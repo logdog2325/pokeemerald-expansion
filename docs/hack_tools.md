@@ -114,7 +114,8 @@ About 3000 frames per second, so a full intro takes seconds.
 tools/hack/emu/gbarun pokeemerald.gba script.txt outdir/
 ```
 More gbarun commands: `until ADDR SIZE VALUE MAX [KEYS PERIOD]` (run, optionally tapping KEYS – a
-comma-separated cycle – until memory equals VALUE, or differs from it when written `!VALUE`),
+comma-separated cycle, each entry may be a combination like `A+UP` – until memory equals VALUE, or differs from
+it when written `!VALUE`),
 `untilhold ADDR SIZE VALUE MAX KEYS`, `read ADDR SIZE LABEL`.
 Addresses may be `HEX`, `*HEX` (pointer) or `*HEX+HEX`.
 
@@ -164,6 +165,16 @@ Static checks over the compiled scripts, map.json files and C: every Draconid fl
 every `FLAG_HIDE_*` flag hides an object and toggles (new game sets it and a script clears it, or the
 other way round), every story state (`DRACONID_STATE_*`, `ASTER_STATE_*`, …) other than 0 is written.
 Record-only flags are warnings; states nothing compares against are notes.
+
+## Wild tables – `tools/hack/check_wild.py`
+```sh
+python3 tools/hack/check_wild.py                  # checks src/data/wild_encounters.json against master's
+python3 tools/hack/check_wild.py --info Beldum    # generation, types, evolutions, flags as this build has them
+python3 tools/hack/check_wild.py --changes        # every Hoenn slot that differs from vanilla (Markdown)
+python3 tools/hack/check_wild.py --doc            # the same table at the end of docs/hack_wild.md
+```
+Species data comes from the preprocessed `species_info.h`, so disabled families count as missing. Rules and
+the level check (area → story segment, cap + 3 for changed slots) are in docs/hack_wild.md (D-197).
 | `savestate F`, `loadstate F` | relative paths are inside the `-o` output directory |
 
 Regression tests live in `tools/hack/emu/tests/` and chain through savestates in one output dir:
@@ -182,6 +193,7 @@ python3 tools/hack/emu/play.py tools/hack/emu/tests/maxie_calls.play    -o /tmp/
 python3 tools/hack/emu/play.py tools/hack/emu/tests/elite_four.play     -o /tmp/emu   # E4 post-game rematch swap
 python3 tools/hack/emu/play.py tools/hack/emu/tests/postgame_home.play  -o /tmp/emu   # SS Ticket / Lati TV at home
 python3 tools/hack/emu/play.py tools/hack/emu/tests/hm_free.play        -o /tmp/emu   # HM field moves without a Pokémon (D-190)
+python3 tools/hack/emu/play.py tools/hack/emu/tests/wild.play           -o /tmp/emu   # National Dex, wild battles, a Gen 4-9 trainer swap
 python3 tools/hack/emu/play.py tools/hack/emu/tests/release_boot.play   -o /tmp/rel --rom pokeemerald-release.gba
 ```
 `release_boot.play` goes through the real title and new-game menus, since release builds have neither Quickstart

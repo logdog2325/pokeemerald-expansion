@@ -275,6 +275,7 @@ Draconid Emerald: meeting Prof. Birch, Brendan and May (Phase 4, story event 2).
 - MAY received TORCHIC!
 - PROF. BIRCH: {PLAYER}, you already have a fine partner, so I have something else for you.
 - PROF. BIRCH: The POKéDEX is a high-tech tool that automatically makes a record of any POKéMON you meet or catch.
+- These days even POKéMON from faraway regions turn up in HOENN, so it records them all.
 - And you'll need these to catch them.
 - PROF. BIRCH: MAY, why don't you show {PLAYER} how a battle works? ROUTE 103 is just north of OLDALE TOWN.
 - MAY: Sure! {PLAYER}, meet me on ROUTE 103!

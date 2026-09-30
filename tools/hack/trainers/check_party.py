@@ -19,8 +19,9 @@ Checks per Pokemon:
   - evolved forms are not below the level at which their line evolves by level-up
     (e.g. Salamence below 50; up to EVO_SLACK levels under is a warning, allowed for aces and
     bosses only; stone/trade evolutions are not checked)
-  - the species is in the Hoenn Pokedex (with cross-generation evolutions) or used by some trainer
-    in vanilla Emerald (warning otherwise; story trainers with their own rosters are exempt)
+  - the species is in the Hoenn Pokedex (with cross-generation evolutions), used by some trainer in vanilla
+    Emerald, or in the family of a species wild in Hoenn or on an ORAS Hoenn trainer (warning otherwise;
+    story trainers with their own rosters are exempt)
   - Mega Stones only for trainers listed in MEGA_TRAINERS (warning otherwise)
   - with --caps: levels do not exceed the trainer's segment cap (tools/hack/trainers/segments.json)
 Errors fail the run (exit 1).
@@ -98,9 +99,12 @@ def mega_stones():
     return set(re.findall(r"\[(ITEM_\w+)\]\s*=\s*\{[^{}]*?HOLD_EFFECT_MEGA_STONE", text, re.S))
 
 
-def species_pool():
+def species_pool(parents=None):
     """Hoenn dex (FOREACH_SPECIES_IN_HOENN_DEX_ORDER, cross-gen evolutions included) + every species
-    a vanilla Emerald trainer uses (git HEAD of master is not needed: the vanilla file is in git)."""
+    a vanilla Emerald trainer uses (git HEAD of master is not needed: the vanilla file is in git).
+    Round 1 (feedback 1.28, D-195): + the evolution families of every species wild in Hoenn
+    (src/data/wild_encounters.json, Gens 4-9 included) and of every species on an ORAS Hoenn trainer
+    (tools/hack/trainers/oras/oras_trainers.json)."""
     text = open(os.path.join(ROOT, "include/constants/pokedex.h")).read()
     m = re.search(r"#define FOREACH_SPECIES_IN_HOENN_DEX_ORDER\(F\)(.*?)\n\n", text, re.S)
     pool = set(re.findall(r"F\((\w+)\)", m.group(1)))
@@ -112,6 +116,50 @@ def species_pool():
     for _, raw in party.split(vanilla)[1]:
         for mon in party.parse_block(raw)["mons"]:
             pool.add(party.const_name(mon["species"], "SPECIES_")[len("SPECIES_"):])
+    regional = set()
+    wild = json.load(open(os.path.join(ROOT, "src/data/wild_encounters.json")))
+    for group in wild["wild_encounter_groups"]:
+        if group["label"] != "gWildMonHeaders":
+            continue
+        for enc in group["encounters"]:
+            if re.search(r"_(FireRed|LeafGreen)$", enc["base_label"]):
+                continue
+            for key, mons in enc.items():
+                if key.endswith("_mons"):
+                    regional |= {m["species"][len("SPECIES_"):] for m in mons["mons"]}
+    oras = json.load(open(os.path.join(ROOT, "tools/hack/trainers/oras/oras_trainers.json")))
+    for loc in oras["locations"].values():
+        for tr in loc["trainers"]:
+            regional |= {party.const_name(m["species"], "SPECIES_")[len("SPECIES_"):] for m in tr["mons"]}
+    if parents is not None:
+        children = {}
+        for child, (par, _, _) in parents.items():
+            children.setdefault(par, set()).add(child)
+
+        def root(sp):
+            seen = set()
+            while sp in parents and sp not in seen:
+                seen.add(sp)
+                sp = parents[sp][0]
+            return sp
+
+        for sp in list(regional):
+            todo = [root(sp)]
+            while todo:
+                cur = todo.pop()
+                regional.add(cur)
+                todo += children.get(cur, [])
+    pool |= regional
+    # species.h aliases (SPECIES_PALAFIN = SPECIES_PALAFIN_ZERO): a party file may use either name
+    alias = dict(re.findall(r"\bSPECIES_(\w+)\s*=\s*SPECIES_(\w+)\s*,",
+                            open(os.path.join(ROOT, "include/constants/species.h")).read()))
+    for name, target in alias.items():
+        seen = set()
+        while target in alias and target not in seen:
+            seen.add(target)
+            target = alias[target]
+        if target in pool:
+            pool.add(name)
     return pool
 
 
@@ -162,7 +210,7 @@ def main():
     abilities_ok = load_constants("include/constants/abilities.h", "ABILITY_")
     natures_ok = load_constants("include/constants/pokemon.h", "NATURE_")
     stones = mega_stones()
-    pool = species_pool()
+    pool = species_pool(parents)
     _, base_blocks = party.split(open(os.path.join(ROOT, "src/data/trainers.party")).read())
     base = {tid: party.parse_block(raw)["fields"] for tid, raw in base_blocks}
     caps = {}

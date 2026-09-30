@@ -5,7 +5,7 @@ This is the resume point for any new session. Legend: `[x]` done, `[~]` in progr
 
 Base: pokeemerald-expansion 1.17.1 (`master` @ dfb0f843). Working branch: `draconid-emerald`.
 Other docs: [decisions](hack_decisions.md) · [changes](hack_changes.md) · [tools](hack_tools.md) ·
-[art pipeline](hack_art_pipeline.md) · [trainers](hack_trainers.md) · [resources](hack_resources.md) ·
+[art pipeline](hack_art_pipeline.md) · [trainers](hack_trainers.md) · [wild Pokémon](hack_wild.md) · [resources](hack_resources.md) ·
 [playtest guide](playtest_guide.md) · [feedback](hack_feedback.md)
 
 ## Where things stand
@@ -46,6 +46,9 @@ menu) → `pokeemerald.gba`, `make release` → `pokeemerald-release.gba`; zippe
       tamer's scale scarf on every player sprite (1.14, D-164–D-167), Zinnia (D-180/181) – checked in the emulator;
       open: Courtney trainer pic (she doesn't battle)
 - [x] Trainers from real ORAS data (Serebii, D-170–D-175): 27 ORAS first-battle teams, Elite Four rosters, Elite Four post-game rematch after the Hall of Fame
+- [x] Gens 4–9 in the wild and on generic trainers (feedback 1.28, D-193–D-197): 95 species in 281 wild slots, Beldum
+      1% on every Granite Cave floor, National Dex from Birch's lab, 122 generic trainers with a Gen 4–9 swap
+      (ORAS rosters where known); `check_wild.py`, `wild.play` ([hack_wild.md](hack_wild.md))
 - [ ] Verification (matrix incl. Nerine/Aster variants, story checks, per-act debug warps) + v2 ROM
 
 ## Phase 0 – Tools and extensions
