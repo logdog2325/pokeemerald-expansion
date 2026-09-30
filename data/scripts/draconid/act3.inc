@@ -669,30 +669,26 @@ MeteorFalls_1F_1R_EventScript_DraconidMeteoriteScene_Text_0:
 	.string "LEADER! The kid made it!$"
 
 MeteorFalls_1F_1R_EventScript_DraconidMeteoriteScene_Text_1:
-	.string "MAXIE: So you are {PLAYER}. We meet at\n"
-	.string "last.\p"
-	.string "A voice on the POKéNAV tells me very\n"
-	.string "little. TABITHA tells me more.\p"
-	.string "She speaks well of you. She rarely\n"
-	.string "speaks well of anyone.$"
+	.string "MAXIE: So you are {PLAYER}.\n"
+	.string "At last we meet.\p"
+	.string "TABITHA speaks well of you, and he is\n"
+	.string "not a man given to praise.$"
 
 MeteorFalls_1F_1R_EventScript_DraconidMeteoriteScene_Text_2:
-	.string "MAXIE: Look at it, {PLAYER}.\p"
-	.string "This stone fell from the sky long ago.\n"
-	.string "It still burns with a power our world has\l"
-	.string "forgotten.\p"
-	.string "With it, we will wake the heart of\n"
-	.string "MT. CHIMNEY. Its fire will cool into new\l"
-	.string "land.\p"
-	.string "Land for people with nowhere to live.\n"
-	.string "For POKéMON driven from their homes.\p"
-	.string "For children like you, {PLAYER}.$"
+	.string "MAXIE: Look at it, {PLAYER}. This\n"
+	.string "METEORITE fell from the sky, and it\l"
+	.string "still holds a remarkable energy.\p"
+	.string "With its power, we will awaken\n"
+	.string "MT. CHIMNEY. The magma will flow, then\l"
+	.string "cool into new land.\p"
+	.string "Land where humankind and POKéMON can\n"
+	.string "live and grow. That is our ideal.$"
 
 MeteorFalls_1F_1R_EventScript_DraconidMeteoriteScene_Text_3:
-	.string "MAXIE: A shard broke away when we cut\n"
-	.string "it from the rock. Here.\p"
-	.string "Keep it. Every great work begins with a\n"
-	.string "small stone.$"
+	.string "MAXIE: A shard broke off when we cut it\n"
+	.string "from the rock. Take it.\p"
+	.string "Keep it with you. Every great work\n"
+	.string "begins with a small stone.$"
 
 MeteorFalls_1F_1R_EventScript_DraconidMeteoriteScene_Text_4:
 	.string "MAXIE pressed a small shard of the\n"
@@ -708,13 +704,12 @@ MeteorFalls_1F_1R_EventScript_DraconidMeteoriteScene_Text_6:
 	.string "playing with!$"
 
 MeteorFalls_1F_1R_EventScript_DraconidMeteoriteScene_Text_7:
-	.string "MAXIE: I know exactly what I am playing\n"
-	.string "with. That is the difference between\l"
-	.string "us.$"
+	.string "MAXIE: I know exactly what it is.\n"
+	.string "That is the difference between us.$"
 
 MeteorFalls_1F_1R_EventScript_DraconidMeteoriteScene_Text_8:
-	.string "MAXIE: {PLAYER}. Hold the stairs. We go\n"
-	.string "to MT. CHIMNEY.$"
+	.string "MAXIE: {PLAYER}, keep AQUA off these\n"
+	.string "stairs. We leave for MT. CHIMNEY.$"
 
 MeteorFalls_1F_1R_EventScript_DraconidMeteoriteScene_Text_9:
 	.string "ARCHIE: Out of the way, kid.\p"
@@ -805,20 +800,14 @@ MtChimney_EventScript_DraconidTabitha_Text_0:
 	.string "Don't keep him waiting. Hehehe!$"
 
 MtChimney_EventScript_DraconidMaxie_Text_0:
-	.string "MAXIE: Ah, {PLAYER}. You came, as I\n"
-	.string "asked.$"
+	.string "MAXIE: Ah, {PLAYER}. Good, you came.$"
 
 MtChimney_EventScript_DraconidMaxie_Text_1:
-	.string "MAXIE: Look. The METEORITE's energy\n"
-	.string "flows into the machine, and from the\l"
-	.string "machine into the mountain.\p"
-	.string "When MT. CHIMNEY wakes, its fire will\n"
-	.string "pour out and cool into new land.\p"
-	.string "ARCHIE calls that destruction. Every\n"
-	.string "birth looks like destruction to those\l"
-	.string "who fear change.\p"
-	.string "The town below will have time to leave. I\n"
-	.string "am not a monster, {PLAYER}.$"
+	.string "MAXIE: When MT. CHIMNEY erupts, the\n"
+	.string "lava will cool into new land. ARCHIE will\l"
+	.string "call it destruction, of course.\p"
+	.string "The people of LAVARIDGE will have time\n"
+	.string "to leave. I am not a monster, {PLAYER}.$"
 
 MtChimney_EventScript_DraconidMaxie_Text_2:
 	.string "MAXIE: TABITHA!$"
@@ -828,16 +817,16 @@ MtChimney_EventScript_DraconidMaxie_Text_3:
 
 MtChimney_EventScript_DraconidMaxie_Text_4:
 	.string "MAXIE: Take the grunts down the east\n"
-	.string "slope. Keep ARCHIE busy.$"
+	.string "slope and keep ARCHIE busy.$"
 
 MtChimney_EventScript_DraconidMaxie_Text_5:
 	.string "TABITHA: With pleasure! Hehehe!$"
 
 MtChimney_EventScript_DraconidMaxie_Text_6:
-	.string "MAXIE: {PLAYER}. Guard the path below\n"
-	.string "us, as I told you. AQUA will come.\p"
-	.string "No one reaches this machine until it is\n"
-	.string "done. I am trusting you with this.$"
+	.string "MAXIE: {PLAYER}, guard the path below\n"
+	.string "us. AQUA will come.\p"
+	.string "Let no one reach this machine until its\n"
+	.string "work is done. I leave it in your hands.$"
 
 MtChimney_EventScript_DraconidNerine_Text_0:
 	.string "NERINE: …Keep your voice down. Your\n"
@@ -867,37 +856,32 @@ MtChimney_EventScript_DraconidNerine_Text_3:
 	.string "on the fire.$"
 
 MtChimney_EventScript_DraconidBrendan_Text_0:
-	.string "BRENDAN: {PLAYER}!\p"
-	.string "Let me through! Your boss is going to\n"
-	.string "make the volcano erupt!\p"
-	.string "LAVARIDGE is right below us! Do you\n"
-	.string "know how many people live there?!$"
+	.string "BRENDAN: {PLAYER}! Get out of the way!\p"
+	.string "Your boss wants this volcano to erupt!\n"
+	.string "LAVARIDGE is right below us!$"
 
 MtChimney_EventScript_DraconidBrendan_Text_1:
-	.string "BRENDAN: …You're not moving.\p"
-	.string "After RUSTBORO I kept telling myself\n"
-	.string "you had a reason. That there had to be\l"
-	.string "one.\p"
-	.string "Then tell me what it is! Or get out of my\n"
-	.string "way!$"
+	.string "BRENDAN: Well?! Ever since RUSTBORO,\n"
+	.string "I've wondered why you joined them.\p"
+	.string "Whatever your reason is, it isn't worth\n"
+	.string "a whole town! Move!$"
 
 MtChimney_EventScript_DraconidBrendan_Text_2:
-	.string "BRENDAN: …Fine. Then I'll go through\n"
-	.string "you!$"
+	.string "BRENDAN: Fine. Then I'll just have to go\n"
+	.string "through you!$"
 
 MtChimney_EventScript_DraconidBrendan_Text_3:
-	.string "BRENDAN: I beat you, and you still won't\n"
-	.string "move.\p"
-	.string "…What happened to you, {PLAYER}?$"
+	.string "BRENDAN: I beat you, and you STILL\n"
+	.string "won't budge?\p"
+	.string "What happened to you, {PLAYER}?$"
 
 MtChimney_EventScript_DraconidBrendan_Text_4:
-	.string "BRENDAN: I can't get past you. Not like\n"
-	.string "this.$"
+	.string "BRENDAN: Tch… I can't get past you.$"
 
 MtChimney_EventScript_DraconidBrendan_Text_5:
-	.string "BRENDAN: Forget it. I'm going down to\n"
-	.string "warn LAVARIDGE. Somebody has to.\p"
-	.string "Don't follow me.$"
+	.string "BRENDAN: Forget it! I'm going down to\n"
+	.string "warn LAVARIDGE.\p"
+	.string "And don't you dare follow me!$"
 
 MtChimney_EventScript_DraconidSabotage_Text_0:
 	.string "MAXIE: Fufufu… Do you feel it? The\n"
@@ -912,41 +896,37 @@ MtChimney_EventScript_DraconidSabotage_Text_2:
 	.string "…and quietly pulled the METEORITE free!$"
 
 MtChimney_EventScript_DraconidSabotage_Text_3:
-	.string "MAXIE: …The rumbling. It's fading?$"
+	.string "MAXIE: Hm? The rumbling is dying down…$"
 
 MtChimney_EventScript_DraconidSabotage_Text_4:
-	.string "MAXIE: The METEORITE… It's gone!$"
+	.string "MAXIE: What?! The METEORITE is gone!$"
 
 MtChimney_EventScript_DraconidSabotage_Text_5:
-	.string "MAXIE: {PLAYER}! Did anyone get past\n"
-	.string "you?$"
+	.string "MAXIE: {PLAYER}!\n"
+	.string "Did anyone get past you?$"
 
 MtChimney_EventScript_DraconidSabotage_Text_6:
 	.string "{PLAYER} shook their head.$"
 
 MtChimney_EventScript_DraconidSabotage_Text_7:
-	.string "MAXIE: …No. Of course not. I watched\n"
-	.string "you hold that path. Twice.\p"
-	.string "Then it was ARCHIE. His grunts were\n"
-	.string "crawling over every slope of this\l"
-	.string "mountain.\p"
-	.string "One of them slipped up the cliff in the\n"
-	.string "smoke while we were busy.$"
+	.string "MAXIE: No… I saw you hold that path\n"
+	.string "with my own eyes.\p"
+	.string "Then it was ARCHIE. His grunts must\n"
+	.string "have climbed the cliff in the smoke.$"
 
 MtChimney_EventScript_DraconidSabotage_Text_8:
 	.string "MAXIE: ARCHIE… You would drown the\n"
 	.string "whole world just to spite me.$"
 
 MtChimney_EventScript_DraconidSabotage_Text_9:
-	.string "MAXIE: …Enough. A key can be stolen.\n"
-	.string "The door is still there.\p"
+	.string "MAXIE: Even without the METEORITE,\n"
+	.string "there is still the ORB. Fufufu…\p"
 	.string "TEAM MAGMA! We withdraw!$"
 
 MtChimney_EventScript_DraconidSabotage_Text_10:
-	.string "MAXIE: {PLAYER}. You did well today.\n"
-	.string "Better than anyone had a right to\l"
-	.string "expect.\p"
-	.string "I will remember it.$"
+	.string "MAXIE: {PLAYER}, you did well today,\n"
+	.string "better than I had any right to expect.\p"
+	.string "I will remember this.$"
 
 MtChimney_EventScript_DraconidSabotage_Text_11:
 	.string "TEAM MAGMA left the summit.\p"
@@ -1020,7 +1000,7 @@ MtChimney_Text_DraconidNerineDefeat::
 	.string "you.$"
 
 MtChimney_Text_DraconidBrendanDefeat::
-	.string "Why?! Why are you protecting HIM?$"
+	.string "Argh! Why are you protecting him?!$"
 
 MtChimney_Text_DraconidBrendanVictory::
-	.string "…I won. So why does it feel like I lost?$"
+	.string "There! Now will you move?$"

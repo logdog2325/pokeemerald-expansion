@@ -111,8 +111,9 @@ script MossdeepCity_SpaceCenter_2F_EventScript_DraconidRaid {
     applymovement(LOCALID_SPACE_CENTER_TABITHA, Common_Movement_WalkInPlaceFasterLeft)
     applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft)
     waitmovement(0)
-    msgbox(format("BRENDAN: …{PLAYER}. Of course. Wherever MAGMA goes, you go.\p"
-                  "I came to help STEVEN. I never thought I'd be fighting you over rocket fuel."))
+    msgbox(format("BRENDAN: {PLAYER}… Figures.\nWherever MAGMA goes, you go.\p"
+                  "I came to help STEVEN protect\nthis place.\p"
+                  "And you're here to steal rocket\nfuel for MAGMA?!"))
     msgbox(format("STEVEN: TABITHA. What does MAGMA want with rocket fuel?"))
     msgbox(format("TABITHA: Hehehe! Since you asked so nicely…\p"
                   "We're going to dump every drop into MT. CHIMNEY.\p"
@@ -126,7 +127,7 @@ script MossdeepCity_SpaceCenter_2F_EventScript_DraconidRaid {
     waitfanfare
     msgbox(format("TABITHA healed {PLAYER}'s POKéMON."))
     msgbox(format("STEVEN: BRENDAN, with me."))
-    msgbox(format("BRENDAN: Right behind you."))
+    msgbox(format("BRENDAN: Right behind you!"))
     closemessage
     call(MossdeepCity_SpaceCenter_2F_EventScript_DraconidTagBattle)
     goto(MossdeepCity_SpaceCenter_2F_EventScript_DefeatedMaxieTabitha)
@@ -155,7 +156,7 @@ text MossdeepCity_SpaceCenter_2F_Text_DraconidStevenDefeat {
 }
 
 text MossdeepCity_SpaceCenter_2F_Text_DraconidBrendanDefeat {
-    format("BRENDAN: Why are you this strong… for THEM?")
+    format("BRENDAN: Why waste strength like that on THEM?!")
 }
 
 // First line of the vanilla DefeatedMaxieTabitha: whoever won, the tanks are already sealed
@@ -204,13 +205,13 @@ script MossdeepCity_SpaceCenter_2F_EventScript_DraconidStevenAndBrendan {
     waitmovement(0)
     applymovement(LOCALID_SPACE_CENTER_2F_BRENDAN, Common_Movement_WalkInPlaceFasterUp)
     waitmovement(0)
-    msgbox(format("BRENDAN: LET us?! STEVEN, you saw it! {PLAYER} battled for MAGMA!"))
+    msgbox(format("BRENDAN: LET us?! STEVEN, you saw it yourself! {PLAYER} battled for MAGMA!"))
     closemessage
     applymovement(LOCALID_SPACE_CENTER_2F_BRENDAN, Common_Movement_WalkInPlaceFasterRight)
     waitmovement(0)
-    msgbox(format("BRENDAN: I don't care what you “let” happen, {PLAYER}.\p"
-                  "You stood next to them. Every single time.\p"
-                  "…I'm done trying to understand you."))
+    msgbox(format("BRENDAN: I don't care what you “let”\nhappen, {PLAYER}.\p"
+                  "You were right there with MAGMA again!\p"
+                  "That's it. I give up trying to\nfigure you out."))
     closemessage
     applymovement(LOCALID_SPACE_CENTER_2F_BRENDAN, MossdeepCity_SpaceCenter_2F_Movement_DraconidBrendanStormsOff)
     waitmovement(0)
@@ -342,11 +343,10 @@ script SootopolisCity_EventScript_DraconidMaxie {
     waitmovement(0)
     playbgm(MUS_ENCOUNTER_MAGMA, FALSE)
     if (var(VAR_MAGMA_STATE) < MAGMA_STATE_TURNED) {
-        msgbox(format("MAXIE: {PLAYER}. You came. Good.\p"
-                      "Stand with me. I want you to see this."))
+        msgbox(format("MAXIE: {PLAYER}.\nYou came, as I knew you would.\p"
+                      "Stand here with me.\nI want you to see this."))
     } else {
-        msgbox(format("MAXIE: You again.\p"
-                      "Have you come to beg for your place back? Or to finish this?"))
+        msgbox(format("MAXIE: You again. Have you come to beg for your place back, or to finish this?"))
     }
     closemessage
     call(SootopolisCity_EventScript_DraconidStandBeforeMaxie)
@@ -355,7 +355,7 @@ script SootopolisCity_EventScript_DraconidMaxie {
     }
     if (!defeated(TRAINER_MAXIE_SOOTOPOLIS)) {
         trainerbattle_no_intro(TRAINER_MAXIE_SOOTOPOLIS, SootopolisCity_Text_DraconidMaxieDefeat)
-        msgbox(format("MAXIE: …Beaten. By a child who wore my colors."))
+        msgbox(format("MAXIE: Humph… Beaten by a child who wore my own colors."))
         closemessage
     }
     call(SootopolisCity_EventScript_DraconidMultiBattle)
@@ -376,11 +376,9 @@ script SootopolisCity_EventScript_DraconidStandBeforeMaxie {
 }
 
 script SootopolisCity_EventScript_DraconidTheTurn {
-    msgbox(format("MAXIE: Look at them. ARCHIE's KYOGRE is drowning the world, one storm at a time.\p"
-                  "And GROUDON fights back. It always has. It only needs a guiding hand.\p"
-                  "The BLUE ORB failed me in the HIDEOUT. It will not fail me twice.\p"
-                  "Help me take control of GROUDON, {PLAYER}. You and I, together.\p"
-                  "When the rain ends, the land will be ours to shape."))
+    msgbox(format("MAXIE: Look at them, {PLAYER}. KYOGRE would drown the world, and only GROUDON stands against it.\p"
+                  "The BLUE ORB failed me once. This time, with your help, I will bring GROUDON under control.\p"
+                  "When the rain ends, we will shape the land together. Our ideal world, {PLAYER}!"))
     closemessage
     applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterDown)
     waitmovement(0)
@@ -391,7 +389,7 @@ script SootopolisCity_EventScript_DraconidTheTurn {
     closemessage
     applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp)
     waitmovement(0)
-    msgbox(format("MAXIE: {PLAYER}? What are you waiting for?"))
+    msgbox(format("MAXIE: {PLAYER}?\nWhat are you waiting for?"))
     msgbox(format("{PLAYER} pulled off the red hood…\p"
                   "…and let the TEAM MAGMA uniform fall to the ground."))
     closemessage
@@ -401,18 +399,16 @@ script SootopolisCity_EventScript_DraconidTheTurn {
     setvar(VAR_MAGMA_STATE, MAGMA_STATE_TURNED)
     applymovement(LOCALID_SOOTOPOLIS_MAXIE, Common_Movement_ExclamationMark)
     waitmovement(0)
-    msgbox(format("MAXIE: Those colors…\p"
-                  "The mountain clan. The DRACONID.\p"
-                  "…You were never mine. Not for a single day."))
+    msgbox(format("MAXIE: Those colors… I know them.\nYou are one of the DRACONID.\p"
+                  "So you were never truly one of us."))
     msgbox(format("MAXIE: After everything I gave you?!\p"
-                  "I trusted you with my plans. I made you my right hand!\p"
-                  "And all that time, you were waiting for this moment."))
+                  "I trusted you with my plans. I made you my right hand!"))
     msgbox(format("MAXIE: Very well. I will take GROUDON without you.\p"
                   "But first, I will deal with the traitor in my ranks!"))
 }
 
 text SootopolisCity_Text_DraconidMaxieDefeat {
-    format("Why…? I gave you everything…")
+    format("Impossible! I, MAXIE, beaten\nby my own recruit?!")
 }
 
 // ARCHIE joins MAXIE, BRENDAN and MAY land on the island, the player picks a partner and the other one holds
@@ -422,7 +418,7 @@ script SootopolisCity_EventScript_DraconidMultiBattle {
     waitmovement(0)
     msgbox(format("ARCHIE: Fufufu! MAXIE's own grunt, turning on him! Now that's a show.\p"
                   "But don't get cocky, kid. KYOGRE is still mine to take."))
-    msgbox(format("MAXIE: ARCHIE… For once, we agree on something.\p"
+    msgbox(format("MAXIE: For once, ARCHIE,\nwe agree on something.\p"
                   "This child stands in both our ways."))
     closemessage
     playbgm(MUS_ENCOUNTER_MAY, FALSE)
@@ -438,20 +434,19 @@ script SootopolisCity_EventScript_DraconidMultiBattle {
         msgbox(format("???: {PLAYER}!"))
         closemessage
         call(SootopolisCity_EventScript_DraconidRivalsStepUp)
-        msgbox(format("MAY: We saw it all from the sky! You threw the uniform away!\p"
-                      "Right in front of MAXIE!"))
-        msgbox(format("BRENDAN: {PLAYER}… What ARE you?"))
-        msgbox(format("MAY: Later, BRENDAN! Two against one isn't fair.\p"
-                      "{PLAYER}, one of us fights with you!"))
+        msgbox(format("MAY: We saw everything from the sky! You threw that uniform away right in front of MAXIE!"))
+        msgbox(format("BRENDAN: {PLAYER}… Just who ARE you?"))
+        msgbox(format("MAY: Save it for later, BRENDAN! Two against one isn't fair.\p"
+                      "{PLAYER}, one of us will fight with you!"))
         msgbox(format("BRENDAN: Their ADMINS are crossing the water, too.\p"
-                      "Whoever doesn't fight here holds them back."))
+                      "Whoever doesn't fight here has to hold them back."))
     } else {
         call(SootopolisCity_EventScript_DraconidRivalsStepUp)
-        msgbox(format("MAY: {PLAYER}! You're back! We kept them busy for you.\p"
-                      "Let's try that again. Pick a partner!"))
+        msgbox(format("MAY: {PLAYER}, you're back! We kept them busy for you.\p"
+                      "Let's try that again!\nWho's your partner?"))
     }
     // MAXIE's battle took its toll: MAY patches the team up first
-    msgbox(format("MAY: But first… your POKéMON are worn out. Hold still!"))
+    msgbox(format("MAY: But first, your POKéMON look worn out. Hold still!"))
     closemessage
     playfanfare(MUS_HEAL)
     special(HealPlayerParty)
@@ -463,14 +458,14 @@ script SootopolisCity_EventScript_DraconidMultiBattle {
     closemessage
     if (var(VAR_RESULT) == 0) {
         setvar(VAR_TEMP_2, PARTNER_BRENDAN)
-        msgbox(format("BRENDAN: …Me? After everything I said to you?\p"
-                      "…Fine. Let's go, {PLAYER}."))
+        msgbox(format("BRENDAN: Me? After all the things I said to you?\p"
+                      "…All right. Let's go, {PLAYER}!"))
         msgbox(format("MAY: Then the ADMINS are mine!"))
         closemessage
         applymovement(LOCALID_SOOTOPOLIS_MAY, SootopolisCity_Movement_DraconidMayToAdmins)
         waitmovement(0)
         playmoncry(SPECIES_BLAZIKEN, CRY_MODE_ENCOUNTER)
-        msgbox(format("MAY: BLAZIKEN, keep them off the island!"))
+        msgbox(format("MAY: BLAZIKEN!\nKeep them off the island!"))
         waitmoncry
         closemessage
         applymovement(LOCALID_SOOTOPOLIS_BRENDAN, SootopolisCity_Movement_DraconidBrendanToPartner)
@@ -514,23 +509,23 @@ script SootopolisCity_EventScript_DraconidMultiBattle {
         fadescreen(FADE_TO_BLACK)
         special(SetCB2WhiteOut)
     }
-    msgbox(format("MAXIE: The land… slipping through my fingers…"))
+    msgbox(format("MAXIE: The land is slipping\nthrough my fingers…"))
     msgbox(format("ARCHIE: KYOGRE won't even look at the RED ORB anymore…"))
     closemessage
     if (var(VAR_TEMP_2) == PARTNER_BRENDAN) {
         applymovement(LOCALID_SOOTOPOLIS_MAY, SootopolisCity_Movement_DraconidMayBack)
         waitmovement(0)
-        msgbox(format("MAY: Their ADMINS turned tail! And you two beat MAXIE and ARCHIE both!"))
+        msgbox(format("MAY: Their ADMINS ran off! And you two beat MAXIE and ARCHIE!"))
     } else {
         applymovement(LOCALID_SOOTOPOLIS_BRENDAN, SootopolisCity_Movement_DraconidBrendanBack)
         waitmovement(0)
-        msgbox(format("BRENDAN: Their ADMINS turned tail! …And you two actually did it."))
+        msgbox(format("BRENDAN: The ADMINS turned tail! And you two actually beat them!"))
     }
     closemessage
 }
 
 text SootopolisCity_Text_DraconidMaxieMultiDefeat {
-    format("Children… All of you…")
+    format("This cannot be happening…")
 }
 
 text SootopolisCity_Text_DraconidArchieMultiDefeat {
@@ -687,18 +682,17 @@ script SootopolisCity_EventScript_DraconidRivalsAftermath {
     }
     applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterDown)
     waitmovement(0)
-    msgbox(format("MAY: It's over… That was RAYQUAZA! A real, live RAYQUAZA!\p"
-                  "And you! DRACONID! Undercover in TEAM MAGMA the whole time!\p"
+    msgbox(format("MAY: Did you see that? That was RAYQUAZA! A real, live RAYQUAZA!\p"
+                  "And you were a DRACONID, undercover in TEAM MAGMA this whole time!\p"
                   "I KNEW it! I knew it, I knew it, I KNEW it!\p"
                   "Nobody who raises dragons like yours could ever be one of THEM."))
-    msgbox(format("BRENDAN: …Hey. {PLAYER}.\p"
-                  "About RUSTBORO. And MOSSDEEP. And… everything I said.\p"
-                  "I, uh… I was wrong. Okay? I was wrong about you.\p"
-                  "…Don't make me say it twice."))
+    msgbox(format("BRENDAN: Hey, {PLAYER}… About the things I said in RUSTBORO and MOSSDEEP.\p"
+                  "I was wrong about you, okay? I'm sorry.\p"
+                  "…Don't make me say that twice."))
     msgbox(format("MAY: Hehe! He practiced that the whole way here."))
     msgbox(format("BRENDAN: I did NOT!"))
-    msgbox(format("MAY: We're going home to tell our dads everything.\p"
-                  "Come visit LITTLEROOT when you can, {PLAYER}!"))
+    msgbox(format("MAY: We're going home to tell our\ndads everything!\p"
+                  "{PLAYER}, come visit LITTLEROOT\nwhen you can!"))
     closemessage
     setvar(VAR_BRENDAN_STATE, BRENDAN_STATE_SOOTOPOLIS)
     setvar(VAR_MAY_STATE, MAY_STATE_SOOTOPOLIS)

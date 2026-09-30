@@ -270,24 +270,22 @@ LavaridgeTown_EventScript_HerbShopSign::
 	end
 
 LavaridgeTown_Text_MayNiceBadgesTakeThis:  @ Draconid Emerald
-	.string "MAY: {PLAYER}! Long time no see!\p"
-	.string "Still in that red uniform, I see…\p"
-	.string "People here won't stop talking about\n"
-	.string "MT. CHIMNEY.\p"
-	.string "Were you really up there with them?\p"
-	.string "…You don't have to answer.\p"
-	.string "You got FLANNERY's BADGE anyway, didn't\n"
-	.string "you? Here. I think you'll need these.$"
+	.string "MAY: {PLAYER}. So you're still wearing\n"
+	.string "that uniform.\p"
+	.string "The whole town is talking about what\n"
+	.string "MAGMA tried on MT. CHIMNEY.\p"
+	.string "…Were you really up there with them?\p"
+	.string "Forget it. Here, I don't need these\n"
+	.string "anymore. Just stay out of LAVARIDGE.$"
 
 LavaridgeTown_Text_MayExplainGoGogglesChallengeDad:  @ Draconid Emerald
 	.string "MAY: With those GO-GOGGLES, you'll have\n"
 	.string "no trouble getting through the desert\l"
 	.string "near ROUTE 111.\p"
-	.string "Four BADGES… That means my DAD's GYM in\n"
+	.string "Four BADGES… So my dad's GYM in\n"
 	.string "PETALBURG is next for you.\p"
-	.string "I'll be there. I want to see how you\n"
-	.string "battle when someone's watching.\p"
-	.string "See you, {PLAYER}!$"
+	.string "He'll stop you, {PLAYER}.\n"
+	.string "And I'll be there to see it.$"
 
 LavaridgeTown_Text_BrendanNiceBadgesTakeThis:
 	.string "BRENDAN: {PLAYER}, hey, it's been a while.\n"

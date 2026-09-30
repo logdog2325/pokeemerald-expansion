@@ -37,16 +37,13 @@ script MeteorFalls_1F_1R_EventScript_DraconidMeteoriteScene {
     waitmovement(0)
     applymovement(LOCALID_METEOR_FALLS_MAXIE, MeteorFalls_1F_1R_Movement_DraconidMaxieApproach)
     waitmovement(0)
-    msgbox(format("MAXIE: So you are {PLAYER}. We meet at last.\p"
-                  "A voice on the POKéNAV tells me very little. TABITHA tells me more.\p"
-                  "She speaks well of you. She rarely speaks well of anyone."))
-    msgbox(format("MAXIE: Look at it, {PLAYER}.\p"
-                  "This stone fell from the sky long ago. It still burns with a power our world has forgotten.\p"
-                  "With it, we will wake the heart of\nMT. CHIMNEY. Its fire will cool into new land.\p"
-                  "Land for people with nowhere to live. For POKéMON driven from their homes.\p"
-                  "For children like you, {PLAYER}."))
-    msgbox(format("MAXIE: A shard broke away when we cut it from the rock. Here.\p"
-                  "Keep it. Every great work begins with a small stone."))
+    msgbox(format("MAXIE: So you are {PLAYER}.\nAt last we meet.\p"
+                  "TABITHA speaks well of you, and he is not a man given to praise."))
+    msgbox(format("MAXIE: Look at it, {PLAYER}. This METEORITE fell from the sky, and it still holds a remarkable energy.\p"
+                  "With its power, we will awaken\nMT. CHIMNEY. The magma will flow, then cool into new land.\p"
+                  "Land where humankind and POKéMON can live and grow. That is our ideal."))
+    msgbox(format("MAXIE: A shard broke off when we cut it from the rock. Take it.\p"
+                  "Keep it with you. Every great work begins with a small stone."))
     msgbox(format("MAXIE pressed a small shard of the METEORITE into {PLAYER}'s hand.\p"
                   "It was still warm."))
     closemessage
@@ -68,11 +65,11 @@ script MeteorFalls_1F_1R_EventScript_DraconidMeteoriteScene {
     waitmovement(0)
     msgbox(format("MAXIE: ARCHIE. Late, as always."))
     msgbox(format("ARCHIE: MAXIE! Hand over that METEORITE! You have no idea what you're playing with!"))
-    msgbox(format("MAXIE: I know exactly what I am playing with. That is the difference between us."))
+    msgbox(format("MAXIE: I know exactly what it is.\nThat is the difference between us."))
     closemessage
     applymovement(LOCALID_METEOR_FALLS_MAXIE, Common_Movement_WalkInPlaceFasterUp)
     waitmovement(0)
-    msgbox(format("MAXIE: {PLAYER}. Hold the stairs. We go to MT. CHIMNEY."))
+    msgbox(format("MAXIE: {PLAYER}, keep AQUA off these stairs. We leave for MT. CHIMNEY."))
     closemessage
     // the player steps aside to let MAGMA up the stairs, then steps back to block them
     applymovement(LOCALID_PLAYER, MeteorFalls_1F_1R_Movement_PushPlayerOutOfWay)
@@ -295,23 +292,21 @@ script MtChimney_EventScript_DraconidMaxie {
     closemessage
     applymovement(LOCALID_MT_CHIMNEY_MAXIE, Common_Movement_FacePlayer)
     waitmovement(0)
-    msgbox(format("MAXIE: Ah, {PLAYER}. You came, as I asked."))
-    msgbox(format("MAXIE: Look. The METEORITE's energy flows into the machine, and from the machine into the mountain.\p"
-                  "When MT. CHIMNEY wakes, its fire will pour out and cool into new land.\p"
-                  "ARCHIE calls that destruction. Every birth looks like destruction to those who fear change.\p"
-                  "The town below will have time to leave. I am not a monster, {PLAYER}."))
+    msgbox(format("MAXIE: Ah, {PLAYER}. Good, you came."))
+    msgbox(format("MAXIE: When MT. CHIMNEY erupts, the lava will cool into new land. ARCHIE will call it destruction, of course.\p"
+                  "The people of LAVARIDGE will have time to leave. I am not a monster, {PLAYER}."))
     msgbox(format("MAXIE: TABITHA!"))
     closemessage
     applymovement(LOCALID_MT_CHIMNEY_TABITHA, MtChimney_Movement_DraconidTabithaToMaxie)
     waitmovement(0)
     msgbox(format("TABITHA: Hehehe! Yes, LEADER?"))
-    msgbox(format("MAXIE: Take the grunts down the east slope. Keep ARCHIE busy."))
+    msgbox(format("MAXIE: Take the grunts down the east slope and keep ARCHIE busy."))
     msgbox(format("TABITHA: With pleasure! Hehehe!"))
     closemessage
     applymovement(LOCALID_MT_CHIMNEY_TABITHA, MtChimney_Movement_DraconidTabithaLeave)
     waitmovement(0)
-    msgbox(format("MAXIE: {PLAYER}. Guard the path below us, as I told you. AQUA will come.\p"
-                  "No one reaches this machine until it is done. I am trusting you with this."))
+    msgbox(format("MAXIE: {PLAYER}, guard the path below us. AQUA will come.\p"
+                  "Let no one reach this machine until its work is done. I leave it in your hands."))
     closemessage
     applymovement(LOCALID_MT_CHIMNEY_MAXIE, Common_Movement_FaceRight)
     waitmovement(0)
@@ -370,24 +365,22 @@ script MtChimney_EventScript_DraconidBrendan {
     playse(SE_PIN)
     applymovement(LOCALID_MT_CHIMNEY_BRENDAN, Common_Movement_ExclamationMark)
     waitmovement(0)
-    msgbox(format("BRENDAN: {PLAYER}!\p"
-                  "Let me through! Your boss is going to make the volcano erupt!\p"
-                  "LAVARIDGE is right below us! Do you know how many people live there?!"))
-    msgbox(format("BRENDAN: …You're not moving.\p"
-                  "After RUSTBORO I kept telling myself you had a reason. That there had to be one.\p"
-                  "Then tell me what it is! Or get out of my way!"))
+    msgbox(format("BRENDAN: {PLAYER}! Get out of the way!\p"
+                  "Your boss wants this volcano to erupt!\nLAVARIDGE is right below us!"))
+    msgbox(format("BRENDAN: Well?! Ever since RUSTBORO, I've wondered why you joined them.\p"
+                  "Whatever your reason is, it isn't worth a whole town! Move!"))
     msgbox(format("{PLAYER} didn't move."))
-    msgbox(format("BRENDAN: …Fine. Then I'll go through you!"))
+    msgbox(format("BRENDAN: Fine. Then I'll just have to go through you!"))
     closemessage
     trainerbattle_earlyrival(TRAINER_BRENDAN_MT_CHIMNEY, RIVAL_BATTLE_HEAL_AFTER, MtChimney_Text_DraconidBrendanDefeat, MtChimney_Text_DraconidBrendanVictory)
     if (var(VAR_RESULT) == TRUE) {
-        msgbox(format("BRENDAN: I beat you, and you still won't move.\p"
-                      "…What happened to you, {PLAYER}?"))
+        msgbox(format("BRENDAN: I beat you, and you STILL\nwon't budge?\p"
+                      "What happened to you, {PLAYER}?"))
     } else {
-        msgbox(format("BRENDAN: I can't get past you. Not like this."))
+        msgbox(format("BRENDAN: Tch… I can't get past you."))
     }
-    msgbox(format("BRENDAN: Forget it. I'm going down to warn LAVARIDGE. Somebody has to.\p"
-                  "Don't follow me."))
+    msgbox(format("BRENDAN: Forget it! I'm going down to warn LAVARIDGE.\p"
+                  "And don't you dare follow me!"))
     closemessage
     applymovement(LOCALID_MT_CHIMNEY_BRENDAN, MtChimney_Movement_DraconidBrendanLeave)
     waitmovement(0)
@@ -397,11 +390,11 @@ script MtChimney_EventScript_DraconidBrendan {
 }
 
 text MtChimney_Text_DraconidBrendanDefeat {
-    format("Why?! Why are you protecting HIM?")
+    format("Argh! Why are you protecting him?!")
 }
 
 text MtChimney_Text_DraconidBrendanVictory {
-    format("…I won. So why does it feel like I lost?")
+    format("There! Now will you move?")
 }
 
 // The mountain rumbles; MAXIE turns his back on the machine to watch the smoke and the player pulls the
@@ -439,26 +432,25 @@ script MtChimney_EventScript_DraconidSabotage {
     delay(30)
     applymovement(LOCALID_MT_CHIMNEY_MAXIE, Common_Movement_FaceRight)
     waitmovement(0)
-    msgbox(format("MAXIE: …The rumbling. It's fading?"))
+    msgbox(format("MAXIE: Hm? The rumbling is dying down…"))
     closemessage
     playse(SE_PIN)
     applymovement(LOCALID_MT_CHIMNEY_MAXIE, Common_Movement_ExclamationMark)
     waitmovement(0)
-    msgbox(format("MAXIE: The METEORITE… It's gone!"))
+    msgbox(format("MAXIE: What?! The METEORITE is gone!"))
     closemessage
     applymovement(LOCALID_MT_CHIMNEY_MAXIE, MtChimney_Movement_DraconidMaxieToPlayer)
     applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft)
     waitmovement(0)
-    msgbox(format("MAXIE: {PLAYER}! Did anyone get past you?"))
+    msgbox(format("MAXIE: {PLAYER}!\nDid anyone get past you?"))
     msgbox(format("{PLAYER} shook their head."))
-    msgbox(format("MAXIE: …No. Of course not. I watched you hold that path. Twice.\p"
-                  "Then it was ARCHIE. His grunts were crawling over every slope of this mountain.\p"
-                  "One of them slipped up the cliff in the smoke while we were busy."))
+    msgbox(format("MAXIE: No… I saw you hold that path with my own eyes.\p"
+                  "Then it was ARCHIE. His grunts must\nhave climbed the cliff in the smoke."))
     msgbox(format("MAXIE: ARCHIE… You would drown the whole world just to spite me."))
-    msgbox(format("MAXIE: …Enough. A key can be stolen. The door is still there.\p"
+    msgbox(format("MAXIE: Even without the METEORITE,\nthere is still the ORB. Fufufu…\p"
                   "TEAM MAGMA! We withdraw!"))
-    msgbox(format("MAXIE: {PLAYER}. You did well today. Better than anyone had a right to expect.\p"
-                  "I will remember it."))
+    msgbox(format("MAXIE: {PLAYER}, you did well today, better than I had any right to expect.\p"
+                  "I will remember this."))
     closemessage
     delay(30)
     fadescreenswapbuffers(FADE_TO_BLACK)

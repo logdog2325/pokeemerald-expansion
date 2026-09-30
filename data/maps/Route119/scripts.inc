@@ -454,22 +454,20 @@ Route119_Text_MayExplainFly:
 	.string "Well, let's meet again somewhere!$"
 
 Route119_Text_BrendanIntro:  @ Draconid Emerald
-	.string "BRENDAN: {PLAYER}.\p"
-	.string "…MAY told me about the WEATHER\n"
-	.string "INSTITUTE.\p"
-	.string "She says you saved those scientists.\n"
-	.string "She says you're a good guy in disguise.\p"
-	.string "I don't know what to think anymore.\p"
-	.string "So I'll do what I know. Battle me!$"
+	.string "BRENDAN: {PLAYER}. MAY told me what\n"
+	.string "happened at the WEATHER INSTITUTE.\p"
+	.string "She thinks you're a good guy in\n"
+	.string "disguise. I don't know what to think.\p"
+	.string "All I know is you were on MT. CHIMNEY\n"
+	.string "with MAGMA. So battle me!$"
 
 Route119_Text_BrendanDefeat:  @ Draconid Emerald
-	.string "…You fight like someone with nothing to\n"
-	.string "hide.$"
+	.string "Tch… You don't battle like a bad guy.$"
 
 Route119_Text_BrendanIllGiveYouThis:  @ Draconid Emerald
 	.string "BRENDAN: MAY made me promise to give\n"
-	.string "you this.\p"
-	.string "…Don't make me regret it.$"
+	.string "you this. So here.\p"
+	.string "Don't make me regret it.$"
 
 Route119_Text_BrendanExplainFly:  @ Draconid Emerald
 	.string "BRENDAN: Use FLY, and your POKéMON\n"

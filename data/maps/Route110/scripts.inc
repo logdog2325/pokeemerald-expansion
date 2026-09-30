@@ -701,33 +701,31 @@ Route110_Text_AquaActionsBringSmiles:
 	.string "smiles to people's faces!$"
 
 Route110_Text_MayLetsBattle:  @ Draconid Emerald
-	.string "MAY: {PLAYER}! I was hoping I'd run\n"
-	.string "into you.\p"
-	.string "…So it's true. You're with TEAM MAGMA.\p"
+	.string "MAY: {PLAYER}! So it's true.\n"
+	.string "You're really with MAGMA.\p"
 	.string "BRENDAN won't even say your name.\n"
-	.string "But I want to see for myself.\p"
-	.string "Your POKéMON will tell me more\n"
-	.string "than you will!$"
+	.string "I didn't want to believe him.\p"
+	.string "MAGMA is hurting people all over HOENN.\n"
+	.string "I'm going to stop you right here!$"
 
 Route110_Text_MayDefeated:  @ Draconid Emerald
 	.string "MAGMA grunts don't raise\n"
 	.string "dragons like that.$"
 
 Route110_Text_MayTakeThis:  @ Draconid Emerald
-	.string "MAY: I've watched MAGMA grunts.\n"
-	.string "They treat POKéMON like tools.\p"
-	.string "Yours trust you. Completely.\p"
-	.string "What are you really doing,\n"
-	.string "{PLAYER}?\p"
-	.string "…Fine. Keep your secret.\n"
-	.string "Here, take this.$"
+	.string "MAY: I've seen how MAGMA grunts treat\n"
+	.string "their POKéMON. Like tools.\p"
+	.string "But yours trust you.\n"
+	.string "…What are you really doing, {PLAYER}?\p"
+	.string "Forget it. The winner gets this.\n"
+	.string "That's the rule, even for MAGMA.$"
 
 Route110_Text_MayExplainItemfinder:  @ Draconid Emerald
-	.string "MAY: That's an ITEMFINDER.\p"
+	.string "MAY: That's a DOWSING MACHINE.\p"
 	.string "Use it to root around for items that\n"
 	.string "aren't visible.\p"
-	.string "If it senses something, it emits\n"
-	.string "a sound.$"
+	.string "If it senses something,\n"
+	.string "it makes a sound.$"
 
 Route110_Text_RideBikeAtFullSpeed:
 	.string "Wouldn't it be great to ride a BIKE\n"
