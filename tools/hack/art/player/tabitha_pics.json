@@ -1,0 +1,27 @@
+{
+ "note": "Magma admin Tabitha, back pic (TRAINER_PIC_MAGMA_ADMIN; he is the player's partner at the Mossdeep Space Center, D-108). The Magma disguise back pic (magma_m_pics.json: FRLG Red's back pic, cap turned into the hood with its ear points) with Tabitha's colours from his front pic: the hood in his duller crimson, and the grunt's charcoal shirt and grey collar (5/6/9/10/13/14) recoloured into one crimson hooded jacket; the seams (4) stay dark.",
+ "pics": [
+  {
+   "src": "graphics/trainers/back_pics/red.png",
+   "out": "graphics/trainers/back_pics/magma_admin.png",
+   "frame_h": 64,
+   "palette": [
+    [115, 197, 164], [112, 72, 48], [255, 205, 160], [226, 152, 120],
+    [120, 64, 64], [136, 40, 56], [96, 24, 40], [128, 128, 136],
+    [112, 24, 40], [232, 104, 120], [184, 56, 72], [224, 88, 104],
+    [184, 56, 72], [200, 72, 88], [152, 40, 56], [0, 0, 0]
+   ],
+   "roles": {"K": 15, "H": 6, "h": 7, "T": 12, "t": 11, "d": 8, "W": 9, "w": 10, "S": 2, "s": 3, "b": 4, "R": 13, "r": 14, "B": 1, "P": 5},
+   "cap": [8, 11, 12],
+   "clear": [],
+   "head": {
+    "anchor": [-5, -4],
+    "rows": [".K.........K....", ".KtK......KtK...", ".KTTK....KTTK...", "..KTTK..KTTK...."]
+   },
+   "remap": [
+    {"rect": [22, 28, 41, 39], "map": {"4": 12, "3": 12}},
+    {"rect": [42, 26, 56, 31], "map": {"9": 11, "10": 12}}
+   ]
+  }
+ ]
+}

@@ -1,0 +1,419 @@
+{
+ "note": "Nerine's true outfit, back pic (she is the player's partner in the Sky Pillar double battle). Base: FRLG Leaf's back pic (5 frames, throw animation), like the Draconid F back pic. Leaf's hat becomes a silver-blue crown with a gold horn clip on her left side; her long hair turns silver-blue (4/8/1); her top becomes the teal scale shawl (6/7, lattice pattern); bare arms become navy sleeves (per-frame rects, the face keeps its skin); the wristbands become gold cuffs; the skirt (11/12) navy (9 stays white for Leaf's eye); the bag strap stays as a gold sash. The front pic is tools/hack/art/recipes/nerine_front_pic.json (kitbash).",
+ "pics": [
+  {
+   "src": "graphics/trainers/back_pics/leaf.png",
+   "out": "graphics/trainers/back_pics/nerine.png",
+   "frame_h": 64,
+   "palette": [
+    [
+     115,
+     197,
+     164
+    ],
+    [
+     224,
+     232,
+     248
+    ],
+    [
+     255,
+     205,
+     160
+    ],
+    [
+     226,
+     152,
+     120
+    ],
+    [
+     152,
+     168,
+     208
+    ],
+    [
+     24,
+     28,
+     64
+    ],
+    [
+     24,
+     112,
+     120
+    ],
+    [
+     80,
+     184,
+     168
+    ],
+    [
+     88,
+     96,
+     152
+    ],
+    [
+     240,
+     240,
+     248
+    ],
+    [
+     48,
+     56,
+     112
+    ],
+    [
+     24,
+     28,
+     64
+    ],
+    [
+     48,
+     56,
+     112
+    ],
+    [
+     240,
+     200,
+     72
+    ],
+    [
+     168,
+     112,
+     32
+    ],
+    [
+     0,
+     0,
+     0
+    ]
+   ],
+   "roles": {
+    "K": 15,
+    "h": 1,
+    "H": 4,
+    "d": 8,
+    "G": 13,
+    "g": 14,
+    "t": 7,
+    "T": 6,
+    "N": 10,
+    "M": 11,
+    "n": 9
+   },
+   "cap": [
+    9,
+    10,
+    11,
+    12
+   ],
+   "clear": [
+    9,
+    10,
+    11,
+    12,
+    6,
+    15
+   ],
+   "head": {
+    "anchor": [
+     -16,
+     -4
+    ],
+    "rows": [
+     ".......K..........................",
+     "......KGK.........................",
+     "......KGgK........................",
+     ".......KGgK.......................",
+     ".......KGGgK......................",
+     "........KGgK...KKKKKKKKK..........",
+     ".........KgKKKKHHHhhhhHHKKK.......",
+     "..........KHHHHHHHHHHhhhHHHHK.....",
+     ".........KHHHHdHHHHHHHHHhhHHHK....",
+     "........KHHHHdHHHHHHHHHHHHhHHHK...",
+     ".......KHHHHdHHHHHHHHHHHHHHhHHHK..",
+     ".......KHHHdHHHHHHHHdHHHHHHHhHHK..",
+     "......KHHHHdHHHHHHHdHHHHHHHHHhHHK.",
+     "......KHHHdHHHHHHHdHHHHHHHHHHHhHK.",
+     "......KHHdHHHHHHHdHHHHHHHHHHHHHHdK",
+     "......KdHdHHHHHHdHHHHHHHHHHHHHHddK",
+     ".......KddHHHHHdHHHHHHHHHHHHHHdHdK",
+     ".......KdddHHHdHHHHHHHHHHHHHHddHdK",
+     "........KdddHdHHHHHHHHHHHHHHHHdddK"
+    ]
+   },
+   "remap": [
+    {
+     "rect": [
+      0,
+      0,
+      63,
+      63
+     ],
+     "map": {
+      "11": 10,
+      "12": 10
+     }
+    },
+    {
+     "rect": [
+      16,
+      46,
+      28,
+      63
+     ],
+     "map": {
+      "2": 10,
+      "3": 11
+     },
+     "frames": [
+      0
+     ]
+    },
+    {
+     "rect": [
+      34,
+      50,
+      56,
+      63
+     ],
+     "map": {
+      "2": 10,
+      "3": 11
+     },
+     "frames": [
+      1
+     ]
+    },
+    {
+     "rect": [
+      1,
+      42,
+      12,
+      55
+     ],
+     "map": {
+      "2": 10,
+      "3": 11
+     },
+     "frames": [
+      1
+     ]
+    },
+    {
+     "rect": [
+      7,
+      56,
+      20,
+      63
+     ],
+     "map": {
+      "2": 10,
+      "3": 11
+     },
+     "frames": [
+      1
+     ]
+    },
+    {
+     "rect": [
+      29,
+      49,
+      41,
+      63
+     ],
+     "map": {
+      "2": 10,
+      "3": 11
+     },
+     "frames": [
+      2
+     ]
+    },
+    {
+     "rect": [
+      0,
+      28,
+      12,
+      38
+     ],
+     "map": {
+      "2": 10,
+      "3": 11
+     },
+     "frames": [
+      2
+     ]
+    },
+    {
+     "rect": [
+      10,
+      38,
+      18,
+      48
+     ],
+     "map": {
+      "2": 10,
+      "3": 11
+     },
+     "frames": [
+      2
+     ]
+    },
+    {
+     "rect": [
+      39,
+      24,
+      63,
+      41
+     ],
+     "map": {
+      "2": 10,
+      "3": 11
+     },
+     "frames": [
+      3
+     ]
+    },
+    {
+     "rect": [
+      2,
+      44,
+      21,
+      63
+     ],
+     "map": {
+      "2": 10,
+      "3": 11
+     },
+     "frames": [
+      3
+     ]
+    },
+    {
+     "rect": [
+      4,
+      48,
+      20,
+      63
+     ],
+     "map": {
+      "2": 10,
+      "3": 11
+     },
+     "frames": [
+      4
+     ]
+    },
+    {
+     "rect": [
+      30,
+      46,
+      50,
+      59
+     ],
+     "map": {
+      "2": 10,
+      "3": 11
+     },
+     "frames": [
+      4
+     ]
+    },
+    {
+     "rect": [
+      44,
+      59,
+      55,
+      63
+     ],
+     "map": {
+      "2": 10,
+      "3": 11
+     },
+     "frames": [
+      4
+     ]
+    },
+    {
+     "rect": [
+      8,
+      54,
+      9,
+      55
+     ],
+     "map": {
+      "6": 13,
+      "7": 13
+     },
+     "frames": [
+      1
+     ]
+    },
+    {
+     "rect": [
+      9,
+      35,
+      12,
+      38
+     ],
+     "map": {
+      "6": 13,
+      "7": 13
+     },
+     "frames": [
+      2
+     ]
+    },
+    {
+     "rect": [
+      47,
+      28,
+      50,
+      29
+     ],
+     "map": {
+      "6": 13,
+      "7": 13
+     },
+     "frames": [
+      3
+     ]
+    },
+    {
+     "rect": [
+      47,
+      58,
+      50,
+      59
+     ],
+     "map": {
+      "6": 13,
+      "7": 13
+     },
+     "frames": [
+      4
+     ]
+    }
+   ],
+   "pattern": [
+    {
+     "rect": [
+      0,
+      40,
+      63,
+      63
+     ],
+     "on": [
+      6
+     ],
+     "tile": [
+      "tTTT",
+      "TtTt",
+      "TTtT",
+      "TtTt"
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -13,7 +13,10 @@ Spec (JSON), one entry per pic in "pics":
    "palette": [[r, g, b] x16], "roles": {...}, "cap": [...], "clear": [...],
    "head": {"anchor": [dx, dy], "rows": [...]},  drawn on every frame, anchored like build_player
    "fix": {"3": {"dx": 0, "dy": 0}},      per-frame nudges
-   "remap": [{"rect": [x0, y0, x1, y1], "map": {"4": 6}}],  per-frame recolours (frame coords), after the head
+   "remap": [{"rect": [x0, y0, x1, y1], "map": {"4": 6}}],  per-frame recolours (frame coords), after the head;
+                                          "frames": [1, 2] limits one to those frames (default: all)
+   "pattern": [{"rect": [...], "on": [6], "tile": ["dT", "Td"], "frames": [...]}],
+                                          tile an ASCII pattern (roles) over the pixels of indices `on`
    "pixels": {"0": ["x,y,ROLE"]}}
 """
 
@@ -45,12 +48,24 @@ def build_pic(p):
             if not ok:
                 print("warning: %s frame %d: no headwear found" % (p["out"], i))
         for r in p.get("remap", []):
+            if "frames" in r and i not in r["frames"]:
+                continue
             x0, y0, x1, y1 = r["rect"]
             m = {int(k): v for k, v in r["map"].items()}
             for y in range(y0, y1 + 1):
                 for x in range(x0, x1 + 1):
                     if px[x, fy + y] in m:
                         px[x, fy + y] = m[px[x, fy + y]]
+        for t in p.get("pattern", []):
+            if "frames" in t and i not in t["frames"]:
+                continue
+            x0, y0, x1, y1 = t["rect"]
+            on, tile = set(t["on"]), t["tile"]
+            for y in range(y0, y1 + 1):
+                for x in range(x0, x1 + 1):
+                    ch = tile[(y - y0) % len(tile)][(x - x0) % len(tile[0])]
+                    if px[x, fy + y] in on and ch != ".":
+                        px[x, fy + y] = roles[ch]
         for q in p.get("pixels", {}).get(str(i), []):
             x, y, ch = q.split(",")
             px[int(x), fy + int(y)] = 0 if ch == "_" else roles[ch]

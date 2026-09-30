@@ -184,7 +184,7 @@ enum __attribute__((packed)) TrainerPicID
     TRAINER_PIC_PLAYER_MAGMA_F,
     TRAINER_PIC_ASTER, // Draconid Emerald: Aster (front pic only)
     TRAINER_PIC_NERINE_AQUA, // Draconid Emerald: Nerine undercover in Team Aqua (front pic only)
-    TRAINER_PIC_NERINE, // Draconid Emerald: Nerine after the reveal (front pic only)
+    TRAINER_PIC_NERINE, // Draconid Emerald: Nerine after the reveal (front + back pic: Sky Pillar partner)
     TRAINER_PIC_COUNT,
 };
 

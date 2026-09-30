@@ -1,0 +1,17 @@
+{
+ "notes": "Team Magma admin Courtney (overworld): the female Magma grunt with the grunt's red hood and horns, lilac hair (brown 11/12 and the side-view shadow 7 recoloured), a gold Magma emblem (white 14 -> gold 5) and a dark crimson admin jacket instead of the grunt's black top (black 15 inside the torso, rows 21-26, becomes the hood's dark red 10; the outline stays black).",
+ "steps": [
+  {"op": "load", "src": "graphics/object_events/pics/people/team_magma/magma_member_f.png"},
+  {"op": "palette", "pal": [
+   [112, 192, 160], [248, 208, 176], [248, 192, 144], [216, 144, 112],
+   [120, 64, 64], [248, 208, 48], [200, 144, 24], [96, 64, 136],
+   [224, 80, 96], [192, 0, 48], [96, 0, 24], [168, 128, 200],
+   [208, 176, 240], [48, 0, 24], [248, 248, 248], [0, 0, 0]]},
+  {"op": "remap", "map": {"14": 5}},
+  {"op": "remap_inner", "box": [0, 21, 16, 6], "map": {"15": 10},
+   "frames": [0, 1, 2, 3, 4, 5, 6, 7, 8], "frame_w": 16},
+  {"op": "save", "dst": "graphics/object_events/pics/people/draconid/courtney.png"},
+  {"op": "save_pal", "dst": "graphics/object_events/palettes/courtney.pal"},
+  {"op": "save_pal", "dst": "graphics/object_events/palettes/courtney_reflection.pal", "reflection": true}
+ ]
+}

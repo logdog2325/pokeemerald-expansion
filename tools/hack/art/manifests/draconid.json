@@ -254,5 +254,35 @@
  {
   "path": "graphics/trainers/front_pics/aster.png",
   "profile": "trainer_front"
+ },
+ {
+  "path": "graphics/object_events/pics/people/draconid/nerine_aqua.png",
+  "profile": "ow_npc16"
+ },
+ {
+  "path": "graphics/object_events/pics/people/draconid/nerine.png",
+  "profile": "ow_npc16"
+ },
+ {
+  "path": "graphics/object_events/pics/people/draconid/courtney.png",
+  "profile": "ow_npc16"
+ },
+ {
+  "path": "graphics/trainers/front_pics/nerine_aqua.png",
+  "profile": "trainer_front"
+ },
+ {
+  "path": "graphics/trainers/front_pics/nerine.png",
+  "profile": "trainer_front"
+ },
+ {
+  "path": "graphics/trainers/back_pics/nerine.png",
+  "profile": "trainer_back",
+  "frames": 5
+ },
+ {
+  "path": "graphics/trainers/back_pics/magma_admin.png",
+  "profile": "trainer_back",
+  "frames": 5
  }
 ]

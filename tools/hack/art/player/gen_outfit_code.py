@@ -39,7 +39,8 @@ NPCS = [
     ("DraconidBoy", "DRACONID_BOY", "draconid/boy.png", "draconid_npc"),
     ("DraconidGuard", "DRACONID_GUARD", "draconid/guard.png", "draconid_npc"),
     ("Aster", "ASTER", "draconid/aster.png", "aster"),
-    # round 1: Nerine undercover in Team Aqua and in her own clothes, Magma admin Courtney (placeholders: TODO(art))
+    # round 1: Nerine undercover in Team Aqua and in her own clothes, Magma admin Courtney
+    # (sheets from tools/hack/art/recipes/{nerine_aqua,nerine,courtney}.json)
     ("NerineAqua", "NERINE_AQUA", "draconid/nerine_aqua.png", "nerine_aqua"),
     ("Nerine", "NERINE", "draconid/nerine.png", "nerine"),
     ("Courtney", "COURTNEY", "draconid/courtney.png", "courtney"),

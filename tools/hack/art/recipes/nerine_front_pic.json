@@ -1,0 +1,588 @@
+{
+ "notes": "Nerine's true Draconid outfit (trainer front pic). Base: Winona's pic (long hair, flowing scarf, gold belt). Her winged headpiece is removed; a new silver-blue crown with a side-swept fringe and long hair behind the shoulders are drawn (pixels, 'under' = behind the body), with a gold horn clip on her left; the slate hair turns silver-blue, the suit, sleeves and white trousers deep navy (gold cuffs), the purple scarf a teal shawl with a diamond scale lattice (pattern). Palette: 1-4 skin, 5/11 gold, 6-8 navy, 9/10/14 hair, 12/13 teal.",
+ "steps": [
+  {
+   "op": "load",
+   "src": "graphics/trainers/front_pics/leader_winona.png"
+  },
+  {
+   "op": "palette",
+   "pal": [
+    [
+     115,
+     197,
+     164
+    ],
+    [
+     255,
+     222,
+     205
+    ],
+    [
+     238,
+     180,
+     148
+    ],
+    [
+     197,
+     139,
+     106
+    ],
+    [
+     106,
+     74,
+     74
+    ],
+    [
+     168,
+     112,
+     32
+    ],
+    [
+     80,
+     88,
+     152
+    ],
+    [
+     48,
+     56,
+     112
+    ],
+    [
+     24,
+     28,
+     64
+    ],
+    [
+     152,
+     168,
+     208
+    ],
+    [
+     88,
+     96,
+     152
+    ],
+    [
+     240,
+     200,
+     72
+    ],
+    [
+     80,
+     184,
+     168
+    ],
+    [
+     24,
+     112,
+     120
+    ],
+    [
+     224,
+     232,
+     248
+    ],
+    [
+     0,
+     0,
+     0
+    ]
+   ]
+  },
+  {
+   "op": "remap_region",
+   "box": [
+    0,
+    0,
+    64,
+    12
+   ],
+   "map": {
+    "10": 0,
+    "12": 0,
+    "13": 0
+   }
+  },
+  {
+   "op": "remap_region",
+   "box": [
+    12,
+    28,
+    14,
+    12
+   ],
+   "map": {
+    "14": 6,
+    "9": 7
+   }
+  },
+  {
+   "op": "remap_region",
+   "box": [
+    36,
+    28,
+    14,
+    12
+   ],
+   "map": {
+    "14": 6,
+    "9": 7
+   }
+  },
+  {
+   "op": "remap_region",
+   "box": [
+    0,
+    19,
+    64,
+    20
+   ],
+   "map": {
+    "9": 6
+   }
+  },
+  {
+   "op": "remap_region",
+   "box": [
+    16,
+    0,
+    26,
+    19
+   ],
+   "map": {
+    "5": 14,
+    "6": 14,
+    "7": 9,
+    "8": 10
+   }
+  },
+  {
+   "op": "remap_region",
+   "box": [
+    20,
+    19,
+    6,
+    3
+   ],
+   "map": {
+    "7": 9,
+    "8": 10
+   }
+  },
+  {
+   "op": "remap_region",
+   "box": [
+    35,
+    19,
+    2,
+    2
+   ],
+   "map": {
+    "7": 9,
+    "8": 10
+   }
+  },
+  {
+   "op": "remap_region",
+   "box": [
+    28,
+    15,
+    4,
+    3
+   ],
+   "map": {
+    "13": 4,
+    "14": 1
+   }
+  },
+  {
+   "op": "remap_region",
+   "box": [
+    36,
+    12,
+    28,
+    18
+   ],
+   "map": {
+    "12": 12,
+    "13": 13,
+    "10": 13
+   }
+  },
+  {
+   "op": "remap_region",
+   "box": [
+    0,
+    19,
+    64,
+    20
+   ],
+   "map": {
+    "5": 6
+   }
+  },
+  {
+   "op": "remap_region",
+   "box": [
+    21,
+    39,
+    20,
+    5
+   ],
+   "map": {
+    "14": 6,
+    "9": 7,
+    "5": 6,
+    "6": 7,
+    "7": 8,
+    "8": 8
+   }
+  },
+  {
+   "op": "remap_region",
+   "box": [
+    0,
+    44,
+    64,
+    20
+   ],
+   "map": {
+    "14": 6,
+    "9": 7,
+    "5": 6,
+    "6": 7,
+    "7": 8,
+    "8": 8
+   }
+  },
+  {
+   "op": "remap_region",
+   "box": [
+    16,
+    36,
+    30,
+    4
+   ],
+   "map": {
+    "3": 5,
+    "4": 5
+   }
+  },
+  {
+   "op": "pixels",
+   "at": [
+    19,
+    37
+   ],
+   "key": {
+    "K": 15,
+    "g": 5,
+    "G": 11,
+    "n": 6,
+    "N": 7,
+    "M": 8,
+    "H": 9,
+    "d": 10,
+    "h": 14,
+    "t": 12,
+    "T": 13,
+    "1": 1,
+    "2": 2,
+    "3": 3,
+    "4": 4,
+    "0": 0
+   },
+   "rows": [
+    "GG"
+   ]
+  },
+  {
+   "op": "pixels",
+   "at": [
+    41,
+    37
+   ],
+   "key": {
+    "K": 15,
+    "g": 5,
+    "G": 11,
+    "n": 6,
+    "N": 7,
+    "M": 8,
+    "H": 9,
+    "d": 10,
+    "h": 14,
+    "t": 12,
+    "T": 13,
+    "1": 1,
+    "2": 2,
+    "3": 3,
+    "4": 4,
+    "0": 0
+   },
+   "rows": [
+    "GGg"
+   ]
+  },
+  {
+   "op": "remap_region",
+   "box": [
+    20,
+    0,
+    22,
+    9
+   ],
+   "map": {
+    "5": 0,
+    "6": 0,
+    "7": 0,
+    "8": 0,
+    "9": 0,
+    "10": 0,
+    "14": 0,
+    "15": 0
+   }
+  },
+  {
+   "op": "pixels",
+   "at": [
+    20,
+    1
+   ],
+   "key": {
+    "K": 15,
+    "g": 5,
+    "G": 11,
+    "n": 6,
+    "N": 7,
+    "M": 8,
+    "H": 9,
+    "d": 10,
+    "h": 14,
+    "t": 12,
+    "T": 13,
+    "1": 1,
+    "2": 2,
+    "3": 3,
+    "4": 4,
+    "0": 0
+   },
+   "rows": [
+    "........KKKKKKK.......",
+    "......KKHhhhhhHKK.....",
+    ".....KHhhhHHHHHHHK....",
+    "....KHhhHHHHHHHHHHK...",
+    "...KHhHHHHHHHHHHHHdK..",
+    "...KHhHHHdHHHHHHHddK..",
+    "..KHhHHHdHHHHHHHHHdK..",
+    "..KHHHHdHHHHHdHHHHdK..",
+    "..KHHHdHHHHddHHHHHdK..",
+    "..KHHd.dd.....ddHHdK.."
+   ]
+  },
+  {
+   "op": "pixels",
+   "at": [
+    36,
+    0
+   ],
+   "key": {
+    "K": 15,
+    "g": 5,
+    "G": 11,
+    "n": 6,
+    "N": 7,
+    "M": 8,
+    "H": 9,
+    "d": 10,
+    "h": 14,
+    "t": 12,
+    "T": 13,
+    "1": 1,
+    "2": 2,
+    "3": 3,
+    "4": 4,
+    "0": 0
+   },
+   "rows": [
+    "...KK.",
+    "..KGgK",
+    ".KGGK.",
+    "KGGgK.",
+    "KGgK..",
+    "KgK..."
+   ]
+  },
+  {
+   "op": "pixels",
+   "at": [
+    16,
+    9
+   ],
+   "key": {
+    "K": 15,
+    "g": 5,
+    "G": 11,
+    "n": 6,
+    "N": 7,
+    "M": 8,
+    "H": 9,
+    "d": 10,
+    "h": 14,
+    "t": 12,
+    "T": 13,
+    "1": 1,
+    "2": 2,
+    "3": 3,
+    "4": 4,
+    "0": 0
+   },
+   "under": true,
+   "rows": [
+    "......KHd...",
+    ".....KhHdd..",
+    ".....KhHdd..",
+    "....KhHHdd..",
+    "....KhHddd..",
+    "....KhHddd..",
+    "....KhHddd..",
+    "...KhHHdddd.",
+    "...KhHddddd.",
+    "...KhHddddd.",
+    "...KhHddddd.",
+    "..KhHHddddd.",
+    "..KhHdddddd.",
+    "..KhHdddd...",
+    "..KHHdd.....",
+    "..KHdK......",
+    "..KHdK......",
+    "..KHd.K.....",
+    "...KdK......",
+    "...KK......."
+   ]
+  },
+  {
+   "op": "pixels",
+   "at": [
+    35,
+    8
+   ],
+   "key": {
+    "K": 15,
+    "g": 5,
+    "G": 11,
+    "n": 6,
+    "N": 7,
+    "M": 8,
+    "H": 9,
+    "d": 10,
+    "h": 14,
+    "t": 12,
+    "T": 13,
+    "1": 1,
+    "2": 2,
+    "3": 3,
+    "4": 4,
+    "0": 0
+   },
+   "under": true,
+   "rows": [
+    "...dK.....",
+    "...HdK....",
+    "...HHdK...",
+    "...HHdK...",
+    "...HHHdK..",
+    "...HHHdK..",
+    "...HHHdK..",
+    "...HHHHdK.",
+    "...HHHHdK.",
+    "...HHHHdK.",
+    "...HHHHddK",
+    "...HHHHHdK",
+    "...HHHHHdK",
+    "....HHHHdK",
+    ".....HHHdK"
+   ]
+  },
+  {
+   "op": "remap_inner",
+   "box": [
+    17,
+    8,
+    9,
+    20
+   ],
+   "map": {
+    "15": 10
+   }
+  },
+  {
+   "op": "remap_inner",
+   "box": [
+    36,
+    6,
+    8,
+    16
+   ],
+   "map": {
+    "15": 10
+   }
+  },
+  {
+   "op": "outline",
+   "box": [
+    14,
+    0,
+    30,
+    30
+   ],
+   "on": [
+    14,
+    9,
+    10
+   ],
+   "color": 15
+  },
+  {
+   "op": "pattern",
+   "box": [
+    36,
+    12,
+    28,
+    18
+   ],
+   "on": [
+    13
+   ],
+   "key": {
+    "K": 15,
+    "g": 5,
+    "G": 11,
+    "n": 6,
+    "N": 7,
+    "M": 8,
+    "H": 9,
+    "d": 10,
+    "h": 14,
+    "t": 12,
+    "T": 13,
+    "1": 1,
+    "2": 2,
+    "3": 3,
+    "4": 4,
+    "0": 0
+   },
+   "tile": [
+    "tTTT",
+    "TtTt",
+    "TTtT",
+    "TtTt"
+   ]
+  },
+  {
+   "op": "save",
+   "dst": "graphics/trainers/front_pics/nerine.png"
+  }
+ ]
+}

@@ -279,7 +279,7 @@ const u32 gTrainerFrontPic_DraconidF[] = INCGFX_U32("graphics/trainers/front_pic
 const u16 gTrainerPalette_DraconidF[] = INCGFX_U16("graphics/trainers/front_pics/draconid_f.png", ".gbapal");
 const u32 gTrainerFrontPic_Aster[] = INCGFX_U32("graphics/trainers/front_pics/aster.png", ".4bpp.smol");
 const u16 gTrainerPalette_Aster[] = INCGFX_U16("graphics/trainers/front_pics/aster.png", ".gbapal");
-// Draconid Emerald: Nerine (placeholders until her art lands: TODO(art))
+// Draconid Emerald: Nerine in her Aqua disguise and in her own clothes (docs/hack_art_pipeline.md)
 const u32 gTrainerFrontPic_NerineAqua[] = INCGFX_U32("graphics/trainers/front_pics/nerine_aqua.png", ".4bpp.smol");
 const u16 gTrainerPalette_NerineAqua[] = INCGFX_U16("graphics/trainers/front_pics/nerine_aqua.png", ".gbapal");
 const u32 gTrainerFrontPic_Nerine[] = INCGFX_U32("graphics/trainers/front_pics/nerine.png", ".4bpp.smol");
@@ -489,6 +489,9 @@ const u8 gTrainerBackPic_DraconidM[] = INCGFX_U8("graphics/trainers/back_pics/dr
 const u8 gTrainerBackPic_DraconidF[] = INCGFX_U8("graphics/trainers/back_pics/draconid_f.png", ".4bpp");
 const u8 gTrainerBackPic_PlayerMagmaM[] = INCGFX_U8("graphics/trainers/back_pics/magma_m.png", ".4bpp");
 const u8 gTrainerBackPic_PlayerMagmaF[] = INCGFX_U8("graphics/trainers/back_pics/magma_f.png", ".4bpp");
+// Draconid Emerald: multi-battle partners seen from behind (Sky Pillar Nerine, Space Center Tabitha)
+const u8 gTrainerBackPic_Nerine[] = INCGFX_U8("graphics/trainers/back_pics/nerine.png", ".4bpp");
+const u8 gTrainerBackPic_MagmaAdmin[] = INCGFX_U8("graphics/trainers/back_pics/magma_admin.png", ".4bpp");
 const u8 gTrainerBackPic_Leaf[] = INCGFX_U8("graphics/trainers/back_pics/leaf.png", ".4bpp");
 const u8 gTrainerBackPic_RubySapphireBrendan[] = INCGFX_U8("graphics/trainers/back_pics/brendan_rs.png", ".4bpp");
 const u8 gTrainerBackPic_RubySapphireMay[] = INCGFX_U8("graphics/trainers/back_pics/may_rs.png", ".4bpp");
@@ -502,6 +505,8 @@ const u16 gTrainerBackPicPalette_DraconidM[] = INCGFX_U16("graphics/trainers/bac
 const u16 gTrainerBackPicPalette_DraconidF[] = INCGFX_U16("graphics/trainers/back_pics/draconid_f.png", ".gbapal");
 const u16 gTrainerBackPicPalette_PlayerMagmaM[] = INCGFX_U16("graphics/trainers/back_pics/magma_m.png", ".gbapal");
 const u16 gTrainerBackPicPalette_PlayerMagmaF[] = INCGFX_U16("graphics/trainers/back_pics/magma_f.png", ".gbapal");
+const u16 gTrainerBackPicPalette_Nerine[] = INCGFX_U16("graphics/trainers/back_pics/nerine.png", ".gbapal");
+const u16 gTrainerBackPicPalette_MagmaAdmin[] = INCGFX_U16("graphics/trainers/back_pics/magma_admin.png", ".gbapal");
 const u16 gTrainerBackPicPalette_Leaf[] = INCGFX_U16("graphics/trainers/back_pics/leaf.png", ".gbapal");
 const u16 gTrainerBackPicPalette_Pokedude[] = INCGFX_U16("graphics/trainers/back_pics/pokedude.png", ".gbapal");
 const u16 gTrainerBackPicPalette_OldMan[] = INCGFX_U16("graphics/trainers/back_pics/old_man.png", ".gbapal");
@@ -661,6 +666,7 @@ const struct TrainerPicInfo gTrainerPicInfo[TRAINER_PIC_COUNT] =
     [TRAINER_PIC_NERINE] =
     {
         .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Nerine, gTrainerPalette_Nerine),
+        .backPic = TRAINER_BACK_PIC(5, gTrainerBackPic_Nerine, gTrainerBackPicPalette_Nerine, sBackAnims_Kanto),
     },
     [TRAINER_PIC_RS_BRENDAN] =
     {
@@ -969,6 +975,8 @@ const struct TrainerPicInfo gTrainerPicInfo[TRAINER_PIC_COUNT] =
     [TRAINER_PIC_MAGMA_ADMIN] =
     {
         .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_MagmaAdmin, gTrainerPalette_MagmaAdmin),
+        // Draconid Emerald: Tabitha is the player's partner at the Space Center (D-108)
+        .backPic = TRAINER_BACK_PIC(5, gTrainerBackPic_MagmaAdmin, gTrainerBackPicPalette_MagmaAdmin, sBackAnims_Kanto),
     },
     [TRAINER_PIC_BUG_CATCHER] =
     {

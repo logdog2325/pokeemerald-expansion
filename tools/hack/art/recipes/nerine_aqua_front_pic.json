@@ -1,0 +1,14 @@
+{
+ "notes": "Nerine undercover in Team Aqua (trainer front pic): the female Aqua grunt pic with her own silver-blue hair under the bandana, like her overworld sprite. The red hair (12/13/10 around the face) moves to 9 (light), 11 (the unused slot, now silver-blue) and 7 (the uniform's dark blue); the mouth, the Poké Ball and the shoes keep the reds.",
+ "steps": [
+  {"op": "load", "src": "graphics/trainers/front_pics/aqua_grunt_f.png"},
+  {"op": "palette", "pal": [
+   [115, 197, 164], [255, 222, 205], [238, 180, 148], [197, 139, 106],
+   [106, 74, 74], [139, 172, 213], [90, 131, 189], [65, 90, 139],
+   [57, 57, 57], [213, 222, 230], [164, 74, 65], [152, 168, 208],
+   [255, 106, 98], [205, 82, 74], [255, 255, 255], [0, 0, 0]]},
+  {"op": "remap_region", "box": [20, 11, 24, 10], "map": {"12": 9, "13": 11, "10": 7}},
+  {"op": "pixels", "at": [36, 16], "rows": ["D"], "key": {"D": 13}},
+  {"op": "save", "dst": "graphics/trainers/front_pics/nerine_aqua.png"}
+ ]
+}
