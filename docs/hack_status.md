@@ -46,6 +46,9 @@ menu) → `pokeemerald.gba`, `make release` → `pokeemerald-release.gba`; zippe
       tamer's scale scarf on every player sprite (1.14, D-164–D-167), Zinnia (D-180/181) – checked in the emulator;
       open: Courtney trainer pic (she doesn't battle)
 - [x] Trainers from real ORAS data (Serebii, D-170–D-175): 27 ORAS first-battle teams, Elite Four rosters, Elite Four post-game rematch after the Hall of Fame
+- [x] Battle Frontier legends (post-game, D-225–D-229): Wes (Colosseum team), Red and Blue (PWT teams, Mega Charizard X /
+      Mega Alakazam) on `BattleFrontier_OutsideEast`, rematchable; the LEGENDS' TAG multi battle with a beaten legend as
+      partner; Wes's sprites and Blue's back pic kitbashed from Steven's – emulator-tested (`frontier_legends.play`)
 - [ ] Verification (matrix incl. Nerine/Aster variants, story checks, per-act debug warps) + v2 ROM
 
 ## Phase 0 – Tools and extensions

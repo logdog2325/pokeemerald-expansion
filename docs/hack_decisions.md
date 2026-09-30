@@ -549,3 +549,62 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   Lilycove. `build_segments.py` places every story fight (and every Nerine/Aster variant) on the round 1
   schedule – Steven's Space Center team is exempt from the cap on purpose (D-108), the Sky Pillar finale and
   Zinnia are post-League (D-109) – and `check_party.py --caps` passes with 0 errors.
+- **D-225 The Battle Frontier legends (post-game)**: Wes (Pokémon Colosseum), Red and Blue wait on
+  `BattleFrontier_OutsideEast` from the Hall of Fame on (`FLAG_HIDE_BATTLE_FRONTIER_*`, set or cleared by the map's
+  OnTransition from `FLAG_SYS_GAME_CLEAR`): **Wes** in the BATTLE PYRAMID's sands among the rocks (58, 22) – a desert,
+  like his Orre; **Red** at the foot of the cliff below ARTISAN CAVE (29, 10), a quiet dead end by a cave mouth, like
+  Mt. Silver; **Blue** by the BATTLE TOWER door (18, 15), where the toughest facility is. SCOTT invited them (his
+  vanilla job is scouting strong trainers). Each battles **again whenever asked** (a YES/NO first), with the same
+  team. Red is silent ("…" boxes, a line of narration), Blue cocky ("I picked the wrong POKéMON again", "Smell ya
+  later"), Wes terse and a mirror of the player (he walked out on Team Snagem as the player did on Magma). Red and
+  Blue are "{PKMN} TRAINER" (`TRAINER_CLASS_LEGEND`, as the PWT calls them) and fight to **`MUS_RG_VS_CHAMPION`**
+  (the FRLG Champion battle – Blue's own final battle, Kanto's strongest theme); Wes is an "ORRE HERO"
+  (`TRAINER_CLASS_ORRE_HERO`) and fights to **`MUS_VS_FRONTIER_BRAIN`** (the Frontier's top-fight theme). Encounter
+  music: Red Elite Four, Blue Cool, Wes Intense; E4-style mugshots (Red yellow, Blue green, Wes purple); prize money
+  class 25 (like the Elite Four, since the battles repeat). – Alt: once a day (three daily flags; the RTC decides
+  when the post-game's best fights come back); one battle only (a dead end for the tag); `MUS_VS_CHAMPION`
+  (Wallace's; the League already uses it); "SNAG MASTER" / "DRIFTER" for Wes. – A post-game gauntlet the player can
+  replay, three voices the playtester will recognise, and no new flag budget beyond the three hide flags.
+- **D-226 The legends' teams and levels**: Red and Blue use their **PWT Champions Tournament** teams (Serebii,
+  `tools/hack/trainers/pwt/pwt_champions.json`) – species, held items and moves as listed – with **Charizardite X**
+  on Red's Charizard and **Alakazite** on Blue's Alakazam (both replace a Focus Sash) and the Mega as the ace
+  (last; the rest in Serebii's order). Serebii lists no abilities or natures, so those (and EVs) are picked for the
+  sets (Pikachu Lightning Rod, Machamp No Guard for Stone Edge, Exeggutor Chlorophyll, …). **Wes**: exactly Espeon,
+  Umbreon, Raikou, Entei, Suicune, Ho-Oh – his Colosseum partners lead, Umbreon keeps its Colosseum Confuse Ray, the
+  beasts and Ho-Oh carry their signature moves (Sacred Fire, Extreme Speed, Scald / Calm Mind), Ho-Oh last as the
+  ace. **Levels 82–83, the ace 85**: above everything else in the post-game (Elite Four rematch 70–75, rivals 75–80,
+  gym leaders' last tier and Steven up to 80), as the post-game's top fights; the PWT's flat 50 would be the easiest
+  battles of the post-game. 3 Full Restores and the Elite Four rematch AI (`Smart Trainer / Prediction / Ace
+  Pokemon`). – Alt: flat 80; Lv 100; PWT items unchanged (no Megas). – The brief's "about 80, the ace higher".
+- **D-227 The LEGENDS' TAG**: an **attendant beside the BATTLE TOWER door** (14, 15; the Tower attendants' sprite)
+  hosts it. The player picks a partner **from the legends they have beaten** (a `dynmultipush` menu of those plus
+  CANCEL); the other two are the opponents, so all three pairings (six partner/opponent pairs) are reachable. The
+  attendant heals the party, the player walks onto the mat in front of the Tower, and under a fade the partner steps
+  up beside them and the other two face them (the legends' own objects, moved with `setobjectxyperm` and sent back
+  home afterwards). **Three Pokémon each** (the player picks three; `Multi Party: Half`, as round 1's Sootopolis multi
+  battle): each legend has a doubles-minded **tag team** of three, which is both his `PARTNER_*` team and his
+  `TRAINER_*_FRONTIER_MULTI` team – Wes Espeon (screens) / Umbreon / Ho-Oh, Red Pikachu (Fake Out) / Venusaur /
+  Mega Charizard X, Blue Arcanine / Gyarados (two Intimidates) / Mega Alakazam; no Earthquake (it would hit the
+  partner). A loss whites out like any trainer battle. – Alt: SCOTT hosting in his house on the west side (the
+  house is 6×8, and the battle would happen far from the legends); a second SCOTT by the Tower (two SCOTTs at once);
+  the legends offering the tag themselves (no host, as the brief's default asks for one); full six-Pokémon teams
+  (the expansion supports them, but 12 against 12 is a very long battle and unlike every other multi battle here).
+- **D-228 Wes's art and Blue's back pic**: no third-party art. Wes is built from **Steven's** sprites (silver spiky
+  hair, a suit to turn into a coat): the walk sheet gets whiter hair, black sunglasses, a navy coat down to the knees
+  (the suit's black and grey inside the outline) with light lapels and a dark shirt; the front pic the same, with the
+  coat's tails drawn over the legs down to a hem (trousers charcoal below it) and the purple stripes as light lapels;
+  the back pic (Steven's four frames, `sBackAnims_Hoenn`) the same colours plus the lens over the visible eye. Blue's
+  FRLG champion pic has no back pic, so his partner back pic is Steven's recoloured into Blue's orange-brown hair
+  and slate shirt (colours from `champion_rival_frlg.pal`). Red uses his FRLG sprites; Blue's FRLG overworld sheet is
+  registered for Emerald as `OBJ_EVENT_GFX_FRONTIER_BLUE` (vanilla's `OBJ_EVENT_GFX_BLUE` exists only in FRLG builds: in
+  an Emerald build it has no graphics info, so the object is invisible and talking to it crashes). – Alt: Maxie's long-coat pic
+  with a new head (a head swap across palettes); Red's back pic for Blue (his cap and backpack would have to be
+  redrawn). – The closest in-repo silhouettes, every step a kitbash recipe; Wes and Steven differ at a glance by the
+  shades, the long navy coat and the light collar.
+- **D-229 Trainer ids and the save layout**: the legends take ids 925–930 (three singles, three tag teams;
+  `TRAINERS_COUNT_EMERALD` 931) and `MAX_TRAINERS_COUNT_EMERALD` goes from 928 to **944**, so the finale's two
+  upcoming ids fit with room to spare. Trainer flags are save flags: 16 more flags move the system flags up by 16
+  and `SaveBlock1` grows by 4 bytes (15576 → 15580, `test/save.c`), so saves from before the change don't carry over
+  (as with D-101). The partners are `PARTNER_WES`/`_RED`/`_BLUE` (14–16, `PARTNER_COUNT` 17). – Alt: reuse the
+  unused vanilla `TRAINER_RED` (851; still no room for the rest); 936 (only three spare ids). – One raise for this
+  round.
