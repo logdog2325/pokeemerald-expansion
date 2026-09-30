@@ -147,7 +147,7 @@ parallel) and prints one line per run:
 ```sh
 python3 tools/hack/emu/matrix.py -o /tmp/matrix [-j 3] [--only F_DREEPY]
 ```
-`opening.play` takes `-D EGG=0|1|2`, `second_starter.play` `-D PICK=… -D SECOND=…`, `aster.play`
+`opening.play` takes `-D EGG=0|1|2`, `second_starter.play` `-D PICK=… -D SECOND=… -D MAGMA=…`, `aster.play`
 `-D EGGNAME=… -D SECOND=…`, `act2.play` `-D EGGNAME=… -D SECOND=… -D SECONDNAME=… -D GOODS=… -D RETURNED=…`,
 `act3.play` `-D EGGNAME=… -D SECOND=… -D SECONDNAME=… -D STONE=…`, `act4.play`
 `-D EGGNAME=… -D SECOND=… -D SECONDNAME=… -D MAGMA=…` (see the comments at the top of each).
@@ -169,7 +169,7 @@ python3 tools/hack/emu/play.py tools/hack/emu/tests/route103.play -o /tmp/emu   
 python3 tools/hack/emu/play.py tools/hack/emu/tests/woods.play -o /tmp/emu      # warp -> Nerine, Courtney, the uniform
 python3 tools/hack/emu/play.py tools/hack/emu/tests/rustboro.play -o /tmp/emu   # Brendan at Rustboro's south edge
 python3 tools/hack/emu/play.py tools/hack/emu/tests/rivals.play   -o /tmp/emu   # the other new rival scenes
-python3 tools/hack/emu/play.py tools/hack/emu/tests/second_starter.play -o /tmp/emu   # Birch in Rustboro
+python3 tools/hack/emu/play.py tools/hack/emu/tests/second_starter.play -o /tmp/emu   # Prof. Oak in Rustboro
 python3 tools/hack/emu/play.py tools/hack/emu/tests/aster.play          -o /tmp/emu   # Aster at Meteor Falls, Sky Pillar, post-game
 python3 tools/hack/emu/play.py tools/hack/emu/tests/act2.play           -o /tmp/emu   # Devon Goods, museum, Route 110, Mr. Briney
 python3 tools/hack/emu/play.py tools/hack/emu/tests/act3.play           -o /tmp/emu   # Meteor Falls, Mt. Chimney, Mega Ring, Lavaridge
