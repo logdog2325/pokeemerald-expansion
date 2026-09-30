@@ -1,0 +1,125 @@
+# Draconid Emerald – story, events and dialogue (source of truth)
+
+Saved verbatim from the playtester's round 1 add-on. It extends the main project prompt; **where it
+conflicts with the main prompt's Phase 4/5 schedules, this add-on wins.** Gaps filled in are recorded in
+[hack_decisions.md](hack_decisions.md); the dialogue as written in the scripts is collected in
+[hack_script.md](hack_script.md).
+
+---
+
+## Premise
+The Draconid Elder has had a vision: a great meteor is falling toward the world, and something alive is riding it (Deoxys). Only Rayquaza, the Draconids' sacred protector, can stop it. But in Hoenn, Team Magma and Team Aqua are chasing ancient power that could wreck the land and sea before the meteor even arrives. The Elder gives the player a dragon egg and sends them into Hoenn to **infiltrate Team Magma**, learn Maxie's plans, sabotage them from the inside, and **be ready to catch Rayquaza before the meteor arrives**.
+
+Most of the game the player wears the **Magma grunt uniform**. Ordinary people treat them like a criminal. Only a few people slowly realize the truth.
+
+## Cast
+- **Player**: a young Draconid dragon tamer. Silent protagonist, but choices in dialogue are allowed.
+- **The Elder**: leader of the Draconid village, calm and grave. Speaks of "the sky's debt".
+- **Aster** (placeholder name): the Elder's apprentice. Resents that the Elder chose the player. Proud and suspicious, "you look good in red, traitor". Ace: the leftover egg. Warms up to the player over the story.
+- **Nerine** (placeholder name): a Draconid undercover in **Team Aqua**, sent separately by the Elder to test the player. Ace: the counter-egg + counter Mega starter. Drops hints that she's not really Aqua until the Seafloor Cavern reveal.
+- **Brendan**: Birch's son, laid-back but competitive, Sceptile ace. Feels betrayed when he first sees the player in Magma red.
+- **May**: Norman's daughter (the family moved to Littleroot from Johto, like vanilla). Energetic and research-minded, Blaziken ace. The first to suspect the player is undercover.
+- **Wally**: as vanilla, a shy boy who grows stronger. Scared of the player's uniform at first, but trusts what he saw at Petalburg.
+- **Maxie**: cold, convinced he's saving humanity. Sees promise in the player and promotes them, which makes the betrayal hurt.
+- **Magma admins Tabitha and Courtney**: Courtney recruits the player; Tabitha is the harsh commander who orders them around.
+- **Aqua: Archie, Matt, Shelly**: as vanilla. Aqua is the enemy team the player is ordered to fight.
+- **Steven**: suspects early that the player is undercover, says nothing, and watches.
+
+## Story outline
+
+### Act 1 – The prophecy (Draconid village → Rustboro)
+1. **Village intro** (replaces the truck intro and Mom): the player wakes in the village. A falling star crosses the sky at night. The Elder tells the prophecy, offers **3 eggs** (Deino / Dreepy / Jangmo-o), and gives the mission: "Walk among the red ones. Learn what Maxie seeks. When the sky splits, you must stand beside Rayquaza." Aster objects and battles the player once the egg hatches (tutorial battle). A villager gives the Running Shoes (replaces Mom's gift).
+2. **Descent to Route 101**: the player saves **Birch** from the wild Poochyena using their hatched dragon (replaces the bag-starter scene). Birch gives the Pokédex and introduces **Brendan** (Treecko) and **May** (Torchic). First rival battle vs May on Route 103.
+3. **Petalburg**: meet Norman (May's dad) and help **Wally** catch Ralts (vanilla, but Norman is May's father, not the player's).
+4. **Petalburg Woods – recruitment**: an Aqua grunt, **Nerine in disguise**, robs the Devon researcher. The player beats her. She whispers a first hint: "Strong... for a lowlander. Or are you?" **Courtney** (Magma) watched the battle and recruits the player: "Anyone who crushes Aqua that easily belongs with us." The player accepts, as the Elder instructed. **Outfit changes to the Magma grunt uniform** (cutscene: a Magma outpost cabin at the edge of the woods, a small new map).
+5. **Rustboro**: people stare and whisper. **Brendan** confronts the player at the city edge: "You joined MAGMA?!" Battle. Win Roxanne's badge. Tabitha's order: "Maxie wants strong grunts. Collect badges, it opens doors for us."
+6. **Birch's second-starter gift** (after badge 1): Birch visits Devon in Rustboro. He's shocked by the uniform but offers **Charmander / Totodile / Treecko** anyway: "I saw how you protected me on Route 101. Whatever you're doing... I'll trust that version of you." Nerine gets her counter-pick off-screen (revealed in a later fight).
+
+### Act 2 – Deep cover (Devon goods → Slateport → Mauville)
+7. **Devon goods (Rusturf Tunnel)**: Nerine (Aqua) steals the Devon Goods. Tabitha orders the player to "take them for Magma". The player catches Nerine and beats her. Hint: "Water doesn't need these parts. Neither do I. Remember that." The player gets the goods, and (dialogue choice) either secretly returns them to **Mr. Stone** or keeps them "for Magma". Both paths continue the same way: Mr. Stone asks the player to deliver the goods to Slateport and the letter to Steven. Record the choice as a flag for later dialogue.
+8. **Dewford / Granite Cave**: deliver the letter to **Steven**. He studies the uniform: "Magma doesn't usually deliver mail... I wonder who you really work for."
+9. **Slateport**: Tabitha orders the player to spy on the **Oceanic Museum**. Aqua grunts storm it; the player must fight them "for Magma". Nerine is there (fight 2): she uses a Dragon-type while "in Aqua". Hint: "Aqua trains Water types. Funny, isn't it?" Deliver the goods to Captain Stern (Magma wants to track his submarine).
+10. **Route 110**: **May** battles the player. She notices the dragons: "Magma grunts don't raise dragons like that. What are you really doing?"
+11. **Mauville**: **Wally** battle. He's scared at first: "You're... one of THEM now?" He trusts the player after losing.
+
+### Act 3 – Rising in the ranks (Meteor Falls → Mt. Chimney → Lavaridge)
+12. **Meteor Falls**: the player is part of Maxie's squad that takes Professor Cozmo's **meteorite**. **Maxie meets the player** for the first time: "Tabitha speaks well of you." Aqua arrives, and the player covers Magma's retreat. **Aster** appears deeper in the Falls, disgusted, and battles the player: "The Elder trusted you, and you carry THEIR flag?"
+13. **Mt. Chimney**: Maxie plans to use the meteorite to make the volcano erupt. The player guards the path; Aqua attacks. **Nerine fight 3**: two "enemy grunts" alone. She says: "Your village is Draconid, mine is too. Show me you're worth the Elder's trust." **Brendan** arrives to stop Magma and the player must battle him to keep cover (it hurts). While Maxie is distracted, the player **secretly removes the meteorite** from the machine (a new scripted choice-free scene). The machine fails and Maxie blames Aqua.
+14. **Jagged Pass**: **Aster** meets the player alone. The Elder made the **Mega Ring** from the meteorite fragment the player took. Aster hands it over grudgingly: "The Elder says you're doing well. I say we'll see." Player gets the **Mega Stone** for their second starter soon after (a Draconid gift in Lavaridge).
+15. **Lavaridge**: Flannery's badge. Townsfolk are hostile ("Magma nearly blew up our mountain!"). Flannery is angry but fights fair.
+
+### Act 4 – The orbs (Petalburg → Weather Institute → Fortree → Mt. Pyre → Magma Hideout)
+16. **Petalburg Gym**: fight **Norman**. May watches: "Dad says you fought honestly. That's not what Magma does."
+17. **Weather Institute**: Aqua raids it. Tabitha sends the player to "take the research before Aqua does". The player fights Aqua and **frees the scientists** (quietly). **May** arrives and nearly exposes the player, then covers for them: "I'll pretend I didn't see you save them."
+18. **Route 119**: **Brendan** battle. He's softer: "May thinks you're a good guy in disguise. I don't know what to think."
+19. **Fortree**: Steven and the Devon Scope (vanilla). Steven: "Keep your head down. I'm watching Maxie too."
+20. **Lilycove**: **double battle vs Brendan and May**. They still don't know the truth.
+21. **Mt. Pyre**: Magma and Aqua fight over the orbs (follow which orb each team takes in vanilla Emerald). Maxie orders the player to hold off Aqua at the summit. **Nerine fight 4** at the summit: "Soon you'll have to choose between the red and the sky. Choose well."
+22. **Magma Hideout**: the player enters **as a trusted member** (no break-in). Maxie **promotes** the player: "Stand beside me as the land is reborn." Maxie awakens **Groudon**, which escapes. The player learns Maxie's full plan and sends word to the Elder.
+
+### Act 5 – The betrayal (Aqua Hideout → Mossdeep → Seafloor Cavern → Sootopolis)
+23. **Aqua Hideout (Lilycove)**: Maxie orders the player to infiltrate Aqua's base. The player fights through Aqua. **Nerine fight 5**. Archie escapes in Stern's submarine.
+24. **Mossdeep Space Center** (reversed vanilla tag battle): Tabitha leads a raid on the rocket fuel. **Tag battle: the player + Tabitha vs Steven + Brendan.** Afterwards Steven quietly says: "I know you let us win the important part." (Scripted: whatever the battle's result, Magma fails to get the fuel.) Brendan storms off, furious.
+25. **Seafloor Cavern – Nerine reveal**: the player chases Aqua down. Before Archie's chamber, Nerine **drops her Aqua disguise** and reveals her true Draconid outfit: "The Elder sent me to test you. You passed... almost." **Nerine fight 6 – her Mega starter Mega Evolves.** Archie awakens **Kyogre** anyway.
+26. **Sootopolis – the turn**: Groudon and Kyogre clash, and the weather goes wild. Maxie orders the player to help him control Groudon. The player **refuses and removes the Magma uniform** (cutscene; **outfit changes back to dragon tamer**). Maxie: "After everything I gave you?!" The player battles **Maxie alone**. Then Archie joins, and **Brendan and May** arrive. **Multi battle**: the player + a partner of their choice (Brendan or May) vs **Maxie + Archie**, while the other rival holds off the admins (cutscene). Both teams are defeated.
+27. **Rayquaza descends**: Aster and Nerine perform the Draconid calling ritual at **Sky Pillar** (cutscene or short scene). **Rayquaza** comes down and calms Groudon and Kyogre (vanilla-style scene), then flies away. The Elder, by Match Call or letter: "It isn't time yet. The sky will tell us when."
+28. **Aftermath**: Maxie and Archie admit their failure (vanilla). Townsfolk start treating the player as a hero; all "uniform" dialogue switches to grateful or embarrassed lines. Brendan apologizes. May: "I KNEW it!"
+
+### Act 6 – Champion (Sootopolis → Victory Road → Pokémon League)
+29. **Juan's gym**, **Victory Road: Wally** (Mega Gallade or Gardevoir), then the **Pokémon League** (Elite Four + Champion Wallace, as vanilla Emerald, with enhanced teams).
+30. **Hall of Fame** does **not** roll credits. Immediately after, the sky darkens, and news reports a meteor heading for Hoenn. The Elder summons the player to Sky Pillar.
+
+### Act 7 – The prophecy fulfilled (Sky Pillar finale)
+31. **Sky Pillar climb**: Aster and Nerine wait at the base. **Final double battle / tag test**: the player + one of them vs the other (default: the player + Nerine vs Aster), then all three climb together.
+32. **Summit**: the Elder is there. Rayquaza appears. **The player must catch Rayquaza** (a no-flee battle; if Rayquaza faints, retry the battle after dialogue). The Elder teaches **Dragon Ascent**, and Rayquaza can now Mega Evolve.
+33. **Deoxys attacks immediately**: before anyone can celebrate, Deoxys drops from the sky. **Boss battle vs Deoxys** (no flee, Rayquaza leads the player's party). After winning, a cutscene: **Mega Rayquaza** flies into space and destroys the meteor (ORAS Delta Episode style). Deoxys vanishes.
+34. **Ending**: the Elder: "The sky's debt is paid... for now." Credits roll. Post-game unlocks: rematches, Brendan/May final double battle, and (default decision) Deoxys catchable later at a post-game location.
+
+## What to script and change
+
+### Outfit and reputation system
+- Outfit var from the main prompt: **tamer** in Act 1 → **Magma uniform** from Petalburg Woods (step 4) → **tamer** at the Sootopolis turn (step 26).
+- A **reputation state**: `pre_uniform`, `uniform`, `revealed`. Add alternate dialogue for NPCs based on this state.
+- **Shared scripts first** (biggest impact for the least work): Pokémon Center nurse (curt but still heals: "...Fine. We don't turn away Pokémon. Even yours."), Mart clerks (cold but still sell), gym guides, and the Cable Club/Day Care NPCs. After the reveal, they become warm or apologetic.
+- **Key NPCs**: every gym leader, the Birch family, Norman, Wally's family, Mr. Stone, Captain Stern, Mr. Briney, Professor Cozmo and the Weather Institute scientists each get uniform and revealed lines.
+- **Towns**: at least 3-5 townsfolk per town with harsh lines while in uniform (whispering, refusing to talk, telling kids to stay away), then changed lines after the reveal.
+
+### Vanilla events to remove or change
+- **Remove**: moving-truck intro, Mom's role (replaced by the village), the player being Norman's child, the player breaking into the Magma Hideout, the player stopping Maxie at Mt. Chimney openly, and vanilla credits after the Hall of Fame.
+- **Change** (as in the outline): Petalburg Woods, Devon goods, Granite Cave letter, Slateport Museum, Meteor Falls, Mt. Chimney, Weather Institute, Mt. Pyre, Magma Hideout, Aqua Hideout, Mossdeep Space Center, Seafloor Cavern, Sootopolis crisis, Sky Pillar, Hall of Fame → finale.
+- Check vanilla story flags stay consistent: gates, HMs, badge checks, blocked paths and the order of city access must still work. Where a vanilla event sets flags you remove, set those flags in the new script.
+- Keep every event that's needed for progression (HMs, Surf, Waterfall, Dive, etc.) even if its dialogue changes.
+
+### New or special battles
+- Tutorial battle vs Aster in the village.
+- Multi battle with a **Magma partner** (Tabitha) at Mossdeep, and a multi battle with a **Brendan or May partner** (player's choice) at Sootopolis.
+- Double battles: Lilycove (Brendan + May) and Sky Pillar (Aster vs the player + Nerine).
+- Scripted must-catch Rayquaza (no flee, retry on faint).
+- Deoxys boss battle (no flee, retry on loss), followed by the Mega Rayquaza meteor cutscene.
+- Use the teams and schedules from the main prompt where they fit, but move fights to the story beats above. Update Nerine's schedule to: Petalburg Woods, Rusturf Tunnel, Slateport Museum, Mt. Chimney, Mt. Pyre, Aqua Hideout, Seafloor reveal (Mega), Sky Pillar, post-game.
+
+### Cutscenes
+Petalburg Woods recruitment/outfit change, Maxie's first meeting at Meteor Falls, the meteorite sabotage at Mt. Chimney, the Mega Ring at Jagged Pass, the promotion at the Magma Hideout, the Nerine reveal, the uniform removal at Sootopolis, the Rayquaza ritual, the post-League meteor alert, and the Deoxys attack + Mega Rayquaza ending. Use movement scripts, fades, screen shakes, weather changes and sound effects from vanilla scenes as references.
+
+## Dialogue rules
+- Write all dialogue in Poryscript with `format()` so it fits GBA text boxes. Keep lines short, and one idea per text box.
+- Tone: vanilla-Emerald simple, but with more emotion. No modern slang.
+- Nerine's hints must be noticeable on a second playthrough, not obvious on the first: she uses dragons, says things about "the sky", knows the player's village, and never says "Aqua" with any feeling.
+- Maxie should be believable and even likable. The betrayal should feel costly.
+- Brendan and May should react differently: Brendan feels betrayed, May is curious and suspicious that the player is secretly good.
+- Write all dialogue into scripts, and also collect it in `docs/hack_script.md` by scene, so I can review and edit the text in one place.
+
+## Checks
+- Play through the whole story by flag/script checks with the debug menu: every step reachable, no softlocks, the outfit correct at every step, NPC reputation dialogue correct in all 3 states, and all story choices (like the Devon goods choice) handled.
+- Check both player genders and all 9 starter combinations at every rival fight.
+- Add each act to `docs/playtest_guide.md` with debug warps so I can jump straight to any act.
+
+---
+
+## Round 1 notes that belong to the story (same message)
+- Brendan's team: Sceptile, Mightyena, Swellow, Slaking, Magcargo, Latios; May's team: Blaziken, Beautifly,
+  Wailord, Tropius, Delcatty, Latias – each gained at the matching point of the story (as the ORAS rivals do).
+- Brendan and May battle the player because they think the player is a Magma grunt; after losing they react and
+  walk off. Dialogue with the evil teams changes to match the disguise.
+- The Mossdeep battle against Brendan / Steven is not a must-win, and Steven is overlevelled (he is the Champion).
+- Before the Magma outfit, the player's overworld sprite is the dragon tamer (never Brendan or May).

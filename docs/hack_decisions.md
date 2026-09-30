@@ -54,12 +54,12 @@ when a playtest note overrides something here, the entry is updated and marked.
 
 ## Story
 
-- **D-030 Player family**: Norman stays the player's Dad (Petalburg Gym is unchanged); Mom lives with the player in
+- **D-030 Player family** *(superseded by D-100, round 1)*: Norman stays the player's Dad (Petalburg Gym is unchanged); Mom lives with the player in
   Draconid Village. – Alt: a Draconid father figure. – Keeps the vanilla Petalburg/Norman beats working untouched.
-- **D-031 Rival families**: **May is Prof. Birch's daughter; Brendan is Birch's nephew** living next door in
+- **D-031 Rival families** *(superseded by D-100, round 1)*: **May is Prof. Birch's daughter; Brendan is Birch's nephew** living next door in
   Littleroot. – Alt: both Birch's children (twins). – Both rivals decoupled from the player's gender, both
   plausibly in the lab; the two Littleroot houses still have owners.
-- **D-032 Opening order**: bedroom (Mom, wall clock) → Elder's egg ceremony → shrine hatching rite → Mom gives the
+- **D-032 Opening order** *(superseded by D-102, round 1)*: bedroom (Mom, wall clock) → Elder's egg ceremony → shrine hatching rite → Mom gives the
   Running Shoes → first Aster battle on the pass → Littleroot → Route 101 rescue with the hatchling → lab: Birch
   gives Brendan Treecko and May Torchic, **the player gets the Pokédex right away** → Route 103 May. – Alt: keep
   the vanilla "Pokédex after Route 103". – The player already has a partner, so the Pokédex is the natural gift;
@@ -71,7 +71,7 @@ when a playtest note overrides something here, the entry is updated and marked.
 - **D-034 Hatching**: the egg hatches at the shrine during a rite (normal `EggHatch` animation), then a special
   raises it to **Lv 5** with its level-up moves. – Alt: hatch at Lv 1 / hatch by walking. – The brief says "hatches
   early"; Lv 1 would lose to the Route 101 Zigzagoon and the first Aster fight.
-- **D-035 Aster**: female, the Elder's granddaughter, same age as the player; her egg counter-picks the player's
+- **D-035 Aster** *(egg and role superseded by D-105, round 1)*: female, the Elder's granddaughter, same age as the player; her egg counter-picks the player's
   (Deino→Jangmo-o, Dreepy→Deino, Jangmo-o→Dreepy, stored in `VAR_ASTER_EGG`). First battle on Draconid Pass is
   **no-whiteout** (`B_FLAG_NO_WHITEOUT` → `FLAG_DRACONID_NO_WHITEOUT`) and heals afterwards. – Alt: a losable
   battle with a separate script path. – One script path, no softlock, no free money loss on turn 1 of the game.
@@ -86,7 +86,7 @@ when a playtest note overrides something here, the entry is updated and marked.
   player gets the Pokédex **and 5 Poké Balls from Birch** (vanilla: from the rival after Route 103); May goes
   ahead to Route 103, Brendan heads west (sets up his Route 104 fight). No Oldale rival scene. – Alt: keep the
   vanilla "Pokédex after Route 103" loop. – Shorter, and no reason to withhold the Pokédex.
-- **D-040 `{RIVAL}` = MAY**: vanilla expands `{RIVAL}` by player gender; almost every use means "Birch's kid", which
+- **D-040 `{RIVAL}` = MAY** *(superseded by D-100: `{RIVAL}` = BRENDAN, round 1)*: vanilla expands `{RIVAL}` by player gender; almost every use means "Birch's kid", which
   is May here, so it is always MAY in Emerald. Scenes where the rival is Brendan name him directly.
 - **D-041 Debug toggles**: the expansion's no-encounter / no-trainer-sight / no-collision toggles get real flags
   (0x2E–0x30) so they work in the debug menu and in emulator tests. The game never sets them.
@@ -95,21 +95,21 @@ when a playtest note overrides something here, the entry is updated and marked.
   (a long walk back), Lv 5. – Birch has business in Rustboro in vanilla too; Lv 10 is below the Stone Badge cap
   (20) and catches up in a route or two. All three have a Dragon-type Mega (Charizard X, Feraligatr, Sceptile),
   which fits the clan and gives the player a Mega since the dragon line has none (brief).
-- **D-043 Aster's arc**: Draconid Pass (battle) → Meteor Falls after Magma takes the meteorite (riddle + battle)
+- **D-043 Aster's arc** *(superseded by D-105, round 1)*: Draconid Pass (battle) → Meteor Falls after Magma takes the meteorite (riddle + battle)
   → Route 112 cable car (hands over the Magma disguise) → Route 119 on the path to Fortree, past the rival spot
   (a row of triggers every route crosses, checked with an elevation-aware path search; she heals the party
   first since Brendan's fight is a few steps back; battle, Mega Altaria) → Magma Hideout after Maxie (sends the player home) → Sky Pillar top before Rayquaza wakes (climax,
   Mega Salamence) → village shrine after the League (rematch). One var, `VAR_ASTER_STATE`, drives all of it.
   – Alt: Aster at Mt. Pyre / Sootopolis. – Follows the meteorite and Rayquaza threads, where Zinnia is in ORAS.
-- **D-044 Magma disguise is a costume, not a stealth mode**: worn from the cable car to Maxie on Mt. Chimney and
+- **D-044 Magma disguise is a costume, not a stealth mode** *(superseded by D-103, round 1)*: worn from the cable car to Maxie on Mt. Chimney and
   again inside the Magma Hideout (it goes back on at the entrance) until Maxie there; grunts still battle.
   – Alt: grunts ignore a disguised player. – Keeps the trainer fights and their EXP before Flannery and the
   Hideout; the outfit system shows it everywhere (sprites, trainer pics). Grunt lines that should notice the
   costume are `TODO(dialogue)`.
-- **D-045 Mega Ring**: the Elder gives it in Draconid Village right after the Magma Hideout, with the Mega Stone
+- **D-045 Mega Ring** *(superseded by D-105, round 1)*: the Elder gives it in Draconid Village right after the Magma Hideout, with the Mega Stone
   for the second starter. – Alt: stones hidden in the world. – The brief's timing; one stone the player can use
   at once (the dragon has no Mega), more stones for the rest later.
-- **D-046 Post-game home**: the SS Ticket / Lati TV scene plays in the Draconid house – Norman visits there, and
+- **D-046 Post-game home** *(superseded by D-112, round 1)*: the SS Ticket / Lati TV scene plays in the Draconid house – Norman visits there, and
   the scene uses the vanilla Brendan-house movements for both genders (the house is a copy of that layout). The
   TV news code, the Hall of Fame respawn and the Littleroot fly spot follow the Draconid house; the Littleroot
   houses belong to Brendan's and May's families. – Alt: keep the scene in Littleroot. – The player never lived
@@ -180,21 +180,21 @@ when a playtest note overrides something here, the entry is updated and marked.
 - **D-066 Trainer Megas**: Maxie (Magma Hideout, Camerupt), Archie (Seafloor Cavern, Sharpedo) as in ORAS,
   Steven (Metagross), gym leaders' last rematch tier, and the story trainers late. – Alt: Megas for all bosses.
   – Megas stay special; the ORAS villains' Megas are canon.
-- **D-037 Trainer ID capacity**: `MAX_TRAINERS_COUNT` is 864 and vanilla uses 855, so only 9 new IDs fit.
+- **D-037 Trainer ID capacity** *(raised in D-101, round 1)*: `MAX_TRAINERS_COUNT` is 864 and vanilla uses 855, so only 9 new IDs fit.
   Aster's first fight uses 3 (one per egg). **Phase 5 (done)**: the 30 vanilla rival ids (3 starters × Brendan/May ×
   Routes 103/110/119, Rustboro, Lilycove) are renamed in place for the 28 Draconid story battles; 2 are spare and
   858–863 stay free. – Alt: raise `MAX_TRAINERS_COUNT` (costs save space). – Same numbers, so trainer flags and
   save data layout don't move.
-- **D-070 Rival schedule**: Route 103 May → Route 104 Brendan (Petalburg Woods entrance) → Rustboro May → Slateport
+- **D-070 Rival schedule** *(superseded by D-106, round 1)*: Route 103 May → Route 104 Brendan (Petalburg Woods entrance) → Rustboro May → Slateport
   May (after the museum; the brief's "Slateport/Mauville") → Route 110 Brendan → Route 119 Brendan → Lilycove both
   (two-on-two) → Space Center tag with the rival of the player's choice → Sootopolis both with Megas (right after the
   Rain Badge, before Victory Road) → post-game in the lab: a single with each, then a double. Brendan's ace is
   Sceptile, May's Blaziken; their teams don't depend on the player's egg. – Alt: Megas only post-game. – The brief's
   list; Sootopolis after Juan is the first moment both Key Stones make sense (Birch sends them).
-- **D-071 Who the rival is in vanilla scenes**: `{RIVAL}` and the common rival sprite are May; Rustboro/Route 104 and
+- **D-071 Who the rival is in vanilla scenes** *(superseded by D-100, round 1)*: `{RIVAL}` and the common rival sprite are May; Rustboro/Route 104 and
   Lavaridge are May's, Routes 110/119 Brendan's; both register in the PokéNav (May in Rustboro, Brendan after
   Route 110). – Alt: keep the player-gender switch. – Brendan and May are separate characters now (D-031).
-- **D-072 Space Center partner**: Steven stays and leads the scene; May and Brendan come to help and the player picks
+- **D-072 Space Center partner** *(superseded by D-108, round 1)*: Steven stays and leads the scene; May and Brendan come to help and the player picks
   one (YES = May, NO = Brendan) as the multi-battle partner. – Alt: replace Steven. – Keeps Steven's Dive/house
   follow-up untouched while making it a rival tag battle.
 - **D-073 Wally**: vanilla Mauville and Victory Road, plus Petalburg Gym door (after the Heat Badge, before Norman)
@@ -203,3 +203,56 @@ when a playtest note overrides something here, the entry is updated and marked.
 - **D-074 Test hooks**: debug builds get `gDraconidTestWarp` (warp/heal on request) so emulator tests can reach any
   scene; release builds compile it out. Flow tests set `FLAG_DRACONID_NO_WHITEOUT` so a mashed battle doesn't end
   the script. – Alt: walking every route in tests (fragile: NPCs block paths).
+
+## Round 1 (story add-on, `docs/hack_story.md`)
+The playtester's story add-on is the source of truth; these fill its gaps and record what it overturned.
+
+- **D-100 Families and `{RIVAL}`**: the player has no family in the village (Mom is gone, the Elder and the clan
+  raise the young); **Brendan is Prof. Birch's son, May is Norman's daughter** (the family moved to Littleroot
+  from Johto), so Norman's Petalburg scenes speak of May, not the player. `{RIVAL}` now expands to **BRENDAN**
+  (Birch's son, which is what vanilla's `{RIVAL}` means); scenes about May name her. – Alt: keep D-030/D-031.
+  – The add-on's cast list.
+- **D-101 Variant trainers**: a fight that depends on the player's choices has one **base trainer id** in the
+  script; `Draconid_ResolveVariantTrainer` remaps it when the battle loads to base + variant (egg: 3 variants;
+  egg × second starter: 9). `MAX_TRAINERS_COUNT` is raised so the variants fit (a few save bytes: trainer flags).
+  – Alt: 9-way branches in every script; party pools. – One script line per fight and one table to check.
+- **D-102 Opening (Act 1)**: night prologue (a falling star, screen flash) → the player wakes in their own house
+  (Aster at the door: the Elder calls) → wall clock → egg ceremony with the prophecy and the mission → hatching rite
+  → a villager gives the Running Shoes → **Aster's tutorial battle** on Draconid Pass → Route 101. – Alt: the
+  Elder wakes the player. – Keeps the tested egg/hatch flow; Aster is there from the first minute.
+- **D-103 Life in the uniform**: the reputation var (`VAR_DRACONID_REPUTATION`: 0 `pre_uniform`, 1 `uniform`,
+  2 `revealed`) drives NPC lines; the outfit var follows it (tamer → Magma at Petalburg Woods → tamer at the
+  Sootopolis turn). **Magma grunts who were trainers stay trainers**, with new lines: they test the new
+  recruit ("show me what the boss sees in you") – Aqua is the team the player fights for real. – Alt: turn
+  Magma grunts into non-battlers. – Keeps the EXP curve the caps were tuned for, and fits the story.
+- **D-104 Nerine's teams**: counter-egg dragon (Deino→Jangmo-o, Dreepy→Deino, Jangmo-o→Dreepy) from fight 1;
+  the counter Mega starter (Charmander→Totodile, Totodile→Treecko, Treecko→Charmander) from fight 2 (Rusturf, the
+  first fight after the second starter); Water/Dark "Aqua cover" members until the reveal, dragons after
+  (Kingdra, Flygon, Dragalge); her starter Mega Evolves from the Seafloor reveal on. 3 + 8 × 9 = 75 teams.
+- **D-105 Aster (round 1)**: the Elder's apprentice (no longer his granddaughter); raises the **leftover egg**
+  (neither the player's nor Nerine's), so all three dragon lines appear. Appearances: tutorial battle on Draconid
+  Pass, battle deep in Meteor Falls, the **Mega Ring at Jagged Pass** (made from the meteorite fragment; no
+  battle), the Rayquaza calling at Sky Pillar with Nerine (scene), the Sky Pillar finale double battle, post-game.
+  The second starter's Mega Stone is a Draconid gift in Lavaridge.
+- **D-106 Rival schedule (round 1)**: May – Route 103, Route 110, Lilycove (double), Sootopolis partner option,
+  post-game; Brendan – Rustboro city edge, Mt. Chimney (not a must-win), Route 119, Lilycove (double), Mossdeep
+  with Steven (not a must-win), Sootopolis partner option, post-game. Teams from the round 1 notes: Brendan
+  Sceptile / Mightyena / Swellow / Slaking / Magcargo / Latios, May Blaziken / Beautifly / Wailord / Tropius /
+  Delcatty / Latias, gaining members at the points the ORAS rival does; each Lati joins after the Balance Badge
+  (when ORAS hands out the Eon Flute); Megas from Mossdeep (Brendan) and the post-game. After every loss they
+  react to the uniform and walk off.
+- **D-107 Dragon evolutions**: Deino, Dreepy and Jangmo-o lines evolve at **25 and 50** (Deino 50/64, Dreepy 50/60,
+  Jangmo-o 35/45 before), for every trainer too. The second starters keep their own levels (Charmander 16/36,
+  Totodile 18/30, Treecko 16/36). – Alt: all starters at 25/50. – The note is about the dragons evolving too late.
+- **D-108 Mossdeep Space Center**: Tabitha leads the raid; **the player + Tabitha vs Steven + Brendan**, can't
+  white out and the scene goes on whoever wins (Magma never gets the fuel). Steven is overlevelled (his ace above
+  the cap, as the Champion he is). – The round 1 note.
+- **D-109 Sky Pillar before the League**: the player does not climb it in Act 5; Aster and Nerine call Rayquaza
+  there in a scene, and the tower stays closed until the post-League finale. – Alt: vanilla climb. – The add-on.
+- **D-110 Must-catch Rayquaza and the Deoxys boss**: no running; if Rayquaza faints, or the player loses to Deoxys,
+  a line and the battle again (no whiteout). Rayquaza learns Dragon Ascent from the Elder (Mega Evolution needs it).
+- **D-111 Deoxys later**: catchable in the post-game at the Sky Pillar summit (where it fell), once. – Alt: Birth
+  Island (needs an event ticket). – Reachable in a normal save.
+- **D-112 Post-game start**: credits roll after the finale; the player wakes at home in the village, where the
+  Elder brings the SS Ticket (sent by Captain Stern) and the Lati TV news airs. – Alt: Norman (now May's father).
+

@@ -74,3 +74,6 @@ tools/porytiles/porytiles
 !tools/hack/porymap_scripts/*.js
 __pycache__/
 tools/hack/emu/gbarun
+
+# Draconid Emerald: zipped ROMs handed to the playtester
+dist/

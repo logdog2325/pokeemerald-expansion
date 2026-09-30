@@ -9,18 +9,27 @@ Other docs: [decisions](hack_decisions.md) · [changes](hack_changes.md) · [too
 [playtest guide](playtest_guide.md) · [feedback](hack_feedback.md)
 
 ## Where things stand
-All seven phases are built and pushed. Every new scene, from the opening to the post-game, is flow-tested in the
-emulator for both genders and all 9 starter pairs (scenes reached by debug warps, battles mashed); nobody has yet
-played the whole game through by hand. Build: `make` (debug, R + Start menu) →
-`pokeemerald.gba`, `make release` → `pokeemerald-release.gba`. Next: playtest rounds through
-[hack_feedback.md](hack_feedback.md) ([guide](playtest_guide.md)).
+**v1** (all seven phases, commit 94f937d3) was handed to the playtester. **Round 1** brought the full story
+add-on ([hack_story.md](hack_story.md)) and a fourth rival, Nerine; the checklist is in
+[hack_feedback.md](hack_feedback.md) and the round's decisions are D-100 onwards. Build: `make` (debug, R + Start
+menu) → `pokeemerald.gba`, `make release` → `pokeemerald-release.gba`; zipped ROMs for the playtester go to
+`dist/` (gitignored).
 
-Open items, none blocking a playthrough:
-- `TODO(art)`: custom Porytiles tiles for the shrine / Rayquaza statue / meteorites; Acro Bike and watering-can
-  frames; the few pixel fixes listed in [hack_art_pipeline.md](hack_art_pipeline.md).
-- `TODO(dialogue)`: Magma grunts don't react to the disguise (D-044).
-- Trainers: no ORAS rematch rosters are used (none could be sourced); swapping them in later is a block edit.
-- A full hand playthrough of the vanilla story between the new scenes hasn't been automated.
+## Round 1 – v2 story (in progress)
+- [~] Docs: story saved, feedback checklist, superseded decisions marked, v2 decisions (D-100–D-112)
+- [ ] Quick fixes: dragon lines evolve at 25/50 (D-107), every Mega checked, player sprite audit (never Brendan/May)
+- [ ] Core: reputation var, outfit timeline, variant trainers (D-101), Nerine + Aster leftover egg, rival teams
+- [ ] Act 1–2: village without Mom, Poochyena rescue, families, Petalburg Woods recruitment + outpost cabin,
+      Rustboro Brendan, second starter lines, Rusturf goods choice, Steven, Slateport museum, Route 110, Wally
+- [ ] Act 3–5: Meteor Falls, Mt. Chimney sabotage, Jagged Pass Mega Ring, Lavaridge, Weather Institute, Mt. Pyre,
+      Magma Hideout promotion, Aqua Hideout, Mossdeep reversed tag battle, Seafloor reveal, Sootopolis turn,
+      Rayquaza calling, aftermath
+- [ ] Act 6–7: Hall of Fame → meteor alert → Sky Pillar finale (double, Rayquaza catch, Deoxys, Mega Rayquaza),
+      credits, post-game
+- [ ] Reputation dialogue (shared NPCs, key NPCs, townsfolk) + `docs/hack_script.md`
+- [ ] Art: Nerine (Aqua disguise + true outfit), Courtney, outpost cabin map, tamer scarf (1.14)
+- [ ] Trainers from real ORAS rematch data (Serebii), Elite Four post-game rematches
+- [ ] Verification (matrix incl. Nerine/Aster variants, story checks, per-act debug warps) + v2 ROM
 
 ## Phase 0 – Tools and extensions
 - [x] Toolchain (apt `gcc-arm-none-eabi` 13.2) – baseline `make` OK (2m30s, 79.7% ROM)
