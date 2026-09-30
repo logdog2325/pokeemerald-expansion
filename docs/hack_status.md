@@ -27,7 +27,8 @@ menu) → `pokeemerald.gba`, `make release` → `pokeemerald-release.gba`; zippe
 - [ ] Act 6–7: Hall of Fame → meteor alert → Sky Pillar finale (double, Rayquaza catch, Deoxys, Mega Rayquaza),
       credits, post-game
 - [ ] Reputation dialogue (shared NPCs, key NPCs, townsfolk) + `docs/hack_script.md`
-- [ ] Art: Nerine (Aqua disguise + true outfit), Courtney, outpost cabin map, tamer scarf (1.14)
+- [~] Art: Nerine (Aqua disguise + true outfit, front/back pics), Courtney, Tabitha back pic done (D-113–D-116,
+      checked in the emulator); open: outpost cabin map, tamer scarf (1.14)
 - [ ] Trainers from real ORAS rematch data (Serebii), Elite Four post-game rematches
 - [ ] Verification (matrix incl. Nerine/Aster variants, story checks, per-act debug warps) + v2 ROM
 

@@ -255,4 +255,22 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   Island (needs an event ticket). – Reachable in a normal save.
 - **D-112 Post-game start**: credits roll after the finale; the player wakes at home in the village, where the
   Elder brings the SS Ticket (sent by Captain Stern) and the Lati TV news airs. – Alt: Norman (now May's father).
+- **D-113 Nerine's disguise detail**: the female Aqua grunt sheet and pic unchanged except her own **silver-blue
+  hair** under the bandana (the real grunts' is magenta/red). – Alt: a teal scale scarf; a gold horn clip on the
+  bandana. – The hair is the one detail readable at 16×32 among grunts (a clip is 2–3 px), it is the same hair
+  she has after the reveal, and it is not "Draconid" on a first playthrough, only in hindsight (story rule on hints).
+- **D-114 Nerine's true look**: long silver-blue hair, deep navy clothes, a teal shawl with a scale lattice, a gold
+  sash/belt and cuffs, and **one** small gold horn clip on her left side. Bases: Frontier Brain Lucy's walk sheet
+  (overworld: very long hair, 9 frames), Winona's front pic (long hair, flowing scarf → shawl; the winged headpiece
+  removed, crown and hair redrawn), Leaf's back pic (like the Draconid F back pic, own crown). – Alt: the Leaf
+  pipeline with a new head, like Aster (same silhouette as Aster and the player); Lucy's front pic (needs a shawl
+  drawn from scratch). – A single asymmetric horn and no headband separate her from the player (teal band, ivory
+  horns) and Aster (crimson band, two gold horns); the long hair gives her a different silhouette.
+- **D-115 Courtney's look**: the female Magma grunt with lilac hair, a dark crimson admin jacket instead of the black
+  top, and a gold Magma emblem; the hood keeps the grunts' red. – Alt: Tabitha's duller crimson for the hood (washed
+  out, less "Magma"); black tights. – Visible at a glance next to grunts from every side, still one of Magma.
+- **D-116 Partner back pics**: Nerine (Sky Pillar) and Tabitha (Space Center) get back pics, used for any
+  `TRAINER_PIC_NERINE` / `TRAINER_PIC_MAGMA_ADMIN` partner. Tabitha's is the Magma disguise back pic (Red's build)
+  recoloured into his crimson hooded jacket. – Alt: draw a heavier build for him (`TODO(art)` if wanted). – Partners
+  are drawn from behind; reusing the player's rigs keeps the 5-frame Kanto throw animation.
 

@@ -1,0 +1,16 @@
+{
+ "notes": "Nerine undercover in Team Aqua (overworld): the female Aqua grunt, unchanged except her own silver-blue hair under the bandana (the Draconid detail; the same hair as her true look). The pink hair (8/9/10 above row 25) moves to 11/12/13; the boots keep 8/9/10.",
+ "steps": [
+  {"op": "load", "src": "graphics/object_events/pics/people/team_aqua/aqua_member_f.png"},
+  {"op": "palette", "pal": [
+   [112, 192, 160], [248, 208, 176], [248, 192, 144], [216, 144, 112],
+   [120, 64, 64], [104, 136, 168], [56, 72, 96], [8, 16, 32],
+   [208, 112, 160], [160, 64, 112], [80, 32, 64], [224, 232, 248],
+   [152, 168, 208], [72, 80, 128], [248, 248, 248], [0, 0, 0]]},
+  {"op": "remap_region", "box": [0, 0, 16, 25], "map": {"8": 11, "9": 12, "10": 13},
+   "frames": [0, 1, 2, 3, 4, 5, 6, 7, 8], "frame_w": 16},
+  {"op": "save", "dst": "graphics/object_events/pics/people/draconid/nerine_aqua.png"},
+  {"op": "save_pal", "dst": "graphics/object_events/palettes/nerine_aqua.pal"},
+  {"op": "save_pal", "dst": "graphics/object_events/palettes/nerine_aqua_reflection.pal", "reflection": true}
+ ]
+}

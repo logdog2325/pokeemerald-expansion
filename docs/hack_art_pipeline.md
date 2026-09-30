@@ -86,3 +86,51 @@ M, hair → dark navy), and a side-view head (spiky hair or a smooth top over th
 leaning back) is drawn over the cap. The head rows were laid out from shapes (hair dome, spikes, horn line, band)
 with a 1 px outline, then checked at 1× and in the emulator.
 - Magma F back pic: the hood still has Leaf's hat silhouette.
+
+## Round 1: Nerine, Courtney and the partner back pics
+
+Files under `graphics/object_events/pics/people/`, `graphics/object_events/palettes/` and `graphics/trainers/`;
+specs under `tools/hack/art/`.
+
+| Sprite | File(s) | Spec (tool) | Base | Look |
+|---|---|---|---|---|
+| Nerine in Team Aqua, overworld | `draconid/nerine_aqua.png`, `nerine_aqua{,_reflection}.pal` | `recipes/nerine_aqua.json` (kitbash) | Aqua grunt F walk sheet | unchanged but her **silver-blue hair** (D-113) |
+| Nerine in Team Aqua, front pic | `front_pics/nerine_aqua.png` | `recipes/nerine_aqua_front_pic.json` (kitbash) | Aqua grunt F pic | same hair |
+| Nerine, overworld | `draconid/nerine.png`, `nerine{,_reflection}.pal` | `recipes/nerine.json` (kitbash) | Frontier Brain Lucy's walk sheet | long silver-blue hair, navy, teal shawl, gold sash, one gold horn clip (D-114) |
+| Nerine, front pic | `front_pics/nerine.png` | `recipes/nerine_front_pic.json` (kitbash) | Winona's pic | same, with a scale-lattice shawl and gold cuffs |
+| Nerine, back pic (5 frames) | `back_pics/nerine.png` | `player/nerine_pics.json` (`build_pics.py`) | FRLG Leaf's back pic | own crown + horn clip, shawl, navy sleeves |
+| Courtney, overworld | `draconid/courtney.png`, `courtney{,_reflection}.pal` | `recipes/courtney.json` (kitbash) | Magma grunt F walk sheet | lilac hair, crimson admin jacket, gold emblem (D-115) |
+| Tabitha, back pic (5 frames) | `back_pics/magma_admin.png` | `player/tabitha_pics.json` (`build_pics.py`) | Magma disguise back pic (Red) | recoloured into his crimson hooded jacket (D-116) |
+
+Rebuild: `python3 tools/hack/art/kitbash.py tools/hack/art/recipes/{nerine_aqua,nerine_aqua_front_pic,nerine,nerine_front_pic,courtney}.json`
+and `python3 tools/hack/art/player/build_pics.py tools/hack/art/player/{nerine,tabitha}_pics.json`, then `make`. The
+overworld recipes also write the palette and its water-reflection version (`save_pal`). No C regeneration is needed:
+the object events were registered with the placeholders; the back pics are `.backPic` entries of
+`TRAINER_PIC_NERINE` / `TRAINER_PIC_MAGMA_ADMIN` in `src/data/graphics/trainers.h` (yOffset 5, `sBackAnims_Kanto`).
+
+How they were made:
+- **Disguise**: the grunt's hair indices are moved to free palette slots inside a box above the body (the boots
+  share the hair's indices, so a global recolour would have turned them silver); the front pic keeps the red mouth
+  pixel and the Poké Ball.
+- **Nerine overworld**: Lucy's hair (C/D) stays as the hair's light/mid; the same indices below the hair become the
+  navy trousers (per view: `DOWN`/`UP`/`LEFT` steps with `shift` for the walk frames, drawn 1 px lower);
+  `remap_inner` turns the black shading inside the hair into a hair-dark blue while keeping the outline and the
+  eyes; the bare midriff becomes a navy top and a gold sash, the shoulders the teal shawl; the horn clip is a
+  4-row `pixels` overlay per view (her left: viewer's right from the front, left from behind).
+- **Nerine front pic**: Winona's winged headpiece is removed, her cap and thin hair replaced by a new crown with a
+  side-swept fringe (`pixels`), and long hair painted *behind* the body (`pixels` with `under`), then `outline`
+  gives the hair a black edge and `remap_inner` merges old edges that now lie inside the hair. The purple scarf is
+  recoloured teal and tiled with a diamond lattice (`pattern`) for the scales; the white forearms become navy with
+  gold cuffs. The remap order matters (index 9 is Winona's light grey *and* the new hair mid) – see the recipe.
+- **Nerine back pic**: like the Draconid F back pic (head template anchored on Leaf's hat, `[-16, -4]`), but a round
+  silver crown without a band and a crescent horn clip; the arms get navy sleeves through per-frame `remap` rects
+  (face kept), the wristbands gold cuffs, the top the teal lattice shawl (`pattern`).
+- **Courtney**: brown hair → lilac by palette; `remap_inner` turns the black inside the torso (rows 21–26) into the
+  hood's dark red, so the outline stays and the top reads as an admin jacket; the white emblem pixels → gold.
+- **Checks**: `validate.py --manifest tools/hack/art/manifests/draconid.json` (all 7 files added); contact sheets
+  and in-context strips at 3×; in the emulator (temporary debug scripts, not committed) the five overworld sprites
+  side by side with the real grunts in all four facings, both Nerine front pics in battle, and both partners'
+  back pics through the multi-battle intro and throw.
+
+Known gaps (`TODO(art)`): Tabitha's back pic keeps Red's slim build (he is heavier in his front pic); Courtney has
+no trainer pic (she does not battle yet); Nerine's shawl pattern is only a hint at 16×32.
