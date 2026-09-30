@@ -59,3 +59,54 @@ shot 06_slowking
 mash B 3000
 expect_party 2 SPECIES_SLOWKING
 expect_item ITEM_KINGS_ROCK 0
+
+# --- 3. The egg dragons evolve at 25 and 50 (D-107): Dreepy Lv 24 -> Drakloak (slot 3); Hakamo-o Lv 49 ->
+#     Kommo-o (slot 4) and Drakloak Lv 49 -> Dragapult (slot 5). The last badges and FLAG_IS_CHAMPION lift the level
+#     cap (src/caps.c) for the Lv 50 candies. Mashing A goes through the "learn a move" prompts before and after the
+#     evolution (B would cancel it); only then does B leave the menus.
+setflag FLAG_BADGE06_GET
+setflag FLAG_BADGE07_GET
+setflag FLAG_BADGE08_GET
+setflag FLAG_IS_CHAMPION
+givemon SPECIES_DREEPY 24
+giveitem ITEM_RARE_CANDY
+expect_party 3 SPECIES_DREEPY
+press START 2 60
+press A 2 90
+press A 2 30
+press A 2 90
+press DOWN 2 20
+press A 2 60
+shot 07_dreepy_candy
+repeat 40 press A 2 88
+shot 08_drakloak
+mash B 3000
+expect_party 3 SPECIES_DRAKLOAK
+
+givemon SPECIES_HAKAMO_O 49
+giveitem ITEM_RARE_CANDY
+expect_party 4 SPECIES_HAKAMO_O
+press START 2 60
+press A 2 90
+press A 2 30
+press A 2 90
+press DOWN 2 20
+press A 2 60
+repeat 40 press A 2 88
+shot 09_kommo_o
+mash B 3000
+expect_party 4 SPECIES_KOMMO_O
+
+givemon SPECIES_DRAKLOAK 49
+giveitem ITEM_RARE_CANDY
+expect_party 5 SPECIES_DRAKLOAK
+press START 2 60
+press A 2 90
+press A 2 30
+press A 2 90
+press DOWN 2 20
+press A 2 60
+repeat 40 press A 2 88
+shot 10_dragapult
+mash B 3000
+expect_party 5 SPECIES_DRAGAPULT

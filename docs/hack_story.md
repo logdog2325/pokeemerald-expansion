@@ -156,3 +156,7 @@ Petalburg Woods recruitment/outfit change, Maxie's first meeting at Meteor Falls
 
 ### Follow-up note 9 (round 1)
 - "also once 6-7 is done make sure theres no story locks until the post game also make sure trainers are getting gen 4-9 pokemon too to spice things up"
+
+### Follow-up note 10 (round 1)
+- "Rewrite rivals' PokéNav Match Call texts by reputation" (a queued task the playtester asked to do)
+- "also make sure the kommo-o and dragapult lines also evolve to second stage at 25 and final stage at 50"

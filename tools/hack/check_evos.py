@@ -10,6 +10,7 @@ Scans src/data/pokemon/species_info/*.h:
   - no level evolution is shadowed: GetEvolutionTargetSpecies (src/pokemon.c) takes the FIRST entry whose
     conditions hold, so an unconditional EVO_LEVEL listed before a conditional EVO_LEVEL of the same or a
     higher level would make that branch unreachable (error)
+  - the Deino, Dreepy and Jangmo-o lines evolve at 25 and 50 (D-107) (error otherwise)
   - every former trade evolution (a level entry with a DRACONID_TRADE_EVO_LEVEL_* level, or a held-item
     level entry in a block tagged D-216/D-217) is printed with its level, held item and the base stat totals
 Exit 1 on errors.
@@ -99,6 +100,16 @@ def main():
                 if param.startswith("DRACONID_TRADE_EVO_LEVEL") or (info["marked"] and item):
                     rows.append((level, name, target, item.group(1) if item else "", info["bst"],
                                  species.get(target, {}).get("bst")))
+    # the egg dragons evolve at 25 and 50 (D-107; the playtester asked for it for all three lines)
+    for frm, to, want in (("DEINO", "ZWEILOUS", 25), ("ZWEILOUS", "HYDREIGON", 50),
+                          ("DREEPY", "DRAKLOAK", 25), ("DRAKLOAK", "DRAGAPULT", 50),
+                          ("JANGMO_O", "HAKAMO_O", 25), ("HAKAMO_O", "KOMMO_O", 50)):
+        got = [consts.get(param, int(param) if param.isdigit() else None)
+               for method, param, target, cond in species.get(frm, {}).get("evos", [])
+               if method == "EVO_LEVEL" and target == to]
+        if got != [want]:
+            print("ERROR %s -> %s: evolves at %s, not %d (D-107)" % (frm, to, got or "no level", want))
+            errors += 1
     rows.sort(key=lambda r: (r[0], r[1]))
     if args.markdown:
         print("| From | To | Level | Held item | BST from → to |")

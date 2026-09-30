@@ -844,3 +844,15 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   (as with D-101). The partners are `PARTNER_WES`/`_RED`/`_BLUE` (14–16, `PARTNER_COUNT` 17). – Alt: reuse the
   unused vanilla `TRAINER_RED` (851; still no room for the rest); 936 (only three spare ids). – One raise for this
   round.
+- **D-243 The rivals' PokéNav calls follow the story and the reputation**: Brendan's, May's and Wally's Match Call
+  texts (vanilla neighbour chat and tips) are replaced by `data/scripts/draconid/rival_calls.pory`. Each rival has two
+  tables in `src/pokenav_match_call_data.c`: one while the player wears the uniform and one after the Sootopolis
+  turn (`VAR_DRACONID_REPUTATION` ≥ `REPUTATION_REVEALED`); an entry is used once the rival's own state var
+  (`VAR_MAY_STATE` / `VAR_BRENDAN_STATE` / `VAR_WALLY_STATE`) has reached its value and its flag (badges, the Orb,
+  Victory Road, the Hall of Fame) is set, and the last such entry wins. In uniform they keep the number to watch a
+  MAGMA grunt (hostile, one crack per rival – docs/hack_voices.md); after the turn they call as friends and point the
+  way (Juan, the League through Victory Road, the lab rematch). The contact descriptions "RAD NEIGHBOR" become
+  "NORMAN'S KID" / "BIRCH'S KID" (neither is the player's neighbour in v2). – Alt: keep the vanilla flag-gated
+  tables and only rewrite the texts (vanilla's gates are story events round 1 moved or removed); one table with a
+  reputation condition per entry (harder to read). – The playtester asked for the rivals to be hostile while the
+  player is in uniform (follow-up 4); the calls were the last friendly lines left.

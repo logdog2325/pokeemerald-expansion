@@ -59,6 +59,7 @@ def chain(gender, egg, egg_id, root):
         # wild tables + National Dex (D-193), the Aqua Hideout story-lock fix (D-213), level evolutions (D-216),
         # the battle-item counter (D-218)
         steps += [("wild", {}), ("progression", {}), ("trade_evos", {}), ("battle_items", {})]
+        steps.append(("rival_calls", {}))  # the rivals' PokéNav calls by story and reputation (D-243)
     for second, value, stone in SECONDS:
         steps.append(("second_starter", {"PICK": value - 1, "SECOND": value}))
         steps.append(("aster", {"EGGNAME": egg, "SECOND": value,

@@ -1,0 +1,165 @@
+// Draconid Emerald: Brendan's and May's PokéNav Match Call texts (D-243). The PokéNav picks one with
+// MatchCall_GetMessage_Rival (src/pokenav_match_call_data.c): the last entry of the rival's table whose state
+// (VAR_BRENDAN_STATE / VAR_MAY_STATE) and flag are reached. While the player wears the uniform the rivals only
+// keep the number to watch a MAGMA grunt (docs/hack_voices.md); after the Sootopolis turn they call as friends.
+// May registers on Route 110 (Act 2), Brendan on Route 119 (Act 4). The call window is as wide as Maxie's calls.
+
+// --- May, while the player wears red ---
+
+text Draconid_Text_MayCallUniform1 {
+    format("MAY: …Oh. It's you.\p"
+           "I only registered you to keep tabs on MAGMA.\p"
+           "So where are you headed next? …Fine. I'll find out anyway.", 188)
+}
+
+text Draconid_Text_MayCallUniform2 {
+    format("MAY: I heard you beat WATTSON.\p"
+           "Does MAGMA hand out a prize for every BADGE, or what?\p"
+           "Don't call me just to brag.", 188)
+}
+
+text Draconid_Text_MayCallUniform3 {
+    format("MAY: MT. CHIMNEY was shaking the other day. You could see the smoke from here.\p"
+           "If MAGMA hurt anyone up there, I'll find out.\p"
+           "…Were you there, {PLAYER}?", 188)
+}
+
+text Draconid_Text_MayCallUniform4 {
+    format("MAY: You beat my dad.\p"
+           "He says you battled fair. He almost sounded proud.\p"
+           "I don't get you, {PLAYER}. I really don't.", 188)
+}
+
+text Draconid_Text_MayCallUniform5 {
+    format("MAY: About the WEATHER INSTITUTE…\p"
+           "I did that for the scientists, okay?\p"
+           "So don't go telling MAGMA about it.", 188)
+}
+
+text Draconid_Text_MayCallUniform6 {
+    format("MAY: BRENDAN and I will stop you next time.\p"
+           "We'll be ready for you. Both of us.", 188)
+}
+
+text Draconid_Text_MayCallUniform7 {
+    format("MAY: My dad called. He asked if I'd seen you.\p"
+           "He still thinks there's some good in you.\p"
+           "…I told him I'd let him know.", 188)
+}
+
+text Draconid_Text_MayCallUniform8 {
+    format("MAY: Everyone in MOSSDEEP keeps looking out at the sea.\p"
+           "AQUA took a submarine, and MAGMA's everywhere.\p"
+           "Whatever you're part of, it's getting worse. I just want it to stop.", 188)
+}
+
+// --- May, after the Sootopolis turn ---
+
+text Draconid_Text_MayCallRevealed1 {
+    format("MAY: Hi, {PLAYER}! Guess who's not mad at you anymore?\p"
+           "Go get JUAN's BADGE. I'll be cheering for you!", 188)
+}
+
+text Draconid_Text_MayCallRevealed2 {
+    format("MAY: Eight BADGES! That's all of them!\p"
+           "The POKéMON LEAGUE is in\nEVER GRANDE CITY.\p"
+           "It's east of SOOTOPOLIS. Climb the waterfall there, then go through VICTORY ROAD.\p"
+           "You can do it!", 188)
+}
+
+text Draconid_Text_MayCallRevealed3 {
+    format("MAY: CHAMPION {PLAYER}! Everyone in HOENN knows your name now.\p"
+           "Whatever's going on with the sky, I know you'll handle it.\p"
+           "Then come by the LAB. BRENDAN and I want a rematch!", 188)
+}
+
+// --- Brendan, while the player wears red ---
+
+text Draconid_Text_BrendanCallUniform1 {
+    format("BRENDAN: Yeah? What do you want?\p"
+           "MAY says we have to keep an eye on you. So that's what I'm doing.\p"
+           "If MAGMA's planning something, you'd better not be in it.", 188)
+}
+
+text Draconid_Text_BrendanCallUniform2 {
+    format("BRENDAN: WINONA says you battled her fair and square.\p"
+           "Doesn't change what you're wearing, {PLAYER}.", 188)
+}
+
+text Draconid_Text_BrendanCallUniform3 {
+    format("BRENDAN: Two of us, and you still won.\p"
+           "Don't get cocky. Next time I'll be ready for you.", 188)
+}
+
+text Draconid_Text_BrendanCallUniform4 {
+    format("BRENDAN: I heard MAGMA took an ORB from MT. PYRE.\p"
+           "Those old folks guarded it their whole lives.\p"
+           "…Tell me you weren't there, {PLAYER}.", 188)
+}
+
+text Draconid_Text_BrendanCallUniform5 {
+    format("BRENDAN: I've got nothing to say to you.\p"
+           "STEVEN says you let us win at the SPACE CENTER. I don't buy it.\p"
+           "…Why would a MAGMA grunt do that?", 188)
+}
+
+// --- Brendan, after the Sootopolis turn ---
+
+text Draconid_Text_BrendanCallRevealed1 {
+    format("BRENDAN: Hey, {PLAYER}. …So, uh. Go beat JUAN.\p"
+           "If you lose to him after all that, I'm never letting you hear the end of it.", 188)
+}
+
+text Draconid_Text_BrendanCallRevealed2 {
+    format("BRENDAN: All eight BADGES, huh? Figures.\p"
+           "VICTORY ROAD starts past the waterfall in EVER GRANDE CITY.\p"
+           "The trainers in there are no joke. Don't lose before you reach the LEAGUE!", 188)
+}
+
+text Draconid_Text_BrendanCallRevealed3 {
+    format("BRENDAN: CHAMPION, huh? …Man, you're strong.\p"
+           "Once things calm down, come by my dad's LAB.\p"
+           "MAY and I have a rematch waiting for you.", 188)
+}
+
+// --- Wally (registered in Mauville), while the player wears red ---
+
+text Draconid_Text_WallyCallUniform1 {
+    format("WALLY: …Oh. It's you.\p"
+           "I'm training every day now. For the next time I see MAGMA.\p"
+           "…For the next time I see you, {PLAYER}.", 188)
+}
+
+text Draconid_Text_WallyCallUniform2 {
+    format("WALLY: People in VERDANTURF say\nMT. CHIMNEY nearly erupted.\p"
+           "The smoke reached all the way here. I could hardly breathe.\p"
+           "Was that MAGMA? …Was that you?", 188)
+}
+
+text Draconid_Text_WallyCallUniform3 {
+    format("WALLY: I lost to you again at the GYM.\p"
+           "My POKéMON didn't give up, though. So I won't either.", 188)
+}
+
+text Draconid_Text_WallyCallUniform4 {
+    format("WALLY: I'm heading for VICTORY ROAD soon.\p"
+           "If MAGMA ever comes near\nEVER GRANDE, I'll be waiting.", 188)
+}
+
+// --- Wally, after the Sootopolis turn ---
+
+text Draconid_Text_WallyCallRevealed1 {
+    format("WALLY: {PLAYER}! I heard about SOOTOPOLIS.\p"
+           "…I'm sorry for everything I said. I didn't know.\p"
+           "I'll be waiting at VICTORY ROAD. Let's have a real battle this time!", 188)
+}
+
+text Draconid_Text_WallyCallRevealed2 {
+    format("WALLY: You're too strong, {PLAYER}!\p"
+           "I'm going to keep training with GALLADE. Someday I'll catch up to you!", 188)
+}
+
+text Draconid_Text_WallyCallRevealed3 {
+    format("WALLY: CHAMPION {PLAYER}! My uncle can't stop talking about it.\p"
+           "He says he always knew. …He didn't, but that's okay.", 188)
+}

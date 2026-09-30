@@ -135,8 +135,9 @@ python3 tools/hack/emu/play.py test.play -o /tmp/out
 | `path MAP X0 Y0 X1 Y1` | shortest walk on MAP's collision grid (avoids tall grass, water, warps; jumps down ledges; ignores NPCs) |
 | `warp MAP_X X Y [MAX]` | debug builds: warp to (X, Y) on MAP_X the next time the player is free (`gDraconidTestWarp`) |
 | `heal` | debug builds: heal the party the next time the player is free |
-| `givemon SPECIES_X LEVEL [ITEM_X]`, `giveitem ITEM_X` | debug builds: add a Pokémon (holding ITEM_X) to the party / one item to the bag the next time the player is free |
+| `givemon SPECIES_X LEVEL [ITEM_X]`, `giveitem ITEM_X [N]` | debug builds: add a Pokémon (holding ITEM_X) to the party / N items (default 1) to the bag the next time the player is free |
 | `expect_party SLOT SPECIES_X` | the species in party slot SLOT (0 = first), decrypted from the box data |
+| `expect_text LABEL [BUFFER]` | the text in BUFFER (default `gStringVar4`) starts like the ROM text LABEL (up to 24 bytes, stopping at its first placeholder); e.g. a PokéNav call |
 | `settrainer TRAINER_X 0/1` | set or clear a trainer's defeated flag |
 | `setvar NAME V`, `gender M/F`, `default NAME V` (+ `-D NAME=V`) | change a var, the player's gender, script defaults |
 | `setflag NAME`, `clearflag NAME` | change a save-block flag, e.g. `setflag FLAG_DEBUG_NO_ENCOUNTER` to walk without wild battles |
@@ -146,7 +147,6 @@ python3 tools/hack/emu/play.py test.play -o /tmp/out
 | `expect_item ITEM_X 0/1` | whether the item is anywhere in the bag |
 | `expect_gfx OBJ_EVENT_GFX_X` | the player's current sprite (outfit, gender, avatar state) |
 | `expect_pos X Y`, `expect_map MAP_X` | the player's map coordinates / the current map |
-| `giveitem ITEM_X [N]`, `givemon SPECIES_X LEVEL` | debug builds: put items in the bag / a Pokémon in the party the next time the player is free |
 | `expect_party_hms N` | debug builds: how many HM moves the party's Pokémon know |
 | `bagcursor POCKET_X N` | the bag opens on POCKET_X at entry N and the start menu on its first entry (then START, DOWN, DOWN, A opens the bag) |
 | `expect_opponent_b TRAINER_X`, `expect_partner PARTNER_X` | opponent B and the in-game partner of the last two-trainer / multi battle |
@@ -229,6 +229,7 @@ python3 tools/hack/emu/play.py tools/hack/emu/tests/wild.play           -o /tmp/
 python3 tools/hack/emu/play.py tools/hack/emu/tests/progression.play    -o /tmp/emu   # story-lock fixes: the Aqua Hideout opens with Maxie's order
 python3 tools/hack/emu/play.py tools/hack/emu/tests/trade_evos.play     -o /tmp/emu   # Kadabra -> Alakazam, Slowpoke + King's Rock -> Slowking
 python3 tools/hack/emu/play.py tools/hack/emu/tests/battle_items.play   -o /tmp/emu   # battle item counter by badges, a Gym booster, a Mega Stone ball
+python3 tools/hack/emu/play.py tools/hack/emu/tests/rival_calls.play    -o /tmp/emu   # Brendan's, May's and Wally's PokéNav calls (D-243)
 python3 tools/hack/emu/play.py tools/hack/emu/tests/release_boot.play   -o /tmp/rel --rom pokeemerald-release.gba
 ```
 `release_boot.play` goes through the real title and new-game menus, since release builds have neither Quickstart

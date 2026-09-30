@@ -42,6 +42,8 @@ A .play script is a gbarun script plus:
                           the next time the player is free
   expect_party_hms N      debug builds: how many HM moves the party's Pokémon know (IsMoveHM)
   expect_party SLOT SPECIES_X   the species in party slot SLOT (0 = first; decrypts the box data)
+  expect_text LABEL [BUFFER]    the text now in BUFFER (default gStringVar4) starts like the ROM text LABEL
+                          (up to 24 bytes, stopping at its first placeholder such as {PLAYER}; e.g. a PokéNav call)
   expect_pos X Y          the player's map coordinates (without MAP_OFFSET)
   expect_map MAP_X        the current map (gSaveBlock1Ptr->location)
   bagcursor POCKET_X N    the bag opens on pocket POCKET_X with the cursor on its entry N (0 = first), and the
@@ -200,6 +202,7 @@ BAG_POCKET, BAG_CURSOR, BAG_SCROLL = ("offsetof(struct BagPosition, pocket)", "o
                                       "offsetof(struct BagPosition, scrollPosition)")
 # party decoding (expect_party)
 MON_SIZE, SECURE_OFFSET, SUBSTRUCT_SIZE = "sizeof(struct Pokemon)", "offsetof(struct BoxPokemon, secure)", "NUM_SUBSTRUCT_BYTES"
+TEXT_BYTES = 24  # expect_text compares up to 24 bytes
 SUBSTRUCT0_POS = [0, 0, 0, 0, 0, 0, 1, 1, 2, 3, 2, 3, 1, 1, 2, 3, 2, 3, 1, 1, 2, 3, 2, 3]  # pokemon.c sSubstructOffsets[0]
 
 LEDGE_JUMP = {"DOWN": "MB_JUMP_SOUTH", "UP": "MB_JUMP_NORTH", "LEFT": "MB_JUMP_WEST", "RIGHT": "MB_JUMP_EAST"}
@@ -242,6 +245,7 @@ def main():
     expects = []
     item_checks = {}  # label -> [item name, item id, wanted, found]
     party_checks = {}  # label -> [species name, species id, slot, {word key: value}]
+    text_checks = {}  # label -> [text label, {"b<i>": RAM word, "r<i>": ROM word}]
 
     def sym(m):
         name = m.group(2)
@@ -406,6 +410,14 @@ def main():
             label = "map_%s#%d" % (t[1], len(expects))
             expects.append((label, (m >> 8) | ((m & 0xFF) << 8)))
             out.append("read %s+%X 2 %s" % (sb1, loc_off, label))
+        elif t[0] == "expect_text":
+            # compare the first TEXT_BYTES bytes of the buffer (RAM) and of the text label (ROM)
+            label = "text%d" % len(text_checks)
+            text_checks[label] = [t[1], {}]
+            buf = syms[t[2] if len(t) > 2 else "gStringVar4"]
+            for i in range(TEXT_BYTES):  # byte reads: text labels aren't word-aligned (the bus would rotate)
+                out.append("read %X 1 %s_b%d" % (buf + i, label, i))
+                out.append("read %X 1 %s_r%d" % (syms[t[1]] + i, label, i))
         elif t[0] == "expect_party":
             # gParties[B_TRAINER_PLAYER] (index 0) slot N: personality, OT id and the encrypted substructs
             label = "party%d" % len(party_checks)
@@ -435,6 +447,10 @@ def main():
     ok = True
     for line in res.stdout.splitlines():
         m = re.match(r"read (\S+?)(?:>>(\d))? = 0x([0-9A-F]+)", line)
+        if m and m.group(1).split("_")[0] in text_checks:
+            prefix, key = m.group(1).split("_", 1)
+            text_checks[prefix][1][key] = int(m.group(3), 16)
+            continue  # reported after the run
         if m and m.group(1).split("_")[0] in party_checks:
             prefix, key = m.group(1).split("_", 1)
             party_checks[prefix][3][key] = int(m.group(3), 16)
@@ -468,6 +484,16 @@ def main():
         line = "party slot %d species = %d (%s = %d)" % (slot, species, name, want)
         if species != want:
             line += "   <-- EXPECTED %s" % name
+            ok = False
+        print(line)
+    for name, words in text_checks.values():
+        ram = bytes(words.get("b%d" % i, 0) for i in range(TEXT_BYTES))
+        rom = bytes(words.get("r%d" % i, 0) for i in range(TEXT_BYTES))
+        n = min([rom.index(c) for c in (b"\xfd", b"\xff") if c in rom] + [len(rom)])  # up to a placeholder / EOS
+        same = n > 0 and ram[:n] == rom[:n]
+        line = "text %s %s" % (name, "matches" if same else "differs")
+        if not same:
+            line += " (buffer %s, ROM %s)   <-- EXPECTED %s" % (ram[:n].hex(), rom[:n].hex(), name)
             ok = False
         print(line)
     if res.stderr.strip():
