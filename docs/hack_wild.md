@@ -48,8 +48,8 @@ Every Granite Cave land table has Beldum in one of its two 1% slots, at a level 
 |---|---|---|---|
 | Granite Cave 1F | 11 (1%) | Geodude Lv 9 (Geodude keeps slots 8–10) | Lv 9 |
 | Granite Cave B1F | 11 (1%) | Sableye Lv 11 (Sableye keeps slots 8–10) | Lv 11 |
-| Granite Cave B2F | 10 (1%) | Sableye Lv 12 (Sableye keeps slots 6–9, 11) | Lv 12 |
-| Steven's Room | 11 (1%) | Aron Lv 8 (Aron keeps slots 8, 10) | Lv 8 |
+| Granite Cave B2F | 10 (1%) | Sableye Lv 12 (Sableye keeps slots 6–8, 11; Carbink took slot 9) | Lv 12 |
+| Steven's Room | 11 (1%) | Aron Lv 8 (Aron keeps slots 8, 10; Carbink took slot 9) | Lv 8 |
 
 Beldum's catch rate is 3, so it is a real prize at S2. `check_wild.py` fails if any Granite Cave land table has no
 Beldum, or has it outside a 1% slot or the floor's level range.
@@ -76,7 +76,7 @@ National Dex scene in Birch's lab still calls it an upgrade – reword it with t
 | Route 111, desert, Mirage Tower | Hippopotas, Sandile, Gible (1%), Nacli (Rock Smash); Sigilyph, Yamask in the tower | sand dwellers; the ruin's guardian bird and the mask of the Relic Castle |
 | Routes 112–114, Fiery Path, Jagged Pass | Rolycoly, Skiddo, Sizzlipede, Rookidee, Croagunk, Stufful (1%), Salandit, Larvesta (1%), Carkol, Mudbray; rivers Buizel, Roggenrola (Rock Smash) | Mt. Chimney's coal, ash and fire; the mountain goat and donkey; the swampy river of 114 |
 | Meteor Falls | Minior, Noibat, Druddigon (1%, Bagon's room and Steven's cave) | falling stars and the Draconid dragons' home |
-| Route 119, 120, 121, 123 | Trumbeak, Fomantis, Goomy (1% / 5%), Stunky, Phantump, Deerling, Drifloon, Steenee | the rainy jungle, Absol's dark fields, the woods and berry farms by Mt. Pyre |
+| Routes 119–121, 123 | Trumbeak, Fomantis, Goomy (1% / 5%), Stunky, Phantump, Deerling, Drifloon, Steenee | the rainy jungle, Absol's dark fields, the woods and berry farms by Mt. Pyre |
 | New Mauville | Joltik, Tadbulb, Rotom (4%) | the abandoned power plant |
 | Abandoned Ship | Frillish (surf), Dhelmise (Super Rod 4%) | a ghost ship; the anchor comes up on a line |
 | Mt. Pyre | Litwick, Greavard, Sinistea, Drifloon, Mimikyu (1%), Chingling (summit) | the cemetery: candles, a ghost dog, offerings of tea, Chimecho's baby at the wind chimes |
