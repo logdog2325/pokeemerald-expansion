@@ -18,6 +18,7 @@ FortreeCity_Gym_EventScript_InitRotatingGates::
 	end
 
 FortreeCity_Gym_EventScript_Winona::
+	goto_if_ne VAR_DRACONID_REPUTATION, REPUTATION_PRE_UNIFORM, FortreeCity_Gym_EventScript_DraconidRepWinona  @ Draconid Emerald (reputation/fortree.pory)
 	trainerbattle_single TRAINER_WINONA_1, FortreeCity_Gym_Text_WinonaIntro, FortreeCity_Gym_Text_WinonaDefeat, FortreeCity_Gym_EventScript_WinonaDefeated, NO_MUSIC
 	specialvar VAR_RESULT, ShouldTryRematchBattle
 	goto_if_eq VAR_RESULT, TRUE, FortreeCity_Gym_EventScript_WinonaRematch
@@ -102,6 +103,7 @@ FortreeCity_Gym_EventScript_Darius::
 FortreeCity_Gym_EventScript_GymGuide::
 	lock
 	faceplayer
+	goto_if_ne VAR_DRACONID_REPUTATION, REPUTATION_PRE_UNIFORM, FortreeCity_Gym_EventScript_DraconidRepGymGuide  @ Draconid Emerald (reputation/fortree.pory)
 	goto_if_set FLAG_DEFEATED_FORTREE_GYM, FortreeCity_Gym_EventScript_GymGuidePostVictory
 	msgbox FortreeCity_Gym_Text_GymGuideAdvice, MSGBOX_DEFAULT
 	release

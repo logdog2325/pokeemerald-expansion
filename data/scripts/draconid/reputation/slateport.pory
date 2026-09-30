@@ -1,0 +1,121 @@
+// Draconid Emerald: reputation dialogue – Slateport City (D-103; shared NPCs in shared.pory).
+// Each townsperson's map.json "script" points here; PRE_UNIFORM goes on to the vanilla script.
+// (The townsfolk around the Stern interview and the museum line are left to the story rework.)
+// Lines collected in docs/reputation_dialogue.md.
+
+// Sailor at (37, 41) (vanilla: "Could the sea have been made by the tears shed by POKéMON?")
+script SlateportCity_EventScript_DraconidRepSailor1 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            lock
+            faceplayer
+            msgbox(SlateportCity_Text_DraconidRepSailor1Uniform, MSGBOX_DEFAULT)
+            goto(Draconid_EventScript_RepTurnAway)
+        case REPUTATION_REVEALED:
+            msgbox(SlateportCity_Text_DraconidRepSailor1Revealed, MSGBOX_NPC)
+        default:
+            goto(SlateportCity_EventScript_Sailor1)
+    }
+}
+
+text SlateportCity_Text_DraconidRepSailor1Uniform {
+    format("The sea is just so vast…\p"
+           "And TEAM MAGMA wants to make it smaller. Isn't that right, grunt?")
+}
+
+text SlateportCity_Text_DraconidRepSailor1Revealed {
+    format("The sea is just so vast…\p"
+           "And thanks to you, it's still here. Thank you, {PLAYER}.")
+}
+
+// Woman at (9, 50) (vanilla: "I get carried away and buy too much.")
+script SlateportCity_EventScript_DraconidRepPokefanF {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SlateportCity_Text_DraconidRepPokefanFUniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(SlateportCity_Text_DraconidRepPokefanFRevealed, MSGBOX_NPC)
+        default:
+            goto(SlateportCity_EventScript_PokefanF)
+    }
+}
+
+text SlateportCity_Text_DraconidRepPokefanFUniform {
+    format("…I'm keeping my purse close. No offense, dear.\p"
+           "Well… some offense.")
+}
+
+text SlateportCity_Text_DraconidRepPokefanFRevealed {
+    format("I'm sorry I clutched my purse whenever you walked by.\p"
+           "Let me make it up to you… Oh, I spent all my money again!")
+}
+
+// Man at (16, 46) (vanilla: "the BATTLE TENT's awesome in its own way.")
+script SlateportCity_EventScript_DraconidRepMan2 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SlateportCity_Text_DraconidRepMan2Uniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(SlateportCity_Text_DraconidRepMan2Revealed, MSGBOX_NPC)
+        default:
+            goto(SlateportCity_EventScript_Man2)
+    }
+}
+
+text SlateportCity_Text_DraconidRepMan2Uniform {
+    format("You're going to the BATTLE TENT? In that uniform?\p"
+           "Don't expect anyone to cheer for you.")
+}
+
+text SlateportCity_Text_DraconidRepMan2Revealed {
+    format("You should enter the BATTLE TENT!\p"
+           "Everyone would cheer for the TRAINER who stood up to MAXIE!")
+}
+
+// Woman at (15, 31) (vanilla: a traded POKéMON's nickname can't be changed)
+script SlateportCity_EventScript_DraconidRepWoman2 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            lock
+            faceplayer
+            msgbox(SlateportCity_Text_DraconidRepWoman2Uniform, MSGBOX_DEFAULT)
+            goto(Draconid_EventScript_RepTurnAway)
+        case REPUTATION_REVEALED:
+            msgbox(SlateportCity_Text_DraconidRepWoman2Revealed, MSGBOX_NPC)
+        default:
+            goto(SlateportCity_EventScript_Woman2)
+    }
+}
+
+text SlateportCity_Text_DraconidRepWoman2Uniform {
+    format("Children, come here! Stay away from that one.\p"
+           "…TEAM MAGMA, right here in SLATEPORT. What next?")
+}
+
+text SlateportCity_Text_DraconidRepWoman2Revealed {
+    format("Children, come and say hello!\p"
+           "This is the TRAINER who protected our sea.\p"
+           "…I'm sorry I kept them away from you.")
+}
+
+// Man at (34, 51) (vanilla: the lighthouse light reaches dozens of miles)
+script SlateportCity_EventScript_DraconidRepMan3 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SlateportCity_Text_DraconidRepMan3Uniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(SlateportCity_Text_DraconidRepMan3Revealed, MSGBOX_NPC)
+        default:
+            goto(SlateportCity_EventScript_Man3)
+    }
+}
+
+text SlateportCity_Text_DraconidRepMan3Uniform {
+    format("TEAM AQUA at our museum, and now TEAM MAGMA in our streets.\p"
+           "What did SLATEPORT ever do to you people?")
+}
+
+text SlateportCity_Text_DraconidRepMan3Revealed {
+    format("The lighthouse shines for every ship that comes home.\p"
+           "Tonight, I think it's shining for you.")
+}

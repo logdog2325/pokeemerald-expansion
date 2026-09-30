@@ -4,11 +4,11 @@ PetalburgCity_Mart_MapScripts::
 PetalburgCity_Mart_EventScript_Clerk::
 	lock
 	faceplayer
-	message gText_HowMayIServeYou
+	call Draconid_EventScript_MartGreeting  @ Draconid Emerald (reputation/shared.pory)
 	waitmessage
 	goto_if_set FLAG_PETALBURG_MART_EXPANDED_ITEMS, PetalburgCity_Mart_EventScript_ExpandedItems
 	pokemart PetalburgCity_Mart_Pokemart_Basic
-	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
+	call Draconid_EventScript_MartGoodbye  @ Draconid Emerald (reputation/shared.pory)
 	release
 	end
 
@@ -29,7 +29,7 @@ PetalburgCity_Mart_Pokemart_Basic:
 
 PetalburgCity_Mart_EventScript_ExpandedItems::
 	pokemart PetalburgCity_Mart_Pokemart_Expanded
-	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
+	call Draconid_EventScript_MartGoodbye  @ Draconid Emerald (reputation/shared.pory)
 	release
 	end
 

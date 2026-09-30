@@ -41,7 +41,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "RustboroCity_EventScript_Woman",
+      "script": "RustboroCity_EventScript_DraconidRepWoman",
       "flag": "0"
     },
     {
@@ -80,7 +80,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "RustboroCity_EventScript_Twin",
+      "script": "RustboroCity_EventScript_DraconidRepTwin",
       "flag": "0"
     },
     {
@@ -106,7 +106,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "RustboroCity_EventScript_Man1",
+      "script": "RustboroCity_EventScript_DraconidRepMan1",
       "flag": "0"
     },
     {
@@ -201,7 +201,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "RustboroCity_EventScript_Man2",
+      "script": "RustboroCity_EventScript_DraconidRepMan2",
       "flag": "0"
     },
     {
@@ -242,7 +242,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "RustboroCity_EventScript_Boy1",
+      "script": "RustboroCity_EventScript_DraconidRepBoy1",
       "flag": "0"
     },
     {

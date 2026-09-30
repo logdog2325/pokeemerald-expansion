@@ -1,0 +1,171 @@
+// Draconid Emerald: reputation dialogue – Dewford Town and its Gym (D-103; shared NPCs in shared.pory).
+// Townsfolk: map.json "script" points here; PRE_UNIFORM goes on to the vanilla script.
+// Gym: DewfordTown_Gym_EventScript_Brawly / _GymGuide jump here when the reputation isn't PRE_UNIFORM.
+// Lines collected in docs/reputation_dialogue.md.
+
+// Woman at (7, 12) (vanilla: "DEWFORD is a tiny island community.")
+script DewfordTown_EventScript_DraconidRepWoman {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(DewfordTown_Text_DraconidRepWomanUniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(DewfordTown_Text_DraconidRepWomanRevealed, MSGBOX_NPC)
+        default:
+            goto(DewfordTown_EventScript_Woman)
+    }
+}
+
+text DewfordTown_Text_DraconidRepWomanUniform {
+    format("DEWFORD is a tiny island. Word gets around fast.\p"
+           "Everyone already knows a TEAM MAGMA grunt came ashore.")
+}
+
+text DewfordTown_Text_DraconidRepWomanRevealed {
+    format("DEWFORD is a tiny island. Word gets around fast.\p"
+           "And the word is, you saved HOENN! It's the biggest trend ever!")
+}
+
+// Man at (3, 3) (vanilla: living in harmony with POKéMON and the family)
+script DewfordTown_House1_EventScript_DraconidRepMan {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(DewfordTown_House1_Text_DraconidRepManUniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(DewfordTown_House1_Text_DraconidRepManRevealed, MSGBOX_NPC)
+        default:
+            goto(DewfordTown_House1_EventScript_Man)
+    }
+}
+
+text DewfordTown_House1_Text_DraconidRepManUniform {
+    format("We live in peace here, with our POKéMON and our family.\p"
+           "Please don't bring TEAM MAGMA's trouble to our island.")
+}
+
+text DewfordTown_House1_Text_DraconidRepManRevealed {
+    format("We live in peace here, with our POKéMON and our family.\p"
+           "That peace is thanks to you. Please, visit anytime.")
+}
+
+// Boy who idolizes Brawly at (2, 3) (vanilla: "He's so cool… Everyone idolizes him.")
+script DewfordTown_House2_EventScript_DraconidRepBoy {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            lock
+            faceplayer
+            msgbox(DewfordTown_House2_Text_DraconidRepBoyUniform, MSGBOX_DEFAULT)
+            goto(Draconid_EventScript_RepTurnAway)
+        case REPUTATION_REVEALED:
+            msgbox(DewfordTown_House2_Text_DraconidRepBoyRevealed, MSGBOX_NPC)
+        default:
+            goto(DewfordTown_House2_EventScript_Boy)
+    }
+}
+
+text DewfordTown_House2_Text_DraconidRepBoyUniform {
+    format("You crossed the sea to visit DEWFORD?\p"
+           "Is TEAM MAGMA after something on our island? …BRAWLY will stop you!")
+}
+
+text DewfordTown_House2_Text_DraconidRepBoyRevealed {
+    format("BRAWLY is cool… but you're even cooler!\p"
+           "A secret agent who beat TEAM MAGMA from the inside!")
+}
+
+// Woman in the Pokémon Center at (10, 6) (vanilla: the stone cavern at the edge of town)
+script DewfordTown_PokemonCenter_1F_EventScript_DraconidRepPokefanF {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(DewfordTown_PokemonCenter_1F_Text_DraconidRepPokefanFUniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(DewfordTown_PokemonCenter_1F_Text_DraconidRepPokefanFRevealed, MSGBOX_NPC)
+        default:
+            goto(DewfordTown_PokemonCenter_1F_EventScript_PokefanF)
+    }
+}
+
+text DewfordTown_PokemonCenter_1F_Text_DraconidRepPokefanFUniform {
+    format("There's a stone cavern at the edge of town.\p"
+           "…Is TEAM MAGMA digging for something in there? Leave our cave alone.")
+}
+
+text DewfordTown_PokemonCenter_1F_Text_DraconidRepPokefanFRevealed {
+    format("There's a stone cavern at the edge of town.\p"
+           "They say a certain famous TRAINER once explored it. That was you, wasn't it?")
+}
+
+// ---------------------------------------------------------------------------
+// Dewford Gym: Gym Guide and BRAWLY (intro and post-battle lines; badge, TM and rematch are vanilla)
+// ---------------------------------------------------------------------------
+
+script DewfordTown_Gym_EventScript_DraconidRepGymGuide {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        if (flag(FLAG_DEFEATED_DEWFORD_GYM)) {
+            msgbox(DewfordTown_Gym_Text_DraconidRepGymGuidePostVictoryUniform, MSGBOX_DEFAULT)
+        } else {
+            msgbox(DewfordTown_Gym_Text_DraconidRepGymGuideAdviceUniform, MSGBOX_DEFAULT)
+        }
+    } elif (flag(FLAG_DEFEATED_DEWFORD_GYM)) {
+        msgbox(DewfordTown_Gym_Text_DraconidRepGymGuidePostVictoryRevealed, MSGBOX_DEFAULT)
+    } else {
+        msgbox(DewfordTown_Gym_Text_GymGuideAdvice, MSGBOX_DEFAULT)
+    }
+    release
+    end
+}
+
+text DewfordTown_Gym_Text_DraconidRepGymGuideAdviceUniform {
+    format("Hey, how's it… Whoa. TEAM MAGMA?\p"
+           "I still have to give you advice. That's the job.\p"
+           "BRAWLY uses FIGHTING types. They lay a smack down on NORMAL types.\p"
+           "The GYM is dark, too. It gets brighter as you beat the TRAINERS. …Go on.")
+}
+
+text DewfordTown_Gym_Text_DraconidRepGymGuidePostVictoryUniform {
+    format("Whoah! It's turned too bright in here!\p"
+           "…Your future might be bright, too. If you ever take off that uniform.")
+}
+
+text DewfordTown_Gym_Text_DraconidRepGymGuidePostVictoryRevealed {
+    format("Hey, {PLAYER}! You lit up more than this GYM.\p"
+           "You lit up all of HOENN! Your future is bright!")
+}
+
+script DewfordTown_Gym_EventScript_DraconidRepBrawly {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        trainerbattle_single(TRAINER_BRAWLY_1, DewfordTown_Gym_Text_DraconidRepBrawlyIntroUniform, DewfordTown_Gym_Text_BrawlyDefeat, DewfordTown_Gym_EventScript_BrawlyDefeated, NO_MUSIC)
+    } else {
+        trainerbattle_single(TRAINER_BRAWLY_1, DewfordTown_Gym_Text_BrawlyIntro, DewfordTown_Gym_Text_BrawlyDefeat, DewfordTown_Gym_EventScript_BrawlyDefeated, NO_MUSIC)
+    }
+    specialvar(VAR_RESULT, ShouldTryRematchBattle)
+    if (var(VAR_RESULT) == TRUE) {
+        goto(DewfordTown_Gym_EventScript_BrawlyRematch)
+    }
+    if (!flag(FLAG_RECEIVED_TM_BULK_UP)) {
+        goto(DewfordTown_Gym_EventScript_GiveBulkUp2)
+    }
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        msgbox(DewfordTown_Gym_Text_DraconidRepBrawlyPostBattleUniform, MSGBOX_DEFAULT)
+    } else {
+        msgbox(DewfordTown_Gym_Text_DraconidRepBrawlyPostBattleRevealed, MSGBOX_DEFAULT)
+    }
+    release
+    end
+}
+
+text DewfordTown_Gym_Text_DraconidRepBrawlyIntroUniform {
+    format("I'm BRAWLY! DEWFORD's GYM LEADER!\p"
+           "Whoa, a TEAM MAGMA grunt, out here on my island?\p"
+           "Doesn't matter! In my GYM, all that counts is how hard you fight!\p"
+           "Let me see what you're made of!")
+}
+
+text DewfordTown_Gym_Text_DraconidRepBrawlyPostBattleUniform {
+    format("You fight clean. Cleaner than I expected from TEAM MAGMA.\p"
+           "Something about you doesn't add up… I'll let the waves sort it out!")
+}
+
+text DewfordTown_Gym_Text_DraconidRepBrawlyPostBattleRevealed {
+    format("Hey, {PLAYER}! The whole island's talking about you!\p"
+           "You rode that wave all the way to TEAM MAGMA's boss! Respect!")
+}

@@ -1,0 +1,237 @@
+// Draconid Emerald: reputation dialogue for the shared NPCs (D-103).
+//
+// VAR_DRACONID_REPUTATION (REPUTATION_*, include/constants/draconid.h):
+//   PRE_UNIFORM  vanilla lines
+//   UNIFORM      the player wears the Team Magma uniform: curt, cold, but every service still works
+//   REVEALED     after the Sootopolis turn: warm, grateful or apologetic
+//
+// Hooks in vanilla scripts (each line tagged "@ Draconid Emerald"):
+//   Pokémon Center nurse   data/scripts/pkmn_center_nurse.inc (greeting, "I'll take them", "restored")
+//   Poké Mart clerks       data/maps/*_Mart, LilycoveCity_DepartmentStore_*, EverGrandeCity_PokemonLeague_1F
+//                          (`message gText_HowMayIServeYou` / `msgbox gText_PleaseComeAgain` → calls below)
+//   Cable Club             data/scripts/cable_club.inc (Union Room, Direct Corner, TEALA)
+//   Day Care couple        data/scripts/day_care.inc (the old man's idle line, the old woman's offer)
+// Townsfolk, gym guides and gym leaders are in the per-town files next to this one.
+// All lines are collected in docs/reputation_dialogue.md.
+
+// ---------------------------------------------------------------------------
+// Townsfolk helper: say the line, then turn their back on the player.
+// Use after `lock`, `faceplayer` and a MSGBOX_DEFAULT line.
+// ---------------------------------------------------------------------------
+script Draconid_EventScript_RepTurnAway {
+    closemessage
+    applymovement(VAR_LAST_TALKED, Common_Movement_FaceAwayPlayer)
+    waitmovement(0)
+    release
+    end
+}
+
+// ---------------------------------------------------------------------------
+// Pokémon Center nurse (Common_EventScript_PkmnCenterNurse jumps here in place of the vanilla
+// "Would you like to rest your POKéMON?"; the Gold Card "usual" stays vanilla). The healing itself is
+// vanilla: YES goes on to EventScript_PkmnCenterNurse_HealPkmn.
+// ---------------------------------------------------------------------------
+script Draconid_EventScript_NurseGreeting {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        msgbox(Draconid_Text_NurseGreetingUniform, MSGBOX_YESNO)
+        if (var(VAR_RESULT) == YES) {
+            goto(EventScript_PkmnCenterNurse_HealPkmn)
+        }
+        message(Draconid_Text_NurseGoodbyeUniform)
+        return
+    }
+    msgbox(Draconid_Text_NurseGreetingRevealed, MSGBOX_YESNO)
+    if (var(VAR_RESULT) == YES) {
+        goto(EventScript_PkmnCenterNurse_HealPkmn)
+    }
+    goto(EventScript_PkmnCenterNurse_Goodbye)
+}
+
+// EventScript_PkmnCenterNurse_IllTakeYourPkmn, in uniform
+script Draconid_EventScript_NurseTakePkmnUniform {
+    message(Draconid_Text_NurseTakePkmnUniform)
+    return
+}
+
+// EventScript_PkmnCenterNurse_ReturnPkmn, in uniform: no bow, no "hope to see you again"
+script Draconid_EventScript_NurseReturnPkmnUniform {
+    message(Draconid_Text_NurseReturnPkmnUniform)
+    return
+}
+
+text Draconid_Text_NurseGreetingUniform {
+    format("…That uniform. TEAM MAGMA.\p"
+           "…Fine. We don't turn away POKéMON. Even yours.\p"
+           "Do you want them healed?")
+}
+
+text Draconid_Text_NurseGoodbyeUniform {
+    format("…Suit yourself.")
+}
+
+text Draconid_Text_NurseTakePkmnUniform {
+    format("…Hand them over, then.")
+}
+
+text Draconid_Text_NurseReturnPkmnUniform {
+    format("They're healed.\p"
+           "…They trust you so much. I hope you deserve it.")
+}
+
+text Draconid_Text_NurseGreetingRevealed {
+    format("Welcome back, {PLAYER}!\p"
+           "We all heard what you did in SOOTOPOLIS. I'm sorry I was so cold to you.\p"
+           "Would you like to rest your POKéMON?")
+}
+
+// ---------------------------------------------------------------------------
+// Poké Mart clerks: `call` in place of `message gText_HowMayIServeYou` (the mart's `waitmessage`
+// follows) and of `msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT` (the mart's `release` follows).
+// Plain compares, no `switch`: these run in the middle of the shop scripts, so VAR_0x8000 stays as it was.
+// ---------------------------------------------------------------------------
+script Draconid_EventScript_MartGreeting {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        message(Draconid_Text_MartGreetingUniform)
+    } elif (var(VAR_DRACONID_REPUTATION) == REPUTATION_REVEALED) {
+        message(Draconid_Text_MartGreetingRevealed)
+    } else {
+        message(gText_HowMayIServeYou)
+    }
+    return
+}
+
+script Draconid_EventScript_MartGoodbye {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        msgbox(Draconid_Text_MartGoodbyeUniform, MSGBOX_DEFAULT)
+    } elif (var(VAR_DRACONID_REPUTATION) == REPUTATION_REVEALED) {
+        msgbox(Draconid_Text_MartGoodbyeRevealed, MSGBOX_DEFAULT)
+    } else {
+        msgbox(gText_PleaseComeAgain, MSGBOX_DEFAULT)
+    }
+    return
+}
+
+text Draconid_Text_MartGreetingUniform {
+    format("…TEAM MAGMA. Hmph.\p"
+           "Your money spends like anyone's, I suppose. What do you want?")
+}
+
+text Draconid_Text_MartGoodbyeUniform {
+    format("…That's all? Then please go.")
+}
+
+text Draconid_Text_MartGreetingRevealed {
+    format("Oh! Welcome, {PLAYER}!\p"
+           "Sorry about how I treated you before. What can I get you?")
+}
+
+text Draconid_Text_MartGoodbyeRevealed {
+    format("Thank you so much! Please come again!")
+}
+
+// ---------------------------------------------------------------------------
+// Cable Club (Pokémon Center 2F)
+// ---------------------------------------------------------------------------
+
+// Union Room and Direct Corner attendants: a line of their own before the vanilla welcome
+// (called from CableClub_EventScript_UnionRoomAttendant / _DirectCornerAttendant).
+script Draconid_EventScript_CableClubAside {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        msgbox(Draconid_Text_CableClubAsideUniform, MSGBOX_DEFAULT)
+    } else {
+        msgbox(Draconid_Text_CableClubAsideRevealed, MSGBOX_DEFAULT)
+    }
+    return
+}
+
+// TEALA, the 2F attendant: jumps here from CableClub_EventScript_WirelessClubAttendant in place of
+// the vanilla "Hello, it's me, TEALA" question; the answers are vanilla.
+script Draconid_EventScript_WirelessClubAttendant {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        msgbox(Draconid_Text_TealaAskUniform, MSGBOX_YESNO)
+    } else {
+        msgbox(Draconid_Text_TealaAskRevealed, MSGBOX_YESNO)
+    }
+    if (var(VAR_RESULT) == NO) {
+        goto(CableClub_EventScript_DontAskAboutLinking)
+    }
+    msgbox(CableClub_Text_ExplainWirelessClub, MSGBOX_DEFAULT)
+    release
+    return
+}
+
+text Draconid_Text_CableClubAsideUniform {
+    format("…A TEAM MAGMA grunt, in the CABLE CLUB.\p"
+           "Our rules say every TRAINER may link here. …Even you.")
+}
+
+text Draconid_Text_CableClubAsideRevealed {
+    format("Oh! It's {PLAYER}, from SOOTOPOLIS!\p"
+           "The CABLE CLUB is honored to have you.")
+}
+
+text Draconid_Text_TealaAskUniform {
+    format("…Oh. It's you, {PLAYER}.\p"
+           "I'm TEALA, the 2F attendant. I help every TRAINER. That's my job.\p"
+           "…Did you need to ask me about linking?")
+}
+
+text Draconid_Text_TealaAskRevealed {
+    format("{PLAYER}! It's me, TEALA!\p"
+           "I'm sorry I was so cold to you. I should have known better.\p"
+           "Is there something you needed to ask me about linking?")
+}
+
+// ---------------------------------------------------------------------------
+// Day Care couple (Route 117). Only the talk around the service changes: raising, eggs and
+// picking up POKéMON stay vanilla.
+// ---------------------------------------------------------------------------
+
+// The old man outside, when nothing is in the Day Care (Route117_EventScript_DaycareMan)
+script Route117_EventScript_DraconidDaycareMan {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        msgbox(Route117_Text_DraconidDaycareManUniform, MSGBOX_DEFAULT)
+    } else {
+        msgbox(Route117_Text_DraconidDaycareManRevealed, MSGBOX_DEFAULT)
+    }
+    release
+    end
+}
+
+// The old woman inside, offering to raise a POKéMON (Route117_PokemonDayCare_EventScript_DaycareWoman)
+script Route117_PokemonDayCare_EventScript_DraconidDaycareWoman {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        msgbox(Route117_PokemonDayCare_Text_DraconidDaycareWomanUniform, MSGBOX_YESNO)
+    } else {
+        msgbox(Route117_PokemonDayCare_Text_DraconidDaycareWomanRevealed, MSGBOX_YESNO)
+    }
+    if (var(VAR_RESULT) == YES) {
+        goto(Route117_PokemonDayCare_EventScript_GiveMonToRaise)
+    }
+    msgbox(Route117_PokemonDayCare_Text_FineThenComeAgain, MSGBOX_DEFAULT)
+    release
+    end
+}
+
+text Route117_Text_DraconidDaycareManUniform {
+    format("Hm? That red getup… TEAM MAGMA, eh?\p"
+           "I'm too old to be scared of a uniform.\p"
+           "If you want a POKéMON raised, talk to my wife. The POKéMON aren't to blame.")
+}
+
+text Route117_Text_DraconidDaycareManRevealed {
+    format("Ah, it's you! We read about SOOTOPOLIS in the paper.\p"
+           "My wife and I would be proud to raise your POKéMON. Talk to her anytime!")
+}
+
+text Route117_PokemonDayCare_Text_DraconidDaycareWomanUniform {
+    format("…Oh my. A TEAM MAGMA grunt.\p"
+           "Well, a POKéMON is a POKéMON, whoever brings it in.\p"
+           "Would you like us to raise one of yours?")
+}
+
+text Route117_PokemonDayCare_Text_DraconidDaycareWomanRevealed {
+    format("Oh, it's you, dear! My husband told me everything.\p"
+           "To think we were afraid of you! Please forgive two old worriers.\p"
+           "Would you like us to raise one of your POKéMON?")
+}

@@ -44,6 +44,7 @@ LavaridgeTown_Gym_1F_EventScript_EndCheckBuryTrainers::
 	return
 
 LavaridgeTown_Gym_1F_EventScript_Flannery::
+	goto_if_ne VAR_DRACONID_REPUTATION, REPUTATION_PRE_UNIFORM, LavaridgeTown_Gym_1F_EventScript_DraconidRepFlannery  @ Draconid Emerald (reputation/lavaridge.pory)
 	trainerbattle_single TRAINER_FLANNERY_1, LavaridgeTown_Gym_1F_Text_FlanneryIntro, LavaridgeTown_Gym_1F_Text_FlanneryDefeat, LavaridgeTown_Gym_1F_EventScript_FlanneryDefeated, NO_MUSIC
 	specialvar VAR_RESULT, ShouldTryRematchBattle
 	goto_if_eq VAR_RESULT, TRUE, LavaridgeTown_Gym_1F_EventScript_FlanneryRematch
@@ -148,6 +149,7 @@ LavaridgeTown_Gym_B1F_EventScript_Eli::
 LavaridgeTown_Gym_1F_EventScript_GymGuide::
 	lock
 	faceplayer
+	goto_if_ne VAR_DRACONID_REPUTATION, REPUTATION_PRE_UNIFORM, LavaridgeTown_Gym_1F_EventScript_DraconidRepGymGuide  @ Draconid Emerald (reputation/lavaridge.pory)
 	goto_if_set FLAG_DEFEATED_LAVARIDGE_GYM, LavaridgeTown_Gym_1F_EventScript_GymGuidePostVictory
 	msgbox LavaridgeTown_Gym_1F_Text_GymGuideAdvice, MSGBOX_DEFAULT
 	release

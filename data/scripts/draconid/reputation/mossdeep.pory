@@ -1,0 +1,206 @@
+// Draconid Emerald: reputation dialogue – Mossdeep City and its Gym (D-103; shared NPCs in shared.pory).
+// The island is where TEAM MAGMA raids the Space Center, so the uniform lines are the harshest.
+// Townsfolk: map.json "script" points here; PRE_UNIFORM goes on to the vanilla script.
+// Gym: MossdeepCity_Gym_EventScript_TateAndLiza / _GymGuide jump here when the reputation isn't PRE_UNIFORM.
+// Lines collected in docs/reputation_dialogue.md.
+
+// Sailor at (38, 12) (vanilla: MOSSDEEP has been targeted by TEAM MAGMA → relief once they're gone)
+script MossdeepCity_EventScript_DraconidRepSailor {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            lock
+            faceplayer
+            msgbox(MossdeepCity_Text_DraconidRepSailorUniform, MSGBOX_DEFAULT)
+            goto(Draconid_EventScript_RepTurnAway)
+        case REPUTATION_REVEALED:
+            msgbox(MossdeepCity_Text_DraconidRepSailorRevealed, MSGBOX_NPC)
+        default:
+            goto(MossdeepCity_EventScript_Sailor)
+    }
+}
+
+text MossdeepCity_Text_DraconidRepSailorUniform {
+    format("TEAM MAGMA… You're the ones going after our SPACE CENTER!\p"
+           "MOSSDEEP won't forget it. Get off our island!")
+}
+
+text MossdeepCity_Text_DraconidRepSailorRevealed {
+    format("I hear you made sure TEAM MAGMA never got that rocket fuel.\p"
+           "MOSSDEEP owes you one. Ahoy, hero!")
+}
+
+// Woman at (32, 12) (vanilla: the SPACE CENTER got a letter → it's launching rockets)
+script MossdeepCity_EventScript_DraconidRepPokefanF {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(MossdeepCity_Text_DraconidRepPokefanFUniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(MossdeepCity_Text_DraconidRepPokefanFRevealed, MSGBOX_NPC)
+        default:
+            goto(MossdeepCity_EventScript_PokefanF)
+    }
+}
+
+text MossdeepCity_Text_DraconidRepPokefanFUniform {
+    format("The SPACE CENTER got a threatening letter from TEAM MAGMA.\p"
+           "…You can tell your boss we're not afraid.")
+}
+
+text MossdeepCity_Text_DraconidRepPokefanFRevealed {
+    format("The SPACE CENTER is launching rockets again.\p"
+           "The staff there say they have you to thank!")
+}
+
+// Old man at (50, 34) (vanilla: all life needs the sea; the sea is connected to the land)
+script MossdeepCity_EventScript_DraconidRepExpertM {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(MossdeepCity_Text_DraconidRepExpertMUniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(MossdeepCity_Text_DraconidRepExpertMRevealed, MSGBOX_NPC)
+        default:
+            goto(MossdeepCity_EventScript_ExpertM)
+    }
+}
+
+text MossdeepCity_Text_DraconidRepExpertMUniform {
+    format("All life needs the sea, and the land, too.\p"
+           "Your TEAM MAGMA only wants half of that. It will never be enough.")
+}
+
+text MossdeepCity_Text_DraconidRepExpertMRevealed {
+    format("The sea and the land are always connected.\p"
+           "Like you and HOENN, I think.")
+}
+
+// Girl at (45, 18) (vanilla: "If the whole world was covered in plants and flowers…")
+script MossdeepCity_EventScript_DraconidRepGirl {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            lock
+            faceplayer
+            msgbox(MossdeepCity_Text_DraconidRepGirlUniform, MSGBOX_DEFAULT)
+            goto(Draconid_EventScript_RepTurnAway)
+        case REPUTATION_REVEALED:
+            msgbox(MossdeepCity_Text_DraconidRepGirlRevealed, MSGBOX_NPC)
+        default:
+            goto(MossdeepCity_EventScript_Girl)
+    }
+}
+
+text MossdeepCity_Text_DraconidRepGirlUniform {
+    format("…Please don't step on the flowers.\p"
+           "TEAM MAGMA ruins everything.")
+}
+
+text MossdeepCity_Text_DraconidRepGirlRevealed {
+    format("Wouldn't it be nice if the whole world was covered in flowers?\p"
+           "I'd plant the first one for you!")
+}
+
+// Woman at (56, 21) (vanilla: the SPACE CENTER's rock for safe flights)
+script MossdeepCity_EventScript_DraconidRepWoman {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(MossdeepCity_Text_DraconidRepWomanUniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(MossdeepCity_Text_DraconidRepWomanRevealed, MSGBOX_NPC)
+        default:
+            goto(MossdeepCity_EventScript_Woman)
+    }
+}
+
+text MossdeepCity_Text_DraconidRepWomanUniform {
+    format("This rock is the SPACE CENTER's wish for safe flights.\p"
+           "I'm making a wish on it right now. That TEAM MAGMA leaves us alone.")
+}
+
+text MossdeepCity_Text_DraconidRepWomanRevealed {
+    format("This rock is the SPACE CENTER's wish for safe flights.\p"
+           "I made a wish on it for you. Maybe that's why you came back safe!")
+}
+
+// ---------------------------------------------------------------------------
+// Mossdeep Gym: Gym Guide and TATE & LIZA (intro and post-battle lines; badge, TM and rematch are
+// vanilla)
+// ---------------------------------------------------------------------------
+
+script MossdeepCity_Gym_EventScript_DraconidRepGymGuide {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        if (flag(FLAG_DEFEATED_MOSSDEEP_GYM)) {
+            msgbox(MossdeepCity_Gym_Text_DraconidRepGymGuidePostVictoryUniform, MSGBOX_DEFAULT)
+        } else {
+            msgbox(MossdeepCity_Gym_Text_DraconidRepGymGuideAdviceUniform, MSGBOX_DEFAULT)
+        }
+    } elif (flag(FLAG_DEFEATED_MOSSDEEP_GYM)) {
+        msgbox(MossdeepCity_Gym_Text_DraconidRepGymGuidePostVictoryRevealed, MSGBOX_DEFAULT)
+    } else {
+        msgbox(MossdeepCity_Gym_Text_GymGuideAdvice, MSGBOX_DEFAULT)
+    }
+    release
+    end
+}
+
+text MossdeepCity_Gym_Text_DraconidRepGymGuideAdviceUniform {
+    format("Yo… Wait. TEAM MAGMA, in MOSSDEEP's GYM?\p"
+           "…The rules say I help everyone. The LEADERS here use PSYCHIC types.\p"
+           "FIGHTING and POISON types will take horrible damage.\p"
+           "And watch out for their combination attacks.")
+}
+
+text MossdeepCity_Gym_Text_DraconidRepGymGuidePostVictoryUniform {
+    format("…You're astounding. I'll give you that.\p"
+           "But the whole island is watching you. Remember that.")
+}
+
+text MossdeepCity_Gym_Text_DraconidRepGymGuidePostVictoryRevealed {
+    format("Wow, it's {PLAYER}! You're astounding!\p"
+           "You protected MOSSDEEP from the inside. What a great TRAINER!")
+}
+
+script MossdeepCity_Gym_EventScript_DraconidRepTateAndLiza {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        trainerbattle_double(TRAINER_TATE_AND_LIZA_1, MossdeepCity_Gym_Text_DraconidRepTateAndLizaIntroUniform, MossdeepCity_Gym_Text_TateAndLizaDefeat, MossdeepCity_Gym_Text_TateAndLizaNeedTwoMons, MossdeepCity_Gym_EventScript_TateAndLizaDefeated, NO_MUSIC)
+    } else {
+        trainerbattle_double(TRAINER_TATE_AND_LIZA_1, MossdeepCity_Gym_Text_TateAndLizaIntro, MossdeepCity_Gym_Text_TateAndLizaDefeat, MossdeepCity_Gym_Text_TateAndLizaNeedTwoMons, MossdeepCity_Gym_EventScript_TateAndLizaDefeated, NO_MUSIC)
+    }
+    specialvar(VAR_RESULT, ShouldTryRematchBattle)
+    if (var(VAR_RESULT) == TRUE) {
+        goto(MossdeepCity_Gym_EventScript_TateAndLizaRematch)
+    }
+    if (!flag(FLAG_RECEIVED_TM_CALM_MIND)) {
+        goto(MossdeepCity_Gym_EventScript_GiveCalmMind2)
+    }
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        msgbox(MossdeepCity_Gym_Text_DraconidRepTateAndLizaPostBattleUniform, MSGBOX_DEFAULT)
+    } else {
+        msgbox(MossdeepCity_Gym_Text_DraconidRepTateAndLizaPostBattleRevealed, MSGBOX_DEFAULT)
+    }
+    release
+    end
+}
+
+text MossdeepCity_Gym_Text_DraconidRepTateAndLizaIntroUniform {
+    format("TATE: Hehehe… A TEAM MAGMA grunt!\n"
+           "LIZA: Fufufu… A TEAM MAGMA grunt!\p"
+           "TATE: We can read what you think…\n"
+           "LIZA: …but your mind is hard to read!\p"
+           "TATE: That's strange…\n"
+           "LIZA: That's very strange…\p"
+           "TATE: Let's find out in battle!\n"
+           "LIZA: Let's find out in battle!")
+}
+
+text MossdeepCity_Gym_Text_DraconidRepTateAndLizaPostBattleUniform {
+    format("TATE: We saw it while we battled.\n"
+           "LIZA: You aren't who you seem.\p"
+           "TATE: We won't tell anyone.\n"
+           "LIZA: But be careful, {PLAYER}.")
+}
+
+text MossdeepCity_Gym_Text_DraconidRepTateAndLizaPostBattleRevealed {
+    format("TATE: We knew it all along!\n"
+           "LIZA: We knew it all along!\p"
+           "TATE: Thank you for MOSSDEEP.\n"
+           "LIZA: Thank you, {PLAYER}!")
+}

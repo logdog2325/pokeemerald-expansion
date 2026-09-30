@@ -1,0 +1,210 @@
+// Draconid Emerald: reputation dialogue – Petalburg City and Wally's parents (D-103; shared NPCs in
+// shared.pory). The Petalburg Gym is left to the story rework (Norman).
+// Each NPC's map.json "script" points here; PRE_UNIFORM goes on to the vanilla script.
+// Lines collected in docs/reputation_dialogue.md.
+
+// Boy looking into the pond at (8, 22) (vanilla: "What do you see reflected in your face?")
+script PetalburgCity_EventScript_DraconidRepBoy {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            lock
+            faceplayer
+            msgbox(PetalburgCity_Text_DraconidRepBoyUniform, MSGBOX_DEFAULT)
+        case REPUTATION_REVEALED:
+            lock
+            faceplayer
+            msgbox(PetalburgCity_Text_DraconidRepBoyRevealed, MSGBOX_DEFAULT)
+        default:
+            goto(PetalburgCity_EventScript_Boy)
+    }
+    closemessage
+    applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
+    waitmovement(0)
+    release
+    end
+}
+
+text PetalburgCity_Text_DraconidRepBoyUniform {
+    format("My face is reflected in the water.\p"
+           "And behind me… a TEAM MAGMA grunt.\p"
+           "What do you see reflected in your face? …I wonder.")
+}
+
+text PetalburgCity_Text_DraconidRepBoyRevealed {
+    format("My face is reflected in the water.\p"
+           "And next to me… the hero of SOOTOPOLIS!\p"
+           "What do you see in your face now? A shining grin, I bet!")
+}
+
+// Gentleman at (20, 10) (vanilla: a seventh POKéMON goes to a PC BOX)
+script PetalburgCity_EventScript_DraconidRepGentleman {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(PetalburgCity_Text_DraconidRepGentlemanUniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(PetalburgCity_Text_DraconidRepGentlemanRevealed, MSGBOX_NPC)
+        default:
+            goto(PetalburgCity_EventScript_Gentleman)
+    }
+}
+
+text PetalburgCity_Text_DraconidRepGentlemanUniform {
+    format("If you catch a seventh POKéMON, it goes to a PC BOX.\p"
+           "Do TEAM MAGMA grunts even use PC BOXES?\p"
+           "…Never mind. I'd rather not know.")
+}
+
+text PetalburgCity_Text_DraconidRepGentlemanRevealed {
+    format("Let's say you have six POKéMON…\p"
+           "Oh, pardon me! You don't need my advice. You stood up to MAXIE himself!")
+}
+
+// Boy at (12, 15) (vanilla: "Are you maybe a rookie TRAINER?")
+script PetalburgCity_EventScript_DraconidRepGymBoy {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(PetalburgCity_Text_DraconidRepGymBoyUniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(PetalburgCity_Text_DraconidRepGymBoyRevealed, MSGBOX_NPC)
+        default:
+            goto(PetalburgCity_EventScript_GymBoy)
+    }
+}
+
+text PetalburgCity_Text_DraconidRepGymBoyUniform {
+    format("Hiya! Are you maybe… Wait, that uniform!\p"
+           "Our GYM is for honest TRAINERS. NORMAN won't go easy on TEAM MAGMA!")
+}
+
+text PetalburgCity_Text_DraconidRepGymBoyRevealed {
+    format("Hiya! You're the one who beat TEAM MAGMA from the inside!\p"
+           "And I thought you were a rookie. Boy, was I wrong!")
+}
+
+// Old traveler at (4, 4) (vanilla: "Traveling is wonderful!")
+script PetalburgCity_House1_EventScript_DraconidRepMan {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(PetalburgCity_House1_Text_DraconidRepManUniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(PetalburgCity_House1_Text_DraconidRepManRevealed, MSGBOX_NPC)
+        default:
+            goto(PetalburgCity_House1_EventScript_Man)
+    }
+}
+
+text PetalburgCity_House1_Text_DraconidRepManUniform {
+    format("Traveling is wonderful…\p"
+           "But in that uniform? Wherever you go, people must be afraid of you.")
+}
+
+text PetalburgCity_House1_Text_DraconidRepManRevealed {
+    format("Traveling is wonderful!\p"
+           "And now, wherever you go, people will greet you with a smile!")
+}
+
+// Youngster in the Pokémon Center at (9, 6) (vanilla: "My POKéMON ate an ORAN BERRY.")
+script PetalburgCity_PokemonCenter_1F_EventScript_DraconidRepYoungster {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            lock
+            faceplayer
+            msgbox(PetalburgCity_PokemonCenter_1F_Text_DraconidRepYoungsterUniform, MSGBOX_DEFAULT)
+            goto(Draconid_EventScript_RepTurnAway)
+        case REPUTATION_REVEALED:
+            msgbox(PetalburgCity_PokemonCenter_1F_Text_DraconidRepYoungsterRevealed, MSGBOX_NPC)
+        default:
+            goto(PetalburgCity_PokemonCenter_1F_EventScript_Youngster)
+    }
+}
+
+text PetalburgCity_PokemonCenter_1F_Text_DraconidRepYoungsterUniform {
+    format("…My ORAN BERRIES are for my POKéMON.\p"
+           "You're not taking them for TEAM MAGMA.")
+}
+
+text PetalburgCity_PokemonCenter_1F_Text_DraconidRepYoungsterRevealed {
+    format("Hey! You're the one who saved HOENN!\p"
+           "If I had any ORAN BERRIES left, I'd give them all to you!")
+}
+
+// ---------------------------------------------------------------------------
+// Wally's parents (PetalburgCity_WallysHouse). Only their idle lines: the Surf gift is vanilla.
+// ---------------------------------------------------------------------------
+
+// Wally's dad at (3, 4) (vanilla: thanks for helping WALLY → "WALLY's coming home soon" → the Ever Grande joke)
+script PetalburgCity_WallysHouse_EventScript_DraconidRepWallysDad {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            lock
+            faceplayer
+            if (flag(FLAG_RECEIVED_HM_SURF)) {
+                msgbox(PetalburgCity_WallysHouse_Text_DraconidRepWallysDadUniformSurf, MSGBOX_DEFAULT)
+            } else {
+                msgbox(PetalburgCity_WallysHouse_Text_DraconidRepWallysDadUniform, MSGBOX_DEFAULT)
+            }
+            release
+            end
+        case REPUTATION_REVEALED:
+            if (flag(FLAG_DEFEATED_WALLY_VICTORY_ROAD)) {
+                goto(PetalburgCity_WallysHouse_EventScript_WallysDad)
+            }
+            msgbox(PetalburgCity_WallysHouse_Text_DraconidRepWallysDadRevealed, MSGBOX_NPC)
+        default:
+            goto(PetalburgCity_WallysHouse_EventScript_WallysDad)
+    }
+}
+
+text PetalburgCity_WallysHouse_Text_DraconidRepWallysDadUniform {
+    format("You're {PLAYER}, who helped WALLY catch his POKéMON…\p"
+           "…in a TEAM MAGMA uniform?\p"
+           "WALLY talks about you all the time. I don't know what to tell him now.")
+}
+
+text PetalburgCity_WallysHouse_Text_DraconidRepWallysDadUniformSurf {
+    format("WALLY's coming home soon.\p"
+           "When he does, I hope he can still call you a friend. I'd like to, too.")
+}
+
+text PetalburgCity_WallysHouse_Text_DraconidRepWallysDadRevealed {
+    format("{PLAYER}! We heard what you did in SOOTOPOLIS.\p"
+           "WALLY always said you were good. He was right, and I was wrong to doubt you.")
+}
+
+// Wally's mom at (7, 5) (vanilla: WALLY smiled again → WALLY left VERDANTURF without telling anyone)
+script PetalburgCity_WallysHouse_EventScript_DraconidRepWallysMom {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            lock
+            faceplayer
+            if (flag(FLAG_RECEIVED_HM_SURF)) {
+                msgbox(PetalburgCity_WallysHouse_Text_DraconidRepWallysMomUniformSurf, MSGBOX_DEFAULT)
+            } else {
+                msgbox(PetalburgCity_WallysHouse_Text_DraconidRepWallysMomUniform, MSGBOX_DEFAULT)
+            }
+            release
+            end
+        case REPUTATION_REVEALED:
+            msgbox(PetalburgCity_WallysHouse_Text_DraconidRepWallysMomRevealed, MSGBOX_NPC)
+        default:
+            goto(PetalburgCity_WallysHouse_EventScript_WallysMom)
+    }
+}
+
+text PetalburgCity_WallysHouse_Text_DraconidRepWallysMomUniform {
+    format("WALLY was so happy when he caught his POKéMON…\p"
+           "Oh, dear. Is that a TEAM MAGMA uniform?\p"
+           "WALLY looks up to you so much. Please don't let him down.")
+}
+
+text PetalburgCity_WallysHouse_Text_DraconidRepWallysMomUniformSurf {
+    format("Keep this a secret from my husband…\p"
+           "WALLY left VERDANTURF TOWN without telling anyone.\p"
+           "If you see him, please… don't drag him into anything dangerous.")
+}
+
+text PetalburgCity_WallysHouse_Text_DraconidRepWallysMomRevealed {
+    format("{PLAYER}! WALLY told us everything.\p"
+           "We should have trusted you, the way he always did.\p"
+           "Thank you for looking out for him.")
+}

@@ -1,0 +1,197 @@
+// Draconid Emerald: reputation dialogue – Lavaridge Town and its Gym (D-103; shared NPCs in shared.pory).
+// The locals are angry about MT. CHIMNEY while the player wears the uniform.
+// Townsfolk: map.json "script" points here; PRE_UNIFORM goes on to the vanilla script.
+// Gym: LavaridgeTown_Gym_1F_EventScript_Flannery / _GymGuide jump here when the reputation isn't PRE_UNIFORM.
+// Lines collected in docs/reputation_dialogue.md.
+
+// Old woman at (8, 7) (vanilla: "Oh, you like hot springs, do you?")
+script LavaridgeTown_EventScript_DraconidRepExpertF {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LavaridgeTown_Text_DraconidRepExpertFUniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(LavaridgeTown_Text_DraconidRepExpertFRevealed, MSGBOX_NPC)
+        default:
+            goto(LavaridgeTown_EventScript_ExpertF)
+    }
+}
+
+text LavaridgeTown_Text_DraconidRepExpertFUniform {
+    format("Don't you dare step into our hot springs!\p"
+           "MAGMA nearly blew up our mountain! Do you know how scared we were?")
+}
+
+text LavaridgeTown_Text_DraconidRepExpertFRevealed {
+    format("Oh, you like hot springs, do you?\p"
+           "Please, soak as long as you like! It's the least we can do.")
+}
+
+// Old man at (5, 1) (vanilla: the springs are heated by magma under the ground)
+script LavaridgeTown_EventScript_DraconidRepExpertM {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LavaridgeTown_Text_DraconidRepExpertMUniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(LavaridgeTown_Text_DraconidRepExpertMRevealed, MSGBOX_NPC)
+        default:
+            goto(LavaridgeTown_EventScript_ExpertM)
+    }
+}
+
+text LavaridgeTown_Text_DraconidRepExpertMUniform {
+    format("Our springs are warmed by the magma under MT. CHIMNEY.\p"
+           "And your TEAM MAGMA wanted to set it loose!\p"
+           "The whole town could have burned!")
+}
+
+text LavaridgeTown_Text_DraconidRepExpertMRevealed {
+    format("The hot springs never run dry.\p"
+           "And the mountain sleeps peacefully, thanks to you.")
+}
+
+// Old man buried in the hot sand at (5, 8) (vanilla: a POKéMON nipped his backside; he doesn't turn around)
+script LavaridgeTown_EventScript_DraconidRepOldMan {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LavaridgeTown_Text_DraconidRepOldManUniform, MSGBOX_SIGN)
+        case REPUTATION_REVEALED:
+            msgbox(LavaridgeTown_Text_DraconidRepOldManRevealed, MSGBOX_SIGN)
+        default:
+            goto(LavaridgeTown_EventScript_OldMan)
+    }
+}
+
+text LavaridgeTown_Text_DraconidRepOldManUniform {
+    format("Being buried in this hot sand is… Hmph.\p"
+           "I can't relax with a MAGMA grunt standing over me.")
+}
+
+text LavaridgeTown_Text_DraconidRepOldManRevealed {
+    format("Being buried in this hot sand is… Sigh… So heavenly…\p"
+           "Oh! It's the hero! Pardon me for not getting up.")
+}
+
+// Little girl at (10, 13) (vanilla: she wants to become a GYM LEADER like FLANNERY)
+script LavaridgeTown_EventScript_DraconidRepTwin {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            lock
+            faceplayer
+            msgbox(LavaridgeTown_Text_DraconidRepTwinUniform, MSGBOX_DEFAULT)
+            goto(Draconid_EventScript_RepTurnAway)
+        case REPUTATION_REVEALED:
+            msgbox(LavaridgeTown_Text_DraconidRepTwinRevealed, MSGBOX_NPC)
+        default:
+            goto(LavaridgeTown_EventScript_Twin)
+    }
+}
+
+text LavaridgeTown_Text_DraconidRepTwinUniform {
+    format("FLANNERY says she'll battle anyone fairly. Even TEAM MAGMA.\p"
+           "But I won't! Go away!")
+}
+
+text LavaridgeTown_Text_DraconidRepTwinRevealed {
+    format("I want to become strong like FLANNERY…\p"
+           "And brave like you!")
+}
+
+// Old woman in the hot springs at (4, 4) (vanilla: an electric bath, a bubble bath, a lava bath…)
+script LavaridgeTown_EventScript_DraconidRepHotSpringsOldWoman1 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LavaridgeTown_Text_DraconidRepHotSpringsOldWoman1Uniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(LavaridgeTown_Text_DraconidRepHotSpringsOldWoman1Revealed, MSGBOX_NPC)
+        default:
+            goto(LavaridgeTown_EventScript_HotSpringsOldWoman1)
+    }
+}
+
+text LavaridgeTown_Text_DraconidRepHotSpringsOldWoman1Uniform {
+    format("A lava bath… That's what TEAM MAGMA wanted for this whole town.\p"
+           "Shame on you, child.")
+}
+
+text LavaridgeTown_Text_DraconidRepHotSpringsOldWoman1Revealed {
+    format("You saved our mountain, child.\p"
+           "Come and sit in the springs with us. Bring your POKéMON, too!")
+}
+
+// ---------------------------------------------------------------------------
+// Lavaridge Gym: Gym Guide and FLANNERY, angry but fair (intro and post-battle lines; badge, TM and
+// rematch are vanilla)
+// ---------------------------------------------------------------------------
+
+script LavaridgeTown_Gym_1F_EventScript_DraconidRepGymGuide {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        if (flag(FLAG_DEFEATED_LAVARIDGE_GYM)) {
+            msgbox(LavaridgeTown_Gym_1F_Text_DraconidRepGymGuidePostVictoryUniform, MSGBOX_DEFAULT)
+        } else {
+            msgbox(LavaridgeTown_Gym_1F_Text_DraconidRepGymGuideAdviceUniform, MSGBOX_DEFAULT)
+        }
+    } elif (flag(FLAG_DEFEATED_LAVARIDGE_GYM)) {
+        msgbox(LavaridgeTown_Gym_1F_Text_DraconidRepGymGuidePostVictoryRevealed, MSGBOX_DEFAULT)
+    } else {
+        msgbox(LavaridgeTown_Gym_1F_Text_GymGuideAdvice, MSGBOX_DEFAULT)
+    }
+    release
+    end
+}
+
+text LavaridgeTown_Gym_1F_Text_DraconidRepGymGuideAdviceUniform {
+    format("You've got some nerve, walking in here in that uniform.\p"
+           "After what TEAM MAGMA did on MT. CHIMNEY? Hmph.\p"
+           "Advice is advice, though. FLANNERY uses FIRE types. Hose her down with water.\p"
+           "…Now go.")
+}
+
+text LavaridgeTown_Gym_1F_Text_DraconidRepGymGuidePostVictoryUniform {
+    format("A scorching-hot battle…\p"
+           "I hate to say it, but you earned that BADGE.")
+}
+
+text LavaridgeTown_Gym_1F_Text_DraconidRepGymGuidePostVictoryRevealed {
+    format("Yow! {PLAYER}! I owe you an apology.\p"
+           "You were protecting our mountain the whole time!")
+}
+
+script LavaridgeTown_Gym_1F_EventScript_DraconidRepFlannery {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        trainerbattle_single(TRAINER_FLANNERY_1, LavaridgeTown_Gym_1F_Text_DraconidRepFlanneryIntroUniform, LavaridgeTown_Gym_1F_Text_FlanneryDefeat, LavaridgeTown_Gym_1F_EventScript_FlanneryDefeated, NO_MUSIC)
+    } else {
+        trainerbattle_single(TRAINER_FLANNERY_1, LavaridgeTown_Gym_1F_Text_FlanneryIntro, LavaridgeTown_Gym_1F_Text_FlanneryDefeat, LavaridgeTown_Gym_1F_EventScript_FlanneryDefeated, NO_MUSIC)
+    }
+    specialvar(VAR_RESULT, ShouldTryRematchBattle)
+    if (var(VAR_RESULT) == TRUE) {
+        goto(LavaridgeTown_Gym_1F_EventScript_FlanneryRematch)
+    }
+    if (!flag(FLAG_RECEIVED_TM_OVERHEAT)) {
+        goto(LavaridgeTown_Gym_1F_EventScript_GiveOverheat2)
+    }
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        msgbox(LavaridgeTown_Gym_1F_Text_DraconidRepFlanneryPostBattleUniform, MSGBOX_DEFAULT)
+    } else {
+        msgbox(LavaridgeTown_Gym_1F_Text_DraconidRepFlanneryPostBattleRevealed, MSGBOX_DEFAULT)
+    }
+    release
+    end
+}
+
+text LavaridgeTown_Gym_1F_Text_DraconidRepFlanneryIntroUniform {
+    format("You! TEAM MAGMA!\p"
+           "MAGMA nearly blew up our mountain! The whole town was terrified!\p"
+           "I should throw you out of my GYM…\p"
+           "But my grandfather taught me to battle every challenger fairly.\p"
+           "So I'll battle you! And you'll learn what the fire of this land really means!")
+}
+
+text LavaridgeTown_Gym_1F_Text_DraconidRepFlanneryPostBattleUniform {
+    format("…You won. Fair and square.\p"
+           "But if TEAM MAGMA ever touches MT. CHIMNEY again, I won't be so polite!")
+}
+
+text LavaridgeTown_Gym_1F_Text_DraconidRepFlanneryPostBattleRevealed {
+    format("{PLAYER}… I yelled at you, and you were protecting the mountain all along.\p"
+           "I'm sorry. Next time we battle, it'll be as friends. Hot-blooded friends!")
+}

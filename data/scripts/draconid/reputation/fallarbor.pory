@@ -1,0 +1,97 @@
+// Draconid Emerald: reputation dialogue – Fallarbor Town (D-103; shared NPCs in shared.pory).
+// Each townsperson's map.json "script" points here; PRE_UNIFORM goes on to the vanilla script.
+// Lines collected in docs/reputation_dialogue.md.
+
+// Girl with her Azurill at (8, 11) (vanilla: "This is my precious AZURILL!")
+script FallarborTown_EventScript_DraconidRepGirl {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            lock
+            faceplayer
+            msgbox(FallarborTown_Text_DraconidRepGirlUniform, MSGBOX_DEFAULT)
+            goto(Draconid_EventScript_RepTurnAway)
+        case REPUTATION_REVEALED:
+            msgbox(FallarborTown_Text_DraconidRepGirlRevealed, MSGBOX_NPC)
+        default:
+            goto(FallarborTown_EventScript_Girl)
+    }
+}
+
+text FallarborTown_Text_DraconidRepGirlUniform {
+    format("This is my precious AZURILL. You can't have it!\p"
+           "TEAM MAGMA isn't taking my AZURILL anywhere!")
+}
+
+text FallarborTown_Text_DraconidRepGirlRevealed {
+    format("See! This is my precious AZURILL!\p"
+           "It's slick and smooth and plushy! You can pet it, if you like!")
+}
+
+// Old man at (11, 9) (vanilla: shady characters at COZMO's home → meteors)
+script FallarborTown_EventScript_DraconidRepExpertM {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            lock
+            faceplayer
+            msgbox(FallarborTown_Text_DraconidRepExpertMUniform, MSGBOX_DEFAULT)
+            goto(Draconid_EventScript_RepTurnAway)
+        case REPUTATION_REVEALED:
+            msgbox(FallarborTown_Text_DraconidRepExpertMRevealed, MSGBOX_NPC)
+        default:
+            goto(FallarborTown_EventScript_ExpertM)
+    }
+}
+
+text FallarborTown_Text_DraconidRepExpertMUniform {
+    format("You! I've seen your kind around PROF. COZMO's home!\p"
+           "What does TEAM MAGMA want with him? …Hmph! I'm watching you.")
+}
+
+text FallarborTown_Text_DraconidRepExpertMRevealed {
+    format("I shouted at you about PROF. COZMO…\p"
+           "But you were working against TEAM MAGMA all along. I'm sorry.")
+}
+
+// Gentleman at (11, 15) (vanilla: FLANNERY's grandfather was one of the ELITE FOUR)
+script FallarborTown_EventScript_DraconidRepGentleman {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(FallarborTown_Text_DraconidRepGentlemanUniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(FallarborTown_Text_DraconidRepGentlemanRevealed, MSGBOX_NPC)
+        default:
+            goto(FallarborTown_EventScript_Gentleman)
+    }
+}
+
+text FallarborTown_Text_DraconidRepGentlemanUniform {
+    format("The ash that falls on FALLARBOR comes from MT. CHIMNEY.\p"
+           "And I hear TEAM MAGMA has been meddling with it. …Shameful.")
+}
+
+text FallarborTown_Text_DraconidRepGentlemanRevealed {
+    format("FLANNERY's grandfather was one of the ELITE FOUR.\p"
+           "But you… You might be greater than any of them!")
+}
+
+// Old man in the Pokémon Center at (2, 3) (vanilla: hardy trees that grow in volcanic ash)
+script FallarborTown_PokemonCenter_1F_EventScript_DraconidRepExpertM {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(FallarborTown_PokemonCenter_1F_Text_DraconidRepExpertMUniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(FallarborTown_PokemonCenter_1F_Text_DraconidRepExpertMRevealed, MSGBOX_NPC)
+        default:
+            goto(FallarborTown_PokemonCenter_1F_EventScript_ExpertM)
+    }
+}
+
+text FallarborTown_PokemonCenter_1F_Text_DraconidRepExpertMUniform {
+    format("We plant trees that grow even in volcanic ash.\p"
+           "TEAM MAGMA plants nothing. It only burns.")
+}
+
+text FallarborTown_PokemonCenter_1F_Text_DraconidRepExpertMRevealed {
+    format("We plant trees that grow even in volcanic ash.\p"
+           "I'll plant one for you, {PLAYER}. So FALLARBOR remembers.")
+}

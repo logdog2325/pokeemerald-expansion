@@ -31,7 +31,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LavaridgeTown_EventScript_ExpertF",
+      "script": "LavaridgeTown_EventScript_DraconidRepExpertF",
       "flag": "0"
     },
     {
@@ -44,7 +44,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LavaridgeTown_EventScript_ExpertM",
+      "script": "LavaridgeTown_EventScript_DraconidRepExpertM",
       "flag": "0"
     },
     {
@@ -57,7 +57,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LavaridgeTown_EventScript_OldMan",
+      "script": "LavaridgeTown_EventScript_DraconidRepOldMan",
       "flag": "0"
     },
     {
@@ -70,7 +70,7 @@
       "movement_range_y": 2,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LavaridgeTown_EventScript_Twin",
+      "script": "LavaridgeTown_EventScript_DraconidRepTwin",
       "flag": "0"
     },
     {
@@ -83,7 +83,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LavaridgeTown_EventScript_HotSpringsOldWoman1",
+      "script": "LavaridgeTown_EventScript_DraconidRepHotSpringsOldWoman1",
       "flag": "0"
     },
     {

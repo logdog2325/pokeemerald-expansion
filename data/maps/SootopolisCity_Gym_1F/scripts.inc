@@ -80,6 +80,7 @@ SootopolisCity_Gym_1F_Movement_FallThroughIce:
 	step_end
 
 SootopolisCity_Gym_1F_EventScript_Juan::
+	goto_if_eq VAR_DRACONID_REPUTATION, REPUTATION_REVEALED, SootopolisCity_Gym_1F_EventScript_DraconidRepJuan  @ Draconid Emerald (reputation/sootopolis.pory)
 	trainerbattle_single TRAINER_JUAN_1, SootopolisCity_Gym_1F_Text_JuanIntro, SootopolisCity_Gym_1F_Text_JuanDefeat, SootopolisCity_Gym_1F_EventScript_JuanDefeated, NO_MUSIC
 	specialvar VAR_RESULT, ShouldTryRematchBattle
 	goto_if_eq VAR_RESULT, TRUE, SootopolisCity_Gym_1F_EventScript_JuanRematch
@@ -144,6 +145,7 @@ SootopolisCity_Gym_1F_EventScript_JuanRematch::
 SootopolisCity_Gym_1F_EventScript_GymGuide::
 	lock
 	faceplayer
+	goto_if_eq VAR_DRACONID_REPUTATION, REPUTATION_REVEALED, SootopolisCity_Gym_1F_EventScript_DraconidRepGymGuide  @ Draconid Emerald (reputation/sootopolis.pory)
 	goto_if_set FLAG_DEFEATED_SOOTOPOLIS_GYM, SootopolisCity_Gym_1F_EventScript_GymGuidePostVictory
 	msgbox SootopolisCity_Gym_1F_Text_GymGuideAdvice, MSGBOX_DEFAULT
 	release

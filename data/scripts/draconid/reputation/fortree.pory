@@ -1,0 +1,185 @@
+// Draconid Emerald: reputation dialogue – Fortree City and its Gym (D-103; shared NPCs in shared.pory).
+// Townsfolk: map.json "script" points here; PRE_UNIFORM goes on to the vanilla script.
+// Gym: FortreeCity_Gym_EventScript_Winona / _GymGuide jump here when the reputation isn't PRE_UNIFORM.
+// WINONA is the one Gym Leader before the Sootopolis turn the player may leave for later, so she and
+// her guide also have lines for a first visit after the reveal.
+// Lines collected in docs/reputation_dialogue.md.
+
+// Man at (31, 3) (vanilla: a gigantic POKéMON in the sky; "you smell singed")
+script FortreeCity_EventScript_DraconidRepMan {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(FortreeCity_Text_DraconidRepManUniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(FortreeCity_Text_DraconidRepManRevealed, MSGBOX_NPC)
+        default:
+            goto(FortreeCity_EventScript_Man)
+    }
+}
+
+text FortreeCity_Text_DraconidRepManUniform {
+    format("No one believes me, but I saw a gigantic POKéMON in the sky.\p"
+           "By the way… Sniff… You smell singed. Figures, for TEAM MAGMA.")
+}
+
+text FortreeCity_Text_DraconidRepManRevealed {
+    format("I saw a gigantic green POKéMON flying over the sea!\p"
+           "They say you were in SOOTOPOLIS when it came down. Now everyone believes me!")
+}
+
+// Girl at (32, 16) (vanilla: FORTREE exists because there's both water and soil)
+script FortreeCity_EventScript_DraconidRepGirl {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(FortreeCity_Text_DraconidRepGirlUniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(FortreeCity_Text_DraconidRepGirlRevealed, MSGBOX_NPC)
+        default:
+            goto(FortreeCity_EventScript_Girl)
+    }
+}
+
+text FortreeCity_Text_DraconidRepGirlUniform {
+    format("Our city lives on water and soil.\p"
+           "TEAM MAGMA wants more land and less sea. Our trees would dry up!")
+}
+
+text FortreeCity_Text_DraconidRepGirlRevealed {
+    format("Our city lives on water and soil.\p"
+           "You kept both of them safe. The trees of FORTREE thank you!")
+}
+
+// Old man at (8, 10) (vanilla: living in the trees made him feel thirty years younger)
+script FortreeCity_EventScript_DraconidRepOldMan {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(FortreeCity_Text_DraconidRepOldManUniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(FortreeCity_Text_DraconidRepOldManRevealed, MSGBOX_NPC)
+        default:
+            goto(FortreeCity_EventScript_OldMan)
+    }
+}
+
+text FortreeCity_Text_DraconidRepOldManUniform {
+    format("In my day, a youngster in a gang's uniform got a stern talking-to!\p"
+           "Hmph. Consider yourself talked to.")
+}
+
+text FortreeCity_Text_DraconidRepOldManRevealed {
+    format("Living in the trees keeps us healthy.\p"
+           "But hearing what you did made me feel thirty years younger!")
+}
+
+// Boy with a Game Boy at (9, 16) (vanilla: POKéMON that evolve when traded)
+script FortreeCity_EventScript_DraconidRepGameboyKid {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            lock
+            faceplayer
+            msgbox(FortreeCity_Text_DraconidRepGameboyKidUniform, MSGBOX_DEFAULT)
+            goto(Draconid_EventScript_RepTurnAway)
+        case REPUTATION_REVEALED:
+            msgbox(FortreeCity_Text_DraconidRepGameboyKidRevealed, MSGBOX_NPC)
+        default:
+            goto(FortreeCity_EventScript_GameboyKid)
+    }
+}
+
+text FortreeCity_Text_DraconidRepGameboyKidUniform {
+    format("…My mom said never to trade with TEAM MAGMA.\p"
+           "So don't ask.")
+}
+
+text FortreeCity_Text_DraconidRepGameboyKidRevealed {
+    format("Will you trade with me someday?\p"
+           "A POKéMON from a real hero would be the coolest!")
+}
+
+// ---------------------------------------------------------------------------
+// Fortree Gym: Gym Guide and WINONA (intro and post-battle lines; badge, TM and rematch are vanilla)
+// ---------------------------------------------------------------------------
+
+script FortreeCity_Gym_EventScript_DraconidRepGymGuide {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        if (flag(FLAG_DEFEATED_FORTREE_GYM)) {
+            msgbox(FortreeCity_Gym_Text_DraconidRepGymGuidePostVictoryUniform, MSGBOX_DEFAULT)
+        } else {
+            msgbox(FortreeCity_Gym_Text_DraconidRepGymGuideAdviceUniform, MSGBOX_DEFAULT)
+        }
+    } elif (flag(FLAG_DEFEATED_FORTREE_GYM)) {
+        msgbox(FortreeCity_Gym_Text_DraconidRepGymGuidePostVictoryRevealed, MSGBOX_DEFAULT)
+    } else {
+        msgbox(FortreeCity_Gym_Text_DraconidRepGymGuideAdviceRevealed, MSGBOX_DEFAULT)
+    }
+    release
+    end
+}
+
+text FortreeCity_Gym_Text_DraconidRepGymGuideAdviceUniform {
+    format("Yo… A TEAM MAGMA grunt, here?\p"
+           "Well, a challenger's a challenger. WINONA is a master of FLYING types.\p"
+           "She waits at the back, behind the rotating doors. …Okay, go.")
+}
+
+text FortreeCity_Gym_Text_DraconidRepGymGuidePostVictoryUniform {
+    format("You achieved liftoff…\p"
+           "Wearing that. I don't know what to think anymore.")
+}
+
+text FortreeCity_Gym_Text_DraconidRepGymGuideAdviceRevealed {
+    format("Yo, it's {PLAYER}! The hero of SOOTOPOLIS!\p"
+           "WINONA is a master of FLYING types. She waits behind the rotating doors.\p"
+           "Go for it! You've got this!")
+}
+
+text FortreeCity_Gym_Text_DraconidRepGymGuidePostVictoryRevealed {
+    format("You did it! You've achieved liftoff!\p"
+           "But you already soared higher than any of us, didn't you?")
+}
+
+script FortreeCity_Gym_EventScript_DraconidRepWinona {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        trainerbattle_single(TRAINER_WINONA_1, FortreeCity_Gym_Text_DraconidRepWinonaIntroUniform, FortreeCity_Gym_Text_WinonaDefeat, FortreeCity_Gym_EventScript_WinonaDefeated, NO_MUSIC)
+    } else {
+        trainerbattle_single(TRAINER_WINONA_1, FortreeCity_Gym_Text_DraconidRepWinonaIntroRevealed, FortreeCity_Gym_Text_WinonaDefeat, FortreeCity_Gym_EventScript_WinonaDefeated, NO_MUSIC)
+    }
+    specialvar(VAR_RESULT, ShouldTryRematchBattle)
+    if (var(VAR_RESULT) == TRUE) {
+        goto(FortreeCity_Gym_EventScript_WinonaRematch)
+    }
+    if (!flag(FLAG_RECEIVED_TM_AERIAL_ACE)) {
+        goto(FortreeCity_Gym_EventScript_GiveAerialAce2)
+    }
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        msgbox(FortreeCity_Gym_Text_DraconidRepWinonaPostBattleUniform, MSGBOX_DEFAULT)
+    } else {
+        msgbox(FortreeCity_Gym_Text_DraconidRepWinonaPostBattleRevealed, MSGBOX_DEFAULT)
+    }
+    release
+    end
+}
+
+text FortreeCity_Gym_Text_DraconidRepWinonaIntroUniform {
+    format("I am WINONA. I am the LEADER of the FORTREE POKéMON GYM.\p"
+           "TEAM MAGMA… Your kind would scorch the skies my BIRD POKéMON love.\p"
+           "Yet the sky judges each flier only by how they fly.\p"
+           "Show me how you fly!")
+}
+
+text FortreeCity_Gym_Text_DraconidRepWinonaIntroRevealed {
+    format("I am WINONA. I am the LEADER of the FORTREE POKéMON GYM.\p"
+           "You are {PLAYER}, who stood against MAXIE in SOOTOPOLIS.\p"
+           "My BIRD POKéMON saw it all from the sky. Now I wish to see it, too.\p"
+           "Witness the elegant choreography of BIRD POKéMON and I!")
+}
+
+text FortreeCity_Gym_Text_DraconidRepWinonaPostBattleUniform {
+    format("Your POKéMON fly with such trust in you.\p"
+           "I cannot read the heart of one who wears that uniform. But they can.")
+}
+
+text FortreeCity_Gym_Text_DraconidRepWinonaPostBattleRevealed {
+    format("The skies over HOENN are calm again, thanks to you.\p"
+           "My BIRD POKéMON and I are grateful.")
+}

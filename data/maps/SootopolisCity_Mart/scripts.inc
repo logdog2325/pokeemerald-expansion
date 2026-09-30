@@ -4,10 +4,10 @@ SootopolisCity_Mart_MapScripts::
 SootopolisCity_Mart_EventScript_Clerk::
 	lock
 	faceplayer
-	message gText_HowMayIServeYou
+	call Draconid_EventScript_MartGreeting  @ Draconid Emerald (reputation/shared.pory)
 	waitmessage
 	pokemart SootopolisCity_Mart_Pokemart
-	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
+	call Draconid_EventScript_MartGoodbye  @ Draconid Emerald (reputation/shared.pory)
 	release
 	end
 

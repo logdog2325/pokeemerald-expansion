@@ -1,0 +1,44 @@
+// Draconid Emerald: reputation dialogue – Mr. Briney's idle lines (D-103). His ferry scripts (cottage,
+// Dewford, Route 109) are vanilla. Each object's map.json "script" points here; PRE_UNIFORM goes on to
+// the vanilla script.
+// Lines collected in docs/reputation_dialogue.md.
+
+// MR. BRINEY at Stern's Shipyard, from the Mind Badge until the Hall of Fame (vanilla: he's helping DOCK build a ferry)
+script SlateportCity_SternsShipyard_1F_EventScript_DraconidRepBriney {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SlateportCity_SternsShipyard_1F_Text_DraconidRepBrineyUniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(SlateportCity_SternsShipyard_1F_Text_DraconidRepBrineyRevealed, MSGBOX_NPC)
+        default:
+            goto(SlateportCity_SternsShipyard_1F_EventScript_Briney)
+    }
+}
+
+text SlateportCity_SternsShipyard_1F_Text_DraconidRepBrineyUniform {
+    format("MR. BRINEY: Ah, {PLAYER}! It's been too long!\p"
+           "Hm? That red getup… So you've taken up with TEAM MAGMA.\p"
+           "Well, PEEKO doesn't mind it, so neither will I.\p"
+           "I'm helping DOCK build a ferry, aye! Mind you don't sink it.")
+}
+
+text SlateportCity_SternsShipyard_1F_Text_DraconidRepBrineyRevealed {
+    format("MR. BRINEY: Ah, {PLAYER}! The whole port is talking about you!\p"
+           "I knew there was a good heart under that red getup, aye!\p"
+           "DOCK and I are still building our ferry. You'll be our first passenger!")
+}
+
+// MR. BRINEY on the S.S. TIDAL, post-game, so only REVEALED (vanilla: they made him honorary captain)
+script SSTidalCorridor_EventScript_DraconidRepBriney {
+    if (var(VAR_DRACONID_REPUTATION) != REPUTATION_REVEALED) {
+        goto(SSTidalCorridor_EventScript_Briney)
+    }
+    msgbox(SSTidalCorridor_Text_DraconidRepBrineyRevealed, MSGBOX_NPC)
+}
+
+text SSTidalCorridor_Text_DraconidRepBrineyRevealed {
+    format("MR. BRINEY: Welcome aboard, {PLAYER}!\p"
+           "They made me honorary captain of the S.S. TIDAL!\p"
+           "And the hero of SOOTOPOLIS is sailing with me!\p"
+           "This old sea dog couldn't be prouder, aye!")
+}

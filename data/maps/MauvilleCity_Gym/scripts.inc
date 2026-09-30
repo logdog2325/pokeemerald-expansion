@@ -74,6 +74,7 @@ MauvilleCity_Gym_EventScript_DeactivatePuzzle::
 	end
 
 MauvilleCity_Gym_EventScript_Wattson::
+	goto_if_ne VAR_DRACONID_REPUTATION, REPUTATION_PRE_UNIFORM, MauvilleCity_Gym_EventScript_DraconidRepWattson  @ Draconid Emerald (reputation/mauville.pory)
 	trainerbattle_single TRAINER_WATTSON_1, MauvilleCity_Gym_Text_WattsonIntro, MauvilleCity_Gym_Text_WattsonDefeat, MauvilleCity_Gym_EventScript_WattsonDefeated, NO_MUSIC
 	specialvar VAR_RESULT, ShouldTryRematchBattle
 	goto_if_eq VAR_RESULT, TRUE, MauvilleCity_Gym_EventScript_WattsonRematch
@@ -224,6 +225,7 @@ MauvilleCity_Gym_EventScript_Angelo::
 MauvilleCity_Gym_EventScript_GymGuide::
 	lock
 	faceplayer
+	goto_if_ne VAR_DRACONID_REPUTATION, REPUTATION_PRE_UNIFORM, MauvilleCity_Gym_EventScript_DraconidRepGymGuide  @ Draconid Emerald (reputation/mauville.pory)
 	goto_if_set FLAG_DEFEATED_MAUVILLE_GYM, MauvilleCity_Gym_EventScript_GymGuidePostVictory
 	msgbox MauvilleCity_Gym_Text_GymGuideAdvice, MSGBOX_DEFAULT
 	release

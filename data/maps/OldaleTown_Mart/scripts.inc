@@ -4,11 +4,11 @@ OldaleTown_Mart_MapScripts::
 OldaleTown_Mart_EventScript_Clerk::
 	lock
 	faceplayer
-	message gText_HowMayIServeYou
+	call Draconid_EventScript_MartGreeting  @ Draconid Emerald (reputation/shared.pory)
 	waitmessage
 	goto_if_set FLAG_ADVENTURE_STARTED, OldaleTown_Mart_ExpandedItems
 	pokemart OldaleTown_Mart_Pokemart_Basic
-	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
+	call Draconid_EventScript_MartGoodbye  @ Draconid Emerald (reputation/shared.pory)
 	release
 	end
 
@@ -22,7 +22,7 @@ OldaleTown_Mart_Pokemart_Basic:
 
 OldaleTown_Mart_ExpandedItems::
 	pokemart OldaleTown_Mart_Pokemart_Expanded
-	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
+	call Draconid_EventScript_MartGoodbye  @ Draconid Emerald (reputation/shared.pory)
 	release
 	end
 
