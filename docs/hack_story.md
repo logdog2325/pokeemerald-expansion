@@ -185,3 +185,6 @@ Petalburg Woods recruitment/outfit change, Maxie's first meeting at Meteor Falls
 ### Follow-up note 18 (round 1)
 - "What is the Jim order? Are we completing all a gems and make sure that fits into the storyline and two is it the same order as a regular story if not, it's OK to change it. Just make sure that the scripts and coding work for that." (answered: the vanilla order, all 8, each at its story point; `check_progression.py` walks them)
 - "Wanted to make sure that it worked and we were in the right place at the right time. Also, is Steven the champion and if not, can we make him the champion?"
+
+### Follow-up note 19 (round 1)
+- "Also make sure that there is dialogue in case you win or lose against Steven at Moss Steve that matches the story and events of either if you lost or you won"
