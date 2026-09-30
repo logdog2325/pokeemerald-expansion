@@ -68,10 +68,11 @@ Route119_WeatherInstitute_1F_EventScript_Grunt4::
 	msgbox Route119_WeatherInstitute_1F_Text_Grunt4PostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route119_WeatherInstitute_1F_Text_Grunt1Intro:
-	.string "The BOSS got interested in\n"
-	.string "the research they have going here,\l"
-	.string "so he sent us out.\p"
+Route119_WeatherInstitute_1F_Text_Grunt1Intro:  @ Draconid Emerald
+	.string "A MAGMA grunt? Here?\p"
+	.string "The BOSS got interested in the\n"
+	.string "research they have going here, so he\l"
+	.string "sent us out.\p"
 	.string "You quit meddling!$"
 
 Route119_WeatherInstitute_1F_Text_Grunt1Defeat:
@@ -83,17 +84,18 @@ Route119_WeatherInstitute_1F_Text_Grunt1PostBattle:
 	.string "But I'm just a GRUNT. What would I know\n"
 	.string "about what he's thinking?$"
 
-Route119_WeatherInstitute_1F_Text_Grunt4Intro:
+Route119_WeatherInstitute_1F_Text_Grunt4Intro:  @ Draconid Emerald
 	.string "Huh?\n"
-	.string "What's a kid doing here?$"
+	.string "What's a MAGMA brat doing here?$"
 
 Route119_WeatherInstitute_1F_Text_Grunt4Defeat:
 	.string "Huh?\n"
 	.string "I lost?!$"
 
-Route119_WeatherInstitute_1F_Text_Grunt4PostBattle:
+Route119_WeatherInstitute_1F_Text_Grunt4PostBattle:  @ Draconid Emerald
 	.string "Oh, no…\n"
-	.string "I'll catch an earful for losing to a kid…\p"
+	.string "I'll catch an earful for losing to\l"
+	.string "MAGMA…\p"
 	.string "I should just take a nap in the bed…$"
 
 Route119_WeatherInstitute_1F_Text_EveryoneWentUpstairs:
@@ -121,11 +123,11 @@ Route119_WeatherInstitute_1F_Text_NoticingAbnormalWeather:
 	.string "isolated cases of droughts and\l"
 	.string "heavy rain lately…$"
 
-Route119_WeatherInstitute_1F_Text_WhatWereAquasUpTo:
-	.string "Hello!\n"
-	.string "We've been saved by your actions!\p"
-	.string "What I don't understand is what on\n"
-	.string "earth the AQUAS were up to.$"
+Route119_WeatherInstitute_1F_Text_WhatWereAquasUpTo:  @ Draconid Emerald
+	.string "Oh… You're the one in red who untied us.\p"
+	.string "Don't worry. We haven't told anyone.\p"
+	.string "But what on earth were AQUA and MAGMA\n"
+	.string "after here?$"
 
 Route119_WeatherInstitute_1F_Text_TakeRestInBed:
 	.string "There's a bed…\n"

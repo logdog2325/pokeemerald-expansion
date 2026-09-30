@@ -3,7 +3,9 @@
 #include "field_move.h"
 #include "fldeff.h"
 #include "fldeff_misc.h"
+#include "item.h"
 #include "party_menu.h"
+#include "pokemon.h"
 #include "strings.h"
 #include "constants/field_move.h"
 #include "constants/moves.h"
@@ -191,3 +193,84 @@ const struct FieldMoveInfo gFieldMoveInfo[FIELD_MOVES_COUNT] =
         .hideIfLocked = TRUE,
     },
 };
+
+// Draconid Emerald (D-190): an HM's field move works once the player owns the HM and the badge that allows
+// the move, even if no party Pokémon knows it. HMs are never used up, so owning one means it is in the bag.
+
+// The HM that teaches this field move, or ITEM_NONE (TM moves such as Secret Power and Dig keep needing a Pokémon).
+enum Item FieldMove_GetHMItem(enum FieldMove fieldMove)
+{
+    enum Move move = FieldMove_GetMoveId(fieldMove);
+
+    if (!IsMoveHM(move))
+        return ITEM_NONE;
+    return GetTMHMItemIdFromMoveId(move);
+}
+
+// The field move an HM does when it is used from the bag (D-191), or FIELD_MOVES_COUNT.
+enum FieldMove GetFieldMoveFromHMItem(enum Item item)
+{
+    enum FieldMove fieldMove;
+
+    if (item == ITEM_NONE)
+        return FIELD_MOVES_COUNT;
+    for (fieldMove = 0; fieldMove < FIELD_MOVES_COUNT; fieldMove++)
+    {
+        if (FieldMove_GetHMItem(fieldMove) == item)
+            return fieldMove;
+    }
+    return FIELD_MOVES_COUNT;
+}
+
+bool32 CanUseFieldMoveWithHM(enum FieldMove fieldMove)
+{
+    enum Item hm;
+
+    if (!OW_FIELD_MOVES_WITH_HM)
+        return FALSE;
+    hm = FieldMove_GetHMItem(fieldMove);
+    return hm != ITEM_NONE && CheckBagHasItem(hm, 1) && IsFieldMoveUnlocked(fieldMove);
+}
+
+static bool32 SpeciesCanLearnMove(enum Species species, enum Move move)
+{
+    const struct LevelUpMove *learnset = GetSpeciesLevelUpLearnset(species);
+
+    for (u32 i = 0; learnset[i].move != LEVEL_UP_MOVE_END; i++)
+    {
+        if (learnset[i].move == move)
+            return TRUE;
+    }
+    return CanLearnTeachableMove(species, move);
+}
+
+// The party slot shown using a field move, or PARTY_SIZE if nobody can use it. A Pokémon that knows the move
+// comes first (vanilla). With the HM and its badge, the first Pokémon that could learn the move stands in,
+// else the first one that isn't an Egg (vanilla lets fainted Pokémon use field moves, so they may here too).
+u32 GetFieldMoveUserSlot(enum FieldMove fieldMove)
+{
+    enum Move move = FieldMove_GetMoveId(fieldMove);
+    bool32 withHM = CanUseFieldMoveWithHM(fieldMove);
+    u32 learner = PARTY_SIZE, firstMon = PARTY_SIZE;
+
+    for (u32 i = 0; i < PARTY_SIZE; i++)
+    {
+        struct Pokemon *mon = &gParties[B_TRAINER_PLAYER][i];
+        enum Species species = GetMonData(mon, MON_DATA_SPECIES);
+
+        if (species == SPECIES_NONE)
+            break;
+        if (GetMonData(mon, MON_DATA_IS_EGG))
+            continue;
+        if (MonKnowsMove(mon, move))
+            return i;
+        if (withHM && learner == PARTY_SIZE && SpeciesCanLearnMove(species, move))
+            learner = i;
+        if (firstMon == PARTY_SIZE)
+            firstMon = i;
+    }
+
+    if (!withHM)
+        return PARTY_SIZE;
+    return (learner != PARTY_SIZE) ? learner : firstMon;
+}

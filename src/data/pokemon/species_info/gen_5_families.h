@@ -2449,8 +2449,8 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         )
         .levelUpLearnset = sBoldoreLevelUpLearnset,
         .teachableLearnset = sBoldoreTeachableLearnset,
-        .evolutions = EVOLUTION({EVO_TRADE, 0, SPECIES_GIGALITH},
-                                {EVO_ITEM, ITEM_LINKING_CORD, SPECIES_GIGALITH}),
+        // Draconid Emerald (D-216): was a trade (and a Linking Cord)
+        .evolutions = EVOLUTION({EVO_LEVEL, DRACONID_TRADE_EVO_LEVEL_MID, SPECIES_GIGALITH}),
     },
 
     [SPECIES_GIGALITH] =
@@ -3187,8 +3187,8 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         )
         .levelUpLearnset = sGurdurrLevelUpLearnset,
         .teachableLearnset = sGurdurrTeachableLearnset,
-        .evolutions = EVOLUTION({EVO_TRADE, 0, SPECIES_CONKELDURR},
-                                {EVO_ITEM, ITEM_LINKING_CORD, SPECIES_CONKELDURR}),
+        // Draconid Emerald (D-216): was a trade (and a Linking Cord)
+        .evolutions = EVOLUTION({EVO_LEVEL, DRACONID_TRADE_EVO_LEVEL_MID, SPECIES_CONKELDURR}),
     },
 
     [SPECIES_CONKELDURR] =
@@ -8602,7 +8602,8 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .levelUpLearnset = sKarrablastLevelUpLearnset,
         .teachableLearnset = sKarrablastTeachableLearnset,
         .eggMoveLearnset = sKarrablastEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_TRADE, 0, SPECIES_ESCAVALIER, CONDITIONS({IF_TRADE_PARTNER_SPECIES, SPECIES_SHELMET})}),
+        // Draconid Emerald (D-216): was a trade for a Shelmet
+        .evolutions = EVOLUTION({EVO_LEVEL, DRACONID_TRADE_EVO_LEVEL_MID, SPECIES_ESCAVALIER}),
     },
 
     [SPECIES_ESCAVALIER] =
@@ -10789,7 +10790,8 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .levelUpLearnset = sShelmetLevelUpLearnset,
         .teachableLearnset = sShelmetTeachableLearnset,
         .eggMoveLearnset = sShelmetEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_TRADE, 0, SPECIES_ACCELGOR, CONDITIONS({IF_TRADE_PARTNER_SPECIES, SPECIES_KARRABLAST})}),
+        // Draconid Emerald (D-216): was a trade for a Karrablast
+        .evolutions = EVOLUTION({EVO_LEVEL, DRACONID_TRADE_EVO_LEVEL_MID, SPECIES_ACCELGOR}),
     },
 
     [SPECIES_ACCELGOR] =

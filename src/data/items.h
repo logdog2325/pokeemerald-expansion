@@ -5650,6 +5650,9 @@ const struct ItemInfo gItemsInfo[] =
     },
 
 // Mega Stones
+// Draconid Emerald (D-222): the stones the battle item counter sells cost MEGA_STONE_PRICE; the others
+// stay at 0 (found or given, and not sellable).
+#define MEGA_STONE_PRICE 50000
 
     [ITEM_VENUSAURITE] =
     {
@@ -5672,7 +5675,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_CHARIZARDITE_X] =
     {
         .name = ITEM_NAME("Charizardite X"),
-        .price = 0,
+        .price = MEGA_STONE_PRICE, // Draconid Emerald (D-222): sold at the battle item counter
         .holdEffect = HOLD_EFFECT_MEGA_STONE,
         .description = COMPOUND_STRING(
             "This stone enables\n"
@@ -5690,7 +5693,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_CHARIZARDITE_Y] =
     {
         .name = ITEM_NAME("Charizardite Y"),
-        .price = 0,
+        .price = MEGA_STONE_PRICE, // Draconid Emerald (D-222): sold at the battle item counter
         .holdEffect = HOLD_EFFECT_MEGA_STONE,
         .description = COMPOUND_STRING(
             "This stone enables\n"
@@ -5762,7 +5765,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_ALAKAZITE] =
     {
         .name = ITEM_NAME("Alakazite"),
-        .price = 0,
+        .price = MEGA_STONE_PRICE, // Draconid Emerald (D-222): sold at the battle item counter
         .holdEffect = HOLD_EFFECT_MEGA_STONE,
         .description = COMPOUND_STRING(
             "This stone enables\n"
@@ -5834,7 +5837,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_PINSIRITE] =
     {
         .name = ITEM_NAME("Pinsirite"),
-        .price = 0,
+        .price = MEGA_STONE_PRICE, // Draconid Emerald (D-222): sold at the battle item counter
         .holdEffect = HOLD_EFFECT_MEGA_STONE,
         .description = COMPOUND_STRING(
             "This stone enables\n"
@@ -5978,7 +5981,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_HERACRONITE] =
     {
         .name = ITEM_NAME("Heracronite"),
-        .price = 0,
+        .price = MEGA_STONE_PRICE, // Draconid Emerald (D-222): sold at the battle item counter
         .holdEffect = HOLD_EFFECT_MEGA_STONE,
         .description = COMPOUND_STRING(
             "This stone enables\n"
@@ -6032,7 +6035,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_SCEPTILITE] =
     {
         .name = ITEM_NAME("Sceptilite"),
-        .price = 0,
+        .price = MEGA_STONE_PRICE, // Draconid Emerald (D-222): sold at the battle item counter
         .holdEffect = HOLD_EFFECT_MEGA_STONE,
         .description = COMPOUND_STRING(
             "This stone enables\n"
@@ -6050,7 +6053,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_BLAZIKENITE] =
     {
         .name = ITEM_NAME("Blazikenite"),
-        .price = 0,
+        .price = MEGA_STONE_PRICE, // Draconid Emerald (D-222): sold at the battle item counter
         .holdEffect = HOLD_EFFECT_MEGA_STONE,
         .description = COMPOUND_STRING(
             "This stone enables\n"
@@ -6086,7 +6089,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_GARDEVOIRITE] =
     {
         .name = ITEM_NAME("Gardevoirite"),
-        .price = 0,
+        .price = MEGA_STONE_PRICE, // Draconid Emerald (D-222): sold at the battle item counter
         .holdEffect = HOLD_EFFECT_MEGA_STONE,
         .description = COMPOUND_STRING(
             "This stone enables\n"
@@ -6104,7 +6107,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_SABLENITE] =
     {
         .name = ITEM_NAME("Sablenite"),
-        .price = 0,
+        .price = MEGA_STONE_PRICE, // Draconid Emerald (D-222): sold at the battle item counter
         .holdEffect = HOLD_EFFECT_MEGA_STONE,
         .description = COMPOUND_STRING(
             "This stone enables\n"
@@ -6122,7 +6125,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_MAWILITE] =
     {
         .name = ITEM_NAME("Mawilite"),
-        .price = 0,
+        .price = MEGA_STONE_PRICE, // Draconid Emerald (D-222): sold at the battle item counter
         .holdEffect = HOLD_EFFECT_MEGA_STONE,
         .description = COMPOUND_STRING(
             "This stone enables\n"
@@ -6140,7 +6143,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_AGGRONITE] =
     {
         .name = ITEM_NAME("Aggronite"),
-        .price = 0,
+        .price = MEGA_STONE_PRICE, // Draconid Emerald (D-222): sold at the battle item counter
         .holdEffect = HOLD_EFFECT_MEGA_STONE,
         .description = COMPOUND_STRING(
             "This stone enables\n"
@@ -6230,7 +6233,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_ALTARIANITE] =
     {
         .name = ITEM_NAME("Altarianite"),
-        .price = 0,
+        .price = MEGA_STONE_PRICE, // Draconid Emerald (D-222): sold at the battle item counter
         .holdEffect = HOLD_EFFECT_MEGA_STONE,
         .description = COMPOUND_STRING(
             "This stone enables\n"
@@ -6302,7 +6305,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_SALAMENCITE] =
     {
         .name = ITEM_NAME("Salamencite"),
-        .price = 0,
+        .price = MEGA_STONE_PRICE, // Draconid Emerald (D-222): sold at the battle item counter
         .holdEffect = HOLD_EFFECT_MEGA_STONE,
         .description = COMPOUND_STRING(
             "This stone enables\n"
@@ -6338,7 +6341,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_LATIASITE] =
     {
         .name = ITEM_NAME("Latiasite"),
-        .price = 0,
+        .price = MEGA_STONE_PRICE, // Draconid Emerald (D-222): sold at the battle item counter
         .holdEffect = HOLD_EFFECT_MEGA_STONE,
         .description = COMPOUND_STRING(
             "This stone enables\n"
@@ -6356,7 +6359,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_LATIOSITE] =
     {
         .name = ITEM_NAME("Latiosite"),
-        .price = 0,
+        .price = MEGA_STONE_PRICE, // Draconid Emerald (D-222): sold at the battle item counter
         .holdEffect = HOLD_EFFECT_MEGA_STONE,
         .description = COMPOUND_STRING(
             "This stone enables\n"
@@ -6446,7 +6449,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_GALLADITE] =
     {
         .name = ITEM_NAME("Galladite"),
-        .price = 0,
+        .price = MEGA_STONE_PRICE, // Draconid Emerald (D-222): sold at the battle item counter
         .holdEffect = HOLD_EFFECT_MEGA_STONE,
         .description = COMPOUND_STRING(
             "This stone enables\n"
@@ -6536,7 +6539,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_STARMINITE] =
     {
         .name = ITEM_NAME("Starminite"),
-        .price = 0,
+        .price = MEGA_STONE_PRICE, // Draconid Emerald (D-222): sold at the battle item counter
         .holdEffect = HOLD_EFFECT_MEGA_STONE,
         .description = COMPOUND_STRING(
             "This stone enables\n"
@@ -6590,7 +6593,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_FERALIGITE] =
     {
         .name = ITEM_NAME("Feraligite"),
-        .price = 0,
+        .price = MEGA_STONE_PRICE, // Draconid Emerald (D-222): sold at the battle item counter
         .holdEffect = HOLD_EFFECT_MEGA_STONE,
         .description = COMPOUND_STRING(
             "This stone enables\n"
@@ -6608,7 +6611,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_SKARMORITE] =
     {
         .name = ITEM_NAME("Skarmorite"),
-        .price = 0,
+        .price = MEGA_STONE_PRICE, // Draconid Emerald (D-222): sold at the battle item counter
         .holdEffect = HOLD_EFFECT_MEGA_STONE,
         .description = COMPOUND_STRING(
             "This stone enables\n"
@@ -6662,7 +6665,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_EXCADRITE] =
     {
         .name = ITEM_NAME("Excadrite"),
-        .price = 0,
+        .price = MEGA_STONE_PRICE, // Draconid Emerald (D-222): sold at the battle item counter
         .holdEffect = HOLD_EFFECT_MEGA_STONE,
         .description = COMPOUND_STRING(
             "This stone enables\n"
@@ -6734,7 +6737,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_CHANDELURITE] =
     {
         .name = ITEM_NAME("Chandelurite"),
-        .price = 0,
+        .price = MEGA_STONE_PRICE, // Draconid Emerald (D-222): sold at the battle item counter
         .holdEffect = HOLD_EFFECT_MEGA_STONE,
         .description = COMPOUND_STRING(
             "This stone enables\n"
@@ -6806,7 +6809,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_PYROARITE] =
     {
         .name = ITEM_NAME("Pyroarite"),
-        .price = 0,
+        .price = MEGA_STONE_PRICE, // Draconid Emerald (D-222): sold at the battle item counter
         .holdEffect = HOLD_EFFECT_MEGA_STONE,
         .description = COMPOUND_STRING(
             "This stone enables\n"
@@ -6860,7 +6863,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_BARBARACITE] =
     {
         .name = ITEM_NAME("Barbaracite"),
-        .price = 0,
+        .price = MEGA_STONE_PRICE, // Draconid Emerald (D-222): sold at the battle item counter
         .holdEffect = HOLD_EFFECT_MEGA_STONE,
         .description = COMPOUND_STRING(
             "This stone enables\n"
@@ -6878,7 +6881,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_DRAGALGITE] =
     {
         .name = ITEM_NAME("Dragalgite"),
-        .price = 0,
+        .price = MEGA_STONE_PRICE, // Draconid Emerald (D-222): sold at the battle item counter
         .holdEffect = HOLD_EFFECT_MEGA_STONE,
         .description = COMPOUND_STRING(
             "This stone enables\n"
@@ -6896,7 +6899,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_HAWLUCHANITE] =
     {
         .name = ITEM_NAME("Hawluchanite"),
-        .price = 0,
+        .price = MEGA_STONE_PRICE, // Draconid Emerald (D-222): sold at the battle item counter
         .holdEffect = HOLD_EFFECT_MEGA_STONE,
         .description = COMPOUND_STRING(
             "This stone enables\n"
@@ -7022,7 +7025,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_RAICHUNITE_X] =
     {
         .name = ITEM_NAME("Raichunite X"),
-        .price = 0,
+        .price = MEGA_STONE_PRICE, // Draconid Emerald (D-222): sold at the battle item counter
         .holdEffect = HOLD_EFFECT_MEGA_STONE,
         .description = COMPOUND_STRING(
             "This stone enables\n"
@@ -7040,7 +7043,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_RAICHUNITE_Y] =
     {
         .name = ITEM_NAME("Raichunite Y"),
-        .price = 0,
+        .price = MEGA_STONE_PRICE, // Draconid Emerald (D-222): sold at the battle item counter
         .holdEffect = HOLD_EFFECT_MEGA_STONE,
         .description = COMPOUND_STRING(
             "This stone enables\n"
@@ -7058,7 +7061,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_CHIMECHITE] =
     {
         .name = ITEM_NAME("Chimechite"),
-        .price = 0,
+        .price = MEGA_STONE_PRICE, // Draconid Emerald (D-222): sold at the battle item counter
         .holdEffect = HOLD_EFFECT_MEGA_STONE,
         .description = COMPOUND_STRING(
             "This stone enables\n"
@@ -7076,7 +7079,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_ABSOLITE_Z] =
     {
         .name = ITEM_NAME("Absolite Z"),
-        .price = 0,
+        .price = MEGA_STONE_PRICE, // Draconid Emerald (D-222): sold at the battle item counter
         .holdEffect = HOLD_EFFECT_MEGA_STONE,
         .description = COMPOUND_STRING(
             "This stone enables\n"
@@ -7094,7 +7097,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_STARAPTITE] =
     {
         .name = ITEM_NAME("Staraptite"),
-        .price = 0,
+        .price = MEGA_STONE_PRICE, // Draconid Emerald (D-222): sold at the battle item counter
         .holdEffect = HOLD_EFFECT_MEGA_STONE,
         .description = COMPOUND_STRING(
             "This stone enables\n"
@@ -7112,7 +7115,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_GARCHOMPITE_Z] =
     {
         .name = ITEM_NAME("Garchompite Z"),
-        .price = 0,
+        .price = MEGA_STONE_PRICE, // Draconid Emerald (D-222): sold at the battle item counter
         .holdEffect = HOLD_EFFECT_MEGA_STONE,
         .description = COMPOUND_STRING(
             "This stone enables\n"
@@ -7148,7 +7151,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_GOLURKITE] =
     {
         .name = ITEM_NAME("Golurkite"),
-        .price = 0,
+        .price = MEGA_STONE_PRICE, // Draconid Emerald (D-222): sold at the battle item counter
         .holdEffect = HOLD_EFFECT_MEGA_STONE,
         .description = COMPOUND_STRING(
             "This stone enables\n"
@@ -7202,7 +7205,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_GOLISOPITE] =
     {
         .name = ITEM_NAME("Golisopite"),
-        .price = 0,
+        .price = MEGA_STONE_PRICE, // Draconid Emerald (D-222): sold at the battle item counter
         .holdEffect = HOLD_EFFECT_MEGA_STONE,
         .description = COMPOUND_STRING(
             "This stone enables\n"
@@ -7292,7 +7295,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_GLIMMORANITE] =
     {
         .name = ITEM_NAME("Glimmoranite"),
-        .price = 0,
+        .price = MEGA_STONE_PRICE, // Draconid Emerald (D-222): sold at the battle item counter
         .holdEffect = HOLD_EFFECT_MEGA_STONE,
         .description = COMPOUND_STRING(
             "This stone enables\n"
@@ -8959,7 +8962,7 @@ const struct ItemInfo gItemsInfo[] =
 
 // Type-enhancing items
 #if I_PRICE >= GEN_9
-    #define TYPE_BOOSTING_PRICE 3000
+    #define TYPE_BOOSTING_PRICE 1000 // Draconid Emerald (D-219): was 3000; the counter's first tier is cheap
 #elif I_PRICE >= GEN_7
     #define TYPE_BOOSTING_PRICE 1000
 #else
@@ -8991,7 +8994,7 @@ const struct ItemInfo gItemsInfo[] =
     {
         .name = ITEM_NAME("Charcoal"),
     #if I_PRICE >= GEN_9
-        .price = 3000,
+        .price = 1000, // Draconid Emerald (D-219): was 3000
     #elif I_PRICE >= GEN_7
         .price = 1000,
     #else
@@ -9299,7 +9302,7 @@ const struct ItemInfo gItemsInfo[] =
     {
         .name = ITEM_NAME("Metal Coat"),
     #if I_PRICE >= GEN_9
-        .price = 3000,
+        .price = 1000, // Draconid Emerald (D-219): was 3000
     #elif I_PRICE >= GEN_7
         .price = 2000,
     #else
@@ -9328,7 +9331,7 @@ const struct ItemInfo gItemsInfo[] =
     {
         .name = ITEM_NAME("Choice Band"),
     #if I_PRICE >= GEN_9
-        .price = 100000,
+        .price = 40000, // Draconid Emerald (D-219): was 100000
     #elif I_PRICE >= GEN_7
         .price = 4000,
     #else
@@ -9353,7 +9356,7 @@ const struct ItemInfo gItemsInfo[] =
         .name = ITEM_NAME("Choice Specs"),
         .pluralName = ITEM_PLURAL_NAME("Choice Specs"),
     #if I_PRICE >= GEN_9
-        .price = 100000,
+        .price = 40000, // Draconid Emerald (D-219): was 100000
     #elif I_PRICE >= GEN_7
         .price = 4000,
     #else
@@ -9378,7 +9381,7 @@ const struct ItemInfo gItemsInfo[] =
         .name = ITEM_NAME("Choice Scarf"),
         .pluralName = ITEM_PLURAL_NAME("Choice Scarves"),
     #if I_PRICE >= GEN_9
-        .price = 100000,
+        .price = 40000, // Draconid Emerald (D-219): was 100000
     #elif I_PRICE >= GEN_7
         .price = 4000,
     #else
@@ -9771,7 +9774,7 @@ const struct ItemInfo gItemsInfo[] =
     {
         .name = ITEM_NAME("White Herb"),
     #if I_PRICE >= GEN_9
-        .price = 20000,
+        .price = 5000, // Draconid Emerald (D-219): was 20000
     #elif I_PRICE >= GEN_7
         .price = 4000,
     #else
@@ -9823,7 +9826,7 @@ const struct ItemInfo gItemsInfo[] =
     {
         .name = ITEM_NAME("Quick Claw"),
     #if I_PRICE >= GEN_9
-        .price = 8000,
+        .price = 4000, // Draconid Emerald (D-219): was 8000
     #elif I_PRICE >= GEN_7
         .price = 4000,
     #else
@@ -9872,7 +9875,7 @@ const struct ItemInfo gItemsInfo[] =
     {
         .name = ITEM_NAME("Mental Herb"),
     #if I_PRICE >= GEN_9
-        .price = 10000,
+        .price = 5000, // Draconid Emerald (D-219): was 10000
     #elif I_PRICE >= GEN_7
         .price = 4000,
     #else
@@ -9902,7 +9905,7 @@ const struct ItemInfo gItemsInfo[] =
     {
         .name = ITEM_NAME("King's Rock"),
     #if I_PRICE >= GEN_9
-        .price = 10000,
+        .price = 5000, // Draconid Emerald (D-219): was 10000
     #elif I_PRICE >= GEN_7
         .price = 5000,
     #else
@@ -10038,7 +10041,7 @@ const struct ItemInfo gItemsInfo[] =
         .name = ITEM_NAME("Scope Lens"),
         .pluralName = ITEM_PLURAL_NAME("Scope Lenses"),
     #if I_PRICE >= GEN_9
-        .price = 15000,
+        .price = 5000, // Draconid Emerald (D-219): was 15000
     #elif I_PRICE >= GEN_7
         .price = 4000,
     #else
@@ -10063,7 +10066,7 @@ const struct ItemInfo gItemsInfo[] =
         .name = ITEM_NAME("Leftovers"),
         .pluralName = ITEM_PLURAL_NAME("Leftovers"),
     #if I_PRICE >= GEN_9
-        .price = 20000,
+        .price = 15000, // Draconid Emerald (D-219): was 20000
     #elif I_PRICE >= GEN_7
         .price = 4000,
     #else
@@ -10088,7 +10091,7 @@ const struct ItemInfo gItemsInfo[] =
     {
         .name = ITEM_NAME("Shell Bell"),
     #if I_PRICE >= GEN_9
-        .price = 20000,
+        .price = 6000, // Draconid Emerald (D-219): was 20000
     #elif I_PRICE >= GEN_7
         .price = 4000,
     #else
@@ -10114,7 +10117,7 @@ const struct ItemInfo gItemsInfo[] =
         .name = ITEM_NAME("Wide Lens"),
         .pluralName = ITEM_PLURAL_NAME("Wide Lenses"),
     #if I_PRICE >= GEN_9
-        .price = 20000,
+        .price = 5000, // Draconid Emerald (D-219): was 20000
     #elif I_PRICE >= GEN_7
         .price = 4000,
     #else
@@ -10139,7 +10142,7 @@ const struct ItemInfo gItemsInfo[] =
     {
         .name = ITEM_NAME("Muscle Band"),
     #if I_PRICE >= GEN_9
-        .price = 8000,
+        .price = 4000, // Draconid Emerald (D-219): was 8000
     #elif I_PRICE >= GEN_7
         .price = 4000,
     #else
@@ -10165,7 +10168,7 @@ const struct ItemInfo gItemsInfo[] =
         .name = ITEM_NAME("Wise Glasses"),
         .pluralName = ITEM_PLURAL_NAME("Wise Glasses"),
     #if I_PRICE >= GEN_9
-        .price = 8000,
+        .price = 4000, // Draconid Emerald (D-219): was 8000
     #elif I_PRICE >= GEN_7
         .price = 4000,
     #else
@@ -10190,7 +10193,7 @@ const struct ItemInfo gItemsInfo[] =
     {
         .name = ITEM_NAME("Expert Belt"),
     #if I_PRICE >= GEN_9
-        .price = 30000,
+        .price = 12000, // Draconid Emerald (D-219): was 30000
     #elif I_PRICE >= GEN_7
         .price = 4000,
     #else
@@ -10215,7 +10218,7 @@ const struct ItemInfo gItemsInfo[] =
     {
         .name = ITEM_NAME("Light Clay"),
     #if I_PRICE >= GEN_9
-        .price = 20000,
+        .price = 6000, // Draconid Emerald (D-219): was 20000
     #elif I_PRICE >= GEN_7
         .price = 4000,
     #else
@@ -10239,7 +10242,7 @@ const struct ItemInfo gItemsInfo[] =
     {
         .name = ITEM_NAME("Life Orb"),
     #if I_PRICE >= GEN_9
-        .price = 50000,
+        .price = 30000, // Draconid Emerald (D-219): was 50000
     #elif I_PRICE >= GEN_7
         .price = 4000,
     #else
@@ -10263,7 +10266,7 @@ const struct ItemInfo gItemsInfo[] =
     {
         .name = ITEM_NAME("Power Herb"),
     #if I_PRICE >= GEN_9
-        .price = 30000,
+        .price = 8000, // Draconid Emerald (D-219): was 30000
     #elif I_PRICE >= GEN_7
         .price = 4000,
     #else
@@ -10288,7 +10291,7 @@ const struct ItemInfo gItemsInfo[] =
         .name = ITEM_NAME("Focus Sash"),
         .pluralName = ITEM_PLURAL_NAME("Focus Sashes"),
     #if I_PRICE >= GEN_9
-        .price = 50000,
+        .price = 10000, // Draconid Emerald (D-219): was 50000
     #elif I_PRICE >= GEN_7
         .price = 4000,
     #else
@@ -10531,7 +10534,7 @@ const struct ItemInfo gItemsInfo[] =
     {
         .name = ITEM_NAME("Big Root"),
     #if I_PRICE >= GEN_9
-        .price = 10000,
+        .price = 4000, // Draconid Emerald (D-219): was 10000
     #elif I_PRICE >= GEN_7
         .price = 4000,
     #else
@@ -10607,7 +10610,7 @@ const struct ItemInfo gItemsInfo[] =
     {
         .name = ITEM_NAME("Eviolite"),
     #if I_PRICE >= GEN_9
-        .price = 50000,
+        .price = 12000, // Draconid Emerald (D-219): was 50000
     #elif I_PRICE >= GEN_7
         .price = 4000,
     #else
@@ -10656,7 +10659,7 @@ const struct ItemInfo gItemsInfo[] =
     {
         .name = ITEM_NAME("Rocky Helmet"),
     #if I_PRICE >= GEN_9
-        .price = 50000,
+        .price = 12000, // Draconid Emerald (D-219): was 50000
     #elif I_PRICE >= GEN_7
         .price = 4000,
     #else
@@ -10681,7 +10684,7 @@ const struct ItemInfo gItemsInfo[] =
     {
         .name = ITEM_NAME("Air Balloon"),
     #if I_PRICE >= GEN_9
-        .price = 15000,
+        .price = 5000, // Draconid Emerald (D-219): was 15000
     #elif I_PRICE >= GEN_7
         .price = 4000,
     #else
@@ -10780,7 +10783,7 @@ const struct ItemInfo gItemsInfo[] =
     {
         .name = ITEM_NAME("Eject Button"),
     #if I_PRICE >= GEN_9
-        .price = 30000,
+        .price = 8000, // Draconid Emerald (D-219): was 30000
     #elif I_PRICE >= GEN_7
         .price = 4000,
     #else
@@ -10805,7 +10808,7 @@ const struct ItemInfo gItemsInfo[] =
     {
         .name = ITEM_NAME("Weakness Policy"),
         .pluralName = ITEM_PLURAL_NAME("Weakness Policies"),
-        .price = (I_PRICE >= GEN_9) ? 50000 : 1000,
+        .price = 20000, // Draconid Emerald (D-219): was (I_PRICE >= GEN_9) ? 50000 : 1000
         .holdEffect = HOLD_EFFECT_WEAKNESS_POLICY,
         .holdEffectParam = 0,
         .description = COMPOUND_STRING(
@@ -10824,7 +10827,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_ASSAULT_VEST] =
     {
         .name = ITEM_NAME("Assault Vest"),
-        .price = (I_PRICE >= GEN_9) ? 50000 : 1000,
+        .price = 30000, // Draconid Emerald (D-219): was (I_PRICE >= GEN_9) ? 50000 : 1000
         .holdEffect = HOLD_EFFECT_ASSAULT_VEST,
         .holdEffectParam = 50,
         .description = COMPOUND_STRING(

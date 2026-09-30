@@ -79,7 +79,7 @@ MossdeepCity_Gym_EventScript_TateAndLizaDefeated::
 	clearflag FLAG_HIDE_MOSSDEEP_CITY_TEAM_MAGMA
 	clearflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_TEAM_MAGMA
 	clearflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_TEAM_MAGMA
-	clearflag FLAG_HIDE_MOSSDEEP_SPACE_CENTER_RIVALS  @ Draconid Emerald: Brendan and May come to help
+	clearflag FLAG_HIDE_MOSSDEEP_SPACE_CENTER_RIVALS  @ Draconid Emerald: Brendan waits with Steven at the Space Center (act5.pory)
 	clearflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_STEVEN
 	setvar VAR_MOSSDEEP_CITY_STATE, 1
 	setflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_STEVEN
@@ -101,6 +101,7 @@ MossdeepCity_Gym_EventScript_GiveCalmMind2::
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	msgbox MossdeepCity_Gym_Text_ExplainCalmMind, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_TM_CALM_MIND
+	call Draconid_EventScript_GymBoosterTateAndLiza  @ Draconid Emerald (battle_items.pory, D-220)
 	release
 	end
 
@@ -109,6 +110,7 @@ MossdeepCity_Gym_EventScript_GiveCalmMind::
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
 	msgbox MossdeepCity_Gym_Text_ExplainCalmMind, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_TM_CALM_MIND
+	call Draconid_EventScript_GymBoosterTateAndLiza  @ Draconid Emerald (battle_items.pory, D-220)
 	return
 
 MossdeepCity_Gym_EventScript_TateAndLizaRematch::

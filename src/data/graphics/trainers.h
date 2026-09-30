@@ -284,7 +284,10 @@ const u32 gTrainerFrontPic_NerineAqua[] = INCGFX_U32("graphics/trainers/front_pi
 const u16 gTrainerPalette_NerineAqua[] = INCGFX_U16("graphics/trainers/front_pics/nerine_aqua.png", ".gbapal");
 const u32 gTrainerFrontPic_Nerine[] = INCGFX_U32("graphics/trainers/front_pics/nerine.png", ".4bpp.smol");
 const u16 gTrainerPalette_Nerine[] = INCGFX_U16("graphics/trainers/front_pics/nerine.png", ".gbapal");
-// Draconid Emerald: Zinnia (Act 7). TODO(art): placeholder (the Hex Maniac's pic) until her own pic is drawn
+// Draconid Emerald: Wes, a Battle Frontier legend (docs/hack_art_pipeline.md, D-228)
+const u32 gTrainerFrontPic_Wes[] = INCGFX_U32("graphics/trainers/front_pics/wes.png", ".4bpp.smol");
+const u16 gTrainerPalette_Wes[] = INCGFX_U16("graphics/trainers/front_pics/wes.png", ".gbapal");
+// Draconid Emerald: Zinnia, the Lorekeeper (Act 7; art: docs/hack_art_pipeline.md, D-180/D-181)
 const u32 gTrainerFrontPic_Zinnia[] = INCGFX_U32("graphics/trainers/front_pics/zinnia.png", ".4bpp.smol");
 const u16 gTrainerPalette_Zinnia[] = INCGFX_U16("graphics/trainers/front_pics/zinnia.png", ".gbapal");
 const u16 gTrainerPalette_Red[] = INCGFX_U16("graphics/trainers/front_pics/red.png", ".gbapal");
@@ -495,6 +498,9 @@ const u8 gTrainerBackPic_PlayerMagmaF[] = INCGFX_U8("graphics/trainers/back_pics
 // Draconid Emerald: multi-battle partners seen from behind (Sky Pillar Nerine, Space Center Tabitha)
 const u8 gTrainerBackPic_Nerine[] = INCGFX_U8("graphics/trainers/back_pics/nerine.png", ".4bpp");
 const u8 gTrainerBackPic_MagmaAdmin[] = INCGFX_U8("graphics/trainers/back_pics/magma_admin.png", ".4bpp");
+// Draconid Emerald: the Battle Frontier legends as partners (D-228)
+const u8 gTrainerBackPic_Wes[] = INCGFX_U8("graphics/trainers/back_pics/wes.png", ".4bpp");
+const u8 gTrainerBackPic_Blue[] = INCGFX_U8("graphics/trainers/back_pics/blue.png", ".4bpp");
 const u8 gTrainerBackPic_Leaf[] = INCGFX_U8("graphics/trainers/back_pics/leaf.png", ".4bpp");
 const u8 gTrainerBackPic_RubySapphireBrendan[] = INCGFX_U8("graphics/trainers/back_pics/brendan_rs.png", ".4bpp");
 const u8 gTrainerBackPic_RubySapphireMay[] = INCGFX_U8("graphics/trainers/back_pics/may_rs.png", ".4bpp");
@@ -510,6 +516,8 @@ const u16 gTrainerBackPicPalette_PlayerMagmaM[] = INCGFX_U16("graphics/trainers/
 const u16 gTrainerBackPicPalette_PlayerMagmaF[] = INCGFX_U16("graphics/trainers/back_pics/magma_f.png", ".gbapal");
 const u16 gTrainerBackPicPalette_Nerine[] = INCGFX_U16("graphics/trainers/back_pics/nerine.png", ".gbapal");
 const u16 gTrainerBackPicPalette_MagmaAdmin[] = INCGFX_U16("graphics/trainers/back_pics/magma_admin.png", ".gbapal");
+const u16 gTrainerBackPicPalette_Wes[] = INCGFX_U16("graphics/trainers/back_pics/wes.png", ".gbapal");
+const u16 gTrainerBackPicPalette_Blue[] = INCGFX_U16("graphics/trainers/back_pics/blue.png", ".gbapal");
 const u16 gTrainerBackPicPalette_Leaf[] = INCGFX_U16("graphics/trainers/back_pics/leaf.png", ".gbapal");
 const u16 gTrainerBackPicPalette_Pokedude[] = INCGFX_U16("graphics/trainers/back_pics/pokedude.png", ".gbapal");
 const u16 gTrainerBackPicPalette_OldMan[] = INCGFX_U16("graphics/trainers/back_pics/old_man.png", ".gbapal");
@@ -670,6 +678,11 @@ const struct TrainerPicInfo gTrainerPicInfo[TRAINER_PIC_COUNT] =
     {
         .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Nerine, gTrainerPalette_Nerine),
         .backPic = TRAINER_BACK_PIC(5, gTrainerBackPic_Nerine, gTrainerBackPicPalette_Nerine, sBackAnims_Kanto),
+    },
+    [TRAINER_PIC_WES] = // Draconid Emerald: Battle Frontier legend, front + back pic (partner)
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Wes, gTrainerPalette_Wes),
+        .backPic = TRAINER_BACK_PIC(4, gTrainerBackPic_Wes, gTrainerBackPicPalette_Wes, sBackAnims_Hoenn),
     },
     [TRAINER_PIC_ZINNIA] =
     {
@@ -1220,6 +1233,8 @@ const struct TrainerPicInfo gTrainerPicInfo[TRAINER_PIC_COUNT] =
     [TRAINER_PIC_CHAMPION_RIVAL_FRLG] =
     {
         .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_ChampionRivalFrlg, gTrainerPalette_ChampionRivalFrlg, 0, 0),
+        // Draconid Emerald: Blue as a Battle Frontier partner needs a back pic (D-228)
+        .backPic = TRAINER_BACK_PIC(4, gTrainerBackPic_Blue, gTrainerBackPicPalette_Blue, sBackAnims_Hoenn),
     },
     [TRAINER_PIC_CHANNELER_FRLG] =
     {

@@ -1,0 +1,28 @@
+# The Elite Four load their ORAS post-game rematch teams once the game is cleared (D-174; Sidney shown).
+# Needs rustboro_done.ss; battles are mashed with the no-whiteout flag on.
+loadstate rustboro_done.ss
+setflag FLAG_DEBUG_NO_TRAINER_SEE
+setflag FLAG_DRACONID_NO_WHITEOUT
+# first time: Sidney's first team (VAR_ELITE_4_STATE 1: the door has closed behind the player already)
+setvar VAR_ELITE_4_STATE 1
+clearflag FLAG_SYS_GAME_CLEAR
+clearflag FLAG_DEFEATED_ELITE_4_SIDNEY
+warp MAP_EVER_GRANDE_CITY_SIDNEYS_ROOM 6 7
+run 150
+path EverGrandeCity_SidneysRoom 6 7 6 6
+press A 2 30
+mash A 60000
+expect_opponent TRAINER_SIDNEY
+# after the Hall of Fame: his rematch team
+heal
+setflag FLAG_SYS_GAME_CLEAR
+clearflag FLAG_DEFEATED_ELITE_4_SIDNEY
+warp MAP_EVER_GRANDE_CITY_SIDNEYS_ROOM 6 7
+run 150
+path EverGrandeCity_SidneysRoom 6 7 6 6
+press A 2 30
+mash A 60000
+shot e10_after_sidney_rematch
+expect_opponent TRAINER_SIDNEY_REMATCH
+clearflag FLAG_DEBUG_NO_TRAINER_SEE
+clearflag FLAG_DRACONID_NO_WHITEOUT

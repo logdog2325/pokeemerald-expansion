@@ -245,6 +245,15 @@ Route110_EventScript_DraconidRegisterMay::
 	return
 
 
+RustboroCity_DevonCorp_3F_EventScript_DraconidGiveExpShare::
+	msgbox RustboroCity_DevonCorp_3F_EventScript_DraconidGiveExpShare_Text_0
+	giveitem ITEM_EXP_SHARE
+	setflag FLAG_RECEIVED_EXP_SHARE
+	setflag FLAG_EXP_SHARE_ON
+	msgbox RustboroCity_DevonCorp_3F_Text_ExplainExpShare, MSGBOX_DEFAULT
+	return
+
+
 RustboroCity_EventScript_DraconidTabithaGoodsOrder_Text_0:
 	.string "TABITHA: Hehehe! Did you see that?\n"
 	.string "AQUA just ran off with DEVON's package!\p"
@@ -311,14 +320,18 @@ SlateportCity_OceanicMuseum_1F_EventScript_DraconidTabitha_Text_0:
 	.string "They'll notice.$"
 
 Route110_EventScript_DraconidRegisterMay_Text_0:
-	.string "MAY: Anyway! Let's register each other\n"
-	.string "in our POKéNAVS.\p"
-	.string "That way I can check up on you. Don't\n"
-	.string "make that face.$"
+	.string "MAY: One more thing. I'm registering you\n"
+	.string "in my POKéNAV.\p"
+	.string "If MAGMA tries anything, I want to know\n"
+	.string "where you are.$"
 
 Route110_EventScript_DraconidRegisterMay_Text_1:
 	.string "Registered MAY in the POKéNAV.$"
 
 Route110_EventScript_DraconidRegisterMay_Text_2:
-	.string "MAY: I'm off to look for new POKéMON.\n"
-	.string "See you, {PLAYER}!$"
+	.string "MAY: Next time, I won't lose.\n"
+	.string "You'll see, {PLAYER}!$"
+
+RustboroCity_DevonCorp_3F_EventScript_DraconidGiveExpShare_Text_0:
+	.string "MR. STONE: And one more thing. DEVON's\n"
+	.string "newest invention!$"

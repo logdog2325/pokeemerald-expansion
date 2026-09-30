@@ -61,6 +61,7 @@ Tick each checkpoint as you pass it; note anything odd with where it happened.
 | 25 | After the credits | You wake in the Draconid bedroom; downstairs Norman brings the **SS Ticket** and the Lati TV news airs | |
 | 26 | Birch's lab (post-game) | May and Brendan singles, then their double; Johto starters as in vanilla | |
 | 27 | Draconid shrine (post-game) | Aster rematch | |
+| 28 | Battle Frontier (post-game, S.S. Tidal) | **Wes** in the Battle Pyramid's sands, **Red** below Artisan Cave, **Blue** by the Battle Tower door; each battles again whenever asked. After beating one, the attendant by the Tower door runs the **LEGENDS' TAG**: that legend as your partner against the other two (debug: warp to `MAP_BATTLE_FRONTIER_OUTSIDE_EAST` with `FLAG_SYS_GAME_CLEAR` set) | Mega Charizard X, Mega Alakazam, all three partners |
 
 ## Things worth pushing on
 - **Difficulty**: does each gym leader and ace trainer feel beatable at the cap without grinding past it?

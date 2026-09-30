@@ -1,0 +1,511 @@
+{
+ "source": "Serebii.net, Pokemon World Tournament - Champions Tournament (Black 2 / White 2)",
+ "url": "https://www.serebii.net/black2white2/pwt/champion.shtml",
+ "fetched": "2026-09-30",
+ "trainers": [
+  {
+   "name": "Blue",
+   "class": "Pokémon Trainer",
+   "mons": [
+    {
+     "species": "Aerodactyl",
+     "level": 50,
+     "item": "Choice Band",
+     "moves": [
+      "Stone Edge",
+      "Earthquake",
+      "Ice Fang",
+      "Fire Blast"
+     ]
+    },
+    {
+     "species": "Exeggutor",
+     "level": 50,
+     "item": "Life Orb",
+     "moves": [
+      "Leaf Storm",
+      "Wood Hammer",
+      "Zen Headbutt",
+      "Leech Seed"
+     ]
+    },
+    {
+     "species": "Gyarados",
+     "level": 50,
+     "item": "King's Rock",
+     "moves": [
+      "Waterfall",
+      "Earthquake",
+      "Ice Fang",
+      "Outrage"
+     ]
+    },
+    {
+     "species": "Alakazam",
+     "level": 50,
+     "item": "Focus Sash",
+     "moves": [
+      "Psychic",
+      "Focus Blast",
+      "Shadow Ball",
+      "Reflect"
+     ]
+    },
+    {
+     "species": "Arcanine",
+     "level": 50,
+     "item": "Expert Belt",
+     "moves": [
+      "Flare Blitz",
+      "Close Combat",
+      "Wild Charge",
+      "Extremespeed"
+     ]
+    },
+    {
+     "species": "Machamp",
+     "level": 50,
+     "item": "White Herb",
+     "moves": [
+      "Superpower",
+      "Stone Edge",
+      "Fire Punch",
+      "Bullet Punch"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Lance",
+   "class": "Pokémon Trainer",
+   "mons": [
+    {
+     "species": "Dragonite",
+     "level": 50,
+     "item": "Focus Sash",
+     "moves": [
+      "Extremespeed",
+      "Ice Punch",
+      "Fire Punch",
+      "Draco Meteor"
+     ]
+    },
+    {
+     "species": "Salamence",
+     "level": 50,
+     "item": "Expert Belt",
+     "moves": [
+      "Dragon Claw",
+      "Crunch",
+      "Earthquake",
+      "Stone Edge"
+     ]
+    },
+    {
+     "species": "Kingdra",
+     "level": 50,
+     "item": "Scope Lens",
+     "moves": [
+      "Surf",
+      "Ice Beam",
+      "Dragon Pulse",
+      "Flash Cannon"
+     ]
+    },
+    {
+     "species": "Hydreigon",
+     "level": 50,
+     "item": "White Herb",
+     "moves": [
+      "Draco Meteor",
+      "Fire Blast",
+      "Earth Power",
+      "Dark Pulse"
+     ]
+    },
+    {
+     "species": "Haxorus",
+     "level": 50,
+     "item": "Choice Scarf",
+     "moves": [
+      "Outrage",
+      "Superpower",
+      "Earthquake",
+      "Rock Slide"
+     ]
+    },
+    {
+     "species": "Flygon",
+     "level": 50,
+     "item": "Power Herb",
+     "moves": [
+      "Solarbeam",
+      "Draco Meteor",
+      "Earth Power",
+      "U-turn"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Steven",
+   "class": "Pokémon Trainer",
+   "mons": [
+    {
+     "species": "Metagross",
+     "level": 50,
+     "item": "Occa Berry",
+     "moves": [
+      "Hammer Arm",
+      "Bullet Punch",
+      "Zen Headbutt",
+      "Earthquake"
+     ]
+    },
+    {
+     "species": "Aggron",
+     "level": 50,
+     "item": "Air Balloon",
+     "moves": [
+      "Head Smash",
+      "Metal Burst",
+      "Earthquake",
+      "Avalanche"
+     ]
+    },
+    {
+     "species": "Excadrill",
+     "level": 50,
+     "item": "Focus Sash",
+     "moves": [
+      "Earthquake",
+      "Rock Slide",
+      "X-scissor",
+      "Sandstorm"
+     ]
+    },
+    {
+     "species": "Archeops",
+     "level": 50,
+     "item": "Sitrus Berry",
+     "moves": [
+      "Quick Attack",
+      "Acrobatics",
+      "Head Smash",
+      "Earthquake"
+     ]
+    },
+    {
+     "species": "Cradily",
+     "level": 50,
+     "item": "Expert Belt",
+     "moves": [
+      "Stone Edge",
+      "Seed Bomb",
+      "Earthquake",
+      "Sandstorm"
+     ]
+    },
+    {
+     "species": "Armaldo",
+     "level": 50,
+     "item": "White Herb",
+     "moves": [
+      "X-scissor",
+      "Rock Blast",
+      "Earthquake",
+      "Superpower"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Wallace",
+   "class": "Pokémon Trainer",
+   "mons": [
+    {
+     "species": "Milotic",
+     "level": 50,
+     "item": "Rocky Helmet",
+     "moves": [
+      "Scald",
+      "Icy Wind",
+      "Rest",
+      "Sleep Talk"
+     ]
+    },
+    {
+     "species": "Sharpedo",
+     "level": 50,
+     "item": "Focus Sash",
+     "moves": [
+      "Aqua Jet",
+      "Zen Headbutt",
+      "Hydro Pump",
+      "Crunch"
+     ]
+    },
+    {
+     "species": "Walrein",
+     "level": 50,
+     "item": "Leftovers",
+     "moves": [
+      "Yawn",
+      "Blizzard",
+      "Surf",
+      "Sheer Cold"
+     ]
+    },
+    {
+     "species": "Ludicolo",
+     "level": 50,
+     "item": "Life Orb",
+     "moves": [
+      "Giga Drain",
+      "Surf",
+      "Focus Blast",
+      "Rain Dance"
+     ]
+    },
+    {
+     "species": "Swampert",
+     "level": 50,
+     "item": "Rindo Berry",
+     "moves": [
+      "Ice Beam",
+      "Muddy Water",
+      "Earth Power",
+      "Focus Blast"
+     ]
+    },
+    {
+     "species": "Starmie",
+     "level": 50,
+     "item": "Expert Belt",
+     "moves": [
+      "Thunderbolt",
+      "Psychic",
+      "Surf",
+      "Signal Beam"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Cynthia",
+   "class": "Pokémon Trainer",
+   "mons": [
+    {
+     "species": "Garchomp",
+     "level": 50,
+     "item": "Focus Sash",
+     "moves": [
+      "Outrage",
+      "Earthquake",
+      "Stone Edge",
+      "Swords Dance"
+     ]
+    },
+    {
+     "species": "Spiritomb",
+     "level": 50,
+     "item": "Rocky Helmet",
+     "moves": [
+      "Pain Split",
+      "Will-o-wisp",
+      "Protect",
+      "Sucker Punch"
+     ]
+    },
+    {
+     "species": "Togekiss",
+     "level": 50,
+     "item": "Leftovers",
+     "moves": [
+      "Air Slash",
+      "Aura Sphere",
+      "Grass Knot",
+      "Shadow Ball"
+     ]
+    },
+    {
+     "species": "Lucario",
+     "level": 50,
+     "item": "Life Orb",
+     "moves": [
+      "Close Combat",
+      "Stone Edge",
+      "Extremespeed",
+      "Dark Pulse"
+     ]
+    },
+    {
+     "species": "Roserade",
+     "level": 50,
+     "item": "White Herb",
+     "moves": [
+      "Leaf Storm",
+      "Shadow Ball",
+      "Sludge Bomb",
+      "Sleep Powder"
+     ]
+    },
+    {
+     "species": "Glaceon",
+     "level": 50,
+     "item": "Choice Scarf",
+     "moves": [
+      "Ice Beam",
+      "Signal Beam",
+      "Shadow Ball",
+      "Water Pulse"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Alder",
+   "class": "Pokémon Trainer",
+   "mons": [
+    {
+     "species": "Volcarona",
+     "level": 50,
+     "item": "Charti Berry",
+     "moves": [
+      "Quiver Dance",
+      "Heat Wave",
+      "Bug Buzz",
+      "Psychic"
+     ]
+    },
+    {
+     "species": "Conkeldurr",
+     "level": 50,
+     "item": "Life Orb",
+     "moves": [
+      "Hammer Arm",
+      "Mach Punch",
+      "Payback",
+      "Stone Edge"
+     ]
+    },
+    {
+     "species": "Reuniclus",
+     "level": 50,
+     "item": "Leftovers",
+     "moves": [
+      "Light Screen",
+      "Reflect",
+      "Toxic",
+      "Psychic"
+     ]
+    },
+    {
+     "species": "Krookodile",
+     "level": 50,
+     "item": "Expert Belt",
+     "moves": [
+      "Earthquake",
+      "Crunch",
+      "Stone Edge",
+      "Outrage"
+     ]
+    },
+    {
+     "species": "Chandelure",
+     "level": 50,
+     "item": "Choice Scarf",
+     "moves": [
+      "Flamethrower",
+      "Shadow Ball",
+      "Energy Ball",
+      "Psychic"
+     ]
+    },
+    {
+     "species": "Braviary",
+     "level": 50,
+     "item": "Choice Band",
+     "moves": [
+      "Brave Bird",
+      "Superpower",
+      "Rock Slide",
+      "U-turn"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Red",
+   "class": "Pokémon Trainer",
+   "mons": [
+    {
+     "species": "Venusaur",
+     "level": 50,
+     "item": "White Herb",
+     "moves": [
+      "Leaf Storm",
+      "Sludge Bomb",
+      "Earthquake",
+      "Sleep Powder"
+     ]
+    },
+    {
+     "species": "Charizard",
+     "level": 50,
+     "item": "Focus Sash",
+     "moves": [
+      "Fire Blast",
+      "Focus Blast",
+      "Air Slash",
+      "Dragon Pulse"
+     ]
+    },
+    {
+     "species": "Blastoise",
+     "level": 50,
+     "item": "Choice Scarf",
+     "moves": [
+      "Water Spout",
+      "Hydro Pump",
+      "Blizzard",
+      "Focus Blast"
+     ]
+    },
+    {
+     "species": "Pikachu",
+     "level": 50,
+     "item": "Light Ball",
+     "moves": [
+      "Volt Tackle",
+      "Iron Tail",
+      "Brick Break",
+      "Fake Out"
+     ]
+    },
+    {
+     "species": "Snorlax",
+     "level": 50,
+     "item": "Quick Claw",
+     "moves": [
+      "Body Slam",
+      "Earthquake",
+      "Crunch",
+      "Seed Bomb"
+     ]
+    },
+    {
+     "species": "Lapras",
+     "level": 50,
+     "item": "Sitrus Berry",
+     "moves": [
+      "Ice Beam",
+      "Hydro Pump",
+      "Ice Shard",
+      "Thunderbolt"
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -82,6 +82,9 @@ MAP_SEGMENT = [
     ("MeteorFalls_StevensCave", "POST"), ("SSTidal", "POST"), ("LittlerootTown_ProfessorBirchsLab", "POST"),
 ]
 
+EGGS = ("DEINO", "DREEPY", "JANGMO_O")
+STARTERS = ("CHARMANDER", "TOTODILE", "TREECKO")
+
 # Trainers whose part of a map is reached at another time (checked against map.json coordinates).
 OVERRIDES = {
     # Route 111 desert (needs the Go-Goggles from Flannery)
@@ -99,19 +102,40 @@ OVERRIDES = {
     # League
     **{t: "S9" for t in ["SIDNEY", "PHOEBE", "GLACIA", "DRAKE", "WALLACE", "WALLY_VR_1"]},
     "STEVEN": "POST",
-    # Story battles (data/scripts/draconid/*.pory)
-    "MAY_ROUTE_103": "S1", "MAY_RUSTBORO": "S2", "WALLY_PETALBURG": "S5", "BRENDAN_ROUTE_119": "S6",
+    # Story battles (round 1 schedule, data/scripts/draconid/*.pory); variant ids (D-101) share their fight's segment
+    "MAY_ROUTE_103": "S1", "BRENDAN_RUSTBORO": "S1", "MAY_ROUTE_110": "S3", "BRENDAN_MT_CHIMNEY": "S4",
+    "BRENDAN_ROUTE_119": "S6", "BRENDAN_LILYCOVE": "S7", "MAY_LILYCOVE": "S7", "BRENDAN_MOSSDEEP": "S8",
+    "MAY_RUSTBORO": "S2", "WALLY_PETALBURG": "S5",
+    # more rival battles in Acts 1-5 (data/scripts/draconid/rivals2.pory, D-234)
+    "BRENDAN_ROUTE_104": "S2", "WALLY_ROUTE_112": "S4", "MAY_LAVARIDGE": "S5", "WALLY_ROUTE_120": "S6",
+    "BRENDAN_JAGGED_PASS": "S7", "MAY_MOSSDEEP": "S8",
     "WALLY_VR_2": "POST",  # Wally's rematches start after the Champion
-    **{"ASTER_METEOR_FALLS_" + e: "S4" for e in ("DEINO", "DREEPY", "JANGMO_O")},
-    **{"ASTER_ROUTE_119_" + e: "S6" for e in ("DEINO", "DREEPY", "JANGMO_O")},
-    **{"ASTER_SKY_PILLAR_" + e: "POST" for e in ("DEINO", "DREEPY", "JANGMO_O")},  # round 1: Act 7, after the Champion
-    **{"ASTER_POSTGAME_" + e: "POST" for e in ("DEINO", "DREEPY", "JANGMO_O")},
-    "BRENDAN_SOOTOPOLIS": "S9", "MAY_SOOTOPOLIS": "S9",
+    # Steven at the Space Center is overlevelled on purpose: he's the Champion (D-108), so no cap applies
+    "STEVEN_MOSSDEEP": "POST",
+    "MAXIE_SOOTOPOLIS": "S8", "MAXIE_SOOTOPOLIS_MULTI": "S8", "ARCHIE_SOOTOPOLIS_MULTI": "S8",
+    **{"ASTER_PASS_" + e: "S1" for e in EGGS},
+    **{"ASTER_METEOR_FALLS_" + e: "S4" for e in EGGS},
+    # the Sky Pillar finale is after the League (D-109)
+    **{"ASTER_SKY_PILLAR_" + e: "POST" for e in EGGS},
+    **{"ASTER_POSTGAME_" + e: "POST" for e in EGGS},
+    "ZINNIA_SKY_PILLAR": "POST",
+    # the Elite Four's ORAS post-game rematch teams, used once the game is cleared (D-174)
+    **{t + "_REMATCH": "POST" for t in ("SIDNEY", "PHOEBE", "GLACIA", "DRAKE")},
+    # the Battle Frontier legends and their legends' tag teams, after the Hall of Fame (D-225, D-226)
+    **{t + "_FRONTIER" + m: "POST" for t in ("WES", "RED", "BLUE") for m in ("", "_MULTI")},
+    **{"NERINE_PETALBURG_WOODS_" + e: "S1" for e in EGGS},
+    **{"NERINE_%s_%s_%s" % (f, e, st): seg for f, seg in (("RUSTURF", "S2"), ("SLATEPORT", "S3"), ("MT_CHIMNEY", "S4"),
+                                                         ("MT_PYRE", "S7"), ("AQUA_HIDEOUT", "S7"), ("SEAFLOOR", "S8"),
+                                                         ("POSTGAME", "POST"))
+       for e in EGGS for st in STARTERS},
     **{t: "POST" for t in ["BRENDAN_POSTGAME", "MAY_POSTGAME", "BRENDAN_POSTGAME_DOUBLE", "MAY_POSTGAME_DOUBLE"]},
     # Gabby & Ty move on after every battle (Route 111 -> 118 -> 120 ...)
     "GABBY_AND_TY_1": "S4", "GABBY_AND_TY_2": "S4", "GABBY_AND_TY_3": "S5",
     "GABBY_AND_TY_4": "S6", "GABBY_AND_TY_5": "S7", "GABBY_AND_TY_6": "S8",
 }
+# every id the game uses (TRAINERS_COUNT_EMERALD)
+MAX_ID = 937
+
 TIER_MIN = {2: "S6", 3: "S7", 4: "S8", 5: "POST", 6: "POST"}
 
 LEADERS = ["ROXANNE_1", "BRAWLY_1", "WATTSON_1", "FLANNERY_1", "NORMAN_1", "WINONA_1", "TATE_AND_LIZA_1", "JUAN_1"]
@@ -119,13 +143,21 @@ ELITE = ["SIDNEY", "PHOEBE", "GLACIA", "DRAKE", "WALLACE", "STEVEN"]
 BOSSES = ["MAXIE", "ARCHIE"]
 ADMINS = ["TABITHA", "SHELLY", "MATT"]
 # Battles written by hand with the story (Phase 5): not in the trainer batches.
-STORY = re.compile(r"^TRAINER_(BRENDAN|MAY|WALLY|ASTER)_")
+STORY = re.compile(r"^TRAINER_(BRENDAN|MAY|WALLY|ASTER|NERINE|ZINNIA|STEVEN_MOSSDEEP|MAXIE_SOOTOPOLIS|ARCHIE_SOOTOPOLIS)")
 SKIP = {"TRAINER_BRENDAN_PLACEHOLDER", "TRAINER_MAY_PLACEHOLDER", "TRAINER_RED", "TRAINER_LEAF",
         "TRAINER_GRUNT_UNUSED", "TRAINER_CINDY_2", "TRAINER_AMY_AND_LIV_3", "TRAINER_GINA_AND_MIA_2",
         "TRAINER_LUCAS_2", "TRAINER_MIKE_1", "TRAINER_DUDLEY", "TRAINER_KAYLEE", "TRAINER_TERRY",
         # Frontier Brains: their parties come from the Frontier code, not trainers.party
         "TRAINER_ANABEL", "TRAINER_TUCKER", "TRAINER_SPENSER", "TRAINER_GRETA", "TRAINER_NOLAND",
-        "TRAINER_LUCY", "TRAINER_BRANDON"}
+        "TRAINER_LUCY", "TRAINER_BRANDON",
+        # round 1: a vanilla Aqua grunt whose battle is Nerine's now
+        "TRAINER_GRUNT_RUSTURF_TUNNEL",
+        # round 1 Act 4: Maxie promotes the player in the Magma Hideout instead of battling (D-134)
+        "TRAINER_MAXIE_MAGMA_HIDEOUT",
+        # round 1 Act 3: Mt. Chimney is one scene with Nerine and Brendan; Tabitha and Maxie don't battle (D-123)
+        "TRAINER_TABITHA_MT_CHIMNEY", "TRAINER_MAXIE_MT_CHIMNEY",
+        # round 1 Act 5: at the Space Center Tabitha is the player's partner against Steven + Brendan (D-141)
+        "TRAINER_TABITHA_MOSSDEEP", "TRAINER_MAXIE_MOSSDEEP"}
 
 
 def read_caps():
@@ -191,7 +223,7 @@ def main():
                 tiers.setdefault(t, (i, row[0]))
 
     for tid in sorted(ids, key=ids.get):
-        if not 0 < ids[tid] < 858 + 6 or tid in tiers:
+        if not 0 < ids[tid] < MAX_ID or tid in tiers:
             continue
         short = tid[len("TRAINER_"):]
         seg = OVERRIDES.get(short) or (map_segment(where[tid]) if tid in where else None)
@@ -208,7 +240,7 @@ def main():
             seg = ORDER[max(ORDER.index(b["segment"]), ORDER.index(TIER_MIN[tier]))]
         put(tid, seg, b["role"], tier, base)
 
-    unplaced = [t for t in ids if 0 < ids[t] < 858 + 6 and t not in trainers and t not in SKIP]
+    unplaced = [t for t in ids if 0 < ids[t] < MAX_ID and t not in trainers and t not in SKIP]
     segs = {s: {"cap": caps[s], "label": LABELS[s], "route": BANDS[s][0], "gym": BANDS[s][1],
                 "ace": BANDS[s][2]} for s in ORDER}
     data = {"segments": segs, "trainers": {t: trainers[t]["segment"] for t in sorted(trainers, key=ids.get)},

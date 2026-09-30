@@ -65,11 +65,88 @@ mash A 30000
 shot a30_mr_stone
 expect_flag FLAG_RECEIVED_POKENAV 1
 expect_item ITEM_LETTER 1
+# the Gen 6 Exp. Share comes with the PokéNav, switched on (D-185)
+expect_item ITEM_EXP_SHARE 1
+expect_flag FLAG_EXP_SHARE_ON 1
+
+# --- Mr. Briney's boat to Dewford: Maxie's first call (not "Dad" Norman, D-186) ---
+# after Peeko's rescue Briney paces (9, 3) <-> (9, 4) (a table blocks the rest of his loop): wait below him
+# facing up and tap A until he's in front
+warp MAP_ROUTE104_MR_BRINEYS_HOUSE 9 6
+path Route104_MrBrineysHouse 9 6 9 5
+press A 2 12
+press A 2 12
+press A 2 12
+press A 2 12
+press A 2 12
+press A 2 12
+press A 2 12
+press A 2 12
+press A 2 12
+press A 2 12
+press A 2 12
+press A 2 12
+press A 2 12
+press A 2 12
+press A 2 12
+press A 2 12
+press A 2 12
+press A 2 12
+press A 2 12
+press A 2 12
+press A 2 12
+press A 2 12
+press A 2 12
+press A 2 12
+press A 2 12
+press A 2 12
+press A 2 12
+press A 2 12
+press A 2 12
+press A 2 12
+press A 2 12
+press A 2 12
+press A 2 12
+press A 2 12
+press A 2 12
+press A 2 12
+press A 2 12
+press A 2 12
+press A 2 12
+press A 2 12
+press A 2 12
+press A 2 12
+press A 2 12
+press A 2 12
+press A 2 12
+press A 2 12
+press A 2 12
+press A 2 12
+press A 2 12
+press A 2 12
+press A 2 12
+press A 2 12
+press A 2 12
+press A 2 12
+press A 2 12
+press A 2 12
+press A 2 12
+press A 2 12
+press A 2 12
+press A 2 12
+mash A 60000
+run 60
+mash A 60000
+shot a35_dewford
+mapid
+expect_var VAR_MAXIE_CALL 1
+expect_flag FLAG_ENABLE_NORMAN_MATCH_CALL 0
 
 # --- Granite Cave: Steven ---
-warp MAP_GRANITE_CAVE_STEVENS_ROOM 7 10
-path GraniteCave_StevensRoom 7 10 7 9
-press UP 2 10
+warp MAP_GRANITE_CAVE_STEVENS_ROOM 7 9
+# let the warp fade finish, or the turn below is lost
+run 150
+press UP 2 20
 press A 2 30
 mash A 20000
 shot a40_steven

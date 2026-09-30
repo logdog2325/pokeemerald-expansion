@@ -1,0 +1,187 @@
+# The rivals' PokéNav Match Call texts follow their story state and the player's reputation (D-243,
+# data/scripts/draconid/rival_calls.pory, src/pokenav_match_call_data.c). Needs rustboro_done.ss
+# (tests/rustboro.play). States are set by hand; each call is made through the real PokéNav (START, POKéNAV,
+# MATCH CALL, the contact, CALL) and expect_text checks gStringVar4 holds the text the table should pick.
+# The Match Call list shows Mr. Stone, Brendan, May and Wally in that order (the header order).
+loadstate rustboro_done.ss
+setflag FLAG_DEBUG_NO_ENCOUNTER
+setflag FLAG_DEBUG_NO_TRAINER_SEE
+setflag FLAG_SYS_POKENAV_GET
+setflag FLAG_HAS_MATCH_CALL
+setflag FLAG_ADDED_MATCH_CALL_TO_POKENAV
+setflag FLAG_ENABLE_RIVAL_MATCH_CALL
+setflag FLAG_ENABLE_BRENDAN_MATCH_CALL
+setflag FLAG_ENABLE_WALLY_MATCH_CALL
+setvar VAR_DRACONID_REPUTATION 1
+
+# --- in uniform: May after the third badge (Route 110 state)
+setvar VAR_MAY_STATE 1
+setflag FLAG_BADGE03_GET
+bagcursor POCKET_ITEMS 0
+run 20
+press START 2 40
+press DOWN 2 10
+press DOWN 2 10
+press DOWN 2 10
+press A 2 200
+press DOWN 2 20
+press DOWN 2 20
+press A 2 150
+press DOWN 2 20
+press DOWN 2 20
+press A 2 60
+press A 2 150
+press A 2 90
+shot 01_may_uniform
+expect_text Draconid_Text_MayCallUniform2
+mash B 900
+
+# --- May after the Mt. Pyre Orbs (Lilycove state)
+setvar VAR_MAY_STATE 3
+setflag FLAG_RECEIVED_RED_OR_BLUE_ORB
+bagcursor POCKET_ITEMS 0
+run 20
+press START 2 40
+press DOWN 2 10
+press DOWN 2 10
+press DOWN 2 10
+press A 2 200
+press DOWN 2 20
+press DOWN 2 20
+press A 2 150
+press DOWN 2 20
+press DOWN 2 20
+press A 2 60
+press A 2 150
+press A 2 90
+shot 02_may_orbs
+expect_text Draconid_Text_MayCallUniform7
+mash B 900
+
+# --- Brendan after the Space Center
+setvar VAR_BRENDAN_STATE 5
+bagcursor POCKET_ITEMS 0
+run 20
+press START 2 40
+press DOWN 2 10
+press DOWN 2 10
+press DOWN 2 10
+press A 2 200
+press DOWN 2 20
+press DOWN 2 20
+press A 2 150
+press DOWN 2 20
+press A 2 60
+press A 2 150
+press A 2 90
+shot 03_brendan_space_center
+expect_text Draconid_Text_BrendanCallUniform5
+mash B 900
+
+# --- Wally after the fourth badge
+setvar VAR_WALLY_STATE 0
+setflag FLAG_BADGE04_GET
+bagcursor POCKET_ITEMS 0
+run 20
+press START 2 40
+press DOWN 2 10
+press DOWN 2 10
+press DOWN 2 10
+press A 2 200
+press DOWN 2 20
+press DOWN 2 20
+press A 2 150
+press DOWN 2 20
+press DOWN 2 20
+press DOWN 2 20
+press A 2 60
+press A 2 150
+press A 2 90
+shot 04_wally_uniform
+expect_text Draconid_Text_WallyCallUniform2
+mash B 900
+
+# --- after the Sootopolis turn: the revealed tables (eight badges)
+setvar VAR_DRACONID_REPUTATION 2
+setvar VAR_MAY_STATE 4
+setvar VAR_BRENDAN_STATE 6
+setflag FLAG_BADGE08_GET
+bagcursor POCKET_ITEMS 0
+run 20
+press START 2 40
+press DOWN 2 10
+press DOWN 2 10
+press DOWN 2 10
+press A 2 200
+press DOWN 2 20
+press DOWN 2 20
+press A 2 150
+press DOWN 2 20
+press DOWN 2 20
+press A 2 60
+press A 2 150
+press A 2 90
+shot 05_may_revealed
+expect_text Draconid_Text_MayCallRevealed2
+mash B 900
+
+bagcursor POCKET_ITEMS 0
+run 20
+press START 2 40
+press DOWN 2 10
+press DOWN 2 10
+press DOWN 2 10
+press A 2 200
+press DOWN 2 20
+press DOWN 2 20
+press A 2 150
+press DOWN 2 20
+press A 2 60
+press A 2 150
+press A 2 90
+shot 06_brendan_revealed
+expect_text Draconid_Text_BrendanCallRevealed2
+mash B 900
+
+# --- Wally after Victory Road
+setflag FLAG_DEFEATED_WALLY_VICTORY_ROAD
+bagcursor POCKET_ITEMS 0
+run 20
+press START 2 40
+press DOWN 2 10
+press DOWN 2 10
+press DOWN 2 10
+press A 2 200
+press DOWN 2 20
+press DOWN 2 20
+press A 2 150
+press DOWN 2 20
+press DOWN 2 20
+press DOWN 2 20
+press A 2 60
+press A 2 150
+press A 2 90
+shot 07_wally_revealed
+expect_text Draconid_Text_WallyCallRevealed2
+mash B 900
+
+# --- after the Hall of Fame
+setflag FLAG_SYS_GAME_CLEAR
+bagcursor POCKET_ITEMS 0
+run 20
+press START 2 40
+press DOWN 2 10
+press DOWN 2 10
+press DOWN 2 10
+press A 2 200
+press DOWN 2 20
+press DOWN 2 20
+press A 2 150
+press DOWN 2 20
+press DOWN 2 20
+press A 2 60
+press A 2 150
+press A 2 90
+shot 08_may_champion
+expect_text Draconid_Text_MayCallRevealed3
+mash B 900

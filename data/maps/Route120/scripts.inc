@@ -55,6 +55,7 @@ Route120_EventScript_SetBridgeKecleonMovement::
 
 Route120_OnTransition:
 	call GabbyAndTy_EventScript_UpdateLocation
+	call Route120_EventScript_DraconidOnTransition  @ Draconid Emerald: WALLY on the south bridge (rivals2.pory)
 	call Route120_EventScript_SetWeather
 	end
 
@@ -359,16 +360,16 @@ Route120_EventScript_Callie::
 	msgbox Route120_Text_CalliePostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route120_Text_StevenGreeting:
+Route120_Text_StevenGreeting:  @ Draconid Emerald
 	.string "STEVEN: Hm? {PLAYER}{KUN}, hi.\n"
-	.string "It's been a while.\p"
+	.string "Still wearing red, I see.\p"
 	.string "There's something here that you can't\n"
 	.string "see, right?\p"
-	.string "Now, if I were to use this device on\n"
-	.string "the invisible obstacle…\p"
-	.string "No, no. Rather than describing it,\n"
-	.string "I should just show you.\l"
-	.string "That would be more fun.\p"
+	.string "Now, if I were to use this device on the\n"
+	.string "invisible obstacle…\p"
+	.string "No, no. Rather than describing it, I\n"
+	.string "should just show you. That would be\l"
+	.string "more fun.\p"
 	.string "{PLAYER}{KUN}, are your POKéMON ready for\n"
 	.string "battle?$"
 
@@ -390,22 +391,22 @@ Route120_Text_StevenUsedDevonScope:
 	.string "visible!\p"
 	.string "The startled POKéMON attacked!$"
 
-Route120_Text_StevenGiveDevonScope:
+Route120_Text_StevenGiveDevonScope:  @ Draconid Emerald
 	.string "STEVEN: I see…\n"
 	.string "Your battle style is intriguing.\p"
 	.string "Your POKéMON have obviously grown\n"
 	.string "since I first met you in DEWFORD.\p"
-	.string "I'd like you to have this\n"
-	.string "DEVON SCOPE.\p"
+	.string "Whoever you're really working for, they\n"
+	.string "trust you. That much is plain.\p"
+	.string "I'd like you to have this DEVON SCOPE.\p"
 	.string "Who knows, there may be other\n"
 	.string "concealed POKéMON.$"
 
-Route120_Text_StevenGoodbye:
+Route120_Text_StevenGoodbye:  @ Draconid Emerald
 	.string "STEVEN: {PLAYER}{KUN}.\p"
-	.string "I enjoy seeing POKéMON and TRAINERS\n"
-	.string "who strive together.\p"
-	.string "I think you're doing great.\p"
-	.string "Well, let's meet again somewhere.$"
+	.string "Keep your head down.\p"
+	.string "I'm watching MAXIE, too.\p"
+	.string "…Well, let's meet again somewhere.$"
 
 Kecleon_Text_SomethingUnseeable:
 	.string "Something unseeable is in the way.$"

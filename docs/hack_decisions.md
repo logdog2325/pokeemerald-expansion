@@ -174,7 +174,7 @@ when a playtest note overrides something here, the entry is updated and marked.
 - **D-064 AI**: route trainers `Basic Trainer` (+ `Smart Mon Choices` from S4), gym trainers `Basic Trainer /
   Smart Mon Choices`, bosses and rivals `Smart Trainer / Ace Pokemon`, Elite Four / Champion / post-game bosses
   `+ Prediction`. – Alt: Smart Trainer everywhere. – Bosses feel smart; route trainers stay quick to play.
-- **D-065 Species pool**: Hoenn Pokédex (with cross-gen evolutions) + every species a vanilla Emerald trainer uses;
+- **D-065 Species pool** *(extended by D-195, round 1)*: Hoenn Pokédex (with cross-gen evolutions) + every species a vanilla Emerald trainer uses;
   Deino/Dreepy/Jangmo-o lines only for the player and Aster; no legendaries. – Alt: any species. – Keeps Hoenn's
   feel and the player's dragon special.
 - **D-066 Trainer Megas**: Maxie (Magma Hideout, Camerupt), Archie (Seafloor Cavern, Sharpedo) as in ORAS,
@@ -234,7 +234,7 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   Pass, battle deep in Meteor Falls, the **Mega Ring at Jagged Pass** (made from the meteorite fragment; no
   battle), the Rayquaza calling at Sky Pillar with Nerine (scene), the Sky Pillar finale double battle, post-game.
   The second starter's Mega Stone is a Draconid gift in Lavaridge.
-- **D-106 Rival schedule (round 1)**: May – Route 103, Route 110, Lilycove (double), Sootopolis partner option,
+- **D-106 Rival schedule (round 1)** *(more battles: D-234; the Latis: D-237)*: May – Route 103, Route 110, Lilycove (double), Sootopolis partner option,
   post-game; Brendan – Rustboro city edge, Mt. Chimney (not a must-win), Route 119, Lilycove (double), Mossdeep
   with Steven (not a must-win), Sootopolis partner option, post-game. Teams from the round 1 notes: Brendan
   Sceptile / Mightyena / Swellow / Slaking / Magcargo / Latios, May Blaziken / Beautifly / Wailord / Tropius /
@@ -293,6 +293,150 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   battle (the first is still a plain grunt, so she can say "Stand aside"). May's Route 110 battle is the vanilla
   rival scene with her lines, and she registers in the PokéNav there (the vanilla Rustboro registration is
   skipped, D-115); Brendan registers on Route 119 (Act 4). – Alt: a Magma messenger grunt.
+- **D-120 Meteor Falls staging (Act 3)**: Maxie stands with the two grunts over Cozmo (a new object sharing their
+  hide flag), comes up onto the stairs to meet the player in person (his PokéNav call sent them there) and gives
+  them a shard of the meteorite (D-121); Aqua comes in from the west, Maxie orders "hold the stairs", the player
+  steps aside for Magma and back into the way, and Archie **backs down without a battle** ("a brawl on these
+  stairs costs more time than we've got") and leaves west, the long way round. Then Aster walks up from deeper in
+  the Falls (the lower level, west) for her battle. – Alt: an Aqua grunt battle to cover the retreat (no Aqua grunt
+  trainer belongs to Meteor Falls or Mt. Chimney, and the unused vanilla ones are Lv 9–18); Aster waiting further
+  in (a detour off the way to Route 112, so missable). – The stairs are the only way east, so standing on them is
+  covering the retreat, and Aster's battle stays the scene's one fight.
+- **D-121 The Mega Ring's stone**: Maxie's shard – a chip of Cozmo's meteorite, "every great work begins with a
+  small stone" – goes to the Elder with Aster after Meteor Falls, and comes back set in the Mega Ring at Jagged
+  Pass. The meteorite itself still comes out of the machine at Mt. Chimney (`ITEM_METEORITE`, Cozmo's TM as in
+  vanilla). – Alt: a fragment of the meteorite pulled at Mt. Chimney (Aster meets the player minutes later: no
+  time for the Elder to make a ring). – Keeps the story's order believable, and Maxie's gift becomes the key to the
+  player's Megas, which the betrayal makes cost him more.
+- **D-122 Aster's Meteor Falls battle can be lost**: `trainerbattle_earlyrival` with `RIVAL_BATTLE_HEAL_AFTER` (as
+  May's Route 103 battle, D-048); her lines follow the result. – Alt: must-win (v1; a whiteout after Magma and Aqua
+  have left would strand the scene's state). – One unbroken scene, and Aster tests the player rather than blocks them.
+- **D-123 Mt. Chimney staging**: one scene from talking to Maxie at his machine: Tabitha comes up for her order
+  and goes down the path (she no longer battles; her object is no longer a trainer), the player walks to (10, 10),
+  the only way up to the crater, Nerine and then Brendan come up, the mountain rumbles, Maxie turns his back on the
+  machine to watch the smoke and the player pulls the meteorite; he blames Aqua, and in a fade Magma and Aqua leave.
+  The flags the vanilla Maxie battle set come from this scene (Jagged Pass, Lavaridge's trainers, Cozmo, the cookie
+  lady). Nerine's battle is a must-win, like her others: nothing is set before it, so a whiteout replays the scene
+  from Maxie (Tabitha is only hidden – removing her would set `FLAG_HIDE_MT_CHIMNEY_TEAM_MAGMA` and hide Maxie).
+  Nerine and Brendan are scene-only objects hidden by `FLAG_TEMP_11` (set on every load). The two Magma grunt
+  trainers on the path stay trainers with rank-test lines (D-103). – Alt: the player walks to the post and a trigger
+  starts the fights (a saved state to carry across a whiteout, and the player could leave before the sabotage);
+  battles with Tabitha and Maxie (the player never fights them before Sootopolis). – The add-on asks for a scripted,
+  choice-free scene.
+- **D-124 Brendan at Mt. Chimney is not a must-win**: `trainerbattle_earlyrival(TRAINER_BRENDAN_MT_CHIMNEY,
+  RIVAL_BATTLE_HEAL_AFTER, …)` – a loss heals the party and the scene goes on, Brendan gets a victory line and
+  `VAR_RESULT` picks his after-line. – Alt: `FLAG_DRACONID_NO_WHITEOUT` around `trainerbattle_no_intro` and a heal
+  (D-108, Draconid Pass; the script can't tell who won). – One command, the same mechanism as Route 103 (D-048).
+- **D-125 Jagged Pass**: Aster waits at the top of the pass (shown by the Mt. Chimney scene) and walks over when the
+  player steps off the stairs from the summit ((13, 8) / (14, 8), on `ASTER_STATE_METEOR_FALLS`: the only way down);
+  no battle; she hands over the ring, points the player to Lavaridge and leaves in a fade. – Alt: at the foot of the
+  pass by Route 112. – The first thing after the summit, and the stairs can't be skipped.
+- **D-126 The Mega Stone gift**: a Draconid villager (`OBJ_EVENT_GFX_DRACONID_MAN`) waits by Lavaridge's east
+  entrance, shown by the Jagged Pass scene; talking to him gives the second starter's stone by `VAR_SECOND_STARTER`
+  (Charizardite X / Feraligite / Sceptilite, as the v1 Elder did); with a full bag he waits; then he leaves in a fade.
+  – Alt: a trigger that walks him to the player. – Aster names him, he stands on the way into town, and he can't be
+  missed for good.
+- **D-127 Act 3 side lines**: May's vanilla Go-Goggles scene in Lavaridge stays (the desert needs them) with round 1
+  lines – the uniform, Mt. Chimney, "my DAD's GYM in PETALBURG is next" (Norman's daughter, D-100; she watches that
+  battle, D-116). Cozmo at Meteor Falls fears the uniform; the Route 112 grunts send the "rookie" to Meteor Falls;
+  Archie at Mt. Chimney knows the player from the falls. – Alt: vanilla text ("challenge your dad").
+- **D-130 Weather Institute (Act 4)**: Tabitha waits by the Institute door on Route 119 (the order runs on the
+  doorstep, the only way in) and sends the player in; the vanilla Aqua fights stay, with Shelly and the grunts
+  reacting to the uniform. After Aqua flees, the player unties the scientists off-screen; May runs up the stairs
+  and starts to say what she saw just as Tabitha comes up to collect, turns it into an insult to cover for the
+  player, then whispers "I'll pretend I didn't see you save them". Tabitha takes the Institute's notes (the
+  "research": the weather answers to two ancient orbs, which Maxie's next phone call picks up); the scientist
+  still gives Castform, now as thanks for the rescue. – Alt: a Magma messenger grunt instead of Tabitha;
+  Castform as the research. – May can only "nearly expose" the player in front of a Magma witness, and Tabitha
+  has given the orders in person since Rustboro (D-115, D-119).
+- **D-131 Brendan on Route 119**: the vanilla scene and HM Fly stay (Brendan hands it over because May made him
+  promise), then he registers in the PokéNav (as May on Route 110) and rides off; Scott's line is unchanged.
+  – Alt: Fly from someone else. – The progression item stays where vanilla has it.
+- **D-132 Mt. Pyre**: the vanilla orbs (Magma takes the Blue Orb first, Aqua the Red). On the first visit Maxie
+  meets the player at the top of the summit stairs (OnFrame; his vanilla summit object), shows the Blue Orb,
+  orders them to hold off Aqua and gives them the Magma Emblem himself (the old lady's "they left this behind"
+  goes; she now wonders about the child in red who fought the others). The four summit grunts are the ones to
+  hold off (lines retold for a Magma opponent); Nerine blocks the stairs below the altar (a trigger row across
+  the only way up) and walks off down the mountain after the fight; then Archie takes the Red Orb (vanilla, his
+  lines address the player). `MAGMA_STATE_MT_PYRE` is set when Archie has left, so Maxie's call about the orbs
+  comes after it; until then the emblem in the bag marks Maxie's scene as done. – Alt: Maxie on the exterior;
+  Nerine as a sight trainer (can be walked past). – One arrival scene carries the order, the orb and the emblem.
+- **D-133 Magma Hideout entrance**: the Jagged Pass guard stays after Mt. Pyre (vanilla hid him there). When the
+  player comes with the emblem (the vanilla emblem triggers, or talking to him) he recognizes it, the rock opens
+  as in vanilla and he goes in ahead (`FLAG_HIDE_JAGGED_PASS_MAGMA_GUARD` is set then). Before that his vanilla
+  battle is a rank test and he won't talk about the door. Inside, the grunts and Tabitha keep their battles as
+  rank tests (D-103); lines that called the player an intruder were rewritten. – Alt: the door opens with no
+  NPC. – "The guard lets them in" (story); a trusted member doesn't sneak in.
+- **D-134 Maxie's promotion, no battle**: talking to Maxie by the magma pool first plays the promotion (Tabitha's
+  report on Mt. Pyre, "I have watched you since Meteor Falls", "Stand beside me as the land is reborn"), then
+  vanilla's awakening and Groudon's escape. The battle is cut; Maxie tells his plan instead (land for everyone,
+  the seas will shrink, the Red Orb is missing, he'll need someone inside Aqua's walls) in the two texts that
+  framed the vanilla battle, and every flag and var vanilla sets after it is still set. The player then writes
+  to the Elder (a narrated letter a traveller carries to the mountains). Maxie's Magma Hideout team (and its Mega
+  Camerupt, D-066) is not fought here any more. – Alt: keep the battle as a "test"; a call to the Elder (he has
+  no PokéNav). – The story cuts the battle; a letter needs no new object or item.
+- **D-135 Lilycove and Wally (round 1)** *(the rivals' tone: D-211; Wally's: D-236)*: the v1 fights and staging stay, with new lines. Before the double,
+  Brendan and May argue about the player (Brendan hurt but unsure since Route 119, May sure the player is secretly
+  good); afterwards both go home to Littleroot as in v1. Wally trusts what he saw in Mauville, at the Petalburg
+  Gym door ("MR. NORMAN", May's dad) and in Lilycove. – The add-on.
+- **D-136 Scene-only NPCs use temp flags**: May and Tabitha on the Weather Institute 2F and Nerine on the summit
+  are hidden by `FLAG_TEMP_11/12`, which the map's OnTransition sets (as May in the Petalburg Gym, D-116); Maxie
+  on the summit borrows his vanilla object and flag. Only Tabitha on Route 119 needs a saved flag (0x35).
+  – Alt: a saved flag per NPC. – The shared flag budget is small, and these NPCs never stay after their scene.
+- **D-137 Steven on Route 120**: vanilla scene and Devon Scope; he notices the uniform ("Still wearing red, I
+  see"), "Whoever you're really working for, they trust you", and leaves with "Keep your head down. I'm watching
+  MAXIE, too." (story step 19).
+- **D-140 Tabitha's raid, no Maxie at Mossdeep**: Maxie is off chasing Groudon (his PokéNav call sends the player to
+  Tabitha), so the vanilla city scene's Maxie object is Tabitha (drawn as a grunt, D-115) and the Space Center 2F
+  has no Maxie; his vanilla "is our goal misguided?" doubts are not said here (at Sootopolis he still wants
+  Groudon). The Magma grunt trainers on 1F and the three on 2F stay battles as **rank tests** of the promoted
+  rookie (D-103). – Alt: Maxie at the Space Center without battling (he would have to doubt himself before
+  Sootopolis, where the add-on has him order the player to help him control Groudon).
+- **D-141 Space Center staging**: Steven and Brendan hold the 2F corner by the fuel, Tabitha faces them; coord
+  triggers across the only way in (x 7, after the grunts) walk the player to Tabitha's side, so the scene can't be
+  skipped or talked into from odd angles. Tabitha heals the player's team first (there is no break between the
+  rank test and the battle), the player picks three (the vanilla half-party menu), and the battle can't white out.
+  **Whoever wins, the scientists have sealed the tanks during the battle** (a voice from the control room); Steven
+  says the player kept Tabitha busy long enough ("I know you let us win the important part"), heals the team after a
+  loss, and Brendan storms off down the stairs. The vanilla ending runs after that (every flag, Steven's house and
+  HM Dive). Brendan's object reuses 0x3E (`FLAG_HIDE_MOSSDEEP_SPACE_CENTER_RIVALS`, name kept). – Alt: a must-win
+  battle (the add-on says not); Magma retreating only after a loss (then a win would give them the fuel).
+- **D-142 Nerine, Aqua Hideout and Seafloor Cavern**: in the hideout she stands beside Matt at the submarine dock and
+  **talking to Matt brings her in first**, so fight 5 can't be skipped; afterwards she dives after Archie's
+  submarine. In the Seafloor Cavern she waits at the entrance of the last room (Room 9, before Archie's chamber) and
+  the reveal plays on arrival: her object draws from `VAR_OBJ_GFX_ID_0` and changes from the Aqua disguise to her
+  own outfit behind a fade. Both are ordinary must-win battles (a loss whites out; the scene plays again).
+  `MAGMA_STATE_SEAFLOOR` is set when Kyogre wakes (end of the vanilla Archie scene), not at the reveal, because
+  Maxie's next PokéNav call says Kyogre is awake. – Alt: a second object for her true look (one more flag); the
+  reveal in Room 8 (the boulder room: no free tile beside the exit).
+- **D-143 The Sootopolis turn**: after the vanilla Groudon/Kyogre scene the player surfs to the Gym island and talks
+  to Maxie; he orders the player to help him control Groudon, the player remembers the Elder's words and takes the
+  uniform off (outfit → tamer, `REPUTATION_REVEALED`, `MAGMA_STATE_TURNED`), then **Maxie alone**, then Archie
+  joins him and Brendan and May fly in; May heals the team (the Maxie battle came right before), the player picks
+  the partner (`PARTNER_BRENDAN` / `PARTNER_MAY`), the other walks to the shore and "holds off the admins"
+  off-screen (a cry and a line; the admins aren't drawn). Both battles
+  are must-win with the vanilla whiteout, and the scene is **re-entrant**: talking to Maxie again resumes at the
+  battle that was lost (the uniform stays off; Brendan and May wait on the island). – Alt: retry loops without
+  whiteout (D-110 style: a flow test can't mash through them); admins as objects (four more flags).
+- **D-144 No Cave of Origin trip**: Steven no longer leads the player to Wallace in the Cave of Origin – he points
+  at Maxie on the island (and, after the crisis, says he was right about the player since Granite Cave). The
+  expert keeps blocking the cave (`FLAG_STEVEN_GUIDES_TO_CAVE_OF_ORIGIN` is never set), so Wallace's Cave of Origin
+  and Sky Pillar scenes can't run; Wallace appears by the Gym after Rayquaza, and his lines say he saw the uniform
+  come off and that the Sky Pillar is sealed. – Alt: keep the Cave of Origin visit (Wallace would have to send the
+  player somewhere, D-109 says not the Sky Pillar).
+- **D-145 The Rayquaza calling and the Sky Pillar state**: after the multi battle, thunder, then over black "Far
+  away, at the SKY PILLAR…" (Aster and Nerine; `ASTER_STATE_RAYQUAZA_CALLED`); then the vanilla Rayquaza scene,
+  seen from the island (own camera pans, the rest as `SootopolisCity_EventScript_RayquazaSceneFromPokeCenter`).
+  Everything the vanilla Sky Pillar trip leaves set is set: `VAR_SOOTOPOLIS_CITY_STATE` 5 (the vanilla aftermath:
+  Maxie, Archie, Wallace, Steven by the Gym; Juan's badge makes it 6), `VAR_SKY_PILLAR_STATE` 3 (Rayquaza is back at
+  the top: floors cracked, its object shown), `VAR_SKY_PILLAR_RAYQUAZA_CRY_DONE` 1, Wallace shown in the city – but
+  **not `FLAG_WALLACE_GOES_TO_SKY_PILLAR`**, so the tower door stays shut until Acts 6–7 open it.
+- **D-146 The Elder's word and the rivals' reactions**: right after Rayquaza leaves, a PokéNav call (the vanilla
+  `pokenavcall`, no Match Call entry needed): the Elder, with Aster and Nerine beside him for a line each – "It isn't
+  time yet. The sky will tell us when." Then, still on the island, May's "I KNEW it!" and Brendan's awkward
+  apology; both fly home (`BRENDAN_STATE_SOOTOPOLIS`, `MAY_STATE_SOOTOPOLIS`) before the city reloads. Maxie and
+  Archie admit their failure in the vanilla aftermath, with a line each about the player. – Alt: a letter (needs a
+  messenger); the rivals' lines after the reload (another state var for the OnFrame).
 - **D-150 After the Hall of Fame (Act 6)**: no credits; the Hall of Fame screen sends the new Champion home to the
   village bedroom (the Hall of Fame save continues there too, so both paths agree). Upstairs a night of celebration
   ends in a quake and a red glare; downstairs the TV breaks in with the meteor news and the Elder, waiting at the
@@ -333,8 +477,8 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   enhancements: held items (Assault Vest, Life Orb, Leftovers, Choice Band, the Salamencite), natures, EVs, IVs 31,
   2 Full Restores, `Smart Trainer / Prediction / Ace Pokemon`. New class LOREKEEPER (25 money, Ultra Ball), battle
   music `MUS_VS_FRONTIER_BRAIN` (a master outside the League). A loss doesn't white out: the climb is one scene, so
-  Nerine heals the party and talking to Zinnia starts the battle again. Placeholder art (the Hex Maniac) until the
-  art round, `TODO(art)`. – Alt: a normal boss battle that whites out (the player would climb the cracked floors
+  Nerine heals the party and talking to Zinnia starts the battle again. Her sprite and pic are the drawn art of
+  D-180/D-181. – Alt: a normal boss battle that whites out (the player would climb the cracked floors
   back alone); the Champion theme.
 - **D-156 Brendan and May after the finale**: their Littleroot lab battles (and Brendan in the lab) wait for the
   finale, not the Hall of Fame; the lines are rewritten for the truth being out (Brendan's apology, May's "I told
@@ -372,3 +516,464 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   `TRAINER_PIC_NERINE` / `TRAINER_PIC_MAGMA_ADMIN` partner. Tabitha's is the Magma disguise back pic (Red's build)
   recoloured into his crimson hooded jacket. – Alt: draw a heavier build for him (`TODO(art)` if wanted). – Partners
   are drawn from behind; reusing the player's rigs keeps the 5-frame Kanto throw animation.
+- **D-164 The tamer's scarf** (feedback 1.14): a long **red** scarf in the clan's red with a fish-scale pattern,
+  worn **with** the horned headband (the clan mark, kept – the two do not clash: the scarf sits at the neck, the
+  horns on the head). Wrapped at the neck, its two ends hang down the back as a short cape (M) or lie over the long
+  hair as two tails (F), trail behind in the side view and stream out when running, cycling and in the credits run;
+  on the pics they stream out like Zinnia's. – Alt: Zinnia's dark grey scarf (not a Draconid colour, reads as Team
+  Aqua/Magma black at 16×32); a teal scarf (lost against the teal jacket); an ivory one (fights the horns); a
+  cloak that replaces the headband (D-051's horns are what makes the silhouette). – Red on the teal jacket is the
+  strongest contrast the palette has, and the cape from behind gives the tamer a silhouette of its own.
+- **D-165 The backpack goes under the cape (M)**: Red's red backpack is covered by the scarf's ends everywhere
+  (overworld back and side views, back pic, front pic, credits); the female keeps her gold bag. – Alt: keep the
+  backpack and hang the scarf over it (two reds in the same place read as one lump at 16×32). – The cape replaces
+  the pack's area pixel for pixel, so the walk animation keeps its proportions.
+- **D-166 Scale detail by size**: the pics and the credits run cycle get a clear pattern (U-shaped scales 4 px wide,
+  offset rows); the 16×32 / 32×32 sprites only a dot hint in the dark red. No new colours: each palette's existing
+  red pair is reused (the female overworld palette's unused bright red), so palettes, reflection palettes and the
+  C data stay as they are. – Alt: a third red for scale highlights (costs a slot every sheet would have to give
+  up). – A readable pattern where it fits, and nothing that would need the outfit code regenerated.
+- **D-167 Small fixes riding along**: the Wailmer Pail on the watering frames is teal (it was a red blob in the
+  scarf's colour; the real pail is blue), and the male front pic's Poké Ball is red (it had come out teal).
+  – Alt: leave them (the pail would merge with the scarf's tail). – Both are on sheets redrawn anyway and cost a
+  line each in the specs.
+- **D-170 ORAS data source**: Serebii's Pokéarth "Gen VI" location pages and its ORAS Elite Four page, scraped once
+  (2026-09-30, one request at a time, cached outside the repo) into `tools/hack/trainers/oras/oras_trainers.json`
+  with the scraper next to it. – Alt: rosters from memory (v1: none could be vouched for); Bulbapedia (HTTP 403).
+  – A recorded, re-parsable source; Serebii lists species, levels and items, so sets are still written and
+  checked here.
+- **D-171 Matching Emerald ↔ ORAS**: same name on the Serebii page of the trainer's map, class mapped (Cooltrainer =
+  Ace Trainer, …); a namesake on another page or two candidates on one page are recorded, not used; the Abandoned
+  Ship's trainers are looked up in Sea Mauville (ORAS replaced it). – Alt: fuzzy names, name-only anywhere. – The
+  brief's "record ambiguous ones instead of guessing": ORAS moved and renamed many trainers (Julie, Georgia, …
+  are other people in ORAS).
+- **D-172 `oras-first` teams**: ORAS rematch teams exist only for trainers that already have Emerald tiers (rule 1),
+  so the ORAS data reaches regular trainers through their first-battle team: used when it has **more evolution
+  families** (species pool only) than the trainer's vanilla Emerald team (27 trainers; Gilbert and Cole already
+  had the ORAS species). The new team keeps the block's header, party size and levels: the ORAS roster (the ORAS
+  ace last, level-up evolutions to the slot's level, stone / trade / friendship evolutions not applied, e.g.
+  Clamperl stays Clamperl, with a Deep Sea Tooth), filled with the current members, Emerald families first (one
+  more slot if none would survive and the party band allows it); sets from the same species elsewhere in
+  `trainers.party`, only moves known at that level (`build_oras_batch.py --check`). – Alt: ORAS first teams for
+  every matched trainer (would replace the richer enhanced teams with 1–3 Pokémon); only when the ORAS team is
+  bigger than the current one (never true). – "Richer" is read against the team the enhanced one was built from.
+- **D-173 Elite Four rosters**: the first battle uses their **ORAS post-game rosters** (species from all regions:
+  Scrafty, Zoroark, Mandibuzz, Mismagius, Drifblim, Chandelure, Abomasnow, Beartic, Vanilluxe, Dragalge,
+  Haxorus – exempt from the species pool, D-065) at the S9 levels they had (aces 55–58), no Megas; the ace is the
+  ORAS first battle's ace (Absol, Dusknoir, Walrein, Salamence), because the rematch aces Sableye and Glalie lean on
+  their Megas. Sets start from Serebii's ORAS moves, made into full competitive sets. – Alt: the ORAS first-battle
+  rosters (nearly the Emerald ones); Hoenn-only replacements. – The brief and the playtester ask for the post-game
+  teams; the League is where a wider roster fits.
+- **D-174 Elite Four rematch**: blocks at the ORAS rematch levels (70–75, the POST ace band) with the ORAS Mega
+  Stones (Absolite, Sablenite, Glalitite, Salamencite) as `TRAINER_{SIDNEY,PHOEBE,GLACIA,DRAKE}_REMATCH` in
+  `tools/hack/trainers/oras/elite_four_rematch.party`, allowed Megas in `check_party.py`; **not in the ROM**: it needs
+  four trainer ids (`include/constants/opponents.h`, 924–927 are free) and a game-clear switch in the Elite Four
+  rooms or a variant rule (`src/draconid.c`), files owned by the story work this round. – Alt: Megas in the first
+  battle. – Megas stay a post-game treat (D-066) and the rematch is ready to wire.
+- **D-175 Wallace unchanged**: ORAS has no Champion Wallace; its only other Wallace battle on Serebii
+  ("Sootopolitan Wallace", Route 131 page) has exactly his Emerald Champion roster, which his current team already
+  uses. – Alt: Steven's ORAS Champion roster (Steven is story-owned). – Nothing in the ORAS data improves him.
+- **D-180 Zinnia's look**: her ORAS Lorekeeper design at GBA size – a black chin-length bob with blunt bangs, a
+  **red bead** hair tie on her left side, red eyes (front pic), a ragged **cream cloak** with a wound high collar,
+  olive leaf-shaped shoulder pads, a black top with two red crescents, a red rope belt with cream ends, olive shorts
+  and boots, cream socks, and her blue-grey Mega Anklet on the right leg (front pic only). The cloak shows from every
+  side: behind her at the sides from the front, covering her back from behind, trailing from the side. – Alt: a dark
+  (charcoal) cloak for an all-dark outfit; a teal or crimson cloak in the clan colours. – Cream is her canon cloak
+  colour and nobody else in the cast wears it: Nerine has silver-blue hair and a teal shawl, Aster a crimson band and
+  gold horns, the player a teal band, ivory horns and teal/red clothes (the tamer scarf added to the player's outfit
+  should stay out of cream so the two scarves stay apart); Zinnia has no horns and no headband, so she reads as a
+  different kind of Draconid (the Lorekeeper), and a dark cloak would merge with her black hair at 16×32.
+- **D-181 Zinnia's art bases**: overworld from Frontier Brain **Anabel's** walk sheet (the only 9-frame NPC sheet with
+  a short bob; her hair and face keep their palette roles, the body is redrawn per frame over Anabel's poses); front
+  pic from the **Psychic F** pic (short hair, dark top, shorts, bare legs, arms spread wide as if calling the sky; the
+  psychic rings and the floating Poké Ball are erased, the cloak is painted behind the body). No back pic (she never
+  fights beside the player). – Alt: the Leaf pipeline like Aster (same silhouette as Aster and the player); Lucy's
+  sheet (long hair, taken by Nerine); Lance's caped FRLG pic (male build, trousers, new head needed); Anabel's
+  pic (pointing pose, trousers). – Short-haired bases give her a silhouette of her own next to the long-haired Nerine,
+  Aster and the player, and every step is a kitbash recipe, so the art can be polished without redrawing.
+- **D-185 Gen 6 Exp. Share**: `I_EXP_SHARE_ITEM` is `GEN_6` (a key item that shares EXP with the whole party
+  while `FLAG_EXP_SHARE_ON` is set; using it toggles the flag). Mr. Stone hands it over **with the PokéNav** at
+  the first Devon meeting and it starts switched on; vanilla gave a held Exp. Share only on a return visit after
+  Steven's letter, which many players never make. The hard level caps still apply. – Alt: keep the held item;
+  Gen 7 always-on. – The playtester's note.
+- **D-186 Maxie's calls**: Maxie phones the recruit after each key story point and names the next place. The
+  first call replaces vanilla's call from "Dad" Norman on Mr. Briney's boat (Norman is May's father now, so he is
+  no longer registered in the PokéNav); the others ring on the 10th step outdoors after the Oceanic Museum,
+  Meteor Falls, Mt. Chimney, the Weather Institute, Mt. Pyre, the promotion, the Aqua Hideout, the Space Center
+  and the Seafloor Cavern (story states, `src/draconid.c`). Only the latest due call plays; none after the
+  Sootopolis turn. – Alt: calls at the end of each scene (they would ring in the middle of the aftermath);
+  Maxie in the Match Call list (needs a new entry with his own call texts). – The playtester's note.
+- **D-187 Rival staging and the level audit** *(the Latis: D-237)*: Brendan's first fight (Rustboro, after Petalburg Woods) is
+  Poochyena, Taillow, Slakoth and Treecko at 10–13 (IVs 15, since the player may have only their dragon there);
+  each later fight grows the team the way ORAS does (Mt. Chimney 5 with Grovyle and Slugma, the Latis after the
+  Balance Badge, all six from Route 119 / Lilycove). May: Torchic on Route 103, four on Route 110, six at
+  Lilycove. `build_segments.py` places every story fight (and every Nerine/Aster variant) on the round 1
+  schedule – Steven's Space Center team is exempt from the cap on purpose (D-108), the Sky Pillar finale and
+  Zinnia are post-League (D-109) – and `check_party.py --caps` passes with 0 errors.
+- **D-190 HM field moves without a Pokémon that knows them** (feedback 1.27): once the player **owns the HM** (HMs
+  are never used up, so it is in the bag) **and has the badge** vanilla requires for its field move
+  (`IsFieldMoveUnlocked`: Cut Stone, Flash Knuckle, Rock Smash Dynamo, Strength Heat, Surf Balance, Fly Feather,
+  Dive Mind, Waterfall Rain), the field move works from the overworld as if a party Pokémon knew it: Cut trees,
+  Rock Smash rocks, Strength boulders, Surf, Waterfall, Dive down and surfacing all go through the vanilla prompts
+  (`checkfieldmove`, `PartyHasMonWithSurf`), so every story obstacle (Rusturf's rock, the Seafloor Cavern and
+  Victory Road boulders, the Dive spots, the Ever Grande waterfall) opens the same way. A Pokémon still appears in
+  the field-move animation and the vanilla "{STR_VAR_1} used CUT!" lines stay: one that knows the move (vanilla),
+  else the first party Pokémon that **could learn** it (level-up or teachable list), else the first one that isn't
+  an Egg (vanilla lets fainted Pokémon use field moves, so they may stand in too). Without the badge nothing
+  changes (the vanilla "can't" lines); TM field moves (Secret Power, Dig) still need a Pokémon that knows them.
+  Switch: `OW_FIELD_MOVES_WITH_HM`. – Alt: a key item per move (ORAS Poké Ride style, needs new items and art);
+  field moves for any Pokémon that could learn them (still forces the right species into the party); dropping the
+  badge gates (would open the story out of order). – The playtester's note, and the HM + badge pair keeps the
+  vanilla order of city access.
+- **D-191 HMs used from the bag**: with its badge, using an HM from the bag first asks "Cut can be used here.
+  Would you like to use it?" when its field move has something to act on right here (the party-menu setup
+  `SetUpFieldMove` decides: a tree or grass for Cut, water to Surf on, a dark cave for Flash, a Fly-able map, …);
+  **Yes** does the move with the D-190 stand-in, **No** goes on to the vanilla "Booted up an HM… Teach it?"
+  question. Anywhere else, and without the badge, using an HM teaches it as in vanilla. Fly opens the region map
+  (cancelling it returns to the bag, not to the party menu); Flash lights a dark cave; the Braille puzzles that
+  need Rock Smash (Regirock) and Flash (Registeel) work the same way. – Alt: a USE / TEACH / CANCEL list in the bag
+  (new menu code in the bag); separate key items; bag use only for Fly and Flash (Cut on tall grass and the Braille
+  puzzles would then still need a Pokémon). – Reuses the bag's own yes/no and the party menu's field-move setup, so
+  every HM behaves the same and the vanilla teaching path is one "No" away.
+- **D-192 HMs can be forgotten**: `P_CAN_FORGET_HIDDEN_MOVE` is TRUE (a new move can replace an HM move, the Move
+  Deleter takes the last Surf). – Alt: keep HM moves locked. – With D-190 no Pokémon has to keep an HM move.
+- **D-193 Gen 4–9 in the wild** (feedback 1.28, docs/hack_wild.md): 95 species from Gens 4–9 join the Hoenn
+  tables (281 slots in 110 tables: land, surf, Rock Smash, all three rods) by habitat, region and story point –
+  forest bugs and birds, cave rock/ground/ghost types and bats, desert ground types, Mt. Chimney's coal and fire
+  types, ghosts on Mt. Pyre, sea birds, rays and reef fish; Alolan and Paldean species suit subtropical Hoenn.
+  A new species only **replaces a duplicate slot and keeps its vanilla levels**, so no table loses a species, no
+  Hoenn species moves, level ranges and Emerald's slot rates stay, and the slot's rate is its rarity (10% common,
+  5%/4% uncommon, 1% for Larvesta, Mimikyu, Hawlucha, Stufful, Morelull and the dragons). No legendary, mythical,
+  paradox or Ultra Beast, **no regional forms** (every Hoenn species keeps its Hoenn look), the Deino / Dreepy /
+  Jangmo-o lines stay out (D-065); other dragons are rare and late (Gible 1% in the desert, Goomy in the rain of
+  Routes 119/120, Noibat and Druddigon in Meteor Falls, Druddigon 1% atop the Sky Pillar). Minior is its Meteor
+  Form (red core). The Johto Safari areas, Artisan / Altering Cave, Mirage Island and the Sootopolis crater stay
+  vanilla. – Alt: add slots (Emerald's slot counts and rates are fixed in the engine); replace whole tables
+  with Gen 4–9 species (loses Hoenn's feel); ORAS's DexNav-only species (the brief asks for Gens 4–9 broadly). –
+  The brief asks for new species "where it makes sense"; taking duplicate slots keeps every vanilla encounter.
+- **D-194 Beldum at 1% in Granite Cave**: every Granite Cave land table (1F, B1F, B2F, Steven's Room – the only
+  floors with tables) has Beldum in one 1% slot at that floor's level (1F Lv 9 and B1F Lv 11 replace a duplicate
+  Geodude / Sableye in slot 11, B2F Lv 12 a Sableye in slot 10, Steven's Room Lv 8 an Aron in slot 11).
+  `check_wild.py` fails without it. – Alt: a scripted Beldum gift; Beldum in both 1% slots (2%). – The brief asks
+  for exactly a 1% encounter; Steven's own Metagross line stays a rare find in his favourite cave.
+- **D-195 Gen 4–9 on generic trainers** (docs/hack_trainers.md, "Gen 4–9 swaps"): 122 of the 434 generic trainers
+  (first battles, route and gym roles; 28%) swap one Pokémon – two for Timothy, Wilton and Nicolas – in all their
+  rematch tiers (214 blocks), keeping level, IVs, EVs, nature and slot. The new species fits the class and the area
+  (a hiker's Rolycoly, a Petalburg Woods bug catcher's Nymble, a Mt. Pyre hex maniac's Litwick), comes from the
+  wild tables (D-193) or, for rematch trainers, from the trainer's **own ORAS roster** (Serebii data, D-170: Haley
+  Whimsicott, Jerry Bisharp, Cindy and Winston Pyroar, Dalton Chatot, Benjamin Klinklang, Ethan Skuntank, Shelby
+  Lucario, Wilton Talonflame and Haxorus, Brooke Purugly, Dusty Tyrantrum, Tony Jellicent, Timothy Hawlucha and
+  Conkeldurr, Jackson Unfezant, Catherine Excadrill, Valerie Mismagius, Jessica Krookodile, Jenny Alomomola,
+  Isaiah Floatzel, Robert Staraptor, Walter Stoutland, Nicolas Noivern and Druddigon) and appears at the stage its
+  level allows in every tier. Aces are kept except Jerry's (ORAS gives him Bisharp for Banette). Magma / Aqua
+  grunts keep their teams (the teams' signature Poochyena / Zubat / Numel / Carvanha lines). The species pool
+  (D-065) now also holds the families of every species wild in Hoenn or on an ORAS Hoenn trainer
+  (`check_party.py`). Moves: level-up (and TMs from S4) chosen for STAB + coverage + a status or set-up move, no
+  moves over 90 power before S4. – Alt: one new Pokémon added on top (party sizes are fixed per segment); new
+  species for story trainers too (they are hand-written, out of scope). – "Roughly a quarter" of the generic
+  trainers, each change following the rulebook, the tiers and ORAS where ORAS knows the trainer.
+- **D-196 National Pokédex from the start**: Birch's lab scene (`birch_intro.pory`) enables the National Dex right
+  after giving the Pokédex, with one line from Birch about Pokémon from faraway regions. Hoenn mode is still in
+  the menu; the Hoenn count, Birch's rating and the diploma are unchanged. `TODO(dialogue)`: the post-game National
+  Dex scene still calls it an upgrade (reword with the post-game rework). – Alt: add the new species to the Hoenn
+  dex (changes `HOENN_DEX_COUNT`, the diploma and every regional count); the National Dex at the Hall of Fame as
+  vanilla (the new species and the player's own dragon would be invisible until then). – The player catches
+  non-Hoenn species from Route 101 on, and their dragon is one of them.
+- **D-197 Wild checks** (`tools/hack/check_wild.py`): species exist, are enabled (preprocessed `species_info.h`),
+  have a front pic, cry and level-up learnset, and are not legendary / mythical / paradox / Ultra Beast / Mega /
+  Gigantamax / regional forms; tables keep slot counts and rates; FRLG, Pyramid and Pike tables stay vanilla; every
+  vanilla Hoenn species stays wild; Beldum is at 1% in Granite Cave; a changed slot keeps its vanilla levels or
+  stays within the area's cap + 3 (`LEVEL_MARGIN`; area → segment in `WILD_SEGMENTS`, Surf / Dive / Rock Smash /
+  rods can make it later); a new species is not below its line's level-up evolution level; a table losing a
+  species is a warning. – Alt: a flat cap + 6 for every slot (vanilla Route 115 and Mirage Island go 6 over). –
+  Vanilla levels are Emerald's own design and wild Pokémon are caught, not fought for EXP; the hack itself never
+  raises a slot over the cap.
+- **D-210 Maxie's voice** (feedback 1.26): composed and formal, full sentences with few contractions, grandiose and
+  sincere about the land, humankind and "our ideal"; dry pride ("That is the difference between us"); short and
+  sharp only when something goes wrong ("What?! The METEORITE is gone!"), then composed again. He praises the player
+  rarely and exactly, so the promotion ("you are my right hand") and the betrayal ("After everything I gave you?!")
+  land. Vanilla's own words come back where they fit: "Fufufu…", "Humph", "No matter", "Even without the METEORITE,
+  there is still the ORB" (his Mt. Chimney line), "I, MAXIE, beaten by my own recruit?!" (after his "I, MAXIE, was
+  caught off guard?!"), and the vanilla Groudon, Seafloor and Route 128 lines stay verbatim. At most one aphorism a
+  scene. His calls keep naming the next place, in fewer, shorter boxes. Tabitha is a man (vanilla, the trainer data
+  and the other lines): Maxie's "she speaks well of you" was a slip. – Alt: an ORAS-style Maxie (more lecturing, "my
+  ideal world" speeches). – The note asks for Maxie as he is in the games; Emerald's Maxie is terse and proud, and
+  short boxes are what the playtester reads on a phone.
+- **D-211 Brendan's and May's voices** (feedback 1.26 and the follow-up "have them be really hostile to you because
+  they're trying to stop Team Magma and protect Hoenn, not knowing your true mission"): Brendan casual, confident
+  and blunt, short sentences, "Huh?", "Hmm…", "Tch…", "Man,"; May warm, curious and quick, with exclamations and a
+  researcher's eye for how POKéMON act. **While the player wears the uniform** (`REPUTATION_UNIFORM`: Rustboro to
+  the Sootopolis turn) both treat the player as an enemy of HOENN: every line before and after a battle is hostile
+  and earnest – they want to stop MAGMA and protect people, and they are angry the player joined ("Those guys want
+  to wreck HOENN!", "I'm going to stop you right here!"). Brendan is betrayed and angry; May fights just as hard,
+  and her suspicion shows only as a small crack, one hesitation or question a scene ("…What are you really doing,
+  {PLAYER}?"), never as warmth – even her cover at the Weather Institute ends "But don't think this changes
+  anything. You still work for MAGMA." What they hand over (the Dowsing Machine, Go-Goggles, HM Fly) is given
+  grudgingly, and the PokéNav registrations are to keep tabs on a MAGMA grunt. **After the turn** they warm up as
+  the story says (May's "I KNEW it!" moved from the Weather Institute to Sootopolis only, Brendan's awkward
+  apology). Both say "my dad" / "Dad" as vanilla does (the round 1 lines had "DAD" like a name). Vanilla reference
+  lines, habits to use and to avoid: [hack_voices.md](hack_voices.md). – Alt: keep the round 1 lines with light
+  edits (May friendly and sure of the player from Route 110 on). – The playtester called them clunky and asked for
+  real hostility; the story's beats (May's doubt on Route 110, her cover at the Institute) survive as cracks in it.
+- **D-212 The voice pass rules and scope**: every round 1 Maxie / Brendan / May line of Acts 1–5 was reread against
+  these rules and rewritten where it broke one: one idea per box and 1–3 boxes a beat; no "Not X. Y." or "X, not Y"
+  antitheses, no rhetorical triplets, no stacked fragments, no em dashes (a cut-off line ends in "…"), at most one
+  "…" per box, nobody narrates their own feelings, no modern phrasing; `\n` placed by hand where `format()` would
+  split a name ("MT. CHIMNEY") or leave one word on a line. Only text changed – labels, scripts, flags and movements
+  are untouched (the emulator tests mash through text, so box counts don't matter); every story fact, place and
+  quote from the add-on is kept ("…you've joined MAGMA?!", "I'll pretend I didn't see you save them", "Stand beside
+  me as the land is reborn", "After everything I gave you?!", "I KNEW it!"). Verbatim vanilla lines keep their
+  punctuation even where it breaks a rule ("Fu… Fuhahaha…"). Out of scope: the lab intro and Route 103 (v1, already
+  in voice), and the post-game lab battles (`rivals.pory`, owned by the Acts 6–7 work). Other characters' lines
+  changed only where a reply had to follow (none needed it). – Alt: rewrite everything from scratch. – The facts and
+  staging were tested act by act; the note is about how the lines sound.
+- **D-213 The Aqua Hideout opens with Maxie's order** (feedback 1.23): Archie takes Captain Stern's submarine
+  **off-screen**. Maxie's call after the promotion sends the player straight to Aqua's hideout in Lilycove, but
+  vanilla kept two grunts in its entrance until the Slateport harbor scene (Archie steals the submarine), which
+  vanilla set up in the Magma Hideout and nothing in the v2 story leads to (the checker's detour on leg 4.16).
+  The Magma Hideout no longer sets up the Slateport scenes (Stern's interview in the city, the harbor theft);
+  its promotion scene sets what the harbor scene left set instead – `VAR_SLATEPORT_CITY_STATE` and
+  `VAR_SLATEPORT_HARBOR_STATE` 2, Stern in the harbor with his vanilla "Why…" line, `FLAG_MET_TEAM_AQUA_HARBOR`,
+  Scott gone from the motel, the entrance grunts gone. – Alt: point Maxie's call at Slateport first (a text
+  change in the dialogue pass's lines, and a detour the add-on's outline – Magma Hideout, then "Maxie orders the
+  player to infiltrate Aqua's base" – doesn't have); leave the vanilla hint from the entrance grunts ("our boss
+  is in Slateport"). – The add-on's order, one hook in the scene that sends the player on, and the hideout's own
+  scene (the submarine leaving with Archie, Nerine diving after it) and Maxie's next call already tell the theft.
+- **D-214 What counts as a story lock** (`tools/hack/check_progression.py`): a leg whose walk is blocked (tile,
+  object, turn-back trigger, a missing HM or badge), a scene that can't start (its object hidden, its trigger's
+  var or OnFrame entry not due), a scene that doesn't set what the next leg needs (`expect`), an OnFrame scene
+  that leaves its var as it was (it would restart every frame), a warp into a closed pocket, and a **detour**: a
+  way that opens only through a scene off the path the story gives. A walk-through scene on the path (Route 121's
+  Aqua grunts leaving) is part of the walk. The model is generous where the player controls it – an HM counts
+  from the bag once its badge is won (the HM work makes field moves usable without a Pokémon knowing them), one
+  bike counts as both (Rydel swaps them), unknown YES/NO or battle branches keep the progressing side – and strict
+  where the game is: collision, elevation, one-way ledges, objects and triggers as the simulated flags leave
+  them. Gym puzzles written in C (Mauville, Petalburg, Mossdeep, Sootopolis) are not modelled: only getting in
+  is checked. – Alt: a playthrough per leg in the emulator (hours per run, and it only proves the order tested);
+  treating every unknown branch as unknown (every YES/NO would "lock"). – A static check runs in ~40 s after any
+  script change, and the emulator (`progression.play`) covers the fix itself.
+- **D-215 Vanilla requirements the v2 order meets stay as they are**: HM Strength for the Magma Hideout (the
+  Rusturf Tunnel reunion, on the only walk from Lavaridge back to Petalburg before Surf), Norman's fourth-badge
+  check, the Wally tutorial before Petalburg's west exit, and talking to both Archie and Maxie in Sootopolis before
+  the Gym door unlocks and Wallace gives Waterfall – no flag set early, no hint added. The story table walks them
+  as the player will (legs 1.10–1.12, 3.07–3.08, 5.12–5.14). – Alt: hand out Strength in a story scene; open the
+  Sootopolis Gym door with the turn. – None of them blocks the way on: the player passes them, or is told on the
+  spot by the vanilla lines, and changing them would rework vanilla content no feedback asks about.
+- **D-216 No trade evolutions** (feedback 1.31): every `EVO_TRADE` (30 entries, Karrablast/Shelmet's
+  trade-partner ones included) is a level evolution. **Rule**: the level follows the evolved form's base stat total,
+  next to Hoenn's own level-up evolutions of that power, so it lands in the matching level-cap segment
+  (`src/caps.c`): up to ~480 → **30** (`DRACONID_TRADE_EVO_LEVEL_LOW`; Sharpedo/Crawdaunt, the Flannery cap) –
+  Trevenant, Aromatisse, Slurpuff; ~485–515 → **36** (`_MID`; the Hoenn starters' final stage, the Winona segment)
+  – Alakazam, Machamp, Golem (and Alolan), Gengar, Gigalith, Conkeldurr, Gourgeist (4 sizes), Escavalier,
+  Accelgor, Steelix, Scizor, Porygon2, Politoed, Huntail, Gorebyss; ~525–540 → **42** (`_HIGH`; Aggron, Glalie, the
+  Tate & Liza segment) – Kingdra, Electivire, Magmortar, Dusknoir, Porygon-Z; Rhyperior **48** (`_LATE`: Rhydon
+  itself comes at 42). Exceptions: **Slowking 37** (Slowbro's level, D-217); **Milotic 36** although it is a 540 –
+  Feebas lives only on Route 119 (cap 38) and, like Magikarp, its weak first stage is the price (Beauty still works).
+  The expansion's "use the item from the bag" shortcuts on these lines (Linking Cord, Metal Coat, King's Rock,
+  Dragon Scale, Up-Grade, Protector, …) are removed so the level is the one rule: Metal Coat and King's Rock are
+  sold from the first counter tiers (D-218) and would otherwise make Steelix or Slowking at any level. Everstone:
+  `P_KADABRA_EVERSTONE` is `GEN_3`, so an Everstone stops Kadabra like any other (the Gen 4 exception was a trade
+  quirk). In-game trades and link trades just never evolve now; the Pokédex does not show methods
+  (`POKEDEX_PLUS_HGSS` is off). `tools/hack/check_evos.py` checks and prints the table (docs/hack_items.md).
+  Trainers: `check_party.py` has 0 errors; 11 new warnings are generic trainers 1–2 levels under the new levels
+  (Kira & Dan's Huntail/Gorebyss, Thalia, Nob, Trent, Sawyer, Aaron) – left to the trainer pass that owns
+  `trainers.party`. – Alt: Linking Cord item from a shop (still a gate the playtester didn't want); one level for
+  all (36 would give Trevenant late and Kingdra early); the core games' "level + 1 after the pre-evolution".
+  – The playtester's note: "Pokémon just evolve at a set level".
+- **D-217 Branches keep an item**: where a trade shared its base with another method, the held item still picks
+  the branch, now on a level-up (`EVO_LEVEL` + `IF_HOLD_ITEM`, which `GetEvolutionTargetSpecies` supports and
+  which consumes the item like the trade did): Poliwhirl → **Politoed at 36 holding a King's Rock** (Poliwrath stays
+  on the Water Stone); Slowpoke → **Slowking at 37 holding a King's Rock**, listed before Slowbro at 37 (the first
+  matching entry wins); Clamperl → **Huntail / Gorebyss at 36 holding the Deep Sea Tooth / Scale** (no item, no
+  evolution, as before). Sources: King's Rock – the Mossdeep boy (vanilla) and the battle item counter from two
+  badges; Deep Sea Tooth / Scale – Captain Stern's Scanner trade (one of them, vanilla) and the counter from two
+  badges (both). – Alt: plain levels with a gender or personality split (no player control); keep the trade for
+  these three only. – Both branches stay reachable in one save.
+- **D-218 The battle item counter** (feedback 1.33): a second clerk behind the counter of every town Poké Mart
+  (Oldale, Petalburg, Rustboro, Slateport, Mauville, Verdanturf, Fallarbor, Lavaridge, Fortree, Mossdeep,
+  Sootopolis) and the Battle Frontier Mart, at (1, 2) next to the vanilla clerk (the counter tile in front of it is
+  a counter, so the player talks across it from (3, 2)); a third clerk between the two on the Lilycove Department
+  Store 3F (the battle floor). Not the Pokémon League 1F: its counter has one talkable tile, and the Acts 6–7 work
+  owns that map. The stock grows with the **badge count** (any order), so it follows the level caps: 0 → the 18
+  type boosters; 2 → accuracy / damage / utility items and the branch items (D-217); 4 → Leftovers, Rocky Helmet,
+  Focus Sash, Eviolite, the herbs …; 6 → Choice items, Life Orb, Assault Vest … and the first Mega Stones; 8 →
+  every other competitive item (weather rocks, orbs, seeds, Loaded Dice, Clear Amulet …) and more Mega Stones;
+  after the Champion (`FLAG_IS_CHAMPION`) the rest of the Mega Stones. The tiers are **one list, newest first**:
+  each tier's label starts its new items and runs on through the lower tiers to one `ITEM_NONE`, so nothing is
+  listed twice and new stock shows at the top. Greeting by reputation (D-103); the goodbye is the Mart clerks'.
+  Booster Energy is not sold (no Paradox Pokémon to hold it). Table: docs/hack_items.md. – Alt: the expansion's
+  per-item `shopCriteriaFunc` (one list, but a global rule in `items.h` for every shop); stock by town (a late
+  town would have to be revisited for early items); Battle Points (the Frontier is post-game). – One script, one
+  list, no C code, and the badge count is what the caps follow.
+- **D-219 Prices climb with the tiers**: from the prize money a player earns per segment (all first battles:
+  ~15k by Roxanne, ~61k by Wattson, ~117k by Flannery, ~209k by Winona, ~463k by Juan) an item of a tier costs
+  a few percent to a fifth of what that stretch pays: type boosters **1,000** (`TYPE_BOOSTING_PRICE`, the Gen 7
+  price; Charcoal and Metal Coat too), tier 2 **4,000–6,000**, tier 3 **5,000–15,000** (Leftovers 15,000), tier 4
+  **20,000–40,000** (the Choice items 40,000, the most expensive held items), tier 5 and unchanged items at their
+  Gen 9 prices (5,000–30,000). Only the Gen 9 branch of each price block changed. – Alt: the Gen 9 prices as they
+  are (Rocky Helmet, Eviolite and Focus Sash at 50,000 when they unlock, Choice items at 100,000 – out of reach
+  before the League); `I_PRICE` GEN_7 (changes every item in the game). – Prices follow the money curve.
+- **D-220 Story gifts on top**: each Gym Leader hands over their type's booster after their TM (Hard Stone,
+  Black Belt, Magnet, Charcoal, Silk Scarf, Sharp Beak, Twisted Spoon, Mystic Water) with a line of their own –
+  one `call` in both vanilla TM paths (straight after the battle, and the later visit when the bag was full). A
+  full bag only costs the booster (the counter sells it). Vanilla item balls and hidden items for battle items
+  stay. – Alt: item balls on routes (new flags in a crowded range while other work adds flags too). – No new flag
+  (the TM flag already makes it once), and the gift says what the Leader's type is about.
+- **D-221 Mega Stones through the story** (the player's addition to 1.33): nothing before the Mega Ring (Jagged
+  Pass, Act 3); the second starter's stone stays the Lavaridge traveller's gift (D-126). After the Ring, **nine
+  stones lie on maps the story opens later**, at ORAS's spot where Emerald has it (Serebii's ORAS Mega Evolution
+  page, 2026-09-30): Manectite – New Mauville (ORAS: the Cycling Road, passed long before the Ring); Banettite –
+  Mt. Pyre 3F; Cameruptite – Magma Hideout; Absolite – Safari Zone NE; Gyaradosite – Route 123; Sharpedonite –
+  Aqua Hideout B2F; Metagrossite – Mossdeep (Steven's town; Beldum is the 1% Granite Cave find); Glalitite – Shoal
+  Cave; Garchompite – Victory Road B2F (Gabite's floor). The **counter** sells more (D-218): at six badges the
+  stones whose ORAS spots the player passes before the Ring (Alakazite, Aggronite, Mawilite, Sablenite,
+  Gardevoirite, Altarianite, Pinsirite, Heracronite) and those of early new wild species (Excadrite, Staraptite,
+  Hawluchanite, Chandelurite); at eight badges Charizardite Y and the Legends Z-A stones of Hoenn and late new
+  species (Skarmorite, Starminite, Chimechite, Raichunite X/Y, Absolite Z, Pyroarite, Golisopite, Barbaracite,
+  Dragalgite, Glimmoranite, Golurkite); after the Champion Salamencite, the Lati stones, Galladite, Garchompite Z
+  and the signature stones of the rivals, Nerine and Aster (Blazikenite, Sceptilite, Charizardite X, Feraligite).
+  **Only stones of species the player can get** (the Hoenn wild tables with the Gen 4–9 additions of D-193 –
+  D-197, gifts, the eggs and second starters, evolutions; Galladite as Wally's signature although the Dawn Stone
+  isn't in the game yet): no Venusaurite, Blastoisinite, Beedrillite, Pidgeotite, Slowbronite, Gengarite,
+  Kangaskhanite, Aerodactylite, Mewtwonite, Ampharosite, Steelixite, Scizorite, Houndoominite, Tyranitarite,
+  Swampertite, Medichamite, Lopunnite, Lucarionite (Riolu is on trainers only), Abomasite, Audinite, Froslassite,
+  Diancite or the other Z-A stones; docs/hack_items.md lists them to recheck against docs/hack_wild.md. – Alt: all
+  stones post-game (the player wants them "throughout the story"); ORAS's exact spots (most are towns and routes
+  the player passes before the Ring). – Paced like the counter tiers, and every stone has a Pokémon to use it.
+- **D-222 Mega Stone details**: placed stones **replace low-value vanilla items** (Paralyze Heal, Super Repel,
+  Escape Rope, Nugget, Ultra Ball, Nest Ball, Net Ball, Ice Heal, Full Heal) and keep their pickup flag's number,
+  renamed after the stone – no new flags. Sold stones cost **50,000** (`MEGA_STONE_PRICE` in `src/data/items.h`,
+  about a quarter of what the Winona → Tate & Liza stretch pays); stones that are only found or given stay at 0
+  (not sellable). – Alt: new item balls with new flags; one price per stone. – Flags are shared with parallel work;
+  one price is easy to read.
+- **D-225 The Battle Frontier legends (post-game)**: Wes (Pokémon Colosseum), Red and Blue wait on
+  `BattleFrontier_OutsideEast` from the Hall of Fame on (`FLAG_HIDE_BATTLE_FRONTIER_*`, set or cleared by the map's
+  OnTransition from `FLAG_SYS_GAME_CLEAR`): **Wes** in the BATTLE PYRAMID's sands among the rocks (58, 22) – a desert,
+  like his Orre; **Red** at the foot of the cliff below ARTISAN CAVE (29, 10), a quiet dead end by a cave mouth, like
+  Mt. Silver; **Blue** by the BATTLE TOWER door (18, 15), where the toughest facility is. SCOTT invited them (his
+  vanilla job is scouting strong trainers). Each battles **again whenever asked** (a YES/NO first), with the same
+  team. Red is silent ("…" boxes, a line of narration), Blue cocky ("I picked the wrong POKéMON again", "Smell ya
+  later"), Wes terse and a mirror of the player (he walked out on Team Snagem as the player did on Magma). Red and
+  Blue are "{PKMN} TRAINER" (`TRAINER_CLASS_LEGEND`, as the PWT calls them) and fight to **`MUS_RG_VS_CHAMPION`**
+  (the FRLG Champion battle – Blue's own final battle, Kanto's strongest theme); Wes is an "ORRE HERO"
+  (`TRAINER_CLASS_ORRE_HERO`) and fights to **`MUS_VS_FRONTIER_BRAIN`** (the Frontier's top-fight theme). Encounter
+  music: Red Elite Four, Blue Cool, Wes Intense; E4-style mugshots (Red yellow, Blue green, Wes purple); prize money
+  class 25 (like the Elite Four, since the battles repeat). – Alt: once a day (three daily flags; the RTC decides
+  when the post-game's best fights come back); one battle only (a dead end for the tag); `MUS_VS_CHAMPION`
+  (Wallace's; the League already uses it); "SNAG MASTER" / "DRIFTER" for Wes. – A post-game gauntlet the player can
+  replay, three voices the playtester will recognise, and no new flag budget beyond the three hide flags.
+- **D-226 The legends' teams and levels**: Red and Blue use their **PWT Champions Tournament** teams (Serebii,
+  `tools/hack/trainers/pwt/pwt_champions.json`) – species, held items and moves as listed – with **Charizardite X**
+  on Red's Charizard and **Alakazite** on Blue's Alakazam (both replace a Focus Sash) and the Mega as the ace
+  (last; the rest in Serebii's order). Serebii lists no abilities or natures, so those (and EVs) are picked for the
+  sets (Pikachu Lightning Rod, Machamp No Guard for Stone Edge, Exeggutor Chlorophyll, …). **Wes**: exactly Espeon,
+  Umbreon, Raikou, Entei, Suicune, Ho-Oh – his Colosseum partners lead, Umbreon keeps its Colosseum Confuse Ray, the
+  beasts and Ho-Oh carry their signature moves (Sacred Fire, Extreme Speed, Scald / Calm Mind), Ho-Oh last as the
+  ace. **Levels 82–83, the ace 85**: above everything else in the post-game (Elite Four rematch 70–75, rivals 75–80,
+  gym leaders' last tier and Steven up to 80), as the post-game's top fights; the PWT's flat 50 would be the easiest
+  battles of the post-game. 3 Full Restores and the Elite Four rematch AI (`Smart Trainer / Prediction / Ace
+  Pokemon`). – Alt: flat 80; Lv 100; PWT items unchanged (no Megas). – The brief's "about 80, the ace higher".
+- **D-227 The LEGENDS' TAG**: an **attendant beside the BATTLE TOWER door** (14, 15; the Tower attendants' sprite)
+  hosts it. The player picks a partner **from the legends they have beaten** (a `dynmultipush` menu of those plus
+  CANCEL); the other two are the opponents, so all three pairings (six partner/opponent pairs) are reachable. The
+  attendant heals the party, the player walks onto the mat in front of the Tower, and under a fade the partner steps
+  up beside them and the other two face them (the legends' own objects, moved with `setobjectxyperm` and sent back
+  home afterwards). **Three Pokémon each** (the player picks three; `Multi Party: Half`, as round 1's Sootopolis multi
+  battle): each legend has a doubles-minded **tag team** of three, which is both his `PARTNER_*` team and his
+  `TRAINER_*_FRONTIER_MULTI` team – Wes Espeon (screens) / Umbreon / Ho-Oh, Red Pikachu (Fake Out) / Venusaur /
+  Mega Charizard X, Blue Arcanine / Gyarados (two Intimidates) / Mega Alakazam; no Earthquake (it would hit the
+  partner). A loss whites out like any trainer battle. – Alt: SCOTT hosting in his house on the west side (the
+  house is 6×8, and the battle would happen far from the legends); a second SCOTT by the Tower (two SCOTTs at once);
+  the legends offering the tag themselves (no host, as the brief's default asks for one); full six-Pokémon teams
+  (the expansion supports them, but 12 against 12 is a very long battle and unlike every other multi battle here).
+- **D-228 Wes's art and Blue's back pic**: no third-party art. Wes is built from **Steven's** sprites (silver spiky
+  hair, a suit to turn into a coat): the walk sheet gets whiter hair, black sunglasses, a navy coat down to the knees
+  (the suit's black and grey inside the outline) with light lapels and a dark shirt; the front pic the same, with the
+  coat's tails drawn over the legs down to a hem (trousers charcoal below it) and the purple stripes as light lapels;
+  the back pic (Steven's four frames, `sBackAnims_Hoenn`) the same colours plus the lens over the visible eye. Blue's
+  FRLG champion pic has no back pic, so his partner back pic is Steven's recoloured into Blue's orange-brown hair
+  and slate shirt (colours from `champion_rival_frlg.pal`). Red uses his FRLG sprites; Blue's FRLG overworld sheet is
+  registered for Emerald as `OBJ_EVENT_GFX_FRONTIER_BLUE` (vanilla's `OBJ_EVENT_GFX_BLUE` exists only in FRLG builds: in
+  an Emerald build it has no graphics info, so the object is invisible and talking to it crashes). – Alt: Maxie's long-coat pic
+  with a new head (a head swap across palettes); Red's back pic for Blue (his cap and backpack would have to be
+  redrawn). – The closest in-repo silhouettes, every step a kitbash recipe; Wes and Steven differ at a glance by the
+  shades, the long navy coat and the light collar.
+- **D-229 Trainer ids and the save layout**: the legends take ids 925–930 (three singles, three tag teams;
+  `TRAINERS_COUNT_EMERALD` 931) and `MAX_TRAINERS_COUNT_EMERALD` goes from 928 to **944**, so the finale's two
+  upcoming ids fit with room to spare. Trainer flags are save flags: 16 more flags move the system flags up by 16
+  and `SaveBlock1` grows by 4 bytes (15576 → 15580, `test/save.c`), so saves from before the change don't carry over
+  (as with D-101). The partners are `PARTNER_WES`/`_RED`/`_BLUE` (14–16, `PARTNER_COUNT` 17). – Alt: reuse the
+  unused vanilla `TRAINER_RED` (851; still no room for the rest); 936 (only three spare ids). – One raise for this
+  round.
+- **D-234 More rival battles: the schedule** (feedback 1.32 "a few more Brendan and May battles", 1.34 "more Wally
+  battles"): two more each in Acts 1–5, placed where a rival had no fight for two segments and the story gives them
+  a reason to be there, on the player's only way forward (segment = level-cap band, docs/hack_trainers.md).
+  **Brendan**: Route 104 at Mr. Briney's cottage (S2, after Mr. Stone's letter – he told his dad, and Birch's "give
+  them a chance" makes him angrier; the vanilla rival spot and trigger, armed again by the Devon scientist) and
+  Jagged Pass as the player walks out of the Magma Hideout (S7, Groudon has just woken: the ground shook "all the
+  way to LITTLEROOT"). **May**: Lavaridge before the Go-Goggles (S5, the vanilla scene out of the Gym: the town
+  nearly lost its homes to MT. CHIMNEY) and Mossdeep outside the Space Center (S8, Brendan called her after the
+  raid; her one crack is "STEVEN is sticking up for you. …Why would he?"). **Wally**: Route 112 at the cable car
+  (S4, after Meteor Falls, where the Magma grunts had blocked it – he wanted the Lavaridge hot springs for his
+  lungs – and Magma has gone up the mountain) and Route 120's south bridge (S6, after the Weather Institute; the
+  bridge is a two-tile cut of every way from Fortree to Lilycove). Every segment from S1 to S8 now has a rival
+  fight; the closest pair is Wally's Route 120 and Lilycove battles (Route 121 apart; the Lilycove one is talk-to,
+  so the player picks when). The fights are marked done by their own trainer flags, so no
+  state value was added or renumbered and none of the free flags (0x36–0x38, 0x44, 0x4C, 0x4D) is used; scene-only
+  objects use temp flags (D-136). Out of the uniform era, Wally's Victory Road battle stays with Acts 6–7. – Alt
+  (the brief's list): May in Slateport after the museum (right before her Route 110 fight, which is where she first
+  sees the uniform); Brendan on Route 117 or at Fortree (Route 117 is a dead end off the way, Fortree comes right
+  after his Route 119 fight); Wally in Verdanturf (optional, easily missed) or at Mt. Pyre's foot (right after his
+  Lilycove fight, no level growth). – On the way, spread out, and each one reacts to something Magma just did.
+- **D-235 Can the new fights be lost?** The existing rule: a fight on its own is a must-win vanilla battle (a loss
+  whites out and the trigger is still armed when the player comes back, as in Rustboro, Route 110, Route 119 and
+  Petalburg), a fight inside a scene the player can't come back to is `trainerbattle_earlyrival` with
+  `RIVAL_BATTLE_HEAL_AFTER` (a loss heals and the rival's line follows the result, D-122/D-124). So Route 104,
+  Route 112 and Route 120 are must-win (the boat, the cable car and the way to Lilycove bring the player back);
+  Lavaridge (straight out of the Gym, and the Go-Goggles are needed for the desert), Jagged Pass and Mossdeep (the
+  story never returns to the hideout or the Space Center door) are early-rival. Each scene also sets its trainer
+  flag at its end, so a mashed test run with no whiteout can't replay it. – Alt: all must-win (a lost Jagged Pass or
+  Mossdeep fight would be gone for good); all early-rival (rivals would stop blocking anything).
+- **D-236 Wally in the uniform era** (feedback 1.34 "really hostile … trying to stop Team Magma and protect Hoenn,
+  not knowing your true mission"; supersedes D-135's "Wally trusts what he saw"): normally gentle, now angry and
+  brave. Mauville: "You helped me catch RALTS! How could you join TEAM MAGMA?", his uncle wants the player away
+  from him and from Verdanturf, and his PokéNav registration is to know where to find the player "if MAGMA hurts
+  anyone"; Route 112: he won't let the player up the mountain; Petalburg: the smoke over Mt. Chimney, "you'll have
+  to get past me"; Route 120: the Weather Institute; Lilycove: the Key Stone is "to protect people". Short, plain
+  sentences like Brendan's and May's (docs/hack_voices.md); his health shows (the hot springs, "I didn't cough
+  once") but not as self-pity. His Lilycove line says KIRLIA evolved (he had Kirlia since Petalburg). – Alt: Wally
+  scared but trusting (D-135, the round 1 story's version). – The playtester's note.
+- **D-237 No Latis before the finale** (part of feedback 1.25: "they shouldn't get their Lati until close to the
+  climax"; supersedes the Lati part of D-106 and D-187): Latios and Latias are gone from every Brendan / May team
+  and partner team of Acts 1–5 (Route 119, the Lilycove double, the Space Center tag, the Sootopolis partners). The
+  singles and the double keep five; the half parties that need three take a member of the given team instead:
+  Brendan's Space Center Mightyena, the Sootopolis partners May's Tropius (Wide Guard for the multi battle) and
+  Brendan's Swellow. The post-game lab teams keep theirs; the Acts 6–7 work brings the Latis in near the climax.
+  – Alt: another species in the sixth slot (the round 1 notes give each rival exactly six). – The note.
+- **D-238 Teams of the new fights**: from the round 1 rosters, growing between the neighbouring fights at the top of
+  each segment's band (the rivals are bosses, default IVs): Brendan Route 104 Poochyena / Taillow / Slakoth 17,
+  Grovyle 19 (between Rustboro's four at 10–13 and Mt. Chimney's five at 27–29); Jagged Pass Mightyena / Swellow /
+  Magcargo 42, Slaking 43, Sceptile 44. May Lavaridge Wailmer / Beautifly / Skitty / Tropius 31, Combusken 33
+  (Tropius joins); Mossdeep Delcatty / Beautifly 45, Tropius / Wailord 46, Blaziken 47 with its **Blazikenite** –
+  her Mega shows up in the same segment as Brendan's at the Space Center (D-106: the rivals' Megas from Mossdeep).
+  Wally Route 112 Roselia / Swablu 25, Kirlia 27; Route 120 Roselia / Altaria / Magneton / Delcatty 36, Kirlia 38
+  (Gallade only in Lilycove, with the Dawn Stone story). `check_party.py --caps --proc` 0 errors. – Alt: May's
+  Mega only at Sootopolis (her Mossdeep fight would be weaker than Brendan's tag half a segment earlier).
+- **D-239 The rivals' bedrooms**: after Lilycove both go home (act4) and stay until the Hall of Fame, so their
+  Littleroot bedroom lines only meet the uniform and the revealed player: in uniform Brendan tells the player to
+  get out before his dad sees them and May won't let them out of her sight; after the turn Brendan is awkward
+  ("Don't make me say sorry twice, okay?") and May cheerful. Each object's `script` in `map.json` points at its own
+  line (both used to run May's vanilla text). – Alt: a reputation branch inside the vanilla shared script (it can't
+  tell the two houses apart without a map check).
+- **D-243 The rivals' PokéNav calls follow the story and the reputation**: Brendan's, May's and Wally's Match Call
+  texts (vanilla neighbour chat and tips) are replaced by `data/scripts/draconid/rival_calls.pory`. Each rival has two
+  tables in `src/pokenav_match_call_data.c`: one while the player wears the uniform and one after the Sootopolis
+  turn (`VAR_DRACONID_REPUTATION` ≥ `REPUTATION_REVEALED`); an entry is used once the rival's own state var
+  (`VAR_MAY_STATE` / `VAR_BRENDAN_STATE` / `VAR_WALLY_STATE`) has reached its value and its flag (badges, the Orb,
+  Victory Road, the Hall of Fame) is set, and the last such entry wins. In uniform they keep the number to watch a
+  MAGMA grunt (hostile, one crack per rival – docs/hack_voices.md); after the turn they call as friends and point the
+  way (Juan, the League through Victory Road, the lab rematch). The contact descriptions "RAD NEIGHBOR" become
+  "NORMAN'S KID" / "BIRCH'S KID" (neither is the player's neighbour in v2). – Alt: keep the vanilla flag-gated
+  tables and only rewrite the texts (vanilla's gates are story events round 1 moved or removed); one table with a
+  reputation condition per entry (harder to read). – The playtester asked for the rivals to be hostile while the
+  player is in uniform (follow-up 4); the calls were the last friendly lines left.

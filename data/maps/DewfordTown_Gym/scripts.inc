@@ -173,6 +173,7 @@ DewfordTown_Gym_EventScript_GiveBulkUp::
 	goto_if_eq VAR_RESULT, 0, Common_EventScript_BagIsFull
 	msgbox DewfordTown_Gym_Text_ExplainBulkUp, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_TM_BULK_UP
+	call Draconid_EventScript_GymBoosterBrawly  @ Draconid Emerald (battle_items.pory, D-220)
 	return
 
 DewfordTown_Gym_EventScript_GiveBulkUp2:
@@ -180,6 +181,7 @@ DewfordTown_Gym_EventScript_GiveBulkUp2:
 	goto_if_eq VAR_RESULT, 0, Common_EventScript_ShowBagIsFull
 	msgbox DewfordTown_Gym_Text_ExplainBulkUp, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_TM_BULK_UP
+	call Draconid_EventScript_GymBoosterBrawly  @ Draconid Emerald (battle_items.pory, D-220)
 	release
 	end
 

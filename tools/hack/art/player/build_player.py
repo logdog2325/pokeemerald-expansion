@@ -25,7 +25,13 @@ Spec (JSON):
               "heads": ["down", "up", "left", ...], per output frame (null = no head swap)
               "fix": {"3": {"dx": 0, "dy": 1}}     per-frame anchor nudges (output frame index)
               "clear_above": 0                     overrides the heads' clear_above (keep fishing rods)
+              "overlays": ["scarf_down", ...],     per output frame, a body overlay (null = none)
+              "overlay_fix": {"3": {"dx": 0, "dy": 1}}  per-frame overlay nudges
               "pixels": {"3": ["x,y,ROLE", ...]}}]  per-frame pixel touch-ups after the swap
+  "overlays": {"scarf_down": {"anchor": [dx, dy], "under": [...], "rows": [...]}}
+            body overlays (the Draconid scarf), anchored on the head template's top-left after the
+            swap (so they follow the head's fix nudges); "under" rows only paint transparent pixels
+            (behind the body), then "rows" paint over it
   "derived": [...]                      sheets made from built frames (see build_derived); "path"
                                         saves one outside out_dir (e.g. the region map icon)
   "reflection_palette_out": "...pal"    generated water-reflection palette
@@ -83,10 +89,12 @@ def largest_component(px, fx, fy, w, h, indices):
 
 
 def swap_head(px, fx, fy, w, h, head, roles, cap, clear, nudge, clear_above=None):
-    """Replace the headwear of one frame (frame origin fx, fy) with a head template."""
+    """Replace the headwear of one frame (frame origin fx, fy) with a head template.
+
+    Returns the template's top-left (x, y) inside the frame (overlays anchor on it), or None."""
     caps = largest_component(px, fx, fy, w, h, cap)
     if not caps:
-        return False
+        return None
     top = min(y for _, y in caps)
     left = min(x for x, y in caps if y == top)
     ax, ay = head["anchor"]
@@ -109,7 +117,26 @@ def swap_head(px, fx, fy, w, h, head, roles, cap, clear, nudge, clear_above=None
             if ch == "." or not (0 <= x < w and 0 <= y < h):
                 continue
             px[fx + x, fy + y] = 0 if ch == "_" else roles[ch]
-    return True
+    return ox, oy
+
+
+def draw_overlay(px, fx, fy, w, h, tpl, roles, origin, nudge):
+    """Draw a body overlay (e.g. the Draconid scarf) anchored on the head template's top-left.
+
+    tpl = {"anchor": [dx, dy], "under": [...], "rows": [...]}: "under" rows paint only transparent
+    pixels (behind the body), then "rows" paint over everything; '.' keeps, '_' clears."""
+    ax, ay = tpl["anchor"]
+    ox = origin[0] + ax + nudge.get("dx", 0)
+    oy = origin[1] + ay + nudge.get("dy", 0)
+    for layer, behind in (("under", True), ("rows", False)):
+        for ty, row in enumerate(tpl.get(layer, [])):
+            for tx, ch in enumerate(row):
+                x, y = ox + tx, oy + ty
+                if ch == "." or not (0 <= x < w and 0 <= y < h):
+                    continue
+                if behind and px[fx + x, fy + y]:
+                    continue
+                px[fx + x, fy + y] = 0 if ch == "_" else roles[ch]
 
 
 def build(spec, preview=None):
@@ -131,13 +158,19 @@ def build(spec, preview=None):
             out.paste(src.crop((f * w, 0, f * w + w, h)), (i * w, 0))
         px = out.load()
         heads = sh.get("heads", [])
+        overlays = sh.get("overlays", [])
         for i in range(len(pick)):
             name = heads[i] if i < len(heads) else None
+            origin = None
             if name:
-                ok = swap_head(px, i * w, 0, w, h, spec["heads"][name], roles, set(spec["cap"]),
-                               set(spec["clear"]), sh.get("fix", {}).get(str(i), {}), sh.get("clear_above"))
-                if not ok:
+                origin = swap_head(px, i * w, 0, w, h, spec["heads"][name], roles, set(spec["cap"]),
+                                   set(spec["clear"]), sh.get("fix", {}).get(str(i), {}), sh.get("clear_above"))
+                if not origin:
                     print("warning: %s frame %d: no headwear found" % (sh["out"], i))
+            ov = overlays[i] if i < len(overlays) else None
+            if ov and origin:
+                draw_overlay(px, i * w, 0, w, h, spec["overlays"][ov], roles, origin,
+                             sh.get("overlay_fix", {}).get(str(i), {}))
             for p in sh.get("pixels", {}).get(str(i), []):
                 x, y, ch = p.split(",")
                 px[i * w + int(x), int(y)] = 0 if ch == "_" else roles[ch]

@@ -813,6 +813,11 @@ static bool8 TryStartStepCountScript(u16 metatileBehavior)
             ScriptContext_SetupScript(MossdeepCity_SpaceCenter_2F_EventScript_RivalRayquazaCall);
             return TRUE;
         }
+        if (Draconid_ShouldDoMaxieCall()) // Draconid Emerald: Maxie's PokéNav calls (D-186)
+        {
+            ScriptContext_SetupScript(Draconid_EventScript_MaxieCall);
+            return TRUE;
+        }
         if (UpdateVsSeekerStepCounter())
         {
             ScriptContext_SetupScript(EventScript_VsSeekerChargingDone);

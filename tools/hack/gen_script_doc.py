@@ -113,23 +113,33 @@ def pory_section(path):
             else:
                 texts[name] = join_strings(body)
     lines = []
+    used = set()
     for kind, name, body in items:
         if kind != "script":
             continue
         said = []
-        # msgbox/message with an inline format() or a text label, in order
-        for m in re.finditer(r'(?:msgbox|message)\(\s*(format\(\s*(?:%s\s*)+\)|\w+)' % STRING, body):
+        # msgbox/message/pokenavcall with an inline format() or a text label, in order
+        for m in re.finditer(r'(?:msgbox|message|pokenavcall)\(\s*(format\(\s*(?:%s\s*)+\)|\w+)' % STRING, body):
             arg = m.group(1)
             if arg.startswith("format"):
                 said.append(join_strings(arg))
             elif arg in texts:
                 said.append(texts[arg])
+                used.add(arg)
         if not said:
             continue
         lines.append("### `%s`" % name)
         for t in said:
             for box in pretty(t):
                 lines.append("- %s" % box)
+        lines.append("")
+    # texts no script here shows (C code picks them, e.g. the rivals' PokéNav calls): one entry each, in file order
+    for name in texts:
+        if name in used or re.search(r"\b%s\b" % re.escape(name), "".join(b for k, _, b in items if k == "script")):
+            continue
+        lines.append("### `%s`" % name)
+        for box in pretty(texts[name]):
+            lines.append("- %s" % box)
         lines.append("")
     if not lines:
         return []

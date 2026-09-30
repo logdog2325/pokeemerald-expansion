@@ -1,0 +1,198 @@
+# Wild Pokémon (round 1, feedback 1.28, docs/hack_wild.md): the Pokédex is National from Birch's lab
+# (D-196), Granite Cave 1F and Petalburg Woods hand out wild battles from the new tables, and Bug Catcher
+# Rick (Route 102) leads with his Gen 4-9 swap, Kricketot (D-195).
+# Needs rustboro_done.ss from tests/rustboro.play in the same output directory. Each wild battle prints the
+# wild Pokémon's species id (gBattleMons[1].species; struct BattlePokemon is 0x8C bytes, species first, speed
+# at +6) and a screenshot, then the player runs away: the test party is a Lv 6 hatchling, too weak for Granite
+# Cave, so its battle speed is poked to 1023 (a faster Pokémon always escapes) and B, DOWN, RIGHT, A picks RUN.
+# The walk and the run use key cycles in "until" (needs the gbarun strtok_r fix). Encounters depend on the
+# ROM build (RNG): round 1 builds showed Woobat (527) in Granite Cave and Nymble (1303), Morelull (755) and Combee (415) in
+# the woods. Compare the ids with include/constants/species.h and `python3 tools/hack/check_wild.py --changes`;
+# the 1% Beldum is checked statically by check_wild.py.
+loadstate rustboro_done.ss
+expect_flag FLAG_SYS_POKEDEX_GET 1
+expect_flag FLAG_SYS_NATIONAL_DEX 1
+setflag FLAG_DEBUG_NO_TRAINER_SEE
+setflag FLAG_DRACONID_NO_WHITEOUT
+setflag FLAG_DEBUG_NO_ENCOUNTER
+heal
+# --- Granite Cave 1F: the upper corridor (row 4)
+warp MAP_GRANITE_CAVE_1F 20 4
+run 60
+clearflag FLAG_DEBUG_NO_ENCOUNTER
+repeat 3 press LEFT 2 16
+until @gMain+4 4 @@BattleMainCB2 20000 LEFT,LEFT,LEFT,LEFT,RIGHT,RIGHT,RIGHT,RIGHT 18
+run 400
+read @gBattleMons+8C 2 granite_1_species
+poke @gBattleMons+6 FF
+poke @gBattleMons+7 03
+shot w01_granite
+until @gMain+4 4 !@@BattleMainCB2 20000 B,DOWN,RIGHT,A 24
+setflag FLAG_DEBUG_NO_ENCOUNTER
+run 120
+heal
+clearflag FLAG_DEBUG_NO_ENCOUNTER
+until @gMain+4 4 @@BattleMainCB2 20000 LEFT,LEFT,LEFT,LEFT,RIGHT,RIGHT,RIGHT,RIGHT 18
+run 400
+read @gBattleMons+8C 2 granite_2_species
+poke @gBattleMons+6 FF
+poke @gBattleMons+7 03
+shot w02_granite
+until @gMain+4 4 !@@BattleMainCB2 20000 B,DOWN,RIGHT,A 24
+setflag FLAG_DEBUG_NO_ENCOUNTER
+run 120
+heal
+clearflag FLAG_DEBUG_NO_ENCOUNTER
+until @gMain+4 4 @@BattleMainCB2 20000 LEFT,LEFT,LEFT,LEFT,RIGHT,RIGHT,RIGHT,RIGHT 18
+run 400
+read @gBattleMons+8C 2 granite_3_species
+poke @gBattleMons+6 FF
+poke @gBattleMons+7 03
+shot w03_granite
+until @gMain+4 4 !@@BattleMainCB2 20000 B,DOWN,RIGHT,A 24
+setflag FLAG_DEBUG_NO_ENCOUNTER
+run 120
+heal
+clearflag FLAG_DEBUG_NO_ENCOUNTER
+until @gMain+4 4 @@BattleMainCB2 20000 LEFT,LEFT,LEFT,LEFT,RIGHT,RIGHT,RIGHT,RIGHT 18
+run 400
+read @gBattleMons+8C 2 granite_4_species
+poke @gBattleMons+6 FF
+poke @gBattleMons+7 03
+shot w04_granite
+until @gMain+4 4 !@@BattleMainCB2 20000 B,DOWN,RIGHT,A 24
+setflag FLAG_DEBUG_NO_ENCOUNTER
+run 120
+heal
+# --- Petalburg Woods: the tall grass west of the south path (row 27)
+warp MAP_PETALBURG_WOODS 6 27
+run 60
+clearflag FLAG_DEBUG_NO_ENCOUNTER
+until @gMain+4 4 @@BattleMainCB2 20000 LEFT,LEFT,LEFT,LEFT,RIGHT,RIGHT,RIGHT,RIGHT 18
+run 400
+read @gBattleMons+8C 2 woods_1_species
+poke @gBattleMons+6 FF
+poke @gBattleMons+7 03
+shot w05_woods
+until @gMain+4 4 !@@BattleMainCB2 20000 B,DOWN,RIGHT,A 24
+setflag FLAG_DEBUG_NO_ENCOUNTER
+run 120
+heal
+clearflag FLAG_DEBUG_NO_ENCOUNTER
+until @gMain+4 4 @@BattleMainCB2 20000 LEFT,LEFT,LEFT,LEFT,RIGHT,RIGHT,RIGHT,RIGHT 18
+run 400
+read @gBattleMons+8C 2 woods_2_species
+poke @gBattleMons+6 FF
+poke @gBattleMons+7 03
+shot w06_woods
+until @gMain+4 4 !@@BattleMainCB2 20000 B,DOWN,RIGHT,A 24
+setflag FLAG_DEBUG_NO_ENCOUNTER
+run 120
+heal
+clearflag FLAG_DEBUG_NO_ENCOUNTER
+until @gMain+4 4 @@BattleMainCB2 20000 LEFT,LEFT,LEFT,LEFT,RIGHT,RIGHT,RIGHT,RIGHT 18
+run 400
+read @gBattleMons+8C 2 woods_3_species
+poke @gBattleMons+6 FF
+poke @gBattleMons+7 03
+shot w07_woods
+until @gMain+4 4 !@@BattleMainCB2 20000 B,DOWN,RIGHT,A 24
+setflag FLAG_DEBUG_NO_ENCOUNTER
+run 120
+heal
+clearflag FLAG_DEBUG_NO_ENCOUNTER
+until @gMain+4 4 @@BattleMainCB2 20000 LEFT,LEFT,LEFT,LEFT,RIGHT,RIGHT,RIGHT,RIGHT 18
+run 400
+read @gBattleMons+8C 2 woods_4_species
+poke @gBattleMons+6 FF
+poke @gBattleMons+7 03
+shot w08_woods
+until @gMain+4 4 !@@BattleMainCB2 20000 B,DOWN,RIGHT,A 24
+setflag FLAG_DEBUG_NO_ENCOUNTER
+run 120
+heal
+clearflag FLAG_DEBUG_NO_ENCOUNTER
+until @gMain+4 4 @@BattleMainCB2 20000 LEFT,LEFT,LEFT,LEFT,RIGHT,RIGHT,RIGHT,RIGHT 18
+run 400
+read @gBattleMons+8C 2 woods_5_species
+poke @gBattleMons+6 FF
+poke @gBattleMons+7 03
+shot w09_woods
+until @gMain+4 4 !@@BattleMainCB2 20000 B,DOWN,RIGHT,A 24
+setflag FLAG_DEBUG_NO_ENCOUNTER
+run 120
+heal
+clearflag FLAG_DEBUG_NO_ENCOUNTER
+until @gMain+4 4 @@BattleMainCB2 20000 LEFT,LEFT,LEFT,LEFT,RIGHT,RIGHT,RIGHT,RIGHT 18
+run 400
+read @gBattleMons+8C 2 woods_6_species
+poke @gBattleMons+6 FF
+poke @gBattleMons+7 03
+shot w10_woods
+until @gMain+4 4 !@@BattleMainCB2 20000 B,DOWN,RIGHT,A 24
+setflag FLAG_DEBUG_NO_ENCOUNTER
+run 120
+heal
+clearflag FLAG_DEBUG_NO_ENCOUNTER
+until @gMain+4 4 @@BattleMainCB2 20000 LEFT,LEFT,LEFT,LEFT,RIGHT,RIGHT,RIGHT,RIGHT 18
+run 400
+read @gBattleMons+8C 2 woods_7_species
+poke @gBattleMons+6 FF
+poke @gBattleMons+7 03
+shot w11_woods
+until @gMain+4 4 !@@BattleMainCB2 20000 B,DOWN,RIGHT,A 24
+setflag FLAG_DEBUG_NO_ENCOUNTER
+run 120
+heal
+clearflag FLAG_DEBUG_NO_ENCOUNTER
+until @gMain+4 4 @@BattleMainCB2 20000 LEFT,LEFT,LEFT,LEFT,RIGHT,RIGHT,RIGHT,RIGHT 18
+run 400
+read @gBattleMons+8C 2 woods_8_species
+poke @gBattleMons+6 FF
+poke @gBattleMons+7 03
+shot w12_woods
+until @gMain+4 4 !@@BattleMainCB2 20000 B,DOWN,RIGHT,A 24
+setflag FLAG_DEBUG_NO_ENCOUNTER
+run 120
+heal
+clearflag FLAG_DEBUG_NO_ENCOUNTER
+until @gMain+4 4 @@BattleMainCB2 20000 LEFT,LEFT,LEFT,LEFT,RIGHT,RIGHT,RIGHT,RIGHT 18
+run 400
+read @gBattleMons+8C 2 woods_9_species
+poke @gBattleMons+6 FF
+poke @gBattleMons+7 03
+shot w13_woods
+until @gMain+4 4 !@@BattleMainCB2 20000 B,DOWN,RIGHT,A 24
+setflag FLAG_DEBUG_NO_ENCOUNTER
+run 120
+heal
+clearflag FLAG_DEBUG_NO_ENCOUNTER
+until @gMain+4 4 @@BattleMainCB2 20000 LEFT,LEFT,LEFT,LEFT,RIGHT,RIGHT,RIGHT,RIGHT 18
+run 400
+read @gBattleMons+8C 2 woods_10_species
+poke @gBattleMons+6 FF
+poke @gBattleMons+7 03
+shot w14_woods
+until @gMain+4 4 !@@BattleMainCB2 20000 B,DOWN,RIGHT,A 24
+setflag FLAG_DEBUG_NO_ENCOUNTER
+run 120
+heal
+shot w99_after
+mapid
+# --- a generic trainer with a Gen 4-9 swap (D-195): Bug Catcher Rick on Route 102 leads with Kricketot (401)
+setflag FLAG_DEBUG_NO_ENCOUNTER
+warp MAP_ROUTE102 25 14
+run 60
+press DOWN 2 16
+press A 2 16
+until @gMain+4 4 @@BattleMainCB2 3000 A 30
+run 300
+read @gBattleMons+8C 2 rick_lead_species
+press A 2 120
+press A 2 200
+shot w20_rick
+mash A 30000
+expect_opponent TRAINER_RICK
+shot w21_after_rick
+clearflag FLAG_DEBUG_NO_TRAINER_SEE
+clearflag FLAG_DRACONID_NO_WHITEOUT

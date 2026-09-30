@@ -28,10 +28,19 @@ Use `tools/hack/art/quantize.py` (≤16 colours, transparent index 0, GBA colour
 `tools/hack/art/validate.py` before wiring anything into the build. Tiles go through Porytiles
 (`docs/hack_tools.md`). Render a contact sheet or map preview and review it before committing.
 
-## Game data sources
-Teams copied from the official games (species, levels, abilities, moves and items as listed there; our own
-natures, EVs and held items are added on top and recorded in `docs/hack_decisions.md`).
+## Data sources (game data, not art)
 
-| Trainer | Source | Notes |
-|---|---|---|
-| `TRAINER_ZINNIA_SKY_PILLAR` (Act 7, D-155) | [Serebii – ORAS Delta Episode](https://www.serebii.net/omegarubyalphasapphire/deltaepisode.shtml) (Zinnia at the Sky Pillar; also [pokearth Sky Pillar](https://www.serebii.net/pokearth/hoenn/skypillar.shtml)) | Goodra 60, Noivern 60, Altaria 60, Tyrantrum 60, Salamence 62 @ Salamencite |
+| Data | Source | Fetched | Where it's used |
+|---|---|---|---|
+| ORAS trainer teams (first battle, rematches; species, levels, held items) | [Serebii Pokéarth – Hoenn, Gen VI pages](https://www.serebii.net/pokearth/hoenn/) (`/pokearth/hoenn/<location>.shtml`, 57 locations with trainers) | 2026-09-30 | `tools/hack/trainers/oras/oras_trainers.json` |
+| ORAS Elite Four / Champion, first battle and post-game rematch, with moves | [Serebii – ORAS Elite Four](https://www.serebii.net/omegarubyalphasapphire/elitefour.shtml) | 2026-09-30 | same file (`oras_elitefour`) |
+| Red's and Blue's Pokémon World Tournament teams (Black 2 / White 2 Champions Tournament: species, Lv 50, held items, moves; no abilities or natures) | [Serebii – PWT Champions Tournament](https://www.serebii.net/black2white2/pwt/champion.shtml) (linked from [the PWT page](https://www.serebii.net/black2white2/worldtournament.shtml)) | 2026-09-30 | `tools/hack/trainers/pwt/pwt_champions.json` → the Battle Frontier legends (D-226) |
+| Zinnia's Sky Pillar team (ORAS Delta Episode: species, levels; held items, natures and EVs are ours, D-155) | [Serebii – ORAS Delta Episode](https://www.serebii.net/omegarubyalphasapphire/deltaepisode.shtml), [Serebii Pokéarth – Sky Pillar](https://www.serebii.net/pokearth/hoenn/skypillar.shtml) | 2026-09-30 | `TRAINER_ZINNIA_SKY_PILLAR` (Goodra 60, Noivern 60, Altaria 60, Tyrantrum 60, Salamence 62 @ Salamencite) |
+
+The PWT page is fetched by `tools/hack/trainers/pwt/scrape_pwt.py` (one request, cached outside the repo; `--offline`
+re-parses the cache). Wes's team (Pokémon Colosseum) is the playtester's list; its sets are written here (D-226).
+
+Fetched by `tools/hack/trainers/oras/scrape_serebii.py` (one request at a time, 2 s apart, pages cached outside
+the repo; rerun with `--offline` on the cache to rebuild the JSON). Only the extracted team data is committed, not
+the pages. Bulbapedia refuses automated requests (HTTP 403), so it is not used. How the data is matched and used:
+docs/hack_trainers.md, "ORAS data".

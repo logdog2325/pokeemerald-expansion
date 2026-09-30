@@ -225,7 +225,7 @@ LilycoveCity_EventScript_AquaGrunt4::
 	end
 
 LilycoveCity_EventScript_Rival::
-	@ Draconid Emerald: Brendan and May together, a two-on-two battle (rivals.pory)
+	@ Draconid Emerald: Brendan and May together, a two-on-two battle (act4.pory)
 	goto LilycoveCity_EventScript_DraconidRivals
 	end
 

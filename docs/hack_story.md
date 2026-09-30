@@ -123,3 +123,40 @@ Petalburg Woods recruitment/outfit change, Maxie's first meeting at Meteor Falls
   walk off. Dialogue with the evil teams changes to match the disguise.
 - The Mossdeep battle against Brendan / Steven is not a must-win, and Steven is overlevelled (he is the Champion).
 - Before the Magma outfit, the player's overworld sprite is the dragon tamer (never Brendan or May).
+
+### Follow-up note (round 1)
+- "Also include a battle with Zinnia at Sky Pillar too with her ORAS team."
+- "Make sure the levels scale properly also introduce gen 6 style exp share should be possible, also too if you can have Maxie call you after key story points to help direct you to the next location I think that would be cool and also like the teams I gave you for Brendan and May should scale so like your first battle with Brendan he should just have treecko poochyena tailow, and maybe slakoth if it’s past petalburg Forrest"
+
+### Follow-up note 2 (round 1)
+- "And also make sure you can actually get to the next place without stuff from emerald blocking you so your not story locked or you get transported to the next place without stuff blocking you"
+- "And obviously once your outed Maxie shouldn't call you anymore lol"
+- "Also I think it would be cool if in the final battle with Maxie he succeeds and has primal Groudon on his team to make the battle more intense and hard but maybe that should be after sky pillar, you have to face both Archie and Maxie with primal Groudon and Kyogre and you have the help of Brendan or may who has there mega lati (also they shouldn't get there lati until close to the climax of the story)"
+- "And make sure Maxie talks like he does in game with his tone of voice and mannerisms. Same with Brendan and may I don't want them clunky or ai sounding dialogue it should be smooth"
+- "Also if possible make it so hms aren't necessary and that you can use them outside of battle once you get the hm I'm not sure how you'd do it but I've seen several rom hacks that have"
+- "Also add some wild pokemon from gens 4 5 6 7 8 9 where it makes sense and also to random trainers roster and have there be a 1% chance to encounter beldum in granite cave"
+- "And also make it so at the story conclusion once Archie and Maxie have been beat Groudon and Kyogre are catchable and encounter able find an appropriate and accessible place to put them and also have the latis roam with Brendan and may either releasing them or new ones being spotted, I also think it would be cool to add a brief storyline before sky pillar where the elder calls you and tells you to return to the village to catch regi drago so you have a legendary dragon too and put regidrago in a once inaccesible part of the cave Where you got your egg"
+
+### Follow-up note 3 (round 1)
+- "also make it so theres no trade evolutions pokemon just evovle at a set level and if possible add a few more brendan and may battles and have it be so you can get battle items throughout the story start with simple type boosting items like black glasses spell tag etc and then as the game progresses choice band choice scarf rocky helmet etc maybe make them sold in stores? figure out the best way to implement that scales with the games difficulty"
+
+### Follow-up note 4 (round 1)
+- "and also more wally battles and have them be really hostile to you because there trying to stop team magma and protect hoenn not knowing your true mission"
+
+### Follow-up notes 5 and 6 (round 1)
+- "also id love to add a post game battle against Wes from pokemon colloseum, his team is espeon, umbreon, raikou, entei suicune, and ho-oh also Red with his pwt team but mega charizard x and also blue with his pwt team and mega alakazam at the battle frontier make them multi battle partners too that you can team up with as well"
+- "also make sure you get access to the mega stones throughout the story"
+
+### Follow-up note 7 (round 1)
+- "also you should be gifted the mega stone for the starter you choose (sceptile feraligator mega charizard x) etc too" (already in: the Lavaridge gift after the Mega Ring)
+- "also have the professor who gives it to you be oak since he already has a in game sprite"
+
+### Follow-up note 8 (round 1)
+- "no oak gives you the second starter the totodile treecko or charmander that you choose the elder still gives you the egg also have the elder tell you the eggs are from galar, unova and alola and make sure you script the egg selection scene and choice and have the egg hatch after like 5 steps"
+
+### Follow-up note 9 (round 1)
+- "also once 6-7 is done make sure theres no story locks until the post game also make sure trainers are getting gen 4-9 pokemon too to spice things up"
+
+### Follow-up note 10 (round 1)
+- "Rewrite rivals' PokéNav Match Call texts by reputation" (a queued task the playtester asked to do)
+- "also make sure the kommo-o and dragapult lines also evolve to second stage at 25 and final stage at 50"

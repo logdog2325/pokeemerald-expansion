@@ -16,6 +16,7 @@
 #include "event_scripts.h"
 #include "fieldmap.h"
 #include "field_effect.h"
+#include "field_move.h"
 #include "field_player_avatar.h"
 #include "field_screen_effect.h"
 #include "field_weather.h"
@@ -25,6 +26,7 @@
 #include "item.h"
 #include "item_menu.h"
 #include "item_use.h"
+#include "link.h"
 #include "mail.h"
 #include "main.h"
 #include "menu.h"
@@ -36,6 +38,7 @@
 #include "party_menu.h"
 #include "pokeblock.h"
 #include "pokemon.h"
+#include "region_map.h"
 #include "script.h"
 #include "sound.h"
 #include "strings.h"
@@ -72,6 +75,10 @@ static void BootUpSoundTMHM(u8);
 static void Task_ShowTMHMContainedMessage(u8);
 static void UseTMHMYesNo(u8);
 static void UseTMHM(u8);
+static bool32 TryOfferHMFieldMove(u8);
+static void UseHMFieldMoveYesNo(u8);
+static void UseHMFieldMove(u8);
+static void TeachInsteadOfHMFieldMove(u8);
 static void Task_StartUseRepel(u8);
 static void Task_StartUseLure(u8 taskId);
 static void Task_UseRepel(u8);
@@ -91,6 +98,7 @@ static const u8 sText_PowderQty[] = _("POWDER QTY: {STR_VAR_1}{PAUSE_UNTIL_PRESS
 static const u8 sText_BootedUpTM[] = _("Booted up a TM.");
 static const u8 sText_BootedUpHM[] = _("Booted up an HM.");
 static const u8 sText_TMHMContainedVar1[] = _("It contained\n{STR_VAR_1}.\pTeach {STR_VAR_1}\nto a POKéMON?");
+static const u8 sText_HMFieldMoveUsableHere[] = _("{STR_VAR_1} can be used here.\nWould you like to use it?");
 static const u8 sText_UsedVar2WildLured[] = _("{PLAYER} used the\n{STR_VAR_2}.\pWild POKéMON will be lured.{PAUSE_UNTIL_PRESS}");
 static const u8 sText_UsedVar2WildRepelled[] = _("{PLAYER} used the\n{STR_VAR_2}.\pWild POKéMON will be repelled.{PAUSE_UNTIL_PRESS}");
 static const u8 sText_PlayedPokeFluteCatchy[] = _("Played the POKé FLUTE.\pNow, that's a catchy tune!{PAUSE_UNTIL_PRESS}");
@@ -119,6 +127,12 @@ static const struct YesNoFuncTable sUseTMHMYesNoFuncTable =
 {
     .yesFunc = UseTMHM,
     .noFunc = CloseItemMessage,
+};
+
+static const struct YesNoFuncTable sUseHMFieldMoveYesNoFuncTable =
+{
+    .yesFunc = UseHMFieldMove,
+    .noFunc = TeachInsteadOfHMFieldMove,
 };
 
 #define tEnigmaBerryType data[4]
@@ -913,6 +927,8 @@ void ItemUseOutOfBattle_DynamaxCandy(u8 taskId)
 
 void ItemUseOutOfBattle_TMHM(u8 taskId)
 {
+    if (TryOfferHMFieldMove(taskId)) // Draconid Emerald (D-191)
+        return;
     if (GetItemTMHMIndex(gSpecialVar_ItemId) > NUM_TECHNICAL_MACHINES)
         DisplayItemMessage(taskId, FONT_NORMAL, sText_BootedUpHM, BootUpSoundTMHM); // HM
     else
@@ -944,6 +960,56 @@ static void UseTMHM(u8 taskId)
 {
     gItemUseCB = ItemUseCB_TMHM;
     SetUpItemUseCallback(taskId);
+}
+
+// Draconid Emerald (D-191): with its badge, an HM used from the bag does its field move when there is something
+// to use it on here (a tree, water, a dark cave, Fly outdoors, ...), shown with the Pokémon checkfieldmove would
+// pick; "No" goes on to the vanilla "Teach it?" question. Otherwise the HM only teaches its move, as in vanilla.
+static bool32 TryOfferHMFieldMove(u8 taskId)
+{
+    enum FieldMove fieldMove = GetFieldMoveFromHMItem(gSpecialVar_ItemId);
+    u32 slot;
+
+    if (fieldMove == FIELD_MOVES_COUNT || !IsFieldMoveUnlocked(fieldMove) || MenuHelpers_IsLinkActive() || InUnionRoom())
+        return FALSE;
+    slot = GetFieldMoveUserSlot(fieldMove);
+    if (slot >= PARTY_SIZE)
+        return FALSE;
+
+    // The field move setup and effects read their user from the party menu's cursor
+    gPartyMenu.slotId = slot;
+    if (!SetUpFieldMove(fieldMove))
+    {
+        gFieldCallback2 = NULL;
+        gPostMenuFieldCallback = NULL;
+        return FALSE;
+    }
+    StringCopy(gStringVar1, GetMoveName(FieldMove_GetMoveId(fieldMove)));
+    StringExpandPlaceholders(gStringVar4, sText_HMFieldMoveUsableHere);
+    DisplayItemMessage(taskId, FONT_NORMAL, gStringVar4, UseHMFieldMoveYesNo);
+    return TRUE;
+}
+
+static void UseHMFieldMoveYesNo(u8 taskId)
+{
+    BagMenu_YesNo(taskId, ITEMWIN_YESNO_HIGH, &sUseHMFieldMoveYesNoFuncTable);
+}
+
+static void UseHMFieldMove(u8 taskId)
+{
+    // Like the party menu: Fly opens the region map, the other moves run their callbacks once the field is back
+    if (GetFieldMoveFromHMItem(gSpecialVar_ItemId) == FIELD_MOVE_FLY)
+        gBagMenu->newScreenCallback = CB2_OpenFlyMapFromBag;
+    else
+        gBagMenu->newScreenCallback = CB2_ReturnToField;
+    Task_FadeAndCloseBagMenu(taskId);
+}
+
+static void TeachInsteadOfHMFieldMove(u8 taskId)
+{
+    gFieldCallback2 = NULL;
+    gPostMenuFieldCallback = NULL;
+    DisplayItemMessage(taskId, FONT_NORMAL, sText_BootedUpHM, BootUpSoundTMHM);
 }
 
 static void RemoveUsedItem(void)

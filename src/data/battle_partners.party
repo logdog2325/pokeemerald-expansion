@@ -60,14 +60,14 @@ Nature: Modest
 - Hyper Voice
 - Protect
 
-Latias @ Soul Dew
+Tropius @ Sitrus Berry
 Level: 46
-Ability: Levitate
-Nature: Timid
+Ability: Harvest
+Nature: Modest
+- Air Slash
+- Energy Ball
 - Dragon Pulse
-- Mist Ball
-- Helping Hand
-- Protect
+- Wide Guard
 
 Blaziken @ Blazikenite
 Level: 47
@@ -96,13 +96,13 @@ Nature: Adamant
 - Fire Fang
 - Protect
 
-Latios @ Soul Dew
+Swellow @ Flame Orb
 Level: 46
-Ability: Levitate
-Nature: Timid
-- Dragon Pulse
-- Luster Purge
-- Tailwind
+Ability: Guts
+Nature: Jolly
+- Facade
+- Brave Bird
+- Quick Attack
 - Protect
 
 Sceptile @ Sceptilite
@@ -491,4 +491,118 @@ Nature: Jolly
 - Dragon Claw
 - Rock Slide
 - Protect
+
+=== PARTNER_WES ===
+Name: WES
+Class: Orre Hero
+Pic: Wes
+Gender: Male
+Music: Intense
+AI: Smart Trainer
+
+Espeon @ Light Clay
+Level: 82
+Ability: Magic Bounce
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Timid
+- Psychic
+- Dazzling Gleam
+- Reflect
+- Light Screen
+
+Umbreon @ Leftovers
+Level: 82
+Ability: Inner Focus
+EVs: 252 HP / 4 Def / 252 SpD
+Nature: Careful
+- Foul Play
+- Snarl
+- Moonlight
+- Protect
+
+Ho-Oh @ Leftovers
+Level: 85
+Ability: Regenerator
+EVs: 252 HP / 252 Atk / 4 SpD
+Nature: Adamant
+- Sacred Fire
+- Brave Bird
+- Recover
+- Protect
+
+=== PARTNER_RED ===
+Name: RED
+Class: Legend
+Pic: Red
+Gender: Male
+Music: Elite Four
+AI: Smart Trainer
+
+Pikachu @ Light Ball
+Level: 83
+Ability: Lightning Rod
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Fake Out
+- Volt Tackle
+- Iron Tail
+- Brick Break
+
+Venusaur @ White Herb
+Level: 82
+Ability: Overgrow
+EVs: 252 HP / 252 SpA / 4 Spe
+Nature: Modest
+- Leaf Storm
+- Sludge Bomb
+- Sleep Powder
+- Protect
+
+Charizard @ Charizardite X
+Level: 85
+Ability: Blaze
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Timid
+- Heat Wave
+- Dragon Pulse
+- Air Slash
+- Protect
+
+=== PARTNER_BLUE ===
+Name: BLUE
+Class: Legend
+Pic: Champion Rival Frlg
+Gender: Male
+Music: Cool
+AI: Smart Trainer
+
+Arcanine @ Expert Belt
+Level: 83
+Ability: Intimidate
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Adamant
+- Flare Blitz
+- Close Combat
+- Extreme Speed
+- Protect
+
+Gyarados @ ITEM_KINGS_ROCK
+Level: 83
+Ability: Intimidate
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Adamant
+- Waterfall
+- Ice Fang
+- Outrage
+- Protect
+
+Alakazam @ Alakazite
+Level: 85
+Ability: Magic Guard
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Timid
+- Psychic
+- Focus Blast
+- Shadow Ball
+- Reflect
 

@@ -1,16 +1,15 @@
-# Flow test for Aster's arc, the Team Magma disguise and the Mega Ring (aster.pory).
+# Flow test for Aster's arc (aster.pory; Meteor Falls is act3.pory's now, and
+# tests/act3.play covers it and the Mega Ring in full).
 # Needs rustboro_done.ss from tests/rustboro.play: a one-Pokemon party, so a mashed battle ends
 # when it faints instead of stopping at the switch menu. VAR_SECOND_STARTER is set by hand.
 # States are set by hand and scenes reached with the debug warp; battles are mashed with the
-# no-whiteout flag on, so this checks the scripts, not the balance. Mt. Chimney's and the Magma
-# Hideout's Maxie scenes are vanilla; their Draconid calls are one line each.
+# no-whiteout flag on, so this checks the scripts, not the balance.
 # Matrix parameters (tools/hack/emu/matrix.py): EGGNAME = the player's egg in the savestate (Aster's
-# trainer ids are named after it), SECOND/STONE = the second starter and its Mega Stone, GFX/MAGMA = the
-# player's sprite prefix for the Draconid and Magma outfits.
+# trainer ids are named after it), SECOND = the second starter, GFX/MAGMA = the player's sprite prefix for
+# the Draconid and Magma outfits (unused since round 1 took the disguise scenes out; the matrix still passes them).
 default START rustboro_done.ss
 default EGGNAME DEINO
 default SECOND 1
-default STONE ITEM_CHARIZARDITE_X
 default GFX DRACONID_M
 default MAGMA MAGMA_M
 loadstate ${START}
@@ -30,42 +29,10 @@ mash A 90000
 shot 10_meteor_falls
 expect_var VAR_ASTER_STATE 1
 expect_opponent TRAINER_ASTER_METEOR_FALLS_${EGGNAME}
-expect_flag FLAG_HIDE_CABLE_CAR_STATION_ASTER 0
 
-# --- A3 Route 112 cable car station: the disguise ---
-heal
-warp MAP_ROUTE112_CABLE_CAR_STATION 6 10 3000
-run 120
-mash A 20000
-shot 20_disguise
-expect_var VAR_ASTER_STATE 2
-expect_var VAR_PLAYER_OUTFIT 1
-expect_gfx OBJ_EVENT_GFX_${MAGMA}_NORMAL
-
-# (Mt. Chimney's Maxie takes the disguise off and sets state 3; the v1 Route 119 battle is gone)
+# (Act 3: Aster gives the Mega Ring at Jagged Pass, state 6 - act3.play checks it)
 setvar VAR_PLAYER_OUTFIT 0
-setvar VAR_ASTER_STATE 3
-
-# --- Magma Hideout: the disguise goes back on ---
-warp MAP_MAGMA_HIDEOUT_1F 10 33 3000
-run 120
-mash A 5000
-shot 40_hideout
-expect_var VAR_PLAYER_OUTFIT 1
-
-# --- Elder: Mega Ring + the second starter's Mega Stone (Magma Hideout's Maxie would set state 5) ---
-setvar VAR_PLAYER_OUTFIT 0
-setvar VAR_ASTER_STATE 5
-warp MAP_DRACONID_VILLAGE_ELDERS_HOUSE 4 5
-run 60
-walk UP 4
-press A 2 30
-mash A 20000
-shot 50_mega_ring
-expect_flag FLAG_RECEIVED_MEGA_RING 1
-expect_var VAR_ASTER_STATE 6
-expect_item ITEM_MEGA_RING 1
-expect_item ${STONE} 1
+setvar VAR_ASTER_STATE 6
 
 # (the Sky Pillar finale and the post-game shrine battle are in tests/act7.play, round 1 Act 7)
 savestate aster_done.ss

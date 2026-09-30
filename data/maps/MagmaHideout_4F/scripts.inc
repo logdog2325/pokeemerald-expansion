@@ -4,6 +4,7 @@ MagmaHideout_4F_MapScripts::
 MagmaHideout_4F_EventScript_Maxie::
 	lockall
 	playbgm MUS_ENCOUNTER_MAGMA, FALSE
+	call MagmaHideout_4F_EventScript_DraconidPromotion  @ Draconid Emerald: Maxie promotes the player (act4.pory)
 	msgbox MagmaHideout_4F_Text_MaxieAwakenGroudon, MSGBOX_DEFAULT
 	closemessage
 	delay 20
@@ -46,21 +47,17 @@ MagmaHideout_4F_EventScript_Maxie::
 	waitmovement 0
 	msgbox MagmaHideout_4F_Text_MaxieGroudonWhatsWrong, MSGBOX_DEFAULT
 	closemessage
-	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft  @ Draconid Emerald: the player stands beside Maxie
 	waitmovement 0
 	delay 30
 	applymovement LOCALID_MAGMA_HIDEOUT_4F_MAXIE, Common_Movement_FacePlayer
 	waitmovement 0
 	msgbox MagmaHideout_4F_Text_MaxieOhItWasYou, MSGBOX_DEFAULT
-	closemessage
-	trainerbattle_no_intro TRAINER_MAXIE_MAGMA_HIDEOUT, MagmaHideout_4F_Text_MaxieDefeat
+	@ Draconid Emerald: no battle with Maxie; he tells the player his plan instead (D-134)
 	msgbox MagmaHideout_4F_Text_MaxieImGoingAfterGroudon, MSGBOX_DEFAULT
 	closemessage
-	clearflag FLAG_HIDE_SLATEPORT_CITY_CAPTAIN_STERN
-	clearflag FLAG_HIDE_SLATEPORT_CITY_GABBY_AND_TY
-	setvar VAR_SLATEPORT_CITY_STATE, 1
+	call MagmaHideout_4F_EventScript_DraconidAquaTakesSubmarine  @ Draconid Emerald: no Slateport harbor detour; Maxie sends the player to the Aqua Hideout (progression.pory, D-213)
 	setflag FLAG_GROUDON_AWAKENED_MAGMA_HIDEOUT
-	setvar VAR_SLATEPORT_HARBOR_STATE, 1
 	fadescreen FADE_TO_BLACK
 	removeobject LOCALID_MAGMA_HIDEOUT_4F_MAXIE
 	removeobject LOCALID_MAGMA_HIDEOUT_4F_GRUNT_1
@@ -69,7 +66,7 @@ MagmaHideout_4F_EventScript_Maxie::
 	removeobject LOCALID_MAGMA_HIDEOUT_4F_TABITHA
 	setflag FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS
 	fadescreen FADE_FROM_BLACK
-	call MagmaHideout_4F_EventScript_DraconidAfterMaxie  @ Draconid Emerald (aster.pory)
+	call MagmaHideout_4F_EventScript_DraconidSendWord  @ Draconid Emerald: word to the Elder (act4.pory)
 	releaseall
 	end
 
@@ -148,12 +145,13 @@ MagmaHideout_4F_Text_Grunt12Defeat:
 	.string "Grrr…\n"
 	.string "I've come so far, but now this?$"
 
-MagmaHideout_4F_Text_Grunt12PostBattle:
+MagmaHideout_4F_Text_Grunt12PostBattle:  @ Draconid Emerald
 	.string "MAXIE, sir!\n"
-	.string "An intruder is headed your way!$"
+	.string "The new one is on the way down!$"
 
-MagmaHideout_4F_Text_Grunt13Intro:
-	.string "You're not finished yet!\n"
+MagmaHideout_4F_Text_Grunt13Intro:  @ Draconid Emerald
+	.string "The LEADER's guest? Then you won't mind\n"
+	.string "one more test!\p"
 	.string "You're not getting by me easily!$"
 
 MagmaHideout_4F_Text_Grunt13Defeat:
@@ -162,23 +160,23 @@ MagmaHideout_4F_Text_Grunt13Defeat:
 MagmaHideout_4F_Text_Grunt13PostBattle:
 	.string "C-come on, one more match…$"
 
-MagmaHideout_4F_Text_TabithaIntro:
-	.string "Hehehe!\n"
-	.string "You made it this far, so I'll tell you!\p"
-	.string "That's right!\n"
-	.string "Up ahead, GROUDON is sleeping!\p"
-	.string "MAXIE went to GROUDON just seconds\n"
-	.string "ago!\p"
-	.string "It's going to awaken real soon!\n"
-	.string "Hehe! Hehehe!$"
+MagmaHideout_4F_Text_TabithaIntro:  @ Draconid Emerald
+	.string "TABITHA: Hehehe! Look who made it all\n"
+	.string "the way down!\p"
+	.string "Leader MAXIE is up ahead, with GROUDON.\n"
+	.string "He wants to see you.\p"
+	.string "But first… let's see if you're still\n"
+	.string "sharp.\p"
+	.string "One last rank test. Hehehe!$"
 
-MagmaHideout_4F_Text_TabithaDefeat:
-	.string "Taken down again…\n"
-	.string "Hehe…$"
+MagmaHideout_4F_Text_TabithaDefeat:  @ Draconid Emerald
+	.string "Taken down again… Hehe… You'll do.$"
 
-MagmaHideout_4F_Text_TabithaPostBattle:
-	.string "…And while you wasted time with me,\n"
-	.string "MAXIE should have awakened GROUDON…$"
+MagmaHideout_4F_Text_TabithaPostBattle:  @ Draconid Emerald
+	.string "TABITHA: Go on. Don't keep the LEADER\n"
+	.string "waiting.\p"
+	.string "Whatever he tells you in there… you\n"
+	.string "should feel honored. Hehe!$"
 
 MagmaHideout_4F_Text_MaxieAwakenGroudon:
 	.string "MAXIE: GROUDON…\p"
@@ -198,27 +196,28 @@ MagmaHideout_4F_Text_MaxieGroudonWhatsWrong:
 	.string "GROUDON!\n"
 	.string "Where have you gone…$"
 
-MagmaHideout_4F_Text_MaxieOhItWasYou:
-	.string "MAXIE: Oh, so it was you?\p"
-	.string "I've seen you poking around uninvited\n"
-	.string "here and there…\p"
-	.string "I get it now!\n"
-	.string "You must have pulled a cheap stunt!$"
+MagmaHideout_4F_Text_MaxieOhItWasYou:  @ Draconid Emerald
+	.string "MAXIE: Did you see its eyes, {PLAYER}?\n"
+	.string "That was the land itself, looking back\l"
+	.string "at us.\p"
+	.string "You deserve to know our true aim. With\n"
+	.string "GROUDON's power, we will expand the land\l"
+	.string "and push back the sea.\p"
+	.string "The seas will shrink and rivers may run\n"
+	.string "dry. In return, humankind and POKéMON\l"
+	.string "will have room to grow.$"
 
 MagmaHideout_4F_Text_MaxieDefeat:
 	.string "What makes you so adept at handling\n"
 	.string "POKéMON?$"
 
-MagmaHideout_4F_Text_MaxieImGoingAfterGroudon:
-	.string "MAXIE: There has to be some reason\n"
-	.string "why GROUDON fled…\p"
-	.string "That's what you're trying to say,\n"
-	.string "aren't you?\p"
-	.string "… … … … … …\n"
-	.string "… … … … … …\p"
-	.string "Humph…\n"
-	.string "You think I didn't know that?\p"
-	.string "With GROUDON gone, there is no longer\n"
-	.string "any need for this blasted volcano.\p"
-	.string "I am going after GROUDON, so this\n"
-	.string "is where we part!$"
+MagmaHideout_4F_Text_MaxieImGoingAfterGroudon:  @ Draconid Emerald
+	.string "MAXIE: GROUDON woke, but it would not\n"
+	.string "obey the BLUE ORB. Something is missing.\l"
+	.string "The RED ORB, perhaps.\p"
+	.string "No matter. GROUDON cannot hide\n"
+	.string "from us forever.\p"
+	.string "When AQUA makes its move, I will need\n"
+	.string "someone I trust inside their walls.\p"
+	.string "Rest while you can, {PLAYER}.\n"
+	.string "The land is waking.$"

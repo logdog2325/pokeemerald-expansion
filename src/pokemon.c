@@ -5132,6 +5132,9 @@ u16 GetBattleBGM(void)
             return MUS_VS_RIVAL;
         case TRAINER_CLASS_DRACONID: // Draconid Emerald: Aster fights to the rival theme
             return MUS_VS_RIVAL;
+        case TRAINER_CLASS_LEGEND: // Draconid Emerald: Red and Blue, the Kanto champions' theme (D-225)
+            return MUS_RG_VS_CHAMPION;
+        case TRAINER_CLASS_ORRE_HERO: // Draconid Emerald: Wes, the Frontier Brains' theme (D-225)
         case TRAINER_CLASS_LOREKEEPER: // Draconid Emerald: Zinnia, a master outside the League (D-155)
             return MUS_VS_FRONTIER_BRAIN;
         case TRAINER_CLASS_ELITE_FOUR:

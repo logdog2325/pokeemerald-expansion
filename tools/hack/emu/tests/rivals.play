@@ -7,54 +7,6 @@ setflag FLAG_DEBUG_NO_ENCOUNTER
 setflag FLAG_DEBUG_NO_TRAINER_SEE
 setflag FLAG_DRACONID_NO_WHITEOUT
 
-# --- Petalburg: Wally at the Gym door (after the Heat Badge) ---
-setvar VAR_WALLY_STATE 1
-clearflag FLAG_HIDE_PETALBURG_CITY_WALLY_GYM
-warp MAP_PETALBURG_CITY 15 12
-path PetalburgCity 15 12 15 10
-press UP 2 10
-run 120
-shot 20_petalburg_wally
-press A 2 30
-mash A 60000
-shot 21_after_wally
-expect_var VAR_WALLY_STATE 2
-expect_flag FLAG_HIDE_PETALBURG_CITY_WALLY_GYM 1
-expect_flag FLAG_HIDE_LILYCOVE_CITY_WALLY 0
-
-# --- Lilycove: Wally by the Pokemon Center ---
-warp MAP_LILYCOVE_CITY 26 18
-path LilycoveCity 26 18 26 17
-press UP 2 10
-press A 2 30
-run 60
-shot 30_lilycove_wally
-mash A 60000
-expect_var VAR_WALLY_STATE 3
-expect_flag FLAG_HIDE_LILYCOVE_CITY_WALLY 1
-
-# --- Lilycove: Brendan and May (needs two Pokemon: this party has one, so they say so) ---
-clearflag FLAG_HIDE_LILYCOVE_CITY_RIVAL
-warp MAP_LILYCOVE_CITY 27 9
-path LilycoveCity 27 9 27 8
-press UP 2 10
-press A 2 30
-run 60
-shot 40_lilycove_rivals
-mash A 20000
-shot 41_lilycove_need_two
-expect_flag FLAG_MET_RIVAL_LILYCOVE 0
-
-# --- Sootopolis: the Mega battles after the Rain Badge (OnFrame scene) ---
-setvar VAR_BRENDAN_STATE 6
-clearflag FLAG_HIDE_SOOTOPOLIS_CITY_RIVALS
-warp MAP_SOOTOPOLIS_CITY 31 33 2000
-shot 50_sootopolis
-mash A 90000
-shot 51_after_sootopolis
-expect_var VAR_BRENDAN_STATE 7
-expect_flag FLAG_HIDE_SOOTOPOLIS_CITY_RIVALS 1
-
 # --- Littleroot lab after the finale: Brendan's rematch (act7.pory) ---
 setflag FLAG_SYS_GAME_CLEAR
 setvar VAR_DRACONID_FINALE_STATE 9

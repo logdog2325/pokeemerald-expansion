@@ -55,6 +55,7 @@ RustboroCity_DevonCorp_3F_EventScript_MeetPresident::
 	setflag FLAG_SYS_POKENAV_GET
 	setflag FLAG_RECEIVED_POKENAV
 	setflag FLAG_HIDE_RUSTBORO_CITY_POKEMON_SCHOOL_SCOTT
+	call RustboroCity_DevonCorp_3F_EventScript_DraconidGiveExpShare  @ Draconid Emerald: the Gen 6 Exp. Share comes with the PokéNav (D-185)
 	msgbox RustboroCity_DevonCorp_3F_Text_MrStoneExplainPokenavRestUp, MSGBOX_DEFAULT
 	closemessage
 	call Common_EventScript_OutOfCenterPartyHeal
@@ -247,14 +248,14 @@ RustboroCity_DevonCorp_3F_Text_ThankYouForDeliveringLetter:
 	.string "This is my way of thanking you.\n"
 	.string "It should help you, a TRAINER.$"
 
-RustboroCity_DevonCorp_3F_Text_ExplainExpShare:
-	.string "MR. STONE: A POKéMON holding that\n"
-	.string "EXP. SHARE will be given some of the\l"
-	.string "EXP Points from battle.\p"
-	.string "It will get EXP Points even if it didn't\n"
-	.string "actually battle.\p"
-	.string "I would say EXP. SHARE is quite useful\n"
-	.string "for raising weak POKéMON.$"
+RustboroCity_DevonCorp_3F_Text_ExplainExpShare:  @ Draconid Emerald
+	.string "MR. STONE: That's DEVON's new\n"
+	.string "EXP. SHARE.\p"
+	.string "While it's on, every POKéMON in your\n"
+	.string "party gets EXP. Points from a battle,\l"
+	.string "even the ones that didn't fight.\p"
+	.string "It's switched on now. You can turn it\n"
+	.string "off from the KEY ITEMS pocket.$"
 
 RustboroCity_DevonCorp_3F_Text_NotFamiliarWithTrends:
 	.string "MR. STONE: Since my youth, I've immersed\n"

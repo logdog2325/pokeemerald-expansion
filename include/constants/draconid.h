@@ -32,6 +32,20 @@
 // The three dragon egg lines evolve earlier than in the core games (round 1, D-107)
 #define DRACONID_EVO_LEVEL_MIDDLE      25 // Deino -> Zweilous, Dreepy -> Drakloak, Jangmo-o -> Hakamo-o
 #define DRACONID_EVO_LEVEL_FINAL       50 // Zweilous -> Hydreigon, Drakloak -> Dragapult, Hakamo-o -> Kommo-o
+// No trade evolutions (round 1, D-216): they happen at a level picked by the evolved form's base stat total,
+// next to Hoenn's own level-up evolutions of that power and the level caps (src/caps.c); a held item is only
+// needed where it picks a branch (D-217). Table: docs/hack_items.md, tools/hack/check_evos.py.
+#define DRACONID_TRADE_EVO_LEVEL_LOW   30 // up to ~480 (Sharpedo/Crawdaunt band): Trevenant, Aromatisse, Slurpuff
+#define DRACONID_TRADE_EVO_LEVEL_MID   36 // ~485-515 (the Hoenn starters' final stage): Alakazam, Machamp, Golem, Gengar ...
+#define DRACONID_TRADE_EVO_LEVEL_HIGH  42 // ~525-540 (Aggron, Glalie): Kingdra, Electivire, Magmortar, Dusknoir, Porygon-Z
+#define DRACONID_TRADE_EVO_LEVEL_LATE  48 // Rhyperior (Rhydon itself comes at 42)
+// The battle item counter in every Poké Mart (round 1, D-218): its stock grows with the number of Gym Badges
+// (data/scripts/draconid/battle_items.pory, docs/hack_items.md). Tier 1 is always open; the post-game tier
+// opens with FLAG_IS_CHAMPION.
+#define BATTLE_ITEMS_TIER_2_BADGES     2 // + Scope Lens, Muscle Band, Light Clay ..., the branch items (D-217)
+#define BATTLE_ITEMS_TIER_3_BADGES     4 // + Leftovers, Rocky Helmet, Focus Sash, Eviolite, the herbs ...
+#define BATTLE_ITEMS_TIER_4_BADGES     6 // + Choice items, Life Orb, Assault Vest ...; the first Mega Stones
+#define BATTLE_ITEMS_TIER_5_BADGES     8 // + every other competitive item; more Mega Stones
 
 // VAR_SECOND_STARTER: Prof. Birch's gift after the first Gym
 #define SECOND_STARTER_NONE            0
@@ -42,12 +56,10 @@
 
 // VAR_ASTER_STATE: Aster's arc after Draconid Pass (round 1 story, D-105; values in story order)
 #define ASTER_STATE_START              0 // Draconid Pass battle (FLAG_DEFEATED_ASTER_DRACONID_PASS)
-#define ASTER_STATE_METEOR_FALLS       1 // battled deep in Meteor Falls (Act 3)
-#define ASTER_STATE_DISGUISED          2 // v1: gave the Magma disguise at the cable car (Act 3 removes it)
-#define ASTER_STATE_CHIMNEY_DONE       3 // v1: disguise off after Mt. Chimney (Act 3 removes it)
-                                         // 4 unused (the v1 Route 119 battle was removed in round 1)
-#define ASTER_STATE_HIDEOUT_DONE       5 // v1: Magma Hideout done (Act 4 removes it)
-#define ASTER_STATE_MEGA_RING          6 // gave the Mega Ring (round 1: at Jagged Pass, Act 3)
+#define ASTER_STATE_METEOR_FALLS       1 // battled deep in Meteor Falls, took Maxie's meteorite shard (Act 3)
+                                         // 2-5 unused (v1: the cable car disguise and Mt. Chimney (Act 3),
+                                         // the Route 119 battle (round 1), the Magma Hideout (Act 4))
+#define ASTER_STATE_MEGA_RING          6 // gave the Mega Ring at Jagged Pass (Act 3)
 #define ASTER_STATE_RAYQUAZA_CALLED    7 // called Rayquaza with Nerine at the Sky Pillar (Act 5)
 #define ASTER_STATE_SKY_PILLAR         8 // the Sky Pillar finale done (Act 7)
 #define ASTER_STATE_POSTGAME           9 // post-game battle at the shrine done
@@ -60,7 +72,7 @@
 #define BRENDAN_STATE_LILYCOVE         4 // Lilycove double battle with May done (Act 4)
 #define BRENDAN_STATE_MOSSDEEP         5 // Space Center tag battle done (Act 5, not a must-win)
 #define BRENDAN_STATE_SOOTOPOLIS       6 // after the Sootopolis turn: knows the truth (Act 5)
-#define BRENDAN_STATE_MEGAS_DONE       7 // v1: Sootopolis Mega battles done (Act 5 reworks them)
+                                         // 7 unused (the v1 Sootopolis Mega battles were removed in round 1 Act 5)
 #define BRENDAN_STATE_POSTGAME         8 // post-game battles (Act 7)
 
 // VAR_MAY_STATE: May's scenes (round 1 schedule, D-106; values in story order)
@@ -109,6 +121,22 @@
 #define MAGMA_STATE_SPACE_CENTER      10 // Mossdeep: the tag battle with Tabitha (Act 5)
 #define MAGMA_STATE_SEAFLOOR          11 // Seafloor Cavern: Nerine's reveal
 #define MAGMA_STATE_TURNED            12 // Sootopolis: the uniform comes off (reputation REVEALED)
+
+// VAR_MAXIE_CALL: Maxie phones the Magma recruit after key story points and names the next place to go
+// (D-186). The first call is scripted on Mr. Briney's boat; the others ring after MAXIE_CALL_STEPS steps
+// outdoors once their story state is reached (src/draconid.c, data/scripts/draconid/maxie_calls.pory).
+#define MAXIE_CALL_NONE                0
+#define MAXIE_CALL_DEWFORD             1  // on the boat to Dewford, just after the PokéNav
+#define MAXIE_CALL_MUSEUM              2  // MAGMA_STATE_MUSEUM: Mauville, then Meteor Falls
+#define MAXIE_CALL_METEOR_FALLS        3  // MAGMA_STATE_METEOR_FALLS: Mt. Chimney by the cable car
+#define MAXIE_CALL_MT_CHIMNEY          4  // MAGMA_STATE_MT_CHIMNEY: Lavaridge, Petalburg, the Weather Institute
+#define MAXIE_CALL_WEATHER_INSTITUTE   5  // MAGMA_STATE_WEATHER_INSTITUTE: Fortree, Lilycove, Mt. Pyre
+#define MAXIE_CALL_MT_PYRE             6  // MAGMA_STATE_MT_PYRE: the Magma Hideout
+#define MAXIE_CALL_PROMOTED            7  // MAGMA_STATE_PROMOTED: infiltrate the Aqua Hideout
+#define MAXIE_CALL_AQUA_HIDEOUT        8  // NERINE_STATE_AQUA_HIDEOUT: Mossdeep, the Space Center
+#define MAXIE_CALL_SPACE_CENTER        9  // MAGMA_STATE_SPACE_CENTER: follow Aqua to the Seafloor Cavern
+#define MAXIE_CALL_SEAFLOOR           10  // MAGMA_STATE_SEAFLOOR: Sootopolis, now
+#define MAXIE_CALL_STEPS              10  // steps outdoors before a due call rings
 
 // VAR_DRACONID_FINALE_STATE: Acts 6-7, from the first Hall of Fame to the post-game (docs/hack_story.md
 // steps 30-34, D-150); each value = that step is done

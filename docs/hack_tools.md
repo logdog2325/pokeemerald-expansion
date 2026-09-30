@@ -114,7 +114,8 @@ About 3000 frames per second, so a full intro takes seconds.
 tools/hack/emu/gbarun pokeemerald.gba script.txt outdir/
 ```
 More gbarun commands: `until ADDR SIZE VALUE MAX [KEYS PERIOD]` (run, optionally tapping KEYS – a
-comma-separated cycle – until memory equals VALUE, or differs from it when written `!VALUE`),
+comma-separated cycle, each entry may be a combination like `A+UP` – until memory equals VALUE, or differs from
+it when written `!VALUE`),
 `untilhold ADDR SIZE VALUE MAX KEYS`, `read ADDR SIZE LABEL`.
 Addresses may be `HEX`, `*HEX` (pointer) or `*HEX+HEX`.
 
@@ -134,6 +135,10 @@ python3 tools/hack/emu/play.py test.play -o /tmp/out
 | `path MAP X0 Y0 X1 Y1` | shortest walk on MAP's collision grid (avoids tall grass, water, warps; jumps down ledges; ignores NPCs) |
 | `warp MAP_X X Y [MAX]` | debug builds: warp to (X, Y) on MAP_X the next time the player is free (`gDraconidTestWarp`) |
 | `heal` | debug builds: heal the party the next time the player is free |
+| `givemon SPECIES_X LEVEL [ITEM_X]`, `giveitem ITEM_X [N]` | debug builds: add a Pokémon (holding ITEM_X) to the party / N items (default 1) to the bag the next time the player is free |
+| `expect_party SLOT SPECIES_X` | the species in party slot SLOT (0 = first), decrypted from the box data |
+| `expect_text LABEL [BUFFER]` | the text in BUFFER (default `gStringVar4`) starts like the ROM text LABEL (up to 24 bytes, stopping at its first placeholder); e.g. a PokéNav call |
+| `settrainer TRAINER_X 0/1` | set or clear a trainer's defeated flag |
 | `setvar NAME V`, `gender M/F`, `default NAME V` (+ `-D NAME=V`) | change a var, the player's gender, script defaults |
 | `setflag NAME`, `clearflag NAME` | change a save-block flag, e.g. `setflag FLAG_DEBUG_NO_ENCOUNTER` to walk without wild battles |
 | `choose N [MAX]` | tap A until a `dynmultichoice` menu opens, then pick entry N (0 = first) |
@@ -141,6 +146,11 @@ python3 tools/hack/emu/play.py test.play -o /tmp/out
 | `expect_trainer TRAINER_X 0/1` | the trainer's defeated flag (only set when the battle is won) |
 | `expect_item ITEM_X 0/1` | whether the item is anywhere in the bag |
 | `expect_gfx OBJ_EVENT_GFX_X` | the player's current sprite (outfit, gender, avatar state) |
+| `expect_pos X Y`, `expect_map MAP_X` | the player's map coordinates / the current map |
+| `expect_party_hms N` | debug builds: how many HM moves the party's Pokémon know |
+| `bagcursor POCKET_X N` | the bag opens on POCKET_X at entry N and the start menu on its first entry (then START, DOWN, DOWN, A opens the bag) |
+| `expect_opponent_b TRAINER_X`, `expect_partner PARTNER_X` | opponent B and the in-game partner of the last two-trainer / multi battle |
+| `wait_species N SPECIES_X [MAX] [KEY]` | tap KEY (default A) until battler N (`gBattleMons[N]`, 1 = the single-battle opponent) is SPECIES_X, e.g. `SPECIES_CHARIZARD_MEGA_X` after a Mega Evolution |
 
 `matrix.py` runs the flow tests for every gender × egg × second starter (18 combinations, 6 chains in
 parallel) and prints one line per run:
@@ -148,7 +158,11 @@ parallel) and prints one line per run:
 python3 tools/hack/emu/matrix.py -o /tmp/matrix [-j 3] [--only F_DREEPY]
 ```
 `opening.play` takes `-D EGG=0|1|2`, `second_starter.play` `-D PICK=… -D SECOND=…`, `aster.play`
-`-D EGGNAME=… -D SECOND=… -D STONE=… -D GFX=… -D MAGMA=…` (see the comments at the top of each).
+`-D EGGNAME=… -D SECOND=…`, `act2.play` `-D EGGNAME=… -D SECOND=… -D SECONDNAME=… -D GOODS=… -D RETURNED=…`,
+`act3.play` `-D EGGNAME=… -D SECOND=… -D SECONDNAME=… -D STONE=…`, `act4.play`
+`-D EGGNAME=… -D SECOND=… -D SECONDNAME=… -D MAGMA=…` (see the comments at the top of each).
+`frontier_legends.play` (the Battle Frontier legends and the LEGENDS' TAG, post-game) needs only `rustboro_done.ss`
+and runs in the Deino chains.
 
 ## Story checks – `tools/hack/check_story.py`
 ```sh
@@ -158,6 +172,41 @@ Static checks over the compiled scripts, map.json files and C: every Draconid fl
 every `FLAG_HIDE_*` flag hides an object and toggles (new game sets it and a script clears it, or the
 other way round), every story state (`DRACONID_STATE_*`, `ASTER_STATE_*`, …) other than 0 is written.
 Record-only flags are warnings; states nothing compares against are notes.
+
+## Wild tables – `tools/hack/check_wild.py`
+```sh
+python3 tools/hack/check_wild.py                  # checks src/data/wild_encounters.json against master's
+python3 tools/hack/check_wild.py --info Beldum    # generation, types, evolutions, flags as this build has them
+python3 tools/hack/check_wild.py --changes        # every Hoenn slot that differs from vanilla (Markdown)
+python3 tools/hack/check_wild.py --doc            # the same table at the end of docs/hack_wild.md
+```
+Species data comes from the preprocessed `species_info.h`, so disabled families count as missing. Rules and
+the level check (area → story segment, cap + 3 for changed slots) are in docs/hack_wild.md (D-197).
+## Story locks – `tools/hack/check_progression.py`
+```sh
+python3 tools/hack/check_progression.py                 # every leg + the warp check; exit 1 on a lock
+python3 tools/hack/check_progression.py --leg 4.16 -v   # one leg (id or a word of its name): path, notes, guesses
+python3 tools/hack/check_progression.py --list          # the story table
+python3 tools/hack/check_progression.py --markdown      # the leg table for docs/hack_progression.md
+python3 tools/hack/check_progression.py --state 4.16 --grep SLATEPORT   # simulated flags/vars/items at a leg
+```
+Walks the v2 story leg by leg (`tools/hack/progression.json`: scene labels in story order, badges/HMs by then,
+side trips for the ways back). A static simulator runs the scenes' flag/var/item commands from the new game on
+(unknown branches taken both ways, listed with `-v`), checks that each scene can start and that OnFrame scenes
+move their var on, then searches the tiles to the next scene across maps: collision, elevation, ledges, doors,
+arrow/step warps, dive/emerge, holes, Fly; objects whose flag is clear, turn-back coord triggers, water /
+waterfalls / boulders / rocks / trees without the HM **and** badge, bike tiles without a bike. A blocked leg
+names its first obstacle and what clears it; a way that opens only through a scene off the path is a detour
+(DTOR). Also checks every round 1 and table scene warp destination (walkable, not a closed pocket). ~40 s.
+Table fields: `to`, `then`, `expect`, `pre` (what C does), `side`, `at`/`map`/`talk`, `puzzles`; the audit and
+how to extend it: [hack_progression.md](hack_progression.md).
+## Evolution check – `tools/hack/check_evos.py`
+```sh
+python3 tools/hack/check_evos.py [--markdown]
+```
+No species may keep a trade evolution (D-216), and no held-item level branch may be hidden behind an earlier
+unconditional level entry (the first matching entry wins). Prints the former trade evolutions with level, held
+item and base stat totals; `--markdown` gives the table in [hack_items.md](hack_items.md).
 | `savestate F`, `loadstate F` | relative paths are inside the `-o` output directory |
 
 Regression tests live in `tools/hack/emu/tests/` and chain through savestates in one output dir:
@@ -168,8 +217,19 @@ python3 tools/hack/emu/play.py tools/hack/emu/tests/woods.play -o /tmp/emu      
 python3 tools/hack/emu/play.py tools/hack/emu/tests/rustboro.play -o /tmp/emu   # Brendan at Rustboro's south edge
 python3 tools/hack/emu/play.py tools/hack/emu/tests/rivals.play   -o /tmp/emu   # the other new rival scenes
 python3 tools/hack/emu/play.py tools/hack/emu/tests/second_starter.play -o /tmp/emu   # Birch in Rustboro
-python3 tools/hack/emu/play.py tools/hack/emu/tests/aster.play          -o /tmp/emu   # Aster arc, disguise, Mega Ring
+python3 tools/hack/emu/play.py tools/hack/emu/tests/aster.play          -o /tmp/emu   # Aster at Meteor Falls, Sky Pillar, post-game
+python3 tools/hack/emu/play.py tools/hack/emu/tests/act2.play           -o /tmp/emu   # Devon Goods, museum, Route 110, Mr. Briney
+python3 tools/hack/emu/play.py tools/hack/emu/tests/act3.play           -o /tmp/emu   # Meteor Falls, Mt. Chimney, Mega Ring, Lavaridge
+python3 tools/hack/emu/play.py tools/hack/emu/tests/act4.play           -o /tmp/emu   # Weather Institute … Maxie's promotion
+python3 tools/hack/emu/play.py tools/hack/emu/tests/maxie_calls.play    -o /tmp/emu   # Maxie's PokéNav calls
+python3 tools/hack/emu/play.py tools/hack/emu/tests/elite_four.play     -o /tmp/emu   # E4 post-game rematch swap
 python3 tools/hack/emu/play.py tools/hack/emu/tests/postgame_home.play  -o /tmp/emu   # SS Ticket / Lati TV at home
+python3 tools/hack/emu/play.py tools/hack/emu/tests/hm_free.play        -o /tmp/emu   # HM field moves without a Pokémon (D-190)
+python3 tools/hack/emu/play.py tools/hack/emu/tests/wild.play           -o /tmp/emu   # National Dex, wild battles, a Gen 4-9 trainer swap
+python3 tools/hack/emu/play.py tools/hack/emu/tests/progression.play    -o /tmp/emu   # story-lock fixes: the Aqua Hideout opens with Maxie's order
+python3 tools/hack/emu/play.py tools/hack/emu/tests/trade_evos.play     -o /tmp/emu   # Kadabra -> Alakazam, Slowpoke + King's Rock -> Slowking
+python3 tools/hack/emu/play.py tools/hack/emu/tests/battle_items.play   -o /tmp/emu   # battle item counter by badges, a Gym booster, a Mega Stone ball
+python3 tools/hack/emu/play.py tools/hack/emu/tests/rival_calls.play    -o /tmp/emu   # Brendan's, May's and Wally's PokéNav calls (D-243)
 python3 tools/hack/emu/play.py tools/hack/emu/tests/release_boot.play   -o /tmp/rel --rom pokeemerald-release.gba
 ```
 `release_boot.play` goes through the real title and new-game menus, since release builds have neither Quickstart

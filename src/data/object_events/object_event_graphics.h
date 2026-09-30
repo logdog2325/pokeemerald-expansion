@@ -525,6 +525,8 @@ const u32 gObjectEventPic_Aster[] = INCGFX_U32("graphics/object_events/pics/peop
 const u32 gObjectEventPic_NerineAqua[] = INCGFX_U32("graphics/object_events/pics/people/draconid/nerine_aqua.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u32 gObjectEventPic_Nerine[] = INCGFX_U32("graphics/object_events/pics/people/draconid/nerine.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u32 gObjectEventPic_Courtney[] = INCGFX_U32("graphics/object_events/pics/people/draconid/courtney.png", ".4bpp", "-mwidth 2 -mheight 4");
+const u32 gObjectEventPic_Wes[] = INCGFX_U32("graphics/object_events/pics/people/frontier_legends/wes.png", ".4bpp", "-mwidth 2 -mheight 4");
+const u32 gObjectEventPic_FrontierBlue[] = INCGFX_U32("graphics/object_events/pics/people/blue.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u32 gObjectEventPic_Zinnia[] = INCGFX_U32("graphics/object_events/pics/people/draconid/zinnia.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u32 gObjectEventPic_DraconidEggDeino[] = INCGFX_U32("graphics/object_events/pics/misc/draconid_egg_deino.png", ".4bpp");
 const u32 gObjectEventPic_DraconidEggDreepy[] = INCGFX_U32("graphics/object_events/pics/misc/draconid_egg_dreepy.png", ".4bpp");
@@ -536,6 +538,8 @@ const u16 gObjectEventPal_NerineAqua[] = INCGFX_U16("graphics/object_events/pale
 const u16 gObjectEventPal_Nerine[] = INCGFX_U16("graphics/object_events/palettes/nerine.pal", ".gbapal");
 const u16 gObjectEventPal_Courtney[] = INCGFX_U16("graphics/object_events/palettes/courtney.pal", ".gbapal");
 const u16 gObjectEventPal_Zinnia[] = INCGFX_U16("graphics/object_events/palettes/zinnia.pal", ".gbapal");
+const u16 gObjectEventPal_Wes[] = INCGFX_U16("graphics/object_events/palettes/wes.pal", ".gbapal");
+const u16 gObjectEventPal_FrontierBlue[] = INCGFX_U16("graphics/object_events/palettes/npc_green.pal", ".gbapal");
 // END DRACONID PLAYER OUTFITS
 
 #if IS_FRLG

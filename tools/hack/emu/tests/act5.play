@@ -1,0 +1,207 @@
+# Act 5 flow test (data/scripts/draconid/act5.pory): Nerine in the Aqua Hideout, Tabitha's raid on the Mossdeep
+# Space Center (the player + Tabitha vs Steven + Brendan), Nerine's reveal in the Seafloor Cavern, Archie and
+# Kyogre, and the Sootopolis turn (uniform off, Maxie, the multi battle, the Rayquaza calling, the aftermath).
+# Needs rustboro_done.ss from tests/rustboro.play (a one-Pokémon party: a mashed battle ends when it faints);
+# the Act 3/4 end states are set by hand and scenes reached with the debug warp; battles are mashed with the
+# no-whiteout flag on (scripts, not balance). The multi battles open the half-party menu: the one Pokémon is
+# entered (A, A) and CONFIRM picked (DOWN, A).
+# Parameters: EGGNAME / SECOND / SECONDNAME (Nerine's variant ids), PARTNER 0 = Brendan, 1 = May at Sootopolis
+# (PARTNERID = the partner id it picks, see include/constants/battle_partner.h).
+default EGGNAME DEINO
+default SECOND 1
+default SECONDNAME CHARMANDER
+default PARTNER 0
+default GFX DRACONID_M
+loadstate rustboro_done.ss
+setflag FLAG_DEBUG_NO_ENCOUNTER
+setflag FLAG_DEBUG_NO_TRAINER_SEE
+setflag FLAG_DRACONID_NO_WHITEOUT
+# Acts 1–4 done: the player is Maxie's promoted grunt, in the uniform
+setvar VAR_SECOND_STARTER ${SECOND}
+setvar VAR_DRACONID_STATE 8
+setvar VAR_PLAYER_OUTFIT 1
+setvar VAR_DRACONID_REPUTATION 1
+setvar VAR_MAGMA_STATE 9
+setvar VAR_NERINE_STATE 5
+setvar VAR_ASTER_STATE 6
+setvar VAR_BRENDAN_STATE 4
+setvar VAR_MAY_STATE 3
+setflag FLAG_RECEIVED_POKENAV
+
+# --- Aqua Hideout B2F: talking to Matt brings Nerine in first (fight 5), then Matt and the submarine ---
+warp MAP_AQUA_HIDEOUT_B2F 24 19
+shot b10_hideout
+# (the first key after a debug warp is eaten: turn twice)
+press LEFT 2 10
+press LEFT 2 10
+press A 2 30
+run 60
+shot b11_nerine
+mash A 90000
+shot b12_after_matt
+expect_var VAR_NERINE_STATE 6
+expect_flag FLAG_HIDE_AQUA_HIDEOUT_NERINE 1
+expect_flag FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE 1
+expect_opponent TRAINER_MATT
+savestate act5_hideout.ss
+
+# --- Mossdeep: after the Mind Badge, Tabitha leads the grunts into the Space Center ---
+heal
+setflag FLAG_BADGE07_GET
+setflag FLAG_DEFEATED_MOSSDEEP_GYM
+setvar VAR_MOSSDEEP_CITY_STATE 1
+setvar VAR_MOSSDEEP_SPACE_CENTER_STATE 1
+clearflag FLAG_HIDE_MOSSDEEP_CITY_TEAM_MAGMA
+clearflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_TEAM_MAGMA
+clearflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_TEAM_MAGMA
+clearflag FLAG_HIDE_MOSSDEEP_SPACE_CENTER_RIVALS
+clearflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_STEVEN
+setflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_STEVEN
+warp MAP_MOSSDEEP_CITY 40 22
+walk RIGHT 41
+run 30
+shot c10_tabitha_city
+mash A 20000
+shot c11_raid_in
+expect_var VAR_MOSSDEEP_CITY_STATE 2
+expect_flag FLAG_HIDE_MOSSDEEP_CITY_TEAM_MAGMA 1
+
+# --- Space Center 2F: the three grunts' rank test, then the raid: the player + Tabitha vs Steven + Brendan ---
+warp MAP_MOSSDEEP_CITY_SPACE_CENTER_2F 13 2
+run 60
+mash A 60000
+shot c20_after_grunts
+expect_var VAR_MOSSDEEP_SPACE_CENTER_STATE 2
+heal
+setflag FLAG_DRACONID_NO_WHITEOUT
+walk RIGHT 14
+walk DOWN 9
+walk LEFT 7
+run 30
+shot c21_raid
+# through the dialogue to the half-party menu; enter the one Pokémon, confirm
+until @gMain+4 4 @@CB2_UpdatePartyMenu 20000 A 30
+run 60
+shot c22_party_menu
+press A 2 30
+press A 2 30
+press DOWN 2 20
+shot c23_party_chosen
+press A 2 60
+mash A 90000
+shot c24_after_raid
+expect_opponent TRAINER_STEVEN_MOSSDEEP
+expect_var VAR_MOSSDEEP_CITY_STATE 3
+expect_var VAR_MOSSDEEP_SPACE_CENTER_STATE 3
+expect_var VAR_MAGMA_STATE 10
+expect_var VAR_BRENDAN_STATE 5
+expect_flag FLAG_DEFEATED_MAGMA_SPACE_CENTER 1
+expect_flag FLAG_HIDE_MOSSDEEP_SPACE_CENTER_RIVALS 1
+expect_flag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_TEAM_MAGMA 1
+expect_var VAR_STEVENS_HOUSE_STATE 1
+savestate act5_space_center.ss
+
+# --- Seafloor Cavern Room 9: Nerine drops the Aqua disguise (OnFrame on arrival) ---
+heal
+setflag FLAG_DRACONID_NO_WHITEOUT
+warp MAP_SEAFLOOR_CAVERN_ROOM9 5 4
+run 60
+shot d10_nerine_aqua
+mash A 90000
+shot d11_after_nerine
+expect_opponent TRAINER_NERINE_SEAFLOOR_${EGGNAME}_${SECONDNAME}
+expect_var VAR_NERINE_STATE 7
+expect_flag FLAG_HIDE_SEAFLOOR_CAVERN_NERINE 1
+expect_var VAR_MAGMA_STATE 10
+
+# --- Room 9: Archie wakes Kyogre (vanilla), then Route 128 (Maxie wants Groudon) ---
+heal
+warp MAP_SEAFLOOR_CAVERN_ROOM9 17 43
+walk UP 42
+run 30
+mash A 90000
+run 120
+mash A 60000
+shot d20_route128
+expect_opponent TRAINER_ARCHIE
+expect_var VAR_MAGMA_STATE 11
+expect_var VAR_SOOTOPOLIS_CITY_STATE 1
+expect_flag FLAG_KYOGRE_ESCAPED_SEAFLOOR_CAVERN 1
+savestate act5_seafloor.ss
+
+# --- Sootopolis: the vanilla Groudon / Kyogre scene from the Pokémon Center door ---
+warp MAP_SOOTOPOLIS_CITY 43 32
+run 60
+mash A 30000
+shot e10_legendaries
+expect_var VAR_SOOTOPOLIS_CITY_STATE 2
+
+# --- the turn: talk to Maxie on the Gym island (29, 33) from below ---
+heal
+setflag FLAG_DRACONID_NO_WHITEOUT
+warp MAP_SOOTOPOLIS_CITY 29 34
+press UP 2 10
+press UP 2 10
+shot e20_before_maxie
+press A 2 30
+run 30
+# Maxie's order, the uniform, Maxie alone, Archie, Brendan and May: then the partner choice
+choose ${PARTNER} 90000
+shot e21_partner_chosen
+expect_var VAR_MAGMA_STATE 12
+expect_var VAR_DRACONID_REPUTATION 2
+expect_var VAR_PLAYER_OUTFIT 0
+expect_gfx OBJ_EVENT_GFX_${GFX}_NORMAL
+expect_opponent TRAINER_MAXIE_SOOTOPOLIS
+until @gMain+4 4 @@CB2_UpdatePartyMenu 20000 A 30
+run 60
+press A 2 30
+press A 2 30
+press DOWN 2 20
+press A 2 60
+# the multi battle, the calling, Rayquaza, the Elder's call, Brendan and May, the warp
+mash A 120000
+run 120
+shot e22_aftermath
+expect_opponent TRAINER_MAXIE_SOOTOPOLIS_MULTI
+expect_var VAR_SOOTOPOLIS_CITY_STATE 5
+expect_var VAR_SKY_PILLAR_STATE 3
+expect_var VAR_SKY_PILLAR_RAYQUAZA_CRY_DONE 1
+expect_var VAR_ASTER_STATE 7
+expect_var VAR_BRENDAN_STATE 6
+expect_var VAR_MAY_STATE 4
+expect_flag FLAG_HIDE_SOOTOPOLIS_CITY_RIVALS 1
+expect_flag FLAG_HIDE_SOOTOPOLIS_CITY_WALLACE 0
+expect_flag FLAG_WALLACE_GOES_TO_SKY_PILLAR 0
+expect_flag FLAG_LEGENDARIES_IN_SOOTOPOLIS 0
+expect_flag FLAG_SYS_WEATHER_CTRL 0
+savestate act5_turn.ss
+
+# --- aftermath (vanilla state 5): Maxie and Archie leave, Wallace gives HM Waterfall, the Gym opens ---
+# the player is at (31, 34) facing Wallace (31, 33); Maxie (33, 35), Archie (34, 35)
+walk DOWN 35
+walk RIGHT 32
+press RIGHT 2 10
+press A 2 30
+mash A 20000
+shot f10_maxie
+warp MAP_SOOTOPOLIS_CITY 34 36
+press UP 2 10
+press UP 2 10
+press A 2 30
+mash A 20000
+run 60
+shot f11_archie
+expect_flag FLAG_SOOTOPOLIS_ARCHIE_MAXIE_LEAVE 1
+press UP 2 10
+press UP 2 10
+press A 2 30
+mash A 20000
+shot f12_wallace
+expect_flag FLAG_RECEIVED_HM_WATERFALL 1
+expect_item ITEM_HM_WATERFALL 1
+savestate act5_done.ss
+
+clearflag FLAG_DEBUG_NO_ENCOUNTER
+clearflag FLAG_DEBUG_NO_TRAINER_SEE
+clearflag FLAG_DRACONID_NO_WHITEOUT

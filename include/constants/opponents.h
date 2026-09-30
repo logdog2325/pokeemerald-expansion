@@ -14,7 +14,7 @@
 #define TRAINER_GRUNT_SEAFLOOR_CAVERN_2       7
 #define TRAINER_GRUNT_SEAFLOOR_CAVERN_3       8
 #define TRAINER_GABRIELLE_1                   9
-#define TRAINER_GRUNT_PETALBURG_WOODS        10
+#define TRAINER_GLACIA_REMATCH              10 // Draconid Emerald: post-game Elite Four (was TRAINER_GRUNT_PETALBURG_WOODS, D-174)
 #define TRAINER_MARCEL                       11
 #define TRAINER_ALBERTO                      12
 #define TRAINER_ED                           13
@@ -25,7 +25,7 @@
 #define TRAINER_GRUNT_WEATHER_INST_2         18
 #define TRAINER_GRUNT_WEATHER_INST_3         19
 #define TRAINER_GRUNT_MUSEUM_1               20
-#define TRAINER_GRUNT_MUSEUM_2               21
+#define TRAINER_DRAKE_REMATCH               21 // Draconid Emerald: post-game Elite Four (was TRAINER_GRUNT_MUSEUM_2, D-174)
 #define TRAINER_GRUNT_SPACE_CENTER_1         22
 #define TRAINER_GRUNT_MT_PYRE_1              23
 #define TRAINER_GRUNT_MT_PYRE_2              24
@@ -668,9 +668,9 @@
 #define TRAINER_BRENDAN_LILYCOVE            661
 #define TRAINER_WALLY_LILYCOVE              662
 #define TRAINER_MAY_POSTGAME_DOUBLE         663
-#define TRAINER_DRACONID_SPARE_1            664
+#define TRAINER_SIDNEY_REMATCH              664 // Draconid Emerald: post-game Elite Four (was TRAINER_DRACONID_SPARE_1, D-174)
 #define TRAINER_MAY_LILYCOVE                665
-#define TRAINER_DRACONID_SPARE_2            666
+#define TRAINER_PHOEBE_REMATCH              666 // Draconid Emerald: post-game Elite Four (was TRAINER_DRACONID_SPARE_2, D-174)
 #define TRAINER_JONAH                       667
 #define TRAINER_HENRY                       668
 #define TRAINER_ROGER                       669
@@ -931,16 +931,33 @@
 #define TRAINER_NERINE_POSTGAME_JANGMO_O_CHARMANDER 921
 #define TRAINER_NERINE_POSTGAME_JANGMO_O_TOTODILE 922
 #define TRAINER_NERINE_POSTGAME_JANGMO_O_TREECKO 923
-#define TRAINER_ZINNIA_SKY_PILLAR           924 // Draconid Emerald: the Lorekeeper on the Sky Pillar 3F (Act 7)
+// Draconid Emerald: Zinnia, the Lorekeeper on the Sky Pillar 3F (Act 7, D-155)
+#define TRAINER_ZINNIA_SKY_PILLAR           924
+// Draconid Emerald: the Battle Frontier legends (post-game, D-225 - D-229): singles and their three-Pokemon
+// tag teams for the legends' tag multi battle (the same teams as PARTNER_WES/_RED/_BLUE)
+#define TRAINER_WES_FRONTIER                925
+#define TRAINER_RED_FRONTIER                926
+#define TRAINER_BLUE_FRONTIER               927
+#define TRAINER_WES_FRONTIER_MULTI          928
+#define TRAINER_RED_FRONTIER_MULTI          929
+#define TRAINER_BLUE_FRONTIER_MULTI         930
+// Draconid Emerald: more rival battles in Acts 1-5 (rivals2.pory, D-234)
+#define TRAINER_BRENDAN_ROUTE_104           931
+#define TRAINER_WALLY_ROUTE_112             932
+#define TRAINER_MAY_LAVARIDGE               933
+#define TRAINER_WALLY_ROUTE_120             934
+#define TRAINER_BRENDAN_JAGGED_PASS         935
+#define TRAINER_MAY_MOSSDEEP                936
 
 // NOTE: Because each Trainer uses a flag to determine when they are defeated, there is only space for 9 additional trainers before trainer flag space overflows
-// Draconid Emerald: MAX_TRAINERS_COUNT_EMERALD raised from 864 so Nerine's variants fit (D-101); system flags move up.
-//       925 trainers of 928 are used (Zinnia, Act 7): 3 spare ids before MAX_TRAINERS_COUNT_EMERALD must grow again
+// Draconid Emerald: MAX_TRAINERS_COUNT_EMERALD raised from 864 so Nerine's variants fit (D-101); system flags move up
+//       928 -> 944 for the Battle Frontier legends and the finale (D-229): 16 more trainer flags, 2 save bytes
+//       937 of 944 used (924: Zinnia, Act 7): 7 spare ids before MAX_TRAINERS_COUNT_EMERALD must grow again
 //       More space can be made by shifting flags around in constants/flags.h or changing how trainer flags are handled
 //       MAX_TRAINERS_COUNT can be increased but will take up additional saveblock space
 
-#define TRAINERS_COUNT_EMERALD     925
-#define MAX_TRAINERS_COUNT_EMERALD 928
+#define TRAINERS_COUNT_EMERALD     937
+#define MAX_TRAINERS_COUNT_EMERALD 944
 
 #if IS_FRLG
 #define TRAINERS_COUNT                      TRAINERS_COUNT_FRLG

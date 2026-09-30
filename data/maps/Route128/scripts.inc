@@ -259,23 +259,19 @@ Route128_Text_MaxieDoYouUnderstandNow:
 	.string "something before the situation goes\l"
 	.string "completely out of control!$"
 
-Route128_Text_MaxieResposibilityFallsToArchieAndMe:
+Route128_Text_MaxieResposibilityFallsToArchieAndMe:  @ Draconid Emerald
 	.string "MAXIE: {PLAYER}, don't say anything.\p"
-	.string "I know that I have no right to be\n"
-	.string "critical of ARCHIE…\p"
-	.string "But the way things are now, I doubt\n"
-	.string "that we humans will be capable of\l"
-	.string "doing anything about it.\p"
-	.string "But neither can we stand by and\n"
-	.string "just watch helplessly.\p"
-	.string "The responsibility for putting an end\n"
-	.string "to this falls to ARCHIE and me…$"
+	.string "This rain is KYOGRE's doing. If it goes\n"
+	.string "on, it will drown everything we have\l"
+	.string "worked for.\p"
+	.string "Only GROUDON can stand against it. I\n"
+	.string "will find it and make it obey.$"
 
-Route128_Text_MaxieThisDefiesBelief:
+Route128_Text_MaxieThisDefiesBelief:  @ Draconid Emerald
 	.string "MAXIE: This defies belief…\p"
-	.string "Those super-ancient POKéMON…\p"
-	.string "Their power is unbelievable.\n"
-	.string "They've upset the balance of nature…$"
+	.string "KYOGRE's power is far beyond\n"
+	.string "anything I imagined.\p"
+	.string "But GROUDON is every bit its equal.$"
 
 Route128_Text_StevenWhatIsHappening:
 	.string "STEVEN: {PLAYER}{KUN}!\n"

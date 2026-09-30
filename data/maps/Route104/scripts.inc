@@ -13,7 +13,7 @@ Route104_EventScript_StartSailToDewford::
 	end
 
 Route104_OnTransition:
-	call Common_EventScript_SetupRivalGfxId
+	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL  @ Draconid Emerald: BRENDAN at Briney's cottage (rivals2.pory)
 	call Route104_EventScript_TrySetRivalPos
 	call Route104_EventScript_ShowOrHideWhiteHerbFlorist
 	end
@@ -46,6 +46,7 @@ Route104_EventScript_Rival::
 	goto Route104_EventScript_RivalEncounter
 
 Route104_EventScript_RivalTrigger::
+	goto Route104_EventScript_DraconidBrendan  @ Draconid Emerald: BRENDAN's Route 104 battle (rivals2.pory)
 	lockall
 	setflag FLAG_HIDE_RUSTBORO_CITY_RIVAL
 	setvar VAR_RUSTBORO_CITY_STATE, 8
@@ -265,8 +266,8 @@ Route104_EventScript_SailToDewford::
 	waitmovement 0
 	hideobjectat LOCALID_PLAYER, MAP_ROUTE104
 	call Common_EventScript_PlayBrineysBoatMusic
-	goto_if_set FLAG_ENABLE_NORMAN_MATCH_CALL, Route104_EventScript_SailToDewfordNoCall
-	goto_if_unset FLAG_ENABLE_NORMAN_MATCH_CALL, Route104_EventScript_SailToDewfordDadCalls
+	goto_if_ge VAR_MAXIE_CALL, MAXIE_CALL_DEWFORD, Route104_EventScript_SailToDewfordNoCall  @ Draconid Emerald: Maxie calls instead of "Dad" Norman (D-186)
+	goto Route104_EventScript_SailToDewfordDadCalls  @ Draconid Emerald
 	end
 
 Route104_EventScript_SailToDewfordNoCall::
@@ -279,15 +280,10 @@ Route104_EventScript_SailToDewfordDadCalls::
 	applymovement LOCALID_ROUTE104_BOAT, Route104_Movement_SailToDewfordBeforeDadCalls
 	applymovement LOCALID_PLAYER, Route104_Movement_SailToDewfordBeforeDadCalls
 	waitmovement 0
-	pokenavcall Route104_Text_DadPokenavCall
+	pokenavcall Draconid_Text_MaxieCallDewford  @ Draconid Emerald: Maxie's first call (D-186); Norman is May's father, not the player's
 	waitmessage
 	delay 30
-	playfanfare MUS_REGISTER_MATCH_CALL
-	msgbox Route104_Text_RegisteredDadInPokenav, MSGBOX_DEFAULT
-	waitfanfare
-	closemessage
-	delay 30
-	setflag FLAG_ENABLE_NORMAN_MATCH_CALL
+	setvar VAR_MAXIE_CALL, MAXIE_CALL_DEWFORD  @ Draconid Emerald
 	applymovement LOCALID_PLAYER, Route104_Movement_SailToDewfordAfterDadCalls
 	applymovement LOCALID_ROUTE104_BOAT, Route104_Movement_SailToDewfordAfterDadCalls, MAP_ROUTE104
 	waitmovement LOCALID_ROUTE104_BOAT, MAP_ROUTE104

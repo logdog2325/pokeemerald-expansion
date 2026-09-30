@@ -147,15 +147,15 @@ MossdeepCity_StevensHouse_EventScript_DiveItemBall::
 	setflag FLAG_RECEIVED_HM_DIVE
 	end
 
-MossdeepCity_StevensHouse_Text_YouveEarnedHMDive:
+MossdeepCity_StevensHouse_Text_YouveEarnedHMDive:  @ Draconid Emerald
 	.string "STEVEN: {PLAYER}{KUN}…\p"
 	.string "As you can see, there's not much here,\n"
 	.string "but this is my home.\p"
-	.string "Thank you for all that you've done.\p"
-	.string "This is my token of appreciation.\n"
-	.string "It's the HIDDEN MACHINE DIVE.\p"
-	.string "No need to be shy--you've earned\n"
-	.string "this HM.$"
+	.string "I won't ask who you really work for. Not\n"
+	.string "yet.\p"
+	.string "But wherever ARCHIE's submarine went,\n"
+	.string "you'll need this to follow.\p"
+	.string "It's the HIDDEN MACHINE DIVE.$"
 
 MossdeepCity_StevensHouse_Text_ExplainDive:
 	.string "STEVEN: While you're using SURF, you\n"

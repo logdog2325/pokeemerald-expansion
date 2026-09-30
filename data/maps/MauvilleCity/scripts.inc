@@ -483,54 +483,51 @@ MauvilleCity_Text_WallyWeCanBeatAnyone:
 	.string "we can beat anyone!$"
 
 MauvilleCity_Text_WallyWillYouBattleMe:  @ Draconid Emerald
-	.string "WALLY: Oh! {PLAYER}!\p"
-	.string "That uniform… You're… one of THEM\n"
-	.string "now? The people from the news?\p"
-	.string "…No. I want to see for myself.\n"
-	.string "I've gotten a lot stronger since\l"
-	.string "we met.\p"
-	.string "{PLAYER}, please, will you have\n"
-	.string "a battle with me?$"
+	.string "WALLY: {PLAYER}?!\p"
+	.string "That uniform… You're one of THEM now?\n"
+	.string "The people from the news?\p"
+	.string "You helped me catch RALTS! How could\n"
+	.string "you join TEAM MAGMA?\p"
+	.string "I've gotten a lot stronger since then.\n"
+	.string "{PLAYER}, battle me!$"
 
-MauvilleCity_Text_WallyMyUncleWontKnowImStrong:
-	.string "WALLY: Oh… If you won't battle me,\n"
-	.string "{PLAYER}, my UNCLE won't know that I've\l"
-	.string "become really strong.$"
+MauvilleCity_Text_WallyMyUncleWontKnowImStrong:  @ Draconid Emerald
+	.string "WALLY: You won't battle me?\p"
+	.string "Then I'm staying right here\n"
+	.string "until you battle me!$"
 
 MauvilleCity_Text_UncleCanYouBattleWally:  @ Draconid Emerald
-	.string "UNCLE: {PLAYER}{KUN}, was it?\n"
-	.string "I don't much like that uniform…\p"
-	.string "But WALLY trusts you. Can I ask you\n"
-	.string "to battle him just this once?\p"
-	.string "I don't think he's going to listen to\n"
-	.string "any reason the way he is now.$"
+	.string "UNCLE: I don't like that uniform, and I\n"
+	.string "don't like you near WALLY.\p"
+	.string "But he won't calm down until he's\n"
+	.string "battled you.\p"
+	.string "Just this once, please. He won't listen\n"
+	.string "to reason the way he is now.$"
 
-MauvilleCity_Text_WallyPleaseBattleMe:
-	.string "WALLY: {PLAYER}, please!\n"
-	.string "Battle with me, please.$"
+MauvilleCity_Text_WallyPleaseBattleMe:  @ Draconid Emerald
+	.string "WALLY: {PLAYER}! Battle me!\n"
+	.string "I'm not scared of TEAM MAGMA!$"
 
-MauvilleCity_Text_WallyHereICome:
-	.string "WALLY: {PLAYER}, thank you.\p"
-	.string "Okay… Here I come!$"
+MauvilleCity_Text_WallyHereICome:  @ Draconid Emerald
+	.string "WALLY: RALTS, let's go!\p"
+	.string "We'll show TEAM MAGMA how strong we are!$"
 
 MauvilleCity_Text_WallyDefeat:  @ Draconid Emerald
-	.string "WALLY: … … … … … … …\p"
-	.string "I lost…\p"
-	.string "But your POKéMON looked happy.\n"
-	.string "Really happy.$"
+	.string "WALLY: … … … … … …\p"
+	.string "I lost… But I won't give up!$"
 
 MauvilleCity_Text_WallyIllGoBackToVerdanturf:  @ Draconid Emerald
-	.string "WALLY: UNCLE…\n"
-	.string "I'll go back to VERDANTURF…\p"
-	.string "{PLAYER}… I don't think you're\n"
-	.string "one of them. Not really.$"
+	.string "WALLY: UNCLE… I'll go back to\n"
+	.string "VERDANTURF…\p"
+	.string "I'll get stronger there. Strong enough\n"
+	.string "to stop TEAM MAGMA.$"
 
-MauvilleCity_Text_ThankYouNotEnoughToBattle:
-	.string "{PLAYER}, thank you.\n"
-	.string "Being a TRAINER is tough, isn't it?\p"
-	.string "It's not enough just to have POKéMON\n"
-	.string "and make them battle. That isn't what\l"
-	.string "being a real TRAINER is about.$"
+MauvilleCity_Text_ThankYouNotEnoughToBattle:  @ Draconid Emerald
+	.string "WALLY: Being a TRAINER isn't just about\n"
+	.string "winning battles, {PLAYER}.\p"
+	.string "It's about protecting people\n"
+	.string "and POKéMON.\p"
+	.string "You used to know that.$"
 
 MauvilleCity_Text_UncleNoNeedToBeDown:
 	.string "UNCLE: WALLY, there's no need to be so\n"
@@ -540,24 +537,23 @@ MauvilleCity_Text_UncleNoNeedToBeDown:
 	.string "Come on, let's go home.\n"
 	.string "Everyone's waiting for you.$"
 
-MauvilleCity_Text_UncleVisitUsSometime:
-	.string "UNCLE: {PLAYER}{KUN}, it just dawned on me\n"
-	.string "that you must be the TRAINER who kept\l"
-	.string "an eye out for WALLY when he caught\l"
-	.string "his POKéMON.\p"
-	.string "Why don't you visit us in VERDANTURF\n"
-	.string "sometime?\l"
-	.string "I'm sure WALLY would enjoy it.$"
+MauvilleCity_Text_UncleVisitUsSometime:  @ Draconid Emerald
+	.string "UNCLE: {PLAYER}{KUN}… So you're the TRAINER\n"
+	.string "who kept an eye on WALLY when he\l"
+	.string "caught his POKéMON.\p"
+	.string "I don't know what happened\n"
+	.string "to you since then.\p"
+	.string "But please, stay away from VERDANTURF.$"
 
 
-MauvilleCity_Text_WallyPokenavCall:
+MauvilleCity_Text_WallyPokenavCall:  @ Draconid Emerald
 	.string "… … … … … …\n"
 	.string "… … … … … Beep!\p"
-	.string "WALLY: Oh, hello, {PLAYER}!\p"
-	.string "I just wanted to tell you that\n"
-	.string "my uncle bought me a POKéNAV!\p"
-	.string "Now I can get in touch with you\n"
-	.string "anytime, {PLAYER}!\p"
+	.string "WALLY: {PLAYER}… It's WALLY.\p"
+	.string "My uncle bought me a POKéNAV. I'm\n"
+	.string "registering you in it.\p"
+	.string "If MAGMA hurts anyone, I'll know where\n"
+	.string "to find you.\p"
 	.string "… … … … … …\n"
 	.string "… … … … … Click!$"
 

@@ -68,33 +68,33 @@
 #define FLAG_DEBUG_NO_ENCOUNTER                  0x2E // Draconid Emerald: WE_FLAG_NO_ENCOUNTER (debug menu / tests)
 #define FLAG_DEBUG_NO_TRAINER_SEE                0x2F // Draconid Emerald: OW_FLAG_NO_TRAINER_SEE (debug menu / tests)
 #define FLAG_DEBUG_NO_COLLISION                  0x30 // Draconid Emerald: OW_FLAG_NO_COLLISION (debug menu / tests)
-#define FLAG_UNUSED_0x031    0x31 // Unused Flag
-#define FLAG_UNUSED_0x032    0x32 // Unused Flag
-#define FLAG_UNUSED_0x033    0x33 // Unused Flag
-#define FLAG_UNUSED_0x034    0x34 // Unused Flag
-#define FLAG_UNUSED_0x035    0x35 // Unused Flag
+#define FLAG_HIDE_LAVARIDGE_TOWN_DRACONID_TRAVELLER 0x31 // Draconid Emerald: the Draconid traveller with the Mega Stone in Lavaridge (Act 3)
+#define FLAG_HIDE_BATTLE_FRONTIER_WES            0x32 // Draconid Emerald: Wes at the Battle Frontier (shown after the Hall of Fame)
+#define FLAG_HIDE_BATTLE_FRONTIER_RED            0x33 // Draconid Emerald: Red at the Battle Frontier (shown after the Hall of Fame)
+#define FLAG_HIDE_BATTLE_FRONTIER_BLUE           0x34 // Draconid Emerald: Blue at the Battle Frontier (shown after the Hall of Fame)
+#define FLAG_HIDE_ROUTE_119_TABITHA              0x35 // Draconid Emerald: Tabitha outside the Weather Institute (Act 4)
 #define FLAG_UNUSED_0x036    0x36 // Unused Flag
 #define FLAG_UNUSED_0x037    0x37 // Unused Flag
 #define FLAG_UNUSED_0x038    0x38 // Unused Flag
 #define FLAG_HIDE_RUSTBORO_CITY_TABITHA          0x39 // Draconid Emerald: Tabitha outside the Rustboro Gym after the Stone Badge (Act 1)
 #define FLAG_UNUSED_0x03A    0x3A // Unused Flag
-#define FLAG_HIDE_SOOTOPOLIS_CITY_RIVALS         0x3B // Draconid Emerald: Brendan and May outside the Sootopolis Gym
+#define FLAG_HIDE_SOOTOPOLIS_CITY_RIVALS         0x3B // Draconid Emerald: Brendan and May on the Sootopolis Gym island (the turn, Act 5)
 #define FLAG_HIDE_PETALBURG_CITY_WALLY_GYM       0x3C // Draconid Emerald: Wally outside the Petalburg Gym (before Norman)
 #define FLAG_HIDE_LILYCOVE_CITY_WALLY            0x3D // Draconid Emerald: Wally in Lilycove
-#define FLAG_HIDE_MOSSDEEP_SPACE_CENTER_RIVALS   0x3E // Draconid Emerald: Brendan and May at the Space Center
+#define FLAG_HIDE_MOSSDEEP_SPACE_CENTER_RIVALS   0x3E // Draconid Emerald: Brendan beside Steven at the Space Center 2F (Act 5)
 #define FLAG_ENABLE_BRENDAN_MATCH_CALL           0x3F // Draconid Emerald: Brendan registered in the PokéNav
 #define FLAG_HIDE_RUSTBORO_CITY_BIRCH            0x40 // Draconid Emerald: Prof. Birch outside the Rustboro Gym (second starter)
 #define FLAG_HIDE_METEOR_FALLS_ASTER             0x41 // Draconid Emerald: Aster in Meteor Falls
-#define FLAG_HIDE_CABLE_CAR_STATION_ASTER        0x42 // Draconid Emerald: Aster at the Route 112 cable car (disguise)
+#define FLAG_HIDE_JAGGED_PASS_ASTER              0x42 // Draconid Emerald: Aster at the top of Jagged Pass with the Mega Ring (Act 3)
 #define FLAG_DEVON_GOODS_RETURNED                0x43 // Draconid Emerald: the player chose to return the Devon Goods to Devon (Rusturf, Act 2)
-#define FLAG_HIDE_MAGMA_HIDEOUT_ASTER            0x44 // Draconid Emerald: Aster after Maxie in the Magma Hideout
+#define FLAG_UNUSED_0x044    0x44 // Unused Flag
 #define FLAG_HIDE_SKY_PILLAR_TOP_ASTER           0x45 // Draconid Emerald: Aster at the top of the Sky Pillar
-#define FLAG_RECEIVED_MEGA_RING                  0x46 // Draconid Emerald: the Elder gave the Mega Ring
+#define FLAG_RECEIVED_MEGA_RING                  0x46 // Draconid Emerald: Aster gave the Mega Ring at Jagged Pass (Act 3)
 #define FLAG_HIDE_DRACONID_HOUSE_ELDER           0x47 // Draconid Emerald: the Elder visiting the player's house (post-game SS Ticket)
 #define FLAG_HIDE_PETALBURG_WOODS_COURTNEY       0x48 // Draconid Emerald: Courtney after Nerine is beaten (Act 1)
 #define FLAG_HIDE_OCEANIC_MUSEUM_TABITHA         0x49 // Draconid Emerald: Tabitha in the Oceanic Museum 1F (Act 2)
-#define FLAG_UNUSED_0x04A    0x4A // Unused Flag
-#define FLAG_UNUSED_0x04B    0x4B // Unused Flag
+#define FLAG_HIDE_AQUA_HIDEOUT_NERINE            0x4A // Draconid Emerald: Nerine beside Matt in the Aqua Hideout B2F (Act 5)
+#define FLAG_HIDE_SEAFLOOR_CAVERN_NERINE         0x4B // Draconid Emerald: Nerine at the Seafloor Cavern Room 9 entrance (her reveal, Act 5)
 #define FLAG_UNUSED_0x04C    0x4C // Unused Flag
 #define FLAG_UNUSED_0x04D    0x4D // Unused Flag
 #define FLAG_DRACONID_NO_RUNNING                 0x4E // Draconid Emerald: WE_FLAG_NO_RUNNING, set around the Sky Pillar Rayquaza and Deoxys battles (Act 7)
@@ -128,7 +128,7 @@
 #define FLAG_MOSSDEEP_GYM_SWITCH_3           0x66 //
 #define FLAG_MOSSDEEP_GYM_SWITCH_4           0x67 //
 
-#define FLAG_UNUSED_0x068                    0x68  // Unused Flag
+#define FLAG_EXP_SHARE_ON                    0x68  // Draconid Emerald: the Gen 6 Exp. Share is switched on (I_EXP_SHARE_FLAG)
 
 #define FLAG_OCEANIC_MUSEUM_MET_REPORTER     0x69
 #define FLAG_RECEIVED_HM_STRENGTH            0x6A
@@ -1093,7 +1093,7 @@
 #define FLAG_ITEM_PETALBURG_CITY_ETHER                              0x410
 #define FLAG_ITEM_RUSTBORO_CITY_X_DEFEND                            0x411
 #define FLAG_ITEM_LILYCOVE_CITY_MAX_REPEL                           0x412
-#define FLAG_ITEM_MOSSDEEP_CITY_NET_BALL                            0x413
+#define FLAG_ITEM_MOSSDEEP_CITY_METAGROSSITE                        0x413 // Draconid Emerald (D-222): was ITEM_NET_BALL
 #define FLAG_ITEM_METEOR_FALLS_1F_1R_TM_IRON_TAIL                   0x414
 #define FLAG_ITEM_METEOR_FALLS_1F_1R_FULL_HEAL                      0x415
 #define FLAG_ITEM_METEOR_FALLS_1F_1R_MOON_STONE                     0x416
@@ -1109,7 +1109,7 @@
 #define FLAG_ITEM_PETALBURG_WOODS_GREAT_BALL                        0x420
 #define FLAG_ITEM_ROUTE_104_POKE_BALL                               0x421
 #define FLAG_ITEM_PETALBURG_WOODS_ETHER                             0x422
-#define FLAG_ITEM_MAGMA_HIDEOUT_3F_3R_ECAPE_ROPE                    0x423
+#define FLAG_ITEM_MAGMA_HIDEOUT_3F_3R_CAMERUPTITE                   0x423 // Draconid Emerald (D-222): was ITEM_ESCAPE_ROPE
 #define FLAG_ITEM_TRICK_HOUSE_PUZZLE_1_ORANGE_MAIL                  0x424
 #define FLAG_ITEM_TRICK_HOUSE_PUZZLE_2_HARBOR_MAIL                  0x425
 #define FLAG_ITEM_TRICK_HOUSE_PUZZLE_2_WAVE_MAIL                    0x426
@@ -1122,7 +1122,7 @@
 #define FLAG_ITEM_TRICK_HOUSE_PUZZLE_8_BEAD_MAIL                    0x42D
 #define FLAG_ITEM_JAGGED_PASS_BURN_HEAL                             0x42E
 #define FLAG_ITEM_AQUA_HIDEOUT_B1F_MAX_ELIXIR                       0x42F
-#define FLAG_ITEM_AQUA_HIDEOUT_B2F_NEST_BALL                        0x430
+#define FLAG_ITEM_AQUA_HIDEOUT_B2F_SHARPEDONITE                     0x430 // Draconid Emerald (D-222): was ITEM_NEST_BALL
 #define FLAG_ITEM_MT_PYRE_EXTERIOR_MAX_POTION                       0x431
 #define FLAG_ITEM_MT_PYRE_EXTERIOR_TM_SKILL_SWAP                    0x432
 #define FLAG_ITEM_NEW_MAUVILLE_ULTRA_BALL                           0x433
@@ -1133,12 +1133,12 @@
 #define FLAG_ITEM_METEOR_FALLS_B1F_2R_TM_DRAGON_CLAW                0x438
 #define FLAG_ITEM_SHOAL_CAVE_ENTRANCE_BIG_PEARL                     0x439
 #define FLAG_ITEM_SHOAL_CAVE_INNER_ROOM_RARE_CANDY                  0x43A
-#define FLAG_ITEM_SHOAL_CAVE_STAIRS_ROOM_ICE_HEAL                   0x43B
+#define FLAG_ITEM_SHOAL_CAVE_STAIRS_ROOM_GLALITITE                  0x43B // Draconid Emerald (D-222): was ITEM_ICE_HEAL
 #define FLAG_ITEM_VICTORY_ROAD_1F_MAX_ELIXIR                        0x43C
 #define FLAG_ITEM_VICTORY_ROAD_1F_PP_UP                             0x43D
 #define FLAG_ITEM_VICTORY_ROAD_B1F_TM_PSYCHIC                       0x43E
 #define FLAG_ITEM_VICTORY_ROAD_B1F_FULL_RESTORE                     0x43F
-#define FLAG_ITEM_VICTORY_ROAD_B2F_FULL_HEAL                        0x440
+#define FLAG_ITEM_VICTORY_ROAD_B2F_GARCHOMPITE                      0x440 // Draconid Emerald (D-222): was ITEM_FULL_HEAL
 #define FLAG_ITEM_MT_PYRE_6F_TM_SHADOW_BALL                         0x441
 #define FLAG_ITEM_SEAFLOOR_CAVERN_ROOM_9_TM_EARTHQUAKE              0x442
 #define FLAG_ITEM_FIERY_PATH_TM_TOXIC                               0x443
@@ -1154,7 +1154,7 @@
 #define FLAG_ITEM_ABANDONED_SHIP_HIDDEN_FLOOR_ROOM_3_WATER_STONE    0x44D
 #define FLAG_ITEM_ABANDONED_SHIP_HIDDEN_FLOOR_ROOM_1_TM_RAIN_DANCE  0x44E
 #define FLAG_ITEM_ROUTE_121_CARBOS                                  0x44F
-#define FLAG_ITEM_ROUTE_123_ULTRA_BALL                              0x450
+#define FLAG_ITEM_ROUTE_123_GYARADOSITE                             0x450 // Draconid Emerald (D-222): was ITEM_ULTRA_BALL
 #define FLAG_ITEM_ROUTE_126_GREEN_SHARD                             0x451
 #define FLAG_ITEM_ROUTE_119_HYPER_POTION_2                          0x452
 #define FLAG_ITEM_ROUTE_120_HYPER_POTION                            0x453
@@ -1170,10 +1170,10 @@
 #define FLAG_ITEM_PETALBURG_WOODS_PARALYZE_HEAL                     0x45D
 #define FLAG_ITEM_ROUTE_115_GREAT_BALL                              0x45E
 #define FLAG_ITEM_SAFARI_ZONE_NORTH_CALCIUM                         0x45F
-#define FLAG_ITEM_MT_PYRE_3F_SUPER_REPEL                            0x460
+#define FLAG_ITEM_MT_PYRE_3F_BANETTITE                              0x460 // Draconid Emerald (D-222): was ITEM_SUPER_REPEL
 #define FLAG_ITEM_ROUTE_118_HYPER_POTION                            0x461
 #define FLAG_ITEM_NEW_MAUVILLE_FULL_HEAL                            0x462
-#define FLAG_ITEM_NEW_MAUVILLE_PARALYZE_HEAL                        0x463
+#define FLAG_ITEM_NEW_MAUVILLE_MANECTITE                            0x463 // Draconid Emerald (D-222): was ITEM_PARALYZE_HEAL
 #define FLAG_ITEM_AQUA_HIDEOUT_B1F_MASTER_BALL                      0x464
 #define FLAG_ITEM_OLD_MAGMA_HIDEOUT_B1F_MASTER_BALL                 0x465 // Unused Flag, leftover from the Ruby Magma hideout
 #define FLAG_ITEM_OLD_MAGMA_HIDEOUT_B1F_MAX_ELIXIR                  0x466 // Unused Flag, leftover from the Ruby Magma hideout
@@ -1219,7 +1219,7 @@
 #define FLAG_ITEM_MAGMA_HIDEOUT_3F_1R_NUGGET                        0x48E
 #define FLAG_ITEM_MAGMA_HIDEOUT_3F_2R_PP_MAX                        0x48F
 #define FLAG_ITEM_MAGMA_HIDEOUT_4F_MAX_REVIVE                       0x490
-#define FLAG_ITEM_SAFARI_ZONE_NORTH_EAST_NUGGET                     0x491
+#define FLAG_ITEM_SAFARI_ZONE_NORTH_EAST_ABSOLITE                   0x491 // Draconid Emerald (D-222): was ITEM_NUGGET
 #define FLAG_ITEM_SAFARI_ZONE_SOUTH_EAST_BIG_PEARL                  0x492
 
 #define FLAG_UNUSED_0x493                                           0x493 // Unused Flag

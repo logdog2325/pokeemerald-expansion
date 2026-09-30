@@ -17,6 +17,7 @@ BattleFrontier_OutsideEast_OnTransition:
 	setvar VAR_BRAVO_TRAINER_BATTLE_TOWER_ON, 0
 	setflag FLAG_HIDE_BATTLE_TOWER_REPORTER
 	call_if_unset FLAG_DEFEATED_SUDOWOODO, BattleFrontier_OutsideEast_EventScript_ShowSudowoodo
+	call BattleFrontier_OutsideEast_EventScript_DraconidLegends @ Draconid Emerald: Wes, Red and Blue after the Hall of Fame
 	end
 
 BattleFrontier_OutsideEast_EventScript_ShowSudowoodo::

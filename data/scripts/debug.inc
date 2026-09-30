@@ -355,7 +355,7 @@ Debug_Follower_NPC_Test_Message:
 	.string "This is a Follower NPC test.$"
 
 Debug_EventScript_Steven_Multi::
-	call MossdeepCity_SpaceCenter_2F_EventScript_DraconidChoosePartner  @ Draconid Emerald: partner choice (rivals.pory)
+	call MossdeepCity_SpaceCenter_2F_EventScript_DraconidTagBattle  @ Draconid Emerald: the player + Tabitha vs Steven + Brendan (act5.pory)
 	release
 	end
 

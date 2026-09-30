@@ -185,7 +185,8 @@ enum __attribute__((packed)) TrainerPicID
     TRAINER_PIC_ASTER, // Draconid Emerald: Aster (front pic only)
     TRAINER_PIC_NERINE_AQUA, // Draconid Emerald: Nerine undercover in Team Aqua (front pic only)
     TRAINER_PIC_NERINE, // Draconid Emerald: Nerine after the reveal (front + back pic: Sky Pillar partner)
-    TRAINER_PIC_ZINNIA, // Draconid Emerald: Zinnia, the Lorekeeper at the Sky Pillar (front pic only; placeholder art, TODO(art))
+    TRAINER_PIC_WES, // Draconid Emerald: Battle Frontier legend (front + back pic: legends' tag partner)
+    TRAINER_PIC_ZINNIA, // Draconid Emerald: Zinnia, the Lorekeeper at the Sky Pillar (front pic only; D-180/D-181)
     TRAINER_PIC_COUNT,
 };
 
@@ -531,6 +532,8 @@ enum TrainerClassID
     TRAINER_CLASS_LADY_FRLG,
     TRAINER_CLASS_PAINTER_FRLG,
     TRAINER_CLASS_DRACONID, // Draconid Emerald: Aster
+    TRAINER_CLASS_LEGEND, // Draconid Emerald: Red and Blue at the Battle Frontier ("{PKMN} TRAINER", D-225)
+    TRAINER_CLASS_ORRE_HERO, // Draconid Emerald: Wes at the Battle Frontier (D-225)
     TRAINER_CLASS_LOREKEEPER, // Draconid Emerald: Zinnia (Sky Pillar, Act 7)
 
     TRAINER_CLASS_COUNT,

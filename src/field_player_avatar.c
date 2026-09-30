@@ -7,6 +7,7 @@
 #include "field_control_avatar.h"
 #include "field_effect.h"
 #include "field_effect_helpers.h"
+#include "field_move.h"
 #include "field_screen_effect.h"
 #include "field_player_avatar.h"
 #include "fieldmap.h"
@@ -1621,6 +1622,9 @@ bool8 PartyHasMonWithSurf(void)
             if (MonKnowsMove(&gParties[B_TRAINER_PLAYER][i], MOVE_SURF))
                 return TRUE;
         }
+        // Draconid Emerald (D-190): the HM and its badge are enough
+        if (GetFieldMoveUserSlot(FIELD_MOVE_SURF) < PARTY_SIZE)
+            return TRUE;
     }
     return FALSE;
 }

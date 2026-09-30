@@ -187,6 +187,8 @@ LittlerootTown_ProfessorBirchsLab_EventScript_DraconidWelcome::
 	waitmovement 0
 	msgbox LittlerootTown_ProfessorBirchsLab_EventScript_DraconidWelcome_Text_9
 	call LittlerootTown_ProfessorBirchsLab_EventScript_ReceivePokedex
+	setflag FLAG_SYS_NATIONAL_DEX
+	special EnableNationalPokedex
 	msgbox LittlerootTown_ProfessorBirchsLab_EventScript_DraconidWelcome_Text_10
 	giveitem ITEM_POKE_BALL, 5
 	msgbox LittlerootTown_ProfessorBirchsLab_EventScript_DraconidWelcome_Text_11
@@ -347,6 +349,9 @@ LittlerootTown_ProfessorBirchsLab_EventScript_DraconidWelcome_Text_10:
 	.string "PROF. BIRCH: The POKéDEX is a high-tech\n"
 	.string "tool that automatically makes a record\l"
 	.string "of any POKéMON you meet or catch.\p"
+	.string "These days even POKéMON from faraway\n"
+	.string "regions turn up in HOENN, so it records\l"
+	.string "them all.\p"
 	.string "And you'll need these to catch them.$"
 
 LittlerootTown_ProfessorBirchsLab_EventScript_DraconidWelcome_Text_11:

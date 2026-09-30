@@ -1,0 +1,23 @@
+// Draconid Emerald round 1 follow-up (feedback 1.23): no story locks. Where the v2 story sends the player
+// somewhere a vanilla event used to open, the scene that sends them there opens it instead. Found and checked
+// by tools/hack/check_progression.py; the audit is docs/hack_progression.md.
+
+// ---------------------------------------------------------------------------
+// Magma Hideout 4F, after the promotion (D-213). MAXIE's next call sends the player straight to AQUA's
+// hideout in Lilycove, but vanilla kept its entrance guarded until the Slateport harbor scene (ARCHIE steals
+// CAPT. STERN's submarine), which nothing in the v2 story leads to. ARCHIE takes the submarine off-screen
+// instead: MagmaHideout_4F_EventScript_Maxie calls this where vanilla set up the Slateport scenes, and it
+// sets what the harbor scene would have left set. STERN waits in the harbor with his vanilla lines.
+// ---------------------------------------------------------------------------
+
+script MagmaHideout_4F_EventScript_DraconidAquaTakesSubmarine {
+    // Slateport: STERN's city scene and the harbor theft count as done (vanilla states 2)
+    setvar(VAR_SLATEPORT_CITY_STATE, 2)
+    setvar(VAR_SLATEPORT_HARBOR_STATE, 2)
+    clearflag(FLAG_HIDE_SLATEPORT_CITY_HARBOR_CAPTAIN_STERN)
+    setflag(FLAG_MET_TEAM_AQUA_HARBOR)
+    setflag(FLAG_HIDE_LILYCOVE_MOTEL_SCOTT)
+    // the two AQUA grunts who blocked the hideout's entrance have left with ARCHIE
+    setflag(FLAG_HIDE_AQUA_HIDEOUT_1F_GRUNT_1_BLOCKING_ENTRANCE)
+    setflag(FLAG_HIDE_AQUA_HIDEOUT_1F_GRUNT_2_BLOCKING_ENTRANCE)
+}

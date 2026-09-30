@@ -147,8 +147,8 @@ script SlateportCity_OceanicMuseum_2F_EventScript_DraconidAfterRaid {
 // ---------------------------------------------------------------------------
 
 script Route110_EventScript_DraconidRegisterMay {
-    msgbox(format("MAY: Anyway! Let's register each other in our POKéNAVS.\p"
-                  "That way I can check up on you. Don't make that face."))
+    msgbox(format("MAY: One more thing. I'm registering you in my POKéNAV.\p"
+                  "If MAGMA tries anything, I want to know where you are."))
     closemessage
     delay(30)
     playfanfare(MUS_REGISTER_MATCH_CALL)
@@ -158,5 +158,19 @@ script Route110_EventScript_DraconidRegisterMay {
     delay(30)
     setflag(FLAG_ENABLE_RIVAL_MATCH_CALL)
     setvar(VAR_MAY_STATE, MAY_STATE_ROUTE_110)
-    msgbox(format("MAY: I'm off to look for new POKéMON. See you, {PLAYER}!"))
+    msgbox(format("MAY: Next time, I won't lose.\nYou'll see, {PLAYER}!"))
+}
+
+// ---------------------------------------------------------------------------
+// Mr. Stone gives the Gen 6 EXP. SHARE with the PokéNav (D-185): a key item that shares EXP with the whole
+// party while FLAG_EXP_SHARE_ON is set (I_EXP_SHARE_FLAG). It starts switched on.
+// RustboroCity_DevonCorp_3F_EventScript_MeetPresident calls this after the PokéNav.
+// ---------------------------------------------------------------------------
+
+script RustboroCity_DevonCorp_3F_EventScript_DraconidGiveExpShare {
+    msgbox(format("MR. STONE: And one more thing. DEVON's newest invention!"))
+    giveitem(ITEM_EXP_SHARE)
+    setflag(FLAG_RECEIVED_EXP_SHARE)
+    setflag(FLAG_EXP_SHARE_ON)
+    msgbox(RustboroCity_DevonCorp_3F_Text_ExplainExpShare, MSGBOX_DEFAULT)
 }
