@@ -1,4 +1,5 @@
 #include "global.h"
+#include "player_outfit.h"
 #include "sprite.h"
 #include "window.h"
 #include "malloc.h"
@@ -353,6 +354,9 @@ u16 PlayerGenderToFrontTrainerPicId_Debug(enum Gender gender, bool8 getClass)
 {
     if (getClass == TRUE)
     {
+        // Draconid Emerald: the player's outfit decides the pic (player_outfit.c)
+        if (!IS_FRLG)
+            return GetPlayerOutfitTrainerPic(gender);
         if (gender != MALE)
             return gFacilityClassToPicIndex[FACILITY_CLASS_MAY];
         else

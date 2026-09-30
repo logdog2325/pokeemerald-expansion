@@ -1,7 +1,10 @@
 # Draconid Emerald opening, new game -> Birch's lab (regression test for Phases 1 and 4).
 #   python3 tools/hack/emu/play.py tools/hack/emu/tests/opening.play -o /tmp/opening
 # Saves opening_*.ss states in the output directory for follow-up scripts.
+# The quickstart gender is random: -D GENDER=F tests the female player.
+default GENDER M
 newgame
+gender ${GENDER}
 mash A 3000
 expect_var VAR_DRACONID_STATE 1
 # bedroom: set the wall clock (the dialog defaults to NO; UP selects YES)
@@ -61,6 +64,7 @@ hold DOWN 40
 run 60
 walk DOWN 17
 run 60
+savestate opening_before_aster.ss
 walk DOWN 18
 run 40
 mash A 40000

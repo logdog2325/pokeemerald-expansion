@@ -1,9 +1,11 @@
 #include "global.h"
 #include "constants/trainers.h"
+#include "player_outfit.h"
 
 static enum TrainerPicID GetEmeraldTrainerPic(enum Gender gender)
 {
-    return gender == MALE ? TRAINER_PIC_BRENDAN : TRAINER_PIC_MAY;
+    // Draconid Emerald: the player's outfit decides the pic (player_outfit.c)
+    return GetPlayerOutfitTrainerPic(gender);
 }
 static enum TrainerPicID GetRSTrainerPic(enum Gender gender)
 {

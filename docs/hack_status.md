@@ -32,19 +32,23 @@ Other docs: [decisions](hack_decisions.md) · [changes](hack_changes.md) · [too
 - [ ] Custom Porytiles tiles (shrine, Rayquaza statue, meteorites) – `TODO(art)`, later
 
 ## Phase 2 – Custom player character
-- [ ] Outfit system (var + script command/special, survives save)
-- [ ] Draconid tamer M/F: walk, run, mach, acro, surf, field move, fish, underwater, watering, decorating
-- [ ] Magma disguise M/F: same states
-- [ ] Reflections / palettes
-- [ ] Trainer front pics (4), back pics with throw frames (4)
-- [ ] Intro/gender select, trainer card, Hall of Fame, PokéNav, contest, Union Room, battle transition mugshots
-- [ ] Validation + contact sheets; Brendan/May unchanged
+- [x] Outfit system: `VAR_PLAYER_OUTFIT`, `src/player_outfit.c`, `special SetPlayerOutfit` (saved with the game)
+- [p] Draconid tamer M/F: walk, run, Mach, Acro, surf, field move, fish, underwater, watering, decorating
+      (Acro wheelies and watering can are rough – `TODO(art)`)
+- [p] Magma disguise M/F: same states (same `TODO(art)` items)
+- [x] Reflection palettes (generated), underwater uses the shared underwater palette
+- [x] Trainer front pics (Draconid M/F; Magma = grunt pics), back pics with throw frames (4 sets)
+- [x] Gender choice, trainer card, Hall of Fame, battle transitions, Pokédex size screen, region map/PokéNav icon,
+      decorating, easy-chat interview follow the outfit; contests/Union Room use the player's object
+- [ ] Opening movie + credits bike scenes still show Brendan/May – `TODO(art)`
+- [x] Validation (`tools/hack/art/manifests/player.json`, 50 files OK) + in-game checks (walk/run, both genders,
+      battle back pic, trainer card, Magma outfit); Brendan/May files unchanged
 
 ## Phase 3 – Other sprites
 - [ ] Elder, Aster, Draconid villager overworld sprites
 - [ ] Aster trainer class, front pic, battle music
 - [ ] Mega placeholders (none needed yet: all required Megas exist, see decisions)
-- [ ] `docs/hack_art_pipeline.md`
+- [x] `docs/hack_art_pipeline.md` (player pipeline; NPC section comes with the NPC sprites)
 
 ## Phase 4 – Story events
 - [x] Egg event (Deino / Dreepy / Jangmo-o) + Aster counter-pick var + hatch rite at the shrine (Lv 5) –

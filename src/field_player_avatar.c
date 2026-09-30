@@ -26,6 +26,7 @@
 #include "task.h"
 #include "tv.h"
 #include "wild_encounter.h"
+#include "player_outfit.h"
 #include "constants/abilities.h"
 #include "constants/event_objects.h"
 #include "constants/event_object_movement.h"
@@ -295,28 +296,19 @@ static const u8 sRSAvatarGfxIds[GENDER_COUNT] =
     [FEMALE] = OBJ_EVENT_GFX_LINK_RS_MAY
 };
 
+// Draconid Emerald: states whose graphics also encode the avatar flags. The graphics ids come
+// from GetPlayerAvatarGraphicsIdByStateIdAndGender, so they follow the player's outfit.
 static const struct PACKED
 {
-    u16 graphicsId;
+    u8 state;
     u8 playerFlag;
-} sPlayerAvatarGfxToStateFlag[GENDER_COUNT][5] =
+} sPlayerAvatarStateToFlag[] =
 {
-    [MALE] =
-    {
-        {PLAYER_AVATAR_GFX_MALE_NORMAL,     PLAYER_AVATAR_FLAG_ON_FOOT},
-        {PLAYER_AVATAR_GFX_MALE_MACH_BIKE,  PLAYER_AVATAR_FLAG_MACH_BIKE},
-        {PLAYER_AVATAR_GFX_MALE_ACRO_BIKE,  PLAYER_AVATAR_FLAG_ACRO_BIKE},
-        {PLAYER_AVATAR_GFX_MALE_SURFING,    PLAYER_AVATAR_FLAG_SURFING},
-        {PLAYER_AVATAR_GFX_MALE_UNDERWATER, PLAYER_AVATAR_FLAG_UNDERWATER},
-    },
-    [FEMALE] =
-    {
-        {PLAYER_AVATAR_GFX_FEMALE_NORMAL,         PLAYER_AVATAR_FLAG_ON_FOOT},
-        {PLAYER_AVATAR_GFX_FEMALE_MACH_BIKE,      PLAYER_AVATAR_FLAG_MACH_BIKE},
-        {PLAYER_AVATAR_GFX_FEMALE_ACRO_BIKE,      PLAYER_AVATAR_FLAG_ACRO_BIKE},
-        {PLAYER_AVATAR_GFX_FEMALE_SURFING,        PLAYER_AVATAR_FLAG_SURFING},
-        {PLAYER_AVATAR_GFX_FEMALE_UNDERWATER,     PLAYER_AVATAR_FLAG_UNDERWATER},
-    }
+    {PLAYER_AVATAR_STATE_NORMAL,     PLAYER_AVATAR_FLAG_ON_FOOT},
+    {PLAYER_AVATAR_STATE_MACH_BIKE,  PLAYER_AVATAR_FLAG_MACH_BIKE},
+    {PLAYER_AVATAR_STATE_ACRO_BIKE,  PLAYER_AVATAR_FLAG_ACRO_BIKE},
+    {PLAYER_AVATAR_STATE_SURFING,    PLAYER_AVATAR_FLAG_SURFING},
+    {PLAYER_AVATAR_STATE_UNDERWATER, PLAYER_AVATAR_FLAG_UNDERWATER},
 };
 
 static bool8 (*const sArrowWarpMetatileBehaviorChecks2[])(u8) =  //Duplicate of sArrowWarpMetatileBehaviorChecks
@@ -1570,6 +1562,9 @@ u16 GetRivalAvatarGraphicsIdByStateIdAndGender(u8 state, enum Gender gender)
 
 u16 GetPlayerAvatarGraphicsIdByStateIdAndGender(u8 state, enum Gender gender)
 {
+    // Draconid Emerald: the player's look comes from their outfit (player_outfit.c)
+    if (!IS_FRLG)
+        return GetPlayerOutfitAvatarGfx(state, gender);
     return sPlayerAvatarGfxIds[state][gender];
 }
 
@@ -1609,7 +1604,7 @@ enum Gender GetPlayerAvatarGenderByGraphicsId(u16 gfxId)
     case OBJ_EVENT_GFX_GREEN_VS_SEEKER_BIKE:
         return FEMALE;
     default:
-        return MALE;
+        return IsFemaleOutfitAvatarGfx(gfxId) ? FEMALE : MALE;
     }
 }
 
@@ -1668,10 +1663,10 @@ static u8 GetPlayerAvatarStateTransitionByGraphicsId(u16 graphicsId, u8 gender)
 {
     u8 i;
 
-    for (i = 0; i < ARRAY_COUNT(sPlayerAvatarGfxToStateFlag[0]); i++)
+    for (i = 0; i < ARRAY_COUNT(sPlayerAvatarStateToFlag); i++)
     {
-        if (sPlayerAvatarGfxToStateFlag[gender][i].graphicsId == graphicsId)
-            return sPlayerAvatarGfxToStateFlag[gender][i].playerFlag;
+        if (GetPlayerAvatarGraphicsIdByStateIdAndGender(sPlayerAvatarStateToFlag[i].state, gender) == graphicsId)
+            return sPlayerAvatarStateToFlag[i].playerFlag;
     }
     return PLAYER_AVATAR_FLAG_ON_FOOT;
 }
@@ -1681,10 +1676,10 @@ u16 GetPlayerAvatarGraphicsIdByCurrentState(void)
     u8 i;
     u8 flags = gPlayerAvatar.flags;
 
-    for (i = 0; i < ARRAY_COUNT(sPlayerAvatarGfxToStateFlag[0]); i++)
+    for (i = 0; i < ARRAY_COUNT(sPlayerAvatarStateToFlag); i++)
     {
-        if (sPlayerAvatarGfxToStateFlag[gPlayerAvatar.gender][i].playerFlag & flags)
-            return sPlayerAvatarGfxToStateFlag[gPlayerAvatar.gender][i].graphicsId;
+        if (sPlayerAvatarStateToFlag[i].playerFlag & flags)
+            return GetPlayerAvatarGraphicsIdByStateIdAndGender(sPlayerAvatarStateToFlag[i].state, gPlayerAvatar.gender);
     }
     return 0;
 }

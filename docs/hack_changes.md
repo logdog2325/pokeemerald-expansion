@@ -17,7 +17,10 @@ Grouped by area; each entry names the file(s).
 | Emulator runner + driver | `tools/hack/emu/gbarun.c`, `tools/hack/emu/play.py` | headless smoke tests, see docs/hack_tools.md |
 | Map specs | `tools/hack/mapgen/specs/draconid_*.{py,json}` | regenerate the Draconid maps with `mapbuild.py` |
 | Seam checker | `tools/hack/mapgen/check_seams.py` | flags secondary metatiles drawable across a connection with other tilesets; run by `mapbuild.py --write` |
-| Emulator regression tests | `tools/hack/emu/tests/*.play` | `opening.play` (new game → lab), `route103.play` (→ May) |
+| Emulator regression tests | `tools/hack/emu/tests/*.play` | `opening.play` (new game → lab, `-D GENDER=F`), `route103.play` (→ May) |
+| Player outfit art builders | `tools/hack/art/player/build_player.py`, `build_pics.py`, specs `draconid_m/f.json`, `magma_m/f.json`, `*_pics.json` | see docs/hack_art_pipeline.md |
+| Outfit C code generator | `tools/hack/art/player/gen_outfit_code.py` | writes between `DRACONID PLAYER OUTFITS` markers |
+| Art manifest | `tools/hack/art/manifests/player.json` | `validate.py --manifest` for all player art; new `map_icon` profile in `gbaart.py` |
 
 ## Config options
 | Option | Old | New | File |
@@ -53,7 +56,7 @@ Grouped by area; each entry names the file(s).
 | `VAR_DRACONID_STATE` (0x40F7) | `DRACONID_STATE_*`: 0 new game, 1 set clock, 2 clock set, 3 egg received, 4 egg hatched, 5 ready to leave, 6 left village |
 | `VAR_ASTER_EGG` (0x40F8) | Aster's egg, `DRACONID_EGG_*` (counter-pick of the player's) |
 | `VAR_SECOND_STARTER` (0x40F9) | `SECOND_STARTER_*`: 0 none, 1 Charmander, 2 Totodile, 3 Treecko |
-| `VAR_PLAYER_OUTFIT` (0x40FA) | `PLAYER_OUTFIT_*`: 0 Draconid, 1 Magma |
+| `VAR_PLAYER_OUTFIT` (0x40FA) | `PLAYER_OUTFIT_*`: 0 Draconid, 1 Magma – picks the player's sprites and trainer pics (`src/player_outfit.c`) |
 | `VAR_ASTER_STATE` (0x40FB) | Aster arc progress (Phase 4) |
 | `VAR_STARTER_MON` (changed meaning) | now the player's egg, `DRACONID_EGG_*`; the starter table in `src/starter_choose.c` maps it to Deino/Dreepy/Jangmo-o |
 
@@ -62,6 +65,9 @@ Grouped by area; each entry names the file(s).
 |---|---|
 | `DRACONID_STATE_*`, `DRACONID_EGG_*`, `DRACONID_EGG_SPECIES_0..2`, `DRACONID_EGG_COUNT`, `DRACONID_HATCHLING_LEVEL`, `SECOND_STARTER_*` | `include/constants/draconid.h` |
 | `PLAYER_OUTFIT_DRACONID`, `PLAYER_OUTFIT_MAGMA`, `PLAYER_OUTFIT_COUNT` | `include/constants/outfits.h` |
+| `OBJ_EVENT_GFX_{DRACONID,MAGMA}_{M,F}_{NORMAL,MACH_BIKE,ACRO_BIKE,SURFING,FIELD_MOVE,FISHING,UNDERWATER,WATERING,DECORATING}` (36 ids) | `include/constants/event_objects.h` (generated region) |
+| `OBJ_EVENT_PAL_TAG_{DRACONID,MAGMA}_{M,F}` + `_REFLECTION` (0x1140–0x1147) | `include/constants/event_objects.h` |
+| `TRAINER_PIC_DRACONID_M/F`, `TRAINER_PIC_PLAYER_MAGMA_M/F` (Magma: grunt front pic + own back pic) | `include/constants/trainers.h`, `src/data/graphics/trainers.h` |
 | `TRAINER_ASTER_PASS_DEINO/_DREEPY/_JANGMO_O` (855–857), `TRAINERS_COUNT_EMERALD` 855→858 | `include/constants/opponents.h`, teams in `src/data/trainers.party` |
 | `MAP_DRACONID_VILLAGE`, `MAP_DRACONID_PASS` (group TownsAndRoutes); `MAP_DRACONID_VILLAGE_PLAYERS_HOUSE_1F/_2F`, `_ELDERS_HOUSE`, `_SHRINE`, `_HOUSE1`, `_HOUSE2` (new group `gMapGroup_IndoorDraconid`) | `data/maps/map_groups.json`, `data/maps/Draconid*/` |
 | `LAYOUT_DRACONID_VILLAGE`, `LAYOUT_DRACONID_PASS`, `LAYOUT_DRACONID_VILLAGE_PLAYERS_HOUSE_1F/_2F`, `_ELDERS_HOUSE`, `_SHRINE` (House1/2 reuse `LAYOUT_HOUSE2`/`LAYOUT_HOUSE1`) | `data/layouts/layouts.json` |
@@ -84,6 +90,12 @@ Grouped by area; each entry names the file(s).
 | Bedroom PC turn-off in the Draconid house | `src/player_pc.c`, `include/event_scripts.h` |
 | New: `StartBirchRescueBattle` special (vanilla first battle vs Zigzagoon Lv2 without choosing a starter) | `src/battle_setup.c`, `include/battle_setup.h`, `data/specials.inc` |
 | `{RIVAL}` always expands to MAY in Emerald (Birch's daughter), for both player genders | `src/string_util.c` |
+| New: player outfits – `GetPlayerOutfit`, `GetPlayerOutfitAvatarGfx`, `GetPlayerOutfitDecoratingGfx`, `GetPlayerOutfitTrainerPic`, `IsFemaleOutfitAvatarGfx`, special `SetPlayerOutfit` | `src/player_outfit.c`, `include/player_outfit.h`, `data/specials.inc` |
+| Player avatar gfx come from the outfit (Emerald); state↔gfx lookups go through it | `src/field_player_avatar.c` |
+| Player trainer pics come from the outfit: battle back pic, front pic (transitions, Pokédex, Frontier), Hall of Fame, trainer card, new-game gender choice | `src/trainer.c`, `src/pokemon.c`, `src/trainer_pokemon_sprites.c`, `src/trainer_card.c`, `src/main_menu.c` |
+| Decorating sprite and easy-chat interview sprite follow the outfit | `src/decoration.c`, `src/easy_chat.c` |
+| Region map / PokéNav player icon: Draconid or Magma head per outfit | `src/region_map.c`, `graphics/pokenav/region_map/*_icon.png` |
+| Outfit sprite data, palettes, reflection sets (generated) | `src/data/object_events/*.h`, `src/event_object_movement.c` |
 
 ## Scripts
 | Script / label | File |

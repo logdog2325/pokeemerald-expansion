@@ -1,4 +1,5 @@
 #include "global.h"
+#include "player_outfit.h"
 #include "scanline_effect.h"
 #include "palette.h"
 #include "task.h"
@@ -1906,7 +1907,9 @@ static void CreateTrainerCardTrainerPic(void)
     }
     else
     {
-        CreateTrainerCardTrainerPicSprite(FacilityClassToPicIndex(sTrainerPicFacilityClass[sData->cardType][sData->trainerCard.gender]),
+        CreateTrainerCardTrainerPicSprite(sData->cardType == CARD_TYPE_EMERALD
+                                            ? GetPlayerOutfitTrainerPic(sData->trainerCard.gender) // Draconid Emerald
+                                            : FacilityClassToPicIndex(sTrainerPicFacilityClass[sData->cardType][sData->trainerCard.gender]),
                     TRUE,
                     sTrainerPicOffset[sData->isHoenn][sData->trainerCard.gender][0],
                     sTrainerPicOffset[sData->isHoenn][sData->trainerCard.gender][1],

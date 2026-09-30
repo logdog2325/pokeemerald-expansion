@@ -177,6 +177,11 @@ enum __attribute__((packed)) TrainerPicID
     TRAINER_PIC_CRUSH_GIRL_FRLG,
     TRAINER_PIC_POKEMON_BREEDER_FRLG,
     TRAINER_PIC_PAINTER_FRLG,
+    // Draconid Emerald: the player's outfits (front + back pic; M then F, like Brendan/May)
+    TRAINER_PIC_DRACONID_M,
+    TRAINER_PIC_DRACONID_F,
+    TRAINER_PIC_PLAYER_MAGMA_M, // Team Magma disguise: grunt front pic, own back pic
+    TRAINER_PIC_PLAYER_MAGMA_F,
     TRAINER_PIC_COUNT,
 };
 

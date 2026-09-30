@@ -29,7 +29,8 @@ PROFILES = {
     "ow_npc16_3": (16, 32, 3, "x"),
     "trainer_front": (64, 64, 1, "y"),
     "trainer_back": (64, 64, 4, "y"),   # idle + 3 throw frames
-    "icon": (32, 32, 2, "y"),
+    "icon": (32, 32, 2, "y"),          # Pokémon icon
+    "map_icon": (16, 16, 1, "x"),      # region map / PokéNav player head
 }
 
 

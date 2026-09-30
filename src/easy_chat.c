@@ -1,4 +1,5 @@
 #include "global.h"
+#include "player_outfit.h"
 #include "malloc.h"
 #include "bard_music.h"
 #include "bg.h"
@@ -4988,7 +4989,7 @@ static void TryAddInterviewObjectEvents(void)
 
     // Add object for player (facing right)
     spriteId = CreateObjectGraphicsSprite(
-        gSaveBlock2Ptr->playerGender == MALE ? OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL : OBJ_EVENT_GFX_RIVAL_MAY_NORMAL,
+        GetPlayerOutfitAvatarGfx(PLAYER_AVATAR_STATE_NORMAL, gSaveBlock2Ptr->playerGender), // Draconid Emerald
         SpriteCallbackDummy,
         52,
         40,

@@ -1,0 +1,923 @@
+{
+ "name": "draconid_f",
+ "note": "Draconid dragon tamer (female). Base: FRLG Leaf (recoloured, new head). See docs/hack_art_pipeline.md.",
+ "base_dir": "graphics/object_events/pics/people/leaf",
+ "out_dir": "graphics/object_events/pics/people/draconid_f",
+ "palette_out": "graphics/object_events/palettes/draconid_f.pal",
+ "palette": [
+  [
+   131,
+   123,
+   164
+  ],
+  [
+   72,
+   72,
+   104
+  ],
+  [
+   255,
+   205,
+   160
+  ],
+  [
+   226,
+   152,
+   120
+  ],
+  [
+   40,
+   40,
+   64
+  ],
+  [
+   32,
+   128,
+   128
+  ],
+  [
+   16,
+   72,
+   80
+  ],
+  [
+   88,
+   192,
+   176
+  ],
+  [
+   120,
+   24,
+   32
+  ],
+  [
+   248,
+   240,
+   216
+  ],
+  [
+   200,
+   184,
+   150
+  ],
+  [
+   224,
+   64,
+   48
+  ],
+  [
+   180,
+   40,
+   40
+  ],
+  [
+   232,
+   192,
+   64
+  ],
+  [
+   176,
+   128,
+   40
+  ],
+  [
+   0,
+   0,
+   0
+  ]
+ ],
+ "roles": {
+  "K": 15,
+  "H": 4,
+  "h": 1,
+  "T": 5,
+  "t": 7,
+  "d": 6,
+  "W": 9,
+  "w": 10,
+  "S": 2,
+  "s": 3,
+  "R": 12,
+  "r": 8,
+  "B": 1,
+  "P": 6
+ },
+ "cap": [
+  9,
+  10,
+  11,
+  12
+ ],
+ "clear": [
+  6,
+  9,
+  10,
+  11,
+  12,
+  15,
+  4,
+  1
+ ],
+ "heads": {
+  "down": {
+   "anchor": [
+    -4,
+    -2
+   ],
+   "rows": [
+    ".....KKKKKK.....",
+    "....KHHhhHHK....",
+    "..K.KHHHHHHK.K..",
+    ".KWKHhHHHHHHKWK.",
+    ".KWwKHHHHHHKwWK.",
+    "..KwdttttttdwK..",
+    ".KKdTTTTTTTTdKK.",
+    ".KHHHHHHHKHHHHK.",
+    ".KHHSHHHSSHHHHK.",
+    ".KHsSSSSSSSSsHK."
+   ],
+   "clear_above": 3
+  },
+  "up": {
+   "anchor": [
+    -4,
+    -2
+   ],
+   "rows": [
+    ".....KKKKKK.....",
+    "....KHHhhHHK....",
+    "..K.KHHHHHHK.K..",
+    ".KWKHHHHHhHHKWK.",
+    ".KWwKHHHHHHKwWK.",
+    "..KwdttttttdwK..",
+    ".KKdTTTddTTTdKK.",
+    ".KHHHHKddKHHHHK.",
+    ".KHHhHKdTKHhHHK.",
+    ".KHHHHHKKHHHHHK."
+   ],
+   "clear_above": 3
+  },
+  "left": {
+   "anchor": [
+    -4,
+    -2
+   ],
+   "rows": [
+    ".....KKKKK......",
+    "....KHhhHHK.K...",
+    "...KHHHHHHKKWK..",
+    "..KHHHHHhHKWwK..",
+    "..KHHHHHHHHKK...",
+    ".KttttttttdHHK..",
+    ".KTTTTTTTTdHHHK.",
+    ".KHHHHHHHHHHdTK.",
+    ".KSHHHHHHHHHHdK.",
+    "..KsSHHHHHHHHTK."
+   ],
+   "clear_above": 3
+  }
+ },
+ "sheets": [
+  {
+   "src": "green_normal.png",
+   "out": "walking.png",
+   "w": 16,
+   "h": 32,
+   "heads": [
+    "down",
+    "up",
+    "left",
+    "down",
+    "down",
+    "up",
+    "up",
+    "left",
+    "left"
+   ]
+  },
+  {
+   "src": "green_surf_run.png",
+   "out": "running.png",
+   "w": 16,
+   "h": 32,
+   "pick": [
+    3,
+    6,
+    9,
+    4,
+    5,
+    7,
+    8,
+    10,
+    11
+   ],
+   "heads": [
+    "down",
+    "up",
+    "left",
+    "down",
+    "down",
+    "up",
+    "up",
+    "left",
+    "left"
+   ]
+  },
+  {
+   "src": "green_surf_run.png",
+   "out": "surfing.png",
+   "w": 16,
+   "h": 32,
+   "pick": [
+    0,
+    1,
+    2
+   ],
+   "heads": [
+    "down",
+    "up",
+    "left"
+   ]
+  },
+  {
+   "src": "green_bike.png",
+   "out": "bike.png",
+   "w": 32,
+   "h": 32,
+   "heads": [
+    "down",
+    "up",
+    "left",
+    "down",
+    "down",
+    "up",
+    "up",
+    "left",
+    "left"
+   ]
+  },
+  {
+   "src": "green_item.png",
+   "out": "field_move.png",
+   "w": 16,
+   "h": 32,
+   "pick": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "heads": [
+    "down",
+    "down",
+    "down",
+    "down",
+    "down"
+   ]
+  },
+  {
+   "src": "green_fish.png",
+   "out": "fishing.png",
+   "w": 32,
+   "h": 32,
+   "heads": [
+    "left",
+    "left",
+    "left",
+    "left",
+    "up",
+    "up",
+    "up",
+    "up",
+    "down",
+    "down",
+    "down",
+    "down"
+   ],
+   "clear_above": 0
+  }
+ ],
+ "reflection_palette_out": "graphics/object_events/palettes/draconid_f_reflection.pal",
+ "derived": [
+  {
+   "out": "acro_bike.png",
+   "w": 32,
+   "h": 32,
+   "frames": [
+    {
+     "from": "bike.png",
+     "frame": 0,
+     "place": [
+      0,
+      0
+     ]
+    },
+    {
+     "from": "bike.png",
+     "frame": 1,
+     "place": [
+      0,
+      0
+     ]
+    },
+    {
+     "from": "bike.png",
+     "frame": 2,
+     "place": [
+      0,
+      0
+     ]
+    },
+    {
+     "from": "bike.png",
+     "frame": 3,
+     "place": [
+      0,
+      0
+     ]
+    },
+    {
+     "from": "bike.png",
+     "frame": 4,
+     "place": [
+      0,
+      0
+     ]
+    },
+    {
+     "from": "bike.png",
+     "frame": 5,
+     "place": [
+      0,
+      0
+     ]
+    },
+    {
+     "from": "bike.png",
+     "frame": 6,
+     "place": [
+      0,
+      0
+     ]
+    },
+    {
+     "from": "bike.png",
+     "frame": 7,
+     "place": [
+      0,
+      0
+     ]
+    },
+    {
+     "from": "bike.png",
+     "frame": 8,
+     "place": [
+      0,
+      0
+     ]
+    },
+    {
+     "from": "bike.png",
+     "frame": 0,
+     "place": [
+      0,
+      0
+     ],
+     "shift": [
+      0,
+      -2
+     ]
+    },
+    {
+     "from": "bike.png",
+     "frame": 0,
+     "place": [
+      0,
+      0
+     ],
+     "shift": [
+      0,
+      -4
+     ]
+    },
+    {
+     "from": "bike.png",
+     "frame": 0,
+     "place": [
+      0,
+      0
+     ],
+     "shift": [
+      0,
+      -1
+     ]
+    },
+    {
+     "from": "bike.png",
+     "frame": 0,
+     "place": [
+      0,
+      0
+     ],
+     "shift": [
+      0,
+      -3
+     ]
+    },
+    {
+     "from": "bike.png",
+     "frame": 1,
+     "place": [
+      0,
+      0
+     ],
+     "shift": [
+      0,
+      -2
+     ]
+    },
+    {
+     "from": "bike.png",
+     "frame": 1,
+     "place": [
+      0,
+      0
+     ],
+     "shift": [
+      0,
+      -4
+     ]
+    },
+    {
+     "from": "bike.png",
+     "frame": 1,
+     "place": [
+      0,
+      0
+     ],
+     "shift": [
+      0,
+      -1
+     ]
+    },
+    {
+     "from": "bike.png",
+     "frame": 1,
+     "place": [
+      0,
+      0
+     ],
+     "shift": [
+      0,
+      -3
+     ]
+    },
+    {
+     "from": "bike.png",
+     "frame": 2,
+     "place": [
+      0,
+      0
+     ],
+     "shear": 0.15,
+     "shift": [
+      0,
+      -1
+     ]
+    },
+    {
+     "from": "bike.png",
+     "frame": 2,
+     "place": [
+      0,
+      0
+     ],
+     "shear": 0.2,
+     "shift": [
+      0,
+      -3
+     ]
+    },
+    {
+     "from": "bike.png",
+     "frame": 2,
+     "place": [
+      0,
+      0
+     ],
+     "shear": -0.15,
+     "shift": [
+      0,
+      -1
+     ]
+    },
+    {
+     "from": "bike.png",
+     "frame": 2,
+     "place": [
+      0,
+      0
+     ],
+     "shear": -0.2,
+     "shift": [
+      0,
+      -3
+     ]
+    },
+    {
+     "from": "bike.png",
+     "frame": 3,
+     "place": [
+      0,
+      0
+     ],
+     "shift": [
+      0,
+      -2
+     ]
+    },
+    {
+     "from": "bike.png",
+     "frame": 4,
+     "place": [
+      0,
+      0
+     ],
+     "shift": [
+      0,
+      -2
+     ]
+    },
+    {
+     "from": "bike.png",
+     "frame": 5,
+     "place": [
+      0,
+      0
+     ],
+     "shift": [
+      0,
+      -2
+     ]
+    },
+    {
+     "from": "bike.png",
+     "frame": 6,
+     "place": [
+      0,
+      0
+     ],
+     "shift": [
+      0,
+      -2
+     ]
+    },
+    {
+     "from": "bike.png",
+     "frame": 7,
+     "place": [
+      0,
+      0
+     ],
+     "shear": 0.15,
+     "shift": [
+      0,
+      -1
+     ]
+    },
+    {
+     "from": "bike.png",
+     "frame": 8,
+     "place": [
+      0,
+      0
+     ],
+     "shear": 0.15,
+     "shift": [
+      0,
+      -1
+     ]
+    }
+   ]
+  },
+  {
+   "out": "underwater.png",
+   "w": 32,
+   "h": 32,
+   "frames": [
+    {
+     "from": "surfing.png",
+     "frame": 0,
+     "place": [
+      8,
+      0
+     ],
+     "shift": [
+      0,
+      -4
+     ],
+     "lum": [
+      [
+       40,
+       15
+      ],
+      [
+       80,
+       8
+      ],
+      [
+       120,
+       7
+      ],
+      [
+       165,
+       6
+      ],
+      [
+       205,
+       5
+      ],
+      [
+       256,
+       9
+      ]
+     ]
+    },
+    {
+     "from": "surfing.png",
+     "frame": 1,
+     "place": [
+      8,
+      0
+     ],
+     "shift": [
+      0,
+      -4
+     ],
+     "lum": [
+      [
+       40,
+       15
+      ],
+      [
+       80,
+       8
+      ],
+      [
+       120,
+       7
+      ],
+      [
+       165,
+       6
+      ],
+      [
+       205,
+       5
+      ],
+      [
+       256,
+       9
+      ]
+     ]
+    },
+    {
+     "from": "surfing.png",
+     "frame": 2,
+     "place": [
+      8,
+      0
+     ],
+     "shift": [
+      0,
+      -4
+     ],
+     "lum": [
+      [
+       40,
+       15
+      ],
+      [
+       80,
+       8
+      ],
+      [
+       120,
+       7
+      ],
+      [
+       165,
+       6
+      ],
+      [
+       205,
+       5
+      ],
+      [
+       256,
+       9
+      ]
+     ]
+    },
+    {
+     "from": "surfing.png",
+     "frame": 2,
+     "place": [
+      8,
+      0
+     ],
+     "shift": [
+      0,
+      -4
+     ],
+     "lum": [
+      [
+       40,
+       15
+      ],
+      [
+       80,
+       8
+      ],
+      [
+       120,
+       7
+      ],
+      [
+       165,
+       6
+      ],
+      [
+       205,
+       5
+      ],
+      [
+       256,
+       9
+      ]
+     ]
+    }
+   ],
+   "note": "indices of the shared player_underwater.pal"
+  },
+  {
+   "out": "watering.png",
+   "w": 32,
+   "h": 32,
+   "frames": [
+    {
+     "from": "walking.png",
+     "frame": 0,
+     "place": [
+      8,
+      0
+     ],
+     "overlay": {
+      "at": [
+       18,
+       23
+      ],
+      "rows": [
+       "..KKK.",
+       "KKRRRK",
+       ".KrRRK",
+       "..KKK."
+      ]
+     }
+    },
+    {
+     "from": "walking.png",
+     "frame": 0,
+     "place": [
+      8,
+      0
+     ],
+     "overlay": {
+      "at": [
+       18,
+       23
+      ],
+      "rows": [
+       "..KKK.",
+       "KKRRRK",
+       "WKrRRK",
+       "..KKK.",
+       "W.....",
+       "..W..."
+      ]
+     }
+    },
+    {
+     "from": "walking.png",
+     "frame": 1,
+     "place": [
+      8,
+      0
+     ],
+     "overlay": {
+      "at": [
+       21,
+       22
+      ],
+      "rows": [
+       "KK",
+       "RK"
+      ]
+     }
+    },
+    {
+     "from": "walking.png",
+     "frame": 1,
+     "place": [
+      8,
+      0
+     ],
+     "overlay": {
+      "at": [
+       21,
+       22
+      ],
+      "rows": [
+       "KK",
+       "RK"
+      ]
+     }
+    },
+    {
+     "from": "walking.png",
+     "frame": 2,
+     "place": [
+      8,
+      0
+     ],
+     "overlay": {
+      "at": [
+       5,
+       22
+      ],
+      "rows": [
+       "..KKK.",
+       "KKRRRK",
+       ".KrRRK",
+       "..KKK."
+      ]
+     }
+    },
+    {
+     "from": "walking.png",
+     "frame": 2,
+     "place": [
+      8,
+      0
+     ],
+     "overlay": {
+      "at": [
+       4,
+       22
+      ],
+      "rows": [
+       "KK.KK..",
+       "WKKRRK.",
+       "..KrRRK",
+       "W..KKK.",
+       ".W.....",
+       "W......"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "out": "decorating.png",
+   "w": 16,
+   "h": 32,
+   "frames": [
+    {
+     "from": "walking.png",
+     "frame": 2,
+     "place": [
+      0,
+      0
+     ]
+    }
+   ]
+  },
+  {
+   "out": "region_map_icon.png",
+   "path": "graphics/pokenav/region_map/draconid_f_icon.png",
+   "w": 16,
+   "h": 16,
+   "frames": [
+    {
+     "from": "walking.png",
+     "frame": 0,
+     "place": [
+      0,
+      -9
+     ]
+    }
+   ]
+  }
+ ]
+}

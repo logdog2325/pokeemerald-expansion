@@ -640,3 +640,4 @@ gSpecials::
 	def_special CheckAddCoins
 	def_special DraconidRaiseHatchling
 	def_special StartBirchRescueBattle, waitstate=1
+	def_special SetPlayerOutfit

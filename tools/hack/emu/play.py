@@ -15,6 +15,7 @@ A .play script is a gbarun script plus:
   expect_flag NAME 0|1    like flag, but fails the run on mismatch
   expect_var NAME VALUE   like var, but fails the run on mismatch
   setflag NAME / clearflag NAME   change a flag in the save block (e.g. FLAG_DEBUG_NO_ENCOUNTER)
+  setvar NAME VALUE       change a var in the save block
   mapid                   print the current map group/num (gSaveBlock1Ptr->location)
   walk DIR COORD [MAX]    hold DIR until the player's x (LEFT/RIGHT) or y (UP/DOWN) is COORD
   pos                     print the player's map coordinates (+7 MAP_OFFSET)
@@ -22,6 +23,8 @@ A .play script is a gbarun script plus:
                           walkable cells (collision 0), avoiding tall grass/water/warps when
                           it can; ignores NPCs and ledges. Expands to walk commands.
   savestate/loadstate F   relative paths are inside the output directory
+  gender M|F              set the player's gender (the sprite follows on the next map load)
+  default NAME VALUE      default for ${NAME}; override with -D NAME=VALUE on the command line
 Lines are otherwise passed to gbarun unchanged (run/press/hold/repeat/shot/savestate/...).
 Exit code 1 if an expectation fails or an "until" times out.
 """
@@ -147,11 +150,19 @@ def main():
     ap.add_argument("script")
     ap.add_argument("-o", "--out", required=True)
     ap.add_argument("--rom", default=os.path.join(ROOT, "pokeemerald.gba"))
+    ap.add_argument("-D", dest="defines", action="append", default=[], help="NAME=VALUE for ${NAME}")
     args = ap.parse_args()
     elf = os.path.splitext(args.rom)[0] + ".elf"
     syms = symbols(elf)
     lines = open(args.script).read().splitlines()
-    names = sorted({l.split()[1] for l in lines if l.split() and l.split()[0] in ("flag", "var", "expect_flag", "expect_var", "setflag", "clearflag")})
+    defines = {}
+    for l in lines:
+        t = l.split()
+        if len(t) == 3 and t[0] == "default":
+            defines.setdefault(t[1], t[2])
+    defines.update(dict(d.split("=", 1) for d in args.defines))
+    lines = [re.sub(r"\$\{(\w+)\}", lambda m: defines[m.group(1)], l) for l in lines if not l.startswith("default ")]
+    names = sorted({l.split()[1] for l in lines if l.split() and l.split()[0] in ("flag", "var", "expect_flag", "expect_var", "setflag", "clearflag", "setvar")})
     flags_off, vars_off, loc_off, coords_off, consts = probe(names)
     # the player is object event 0 (spawned first on every map load); MAP_OFFSET is 7
     player_x = syms["gObjectEvents"] + coords_off
@@ -192,6 +203,11 @@ def main():
         elif t[0] in ("setflag", "clearflag"):
             f = consts[t[1]]
             out.append("pokebit %s+%X %d %d" % (sb1, flags_off + f // 8, f % 8, 1 if t[0] == "setflag" else 0))
+        elif t[0] == "setvar":
+            v, val = consts[t[1]], int(t[2], 0)
+            addr = vars_off + (v - 0x4000) * 2
+            out.append("poke %s+%X %X" % (sb1, addr, val & 0xFF))
+            out.append("poke %s+%X %X" % (sb1, addr + 1, val >> 8))
         elif t[0] in ("var", "expect_var"):
             v = consts[t[1]]
             label = t[1]
@@ -207,6 +223,9 @@ def main():
             for dname, coord in plan_path(t[1], *map(int, t[2:6])):
                 addr = player_x if dname in ("LEFT", "RIGHT") else player_y
                 out.append("untilhold %X 2 %X 900 %s" % (addr, coord + 7, dname))
+        elif t[0] == "gender":
+            g = 0 if t[1].upper().startswith("M") else 1
+            out.append("poke *%X+8 %X" % (syms["gSaveBlock2Ptr"], g))
         elif t[0] == "pos":
             out.append("read %X 2 player_x+7" % player_x)
             out.append("read %X 2 player_y+7" % player_y)

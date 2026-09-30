@@ -1,4 +1,6 @@
 #include "global.h"
+#include "player_outfit.h"
+#include "constants/outfits.h"
 #include "main.h"
 #include "text.h"
 #include "menu.h"
@@ -127,6 +129,15 @@ static const u16 sRegionMapPlayerIcon_BrendanPal[] = INCGFX_U16("graphics/pokena
 static const u8 sRegionMapPlayerIcon_BrendanGfx[] = INCGFX_U8("graphics/pokenav/region_map/brendan_icon.png", ".4bpp");
 static const u16 sRegionMapPlayerIcon_MayPal[] = INCGFX_U16("graphics/pokenav/region_map/may_icon.png", ".gbapal");
 static const u8 sRegionMapPlayerIcon_MayGfx[] = INCGFX_U8("graphics/pokenav/region_map/may_icon.png", ".4bpp");
+// Draconid Emerald: the player's head (built with the overworld sprites, tools/hack/art/player)
+static const u16 sRegionMapPlayerIcon_DraconidMPal[] = INCGFX_U16("graphics/pokenav/region_map/draconid_m_icon.png", ".gbapal");
+static const u8 sRegionMapPlayerIcon_DraconidMGfx[] = INCGFX_U8("graphics/pokenav/region_map/draconid_m_icon.png", ".4bpp");
+static const u16 sRegionMapPlayerIcon_DraconidFPal[] = INCGFX_U16("graphics/pokenav/region_map/draconid_f_icon.png", ".gbapal");
+static const u8 sRegionMapPlayerIcon_DraconidFGfx[] = INCGFX_U8("graphics/pokenav/region_map/draconid_f_icon.png", ".4bpp");
+static const u16 sRegionMapPlayerIcon_MagmaMPal[] = INCGFX_U16("graphics/pokenav/region_map/magma_m_icon.png", ".gbapal");
+static const u8 sRegionMapPlayerIcon_MagmaMGfx[] = INCGFX_U8("graphics/pokenav/region_map/magma_m_icon.png", ".4bpp");
+static const u16 sRegionMapPlayerIcon_MagmaFPal[] = INCGFX_U16("graphics/pokenav/region_map/magma_f_icon.png", ".gbapal");
+static const u8 sRegionMapPlayerIcon_MagmaFGfx[] = INCGFX_U8("graphics/pokenav/region_map/magma_f_icon.png", ".4bpp");
 static const u16 sRegionMapPlayerIcon_RedPal[] = INCGFX_U16("graphics/pokenav/region_map/red_icon.pal", ".gbapal");
 static const u8 sRegionMapPlayerIcon_RedGfx[] = INCGFX_U8("graphics/pokenav/region_map/red_icon.png", ".4bpp");
 static const u16 sRegionMapPlayerIcon_LeafPal[] = INCGFX_U16("graphics/pokenav/region_map/leaf_icon.pal", ".gbapal");
@@ -1754,13 +1765,20 @@ void CreateRegionMapPlayerIcon(u16 tileTag, u16 paletteTag)
     }
     else if (gSaveBlock2Ptr->playerGender == FEMALE)
     {
-        sheet.data = sRegionMapPlayerIcon_MayGfx;
-        palette.data = sRegionMapPlayerIcon_MayPal;
+        bool32 magma = GetPlayerOutfit() == PLAYER_OUTFIT_MAGMA;
+        sheet.data = magma ? sRegionMapPlayerIcon_MagmaFGfx : sRegionMapPlayerIcon_DraconidFGfx;
+        palette.data = magma ? sRegionMapPlayerIcon_MagmaFPal : sRegionMapPlayerIcon_DraconidFPal;
     }
     else if (IS_FRLG)
     {
         sheet.data = sRegionMapPlayerIcon_RedGfx;
         palette.data = sRegionMapPlayerIcon_RedPal;
+    }
+    else
+    {
+        bool32 magma = GetPlayerOutfit() == PLAYER_OUTFIT_MAGMA;
+        sheet.data = magma ? sRegionMapPlayerIcon_MagmaMGfx : sRegionMapPlayerIcon_DraconidMGfx;
+        palette.data = magma ? sRegionMapPlayerIcon_MagmaMPal : sRegionMapPlayerIcon_DraconidMPal;
     }
     LoadSpriteSheet(&sheet);
     LoadSpritePalette(&palette);

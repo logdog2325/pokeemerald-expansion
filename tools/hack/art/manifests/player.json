@@ -1,0 +1,214 @@
+[
+ {
+  "path": "graphics/object_events/pics/people/draconid_m/walking.png",
+  "profile": "ow_walk"
+ },
+ {
+  "path": "graphics/object_events/pics/people/draconid_m/running.png",
+  "profile": "ow_walk"
+ },
+ {
+  "path": "graphics/object_events/pics/people/draconid_m/bike.png",
+  "profile": "ow_mach_bike"
+ },
+ {
+  "path": "graphics/object_events/pics/people/draconid_m/acro_bike.png",
+  "profile": "ow_acro_bike"
+ },
+ {
+  "path": "graphics/object_events/pics/people/draconid_m/surfing.png",
+  "profile": "ow_npc16",
+  "frames": 3
+ },
+ {
+  "path": "graphics/object_events/pics/people/draconid_m/field_move.png",
+  "profile": "ow_npc16",
+  "frames": 5
+ },
+ {
+  "path": "graphics/object_events/pics/people/draconid_m/fishing.png",
+  "profile": "ow_fishing"
+ },
+ {
+  "path": "graphics/object_events/pics/people/draconid_m/underwater.png",
+  "profile": "ow_underwater"
+ },
+ {
+  "path": "graphics/object_events/pics/people/draconid_m/watering.png",
+  "profile": "ow_watering"
+ },
+ {
+  "path": "graphics/object_events/pics/people/draconid_m/decorating.png",
+  "profile": "ow_decorating"
+ },
+ {
+  "path": "graphics/pokenav/region_map/draconid_m_icon.png",
+  "profile": "map_icon"
+ },
+ {
+  "path": "graphics/trainers/back_pics/draconid_m.png",
+  "profile": "trainer_back",
+  "frames": 5
+ },
+ {
+  "path": "graphics/object_events/pics/people/draconid_f/walking.png",
+  "profile": "ow_walk"
+ },
+ {
+  "path": "graphics/object_events/pics/people/draconid_f/running.png",
+  "profile": "ow_walk"
+ },
+ {
+  "path": "graphics/object_events/pics/people/draconid_f/bike.png",
+  "profile": "ow_mach_bike"
+ },
+ {
+  "path": "graphics/object_events/pics/people/draconid_f/acro_bike.png",
+  "profile": "ow_acro_bike"
+ },
+ {
+  "path": "graphics/object_events/pics/people/draconid_f/surfing.png",
+  "profile": "ow_npc16",
+  "frames": 3
+ },
+ {
+  "path": "graphics/object_events/pics/people/draconid_f/field_move.png",
+  "profile": "ow_npc16",
+  "frames": 5
+ },
+ {
+  "path": "graphics/object_events/pics/people/draconid_f/fishing.png",
+  "profile": "ow_fishing"
+ },
+ {
+  "path": "graphics/object_events/pics/people/draconid_f/underwater.png",
+  "profile": "ow_underwater"
+ },
+ {
+  "path": "graphics/object_events/pics/people/draconid_f/watering.png",
+  "profile": "ow_watering"
+ },
+ {
+  "path": "graphics/object_events/pics/people/draconid_f/decorating.png",
+  "profile": "ow_decorating"
+ },
+ {
+  "path": "graphics/pokenav/region_map/draconid_f_icon.png",
+  "profile": "map_icon"
+ },
+ {
+  "path": "graphics/trainers/back_pics/draconid_f.png",
+  "profile": "trainer_back",
+  "frames": 5
+ },
+ {
+  "path": "graphics/object_events/pics/people/magma_m/walking.png",
+  "profile": "ow_walk"
+ },
+ {
+  "path": "graphics/object_events/pics/people/magma_m/running.png",
+  "profile": "ow_walk"
+ },
+ {
+  "path": "graphics/object_events/pics/people/magma_m/bike.png",
+  "profile": "ow_mach_bike"
+ },
+ {
+  "path": "graphics/object_events/pics/people/magma_m/acro_bike.png",
+  "profile": "ow_acro_bike"
+ },
+ {
+  "path": "graphics/object_events/pics/people/magma_m/surfing.png",
+  "profile": "ow_npc16",
+  "frames": 3
+ },
+ {
+  "path": "graphics/object_events/pics/people/magma_m/field_move.png",
+  "profile": "ow_npc16",
+  "frames": 5
+ },
+ {
+  "path": "graphics/object_events/pics/people/magma_m/fishing.png",
+  "profile": "ow_fishing"
+ },
+ {
+  "path": "graphics/object_events/pics/people/magma_m/underwater.png",
+  "profile": "ow_underwater"
+ },
+ {
+  "path": "graphics/object_events/pics/people/magma_m/watering.png",
+  "profile": "ow_watering"
+ },
+ {
+  "path": "graphics/object_events/pics/people/magma_m/decorating.png",
+  "profile": "ow_decorating"
+ },
+ {
+  "path": "graphics/pokenav/region_map/magma_m_icon.png",
+  "profile": "map_icon"
+ },
+ {
+  "path": "graphics/trainers/back_pics/magma_m.png",
+  "profile": "trainer_back",
+  "frames": 5
+ },
+ {
+  "path": "graphics/object_events/pics/people/magma_f/walking.png",
+  "profile": "ow_walk"
+ },
+ {
+  "path": "graphics/object_events/pics/people/magma_f/running.png",
+  "profile": "ow_walk"
+ },
+ {
+  "path": "graphics/object_events/pics/people/magma_f/bike.png",
+  "profile": "ow_mach_bike"
+ },
+ {
+  "path": "graphics/object_events/pics/people/magma_f/acro_bike.png",
+  "profile": "ow_acro_bike"
+ },
+ {
+  "path": "graphics/object_events/pics/people/magma_f/surfing.png",
+  "profile": "ow_npc16",
+  "frames": 3
+ },
+ {
+  "path": "graphics/object_events/pics/people/magma_f/field_move.png",
+  "profile": "ow_npc16",
+  "frames": 5
+ },
+ {
+  "path": "graphics/object_events/pics/people/magma_f/fishing.png",
+  "profile": "ow_fishing"
+ },
+ {
+  "path": "graphics/object_events/pics/people/magma_f/underwater.png",
+  "profile": "ow_underwater"
+ },
+ {
+  "path": "graphics/object_events/pics/people/magma_f/watering.png",
+  "profile": "ow_watering"
+ },
+ {
+  "path": "graphics/object_events/pics/people/magma_f/decorating.png",
+  "profile": "ow_decorating"
+ },
+ {
+  "path": "graphics/pokenav/region_map/magma_f_icon.png",
+  "profile": "map_icon"
+ },
+ {
+  "path": "graphics/trainers/back_pics/magma_f.png",
+  "profile": "trainer_back",
+  "frames": 5
+ },
+ {
+  "path": "graphics/trainers/front_pics/draconid_m.png",
+  "profile": "trainer_front"
+ },
+ {
+  "path": "graphics/trainers/front_pics/draconid_f.png",
+  "profile": "trainer_front"
+ }
+]

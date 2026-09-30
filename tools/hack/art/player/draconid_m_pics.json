@@ -1,0 +1,296 @@
+{
+ "pics": [
+  {
+   "src": "graphics/trainers/front_pics/red.png",
+   "out": "graphics/trainers/front_pics/draconid_m.png",
+   "palette": [
+    [
+     115,
+     197,
+     164
+    ],
+    [
+     255,
+     230,
+     180
+    ],
+    [
+     230,
+     189,
+     156
+    ],
+    [
+     205,
+     148,
+     115
+    ],
+    [
+     123,
+     90,
+     82
+    ],
+    [
+     120,
+     120,
+     152
+    ],
+    [
+     80,
+     80,
+     112
+    ],
+    [
+     56,
+     56,
+     88
+    ],
+    [
+     32,
+     32,
+     48
+    ],
+    [
+     232,
+     224,
+     200
+    ],
+    [
+     224,
+     64,
+     48
+    ],
+    [
+     150,
+     32,
+     40
+    ],
+    [
+     88,
+     192,
+     176
+    ],
+    [
+     32,
+     128,
+     128
+    ],
+    [
+     255,
+     255,
+     255
+    ],
+    [
+     0,
+     0,
+     0
+    ]
+   ],
+   "roles": {
+    "K": 15,
+    "H": 8,
+    "h": 7,
+    "T": 13,
+    "t": 12,
+    "W": 14,
+    "w": 9,
+    "S": 1,
+    "s": 2
+   },
+   "cap": [
+    12,
+    13
+   ],
+   "clear": [
+    12,
+    13,
+    9,
+    14,
+    15,
+    4,
+    8
+   ],
+   "head": {
+    "anchor": [
+     -7,
+     -3
+    ],
+    "rows": [
+     "....................",
+     "......K..KK..K......",
+     "..KK.KhKKHhKKhK.KK..",
+     ".KWKKHHHHHHHHHHKKWK.",
+     ".KWWKHhHHHHHhHHKWWK.",
+     "..KWKHHHHHHHHHHKWK..",
+     "..KwKHHHHhHHHHHKwK..",
+     "...KttttttttttttK...",
+     "...KTTTTTTTTTTTTK...",
+     "...KHKHHHHHHHHKHK...",
+     "...KHHSHHSSHHSHHK...",
+     "...KHSSSHSSHSSSHK...",
+     "...KsSSSSSSSSSSsK..."
+    ]
+   }
+  },
+  {
+   "src": "graphics/trainers/back_pics/red.png",
+   "out": "graphics/trainers/back_pics/draconid_m.png",
+   "frame_h": 64,
+   "palette": [
+    [
+     131,
+     123,
+     164
+    ],
+    [
+     112,
+     72,
+     48
+    ],
+    [
+     255,
+     205,
+     160
+    ],
+    [
+     226,
+     152,
+     120
+    ],
+    [
+     120,
+     64,
+     64
+    ],
+    [
+     72,
+     72,
+     104
+    ],
+    [
+     40,
+     40,
+     64
+    ],
+    [
+     112,
+     112,
+     152
+    ],
+    [
+     16,
+     72,
+     80
+    ],
+    [
+     248,
+     240,
+     216
+    ],
+    [
+     200,
+     184,
+     150
+    ],
+    [
+     88,
+     192,
+     176
+    ],
+    [
+     32,
+     128,
+     128
+    ],
+    [
+     224,
+     64,
+     48
+    ],
+    [
+     150,
+     32,
+     40
+    ],
+    [
+     0,
+     0,
+     0
+    ]
+   ],
+   "roles": {
+    "K": 15,
+    "H": 6,
+    "h": 7,
+    "T": 12,
+    "t": 11,
+    "d": 8,
+    "W": 9,
+    "w": 10,
+    "S": 2,
+    "s": 3,
+    "b": 4,
+    "R": 13,
+    "r": 14,
+    "B": 1,
+    "P": 5
+   },
+   "cap": [
+    8,
+    11,
+    12
+   ],
+   "clear": [
+    8,
+    9,
+    10,
+    11,
+    12,
+    15
+   ],
+   "remap": [
+    {
+     "rect": [
+      22,
+      33,
+      41,
+      39
+     ],
+     "map": {
+      "4": 6,
+      "8": 15
+     }
+    }
+   ],
+   "head": {
+    "anchor": [
+     -18,
+     -5
+    ],
+    "rows": [
+     "........................KK........",
+     "..............K.........KWK.......",
+     "...........K.KHK...K....KWWK......",
+     ".........KKHKHHK..KHK..KwWK.......",
+     ".......KKHHhHHHHKKHHK.KKwK........",
+     "......KHHhhHHHHHHHHHHKHHKK........",
+     "....KKHHHHHHHHHHhhHHHHHHHHK.......",
+     "..KKHHHHHHhhHHHHHHHHHHHHHHHK......",
+     "....KKHHHHHHHHHHHHHHhhHHHHHHK.....",
+     "..KKHHHHHHHHHHHHHHHHHHHHHHHHK.....",
+     "....KKHHHhhHHHHHHHHHHHHHHHHHHK....",
+     "...KHHHHHHHHHHHHHhhHHHHHHHHHHK....",
+     ".KKHHHHHHHHHHHHHHHHHHHHHHHHHHK....",
+     "...KKHHHHHHHHHHHHHHHHHHHHHHHHHK...",
+     "..KddddttttttttttttttttttttddHK...",
+     ".KdTTTTTTTTTTTTTTTTTTTTTTTTTdK....",
+     "KdTTdddddddddddddddddddddddddK....",
+     "KTTdKHHHHHHHHHHHHHHHHHHHKK........",
+     ".KTdKHHHHHHHHHHHHHHHK.............",
+     "..KdKHHHHHHHHHHHHHHHK.............",
+     "...KKHHHHHHHHHHHHHHK..............",
+     "....KHHHHHHHHHHHHHHK.............."
+    ]
+   }
+  }
+ ]
+}

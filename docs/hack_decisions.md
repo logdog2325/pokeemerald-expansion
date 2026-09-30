@@ -90,6 +90,22 @@ when a playtest note overrides something here, the entry is updated and marked.
   is May here, so it is always MAY in Emerald. Scenes where the rival is Brendan name him directly.
 - **D-041 Debug toggles**: the expansion's no-encounter / no-trainer-sight / no-collision toggles get real flags
   (0x2E–0x30) so they work in the debug menu and in emulator tests. The game never sets them.
+- **D-050 Player art base**: the four player sets are **derived from the FRLG Red/Leaf sprites** already in the
+  repo (recoloured through their palette index roles, new head drawn from templates), and the Emerald-only states
+  (Acro Bike, underwater, watering, decorating) are composed from those frames. – Alt: draw everything from scratch
+  (weeks of pixel work to do well); base on Brendan/May (forbidden: they are the rivals); NPC sheets (walk frames
+  only). – Red/Leaf are the only non-Brendan/May sets with bike/surf/fishing/field-move poses. The pipeline is
+  scripted, so any frame can be hand-polished later without losing the rest (`TODO(art)` list in
+  docs/hack_art_pipeline.md).
+- **D-051 Player look**: black hair (spiky M, long F), teal headband with two ivory dragon horns, teal jacket, red
+  accents. – Alt: Zinnia-style cloak. – Horns make the silhouette readable at 16×32 and tie in with the Draconid
+  clan; teal/red stays distinct from Brendan (white/red/green), May (red/green) and Aster.
+- **D-052 Magma disguise**: the grunt's red hood (with its two ear points) and charcoal uniform on the player's
+  body; the front pic is the vanilla Magma Grunt pic (it is a disguise), the back pic is the player's with the hood.
+  – Alt: a unique outfit. – Grunts must mistake the player for one of their own.
+- **D-053 Outfit system**: built here (the expansion 1.17.1 has none): `VAR_PLAYER_OUTFIT` + `src/player_outfit.c`
+  tables + `special SetPlayerOutfit`; all player gfx/pic lookups go through it, so it is saved with the game.
+  Link partners in other games still appear as Brendan/May (their game's data).
 - **D-037 Trainer ID capacity**: `MAX_TRAINERS_COUNT` is 864 and vanilla uses 855, so only 9 new IDs fit.
   Aster's first fight uses 3 (one per egg). Plan for Phase 5: reuse the unused/duplicated rival IDs where the
   vanilla game has them, then raise `MAX_TRAINERS_COUNT` together with the trainer-flag space (saveblock
