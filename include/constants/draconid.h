@@ -26,6 +26,9 @@
 
 // Level the hatchling is raised to after the rite (eggs hatch at EGG_HATCH_LEVEL = 1)
 #define DRACONID_HATCHLING_LEVEL       5
+// The three dragon egg lines evolve earlier than in the core games (round 1, D-107)
+#define DRACONID_EVO_LEVEL_MIDDLE      25 // Deino -> Zweilous, Dreepy -> Drakloak, Jangmo-o -> Hakamo-o
+#define DRACONID_EVO_LEVEL_FINAL       50 // Zweilous -> Hydreigon, Drakloak -> Dragapult, Hakamo-o -> Kommo-o
 
 // VAR_SECOND_STARTER: Prof. Birch's gift after the first Gym
 #define SECOND_STARTER_NONE            0

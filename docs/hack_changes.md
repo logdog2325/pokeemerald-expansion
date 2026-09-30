@@ -143,6 +143,8 @@ Grouped by area; each entry names the file(s).
 | Player's-house TV (Lati news flash, movie, "Mom might like this") checks the Draconid house 1F instead of the gender's Littleroot house (`IsInPlayersHouse1F`) | `src/tv.c` |
 | Fix: an early-rival battle with `RIVAL_BATTLE_HEAL_AFTER` no longer turns into the first (tutorial) battle, which in Emerald replaced the rival's team with a wild Lv 2 Zigzagoon (the flag test needs all bits of `RIVAL_BATTLE_TUTORIAL`) | `src/battle_setup.c` |
 | Credits: the player is a Draconid run cycle (`CreateCreditsDraconidSprite`, `TAG_DRACONID`, `sAnims_DraconidRun`, `DRACONID_CREDITS_RUN_Y`) and May always rides in as the rival (D-049) | `src/credits.c`, `src/intro_credits_graphics.c`, `include/intro_credits_graphics.h`, `graphics/intro/scene_2/draconid_{m,f}_credits.png`, `tools/hack/art/player/draconid_credits.json` |
+| Deino, Dreepy and Jangmo-o lines evolve at `DRACONID_EVO_LEVEL_MIDDLE` (25) and `DRACONID_EVO_LEVEL_FINAL` (50) (D-107) | `src/data/pokemon/species_info/gen_{5,7,8}_families.h`, `include/constants/draconid.h`, `src/data/pokemon/species_info.h` |
+| The name-entry screen shows the player's outfit sprite (vanilla drew the rival Brendan/May); linked Emerald players appear as Draconid tamers (`GetOutfitAvatarGfx`) | `src/naming_screen.c`, `src/overworld.c`, `src/player_outfit.c`, `include/player_outfit.h` |
 | Emulator test hook (debug builds only): `gDraconidTestWarp` + `Draconid_TryTestWarp` (warp / heal on request), called from `ProcessPlayerFieldInput` | `src/draconid.c`, `include/draconid.h`, `src/field_control_avatar.c` |
 
 ## Scripts
@@ -172,3 +174,4 @@ Grouped by area; each entry names the file(s).
 | SS Ticket / Lati TV scene moved to the Draconid house: new entry label `PlayersHouse_1F_EventScript_SSTicketAndLatiTV` (after the gender setup), `DraconidVillage_PlayersHouse_1F` OnFrame jumps there with the Brendan-house movements; the Littleroot houses' OnFrame entries removed | `data/scripts/players_house.inc`, `data/maps/DraconidVillage_PlayersHouse_1F/scripts.pory`, `data/maps/LittlerootTown_{Brendans,Mays}House_1F/scripts.inc` |
 | Dialogue: Rustboro's Mr. Briney hint (May, and Brendan's unused twin) and Rydel's bike speech no longer assume the player just moved to Littleroot | `data/maps/RustboroCity/scripts.inc`, `data/maps/MauvilleCity_BikeShop/scripts.inc` |
 | Route 103 May is an early-rival battle (`trainerbattle_earlyrival … RIVAL_BATTLE_HEAL_AFTER`): a loss heals and the scene continues with its own line (D-048) | `data/scripts/draconid/birch_intro.pory` |
+| Birch's new-game speech: the player is of the Draconid clan, not moving to Littleroot | `data/text/birch_speech.inc` |

@@ -26,7 +26,7 @@ when a playtest note overrides something here, the entry is updated and marked.
 
 ## Megas
 
-- **D-010 All required Megas already exist in 1.17.1**: Charizard-Mega-X, Sceptile, Blaziken, Altaria,
+- **D-010 All required Megas already exist in 1.17.1** (re-checked in round 1: Charizard X, Sceptile, Blaziken, Feraligatr, Altaria, Salamence, Gallade, Gardevoir, Camerupt, Sharpedo, Metagross, Rayquaza, Latios, Latias all have form species, form-change entries and sprites; Mega Feraligatr is the expansion's Legends: Z-A data – Water/Dragon, 85/160/125/89/93/78, Dragonize – with its own front/back pics): Charizard-Mega-X, Sceptile, Blaziken, Altaria,
   Salamence, Gallade, Gardevoir and **Feraligatr-Mega (Legends: Z-A, `SPECIES_FERALIGATR_MEGA` = 1529)**.
   No Mega data had to be added; Hydreigon, Dragapult and Kommo-o have no Megas in the expansion and none were
   invented. (Data source: the expansion's own species data.)

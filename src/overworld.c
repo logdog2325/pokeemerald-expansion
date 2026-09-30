@@ -84,6 +84,8 @@
 #include "constants/songs.h"
 #include "constants/trainer_hill.h"
 #include "constants/weather.h"
+#include "constants/outfits.h"
+#include "player_outfit.h"
 
 STATIC_ASSERT((B_FLAG_FOLLOWERS_DISABLED == 0 || OW_FOLLOWERS_ENABLED), FollowersFlagAssignedWithoutEnablingThem);
 
@@ -3636,7 +3638,8 @@ static void CreateLinkPlayerSprite(u8 linkPlayerId, enum GameVersion gameVersion
             objEvent->spriteId = CreateObjectGraphicsSprite(GetRSAvatarGraphicsIdByGender(linkGender(objEvent)), SpriteCB_LinkPlayer, 0, 0, 0);
             break;
         case VERSION_EMERALD:
-            objEvent->spriteId = CreateObjectGraphicsSprite(GetRivalAvatarGraphicsIdByStateIdAndGender(PLAYER_AVATAR_STATE_NORMAL, linkGender(objEvent)), SpriteCB_LinkPlayer, 0, 0, 0);
+            // Draconid Emerald: linked players are Draconid tamers too, not Brendan/May
+            objEvent->spriteId = CreateObjectGraphicsSprite(GetOutfitAvatarGfx(PLAYER_OUTFIT_DRACONID, PLAYER_AVATAR_STATE_NORMAL, linkGender(objEvent)), SpriteCB_LinkPlayer, 0, 0, 0);
             break;
         default:
             break;

@@ -44,9 +44,10 @@ gText_Birch_SoItsPlayer::
 
 gText_Birch_YourePlayer::
 	.string "Ah, okay!\p"
-	.string "You're {PLAYER}{KUN} who's moving to my\n"
-	.string "hometown of LITTLEROOT.\l"
-	.string "I get it now!\p"
+	@ Draconid Emerald: the player grows up in Draconid Village, not a newcomer to Littleroot
+	.string "You're {PLAYER}{KUN} of the DRACONID\n"
+	.string "clan, from the village in the\l"
+	.string "mountains. I get it now!\p"
 	.string "$"
 
 gText_Birch_AreYouReady::

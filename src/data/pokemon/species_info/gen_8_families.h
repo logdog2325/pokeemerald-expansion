@@ -6758,7 +6758,8 @@ const struct SpeciesInfo gSpeciesInfoGen8[] =
         .levelUpLearnset = sDreepyLevelUpLearnset,
         .teachableLearnset = sDreepyTeachableLearnset,
         .eggMoveLearnset = sDreepyEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 50, SPECIES_DRAKLOAK}),
+        // Draconid Emerald: was 50 (D-107)
+        .evolutions = EVOLUTION({EVO_LEVEL, DRACONID_EVO_LEVEL_MIDDLE, SPECIES_DRAKLOAK}),
     },
 
     [SPECIES_DRAKLOAK] =
@@ -6822,7 +6823,8 @@ const struct SpeciesInfo gSpeciesInfoGen8[] =
         )
         .levelUpLearnset = sDrakloakLevelUpLearnset,
         .teachableLearnset = sDrakloakTeachableLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 60, SPECIES_DRAGAPULT}),
+        // Draconid Emerald: was 60 (D-107)
+        .evolutions = EVOLUTION({EVO_LEVEL, DRACONID_EVO_LEVEL_FINAL, SPECIES_DRAGAPULT}),
     },
 
     [SPECIES_DRAGAPULT] =

@@ -65,6 +65,8 @@ def load_levelup():
 def load_species_info():
     """(parents: child -> (parent, method, param), abilities: species -> set of ABILITY_*,
     levelup: species -> set of MOVE_* it learns by level-up)."""
+    draconid = {k: int(v) for k, v in re.findall(r"#define (DRACONID_\w+)\s+(\d+)",
+                                                   open(os.path.join(ROOT, "include/constants/draconid.h")).read())}
     parent, abilities, levelup = {}, {}, {}
     lsets = load_levelup()
     for path in glob.glob(os.path.join(ROOT, "src/data/pokemon/species_info/*.h")):
@@ -81,7 +83,8 @@ def load_species_info():
             if not ev:
                 continue
             for method, param, child in re.findall(r"\{\s*(EVO_\w+)\s*,\s*([^,]+?)\s*,\s*SPECIES_(\w+)", ev.group(1)):
-                parent.setdefault(child, (name, method, param.strip()))
+                param = str(draconid.get(param.strip(), param.strip()))  # DRACONID_EVO_LEVEL_* (D-107)
+                parent.setdefault(child, (name, method, param))
     return parent, abilities, levelup
 
 

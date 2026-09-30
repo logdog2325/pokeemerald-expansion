@@ -12270,7 +12270,8 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .levelUpLearnset = sDeinoLevelUpLearnset,
         .teachableLearnset = sDeinoTeachableLearnset,
         .eggMoveLearnset = sDeinoEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 50, SPECIES_ZWEILOUS}),
+        // Draconid Emerald: was 50 (D-107)
+        .evolutions = EVOLUTION({EVO_LEVEL, DRACONID_EVO_LEVEL_MIDDLE, SPECIES_ZWEILOUS}),
     },
 
     [SPECIES_ZWEILOUS] =
@@ -12337,7 +12338,8 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         )
         .levelUpLearnset = sZweilousLevelUpLearnset,
         .teachableLearnset = sZweilousTeachableLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 64, SPECIES_HYDREIGON}),
+        // Draconid Emerald: was 64 (D-107)
+        .evolutions = EVOLUTION({EVO_LEVEL, DRACONID_EVO_LEVEL_FINAL, SPECIES_HYDREIGON}),
     },
 
     [SPECIES_HYDREIGON] =

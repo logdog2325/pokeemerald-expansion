@@ -58,6 +58,12 @@ u16 GetPlayerOutfitAvatarGfx(u8 state, enum Gender gender)
     return sOutfitAvatarGfx[GetPlayerOutfit()][state][gender];
 }
 
+// A given outfit's avatar graphics, whatever the player is wearing (e.g. linked players are always tamers).
+u16 GetOutfitAvatarGfx(u32 outfit, u8 state, enum Gender gender)
+{
+    return sOutfitAvatarGfx[outfit][state][gender];
+}
+
 u16 GetPlayerOutfitDecoratingGfx(enum Gender gender)
 {
     return sOutfitDecoratingGfx[GetPlayerOutfit()][gender];
