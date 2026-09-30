@@ -666,3 +666,35 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   in voice), and the post-game lab battles (`rivals.pory`, owned by the Acts 6–7 work). Other characters' lines
   changed only where a reply had to follow (none needed it). – Alt: rewrite everything from scratch. – The facts and
   staging were tested act by act; the note is about how the lines sound.
+- **D-213 The Aqua Hideout opens with Maxie's order** (feedback 1.23): Archie takes Captain Stern's submarine
+  **off-screen**. Maxie's call after the promotion sends the player straight to Aqua's hideout in Lilycove, but
+  vanilla kept two grunts in its entrance until the Slateport harbor scene (Archie steals the submarine), which
+  vanilla set up in the Magma Hideout and nothing in the v2 story leads to (the checker's detour on leg 4.16).
+  The Magma Hideout no longer sets up the Slateport scenes (Stern's interview in the city, the harbor theft);
+  its promotion scene sets what the harbor scene left set instead – `VAR_SLATEPORT_CITY_STATE` and
+  `VAR_SLATEPORT_HARBOR_STATE` 2, Stern in the harbor with his vanilla "Why…" line, `FLAG_MET_TEAM_AQUA_HARBOR`,
+  Scott gone from the motel, the entrance grunts gone. – Alt: point Maxie's call at Slateport first (a text
+  change in the dialogue pass's lines, and a detour the add-on's outline – Magma Hideout, then "Maxie orders the
+  player to infiltrate Aqua's base" – doesn't have); leave the vanilla hint from the entrance grunts ("our boss
+  is in Slateport"). – The add-on's order, one hook in the scene that sends the player on, and the hideout's own
+  scene (the submarine leaving with Archie, Nerine diving after it) and Maxie's next call already tell the theft.
+- **D-214 What counts as a story lock** (`tools/hack/check_progression.py`): a leg whose walk is blocked (tile,
+  object, turn-back trigger, a missing HM or badge), a scene that can't start (its object hidden, its trigger's
+  var or OnFrame entry not due), a scene that doesn't set what the next leg needs (`expect`), an OnFrame scene
+  that leaves its var as it was (it would restart every frame), a warp into a closed pocket, and a **detour**: a
+  way that opens only through a scene off the path the story gives. A walk-through scene on the path (Route 121's
+  Aqua grunts leaving) is part of the walk. The model is generous where the player controls it – an HM counts
+  from the bag once its badge is won (the HM work makes field moves usable without a Pokémon knowing them), one
+  bike counts as both (Rydel swaps them), unknown YES/NO or battle branches keep the progressing side – and strict
+  where the game is: collision, elevation, one-way ledges, objects and triggers as the simulated flags leave
+  them. Gym puzzles written in C (Mauville, Petalburg, Mossdeep, Sootopolis) are not modelled: only getting in
+  is checked. – Alt: a playthrough per leg in the emulator (hours per run, and it only proves the order tested);
+  treating every unknown branch as unknown (every YES/NO would "lock"). – A static check runs in ~40 s after any
+  script change, and the emulator (`progression.play`) covers the fix itself.
+- **D-215 Vanilla requirements the v2 order meets stay as they are**: HM Strength for the Magma Hideout (the
+  Rusturf Tunnel reunion, on the only walk from Lavaridge back to Petalburg before Surf), Norman's fourth-badge
+  check, the Wally tutorial before Petalburg's west exit, and talking to both Archie and Maxie in Sootopolis before
+  the Gym door unlocks and Wallace gives Waterfall – no flag set early, no hint added. The story table walks them
+  as the player will (legs 1.10–1.12, 3.07–3.08, 5.12–5.14). – Alt: hand out Strength in a story scene; open the
+  Sootopolis Gym door with the turn. – None of them blocks the way on: the player passes them, or is told on the
+  spot by the vanilla lines, and changing them would rework vanilla content no feedback asks about.

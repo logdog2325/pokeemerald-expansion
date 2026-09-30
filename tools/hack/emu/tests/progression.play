@@ -1,0 +1,62 @@
+# Story-lock fixes (tools/hack/check_progression.py, docs/hack_progression.md), checked in the game: the
+# checker finds them statically, this walks through the spots that were blocked.
+#  - D-213: after MAXIE's promotion the AQUA Hideout is open (ARCHIE took STERN's submarine off-screen): the
+#    player walks through the two entrance tiles the vanilla grunts blocked until the Slateport harbor scene;
+#    Slateport has no theft scene left to play and STERN laments his submarine in the harbor.
+# Needs rustboro_done.ss from tests/rustboro.play; the Act 1-4 states up to Mt. Pyre are set by hand and the
+# scenes reached with the debug warp.
+loadstate rustboro_done.ss
+setflag FLAG_DEBUG_NO_ENCOUNTER
+setflag FLAG_DEBUG_NO_TRAINER_SEE
+setflag FLAG_DRACONID_NO_WHITEOUT
+# after Mt. Pyre: the player is MAXIE's grunt in the uniform (MAGMA_STATE_MT_PYRE)
+setvar VAR_DRACONID_STATE 8
+setvar VAR_PLAYER_OUTFIT 1
+setvar VAR_DRACONID_REPUTATION 1
+setvar VAR_MAGMA_STATE 8
+setvar VAR_NERINE_STATE 5
+setvar VAR_ASTER_STATE 6
+setvar VAR_BRENDAN_STATE 4
+setvar VAR_MAY_STATE 3
+setflag FLAG_RECEIVED_POKENAV
+
+# --- Magma Hideout 4F: the promotion; the Slateport scenes are no longer set up, the hideout opens ---
+warp MAP_MAGMA_HIDEOUT_4F 18 21
+walk LEFT 17
+press A 2 30
+mash A 90000
+shot p10_after_promotion
+expect_var VAR_MAGMA_STATE 9
+expect_flag FLAG_GROUDON_AWAKENED_MAGMA_HIDEOUT 1
+expect_var VAR_SLATEPORT_CITY_STATE 2
+expect_var VAR_SLATEPORT_HARBOR_STATE 2
+expect_flag FLAG_HIDE_SLATEPORT_CITY_CAPTAIN_STERN 1
+expect_flag FLAG_HIDE_SLATEPORT_CITY_HARBOR_CAPTAIN_STERN 0
+expect_flag FLAG_HIDE_SLATEPORT_CITY_HARBOR_ARCHIE 1
+expect_flag FLAG_HIDE_AQUA_HIDEOUT_1F_GRUNT_1_BLOCKING_ENTRANCE 1
+expect_flag FLAG_HIDE_AQUA_HIDEOUT_1F_GRUNT_2_BLOCKING_ENTRANCE 1
+
+# --- Aqua Hideout 1F: from the landing (13, 12) north through (13, 11), where a grunt stood ---
+warp MAP_AQUA_HIDEOUT_1F 13 12
+run 60
+shot p20_hideout_entrance
+walk UP 9 300
+run 20
+shot p21_past_the_entrance
+mapid
+pos
+
+# --- Slateport harbor: STERN waits by the empty berth ---
+warp MAP_SLATEPORT_CITY_HARBOR 6 14
+run 60
+shot p30_harbor
+press UP 2 10
+press UP 2 10
+press A 2 40
+run 30
+shot p31_stern
+mash A 5000
+expect_var VAR_SLATEPORT_HARBOR_STATE 2
+clearflag FLAG_DEBUG_NO_ENCOUNTER
+clearflag FLAG_DEBUG_NO_TRAINER_SEE
+clearflag FLAG_DRACONID_NO_WHITEOUT

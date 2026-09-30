@@ -65,6 +65,10 @@ python3 tools/hack/emu/play.py tools/hack/emu/tests/wild.play -o /tmp/emu       
 python3 tools/hack/emu/matrix.py -o /tmp/matrix       # all 18 gender x egg x second-starter flows
 python3 tools/hack/check_story.py                     # every new flag / story state set and read
 python3 tools/hack/check_wild.py [--info X|--doc]     # wild tables: species legal, levels, Hoenn species kept, 1% Beldum
+python3 tools/hack/emu/play.py tools/hack/emu/tests/progression.play -o /tmp/emu  # story-lock fixes (Aqua Hideout entrance)
+python3 tools/hack/emu/matrix.py -o /tmp/matrix       # all 18 gender x egg x second-starter flows
+python3 tools/hack/check_story.py                     # every new flag / story state set and read
+python3 tools/hack/check_progression.py [--leg 4.16] [-v]   # story locks: walk every leg of the v2 story (table: tools/hack/progression.json, audit: docs/hack_progression.md)
 python3 tools/hack/gen_script_doc.py                  # docs/hack_script.md: all dialogue by scene (rerun after edits)
 # trainers (rules: docs/hack_trainers.md)
 python3 tools/hack/trainers/check_party.py [batch.party] --caps --proc   # legality, caps, headers, trainerproc

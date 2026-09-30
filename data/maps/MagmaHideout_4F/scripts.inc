@@ -56,11 +56,8 @@ MagmaHideout_4F_EventScript_Maxie::
 	@ Draconid Emerald: no battle with Maxie; he tells the player his plan instead (D-134)
 	msgbox MagmaHideout_4F_Text_MaxieImGoingAfterGroudon, MSGBOX_DEFAULT
 	closemessage
-	clearflag FLAG_HIDE_SLATEPORT_CITY_CAPTAIN_STERN
-	clearflag FLAG_HIDE_SLATEPORT_CITY_GABBY_AND_TY
-	setvar VAR_SLATEPORT_CITY_STATE, 1
+	call MagmaHideout_4F_EventScript_DraconidAquaTakesSubmarine  @ Draconid Emerald: no Slateport harbor detour; Maxie sends the player to the Aqua Hideout (progression.pory, D-213)
 	setflag FLAG_GROUDON_AWAKENED_MAGMA_HIDEOUT
-	setvar VAR_SLATEPORT_HARBOR_STATE, 1
 	fadescreen FADE_TO_BLACK
 	removeobject LOCALID_MAGMA_HIDEOUT_4F_MAXIE
 	removeobject LOCALID_MAGMA_HIDEOUT_4F_GRUNT_1
