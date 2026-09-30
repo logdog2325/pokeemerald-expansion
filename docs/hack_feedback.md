@@ -44,3 +44,6 @@ main brief re-sent with a fourth rival (Nerine). Items:
 | 1.28 | balance | (follow-up 2) Wild Pokémon from Gens 4–9 where they fit, and in generic trainers' teams; a 1% Beldum in Granite Cave | [ ] |
 | 1.29 | story | (follow-up 2) After Maxie and Archie are beaten, Groudon and Kyogre can be found and caught in accessible places; the Latis roam (the rivals release theirs or new ones are spotted) | [ ] |
 | 1.30 | story | (follow-up 2) Before the Sky Pillar the Elder calls the player home to catch **Regidrago** in a once-sealed part of the cave where they got their egg | [ ] |
+| 1.31 | balance | (follow-up 3) No trade evolutions: those Pokémon evolve at a set level | [ ] |
+| 1.32 | story | (follow-up 3) A few more Brendan and May battles | [ ] |
+| 1.33 | balance | (follow-up 3) Battle items through the story, scaling with the game: type boosters (Black Glasses, Spell Tag …) early, Choice Band / Choice Scarf / Rocky Helmet … later, maybe sold in stores | [ ] |
