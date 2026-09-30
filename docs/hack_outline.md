@@ -28,14 +28,23 @@ undercover. Everyone else may suspect (May's doubts, Steven's "strongest MAGMA g
     second partner: Charmander, Totodile or Treecko.
 
 ## Act 2 – Deep cover (Devon Goods → Mauville)
-12. ✅ The Devon Goods theft; **Nerine battle 2** – Rusturf Tunnel; the goods choice (return / keep for Magma).
+12. ✅ The Devon Goods theft; **Nerine battle 2** – Rusturf Tunnel (the player saves Mr. Briney's Peeko); the goods
+    choice (return / keep for Magma). 🚧 The choice has consequences (D-258): kept, Devon thinks the thief got away,
+    Tabitha pays (money + a Fire Stone) and Stern gets the parts from a Magma grunt who "found" them; returned, Mr.
+    Stone adds an Amulet Coin. Devon's staff, Rustboro, Mr. Stone (and his calls), Stern, Maxie and Tabitha react,
+    in uniform and after the reveal.
 13. ✅ Mr. Stone: the PokéNav and the Gen 6 Exp. Share.
 14. ✅ **Brendan battle 2** – Route 104, outside Mr. Briney's cottage.
-15. ✅ Mr. Briney's boat: Maxie's first call (his calls guide the player until the reveal).
-16. ✅ **Gym 2 – Brawly** (Knuckle Badge); Granite Cave: Steven and the letter.
-17. ✅ Slateport, Oceanic Museum: Tabitha's order; **Nerine battle 3**.
-18. ✅ **May battle 2** – Route 110; she registers the player "to keep tabs on MAGMA".
-19. ✅ **Wally battle 1** – Mauville (hostile).
+15. ✅ Mr. Briney's boat: Maxie's first call (his calls guide the player until the reveal). 🚧 Briney: "I don't care
+    what colors you're wearing. You saved my PEEKO, and a sailor pays his debts!" (D-257); Maxie's call follows the
+    goods choice.
+16. ✅ **Gym 2 – Brawly** (Knuckle Badge); Granite Cave: Steven and the letter. 🚧 Steven doesn't register the player
+    (D-256).
+17. ✅ Slateport, Oceanic Museum: Tabitha's order; **Nerine battle 3**. 🚧 Tabitha hands out the Dowsing Machine
+    (D-259).
+18. ✅ **May battle 2** – Route 110. 🚧 She no longer registers the player or hands over the Dowsing Machine: nobody
+    gives a MAGMA grunt their number (D-256, D-259).
+19. ✅ **Wally battle 1** – Mauville (hostile). 🚧 No PokéNav registration call afterwards (D-256).
 20. ✅ **Gym 3 – Wattson** (Dynamo Badge).
 
 ## Act 3 – Rising in the ranks (Meteor Falls → Lavaridge)
@@ -44,15 +53,17 @@ undercover. Everyone else may suspect (May's doubts, Steven's "strongest MAGMA g
 23. ✅ Mt. Chimney: Tabitha's order; **Nerine battle 4**; **Brendan battle 3**; the player secretly pulls the
     meteorite and the machine dies.
 24. ✅ Jagged Pass: Aster gives the Mega Ring.
-25. ✅ Lavaridge: a Draconid traveller gives the second partner's Mega Stone; **May battle 3**, then the
-    Go-Goggles.
+25. ✅ Lavaridge: a Draconid traveller gives the second partner's Mega Stone; **May battle 3**. 🚧 Then she storms
+    off and drops the Go-Goggles, which the player picks up (D-259).
 26. ✅ **Gym 4 – Flannery** (Heat Badge).
 
 ## Act 4 – The orbs (Petalburg → Magma Hideout)
 27. ✅ **Wally battle 3** – the Petalburg Gym door.
 28. ✅ **Gym 5 – Norman** (Balance Badge) while May watches; Wally's father gives Surf.
-29. ✅ Route 119: Tabitha's order; the Weather Institute (Shelly); May covers for the player (no battle).
-30. ✅ **Brendan battle 4** – Route 119; HM Fly; the PokéNav registration.
+29. ✅ Route 119: Tabitha's order; the Weather Institute (Shelly); May covers for the player (no battle). 🚧 Tabitha
+    hands out HM Fly (D-259).
+30. ✅ **Brendan battle 4** – Route 119. 🚧 A battle only: no HM Fly and no PokéNav registration from him (D-259,
+    D-256).
 31. ✅ Route 120: Steven and the Devon Scope; **Wally battle 4** on the bridge.
 32. ✅ **Gym 6 – Winona** (Feather Badge).
 33. ✅ Lilycove: **Wally battle 5** (Mega Gallade); **Brendan + May double battle** (Brendan 5, May 4).
@@ -73,7 +84,8 @@ undercover. Everyone else may suspect (May's doubts, Steven's "strongest MAGMA g
     🚧 Rewritten as a big scene: Maxie pieces the lies together (the meteorite, the sealed fuel, the Draconid
     colours), Tabitha takes it personally, Maxie swears revenge.
 42. ✅ Aster and Nerine call Rayquaza; the titans calm; the Elder's call; the rivals make up; Wallace gives
-    Waterfall.
+    Waterfall. 🚧 Making up, Brendan and May swap PokéNav numbers with the player and pass on Steven's and Wally's
+    (D-256).
 43. ✅ **Gym 8 – Juan** (Rain Badge).
 
 ## Act 5½ – Revenge (Sootopolis → Victory Road)  🚧 being built now
@@ -121,6 +133,9 @@ undercover. Everyone else may suspect (May's doubts, Steven's "strongest MAGMA g
 | Nerine | Petalburg Woods ✅ · Rusturf ✅ · Museum ✅ · Mt. Chimney ✅ · Mt. Pyre ✅ · Aqua Hideout ✅ · Seafloor (Mega) ✅ · Sky Pillar partner ☑️ · post-game pond ☑️ |
 | Maxie | Sootopolis ✅ (bigger scene 🚧) · before Victory Road 🚧 · village finale (Primal Groudon) ⬜ |
 
+🚧 PokéNav: no rival registers the player (nor hands them anything) while they wear the uniform; Brendan, May and
+Wally (and Steven) are registered in the Sootopolis aftermath, and their calls are a friend's (D-256, D-259).
+
 ## Gyms at a glance
 Roxanne ✅ · Brawly ✅ · Wattson ✅ · Flannery ✅ · Norman ✅ · Winona ✅ · Tate & Liza ✅ · Juan ✅ – the vanilla
 order, each at its story point (`check_progression.py` walks all eight).
@@ -128,6 +143,8 @@ order, each at its story point (`check_progression.py` walks all eight).
 ## Systems
 - ✅ Reputation (pre-uniform / uniform / revealed) for NPCs, shops, gyms; the tamer ↔ Magma outfit.
 - ✅ Maxie's 10 PokéNav calls (they stop at the reveal); the rivals' PokéNav calls follow their story.
+  🚧 The rivals register only after the Sootopolis turn (D-256); Mr. Stone's calls follow the Devon Goods choice
+  (D-258).
 - ✅ Hard level caps; rival teams grow through the story; Latis kept off the rivals until the finale.
 - ✅ Gen 6 Exp. Share; HM field moves without a Pokémon that knows them; no trade evolutions; the egg dragons
   evolve at 25 and 50.

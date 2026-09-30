@@ -262,7 +262,7 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   add-on asks for a small cutscene map; no new exterior art needed.
 - **D-114 Recruitment without a YES/NO**: the player remembers the Elder's words and nods. – Alt: a YES/NO that
   loops until YES. – The Elder ordered it; a refusal the game can't honour would be a fake choice.
-- **D-115 Rustboro, Act 1**: Brendan uses the vanilla rival object and triggers on row 53 (the only way in from the
+- **D-115 Rustboro, Act 1** *(no registrations in uniform: D-256)*: Brendan uses the vanilla rival object and triggers on row 53 (the only way in from the
   woods), now on `VAR_BRENDAN_STATE`; the vanilla May registration in Rustboro / at Briney's cottage is skipped
   (May registers on Route 110, D-106). After the Stone Badge **Tabitha gives the order first, then Birch**
   (Prof. Oak since D-233), who saw them talking. Tabitha's overworld sprite is the Magma grunt, as in vanilla.
@@ -283,12 +283,12 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   per NPC so the apology plays once; refusing service in uniform; hooks in every town's `scripts.inc`. – The
   services are the player's lifeline, a repeated line is how vanilla NPCs work, and redirecting the object keeps
   the vanilla scripts (which the story rework edits) untouched.
-- **D-118 The Devon Goods choice** (Rusturf Tunnel, after Nerine): "Return to DEVON" or "Keep for MAGMA"
+- **D-118 The Devon Goods choice** *(what "keep" means and changes: D-258)* (Rusturf Tunnel, after Nerine): "Return to DEVON" or "Keep for MAGMA"
   (`FLAG_DEVON_GOODS_RETURNED`). Both continue the same way, as the add-on asks: the Devon employee catches the
   player outside Devon either way (the "keep" path gets a line about it) and Mr. Stone sends them on; Tabitha's
   museum order reacts to the flag (Magma wants Stern's submarine tracked, so the parts get delivered anyway).
   – Alt: a YES/NO; skipping Mr. Stone on the "keep" path (would cut the PokéNav and the letter).
-- **D-119 Act 2 staging**: Tabitha gives the order in person twice – out of the Rustboro Gym right after the
+- **D-119 Act 2 staging** *(no registrations in uniform: D-256)*: Tabitha gives the order in person twice – out of the Rustboro Gym right after the
   theft, and past the Oceanic Museum ticket counter (he stays there, "watching" Aqua, until the raid ends).
   Nerine is the Rustboro thief, the Rusturf "grunt" (she lets Peeko go unharmed) and the **second** museum
   battle (the first is still a plain grunt, so she can say "Stand aside"). May's Route 110 battle is the vanilla
@@ -337,7 +337,7 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   (Charizardite X / Feraligite / Sceptilite, as the v1 Elder did); with a full bag he waits; then he leaves in a fade.
   – Alt: a trigger that walks him to the player. – Aster names him, he stands on the way into town, and he can't be
   missed for good.
-- **D-127 Act 3 side lines**: May's vanilla Go-Goggles scene in Lavaridge stays (the desert needs them) with round 1
+- **D-127 Act 3 side lines** *(May drops the Go-Goggles: D-259)*: May's vanilla Go-Goggles scene in Lavaridge stays (the desert needs them) with round 1
   lines – the uniform, Mt. Chimney, "my DAD's GYM in PETALBURG is next" (Norman's daughter, D-100; she watches that
   battle, D-116). Cozmo at Meteor Falls fears the uniform; the Route 112 grunts send the "rookie" to Meteor Falls;
   Archie at Mt. Chimney knows the player from the falls. – Alt: vanilla text ("challenge your dad").
@@ -350,7 +350,7 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   still gives Castform, now as thanks for the rescue. – Alt: a Magma messenger grunt instead of Tabitha;
   Castform as the research. – May can only "nearly expose" the player in front of a Magma witness, and Tabitha
   has given the orders in person since Rustboro (D-115, D-119).
-- **D-131 Brendan on Route 119**: the vanilla scene and HM Fly stay (Brendan hands it over because May made him
+- **D-131 Brendan on Route 119** *(HM Fly from Tabitha, no registration: D-259, D-256)*: the vanilla scene and HM Fly stay (Brendan hands it over because May made him
   promise), then he registers in the PokéNav (as May on Route 110) and rides off; Scott's line is unchanged.
   – Alt: Fly from someone else. – The progression item stays where vanilla has it.
 - **D-132 Mt. Pyre**: the vanilla orbs (Magma takes the Blue Orb first, Aqua the Red). On the first visit Maxie
@@ -597,7 +597,7 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   the first Devon meeting and it starts switched on; vanilla gave a held Exp. Share only on a return visit after
   Steven's letter, which many players never make. The hard level caps still apply. – Alt: keep the held item;
   Gen 7 always-on. – The playtester's note.
-- **D-186 Maxie's calls**: Maxie phones the recruit after each key story point and names the next place. The
+- **D-186 Maxie's calls** *(the first by the Devon Goods choice: D-258)*: Maxie phones the recruit after each key story point and names the next place. The
   first call replaces vanilla's call from "Dad" Norman on Mr. Briney's boat (Norman is May's father now, so he is
   no longer registered in the PokéNav); the others ring on the 10th step outdoors after the Oceanic Museum,
   Meteor Falls, Mt. Chimney, the Weather Institute, Mt. Pyre, the promotion, the Aqua Hideout, the Space Center
@@ -700,7 +700,7 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   and the other lines): Maxie's "she speaks well of you" was a slip. – Alt: an ORAS-style Maxie (more lecturing, "my
   ideal world" speeches). – The note asks for Maxie as he is in the games; Emerald's Maxie is terse and proud, and
   short boxes are what the playtester reads on a phone.
-- **D-211 Brendan's and May's voices** (feedback 1.26 and the follow-up "have them be really hostile to you because
+- **D-211 Brendan's and May's voices** *(no hand-overs or registrations in uniform: D-256, D-259)* (feedback 1.26 and the follow-up "have them be really hostile to you because
   they're trying to stop Team Magma and protect Hoenn, not knowing your true mission"): Brendan casual, confident
   and blunt, short sentences, "Huh?", "Hmm…", "Tch…", "Man,"; May warm, curious and quick, with exclamations and a
   researcher's eye for how POKéMON act. **While the player wears the uniform** (`REPUTATION_UNIFORM`: Rustboro to
@@ -970,7 +970,7 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   story never returns to the hideout or the Space Center door) are early-rival. Each scene also sets its trainer
   flag at its end, so a mashed test run with no whiteout can't replay it. – Alt: all must-win (a lost Jagged Pass or
   Mossdeep fight would be gone for good); all early-rival (rivals would stop blocking anything).
-- **D-236 Wally in the uniform era** (feedback 1.34 "really hostile … trying to stop Team Magma and protect Hoenn,
+- **D-236 Wally in the uniform era** *(no registration: D-256)* (feedback 1.34 "really hostile … trying to stop Team Magma and protect Hoenn,
   not knowing your true mission"; supersedes D-135's "Wally trusts what he saw"): normally gentle, now angry and
   brave. Mauville: "You helped me catch RALTS! How could you join TEAM MAGMA?", his uncle wants the player away
   from him and from Verdanturf, and his PokéNav registration is to know where to find the player "if MAGMA hurts
@@ -1032,7 +1032,7 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   Magma grunts (the player's side). – D-195 kept grunts as they were to keep the teams' identity; with the
   signature lines kept on every team, one newcomer adds the new species without losing it, and grunts are the
   trainers the player fights most in Acts 3–5.
-- **D-243 The rivals' PokéNav calls follow the story and the reputation**: Brendan's, May's and Wally's Match Call
+- **D-243 The rivals' PokéNav calls follow the story and the reputation** *(revealed calls only: D-256)*: Brendan's, May's and Wally's Match Call
   texts (vanilla neighbour chat and tips) are replaced by `data/scripts/draconid/rival_calls.pory`. Each rival has two
   tables in `src/pokenav_match_call_data.c`: one while the player wears the uniform and one after the Sootopolis
   turn (`VAR_DRACONID_REPUTATION` ≥ `REPUTATION_REVEALED`); an entry is used once the rival's own state var
@@ -1051,3 +1051,75 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   mustn't know yet); Brendan's Space Center call quotes Steven's "strongest grunt" instead of "you let us win".
   – Alt: Steven guesses the truth at the Space Center (the earlier version). – The playtester: "I don't think anybody
   should know that you're undercover besides the Draconids and Birch and Oak."
+- **D-256 No PokéNav numbers for a MAGMA grunt** (feedback 1.52: "why would we willingly give her our number if
+  we're posing as a Magma grunt, and why would she even ask?"; story audit #6): nobody but the Draconids
+  swaps numbers with the player while they wear the uniform. May's Route 110 and Brendan's Route 119
+  registrations are gone, and so is Wally's Mauville call (`FLAG_ENABLE_FIRST_WALLY_POKENAV_CALL` is no longer
+  set); the scenes keep their battles and states (`MAY_STATE_ROUTE_110`, `BRENDAN_STATE_ROUTE_119`). Steven no
+  longer registers in Granite Cave ("I'd ask for your POKéNAV number. …But I don't think MAGMA would like that").
+  The numbers are swapped when they make up: at the end of the Sootopolis aftermath (one call line in act5.pory,
+  `rival_numbers.pory`) May and Brendan register ("I wasn't going to give my number to a MAGMA grunt"), Brendan
+  passes on Steven's (he saw the uniform come off) and May passes on Wally's ("he'll want to say sorry", which
+  his first call does). The rivals' calls (D-243) now only ever play the revealed table: the 17 uniform texts,
+  the uniform tables and the reputation switch are removed. Nothing else reads the four flags earlier (the Match
+  Call list shows an entry once its flag is set; Wally's rematch uses `FLAG_REGISTERED_WALLY`; vanilla's rival
+  Rayquaza call after the Space Center, which rang without a registered number, is switched off by the
+  contradiction scrub, D-253). Two who keep a reason to
+  register stay, with the reason said: Scott scouts "TRAINERS, not teams" (his calls lead to the Frontier), and
+  the Gym Leaders' registration says the POKéMON LEAGUE registers every challenger for rematches (Roxanne's call:
+  "Even one in red"). Scott's Mauville line no longer calls the player Wally's friend. – Alt: keep the
+  registrations with a better excuse ("keep tabs on MAGMA" is the excuse the playtester questioned); register the
+  rivals in their Littleroot bedrooms after the turn (a visit the player may never make). – Supersedes the
+  registration parts of D-115, D-119, D-131, D-211, D-236 and D-243's uniform tables.
+- **D-257 Mr. Briney pays his debt** (feedback 1.52: "Is Mr. Briney secretly working for Team Magma – why does he
+  give us a ride? Is it because we saved his bird?"): yes, and he says so. In Rusturf Tunnel (after Nerine lets
+  Peeko go) he thanks the player – "Red uniform or not, you saved her" – and adds "I owe you a debt now, and a
+  sailor always pays his debts. If you ever need to cross the sea, you come to me!"; at the cottage (the first
+  sailing talk, always in uniform) he names the uniform: "That red getup is TEAM MAGMA's, isn't it? Well, I don't
+  care what colors you're wearing. You saved my PEEKO, and a sailor pays his debts!" His Slateport shipyard line
+  (Mind Badge) no longer notices the uniform for the first time ("Still in that red getup, I see"). The Dewford
+  and Route 109 boat texts never mention the uniform or the player's family and stay vanilla. – Alt: Briney
+  working for Magma (every vanilla Briney scene would become a lie); Tabitha arranging the boat. – Vanilla's own
+  reason (Peeko), made explicit, in his grandfatherly voice ("Ahoy", "aye", "my darling PEEKO").
+- **D-258 Keeping the Devon Goods has consequences** (feedback 1.52: "Are there any consequences if we keep the
+  Devon Goods? There should be at least some with our reputation"; story audit #9): "Keep for MAGMA" now means
+  keeping them. At the edge of Rustboro the employee asks and the player says nothing (no thanks, no Great Ball),
+  so DEVON believes the thief got away; Mr. Stone still gives the letter, the PokéNav and the Exp. Share, but asks
+  the player to tell CAPT. STERN what happened instead of delivering the parcel; Tabitha pays at the museum and
+  sends the player to Stern with the parts ("Tell him you found it"); Stern takes them from a MAGMA grunt who
+  "found" them ("…In that uniform? Well, I won't ask") and tells Mr. Stone. "Return to DEVON" is the old path (the
+  employee's thanks and Great Ball, the delivery request) plus a thank-you gift. Who reacts, while the player is in
+  uniform and after the reveal: the employee and Mr. Stone at the meeting; on 1F the wandering employee and the
+  stair guard, on 2F the POKéNAV scientist, on 3F the employee (until the delivery); Mr. Stone at his desk and in
+  his PokéNav calls (the errand, Steven's letter, Stern's news, after the reveal); Stern at the museum and, after
+  the reveal, in the harbor; Rustboro's gossiping boy and the man who turns away; Maxie's first call ("TABITHA
+  tells me you kept DEVON's parts for us. … DEVON believes the thief got away with them. Let them." / "TABITHA
+  tells me DEVON got its parts back. Sloppy… but no matter.") and Tabitha ("No pay for sloppy work"). After the
+  reveal Mr. Stone forgives ("All is forgiven. But I did count every screw!") and the 1F employee remembers ("I'm
+  still thinking about it"). The tangible difference, small and balanced: kept → Tabitha pays ₽5,000 (about one
+  tier-2 battle item, the tier that opens at two badges, D-219) and a FIRE STONE (Magma-flavoured; its only early
+  user is Vulpix at Mt. Pyre, and Fiery Path has one after the third badge); returned → Mr. Stone's AMULET COIN
+  (Mom's gift at five badges in vanilla, unobtainable since Mom is gone, D-100; `FLAG_RECEIVED_AMULET_COIN` reused,
+  and a full bag leaves it on his desk) – cash in hand now against double prize money for its holder. Mr. Stone's
+  call table replaces vanilla's, whose reward call ("come see me", the Exp. Share already came, D-185) no longer
+  fits; his Rusturf Tunnel call moves to the third badge, and calls 5 and 6 (the clan, Norman's badge) keep their
+  vanilla flags and the contradiction scrub's wording (D-254), the same whatever the goods; his vanilla PokéNav explanation no longer calls MAGMA "sinister criminals" to the grunt
+  he has just thanked ("TEAM AQUA has been making trouble far and wide. …Your own people, too, I'm told"). – Alt:
+  the employee catches the player with the goods (the old "couldn't very well refuse him" line: keeping changed
+  nothing); a Lucky Egg (the level caps and the Gen 6 Exp. Share make it close to useless); a TM (Dig is Route
+  114's gift, stronger ones break the early caps). – Progression is the same on both paths, as the add-on asks
+  (D-118): the letter, the PokéNav, the Exp. Share, the museum, and the parts reach Stern either way.
+- **D-259 Nobody hands a MAGMA grunt anything** (feedback 1.52: "Why does May hand over the Go-Goggles after we
+  beat her? Maybe she drops them."; story audit #5): after the Lavaridge battle (win or lose) May says her piece
+  ("Forget it. I don't even want to know!", her dad's Gym is next) and rides off; "MAY dropped something as she
+  stormed off…", "{PLAYER} found the Go-Goggles!" (the item fanfare and description; the item's own name, as the
+  "Obtained" messages show it), and a tag on the strap says what they are for ("Property of MAY. For the
+  sandstorm on ROUTE 111!"). The same hole had two more cases, so
+  TEAM MAGMA equips its own grunt instead: Tabitha hands out the DOWSING MACHINE with her museum order ("MAGMA digs,
+  grunt. Every one of us carries one") – May gives nothing on Route 110 – and HM FLY when he collects the Weather
+  Institute notes ("Leader MAXIE wants his best grunts where he needs them. Fast") – Brendan only battles on Route
+  119. `ITEM_GO_GOGGLES` / `FLAG_RECEIVED_GO_GOGGLES`, the Dowsing Machine and `ITEM_HM_FLY` /
+  `FLAG_RECEIVED_HM_FLY` are set exactly as vanilla set them, each before the place that needs it (the desert,
+  Fortree's badge for Fly). – Alt: May throws them at the player; Fly from Brendan "because May made him promise"
+  (the audit's point: the same non-reason). – A hostile rival wouldn't give a MAGMA grunt a present, and Magma
+  arming its own grunt fits Tabitha's orders.

@@ -445,37 +445,39 @@ Draconid Emerald round 1, Act 2 (docs/hack_story.md): the Devon Goods (Rustboro,
 - She ran for RUSTURF TUNNEL, east of town. Get that package back.
 - Not for DEVON. For MAGMA. Understood?
 
-### `RustboroCity_EventScript_DraconidGoodsIntercepted`
-- {PLAYER} couldn't very well refuse him in the middle of the street…
-
 ### `RusturfTunnel_EventScript_DraconidGoodsChoice`
 - {PLAYER} looked at the DEVON GOODS.
 - TABITHA wants them for MAGMA. DEVON wants them back.
 - What will {PLAYER} do with them?
 - {PLAYER} decided to return the GOODS to DEVON.
-- Quietly. TABITHA doesn't need to know.
+- If TABITHA asks, DEVON's people got to them first.
 - {PLAYER} tucked the GOODS away for MAGMA.
-- The ELDER said to earn their trust. This is how.
+- DEVON will have to think the thief got away with them.
+- The ELDER said to earn MAGMA's trust. This is how.
 
 ### `SlateportCity_OceanicMuseum_1F_EventScript_DraconidTabithaOrder`
 - TABITHA: Hehehe! There you are. DEVON got its package back, I hear.
-- Sloppy. …But it doesn't matter. The package is going to STERN anyway.
-- TABITHA: Hehehe! There you are. You kept the package for us? Good grunt!
-- Now, here's the fun part. Deliver it to STERN, just like DEVON asked.
+- Sloppy. No pay for sloppy work.
+- …But it doesn't matter. The package is going to STERN anyway.
+- TABITHA: Hehehe! There you are. You kept DEVON's package, and DEVON thinks the thief got away!
+- Good grunt! Leader MAXIE pays for results.
+- TABITHA: Now, here's the fun part. Take the package to STERN.
+- Tell him you found it. A grateful man doesn't ask questions.
 - TABITHA: STERN is building a submarine. Leader MAXIE wants to know where it goes.
 - Hand over the parts, smile, and keep your eyes open upstairs.
 - AQUA is crawling all over this museum. If they move on STERN, stop them.
 - For MAGMA, of course. Hehehe!
+- TABITHA: Oh, and take this. MAGMA digs, grunt. Every one of us carries one.
+- TABITHA: A DOWSING MACHINE. It beeps when something's buried nearby.
+- If it's worth digging up, MAGMA wants it. Hehehe!
 
 ### `SlateportCity_OceanicMuseum_1F_EventScript_DraconidTabitha`
 - TABITHA: Upstairs. STERN. Go on.
 - …And don't stare at the AQUA fools. They'll notice.
 
-### `Route110_EventScript_DraconidRegisterMay`
-- MAY: One more thing. I'm registering you in my POKéNAV.
-- If MAGMA tries anything, I want to know where you are.
-- Registered MAY in the POKéNAV.
-- MAY: Next time, I won't lose. You'll see, {PLAYER}!
+### `Route110_EventScript_DraconidMayLeaves`
+- MAY: If MAGMA hurts anyone on this route, I'll know who to look for.
+- Next time, I won't lose. You'll see, {PLAYER}!
 
 ### `RustboroCity_DevonCorp_3F_EventScript_DraconidGiveExpShare`
 - MR. STONE: And one more thing. DEVON's newest invention!
@@ -683,13 +685,14 @@ Draconid Emerald round 1, Act 4 (docs/hack_story.md): Petalburg Gym with MAY wat
 - And the eggheads left their notes lying around. Weather records… something about ancient ORBS.
 - Leader MAXIE will love this. I'll take it to him myself.
 - Keep your POKéNAV on. He'll have orders for you soon. Hehehe!
+- TABITHA: Oh, and Leader MAXIE wants his best grunts where he needs them. Fast.
+- Take this.
+- TABITHA: FLY. Your POKéMON will carry you to any town you've been to.
+- Once you have FORTREE's GYM BADGE, that is. So go and get it. Hehehe!
 - MAY: I'll pretend I didn't see you save them, {PLAYER}.
 - But don't think this changes anything. You still work for MAGMA.
 
-### `Route119_EventScript_DraconidRegisterBrendan`
-- BRENDAN: And MAY wants us registered in each other's POKéNAVS.
-- Fine by me. If MAGMA makes a move, I'll know where to find you.
-- Registered BRENDAN in the POKéNAV.
+### `Route119_EventScript_DraconidBrendanLeaves`
 - BRENDAN: If MAY's wrong about you, I'm the one who stops you.
 - I'll be watching, {PLAYER}.
 
@@ -1248,6 +1251,167 @@ Draconid Emerald round 1, feedback 1.33 (D-218 – D-222): battle items and Mega
 - JUAN: Please, accept this MYSTIC WATER as well.
 - It lends grace to WATER-type moves.
 
+## data/scripts/draconid/devon_goods.pory
+
+Draconid Emerald (D-258): what the Devon Goods choice in Rusturf Tunnel (FLAG_DEVON_GOODS_RETURNED, act2.pory) changes. "Return to DEVON": the employee gets the parcel back at the edge of town, Mr. Stone sends the player on with it and adds a thank-you gift, the AMULET COIN. "Keep for MAGMA": the player says nothing, so DEVON believes the thief got away; Mr. Stone asks the player to tell CAPT. STERN, the player hands STERN the parts as a MAGMA grunt who "found" them, STERN tells Mr. Stone, and TABITHA pays for the job (money and a FIRE STONE, SlateportCity_OceanicMuseum_1F_EventScript_DraconidTabithaOrder). The Devon staff, Mr. Stone (his lines and his PokéNav calls), STERN and Rustboro's townsfolk (reputation/rustboro.pory) react while the player wears the uniform and after the Sootopolis reveal (Mr. Stone forgives; some of his staff remember). Maxie's first call (maxie_calls.pory) and TABITHA follow it too.
+
+### `RustboroCity_EventScript_DraconidEmployeeAsksForGoods`
+- Oh! You're the TRAINER who went after that thief!
+- Did you get our DEVON GOODS back?
+- {PLAYER} said nothing.
+- The GOODS stayed at the bottom of the BAG.
+- …The thief got away with them? Oh, no…
+- Well, you tried, and in that uniform, too. Thank you for that.
+
+### `RustboroCity_DevonCorp_3F_EventScript_DraconidEmployeeWaitHere`
+- This is the DEVON CORPORATION's third floor.
+- Our PRESIDENT's OFFICE is on this floor.
+- It's a shame about that parcel…
+- CAPT. STERN in SLATEPORT was waiting for those parts. Now we have to tell him they're gone.
+- Oh, that's right. Could you wait here a second?
+
+### `RustboroCity_DevonCorp_3F_EventScript_DraconidMrStoneFavor`
+- I'm MR. STONE, the PRESIDENT of the DEVON CORPORATION.
+- I'd just got word about you!
+- You saved our researcher in PETALBURG WOODS, and you chased that thief all the way to RUSTURF TUNNEL.
+- …In TEAM MAGMA's colors. I won't pretend to understand that.
+- Our parts are gone, I'm told. Well, that can't be helped.
+- CAPT. STERN in SLATEPORT was waiting for them. Would you tell him what happened?
+- And on the way, could you stop off in DEWFORD TOWN?
+- I was hoping that you'd deliver a LETTER to STEVEN in DEWFORD.
+
+### `RustboroCity_DevonCorp_3F_EventScript_DraconidThankYouGift`
+- MR. STONE: And this one is from me, for bringing our parts back.
+- A TRAINER who returns what was stolen deserves a little luck!
+- MR. STONE: Oh? Your BAG is full!
+- Come and see me when you've made some room.
+- MR. STONE: That's an AMULET COIN.
+- Have a POKéMON hold it in battle, and the prize money doubles!
+- Business sense, you see. Wahahaha!
+
+### `RustboroCity_DevonCorp_3F_EventScript_DraconidMrStoneTalk`
+- MR. STONE: {PLAYER}{KUN}! So you were a DRACONID all along!
+- A TEAM MAGMA grunt who brought our parts back… I should have guessed! Wahahaha!
+- MR. STONE: {PLAYER}{KUN}! So you were a DRACONID all along!
+- That's why you kept our parts, then. TEAM MAGMA had to believe you were one of them.
+- All is forgiven, my friend. Wahahaha!
+- MR. STONE: My staff are still talking about it.
+- A TEAM MAGMA grunt who brings back what was stolen!
+- Since my youth, I've immersed myself in work. I don't understand young people at all. Wahaha!
+- MR. STONE: CAPT. STERN tells me our parts reached him after all.
+- In your hands, {PLAYER}{KUN}.
+- I'm a patient man. But I do keep count.
+- MR. STONE: I'm counting on you!
+- My LETTER for STEVEN, and the news for poor CAPT. STERN.
+
+### `RustboroCity_DevonCorp_1F_EventScript_DraconidEmployee`
+- You brought our GOODS back even while you wore that uniform.
+- No wonder the PRESIDENT trusted you!
+- So keeping our GOODS was part of your act?
+- The PRESIDENT says all is forgiven.
+- …I'm still thinking about it.
+- Hey, you're the TEAM MAGMA grunt who brought our GOODS back!
+- I still can't believe it. …Thanks, I guess.
+- Our missing GOODS turned up in SLATEPORT!
+- CAPT. STERN says a TEAM MAGMA grunt brought them in. Said they “found” them.
+- …Found them. Sure.
+- Our stolen GOODS are gone for good.
+- You chased the thief, didn't you? And came back with nothing?
+- …Some of us here don't believe that story.
+
+### `RustboroCity_DevonCorp_1F_EventScript_DraconidStairGuard`
+- The PRESIDENT says to let you through.
+- He's forgiven you for the GOODS. So… welcome back, I suppose.
+- Hi, there! The PRESIDENT says you're always welcome here.
+- Uniform and all.
+- The PRESIDENT says to let you through.
+- …I'll be watching you, though.
+
+### `RustboroCity_DevonCorp_2F_EventScript_DraconidPokenavScientist`
+- Oh, wow! A DRACONID, using my POKéNAV to fool TEAM MAGMA!
+- I'd love to hear how it held up out there!
+- Oh, wow! That's the POKéNAV I built!
+- You brought our GOODS back, so I suppose you earned it. Even in that uniform.
+- That's the POKéNAV I built.
+- The PRESIDENT gave one to you, even after what happened to our GOODS?
+- He trusts people far too easily.
+
+### `RustboroCity_DevonCorp_3F_EventScript_DraconidEmployee`
+- Poor CAPT. STERN. He's been waiting for those parts for weeks.
+- If you visit the SHIPYARD in SLATEPORT, please tell him what happened.
+
+### `SlateportCity_OceanicMuseum_1F_EventScript_DraconidTabithaPays`
+- {PLAYER} received ¥{STR_VAR_1} from TABITHA.
+- TABITHA: And a little something from MT. CHIMNEY. Our people dig them up all the time. Hehehe!
+
+### `SlateportCity_OceanicMuseum_2F_EventScript_DraconidSternSeesParts`
+- CAPT. STERN: Hm? Those parts… They're the ones I ordered from DEVON!
+- MR. STONE phoned me. He said a thief ran off with them!
+- You found them? …In that uniform?
+- Well, I won't ask. Thank you! We can prepare for our expedition now.
+
+### `SlateportCity_OceanicMuseum_2F_EventScript_DraconidSternThanks`
+- CAPT. STERN: You're… Ah, okay, you're {PLAYER}{KUN}…
+- A TEAM MAGMA member, fighting off TEAM AQUA… for my sake?
+- Well, that was a tense situation! Thank you for saving us!
+- And the parts DEVON lost… I'll let MR. STONE know they turned up.
+- In your hands.
+
+### `SlateportCity_Harbor_EventScript_DraconidSternFerry`
+- CAPT. STERN: {PLAYER}{KUN}! I heard about SOOTOPOLIS!
+- Undercover in TEAM MAGMA, and you still brought DEVON's parts to me at the MUSEUM.
+- I'm proud to have met you!
+- CAPT. STERN: {PLAYER}{KUN}! I heard about SOOTOPOLIS!
+- So that's why a MAGMA grunt “found” my parts from DEVON.
+- MR. STONE laughed when I told him. I think he's forgiven you!
+
+### `Draconid_Text_MrStoneCallErrandReturned`
+- MR. STONE: Oh? {PLAYER}{KUN}!
+- Since you called me, the POKéNAV must be working properly!
+- Now, don't forget my errand. My LETTER goes to STEVEN in DEWFORD.
+- And our parcel goes to CAPT. STERN in SLATEPORT.
+- Since I am a busy PRESIDENT, I have to go! Bye-bye!
+
+### `Draconid_Text_MrStoneCallErrandKept`
+- MR. STONE: Oh? {PLAYER}{KUN}!
+- Since you called me, the POKéNAV must be working properly!
+- Now, don't forget my errand. My LETTER goes to STEVEN in DEWFORD.
+- And please tell CAPT. STERN in SLATEPORT about his parts. He'll be so disappointed…
+- Since I am a busy PRESIDENT, I have to go! Bye-bye!
+
+### `Draconid_Text_MrStoneCallLetterReturned`
+- MR. STONE: Oh! {PLAYER}{KUN}!
+- Ah, so you've met STEVEN! Thank you kindly!
+- Now there's only our parcel for CAPT. STERN. I'm counting on you!
+
+### `Draconid_Text_MrStoneCallLetterKept`
+- MR. STONE: Oh! {PLAYER}{KUN}!
+- Ah, so you've met STEVEN! Thank you kindly!
+- Have you been to SLATEPORT yet? Poor CAPT. STERN…
+
+### `Draconid_Text_MrStoneCallSternReturned`
+- MR. STONE: {PLAYER}{KUN}! CAPT. STERN just called me!
+- Our parts reached him safe and sound, and you fought off TEAM AQUA, too!
+- A TEAM MAGMA grunt, protecting DEVON's parts… I'll never understand it. Wahaha!
+
+### `Draconid_Text_MrStoneCallSternKept`
+- MR. STONE: …{PLAYER}{KUN}. CAPT. STERN just called me.
+- It seems our missing parts turned up in SLATEPORT. In your hands.
+- He says you “found” them.
+- I won't ask. But I will remember.
+
+### `Draconid_Text_MrStoneCallRevealedReturned`
+- MR. STONE: {PLAYER}{KUN}! It's me!
+- I heard everything! A DRACONID, undercover in TEAM MAGMA!
+- And even then, you brought our parts back to DEVON.
+- I always said I could spot a good TRAINER. Wahahaha!
+
+### `Draconid_Text_MrStoneCallRevealedKept`
+- MR. STONE: {PLAYER}{KUN}! It's me!
+- I heard everything! A DRACONID, undercover in TEAM MAGMA!
+- So that's why you kept our parts. TEAM MAGMA had to believe you were theirs.
+- All is forgiven. But I did count every screw! Wahahaha!
+
 ## data/scripts/draconid/frontier_legends.pory
 
 Draconid Emerald round 1 follow-up: the Battle Frontier legends (post-game, D-225 - D-229). WES (Pokémon Colosseum) waits in the BATTLE PYRAMID's sands (58, 22), RED at the foot of the cliff below ARTISAN CAVE (29, 10), BLUE by the BATTLE TOWER door (18, 15). They are there once the Hall of Fame is done (FLAG_SYS_GAME_CLEAR) and battle again whenever asked. The LEGENDS' TAG attendant beside the TOWER door (14, 15) pairs the player with a legend they have beaten (PARTNER_WES / _RED / _BLUE) against the other two: a multi battle on the mat in front of the TOWER, three POKéMON each (the *_FRONTIER_MULTI teams).
@@ -1392,57 +1556,25 @@ Draconid Emerald round 1: Maxie's PokéNav calls to the Magma recruit (D-186). A
 - Together, we can still set this right.
 - … … … … … Click!
 
-### `Draconid_Text_MaxieCallDewford`
+### `Route104_EventScript_DraconidMaxieCallDewford`
 - … … … … … … … … … … … Beep!
 - MAXIE: Is this {PLAYER}? I am MAXIE, the leader of TEAM MAGMA.
-- TABITHA tells me our newest recruit raises dragons and wins BADGES.
-- So DEVON trusts you now. Excellent.
+- TABITHA tells me DEVON got its parts back. Sloppy… but no matter.
+- They are going to SLATEPORT all the same, and so are you.
 - Take MR. STONE's LETTER to DEWFORD and the parts to SLATEPORT.
+- Keep your eyes open. We will speak again.
+- … … … … … Click!
+- … … … … … … … … … … … Beep!
+- MAXIE: Is this {PLAYER}? I am MAXIE, the leader of TEAM MAGMA.
+- TABITHA tells me you kept DEVON's parts for us. Well done.
+- DEVON believes the thief got away with them. Let them.
+- Take MR. STONE's LETTER to DEWFORD, then the parts to SLATEPORT. TABITHA will be waiting.
 - Keep your eyes open. We will speak again.
 - … … … … … Click!
 
 ## data/scripts/draconid/rival_calls.pory
 
-Draconid Emerald: Brendan's and May's PokéNav Match Call texts (D-243). The PokéNav picks one with MatchCall_GetMessage_Rival (src/pokenav_match_call_data.c): the last entry of the rival's table whose state (VAR_BRENDAN_STATE / VAR_MAY_STATE) and flag are reached. While the player wears the uniform the rivals only keep the number to watch a MAGMA grunt (docs/hack_voices.md); after the Sootopolis turn they call as friends. May registers on Route 110 (Act 2), Brendan on Route 119 (Act 4). The call window is as wide as Maxie's calls.
-
-### `Draconid_Text_MayCallUniform1`
-- MAY: …Oh. It's you.
-- I only registered you to keep tabs on MAGMA.
-- So where are you headed next? …Fine. I'll find out anyway.
-
-### `Draconid_Text_MayCallUniform2`
-- MAY: I heard you beat WATTSON.
-- Does MAGMA hand out a prize for every BADGE, or what?
-- Don't call me just to brag.
-
-### `Draconid_Text_MayCallUniform3`
-- MAY: MT. CHIMNEY was shaking the other day. You could see the smoke from here.
-- If MAGMA hurt anyone up there, I'll find out.
-- …Were you there, {PLAYER}?
-
-### `Draconid_Text_MayCallUniform4`
-- MAY: You beat my dad.
-- He says you battled fair. He almost sounded proud.
-- I don't get you, {PLAYER}. I really don't.
-
-### `Draconid_Text_MayCallUniform5`
-- MAY: About the WEATHER INSTITUTE…
-- I did that for the scientists, okay?
-- So don't go telling MAGMA about it.
-
-### `Draconid_Text_MayCallUniform6`
-- MAY: BRENDAN and I will stop you next time.
-- We'll be ready for you. Both of us.
-
-### `Draconid_Text_MayCallUniform7`
-- MAY: My dad called. He asked if I'd seen you.
-- He still thinks there's some good in you.
-- …I told him I'd let him know.
-
-### `Draconid_Text_MayCallUniform8`
-- MAY: Everyone in MOSSDEEP keeps looking out at the sea.
-- AQUA took a submarine, and MAGMA's everywhere.
-- Whatever you're part of, it's getting worse. I just want it to stop.
+Draconid Emerald: Brendan's, May's and Wally's PokéNav Match Call texts (D-243). The PokéNav picks one with MatchCall_GetMessage_Rival / _Wally (src/pokenav_match_call_data.c): the last entry of the rival's table whose state (VAR_BRENDAN_STATE / VAR_MAY_STATE / VAR_WALLY_STATE) and flag are reached. No rival has the player's number while they wear the MAGMA uniform (D-256): Brendan and May swap numbers with the player in the Sootopolis aftermath, Brendan passes on Steven's and May Wally's (data/scripts/draconid/rival_numbers.pory), so they only ever call as friends. The call window is as wide as Maxie's calls.
 
 ### `Draconid_Text_MayCallRevealed1`
 - MAY: Hi, {PLAYER}! Guess who's not mad at you anymore?
@@ -1459,29 +1591,6 @@ Draconid Emerald: Brendan's and May's PokéNav Match Call texts (D-243). The Pok
 - Whatever's going on with the sky, I know you'll handle it.
 - Then come by the LAB. BRENDAN and I want a rematch!
 
-### `Draconid_Text_BrendanCallUniform1`
-- BRENDAN: Yeah? What do you want?
-- MAY says we have to keep an eye on you. So that's what I'm doing.
-- If MAGMA's planning something, you'd better not be in it.
-
-### `Draconid_Text_BrendanCallUniform2`
-- BRENDAN: WINONA says you battled her fair and square.
-- Doesn't change what you're wearing, {PLAYER}.
-
-### `Draconid_Text_BrendanCallUniform3`
-- BRENDAN: Two of us, and you still won.
-- Don't get cocky. Next time I'll be ready for you.
-
-### `Draconid_Text_BrendanCallUniform4`
-- BRENDAN: I heard MAGMA took an ORB from MT. PYRE.
-- Those old folks guarded it their whole lives.
-- …Tell me you weren't there, {PLAYER}.
-
-### `Draconid_Text_BrendanCallUniform5`
-- BRENDAN: I've got nothing to say to you.
-- STEVEN says you're the strongest MAGMA grunt he's ever faced.
-- …So why waste it on them?
-
 ### `Draconid_Text_BrendanCallRevealed1`
 - BRENDAN: Hey, {PLAYER}. …So, uh. Go beat JUAN.
 - If you lose to him after all that, I'm never letting you hear the end of it.
@@ -1496,24 +1605,6 @@ Draconid Emerald: Brendan's and May's PokéNav Match Call texts (D-243). The Pok
 - Once things calm down, come by my dad's LAB.
 - MAY and I have a rematch waiting for you.
 
-### `Draconid_Text_WallyCallUniform1`
-- WALLY: …Oh. It's you.
-- I'm training every day now. For the next time I see MAGMA.
-- …For the next time I see you, {PLAYER}.
-
-### `Draconid_Text_WallyCallUniform2`
-- WALLY: People in VERDANTURF say MT. CHIMNEY nearly erupted.
-- The smoke reached all the way here. I could hardly breathe.
-- Was that MAGMA? …Was that you?
-
-### `Draconid_Text_WallyCallUniform3`
-- WALLY: I lost to you again at the GYM.
-- My POKéMON didn't give up, though. So I won't either.
-
-### `Draconid_Text_WallyCallUniform4`
-- WALLY: I'm heading for VICTORY ROAD soon.
-- If MAGMA ever comes near EVER GRANDE, I'll be waiting.
-
 ### `Draconid_Text_WallyCallRevealed1`
 - WALLY: {PLAYER}! I heard about SOOTOPOLIS.
 - …I'm sorry for everything I said. I didn't know.
@@ -1526,6 +1617,27 @@ Draconid Emerald: Brendan's and May's PokéNav Match Call texts (D-243). The Pok
 ### `Draconid_Text_WallyCallRevealed3`
 - WALLY: CHAMPION {PLAYER}! My uncle can't stop talking about it.
 - He says he always knew. …He didn't, but that's okay.
+
+## data/scripts/draconid/rival_numbers.pory
+
+Draconid Emerald (D-256): nobody who isn't a Draconid swaps PokéNav numbers with a MAGMA grunt. Brendan and May do it once they make up, at the end of the Sootopolis aftermath (SootopolisCity_EventScript_DraconidRivalsAftermath in act5.pory calls this before they fly home); Brendan passes on STEVEN's number (he saw the uniform come off; vanilla registered him in Granite Cave) and May passes on Wally's. From here the rivals' calls are the friendly ones (rival_calls.pory, D-243).
+
+### `SootopolisCity_EventScript_DraconidRivalNumbers`
+- MAY: Oh! Before we go…
+- {PLAYER}, let's register each other in our POKéNAVS!
+- MAY: I wasn't going to give my number to a MAGMA grunt.
+- But you were never really one of them. Hehe!
+- BRENDAN: Yeah, fine. Mine, too.
+- Somebody's got to tell you when you're slacking off.
+- Registered MAY and BRENDAN in the POKéNAV.
+- BRENDAN: Oh, right. STEVEN gave me his number for you.
+- He said he'd like to talk to you without a battle in the way.
+- Registered STEVEN in the POKéNAV.
+- MAY: And here's WALLY's number, too. My dad gave it to me.
+- MAY: WALLY's been so angry at MAGMA. At you, too.
+- Once he hears the truth, he'll want to say sorry. Let him, okay?
+- Registered WALLY in the POKéNAV.
+- MAY: Okay! Now we're really going. See you, {PLAYER}!
 
 ## data/scripts/draconid/rivals2.pory
 
@@ -1559,6 +1671,12 @@ Draconid Emerald round 1 follow-ups (feedback 1.32, 1.34, part of 1.25; D-234 �
 - I'm not letting a MAGMA grunt walk away from that. Battle me!
 - MAY: See? MAGMA can't win every time.
 - MAY: Tch… You're even stronger than on ROUTE 110.
+
+### `LavaridgeTown_EventScript_DraconidFindGoGoggles`
+- MAY dropped something as she stormed off…
+- {PLAYER} found the {STR_VAR_2}!
+- There's a tag on the strap.
+- “Property of MAY. For the sandstorm on ROUTE 111!”
 
 ### `Route120_EventScript_DraconidWally`
 - WALLY: {PLAYER}. I knew you'd come this way.
@@ -1614,13 +1732,19 @@ Draconid Emerald round 1 follow-ups (feedback 1.32, 1.34, part of 1.25; D-234 �
 
 ## Reworked vanilla texts (`@ Draconid Emerald` labels in `data/maps/*/scripts.inc`)
 
+### DewfordTown_Gym
+- `DewfordTown_Gym_Text_RegisteredBrawly`: For rematches, the POKéMON LEAGUE registers every challenger. / Registered GYM LEADER BRAWLY in the POKéNAV.
+
 ### EverGrandeCity_ChampionsRoom
 - `EverGrandeCity_ChampionsRoom_Text_IntroSpeech`: WALLACE: Welcome, {PLAYER}{KUN}. / That incident in SOOTOPOLIS CITY… All of HOENN has heard how you cast off that red uniform before MAXIE. / I confess I didn't know what to make of a MAGMA grunt who raised dragons. / Now I do. But it wouldn't be fair to say that you alone ended the crisis. / You overcame that difficult situation by working as one with your POKéMON. / We TRAINERS raise POKéMON by giving them items and by teaching them new techniques for battle. / But we ourselves also learn many things from POKéMON. / And this is where your achievements are put to the test against what others like you have achieved. / Now! / Who can most elegantly dance with their POKéMON in HOENN? / Show me right here and now!
 - `EverGrandeCity_ChampionsRoom_Text_BirchArriveRatePokedex`: PROF. BIRCH: See? What did I tell you, {RIVAL}? / Didn't I tell you that you didn't need to worry about {PLAYER}{KUN}? / … … … … … … … … {PLAYER}{KUN}, you've finally done it. / The day we met, you and your little dragon saved me on ROUTE 101. / Then came that red uniform… But I never stopped trusting you. / And now look at you. The CHAMPION! / Ah, yes! / What became of your POKéDEX? Here, let me see.
 
+### FortreeCity_Gym
+- `FortreeCity_Gym_Text_RegisteredWinona`: For rematches, the POKéMON LEAGUE registers every challenger. / Registered GYM LEADER WINONA in the POKéNAV.
+
 ### GraniteCave_StevensRoom
 - `GraniteCave_StevensRoom_Text_ImStevenLetterForMe`: My name is STEVEN. / I'm interested in rare stones, so I travel here and there. / Oh? A TEAM MAGMA member… with a LETTER for me? / MAGMA doesn't usually deliver mail.
-- `GraniteCave_StevensRoom_Text_CouldBecomeChampionLetsRegister`: STEVEN: Your POKéMON trust you. That's hard to fake. / I wonder who you really work for. / Let's register one another in our POKéNAVS. I'd like to keep an eye on you… in a friendly way. / … … … … … …
+- `GraniteCave_StevensRoom_Text_CouldBecomeChampionLetsRegister`: STEVEN: Your POKéMON trust you. That's hard to fake. / I wonder who you really work for. / I'd ask for your POKéNAV number. …But I don't think MAGMA would like that. Another time, perhaps.
 
 ### JaggedPass
 - `JaggedPass_Text_GruntIntro`: Wah! Another grunt? What are you doing up here? / Me? I'm guarding a rock. Just a rock. There's nothing behind it. / …You look new. Rank test!
@@ -1628,8 +1752,11 @@ Draconid Emerald round 1 follow-ups (feedback 1.32, 1.34, part of 1.25; D-234 �
 - `JaggedPass_Text_GoWhereverYouWant`: Okay, oh-kay! I admit it, you're strong! / But orders are orders. This rock stays shut unless the LEADER himself sends you.
 
 ### LavaridgeTown
-- `LavaridgeTown_Text_MayNiceBadgesTakeThis`: MAY: …Were you really up there with them, on MT. CHIMNEY? / Forget it. I don't need these anymore. / Take them, and stay out of LAVARIDGE.
-- `LavaridgeTown_Text_MayExplainGoGogglesChallengeDad`: MAY: With those GO-GOGGLES, you'll have no trouble getting through the desert near ROUTE 111. / Four BADGES… So my dad's GYM in PETALBURG is next for you. / He'll stop you, {PLAYER}. And I'll be there to see it.
+- `LavaridgeTown_Text_MayNiceBadgesTakeThis`: MAY: …Were you really up there with them, on MT. CHIMNEY? / Forget it. I don't even want to know!
+- `LavaridgeTown_Text_MayExplainGoGogglesChallengeDad`: MAY: Four BADGES… So my dad's GYM in PETALBURG is next for you. / He'll stop you, {PLAYER}. And I'll be there to see it!
+
+### LavaridgeTown_Gym_1F
+- `LavaridgeTown_Gym_1F_Text_RegisteredFlannery`: For rematches, the POKéMON LEAGUE registers every challenger. / Registered GYM LEADER FLANNERY in the POKéNAV.
 
 ### MagmaHideout_2F_1R
 - `MagmaHideout_2F_1R_Text_Grunt14Intro`: What, what, what? / A face I don't know, in a TEAM MAGMA uniform? / They say the LEADER gave some new grunt his own EMBLEM… / You rouse my suspicion! Rank test! Battle with me!
@@ -1665,7 +1792,13 @@ Draconid Emerald round 1 follow-ups (feedback 1.32, 1.34, part of 1.25; D-234 �
 - `MauvilleCity_Text_WallyIllGoBackToVerdanturf`: WALLY: UNCLE… I'll go back to VERDANTURF… / I'll get stronger there. Strong enough to stop TEAM MAGMA.
 - `MauvilleCity_Text_ThankYouNotEnoughToBattle`: WALLY: Being a TRAINER isn't just about winning battles, {PLAYER}. / It's about protecting people and POKéMON. / You used to know that.
 - `MauvilleCity_Text_UncleVisitUsSometime`: UNCLE: {PLAYER}{KUN}… So you're the TRAINER who kept an eye on WALLY when he caught his POKéMON. / I don't know what happened to you since then. / But please, stay away from VERDANTURF.
-- `MauvilleCity_Text_WallyPokenavCall`: … … … … … … … … … … … Beep! / WALLY: {PLAYER}… It's WALLY. / My uncle bought me a POKéNAV. I'm registering you in it. / If MAGMA hurts anyone, I'll know where to find you. / … … … … … … … … … … … Click!
+- `MauvilleCity_Text_ScottYouDidntHoldBack`: SCOTT: Hehe… I was watching that match! / That boy WALLY really let you have it, huh? And about your uniform, too. / But you didn't hold anything back and beat him impressively. / Yeah! That's what a real POKéMON battle is all about! / … … … … … … I'll be cheering for you!
+
+### MauvilleCity_Gym
+- `MauvilleCity_Gym_Text_RegisteredWattson`: For rematches, the POKéMON LEAGUE registers every challenger. / Registered GYM LEADER WATTSON in the POKéNAV.
+
+### MossdeepCity_Gym
+- `MossdeepCity_Gym_Text_RegisteredTateAndLiza`: For rematches, the POKéMON LEAGUE registers every challenger. / Registered GYM LEADERS TATE & LIZA in the POKéNAV.
 
 ### MossdeepCity_SpaceCenter_1F
 - `MossdeepCity_SpaceCenter_1F_Text_MagmaHaveSightsOnSpaceCenter`: That red uniform… You're one of those MAGMA thugs! / Well, we won't let anything that minor interfere with our rocket launch!
@@ -1743,11 +1876,13 @@ Draconid Emerald round 1 follow-ups (feedback 1.32, 1.34, part of 1.25; D-234 �
 - `PetalburgWoods_Text_ThatWasAwfullyClose`: Whew… That was awfully close! / Thanks to you, she didn't rob me of these important papers. / I know, I'll give you a GREAT BALL as my thanks!
 - `PetalburgWoods_Text_TeamAquaAfterSomethingInRustboro`: That TEAM AQUA woman… Are they after DEVON in RUSTBORO, too?
 
+### Route104_MrBrineysHouse
+- `Route104_MrBrineysHouse_Text_ItsYouLetsSailToDewford`: Hm? You're {PLAYER}{KUN}! You saved my darling PEEKO! / What's that? You want to sail with me? / Hmhm… That red getup is TEAM MAGMA's, isn't it? / Well, I don't care what colors you're wearing. / You saved my PEEKO, and a sailor pays his debts! / A LETTER bound for DEWFORD and a package for SLATEPORT, is it? / You've come to the right man! We'll set sail for DEWFORD.
+
 ### Route110
 - `Route110_Text_MayLetsBattle`: MAY: {PLAYER}! So it's true. You're really with MAGMA. / BRENDAN won't even say your name. I didn't want to believe him. / MAGMA is hurting people all over HOENN. I'm going to stop you right here!
 - `Route110_Text_MayDefeated`: MAGMA grunts don't raise dragons like that.
-- `Route110_Text_MayTakeThis`: MAY: I've seen how MAGMA grunts treat their POKéMON. Like tools. / But yours trust you. …What are you really doing, {PLAYER}? / Forget it. The winner gets this. That's the rule, even for MAGMA.
-- `Route110_Text_MayExplainItemfinder`: MAY: That's a DOWSING MACHINE. / Use it to root around for items that aren't visible. / If it senses something, it makes a sound.
+- `Route110_Text_MayTakeThis`: MAY: I've seen how MAGMA grunts treat their POKéMON. Like tools. / But yours trust you. …What are you really doing, {PLAYER}?
 
 ### Route112
 - `Route112_Text_CantLetAnyonePassUntilTheyreBack`: You got it. And until they come back, we're not to let anyone pass, right. / …Hey, you! The rookie! / What are you standing around for? The LEADER's squad went to METEOR FALLS, past FALLARBOR. / Get over there and catch up!
@@ -1755,8 +1890,6 @@ Draconid Emerald round 1 follow-ups (feedback 1.32, 1.34, part of 1.25; D-234 �
 ### Route119
 - `Route119_Text_BrendanIntro`: BRENDAN: {PLAYER}. MAY told me what happened at the WEATHER INSTITUTE. / She thinks you're a good guy in disguise. I don't know what to think. / All I know is you were on MT. CHIMNEY with MAGMA. So battle me!
 - `Route119_Text_BrendanDefeat`: Tch… You don't battle like a bad guy.
-- `Route119_Text_BrendanIllGiveYouThis`: BRENDAN: MAY made me promise to give you this. So here. / Don't make me regret it.
-- `Route119_Text_BrendanExplainFly`: BRENDAN: Use FLY, and your POKéMON carries you to any town you've already visited. / But you need the FORTREE GYM BADGE to do that.
 
 ### Route119_WeatherInstitute_1F
 - `Route119_WeatherInstitute_1F_Text_Grunt1Intro`: A MAGMA grunt? Here? / The BOSS got interested in the research they have going here, so he sent us out. / You quit meddling!
@@ -1786,17 +1919,24 @@ Draconid Emerald round 1 follow-ups (feedback 1.32, 1.34, part of 1.25; D-234 �
 
 ### RustboroCity_DevonCorp_3F
 - `RustboroCity_DevonCorp_3F_Text_MrStoneIHaveFavor`: I'm MR. STONE, the PRESIDENT of the DEVON CORPORATION. / I'd just got word about you! / You saved our staff not just once, but twice! …In TEAM MAGMA's colors. / I won't pretend to understand that. But I know what you did for DEVON. / I understand that you're delivering a package to SLATEPORT's SHIPYARD. / Well, on the way, could you stop off in DEWFORD TOWN? / I was hoping that you'd deliver a LETTER to STEVEN in DEWFORD.
+- `RustboroCity_DevonCorp_3F_Text_MrStoneExplainPokenavRestUp`: MR. STONE: That device… / It's a POKéMON NAVIGATOR, or POKéNAV for short. / It's an indispensable tool for any TRAINER on an adventure. / It has a map of the HOENN region. / You can check the locations of DEWFORD and SLATEPORT easily! / By the way, TEAM AQUA has been making trouble far and wide. / …Your own people, too, I'm told. / Whatever you are, I think you should rest up before you go on your way.
 - `RustboroCity_DevonCorp_3F_Text_ExplainExpShare`: MR. STONE: That's DEVON's new EXP. SHARE. / While it's on, every POKéMON in your party gets EXP. Points from a battle, even the ones that didn't fight. / It's switched on now. You can turn it off from the KEY ITEMS pocket.
+
+### RustboroCity_Gym
+- `RustboroCity_Gym_Text_RoxanneRegisterCall`: … … … … … … … … … … … Beep! / ROXANNE: Hello, {PLAYER}. This is ROXANNE of RUSTBORO CITY. / The POKéMON LEAGUE registers every challenger for rematches. Even one in red. / I heard from BRAWLY that you're moving up through the ranks of TRAINERS at an incredible clip. / I will shape up my GYM so that you may challenge us again. / … … … … … … … … … … … Click!
 
 ### RusturfTunnel
 - `RusturfTunnel_Text_ComeAndGetSome`: NERINE: Following me? …Fine. Come, then.
 - `RusturfTunnel_Text_GruntIntro`: NERINE: You again. The lowlander in red. / So MAGMA sends its children after DEVON's parts now. / …This WINGULL? It got in my way. It isn't hurt. / The parts, though… Those you'll have to win.
 - `RusturfTunnel_Text_GruntDefeat`: Hm. A second partner. Interesting choice.
 - `RusturfTunnel_Text_GruntTakePackage`: NERINE: Water doesn't need these parts. / Neither do I. Remember that. / Take them. And take the bird home.
-- `RusturfTunnel_Text_ThankYouLetsGoHomePeeko`: PEEKO owes her life to you! / Red uniform or not, you saved her. They call me MR. BRINEY. And, you are? / … … … … … … … … … … … … … … … … / Ah, so you are {PLAYER}{KUN}! I sincerely thank you! / Now, if there's anything that troubles you, don't hesitate to tell me! / You can usually find me in my cottage by the sea near PETALBURG WOODS. / Come, PEEKO, we should make our way home. / PEEKO: Pihyoh!
+- `RusturfTunnel_Text_ThankYouLetsGoHomePeeko`: PEEKO owes her life to you! / Red uniform or not, you saved her. They call me MR. BRINEY. And, you are? / … … … … … … … … … … … … … … … … / Ah, so you are {PLAYER}{KUN}! I sincerely thank you! / I owe you a debt now, and a sailor always pays his debts. / If you ever need to cross the sea, you come to me! / You can usually find me in my cottage by the sea near PETALBURG WOODS. / Come, PEEKO, we should make our way home. / PEEKO: Pihyoh!
 
 ### SeafloorCavern_Room9
 - `SeafloorCavern_Room9_Text_ArchieSoItWasYou`: ARCHIE: Fufufu… MAXIE's little red shadow. / So it was you, after all.
+
+### SlateportCity
+- `SlateportCity_Text_LetsRegisterEachOther`: SCOTT: A TEAM MAGMA grunt who sends TEAM AQUA running… Hmm. / Well, I scout TRAINERS, not teams! Let's register each other in our POKéNAVS. / … … … … … …
 
 ### SlateportCity_OceanicMuseum_2F
 - `SlateportCity_OceanicMuseum_2F_Text_WellTakeThoseParts`: Hehehe, hold it! We'll take those parts!
