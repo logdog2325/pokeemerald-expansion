@@ -1732,7 +1732,7 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Cutiefly
 Level: 20
-Ability: Honey Gather
+Ability: Shield Dust
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Draining Kiss
 - Absorb
@@ -2414,7 +2414,7 @@ AI: Basic Trainer / Smart Mon Choices
 
 Ribombee
 Level: 25
-Ability: Honey Gather
+Ability: Shield Dust
 IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
 - Pollen Puff
 - Draining Kiss
@@ -8898,7 +8898,7 @@ AI: Basic Trainer / Smart Mon Choices
 
 Noivern @ Sitrus Berry
 Level: 48
-Ability: Frisk
+Ability: Infiltrator
 IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
 Nature: Modest
 - Air Slash
@@ -8947,7 +8947,7 @@ AI: Basic Trainer / Smart Mon Choices
 
 Noivern @ Sitrus Berry
 Level: 50
-Ability: Frisk
+Ability: Infiltrator
 IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
 - Air Slash
 - Dragon Pulse
@@ -8993,7 +8993,7 @@ AI: Basic Trainer / Smart Mon Choices
 
 Noivern @ Sitrus Berry
 Level: 52
-Ability: Frisk
+Ability: Infiltrator
 IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
 - Hurricane
 - Dragon Pulse
@@ -9048,7 +9048,7 @@ AI: Basic Trainer / Smart Mon Choices
 
 Noivern @ Sitrus Berry
 Level: 54
-Ability: Frisk
+Ability: Infiltrator
 IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
 - Hurricane
 - Dragon Pulse
@@ -9113,7 +9113,7 @@ Nature: Jolly
 
 Noivern @ Leftovers
 Level: 67
-Ability: Frisk
+Ability: Infiltrator
 EVs: 4 HP / 252 SpA / 252 Spe
 Nature: Modest
 - Hurricane

@@ -327,7 +327,9 @@ per block are in `gen49_swaps.json`, and the trainer table below shows them afte
 - **What stays**: the slot, level, IVs, EVs (Atk / SpA swapped for a special attacker), nature (mirrored the same
   way), party size, header, AI; the ace (last Pokémon) except Jerry's, whose ORAS team has Bisharp for Banette.
   Held items carry over; a type booster becomes the new species' booster, set-specific items (Flame Orb, White
-  Herb, Choice items, Light Clay …) become a berry / Leftovers or a Life Orb from S7.
+  Herb, Choice items, Light Clay …) become a berry / Leftovers or a Life Orb from S7. The ability (where the block
+  names one) is the species' first regular ability that does something in battle (no hidden abilities; Cutiefly
+  gets Shield Dust, not Honey Gather).
 - **Stage**: the one its level allows by level-up (Starly → Staravia 14 → Staraptor 34); stone / trade / friendship
   evolutions at a set level (Whimsicott, Lucario and Mismagius from 30, Tsareena from 29, Chandelure from 50,
   Conkeldurr and Trevenant only post-game).
