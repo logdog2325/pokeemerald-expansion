@@ -121,6 +121,7 @@ SootopolisCity_Gym_1F_EventScript_GiveWaterPulse::
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
 	msgbox SootopolisCity_Gym_1F_Text_ExplainWaterPulse, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_TM_WATER_PULSE
+	call Draconid_EventScript_GymBoosterJuan  @ Draconid Emerald (battle_items.pory, D-220)
 	return
 
 SootopolisCity_Gym_1F_EventScript_GiveWaterPulse2::
@@ -128,6 +129,7 @@ SootopolisCity_Gym_1F_EventScript_GiveWaterPulse2::
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	msgbox SootopolisCity_Gym_1F_Text_ExplainWaterPulse, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_TM_WATER_PULSE
+	call Draconid_EventScript_GymBoosterJuan  @ Draconid Emerald (battle_items.pory, D-220)
 	release
 	end
 

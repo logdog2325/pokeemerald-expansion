@@ -32,6 +32,7 @@ RustboroCity_Gym_EventScript_GiveRockTomb::
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	setflag FLAG_RECEIVED_TM_ROCK_TOMB
 	msgbox RustboroCity_Gym_Text_ExplainRockTomb, MSGBOX_DEFAULT
+	call Draconid_EventScript_GymBoosterRoxanne  @ Draconid Emerald (battle_items.pory, D-220)
 	release
 	end
 

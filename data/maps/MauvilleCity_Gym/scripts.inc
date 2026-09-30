@@ -117,6 +117,7 @@ MauvilleCity_Gym_EventScript_GiveShockWave2::
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	msgbox MauvilleCity_Gym_Text_ExplainShockWave, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_TM_SHOCK_WAVE
+	call Draconid_EventScript_GymBoosterWattson  @ Draconid Emerald (battle_items.pory, D-220)
 	release
 	end
 
@@ -125,6 +126,7 @@ MauvilleCity_Gym_EventScript_GiveShockWave::
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
 	msgbox MauvilleCity_Gym_Text_ExplainShockWave, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_TM_SHOCK_WAVE
+	call Draconid_EventScript_GymBoosterWattson  @ Draconid Emerald (battle_items.pory, D-220)
 	return
 
 MauvilleCity_Gym_EventScript_CompletedNewMauville::

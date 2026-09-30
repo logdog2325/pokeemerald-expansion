@@ -189,6 +189,7 @@ python3 tools/hack/emu/play.py tools/hack/emu/tests/maxie_calls.play    -o /tmp/
 python3 tools/hack/emu/play.py tools/hack/emu/tests/elite_four.play     -o /tmp/emu   # E4 post-game rematch swap
 python3 tools/hack/emu/play.py tools/hack/emu/tests/postgame_home.play  -o /tmp/emu   # SS Ticket / Lati TV at home
 python3 tools/hack/emu/play.py tools/hack/emu/tests/trade_evos.play     -o /tmp/emu   # Kadabra -> Alakazam, Slowpoke + King's Rock -> Slowking
+python3 tools/hack/emu/play.py tools/hack/emu/tests/battle_items.play   -o /tmp/emu   # battle item counter by badges, a Gym booster, a Mega Stone ball
 python3 tools/hack/emu/play.py tools/hack/emu/tests/release_boot.play   -o /tmp/rel --rom pokeemerald-release.gba
 ```
 `release_boot.play` goes through the real title and new-game menus, since release builds have neither Quickstart

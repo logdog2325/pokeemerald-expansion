@@ -950,7 +950,7 @@ Draconid Emerald round 1, Act 5 (docs/hack_story.md steps 23–28): the Aqua Hid
 
 ## data/scripts/draconid/rivals.pory
 
-Draconid Emerald: rival battles vanilla Emerald doesn't have (Phase 5).  Brendan  Route 104 (Petalburg Woods entrance), Route 110 (+ PokéNav registration), Route 119, Lilycove (with May), Littleroot lab after the Champion May      Route 103, Rustboro, Slateport (after the Oceanic Museum), Lilycove (with Brendan), Littleroot lab after the Champion Wally    Mauville (vanilla), Petalburg Gym door (after the Heat Badge), Lilycove (Mega Gallade), Victory Road (vanilla)  State vars: VAR_BRENDAN_STATE, VAR_MAY_STATE, VAR_WALLY_STATE (include/constants/draconid.h). Vanilla hooks are listed in docs/hack_changes.md ("Scripts").
+Draconid Emerald: rival scenes that belong to no single act (Phase 5, cut down in round 1).  The story fights live in the act files now: Brendan – Rustboro (act1), Mt. Chimney (act3), Route 119 and Lilycove (act4), the Space Center (act5); May – Route 103 (vanilla), Route 110 (act2), the Weather Institute and Lilycove (act4), the Sootopolis partner choice (act5); Wally – Mauville (act2), the Petalburg Gym door and Lilycove (act4), Victory Road (vanilla). Left here: the post-game battles in the Littleroot lab and two Lilycove lines they share.  State vars: VAR_BRENDAN_STATE, VAR_MAY_STATE, VAR_WALLY_STATE (include/constants/draconid.h). Vanilla hooks are listed in docs/hack_changes.md ("Scripts").
 
 ### `LittlerootTown_ProfessorBirchsLab_EventScript_DraconidPostgameMay`
 - MAY: The new CHAMPION of HOENN, back in LITTLEROOT!
@@ -1001,6 +1001,50 @@ Draconid Emerald: Aster's arc after Draconid Pass (Phase 4, reworked in round 1)
 - ASTER: I'll wait. The statue doesn't mind.
 - ASTER: …You know what the answer to all my riddles was? The sky. It was always the sky.
 - See you up there someday, {PLAYER}.
+
+## data/scripts/draconid/battle_items.pory
+
+Draconid Emerald round 1, feedback 1.33 (D-218 – D-222): battle items and Mega Stones through the story.  A second clerk behind the counter of every Poké Mart (and a third on the Lilycove Department Store 3F) runs the BATTLE ITEM counter. Its stock grows with the number of Gym Badges, so it follows the level caps (src/caps.c): type boosters from the start, Choice items and the first Mega Stones at six badges, the rest of the competitive items at eight, the remaining Mega Stones after the Champion. Tier table and prices: docs/hack_items.md. The Gym Leaders also hand over their type's booster with their TM (D-220).
+
+### `Draconid_EventScript_BattleItemClerk`
+- …Battle items for TEAM MAGMA. Wonderful.
+- Rules are rules. Your BADGES decide what I sell you. Not your uniform.
+- {PLAYER}! Everyone's talking about what you did in SOOTOPOLIS!
+- Here, have a look. Everything your BADGES allow!
+- Welcome to the BATTLE ITEM counter!
+- The more GYM BADGES you carry, the stronger the items I'm allowed to sell you.
+
+### `Draconid_EventScript_GymBoosterRoxanne`
+- ROXANNE: Please take this HARD STONE as well.
+- Held by a POKéMON, it strengthens ROCK-type moves.
+
+### `Draconid_EventScript_GymBoosterBrawly`
+- BRAWLY: Oh, and grab this BLACK BELT, too!
+- Hold it, and your FIGHTING-type moves hit like a big wave!
+
+### `Draconid_EventScript_GymBoosterWattson`
+- WATTSON: Wahahahaha! Take this MAGNET as well!
+- It charges up ELECTRIC-type moves. Zap!
+
+### `Draconid_EventScript_GymBoosterFlannery`
+- FLANNERY: And… take this CHARCOAL, too.
+- It makes FIRE-type moves burn hotter. Use it well!
+
+### `Draconid_EventScript_GymBoosterNorman`
+- NORMAN: Take this SILK SCARF, too.
+- It strengthens NORMAL-type moves. Simple, and strong.
+
+### `Draconid_EventScript_GymBoosterWinona`
+- WINONA: Please accept this SHARP BEAK as well.
+- It lends strength to FLYING-type moves.
+
+### `Draconid_EventScript_GymBoosterTateAndLiza`
+- TATE: We have one more gift for you…
+- LIZA: …a TWISTED SPOON! It sharpens PSYCHIC-type moves!
+
+### `Draconid_EventScript_GymBoosterJuan`
+- JUAN: Please, accept this MYSTIC WATER as well.
+- It lends grace to WATER-type moves.
 
 ## data/scripts/draconid/maxie_calls.pory
 

@@ -47,6 +47,9 @@ menu) → `pokeemerald.gba`, `make release` → `pokeemerald-release.gba`; zippe
       tamer's scale scarf on every player sprite (1.14, D-164–D-167), Zinnia (D-180/181) – checked in the emulator;
       open: Courtney trainer pic (she doesn't battle)
 - [x] Trainers from real ORAS data (Serebii, D-170–D-175): 27 ORAS first-battle teams, Elite Four rosters, Elite Four post-game rematch after the Hall of Fame
+- [x] Follow-up 3 (1.31, 1.33): no trade evolutions (level evolutions, D-216/D-217), a battle item counter in
+      every Mart whose stock grows with the badges, Gym Leader boosters, Mega Stones after the Mega Ring (placed
+      and sold, D-218–D-222) – [hack_items.md](hack_items.md); `trade_evos.play`, `battle_items.play`
 - [ ] Verification (matrix incl. Nerine/Aster variants, story checks, per-act debug warps) + v2 ROM
 
 ## Phase 0 – Tools and extensions

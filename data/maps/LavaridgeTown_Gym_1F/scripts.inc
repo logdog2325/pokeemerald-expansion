@@ -85,6 +85,7 @@ LavaridgeTown_Gym_1F_EventScript_GiveOverheat2::
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	msgbox LavaridgeTown_Gym_1F_Text_ExplainOverheat, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_TM_OVERHEAT
+	call Draconid_EventScript_GymBoosterFlannery  @ Draconid Emerald (battle_items.pory, D-220)
 	release
 	end
 
@@ -93,6 +94,7 @@ LavaridgeTown_Gym_1F_EventScript_GiveOverheat::
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
 	msgbox LavaridgeTown_Gym_1F_Text_ExplainOverheat, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_TM_OVERHEAT
+	call Draconid_EventScript_GymBoosterFlannery  @ Draconid Emerald (battle_items.pory, D-220)
 	return
 
 LavaridgeTown_Gym_1F_EventScript_FlanneryRematch::

@@ -1093,7 +1093,7 @@
 #define FLAG_ITEM_PETALBURG_CITY_ETHER                              0x410
 #define FLAG_ITEM_RUSTBORO_CITY_X_DEFEND                            0x411
 #define FLAG_ITEM_LILYCOVE_CITY_MAX_REPEL                           0x412
-#define FLAG_ITEM_MOSSDEEP_CITY_NET_BALL                            0x413
+#define FLAG_ITEM_MOSSDEEP_CITY_METAGROSSITE                        0x413 // Draconid Emerald (D-222): was ITEM_NET_BALL
 #define FLAG_ITEM_METEOR_FALLS_1F_1R_TM_IRON_TAIL                   0x414
 #define FLAG_ITEM_METEOR_FALLS_1F_1R_FULL_HEAL                      0x415
 #define FLAG_ITEM_METEOR_FALLS_1F_1R_MOON_STONE                     0x416
@@ -1109,7 +1109,7 @@
 #define FLAG_ITEM_PETALBURG_WOODS_GREAT_BALL                        0x420
 #define FLAG_ITEM_ROUTE_104_POKE_BALL                               0x421
 #define FLAG_ITEM_PETALBURG_WOODS_ETHER                             0x422
-#define FLAG_ITEM_MAGMA_HIDEOUT_3F_3R_ECAPE_ROPE                    0x423
+#define FLAG_ITEM_MAGMA_HIDEOUT_3F_3R_CAMERUPTITE                   0x423 // Draconid Emerald (D-222): was ITEM_ESCAPE_ROPE
 #define FLAG_ITEM_TRICK_HOUSE_PUZZLE_1_ORANGE_MAIL                  0x424
 #define FLAG_ITEM_TRICK_HOUSE_PUZZLE_2_HARBOR_MAIL                  0x425
 #define FLAG_ITEM_TRICK_HOUSE_PUZZLE_2_WAVE_MAIL                    0x426
@@ -1122,7 +1122,7 @@
 #define FLAG_ITEM_TRICK_HOUSE_PUZZLE_8_BEAD_MAIL                    0x42D
 #define FLAG_ITEM_JAGGED_PASS_BURN_HEAL                             0x42E
 #define FLAG_ITEM_AQUA_HIDEOUT_B1F_MAX_ELIXIR                       0x42F
-#define FLAG_ITEM_AQUA_HIDEOUT_B2F_NEST_BALL                        0x430
+#define FLAG_ITEM_AQUA_HIDEOUT_B2F_SHARPEDONITE                     0x430 // Draconid Emerald (D-222): was ITEM_NEST_BALL
 #define FLAG_ITEM_MT_PYRE_EXTERIOR_MAX_POTION                       0x431
 #define FLAG_ITEM_MT_PYRE_EXTERIOR_TM_SKILL_SWAP                    0x432
 #define FLAG_ITEM_NEW_MAUVILLE_ULTRA_BALL                           0x433
@@ -1133,12 +1133,12 @@
 #define FLAG_ITEM_METEOR_FALLS_B1F_2R_TM_DRAGON_CLAW                0x438
 #define FLAG_ITEM_SHOAL_CAVE_ENTRANCE_BIG_PEARL                     0x439
 #define FLAG_ITEM_SHOAL_CAVE_INNER_ROOM_RARE_CANDY                  0x43A
-#define FLAG_ITEM_SHOAL_CAVE_STAIRS_ROOM_ICE_HEAL                   0x43B
+#define FLAG_ITEM_SHOAL_CAVE_STAIRS_ROOM_GLALITITE                  0x43B // Draconid Emerald (D-222): was ITEM_ICE_HEAL
 #define FLAG_ITEM_VICTORY_ROAD_1F_MAX_ELIXIR                        0x43C
 #define FLAG_ITEM_VICTORY_ROAD_1F_PP_UP                             0x43D
 #define FLAG_ITEM_VICTORY_ROAD_B1F_TM_PSYCHIC                       0x43E
 #define FLAG_ITEM_VICTORY_ROAD_B1F_FULL_RESTORE                     0x43F
-#define FLAG_ITEM_VICTORY_ROAD_B2F_FULL_HEAL                        0x440
+#define FLAG_ITEM_VICTORY_ROAD_B2F_GARCHOMPITE                      0x440 // Draconid Emerald (D-222): was ITEM_FULL_HEAL
 #define FLAG_ITEM_MT_PYRE_6F_TM_SHADOW_BALL                         0x441
 #define FLAG_ITEM_SEAFLOOR_CAVERN_ROOM_9_TM_EARTHQUAKE              0x442
 #define FLAG_ITEM_FIERY_PATH_TM_TOXIC                               0x443
@@ -1154,7 +1154,7 @@
 #define FLAG_ITEM_ABANDONED_SHIP_HIDDEN_FLOOR_ROOM_3_WATER_STONE    0x44D
 #define FLAG_ITEM_ABANDONED_SHIP_HIDDEN_FLOOR_ROOM_1_TM_RAIN_DANCE  0x44E
 #define FLAG_ITEM_ROUTE_121_CARBOS                                  0x44F
-#define FLAG_ITEM_ROUTE_123_ULTRA_BALL                              0x450
+#define FLAG_ITEM_ROUTE_123_GYARADOSITE                             0x450 // Draconid Emerald (D-222): was ITEM_ULTRA_BALL
 #define FLAG_ITEM_ROUTE_126_GREEN_SHARD                             0x451
 #define FLAG_ITEM_ROUTE_119_HYPER_POTION_2                          0x452
 #define FLAG_ITEM_ROUTE_120_HYPER_POTION                            0x453
@@ -1170,10 +1170,10 @@
 #define FLAG_ITEM_PETALBURG_WOODS_PARALYZE_HEAL                     0x45D
 #define FLAG_ITEM_ROUTE_115_GREAT_BALL                              0x45E
 #define FLAG_ITEM_SAFARI_ZONE_NORTH_CALCIUM                         0x45F
-#define FLAG_ITEM_MT_PYRE_3F_SUPER_REPEL                            0x460
+#define FLAG_ITEM_MT_PYRE_3F_BANETTITE                              0x460 // Draconid Emerald (D-222): was ITEM_SUPER_REPEL
 #define FLAG_ITEM_ROUTE_118_HYPER_POTION                            0x461
 #define FLAG_ITEM_NEW_MAUVILLE_FULL_HEAL                            0x462
-#define FLAG_ITEM_NEW_MAUVILLE_PARALYZE_HEAL                        0x463
+#define FLAG_ITEM_NEW_MAUVILLE_MANECTITE                            0x463 // Draconid Emerald (D-222): was ITEM_PARALYZE_HEAL
 #define FLAG_ITEM_AQUA_HIDEOUT_B1F_MASTER_BALL                      0x464
 #define FLAG_ITEM_OLD_MAGMA_HIDEOUT_B1F_MASTER_BALL                 0x465 // Unused Flag, leftover from the Ruby Magma hideout
 #define FLAG_ITEM_OLD_MAGMA_HIDEOUT_B1F_MAX_ELIXIR                  0x466 // Unused Flag, leftover from the Ruby Magma hideout
@@ -1219,7 +1219,7 @@
 #define FLAG_ITEM_MAGMA_HIDEOUT_3F_1R_NUGGET                        0x48E
 #define FLAG_ITEM_MAGMA_HIDEOUT_3F_2R_PP_MAX                        0x48F
 #define FLAG_ITEM_MAGMA_HIDEOUT_4F_MAX_REVIVE                       0x490
-#define FLAG_ITEM_SAFARI_ZONE_NORTH_EAST_NUGGET                     0x491
+#define FLAG_ITEM_SAFARI_ZONE_NORTH_EAST_ABSOLITE                   0x491 // Draconid Emerald (D-222): was ITEM_NUGGET
 #define FLAG_ITEM_SAFARI_ZONE_SOUTH_EAST_BIG_PEARL                  0x492
 
 #define FLAG_UNUSED_0x493                                           0x493 // Unused Flag
