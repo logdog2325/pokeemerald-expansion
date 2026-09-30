@@ -1,0 +1,255 @@
+# Gen 4-9 Pokémon on trainers, second pass (round 1 follow-up, feedback 1.40, D-240 - D-242,
+# docs/hack_trainers.md "Gen 4-9 swaps"): four changed trainers from four stretches of the game send out
+# their new Gen 4-9 lead. Needs rustboro_done.ss from tests/rustboro.play in the same output directory.
+# The party is the Lv 6 hatchling, so the later battles are lost on purpose (FLAG_DRACONID_NO_WHITEOUT):
+# this checks the data and the scripts, not balance. Each battle waits for the opponent's species in
+# gBattleMons[1] (struct BattlePokemon is 0x8C bytes, species first; the ids are hex SPECIES_* values from
+# include/constants/species.h), takes a frame series of the send-out (NAME_00 ... NAME_15), then mashes A to the end.
+#   Tommy (Rustboro Gym, S1, gym trainers get their gym's type, D-241): Roggenrola (0x20C) for a Geodude
+#   Helene (Route 115 north, S6, two from S5 on, D-240): Hawlucha (0x2BD) for her Machoke, Lucario behind it
+#   Magma grunt 1 (Magma Hideout 1F, S7, grunts get one, D-242): Salazzle (0x2F6) for his Weezing
+#   Felix (Victory Road B2F, S9): Barbaracle (0x2B1) for his Starmie, Golurk behind it
+loadstate rustboro_done.ss
+setflag FLAG_DEBUG_NO_TRAINER_SEE
+setflag FLAG_DRACONID_NO_WHITEOUT
+setflag FLAG_DEBUG_NO_ENCOUNTER
+heal
+# --- Tommy: stands at (3, 9) facing left; the player talks to him from (2, 9)
+settrainer TRAINER_TOMMY 0
+warp MAP_RUSTBORO_CITY_GYM 2 9
+run 60
+press RIGHT 2 16
+press A 2 16
+until @gMain+4 4 @@BattleMainCB2 3000 A 30
+until @gBattleMons+8C 2 20C 600
+run 40
+shot g01_tommy_00
+press A 2 8
+run 40
+shot g01_tommy_01
+press A 2 8
+run 40
+shot g01_tommy_02
+press A 2 8
+run 40
+shot g01_tommy_03
+press A 2 8
+run 40
+shot g01_tommy_04
+press A 2 8
+run 40
+shot g01_tommy_05
+press A 2 8
+run 40
+shot g01_tommy_06
+press A 2 8
+run 40
+shot g01_tommy_07
+press A 2 8
+run 40
+shot g01_tommy_08
+press A 2 8
+run 40
+shot g01_tommy_09
+press A 2 8
+run 40
+shot g01_tommy_10
+press A 2 8
+run 40
+shot g01_tommy_11
+press A 2 8
+run 40
+shot g01_tommy_12
+press A 2 8
+run 40
+shot g01_tommy_13
+press A 2 8
+run 40
+shot g01_tommy_14
+press A 2 8
+run 40
+shot g01_tommy_15
+press A 2 8
+mash A 30000
+expect_opponent TRAINER_TOMMY
+heal
+# --- Helene: stands at (15, 7) facing left; the player talks to her from (14, 7)
+settrainer TRAINER_HELENE 0
+warp MAP_ROUTE115 14 7
+run 60
+press RIGHT 2 16
+press A 2 16
+until @gMain+4 4 @@BattleMainCB2 3000 A 30
+until @gBattleMons+8C 2 2BD 600
+run 40
+shot g02_helene_00
+press A 2 8
+run 40
+shot g02_helene_01
+press A 2 8
+run 40
+shot g02_helene_02
+press A 2 8
+run 40
+shot g02_helene_03
+press A 2 8
+run 40
+shot g02_helene_04
+press A 2 8
+run 40
+shot g02_helene_05
+press A 2 8
+run 40
+shot g02_helene_06
+press A 2 8
+run 40
+shot g02_helene_07
+press A 2 8
+run 40
+shot g02_helene_08
+press A 2 8
+run 40
+shot g02_helene_09
+press A 2 8
+run 40
+shot g02_helene_10
+press A 2 8
+run 40
+shot g02_helene_11
+press A 2 8
+run 40
+shot g02_helene_12
+press A 2 8
+run 40
+shot g02_helene_13
+press A 2 8
+run 40
+shot g02_helene_14
+press A 2 8
+run 40
+shot g02_helene_15
+press A 2 8
+mash A 30000
+expect_opponent TRAINER_HELENE
+heal
+# --- Magma grunt 1: stands at (4, 5) facing right; the player talks to him from (5, 5)
+clearflag FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS
+settrainer TRAINER_GRUNT_MAGMA_HIDEOUT_1 0
+warp MAP_MAGMA_HIDEOUT_1F 5 5
+run 60
+press LEFT 2 16
+press A 2 16
+until @gMain+4 4 @@BattleMainCB2 3000 A 30
+until @gBattleMons+8C 2 2F6 600
+run 40
+shot g03_magma_grunt_00
+press A 2 8
+run 40
+shot g03_magma_grunt_01
+press A 2 8
+run 40
+shot g03_magma_grunt_02
+press A 2 8
+run 40
+shot g03_magma_grunt_03
+press A 2 8
+run 40
+shot g03_magma_grunt_04
+press A 2 8
+run 40
+shot g03_magma_grunt_05
+press A 2 8
+run 40
+shot g03_magma_grunt_06
+press A 2 8
+run 40
+shot g03_magma_grunt_07
+press A 2 8
+run 40
+shot g03_magma_grunt_08
+press A 2 8
+run 40
+shot g03_magma_grunt_09
+press A 2 8
+run 40
+shot g03_magma_grunt_10
+press A 2 8
+run 40
+shot g03_magma_grunt_11
+press A 2 8
+run 40
+shot g03_magma_grunt_12
+press A 2 8
+run 40
+shot g03_magma_grunt_13
+press A 2 8
+run 40
+shot g03_magma_grunt_14
+press A 2 8
+run 40
+shot g03_magma_grunt_15
+press A 2 8
+mash A 30000
+expect_opponent TRAINER_GRUNT_MAGMA_HIDEOUT_1
+heal
+# --- Felix: stands at (25, 21) facing up; the player talks to him from (25, 20)
+settrainer TRAINER_FELIX 0
+warp MAP_VICTORY_ROAD_B2F 25 20
+run 60
+press DOWN 2 16
+press A 2 16
+until @gMain+4 4 @@BattleMainCB2 3000 A 30
+until @gBattleMons+8C 2 2B1 600
+run 40
+shot g04_felix_00
+press A 2 8
+run 40
+shot g04_felix_01
+press A 2 8
+run 40
+shot g04_felix_02
+press A 2 8
+run 40
+shot g04_felix_03
+press A 2 8
+run 40
+shot g04_felix_04
+press A 2 8
+run 40
+shot g04_felix_05
+press A 2 8
+run 40
+shot g04_felix_06
+press A 2 8
+run 40
+shot g04_felix_07
+press A 2 8
+run 40
+shot g04_felix_08
+press A 2 8
+run 40
+shot g04_felix_09
+press A 2 8
+run 40
+shot g04_felix_10
+press A 2 8
+run 40
+shot g04_felix_11
+press A 2 8
+run 40
+shot g04_felix_12
+press A 2 8
+run 40
+shot g04_felix_13
+press A 2 8
+run 40
+shot g04_felix_14
+press A 2 8
+run 40
+shot g04_felix_15
+press A 2 8
+mash A 30000
+expect_opponent TRAINER_FELIX
+shot g05_after
+clearflag FLAG_DEBUG_NO_TRAINER_SEE
+clearflag FLAG_DRACONID_NO_WHITEOUT

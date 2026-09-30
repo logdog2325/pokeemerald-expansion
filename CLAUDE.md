@@ -63,6 +63,7 @@ python3 tools/hack/emu/play.py tools/hack/emu/tests/postgame_home.play -o /tmp/e
 python3 tools/hack/emu/play.py tools/hack/emu/tests/hm_free.play -o /tmp/emu    # HM field moves (debug build)
 python3 tools/hack/emu/play.py tools/hack/emu/tests/wild.play -o /tmp/emu       # National Dex, wild battles
 python3 tools/hack/emu/play.py tools/hack/emu/tests/rival_calls.play -o /tmp/emu  # rivals' PokéNav calls (expect_text)
+python3 tools/hack/emu/play.py tools/hack/emu/tests/gen49_trainers.play -o /tmp/emu  # four trainers' Gen 4-9 send-outs
 python3 tools/hack/emu/play.py tools/hack/emu/tests/frontier_legends.play -o /tmp/emu   # Wes, Red, Blue + the tag
 python3 tools/hack/emu/matrix.py -o /tmp/matrix       # all 18 gender x egg x second-starter flows
 python3 tools/hack/check_story.py                     # every new flag / story state set and read
@@ -83,6 +84,7 @@ python3 tools/hack/trainers/splice_party.py batch.party                  # merge
 python3 tools/hack/trainers/build_segments.py [--list S3]                # segments.json (caps from src/caps.c)
 python3 tools/hack/trainers/learnset.py Grovyle --level 23 [--all]       # moves for writing sets
 python3 tools/hack/trainers/check_tiers.py                               # rematch tiers grow tier to tier
+python3 tools/hack/trainers/gen49.py --coverage                          # Gen 4-9 share per segment, gym types, grunts (D-240)
 python3 tools/hack/trainers/report.py                                    # trainer table in docs/hack_trainers.md
 ```
 Scratch output (previews, sheets) goes to the session scratchpad, not the repo.

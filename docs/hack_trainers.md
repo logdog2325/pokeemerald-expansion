@@ -172,7 +172,8 @@ checked).
 
 Tools: `scan_maps.py` (which map fights which trainer), `build_segments.py` (segments.json),
 `check_party.py`, `check_tiers.py`, `splice_party.py` (`--target` to merge into another file), `report.py`,
-`party.py` (the `.party` reader/writer they share), and the ORAS tools in `oras/` (below).
+`party.py` (the `.party` reader/writer they share), `gen49.py` + `gen49_plan.py` (the Gen 4–9 swaps, `--coverage`;
+[below](#second-pass-round-1-follow-up-feedback-140-d-240--d-242)) and the ORAS tools in `oras/` (below).
 
 ## ORAS data (round 1)
 
@@ -363,6 +364,63 @@ multi battle. Blocks: `tools/hack/trainers/pwt/batch_frontier_legends.party` (+ 
 | `TRAINER_WES_FRONTIER_MULTI` / `PARTNER_WES` | Espeon (Reflect, Light Screen), Umbreon, Ho-Oh |
 | `TRAINER_RED_FRONTIER_MULTI` / `PARTNER_RED` | Pikachu (Fake Out), Venusaur, Charizard @ Charizardite X |
 | `TRAINER_BLUE_FRONTIER_MULTI` / `PARTNER_BLUE` | Arcanine, Gyarados (two Intimidates), Alakazam @ Alakazite |
+### Second pass (round 1 follow-up, feedback 1.40, D-240 – D-242)
+
+"Make sure trainers are getting Gen 4–9 Pokémon too to spice things up." A **Gen 4–9 Pokémon** here is a species
+of Gens 4–9 that is not in the Hoenn Pokédex (Roserade, Gallade, Magnezone, Dusknoir … are Hoenn species).
+`python3 tools/hack/trainers/gen49.py --coverage` counts them and checks the rules below:
+
+| Segment | S1 | S2 | S3 | S4 | S5 | S6 | S7 | S8 | S9 | POST | All |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| Generic first battles with one | 17/26 | 14/22 | 26/43 | 39/64 | 12/19 | 43/71 | 85/140 | 11/14 | 15/24 | 7/11 | **269/434 (62%)** |
+| Blocks with their rematch tiers | 17/26 | 14/22 | 26/43 | 39/64 | 12/19 | 64/116 | 122/219 | 40/76 | 18/30 | 37/75 | 389/690 |
+
+(D-195: 122 trainers, 28%.) Grunts: 44 of 49.
+
+- **About 60% of the generic trainers** (D-240), 60–65% in every segment (S8 79%: the Sootopolis Gym is most of
+  it), in their first battle and every rematch tier; Wilton and Brooke, who had one only from tier 2, now have it
+  in tier 1 too (Cindy's and Winston's one-Pokémon first battles keep their Zigzagoon). Picked like D-195: the
+  area's wild newcomers ([hack_wild.md](hack_wild.md)), the class's theme, the trainer's ORAS roster where it has
+  one (Albert Sigilyph, Thomas Braviary, Leonard Floatzel, Dusty Aurorus), the ace kept.
+- **Two from S5 on**: every block from S5 on with 4+ Pokémon that has a Gen 4–9 Pokémon has two – the new
+  trainers, D-195's trainers and every rematch tier. In a rematch chain the second one comes in with the first big
+  tier and grows from tier to tier (Calvin's Breloom slot becomes Gumshoos from tier 2), taken from a family that
+  the earlier tiers don't have, so `check_tiers.py` stays at 0 warnings.
+- **Gym trainers** (D-241): all 57 have one of their gym's type, the Petalburg, Fortree, Mossdeep and Sootopolis
+  trainers two – Rustboro rock (Nacli, Rolycoly, Roggenrola), Dewford fighting (Sawk, Scraggy, Clobbopus, Throh,
+  Croagunk, Timburr), Mauville electric (Pawmo, Luxio, Tadbulb, Joltik; Vivian the Battle Girl gets
+  electric/fighting Pawmo), Lavaridge fire (Litleo, Sizzlipede, Salandit, Carkol, Larvesta, Heatmor, Fletchinder;
+  Danielle's D-195 Gurdurr became Heatmor), Petalburg normal (Gumshoos, Bewear, Greedent, Diggersby, Glameow,
+  Bouffalant, Chatot, Herdier), Fortree flying (Staraptor, Toucannon, Hawlucha, Unfezant, Swanna, Talonflame,
+  Chatot, Corvisquire, Kilowattrel, Sigilyph), Mossdeep psychic (Bronzong, Musharna, Swoobat, Sigilyph, Bruxish –
+  the only psychic lines in the species pool, so they repeat), Sootopolis water.
+- **Grunts** (D-242, reversing D-195's exclusion): one each, never the Poochyena / Zubat / Numel / Carvanha lines
+  and never the ace. Magma: fire / ground / rock (Salazzle, Excadrill, Heatmor, Coalossal, Gigalith, Mudsdale,
+  Centiskorch, Hippowdon, Pyroar, Garganacl, Krookodile, Sandaconda, Rampardos, Glimmora, Talonflame); Aqua: water /
+  dark (Thievul, Barraskewda, Kilowattrel, Floatzel, Zoroark, Clawitzer, Skuntank, Lumineon, Toxapex, Palafin,
+  Jellicent, Scrafty, Barbaracle, Drednaw). The five grunts whose teams are only those lines keep them (Museum,
+  both Mt. Chimney grunts, Jagged Pass, Aqua Hideout 8). Purrloin is not in the species pool, so the Aqua dark
+  types are Thievul, Skuntank, Scrafty and Zoroark.
+- **Strength**: the new Pokémon's stage has at least 80% of the base stat total of the one it replaces (no Skrelp
+  at 39, Goomy at 35 or Larvesta at 43), except a line that grows through the rematch tiers (Amaura → Aurorus,
+  Axew → Fraxure, Corvisquire → Corviknight) and Wishiwashi (Schooling).
+- **Moves** as D-195, now written by `gen49.py`; moves over 90 power are held back before S7 (the batches use them
+  for 3–4% of moves in S4–S6). Stones, friendship and other evolutions at set levels (`SET_LEVEL`: Lucario,
+  Swoobat, Whimsicott, Lilligant, Musharna, Pawmot, Polteageist 30, Tsareena 29, Grapploct and Frosmoth 35,
+  Chandelure 50).
+- **Evolution levels** (D-216's warnings): the generic trainers 1–2 levels under the new trade-evolution levels are
+  pre-evolved – Kira & Dan's Huntail / Gorebyss and Thalia's Gorebyss (tiers 1–2) are Clamperl holding the Deep Sea
+  Tooth / Scale they will evolve with, Thalia's tier 3 and Aaron's Kingdra are Seadra (Aaron, a Dragon Tamer, gets
+  Fraxure and Druddigon beside it), Nob's Machamp is a Machoke, Trent's and Sawyer's Golem a Graveler.
+  `check_party.py --caps --proc`: 0 errors, 13 warnings (the story and leader teams); `check_tiers.py` 0 / 0.
+
+**Workflow.** `tools/hack/trainers/gen49_plan.py` lists every swap (trainer → the family that makes way → the new
+line, per tier where needed) and the pre-evolutions; `gen49.py` writes the Pokémon from it into
+`batch_gen49.party` (every block with a swap or a fix) and `gen49_swaps.json`, then `splice_party.py
+tools/hack/trainers/batch_gen49.party`. A swap whose family is already in the block is skipped, so the script can run
+again on the spliced file (it changes nothing); `-v` prints every swap, `--moves Clawitzer 40 S7` the set the rules
+give a species. `check_party.py` now resolves species aliases before it takes a wild species' family into the pool
+(Sinistea → Polteageist).
 
 ## Trainer table
 <!-- generated by tools/hack/trainers/report.py -->
@@ -376,10 +434,10 @@ multi battle. Blocks: `tools/hack/trainers/pwt/batch_frontier_legends.party` (+ 
 | ROXANNE_1 | RustboroCity_Gym | leader | 4 | 12–15 | Nosepass 15 | emerald-rematch |
 | JERRY_1 | Route116 | route | 2 | 10–11 | Pawniard 11 | emerald-rematch + Pawniard |
 | KAREN_1 | Route116 | route | 2 | 10–11 | Whismur 11 | emerald-rematch |
-| CALVIN_1 | Route102 | route | 3 | 5–6 | Poochyena 6 | emerald-rematch |
-| BILLY | Route104 | route | 2 | 7–8 | Seedot 8 | enhanced |
+| CALVIN_1 | Route102 | route | 3 | 5–6 | Poochyena 6 | emerald-rematch + Skwovet |
+| BILLY | Route104 | route | 2 | 7–8 | Seedot 8 | enhanced + Pikipek |
 | JOSH | RustboroCity_Gym | gym | 2 | 11–12 | Aron 12 | enhanced + Nacli |
-| TOMMY | RustboroCity_Gym | gym | 2 | 11–12 | Geodude 12 | enhanced |
+| TOMMY | RustboroCity_Gym | gym | 2 | 11–12 | Geodude 12 | enhanced + Roggenrola |
 | JOEY | Route116 | route | 2 | 10–11 | Machop 11 | enhanced + Starly |
 | ALLEN | Route102 | route | 2 | 6–7 | Taillow 7 | enhanced |
 | IVAN | Route104 | route | 3 | 9–11 | Tentacool 11 | enhanced |
@@ -387,19 +445,19 @@ multi battle. Blocks: `tools/hack/trainers/pwt/batch_frontier_legends.party` (+ 
 | BRENDAN_RUSTBORO | RustboroCity | route | 4 | 10–13 | Treecko 13 | story |
 | MAY_ROUTE_103 | Route103 | route | 1 | 5–5 | Torchic 5 | story |
 | MARC | RustboroCity_Gym | gym | 2 | 12–13 | Onix 13 | enhanced + Rolycoly |
-| TIANA | Route102 | route | 2 | 6–7 | Shroomish 7 | enhanced |
+| TIANA | Route102 | route | 2 | 6–7 | Shroomish 7 | enhanced + Skwovet |
 | HALEY_1 | Route104 | route | 3 | 10–11 | Shroomish 11 | emerald-rematch + Cottonee |
 | JANICE | Route116 | route | 2 | 10–11 | Marill 11 | enhanced |
 | RICK | Route102 | route | 2 | 5–6 | Wurmple 6 | enhanced + Kricketot |
 | LYLE | PetalburgWoods | route | 3 | 8–9 | Cascoon 9 | enhanced + Nymble |
 | JOSE | Route116 | route | 2 | 10–11 | Beautifly 11 | enhanced |
 | JAMES_1 | PetalburgWoods | route | 3 | 9–10 | Dustox 10 | emerald-rematch + Combee |
-| CLARK | Route116 | route | 2 | 11–12 | Geodude 12 | enhanced |
-| DAWSON | Route116 | route | 2 | 11–12 | Poochyena 12 | enhanced |
+| CLARK | Route116 | route | 2 | 11–12 | Geodude 12 | enhanced + Timburr |
+| DAWSON | Route116 | route | 2 | 11–12 | Poochyena 12 | enhanced + Lillipup |
 | SARAH | Route116 | route | 2 | 11–12 | Zigzagoon 12 | enhanced |
-| DARIAN | Route104 | route | 2 | 7–8 | Tentacool 8 | enhanced |
+| DARIAN | Route104 | route | 2 | 7–8 | Tentacool 8 | enhanced + Chewtle |
 | DEVAN | Route116 | route | 2 | 11–12 | Geodude 12 | enhanced + Drilbur |
-| JOHNSON | Route116 | route | 2 | 11–12 | Shroomish 12 | enhanced |
+| JOHNSON | Route116 | route | 2 | 11–12 | Shroomish 12 | enhanced + Bunnelby |
 | ASTER_PASS_DEINO | DraconidPass | route | 1 | 5–5 | Dreepy 5 | story |
 | ASTER_PASS_DREEPY |  | route | 1 | 5–5 | Jangmo-o 5 | story |
 | ASTER_PASS_JANGMO_O |  | route | 1 | 5–5 | Deino 5 | story |
@@ -414,25 +472,25 @@ multi battle. Blocks: `tools/hack/trainers/pwt/batch_frontier_legends.party` (+ 
 | LOLA_1 | Route109 | route | 2 | 15–16 | Marill 16 | emerald-rematch |
 | RICKY_1 | Route109 | route | 2 | 15–16 | Zigzagoon 16 | emerald-rematch |
 | SIMON | Route109_SeashoreHouse | route | 2 | 15–16 | Marill 16 | enhanced |
-| TAKAO | DewfordTown_Gym | gym | 2 | 16–17 | Makuhita 17 | enhanced |
+| TAKAO | DewfordTown_Gym | gym | 2 | 16–17 | Makuhita 17 | enhanced + Sawk |
 | NOB_1 | Route115 | route | 2 | 16–17 | Machop 17 | emerald-rematch |
 | BRAWLY_1 | DewfordTown_Gym | leader | 4 | 17–20 | Makuhita 20 | emerald-rematch |
 | ELLIOT_1 | Route106 | route | 3 | 13–14 | Tentacool 14 | emerald-rematch |
 | NED | Route106 | route | 2 | 12–13 | Tentacool 13 | enhanced + Arrokuda |
 | JOCELYN | DewfordTown_Gym | gym | 3 | 17–18 | Meditite 18 | enhanced + Croagunk |
-| LAURA | DewfordTown_Gym | gym | 2 | 16–17 | Meditite 17 | enhanced |
+| LAURA | DewfordTown_Gym | gym | 2 | 16–17 | Meditite 17 | enhanced + Scraggy |
 | CYNDY_1 | Route115 | route | 2 | 16–17 | Makuhita 17 | emerald-rematch |
 | HUEY | Route109 | route | 2 | 16–17 | Machop 17 | enhanced + Wattrel |
 | EDMOND | Route109 | route | 2 | 15–16 | Machop 16 | oras-first |
-| DWAYNE | Route109_SeashoreHouse | route | 3 | 16–17 | Machop 17 | enhanced |
+| DWAYNE | Route109_SeashoreHouse | route | 3 | 16–17 | Machop 17 | enhanced + Finneon |
 | HECTOR | Route115 | route | 2 | 16–17 | Zangoose 17 | enhanced |
-| BRENDEN | DewfordTown_Gym | gym | 2 | 16–17 | Machop 17 | enhanced |
-| LILITH | DewfordTown_Gym | gym | 2 | 17–18 | Meditite 18 | enhanced |
+| BRENDEN | DewfordTown_Gym | gym | 2 | 16–17 | Machop 17 | enhanced + Clobbopus |
+| LILITH | DewfordTown_Gym | gym | 2 | 17–18 | Meditite 18 | enhanced + Throh |
 | CRISTIAN | DewfordTown_Gym | gym | 2 | 17–18 | Makuhita 18 | enhanced + Timburr |
 | MIKE_2 | RusturfTunnel | route | 3 | 14–15 | Geodude 15 | enhanced + Roggenrola |
-| JOHANNA | Route109_SeashoreHouse | route | 2 | 16–17 | Goldeen 17 | enhanced |
-| HAILEY | Route109 | route | 2 | 15–16 | Marill 16 | enhanced |
-| CHANDLER | Route109 | route | 2 | 15–16 | Tentacool 16 | enhanced |
+| JOHANNA | Route109_SeashoreHouse | route | 2 | 16–17 | Goldeen 17 | enhanced + Glameow |
+| HAILEY | Route109 | route | 2 | 15–16 | Marill 16 | enhanced + Finizen |
+| CHANDLER | Route109 | route | 2 | 15–16 | Tentacool 16 | enhanced + Buizel |
 | MARLENE | Route115 | route | 2 | 15–16 | Spoink 16 | enhanced + Woobat |
 | MAY_RUSTBORO | Route104 | route | 3 | 15–17 | Combusken 17 | story |
 | NERINE_RUSTURF_DEINO_CHARMANDER | RusturfTunnel | route | 4 | 14–17 | Jangmo-o 17 | story |
@@ -451,29 +509,29 @@ multi battle. Blocks: `tools/hack/trainers/pwt/batch_frontier_legends.party` (+ 
 | Trainer | Map | Role | Mons | Levels | Ace | Source |
 |---|---|---|---|---|---|---|
 | GRUNT_MUSEUM_1 | SlateportCity_OceanicMuseum_2F | grunt | 2 | 17–18 | Carvanha 18 | enhanced |
-| DAISY | Route103 | route | 3 | 17–18 | Roselia 18 | enhanced |
-| ROSE_1 | Route118 | route | 3 | 20–22 | Roselia 22 | emerald-rematch |
+| DAISY | Route103 | route | 3 | 17–18 | Roselia 18 | enhanced + Morelull |
+| ROSE_1 | Route118 | route | 3 | 20–22 | Roselia 22 | emerald-rematch + Petilil |
 | KIRK | MauvilleCity_Gym | gym | 3 | 21–22 | Electrike 22 | enhanced + Pawmo |
 | SHAWN | MauvilleCity_Gym | gym | 3 | 22–23 | Magnemite 23 | enhanced + Luxio |
 | DALTON_1 | Route118 | route | 2 | 21–22 | Loudred 22 | emerald-rematch + Chatot |
 | DEREK | Route117 | route | 3 | 20–21 | Beautifly 21 | oras-first + Cutiefly |
-| EDWARD | Route110 | route | 2 | 19–20 | Kadabra 20 | enhanced |
-| JACLYN | Route110 | route | 3 | 20–21 | Kadabra 21 | enhanced |
+| EDWARD | Route110 | route | 2 | 19–20 | Kadabra 20 | enhanced + Munna |
+| JACLYN | Route110 | route | 3 | 20–21 | Kadabra 21 | enhanced + Sigilyph |
 | WATTSON_1 | MauvilleCity_Gym | leader | 5 | 22–25 | Manectric 25 | emerald-rematch |
 | ANNA_AND_MEG_1 | Route117 | route | 2 | 18–19 | Makuhita 19 | emerald-rematch |
 | MIGUEL_1 | Route103 | route | 2 | 18–19 | Skitty 19 | emerald-rematch |
 | ISABEL_1 | Route110 | route | 2 | 17–18 | Minun 18 | emerald-rematch |
 | BEN | MauvilleCity_Gym | gym | 3 | 21–22 | Linoone 22 | enhanced + Tadbulb |
 | EDDIE | Route110_TrickHousePuzzle1 | route | 3 | 21–22 | Geodude 22 | oras-first |
-| TIMMY | Route110 | route | 3 | 17–18 | Electrike 18 | oras-first |
+| TIMMY | Route110 | route | 3 | 17–18 | Electrike 18 | oras-first + Nickit |
 | ANDREW | Route103 | route | 3 | 18–20 | Gyarados 20 | enhanced + Finneon |
-| DALE | Route110 | route | 4 | 19–21 | Wailmer 21 | enhanced |
-| WADE | Route118 | route | 2 | 20–21 | Carvanha 21 | enhanced |
-| JACOB | Route110 | route | 3 | 20–21 | Magnemite 21 | enhanced |
-| ANTHONY | Route110 | route | 2 | 21–22 | Magnemite 22 | enhanced |
+| DALE | Route110 | route | 4 | 19–21 | Wailmer 21 | enhanced + Finneon |
+| WADE | Route118 | route | 2 | 20–21 | Carvanha 21 | enhanced + Arrokuda |
+| JACOB | Route110 | route | 3 | 20–21 | Magnemite 21 | enhanced + Pawmo |
+| ANTHONY | Route110 | route | 2 | 21–22 | Magnemite 22 | enhanced + Luxio |
 | BENJAMIN_1 | Route110 | route | 2 | 20–21 | Magnemite 21 | emerald-rematch + Klink |
 | ABIGAIL_1 | Route110 | route | 2 | 21–22 | Magnemite 22 | emerald-rematch |
-| JASMINE | Route110 | route | 3 | 20–21 | Magnemite 21 | enhanced |
+| JASMINE | Route110 | route | 3 | 20–21 | Magnemite 21 | enhanced + Blitzle |
 | DYLAN_1 | Route117 | route | 2 | 18–19 | Doduo 19 | emerald-rematch |
 | MARIA_1 | Route117 | route | 2 | 19–20 | Doduo 20 | emerald-rematch |
 | AMY_AND_LIV_1 | Route103 | route | 2 | 18–19 | Minun 19 | emerald-rematch |
@@ -482,18 +540,18 @@ multi battle. Blocks: `tools/hack/trainers/pwt/batch_frontier_legends.party` (+ 
 | ISAAC_1 | Route117 | route | 4 | 19–20 | Loudred 20 | emerald-rematch |
 | LYDIA_1 | Route117 | route | 4 | 20–22 | Roselia 22 | emerald-rematch |
 | SALLY | Route110_TrickHousePuzzle1 | route | 2 | 20–21 | Gloom 21 | enhanced |
-| ROBIN | Route110_TrickHousePuzzle1 | route | 3 | 20–21 | Azumarill 21 | enhanced |
-| VIVIAN | MauvilleCity_Gym | gym | 3 | 21–22 | Meditite 22 | enhanced |
+| ROBIN | Route110_TrickHousePuzzle1 | route | 3 | 20–21 | Azumarill 21 | enhanced + Glameow |
+| VIVIAN | MauvilleCity_Gym | gym | 3 | 21–22 | Meditite 22 | enhanced + Pawmo |
 | WALLY_MAUVILLE | MauvilleCity | route | 1 | 19–19 | Ralts 19 | story |
 | KALEB | Route110 | route | 2 | 17–18 | Plusle 18 | enhanced |
 | JOSEPH | Route110 | route | 3 | 19–20 | Electrike 20 | enhanced |
 | ALYSSA | Route110 | route | 2 | 21–22 | Magnemite 22 | enhanced |
 | MARCOS | Route103 | route | 2 | 17–18 | Voltorb 18 | enhanced |
-| RHETT | Route103 | route | 2 | 17–18 | Makuhita 18 | enhanced |
+| RHETT | Route103 | route | 2 | 17–18 | Makuhita 18 | enhanced + Timburr |
 | DEANDRE | Route118 | route | 3 | 20–21 | Linoone 21 | enhanced + Luxio |
 | PETE | Route103 | route | 2 | 19–20 | Tentacool 20 | enhanced + Wattrel |
-| ISABELLE | Route103 | route | 2 | 19–20 | Azumarill 20 | enhanced |
-| MELINA | Route117 | route | 2 | 20–21 | Doduo 21 | enhanced |
+| ISABELLE | Route103 | route | 2 | 19–20 | Azumarill 20 | enhanced + Finizen |
+| MELINA | Route117 | route | 2 | 20–21 | Doduo 21 | enhanced + Herdier |
 | BRANDI | Route117 | route | 2 | 20–21 | Kirlia 21 | enhanced |
 | AISHA | Route117 | route | 2 | 19–20 | Meditite 20 | enhanced + Stufful |
 | ANGELO | MauvilleCity_Gym | gym | 3 | 21–22 | Volbeat 22 | enhanced + Joltik |
@@ -514,25 +572,25 @@ multi battle. Blocks: `tools/hack/trainers/pwt/batch_frontier_legends.party` (+ 
 | SAWYER_1 | MtChimney | route | 3 | 25–26 | Graveler 26 | emerald-rematch + Carkol |
 | GABBY_AND_TY_1 |  | route | 4 | 22–23 | Loudred 23 | enhanced |
 | GABBY_AND_TY_2 |  | route | 4 | 26–27 | Loudred 27 | enhanced |
-| WILTON_1 | Route111 | route | 3 | 23–24 | Hariyama 24 | emerald-rematch |
-| BROOKE_1 | Route111 | route | 3 | 23–24 | Roselia 24 | emerald-rematch |
-| MELISSA | MtChimney | route | 3 | 25–26 | Azumarill 26 | enhanced |
+| WILTON_1 | Route111 | route | 3 | 23–24 | Hariyama 24 | emerald-rematch + Fletchinder |
+| BROOKE_1 | Route111 | route | 3 | 23–24 | Roselia 24 | emerald-rematch + Glameow |
+| MELISSA | MtChimney | route | 3 | 25–26 | Azumarill 26 | enhanced + Ducklett |
 | SHEILA | MtChimney | route | 3 | 25–26 | Breloom 26 | enhanced + Ribombee |
-| SHIRLEY | MtChimney | route | 3 | 25–26 | Ponyta 26 | enhanced |
+| SHIRLEY | MtChimney | route | 3 | 25–26 | Ponyta 26 | enhanced + Salandit |
 | STEVE_1 | Route114 | route | 3 | 24–25 | Rhyhorn 25 | emerald-rematch |
 | GRUNT_MT_CHIMNEY_1 | MtChimney | grunt | 3 | 25–26 | Mightyena 26 | enhanced |
-| DAISUKE | Route111 | route | 3 | 22–23 | Machop 23 | enhanced |
-| COLE | LavaridgeTown_Gym_1F | gym | 3 | 26–27 | Numel 27 | enhanced |
+| DAISUKE | Route111 | route | 3 | 22–23 | Machop 23 | enhanced + Riolu |
+| COLE | LavaridgeTown_Gym_1F | gym | 3 | 26–27 | Numel 27 | enhanced + Larvesta |
 | JEFF | LavaridgeTown_Gym_1F | gym | 3 | 26–27 | Slugma 27 | enhanced + Litleo |
 | AXLE | LavaridgeTown_Gym_1F | gym | 3 | 26–27 | Numel 27 | enhanced + Sizzlipede |
 | JACE | LavaridgeTown_Gym_1F | gym | 3 | 26–27 | Slugma 27 | enhanced + Salandit |
-| KEEGAN | LavaridgeTown_Gym_1F | gym | 3 | 27–28 | Slugma 28 | enhanced |
+| KEEGAN | LavaridgeTown_Gym_1F | gym | 3 | 27–28 | Slugma 28 | enhanced + Carkol |
 | BERNIE_1 | Route114 | route | 3 | 24–25 | Pelipper 25 | emerald-rematch |
-| LARRY | Route112 | route | 3 | 22–23 | Golbat 23 | oras-first |
+| LARRY | Route112 | route | 3 | 22–23 | Golbat 23 | oras-first + Trumbeak |
 | SHANE | Route114 | route | 3 | 24–25 | Nuzleaf 25 | enhanced + Skiddo |
 | ETHAN_1 | JaggedPass | route | 3 | 26–27 | Linoone 27 | emerald-rematch + Stunky |
-| AUTUMN | JaggedPass | route | 3 | 26–27 | Breloom 27 | enhanced |
-| TRAVIS | Route111 | route | 3 | 21–22 | Sandslash 22 | enhanced |
+| AUTUMN | JaggedPass | route | 3 | 26–27 | Breloom 27 | enhanced + Steenee |
+| TRAVIS | Route111 | route | 3 | 21–22 | Sandslash 22 | enhanced + Diggersby |
 | FLANNERY_1 | LavaridgeTown_Gym_1F | leader | 5 | 27–30 | Torkoal 30 | emerald-rematch |
 | TED | Route110_TrickHousePuzzle2 | route | 3 | 22–23 | Kirlia 23 | enhanced |
 | PAUL | Route110_TrickHousePuzzle2 | route | 3 | 22–23 | Gloom 23 | enhanced |
@@ -542,13 +600,13 @@ multi battle. Blocks: `tools/hack/trainers/pwt/batch_frontier_legends.party` (+ 
 | VICKY | Route111 | route | 3 | 23–24 | Meditite 24 | enhanced |
 | SHELBY_1 | MtChimney | route | 3 | 25–26 | Hariyama 26 | emerald-rematch + Riolu |
 | JAYLEN | Route113 | route | 3 | 23–24 | Trapinch 24 | enhanced |
-| DILLON | Route113 | route | 3 | 23–24 | Aron 24 | enhanced |
+| DILLON | Route113 | route | 3 | 23–24 | Aron 24 | enhanced + Carkol |
 | CLAUDE | Route114 | route | 3 | 24–25 | Gyarados 25 | enhanced + Buizel |
-| NOLAN | Route114 | route | 3 | 24–25 | Barboach 25 | enhanced |
-| LAO_1 | Route113 | route | 3 | 23–24 | Koffing 24 | emerald-rematch |
-| LUNG | Route113 | route | 3 | 23–24 | Ninjask 24 | enhanced |
+| NOLAN | Route114 | route | 3 | 24–25 | Barboach 25 | enhanced + Drednaw |
+| LAO_1 | Route113 | route | 3 | 23–24 | Koffing 24 | emerald-rematch + Croagunk |
+| LUNG | Route113 | route | 3 | 23–24 | Ninjask 24 | enhanced + Salandit |
 | MADELINE_1 | Route113 | route | 3 | 23–24 | Numel 24 | emerald-rematch |
-| CAROL | Route112 | route | 3 | 22–23 | Lombre 23 | enhanced |
+| CAROL | Route112 | route | 3 | 22–23 | Lombre 23 | enhanced + Skiddo |
 | NANCY | Route114 | route | 3 | 24–25 | Lombre 25 | enhanced |
 | DIANA_1 | JaggedPass | route | 3 | 26–27 | Breloom 27 | emerald-rematch |
 | IRENE | Route111 | route | 3 | 21–22 | Azumarill 22 | enhanced |
@@ -557,32 +615,32 @@ multi battle. Blocks: `tools/hack/trainers/pwt/batch_frontier_legends.party` (+ 
 | ASTER_METEOR_FALLS_DEINO | MeteorFalls_1F_1R | route | 5 | 26–28 | Drakloak 28 | story |
 | ASTER_METEOR_FALLS_DREEPY |  | route | 5 | 26–28 | Hakamo-o 28 | story |
 | ASTER_METEOR_FALLS_JANGMO_O |  | route | 5 | 26–28 | Zweilous 28 | story |
-| JULIO | JaggedPass | route | 3 | 26–27 | Manectric 27 | enhanced |
+| JULIO | JaggedPass | route | 3 | 26–27 | Manectric 27 | enhanced + Blitzle |
 | GRUNT_JAGGED_PASS | JaggedPass | grunt | 3 | 26–27 | Mightyena 27 | enhanced |
 | GRUNT_MT_CHIMNEY_2 | MtChimney | grunt | 3 | 25–26 | Golbat 26 | enhanced |
 | VIVI | Route111 | route | 3 | 22–23 | Azumarill 23 | enhanced |
 | BRICE | Route112 | route | 3 | 22–23 | Machop 23 | enhanced + Nacli |
-| TRENT_1 | Route112 | route | 3 | 22–23 | Geodude 23 | emerald-rematch |
+| TRENT_1 | Route112 | route | 3 | 22–23 | Geodude 23 | emerald-rematch + Carkol |
 | LENNY | Route114 | route | 3 | 24–25 | Graveler 25 | enhanced + Roggenrola |
 | LUCAS_1 | Route114 | route | 3 | 24–25 | Graveler 25 | enhanced |
 | ERIC | JaggedPass | route | 3 | 26–27 | Graveler 27 | enhanced + Mudbray |
-| GERALD | LavaridgeTown_Gym_1F | gym | 3 | 27–28 | Kecleon 28 | enhanced |
-| DANIELLE | LavaridgeTown_Gym_1F | gym | 3 | 26–28 | Meditite 28 | enhanced + Gurdurr |
+| GERALD | LavaridgeTown_Gym_1F | gym | 3 | 27–28 | Kecleon 28 | enhanced + Fletchinder |
+| DANIELLE | LavaridgeTown_Gym_1F | gym | 3 | 26–28 | Meditite 28 | enhanced + Heatmor |
 | TORI_AND_TIA | Route113 | route | 4 | 23–24 | Minun 24 | enhanced |
 | TYRA_AND_IVY | Route114 | route | 4 | 24–25 | Graveler 25 | enhanced |
 | TYRON | Route111 | route | 3 | 21–22 | Sandslash 22 | enhanced |
 | CELINA | Route111 | route | 3 | 21–22 | Roselia 22 | enhanced |
 | BIANCA | Route111 | route | 3 | 21–22 | Shroomish 22 | enhanced |
-| HAYDEN | Route111 | route | 3 | 21–22 | Numel 22 | enhanced |
+| HAYDEN | Route111 | route | 3 | 21–22 | Numel 22 | enhanced + Litleo |
 | SOPHIE | Route113 | route | 3 | 23–24 | Lombre 24 | enhanced |
 | COBY | Route113 | route | 3 | 23–24 | Swellow 24 | enhanced + Corvisquire |
-| LAWRENCE | Route113 | route | 3 | 23–24 | Sandslash 24 | enhanced |
-| WYATT | Route113 | route | 3 | 23–24 | Aron 24 | enhanced |
+| LAWRENCE | Route113 | route | 3 | 23–24 | Sandslash 24 | enhanced + Hippopotas |
+| WYATT | Route113 | route | 3 | 23–24 | Aron 24 | enhanced + Cranidos |
 | ANGELINA | Route114 | route | 3 | 24–25 | Azumarill 25 | enhanced |
 | KAI | Route114 | route | 3 | 24–25 | Barboach 25 | enhanced |
 | CHARLOTTE | Route114 | route | 3 | 24–25 | Nuzleaf 25 | enhanced + Stufful |
-| BRYANT | Route112 | route | 3 | 22–23 | Slugma 23 | enhanced |
-| SHAYLA | Route112 | route | 3 | 22–23 | Roselia 23 | enhanced |
+| BRYANT | Route112 | route | 3 | 22–23 | Slugma 23 | enhanced + Sizzlipede |
+| SHAYLA | Route112 | route | 3 | 22–23 | Roselia 23 | enhanced + Morelull |
 | NERINE_MT_CHIMNEY_DEINO_CHARMANDER | MtChimney | route | 5 | 27–29 | Hakamo-o 29 | story |
 | NERINE_MT_CHIMNEY_DEINO_TOTODILE |  | route | 5 | 27–29 | Hakamo-o 29 | story |
 | NERINE_MT_CHIMNEY_DEINO_TREECKO |  | route | 5 | 27–29 | Hakamo-o 29 | story |
@@ -600,13 +658,13 @@ multi battle. Blocks: `tools/hack/trainers/pwt/batch_frontier_legends.party` (+ 
 |---|---|---|---|---|---|---|
 | DUSTY_1 | Route111 | route | 3 | 28–30 | Sandslash 30 | emerald-rematch + Tyrunt |
 | GABBY_AND_TY_3 |  | route | 4 | 29–31 | Loudred 31 | enhanced |
-| RANDALL | PetalburgCity_Gym | gym | 4 | 30–31 | Swellow 31 | enhanced |
-| PARKER | PetalburgCity_Gym | gym | 4 | 30–31 | Spinda 31 | enhanced |
-| GEORGE | PetalburgCity_Gym | gym | 4 | 31–32 | Vigoroth 32 | enhanced + Greedent |
-| BERKE | PetalburgCity_Gym | gym | 4 | 31–32 | Vigoroth 32 | enhanced |
-| MARY | PetalburgCity_Gym | gym | 4 | 30–31 | Delcatty 31 | enhanced |
-| ALEXIA | PetalburgCity_Gym | gym | 4 | 31–32 | Wigglytuff 32 | enhanced |
-| JODY | PetalburgCity_Gym | gym | 4 | 31–32 | Zangoose 32 | enhanced |
+| RANDALL | PetalburgCity_Gym | gym | 4 | 30–31 | Swellow 31 | enhanced + Gumshoos, Vespiquen |
+| PARKER | PetalburgCity_Gym | gym | 4 | 30–31 | Spinda 31 | enhanced + Swoobat, Bewear |
+| GEORGE | PetalburgCity_Gym | gym | 4 | 31–32 | Vigoroth 32 | enhanced + Greedent, Floatzel |
+| BERKE | PetalburgCity_Gym | gym | 4 | 31–32 | Vigoroth 32 | enhanced + Diggersby, Zoroark |
+| MARY | PetalburgCity_Gym | gym | 4 | 30–31 | Delcatty 31 | enhanced + Glameow, Whimsicott |
+| ALEXIA | PetalburgCity_Gym | gym | 4 | 31–32 | Wigglytuff 32 | enhanced + Bouffalant, Chatot |
+| JODY | PetalburgCity_Gym | gym | 4 | 31–32 | Zangoose 32 | enhanced + Lokix, Herdier |
 | DREW | Route111 | route | 3 | 28–29 | Sandslash 29 | enhanced + Gabite |
 | BEAU | Route111 | route | 3 | 27–28 | Baltoy 28 | enhanced + Hippopotas |
 | JUSTIN | Route110_TrickHousePuzzle3 | route | 3 | 29–30 | Kecleon 30 | enhanced |
@@ -625,109 +683,109 @@ multi battle. Blocks: `tools/hack/trainers/pwt/batch_frontier_legends.party` (+ 
 
 | Trainer | Map | Role | Mons | Levels | Ace | Source |
 |---|---|---|---|---|---|---|
-| GRUNT_WEATHER_INST_1 | Route119_WeatherInstitute_1F | grunt | 4 | 32–33 | Golbat 33 | enhanced |
-| GRUNT_WEATHER_INST_2 | Route119_WeatherInstitute_2F | grunt | 4 | 33–34 | Sharpedo 34 | enhanced |
-| GRUNT_WEATHER_INST_3 | Route119_WeatherInstitute_2F | grunt | 5 | 33–34 | Sharpedo 34 | enhanced |
-| GRUNT_WEATHER_INST_4 | Route119_WeatherInstitute_1F | grunt | 4 | 32–33 | Sharpedo 33 | enhanced |
+| GRUNT_WEATHER_INST_1 | Route119_WeatherInstitute_1F | grunt | 4 | 32–33 | Golbat 33 | enhanced + Thievul |
+| GRUNT_WEATHER_INST_2 | Route119_WeatherInstitute_2F | grunt | 4 | 33–34 | Sharpedo 34 | enhanced + Barraskewda |
+| GRUNT_WEATHER_INST_3 | Route119_WeatherInstitute_2F | grunt | 5 | 33–34 | Sharpedo 34 | enhanced + Kilowattrel |
+| GRUNT_WEATHER_INST_4 | Route119_WeatherInstitute_1F | grunt | 4 | 32–33 | Sharpedo 33 | enhanced + Floatzel |
 | SHELLY_WEATHER_INSTITUTE | Route119_WeatherInstitute_2F | admin | 5 | 34–36 | Sharpedo 36 | enhanced |
-| ROSE_2 | Route118 | route t2 | 4 | 32–34 | Roselia 34 | emerald-rematch |
-| FOSTER | Route105 | route | 4 | 30–31 | Sandslash 31 | enhanced |
-| DUSTY_2 | Route111 | route t2 | 4 | 33–35 | Sandslash 35 | emerald-rematch + Tyrunt |
+| ROSE_2 | Route118 | route t2 | 4 | 32–34 | Roselia 34 | emerald-rematch + Lilligant, Shiinotic |
+| FOSTER | Route105 | route | 4 | 30–31 | Sandslash 31 | enhanced + Rampardos, Boldore |
+| DUSTY_2 | Route111 | route t2 | 4 | 33–35 | Sandslash 35 | emerald-rematch + Tyrunt, Amaura |
 | GABBY_AND_TY_4 |  | route | 4 | 32–34 | Magneton 34 | enhanced |
-| AUSTINA | Route109 | route | 4 | 31–32 | Azumarill 32 | enhanced |
-| GWEN | Route109 | route | 4 | 31–32 | Azumarill 32 | enhanced |
+| AUSTINA | Route109 | route | 4 | 31–32 | Azumarill 32 | enhanced + Bruxish, Ducklett |
+| GWEN | Route109 | route | 4 | 31–32 | Azumarill 32 | enhanced + Finizen, Kilowattrel |
 | LOLA_2 | Route109 | route t2 | 4 | 32–34 | Azumarill 34 | emerald-rematch |
-| CHARLIE | AbandonedShip_Corridors_1F | route | 4 | 32–33 | Azumarill 33 | enhanced |
+| CHARLIE | AbandonedShip_Corridors_1F | route | 4 | 32–33 | Azumarill 33 | enhanced + Floatzel, Drednaw |
 | RICKY_2 | Route109 | route t2 | 4 | 32–34 | Linoone 34 | emerald-rematch |
-| WILTON_2 | Route111 | route t2 | 4 | 33–35 | Hariyama 35 | emerald-rematch + Fletchinder |
-| BROOKE_2 | Route111 | route t2 | 4 | 33–35 | Roselia 35 | emerald-rematch + Glameow |
-| CINDY_3 | Route104 | route t2 | 4 | 32–34 | Linoone 34 | emerald-rematch + Litleo |
-| WINSTON_2 | Route104 | route t2 | 4 | 32–34 | Linoone 34 | emerald-rematch + Litleo |
+| WILTON_2 | Route111 | route t2 | 4 | 33–35 | Hariyama 35 | emerald-rematch + Fletchinder, Axew |
+| BROOKE_2 | Route111 | route t2 | 4 | 33–35 | Roselia 35 | emerald-rematch + Glameow, Kilowattrel |
+| CINDY_3 | Route104 | route t2 | 4 | 32–34 | Linoone 34 | emerald-rematch + Litleo, Whimsicott |
+| WINSTON_2 | Route104 | route t2 | 4 | 32–34 | Linoone 34 | emerald-rematch + Litleo, Unfezant |
 | THALIA_1 | AbandonedShip_Rooms_1F | route | 4 | 33–34 | Seadra 34 | emerald-rematch |
 | STEVE_2 | Route114 | route t2 | 4 | 33–35 | Lairon 35 | emerald-rematch |
-| LUIS | Route105 | route | 4 | 30–31 | Sharpedo 31 | enhanced |
-| DOMINIK | Route105 | route | 4 | 30–31 | Tentacruel 31 | enhanced |
+| LUIS | Route105 | route | 4 | 30–31 | Sharpedo 31 | enhanced + Kilowattrel, Barraskewda |
+| DOMINIK | Route105 | route | 4 | 30–31 | Tentacruel 31 | enhanced + Finneon, Clauncher |
 | DOUGLAS | Route106 | route | 4 | 30–31 | Tentacruel 31 | enhanced |
 | DARRIN | Route107 | route | 4 | 31–32 | Tentacruel 32 | enhanced |
-| TONY_1 | Route107 | route | 4 | 31–32 | Sharpedo 32 | emerald-rematch + Frillish |
+| TONY_1 | Route107 | route | 4 | 31–32 | Sharpedo 32 | emerald-rematch + Frillish, Lumineon |
 | JEROME | Route108 | route | 4 | 32–33 | Pelipper 33 | oras-first |
-| MATTHEW | Route108 | route | 4 | 32–33 | Sharpedo 33 | enhanced |
+| MATTHEW | Route108 | route | 4 | 32–33 | Sharpedo 33 | enhanced + Barraskewda, Kilowattrel |
 | DAVID | Route109 | route | 4 | 32–33 | Sharpedo 33 | enhanced |
-| TONY_2 | Route107 | route t2 | 4 | 33–35 | Sharpedo 35 | emerald-rematch + Frillish |
-| KOICHI | Route115 | route | 4 | 31–32 | Machoke 32 | enhanced |
-| NOB_2 | Route115 | route t2 | 4 | 32–34 | Machamp 34 | emerald-rematch |
+| TONY_2 | Route107 | route t2 | 4 | 33–35 | Sharpedo 35 | emerald-rematch + Frillish, Lumineon |
+| KOICHI | Route115 | route | 4 | 31–32 | Machoke 32 | enhanced + Throh, Sawk |
+| NOB_2 | Route115 | route t2 | 4 | 32–34 | Machoke 34 | emerald-rematch |
 | YUJI | Route110_TrickHousePuzzle4 | route | 4 | 33–34 | Machoke 34 | enhanced |
-| DALTON_2 | Route118 | route t2 | 4 | 32–35 | Loudred 35 | emerald-rematch + Chatot |
+| DALTON_2 | Route118 | route t2 | 4 | 32–35 | Loudred 35 | emerald-rematch + Chatot, Rotom |
 | BERNIE_2 | Route114 | route t2 | 4 | 33–35 | Camerupt 35 | emerald-rematch |
-| ETHAN_2 | JaggedPass | route t2 | 4 | 33–35 | Linoone 35 | emerald-rematch + Stunky |
+| ETHAN_2 | JaggedPass | route t2 | 4 | 33–35 | Linoone 35 | emerald-rematch + Stunky, Mudsdale |
 | BRENT | Route119 | route | 4 | 31–32 | Ninjask 32 | oras-first |
-| DONALD | Route119 | route | 4 | 31–32 | Beautifly 32 | enhanced + Centiskorch |
-| TAYLOR | Route119 | route | 4 | 32–33 | Dustox 33 | enhanced |
+| DONALD | Route119 | route | 4 | 31–32 | Beautifly 32 | enhanced + Centiskorch, Golisopod |
+| TAYLOR | Route119 | route | 4 | 32–33 | Dustox 33 | enhanced + Lokix, Ribombee |
 | WINONA_1 | FortreeCity_Gym | leader | 6 | 35–38 | Altaria 38 | emerald-rematch |
-| JERRY_2 | Route116 | route t2 | 4 | 32–34 | Gardevoir 34 | emerald-rematch + Pawniard |
+| JERRY_2 | Route116 | route t2 | 4 | 32–34 | Gardevoir 34 | emerald-rematch + Pawniard, Musharna |
 | KAREN_2 | Route116 | route t2 | 4 | 32–34 | Loudred 34 | emerald-rematch |
 | ANNA_AND_MEG_2 | Route117 | route t2 | 4 | 32–34 | Hariyama 34 | emerald-rematch |
 | MIGUEL_2 | Route103 | route t2 | 4 | 32–34 | Delcatty 34 | emerald-rematch |
 | ISABEL_2 | Route110 | route t2 | 4 | 32–34 | Minun 34 | emerald-rematch |
 | TIMOTHY_1 | Route115 | route | 4 | 32–33 | Hariyama 33 | emerald-rematch + Hawlucha, Gurdurr |
 | TIMOTHY_2 | Route115 | route t2 | 4 | 33–35 | Hariyama 35 | emerald-rematch + Hawlucha, Gurdurr |
-| SHELBY_2 | MtChimney | route t2 | 4 | 33–35 | Hariyama 35 | emerald-rematch + Lucario |
-| CALVIN_2 | Route102 | route t2 | 4 | 32–34 | Mightyena 34 | emerald-rematch |
-| BARNY | Route118 | route | 4 | 30–31 | Sharpedo 31 | enhanced + Drednaw |
-| CARTER | Route109 | route | 4 | 32–33 | Tentacruel 33 | enhanced |
+| SHELBY_2 | MtChimney | route t2 | 4 | 33–35 | Hariyama 35 | emerald-rematch + Lucario, Hawlucha |
+| CALVIN_2 | Route102 | route t2 | 4 | 32–34 | Mightyena 34 | emerald-rematch + Greedent, Gumshoos |
+| BARNY | Route118 | route | 4 | 30–31 | Sharpedo 31 | enhanced + Drednaw, Barraskewda |
+| CARTER | Route109 | route | 4 | 32–33 | Tentacruel 33 | enhanced + Lumineon, Drednaw |
 | ELLIOT_2 | Route106 | route t2 | 4 | 32–34 | Tentacruel 34 | emerald-rematch |
-| BENJAMIN_2 | Route110 | route t2 | 4 | 32–34 | Magneton 34 | emerald-rematch + Klink |
+| BENJAMIN_2 | Route110 | route t2 | 4 | 32–34 | Magneton 34 | emerald-rematch + Klink, Zebstrika |
 | ABIGAIL_2 | Route110 | route t2 | 4 | 32–34 | Magneton 34 | emerald-rematch |
 | DYLAN_2 | Route117 | route t2 | 4 | 32–34 | Dodrio 34 | emerald-rematch |
 | MARIA_2 | Route117 | route t2 | 4 | 32–34 | Dodrio 34 | emerald-rematch |
-| DEMETRIUS | AbandonedShip_Rooms_1F | route | 4 | 32–33 | Manectric 33 | enhanced + Thievul |
-| PERRY | Route118 | route | 4 | 30–31 | Pelipper 31 | enhanced + Kilowattrel |
-| HUGH | Route119 | route | 4 | 32–33 | Tropius 33 | enhanced |
-| PHIL | Route119 | route | 4 | 32–33 | Swellow 33 | enhanced + Toucannon |
-| JARED | FortreeCity_Gym | gym | 4 | 34–35 | Tropius 35 | enhanced |
-| HUMBERTO | FortreeCity_Gym | gym | 4 | 35–36 | Skarmory 36 | enhanced |
-| EDWARDO | FortreeCity_Gym | gym | 4 | 34–35 | Pelipper 35 | enhanced |
+| DEMETRIUS | AbandonedShip_Rooms_1F | route | 4 | 32–33 | Manectric 33 | enhanced + Thievul, Gumshoos |
+| PERRY | Route118 | route | 4 | 30–31 | Pelipper 31 | enhanced + Kilowattrel, Hawlucha |
+| HUGH | Route119 | route | 4 | 32–33 | Tropius 33 | enhanced + Toucannon, Kilowattrel |
+| PHIL | Route119 | route | 4 | 32–33 | Swellow 33 | enhanced + Toucannon, Unfezant |
+| JARED | FortreeCity_Gym | gym | 4 | 34–35 | Tropius 35 | enhanced + Staraptor, Toucannon |
+| HUMBERTO | FortreeCity_Gym | gym | 4 | 35–36 | Skarmory 36 | enhanced + Hawlucha, Sigilyph |
+| EDWARDO | FortreeCity_Gym | gym | 4 | 34–35 | Pelipper 35 | enhanced + Unfezant, Kilowattrel |
 | CHESTER | Route118 | route | 4 | 31–32 | Swellow 32 | oras-first |
-| YASU | Route119 | route | 4 | 32–33 | Ninjask 33 | enhanced + Croagunk |
-| TAKASHI | Route119 | route | 4 | 32–33 | Ninjask 33 | enhanced |
-| JANI | AbandonedShip_Rooms2_1F | route | 4 | 32–33 | Azumarill 33 | enhanced |
-| LAO_2 | Route113 | route t2 | 4 | 33–35 | Weezing 35 | emerald-rematch |
+| YASU | Route119 | route | 4 | 32–33 | Ninjask 33 | enhanced + Croagunk, Zoroark |
+| TAKASHI | Route119 | route | 4 | 32–33 | Ninjask 33 | enhanced + Lokix, Hawlucha |
+| JANI | AbandonedShip_Rooms2_1F | route | 4 | 32–33 | Azumarill 33 | enhanced + Alomomola, Dhelmise |
+| LAO_2 | Route113 | route t2 | 4 | 33–35 | Weezing 35 | emerald-rematch + Croagunk, Stunky |
 | CORA | Route110_TrickHousePuzzle4 | route | 4 | 33–34 | Meditite 34 | enhanced |
-| PAULA | Route110_TrickHousePuzzle4 | route | 4 | 33–34 | Breloom 34 | enhanced |
+| PAULA | Route110_TrickHousePuzzle4 | route | 4 | 33–34 | Breloom 34 | enhanced + Lucario, Mienfoo |
 | CYNDY_2 | Route115 | route t2 | 4 | 32–34 | Hariyama 34 | emerald-rematch |
 | MADELINE_2 | Route113 | route t2 | 4 | 33–35 | Camerupt 35 | emerald-rematch |
-| BEVERLY | Route105 | route | 4 | 30–31 | Wailmer 31 | enhanced + Finizen |
+| BEVERLY | Route105 | route | 4 | 30–31 | Wailmer 31 | enhanced + Finizen, Kilowattrel |
 | IMANI | Route105 | route | 4 | 30–31 | Azumarill 31 | enhanced |
 | KYLA | Route106 | route | 4 | 30–31 | Wailmer 31 | enhanced |
-| DENISE | Route107 | route | 4 | 31–32 | Pelipper 32 | enhanced |
+| DENISE | Route107 | route | 4 | 31–32 | Pelipper 32 | enhanced + Lumineon, Alomomola |
 | BETH | Route107 | route | 4 | 31–33 | Seaking 33 | enhanced |
-| TARA | Route108 | route | 4 | 32–33 | Seadra 33 | enhanced + Alomomola |
+| TARA | Route108 | route | 4 | 32–33 | Seadra 33 | enhanced + Alomomola, Lumineon |
 | MISSY | Route108 | route | 4 | 32–33 | Wailmer 33 | oras-first |
 | ALICE | Route109 | route | 4 | 32–34 | Seaking 34 | enhanced |
 | DIANA_2 | JaggedPass | route t2 | 4 | 33–35 | Altaria 35 | emerald-rematch |
 | AMY_AND_LIV_2 | Route103 | route t2 | 4 | 32–34 | Minun 34 | emerald-rematch |
-| DUNCAN | AbandonedShip_Corridors_B1F | route | 4 | 33–34 | Machoke 34 | enhanced + Frillish |
+| DUNCAN | AbandonedShip_Corridors_B1F | route | 4 | 33–34 | Machoke 34 | enhanced + Frillish, Kilowattrel |
 | EDWIN_2 | Route110 | route t2 | 4 | 33–34 | Shiftry 34 | emerald-rematch |
 | BRENDAN_ROUTE_119 | Route119 | route | 5 | 35–37 | Sceptile 37 | story |
 | ISAAC_2 | Route117 | route t2 | 4 | 33–34 | Hariyama 34 | emerald-rematch |
 | GARRISON | AbandonedShip_Rooms2_1F | route | 4 | 32–34 | Sandslash 34 | enhanced |
 | LYDIA_2 | Route117 | route t2 | 4 | 33–34 | Azumarill 34 | emerald-rematch |
-| JACKSON_1 | Route119 | route | 4 | 32–33 | Breloom 33 | emerald-rematch + Unfezant |
-| JACKSON_2 | Route119 | route t2 | 4 | 34–35 | Breloom 35 | emerald-rematch + Unfezant |
-| CATHERINE_1 | Route119 | route | 4 | 32–33 | Roselia 33 | emerald-rematch + Excadrill |
-| CATHERINE_2 | Route119 | route t2 | 4 | 34–35 | Roselia 35 | emerald-rematch + Excadrill |
-| GRUNT_WEATHER_INST_5 | Route119_WeatherInstitute_2F | grunt | 4 | 33–34 | Golbat 34 | enhanced |
-| HALEY_2 | Route104 | route t2 | 4 | 32–34 | Breloom 34 | emerald-rematch + Whimsicott |
+| JACKSON_1 | Route119 | route | 4 | 32–33 | Breloom 33 | emerald-rematch + Unfezant, Toucannon |
+| JACKSON_2 | Route119 | route t2 | 4 | 34–35 | Breloom 35 | emerald-rematch + Unfezant, Toucannon |
+| CATHERINE_1 | Route119 | route | 4 | 32–33 | Roselia 33 | emerald-rematch + Excadrill, Tsareena |
+| CATHERINE_2 | Route119 | route t2 | 4 | 34–35 | Roselia 35 | emerald-rematch + Excadrill, Tsareena |
+| GRUNT_WEATHER_INST_5 | Route119_WeatherInstitute_2F | grunt | 4 | 33–34 | Golbat 34 | enhanced + Zoroark |
+| HALEY_2 | Route104 | route t2 | 4 | 32–34 | Breloom 34 | emerald-rematch + Whimsicott, Ribombee |
 | DOUG | Route119 | route | 4 | 31–32 | Illumise 32 | oras-first |
-| GREG | Route119 | route | 4 | 31–32 | Illumise 32 | enhanced + Lokix |
+| GREG | Route119 | route | 4 | 31–32 | Illumise 32 | enhanced + Lokix, Vespiquen |
 | KENT | Route119 | route | 4 | 31–32 | Ninjask 32 | enhanced |
-| JAMES_2 | PetalburgWoods | route t2 | 4 | 32–34 | Ninjask 34 | emerald-rematch + Vespiquen |
-| TRENT_2 | Route112 | route t2 | 4 | 33–35 | Golem 35 | emerald-rematch |
+| JAMES_2 | PetalburgWoods | route t2 | 4 | 32–34 | Ninjask 34 | emerald-rematch + Vespiquen, Lokix |
+| TRENT_2 | Route112 | route t2 | 4 | 33–35 | Graveler 35 | emerald-rematch + Carkol, Boldore |
 | KIRA_AND_DAN_1 | AbandonedShip_Rooms2_1F | route | 4 | 33–34 | Illumise 34 | emerald-rematch |
 | KIRA_AND_DAN_2 | AbandonedShip_Rooms2_1F | route t2 | 4 | 34–35 | Illumise 35 | emerald-rematch |
 | HIDEO | Route119 | route | 4 | 33–35 | Weezing 35 | enhanced |
-| FLINT | FortreeCity_Gym | gym | 4 | 35–36 | Xatu 36 | enhanced + Corvisquire |
-| ASHLEY | FortreeCity_Gym | gym | 4 | 35–36 | Altaria 36 | enhanced + Swanna |
+| FLINT | FortreeCity_Gym | gym | 4 | 35–36 | Xatu 36 | enhanced + Corvisquire, Talonflame |
+| ASHLEY | FortreeCity_Gym | gym | 4 | 35–36 | Altaria 36 | enhanced + Swanna, Chatot |
 | MEL_AND_PAUL | Route109 | route | 4 | 32–33 | Beautifly 33 | enhanced |
 | LISA_AND_RAY | Route107 | route | 4 | 31–33 | Seaking 33 | enhanced |
 | CHRIS | Route119 | route | 4 | 32–34 | Gyarados 34 | enhanced |
@@ -735,19 +793,19 @@ multi battle. Blocks: `tools/hack/trainers/pwt/batch_frontier_legends.party` (+ 
 | JOSUE | Route105 | route | 4 | 30–31 | Swellow 31 | enhanced |
 | CAMRON | Route107 | route | 4 | 31–32 | Starmie 32 | enhanced |
 | CORY_1 | Route108 | route | 4 | 32–33 | Tentacruel 33 | emerald-rematch |
-| CAROLINA | Route108 | route | 5 | 33–34 | Manectric 34 | enhanced |
-| ELIJAH | Route109 | route | 4 | 32–33 | Skarmory 33 | enhanced |
+| CAROLINA | Route108 | route | 5 | 33–34 | Manectric 34 | enhanced + Luxray, Tsareena |
+| ELIJAH | Route109 | route | 4 | 32–33 | Skarmory 33 | enhanced + Kilowattrel, Unfezant |
 | KYRA | Route115 | route | 4 | 31–32 | Dodrio 32 | enhanced |
-| JAIDEN | Route115 | route | 4 | 31–32 | Swalot 32 | enhanced |
-| ALIX | Route115 | route | 4 | 31–33 | Gardevoir 33 | enhanced + Sigilyph |
-| HELENE | Route115 | route | 4 | 31–32 | Hariyama 32 | enhanced |
-| FABIAN | Route119 | route | 4 | 32–33 | Manectric 33 | enhanced + Rotom |
-| DAYTON | Route119 | route | 4 | 32–33 | Camerupt 33 | enhanced + Heatmor |
-| RACHEL | Route119 | route | 4 | 32–33 | Seaking 33 | enhanced + Goomy |
-| DARIUS | FortreeCity_Gym | gym | 5 | 35–36 | Tropius 36 | enhanced |
+| JAIDEN | Route115 | route | 4 | 31–32 | Swalot 32 | enhanced + Thievul, Zoroark |
+| ALIX | Route115 | route | 4 | 31–33 | Gardevoir 33 | enhanced + Sigilyph, Swoobat |
+| HELENE | Route115 | route | 4 | 31–32 | Hariyama 32 | enhanced + Hawlucha, Lucario |
+| FABIAN | Route119 | route | 4 | 32–33 | Manectric 33 | enhanced + Rotom, Luxray |
+| DAYTON | Route119 | route | 4 | 32–33 | Camerupt 33 | enhanced + Heatmor, Fletchinder |
+| RACHEL | Route119 | route | 4 | 32–33 | Seaking 33 | enhanced + Goomy, Palpitoad |
+| DARIUS | FortreeCity_Gym | gym | 5 | 35–36 | Tropius 36 | enhanced + Staraptor, Swanna |
 | ANDRES_2 | Route105 | route t2 | 4 | 33–35 | Sandslash 35 | emerald-rematch |
 | CORY_2 | Route108 | route t2 | 4 | 33–35 | Tentacruel 35 | emerald-rematch |
-| SAWYER_2 | MtChimney | route t2 | 4 | 33–35 | Golem 35 | emerald-rematch + Coalossal |
+| SAWYER_2 | MtChimney | route t2 | 4 | 33–35 | Graveler 35 | emerald-rematch + Coalossal, Mudsdale |
 | THALIA_2 | AbandonedShip_Rooms_1F | route t2 | 4 | 34–35 | Seadra 35 | emerald-rematch |
 | WALLY_ROUTE_120 | Route120 | route | 5 | 36–38 | Kirlia 38 | story |
 
@@ -755,120 +813,120 @@ multi battle. Blocks: `tools/hack/trainers/pwt/batch_frontier_legends.party` (+ 
 
 | Trainer | Map | Role | Mons | Levels | Ace | Source |
 |---|---|---|---|---|---|---|
-| GRUNT_AQUA_HIDEOUT_1 | AquaHideout_1F | grunt | 4 | 39–40 | Mightyena 40 | enhanced |
-| GRUNT_AQUA_HIDEOUT_2 | AquaHideout_B1F | grunt | 4 | 40–41 | Sharpedo 41 | enhanced |
-| GRUNT_AQUA_HIDEOUT_3 | AquaHideout_B1F | grunt | 4 | 40–41 | Crobat 41 | enhanced |
-| GRUNT_AQUA_HIDEOUT_4 | AquaHideout_B2F | grunt | 4 | 40–41 | Sharpedo 41 | enhanced |
+| GRUNT_AQUA_HIDEOUT_1 | AquaHideout_1F | grunt | 4 | 39–40 | Mightyena 40 | enhanced + Toxapex |
+| GRUNT_AQUA_HIDEOUT_2 | AquaHideout_B1F | grunt | 4 | 40–41 | Sharpedo 41 | enhanced + Palafin |
+| GRUNT_AQUA_HIDEOUT_3 | AquaHideout_B1F | grunt | 4 | 40–41 | Crobat 41 | enhanced + Skuntank |
+| GRUNT_AQUA_HIDEOUT_4 | AquaHideout_B2F | grunt | 4 | 40–41 | Sharpedo 41 | enhanced + Jellicent |
 | GABRIELLE_1 | MtPyre_3F | route | 4 | 37–38 | Mightyena 38 | emerald-rematch |
-| MARCEL | Route121 | route | 4 | 37–38 | Manectric 38 | enhanced |
-| ALBERTO | Route123 | route | 4 | 37–38 | Xatu 38 | enhanced + Kilowattrel |
-| ED | Route123 | route | 4 | 37–39 | Zangoose 39 | enhanced + Mimikyu |
-| DECLAN | Route124 | route | 4 | 35–37 | Gyarados 37 | enhanced |
-| GRUNT_MT_PYRE_1 | MtPyre_Summit | grunt | 4 | 37–38 | Golbat 38 | enhanced |
-| GRUNT_MT_PYRE_2 | MtPyre_Summit | grunt | 4 | 37–38 | Sharpedo 38 | enhanced |
-| GRUNT_MT_PYRE_3 | MtPyre_Summit | grunt | 4 | 37–38 | Mightyena 38 | enhanced |
-| GRUNT_AQUA_HIDEOUT_5 | AquaHideout_B1F | grunt | 4 | 40–41 | Sharpedo 41 | enhanced |
-| GRUNT_AQUA_HIDEOUT_6 | AquaHideout_B2F | grunt | 4 | 40–41 | Crobat 41 | enhanced |
-| FREDRICK | Route123 | route | 4 | 37–39 | Machamp 39 | enhanced + Lucario |
+| MARCEL | Route121 | route | 4 | 37–38 | Manectric 38 | enhanced + Barraskewda, Zoroark |
+| ALBERTO | Route123 | route | 4 | 37–38 | Xatu 38 | enhanced + Kilowattrel, Toucannon |
+| ED | Route123 | route | 4 | 37–39 | Zangoose 39 | enhanced + Mimikyu, Rotom |
+| DECLAN | Route124 | route | 4 | 35–37 | Gyarados 37 | enhanced + Kilowattrel, Wishiwashi |
+| GRUNT_MT_PYRE_1 | MtPyre_Summit | grunt | 4 | 37–38 | Golbat 38 | enhanced + Clawitzer |
+| GRUNT_MT_PYRE_2 | MtPyre_Summit | grunt | 4 | 37–38 | Sharpedo 38 | enhanced + Kilowattrel |
+| GRUNT_MT_PYRE_3 | MtPyre_Summit | grunt | 4 | 37–38 | Mightyena 38 | enhanced + Skuntank |
+| GRUNT_AQUA_HIDEOUT_5 | AquaHideout_B1F | grunt | 4 | 40–41 | Sharpedo 41 | enhanced + Barraskewda |
+| GRUNT_AQUA_HIDEOUT_6 | AquaHideout_B2F | grunt | 4 | 40–41 | Crobat 41 | enhanced + Scrafty |
+| FREDRICK | Route123 | route | 4 | 37–39 | Machamp 39 | enhanced + Lucario, Conkeldurr |
 | MATT | AquaHideout_B2F | admin | 5 | 40–42 | Sharpedo 42 | enhanced |
-| ZANDER | MtPyre_2F | route | 4 | 36–37 | Hariyama 37 | enhanced |
-| LEAH | MtPyre_2F | route | 4 | 36–37 | Banette 37 | enhanced + Litwick |
-| VIOLET | Route123 | route | 4 | 37–39 | Roserade 39 | enhanced + Tsareena |
-| ROSE_3 | Route118 | route t3 | 5 | 37–39 | Roselia 39 | emerald-rematch |
-| CHIP | Route120 | route | 4 | 35–36 | Claydol 36 | enhanced + Golett |
-| DUSTY_3 | Route111 | route t3 | 4 | 38–40 | Sandslash 40 | emerald-rematch + Tyrunt |
+| ZANDER | MtPyre_2F | route | 4 | 36–37 | Hariyama 37 | enhanced + Conkeldurr, Throh |
+| LEAH | MtPyre_2F | route | 4 | 36–37 | Banette 37 | enhanced + Litwick, Houndstone |
+| VIOLET | Route123 | route | 4 | 37–39 | Roserade 39 | enhanced + Tsareena, Shiinotic |
+| ROSE_3 | Route118 | route t3 | 5 | 37–39 | Roselia 39 | emerald-rematch + Lilligant, Shiinotic |
+| CHIP | Route120 | route | 4 | 35–36 | Claydol 36 | enhanced + Golett, Cofagrigus |
+| DUSTY_3 | Route111 | route t3 | 4 | 38–40 | Sandslash 40 | emerald-rematch + Tyrunt, Aurorus |
 | GABBY_AND_TY_5 |  | route | 4 | 38–39 | Magneton 39 | emerald-rematch |
 | LOLA_3 | Route109 | route t3 | 4 | 37–39 | Azumarill 39 | emerald-rematch |
 | RICKY_3 | Route109 | route t3 | 4 | 38–39 | Linoone 39 | emerald-rematch |
-| BRAXTON | Route123 | route | 5 | 37–39 | Shiftry 39 | enhanced |
+| BRAXTON | Route123 | route | 5 | 37–39 | Shiftry 39 | enhanced + Staraptor, Barraskewda |
 | WILTON_3 | Route111 | route t3 | 5 | 38–40 | Hariyama 40 | emerald-rematch + Fraxure, Talonflame |
 | WARREN | Route133 | route | 5 | 39–41 | Alakazam 41 | oras-first |
-| WENDY | Route123 | route | 4 | 37–39 | Altaria 39 | enhanced |
-| JENNIFER | Route120 | route | 4 | 35–36 | Sableye 36 | enhanced |
-| BROOKE_3 | Route111 | route t3 | 5 | 38–40 | Roselia 40 | emerald-rematch + Purugly |
-| KINDRA | Route123 | route | 4 | 37–39 | Dusclops 39 | enhanced + Drifblim |
-| TAMMY | Route121 | route | 4 | 36–38 | Dusclops 38 | enhanced + Phantump |
-| VALERIE_1 | MtPyre_6F | route | 4 | 38–39 | Sableye 39 | emerald-rematch + Mismagius |
+| WENDY | Route123 | route | 4 | 37–39 | Altaria 39 | enhanced + Swanna, Whimsicott |
+| JENNIFER | Route120 | route | 4 | 35–36 | Sableye 36 | enhanced + Trevenant, Luxray |
+| BROOKE_3 | Route111 | route t3 | 5 | 38–40 | Roselia 40 | emerald-rematch + Purugly, Kilowattrel |
+| KINDRA | Route123 | route | 4 | 37–39 | Dusclops 39 | enhanced + Drifblim, Trevenant |
+| TAMMY | Route121 | route | 4 | 36–38 | Dusclops 38 | enhanced + Phantump, Cofagrigus |
+| VALERIE_1 | MtPyre_6F | route | 4 | 38–39 | Sableye 39 | emerald-rematch + Mismagius, Polteageist |
 | TASHA | MtPyre_5F | route | 4 | 38–39 | Xatu 39 | oras-first |
-| VALERIE_2 | MtPyre_6F | route t2 | 4 | 38–40 | Mismagius 40 | emerald-rematch + Mismagius |
-| VALERIE_3 | MtPyre_6F | route t3 | 5 | 39–41 | Mismagius 41 | emerald-rematch + Mismagius |
-| CINDY_4 | Route104 | route t3 | 4 | 37–39 | Linoone 39 | emerald-rematch + Pyroar |
-| JESSICA_1 | Route121 | route | 4 | 37–38 | Seviper 38 | emerald-rematch + Krokorok |
-| JESSICA_2 | Route121 | route t2 | 4 | 37–39 | Seviper 39 | emerald-rematch + Krokorok |
-| JESSICA_3 | Route121 | route t3 | 4 | 39–41 | Seviper 41 | emerald-rematch + Krookodile |
-| MOLLIE | Route133 | route | 5 | 39–41 | Whiscash 41 | enhanced |
-| WINSTON_3 | Route104 | route t3 | 4 | 37–39 | Linoone 39 | emerald-rematch + Pyroar |
-| MARK | MtPyre_2F | route | 4 | 36–37 | Rhyhorn 37 | enhanced |
+| VALERIE_2 | MtPyre_6F | route t2 | 4 | 38–40 | Mismagius 40 | emerald-rematch + Mismagius, Polteageist |
+| VALERIE_3 | MtPyre_6F | route t3 | 5 | 39–41 | Mismagius 41 | emerald-rematch + Mismagius, Polteageist |
+| CINDY_4 | Route104 | route t3 | 4 | 37–39 | Linoone 39 | emerald-rematch + Pyroar, Whimsicott |
+| JESSICA_1 | Route121 | route | 4 | 37–38 | Seviper 38 | emerald-rematch + Krokorok, Salazzle |
+| JESSICA_2 | Route121 | route t2 | 4 | 37–39 | Seviper 39 | emerald-rematch + Krokorok, Salazzle |
+| JESSICA_3 | Route121 | route t3 | 4 | 39–41 | Seviper 41 | emerald-rematch + Krookodile, Salazzle |
+| MOLLIE | Route133 | route | 5 | 39–41 | Whiscash 41 | enhanced + Lucario, Hawlucha |
+| WINSTON_3 | Route104 | route t3 | 4 | 37–39 | Linoone 39 | emerald-rematch + Pyroar, Unfezant |
+| MARK | MtPyre_2F | route | 4 | 36–37 | Rhyhorn 37 | enhanced + Tyrunt, Rampardos |
 | STEVE_3 | Route114 | route t3 | 4 | 38–40 | Lairon 40 | emerald-rematch |
-| SPENCER | Route124 | route | 4 | 36–38 | Tentacruel 38 | enhanced |
-| ROLAND | Route124 | route | 4 | 36–38 | Sharpedo 38 | enhanced |
+| SPENCER | Route124 | route | 4 | 36–38 | Tentacruel 38 | enhanced + Lumineon, Floatzel |
+| ROLAND | Route124 | route | 4 | 36–38 | Sharpedo 38 | enhanced + Clawitzer, Alomomola |
 | NOLEN | Route125 | route | 4 | 36–38 | Tentacruel 38 | enhanced |
 | STAN | Route125 | route | 4 | 37–39 | Seadra 39 | enhanced |
-| BARRY | Route126 | route | 4 | 37–39 | Gyarados 39 | enhanced |
+| BARRY | Route126 | route | 4 | 37–39 | Gyarados 39 | enhanced + Alomomola, Barraskewda |
 | DEAN | Route126 | route | 4 | 37–39 | Golduck 39 | oras-first |
-| RODNEY | Route130 | route | 4 | 38–40 | Gyarados 40 | enhanced + Bruxish |
-| RICHARD | Route131 | route | 4 | 38–40 | Pelipper 40 | enhanced |
+| RODNEY | Route130 | route | 4 | 38–40 | Gyarados 40 | enhanced + Bruxish, Palafin |
+| RICHARD | Route131 | route | 4 | 38–40 | Pelipper 40 | enhanced + Bruxish, Palafin |
 | HERMAN | Route131 | route | 4 | 39–40 | Tentacruel 40 | enhanced |
 | SANTIAGO | Route130 | route | 4 | 38–40 | Wailord 40 | enhanced |
-| GILBERT | Route132 | route | 4 | 39–41 | Sharpedo 41 | enhanced |
+| GILBERT | Route132 | route | 4 | 39–41 | Sharpedo 41 | enhanced + Clawitzer, Toxapex |
 | FRANKLIN | Route133 | route | 4 | 39–41 | Whiscash 41 | oras-first |
-| KEVIN | Route131 | route | 4 | 38–40 | Gyarados 40 | enhanced + Palafin |
+| KEVIN | Route131 | route | 4 | 38–40 | Gyarados 40 | enhanced + Palafin, Bruxish |
 | JACK | Route134 | route | 4 | 40–41 | Sharpedo 41 | oras-first |
 | CHAD | Route124 | route | 4 | 36–38 | Tentacruel 38 | enhanced |
-| TONY_3 | Route107 | route t3 | 5 | 38–40 | Sharpedo 40 | emerald-rematch + Frillish |
+| TONY_3 | Route107 | route t3 | 5 | 38–40 | Sharpedo 40 | emerald-rematch + Frillish, Lumineon |
 | HITOSHI | Route134 | route | 4 | 39–41 | Heracross 41 | oras-first |
-| KIYO | Route132 | route | 4 | 39–41 | Hariyama 41 | enhanced |
+| KIYO | Route132 | route | 4 | 39–41 | Hariyama 41 | enhanced + Mienfoo, Grapploct |
 | NOB_3 | Route115 | route t3 | 5 | 37–39 | Machamp 39 | emerald-rematch |
-| ATSUSHI | MtPyre_4F | route | 4 | 37–38 | Hariyama 38 | enhanced |
-| GRUNT_AQUA_HIDEOUT_7 | AquaHideout_B1F | grunt | 4 | 40–41 | Mightyena 41 | enhanced |
+| ATSUSHI | MtPyre_4F | route | 4 | 37–38 | Hariyama 38 | enhanced + Throh, Sawk |
+| GRUNT_AQUA_HIDEOUT_7 | AquaHideout_B1F | grunt | 4 | 40–41 | Mightyena 41 | enhanced + Clawitzer |
 | GRUNT_AQUA_HIDEOUT_8 | AquaHideout_B2F | grunt | 4 | 40–41 | Gyarados 41 | enhanced |
-| FERNANDO_1 | Route123 | route | 4 | 37–38 | Loudred 38 | emerald-rematch |
-| DALTON_3 | Route118 | route t3 | 5 | 37–40 | Exploud 40 | emerald-rematch + Chatot |
+| FERNANDO_1 | Route123 | route | 4 | 37–38 | Loudred 38 | emerald-rematch + Luxray, Rotom |
+| DALTON_3 | Route118 | route t3 | 5 | 37–40 | Exploud 40 | emerald-rematch + Chatot, Rotom |
 | BERNIE_3 | Route114 | route t3 | 5 | 38–40 | Magcargo 40 | emerald-rematch |
-| ETHAN_3 | JaggedPass | route t3 | 4 | 38–40 | Linoone 40 | emerald-rematch + Skuntank |
-| JEFFREY_1 | Route120 | route | 4 | 35–36 | Masquerain 36 | emerald-rematch |
-| JEFFREY_2 | Route120 | route t2 | 4 | 37–39 | Masquerain 39 | emerald-rematch |
-| JEFFREY_3 | Route120 | route t3 | 5 | 39–41 | Masquerain 41 | emerald-rematch |
-| PRESTON | MossdeepCity_Gym | gym | 4 | 39–41 | Gallade 41 | enhanced |
-| VIRGIL | MossdeepCity_Gym | gym | 4 | 39–41 | Girafarig 41 | oras-first |
-| BLAKE | MossdeepCity_Gym | gym | 4 | 39–41 | Girafarig 41 | enhanced + Bronzong |
+| ETHAN_3 | JaggedPass | route t3 | 4 | 38–40 | Linoone 40 | emerald-rematch + Skuntank, Mudsdale |
+| JEFFREY_1 | Route120 | route | 4 | 35–36 | Masquerain 36 | emerald-rematch + Golisopod, Larvesta |
+| JEFFREY_2 | Route120 | route t2 | 4 | 37–39 | Masquerain 39 | emerald-rematch + Golisopod, Larvesta |
+| JEFFREY_3 | Route120 | route t3 | 5 | 39–41 | Masquerain 41 | emerald-rematch + Golisopod, Larvesta |
+| PRESTON | MossdeepCity_Gym | gym | 4 | 39–41 | Gallade 41 | enhanced + Musharna, Sigilyph |
+| VIRGIL | MossdeepCity_Gym | gym | 4 | 39–41 | Girafarig 41 | oras-first + Bronzong, Swoobat |
+| BLAKE | MossdeepCity_Gym | gym | 4 | 39–41 | Girafarig 41 | enhanced + Bronzong, Sigilyph |
 | WILLIAM | MtPyre_3F | route | 4 | 37–38 | Grumpig 38 | oras-first |
 | CAMERON_1 | Route123 | route | 4 | 37–38 | Solrock 38 | emerald-rematch |
 | CAMERON_2 | Route123 | route t2 | 4 | 37–39 | Kadabra 39 | emerald-rematch |
 | CAMERON_3 | Route123 | route t3 | 5 | 39–41 | Alakazam 41 | emerald-rematch |
-| HANNAH | MossdeepCity_Gym | gym | 4 | 39–41 | Gardevoir 41 | enhanced |
-| SAMANTHA | MossdeepCity_Gym | gym | 4 | 39–41 | Xatu 41 | enhanced |
-| MAURA | MossdeepCity_Gym | gym | 4 | 39–41 | Alakazam 41 | enhanced |
+| HANNAH | MossdeepCity_Gym | gym | 4 | 39–41 | Gardevoir 41 | enhanced + Sigilyph, Swoobat |
+| SAMANTHA | MossdeepCity_Gym | gym | 4 | 39–41 | Xatu 41 | enhanced + Lucario, Bronzong |
+| MAURA | MossdeepCity_Gym | gym | 4 | 39–41 | Alakazam 41 | enhanced + Bruxish, Musharna |
 | KAYLA | MtPyre_3F | route | 4 | 37–38 | Alakazam 38 | enhanced |
 | JACKI_1 | Route123 | route | 4 | 37–38 | Lunatone 38 | emerald-rematch |
 | JACKI_2 | Route123 | route t2 | 4 | 37–39 | Kadabra 39 | emerald-rematch |
 | JACKI_3 | Route123 | route t3 | 5 | 39–41 | Alakazam 41 | emerald-rematch |
-| WALTER_1 | Route121 | route | 4 | 36–37 | Manectric 37 | emerald-rematch + Stoutland |
-| WALTER_2 | Route121 | route t2 | 4 | 37–39 | Manectric 39 | emerald-rematch + Stoutland |
-| WALTER_3 | Route121 | route t3 | 5 | 39–41 | Manectric 41 | emerald-rematch + Stoutland |
+| WALTER_1 | Route121 | route | 4 | 36–37 | Manectric 37 | emerald-rematch + Stoutland, Pyroar |
+| WALTER_2 | Route121 | route t2 | 4 | 37–39 | Manectric 39 | emerald-rematch + Stoutland, Pyroar |
+| WALTER_3 | Route121 | route t3 | 5 | 39–41 | Manectric 41 | emerald-rematch + Stoutland, Pyroar |
 | TATE_AND_LIZA_1 | MossdeepCity_Gym | leader | 6 | 42–44 | Solrock 44 | emerald-rematch |
-| JERRY_3 | Route116 | route t3 | 4 | 38–39 | Gardevoir 39 | emerald-rematch + Pawniard |
+| JERRY_3 | Route116 | route t3 | 4 | 38–39 | Gardevoir 39 | emerald-rematch + Pawniard, Musharna |
 | KAREN_3 | Route116 | route t3 | 4 | 37–40 | Exploud 40 | emerald-rematch |
 | KATE_AND_JOY | Route121 | route | 4 | 36–37 | Slaking 37 | enhanced |
 | ANNA_AND_MEG_3 | Route117 | route t3 | 4 | 37–39 | Hariyama 39 | emerald-rematch |
 | MIGUEL_3 | Route103 | route t3 | 4 | 37–39 | Delcatty 39 | emerald-rematch |
-| VANESSA | Route121 | route | 4 | 36–37 | Pikachu 37 | enhanced |
+| VANESSA | Route121 | route | 4 | 36–37 | Pikachu 37 | enhanced + Pawmot, Ribombee |
 | ISABEL_3 | Route110 | route t3 | 4 | 38–39 | Minun 39 | emerald-rematch |
 | TIMOTHY_3 | Route115 | route t3 | 4 | 38–40 | Hariyama 40 | emerald-rematch + Hawlucha, Gurdurr |
-| SHELBY_3 | MtChimney | route t3 | 4 | 38–40 | Hariyama 40 | emerald-rematch + Lucario |
-| CALVIN_3 | Route102 | route t3 | 4 | 37–39 | Mightyena 39 | emerald-rematch |
+| SHELBY_3 | MtChimney | route t3 | 4 | 38–40 | Hariyama 40 | emerald-rematch + Lucario, Hawlucha |
+| CALVIN_3 | Route102 | route t3 | 4 | 37–39 | Mightyena 39 | emerald-rematch + Greedent, Gumshoos |
 | ELLIOT_3 | Route106 | route t3 | 5 | 37–39 | Tentacruel 39 | emerald-rematch |
 | RONALD | Route132 | route | 5 | 39–41 | Gyarados 41 | enhanced |
-| BENJAMIN_3 | Route110 | route t3 | 4 | 37–39 | Magneton 39 | emerald-rematch + Klang |
+| BENJAMIN_3 | Route110 | route t3 | 4 | 37–39 | Magneton 39 | emerald-rematch + Klang, Zebstrika |
 | ABIGAIL_3 | Route110 | route t3 | 4 | 37–39 | Magneton 39 | emerald-rematch |
 | DYLAN_3 | Route117 | route t3 | 4 | 37–39 | Dodrio 39 | emerald-rematch |
 | MARIA_3 | Route117 | route t3 | 4 | 37–39 | Dodrio 39 | emerald-rematch |
-| CAMDEN | Route127 | route | 4 | 37–39 | Starmie 39 | enhanced |
-| ISAIAH_1 | Route128 | route | 4 | 38–40 | Starmie 40 | emerald-rematch + Floatzel |
+| CAMDEN | Route127 | route | 4 | 37–39 | Starmie 39 | enhanced + Floatzel, Barraskewda |
+| ISAIAH_1 | Route128 | route | 4 | 38–40 | Starmie 40 | emerald-rematch + Floatzel, Toxapex |
 | PABLO_1 | Route126 | route | 4 | 37–39 | Starmie 39 | emerald-rematch |
-| CHASE | Route129 | route | 4 | 38–40 | Starmie 40 | enhanced |
-| ISAIAH_2 | Route128 | route t2 | 4 | 39–41 | Starmie 41 | emerald-rematch + Floatzel |
-| ISAIAH_3 | Route128 | route t3 | 5 | 40–42 | Starmie 42 | emerald-rematch + Floatzel |
+| CHASE | Route129 | route | 4 | 38–40 | Starmie 40 | enhanced + Bruxish, Palafin |
+| ISAIAH_2 | Route128 | route t2 | 4 | 39–41 | Starmie 41 | emerald-rematch + Floatzel, Toxapex |
+| ISAIAH_3 | Route128 | route t3 | 5 | 40–42 | Starmie 42 | emerald-rematch + Floatzel, Toxapex |
 | ISOBEL | Route126 | route | 4 | 37–39 | Starmie 39 | enhanced |
 | DONNY | Route127 | route | 4 | 38–40 | Starmie 40 | enhanced |
 | TALIA | Route131 | route | 4 | 38–40 | Starmie 40 | enhanced |
@@ -876,92 +934,92 @@ multi battle. Blocks: `tools/hack/trainers/pwt/batch_frontier_legends.party` (+ 
 | ALLISON | Route129 | route | 4 | 38–40 | Starmie 40 | enhanced |
 | KATELYN_2 | Route128 | route t2 | 4 | 39–41 | Starmie 41 | emerald-rematch |
 | KATELYN_3 | Route128 | route t3 | 5 | 40–42 | Starmie 42 | emerald-rematch |
-| AARON | Route134 | route | 4 | 39–41 | Kingdra 41 | oras-first |
-| PRESLEY | Route125 | route | 4 | 37–39 | Xatu 39 | enhanced + Toucannon |
-| COLIN | Route120 | route | 4 | 35–36 | Pelipper 36 | enhanced |
-| ROBERT_1 | Route120 | route | 4 | 35–36 | Altaria 36 | emerald-rematch + Staraptor |
-| ROBERT_2 | Route120 | route t2 | 4 | 37–39 | Xatu 39 | emerald-rematch + Staraptor |
-| ROBERT_3 | Route120 | route t3 | 5 | 39–41 | Xatu 41 | emerald-rematch + Staraptor |
-| ALEX | Route134 | route | 4 | 40–41 | Swellow 41 | enhanced |
-| BECK | Route133 | route | 4 | 39–41 | Tropius 41 | enhanced |
-| LAO_3 | Route113 | route t3 | 5 | 37–40 | Weezing 40 | emerald-rematch |
+| AARON | Route134 | route | 4 | 39–41 | Seadra 41 | oras-first + Fraxure, Druddigon |
+| PRESLEY | Route125 | route | 4 | 37–39 | Xatu 39 | enhanced + Toucannon, Kilowattrel |
+| COLIN | Route120 | route | 4 | 35–36 | Pelipper 36 | enhanced + Toucannon, Staraptor |
+| ROBERT_1 | Route120 | route | 4 | 35–36 | Altaria 36 | emerald-rematch + Staraptor, Corvisquire |
+| ROBERT_2 | Route120 | route t2 | 4 | 37–39 | Xatu 39 | emerald-rematch + Staraptor, Corviknight |
+| ROBERT_3 | Route120 | route t3 | 5 | 39–41 | Xatu 41 | emerald-rematch + Staraptor, Corviknight |
+| ALEX | Route134 | route | 4 | 40–41 | Swellow 41 | enhanced + Kilowattrel, Corviknight |
+| BECK | Route133 | route | 4 | 39–41 | Tropius 41 | enhanced + Talonflame, Hawlucha |
+| LAO_3 | Route113 | route t3 | 5 | 37–40 | Weezing 40 | emerald-rematch + Toxicroak, Skuntank |
 | CYNDY_3 | Route115 | route t3 | 4 | 38–39 | Hariyama 39 | emerald-rematch |
-| CLARISSA | Route120 | route | 4 | 35–36 | Ludicolo 36 | enhanced + Goomy |
-| ANGELICA | Route120 | route | 4 | 35–36 | Castform 36 | enhanced |
+| CLARISSA | Route120 | route | 4 | 35–36 | Ludicolo 36 | enhanced + Goomy, Lurantis |
+| ANGELICA | Route120 | route | 4 | 35–36 | Castform 36 | enhanced + Swanna, Palpitoad |
 | MADELINE_3 | Route113 | route t3 | 5 | 38–40 | Camerupt 40 | emerald-rematch |
-| JENNY_1 | Route124 | route | 4 | 36–38 | Starmie 38 | emerald-rematch + Alomomola |
+| JENNY_1 | Route124 | route | 4 | 36–38 | Starmie 38 | emerald-rematch + Alomomola, Lumineon |
 | GRACE | Route124 | route | 4 | 35–37 | Azumarill 37 | oras-first |
-| TANYA | Route125 | route | 4 | 37–39 | Lanturn 39 | enhanced |
+| TANYA | Route125 | route | 4 | 37–39 | Lanturn 39 | enhanced + Alomomola, Lumineon |
 | SHARON | Route125 | route | 4 | 36–38 | Clamperl 38 | oras-first |
-| NIKKI | Route126 | route | 4 | 37–39 | Azumarill 39 | enhanced |
+| NIKKI | Route126 | route | 4 | 37–39 | Azumarill 39 | enhanced + Lumineon, Swanna |
 | BRENDA | Route126 | route | 4 | 37–39 | Seaking 39 | enhanced |
 | KATIE | Route130 | route | 4 | 38–40 | Seaking 40 | enhanced |
 | SUSIE | Route131 | route | 4 | 39–40 | Gorebyss 40 | enhanced |
 | KARA | Route131 | route | 4 | 39–40 | Seaking 40 | enhanced |
 | DANA | Route132 | route | 4 | 39–41 | Azumarill 41 | enhanced |
-| SIENNA | Route126 | route | 4 | 37–39 | Milotic 39 | enhanced |
-| DEBRA | Route133 | route | 4 | 39–41 | Seaking 41 | enhanced + Clawitzer |
+| SIENNA | Route126 | route | 4 | 37–39 | Milotic 39 | enhanced + Alomomola, Lumineon |
+| DEBRA | Route133 | route | 4 | 39–41 | Seaking 41 | enhanced + Clawitzer, Kilowattrel |
 | LINDA | Route133 | route | 4 | 39–41 | Seaking 41 | oras-first |
-| LAUREL | Route134 | route | 4 | 39–41 | Lanturn 41 | enhanced + Skrelp |
+| LAUREL | Route134 | route | 4 | 39–41 | Lanturn 41 | enhanced + Skrelp, Clawitzer |
 | CARLEE | Route128 | route | 4 | 38–40 | Seaking 40 | enhanced |
-| JENNY_2 | Route124 | route t2 | 4 | 37–39 | Starmie 39 | emerald-rematch + Alomomola |
-| JENNY_3 | Route124 | route t3 | 5 | 39–41 | Starmie 41 | emerald-rematch + Alomomola |
+| JENNY_2 | Route124 | route t2 | 4 | 37–39 | Starmie 39 | emerald-rematch + Alomomola, Lumineon |
+| JENNY_3 | Route124 | route t3 | 5 | 39–41 | Starmie 41 | emerald-rematch + Alomomola, Lumineon |
 | CEDRIC | MtPyre_6F | route | 4 | 38–39 | Wobbuffet 39 | enhanced |
 | DIANA_3 | JaggedPass | route t3 | 4 | 38–40 | Altaria 40 | emerald-rematch |
-| MIU_AND_YUKI | Route123 | route | 4 | 37–38 | Illumise 38 | enhanced |
+| MIU_AND_YUKI | Route123 | route | 4 | 37–38 | Illumise 38 | enhanced + Ribombee, Vespiquen |
 | AMY_AND_LIV_4 | Route103 | route t3 | 4 | 37–39 | Minun 39 | emerald-rematch |
 | ERNEST_1 | Route125 | route | 4 | 36–38 | Machamp 38 | emerald-rematch |
 | ERNEST_2 | Route125 | route t2 | 4 | 38–39 | Tentacruel 39 | emerald-rematch |
 | ERNEST_3 | Route125 | route t3 | 5 | 39–41 | Tentacruel 41 | emerald-rematch |
-| JAZMYN | Route123 | route | 4 | 37–38 | Absol 38 | enhanced + Salazzle |
-| JONAS | Route123 | route | 4 | 37–38 | Weezing 38 | enhanced + Toxicroak |
-| KAYLEY | Route123 | route | 4 | 37–38 | Castform 38 | enhanced |
-| AURON | Route125 | route | 5 | 37–39 | Machamp 39 | enhanced |
-| KELVIN | Route134 | route | 4 | 40–41 | Machamp 41 | enhanced + Dhelmise |
-| MARLEY | Route134 | route | 5 | 39–41 | Manectric 41 | enhanced |
-| REYNA | Route134 | route | 4 | 39–41 | Hariyama 41 | enhanced |
-| HUDSON | Route134 | route | 4 | 39–41 | Wailord 41 | enhanced |
+| JAZMYN | Route123 | route | 4 | 37–38 | Absol 38 | enhanced + Salazzle, Lurantis |
+| JONAS | Route123 | route | 4 | 37–38 | Weezing 38 | enhanced + Toxicroak, Zoroark |
+| KAYLEY | Route123 | route | 4 | 37–38 | Castform 38 | enhanced + Tsareena, Drifblim |
+| AURON | Route125 | route | 5 | 37–39 | Machamp 39 | enhanced + Hawlucha, Lucario |
+| KELVIN | Route134 | route | 4 | 40–41 | Machamp 41 | enhanced + Dhelmise, Clawitzer |
+| MARLEY | Route134 | route | 5 | 39–41 | Manectric 41 | enhanced + Tsareena, Clawitzer |
+| REYNA | Route134 | route | 4 | 39–41 | Hariyama 41 | enhanced + Lucario, Hawlucha |
+| HUDSON | Route134 | route | 4 | 39–41 | Wailord 41 | enhanced + Clawitzer, Grapploct |
 | CONOR | Route133 | route | 5 | 39–41 | Hariyama 41 | enhanced |
 | EDWIN_3 | Route110 | route t3 | 5 | 37–39 | Shiftry 39 | emerald-rematch |
-| DAVIS | Route123 | route | 4 | 37–38 | Pinsir 38 | enhanced + Lokix |
+| DAVIS | Route123 | route | 4 | 37–38 | Pinsir 38 | enhanced + Lokix, Galvantula |
 | ISAAC_3 | Route117 | route t3 | 5 | 38–39 | Hariyama 39 | emerald-rematch |
 | LYDIA_3 | Route117 | route t3 | 5 | 38–39 | Azumarill 39 | emerald-rematch |
-| LORENZO | Route120 | route | 4 | 35–36 | Shiftry 36 | enhanced + Lurantis |
-| JACKSON_3 | Route119 | route t3 | 5 | 39–40 | Breloom 40 | emerald-rematch + Unfezant |
+| LORENZO | Route120 | route | 4 | 35–36 | Shiftry 36 | enhanced + Lurantis, Gogoat |
+| JACKSON_3 | Route119 | route t3 | 5 | 39–40 | Breloom 40 | emerald-rematch + Unfezant, Toucannon |
 | JENNA | Route120 | route | 4 | 35–36 | Ludicolo 36 | enhanced |
-| CATHERINE_3 | Route119 | route t3 | 4 | 39–40 | Roselia 40 | emerald-rematch + Excadrill |
-| GRUNT_MT_PYRE_4 | MtPyre_Summit | grunt | 4 | 37–38 | Wailmer 38 | enhanced |
-| SYLVIA | MossdeepCity_Gym | gym | 4 | 39–41 | Medicham 41 | enhanced + Drifblim |
+| CATHERINE_3 | Route119 | route t3 | 4 | 39–40 | Roselia 40 | emerald-rematch + Excadrill, Tsareena |
+| GRUNT_MT_PYRE_4 | MtPyre_Summit | grunt | 4 | 37–38 | Wailmer 38 | enhanced + Lumineon |
+| SYLVIA | MossdeepCity_Gym | gym | 4 | 39–41 | Medicham 41 | enhanced + Drifblim, Musharna |
 | LEONARDO | Route126 | route | 4 | 36–38 | Sharpedo 38 | enhanced |
-| ATHENA | Route127 | route | 5 | 37–39 | Manectric 39 | enhanced + Pyroar |
-| HARRISON | Route128 | route | 4 | 38–40 | Tentacruel 40 | enhanced + Toxapex |
+| ATHENA | Route127 | route | 5 | 37–39 | Manectric 39 | enhanced + Pyroar, Swanna |
+| HARRISON | Route128 | route | 4 | 38–40 | Tentacruel 40 | enhanced + Toxapex, Palafin |
 | CLARENCE | Route129 | route | 4 | 38–40 | Sharpedo 40 | enhanced |
-| NATE | MossdeepCity_Gym | gym | 4 | 39–41 | Grumpig 41 | enhanced |
-| KATHLEEN | MossdeepCity_Gym | gym | 4 | 39–41 | Alakazam 41 | enhanced |
-| CLIFFORD | MossdeepCity_Gym | gym | 4 | 39–41 | Girafarig 41 | enhanced |
-| NICHOLAS | MossdeepCity_Gym | gym | 4 | 39–41 | Wobbuffet 41 | enhanced |
-| MACEY | MossdeepCity_Gym | gym | 4 | 39–41 | Xatu 41 | enhanced |
+| NATE | MossdeepCity_Gym | gym | 4 | 39–41 | Grumpig 41 | enhanced + Bronzong, Sigilyph |
+| KATHLEEN | MossdeepCity_Gym | gym | 4 | 39–41 | Alakazam 41 | enhanced + Sigilyph, Cofagrigus |
+| CLIFFORD | MossdeepCity_Gym | gym | 4 | 39–41 | Girafarig 41 | enhanced + Sigilyph, Bruxish |
+| NICHOLAS | MossdeepCity_Gym | gym | 4 | 39–41 | Wobbuffet 41 | enhanced + Musharna, Bronzong |
+| MACEY | MossdeepCity_Gym | gym | 4 | 39–41 | Xatu 41 | enhanced + Swoobat, Bronzong |
 | PAXTON | Route132 | route | 5 | 39–41 | Breloom 41 | enhanced |
 | ISABELLA | Route124 | route | 4 | 36–38 | Starmie 38 | enhanced |
 | JONATHAN | Route132 | route | 5 | 39–41 | Exploud 41 | enhanced |
-| HALEY_3 | Route104 | route t3 | 4 | 37–39 | Breloom 39 | emerald-rematch + Whimsicott |
-| JAMES_3 | PetalburgWoods | route t3 | 5 | 37–39 | Ninjask 39 | emerald-rematch + Vespiquen |
-| TRENT_3 | Route112 | route t3 | 5 | 38–40 | Golem 40 | emerald-rematch |
+| HALEY_3 | Route104 | route t3 | 4 | 37–39 | Breloom 39 | emerald-rematch + Whimsicott, Ribombee |
+| JAMES_3 | PetalburgWoods | route t3 | 5 | 37–39 | Ninjask 39 | emerald-rematch + Vespiquen, Lokix |
+| TRENT_3 | Route112 | route t3 | 5 | 38–40 | Golem 40 | emerald-rematch + Coalossal, Gigalith |
 | DEZ_AND_LUKE | MtPyre_2F | route | 4 | 36–37 | Manectric 37 | enhanced |
 | KIRA_AND_DAN_3 | AbandonedShip_Rooms2_1F | route t3 | 4 | 39–40 | Illumise 40 | emerald-rematch |
-| KEIGO | Route120 | route | 4 | 35–36 | Ninjask 36 | enhanced + Skuntank |
-| RILEY | Route120 | route | 4 | 35–36 | Ninjask 36 | enhanced |
+| KEIGO | Route120 | route | 4 | 35–36 | Ninjask 36 | enhanced + Skuntank, Salazzle |
+| RILEY | Route120 | route | 4 | 35–36 | Ninjask 36 | enhanced + Zoroark, Skuntank |
 | BRENDAN_LILYCOVE | LilycoveCity | route | 5 | 40–43 | Sceptile 43 | story |
 | WALLY_LILYCOVE | LilycoveCity | route | 5 | 40–43 | Gallade 43 | story |
 | MAY_LILYCOVE | LilycoveCity | route | 5 | 40–43 | Blaziken 43 | story |
-| JONAH | Route127 | route | 4 | 37–39 | Sharpedo 39 | enhanced + Wishiwashi |
-| HENRY | Route127 | route | 4 | 37–39 | Tentacruel 39 | enhanced |
+| JONAH | Route127 | route | 4 | 37–39 | Sharpedo 39 | enhanced + Wishiwashi, Drednaw |
+| HENRY | Route127 | route | 4 | 37–39 | Tentacruel 39 | enhanced + Wishiwashi, Barraskewda |
 | ROGER | Route127 | route | 4 | 37–39 | Sharpedo 39 | oras-first |
-| ALEXA | Route128 | route | 5 | 38–40 | Azumarill 40 | enhanced |
+| ALEXA | Route128 | route | 5 | 38–40 | Azumarill 40 | enhanced + Toxapex, Lilligant |
 | RUBEN | Route128 | route | 5 | 38–40 | Shiftry 40 | enhanced |
 | KOJI_1 | Route127 | route | 4 | 38–40 | Machamp 40 | emerald-rematch |
-| WAYNE | Route128 | route | 4 | 38–40 | Wailord 40 | enhanced |
-| AIDAN | Route127 | route | 4 | 37–39 | Skarmory 39 | enhanced |
+| WAYNE | Route128 | route | 4 | 38–40 | Wailord 40 | enhanced + Toxapex, Bruxish |
+| AIDAN | Route127 | route | 4 | 37–39 | Skarmory 39 | enhanced + Staraptor, Toucannon |
 | REED | Route129 | route | 4 | 38–40 | Sharpedo 40 | enhanced |
 | TISHA | Route129 | route | 4 | 38–40 | Azumarill 40 | oras-first |
 | KIM_AND_IRIS | Route125 | route | 4 | 36–38 | Camerupt 38 | enhanced |
@@ -969,28 +1027,28 @@ multi battle. Blocks: `tools/hack/trainers/pwt/batch_frontier_legends.party` (+ 
 | LILA_AND_ROY_1 | Route124 | route | 4 | 35–37 | Sharpedo 37 | emerald-rematch |
 | LILA_AND_ROY_2 | Route124 | route t2 | 4 | 37–39 | Sharpedo 39 | emerald-rematch |
 | LILA_AND_ROY_3 | Route124 | route t3 | 4 | 39–41 | Sharpedo 41 | emerald-rematch |
-| GRUNT_MAGMA_HIDEOUT_1 | MagmaHideout_1F | grunt | 4 | 38–39 | Golbat 39 | enhanced |
-| GRUNT_MAGMA_HIDEOUT_2 | MagmaHideout_1F | grunt | 4 | 38–39 | Mightyena 39 | enhanced |
-| GRUNT_MAGMA_HIDEOUT_3 | MagmaHideout_2F_1R | grunt | 4 | 38–39 | Camerupt 39 | enhanced |
-| GRUNT_MAGMA_HIDEOUT_4 | MagmaHideout_2F_1R | grunt | 4 | 38–39 | Claydol 39 | enhanced |
-| GRUNT_MAGMA_HIDEOUT_5 | MagmaHideout_2F_1R | grunt | 4 | 38–39 | Camerupt 39 | enhanced |
-| GRUNT_MAGMA_HIDEOUT_6 | MagmaHideout_2F_2R | grunt | 4 | 39–40 | Mightyena 40 | enhanced |
-| GRUNT_MAGMA_HIDEOUT_7 | MagmaHideout_2F_2R | grunt | 4 | 39–40 | Crobat 40 | enhanced |
-| GRUNT_MAGMA_HIDEOUT_8 | MagmaHideout_2F_2R | grunt | 4 | 39–40 | Mightyena 40 | enhanced |
-| GRUNT_MAGMA_HIDEOUT_9 | MagmaHideout_3F_1R | grunt | 4 | 39–40 | Golbat 40 | enhanced |
-| GRUNT_MAGMA_HIDEOUT_10 | MagmaHideout_3F_2R | grunt | 4 | 40–41 | Mightyena 41 | enhanced |
-| GRUNT_MAGMA_HIDEOUT_11 | MagmaHideout_4F | grunt | 4 | 40–41 | Claydol 41 | enhanced |
-| GRUNT_MAGMA_HIDEOUT_12 | MagmaHideout_4F | grunt | 4 | 40–41 | Camerupt 41 | enhanced |
-| GRUNT_MAGMA_HIDEOUT_13 | MagmaHideout_4F | grunt | 4 | 40–41 | Crobat 41 | enhanced |
-| GRUNT_MAGMA_HIDEOUT_14 | MagmaHideout_2F_1R | grunt | 4 | 38–39 | Mightyena 39 | enhanced |
-| GRUNT_MAGMA_HIDEOUT_15 | MagmaHideout_2F_2R | grunt | 4 | 39–40 | Camerupt 40 | enhanced |
-| GRUNT_MAGMA_HIDEOUT_16 | MagmaHideout_3F_1R | grunt | 4 | 39–40 | Claydol 40 | enhanced |
+| GRUNT_MAGMA_HIDEOUT_1 | MagmaHideout_1F | grunt | 4 | 38–39 | Golbat 39 | enhanced + Salazzle |
+| GRUNT_MAGMA_HIDEOUT_2 | MagmaHideout_1F | grunt | 4 | 38–39 | Mightyena 39 | enhanced + Excadrill |
+| GRUNT_MAGMA_HIDEOUT_3 | MagmaHideout_2F_1R | grunt | 4 | 38–39 | Camerupt 39 | enhanced + Heatmor |
+| GRUNT_MAGMA_HIDEOUT_4 | MagmaHideout_2F_1R | grunt | 4 | 38–39 | Claydol 39 | enhanced + Gigalith |
+| GRUNT_MAGMA_HIDEOUT_5 | MagmaHideout_2F_1R | grunt | 4 | 38–39 | Camerupt 39 | enhanced + Coalossal |
+| GRUNT_MAGMA_HIDEOUT_6 | MagmaHideout_2F_2R | grunt | 4 | 39–40 | Mightyena 40 | enhanced + Mudsdale |
+| GRUNT_MAGMA_HIDEOUT_7 | MagmaHideout_2F_2R | grunt | 4 | 39–40 | Crobat 40 | enhanced + Centiskorch |
+| GRUNT_MAGMA_HIDEOUT_8 | MagmaHideout_2F_2R | grunt | 4 | 39–40 | Mightyena 40 | enhanced + Hippowdon |
+| GRUNT_MAGMA_HIDEOUT_9 | MagmaHideout_3F_1R | grunt | 4 | 39–40 | Golbat 40 | enhanced + Pyroar |
+| GRUNT_MAGMA_HIDEOUT_10 | MagmaHideout_3F_2R | grunt | 4 | 40–41 | Mightyena 41 | enhanced + Garganacl |
+| GRUNT_MAGMA_HIDEOUT_11 | MagmaHideout_4F | grunt | 4 | 40–41 | Claydol 41 | enhanced + Krookodile |
+| GRUNT_MAGMA_HIDEOUT_12 | MagmaHideout_4F | grunt | 4 | 40–41 | Camerupt 41 | enhanced + Sandaconda |
+| GRUNT_MAGMA_HIDEOUT_13 | MagmaHideout_4F | grunt | 4 | 40–41 | Crobat 41 | enhanced + Rampardos |
+| GRUNT_MAGMA_HIDEOUT_14 | MagmaHideout_2F_1R | grunt | 4 | 38–39 | Mightyena 39 | enhanced + Glimmora |
+| GRUNT_MAGMA_HIDEOUT_15 | MagmaHideout_2F_2R | grunt | 4 | 39–40 | Camerupt 40 | enhanced + Hippowdon |
+| GRUNT_MAGMA_HIDEOUT_16 | MagmaHideout_3F_1R | grunt | 4 | 39–40 | Claydol 40 | enhanced + Talonflame |
 | TABITHA_MAGMA_HIDEOUT | MagmaHideout_4F | admin | 5 | 39–42 | Camerupt 42 | enhanced |
-| DARCY | Route132 | route | 5 | 39–41 | Camerupt 41 | enhanced + Bewear |
-| MAKAYLA | Route132 | route | 5 | 39–41 | Medicham 41 | enhanced + Hawlucha |
-| LEONEL | Route120 | route | 4 | 35–36 | Manectric 36 | enhanced |
-| CALLIE | Route120 | route | 4 | 36–37 | Medicham 37 | enhanced |
-| CALE | Route121 | route | 4 | 36–37 | Dustox 37 | enhanced + Galvantula |
+| DARCY | Route132 | route | 5 | 39–41 | Camerupt 41 | enhanced + Bewear, Clawitzer |
+| MAKAYLA | Route132 | route | 5 | 39–41 | Medicham 41 | enhanced + Hawlucha, Grapploct |
+| LEONEL | Route120 | route | 4 | 35–36 | Manectric 36 | enhanced + Palpitoad, Pyroar |
+| CALLIE | Route120 | route | 4 | 36–37 | Medicham 37 | enhanced + Lucario, Bewear |
+| CALE | Route121 | route | 4 | 36–37 | Dustox 37 | enhanced + Galvantula, Golisopod |
 | MYLES | Route121 | route | 5 | 36–37 | Hariyama 37 | enhanced |
 | PAT | Route121 | route | 5 | 36–37 | Breloom 37 | enhanced |
 | CRISTIN_1 | Route121 | route | 4 | 36–38 | Vigoroth 38 | emerald-rematch |
@@ -1002,12 +1060,12 @@ multi battle. Blocks: `tools/hack/trainers/pwt/batch_frontier_legends.party` (+ 
 | KOJI_3 | Route127 | route t3 | 5 | 40–42 | Machamp 42 | emerald-rematch |
 | CRISTIN_2 | Route121 | route t2 | 4 | 37–39 | Slaking 39 | emerald-rematch |
 | CRISTIN_3 | Route121 | route t3 | 5 | 39–41 | Slaking 41 | emerald-rematch |
-| FERNANDO_2 | Route123 | route t2 | 4 | 38–40 | Exploud 40 | emerald-rematch |
-| FERNANDO_3 | Route123 | route t3 | 5 | 39–41 | Exploud 41 | emerald-rematch |
-| SAWYER_3 | MtChimney | route t3 | 5 | 38–40 | Golem 40 | emerald-rematch + Coalossal |
+| FERNANDO_2 | Route123 | route t2 | 4 | 38–40 | Exploud 40 | emerald-rematch + Luxray, Rotom |
+| FERNANDO_3 | Route123 | route t3 | 5 | 39–41 | Exploud 41 | emerald-rematch + Luxray, Rotom |
+| SAWYER_3 | MtChimney | route t3 | 5 | 38–40 | Golem 40 | emerald-rematch + Coalossal, Mudsdale |
 | GABRIELLE_2 | MtPyre_3F | route t2 | 4 | 38–39 | Mightyena 39 | emerald-rematch |
 | GABRIELLE_3 | MtPyre_3F | route t3 | 5 | 40–41 | Swellow 41 | emerald-rematch |
-| THALIA_3 | AbandonedShip_Rooms_1F | route t3 | 5 | 38–40 | Kingdra 40 | emerald-rematch |
+| THALIA_3 | AbandonedShip_Rooms_1F | route t3 | 5 | 38–40 | Seadra 40 | emerald-rematch |
 | NERINE_MT_PYRE_DEINO_CHARMANDER | MtPyre_Summit | route | 5 | 40–43 | Feraligatr 43 | story |
 | NERINE_MT_PYRE_DEINO_TOTODILE |  | route | 5 | 40–43 | Sceptile 43 | story |
 | NERINE_MT_PYRE_DEINO_TREECKO |  | route | 5 | 40–43 | Charizard 43 | story |
@@ -1032,68 +1090,68 @@ multi battle. Blocks: `tools/hack/trainers/pwt/batch_frontier_legends.party` (+ 
 
 | Trainer | Map | Role | Mons | Levels | Ace | Source |
 |---|---|---|---|---|---|---|
-| GRUNT_SEAFLOOR_CAVERN_1 | SeafloorCavern_Room1 | grunt | 4 | 41–42 | Mightyena 42 | enhanced |
-| GRUNT_SEAFLOOR_CAVERN_2 | SeafloorCavern_Room1 | grunt | 4 | 41–42 | Sharpedo 42 | enhanced |
-| GRUNT_SEAFLOOR_CAVERN_3 | SeafloorCavern_Room4 | grunt | 4 | 42–43 | Crobat 43 | enhanced |
-| GRUNT_SEAFLOOR_CAVERN_4 | SeafloorCavern_Room4 | grunt | 4 | 42–43 | Sharpedo 43 | enhanced |
-| GRUNT_SPACE_CENTER_1 | MossdeepCity_SpaceCenter_1F | grunt | 4 | 40–41 | Camerupt 41 | enhanced |
+| GRUNT_SEAFLOOR_CAVERN_1 | SeafloorCavern_Room1 | grunt | 4 | 41–42 | Mightyena 42 | enhanced + Barbaracle |
+| GRUNT_SEAFLOOR_CAVERN_2 | SeafloorCavern_Room1 | grunt | 4 | 41–42 | Sharpedo 42 | enhanced + Zoroark |
+| GRUNT_SEAFLOOR_CAVERN_3 | SeafloorCavern_Room4 | grunt | 4 | 42–43 | Crobat 43 | enhanced + Drednaw |
+| GRUNT_SEAFLOOR_CAVERN_4 | SeafloorCavern_Room4 | grunt | 4 | 42–43 | Sharpedo 43 | enhanced + Jellicent |
+| GRUNT_SPACE_CENTER_1 | MossdeepCity_SpaceCenter_1F | grunt | 4 | 40–41 | Camerupt 41 | enhanced + Hippowdon |
 | SHELLY_SEAFLOOR_CAVERN | SeafloorCavern_Room3 | admin | 6 | 44–46 | Sharpedo 46 | enhanced |
 | ARCHIE | SeafloorCavern_Room9 | boss | 6 | 46–48 | Sharpedo 48 | enhanced |
-| ROSE_4 | Route118 | route t4 | 4 | 42–45 | Roserade 45 | emerald-rematch |
-| DUSTY_4 | Route111 | route t4 | 4 | 42–45 | Sandslash 45 | emerald-rematch + Tyrantrum |
+| ROSE_4 | Route118 | route t4 | 4 | 42–45 | Roserade 45 | emerald-rematch + Lilligant, Shiinotic |
+| DUSTY_4 | Route111 | route t4 | 4 | 42–45 | Sandslash 45 | emerald-rematch + Tyrantrum, Aurorus |
 | GABBY_AND_TY_6 |  | route | 4 | 44–45 | Exploud 45 | emerald-rematch |
 | LOLA_4 | Route109 | route t4 | 4 | 42–45 | Azumarill 45 | emerald-rematch |
 | RICKY_4 | Route109 | route t4 | 4 | 42–45 | Linoone 45 | emerald-rematch |
 | WILTON_4 | Route111 | route t4 | 5 | 42–45 | Hariyama 45 | emerald-rematch + Fraxure, Talonflame |
-| BROOKE_4 | Route111 | route t4 | 5 | 42–45 | Roserade 45 | emerald-rematch + Purugly |
-| VALERIE_4 | MtPyre_6F | route t4 | 5 | 42–45 | Mismagius 45 | emerald-rematch + Mismagius |
-| DAPHNE | SootopolisCity_Gym_B1F | gym | 5 | 44–46 | Starmie 46 | enhanced + Alomomola |
-| GRUNT_SPACE_CENTER_2 | MossdeepCity_SpaceCenter_1F | grunt | 4 | 41–42 | Camerupt 42 | enhanced |
-| BRIANNA | SootopolisCity_Gym_B1F | gym | 5 | 44–46 | Corsola 46 | oras-first |
-| CINDY_5 | Route104 | route t4 | 4 | 42–45 | Linoone 45 | emerald-rematch + Pyroar |
-| CONNIE | SootopolisCity_Gym_B1F | gym | 5 | 44–46 | Seaking 46 | enhanced + Swanna |
-| BRIDGET | SootopolisCity_Gym_B1F | gym | 5 | 44–46 | Azumarill 46 | enhanced |
-| OLIVIA | SootopolisCity_Gym_B1F | gym | 5 | 44–46 | Ludicolo 46 | enhanced + Barraskewda |
-| TIFFANY | SootopolisCity_Gym_B1F | gym | 5 | 44–46 | Wailord 46 | oras-first |
-| JESSICA_4 | Route121 | route t4 | 4 | 42–45 | Seviper 45 | emerald-rematch + Krookodile |
-| WINSTON_4 | Route104 | route t4 | 4 | 42–45 | Linoone 45 | emerald-rematch + Pyroar |
+| BROOKE_4 | Route111 | route t4 | 5 | 42–45 | Roserade 45 | emerald-rematch + Purugly, Kilowattrel |
+| VALERIE_4 | MtPyre_6F | route t4 | 5 | 42–45 | Mismagius 45 | emerald-rematch + Mismagius, Polteageist |
+| DAPHNE | SootopolisCity_Gym_B1F | gym | 5 | 44–46 | Starmie 46 | enhanced + Alomomola, Lumineon |
+| GRUNT_SPACE_CENTER_2 | MossdeepCity_SpaceCenter_1F | grunt | 4 | 41–42 | Camerupt 42 | enhanced + Pyroar |
+| BRIANNA | SootopolisCity_Gym_B1F | gym | 5 | 44–46 | Corsola 46 | oras-first + Floatzel, Jellicent |
+| CINDY_5 | Route104 | route t4 | 4 | 42–45 | Linoone 45 | emerald-rematch + Pyroar, Whimsicott |
+| CONNIE | SootopolisCity_Gym_B1F | gym | 5 | 44–46 | Seaking 46 | enhanced + Swanna, Toxapex |
+| BRIDGET | SootopolisCity_Gym_B1F | gym | 5 | 44–46 | Azumarill 46 | enhanced + Lumineon, Barbaracle |
+| OLIVIA | SootopolisCity_Gym_B1F | gym | 5 | 44–46 | Ludicolo 46 | enhanced + Barraskewda, Clawitzer |
+| TIFFANY | SootopolisCity_Gym_B1F | gym | 5 | 44–46 | Wailord 46 | oras-first + Palafin, Drednaw |
+| JESSICA_4 | Route121 | route t4 | 4 | 42–45 | Seviper 45 | emerald-rematch + Krookodile, Salazzle |
+| WINSTON_4 | Route104 | route t4 | 4 | 42–45 | Linoone 45 | emerald-rematch + Pyroar, Unfezant |
 | STEVE_4 | Route114 | route t4 | 4 | 42–45 | Rhydon 45 | emerald-rematch |
-| TONY_4 | Route107 | route t4 | 5 | 42–45 | Sharpedo 45 | emerald-rematch + Jellicent |
+| TONY_4 | Route107 | route t4 | 5 | 42–45 | Sharpedo 45 | emerald-rematch + Jellicent, Lumineon |
 | NOB_4 | Route115 | route t4 | 5 | 42–45 | Machamp 45 | emerald-rematch |
-| DALTON_4 | Route118 | route t4 | 5 | 42–45 | Magneton 45 | emerald-rematch + Chatot |
+| DALTON_4 | Route118 | route t4 | 5 | 42–45 | Magneton 45 | emerald-rematch + Chatot, Rotom |
 | BERNIE_4 | Route114 | route t4 | 5 | 42–45 | Magcargo 45 | emerald-rematch |
-| ETHAN_4 | JaggedPass | route t4 | 4 | 42–45 | Linoone 45 | emerald-rematch + Skuntank |
-| JEFFREY_4 | Route120 | route t4 | 5 | 42–45 | Masquerain 45 | emerald-rematch |
+| ETHAN_4 | JaggedPass | route t4 | 4 | 42–45 | Linoone 45 | emerald-rematch + Skuntank, Mudsdale |
+| JEFFREY_4 | Route120 | route t4 | 5 | 42–45 | Masquerain 45 | emerald-rematch + Golisopod, Larvesta |
 | CAMERON_4 | Route123 | route t4 | 5 | 42–45 | Alakazam 45 | emerald-rematch |
 | JACKI_4 | Route123 | route t4 | 5 | 42–45 | Alakazam 45 | emerald-rematch |
-| WALTER_4 | Route121 | route t4 | 5 | 42–45 | Manectric 45 | emerald-rematch + Stoutland |
+| WALTER_4 | Route121 | route t4 | 5 | 42–45 | Manectric 45 | emerald-rematch + Stoutland, Pyroar |
 | JUAN_1 | SootopolisCity_Gym_1F | leader | 6 | 44–48 | Kingdra 48 | emerald-rematch |
-| JERRY_4 | Route116 | route t4 | 4 | 42–45 | Gardevoir 45 | emerald-rematch + Pawniard |
+| JERRY_4 | Route116 | route t4 | 4 | 42–45 | Gardevoir 45 | emerald-rematch + Pawniard, Musharna |
 | KAREN_4 | Route116 | route t4 | 4 | 42–45 | Breloom 45 | emerald-rematch |
 | ANNA_AND_MEG_4 | Route117 | route t4 | 4 | 43–45 | Hariyama 45 | emerald-rematch |
 | MIGUEL_4 | Route103 | route t4 | 4 | 42–45 | Delcatty 45 | emerald-rematch |
-| BETHANY | SootopolisCity_Gym_B1F | gym | 5 | 44–46 | Azumarill 46 | enhanced |
+| BETHANY | SootopolisCity_Gym_B1F | gym | 5 | 44–46 | Azumarill 46 | enhanced + Palafin, Wishiwashi |
 | ISABEL_4 | Route110 | route t4 | 4 | 42–45 | Minun 45 | emerald-rematch |
 | TIMOTHY_4 | Route115 | route t4 | 4 | 42–45 | Hariyama 45 | emerald-rematch + Hawlucha, Gurdurr |
-| SHELBY_4 | MtChimney | route t4 | 4 | 42–45 | Hariyama 45 | emerald-rematch + Lucario |
-| CALVIN_4 | Route102 | route t4 | 4 | 42–45 | Mightyena 45 | emerald-rematch |
+| SHELBY_4 | MtChimney | route t4 | 4 | 42–45 | Hariyama 45 | emerald-rematch + Lucario, Hawlucha |
+| CALVIN_4 | Route102 | route t4 | 4 | 42–45 | Mightyena 45 | emerald-rematch + Greedent, Gumshoos |
 | ELLIOT_4 | Route106 | route t4 | 5 | 42–45 | Gyarados 45 | emerald-rematch |
-| BENJAMIN_4 | Route110 | route t4 | 4 | 42–45 | Magneton 45 | emerald-rematch + Klang |
+| BENJAMIN_4 | Route110 | route t4 | 4 | 42–45 | Magneton 45 | emerald-rematch + Klang, Zebstrika |
 | ABIGAIL_4 | Route110 | route t4 | 4 | 42–45 | Magneton 45 | emerald-rematch |
 | DYLAN_4 | Route117 | route t4 | 4 | 42–45 | Dodrio 45 | emerald-rematch |
 | MARIA_4 | Route117 | route t4 | 4 | 42–45 | Dodrio 45 | emerald-rematch |
-| ISAIAH_4 | Route128 | route t4 | 5 | 42–45 | Starmie 45 | emerald-rematch + Floatzel |
+| ISAIAH_4 | Route128 | route t4 | 5 | 42–45 | Starmie 45 | emerald-rematch + Floatzel, Toxapex |
 | KATELYN_4 | Route128 | route t4 | 5 | 42–45 | Starmie 45 | emerald-rematch |
-| BENNY | Route110_TrickHousePuzzle6 | route | 4 | 42–44 | Swellow 44 | enhanced + Corviknight |
-| ROBERT_4 | Route120 | route t4 | 5 | 42–45 | Altaria 45 | emerald-rematch + Staraptor |
-| LAO_4 | Route113 | route t4 | 5 | 42–45 | Weezing 45 | emerald-rematch |
+| BENNY | Route110_TrickHousePuzzle6 | route | 4 | 42–44 | Swellow 44 | enhanced + Corviknight, Toucannon |
+| ROBERT_4 | Route120 | route t4 | 5 | 42–45 | Altaria 45 | emerald-rematch + Staraptor, Corviknight |
+| LAO_4 | Route113 | route t4 | 5 | 42–45 | Weezing 45 | emerald-rematch + Toxicroak, Skuntank |
 | CYNDY_4 | Route115 | route t4 | 4 | 42–45 | Hariyama 45 | emerald-rematch |
 | MADELINE_4 | Route113 | route t4 | 5 | 42–45 | Camerupt 45 | emerald-rematch |
-| JENNY_4 | Route124 | route t4 | 5 | 42–45 | Starmie 45 | emerald-rematch + Alomomola |
+| JENNY_4 | Route124 | route t4 | 5 | 42–45 | Starmie 45 | emerald-rematch + Alomomola, Lumineon |
 | DIANA_4 | JaggedPass | route t4 | 4 | 42–45 | Altaria 45 | emerald-rematch |
 | AMY_AND_LIV_5 | Route103 | route t4 | 4 | 43–45 | Minun 45 | emerald-rematch |
 | ERNEST_4 | Route125 | route t4 | 5 | 42–45 | Machamp 45 | emerald-rematch |
-| ANNIKA | SootopolisCity_Gym_B1F | gym | 5 | 44–46 | Milotic 46 | enhanced |
+| ANNIKA | SootopolisCity_Gym_B1F | gym | 5 | 44–46 | Milotic 46 | enhanced + Alomomola, Seismitoad |
 | EDWIN_4 | Route110 | route t4 | 5 | 42–45 | Shiftry 45 | emerald-rematch |
 | BRENDAN_MOSSDEEP | MossdeepCity_SpaceCenter_2F | route | 3 | 46–47 | Sceptile 47 | story |
 | MAXIE_SOOTOPOLIS | SootopolisCity | boss | 6 | 46–48 | Camerupt 48 | story |
@@ -1102,20 +1160,20 @@ multi battle. Blocks: `tools/hack/trainers/pwt/batch_frontier_legends.party` (+ 
 | ISAAC_4 | Route117 | route t4 | 6 | 42–45 | Hariyama 45 | emerald-rematch |
 | LYDIA_4 | Route117 | route t4 | 6 | 42–45 | Azumarill 45 | emerald-rematch |
 | SEBASTIAN | Route110_TrickHousePuzzle6 | route | 4 | 42–44 | Aggron 44 | oras-first |
-| JACKSON_4 | Route119 | route t4 | 5 | 42–45 | Breloom 45 | emerald-rematch + Unfezant |
+| JACKSON_4 | Route119 | route t4 | 5 | 42–45 | Breloom 45 | emerald-rematch + Unfezant, Toucannon |
 | SOPHIA | Route110_TrickHousePuzzle6 | route | 4 | 42–44 | Altaria 44 | enhanced |
-| CATHERINE_4 | Route119 | route t4 | 4 | 42–45 | Roserade 45 | emerald-rematch + Excadrill |
-| GRUNT_SEAFLOOR_CAVERN_5 | SeafloorCavern_Room3 | grunt | 4 | 43–44 | Mightyena 44 | enhanced |
-| GRUNT_SPACE_CENTER_3 | MossdeepCity_SpaceCenter_1F | grunt | 4 | 40–41 | Mightyena 41 | enhanced |
-| GRUNT_SPACE_CENTER_4 | MossdeepCity_SpaceCenter_1F | grunt | 4 | 41–42 | Claydol 42 | enhanced |
-| GRUNT_SPACE_CENTER_5 | MossdeepCity_SpaceCenter_2F | grunt | 4 | 42–43 | Crobat 43 | enhanced |
-| GRUNT_SPACE_CENTER_6 | MossdeepCity_SpaceCenter_2F | grunt | 4 | 42–43 | Mightyena 43 | enhanced |
-| GRUNT_SPACE_CENTER_7 | MossdeepCity_SpaceCenter_2F | grunt | 4 | 42–43 | Claydol 43 | enhanced |
-| HALEY_4 | Route104 | route t4 | 4 | 42–45 | Breloom 45 | emerald-rematch + Whimsicott |
-| ANDREA | SootopolisCity_Gym_B1F | gym | 5 | 44–46 | Lapras 46 | enhanced |
-| CRISSY | SootopolisCity_Gym_B1F | gym | 5 | 44–46 | Wailord 46 | enhanced |
-| JAMES_4 | PetalburgWoods | route t4 | 5 | 42–45 | Ninjask 45 | emerald-rematch + Vespiquen |
-| TRENT_4 | Route112 | route t4 | 5 | 42–45 | Golem 45 | emerald-rematch |
+| CATHERINE_4 | Route119 | route t4 | 4 | 42–45 | Roserade 45 | emerald-rematch + Excadrill, Tsareena |
+| GRUNT_SEAFLOOR_CAVERN_5 | SeafloorCavern_Room3 | grunt | 4 | 43–44 | Mightyena 44 | enhanced + Toxapex |
+| GRUNT_SPACE_CENTER_3 | MossdeepCity_SpaceCenter_1F | grunt | 4 | 40–41 | Mightyena 41 | enhanced + Salazzle |
+| GRUNT_SPACE_CENTER_4 | MossdeepCity_SpaceCenter_1F | grunt | 4 | 41–42 | Claydol 42 | enhanced + Excadrill |
+| GRUNT_SPACE_CENTER_5 | MossdeepCity_SpaceCenter_2F | grunt | 4 | 42–43 | Crobat 43 | enhanced + Centiskorch |
+| GRUNT_SPACE_CENTER_6 | MossdeepCity_SpaceCenter_2F | grunt | 4 | 42–43 | Mightyena 43 | enhanced + Coalossal |
+| GRUNT_SPACE_CENTER_7 | MossdeepCity_SpaceCenter_2F | grunt | 4 | 42–43 | Claydol 43 | enhanced + Mudsdale |
+| HALEY_4 | Route104 | route t4 | 4 | 42–45 | Breloom 45 | emerald-rematch + Whimsicott, Ribombee |
+| ANDREA | SootopolisCity_Gym_B1F | gym | 5 | 44–46 | Lapras 46 | enhanced + Swanna, Bruxish |
+| CRISSY | SootopolisCity_Gym_B1F | gym | 5 | 44–46 | Wailord 46 | enhanced + Basculin, Golisopod |
+| JAMES_4 | PetalburgWoods | route t4 | 5 | 42–45 | Ninjask 45 | emerald-rematch + Vespiquen, Lokix |
+| TRENT_4 | Route112 | route t4 | 5 | 42–45 | Golem 45 | emerald-rematch + Coalossal, Gigalith |
 | KIRA_AND_DAN_4 | AbandonedShip_Rooms2_1F | route t4 | 4 | 43–45 | Gorebyss 45 | emerald-rematch |
 | LILA_AND_ROY_4 | Route124 | route t4 | 4 | 43–45 | Sharpedo 45 | emerald-rematch |
 | ANDRES_4 | Route105 | route t4 | 5 | 42–45 | Sandslash 45 | emerald-rematch |
@@ -1123,8 +1181,8 @@ multi battle. Blocks: `tools/hack/trainers/pwt/batch_frontier_legends.party` (+ 
 | PABLO_4 | Route126 | route t4 | 5 | 42–45 | Starmie 45 | emerald-rematch |
 | KOJI_4 | Route127 | route t4 | 5 | 42–45 | Machamp 45 | emerald-rematch |
 | CRISTIN_4 | Route121 | route t4 | 5 | 42–45 | Slaking 45 | emerald-rematch |
-| FERNANDO_4 | Route123 | route t4 | 5 | 42–45 | Exploud 45 | emerald-rematch |
-| SAWYER_4 | MtChimney | route t4 | 5 | 42–45 | Golem 45 | emerald-rematch + Coalossal |
+| FERNANDO_4 | Route123 | route t4 | 5 | 42–45 | Exploud 45 | emerald-rematch + Luxray, Rotom |
+| SAWYER_4 | MtChimney | route t4 | 5 | 42–45 | Golem 45 | emerald-rematch + Coalossal, Mudsdale |
 | GABRIELLE_4 | MtPyre_3F | route t4 | 6 | 42–45 | Swellow 45 | emerald-rematch |
 | THALIA_4 | AbandonedShip_Rooms_1F | route t4 | 5 | 42–45 | Kingdra 45 | emerald-rematch |
 | NERINE_SEAFLOOR_DEINO_CHARMANDER | SeafloorCavern_Room9 | route | 6 | 45–48 | Feraligatr 48 | story |
@@ -1142,17 +1200,17 @@ multi battle. Blocks: `tools/hack/trainers/pwt/batch_frontier_legends.party` (+ 
 
 | Trainer | Map | Role | Mons | Levels | Ace | Source |
 |---|---|---|---|---|---|---|
-| FELIX | VictoryRoad_B2F | route | 5 | 53–55 | Medicham 55 | enhanced |
-| EDGAR | VictoryRoad_1F | route | 5 | 48–50 | Cacturne 50 | enhanced |
-| ALBERT | VictoryRoad_1F | route | 5 | 48–50 | Muk 50 | enhanced + Corviknight |
-| SAMUEL | VictoryRoad_B1F | route | 5 | 50–52 | Alakazam 52 | enhanced |
-| VITO | VictoryRoad_B2F | route | 5 | 52–54 | Shiftry 54 | enhanced + Galvantula |
-| OWEN | VictoryRoad_B2F | route | 5 | 52–54 | Wailord 54 | enhanced + Garganacl |
-| HOPE | VictoryRoad_1F | route | 5 | 49–51 | Roserade 51 | enhanced |
-| SHANNON | VictoryRoad_B1F | route | 5 | 50–52 | Claydol 52 | enhanced |
-| MICHELLE | VictoryRoad_B1F | route | 5 | 50–52 | Ludicolo 52 | enhanced |
-| CAROLINE | VictoryRoad_B2F | route | 5 | 52–54 | Skarmory 54 | enhanced |
-| JULIE | VictoryRoad_B2F | route | 5 | 52–54 | Ninetales 54 | enhanced + Garchomp |
+| FELIX | VictoryRoad_B2F | route | 5 | 53–55 | Medicham 55 | enhanced + Golurk, Barbaracle |
+| EDGAR | VictoryRoad_1F | route | 5 | 48–50 | Cacturne 50 | enhanced + Luxray, Bronzong |
+| ALBERT | VictoryRoad_1F | route | 5 | 48–50 | Muk 50 | enhanced + Corviknight, Sigilyph |
+| SAMUEL | VictoryRoad_B1F | route | 5 | 50–52 | Alakazam 52 | enhanced + Bouffalant, Durant |
+| VITO | VictoryRoad_B2F | route | 5 | 52–54 | Shiftry 54 | enhanced + Galvantula, Staraptor |
+| OWEN | VictoryRoad_B2F | route | 5 | 52–54 | Wailord 54 | enhanced + Garganacl, Excadrill |
+| HOPE | VictoryRoad_1F | route | 5 | 49–51 | Roserade 51 | enhanced + Tsareena, Lurantis |
+| SHANNON | VictoryRoad_B1F | route | 5 | 50–52 | Claydol 52 | enhanced + Avalugg, Conkeldurr |
+| MICHELLE | VictoryRoad_B1F | route | 5 | 50–52 | Ludicolo 52 | enhanced + Coalossal, Clawitzer |
+| CAROLINE | VictoryRoad_B2F | route | 5 | 52–54 | Skarmory 54 | enhanced + Glimmora, Beartic |
+| JULIE | VictoryRoad_B2F | route | 5 | 52–54 | Ninetales 54 | enhanced + Garchomp, Hippowdon |
 | PATRICIA | Route110_TrickHousePuzzle7 | route | 4 | 48–50 | Banette 50 | enhanced |
 | JOSHUA | Route110_TrickHousePuzzle7 | route | 4 | 48–50 | Alakazam 50 | enhanced |
 | ALEXIS | Route110_TrickHousePuzzle7 | route | 4 | 48–50 | Gardevoir 50 | enhanced |
@@ -1169,73 +1227,73 @@ multi battle. Blocks: `tools/hack/trainers/pwt/batch_frontier_legends.party` (+ 
 | NICOLAS_4 | MeteorFalls_1F_2R | route t4 | 5 | 54–55 | Salamence 55 | emerald-rematch + Druddigon, Noivern |
 | DIANNE | VictoryRoad_B2F | route | 5 | 53–55 | Lanturn 55 | enhanced |
 | WALLY_VR_1 | VictoryRoad_1F | route | 5 | 54–57 | Gallade 57 | story |
-| MITCHELL | VictoryRoad_B1F | route | 5 | 50–52 | Solrock 52 | enhanced + Bronzong |
-| HALLE | VictoryRoad_B1F | route | 5 | 50–52 | Absol 52 | enhanced + Chandelure |
+| MITCHELL | VictoryRoad_B1F | route | 5 | 50–52 | Solrock 52 | enhanced + Bronzong, Sigilyph |
+| HALLE | VictoryRoad_B1F | route | 5 | 50–52 | Absol 52 | enhanced + Chandelure, Houndstone |
 | JOHN_AND_JAY_1 | MeteorFalls_1F_2R | route | 4 | 48–49 | Hariyama 49 | emerald-rematch |
 | JOHN_AND_JAY_2 | MeteorFalls_1F_2R | route t2 | 4 | 50–52 | Hariyama 52 | emerald-rematch |
 | JOHN_AND_JAY_3 | MeteorFalls_1F_2R | route t3 | 4 | 52–54 | Hariyama 54 | emerald-rematch |
 | JOHN_AND_JAY_4 | MeteorFalls_1F_2R | route t4 | 4 | 54–55 | Hariyama 55 | emerald-rematch |
 | MARIELA | Route110_TrickHousePuzzle7 | route | 4 | 48–50 | Starmie 50 | enhanced |
 | ALVARO | Route110_TrickHousePuzzle7 | route | 4 | 48–50 | Alakazam 50 | enhanced |
-| EVERETT | Route110_TrickHousePuzzle7 | route | 4 | 48–50 | Arcanine 50 | enhanced + Stoutland |
+| EVERETT | Route110_TrickHousePuzzle7 | route | 4 | 48–50 | Arcanine 50 | enhanced + Stoutland, Purugly |
 
 ### POST (cap none) – After the Champion (no cap)
 
 | Trainer | Map | Role | Mons | Levels | Ace | Source |
 |---|---|---|---|---|---|---|
-| ROSE_5 | Route118 | route t5 | 4 | 60–61 | Roserade 61 | emerald-rematch |
-| DUSTY_5 | Route111 | route t5 | 4 | 60–62 | Sandslash 62 | emerald-rematch + Tyrantrum |
+| ROSE_5 | Route118 | route t5 | 4 | 60–61 | Roserade 61 | emerald-rematch + Lilligant, Shiinotic |
+| DUSTY_5 | Route111 | route t5 | 4 | 60–62 | Sandslash 62 | emerald-rematch + Tyrantrum, Aurorus |
 | LOLA_5 | Route109 | route t5 | 4 | 60–62 | Azumarill 62 | emerald-rematch |
 | RICKY_5 | Route109 | route t5 | 4 | 60–62 | Linoone 62 | emerald-rematch |
-| VINCENT | Route110_TrickHousePuzzle8 | route | 5 | 64–66 | Sharpedo 66 | enhanced |
-| LEROY | Route110_TrickHousePuzzle8 | route | 5 | 65–67 | Starmie 67 | enhanced + Pyroar |
+| VINCENT | Route110_TrickHousePuzzle8 | route | 5 | 64–66 | Sharpedo 66 | enhanced + Lucario, Zoroark |
+| LEROY | Route110_TrickHousePuzzle8 | route | 5 | 65–67 | Starmie 67 | enhanced + Pyroar, Corviknight |
 | WILTON_5 | Route111 | route t5 | 5 | 60–62 | Hariyama 62 | emerald-rematch + Haxorus, Talonflame |
 | KEIRA | Route110_TrickHousePuzzle8 | route | 5 | 65–67 | Aggron 67 | enhanced |
-| BROOKE_5 | Route111 | route t5 | 5 | 60–61 | Roserade 61 | emerald-rematch + Purugly |
-| VALERIE_5 | MtPyre_6F | route t5 | 5 | 63–65 | Mismagius 65 | emerald-rematch + Mismagius |
-| NAOMI | SSTidalCorridor | route | 4 | 65–67 | Roserade 67 | enhanced |
-| CINDY_6 | Route104 | route t5 | 4 | 60–62 | Linoone 62 | emerald-rematch + Pyroar |
-| JESSICA_5 | Route121 | route t5 | 4 | 64–66 | Seviper 66 | emerald-rematch + Krookodile |
+| BROOKE_5 | Route111 | route t5 | 5 | 60–61 | Roserade 61 | emerald-rematch + Purugly, Kilowattrel |
+| VALERIE_5 | MtPyre_6F | route t5 | 5 | 63–65 | Mismagius 65 | emerald-rematch + Mismagius, Polteageist |
+| NAOMI | SSTidalCorridor | route | 4 | 65–67 | Roserade 67 | enhanced + Lilligant, Purugly |
+| CINDY_6 | Route104 | route t5 | 4 | 60–62 | Linoone 62 | emerald-rematch + Pyroar, Whimsicott |
+| JESSICA_5 | Route121 | route t5 | 4 | 64–66 | Seviper 66 | emerald-rematch + Krookodile, Salazzle |
 | GARRET | SSTidalCorridor | route | 4 | 65–67 | Azumarill 67 | enhanced |
-| WINSTON_5 | Route104 | route t5 | 4 | 60–62 | Linoone 62 | emerald-rematch + Pyroar |
+| WINSTON_5 | Route104 | route t5 | 4 | 60–62 | Linoone 62 | emerald-rematch + Pyroar, Unfezant |
 | STEVE_5 | Route114 | route t5 | 4 | 60–62 | Rhyperior 62 | emerald-rematch |
-| TONY_5 | Route107 | route t5 | 5 | 62–64 | Sharpedo 64 | emerald-rematch + Jellicent |
+| TONY_5 | Route107 | route t5 | 5 | 62–64 | Sharpedo 64 | emerald-rematch + Jellicent, Lumineon |
 | NOB_5 | Route115 | route t5 | 5 | 60–61 | Machamp 61 | emerald-rematch |
-| DALTON_5 | Route118 | route t5 | 5 | 60–61 | Magnezone 61 | emerald-rematch + Chatot |
+| DALTON_5 | Route118 | route t5 | 5 | 60–61 | Magnezone 61 | emerald-rematch + Chatot, Rotom |
 | BERNIE_5 | Route114 | route t5 | 5 | 60–62 | Magcargo 62 | emerald-rematch |
-| ETHAN_5 | JaggedPass | route t5 | 4 | 60–61 | Linoone 61 | emerald-rematch + Skuntank |
-| JEFFREY_5 | Route120 | route t5 | 6 | 60–63 | Masquerain 63 | emerald-rematch |
+| ETHAN_5 | JaggedPass | route t5 | 4 | 60–61 | Linoone 61 | emerald-rematch + Skuntank, Mudsdale |
+| JEFFREY_5 | Route120 | route t5 | 6 | 60–63 | Masquerain 63 | emerald-rematch + Golisopod, Volcarona |
 | CAMERON_5 | Route123 | route t5 | 5 | 65–67 | Alakazam 67 | emerald-rematch |
 | JACKI_5 | Route123 | route t5 | 5 | 64–66 | Alakazam 66 | emerald-rematch |
-| MICAH | SSTidalCorridor | route | 5 | 64–66 | Manectric 66 | enhanced + Stoutland |
-| THOMAS | SSTidalCorridor | route | 4 | 65–67 | Zangoose 67 | enhanced + Bouffalant |
-| WALTER_5 | Route121 | route t5 | 5 | 63–65 | Manectric 65 | emerald-rematch + Stoutland |
-| JERRY_5 | Route116 | route t5 | 4 | 60–61 | Gardevoir 61 | emerald-rematch + Bisharp |
+| MICAH | SSTidalCorridor | route | 5 | 64–66 | Manectric 66 | enhanced + Stoutland, Pyroar |
+| THOMAS | SSTidalCorridor | route | 4 | 65–67 | Zangoose 67 | enhanced + Bouffalant, Braviary |
+| WALTER_5 | Route121 | route t5 | 5 | 63–65 | Manectric 65 | emerald-rematch + Stoutland, Pyroar |
+| JERRY_5 | Route116 | route t5 | 4 | 60–61 | Gardevoir 61 | emerald-rematch + Bisharp, Musharna |
 | KAREN_5 | Route116 | route t5 | 4 | 60–62 | Breloom 62 | emerald-rematch |
 | ANNA_AND_MEG_5 | Route117 | route t5 | 4 | 61–63 | Hariyama 63 | emerald-rematch |
 | COLTON | SSTidalCorridor | route | 5 | 63–65 | Delcatty 65 | enhanced |
 | MIGUEL_5 | Route103 | route t5 | 4 | 60–62 | Delcatty 62 | emerald-rematch |
 | ISABEL_5 | Route110 | route t5 | 4 | 60–62 | Minun 62 | emerald-rematch |
 | TIMOTHY_5 | Route115 | route t5 | 4 | 63–65 | Hariyama 65 | emerald-rematch + Hawlucha, Conkeldurr |
-| SHELBY_5 | MtChimney | route t5 | 4 | 62–64 | Hariyama 64 | emerald-rematch + Lucario |
-| CALVIN_5 | Route102 | route t5 | 4 | 60–62 | Mightyena 62 | emerald-rematch |
+| SHELBY_5 | MtChimney | route t5 | 4 | 62–64 | Hariyama 64 | emerald-rematch + Lucario, Hawlucha |
+| CALVIN_5 | Route102 | route t5 | 4 | 60–62 | Mightyena 62 | emerald-rematch + Greedent, Gumshoos |
 | ELLIOT_5 | Route106 | route t5 | 5 | 60–62 | Gyarados 62 | emerald-rematch |
-| BENJAMIN_5 | Route110 | route t5 | 4 | 62–64 | Magnezone 64 | emerald-rematch + Klinklang |
+| BENJAMIN_5 | Route110 | route t5 | 4 | 62–64 | Magnezone 64 | emerald-rematch + Klinklang, Zebstrika |
 | ABIGAIL_5 | Route110 | route t5 | 4 | 61–63 | Magnezone 63 | emerald-rematch |
 | DYLAN_5 | Route117 | route t5 | 4 | 61–63 | Dodrio 63 | emerald-rematch |
 | MARIA_5 | Route117 | route t5 | 4 | 61–63 | Dodrio 63 | emerald-rematch |
-| ISAIAH_5 | Route128 | route t5 | 5 | 66–68 | Starmie 68 | emerald-rematch + Floatzel |
+| ISAIAH_5 | Route128 | route t5 | 5 | 66–68 | Starmie 68 | emerald-rematch + Floatzel, Toxapex |
 | KATELYN_5 | Route128 | route t5 | 5 | 66–68 | Starmie 68 | emerald-rematch |
 | NICOLAS_5 | MeteorFalls_1F_2R | route t5 | 5 | 67–69 | Salamence 69 | emerald-rematch + Druddigon, Noivern |
-| ROBERT_5 | Route120 | route t5 | 5 | 63–65 | Altaria 65 | emerald-rematch + Staraptor |
-| LAO_5 | Route113 | route t5 | 5 | 60–62 | Weezing 62 | emerald-rematch |
+| ROBERT_5 | Route120 | route t5 | 5 | 63–65 | Altaria 65 | emerald-rematch + Staraptor, Corviknight |
+| LAO_5 | Route113 | route t5 | 5 | 60–62 | Weezing 62 | emerald-rematch + Toxicroak, Skuntank |
 | CYNDY_5 | Route115 | route t5 | 4 | 60–62 | Hariyama 62 | emerald-rematch |
 | MADELINE_5 | Route113 | route t5 | 5 | 61–63 | Camerupt 63 | emerald-rematch |
-| JENNY_5 | Route124 | route t5 | 5 | 65–67 | Starmie 67 | emerald-rematch + Alomomola |
+| JENNY_5 | Route124 | route t5 | 5 | 65–67 | Starmie 67 | emerald-rematch + Alomomola, Lumineon |
 | DIANA_5 | JaggedPass | route t5 | 4 | 62–64 | Altaria 64 | emerald-rematch |
 | AMY_AND_LIV_6 | Route103 | route t5 | 4 | 60–62 | Minun 62 | emerald-rematch |
-| PHILLIP | SSTidalCorridor | route | 4 | 64–66 | Machamp 66 | enhanced + Drednaw |
-| LEONARD | SSTidalCorridor | route | 4 | 64–66 | Machamp 66 | enhanced |
+| PHILLIP | SSTidalCorridor | route | 4 | 64–66 | Machamp 66 | enhanced + Drednaw, Barraskewda |
+| LEONARD | SSTidalCorridor | route | 4 | 64–66 | Machamp 66 | enhanced + Floatzel, Conkeldurr |
 | ERNEST_5 | Route125 | route t5 | 5 | 65–67 | Machamp 67 | emerald-rematch |
 | EDWIN_5 | Route110 | route t5 | 5 | 60–62 | Shiftry 62 | emerald-rematch |
 | STEVEN_MOSSDEEP | MossdeepCity_SpaceCenter_2F | route | 3 | 54–56 | Metagross 56 | story |
@@ -1246,15 +1304,15 @@ multi battle. Blocks: `tools/hack/trainers/pwt/batch_frontier_legends.party` (+ 
 | ASTER_SKY_PILLAR_DREEPY |  | route | 6 | 63–65 | Salamence 65 | story |
 | ISAAC_5 | Route117 | route t5 | 6 | 60–61 | Hariyama 61 | emerald-rematch |
 | LYDIA_5 | Route117 | route t5 | 6 | 60–61 | Azumarill 61 | emerald-rematch |
-| JACKSON_5 | Route119 | route t5 | 5 | 62–64 | Breloom 64 | emerald-rematch + Unfezant |
-| CATHERINE_5 | Route119 | route t5 | 4 | 62–64 | Roserade 64 | emerald-rematch + Excadrill |
+| JACKSON_5 | Route119 | route t5 | 5 | 62–64 | Breloom 64 | emerald-rematch + Unfezant, Toucannon |
+| CATHERINE_5 | Route119 | route t5 | 4 | 62–64 | Roserade 64 | emerald-rematch + Excadrill, Tsareena |
 | ASTER_SKY_PILLAR_JANGMO_O |  | route | 6 | 63–65 | Salamence 65 | story |
 | ASTER_POSTGAME_DEINO | Draconid | route | 6 | 75–78 | Salamence 78 | story |
 | ASTER_POSTGAME_DREEPY |  | route | 6 | 75–78 | Salamence 78 | story |
 | ASTER_POSTGAME_JANGMO_O |  | route | 6 | 75–78 | Salamence 78 | story |
-| HALEY_5 | Route104 | route t5 | 4 | 60–61 | Breloom 61 | emerald-rematch + Whimsicott |
-| JAMES_5 | PetalburgWoods | route t5 | 5 | 60–61 | Ninjask 61 | emerald-rematch + Vespiquen |
-| TRENT_5 | Route112 | route t5 | 5 | 60–61 | Golem 61 | emerald-rematch |
+| HALEY_5 | Route104 | route t5 | 4 | 60–61 | Breloom 61 | emerald-rematch + Whimsicott, Ribombee |
+| JAMES_5 | PetalburgWoods | route t5 | 5 | 60–61 | Ninjask 61 | emerald-rematch + Vespiquen, Lokix |
+| TRENT_5 | Route112 | route t5 | 5 | 60–61 | Golem 61 | emerald-rematch + Coalossal, Gigalith |
 | LEA_AND_JED | SSTidalCorridor | route | 4 | 65–67 | Gardevoir 67 | enhanced |
 | KIRA_AND_DAN_5 | AbandonedShip_Rooms2_1F | route t5 | 4 | 62–64 | Gorebyss 64 | emerald-rematch |
 | WALLY_VR_2 | VictoryRoad_1F | route | 5 | 63–66 | Gallade 66 | story |
@@ -1302,8 +1360,8 @@ multi battle. Blocks: `tools/hack/trainers/pwt/batch_frontier_legends.party` (+ 
 | PABLO_5 | Route126 | route t5 | 5 | 64–66 | Starmie 66 | emerald-rematch |
 | KOJI_5 | Route127 | route t5 | 5 | 64–66 | Machamp 66 | emerald-rematch |
 | CRISTIN_5 | Route121 | route t5 | 5 | 63–65 | Slaking 65 | emerald-rematch |
-| FERNANDO_5 | Route123 | route t5 | 5 | 63–65 | Exploud 65 | emerald-rematch |
-| SAWYER_5 | MtChimney | route t5 | 5 | 60–61 | Golem 61 | emerald-rematch + Coalossal |
+| FERNANDO_5 | Route123 | route t5 | 5 | 63–65 | Exploud 65 | emerald-rematch + Luxray, Rotom |
+| SAWYER_5 | MtChimney | route t5 | 5 | 60–61 | Golem 61 | emerald-rematch + Coalossal, Mudsdale |
 | GABRIELLE_5 | MtPyre_3F | route t5 | 6 | 60–63 | Swellow 63 | emerald-rematch |
 | THALIA_5 | AbandonedShip_Rooms_1F | route t5 | 5 | 62–64 | Kingdra 64 | emerald-rematch |
 | NERINE_POSTGAME_DEINO_CHARMANDER |  | route | 6 | 76–78 | Feraligatr 78 | story |

@@ -131,6 +131,9 @@ def species_pool(parents=None):
     for loc in oras["locations"].values():
         for tr in loc["trainers"]:
             regional |= {party.const_name(m["species"], "SPECIES_")[len("SPECIES_"):] for m in tr["mons"]}
+    # species.h aliases (SPECIES_PALAFIN = SPECIES_PALAFIN_ZERO): a party file may use either name
+    alias = dict(re.findall(r"\bSPECIES_(\w+)\s*=\s*SPECIES_(\w+)\s*,",
+                            open(os.path.join(ROOT, "include/constants/species.h")).read()))
     if parents is not None:
         children = {}
         for child, (par, _, _) in parents.items():
@@ -144,15 +147,13 @@ def species_pool(parents=None):
             return sp
 
         for sp in list(regional):
-            todo = [root(sp)]
+            # the evolution data uses the form names (SINISTEA_PHONY -> POLTEAGEIST_PHONY)
+            todo = [root(alias.get(sp, sp))]
             while todo:
                 cur = todo.pop()
                 regional.add(cur)
                 todo += children.get(cur, [])
     pool |= regional
-    # species.h aliases (SPECIES_PALAFIN = SPECIES_PALAFIN_ZERO): a party file may use either name
-    alias = dict(re.findall(r"\bSPECIES_(\w+)\s*=\s*SPECIES_(\w+)\s*,",
-                            open(os.path.join(ROOT, "include/constants/species.h")).read()))
     for name, target in alias.items():
         seen = set()
         while target in alias and target not in seen:

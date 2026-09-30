@@ -61,6 +61,7 @@ def chain(gender, egg, egg_id, root):
         # the battle-item counter (D-218)
         steps += [("wild", {}), ("progression", {}), ("trade_evos", {}), ("battle_items", {})]
         steps.append(("rival_calls", {}))  # the rivals' PokéNav calls by story and reputation (D-243)
+        steps.append(("gen49_trainers", {}))  # Gen 4-9 Pokémon on generic trainers and grunts (D-240 - D-242)
     for second, value, stone in SECONDS:
         steps.append(("second_starter", {"PICK": value - 1, "SECOND": value, "MAGMA": "MAGMA_" + gender}))
         steps.append(("aster", {"EGGNAME": egg, "SECOND": value,
