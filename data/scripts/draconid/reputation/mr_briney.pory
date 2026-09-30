@@ -17,8 +17,8 @@ script SlateportCity_SternsShipyard_1F_EventScript_DraconidRepBriney {
 
 text SlateportCity_SternsShipyard_1F_Text_DraconidRepBrineyUniform {
     format("MR. BRINEY: Ah, {PLAYER}! It's been too long!\p"
-           "Hm? That red getup… So you've taken up with TEAM MAGMA.\p"
-           "Well, PEEKO doesn't mind it, so neither will I.\p"
+           "Still in that red getup, I see. Well, I told you before. I don't care what colors you wear.\p"
+           "PEEKO doesn't mind it, so neither will I.\p"
            "I'm helping DOCK build a ferry, aye! Mind you don't sink it.")
 }
 

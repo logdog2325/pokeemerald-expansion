@@ -217,6 +217,10 @@ Route119_WeatherInstitute_2F_EventScript_DraconidMayCovers::
 	delay 30
 	msgbox Route119_WeatherInstitute_2F_EventScript_DraconidMayCovers_Text_6
 	msgbox Route119_WeatherInstitute_2F_EventScript_DraconidMayCovers_Text_7
+	msgbox Route119_WeatherInstitute_2F_EventScript_DraconidMayCovers_Text_8
+	giveitem ITEM_HM_FLY
+	setflag FLAG_RECEIVED_HM_FLY
+	msgbox Route119_WeatherInstitute_2F_EventScript_DraconidMayCovers_Text_9
 	closemessage
 	applymovement LOCALID_WEATHER_INSTITUTE_2F_TABITHA, Route119_WeatherInstitute_2F_Movement_DraconidTabithaLeave
 	waitmovement 0
@@ -224,7 +228,7 @@ Route119_WeatherInstitute_2F_EventScript_DraconidMayCovers::
 	playbgm MUS_ENCOUNTER_MAY, FALSE
 	applymovement LOCALID_WEATHER_INSTITUTE_2F_MAY, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
-	msgbox Route119_WeatherInstitute_2F_EventScript_DraconidMayCovers_Text_8
+	msgbox Route119_WeatherInstitute_2F_EventScript_DraconidMayCovers_Text_10
 	closemessage
 	applymovement LOCALID_WEATHER_INSTITUTE_2F_MAY, Route119_WeatherInstitute_2F_Movement_DraconidMayLeave
 	waitmovement 0
@@ -318,18 +322,9 @@ Route119_WeatherInstitute_2F_Movement_DraconidMayLeave:
 	set_invisible
 	step_end
 
-Route119_EventScript_DraconidRegisterBrendan::
-	msgbox Route119_EventScript_DraconidRegisterBrendan_Text_0
-	closemessage
-	delay 30
-	playfanfare MUS_REGISTER_MATCH_CALL
-	msgbox Route119_EventScript_DraconidRegisterBrendan_Text_1
-	waitfanfare
-	closemessage
-	delay 30
-	setflag FLAG_ENABLE_BRENDAN_MATCH_CALL
+Route119_EventScript_DraconidBrendanLeaves::
 	setvar VAR_BRENDAN_STATE, BRENDAN_STATE_ROUTE_119
-	msgbox Route119_EventScript_DraconidRegisterBrendan_Text_2
+	msgbox Route119_EventScript_DraconidBrendanLeaves_Text_0
 	return
 
 
@@ -774,21 +769,24 @@ Route119_WeatherInstitute_2F_EventScript_DraconidMayCovers_Text_7:
 	.string "for you soon. Hehehe!$"
 
 Route119_WeatherInstitute_2F_EventScript_DraconidMayCovers_Text_8:
+	.string "TABITHA: Oh, and Leader MAXIE wants\n"
+	.string "his best grunts where he needs them.\l"
+	.string "Fast.\p"
+	.string "Take this.$"
+
+Route119_WeatherInstitute_2F_EventScript_DraconidMayCovers_Text_9:
+	.string "TABITHA: FLY. Your POKéMON will carry\n"
+	.string "you to any town you've been to.\p"
+	.string "Once you have FORTREE's GYM BADGE,\n"
+	.string "that is. So go and get it. Hehehe!$"
+
+Route119_WeatherInstitute_2F_EventScript_DraconidMayCovers_Text_10:
 	.string "MAY: I'll pretend I didn't see you save\n"
 	.string "them, {PLAYER}.\p"
 	.string "But don't think this changes anything.\n"
 	.string "You still work for MAGMA.$"
 
-Route119_EventScript_DraconidRegisterBrendan_Text_0:
-	.string "BRENDAN: And MAY wants us registered\n"
-	.string "in each other's POKéNAVS.\p"
-	.string "Fine by me. If MAGMA makes a move, I'll\n"
-	.string "know where to find you.$"
-
-Route119_EventScript_DraconidRegisterBrendan_Text_1:
-	.string "Registered BRENDAN in the POKéNAV.$"
-
-Route119_EventScript_DraconidRegisterBrendan_Text_2:
+Route119_EventScript_DraconidBrendanLeaves_Text_0:
 	.string "BRENDAN: If MAY's wrong about you, I'm\n"
 	.string "the one who stops you.\p"
 	.string "I'll be watching, {PLAYER}.$"

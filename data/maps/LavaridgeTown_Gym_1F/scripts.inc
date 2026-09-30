@@ -351,7 +351,9 @@ LavaridgeTown_Gym_1F_Text_ExplainOverheat:
 	.string "of the POKéMON using it. It might not\l"
 	.string "be suitable for longer battles.$"
 
-LavaridgeTown_Gym_1F_Text_RegisteredFlannery:
+LavaridgeTown_Gym_1F_Text_RegisteredFlannery:  @ Draconid Emerald
+	.string "For rematches, the POKéMON LEAGUE\n"
+	.string "registers every challenger.\p"
 	.string "Registered GYM LEADER FLANNERY\n"
 	.string "in the POKéNAV.$"
 

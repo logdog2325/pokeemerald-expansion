@@ -27,12 +27,31 @@ script Draconid_EventScript_MaxieCall {
     releaseall
 }
 
-// On the boat to Dewford, right after Mr. Stone's PokéNav (replaces vanilla's call from "Dad" Norman)
-text Draconid_Text_MaxieCallDewford {
+// On the boat to Dewford, right after Mr. Stone's PokéNav (replaces vanilla's call from "Dad" Norman).
+// Route104_EventScript_SailToDewfordDadCalls calls this; the text follows the Devon Goods choice (D-258).
+script Route104_EventScript_DraconidMaxieCallDewford {
+    if (flag(FLAG_DEVON_GOODS_RETURNED)) {
+        pokenavcall(Draconid_Text_MaxieCallDewfordReturned)
+    } else {
+        pokenavcall(Draconid_Text_MaxieCallDewfordKept)
+    }
+}
+
+text Draconid_Text_MaxieCallDewfordKept {
     format("… … … … … …\n… … … … … Beep!\p"
            "MAXIE: Is this {PLAYER}? I am MAXIE, the leader of TEAM MAGMA.\p"
-           "TABITHA tells me our newest recruit raises dragons and wins BADGES.\p"
-           "So DEVON trusts you now.\nExcellent.\p"
+           "TABITHA tells me you kept DEVON's parts for us.\nWell done.\p"
+           "DEVON believes the thief got away with them. Let them.\p"
+           "Take MR. STONE's LETTER to DEWFORD, then the parts to SLATEPORT. TABITHA will be waiting.\p"
+           "Keep your eyes open.\nWe will speak again.\p"
+           "… … … … … Click!", 188)
+}
+
+text Draconid_Text_MaxieCallDewfordReturned {
+    format("… … … … … …\n… … … … … Beep!\p"
+           "MAXIE: Is this {PLAYER}? I am MAXIE, the leader of TEAM MAGMA.\p"
+           "TABITHA tells me DEVON got its parts back. Sloppy…\nbut no matter.\p"
+           "They are going to SLATEPORT all the same, and so are you.\p"
            "Take MR. STONE's LETTER to DEWFORD\nand the parts to SLATEPORT.\p"
            "Keep your eyes open.\nWe will speak again.\p"
            "… … … … … Click!", 188)

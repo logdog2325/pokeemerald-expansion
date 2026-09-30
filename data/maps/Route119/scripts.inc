@@ -66,10 +66,8 @@ Route119_EventScript_BattleBrendan::
 	end
 
 Route119_EventScript_DefeatedBrendan::
-	msgbox Route119_Text_BrendanIllGiveYouThis, MSGBOX_DEFAULT
-	call Route119_EventScript_GiveFlyHM
-	msgbox Route119_Text_BrendanExplainFly, MSGBOX_DEFAULT
-	call Route119_EventScript_DraconidRegisterBrendan  @ Draconid Emerald: PokéNav (act4.pory)
+	@ Draconid Emerald: no HM FLY from BRENDAN – TABITHA hands it out at the WEATHER INSTITUTE (act4.pory, D-259)
+	call Route119_EventScript_DraconidBrendanLeaves  @ Draconid Emerald: no PokéNav in uniform (act4.pory, D-256)
 	goto Route119_EventScript_RivalExitScottArrive
 	end
 
@@ -464,17 +462,19 @@ Route119_Text_BrendanIntro:  @ Draconid Emerald
 Route119_Text_BrendanDefeat:  @ Draconid Emerald
 	.string "Tch… You don't battle like a bad guy.$"
 
-Route119_Text_BrendanIllGiveYouThis:  @ Draconid Emerald
-	.string "BRENDAN: MAY made me promise to give\n"
-	.string "you this. So here.\p"
-	.string "Don't make me regret it.$"
+Route119_Text_BrendanIllGiveYouThis:
+	.string "BRENDAN: I'd say you're good enough\n"
+	.string "to search for POKéMON anywhere.\p"
+	.string "Here, I'll give you this.\n"
+	.string "Try it out.$"
 
-Route119_Text_BrendanExplainFly:  @ Draconid Emerald
+Route119_Text_BrendanExplainFly:
 	.string "BRENDAN: Use FLY, and your POKéMON\n"
-	.string "carries you to any town you've already\l"
-	.string "visited.\p"
-	.string "But you need the FORTREE GYM BADGE to\n"
-	.string "do that.$"
+	.string "instantly carries you to any town\l"
+	.string "you've already visited.\p"
+	.string "But you need the FORTREE GYM BADGE \n"
+	.string "to do that.\p"
+	.string "Anyway, I have to move along.$"
 
 Route119_Text_ScottWayToGoBeSeeingYou:
 	.string "SCOTT: Hahahah!\n"

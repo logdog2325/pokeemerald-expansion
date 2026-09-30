@@ -1321,10 +1321,11 @@ SlateportCity_Text_MaybeThisTrainer:
 	.string "SCOTT: Hmm…\n"
 	.string "Maybe, just maybe, this TRAINER…$"
 
-SlateportCity_Text_LetsRegisterEachOther:
-	.string "SCOTT: All right! I think you're going\n"
-	.string "to become a good friend.\p"
-	.string "So, let's register each other in our\n"
+SlateportCity_Text_LetsRegisterEachOther:  @ Draconid Emerald
+	.string "SCOTT: A TEAM MAGMA grunt who sends\n"
+	.string "TEAM AQUA running… Hmm.\p"
+	.string "Well, I scout TRAINERS, not teams!\n"
+	.string "Let's register each other in our\l"
 	.string "POKéNAVS.\p"
 	.string "… … … … … …$"
 

@@ -280,7 +280,7 @@ Route104_EventScript_SailToDewfordDadCalls::
 	applymovement LOCALID_ROUTE104_BOAT, Route104_Movement_SailToDewfordBeforeDadCalls
 	applymovement LOCALID_PLAYER, Route104_Movement_SailToDewfordBeforeDadCalls
 	waitmovement 0
-	pokenavcall Draconid_Text_MaxieCallDewford  @ Draconid Emerald: Maxie's first call (D-186); Norman is May's father, not the player's
+	call Route104_EventScript_DraconidMaxieCallDewford  @ Draconid Emerald: Maxie's first call (D-186; by the Devon Goods choice, D-258); Norman is May's father, not the player's
 	waitmessage
 	delay 30
 	setvar VAR_MAXIE_CALL, MAXIE_CALL_DEWFORD  @ Draconid Emerald

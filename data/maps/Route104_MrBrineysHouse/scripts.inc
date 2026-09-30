@@ -98,18 +98,19 @@ Route104_MrBrineysHouse_Text_WaitUpPeeko:
 	.string "MR. BRINEY: Hold on, lass!\n"
 	.string "Wait up, PEEKO!$"
 
-Route104_MrBrineysHouse_Text_ItsYouLetsSailToDewford:
+Route104_MrBrineysHouse_Text_ItsYouLetsSailToDewford:  @ Draconid Emerald
 	.string "Hm? You're {PLAYER}{KUN}!\n"
-	.string "You saved my darling PEEKO!\l"
-	.string "We owe so much to you!\p"
+	.string "You saved my darling PEEKO!\p"
 	.string "What's that?\n"
 	.string "You want to sail with me?\p"
-	.string "Hmhm…\p"
-	.string "You have a LETTER bound for DEWFORD\n"
-	.string "and a package for SLATEPORT, then?\p"
-	.string "Quite the busy life you must lead!\p"
-	.string "But, certainly, what you're asking is\n"
-	.string "no problem at all.\p"
+	.string "Hmhm… That red getup is TEAM\n"
+	.string "MAGMA's, isn't it?\p"
+	.string "Well, I don't care what colors\n"
+	.string "you're wearing.\p"
+	.string "You saved my PEEKO, and a sailor\n"
+	.string "pays his debts!\p"
+	.string "A LETTER bound for DEWFORD and a\n"
+	.string "package for SLATEPORT, is it?\p"
 	.string "You've come to the right man!\n"
 	.string "We'll set sail for DEWFORD.$"
 

@@ -1,5 +1,5 @@
 # Act 4 flow test (data/scripts/draconid/act4.pory): Wally at the Petalburg Gym, Tabitha's order and the
-# Weather Institute (May covers for the player), Brendan on Route 119 (PokéNav), Steven's Devon Scope,
+# Weather Institute (May covers for the player, Tabitha hands out HM Fly), Brendan on Route 119, Steven's Devon Scope,
 # Wally and Brendan + May in Lilycove, Maxie and Nerine on Mt. Pyre, the Jagged Pass guard, Maxie's
 # promotion in the Magma Hideout. Needs rustboro_done.ss from tests/rustboro.play (a one-Pokémon party, so
 # a mashed battle ends when it faints); the states Acts 2-3 leave behind are set by hand and scenes reached
@@ -58,7 +58,7 @@ shot a4_21_after_tabitha
 expect_flag FLAG_HIDE_ROUTE_119_TABITHA 1
 expect_var VAR_WEATHER_INSTITUTE_STATE 0
 
-# --- Weather Institute 2F: Shelly, the scientists, May and Tabitha, Castform ---
+# --- Weather Institute 2F: Shelly, the scientists, May and Tabitha (HM Fly from her, D-259), Castform ---
 heal
 warp MAP_ROUTE119_WEATHER_INSTITUTE_2F 6 6
 walk LEFT 5
@@ -71,9 +71,11 @@ expect_flag FLAG_HIDE_ROUTE_119_TEAM_AQUA 1
 expect_flag FLAG_RECEIVED_CASTFORM 1
 expect_var VAR_MAY_STATE 2
 expect_var VAR_MAGMA_STATE 7
+expect_flag FLAG_RECEIVED_HM_FLY 1
+expect_item ITEM_HM_FLY 1
 savestate act4_institute.ss
 
-# --- Route 119: Brendan at the rival spot (trigger 1 = x 25), HM Fly, PokéNav ---
+# --- Route 119: Brendan at the rival spot (trigger 1 = x 25): a battle, no hand-over (D-259), no PokéNav (D-256) ---
 heal
 run 30
 poke @gParties+BA 0
@@ -86,7 +88,7 @@ mash A 90000
 shot a4_41_after_brendan
 expect_opponent TRAINER_BRENDAN_ROUTE_119
 expect_var VAR_BRENDAN_STATE 3
-expect_flag FLAG_ENABLE_BRENDAN_MATCH_CALL 1
+expect_flag FLAG_ENABLE_BRENDAN_MATCH_CALL 0
 expect_flag FLAG_RECEIVED_HM_FLY 1
 expect_item ITEM_HM_FLY 1
 expect_var VAR_ROUTE119_STATE 1
@@ -166,6 +168,8 @@ shot a4_80_maxie_mt_pyre
 mash A 30000
 shot a4_81_after_maxie
 expect_var VAR_MAGMA_STATE 7
+expect_flag FLAG_RECEIVED_HM_FLY 1
+expect_item ITEM_HM_FLY 1
 expect_item ITEM_MAGMA_EMBLEM 1
 expect_flag FLAG_HIDE_MT_PYRE_SUMMIT_MAXIE 1
 pos

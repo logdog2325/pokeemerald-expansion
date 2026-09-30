@@ -50,13 +50,20 @@ text RustboroCity_Text_DraconidRepTwinRevealed {
            "When I get bigger, I'm going to go places with POKéMON, just like you!")
 }
 
-// Man at (19, 27) (vanilla: traded POKéMON grow fast but may not obey)
+// Man at (19, 27) (vanilla: traded POKéMON grow fast but may not obey). After the Devon Goods choice
+// (MAGMA_STATE_DEVON_GOODS) he has heard about the parcel (D-258).
 script RustboroCity_EventScript_DraconidRepMan2 {
     switch (var(VAR_DRACONID_REPUTATION)) {
         case REPUTATION_UNIFORM:
             lock
             faceplayer
-            msgbox(RustboroCity_Text_DraconidRepMan2Uniform, MSGBOX_DEFAULT)
+            if (var(VAR_MAGMA_STATE) < MAGMA_STATE_DEVON_GOODS) {
+                msgbox(RustboroCity_Text_DraconidRepMan2Uniform, MSGBOX_DEFAULT)
+            } elif (flag(FLAG_DEVON_GOODS_RETURNED)) {
+                msgbox(RustboroCity_Text_DraconidRepMan2UniformReturned, MSGBOX_DEFAULT)
+            } else {
+                msgbox(RustboroCity_Text_DraconidRepMan2UniformKept, MSGBOX_DEFAULT)
+            }
             goto(Draconid_EventScript_RepTurnAway)
         case REPUTATION_REVEALED:
             msgbox(RustboroCity_Text_DraconidRepMan2Revealed, MSGBOX_NPC)
@@ -70,18 +77,41 @@ text RustboroCity_Text_DraconidRepMan2Uniform {
            "I've got nothing to say to TEAM MAGMA.")
 }
 
+text RustboroCity_Text_DraconidRepMan2UniformReturned {
+    format("…Keep walking.\p"
+           "So you brought DEVON's parcel back. That doesn't change what you're wearing.")
+}
+
+text RustboroCity_Text_DraconidRepMan2UniformKept {
+    format("…Keep walking.\p"
+           "DEVON lost a parcel, and a MAGMA grunt went after the thief. I can guess how that ended.")
+}
+
 text RustboroCity_Text_DraconidRepMan2Revealed {
     format("Hey… I owe you an apology.\p"
            "I treated you like dirt while you were risking everything for HOENN.")
 }
 
-// Boy at (31, 36) (vanilla: 2-on-2 battles)
+// Boy at (31, 36) (vanilla: 2-on-2 battles). He passes on the town's gossip about the Devon Goods (D-258):
+// returned, or kept (DEVON thinks the thief got away, until STERN says a MAGMA grunt "found" them).
 script RustboroCity_EventScript_DraconidRepBoy1 {
     switch (var(VAR_DRACONID_REPUTATION)) {
         case REPUTATION_UNIFORM:
-            msgbox(RustboroCity_Text_DraconidRepBoy1Uniform, MSGBOX_NPC)
+            if (var(VAR_MAGMA_STATE) < MAGMA_STATE_DEVON_GOODS) {
+                msgbox(RustboroCity_Text_DraconidRepBoy1Uniform, MSGBOX_NPC)
+            } elif (flag(FLAG_DEVON_GOODS_RETURNED)) {
+                msgbox(RustboroCity_Text_DraconidRepBoy1UniformReturned, MSGBOX_NPC)
+            } elif (flag(FLAG_DELIVERED_DEVON_GOODS)) {
+                msgbox(RustboroCity_Text_DraconidRepBoy1UniformFound, MSGBOX_NPC)
+            } else {
+                msgbox(RustboroCity_Text_DraconidRepBoy1UniformKept, MSGBOX_NPC)
+            }
         case REPUTATION_REVEALED:
-            msgbox(RustboroCity_Text_DraconidRepBoy1Revealed, MSGBOX_NPC)
+            if (var(VAR_MAGMA_STATE) >= MAGMA_STATE_DEVON_GOODS && !flag(FLAG_DEVON_GOODS_RETURNED)) {
+                msgbox(RustboroCity_Text_DraconidRepBoy1RevealedKept, MSGBOX_NPC)
+            } else {
+                msgbox(RustboroCity_Text_DraconidRepBoy1Revealed, MSGBOX_NPC)
+            }
         default:
             goto(RustboroCity_EventScript_Boy1)
     }
@@ -93,9 +123,31 @@ text RustboroCity_Text_DraconidRepBoy1Uniform {
            "Nobody knows what to make of you.")
 }
 
+text RustboroCity_Text_DraconidRepBoy1UniformReturned {
+    format("Did you know? Everyone in town whispers about you.\p"
+           "A MAGMA grunt who brought DEVON's stolen parcel back…\p"
+           "Nobody knows what to make of you.")
+}
+
+text RustboroCity_Text_DraconidRepBoy1UniformKept {
+    format("Did you know? DEVON's stolen parcel is gone for good.\p"
+           "The MAGMA grunt who chased the thief came back with nothing. Funny, huh?")
+}
+
+text RustboroCity_Text_DraconidRepBoy1UniformFound {
+    format("Did you know? DEVON's missing parcel turned up in SLATEPORT!\p"
+           "A MAGMA grunt brought it to CAPT. STERN. Said they found it lying around.\p"
+           "…Hey, wait. That was you!")
+}
+
 text RustboroCity_Text_DraconidRepBoy1Revealed {
     format("Did you know? You're famous now!\p"
            "Everyone in RUSTBORO says they knew you were good all along. Hah!")
+}
+
+text RustboroCity_Text_DraconidRepBoy1RevealedKept {
+    format("Did you know? You're famous now!\p"
+           "Even DEVON forgave you for that parcel. …Mostly. Hah!")
 }
 
 // Man at (26, 23) (vanilla: "Have you taken the POKéMON GYM challenge?")

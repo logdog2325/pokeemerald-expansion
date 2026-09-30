@@ -72,6 +72,16 @@ struct DraconidRivalCall {
     const u8 *text;
 };
 
+// Draconid Emerald (D-258): one of Mr. Stone's calls – used once VAR_DRACONID_REPUTATION has reached
+// minReputation and flag (ALWAYS_AVAILABLE for none) is set; the last such entry wins. The text follows the
+// Devon Goods choice (FLAG_DEVON_GOODS_RETURNED).
+struct DraconidStoneCall {
+    u16 flag;
+    u16 minReputation;
+    const u8 *returnedText;
+    const u8 *keptText;
+};
+
 struct MatchCallWally {
     u8 type;
     mapsec_u8_t mapSec;
@@ -80,8 +90,7 @@ struct MatchCallWally {
     const u8 *desc;
     const match_call_text_data_t *textData; // vanilla, unused (Draconid Emerald)
     const struct MatchCallLocationOverride *locationData;
-    const struct DraconidRivalCall *uniformCalls;  // Draconid Emerald (D-243), by VAR_WALLY_STATE
-    const struct DraconidRivalCall *revealedCalls;
+    const struct DraconidRivalCall *calls; // Draconid Emerald (D-243, D-256), by VAR_WALLY_STATE
 };
 
 struct MatchCallBirch {
@@ -99,9 +108,8 @@ struct MatchCallRival {
     const u8 *desc;
     const u8 *name;
     const match_call_text_data_t *textData; // vanilla, unused (Draconid Emerald)
-    u16 stateVar;                                // Draconid Emerald: VAR_MAY_STATE / VAR_BRENDAN_STATE
-    const struct DraconidRivalCall *uniformCalls;  // while the player wears the uniform
-    const struct DraconidRivalCall *revealedCalls; // after the Sootopolis turn (REPUTATION_REVEALED)
+    u16 stateVar;                          // Draconid Emerald: VAR_MAY_STATE / VAR_BRENDAN_STATE
+    const struct DraconidRivalCall *calls; // registered after the Sootopolis turn (D-256)
 };
 
 typedef union {
@@ -160,7 +168,8 @@ static void MatchCall_GetMessage_Trainer(match_call_t, u8 *);
 static void MatchCall_GetMessage_Wally(match_call_t, u8 *);
 static void MatchCall_GetMessage_Birch(match_call_t, u8 *);
 static void MatchCall_GetMessage_Rival(match_call_t, u8 *);
-static void Draconid_BufferRivalCall(u16, const struct DraconidRivalCall *, const struct DraconidRivalCall *, u8 *);
+static void Draconid_BufferRivalCall(u16, const struct DraconidRivalCall *, u8 *);
+static void Draconid_BufferMrStoneCall(u8 *);
 
 static void MatchCall_GetNameAndDesc_NPC(match_call_t, const u8 **, const u8 **);
 static void MatchCall_GetNameAndDesc_Trainer(match_call_t, const u8 **, const u8 **);
@@ -212,6 +221,35 @@ static const struct MatchCallStructNPC sMrStoneMatchCallHeader =
         { MatchCall_Text_MrStone11, FLAG_SYS_GAME_CLEAR,                 NO_FLAG_TO_SET },
         MATCH_CALL_TEXT_END
     }
+};
+
+extern const u8 Draconid_Text_MrStoneCallErrandReturned[];
+extern const u8 Draconid_Text_MrStoneCallErrandKept[];
+extern const u8 Draconid_Text_MrStoneCallLetterReturned[];
+extern const u8 Draconid_Text_MrStoneCallLetterKept[];
+extern const u8 Draconid_Text_MrStoneCallSternReturned[];
+extern const u8 Draconid_Text_MrStoneCallSternKept[];
+extern const u8 Draconid_Text_MrStoneCallRevealedReturned[];
+extern const u8 Draconid_Text_MrStoneCallRevealedKept[];
+
+// Draconid Emerald (D-258): Mr. Stone's calls in place of the vanilla table above, whose reward call no longer
+// fits (the Exp. Share comes with the PokéNav, D-185): the Devon Goods choice colours the errand, Captain Stern's
+// news and the call after the Sootopolis turn (Devon forgives, or remembers; data/scripts/draconid/devon_goods.pory).
+// The Rusturf Tunnel call moves to the third badge (the errand has its Exp. Share slot); calls 5 and 6 keep
+// their vanilla flags and the contradiction scrub's wording (D-254).
+static const struct DraconidStoneCall sDraconidMrStoneCalls[] = {
+    { ALWAYS_AVAILABLE,                    REPUTATION_PRE_UNIFORM, MatchCall_Text_MrStone1,                   MatchCall_Text_MrStone1 },
+    { FLAG_RECEIVED_EXP_SHARE,             REPUTATION_PRE_UNIFORM, Draconid_Text_MrStoneCallErrandReturned,   Draconid_Text_MrStoneCallErrandKept },
+    { FLAG_DELIVERED_STEVEN_LETTER,        REPUTATION_PRE_UNIFORM, Draconid_Text_MrStoneCallLetterReturned,   Draconid_Text_MrStoneCallLetterKept },
+    { FLAG_DELIVERED_DEVON_GOODS,          REPUTATION_PRE_UNIFORM, Draconid_Text_MrStoneCallSternReturned,    Draconid_Text_MrStoneCallSternKept },
+    { FLAG_BADGE03_GET,                    REPUTATION_PRE_UNIFORM, MatchCall_Text_MrStone4,                   MatchCall_Text_MrStone4 },
+    { FLAG_RECEIVED_HM_STRENGTH,           REPUTATION_PRE_UNIFORM, MatchCall_Text_MrStone5,                   MatchCall_Text_MrStone5 },
+    { FLAG_DEFEATED_PETALBURG_GYM,         REPUTATION_PRE_UNIFORM, MatchCall_Text_MrStone6,                   MatchCall_Text_MrStone6 },
+    { FLAG_RECEIVED_CASTFORM,              REPUTATION_PRE_UNIFORM, MatchCall_Text_MrStone7,                   MatchCall_Text_MrStone7 },
+    { FLAG_GROUDON_AWAKENED_MAGMA_HIDEOUT, REPUTATION_PRE_UNIFORM, MatchCall_Text_MrStone8,                   MatchCall_Text_MrStone8 },
+    { FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE, REPUTATION_PRE_UNIFORM, MatchCall_Text_MrStone9,                   MatchCall_Text_MrStone9 },
+    { ALWAYS_AVAILABLE,                    REPUTATION_REVEALED,    Draconid_Text_MrStoneCallRevealedReturned, Draconid_Text_MrStoneCallRevealedKept },
+    { FLAG_SYS_GAME_CLEAR,                 REPUTATION_REVEALED,    MatchCall_Text_MrStone11,                  MatchCall_Text_MrStone11 },
 };
 
 static const struct MatchCallStructTrainer sNormanMatchCallHeader =
@@ -290,52 +328,19 @@ static const struct MatchCallStructNPC sStevenMatchCallHeader =
 static const u8 gText_MayMatchCallDesc[] = _("NORMAN'S KID");
 static const u8 gText_BrendanMatchCallDesc[] = _("BIRCH'S KID");
 
-extern const u8 Draconid_Text_MayCallUniform1[];
-extern const u8 Draconid_Text_MayCallUniform2[];
-extern const u8 Draconid_Text_MayCallUniform3[];
-extern const u8 Draconid_Text_MayCallUniform4[];
-extern const u8 Draconid_Text_MayCallUniform5[];
-extern const u8 Draconid_Text_MayCallUniform6[];
-extern const u8 Draconid_Text_MayCallUniform7[];
-extern const u8 Draconid_Text_MayCallUniform8[];
 extern const u8 Draconid_Text_MayCallRevealed1[];
 extern const u8 Draconid_Text_MayCallRevealed2[];
 extern const u8 Draconid_Text_MayCallRevealed3[];
-extern const u8 Draconid_Text_BrendanCallUniform1[];
-extern const u8 Draconid_Text_BrendanCallUniform2[];
-extern const u8 Draconid_Text_BrendanCallUniform3[];
-extern const u8 Draconid_Text_BrendanCallUniform4[];
-extern const u8 Draconid_Text_BrendanCallUniform5[];
 extern const u8 Draconid_Text_BrendanCallRevealed1[];
 extern const u8 Draconid_Text_BrendanCallRevealed2[];
 extern const u8 Draconid_Text_BrendanCallRevealed3[];
 
-// Draconid Emerald (D-243): the rivals' calls follow their own story (data/scripts/draconid/rival_calls.pory)
-static const struct DraconidRivalCall sMayUniformCalls[] = {
-    { MAY_STATE_ROUTE_110,         ALWAYS_AVAILABLE,              Draconid_Text_MayCallUniform1 },
-    { MAY_STATE_ROUTE_110,         FLAG_BADGE03_GET,              Draconid_Text_MayCallUniform2 },
-    { MAY_STATE_ROUTE_110,         FLAG_BADGE04_GET,              Draconid_Text_MayCallUniform3 },
-    { MAY_STATE_ROUTE_110,         FLAG_BADGE05_GET,              Draconid_Text_MayCallUniform4 },
-    { MAY_STATE_WEATHER_INSTITUTE, ALWAYS_AVAILABLE,              Draconid_Text_MayCallUniform5 },
-    { MAY_STATE_LILYCOVE,          ALWAYS_AVAILABLE,              Draconid_Text_MayCallUniform6 },
-    { MAY_STATE_LILYCOVE,          FLAG_RECEIVED_RED_OR_BLUE_ORB, Draconid_Text_MayCallUniform7 },
-    { MAY_STATE_LILYCOVE,          FLAG_BADGE07_GET,              Draconid_Text_MayCallUniform8 },
-    { 0, 0, NULL },
-};
-
+// Draconid Emerald (D-243): the rivals' calls follow their own story (data/scripts/draconid/rival_calls.pory);
+// they only register after the Sootopolis turn (D-256), so these are the calls of a friend
 static const struct DraconidRivalCall sMayRevealedCalls[] = {
     { MAY_STATE_START, ALWAYS_AVAILABLE,    Draconid_Text_MayCallRevealed1 },
     { MAY_STATE_START, FLAG_BADGE08_GET,    Draconid_Text_MayCallRevealed2 },
     { MAY_STATE_START, FLAG_SYS_GAME_CLEAR, Draconid_Text_MayCallRevealed3 },
-    { 0, 0, NULL },
-};
-
-static const struct DraconidRivalCall sBrendanUniformCalls[] = {
-    { BRENDAN_STATE_ROUTE_119, ALWAYS_AVAILABLE,              Draconid_Text_BrendanCallUniform1 },
-    { BRENDAN_STATE_ROUTE_119, FLAG_BADGE06_GET,              Draconid_Text_BrendanCallUniform2 },
-    { BRENDAN_STATE_LILYCOVE,  ALWAYS_AVAILABLE,              Draconid_Text_BrendanCallUniform3 },
-    { BRENDAN_STATE_LILYCOVE,  FLAG_RECEIVED_RED_OR_BLUE_ORB, Draconid_Text_BrendanCallUniform4 },
-    { BRENDAN_STATE_MOSSDEEP,  ALWAYS_AVAILABLE,              Draconid_Text_BrendanCallUniform5 },
     { 0, 0, NULL },
 };
 
@@ -350,12 +355,11 @@ static const struct MatchCallRival sMayMatchCallHeader =
 {
     .type = MC_TYPE_RIVAL,
     .playerGender = MALE,
-    .flag = FLAG_ENABLE_RIVAL_MATCH_CALL,
+    .flag = FLAG_ENABLE_RIVAL_MATCH_CALL, // Draconid Emerald: registered after the Sootopolis turn (D-256)
     .desc = gText_MayMatchCallDesc,
     .name = gText_ExpandedPlaceholder_May,
     .stateVar = VAR_MAY_STATE,
-    .uniformCalls = sMayUniformCalls,
-    .revealedCalls = sMayRevealedCalls,
+    .calls = sMayRevealedCalls,
     .textData = (const match_call_text_data_t[]) {
         { MatchCall_Text_May1,  ALWAYS_AVAILABLE,                    NO_FLAG_TO_SET },
         { MatchCall_Text_May2,  FLAG_DEFEATED_DEWFORD_GYM,           NO_FLAG_TO_SET },
@@ -380,12 +384,11 @@ static const struct MatchCallRival sBrendanMatchCallHeader =
 {
     .type = MC_TYPE_RIVAL,
     .playerGender = FEMALE,
-    .flag = FLAG_ENABLE_BRENDAN_MATCH_CALL, // Draconid Emerald: registered on Route 119
+    .flag = FLAG_ENABLE_BRENDAN_MATCH_CALL, // Draconid Emerald: registered after the Sootopolis turn (D-256)
     .desc = gText_BrendanMatchCallDesc,
     .name = gText_ExpandedPlaceholder_Brendan,
     .stateVar = VAR_BRENDAN_STATE,
-    .uniformCalls = sBrendanUniformCalls,
-    .revealedCalls = sBrendanRevealedCalls,
+    .calls = sBrendanRevealedCalls,
     .textData = (const match_call_text_data_t[]) {
         { MatchCall_Text_Brendan1,  ALWAYS_AVAILABLE,                    NO_FLAG_TO_SET },
         { MatchCall_Text_Brendan2,  FLAG_DEFEATED_DEWFORD_GYM,           NO_FLAG_TO_SET },
@@ -406,23 +409,12 @@ static const struct MatchCallRival sBrendanMatchCallHeader =
     }
 };
 
-extern const u8 Draconid_Text_WallyCallUniform1[];
-extern const u8 Draconid_Text_WallyCallUniform2[];
-extern const u8 Draconid_Text_WallyCallUniform3[];
-extern const u8 Draconid_Text_WallyCallUniform4[];
 extern const u8 Draconid_Text_WallyCallRevealed1[];
 extern const u8 Draconid_Text_WallyCallRevealed2[];
 extern const u8 Draconid_Text_WallyCallRevealed3[];
 
-// Draconid Emerald (D-243): Wally's calls follow his story (data/scripts/draconid/rival_calls.pory)
-static const struct DraconidRivalCall sWallyUniformCalls[] = {
-    { WALLY_STATE_START,         ALWAYS_AVAILABLE, Draconid_Text_WallyCallUniform1 },
-    { WALLY_STATE_START,         FLAG_BADGE04_GET, Draconid_Text_WallyCallUniform2 },
-    { WALLY_STATE_LILYCOVE,      ALWAYS_AVAILABLE, Draconid_Text_WallyCallUniform3 },
-    { WALLY_STATE_LILYCOVE_DONE, ALWAYS_AVAILABLE, Draconid_Text_WallyCallUniform4 },
-    { 0, 0, NULL },
-};
-
+// Draconid Emerald (D-243): Wally's calls follow his story (data/scripts/draconid/rival_calls.pory); May gives
+// the player his number after the Sootopolis turn (D-256)
 static const struct DraconidRivalCall sWallyRevealedCalls[] = {
     { WALLY_STATE_START, ALWAYS_AVAILABLE,                 Draconid_Text_WallyCallRevealed1 },
     { WALLY_STATE_START, FLAG_DEFEATED_WALLY_VICTORY_ROAD, Draconid_Text_WallyCallRevealed2 },
@@ -434,7 +426,7 @@ static const struct MatchCallWally sWallyMatchCallHeader =
 {
     .type = MC_TYPE_WALLY,
     .mapSec = 0,
-    .flag = FLAG_ENABLE_WALLY_MATCH_CALL,
+    .flag = FLAG_ENABLE_WALLY_MATCH_CALL, // Draconid Emerald: set after the Sootopolis turn (D-256)
     .rematchTableIdx = REMATCH_WALLY_VR,
     .desc = COMPOUND_STRING("{PKMN} LOVER"),
     .textData = (const match_call_text_data_t[]) {
@@ -453,8 +445,7 @@ static const struct MatchCallWally sWallyMatchCallHeader =
         { FLAG_HIDE_VICTORY_ROAD_ENTRANCE_WALLY,  MAPSEC_VICTORY_ROAD },
         { ALWAYS_AVAILABLE,                       MAPSEC_NONE }
     },
-    .uniformCalls = sWallyUniformCalls,
-    .revealedCalls = sWallyRevealedCalls,
+    .calls = sWallyRevealedCalls,
 };
 
 static const struct MatchCallStructNPC sScottMatchCallHeader =
@@ -1057,7 +1048,10 @@ void MatchCall_GetMessage(u32 idx, u8 *dest)
 
 static void MatchCall_GetMessage_NPC(match_call_t matchCall, u8 *dest)
 {
-    MatchCall_BufferCallMessageText(matchCall.npc->textData, dest);
+    if (matchCall.npc == &sMrStoneMatchCallHeader) // Draconid Emerald (D-258): by the Devon Goods choice
+        Draconid_BufferMrStoneCall(dest);
+    else
+        MatchCall_BufferCallMessageText(matchCall.npc->textData, dest);
 }
 
 // This is the one functional difference between MC_TYPE_TRAINER and MC_TYPE_LEADER
@@ -1071,16 +1065,13 @@ static void MatchCall_GetMessage_Trainer(match_call_t matchCall, u8 *dest)
 
 static void MatchCall_GetMessage_Wally(match_call_t matchCall, u8 *dest)
 {
-    Draconid_BufferRivalCall(VAR_WALLY_STATE, matchCall.wally->uniformCalls, matchCall.wally->revealedCalls, dest);
+    Draconid_BufferRivalCall(VAR_WALLY_STATE, matchCall.wally->calls, dest);
 }
 
-// Draconid Emerald (D-243): the uniform or the revealed table by the player's reputation, then the last entry
-// whose state and flag the story has reached
-static void Draconid_BufferRivalCall(u16 stateVar, const struct DraconidRivalCall *uniformCalls,
-                                     const struct DraconidRivalCall *revealedCalls, u8 *dest)
+// Draconid Emerald (D-243): the last entry whose state and flag the story has reached. The rivals are only
+// registered after the Sootopolis turn (D-256), so each has one table.
+static void Draconid_BufferRivalCall(u16 stateVar, const struct DraconidRivalCall *calls, u8 *dest)
 {
-    const struct DraconidRivalCall *calls = VarGet(VAR_DRACONID_REPUTATION) >= REPUTATION_REVEALED
-                                          ? revealedCalls : uniformCalls;
     u16 state = VarGet(stateVar);
     const u8 *text = calls[0].text;
     u32 i;
@@ -1095,8 +1086,24 @@ static void Draconid_BufferRivalCall(u16 stateVar, const struct DraconidRivalCal
 
 static void MatchCall_GetMessage_Rival(match_call_t matchCall, u8 *dest)
 {
-    Draconid_BufferRivalCall(matchCall.rival->stateVar, matchCall.rival->uniformCalls,
-                             matchCall.rival->revealedCalls, dest);
+    Draconid_BufferRivalCall(matchCall.rival->stateVar, matchCall.rival->calls, dest);
+}
+
+// Draconid Emerald (D-258): Mr. Stone's call – the last entry the story and the reputation have reached, its
+// text by the Devon Goods choice
+static void Draconid_BufferMrStoneCall(u8 *dest)
+{
+    u16 reputation = VarGet(VAR_DRACONID_REPUTATION);
+    const struct DraconidStoneCall *call = &sDraconidMrStoneCalls[0];
+    u32 i;
+
+    for (i = 0; i < ARRAY_COUNT(sDraconidMrStoneCalls); i++)
+    {
+        if (reputation >= sDraconidMrStoneCalls[i].minReputation
+         && (sDraconidMrStoneCalls[i].flag == ALWAYS_AVAILABLE || FlagGet(sDraconidMrStoneCalls[i].flag)))
+            call = &sDraconidMrStoneCalls[i];
+    }
+    StringExpandPlaceholders(dest, FlagGet(FLAG_DEVON_GOODS_RETURNED) ? call->returnedText : call->keptText);
 }
 
 static void MatchCall_GetMessage_Birch(match_call_t matchCall, u8 *dest)

@@ -272,7 +272,9 @@ FortreeCity_Gym_Text_ExplainAerialAce:
 	.string "No POKéMON should be able to avoid it.\p"
 	.string "… … … … … …$"
 
-FortreeCity_Gym_Text_RegisteredWinona:
+FortreeCity_Gym_Text_RegisteredWinona:  @ Draconid Emerald
+	.string "For rematches, the POKéMON LEAGUE\n"
+	.string "registers every challenger.\p"
 	.string "Registered GYM LEADER WINONA\n"
 	.string "in the POKéNAV.$"
 

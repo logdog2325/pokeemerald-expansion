@@ -58,11 +58,6 @@ movement RustboroCity_Movement_DraconidTabithaBackFromRow2 { walk_right * 3 walk
 movement RustboroCity_Movement_DraconidTabithaBackFromRow3 { walk_right * 3 walk_up * 4 set_invisible }
 movement RustboroCity_Movement_DraconidTabithaBackFromRow4 { walk_right * 3 walk_up * 5 set_invisible }
 
-// The employee catches the player on the way out of town (the goods were meant for MAGMA)
-script RustboroCity_EventScript_DraconidGoodsIntercepted {
-    msgbox(format("{PLAYER} couldn't very well refuse him in the middle of the street…"))
-}
-
 // ---------------------------------------------------------------------------
 // Rusturf Tunnel: NERINE fight 2 (her team counters the egg and the second starter, D-104), then the
 // Devon Goods choice (FLAG_DEVON_GOODS_RETURNED). RusturfTunnel_EventScript_Grunt battles her (base id)
@@ -76,14 +71,16 @@ script RusturfTunnel_EventScript_DraconidGoodsChoice {
     message(format("What will {PLAYER} do with them?"))
     waitmessage
     dynmultichoice(15, 6, FALSE, 2, 0, DYN_MULTICHOICE_CB_NONE, "Return to DEVON", "Keep for MAGMA")
+    // what each choice leads to: devon_goods.pory (D-258)
     if (var(VAR_RESULT) == 0) {
         setflag(FLAG_DEVON_GOODS_RETURNED)
         msgbox(format("{PLAYER} decided to return the GOODS to DEVON.\p"
-                      "Quietly. TABITHA doesn't need to know."))
+                      "If TABITHA asks, DEVON's people got to them first."))
     } else {
         clearflag(FLAG_DEVON_GOODS_RETURNED)
         msgbox(format("{PLAYER} tucked the GOODS away for MAGMA.\p"
-                      "The ELDER said to earn their trust. This is how."))
+                      "DEVON will have to think the thief got away with them.\p"
+                      "The ELDER said to earn MAGMA's trust. This is how."))
     }
     setvar(VAR_MAGMA_STATE, MAGMA_STATE_DEVON_GOODS)
     // Tabitha waits in the Oceanic Museum with the next order
@@ -104,17 +101,27 @@ script SlateportCity_OceanicMuseum_1F_EventScript_DraconidTabithaOrder {
     waitmovement(0)
     applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp)
     waitmovement(0)
+    // the goods choice (D-258): the kept parts earn the player TABITHA's pay (devon_goods.pory)
     if (flag(FLAG_DEVON_GOODS_RETURNED)) {
         msgbox(format("TABITHA: Hehehe! There you are. DEVON got its package back, I hear.\p"
-                      "Sloppy. …But it doesn't matter. The package is going to STERN anyway."))
+                      "Sloppy. No pay for sloppy work.\p"
+                      "…But it doesn't matter. The package is going to STERN anyway."))
     } else {
-        msgbox(format("TABITHA: Hehehe! There you are. You kept the package for us? Good grunt!\p"
-                      "Now, here's the fun part. Deliver it to STERN, just like DEVON asked."))
+        msgbox(format("TABITHA: Hehehe! There you are. You kept DEVON's package, and DEVON thinks the thief got away!\p"
+                      "Good grunt! Leader MAXIE pays for results."))
+        call(SlateportCity_OceanicMuseum_1F_EventScript_DraconidTabithaPays)
+        msgbox(format("TABITHA: Now, here's the fun part. Take the package to STERN.\p"
+                      "Tell him you found it. A grateful man doesn't ask questions."))
     }
     msgbox(format("TABITHA: STERN is building a submarine. Leader MAXIE wants to know where it goes.\p"
                   "Hand over the parts, smile, and keep your eyes open upstairs.\p"
                   "AQUA is crawling all over this museum. If they move on STERN, stop them.\p"
                   "For MAGMA, of course. Hehehe!"))
+    // TEAM MAGMA equips its own grunt: the DOWSING MACHINE (it was MAY's hand-over on Route 110, D-259)
+    msgbox(format("TABITHA: Oh, and take this. MAGMA digs, grunt. Every one of us carries one."))
+    giveitem(ITEM_DOWSING_MACHINE)
+    msgbox(format("TABITHA: A DOWSING MACHINE. It beeps when something's buried nearby.\p"
+                  "If it's worth digging up, MAGMA wants it. Hehehe!"))
     closemessage
     applymovement(LOCALID_OCEANIC_MUSEUM_1F_TABITHA, SlateportCity_OceanicMuseum_1F_Movement_DraconidTabithaAside)
     waitmovement(0)
@@ -142,23 +149,16 @@ script SlateportCity_OceanicMuseum_2F_EventScript_DraconidAfterRaid {
 }
 
 // ---------------------------------------------------------------------------
-// Route 110: MAY battles the player (the vanilla rival scene, now hers) and registers in the PokéNav
-// (Route110_EventScript_MayDefeated calls this)
+// Route 110: MAY battles the player (the vanilla rival scene, now hers) and leaves. She doesn't register the
+// player in her PokéNav: nobody gives a MAGMA grunt their number (D-256; the rivals swap numbers at
+// Sootopolis, rival_numbers.pory), nor hands over the DOWSING MACHINE (TABITHA does, D-259).
+// Route110_EventScript_MayDefeated calls this after her post-battle line.
 // ---------------------------------------------------------------------------
 
-script Route110_EventScript_DraconidRegisterMay {
-    msgbox(format("MAY: One more thing. I'm registering you in my POKéNAV.\p"
-                  "If MAGMA tries anything, I want to know where you are."))
-    closemessage
-    delay(30)
-    playfanfare(MUS_REGISTER_MATCH_CALL)
-    msgbox(format("Registered MAY in the POKéNAV."))
-    waitfanfare
-    closemessage
-    delay(30)
-    setflag(FLAG_ENABLE_RIVAL_MATCH_CALL)
+script Route110_EventScript_DraconidMayLeaves {
     setvar(VAR_MAY_STATE, MAY_STATE_ROUTE_110)
-    msgbox(format("MAY: Next time, I won't lose.\nYou'll see, {PLAYER}!"))
+    msgbox(format("MAY: If MAGMA hurts anyone on this route, I'll know who to look for.\p"
+                  "Next time, I won't lose.\nYou'll see, {PLAYER}!"))
 }
 
 // ---------------------------------------------------------------------------
@@ -173,4 +173,6 @@ script RustboroCity_DevonCorp_3F_EventScript_DraconidGiveExpShare {
     setflag(FLAG_RECEIVED_EXP_SHARE)
     setflag(FLAG_EXP_SHARE_ON)
     msgbox(RustboroCity_DevonCorp_3F_Text_ExplainExpShare, MSGBOX_DEFAULT)
+    // the parts came back: MR. STONE's thank-you gift (devon_goods.pory, D-258)
+    call(RustboroCity_DevonCorp_3F_EventScript_DraconidThankYouGift)
 }

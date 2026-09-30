@@ -235,20 +235,19 @@ RustboroCity_Gym_Text_GymStatueCertified:
 	.string "ROXANNE'S CERTIFIED TRAINERS:\n"
 	.string "{PLAYER}$"
 
-RustboroCity_Gym_Text_RoxanneRegisterCall:
+RustboroCity_Gym_Text_RoxanneRegisterCall:  @ Draconid Emerald
 	.string "… … … … … …\n"
 	.string "… … … … … Beep!\p"
-	.string "ROXANNE: Oh, hello, {PLAYER}?\n"
+	.string "ROXANNE: Hello, {PLAYER}.\n"
 	.string "This is ROXANNE of RUSTBORO CITY.\p"
+	.string "The POKéMON LEAGUE registers every\n"
+	.string "challenger for rematches. Even one\l"
+	.string "in red.\p"
 	.string "I heard from BRAWLY that you're\n"
 	.string "moving up through the ranks of\l"
 	.string "TRAINERS at an incredible clip.\p"
-	.string "Well, I'd rather not think that\n"
-	.string "I can't beat you.\p"
-	.string "I promise, I will shape up my GYM\n"
-	.string "so that you may challenge us again.\p"
-	.string "I hope you'll be looking forward to\n"
-	.string "that occasion as much as me!\p"
+	.string "I will shape up my GYM so that you\n"
+	.string "may challenge us again.\p"
 	.string "… … … … … …\n"
 	.string "… … … … … Click!$"
 

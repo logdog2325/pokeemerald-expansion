@@ -43,13 +43,25 @@ RustboroCity_EventScript_DraconidRepMan2::
 RustboroCity_EventScript_DraconidRepMan2_2:
 	lock
 	faceplayer
-	msgbox RustboroCity_Text_DraconidRepMan2Uniform, MSGBOX_DEFAULT
+	compare VAR_MAGMA_STATE, MAGMA_STATE_DEVON_GOODS
+	goto_if_lt RustboroCity_EventScript_DraconidRepMan2_6
+	goto_if_set FLAG_DEVON_GOODS_RETURNED, RustboroCity_EventScript_DraconidRepMan2_7
+	msgbox RustboroCity_Text_DraconidRepMan2UniformKept, MSGBOX_DEFAULT
+RustboroCity_EventScript_DraconidRepMan2_5:
 	goto Draconid_EventScript_RepTurnAway
 	return
 
 RustboroCity_EventScript_DraconidRepMan2_3:
 	msgbox RustboroCity_Text_DraconidRepMan2Revealed, MSGBOX_NPC
 	return
+
+RustboroCity_EventScript_DraconidRepMan2_6:
+	msgbox RustboroCity_Text_DraconidRepMan2Uniform, MSGBOX_DEFAULT
+	goto RustboroCity_EventScript_DraconidRepMan2_5
+
+RustboroCity_EventScript_DraconidRepMan2_7:
+	msgbox RustboroCity_Text_DraconidRepMan2UniformReturned, MSGBOX_DEFAULT
+	goto RustboroCity_EventScript_DraconidRepMan2_5
 
 
 RustboroCity_EventScript_DraconidRepBoy1::
@@ -60,12 +72,39 @@ RustboroCity_EventScript_DraconidRepBoy1::
 	return
 
 RustboroCity_EventScript_DraconidRepBoy1_2:
-	msgbox RustboroCity_Text_DraconidRepBoy1Uniform, MSGBOX_NPC
+	compare VAR_MAGMA_STATE, MAGMA_STATE_DEVON_GOODS
+	goto_if_lt RustboroCity_EventScript_DraconidRepBoy1_5
+	goto_if_set FLAG_DEVON_GOODS_RETURNED, RustboroCity_EventScript_DraconidRepBoy1_6
+	goto_if_set FLAG_DELIVERED_DEVON_GOODS, RustboroCity_EventScript_DraconidRepBoy1_7
+	msgbox RustboroCity_Text_DraconidRepBoy1UniformKept, MSGBOX_NPC
 	return
 
 RustboroCity_EventScript_DraconidRepBoy1_3:
+	compare VAR_MAGMA_STATE, MAGMA_STATE_DEVON_GOODS
+	goto_if_ge RustboroCity_EventScript_DraconidRepBoy1_14
+RustboroCity_EventScript_DraconidRepBoy1_13:
 	msgbox RustboroCity_Text_DraconidRepBoy1Revealed, MSGBOX_NPC
 	return
+
+RustboroCity_EventScript_DraconidRepBoy1_5:
+	msgbox RustboroCity_Text_DraconidRepBoy1Uniform, MSGBOX_NPC
+	return
+
+RustboroCity_EventScript_DraconidRepBoy1_6:
+	msgbox RustboroCity_Text_DraconidRepBoy1UniformReturned, MSGBOX_NPC
+	return
+
+RustboroCity_EventScript_DraconidRepBoy1_7:
+	msgbox RustboroCity_Text_DraconidRepBoy1UniformFound, MSGBOX_NPC
+	return
+
+RustboroCity_EventScript_DraconidRepBoy1_12:
+	msgbox RustboroCity_Text_DraconidRepBoy1RevealedKept, MSGBOX_NPC
+	return
+
+RustboroCity_EventScript_DraconidRepBoy1_14:
+	goto_if_unset FLAG_DEVON_GOODS_RETURNED, RustboroCity_EventScript_DraconidRepBoy1_12
+	goto RustboroCity_EventScript_DraconidRepBoy1_13
 
 
 RustboroCity_EventScript_DraconidRepMan1::
@@ -166,6 +205,18 @@ RustboroCity_Text_DraconidRepMan2Uniform::
 	.string "…Keep walking.\p"
 	.string "I've got nothing to say to TEAM MAGMA.$"
 
+RustboroCity_Text_DraconidRepMan2UniformReturned::
+	.string "…Keep walking.\p"
+	.string "So you brought DEVON's parcel back.\n"
+	.string "That doesn't change what you're\l"
+	.string "wearing.$"
+
+RustboroCity_Text_DraconidRepMan2UniformKept::
+	.string "…Keep walking.\p"
+	.string "DEVON lost a parcel, and a MAGMA grunt\n"
+	.string "went after the thief. I can guess how\l"
+	.string "that ended.$"
+
 RustboroCity_Text_DraconidRepMan2Revealed::
 	.string "Hey… I owe you an apology.\p"
 	.string "I treated you like dirt while you were\n"
@@ -178,10 +229,35 @@ RustboroCity_Text_DraconidRepBoy1Uniform::
 	.string "POKéMON…\p"
 	.string "Nobody knows what to make of you.$"
 
+RustboroCity_Text_DraconidRepBoy1UniformReturned::
+	.string "Did you know? Everyone in town whispers\n"
+	.string "about you.\p"
+	.string "A MAGMA grunt who brought DEVON's\n"
+	.string "stolen parcel back…\p"
+	.string "Nobody knows what to make of you.$"
+
+RustboroCity_Text_DraconidRepBoy1UniformKept::
+	.string "Did you know? DEVON's stolen parcel is\n"
+	.string "gone for good.\p"
+	.string "The MAGMA grunt who chased the thief\n"
+	.string "came back with nothing. Funny, huh?$"
+
+RustboroCity_Text_DraconidRepBoy1UniformFound::
+	.string "Did you know? DEVON's missing parcel\n"
+	.string "turned up in SLATEPORT!\p"
+	.string "A MAGMA grunt brought it to CAPT.\n"
+	.string "STERN. Said they found it lying around.\p"
+	.string "…Hey, wait. That was you!$"
+
 RustboroCity_Text_DraconidRepBoy1Revealed::
 	.string "Did you know? You're famous now!\p"
 	.string "Everyone in RUSTBORO says they knew\n"
 	.string "you were good all along. Hah!$"
+
+RustboroCity_Text_DraconidRepBoy1RevealedKept::
+	.string "Did you know? You're famous now!\p"
+	.string "Even DEVON forgave you for that parcel.\n"
+	.string "…Mostly. Hah!$"
 
 RustboroCity_Text_DraconidRepMan1Uniform::
 	.string "A TEAM MAGMA grunt, collecting GYM\n"

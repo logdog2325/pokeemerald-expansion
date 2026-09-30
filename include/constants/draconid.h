@@ -71,7 +71,7 @@
 #define BRENDAN_STATE_START            0 // confronts the player at Rustboro's south edge (Act 1)
 #define BRENDAN_STATE_RUSTBORO         1 // beaten at Rustboro
 #define BRENDAN_STATE_MT_CHIMNEY       2 // Mt. Chimney battle done (Act 3, not a must-win)
-#define BRENDAN_STATE_ROUTE_119        3 // beaten on Route 119, registered in the PokéNav (Act 4)
+#define BRENDAN_STATE_ROUTE_119        3 // beaten on Route 119, gave HM Fly (Act 4); no PokéNav until Sootopolis (D-256)
 #define BRENDAN_STATE_LILYCOVE         4 // Lilycove double battle with May done (Act 4)
 #define BRENDAN_STATE_MOSSDEEP         5 // Space Center tag battle done (Act 5, not a must-win)
 #define BRENDAN_STATE_SOOTOPOLIS       6 // after the Sootopolis turn: knows the truth (Act 5)
@@ -80,7 +80,7 @@
 
 // VAR_MAY_STATE: May's scenes (round 1 schedule, D-106; values in story order)
 #define MAY_STATE_START                0
-#define MAY_STATE_ROUTE_110            1 // beaten on Route 110, registered in the PokéNav (Act 2)
+#define MAY_STATE_ROUTE_110            1 // beaten on Route 110 (Act 2); no PokéNav until Sootopolis (D-256)
 #define MAY_STATE_WEATHER_INSTITUTE    2 // covered for the player at the Weather Institute (Act 4)
 #define MAY_STATE_LILYCOVE             3 // Lilycove double battle done (Act 4)
 #define MAY_STATE_SOOTOPOLIS           4 // after the Sootopolis turn: knows the truth (Act 5)
@@ -124,6 +124,12 @@
 #define MAGMA_STATE_SPACE_CENTER      10 // Mossdeep: the tag battle with Tabitha (Act 5)
 #define MAGMA_STATE_SEAFLOOR          11 // Seafloor Cavern: Nerine's reveal
 #define MAGMA_STATE_TURNED            12 // Sootopolis: the uniform comes off (reputation REVEALED)
+
+// The Devon Goods choice (FLAG_DEVON_GOODS_RETURNED, D-258): kept for Magma, Tabitha pays at the Oceanic
+// Museum; returned to Devon, Mr. Stone adds a thank-you gift (FLAG_RECEIVED_AMULET_COIN)
+#define DRACONID_GOODS_REWARD_MONEY    5000             // Tabitha's pay: about one tier-2 battle item (D-219)
+#define DRACONID_GOODS_REWARD_ITEM     ITEM_FIRE_STONE  // "from Mt. Chimney"; its only early user is Vulpix (Mt. Pyre)
+#define DRACONID_GOODS_THANKS_ITEM     ITEM_AMULET_COIN // Mom's gift in vanilla (Mom is gone, D-100)
 
 // VAR_MAXIE_CALL: Maxie phones the Magma recruit after key story points and names the next place to go
 // (D-186). The first call is scripted on Mr. Briney's boat; the others ring after MAXIE_CALL_STEPS steps

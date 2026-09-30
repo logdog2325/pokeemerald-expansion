@@ -1076,6 +1076,8 @@ gStdScripts_End::
 	.include "data/scripts/draconid/act5.inc"
 	.include "data/scripts/draconid/maxie_calls.inc"
 	.include "data/scripts/draconid/rival_calls.inc"
+	.include "data/scripts/draconid/rival_numbers.inc"
+	.include "data/scripts/draconid/devon_goods.inc"
 	.include "data/scripts/draconid/progression.inc"
 	.include "data/scripts/draconid/frontier_legends.inc"
 	.include "data/scripts/draconid/act6.inc"

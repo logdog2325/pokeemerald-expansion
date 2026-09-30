@@ -59,15 +59,43 @@ Draconid_EventScript_MaxieCall_11:
 	goto Draconid_EventScript_MaxieCall_1
 
 
-Draconid_Text_MaxieCallDewford::
+Route104_EventScript_DraconidMaxieCallDewford::
+	goto_if_set FLAG_DEVON_GOODS_RETURNED, Route104_EventScript_DraconidMaxieCallDewford_1
+	pokenavcall Draconid_Text_MaxieCallDewfordKept
+	return
+
+Route104_EventScript_DraconidMaxieCallDewford_1:
+	pokenavcall Draconid_Text_MaxieCallDewfordReturned
+	return
+
+
+Draconid_Text_MaxieCallDewfordKept::
 	.string "… … … … … …\n"
 	.string "… … … … … Beep!\p"
 	.string "MAXIE: Is this {PLAYER}? I am MAXIE,\n"
 	.string "the leader of TEAM MAGMA.\p"
-	.string "TABITHA tells me our newest recruit\n"
-	.string "raises dragons and wins BADGES.\p"
-	.string "So DEVON trusts you now.\n"
-	.string "Excellent.\p"
+	.string "TABITHA tells me you kept DEVON's\n"
+	.string "parts for us.\n"
+	.string "Well done.\p"
+	.string "DEVON believes the thief got away\n"
+	.string "with them. Let them.\p"
+	.string "Take MR. STONE's LETTER to DEWFORD,\n"
+	.string "then the parts to SLATEPORT.\l"
+	.string "TABITHA will be waiting.\p"
+	.string "Keep your eyes open.\n"
+	.string "We will speak again.\p"
+	.string "… … … … … Click!$"
+
+Draconid_Text_MaxieCallDewfordReturned::
+	.string "… … … … … …\n"
+	.string "… … … … … Beep!\p"
+	.string "MAXIE: Is this {PLAYER}? I am MAXIE,\n"
+	.string "the leader of TEAM MAGMA.\p"
+	.string "TABITHA tells me DEVON got its\n"
+	.string "parts back. Sloppy…\n"
+	.string "but no matter.\p"
+	.string "They are going to SLATEPORT all the\n"
+	.string "same, and so are you.\p"
 	.string "Take MR. STONE's LETTER to DEWFORD\n"
 	.string "and the parts to SLATEPORT.\p"
 	.string "Keep your eyes open.\n"
