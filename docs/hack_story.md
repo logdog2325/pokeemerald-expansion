@@ -191,3 +191,9 @@ Petalburg Woods recruitment/outfit change, Maxie's first meeting at Meteor Falls
 
 ### Follow-up note 20 (round 1)
 - "Sorry but slight change. I don't think Steven should know that you're undercover. Maybe he should say something like you're like the strongest team magma grant I faced or something like that and maybe have a little bit of the suspicion but yeah and I don't think he should heal your Pokémon after you lose too. I think it should like Courtney should do it and she should be mad at you for losing, but still heal your Pokémon yeah I don't think anybody should know that you're undercover besides the  Draconids and birch and oak"
+
+### Follow-up note 21 (round 1)
+- "wait this doesnt make sense ✅ Route 110: May's battle; she registers the player to "keep tabs on MAGMA". why would we willingly give her our number if were posing as a magma grunt and why would she even ask  also is mr briney secretly working for team magma why does he give us a ride is it cause we saved his bird or something else also are there any consequences if we keep the devon goods? I think there should be at least some with out reputation also why does may hand over the go gogles after we beat her maybe she drops it after we beat her besides that story outline is very good but those are the changes I would make"
+
+### Follow-up note 22 (round 1)
+- "also have a agent look for any other contradictions with the games story and come up with fixes besides the ones I found already"
