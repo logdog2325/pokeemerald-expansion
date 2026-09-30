@@ -20,6 +20,10 @@ A .play script is a gbarun script plus:
   expect_gfx OBJ_EVENT_GFX_X   the player's current object graphics (outfit, gender, avatar state)
   expect_opponent TRAINER_X   the last trainer battle's opponent A (kept until the next battle is set
                           up; works when a mashed battle is lost, unlike expect_trainer)
+  expect_opponent_b TRAINER_X   the same for opponent B of the last two-trainer battle (multi, double)
+  expect_partner PARTNER_X      the last multi battle's in-game partner (gPartnerTrainerId)
+  wait_species N SPECIES_X [MAX] [KEY]   tap KEY (default A) until battler N (gBattleMons[N]; 1 = the
+                          opponent in a single battle) is SPECIES_X, e.g. a Mega Evolution
   setflag NAME / clearflag NAME   change a flag in the save block (e.g. FLAG_DEBUG_NO_ENCOUNTER)
   settrainer TRAINER_X 0|1        set or clear a trainer's "defeated" flag
   setvar NAME VALUE       change a var in the save block
@@ -79,6 +83,7 @@ def probe(names):
     src = '#include "global.h"\n#include "constants/flags.h"\n#include "constants/vars.h"\n#include "constants/maps.h"\n'
     src += '#include "constants/items.h"\n#include "constants/opponents.h"\n#include "battle_setup.h"\n'
     src += '#include "constants/event_objects.h"\n#include "draconid.h"\n#include "item_menu.h"\n#include "pokemon.h"\n'
+    src += '#include "constants/battle_partner.h"\n#include "battle.h"\n#include "constants/species.h"\n'
     src += "const u32 gProbe[] = {\n  offsetof(struct SaveBlock1, flags),\n  offsetof(struct SaveBlock1, vars),\n"
     src += "  offsetof(struct SaveBlock1, location),\n"
     src += "  offsetof(struct ObjectEvent, currentCoords),\n"
@@ -183,6 +188,8 @@ def plan_path(map_name, x0, y0, x1, y1):
 
 GFX_OFFSET = "offsetof(struct ObjectEvent, graphicsId)"
 OPPONENT_A_OFFSET = "offsetof(struct _TrainerBattleParameter, opponentA)"
+OPPONENT_B_OFFSET = "offsetof(struct _TrainerBattleParameter, opponentB)"
+BATTLE_MON_SIZE, BATTLE_MON_SPECIES = "sizeof(struct BattlePokemon)", "offsetof(struct BattlePokemon, species)"
 BAG_OFFSET, SLOT_SIZE, BAG_SIZE = "offsetof(struct SaveBlock1, bag)", "sizeof(struct ItemSlot)", "sizeof(struct Bag)"
 # the debug-build test hook (include/draconid.h): only probed when a test uses giveitem / givemon / expect_party_hms
 HOOK_COMMANDS = ("giveitem", "givemon", "expect_party_hms")
@@ -215,10 +222,12 @@ def main():
             defines.setdefault(t[1], t[2])
     defines.update(dict(d.split("=", 1) for d in args.defines))
     lines = [re.sub(r"\$\{(\w+)\}", lambda m: defines[m.group(1)], l) for l in lines if not l.startswith("default ")]
-    names = sorted({l.split()[1] for l in lines if l.split() and l.split()[0] in ("flag", "var", "expect_flag", "expect_var", "setflag", "clearflag", "setvar", "warp", "expect_trainer", "expect_item", "expect_opponent", "expect_gfx", "giveitem", "givemon", "expect_map", "bagcursor", "settrainer")})
+    names = sorted({l.split()[1] for l in lines if l.split() and l.split()[0] in ("flag", "var", "expect_flag", "expect_var", "setflag", "clearflag", "setvar", "warp", "expect_trainer", "expect_item", "expect_opponent", "expect_opponent_b", "expect_gfx", "giveitem", "givemon", "expect_map", "bagcursor", "settrainer")})
     names += sorted({l.split()[2] for l in lines if l.split() and l.split()[0] == "expect_party"})
     names += sorted({l.split()[3] for l in lines if l.split() and l.split()[0] == "givemon" and len(l.split()) > 3})
-    names += [OPPONENT_A_OFFSET, GFX_OFFSET]
+    names += ["TRAINER_PARTNER(%s)" % l.split()[1] for l in lines if l.split()[:1] == ["expect_partner"]]
+    names += [l.split()[2] for l in lines if l.split()[:1] == ["wait_species"]]
+    names += [OPPONENT_A_OFFSET, OPPONENT_B_OFFSET, GFX_OFFSET, BATTLE_MON_SIZE, BATTLE_MON_SPECIES]
     names += [BAG_OFFSET, SLOT_SIZE, BAG_SIZE, "TRAINER_FLAGS_START", MON_SIZE, SECURE_OFFSET, SUBSTRUCT_SIZE]
     if any(l.split() and l.split()[0] in HOOK_COMMANDS for l in lines):
         names += [TEST_ITEM_OFFSET, TEST_HMS_OFFSET, TEST_SPECIES_OFFSET, TEST_LEVEL_OFFSET,
@@ -280,6 +289,22 @@ def main():
             label = "opponent_%s#%d" % (t[1], len(expects))
             expects.append((label, consts[t[1]]))
             out.append("read %X 2 %s" % (syms["gTrainerBattleParameter"] + consts[OPPONENT_A_OFFSET], label))
+        elif t[0] == "expect_opponent_b":
+            # opponentB sits at an odd offset of the packed struct (a halfword read would be aligned down):
+            # compare it byte by byte
+            addr = syms["gTrainerBattleParameter"] + consts[OPPONENT_B_OFFSET]
+            for i, part in enumerate((consts[t[1]] & 0xFF, consts[t[1]] >> 8)):
+                label = "opponent_b_%s_byte%d#%d" % (t[1], i, len(expects))
+                expects.append((label, part))
+                out.append("read %X 1 %s" % (addr + i, label))
+        elif t[0] == "expect_partner":
+            label = "partner_%s#%d" % (t[1], len(expects))
+            expects.append((label, consts["TRAINER_PARTNER(%s)" % t[1]]))
+            out.append("read %X 2 %s" % (syms["gPartnerTrainerId"], label))
+        elif t[0] == "wait_species":
+            addr = syms["gBattleMons"] + int(t[1]) * consts[BATTLE_MON_SIZE] + consts[BATTLE_MON_SPECIES]
+            out.append("until %X 2 %X %s %s 24" % (addr, consts[t[2]], t[3] if len(t) > 3 else "60000",
+                                                  t[4] if len(t) > 4 else "A"))
         elif t[0] == "expect_gfx":
             label = "player_gfx_%s#%d" % (t[1], len(expects))
             expects.append((label, consts[t[1]]))

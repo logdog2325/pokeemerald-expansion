@@ -62,6 +62,7 @@ python3 tools/hack/emu/play.py tools/hack/emu/tests/aster.play -o /tmp/emu
 python3 tools/hack/emu/play.py tools/hack/emu/tests/postgame_home.play -o /tmp/emu
 python3 tools/hack/emu/play.py tools/hack/emu/tests/hm_free.play -o /tmp/emu    # HM field moves (debug build)
 python3 tools/hack/emu/play.py tools/hack/emu/tests/wild.play -o /tmp/emu       # National Dex, wild battles
+python3 tools/hack/emu/play.py tools/hack/emu/tests/frontier_legends.play -o /tmp/emu   # Wes, Red, Blue + the tag
 python3 tools/hack/emu/matrix.py -o /tmp/matrix       # all 18 gender x egg x second-starter flows
 python3 tools/hack/check_story.py                     # every new flag / story state set and read
 python3 tools/hack/check_wild.py [--info X|--doc]     # wild tables: species legal, levels, Hoenn species kept, 1% Beldum

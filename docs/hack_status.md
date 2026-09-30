@@ -53,6 +53,9 @@ menu) → `pokeemerald.gba`, `make release` → `pokeemerald-release.gba`; zippe
 - [x] Follow-up 3 (1.31, 1.33): no trade evolutions (level evolutions, D-216/D-217), a battle item counter in
       every Mart whose stock grows with the badges, Gym Leader boosters, Mega Stones after the Mega Ring (placed
       and sold, D-218–D-222) – [hack_items.md](hack_items.md); `trade_evos.play`, `battle_items.play`
+- [x] Battle Frontier legends (post-game, D-225–D-229): Wes (Colosseum team), Red and Blue (PWT teams, Mega Charizard X /
+      Mega Alakazam) on `BattleFrontier_OutsideEast`, rematchable; the LEGENDS' TAG multi battle with a beaten legend as
+      partner; Wes's sprites and Blue's back pic kitbashed from Steven's – emulator-tested (`frontier_legends.play`)
 - [ ] Verification (matrix incl. Nerine/Aster variants, story checks, per-act debug warps) + v2 ROM
 
 ## Phase 0 – Tools and extensions

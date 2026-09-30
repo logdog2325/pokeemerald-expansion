@@ -149,6 +149,8 @@ python3 tools/hack/emu/play.py test.play -o /tmp/out
 | `giveitem ITEM_X [N]`, `givemon SPECIES_X LEVEL` | debug builds: put items in the bag / a Pokémon in the party the next time the player is free |
 | `expect_party_hms N` | debug builds: how many HM moves the party's Pokémon know |
 | `bagcursor POCKET_X N` | the bag opens on POCKET_X at entry N and the start menu on its first entry (then START, DOWN, DOWN, A opens the bag) |
+| `expect_opponent_b TRAINER_X`, `expect_partner PARTNER_X` | opponent B and the in-game partner of the last two-trainer / multi battle |
+| `wait_species N SPECIES_X [MAX] [KEY]` | tap KEY (default A) until battler N (`gBattleMons[N]`, 1 = the single-battle opponent) is SPECIES_X, e.g. `SPECIES_CHARIZARD_MEGA_X` after a Mega Evolution |
 
 `matrix.py` runs the flow tests for every gender × egg × second starter (18 combinations, 6 chains in
 parallel) and prints one line per run:
@@ -159,6 +161,8 @@ python3 tools/hack/emu/matrix.py -o /tmp/matrix [-j 3] [--only F_DREEPY]
 `-D EGGNAME=… -D SECOND=…`, `act2.play` `-D EGGNAME=… -D SECOND=… -D SECONDNAME=… -D GOODS=… -D RETURNED=…`,
 `act3.play` `-D EGGNAME=… -D SECOND=… -D SECONDNAME=… -D STONE=…`, `act4.play`
 `-D EGGNAME=… -D SECOND=… -D SECONDNAME=… -D MAGMA=…` (see the comments at the top of each).
+`frontier_legends.play` (the Battle Frontier legends and the LEGENDS' TAG, post-game) needs only `rustboro_done.ss`
+and runs in the Deino chains.
 
 ## Story checks – `tools/hack/check_story.py`
 ```sh

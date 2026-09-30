@@ -69,9 +69,9 @@
 #define FLAG_DEBUG_NO_TRAINER_SEE                0x2F // Draconid Emerald: OW_FLAG_NO_TRAINER_SEE (debug menu / tests)
 #define FLAG_DEBUG_NO_COLLISION                  0x30 // Draconid Emerald: OW_FLAG_NO_COLLISION (debug menu / tests)
 #define FLAG_HIDE_LAVARIDGE_TOWN_DRACONID_TRAVELLER 0x31 // Draconid Emerald: the Draconid traveller with the Mega Stone in Lavaridge (Act 3)
-#define FLAG_UNUSED_0x032    0x32 // Unused Flag
-#define FLAG_UNUSED_0x033    0x33 // Unused Flag
-#define FLAG_UNUSED_0x034    0x34 // Unused Flag
+#define FLAG_HIDE_BATTLE_FRONTIER_WES            0x32 // Draconid Emerald: Wes at the Battle Frontier (shown after the Hall of Fame)
+#define FLAG_HIDE_BATTLE_FRONTIER_RED            0x33 // Draconid Emerald: Red at the Battle Frontier (shown after the Hall of Fame)
+#define FLAG_HIDE_BATTLE_FRONTIER_BLUE           0x34 // Draconid Emerald: Blue at the Battle Frontier (shown after the Hall of Fame)
 #define FLAG_HIDE_ROUTE_119_TABITHA              0x35 // Draconid Emerald: Tabitha outside the Weather Institute (Act 4)
 #define FLAG_UNUSED_0x036    0x36 // Unused Flag
 #define FLAG_UNUSED_0x037    0x37 // Unused Flag

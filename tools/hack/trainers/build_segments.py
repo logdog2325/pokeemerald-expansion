@@ -118,6 +118,8 @@ OVERRIDES = {
     "ZINNIA_SKY_PILLAR": "POST",
     # the Elite Four's ORAS post-game rematch teams, used once the game is cleared (D-174)
     **{t + "_REMATCH": "POST" for t in ("SIDNEY", "PHOEBE", "GLACIA", "DRAKE")},
+    # the Battle Frontier legends and their legends' tag teams, after the Hall of Fame (D-225, D-226)
+    **{t + "_FRONTIER" + m: "POST" for t in ("WES", "RED", "BLUE") for m in ("", "_MULTI")},
     **{"NERINE_PETALBURG_WOODS_" + e: "S1" for e in EGGS},
     **{"NERINE_%s_%s_%s" % (f, e, st): seg for f, seg in (("RUSTURF", "S2"), ("SLATEPORT", "S3"), ("MT_CHIMNEY", "S4"),
                                                          ("MT_PYRE", "S7"), ("AQUA_HIDEOUT", "S7"), ("SEAFLOOR", "S8"),
@@ -129,7 +131,7 @@ OVERRIDES = {
     "GABBY_AND_TY_4": "S6", "GABBY_AND_TY_5": "S7", "GABBY_AND_TY_6": "S8",
 }
 # every id the game uses (TRAINERS_COUNT_EMERALD)
-MAX_ID = 925
+MAX_ID = 931
 
 TIER_MIN = {2: "S6", 3: "S7", 4: "S8", 5: "POST", 6: "POST"}
 

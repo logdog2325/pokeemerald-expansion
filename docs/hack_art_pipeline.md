@@ -229,3 +229,45 @@ regression chain (`opening` … `act2`) passes for both genders.
 Known gaps (`TODO(art)`): the scale pattern is only a dot hint on the overworld sprites (16×32 has no room for more);
 the Acro Bike's wheelie/hop frames still shear the Mach Bike frames, scarf included; the M throw frames show the
 cape with the backpack's rounded outline.
+
+## Round 1: the Battle Frontier legends (Wes; Blue's partner back pic)
+
+Wes (Pokémon Colosseum) has no sprites in the repository, and Blue's FRLG champion pic has no back pic (he fights
+beside the player in the LEGENDS' TAG). Both are kitbashed from **Steven's** sprites (D-228); Red uses his FRLG
+sprites as they are, and Blue's overworld sprite is the FRLG `blue.png` sheet with `npc_green.pal`, registered for
+Emerald as `OBJ_EVENT_GFX_FRONTIER_BLUE` (vanilla registers `OBJ_EVENT_GFX_BLUE` only in FRLG builds).
+
+| Sprite | File(s) | Spec (tool) | Base | Look |
+|---|---|---|---|---|
+| Wes, overworld (9 × 16×32) | `frontier_legends/wes.png`, `wes{,_reflection}.pal` | `recipes/wes.json` (kitbash) | Steven's walk sheet | white spiky hair, black sunglasses, a long navy coat to the knees with light lapels, dark shirt, grey trousers |
+| Wes, front pic | `front_pics/wes.png` | `recipes/wes_front_pic.json` (kitbash) | Steven's pic | the same; the coat's tails drawn over the legs down to a hem, charcoal trousers below, glints on the lenses |
+| Wes, back pic (4 frames) | `back_pics/wes.png` | `recipes/wes_back_pic.json` (kitbash) | Steven's back pic (`sBackAnims_Hoenn`) | white hair, the lens over the visible eye, navy coat with the light collar and cuffs |
+| Blue, back pic (4 frames) | `back_pics/blue.png` | `recipes/blue_back_pic.json` (kitbash) | Steven's back pic | Blue's orange-brown hair and slate shirt (colours from `champion_rival_frlg.pal`) |
+
+Rebuild: `python3 tools/hack/art/kitbash.py tools/hack/art/recipes/{wes,wes_front_pic,wes_back_pic,blue_back_pic}.json`,
+then `make` (the overworld recipe also writes both palettes). The object events come from `gen_outfit_code.py`
+(`NPCS`: `Wes`, `FrontierBlue`; `NPC_PALETTES`: tags 0x1150, 0x1151); the pics are `TRAINER_PIC_WES` and the new
+`.backPic` of `TRAINER_PIC_CHAMPION_RIVAL_FRLG` in `src/data/graphics/trainers.h` (yOffset 4, `sBackAnims_Hoenn`, own
+back-pic palettes).
+
+How they were made:
+- **Overworld**: a new palette keeps Steven's index roles (skin 1–4; hair B/C/D whiter; the purple stripes 9 → a
+  pale blue for the lapels, the tie A and the white shirt E → navy / a dark shirt). The coat is the suit inside the
+  outline: in rows 20–28 (down to the knees; the walk frames 1 px lower) the grey shading → coat highlight and the
+  black inner pixels → navy (`remap_inner` keeps the black outline), so the coat ends where the grey legs start.
+  The shades are a `pixels` band over both eyes (front) and a lens + arm (side).
+- **Front pic**: the palette turns the suit navy, the stripes into light lapels and the hair white; the red tie and
+  shirt become a dark shirt. The coat's tails are computed from Steven's leg outline (rows 43–53: one panel over
+  both legs that flares a pixel every four rows, a light left edge, a black front opening with shadow either side,
+  a black hem) and written into the recipe as plain `pixels` rows; the trousers below the hem are remapped to
+  charcoal. The lenses are black with one light glint each.
+- **Back pics**: from the shoulders down (rows 36–63 of each frame) the suit's grey/dark → the new clothes; the
+  hair recolours by palette. Wes keeps Steven's light collar and cuffs (his light collar) and gets a lens over the
+  eye in every frame (the eye's position per frame is in the recipe); Blue's collar and cuffs become shirt.
+- **Checks**: `validate.py --manifest` (the four files added); contact sheets at 3–6× next to Steven's sprites; in the
+  emulator (`frontier_legends.play`) Wes in the Pyramid's sands, Blue by the Tower door and Red below Artisan Cave,
+  the intros with Blue's and Wes's front pics, and the partner back pics in the tag battles' intro.
+
+Known gaps (`TODO(art)`, polish only): Wes shares Steven's pose and build (he is recognisable by the shades, coat and
+colours, not by a new silhouette); there is no Snag Machine on his arm (2–3 px at 16×32); the lens on the back pic
+is only a darker eye.

@@ -168,6 +168,9 @@ def species_pool(parents=None):
 # holds the ORAS Mega Stones, like the trainers in MEGA_TRAINERS (D-174).
 ORAS_ROSTER_TRAINERS = re.compile(r"^TRAINER_(SIDNEY|PHOEBE|GLACIA|DRAKE)(_REMATCH)?$")
 ORAS_MEGA_TRAINERS = re.compile(r"^TRAINER_(SIDNEY|PHOEBE|GLACIA|DRAKE)_REMATCH$")
+# Round 1 Battle Frontier legends (D-225, D-226): Wes's Colosseum team (Eeveelutions, the legendary beasts, Ho-Oh)
+# and Red's / Blue's PWT teams, species from every region; Red's Charizard and Blue's Alakazam Mega Evolve.
+LEGEND_TRAINERS = re.compile(r"^(TRAINER_(WES|RED|BLUE)_FRONTIER(_MULTI)?|PARTNER_(WES|RED|BLUE))$")
 
 
 def min_level(species, parents):
@@ -265,7 +268,8 @@ def main():
                     item = party.const_name(mon["item"], "ITEM_")
                     if item not in items_ok:
                         err("%s: unknown item %s" % (where, mon["item"]))
-                    elif item in stones and not MEGA_TRAINERS.match(tid) and not ORAS_MEGA_TRAINERS.match(tid):
+                    elif (item in stones and not MEGA_TRAINERS.match(tid) and not ORAS_MEGA_TRAINERS.match(tid)
+                          and not LEGEND_TRAINERS.match(tid)):
                         warn("%s: Mega Stone on a trainer outside MEGA_TRAINERS" % where)
                 if "nature" in mon and party.const_name(mon["nature"], "NATURE_") not in natures_ok:
                     err("%s: unknown nature %s" % (where, mon["nature"]))
@@ -297,7 +301,8 @@ def main():
                     err("%s: evolves by level-up at %d" % (where, ml))
                 elif mon["level"] < ml - args.evo_slack:
                     warn("%s: evolves by level-up at %d (only aces/bosses may be under)" % (where, ml))
-                if sp not in pool and not STORY_TRAINERS.match(tid) and not ORAS_ROSTER_TRAINERS.match(tid):
+                if (sp not in pool and not STORY_TRAINERS.match(tid) and not ORAS_ROSTER_TRAINERS.match(tid)
+                        and not LEGEND_TRAINERS.match(tid)):
                     warn("%s: not in the Hoenn dex or a vanilla Emerald team" % where)
                 if tid in caps and mon["level"] > caps[tid]:
                     err("%s: above the segment cap %d" % (where, caps[tid]))

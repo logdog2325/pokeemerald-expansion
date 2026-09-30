@@ -1054,7 +1054,13 @@
   "TRAINER_NERINE_POSTGAME_DREEPY_TREECKO": "POST",
   "TRAINER_NERINE_POSTGAME_JANGMO_O_CHARMANDER": "POST",
   "TRAINER_NERINE_POSTGAME_JANGMO_O_TOTODILE": "POST",
-  "TRAINER_NERINE_POSTGAME_JANGMO_O_TREECKO": "POST"
+  "TRAINER_NERINE_POSTGAME_JANGMO_O_TREECKO": "POST",
+  "TRAINER_WES_FRONTIER": "POST",
+  "TRAINER_RED_FRONTIER": "POST",
+  "TRAINER_BLUE_FRONTIER": "POST",
+  "TRAINER_WES_FRONTIER_MULTI": "POST",
+  "TRAINER_RED_FRONTIER_MULTI": "POST",
+  "TRAINER_BLUE_FRONTIER_MULTI": "POST"
  },
  "info": {
   "TRAINER_SAWYER_1": {
@@ -6996,6 +7002,42 @@
    "role": "route",
    "map": null,
    "story": true
+  },
+  "TRAINER_WES_FRONTIER": {
+   "segment": "POST",
+   "role": "route",
+   "map": "BattleFrontier_OutsideEast",
+   "story": false
+  },
+  "TRAINER_RED_FRONTIER": {
+   "segment": "POST",
+   "role": "route",
+   "map": "BattleFrontier_OutsideEast",
+   "story": false
+  },
+  "TRAINER_BLUE_FRONTIER": {
+   "segment": "POST",
+   "role": "route",
+   "map": "BattleFrontier_OutsideEast",
+   "story": false
+  },
+  "TRAINER_WES_FRONTIER_MULTI": {
+   "segment": "POST",
+   "role": "route",
+   "map": "BattleFrontier_OutsideEast",
+   "story": false
+  },
+  "TRAINER_RED_FRONTIER_MULTI": {
+   "segment": "POST",
+   "role": "route",
+   "map": "BattleFrontier_OutsideEast",
+   "story": false
+  },
+  "TRAINER_BLUE_FRONTIER_MULTI": {
+   "segment": "POST",
+   "role": "route",
+   "map": "BattleFrontier_OutsideEast",
+   "story": false
   }
  }
 }

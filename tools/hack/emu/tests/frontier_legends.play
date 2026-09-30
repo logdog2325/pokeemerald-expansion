@@ -1,0 +1,262 @@
+# The Battle Frontier legends (data/scripts/draconid/frontier_legends.pory, D-225 - D-229): Wes, Red and Blue on
+# BattleFrontier_OutsideEast only after the Hall of Fame, each legend's battle, the Megas (Blue's Alakazam, Red's
+# Charizard X), and the LEGENDS' TAG with each partner against the other two. Needs rustboro_done.ss (a
+# one-Pokémon party); the states are set by hand and the scenes reached with the debug warp. Battles are mashed
+# with the no-whiteout flag on, so this checks scripts, not balance.
+# Party pokes (gParties[B_TRAINER_PLAYER] slot 0, struct Pokemon's unencrypted fields): for the Blue and Red
+# battles the lead gets level 100, 999 HP / Defense / Speed / Sp. Defense and 65535 Attack / Sp. Attack (+0x54,
+# +0x56..+0x63), so every hit knocks out and the ace comes out quickly (the stats are recalculated when the battle
+# ends). Trainer flags are TRAINER_FLAGS_START + the trainer id.
+loadstate rustboro_done.ss
+setflag FLAG_DEBUG_NO_ENCOUNTER
+setflag FLAG_DEBUG_NO_TRAINER_SEE
+setflag FLAG_DRACONID_NO_WHITEOUT
+
+# --- before the Hall of Fame nobody is there ---
+clearflag FLAG_SYS_GAME_CLEAR
+warp MAP_BATTLE_FRONTIER_OUTSIDE_EAST 18 16
+shot a10_before_hof
+expect_flag FLAG_HIDE_BATTLE_FRONTIER_WES 1
+expect_flag FLAG_HIDE_BATTLE_FRONTIER_RED 1
+expect_flag FLAG_HIDE_BATTLE_FRONTIER_BLUE 1
+
+# --- after the Hall of Fame: Blue by the BATTLE TOWER door (the boosted lead wins; Mega Alakazam) ---
+setflag FLAG_SYS_GAME_CLEAR
+warp MAP_BATTLE_FRONTIER_OUTSIDE_EAST 18 16
+shot a11_blue_and_attendant
+expect_flag FLAG_HIDE_BATTLE_FRONTIER_WES 0
+expect_flag FLAG_HIDE_BATTLE_FRONTIER_RED 0
+expect_flag FLAG_HIDE_BATTLE_FRONTIER_BLUE 0
+heal
+run 30
+poke @gParties+54 64
+poke @gParties+56 E7
+poke @gParties+57 3
+poke @gParties+58 E7
+poke @gParties+59 3
+poke @gParties+5A FF
+poke @gParties+5B FF
+poke @gParties+5C E7
+poke @gParties+5D 3
+poke @gParties+5E E7
+poke @gParties+5F 3
+poke @gParties+60 FF
+poke @gParties+61 FF
+poke @gParties+62 E7
+poke @gParties+63 3
+press UP 2 10
+press UP 2 10
+press A 2 30
+shot b10_blue_intro
+wait_species 1 SPECIES_ALAKAZAM_MEGA 120000
+press A 2 70
+shot b11_mega_alakazam_01
+press A 2 70
+shot b11_mega_alakazam_02
+press A 2 70
+shot b11_mega_alakazam_03
+press A 2 70
+shot b11_mega_alakazam_04
+press A 2 70
+shot b11_mega_alakazam_05
+press A 2 70
+shot b11_mega_alakazam_06
+press A 2 70
+shot b11_mega_alakazam_07
+press A 2 70
+shot b11_mega_alakazam_08
+press A 2 70
+shot b11_mega_alakazam_09
+press A 2 70
+shot b11_mega_alakazam_10
+press A 2 70
+shot b11_mega_alakazam_11
+press A 2 70
+shot b11_mega_alakazam_12
+press A 2 70
+shot b11_mega_alakazam_13
+press A 2 70
+shot b11_mega_alakazam_14
+mash A 120000
+shot b12_after_blue
+expect_opponent TRAINER_BLUE_FRONTIER
+expect_trainer TRAINER_BLUE_FRONTIER 1
+
+# --- Red below ARTISAN CAVE (boosted lead; Mega Charizard X); the boost after the warp ---
+warp MAP_BATTLE_FRONTIER_OUTSIDE_EAST 29 11
+heal
+run 30
+poke @gParties+54 64
+poke @gParties+56 E7
+poke @gParties+57 3
+poke @gParties+58 E7
+poke @gParties+59 3
+poke @gParties+5A FF
+poke @gParties+5B FF
+poke @gParties+5C E7
+poke @gParties+5D 3
+poke @gParties+5E E7
+poke @gParties+5F 3
+poke @gParties+60 FF
+poke @gParties+61 FF
+poke @gParties+62 E7
+poke @gParties+63 3
+press UP 2 10
+press UP 2 10
+shot c10_red
+press A 2 30
+wait_species 1 SPECIES_CHARIZARD_MEGA_X 120000
+press A 2 70
+shot c11_mega_charizard_x_01
+press A 2 70
+shot c11_mega_charizard_x_02
+press A 2 70
+shot c11_mega_charizard_x_03
+press A 2 70
+shot c11_mega_charizard_x_04
+press A 2 70
+shot c11_mega_charizard_x_05
+press A 2 70
+shot c11_mega_charizard_x_06
+press A 2 70
+shot c11_mega_charizard_x_07
+press A 2 70
+shot c11_mega_charizard_x_08
+press A 2 70
+shot c11_mega_charizard_x_09
+press A 2 70
+shot c11_mega_charizard_x_10
+press A 2 70
+shot c11_mega_charizard_x_11
+press A 2 70
+shot c11_mega_charizard_x_12
+press A 2 70
+shot c11_mega_charizard_x_13
+press A 2 70
+shot c11_mega_charizard_x_14
+mash A 120000
+shot c12_after_red
+expect_opponent TRAINER_RED_FRONTIER
+expect_trainer TRAINER_RED_FRONTIER 1
+
+# --- Wes in the BATTLE PYRAMID's sands (the plain lead loses; his flag is set by hand) ---
+heal
+warp MAP_BATTLE_FRONTIER_OUTSIDE_EAST 58 23
+press UP 2 10
+press UP 2 10
+shot d10_wes
+press A 2 30
+mash A 90000
+shot d11_after_wes
+expect_opponent TRAINER_WES_FRONTIER
+setflag TRAINER_FLAGS_START+TRAINER_WES_FRONTIER
+
+# --- Blue again: the rematch asks first (NO) ---
+heal
+warp MAP_BATTLE_FRONTIER_OUTSIDE_EAST 18 16
+press UP 2 10
+press UP 2 10
+press A 2 30
+shot e10_blue_rematch_ask
+mash B 20000
+expect_trainer TRAINER_BLUE_FRONTIER 1
+
+# --- the LEGENDS' TAG: the attendant (14, 15), talked to from below; menu WES, RED, BLUE, CANCEL ---
+heal
+warp MAP_BATTLE_FRONTIER_OUTSIDE_EAST 14 16
+press UP 2 10
+press UP 2 10
+savestate frontier_tag.ss
+# partner Wes vs Red + Blue
+press A 2 30
+choose 0 30000
+until @gMain+4 4 @@CB2_UpdatePartyMenu 30000 A 30
+run 60
+shot f10_tag_party_menu
+press A 2 30
+press A 2 30
+press DOWN 2 20
+press A 2 60
+run 900
+shot f11_tag_wes
+expect_opponent TRAINER_RED_FRONTIER_MULTI
+expect_opponent_b TRAINER_BLUE_FRONTIER_MULTI
+expect_partner PARTNER_WES
+# partner Red vs Wes + Blue
+loadstate frontier_tag.ss
+press A 2 30
+choose 1 30000
+until @gMain+4 4 @@CB2_UpdatePartyMenu 30000 A 30
+run 60
+press A 2 30
+press A 2 30
+press DOWN 2 20
+press A 2 60
+run 900
+shot f12_tag_red
+expect_opponent TRAINER_WES_FRONTIER_MULTI
+expect_opponent_b TRAINER_BLUE_FRONTIER_MULTI
+expect_partner PARTNER_RED
+# partner Blue vs Wes + Red, played to the end (the stage is cleared, everyone goes home)
+loadstate frontier_tag.ss
+press A 2 30
+choose 2 30000
+press A 2 40
+shot f13_stage_01
+press A 2 40
+shot f13_stage_02
+press A 2 40
+shot f13_stage_03
+press A 2 40
+shot f13_stage_04
+press A 2 40
+shot f13_stage_05
+press A 2 40
+shot f13_stage_06
+press A 2 40
+shot f13_stage_07
+press A 2 40
+shot f13_stage_08
+press A 2 40
+shot f13_stage_09
+press A 2 40
+shot f13_stage_10
+press A 2 40
+shot f13_stage_11
+press A 2 40
+shot f13_stage_12
+press A 2 40
+shot f13_stage_13
+press A 2 40
+shot f13_stage_14
+press A 2 40
+shot f13_stage_15
+press A 2 40
+shot f13_stage_16
+press A 2 40
+shot f13_stage_17
+press A 2 40
+shot f13_stage_18
+press A 2 40
+shot f13_stage_19
+press A 2 40
+shot f13_stage_20
+press A 2 40
+shot f13_stage_21
+until @gMain+4 4 @@CB2_UpdatePartyMenu 30000 A 30
+run 60
+press A 2 30
+press A 2 30
+press DOWN 2 20
+press A 2 60
+run 900
+shot f14_tag_blue
+expect_opponent TRAINER_WES_FRONTIER_MULTI
+expect_opponent_b TRAINER_RED_FRONTIER_MULTI
+expect_partner PARTNER_BLUE
+mash A 200000
+run 60
+shot f15_after_tag
+pos
+clearflag FLAG_DEBUG_NO_TRAINER_SEE
+clearflag FLAG_DRACONID_NO_WHITEOUT

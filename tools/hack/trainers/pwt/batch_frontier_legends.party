@@ -1,0 +1,336 @@
+=== TRAINER_WES_FRONTIER ===
+Name: WES
+Class: Orre Hero
+Pic: Wes
+Gender: Male
+Music: Intense
+Items: Full Restore / Full Restore / Full Restore
+Double Battle: No
+AI: Smart Trainer / Prediction / Ace Pokemon
+Mugshot: Purple
+
+Espeon @ Life Orb
+Level: 82
+Ability: Magic Bounce
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Timid
+- Psychic
+- Dazzling Gleam
+- Shadow Ball
+- Calm Mind
+
+Umbreon @ Leftovers
+Level: 82
+Ability: Synchronize
+EVs: 252 HP / 4 Def / 252 SpD
+Nature: Careful
+- Foul Play
+- Moonlight
+- Toxic
+- Confuse Ray
+
+Raikou @ Choice Specs
+Level: 83
+Ability: Pressure
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Timid
+- Thunderbolt
+- Volt Switch
+- Shadow Ball
+- Extrasensory
+
+Entei @ Choice Band
+Level: 83
+Ability: Inner Focus
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Adamant
+- Sacred Fire
+- Extreme Speed
+- Stone Edge
+- Stomping Tantrum
+
+Suicune @ Leftovers
+Level: 83
+Ability: Pressure
+EVs: 252 HP / 252 Def / 4 SpA
+Nature: Bold
+- Scald
+- Ice Beam
+- Calm Mind
+- Rest
+
+Ho-Oh @ Leftovers
+Level: 85
+Ability: Regenerator
+EVs: 252 HP / 252 Atk / 4 SpD
+Nature: Adamant
+- Sacred Fire
+- Brave Bird
+- Earthquake
+- Recover
+
+=== TRAINER_RED_FRONTIER ===
+Name: RED
+Class: Legend
+Pic: Red
+Gender: Male
+Music: Elite Four
+Items: Full Restore / Full Restore / Full Restore
+Double Battle: No
+AI: Smart Trainer / Prediction / Ace Pokemon
+Mugshot: Yellow
+
+Venusaur @ White Herb
+Level: 82
+Ability: Overgrow
+EVs: 252 HP / 252 SpA / 4 Spe
+Nature: Modest
+- Leaf Storm
+- Sludge Bomb
+- Earthquake
+- Sleep Powder
+
+Blastoise @ Choice Scarf
+Level: 82
+Ability: Torrent
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Modest
+- Water Spout
+- Hydro Pump
+- Blizzard
+- Focus Blast
+
+Pikachu @ Light Ball
+Level: 83
+Ability: Lightning Rod
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Volt Tackle
+- Iron Tail
+- Brick Break
+- Fake Out
+
+Snorlax @ Quick Claw
+Level: 83
+Ability: Thick Fat
+EVs: 252 HP / 252 Atk / 4 Def
+Nature: Adamant
+- Body Slam
+- Earthquake
+- Crunch
+- Seed Bomb
+
+Lapras @ Sitrus Berry
+Level: 83
+Ability: Water Absorb
+EVs: 252 HP / 252 SpA / 4 SpD
+Nature: Modest
+- Ice Beam
+- Hydro Pump
+- Ice Shard
+- Thunderbolt
+
+Charizard @ Charizardite X
+Level: 85
+Ability: Blaze
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Timid
+- Fire Blast
+- Focus Blast
+- Air Slash
+- Dragon Pulse
+
+=== TRAINER_BLUE_FRONTIER ===
+Name: BLUE
+Class: Legend
+Pic: Champion Rival Frlg
+Gender: Male
+Music: Cool
+Items: Full Restore / Full Restore / Full Restore
+Double Battle: No
+AI: Smart Trainer / Prediction / Ace Pokemon
+Mugshot: Green
+
+Aerodactyl @ Choice Band
+Level: 82
+Ability: Unnerve
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Stone Edge
+- Earthquake
+- Ice Fang
+- Fire Blast
+
+Exeggutor @ Life Orb
+Level: 82
+Ability: Chlorophyll
+EVs: 252 HP / 252 Atk / 4 SpA
+Nature: Brave
+- Leaf Storm
+- Wood Hammer
+- Zen Headbutt
+- Leech Seed
+
+Gyarados @ ITEM_KINGS_ROCK
+Level: 83
+Ability: Intimidate
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Adamant
+- Waterfall
+- Earthquake
+- Ice Fang
+- Outrage
+
+Arcanine @ Expert Belt
+Level: 83
+Ability: Intimidate
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Adamant
+- Flare Blitz
+- Close Combat
+- Wild Charge
+- Extreme Speed
+
+Machamp @ White Herb
+Level: 83
+Ability: No Guard
+EVs: 252 HP / 252 Atk / 4 Def
+Nature: Adamant
+- Superpower
+- Stone Edge
+- Fire Punch
+- Bullet Punch
+
+Alakazam @ Alakazite
+Level: 85
+Ability: Magic Guard
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Timid
+- Psychic
+- Focus Blast
+- Shadow Ball
+- Reflect
+
+=== TRAINER_WES_FRONTIER_MULTI ===
+Name: WES
+Class: Orre Hero
+Pic: Wes
+Gender: Male
+Music: Intense
+Items: Full Restore / Full Restore
+Double Battle: No
+AI: Smart Trainer / Prediction / Ace Pokemon
+Multi Party: Half
+
+Espeon @ Light Clay
+Level: 82
+Ability: Magic Bounce
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Timid
+- Psychic
+- Dazzling Gleam
+- Reflect
+- Light Screen
+
+Umbreon @ Leftovers
+Level: 82
+Ability: Inner Focus
+EVs: 252 HP / 4 Def / 252 SpD
+Nature: Careful
+- Foul Play
+- Snarl
+- Moonlight
+- Protect
+
+Ho-Oh @ Leftovers
+Level: 85
+Ability: Regenerator
+EVs: 252 HP / 252 Atk / 4 SpD
+Nature: Adamant
+- Sacred Fire
+- Brave Bird
+- Recover
+- Protect
+
+=== TRAINER_RED_FRONTIER_MULTI ===
+Name: RED
+Class: Legend
+Pic: Red
+Gender: Male
+Music: Elite Four
+Items: Full Restore / Full Restore
+Double Battle: No
+AI: Smart Trainer / Prediction / Ace Pokemon
+Multi Party: Half
+
+Pikachu @ Light Ball
+Level: 83
+Ability: Lightning Rod
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Fake Out
+- Volt Tackle
+- Iron Tail
+- Brick Break
+
+Venusaur @ White Herb
+Level: 82
+Ability: Overgrow
+EVs: 252 HP / 252 SpA / 4 Spe
+Nature: Modest
+- Leaf Storm
+- Sludge Bomb
+- Sleep Powder
+- Protect
+
+Charizard @ Charizardite X
+Level: 85
+Ability: Blaze
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Timid
+- Heat Wave
+- Dragon Pulse
+- Air Slash
+- Protect
+
+=== TRAINER_BLUE_FRONTIER_MULTI ===
+Name: BLUE
+Class: Legend
+Pic: Champion Rival Frlg
+Gender: Male
+Music: Cool
+Items: Full Restore / Full Restore
+Double Battle: No
+AI: Smart Trainer / Prediction / Ace Pokemon
+Multi Party: Half
+
+Arcanine @ Expert Belt
+Level: 83
+Ability: Intimidate
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Adamant
+- Flare Blitz
+- Close Combat
+- Extreme Speed
+- Protect
+
+Gyarados @ ITEM_KINGS_ROCK
+Level: 83
+Ability: Intimidate
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Adamant
+- Waterfall
+- Ice Fang
+- Outrage
+- Protect
+
+Alakazam @ Alakazite
+Level: 85
+Ability: Magic Guard
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Timid
+- Psychic
+- Focus Blast
+- Shadow Ball
+- Reflect
+

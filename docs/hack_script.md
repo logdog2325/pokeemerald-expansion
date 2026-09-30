@@ -1021,6 +1021,97 @@ Draconid Emerald round 1, feedback 1.33 (D-218 – D-222): battle items and Mega
 - JUAN: Please, accept this MYSTIC WATER as well.
 - It lends grace to WATER-type moves.
 
+## data/scripts/draconid/frontier_legends.pory
+
+Draconid Emerald round 1 follow-up: the Battle Frontier legends (post-game, D-225 - D-229). WES (Pokémon Colosseum) waits in the BATTLE PYRAMID's sands (58, 22), RED at the foot of the cliff below ARTISAN CAVE (29, 10), BLUE by the BATTLE TOWER door (18, 15). They are there once the Hall of Fame is done (FLAG_SYS_GAME_CLEAR) and battle again whenever asked. The LEGENDS' TAG attendant beside the TOWER door (14, 15) pairs the player with a legend they have beaten (PARTNER_WES / _RED / _BLUE) against the other two: a multi battle on the mat in front of the TOWER, three POKéMON each (the *_FRONTIER_MULTI teams).
+
+### `BattleFrontier_OutsideEast_EventScript_DraconidWes`
+- WES: …Again?
+- WES: …Suit yourself.
+- WES: ESPEON. UMBREON. We're up.
+- WES: …Good battle. You know where to find me.
+- WES: …
+- You're the one who wore the red uniform. MAGMA.
+- I ran with a gang once, too. Team SNAGEM, out in ORRE.
+- Walked out on them one night. Took their best machine with me.
+- WES: SCOTT says you're the best TRAINER in HOENN.
+- …Show me.
+- WES: …Suit yourself. I'm not going anywhere.
+- WES: ESPEON. UMBREON. We're up.
+- WES: You fight like someone with something to protect.
+- …The attendant by the BATTLE TOWER door sets up tag battles.
+- If you ever need a partner, I'm around.
+
+### `BattleFrontier_OutsideEast_EventScript_DraconidRed`
+- RED: …
+- Battle RED again?
+- RED: …
+- RED: …!
+- RED: …
+- RED gave a small nod.
+- RED: …
+- RED: …
+- RED is looking at {PLAYER}'s POKéMON.
+- …He seems to want a battle.
+- Battle RED?
+- RED: …
+- RED: …!
+- RED: …
+- RED looked over at the BATTLE TOWER, then back at {PLAYER}.
+- …It seems he'd team up with you.
+
+### `BattleFrontier_OutsideEast_EventScript_DraconidBlue`
+- BLUE: Back for more? I've been itching for a rematch!
+- BLUE: Tch. Fine. Smell ya later!
+- BLUE: This time I win for real!
+- BLUE: Tch… Next time, for sure. Smell ya later!
+- BLUE: Hey! You're {PLAYER}, right? Everybody here keeps talking about you.
+- Wore a MAGMA uniform, then threw it off right in front of their boss. Ha! Gutsy.
+- BLUE: I'm BLUE. I was the CHAMPION of KANTO.
+- …For about five minutes. Then RED showed up. Don't ask.
+- BLUE: SCOTT says you're the toughest TRAINER in HOENN.
+- Well? Think you can take on the best in KANTO?
+- BLUE: Heh. Scared? I'll be right here when you're ready.
+- BLUE: That's more like it! Let's go!
+- BLUE: Alright, alright. You're the real deal.
+- Hey, that attendant by the door runs tag battles. Two on two.
+- You and me on the same side? Nobody'd stand a chance. Smell ya later!
+
+### `BattleFrontier_OutsideEast_EventScript_DraconidTagAttendant`
+- Our special guests haven't arrived yet. Please come back another time!
+- Welcome to the LEGENDS' TAG!
+- SCOTT has invited three legendary TRAINERS to the BATTLE FRONTIER.
+- WES from the ORRE region, and RED and BLUE from KANTO.
+- Win a battle against one of them, and they may agree to team up with you.
+- Then the two of you take on the other two in a multi battle!
+- Welcome to the LEGENDS' TAG!
+- Would you like to team up with a legend?
+- Please come again!
+- Which TRAINER will be your partner?
+- Please come again!
+- Your POKéMON will be restored first.
+- Now, please take your place on the mat in front of the TOWER!
+
+### `BattleFrontier_OutsideEast_EventScript_DraconidTagBattle`
+- BLUE: Heh! RED and me on the same side for once. You two don't stand a chance!
+- RED: …
+- WES: …Stay sharp, {PLAYER}.
+- BLUE: So I'm stuck with Mr. Sunglasses. Fine! Let's finally beat RED!
+- WES: …Just don't get in my way.
+- RED: …!
+- BLUE: Alright, {PLAYER}! You and me. Let's show RED who's boss!
+- RED: …
+- WES: …Let's go.
+- Choose the POKéMON that will battle beside your partner!
+- WES: …Not bad. We make a good team.
+- RED: …
+- RED gave {PLAYER} a quiet thumbs-up.
+- BLUE: Ha! Did you see that?! Smell ya later, you two!
+- WES: …We'll get them next time.
+- RED: …
+- BLUE: Tch! Next time we win, got it?
+- What a battle! The LEGENDS' TAG is open any time.
+
 ## data/scripts/draconid/maxie_calls.pory
 
 Draconid Emerald round 1: Maxie's PokéNav calls to the Magma recruit (D-186). After each key story point he rings once the player has walked MAXIE_CALL_STEPS steps outdoors (Draconid_ShouldDoMaxieCall, src/draconid.c) and names the next place to go. The first call is on Mr. Briney's boat (Route104_EventScript_SailToDewfordDadCalls). Call texts use a 188-pixel line: the call window starts the text after the PokéNav icon.

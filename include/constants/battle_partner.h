@@ -17,6 +17,10 @@
 #define PARTNER_NERINE_JANGMO_O_CHARMANDER 11
 #define PARTNER_NERINE_JANGMO_O_TOTODILE 12
 #define PARTNER_NERINE_JANGMO_O_TREECKO 13
-#define PARTNER_COUNT 14
+// Draconid Emerald: the Battle Frontier legends' tag (D-227), their three-Pokemon tag teams
+#define PARTNER_WES 14
+#define PARTNER_RED 15
+#define PARTNER_BLUE 16
+#define PARTNER_COUNT 17
 
 #endif  // GUARD_CONSTANTS_BATTLE_PARTNERS_H
