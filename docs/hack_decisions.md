@@ -256,3 +256,17 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
 - **D-112 Post-game start**: credits roll after the finale; the player wakes at home in the village, where the
   Elder brings the SS Ticket (sent by Captain Stern) and the Lati TV news airs. – Alt: Norman (now May's father).
 
+- **D-113 Reputation dialogue**: who reacts to `VAR_DRACONID_REPUTATION` and how (lines in
+  [reputation_dialogue.md](reputation_dialogue.md)). **Townsfolk** (3–5 per town, 2 in Ever Grande, which has no
+  more): ordinary people with idle lines; not the ones whose lines follow story state that the story rework owns
+  (Sootopolis crisis residents outside, Slateport's Stern interview, Lilycove's Team Aqua lines, Wally, Scott), so
+  Sootopolis uses the people in its houses. Their object's `script` in `map.json` points at the new script, which
+  goes to the vanilla one in pre-uniform. **Services never refuse**: the nurse heals, clerks sell, the Cable Club
+  links and the Day Care raises – only the words around them change (a hook line in the vanilla script). Some
+  townsfolk turn their back after a uniform line. **Gyms** (not Petalburg: Norman is the story's): Leader intro +
+  post-battle line and the Gym Guide; badges, TMs and rematches stay vanilla. **Unreachable combinations keep
+  vanilla** instead of new text: a Leader's intro after the reveal when the badge is required before it (all but
+  Winona and Juan), Juan's gym and Ever Grande in uniform, Mr. Briney on the S.S. Tidal in uniform. – Alt: a flag
+  per NPC so the apology plays once; refusing service in uniform; hooks in every town's `scripts.inc`. – The
+  services are the player's lifeline, a repeated line is how vanilla NPCs work, and redirecting the object keeps
+  the vanilla scripts (which the story rework edits) untouched.
