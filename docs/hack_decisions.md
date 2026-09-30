@@ -311,3 +311,22 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   `TRAINER_PIC_NERINE` / `TRAINER_PIC_MAGMA_ADMIN` partner. Tabitha's is the Magma disguise back pic (Red's build)
   recoloured into his crimson hooded jacket. – Alt: draw a heavier build for him (`TODO(art)` if wanted). – Partners
   are drawn from behind; reusing the player's rigs keeps the 5-frame Kanto throw animation.
+- **D-185 Gen 6 Exp. Share**: `I_EXP_SHARE_ITEM` is `GEN_6` (a key item that shares EXP with the whole party
+  while `FLAG_EXP_SHARE_ON` is set; using it toggles the flag). Mr. Stone hands it over **with the PokéNav** at
+  the first Devon meeting and it starts switched on; vanilla gave a held Exp. Share only on a return visit after
+  Steven's letter, which many players never make. The hard level caps still apply. – Alt: keep the held item;
+  Gen 7 always-on. – The playtester's note.
+- **D-186 Maxie's calls**: Maxie phones the recruit after each key story point and names the next place. The
+  first call replaces vanilla's call from "Dad" Norman on Mr. Briney's boat (Norman is May's father now, so he is
+  no longer registered in the PokéNav); the others ring on the 10th step outdoors after the Oceanic Museum,
+  Meteor Falls, Mt. Chimney, the Weather Institute, Mt. Pyre, the promotion, the Aqua Hideout, the Space Center
+  and the Seafloor Cavern (story states, `src/draconid.c`). Only the latest due call plays; none after the
+  Sootopolis turn. – Alt: calls at the end of each scene (they would ring in the middle of the aftermath);
+  Maxie in the Match Call list (needs a new entry with his own call texts). – The playtester's note.
+- **D-187 Rival staging and the level audit**: Brendan's first fight (Rustboro, after Petalburg Woods) is
+  Poochyena, Taillow, Slakoth and Treecko at 10–13 (IVs 15, since the player may have only their dragon there);
+  each later fight grows the team the way ORAS does (Mt. Chimney 5 with Grovyle and Slugma, the Latis after the
+  Balance Badge, all six from Route 119 / Lilycove). May: Torchic on Route 103, four on Route 110, six at
+  Lilycove. `build_segments.py` places every story fight (and every Nerine/Aster variant) on the round 1
+  schedule – Steven's Space Center team is exempt from the cap on purpose (D-108), the Sky Pillar finale and
+  Zinnia are post-League (D-109) – and `check_party.py --caps` passes with 0 errors.

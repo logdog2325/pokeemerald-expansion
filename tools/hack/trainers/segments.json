@@ -171,18 +171,15 @@
   "TRAINER_GRUNT_SEAFLOOR_CAVERN_2": "S8",
   "TRAINER_GRUNT_SEAFLOOR_CAVERN_3": "S8",
   "TRAINER_GABRIELLE_1": "S7",
-  "TRAINER_GRUNT_PETALBURG_WOODS": "S1",
   "TRAINER_MARCEL": "S7",
   "TRAINER_ALBERTO": "S7",
   "TRAINER_ED": "S7",
   "TRAINER_GRUNT_SEAFLOOR_CAVERN_4": "S8",
   "TRAINER_DECLAN": "S7",
-  "TRAINER_GRUNT_RUSTURF_TUNNEL": "S2",
   "TRAINER_GRUNT_WEATHER_INST_1": "S6",
   "TRAINER_GRUNT_WEATHER_INST_2": "S6",
   "TRAINER_GRUNT_WEATHER_INST_3": "S6",
   "TRAINER_GRUNT_MUSEUM_1": "S3",
-  "TRAINER_GRUNT_MUSEUM_2": "S3",
   "TRAINER_GRUNT_SPACE_CENTER_1": "S8",
   "TRAINER_GRUNT_MT_PYRE_1": "S7",
   "TRAINER_GRUNT_MT_PYRE_2": "S7",
@@ -677,11 +674,11 @@
   "TRAINER_EDWIN_5": "POST",
   "TRAINER_WALLY_VR_1": "S9",
   "TRAINER_BRENDAN_RUSTBORO": "S1",
-  "TRAINER_BRENDAN_MT_CHIMNEY": "S3",
+  "TRAINER_BRENDAN_MT_CHIMNEY": "S4",
   "TRAINER_BRENDAN_ROUTE_119": "S6",
   "TRAINER_MAY_ROUTE_110": "S3",
-  "TRAINER_BRENDAN_MOSSDEEP": "S9",
-  "TRAINER_STEVEN_MOSSDEEP": "S9",
+  "TRAINER_BRENDAN_MOSSDEEP": "S8",
+  "TRAINER_STEVEN_MOSSDEEP": "POST",
   "TRAINER_BRENDAN_POSTGAME": "POST",
   "TRAINER_MAY_POSTGAME": "POST",
   "TRAINER_BRENDAN_POSTGAME_DOUBLE": "POST",
@@ -689,11 +686,11 @@
   "TRAINER_ASTER_METEOR_FALLS_DREEPY": "S4",
   "TRAINER_ASTER_METEOR_FALLS_JANGMO_O": "S4",
   "TRAINER_MAY_ROUTE_103": "S1",
-  "TRAINER_MAXIE_SOOTOPOLIS": "S6",
-  "TRAINER_MAXIE_SOOTOPOLIS_MULTI": "S6",
-  "TRAINER_ARCHIE_SOOTOPOLIS_MULTI": "S6",
-  "TRAINER_ASTER_SKY_PILLAR_DEINO": "S8",
-  "TRAINER_ASTER_SKY_PILLAR_DREEPY": "S8",
+  "TRAINER_MAXIE_SOOTOPOLIS": "S8",
+  "TRAINER_MAXIE_SOOTOPOLIS_MULTI": "S8",
+  "TRAINER_ARCHIE_SOOTOPOLIS_MULTI": "S8",
+  "TRAINER_ASTER_SKY_PILLAR_DEINO": "POST",
+  "TRAINER_ASTER_SKY_PILLAR_DREEPY": "POST",
   "TRAINER_ISAAC_1": "S3",
   "TRAINER_DAVIS": "S7",
   "TRAINER_MITCHELL": "S9",
@@ -746,7 +743,7 @@
   "TRAINER_GRUNT_SPACE_CENTER_6": "S8",
   "TRAINER_GRUNT_SPACE_CENTER_7": "S8",
   "TRAINER_MACEY": "S7",
-  "TRAINER_ASTER_SKY_PILLAR_JANGMO_O": "S8",
+  "TRAINER_ASTER_SKY_PILLAR_JANGMO_O": "POST",
   "TRAINER_ASTER_POSTGAME_DEINO": "POST",
   "TRAINER_PAXTON": "S7",
   "TRAINER_ISABELLA": "S7",
@@ -996,7 +993,73 @@
   "TRAINER_EVERETT": "S9",
   "TRAINER_ASTER_PASS_DEINO": "S1",
   "TRAINER_ASTER_PASS_DREEPY": "S1",
-  "TRAINER_ASTER_PASS_JANGMO_O": "S1"
+  "TRAINER_ASTER_PASS_JANGMO_O": "S1",
+  "TRAINER_NERINE_PETALBURG_WOODS_DEINO": "S1",
+  "TRAINER_NERINE_PETALBURG_WOODS_DREEPY": "S1",
+  "TRAINER_NERINE_PETALBURG_WOODS_JANGMO_O": "S1",
+  "TRAINER_NERINE_RUSTURF_DEINO_CHARMANDER": "S2",
+  "TRAINER_NERINE_RUSTURF_DEINO_TOTODILE": "S2",
+  "TRAINER_NERINE_RUSTURF_DEINO_TREECKO": "S2",
+  "TRAINER_NERINE_RUSTURF_DREEPY_CHARMANDER": "S2",
+  "TRAINER_NERINE_RUSTURF_DREEPY_TOTODILE": "S2",
+  "TRAINER_NERINE_RUSTURF_DREEPY_TREECKO": "S2",
+  "TRAINER_NERINE_RUSTURF_JANGMO_O_CHARMANDER": "S2",
+  "TRAINER_NERINE_RUSTURF_JANGMO_O_TOTODILE": "S2",
+  "TRAINER_NERINE_RUSTURF_JANGMO_O_TREECKO": "S2",
+  "TRAINER_NERINE_SLATEPORT_DEINO_CHARMANDER": "S3",
+  "TRAINER_NERINE_SLATEPORT_DEINO_TOTODILE": "S3",
+  "TRAINER_NERINE_SLATEPORT_DEINO_TREECKO": "S3",
+  "TRAINER_NERINE_SLATEPORT_DREEPY_CHARMANDER": "S3",
+  "TRAINER_NERINE_SLATEPORT_DREEPY_TOTODILE": "S3",
+  "TRAINER_NERINE_SLATEPORT_DREEPY_TREECKO": "S3",
+  "TRAINER_NERINE_SLATEPORT_JANGMO_O_CHARMANDER": "S3",
+  "TRAINER_NERINE_SLATEPORT_JANGMO_O_TOTODILE": "S3",
+  "TRAINER_NERINE_SLATEPORT_JANGMO_O_TREECKO": "S3",
+  "TRAINER_NERINE_MT_CHIMNEY_DEINO_CHARMANDER": "S4",
+  "TRAINER_NERINE_MT_CHIMNEY_DEINO_TOTODILE": "S4",
+  "TRAINER_NERINE_MT_CHIMNEY_DEINO_TREECKO": "S4",
+  "TRAINER_NERINE_MT_CHIMNEY_DREEPY_CHARMANDER": "S4",
+  "TRAINER_NERINE_MT_CHIMNEY_DREEPY_TOTODILE": "S4",
+  "TRAINER_NERINE_MT_CHIMNEY_DREEPY_TREECKO": "S4",
+  "TRAINER_NERINE_MT_CHIMNEY_JANGMO_O_CHARMANDER": "S4",
+  "TRAINER_NERINE_MT_CHIMNEY_JANGMO_O_TOTODILE": "S4",
+  "TRAINER_NERINE_MT_CHIMNEY_JANGMO_O_TREECKO": "S4",
+  "TRAINER_NERINE_MT_PYRE_DEINO_CHARMANDER": "S7",
+  "TRAINER_NERINE_MT_PYRE_DEINO_TOTODILE": "S7",
+  "TRAINER_NERINE_MT_PYRE_DEINO_TREECKO": "S7",
+  "TRAINER_NERINE_MT_PYRE_DREEPY_CHARMANDER": "S7",
+  "TRAINER_NERINE_MT_PYRE_DREEPY_TOTODILE": "S7",
+  "TRAINER_NERINE_MT_PYRE_DREEPY_TREECKO": "S7",
+  "TRAINER_NERINE_MT_PYRE_JANGMO_O_CHARMANDER": "S7",
+  "TRAINER_NERINE_MT_PYRE_JANGMO_O_TOTODILE": "S7",
+  "TRAINER_NERINE_MT_PYRE_JANGMO_O_TREECKO": "S7",
+  "TRAINER_NERINE_AQUA_HIDEOUT_DEINO_CHARMANDER": "S7",
+  "TRAINER_NERINE_AQUA_HIDEOUT_DEINO_TOTODILE": "S7",
+  "TRAINER_NERINE_AQUA_HIDEOUT_DEINO_TREECKO": "S7",
+  "TRAINER_NERINE_AQUA_HIDEOUT_DREEPY_CHARMANDER": "S7",
+  "TRAINER_NERINE_AQUA_HIDEOUT_DREEPY_TOTODILE": "S7",
+  "TRAINER_NERINE_AQUA_HIDEOUT_DREEPY_TREECKO": "S7",
+  "TRAINER_NERINE_AQUA_HIDEOUT_JANGMO_O_CHARMANDER": "S7",
+  "TRAINER_NERINE_AQUA_HIDEOUT_JANGMO_O_TOTODILE": "S7",
+  "TRAINER_NERINE_AQUA_HIDEOUT_JANGMO_O_TREECKO": "S7",
+  "TRAINER_NERINE_SEAFLOOR_DEINO_CHARMANDER": "S8",
+  "TRAINER_NERINE_SEAFLOOR_DEINO_TOTODILE": "S8",
+  "TRAINER_NERINE_SEAFLOOR_DEINO_TREECKO": "S8",
+  "TRAINER_NERINE_SEAFLOOR_DREEPY_CHARMANDER": "S8",
+  "TRAINER_NERINE_SEAFLOOR_DREEPY_TOTODILE": "S8",
+  "TRAINER_NERINE_SEAFLOOR_DREEPY_TREECKO": "S8",
+  "TRAINER_NERINE_SEAFLOOR_JANGMO_O_CHARMANDER": "S8",
+  "TRAINER_NERINE_SEAFLOOR_JANGMO_O_TOTODILE": "S8",
+  "TRAINER_NERINE_SEAFLOOR_JANGMO_O_TREECKO": "S8",
+  "TRAINER_NERINE_POSTGAME_DEINO_CHARMANDER": "POST",
+  "TRAINER_NERINE_POSTGAME_DEINO_TOTODILE": "POST",
+  "TRAINER_NERINE_POSTGAME_DEINO_TREECKO": "POST",
+  "TRAINER_NERINE_POSTGAME_DREEPY_CHARMANDER": "POST",
+  "TRAINER_NERINE_POSTGAME_DREEPY_TOTODILE": "POST",
+  "TRAINER_NERINE_POSTGAME_DREEPY_TREECKO": "POST",
+  "TRAINER_NERINE_POSTGAME_JANGMO_O_CHARMANDER": "POST",
+  "TRAINER_NERINE_POSTGAME_JANGMO_O_TOTODILE": "POST",
+  "TRAINER_NERINE_POSTGAME_JANGMO_O_TREECKO": "POST"
  },
  "info": {
   "TRAINER_SAWYER_1": {
@@ -1053,12 +1116,6 @@
    "map": "MtPyre_3F",
    "story": false
   },
-  "TRAINER_GRUNT_PETALBURG_WOODS": {
-   "segment": "S1",
-   "role": "grunt",
-   "map": "PetalburgWoods",
-   "story": false
-  },
   "TRAINER_MARCEL": {
    "segment": "S7",
    "role": "route",
@@ -1089,12 +1146,6 @@
    "map": "Route124",
    "story": false
   },
-  "TRAINER_GRUNT_RUSTURF_TUNNEL": {
-   "segment": "S2",
-   "role": "grunt",
-   "map": "RusturfTunnel",
-   "story": false
-  },
   "TRAINER_GRUNT_WEATHER_INST_1": {
    "segment": "S6",
    "role": "grunt",
@@ -1114,12 +1165,6 @@
    "story": false
   },
   "TRAINER_GRUNT_MUSEUM_1": {
-   "segment": "S3",
-   "role": "grunt",
-   "map": "SlateportCity_OceanicMuseum_2F",
-   "story": false
-  },
-  "TRAINER_GRUNT_MUSEUM_2": {
    "segment": "S3",
    "role": "grunt",
    "map": "SlateportCity_OceanicMuseum_2F",
@@ -4446,13 +4491,13 @@
   "TRAINER_BRENDAN_RUSTBORO": {
    "segment": "S1",
    "role": "route",
-   "map": "Route104",
+   "map": "RustboroCity",
    "story": true
   },
   "TRAINER_BRENDAN_MT_CHIMNEY": {
-   "segment": "S3",
+   "segment": "S4",
    "role": "route",
-   "map": "Route110",
+   "map": null,
    "story": true
   },
   "TRAINER_BRENDAN_ROUTE_119": {
@@ -4464,17 +4509,17 @@
   "TRAINER_MAY_ROUTE_110": {
    "segment": "S3",
    "role": "route",
-   "map": "SlateportCity",
+   "map": "Route110",
    "story": true
   },
   "TRAINER_BRENDAN_MOSSDEEP": {
-   "segment": "S9",
+   "segment": "S8",
    "role": "route",
    "map": "SootopolisCity",
    "story": true
   },
   "TRAINER_STEVEN_MOSSDEEP": {
-   "segment": "S9",
+   "segment": "POST",
    "role": "route",
    "map": "SootopolisCity",
    "story": true
@@ -4500,7 +4545,7 @@
   "TRAINER_ASTER_METEOR_FALLS_DEINO": {
    "segment": "S4",
    "role": "route",
-   "map": null,
+   "map": "Draconid",
    "story": true
   },
   "TRAINER_ASTER_METEOR_FALLS_DREEPY": {
@@ -4522,31 +4567,31 @@
    "story": true
   },
   "TRAINER_MAXIE_SOOTOPOLIS": {
-   "segment": "S6",
-   "role": "route",
+   "segment": "S8",
+   "role": "boss",
    "map": null,
    "story": true
   },
   "TRAINER_MAXIE_SOOTOPOLIS_MULTI": {
-   "segment": "S6",
-   "role": "route",
+   "segment": "S8",
+   "role": "boss",
    "map": null,
    "story": true
   },
   "TRAINER_ARCHIE_SOOTOPOLIS_MULTI": {
-   "segment": "S6",
-   "role": "route",
+   "segment": "S8",
+   "role": "boss",
    "map": null,
    "story": true
   },
   "TRAINER_ASTER_SKY_PILLAR_DEINO": {
-   "segment": "S8",
+   "segment": "POST",
    "role": "route",
-   "map": null,
+   "map": "Draconid",
    "story": true
   },
   "TRAINER_ASTER_SKY_PILLAR_DREEPY": {
-   "segment": "S8",
+   "segment": "POST",
    "role": "route",
    "map": null,
    "story": true
@@ -4896,7 +4941,7 @@
    "story": false
   },
   "TRAINER_ASTER_SKY_PILLAR_JANGMO_O": {
-   "segment": "S8",
+   "segment": "POST",
    "role": "route",
    "map": null,
    "story": true
@@ -4904,7 +4949,7 @@
   "TRAINER_ASTER_POSTGAME_DEINO": {
    "segment": "POST",
    "role": "route",
-   "map": null,
+   "map": "Draconid",
    "story": true
   },
   "TRAINER_PAXTON": {
@@ -6582,13 +6627,409 @@
   "TRAINER_ASTER_PASS_DREEPY": {
    "segment": "S1",
    "role": "route",
-   "map": "DraconidPass",
+   "map": null,
    "story": true
   },
   "TRAINER_ASTER_PASS_JANGMO_O": {
    "segment": "S1",
    "role": "route",
-   "map": "DraconidPass",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_PETALBURG_WOODS_DEINO": {
+   "segment": "S1",
+   "role": "route",
+   "map": "PetalburgWoods",
+   "story": true
+  },
+  "TRAINER_NERINE_PETALBURG_WOODS_DREEPY": {
+   "segment": "S1",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_PETALBURG_WOODS_JANGMO_O": {
+   "segment": "S1",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_RUSTURF_DEINO_CHARMANDER": {
+   "segment": "S2",
+   "role": "route",
+   "map": "RusturfTunnel",
+   "story": true
+  },
+  "TRAINER_NERINE_RUSTURF_DEINO_TOTODILE": {
+   "segment": "S2",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_RUSTURF_DEINO_TREECKO": {
+   "segment": "S2",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_RUSTURF_DREEPY_CHARMANDER": {
+   "segment": "S2",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_RUSTURF_DREEPY_TOTODILE": {
+   "segment": "S2",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_RUSTURF_DREEPY_TREECKO": {
+   "segment": "S2",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_RUSTURF_JANGMO_O_CHARMANDER": {
+   "segment": "S2",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_RUSTURF_JANGMO_O_TOTODILE": {
+   "segment": "S2",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_RUSTURF_JANGMO_O_TREECKO": {
+   "segment": "S2",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_SLATEPORT_DEINO_CHARMANDER": {
+   "segment": "S3",
+   "role": "route",
+   "map": "SlateportCity_OceanicMuseum_2F",
+   "story": true
+  },
+  "TRAINER_NERINE_SLATEPORT_DEINO_TOTODILE": {
+   "segment": "S3",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_SLATEPORT_DEINO_TREECKO": {
+   "segment": "S3",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_SLATEPORT_DREEPY_CHARMANDER": {
+   "segment": "S3",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_SLATEPORT_DREEPY_TOTODILE": {
+   "segment": "S3",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_SLATEPORT_DREEPY_TREECKO": {
+   "segment": "S3",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_SLATEPORT_JANGMO_O_CHARMANDER": {
+   "segment": "S3",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_SLATEPORT_JANGMO_O_TOTODILE": {
+   "segment": "S3",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_SLATEPORT_JANGMO_O_TREECKO": {
+   "segment": "S3",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_MT_CHIMNEY_DEINO_CHARMANDER": {
+   "segment": "S4",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_MT_CHIMNEY_DEINO_TOTODILE": {
+   "segment": "S4",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_MT_CHIMNEY_DEINO_TREECKO": {
+   "segment": "S4",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_MT_CHIMNEY_DREEPY_CHARMANDER": {
+   "segment": "S4",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_MT_CHIMNEY_DREEPY_TOTODILE": {
+   "segment": "S4",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_MT_CHIMNEY_DREEPY_TREECKO": {
+   "segment": "S4",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_MT_CHIMNEY_JANGMO_O_CHARMANDER": {
+   "segment": "S4",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_MT_CHIMNEY_JANGMO_O_TOTODILE": {
+   "segment": "S4",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_MT_CHIMNEY_JANGMO_O_TREECKO": {
+   "segment": "S4",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_MT_PYRE_DEINO_CHARMANDER": {
+   "segment": "S7",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_MT_PYRE_DEINO_TOTODILE": {
+   "segment": "S7",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_MT_PYRE_DEINO_TREECKO": {
+   "segment": "S7",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_MT_PYRE_DREEPY_CHARMANDER": {
+   "segment": "S7",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_MT_PYRE_DREEPY_TOTODILE": {
+   "segment": "S7",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_MT_PYRE_DREEPY_TREECKO": {
+   "segment": "S7",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_MT_PYRE_JANGMO_O_CHARMANDER": {
+   "segment": "S7",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_MT_PYRE_JANGMO_O_TOTODILE": {
+   "segment": "S7",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_MT_PYRE_JANGMO_O_TREECKO": {
+   "segment": "S7",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_AQUA_HIDEOUT_DEINO_CHARMANDER": {
+   "segment": "S7",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_AQUA_HIDEOUT_DEINO_TOTODILE": {
+   "segment": "S7",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_AQUA_HIDEOUT_DEINO_TREECKO": {
+   "segment": "S7",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_AQUA_HIDEOUT_DREEPY_CHARMANDER": {
+   "segment": "S7",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_AQUA_HIDEOUT_DREEPY_TOTODILE": {
+   "segment": "S7",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_AQUA_HIDEOUT_DREEPY_TREECKO": {
+   "segment": "S7",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_AQUA_HIDEOUT_JANGMO_O_CHARMANDER": {
+   "segment": "S7",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_AQUA_HIDEOUT_JANGMO_O_TOTODILE": {
+   "segment": "S7",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_AQUA_HIDEOUT_JANGMO_O_TREECKO": {
+   "segment": "S7",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_SEAFLOOR_DEINO_CHARMANDER": {
+   "segment": "S8",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_SEAFLOOR_DEINO_TOTODILE": {
+   "segment": "S8",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_SEAFLOOR_DEINO_TREECKO": {
+   "segment": "S8",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_SEAFLOOR_DREEPY_CHARMANDER": {
+   "segment": "S8",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_SEAFLOOR_DREEPY_TOTODILE": {
+   "segment": "S8",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_SEAFLOOR_DREEPY_TREECKO": {
+   "segment": "S8",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_SEAFLOOR_JANGMO_O_CHARMANDER": {
+   "segment": "S8",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_SEAFLOOR_JANGMO_O_TOTODILE": {
+   "segment": "S8",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_SEAFLOOR_JANGMO_O_TREECKO": {
+   "segment": "S8",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_POSTGAME_DEINO_CHARMANDER": {
+   "segment": "POST",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_POSTGAME_DEINO_TOTODILE": {
+   "segment": "POST",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_POSTGAME_DEINO_TREECKO": {
+   "segment": "POST",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_POSTGAME_DREEPY_CHARMANDER": {
+   "segment": "POST",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_POSTGAME_DREEPY_TOTODILE": {
+   "segment": "POST",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_POSTGAME_DREEPY_TREECKO": {
+   "segment": "POST",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_POSTGAME_JANGMO_O_CHARMANDER": {
+   "segment": "POST",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_POSTGAME_JANGMO_O_TOTODILE": {
+   "segment": "POST",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_POSTGAME_JANGMO_O_TREECKO": {
+   "segment": "POST",
+   "role": "route",
+   "map": null,
    "story": true
   }
  }

@@ -1,0 +1,112 @@
+// Draconid Emerald round 1: Maxie's PokéNav calls to the Magma recruit (D-186). After each key story point he
+// rings once the player has walked MAXIE_CALL_STEPS steps outdoors (Draconid_ShouldDoMaxieCall, src/draconid.c)
+// and names the next place to go. The first call is on Mr. Briney's boat (Route104_EventScript_SailToDewfordDadCalls).
+// Call texts use a 188-pixel line: the call window starts the text after the PokéNav icon.
+
+script Draconid_EventScript_MaxieCall {
+    lockall
+    specialvar(VAR_RESULT, Draconid_GetDueMaxieCall)
+    switch (var(VAR_RESULT)) {
+        case MAXIE_CALL_MUSEUM:            pokenavcall(Draconid_Text_MaxieCallMuseum)
+        case MAXIE_CALL_METEOR_FALLS:      pokenavcall(Draconid_Text_MaxieCallMeteorFalls)
+        case MAXIE_CALL_MT_CHIMNEY:        pokenavcall(Draconid_Text_MaxieCallMtChimney)
+        case MAXIE_CALL_WEATHER_INSTITUTE: pokenavcall(Draconid_Text_MaxieCallWeatherInstitute)
+        case MAXIE_CALL_MT_PYRE:           pokenavcall(Draconid_Text_MaxieCallMtPyre)
+        case MAXIE_CALL_PROMOTED:          pokenavcall(Draconid_Text_MaxieCallPromoted)
+        case MAXIE_CALL_AQUA_HIDEOUT:      pokenavcall(Draconid_Text_MaxieCallAquaHideout)
+        case MAXIE_CALL_SPACE_CENTER:      pokenavcall(Draconid_Text_MaxieCallSpaceCenter)
+        case MAXIE_CALL_SEAFLOOR:          pokenavcall(Draconid_Text_MaxieCallSeafloor)
+        default:
+            setvar(VAR_MAXIE_CALL_STEPS, 0)
+            releaseall
+            end
+    }
+    waitmessage
+    copyvar(VAR_MAXIE_CALL, VAR_RESULT)
+    setvar(VAR_MAXIE_CALL_STEPS, 0)
+    releaseall
+}
+
+// On the boat to Dewford, right after Mr. Stone's PokéNav (replaces vanilla's call from "Dad" Norman)
+text Draconid_Text_MaxieCallDewford {
+    format("… … … … … …\n… … … … … Beep!\p"
+           "MAXIE: Is this {PLAYER}? My name is MAXIE. I lead TEAM MAGMA.\p"
+           "TABITHA tells me our newest recruit carries a dragon and wins BADGES.\p"
+           "DEVON trusts you now. Good. Deliver MR. STONE's LETTER in DEWFORD, and the parts to SLATEPORT.\p"
+           "Keep your eyes open. We'll speak again.\p"
+           "… … … … … Click!", 188)
+}
+
+text Draconid_Text_MaxieCallMuseum {
+    format("… … … … … …\n… … … … … Beep!\p"
+           "MAXIE: {PLAYER}. TABITHA told me about the museum. You faced ARCHIE's people and didn't flinch.\p"
+           "Come north. Win your BADGE in MAUVILLE, then take ROUTE 111 up to FALLARBOR.\p"
+           "I'll be at METEOR FALLS, west of FALLARBOR. It's time we met.\p"
+           "… … … … … Click!", 188)
+}
+
+text Draconid_Text_MaxieCallMeteorFalls {
+    format("… … … … … …\n… … … … … Beep!\p"
+           "MAXIE: You covered our retreat well. The meteorite is safe in our hands.\p"
+           "With it, the mountain will wake. Take the cable car on ROUTE 112 up MT. CHIMNEY.\p"
+           "Guard the path while I work. AQUA will come.\p"
+           "… … … … … Click!", 188)
+}
+
+text Draconid_Text_MaxieCallMtChimney {
+    format("… … … … … …\n… … … … … Beep!\p"
+           "MAXIE: …The machine failed. AQUA's meddling, no doubt.\p"
+           "No matter. Ours is patient work.\p"
+           "Win the BADGE in LAVARIDGE, then a fifth from NORMAN in PETALBURG.\p"
+           "After that, TABITHA will need you at the WEATHER INSTITUTE on ROUTE 119.\p"
+           "… … … … … Click!", 188)
+}
+
+text Draconid_Text_MaxieCallWeatherInstitute {
+    format("… … … … … …\n… … … … … Beep!\p"
+           "MAXIE: The research says the weather answers to two ancient ORBS.\p"
+           "They rest on MT. PYRE, east of LILYCOVE, on ROUTE 122.\p"
+           "Win your BADGE in FORTREE, then go to LILYCOVE and on to the mountain.\p"
+           "Hold the summit against AQUA. I'm counting on you.\p"
+           "… … … … … Click!", 188)
+}
+
+text Draconid_Text_MaxieCallMtPyre {
+    format("… … … … … …\n… … … … … Beep!\p"
+           "MAXIE: We have what we came for. ARCHIE has the other ORB.\p"
+           "It's time you saw our true home. Come to our HIDEOUT at JAGGED PASS.\p"
+           "…I have something to ask of you, {PLAYER}.\p"
+           "… … … … … Click!", 188)
+}
+
+text Draconid_Text_MaxieCallPromoted {
+    format("… … … … … …\n… … … … … Beep!\p"
+           "MAXIE: GROUDON slipped from us… but it will rise again. I can feel it.\p"
+           "ARCHIE will make his move. I want to know what he plans.\p"
+           "AQUA has a hideout on the shore of LILYCOVE. Get inside and find out.\p"
+           "… … … … … Click!", 188)
+}
+
+text Draconid_Text_MaxieCallAquaHideout {
+    format("… … … … … …\n… … … … … Beep!\p"
+           "MAXIE: ARCHIE took CAPT. STERN's submarine? He means to go under the sea.\p"
+           "TABITHA is leading a team to MOSSDEEP. The SPACE CENTER has fuel we need.\p"
+           "Win your BADGE in MOSSDEEP, then join him at the SPACE CENTER.\p"
+           "… … … … … Click!", 188)
+}
+
+text Draconid_Text_MaxieCallSpaceCenter {
+    format("… … … … … …\n… … … … … Beep!\p"
+           "MAXIE: No fuel. …Never mind that now.\p"
+           "AQUA's submarine was seen by the SEAFLOOR CAVERN, under ROUTE 128.\p"
+           "DIVE after them. Whatever ARCHIE means to wake, we must see it first.\p"
+           "… … … … … Click!", 188)
+}
+
+text Draconid_Text_MaxieCallSeafloor {
+    format("… … … … … …\n… … … … … Beep!\p"
+           "MAXIE: KYOGRE is awake. The sky over SOOTOPOLIS has gone black.\p"
+           "{PLAYER}, I need you in SOOTOPOLIS. Now.\p"
+           "Together, we can still set this right. Hurry.\p"
+           "… … … … … Click!", 188)
+}

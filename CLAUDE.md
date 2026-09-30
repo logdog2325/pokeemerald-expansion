@@ -51,6 +51,8 @@ python3 tools/hack/emu/play.py tools/hack/emu/tests/opening.play -o /tmp/emu
 python3 tools/hack/emu/play.py tools/hack/emu/tests/route103.play -o /tmp/emu
 python3 tools/hack/emu/play.py tools/hack/emu/tests/woods.play -o /tmp/emu      # warp hook (debug build)
 python3 tools/hack/emu/play.py tools/hack/emu/tests/rustboro.play -o /tmp/emu
+python3 tools/hack/emu/play.py tools/hack/emu/tests/act2.play -o /tmp/emu
+python3 tools/hack/emu/play.py tools/hack/emu/tests/maxie_calls.play -o /tmp/emu
 python3 tools/hack/emu/play.py tools/hack/emu/tests/rivals.play -o /tmp/emu
 python3 tools/hack/emu/play.py tools/hack/emu/tests/second_starter.play -o /tmp/emu
 python3 tools/hack/emu/play.py tools/hack/emu/tests/aster.play -o /tmp/emu

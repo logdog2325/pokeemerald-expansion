@@ -444,6 +444,9 @@ Draconid Emerald round 1, Act 2 (docs/hack_story.md): the Devon Goods (Rustboro,
 - Registered MAY in the POKéNAV.
 - MAY: I'm off to look for new POKéMON. See you, {PLAYER}!
 
+### `RustboroCity_DevonCorp_3F_EventScript_DraconidGiveExpShare`
+- MR. STONE: And one more thing. DEVON's newest invention!
+
 ## data/scripts/draconid/act4.pory
 
 Draconid Emerald round 1, Act 4 (docs/hack_story.md): Petalburg Gym with MAY watching, Weather Institute, Route 119, Fortree, Lilycove, Mt. Pyre, Magma Hideout. NPC lines follow VAR_DRACONID_REPUTATION (D-103).
@@ -666,6 +669,7 @@ Draconid Emerald: Aster's arc after Draconid Pass, the Team Magma disguise and t
 
 ### RustboroCity_DevonCorp_3F
 - `RustboroCity_DevonCorp_3F_Text_MrStoneIHaveFavor`: I'm MR. STONE, the PRESIDENT of the DEVON CORPORATION. / I'd just got word about you! / You saved our staff not just once, but twice! …In TEAM MAGMA's colors. / I won't pretend to understand that. But I know what you did for DEVON. / I understand that you're delivering a package to SLATEPORT's SHIPYARD. / Well, on the way, could you stop off in DEWFORD TOWN? / I was hoping that you'd deliver a LETTER to STEVEN in DEWFORD.
+- `RustboroCity_DevonCorp_3F_Text_ExplainExpShare`: MR. STONE: That's DEVON's new EXP. SHARE. / While it's on, every POKéMON in your party gets EXP. Points from a battle, even the ones that didn't fight. / It's switched on now. You can turn it off from the KEY ITEMS pocket.
 
 ### RusturfTunnel
 - `RusturfTunnel_Text_ComeAndGetSome`: NERINE: Following me? …Fine. Come, then.

@@ -126,3 +126,4 @@ Petalburg Woods recruitment/outfit change, Maxie's first meeting at Meteor Falls
 
 ### Follow-up note (round 1)
 - "Also include a battle with Zinnia at Sky Pillar too with her ORAS team."
+- "Make sure the levels scale properly also introduce gen 6 style exp share should be possible, also too if you can have Maxie call you after key story points to help direct you to the next location I think that would be cool and also like the teams I gave you for Brendan and May should scale so like your first battle with Brendan he should just have treecko poochyena tailow, and maybe slakoth if it’s past petalburg Forrest"

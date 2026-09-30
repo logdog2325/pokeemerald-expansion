@@ -110,4 +110,20 @@
 #define MAGMA_STATE_SEAFLOOR          11 // Seafloor Cavern: Nerine's reveal
 #define MAGMA_STATE_TURNED            12 // Sootopolis: the uniform comes off (reputation REVEALED)
 
+// VAR_MAXIE_CALL: Maxie phones the Magma recruit after key story points and names the next place to go
+// (D-186). The first call is scripted on Mr. Briney's boat; the others ring after MAXIE_CALL_STEPS steps
+// outdoors once their story state is reached (src/draconid.c, data/scripts/draconid/maxie_calls.pory).
+#define MAXIE_CALL_NONE                0
+#define MAXIE_CALL_DEWFORD             1  // on the boat to Dewford, just after the PokéNav
+#define MAXIE_CALL_MUSEUM              2  // MAGMA_STATE_MUSEUM: Mauville, then Meteor Falls
+#define MAXIE_CALL_METEOR_FALLS        3  // MAGMA_STATE_METEOR_FALLS: Mt. Chimney by the cable car
+#define MAXIE_CALL_MT_CHIMNEY          4  // MAGMA_STATE_MT_CHIMNEY: Lavaridge, Petalburg, the Weather Institute
+#define MAXIE_CALL_WEATHER_INSTITUTE   5  // MAGMA_STATE_WEATHER_INSTITUTE: Fortree, Lilycove, Mt. Pyre
+#define MAXIE_CALL_MT_PYRE             6  // MAGMA_STATE_MT_PYRE: the Magma Hideout
+#define MAXIE_CALL_PROMOTED            7  // MAGMA_STATE_PROMOTED: infiltrate the Aqua Hideout
+#define MAXIE_CALL_AQUA_HIDEOUT        8  // NERINE_STATE_AQUA_HIDEOUT: Mossdeep, the Space Center
+#define MAXIE_CALL_SPACE_CENTER        9  // MAGMA_STATE_SPACE_CENTER: follow Aqua to the Seafloor Cavern
+#define MAXIE_CALL_SEAFLOOR           10  // MAGMA_STATE_SEAFLOOR: Sootopolis, now
+#define MAXIE_CALL_STEPS              10  // steps outdoors before a due call rings
+
 #endif // GUARD_CONSTANTS_DRACONID_H

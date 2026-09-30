@@ -43,6 +43,7 @@ ALLOWED = {
     "FLAG_DEBUG_NO_COLLISION": "config flag (OW_FLAG_NO_COLLISION), toggled by the debug menu and tests",
     "FLAG_HIDE_DRACONID_VILLAGE_ASTER": "reserved for later village visits (docs/hack_changes.md)",
     "FLAG_DRACONID_NO_WHITEOUT": "config flag (B_FLAG_NO_WHITEOUT), read by the battle engine",
+    "FLAG_EXP_SHARE_ON": "config flag (I_EXP_SHARE_FLAG), toggled by the Exp. Share, read by the battle engine",
 }
 
 # Round 1 (v2 story) is being built act by act: states of acts that aren't scripted yet. Each is

@@ -32,3 +32,7 @@ main brief re-sent with a fourth rival (Nerine). Items:
 | 1.16 | bug | Check that every Mega used exists (Mega Feraligatr included) and record the data source | [x] all 14 exist with sprites; source in D-010 |
 | 1.17 | other | `docs/hack_script.md` (all dialogue by scene), playtest guide per act with debug warps | [ ] |
 | 1.18 | story | (follow-up note) A battle with **Zinnia** at the Sky Pillar, with her ORAS team (Delta Episode: Goodra, Noivern, Altaria, Tyrantrum Lv 60, Mega Salamence Lv 62) | [~] team from Serebii; scene in the Acts 6–7 finale (Lorekeeper of the Meteor Falls Draconids, mid-climb); sprites being drawn |
+| 1.19 | balance | (follow-up) Make sure the levels scale properly | [x] every story fight and variant placed on the round 1 schedule; `check_party.py --caps` 0 errors (D-187) |
+| 1.20 | balance | (follow-up) Gen 6 style Exp. Share | [x] key item, party-wide, toggleable; Mr. Stone gives it with the PokéNav (D-185) |
+| 1.21 | story | (follow-up) Maxie calls after key story points to point the way | [x] 10 calls, first one on Mr. Briney's boat (replacing "Dad" Norman's) (D-186) |
+| 1.22 | balance | (follow-up) Rival teams scale: Brendan's first fight Treecko, Poochyena, Taillow (+ Slakoth past Petalburg Woods) | [x] Rustboro: all four; later fights grow like ORAS (D-187) |

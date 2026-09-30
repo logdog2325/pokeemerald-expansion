@@ -160,3 +160,17 @@ script Route110_EventScript_DraconidRegisterMay {
     setvar(VAR_MAY_STATE, MAY_STATE_ROUTE_110)
     msgbox(format("MAY: I'm off to look for new POKéMON. See you, {PLAYER}!"))
 }
+
+// ---------------------------------------------------------------------------
+// Mr. Stone gives the Gen 6 EXP. SHARE with the PokéNav (D-185): a key item that shares EXP with the whole
+// party while FLAG_EXP_SHARE_ON is set (I_EXP_SHARE_FLAG). It starts switched on.
+// RustboroCity_DevonCorp_3F_EventScript_MeetPresident calls this after the PokéNav.
+// ---------------------------------------------------------------------------
+
+script RustboroCity_DevonCorp_3F_EventScript_DraconidGiveExpShare {
+    msgbox(format("MR. STONE: And one more thing. DEVON's newest invention!"))
+    giveitem(ITEM_EXP_SHARE)
+    setflag(FLAG_RECEIVED_EXP_SHARE)
+    setflag(FLAG_EXP_SHARE_ON)
+    msgbox(RustboroCity_DevonCorp_3F_Text_ExplainExpShare, MSGBOX_DEFAULT)
+}

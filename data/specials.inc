@@ -639,6 +639,7 @@ gSpecials::
 	def_special StickerManGetBragFlags
 	def_special CheckAddCoins
 	def_special DraconidRaiseHatchling
+	def_special Draconid_GetDueMaxieCall
 	def_special StartBirchRescueBattle, waitstate=1
 	def_special SetPlayerOutfit
 	def_special GetPlayerOutfitNormalGfx

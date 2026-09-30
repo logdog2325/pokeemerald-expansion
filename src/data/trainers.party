@@ -23663,19 +23663,39 @@ Double Battle: No
 AI: Smart Trainer / Ace Pokemon
 
 Poochyena
-Level: 12
+Level: 10
 Ability: Quick Feet
-IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
 Nature: Adamant
 - Bite
 - Tackle
 - Howl
 - Sand Attack
 
+Taillow
+Level: 10
+Ability: Guts
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+Nature: Jolly
+- Peck
+- Quick Attack
+- Growl
+- Focus Energy
+
+Slakoth
+Level: 11
+Ability: Truant
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+Nature: Adamant
+- Scratch
+- Yawn
+- Encore
+- Slack Off
+
 Treecko @ Oran Berry
 Level: 13
 Ability: Overgrow
-IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
 Nature: Jolly
 - Leafage
 - Mega Drain

@@ -1,0 +1,41 @@
+# Maxie's PokéNav calls (data/scripts/draconid/maxie_calls.pory, D-186): a call rings on the MAXIE_CALL_STEPS-th
+# (10th) step outdoors once its story state is reached; only the latest due call plays; none after the
+# Sootopolis turn. Needs rustboro_done.ss (the player in the Magma uniform). States are set by hand; the
+# 10-step walks run up and down Rustboro's clear column x 13 (y 57 <-> 47).
+loadstate rustboro_done.ss
+setflag FLAG_DEBUG_NO_ENCOUNTER
+setflag FLAG_DEBUG_NO_TRAINER_SEE
+setflag FLAG_SYS_POKENAV_GET
+setvar VAR_MAXIE_CALL 1
+warp MAP_RUSTBORO_CITY 13 57
+# nothing due yet: no call
+path RustboroCity 13 57 13 47
+path RustboroCity 13 47 13 57
+expect_var VAR_MAXIE_CALL 1
+
+# after the Oceanic Museum raid: the Mauville / Meteor Falls call on the 10th step
+setvar VAR_MAGMA_STATE 4
+path RustboroCity 13 57 13 47
+run 60
+shot m10_museum_call
+mash A 20000
+expect_var VAR_MAXIE_CALL 2
+expect_var VAR_MAXIE_CALL_STEPS 0
+
+# several steps later in the story: only the latest call (the Aqua Hideout one) plays
+setvar VAR_MAGMA_STATE 9
+setvar VAR_NERINE_STATE 6
+path RustboroCity 13 47 13 57
+run 60
+shot m20_aqua_hideout_call
+mash A 20000
+expect_var VAR_MAXIE_CALL 8
+
+# after the Sootopolis turn Maxie never calls again
+setvar VAR_MAGMA_STATE 12
+setvar VAR_DRACONID_REPUTATION 2
+path RustboroCity 13 57 13 47
+path RustboroCity 13 47 13 57
+expect_var VAR_MAXIE_CALL 8
+clearflag FLAG_DEBUG_NO_ENCOUNTER
+clearflag FLAG_DEBUG_NO_TRAINER_SEE

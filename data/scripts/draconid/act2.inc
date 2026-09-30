@@ -245,6 +245,15 @@ Route110_EventScript_DraconidRegisterMay::
 	return
 
 
+RustboroCity_DevonCorp_3F_EventScript_DraconidGiveExpShare::
+	msgbox RustboroCity_DevonCorp_3F_EventScript_DraconidGiveExpShare_Text_0
+	giveitem ITEM_EXP_SHARE
+	setflag FLAG_RECEIVED_EXP_SHARE
+	setflag FLAG_EXP_SHARE_ON
+	msgbox RustboroCity_DevonCorp_3F_Text_ExplainExpShare, MSGBOX_DEFAULT
+	return
+
+
 RustboroCity_EventScript_DraconidTabithaGoodsOrder_Text_0:
 	.string "TABITHA: Hehehe! Did you see that?\n"
 	.string "AQUA just ran off with DEVON's package!\p"
@@ -322,3 +331,7 @@ Route110_EventScript_DraconidRegisterMay_Text_1:
 Route110_EventScript_DraconidRegisterMay_Text_2:
 	.string "MAY: I'm off to look for new POKéMON.\n"
 	.string "See you, {PLAYER}!$"
+
+RustboroCity_DevonCorp_3F_EventScript_DraconidGiveExpShare_Text_0:
+	.string "MR. STONE: And one more thing. DEVON's\n"
+	.string "newest invention!$"
