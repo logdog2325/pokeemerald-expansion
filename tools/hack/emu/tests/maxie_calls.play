@@ -31,11 +31,19 @@ shot m20_aqua_hideout_call
 mash A 20000
 expect_var VAR_MAXIE_CALL 8
 
+# after the Seafloor Cavern: the Sootopolis call (GROUDON found; the player saw KYOGRE wake, D-272)
+setvar VAR_MAGMA_STATE 11
+path RustboroCity 13 57 13 47
+run 60
+shot m30_seafloor_call
+mash A 20000
+expect_var VAR_MAXIE_CALL 10
+
 # after the Sootopolis turn Maxie never calls again
 setvar VAR_MAGMA_STATE 12
 setvar VAR_DRACONID_REPUTATION 2
-path RustboroCity 13 57 13 47
 path RustboroCity 13 47 13 57
-expect_var VAR_MAXIE_CALL 8
+path RustboroCity 13 57 13 47
+expect_var VAR_MAXIE_CALL 10
 clearflag FLAG_DEBUG_NO_ENCOUNTER
 clearflag FLAG_DEBUG_NO_TRAINER_SEE

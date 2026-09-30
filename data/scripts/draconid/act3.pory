@@ -129,11 +129,12 @@ script MeteorFalls_1F_1R_EventScript_DraconidAster {
     playbgm(MUS_ENCOUNTER_INTENSE, FALSE)
     applymovement(LOCALID_METEOR_FALLS_ASTER, MeteorFalls_1F_1R_Movement_DraconidAsterApproach)
     waitmovement(0)
-    msgbox(format("ASTER: …So it's true."))
+    msgbox(format("ASTER: So you really did it."))
     msgbox(format("ASTER: I followed MAGMA's trail from FALLARBOR. I thought I'd find the ELDER's chosen one stopping them.\p"
                   "Instead I watched you guard the stairs so MAXIE could run!"))
-    msgbox(format("ASTER: The ELDER's eggs came from these falls, {PLAYER}. Yours too.\p"
-                  "And you stood watch while they robbed it.\p"
+    msgbox(format("ASTER: The DRACONIDS of these falls are our kin, {PLAYER}. They keep the old songs here.\p"
+                  "And you stood watch while MAGMA\nrobbed them!"))
+    msgbox(format("ASTER: The ELDER said wear their red.\nHolding their door was your own idea!\p"
                   "The ELDER trusted you, and you carry THEIR flag?"))
     msgbox(format("ASTER: …Show me there's still a Draconid under all that red!"))
     closemessage
@@ -558,8 +559,9 @@ script JaggedPass_EventScript_DraconidAster {
     msgbox(format("ASTER: I watched from the ridge. MAXIE's machine sputtered out like a wet match.\p"
                   "And I saw who was standing next to it when it died.\p"
                   "…Not bad. For a traitor."))
-    msgbox(format("ASTER: I took your shard to the ELDER. He set it in this.\p"
-                  "A KEY STONE, in a ring. When a POKéMON trusts you with its whole heart, the stone lets it MEGA EVOLVE."))
+    msgbox(format("ASTER: I took your shard to the ELDER. He set it in this ring, beside a chip of our own star.\p"
+                  "Two falling stars make one KEY STONE.\p"
+                  "When a POKéMON gives you its whole\nheart, the stone lets it MEGA EVOLVE."))
     giveitem(ITEM_MEGA_RING)
     setflag(FLAG_RECEIVED_MEGA_RING)
     msgbox(format("ASTER: The ELDER says you're doing well.\p"

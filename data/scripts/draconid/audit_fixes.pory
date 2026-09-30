@@ -1,0 +1,118 @@
+// Draconid Emerald round 1 v2: fixes from the story audit (feedback 1.53, docs/hack_story_audit.md, D-270 – D-275).
+// Most fixes are text changes in place; the scripts here are the ones that needed new logic, each called by one
+// tagged line in a vanilla script.
+
+// ---------------------------------------------------------------------------
+// Lilycove: BRENDAN and MAY's double battle and WALLY's battle (act4.pory) are talk-to fights the player can skip.
+// They close with the MIND BADGE: BRENDAN waits at the SPACE CENTER from then on (MossdeepCity_Gym), and the
+// SPACE CENTER raid, the SEAFLOOR CAVERN and SOOTOPOLIS all come after it (D-273).
+// LilycoveCity_OnTransition calls this.
+// ---------------------------------------------------------------------------
+
+script LilycoveCity_EventScript_DraconidCloseFights {
+    if (flag(FLAG_BADGE07_GET)) {
+        setflag(FLAG_HIDE_LILYCOVE_CITY_RIVAL)
+        setflag(FLAG_HIDE_LILYCOVE_CITY_WALLY)
+    }
+}
+
+// ---------------------------------------------------------------------------
+// One place at a time (D-274).
+// The rivals' Littleroot bedrooms: they come home after the LILYCOVE double (act4.pory) and the Hall of Fame hides
+// them again. In between they are away from the MIND BADGE (BRENDAN waits at the SPACE CENTER, MAY comes to
+// MOSSDEEP after the raid) until the SOOTOPOLIS aftermath, where both fly home (act5.pory: BRENDAN_STATE_SOOTOPOLIS,
+// MAY_STATE_SOOTOPOLIS). Each bedroom's OnTransition calls its script, so the object follows the story wherever the
+// flag was last left (also when the LILYCOVE double was skipped). FLAG_MET_RIVAL_LILYCOVE, which only the bedrooms
+// read, puts them at their desks: without it they would stand on the stairs (the vanilla meeting spot).
+// ---------------------------------------------------------------------------
+
+script LittlerootTown_BrendansHouse_2F_EventScript_DraconidRivalAtHome {
+    if (!flag(FLAG_SYS_GAME_CLEAR)) {
+        if (var(VAR_BRENDAN_STATE) >= BRENDAN_STATE_SOOTOPOLIS) {
+            clearflag(FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_BEDROOM)
+            setflag(FLAG_MET_RIVAL_LILYCOVE) // the vanilla OnTransition then moves them off the stairs
+        } elif (flag(FLAG_BADGE07_GET)) {
+            setflag(FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_BEDROOM)
+        }
+    }
+}
+
+script LittlerootTown_MaysHouse_2F_EventScript_DraconidRivalAtHome {
+    if (!flag(FLAG_SYS_GAME_CLEAR)) {
+        if (var(VAR_MAY_STATE) >= MAY_STATE_SOOTOPOLIS) {
+            clearflag(FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_RIVAL_BEDROOM)
+            setflag(FLAG_MET_RIVAL_LILYCOVE) // the vanilla OnTransition then moves them off the stairs
+        } elif (flag(FLAG_BADGE07_GET)) {
+            setflag(FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_RIVAL_BEDROOM)
+        }
+    }
+}
+
+// WALLY and his uncle are on their way to the LAVARIDGE hot springs while WALLY's ROUTE 112 fight is due (the same
+// condition as Route112_EventScript_DraconidOnTransition, rivals2.pory), so WANDA's house doesn't show them then.
+// Otherwise the vanilla flags stand: both from WALLY's MAUVILLE battle on, WALLY until the HEAT BADGE.
+// VerdanturfTown_WandasHouse's OnTransition.
+script VerdanturfTown_WandasHouse_EventScript_DraconidOnTransition {
+    if (var(VAR_MAGMA_STATE) == MAGMA_STATE_METEOR_FALLS && flag(FLAG_DEFEATED_WALLY_MAUVILLE) && !defeated(TRAINER_WALLY_ROUTE_112)) {
+        setflag(FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WALLY)
+        setflag(FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WALLYS_UNCLE)
+    } elif (flag(FLAG_DEFEATED_WALLY_MAUVILLE)) {
+        clearflag(FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WALLYS_UNCLE)
+        if (!flag(FLAG_DEFEATED_LAVARIDGE_GYM)) {
+            clearflag(FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WALLY)
+        }
+    }
+}
+
+// ---------------------------------------------------------------------------
+// WATTSON outside his GYM (after NORMAN's badge, so always in uniform until SOOTOPOLIS): he hands a MAGMA grunt
+// the key to NEW MAUVILLE's GENERATOR because nobody else will go, and says so (D-275). Same items and flags as
+// MauvilleCity_EventScript_Wattson, which comes here while the player wears the uniform.
+// ---------------------------------------------------------------------------
+
+script MauvilleCity_EventScript_DraconidWattsonUniform {
+    if (flag(FLAG_GOT_TM_THUNDERBOLT_FROM_WATTSON)) {
+        msgbox(MauvilleCity_Text_DraconidWattsonUniformDone)
+    } elif (var(VAR_NEW_MAUVILLE_STATE) == 2) {
+        msgbox(MauvilleCity_Text_DraconidWattsonUniformThanks)
+        giveitem(ITEM_TM_THUNDERBOLT)
+        if (var(VAR_RESULT) == FALSE) {
+            goto(Common_EventScript_ShowBagIsFull)
+        }
+        setflag(FLAG_GOT_TM_THUNDERBOLT_FROM_WATTSON)
+        msgbox(MauvilleCity_Text_DraconidWattsonUniformDone)
+    } elif (flag(FLAG_GOT_BASEMENT_KEY_FROM_WATTSON)) {
+        msgbox(MauvilleCity_Text_DraconidWattsonUniformGo)
+    } else {
+        msgbox(MauvilleCity_Text_DraconidWattsonUniformKey)
+        giveitem(ITEM_BASEMENT_KEY)
+        if (var(VAR_RESULT) == FALSE) {
+            goto(Common_EventScript_ShowBagIsFull)
+        }
+        setflag(FLAG_GOT_BASEMENT_KEY_FROM_WATTSON)
+        msgbox(MauvilleCity_Text_DraconidWattsonUniformGo)
+    }
+    release
+}
+
+text MauvilleCity_Text_DraconidWattsonUniformKey {
+    format("WATTSON: Wahahahaha! The MAGMA grunt\nwho beat my GYM fair and square!\p"
+           "MAUVILLE has an underground sector.\nWe call it NEW MAUVILLE.\p"
+           "Its GENERATOR is running haywire, and\nnobody else will go down there.\p"
+           "So I'll take a gamble on you! Here, this\nis the KEY to get into NEW MAUVILLE.")
+}
+
+text MauvilleCity_Text_DraconidWattsonUniformGo {
+    format("WATTSON: Switch that GENERATOR off.\nIt's a short SURF from ROUTE 110.\p"
+           "And if anything else down there breaks,\nI'll know where to find you! Wahahahaha!")
+}
+
+text MauvilleCity_Text_DraconidWattsonUniformThanks {
+    format("WATTSON: You did it! The GENERATOR is\nquiet, and my city is still standing!\p"
+           "I had my doubts about that uniform.\nThis TM holds THUNDERBOLT. Take it!")
+}
+
+text MauvilleCity_Text_DraconidWattsonUniformDone {
+    format("WATTSON: MAGMA or not, you kept\nMAUVILLE's lights on.\p"
+           "Don't make me regret it! Wahahahaha!")
+}

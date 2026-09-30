@@ -1,0 +1,150 @@
+LilycoveCity_EventScript_DraconidCloseFights::
+	goto_if_set FLAG_BADGE07_GET, LilycoveCity_EventScript_DraconidCloseFights_1
+	return
+
+LilycoveCity_EventScript_DraconidCloseFights_1:
+	setflag FLAG_HIDE_LILYCOVE_CITY_RIVAL
+	setflag FLAG_HIDE_LILYCOVE_CITY_WALLY
+	return
+
+
+LittlerootTown_BrendansHouse_2F_EventScript_DraconidRivalAtHome::
+	goto_if_unset FLAG_SYS_GAME_CLEAR, LittlerootTown_BrendansHouse_2F_EventScript_DraconidRivalAtHome_1
+	return
+
+LittlerootTown_BrendansHouse_2F_EventScript_DraconidRivalAtHome_1:
+	compare VAR_BRENDAN_STATE, BRENDAN_STATE_SOOTOPOLIS
+	goto_if_ge LittlerootTown_BrendansHouse_2F_EventScript_DraconidRivalAtHome_3
+	goto_if_set FLAG_BADGE07_GET, LittlerootTown_BrendansHouse_2F_EventScript_DraconidRivalAtHome_4
+	return
+
+LittlerootTown_BrendansHouse_2F_EventScript_DraconidRivalAtHome_3:
+	clearflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_BEDROOM
+	setflag FLAG_MET_RIVAL_LILYCOVE
+	return
+
+LittlerootTown_BrendansHouse_2F_EventScript_DraconidRivalAtHome_4:
+	setflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_BEDROOM
+	return
+
+
+LittlerootTown_MaysHouse_2F_EventScript_DraconidRivalAtHome::
+	goto_if_unset FLAG_SYS_GAME_CLEAR, LittlerootTown_MaysHouse_2F_EventScript_DraconidRivalAtHome_1
+	return
+
+LittlerootTown_MaysHouse_2F_EventScript_DraconidRivalAtHome_1:
+	compare VAR_MAY_STATE, MAY_STATE_SOOTOPOLIS
+	goto_if_ge LittlerootTown_MaysHouse_2F_EventScript_DraconidRivalAtHome_3
+	goto_if_set FLAG_BADGE07_GET, LittlerootTown_MaysHouse_2F_EventScript_DraconidRivalAtHome_4
+	return
+
+LittlerootTown_MaysHouse_2F_EventScript_DraconidRivalAtHome_3:
+	clearflag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_RIVAL_BEDROOM
+	setflag FLAG_MET_RIVAL_LILYCOVE
+	return
+
+LittlerootTown_MaysHouse_2F_EventScript_DraconidRivalAtHome_4:
+	setflag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_RIVAL_BEDROOM
+	return
+
+
+VerdanturfTown_WandasHouse_EventScript_DraconidOnTransition::
+	compare VAR_MAGMA_STATE, MAGMA_STATE_METEOR_FALLS
+	goto_if_eq VerdanturfTown_WandasHouse_EventScript_DraconidOnTransition_5
+VerdanturfTown_WandasHouse_EventScript_DraconidOnTransition_3:
+	goto_if_set FLAG_DEFEATED_WALLY_MAUVILLE, VerdanturfTown_WandasHouse_EventScript_DraconidOnTransition_2
+	return
+
+VerdanturfTown_WandasHouse_EventScript_DraconidOnTransition_1:
+	setflag FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WALLY
+	setflag FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WALLYS_UNCLE
+	return
+
+VerdanturfTown_WandasHouse_EventScript_DraconidOnTransition_2:
+	clearflag FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WALLYS_UNCLE
+	goto_if_unset FLAG_DEFEATED_LAVARIDGE_GYM, VerdanturfTown_WandasHouse_EventScript_DraconidOnTransition_9
+	return
+
+VerdanturfTown_WandasHouse_EventScript_DraconidOnTransition_4:
+	checktrainerflag TRAINER_WALLY_ROUTE_112
+	goto_if 0, VerdanturfTown_WandasHouse_EventScript_DraconidOnTransition_1
+	goto VerdanturfTown_WandasHouse_EventScript_DraconidOnTransition_3
+
+VerdanturfTown_WandasHouse_EventScript_DraconidOnTransition_5:
+	goto_if_set FLAG_DEFEATED_WALLY_MAUVILLE, VerdanturfTown_WandasHouse_EventScript_DraconidOnTransition_4
+	goto VerdanturfTown_WandasHouse_EventScript_DraconidOnTransition_3
+
+VerdanturfTown_WandasHouse_EventScript_DraconidOnTransition_9:
+	clearflag FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WALLY
+	return
+
+
+MauvilleCity_EventScript_DraconidWattsonUniform::
+	goto_if_set FLAG_GOT_TM_THUNDERBOLT_FROM_WATTSON, MauvilleCity_EventScript_DraconidWattsonUniform_2
+	compare VAR_NEW_MAUVILLE_STATE, 2
+	goto_if_eq MauvilleCity_EventScript_DraconidWattsonUniform_3
+	goto_if_set FLAG_GOT_BASEMENT_KEY_FROM_WATTSON, MauvilleCity_EventScript_DraconidWattsonUniform_4
+	msgbox MauvilleCity_Text_DraconidWattsonUniformKey
+	giveitem ITEM_BASEMENT_KEY
+	compare VAR_RESULT, FALSE
+	goto_if_eq MauvilleCity_EventScript_DraconidWattsonUniform_13
+MauvilleCity_EventScript_DraconidWattsonUniform_12:
+	setflag FLAG_GOT_BASEMENT_KEY_FROM_WATTSON
+	msgbox MauvilleCity_Text_DraconidWattsonUniformGo
+MauvilleCity_EventScript_DraconidWattsonUniform_1:
+	release
+	return
+
+MauvilleCity_EventScript_DraconidWattsonUniform_2:
+	msgbox MauvilleCity_Text_DraconidWattsonUniformDone
+	goto MauvilleCity_EventScript_DraconidWattsonUniform_1
+
+MauvilleCity_EventScript_DraconidWattsonUniform_3:
+	msgbox MauvilleCity_Text_DraconidWattsonUniformThanks
+	giveitem ITEM_TM_THUNDERBOLT
+	compare VAR_RESULT, FALSE
+	goto_if_eq MauvilleCity_EventScript_DraconidWattsonUniform_10
+MauvilleCity_EventScript_DraconidWattsonUniform_9:
+	setflag FLAG_GOT_TM_THUNDERBOLT_FROM_WATTSON
+	msgbox MauvilleCity_Text_DraconidWattsonUniformDone
+	goto MauvilleCity_EventScript_DraconidWattsonUniform_1
+
+MauvilleCity_EventScript_DraconidWattsonUniform_4:
+	msgbox MauvilleCity_Text_DraconidWattsonUniformGo
+	goto MauvilleCity_EventScript_DraconidWattsonUniform_1
+
+MauvilleCity_EventScript_DraconidWattsonUniform_10:
+	goto Common_EventScript_ShowBagIsFull
+	goto MauvilleCity_EventScript_DraconidWattsonUniform_9
+
+MauvilleCity_EventScript_DraconidWattsonUniform_13:
+	goto Common_EventScript_ShowBagIsFull
+	goto MauvilleCity_EventScript_DraconidWattsonUniform_12
+
+
+MauvilleCity_Text_DraconidWattsonUniformKey::
+	.string "WATTSON: Wahahahaha! The MAGMA grunt\n"
+	.string "who beat my GYM fair and square!\p"
+	.string "MAUVILLE has an underground sector.\n"
+	.string "We call it NEW MAUVILLE.\p"
+	.string "Its GENERATOR is running haywire, and\n"
+	.string "nobody else will go down there.\p"
+	.string "So I'll take a gamble on you! Here, this\n"
+	.string "is the KEY to get into NEW MAUVILLE.$"
+
+MauvilleCity_Text_DraconidWattsonUniformGo::
+	.string "WATTSON: Switch that GENERATOR off.\n"
+	.string "It's a short SURF from ROUTE 110.\p"
+	.string "And if anything else down there breaks,\n"
+	.string "I'll know where to find you! Wahahahaha!$"
+
+MauvilleCity_Text_DraconidWattsonUniformThanks::
+	.string "WATTSON: You did it! The GENERATOR is\n"
+	.string "quiet, and my city is still standing!\p"
+	.string "I had my doubts about that uniform.\n"
+	.string "This TM holds THUNDERBOLT. Take it!$"
+
+MauvilleCity_Text_DraconidWattsonUniformDone::
+	.string "WATTSON: MAGMA or not, you kept\n"
+	.string "MAUVILLE's lights on.\p"
+	.string "Don't make me regret it! Wahahahaha!$"

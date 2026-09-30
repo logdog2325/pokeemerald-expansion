@@ -9,6 +9,7 @@ LilycoveCity_OnTransition:
 	setflag FLAG_HIDE_LILYCOVE_CONTEST_HALL_REPORTER
 	call_if_set FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetAbnormalWeather
 	call Common_EventScript_SetupRivalGfxId
+	call LilycoveCity_EventScript_DraconidCloseFights  @ Draconid Emerald: the rivals and WALLY leave with the MIND BADGE (audit_fixes.pory, D-273)
 	end
 
 LilycoveCity_OnLoad:

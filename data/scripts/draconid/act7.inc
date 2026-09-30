@@ -799,13 +799,16 @@ LittlerootTown_ProfessorBirchsLab_EventScript_DraconidPostgameDouble::
 	goto_if 0, LittlerootTown_ProfessorBirchsLab_EventScript_DraconidPostgameDouble_2
 	checktrainerflag TRAINER_BRENDAN_POSTGAME_DOUBLE
 	goto_if 1, LittlerootTown_ProfessorBirchsLab_EventScript_DraconidPostgameDouble_7
-	msgbox LittlerootTown_ProfessorBirchsLab_EventScript_DraconidPostgameDouble_Text_1, MSGBOX_YESNO
+	checktrainerflag TRAINER_BRENDAN_LILYCOVE
+	goto_if 1, LittlerootTown_ProfessorBirchsLab_EventScript_DraconidPostgameDouble_10
+	msgbox LittlerootTown_ProfessorBirchsLab_EventScript_DraconidPostgameDouble_Text_2, MSGBOX_YESNO
+LittlerootTown_ProfessorBirchsLab_EventScript_DraconidPostgameDouble_9:
 	compare VAR_RESULT, NO
-	goto_if_eq LittlerootTown_ProfessorBirchsLab_EventScript_DraconidPostgameDouble_10
+	goto_if_eq LittlerootTown_ProfessorBirchsLab_EventScript_DraconidPostgameDouble_14
 	special HasEnoughMonsForDoubleBattle
 	compare VAR_RESULT, PLAYER_HAS_TWO_USABLE_MONS
-	goto_if_ne LittlerootTown_ProfessorBirchsLab_EventScript_DraconidPostgameDouble_13
-	msgbox LittlerootTown_ProfessorBirchsLab_EventScript_DraconidPostgameDouble_Text_3
+	goto_if_ne LittlerootTown_ProfessorBirchsLab_EventScript_DraconidPostgameDouble_17
+	msgbox LittlerootTown_ProfessorBirchsLab_EventScript_DraconidPostgameDouble_Text_4
 	trainerbattle_two_trainers_no_intro TRAINER_BRENDAN_POSTGAME_DOUBLE, LittlerootTown_ProfessorBirchsLab_Text_DraconidBrendanPostgameDefeat, TRAINER_MAY_POSTGAME_DOUBLE, LittlerootTown_ProfessorBirchsLab_Text_DraconidMayPostgameDefeat
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_DraconidPostgameDone
 	release
@@ -822,12 +825,16 @@ LittlerootTown_ProfessorBirchsLab_EventScript_DraconidPostgameDouble_7:
 	end
 
 LittlerootTown_ProfessorBirchsLab_EventScript_DraconidPostgameDouble_10:
+	msgbox LittlerootTown_ProfessorBirchsLab_EventScript_DraconidPostgameDouble_Text_1, MSGBOX_YESNO
+	goto LittlerootTown_ProfessorBirchsLab_EventScript_DraconidPostgameDouble_9
+
+LittlerootTown_ProfessorBirchsLab_EventScript_DraconidPostgameDouble_14:
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_DraconidRivalAnytime
 	release
 	end
 
-LittlerootTown_ProfessorBirchsLab_EventScript_DraconidPostgameDouble_13:
-	msgbox LittlerootTown_ProfessorBirchsLab_EventScript_DraconidPostgameDouble_Text_2
+LittlerootTown_ProfessorBirchsLab_EventScript_DraconidPostgameDouble_17:
+	msgbox LittlerootTown_ProfessorBirchsLab_EventScript_DraconidPostgameDouble_Text_3
 	release
 	end
 
@@ -1282,10 +1289,18 @@ LittlerootTown_ProfessorBirchsLab_EventScript_DraconidPostgameDouble_Text_1:
 	.string "battling!$"
 
 LittlerootTown_ProfessorBirchsLab_EventScript_DraconidPostgameDouble_Text_2:
+	.string "BRENDAN: One at a time wasn't\n"
+	.string "enough, huh?\p"
+	.string "MAY: Then how about both of us\n"
+	.string "at once?\p"
+	.string "Two on one, and this time we know who\n"
+	.string "we're battling!$"
+
+LittlerootTown_ProfessorBirchsLab_EventScript_DraconidPostgameDouble_Text_3:
 	.string "MAY: Oh! You need at least two POKéMON\n"
 	.string "that can battle for this one.$"
 
-LittlerootTown_ProfessorBirchsLab_EventScript_DraconidPostgameDouble_Text_3:
+LittlerootTown_ProfessorBirchsLab_EventScript_DraconidPostgameDouble_Text_4:
 	.string "BRENDAN: MAY, let's go!\p"
 	.string "MAY: Right behind you!$"
 

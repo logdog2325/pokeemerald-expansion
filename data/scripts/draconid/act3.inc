@@ -106,15 +106,16 @@ MeteorFalls_1F_1R_EventScript_DraconidAster::
 	msgbox MeteorFalls_1F_1R_EventScript_DraconidAster_Text_1
 	msgbox MeteorFalls_1F_1R_EventScript_DraconidAster_Text_2
 	msgbox MeteorFalls_1F_1R_EventScript_DraconidAster_Text_3
+	msgbox MeteorFalls_1F_1R_EventScript_DraconidAster_Text_4
 	closemessage
 	trainerbattle_earlyrival TRAINER_ASTER_METEOR_FALLS_DEINO, RIVAL_BATTLE_HEAL_AFTER, MeteorFalls_1F_1R_Text_DraconidAsterDefeat, MeteorFalls_1F_1R_Text_DraconidAsterVictory
 	compare VAR_RESULT, TRUE
 	goto_if_eq MeteorFalls_1F_1R_EventScript_DraconidAster_2
-	msgbox MeteorFalls_1F_1R_EventScript_DraconidAster_Text_5
-MeteorFalls_1F_1R_EventScript_DraconidAster_1:
 	msgbox MeteorFalls_1F_1R_EventScript_DraconidAster_Text_6
+MeteorFalls_1F_1R_EventScript_DraconidAster_1:
 	msgbox MeteorFalls_1F_1R_EventScript_DraconidAster_Text_7
 	msgbox MeteorFalls_1F_1R_EventScript_DraconidAster_Text_8
+	msgbox MeteorFalls_1F_1R_EventScript_DraconidAster_Text_9
 	closemessage
 	applymovement LOCALID_METEOR_FALLS_ASTER, MeteorFalls_1F_1R_Movement_DraconidAsterLeave
 	waitmovement 0
@@ -125,7 +126,7 @@ MeteorFalls_1F_1R_EventScript_DraconidAster_1:
 	return
 
 MeteorFalls_1F_1R_EventScript_DraconidAster_2:
-	msgbox MeteorFalls_1F_1R_EventScript_DraconidAster_Text_4
+	msgbox MeteorFalls_1F_1R_EventScript_DraconidAster_Text_5
 	goto MeteorFalls_1F_1R_EventScript_DraconidAster_1
 
 
@@ -737,7 +738,7 @@ MeteorFalls_1F_1R_EventScript_DraconidMeteoriteScene_Text_12:
 	.string "TEAM AQUA, move out!$"
 
 MeteorFalls_1F_1R_EventScript_DraconidAster_Text_0:
-	.string "ASTER: …So it's true.$"
+	.string "ASTER: So you really did it.$"
 
 MeteorFalls_1F_1R_EventScript_DraconidAster_Text_1:
 	.string "ASTER: I followed MAGMA's trail from\n"
@@ -747,27 +748,32 @@ MeteorFalls_1F_1R_EventScript_DraconidAster_Text_1:
 	.string "so MAXIE could run!$"
 
 MeteorFalls_1F_1R_EventScript_DraconidAster_Text_2:
-	.string "ASTER: The ELDER's eggs came from\n"
-	.string "these falls, {PLAYER}. Yours too.\p"
-	.string "And you stood watch while they robbed\n"
-	.string "it.\p"
+	.string "ASTER: The DRACONIDS of these falls\n"
+	.string "are our kin, {PLAYER}. They keep the old\l"
+	.string "songs here.\p"
+	.string "And you stood watch while MAGMA\n"
+	.string "robbed them!$"
+
+MeteorFalls_1F_1R_EventScript_DraconidAster_Text_3:
+	.string "ASTER: The ELDER said wear their red.\n"
+	.string "Holding their door was your own idea!\p"
 	.string "The ELDER trusted you, and you carry\n"
 	.string "THEIR flag?$"
 
-MeteorFalls_1F_1R_EventScript_DraconidAster_Text_3:
+MeteorFalls_1F_1R_EventScript_DraconidAster_Text_4:
 	.string "ASTER: …Show me there's still a Draconid\n"
 	.string "under all that red!$"
 
-MeteorFalls_1F_1R_EventScript_DraconidAster_Text_4:
+MeteorFalls_1F_1R_EventScript_DraconidAster_Text_5:
 	.string "ASTER: Weak. And wearing their colors.\p"
 	.string "…The ELDER must see something in you\n"
 	.string "that I can't.$"
 
-MeteorFalls_1F_1R_EventScript_DraconidAster_Text_5:
+MeteorFalls_1F_1R_EventScript_DraconidAster_Text_6:
 	.string "ASTER: …Fine. You haven't forgotten\n"
 	.string "everything.$"
 
-MeteorFalls_1F_1R_EventScript_DraconidAster_Text_6:
+MeteorFalls_1F_1R_EventScript_DraconidAster_Text_7:
 	.string "ASTER: …What's that in your hand?\p"
 	.string "A piece of the METEORITE? MAXIE handed\n"
 	.string "you a piece of the sky like it was a\l"
@@ -775,10 +781,10 @@ MeteorFalls_1F_1R_EventScript_DraconidAster_Text_6:
 	.string "Give it here. The ELDER should see what\n"
 	.string "MAGMA is playing with.$"
 
-MeteorFalls_1F_1R_EventScript_DraconidAster_Text_7:
+MeteorFalls_1F_1R_EventScript_DraconidAster_Text_8:
 	.string "{PLAYER} handed the shard to ASTER.$"
 
-MeteorFalls_1F_1R_EventScript_DraconidAster_Text_8:
+MeteorFalls_1F_1R_EventScript_DraconidAster_Text_9:
 	.string "ASTER: Don't follow me. And don't get\n"
 	.string "too comfortable in red.$"
 
@@ -946,10 +952,11 @@ JaggedPass_EventScript_DraconidAster_Text_1:
 
 JaggedPass_EventScript_DraconidAster_Text_2:
 	.string "ASTER: I took your shard to the ELDER.\n"
-	.string "He set it in this.\p"
-	.string "A KEY STONE, in a ring. When a POKéMON\n"
-	.string "trusts you with its whole heart, the\l"
-	.string "stone lets it MEGA EVOLVE.$"
+	.string "He set it in this ring, beside a chip of\l"
+	.string "our own star.\p"
+	.string "Two falling stars make one KEY STONE.\p"
+	.string "When a POKéMON gives you its whole\n"
+	.string "heart, the stone lets it MEGA EVOLVE.$"
 
 JaggedPass_EventScript_DraconidAster_Text_3:
 	.string "ASTER: The ELDER says you're doing well.\p"

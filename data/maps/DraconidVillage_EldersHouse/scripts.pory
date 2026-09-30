@@ -36,7 +36,8 @@ script DraconidVillage_EldersHouse_EventScript_Ceremony {
                   "Walk among the red ones. Learn what MAXIE, their leader, seeks.\p"
                   "Wear their colors if you must. Undo their work from within.\p"
                   "And when the sky splits, you must stand beside RAYQUAZA."))
-    msgbox(format("ELDER: No one outside this village may know why you go. Not even the kind ones."))
+    msgbox(format("ELDER: No one outside this village may know why you go.\p"
+                  "Only PROF. BIRCH, an old friend of our clan, will know. I have written to him."))
     msgbox(format("ELDER: Now. A tamer needs a partner.\p"
                   "Three eggs are waiting in the shrine, before the Guardian of the Sky.\p"
                   "Come, both of you. We go up together."))

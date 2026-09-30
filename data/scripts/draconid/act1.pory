@@ -11,6 +11,11 @@ script LittlerootTown_BrendansHouse_1F_EventScript_DraconidBirchsWife {
     if (var(VAR_DRACONID_REPUTATION) == REPUTATION_PRE_UNIFORM) {
         msgbox(format("MRS. BIRCH: Oh! You must be the young dragon tamer. My husband talked about you all night!\p"
                       "BRENDAN left for RUSTBORO already. Like father, like son. Neither of them can stay home."))
+    } elif (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM && var(VAR_BRENDAN_STATE) < BRENDAN_STATE_RUSTBORO) {
+        // nobody she knows has seen the uniform yet: BRENDAN first sees it at RUSTBORO (D-272)
+        msgbox(format("MRS. BIRCH: Oh! {PLAYER}? What on earth are you wearing, dear?\p"
+                      "Isn't that what those TEAM MAGMA people wear? The ones from the news?\p"
+                      "…Oh, my. BRENDAN won't like this at all."))
     } elif (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
         msgbox(format("MRS. BIRCH: {PLAYER}? That red uniform… So it's true.\p"
                       "BRENDAN came home so angry. He wouldn't even eat.\p"
@@ -28,6 +33,11 @@ script LittlerootTown_MaysHouse_1F_EventScript_DraconidMaysMom {
     if (var(VAR_DRACONID_REPUTATION) == REPUTATION_PRE_UNIFORM) {
         msgbox(format("MAY'S MOM: Hello! You must be {PLAYER}. MAY talks about nothing but your dragon!\p"
                       "We only just moved here from JOHTO. My husband NORMAN runs the PETALBURG GYM now."))
+    } elif (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM && var(VAR_BRENDAN_STATE) < BRENDAN_STATE_RUSTBORO) {
+        // MAY only hears about the uniform from BRENDAN, after RUSTBORO (D-272)
+        msgbox(format("MAY'S MOM: Oh! {PLAYER}?\nMy, what a red outfit.\p"
+                      "Isn't that the uniform those TEAM MAGMA people wear?\p"
+                      "MAY is going to have questions for you. Lots of them."))
     } elif (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
         msgbox(format("MAY'S MOM: Oh… {PLAYER}. MAY told me you joined those people.\p"
                       "She doesn't believe it, though. And do you know what? Neither do I. Not quite."))

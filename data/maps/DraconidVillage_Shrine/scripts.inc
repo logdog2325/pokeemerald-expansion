@@ -277,11 +277,10 @@ DraconidVillage_Shrine_EventScript_EggCeremony_Text_11:
 	.string "your warmth.$"
 
 DraconidVillage_Shrine_EventScript_EggCeremony_Text_12:
-	.string "ELDER: The {STR_VAR_1} egg I will\n"
-	.string "keep aside.\p"
-	.string "It belongs to one who already walks a\n"
-	.string "far road for our clan. You will meet, in\l"
-	.string "time.$"
+	.string "ELDER: The {STR_VAR_1} egg flies\n"
+	.string "tonight, on my old dragon's back.\p"
+	.string "It goes to one who already walks a far\n"
+	.string "road for our clan. You will meet, in time.$"
 
 DraconidVillage_Shrine_EventScript_EggCeremony_Text_13:
 	.string "ASTER: A ghost that drifts through\n"

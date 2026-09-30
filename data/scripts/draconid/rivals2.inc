@@ -376,13 +376,14 @@ MossdeepCity_EventScript_DraconidMay::
 	msgbox MossdeepCity_EventScript_DraconidMay_Text_0
 	msgbox MossdeepCity_EventScript_DraconidMay_Text_1
 	msgbox MossdeepCity_EventScript_DraconidMay_Text_2
+	msgbox MossdeepCity_EventScript_DraconidMay_Text_3
 	closemessage
 	trainerbattle_earlyrival TRAINER_MAY_MOSSDEEP, RIVAL_BATTLE_HEAL_AFTER, MossdeepCity_Text_DraconidMayDefeat, MossdeepCity_Text_DraconidMayVictory
 	compare VAR_RESULT, TRUE
 	goto_if_eq MossdeepCity_EventScript_DraconidMay_2
-	msgbox MossdeepCity_EventScript_DraconidMay_Text_4
-MossdeepCity_EventScript_DraconidMay_1:
 	msgbox MossdeepCity_EventScript_DraconidMay_Text_5
+MossdeepCity_EventScript_DraconidMay_1:
+	msgbox MossdeepCity_EventScript_DraconidMay_Text_6
 	closemessage
 	applymovement LOCALID_MOSSDEEP_MAY, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
@@ -398,7 +399,7 @@ MossdeepCity_EventScript_DraconidMay_1:
 	return
 
 MossdeepCity_EventScript_DraconidMay_2:
-	msgbox MossdeepCity_EventScript_DraconidMay_Text_3
+	msgbox MossdeepCity_EventScript_DraconidMay_Text_4
 	goto MossdeepCity_EventScript_DraconidMay_1
 
 
@@ -601,19 +602,25 @@ MossdeepCity_EventScript_DraconidMay_Text_1:
 	.string "again!$"
 
 MossdeepCity_EventScript_DraconidMay_Text_2:
-	.string "MAY: He says STEVEN is sticking up for\n"
-	.string "you. …Why would he?\p"
-	.string "Forget it! I'll find out for myself.\n"
-	.string "Battle me!$"
+	.string "MAY: He says STEVEN called you the\n"
+	.string "strongest MAGMA grunt he's ever faced.\p"
+	.string "…Then why do you battle like you've got\n"
+	.string "something to protect?$"
 
 MossdeepCity_EventScript_DraconidMay_Text_3:
+	.string "MAY: Forget it! I'll find out for myself.\p"
+	.string "My dad gave me his KEY STONE. He says\n"
+	.string "BLAZIKEN and I are ready.\p"
+	.string "Battle me!$"
+
+MossdeepCity_EventScript_DraconidMay_Text_4:
 	.string "MAY: MAGMA's going to lose, {PLAYER}.\n"
 	.string "Just like you did.$"
 
-MossdeepCity_EventScript_DraconidMay_Text_4:
+MossdeepCity_EventScript_DraconidMay_Text_5:
 	.string "MAY: Tch… Fine. You win this one.$"
 
-MossdeepCity_EventScript_DraconidMay_Text_5:
+MossdeepCity_EventScript_DraconidMay_Text_6:
 	.string "MAY: Whatever MAGMA does next, BRENDAN\n"
 	.string "and I will be there to stop it.\p"
 	.string "And that means stopping you, too.$"

@@ -437,8 +437,9 @@ RusturfTunnel_Text_GruntIntro:  @ Draconid Emerald
 	.string "Those you'll have to win.$"
 
 RusturfTunnel_Text_GruntDefeat:  @ Draconid Emerald
-	.string "Hm. A second partner.\n"
-	.string "Interesting choice.$"
+	.string "Hm. A second partner.\p"
+	.string "…The old man from KANTO\n"
+	.string "packs well, doesn't he?$"
 
 RusturfTunnel_Text_GruntTakePackage:  @ Draconid Emerald
 	.string "NERINE: Water doesn't need\n"

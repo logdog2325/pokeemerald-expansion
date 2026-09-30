@@ -123,10 +123,11 @@ text Draconid_Text_MaxieCallSpaceCenter {
            "… … … … … Click!", 188)
 }
 
+// After ROUTE 128 the player has seen KYOGRE wake: the news is GROUDON, found in SOOTOPOLIS (D-272)
 text Draconid_Text_MaxieCallSeafloor {
     format("… … … … … …\n… … … … … Beep!\p"
-           "MAXIE: KYOGRE has awakened.\nThe sky over SOOTOPOLIS is black.\p"
-           "{PLAYER}, come to SOOTOPOLIS at once. I need you.\p"
-           "Together, we can still\nset this right.\p"
+           "MAXIE: {PLAYER}.\nI have found GROUDON.\p"
+           "It has risen in SOOTOPOLIS to meet KYOGRE. The two of them will tear the city apart.\p"
+           "Come to SOOTOPOLIS at once.\nI need you at my side.\p"
            "… … … … … Click!", 188)
 }
