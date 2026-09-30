@@ -393,7 +393,7 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   Groudon). The Magma grunt trainers on 1F and the three on 2F stay battles as **rank tests** of the promoted
   rookie (D-103). – Alt: Maxie at the Space Center without battling (he would have to doubt himself before
   Sootopolis, where the add-on has him order the player to help him control Groudon).
-- **D-141 Space Center staging**: Steven and Brendan hold the 2F corner by the fuel, Tabitha faces them; coord
+- **D-141 Space Center staging** *(the aftermath superseded by D-248: Steven no longer knows, Courtney heals after a loss)*: Steven and Brendan hold the 2F corner by the fuel, Tabitha faces them; coord
   triggers across the only way in (x 7, after the grunts) walk the player to Tabitha's side, so the scene can't be
   skipped or talked into from odd angles. Tabitha heals the player's team first (there is no break between the
   rank test and the battle), the player picks three (the vanilla half-party menu), and the battle can't white out.
@@ -410,7 +410,7 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   `MAGMA_STATE_SEAFLOOR` is set when Kyogre wakes (end of the vanilla Archie scene), not at the reveal, because
   Maxie's next PokéNav call says Kyogre is awake. – Alt: a second object for her true look (one more flag); the
   reveal in Room 8 (the boulder room: no free tile beside the exit).
-- **D-143 The Sootopolis turn**: after the vanilla Groudon/Kyogre scene the player surfs to the Gym island and talks
+- **D-143 The Sootopolis turn** *(the reveal staged as a scene, Tabitha and the grunts on the island: D-244)*: after the vanilla Groudon/Kyogre scene the player surfs to the Gym island and talks
   to Maxie; he orders the player to help him control Groudon, the player remembers the Elder's words and takes the
   uniform off (outfit → tamer, `REPUTATION_REVEALED`, `MAGMA_STATE_TURNED`), then **Maxie alone**, then Archie
   joins him and Brendan and May fly in; May heals the team (the Maxie battle came right before), the player picks
@@ -983,3 +983,123 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   tables and only rewrite the texts (vanilla's gates are story events round 1 moved or removed); one table with a
   reputation condition per entry (harder to read). – The playtester asked for the rivals to be hostile while the
   player is in uniform (follow-up 4); the calls were the last friendly lines left.
+- **D-244 The reveal to Maxie is a scene** (feedback 1.43 "that should be a big scene and he should hate you for
+  lying to him"; extends D-143): Tabitha and two Magma grunts stand on the Gym island with Maxie during the crisis
+  (scene-only objects on `FLAG_TEMP_11`, which Sootopolis's OnTransition sets outside `VAR_SOOTOPOLIS_CITY_STATE`
+  2; they are removed after the multi battle). The turn plays in beats: Maxie's order (go to the water's edge with
+  Tabitha, take hold of Groudon together), a thunder crack with a camera shake and a downpour, the player looks out
+  at the fight and remembers the Elder's words, Tabitha barks "Move it!", the hood comes off and the uniform falls
+  under a thunderclap (shake and a *hardware* black fade, `fadescreenswapbuffers`: a palette fade copies the
+  downpour-darkened palettes back as the originals, so the island came back twice as dark – a white one washed
+  out; the same goes for the rivals' landing and Tabitha's exit, and the camera's pan to the fight after the Sky
+  Pillar call now stays under the black)
+  (outfit, `REPUTATION_REVEALED`, `MAGMA_STATE_TURNED` set there), the grunts turn and
+  "!", then Maxie's silence and his realization from what *he* knows: the Draconid colours, the meteorite that "did
+  not slip" from his machine on Mt. Chimney (he blamed Aqua), the fuel tanks that Tabitha reported sealed while the
+  player battled ("I called it bad luck. It was you, every time."). Tabitha steps up – he vouched for the player –
+  and wants to crush the traitor himself; Maxie's "Enough." Then the cold fury in short boxes: "You wore my colors.
+  You ate at my table." / "You stood at my side when I called you my right hand…" / "…and every word was a lie." /
+  "After everything I gave you?!" / "You will pay for every lie you told me." / "GROUDON can wait. First, the
+  traitor." The solo and multi battles are unchanged; their lines follow the hatred ("So the liar comes back",
+  "Beaten again… by that liar?!"), Maxie asks Archie to help him finish the liar and settle their own quarrel after
+  (the pact behind D-245), and the rival who doesn't partner the player now holds off Tabitha and his grunts in view
+  (both rivals end on the tiles the aftermath expects). The vanilla aftermath lines follow: Maxie keeps his broken
+  "Fu… Fuhahaha…" and then "Do not think this is over … I will not forgive it", Archie "MAXIE and I don't agree on
+  much. On you, we might." – Alt: keep the admins off-screen (the note asks for the grunts and Tabitha to react);
+  Steven's "you let us win" in Maxie's list (Maxie never heard it, and D-248 removed it); a Tabitha battle here (the
+  multi is the fight, and Tabitha gets his in Victory Road). – The playtester's note and Maxie's voice (D-210: short
+  and sharp when angered, no speeches).
+  **Around the scene** (the story audit, items 21, 25, 27): Maxie and Archie **keep the Orbs** – the vanilla
+  `MaxieArchieLeave` no longer sends them to Mt. Pyre (the summit's hide flags stay set, `VAR_MT_PYRE_STATE` stays
+  1), Steven says "the ORBS went with them. That worries me more than either of them alone", and the summit's old
+  lady says they never came back (`FLAG_RETURNED_RED_OR_BLUE_ORB` is still checked first, so the finale can hand
+  the Orbs over). The Elder's call after Rayquaza comes **from the Sky Pillar on Nerine's PokéNav** ("I came down
+  to the SKY PILLAR when the sky turned black. NERINE lent me her little talking box."): he has none (D-134), and
+  Aster and Nerine are with him. Nerine's Seafloor reveal builds on Mt. Chimney, where she already said she is
+  Draconid: "You've known what I am since MT. CHIMNEY. Now you'll see who I am." – Alt: keep the vanilla Orb
+  return (then Maxie's revenge and the finale have no Orbs, and the old lady calls them "not so evil"); the Elder
+  on the mountain (he can't call, and Aster and Nerine would be in two places).
+- **D-245 The Aqua gauntlet** (feedback note 13): at the top of the steps from Ever Grande's lower terrace to the
+  flower field (19, 50) / (20, 50) – the only way to Victory Road – five Aqua grunts spring out of the flowers and
+  surround the player (one on the steps behind), then Shelly walks down from the cave: "ARCHIE sends his regards …
+  For once, the two of them agree on something. And that something is you." Six `trainerbattle_no_intro` battles
+  in one locked script, no healing and no way out; a loss whites out (to the Ever Grande Pokémon Center just below, once the player has used it) and
+  the next try starts again from the first grunt: the scene clears the five grunts' trainer flags when it starts,
+  and only Shelly's flag marks it done. Balance ("easy grunts, the admin slightly stronger"): the grunts have 2–3
+  Pokémon at 48–50 (12 in all; the player arrives around 48–50 after Juan, cap 60), no held items or natures, 28
+  IVs as S9 grunts; Shelly has 4 at 51–53 – Pelipper (Drizzle), Crawdaunt, Clawitzer and Mega Gyarados last – with
+  Smart AI but **no bag items**, since the player can't heal between the battles either. – Alt: Shelly with six
+  and two Full Restores like her Seafloor team (a wall after five battles); the gauntlet in Victory Road (1F belongs
+  to the Acts 6–7 work, and a cave loss would send the player back through it); a heal before Shelly (the note
+  says no healing). – The note, and the Pokémon Center one terrace below lets the player prepare first.
+- **D-246 Tabitha and Courtney in Victory Road** (feedback note 12, the coordinator's team spec): the last ladder up
+  from B1F (20, 21) is reached only through the one-tile column x 22 (rows 20–26), so the trigger (22, 23) catches
+  everyone; they come down the ladder, battle as a **two-trainer double** (one usable Pokémon: two singles) and climb
+  back up after the win. Both Mega Evolve – the engine lets each trainer of a two-opponent battle Mega Evolve once
+  (`HasTrainerUsedGimmick` only counts the partner when it's the same trainer): Tabitha's **Mega Charizard Y** (not
+  Camerupt, Maxie's signature; its Drought powers Courtney's **Mega Houndoom**'s Solar Power), Courtney's team is
+  ORAS-Courtney flavoured (Mightyena, Xatu with the screens, Salazzle). Four each at 54–56, above Tabitha's Space
+  Center 44–46, Smart AI, one Full Restore each. Tabitha is bitter (he vouched for the player, "the ADMIN who brought
+  a spy home"), Courtney cold ("Error: mine."; she recruited the player in Petalburg Woods); after losing they point
+  at the finale: "MAXIE knows where you come from now." / "A village up in the mountains … where the dragons nest."
+  / "ARCHIE knows, too. …They talk." / "The DRACONIDS will pay. All of them." – no Orbs named. Courtney's
+  **front pic** (`TRAINER_PIC_COURTNEY`, front only) is the female grunt's pic recoloured by recipe
+  (`tools/hack/art/recipes/courtney_front_pic.json`): lilac hair, the black shirt turned into a dark crimson admin
+  jacket, a gold emblem and belt buckle, the hood's red kept – her D-162 overworld look. – Alt: B2F (not a
+  chokepoint: several ladders lead back); the Magma admin pic for her with a `TODO(art)` (not needed); only
+  Courtney Mega Evolving (not needed).
+- **D-247 Where Team Magma strikes, and in what order** (feedback 1.43 "multiple battles with him and Team Magma
+  grunts after"): (1) two grunts come out of Juan's Gym door behind the player (they watched the battle) – the first
+  step off the doorstep triggers it; (2) two grunts on the landing at the top of Ever Grande's waterfall call out as
+  the player surfs up (the pool row 57); (3) a grunt beside the Ever Grande Pokémon Center door, a sight trainer
+  facing the tile in front of it ("Going to heal up, traitor?"); (4) the Aqua gauntlet; (5) **Maxie #2** walks out
+  of Victory Road's mouth (trigger on its only approach, (18, 43)): "You will not stand as CHAMPION while my work
+  lies in ruins", Mega Camerupt at 58 on a 55–58 team (Mightyena, Crobat, Weezing, Hippowdon, Torkoal) – above
+  Sootopolis's 46–48, at the Elite Four's ace level – and after losing "You have a home, do you not? Somewhere in
+  the mountains … I wonder how your people would bear it, to lose everything as I have."; (6) Tabitha + Courtney in
+  Victory Road B1F, who make his hint explicit; (7) a grunt on the stairs out of Victory Road; (8) the last two
+  grunts in the League's forecourt ((16..20, 14), the only way to the door): "We're the last ones." Maxie's battle
+  #3 is the Primal Groudon finale at the Draconid village after the Sky Pillar (built by the finale work).
+  Five Magma grunt fights, three of them doubles, 48–55 rising along the way (S9 route band), one Gen 4–9
+  fire/ground/rock newcomer each (D-242). Every scene is on the only way on (the Sootopolis one: every player leaves
+  the Gym through that door; Fly from the doorstep skips it, not a lock) and none locks it: a loss whites out and the
+  scene waits again; beaten, the grunts leave. The **sea routes** get no ambush: there is no surfing Magma sprite,
+  no grunt can stand on water and see a surfing player (elevation), and Routes 126–128 are open sea with no
+  chokepoint – the landing at the top of the waterfall is the first land after the sea. Maxie waits at Victory
+  Road's **mouth**, not at the League door: the Pokémon Center is a terrace below, so the player can heal after the
+  gauntlet; at the door he would come straight out of Victory Road with nothing to heal at. – Alt: grunts on Route
+  128's sandbars (off the way, easy to miss); Maxie at the League door (no heal after Victory Road).
+- **D-248 The Space Center follows the battle's outcome, and nobody outside the clan knows** (the playtester's
+  correction to feedback 1.45; supersedes D-141's aftermath): **won** – Tabitha gloats, the tanks turn out sealed,
+  Tabitha grumbles that the grunt "took their sweet time", Courtney notes it; Steven: "You're the strongest TEAM
+  MAGMA grunt I have ever faced … Strange. You battle like someone with something to protect."; Brendan, furious
+  they lost to Magma, storms off. **Lost** – Steven and Brendan get their victory lines right after the battle
+  (`multi_2_vs_2` has no victory text), Tabitha blames the "useless grunt", the tanks are sealed, **Courtney** walks
+  over and heals the team, coldly ("…Pathetic. Two against two, and you lost." / "…Hold still."); Steven's
+  "strongest grunt" line; Brendan gloats and storms off. Courtney watches the raid from (6, 8) (an object on the
+  Magma raid's hide flag, removed with them). Steven no longer heals the player or says "I know you let us win";
+  his last line wonders instead ("…I wonder what you care about"). The rule for every line, in
+  [hack_voices.md](hack_voices.md): until Sootopolis only the Draconids, Prof. Birch and Prof. Oak know the mission;
+  others may suspect. Brendan's Match Call that quoted Steven's "you let us win" now quotes the "strongest grunt"
+  line. Still to align (other work's files): Steven's Route 120 "Keep your head down. I'm watching MAXIE, too."
+  Brendan's Mega Sceptile has a Key Stone because "STEVEN lent me a KEY STONE for today" (Steven, a Mega user,
+  stands beside him; nothing explained it before). Steven's HM Dive for a Magma grunt has a reason he says
+  out loud: "I can't chase MAXIE and ARCHIE both" at the Space Center; at home "Your MAGMA wants ARCHIE stopped. So
+  do I. For today, that will have to be enough. … Don't make me regret it." (his "I won't ask who you really work
+  for" knew too much).
+  – Alt: keep Steven's knowing line (the playtester said no); Tabitha hands over HM Dive for Maxie (Steven's house
+  scene would lose its reason to exist, and Maxie's call already sends the player after Archie).
+- **D-249 Trainer ids and flags for the revenge**: ids 937–953 in story order (954–956 stay free; the finale uses
+  957+), `TRAINERS_COUNT_EMERALD` 954, `MAX_TRAINERS_COUNT_EMERALD` 944 → **960**. The 16 extra trainer flags fit
+  in `SaveBlock1`'s padding (still 15580 bytes, `test/save.c`), but the system flags move up by 16, so older saves
+  don't carry over (as with D-101, D-229). No saved flag or state value is used: each scene is done when its
+  (last) trainer is beaten, and scene objects and trigger arms are temp flags / vars set in each map's OnTransition
+  (Sootopolis `FLAG_TEMP_11/12`, `VAR_TEMP_3`; Ever Grande `FLAG_TEMP_11`–`_17`, `VAR_TEMP_2`–`_6`; Victory Road
+  B1F `FLAG_TEMP_18`, the one its boulders and rocks leave free, `VAR_TEMP_2`), so the free flags 0x36–0x38 and 0x44
+  stay free. Every scene stops once the player is Champion (`FLAG_IS_CHAMPION`). No hostile lines or rematches for
+  the Magma Hideout / Mt. Chimney / Jagged Pass grunts (optional in the brief): nobody is left there by the reveal –
+  vanilla hides them all (`FLAG_HIDE_MT_CHIMNEY_TEAM_MAGMA` after Act 3's scene, `FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS`
+  when Groudon escapes, `FLAG_HIDE_JAGGED_PASS_MAGMA_GUARD` when the guard lets the player in) – so the grunts'
+  hatred is carried by the new ambushes instead. – Alt: a `VAR_MAGMA_STATE` value per scene (the tests set the
+  state numbers literally; trainer flags already say it); bringing the hideout grunts back for rematches (three
+  ids left, and the hideout is off the way to the League).

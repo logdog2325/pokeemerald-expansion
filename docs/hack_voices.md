@@ -24,6 +24,14 @@ decisions D-210 – D-212 in [hack_decisions.md](hack_decisions.md); the lines a
 - **Wrap by hand where it matters**: `format()` fills lines greedily; a `\n` in the string keeps a name on one
   line ("MT. CHIMNEY") and avoids a one-word last line.
 
+## Who knows the player's mission (applies to every line)
+Until the public reveal at Sootopolis, **only the Draconids (the Elder, Aster, Nerine, the villagers), Prof. Birch
+and Prof. Oak know** that the player is undercover. Everyone else may *suspect* – May's small crack, Steven's
+puzzlement ("You're the strongest TEAM MAGMA grunt I have ever faced… Strange. You battle like someone with
+something to protect."), Tabitha grumbling that the grunt "took their sweet time" – but nobody outside that circle
+says or shows that they *know* ("I know you let us win", "keep your head down", "I'll cover for you"). After the
+uniform comes off in front of Maxie, everyone knows. (The playtester's correction, D-248.)
+
 ## Brendan and May while the player wears red
 From Rustboro to the Sootopolis turn (`REPUTATION_UNIFORM`) the rivals don't know the player's mission, so they
 treat them as an **enemy of HOENN**: they want to stop TEAM MAGMA and protect people, and they are angry the
