@@ -99,8 +99,8 @@ text Draconid_Text_BrendanCallUniform4 {
 
 text Draconid_Text_BrendanCallUniform5 {
     format("BRENDAN: I've got nothing to say to you.\p"
-           "STEVEN says you let us win at the SPACE CENTER. I don't buy it.\p"
-           "…Why would a MAGMA grunt do that?", 188)
+           "STEVEN says you're the strongest MAGMA grunt he's ever faced.\p"
+           "…So why waste it on them?", 188)
 }
 
 // --- Brendan, after the Sootopolis turn ---

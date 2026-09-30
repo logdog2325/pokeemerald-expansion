@@ -1044,3 +1044,10 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   tables and only rewrite the texts (vanilla's gates are story events round 1 moved or removed); one table with a
   reputation condition per entry (harder to read). – The playtester asked for the rivals to be hostile while the
   player is in uniform (follow-up 4); the calls were the last friendly lines left.
+- **D-244a Who knows the player's mission** (follow-up 20): until the public reveal at Sootopolis only the Draconids
+  (the Elder, Aster, Nerine, the villagers), Prof. Birch and Prof. Oak know the player is undercover. Everyone else
+  may suspect – May's small crack, Steven thinking the player is "the strongest TEAM MAGMA grunt he's ever faced" –
+  but never knows. Oak says so at Rustboro (the Elder's letter told Birch, Birch told Oak, nobody else; Brendan
+  mustn't know yet); Brendan's Space Center call quotes Steven's "strongest grunt" instead of "you let us win".
+  – Alt: Steven guesses the truth at the Space Center (the earlier version). – The playtester: "I don't think anybody
+  should know that you're undercover besides the Draconids and Birch and Oak."

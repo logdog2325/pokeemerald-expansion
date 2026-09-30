@@ -188,3 +188,6 @@ Petalburg Woods recruitment/outfit change, Maxie's first meeting at Meteor Falls
 
 ### Follow-up note 19 (round 1)
 - "Also make sure that there is dialogue in case you win or lose against Steven at Moss Steve that matches the story and events of either if you lost or you won"
+
+### Follow-up note 20 (round 1)
+- "Sorry but slight change. I don't think Steven should know that you're undercover. Maybe he should say something like you're like the strongest team magma grant I faced or something like that and maybe have a little bit of the suspicion but yeah and I don't think he should heal your Pokémon after you lose too. I think it should like Courtney should do it and she should be mad at you for losing, but still heal your Pokémon yeah I don't think anybody should know that you're undercover besides the  Draconids and birch and oak"

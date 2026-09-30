@@ -112,12 +112,12 @@ text RustboroCity_Text_DraconidOakHello {
 }
 
 text RustboroCity_Text_DraconidOakUniform {
-    format("PROF. OAK: …Hm? But that red uniform. TEAM MAGMA, isn't it? And the fellow you were just talking to…\p"
-           "BIRCH warned me. His boy BRENDAN came home terribly upset about it.\p"
-           "But BIRCH told me something else, too.\p"
-           "“I saw how that child protected me on ROUTE 101. I'll trust that version of them.”\p"
-           "I've studied POKéMON for a long time, {PLAYER}. A POKéMON knows its TRAINER's heart better than any uniform.\p"
-           "And your dragon trusts you. That's good enough for me!")
+    format("PROF. OAK: …And that red uniform. Ahem. Yes.\p"
+           "Your ELDER's letter told BIRCH why you wear it, and BIRCH told me. Nobody else, mind you.\p"
+           "Your secret is safe with two old men, {PLAYER}.\p"
+           "BRENDAN came home terribly upset about it. He doesn't know, and for now he mustn't.\p"
+           "It won't be easy, letting your friends think the worst of you. But your dragon knows your heart.\p"
+           "That's good enough for me!")
 }
 
 text RustboroCity_Text_DraconidOakGift {

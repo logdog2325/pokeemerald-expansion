@@ -412,12 +412,12 @@ Draconid Emerald: Prof. Oak's second partner after the first Gym (Phase 4; round
 - PROF. OAK: Ah, {PLAYER}! So you're the young dragon tamer BIRCH told me about!
 - I'm OAK. I study POKéMON in PALLET TOWN, far away in KANTO.
 - I'm in HOENN visiting my old friend BIRCH. And I watched your GYM battle through the window. Splendid!
-- PROF. OAK: …Hm? But that red uniform. TEAM MAGMA, isn't it? And the fellow you were just talking to…
-- BIRCH warned me. His boy BRENDAN came home terribly upset about it.
-- But BIRCH told me something else, too.
-- “I saw how that child protected me on ROUTE 101. I'll trust that version of them.”
-- I've studied POKéMON for a long time, {PLAYER}. A POKéMON knows its TRAINER's heart better than any uniform.
-- And your dragon trusts you. That's good enough for me!
+- PROF. OAK: …And that red uniform. Ahem. Yes.
+- Your ELDER's letter told BIRCH why you wear it, and BIRCH told me. Nobody else, mind you.
+- Your secret is safe with two old men, {PLAYER}.
+- BRENDAN came home terribly upset about it. He doesn't know, and for now he mustn't.
+- It won't be easy, letting your friends think the worst of you. But your dragon knows your heart.
+- That's good enough for me!
 - PROF. OAK: Now then! Your ELDER wrote to BIRCH before you came down the mountain.
 - Draconid tamers raise a second partner from a faraway land, to learn balance.
 - So I brought three POKéMON with me, each from a land I know well. Go on, choose!
@@ -1479,8 +1479,8 @@ Draconid Emerald: Brendan's and May's PokéNav Match Call texts (D-243). The Pok
 
 ### `Draconid_Text_BrendanCallUniform5`
 - BRENDAN: I've got nothing to say to you.
-- STEVEN says you let us win at the SPACE CENTER. I don't buy it.
-- …Why would a MAGMA grunt do that?
+- STEVEN says you're the strongest MAGMA grunt he's ever faced.
+- …So why waste it on them?
 
 ### `Draconid_Text_BrendanCallRevealed1`
 - BRENDAN: Hey, {PLAYER}. …So, uh. Go beat JUAN.

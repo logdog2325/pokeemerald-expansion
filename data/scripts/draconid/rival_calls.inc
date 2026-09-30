@@ -105,9 +105,9 @@ Draconid_Text_BrendanCallUniform4::
 Draconid_Text_BrendanCallUniform5::
 	.string "BRENDAN: I've got nothing to say to\n"
 	.string "you.\p"
-	.string "STEVEN says you let us win at the\n"
-	.string "SPACE CENTER. I don't buy it.\p"
-	.string "…Why would a MAGMA grunt do that?$"
+	.string "STEVEN says you're the strongest\n"
+	.string "MAGMA grunt he's ever faced.\p"
+	.string "…So why waste it on them?$"
 
 Draconid_Text_BrendanCallRevealed1::
 	.string "BRENDAN: Hey, {PLAYER}. …So, uh. Go\n"
