@@ -413,6 +413,7 @@ PetalburgCity_Gym_EventScript_GiveFacade::
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
 	setflag FLAG_RECEIVED_TM_FACADE
 	msgbox PetalburgCity_Gym_Text_ExplainFacade, MSGBOX_DEFAULT
+	call Draconid_EventScript_GymBoosterNorman  @ Draconid Emerald (battle_items.pory, D-220)
 	return
 
 PetalburgCity_Gym_EventScript_WallysDadArrivesNorth::

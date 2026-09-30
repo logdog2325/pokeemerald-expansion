@@ -6,7 +6,8 @@ This is the resume point for any new session. Legend: `[x]` done, `[~]` in progr
 Base: pokeemerald-expansion 1.17.1 (`master` @ dfb0f843). Working branch: `draconid-emerald`.
 Other docs: [decisions](hack_decisions.md) · [changes](hack_changes.md) · [tools](hack_tools.md) ·
 [art pipeline](hack_art_pipeline.md) · [trainers](hack_trainers.md) · [wild Pokémon](hack_wild.md) · [resources](hack_resources.md) ·
-[playtest guide](playtest_guide.md) · [feedback](hack_feedback.md)
+[playtest guide](playtest_guide.md) · [feedback](hack_feedback.md) ·
+[items: evolutions, battle items, Mega Stones](hack_items.md)
 
 ## Where things stand
 **v1** (all seven phases, commit 94f937d3) was handed to the playtester. **Round 1** brought the full story
@@ -49,6 +50,9 @@ menu) → `pokeemerald.gba`, `make release` → `pokeemerald-release.gba`; zippe
 - [x] Gens 4–9 in the wild and on generic trainers (feedback 1.28, D-193–D-197): 95 species in 281 wild slots, Beldum
       1% on every Granite Cave floor, National Dex from Birch's lab, 122 generic trainers with a Gen 4–9 swap
       (ORAS rosters where known); `check_wild.py`, `wild.play` ([hack_wild.md](hack_wild.md))
+- [x] Follow-up 3 (1.31, 1.33): no trade evolutions (level evolutions, D-216/D-217), a battle item counter in
+      every Mart whose stock grows with the badges, Gym Leader boosters, Mega Stones after the Mega Ring (placed
+      and sold, D-218–D-222) – [hack_items.md](hack_items.md); `trade_evos.play`, `battle_items.play`
 - [ ] Verification (matrix incl. Nerine/Aster variants, story checks, per-act debug warps) + v2 ROM
 
 ## Phase 0 – Tools and extensions

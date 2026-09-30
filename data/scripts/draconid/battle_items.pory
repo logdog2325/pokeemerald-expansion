@@ -1,0 +1,270 @@
+// Draconid Emerald round 1, feedback 1.33 (D-218 – D-222): battle items and Mega Stones through the story.
+//
+// A second clerk behind the counter of every Poké Mart (and a third on the Lilycove Department Store 3F)
+// runs the BATTLE ITEM counter. Its stock grows with the number of Gym Badges, so it follows the level caps
+// (src/caps.c): type boosters from the start, Choice items and the first Mega Stones at six badges, the rest
+// of the competitive items at eight, the remaining Mega Stones after the Champion. Tier table and prices:
+// docs/hack_items.md. The Gym Leaders also hand over their type's booster with their TM (D-220).
+
+// ---------------------------------------------------------------------------
+// The counter clerk (map.json objects in the Marts point here)
+// ---------------------------------------------------------------------------
+script Draconid_EventScript_BattleItemClerk {
+    lock
+    faceplayer
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        message(Draconid_Text_BattleItemGreetingUniform)
+    } elif (var(VAR_DRACONID_REPUTATION) == REPUTATION_REVEALED) {
+        message(Draconid_Text_BattleItemGreetingRevealed)
+    } else {
+        message(Draconid_Text_BattleItemGreeting)
+    }
+    waitmessage
+    call(Draconid_EventScript_CountBadges)
+    if (flag(FLAG_IS_CHAMPION)) {
+        pokemart(Draconid_BattleItems_PostGame)
+    } elif (var(VAR_RESULT) >= BATTLE_ITEMS_TIER_5_BADGES) {
+        pokemart(Draconid_BattleItems_Tier5)
+    } elif (var(VAR_RESULT) >= BATTLE_ITEMS_TIER_4_BADGES) {
+        pokemart(Draconid_BattleItems_Tier4)
+    } elif (var(VAR_RESULT) >= BATTLE_ITEMS_TIER_3_BADGES) {
+        pokemart(Draconid_BattleItems_Tier3)
+    } elif (var(VAR_RESULT) >= BATTLE_ITEMS_TIER_2_BADGES) {
+        pokemart(Draconid_BattleItems_Tier2)
+    } else {
+        pokemart(Draconid_BattleItems_Tier1)
+    }
+    call(Draconid_EventScript_MartGoodbye)
+    release
+    end
+}
+
+// VAR_RESULT = the number of Gym Badges (any order)
+script Draconid_EventScript_CountBadges {
+    setvar(VAR_RESULT, 0)
+    if (flag(FLAG_BADGE01_GET)) { addvar(VAR_RESULT, 1) }
+    if (flag(FLAG_BADGE02_GET)) { addvar(VAR_RESULT, 1) }
+    if (flag(FLAG_BADGE03_GET)) { addvar(VAR_RESULT, 1) }
+    if (flag(FLAG_BADGE04_GET)) { addvar(VAR_RESULT, 1) }
+    if (flag(FLAG_BADGE05_GET)) { addvar(VAR_RESULT, 1) }
+    if (flag(FLAG_BADGE06_GET)) { addvar(VAR_RESULT, 1) }
+    if (flag(FLAG_BADGE07_GET)) { addvar(VAR_RESULT, 1) }
+    if (flag(FLAG_BADGE08_GET)) { addvar(VAR_RESULT, 1) }
+    return
+}
+
+text Draconid_Text_BattleItemGreeting {
+    format("Welcome to the BATTLE ITEM counter!\p"
+           "The more GYM BADGES you carry, the stronger the items I'm allowed to sell you.")
+}
+
+text Draconid_Text_BattleItemGreetingUniform {
+    format("…Battle items for TEAM MAGMA. Wonderful.\p"
+           "Rules are rules. Your BADGES decide what I sell you. Not your uniform.")
+}
+
+text Draconid_Text_BattleItemGreetingRevealed {
+    format("{PLAYER}! Everyone's talking about what you did in SOOTOPOLIS!\p"
+           "Here, have a look. Everything your BADGES allow!")
+}
+
+// ---------------------------------------------------------------------------
+// The stock: ONE list, newest tier first. Each tier's label starts its own new items and runs on through
+// every lower tier to the single ITEM_NONE, so a tier sells everything below it and its new items come
+// first in the shop. Tier badge counts: BATTLE_ITEMS_TIER_*_BADGES (include/constants/draconid.h).
+// Mega Stones only for Pokémon the player can get (docs/hack_items.md; recheck against the wild tables).
+// ---------------------------------------------------------------------------
+raw `
+	.align 2
+Draconid_BattleItems_PostGame::
+	.2byte ITEM_SALAMENCITE
+	.2byte ITEM_LATIASITE
+	.2byte ITEM_LATIOSITE
+	.2byte ITEM_GALLADITE
+	.2byte ITEM_BLAZIKENITE
+	.2byte ITEM_SCEPTILITE
+	.2byte ITEM_CHARIZARDITE_X
+	.2byte ITEM_FERALIGITE
+	.2byte ITEM_GARCHOMPITE_Z
+Draconid_BattleItems_Tier5::
+	.2byte ITEM_CHARIZARDITE_Y
+	.2byte ITEM_SKARMORITE
+	.2byte ITEM_STARMINITE
+	.2byte ITEM_CHIMECHITE
+	.2byte ITEM_PYROARITE
+	.2byte ITEM_GOLISOPITE
+	.2byte ITEM_BARBARACITE
+	.2byte ITEM_DRAGALGITE
+	.2byte ITEM_GLIMMORANITE
+	.2byte ITEM_GOLURKITE
+	.2byte ITEM_RAICHUNITE_X
+	.2byte ITEM_RAICHUNITE_Y
+	.2byte ITEM_ABSOLITE_Z
+	.2byte ITEM_LOADED_DICE
+	.2byte ITEM_CLEAR_AMULET
+	.2byte ITEM_MIRROR_HERB
+	.2byte ITEM_PUNCHING_GLOVE
+	.2byte ITEM_THROAT_SPRAY
+	.2byte ITEM_BLUNDER_POLICY
+	.2byte ITEM_ROOM_SERVICE
+	.2byte ITEM_EJECT_PACK
+	.2byte ITEM_PROTECTIVE_PADS
+	.2byte ITEM_UTILITY_UMBRELLA
+	.2byte ITEM_ABILITY_SHIELD
+	.2byte ITEM_TERRAIN_EXTENDER
+	.2byte ITEM_ELECTRIC_SEED
+	.2byte ITEM_GRASSY_SEED
+	.2byte ITEM_MISTY_SEED
+	.2byte ITEM_PSYCHIC_SEED
+	.2byte ITEM_DAMP_ROCK
+	.2byte ITEM_HEAT_ROCK
+	.2byte ITEM_SMOOTH_ROCK
+	.2byte ITEM_ICY_ROCK
+	.2byte ITEM_FLAME_ORB
+	.2byte ITEM_TOXIC_ORB
+	.2byte ITEM_ZOOM_LENS
+	.2byte ITEM_RAZOR_CLAW
+	.2byte ITEM_BRIGHT_POWDER
+	.2byte ITEM_FOCUS_BAND
+	.2byte ITEM_SHED_SHELL
+	.2byte ITEM_GRIP_CLAW
+	.2byte ITEM_BINDING_BAND
+	.2byte ITEM_IRON_BALL
+	.2byte ITEM_LAGGING_TAIL
+	.2byte ITEM_STICKY_BARB
+	.2byte ITEM_METRONOME
+	.2byte ITEM_ABSORB_BULB
+	.2byte ITEM_CELL_BATTERY
+	.2byte ITEM_LUMINOUS_MOSS
+	.2byte ITEM_SNOWBALL
+	.2byte ITEM_ADRENALINE_ORB
+Draconid_BattleItems_Tier4::
+	.2byte ITEM_ALAKAZITE
+	.2byte ITEM_AGGRONITE
+	.2byte ITEM_MAWILITE
+	.2byte ITEM_SABLENITE
+	.2byte ITEM_GARDEVOIRITE
+	.2byte ITEM_ALTARIANITE
+	.2byte ITEM_PINSIRITE
+	.2byte ITEM_HERACRONITE
+	.2byte ITEM_EXCADRITE
+	.2byte ITEM_STARAPTITE
+	.2byte ITEM_HAWLUCHANITE
+	.2byte ITEM_CHANDELURITE
+	.2byte ITEM_CHOICE_BAND
+	.2byte ITEM_CHOICE_SPECS
+	.2byte ITEM_CHOICE_SCARF
+	.2byte ITEM_LIFE_ORB
+	.2byte ITEM_ASSAULT_VEST
+	.2byte ITEM_WEAKNESS_POLICY
+	.2byte ITEM_HEAVY_DUTY_BOOTS
+	.2byte ITEM_SAFETY_GOGGLES
+	.2byte ITEM_COVERT_CLOAK
+Draconid_BattleItems_Tier3::
+	.2byte ITEM_LEFTOVERS
+	.2byte ITEM_BLACK_SLUDGE
+	.2byte ITEM_ROCKY_HELMET
+	.2byte ITEM_EXPERT_BELT
+	.2byte ITEM_FOCUS_SASH
+	.2byte ITEM_EVIOLITE
+	.2byte ITEM_AIR_BALLOON
+	.2byte ITEM_EJECT_BUTTON
+	.2byte ITEM_RED_CARD
+	.2byte ITEM_WHITE_HERB
+	.2byte ITEM_MENTAL_HERB
+	.2byte ITEM_POWER_HERB
+Draconid_BattleItems_Tier2::
+	.2byte ITEM_MUSCLE_BAND
+	.2byte ITEM_WISE_GLASSES
+	.2byte ITEM_QUICK_CLAW
+	.2byte ITEM_SCOPE_LENS
+	.2byte ITEM_WIDE_LENS
+	.2byte ITEM_SHELL_BELL
+	.2byte ITEM_BIG_ROOT
+	.2byte ITEM_LIGHT_CLAY
+	.2byte ITEM_KINGS_ROCK
+	.2byte ITEM_DEEP_SEA_TOOTH
+	.2byte ITEM_DEEP_SEA_SCALE
+	.2byte ITEM_EVERSTONE
+Draconid_BattleItems_Tier1::
+	.2byte ITEM_SILK_SCARF
+	.2byte ITEM_CHARCOAL
+	.2byte ITEM_MYSTIC_WATER
+	.2byte ITEM_MIRACLE_SEED
+	.2byte ITEM_MAGNET
+	.2byte ITEM_NEVER_MELT_ICE
+	.2byte ITEM_BLACK_BELT
+	.2byte ITEM_POISON_BARB
+	.2byte ITEM_SOFT_SAND
+	.2byte ITEM_SHARP_BEAK
+	.2byte ITEM_TWISTED_SPOON
+	.2byte ITEM_SILVER_POWDER
+	.2byte ITEM_HARD_STONE
+	.2byte ITEM_SPELL_TAG
+	.2byte ITEM_DRAGON_FANG
+	.2byte ITEM_BLACK_GLASSES
+	.2byte ITEM_METAL_COAT
+	.2byte ITEM_FAIRY_FEATHER
+	.2byte ITEM_NONE
+`
+
+// ---------------------------------------------------------------------------
+// Gym Leaders: their type's booster after the TM (D-220). Called from each gym's TM script right after the
+// TM flag is set (both vanilla paths: straight after the battle, and on a later visit if the bag was full).
+// A full bag only costs the booster; the counter sells it too.
+// ---------------------------------------------------------------------------
+script Draconid_EventScript_GymBoosterRoxanne {
+    msgbox(format("ROXANNE: Please take this HARD STONE as well.\p"
+                  "Held by a POKéMON, it strengthens ROCK-type moves."))
+    giveitem(ITEM_HARD_STONE)
+    return
+}
+
+script Draconid_EventScript_GymBoosterBrawly {
+    msgbox(format("BRAWLY: Oh, and grab this BLACK BELT, too!\p"
+                  "Hold it, and your FIGHTING-type moves hit like a big wave!"))
+    giveitem(ITEM_BLACK_BELT)
+    return
+}
+
+script Draconid_EventScript_GymBoosterWattson {
+    msgbox(format("WATTSON: Wahahahaha! Take this MAGNET as well!\p"
+                  "It charges up ELECTRIC-type moves. Zap!"))
+    giveitem(ITEM_MAGNET)
+    return
+}
+
+script Draconid_EventScript_GymBoosterFlannery {
+    msgbox(format("FLANNERY: And… take this CHARCOAL, too.\p"
+                  "It makes FIRE-type moves burn hotter. Use it well!"))
+    giveitem(ITEM_CHARCOAL)
+    return
+}
+
+script Draconid_EventScript_GymBoosterNorman {
+    msgbox(format("NORMAN: Take this SILK SCARF, too.\p"
+                  "It strengthens NORMAL-type moves. Simple, and strong."))
+    giveitem(ITEM_SILK_SCARF)
+    return
+}
+
+script Draconid_EventScript_GymBoosterWinona {
+    msgbox(format("WINONA: Please accept this SHARP BEAK as well.\p"
+                  "It lends strength to FLYING-type moves."))
+    giveitem(ITEM_SHARP_BEAK)
+    return
+}
+
+script Draconid_EventScript_GymBoosterTateAndLiza {
+    msgbox(format("TATE: We have one more gift for you…\p"
+                  "LIZA: …a TWISTED SPOON! It sharpens PSYCHIC-type moves!"))
+    giveitem(ITEM_TWISTED_SPOON)
+    return
+}
+
+script Draconid_EventScript_GymBoosterJuan {
+    msgbox(format("JUAN: Please, accept this MYSTIC WATER as well.\p"
+                  "It lends grace to WATER-type moves."))
+    giveitem(ITEM_MYSTIC_WATER)
+    return
+}

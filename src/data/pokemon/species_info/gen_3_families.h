@@ -9101,8 +9101,8 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .teachableLearnset = sFeebasTeachableLearnset,
         .eggMoveLearnset = sFeebasEggMoveLearnset,
         .evolutions = EVOLUTION({EVO_LEVEL, 0, SPECIES_MILOTIC, CONDITIONS({IF_MIN_BEAUTY, 170})},
-                                {EVO_TRADE, 0, SPECIES_MILOTIC, CONDITIONS({IF_HOLD_ITEM, ITEM_PRISM_SCALE})},
-                                {EVO_ITEM, ITEM_PRISM_SCALE, SPECIES_MILOTIC}),
+                                // Draconid Emerald (D-216): was a trade holding a Prism Scale (and a Prism Scale from the bag)
+                                {EVO_LEVEL, DRACONID_TRADE_EVO_LEVEL_MID, SPECIES_MILOTIC}),
     },
 
     [SPECIES_MILOTIC] =
@@ -9984,8 +9984,8 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .levelUpLearnset = sDusclopsLevelUpLearnset,
         .teachableLearnset = sDusclopsTeachableLearnset,
     #if P_GEN_4_CROSS_EVOS
-        .evolutions = EVOLUTION({EVO_TRADE, 0, SPECIES_DUSKNOIR, CONDITIONS({IF_HOLD_ITEM, ITEM_REAPER_CLOTH})},
-                                {EVO_ITEM, ITEM_REAPER_CLOTH, SPECIES_DUSKNOIR}),
+        // Draconid Emerald (D-216): was a trade holding a Reaper Cloth (and a Reaper Cloth from the bag)
+        .evolutions = EVOLUTION({EVO_LEVEL, DRACONID_TRADE_EVO_LEVEL_HIGH, SPECIES_DUSKNOIR}),
     #endif
     },
 
@@ -11275,10 +11275,9 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .levelUpLearnset = sClamperlLevelUpLearnset,
         .teachableLearnset = sClamperlTeachableLearnset,
         .eggMoveLearnset = sClamperlEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_TRADE, 0, SPECIES_HUNTAIL, CONDITIONS({IF_HOLD_ITEM, ITEM_DEEP_SEA_TOOTH})},
-                                {EVO_TRADE, 0, SPECIES_GOREBYSS, CONDITIONS({IF_HOLD_ITEM, ITEM_DEEP_SEA_SCALE})},
-                                {EVO_ITEM, ITEM_DEEP_SEA_TOOTH, SPECIES_HUNTAIL},
-                                {EVO_ITEM, ITEM_DEEP_SEA_SCALE, SPECIES_GOREBYSS}),
+        // Draconid Emerald (D-217): were trades holding the Deep Sea Tooth / Scale (and those items from the bag)
+        .evolutions = EVOLUTION({EVO_LEVEL, DRACONID_TRADE_EVO_LEVEL_MID, SPECIES_HUNTAIL, CONDITIONS({IF_HOLD_ITEM, ITEM_DEEP_SEA_TOOTH})},
+                                {EVO_LEVEL, DRACONID_TRADE_EVO_LEVEL_MID, SPECIES_GOREBYSS, CONDITIONS({IF_HOLD_ITEM, ITEM_DEEP_SEA_SCALE})}),
     },
 
     [SPECIES_HUNTAIL] =

@@ -32,6 +32,20 @@
 // The three dragon egg lines evolve earlier than in the core games (round 1, D-107)
 #define DRACONID_EVO_LEVEL_MIDDLE      25 // Deino -> Zweilous, Dreepy -> Drakloak, Jangmo-o -> Hakamo-o
 #define DRACONID_EVO_LEVEL_FINAL       50 // Zweilous -> Hydreigon, Drakloak -> Dragapult, Hakamo-o -> Kommo-o
+// No trade evolutions (round 1, D-216): they happen at a level picked by the evolved form's base stat total,
+// next to Hoenn's own level-up evolutions of that power and the level caps (src/caps.c); a held item is only
+// needed where it picks a branch (D-217). Table: docs/hack_items.md, tools/hack/check_evos.py.
+#define DRACONID_TRADE_EVO_LEVEL_LOW   30 // up to ~480 (Sharpedo/Crawdaunt band): Trevenant, Aromatisse, Slurpuff
+#define DRACONID_TRADE_EVO_LEVEL_MID   36 // ~485-515 (the Hoenn starters' final stage): Alakazam, Machamp, Golem, Gengar ...
+#define DRACONID_TRADE_EVO_LEVEL_HIGH  42 // ~525-540 (Aggron, Glalie): Kingdra, Electivire, Magmortar, Dusknoir, Porygon-Z
+#define DRACONID_TRADE_EVO_LEVEL_LATE  48 // Rhyperior (Rhydon itself comes at 42)
+// The battle item counter in every Poké Mart (round 1, D-218): its stock grows with the number of Gym Badges
+// (data/scripts/draconid/battle_items.pory, docs/hack_items.md). Tier 1 is always open; the post-game tier
+// opens with FLAG_IS_CHAMPION.
+#define BATTLE_ITEMS_TIER_2_BADGES     2 // + Scope Lens, Muscle Band, Light Clay ..., the branch items (D-217)
+#define BATTLE_ITEMS_TIER_3_BADGES     4 // + Leftovers, Rocky Helmet, Focus Sash, Eviolite, the herbs ...
+#define BATTLE_ITEMS_TIER_4_BADGES     6 // + Choice items, Life Orb, Assault Vest ...; the first Mega Stones
+#define BATTLE_ITEMS_TIER_5_BADGES     8 // + every other competitive item; more Mega Stones
 
 // VAR_SECOND_STARTER: Prof. Birch's gift after the first Gym
 #define SECOND_STARTER_NONE            0

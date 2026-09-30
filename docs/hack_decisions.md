@@ -698,3 +698,90 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   as the player will (legs 1.10–1.12, 3.07–3.08, 5.12–5.14). – Alt: hand out Strength in a story scene; open the
   Sootopolis Gym door with the turn. – None of them blocks the way on: the player passes them, or is told on the
   spot by the vanilla lines, and changing them would rework vanilla content no feedback asks about.
+- **D-216 No trade evolutions** (feedback 1.31): every `EVO_TRADE` (30 entries, Karrablast/Shelmet's
+  trade-partner ones included) is a level evolution. **Rule**: the level follows the evolved form's base stat total,
+  next to Hoenn's own level-up evolutions of that power, so it lands in the matching level-cap segment
+  (`src/caps.c`): up to ~480 → **30** (`DRACONID_TRADE_EVO_LEVEL_LOW`; Sharpedo/Crawdaunt, the Flannery cap) –
+  Trevenant, Aromatisse, Slurpuff; ~485–515 → **36** (`_MID`; the Hoenn starters' final stage, the Winona segment)
+  – Alakazam, Machamp, Golem (and Alolan), Gengar, Gigalith, Conkeldurr, Gourgeist (4 sizes), Escavalier,
+  Accelgor, Steelix, Scizor, Porygon2, Politoed, Huntail, Gorebyss; ~525–540 → **42** (`_HIGH`; Aggron, Glalie, the
+  Tate & Liza segment) – Kingdra, Electivire, Magmortar, Dusknoir, Porygon-Z; Rhyperior **48** (`_LATE`: Rhydon
+  itself comes at 42). Exceptions: **Slowking 37** (Slowbro's level, D-217); **Milotic 36** although it is a 540 –
+  Feebas lives only on Route 119 (cap 38) and, like Magikarp, its weak first stage is the price (Beauty still works).
+  The expansion's "use the item from the bag" shortcuts on these lines (Linking Cord, Metal Coat, King's Rock,
+  Dragon Scale, Up-Grade, Protector, …) are removed so the level is the one rule: Metal Coat and King's Rock are
+  sold from the first counter tiers (D-218) and would otherwise make Steelix or Slowking at any level. Everstone:
+  `P_KADABRA_EVERSTONE` is `GEN_3`, so an Everstone stops Kadabra like any other (the Gen 4 exception was a trade
+  quirk). In-game trades and link trades just never evolve now; the Pokédex does not show methods
+  (`POKEDEX_PLUS_HGSS` is off). `tools/hack/check_evos.py` checks and prints the table (docs/hack_items.md).
+  Trainers: `check_party.py` has 0 errors; 11 new warnings are generic trainers 1–2 levels under the new levels
+  (Kira & Dan's Huntail/Gorebyss, Thalia, Nob, Trent, Sawyer, Aaron) – left to the trainer pass that owns
+  `trainers.party`. – Alt: Linking Cord item from a shop (still a gate the playtester didn't want); one level for
+  all (36 would give Trevenant late and Kingdra early); the core games' "level + 1 after the pre-evolution".
+  – The playtester's note: "Pokémon just evolve at a set level".
+- **D-217 Branches keep an item**: where a trade shared its base with another method, the held item still picks
+  the branch, now on a level-up (`EVO_LEVEL` + `IF_HOLD_ITEM`, which `GetEvolutionTargetSpecies` supports and
+  which consumes the item like the trade did): Poliwhirl → **Politoed at 36 holding a King's Rock** (Poliwrath stays
+  on the Water Stone); Slowpoke → **Slowking at 37 holding a King's Rock**, listed before Slowbro at 37 (the first
+  matching entry wins); Clamperl → **Huntail / Gorebyss at 36 holding the Deep Sea Tooth / Scale** (no item, no
+  evolution, as before). Sources: King's Rock – the Mossdeep boy (vanilla) and the battle item counter from two
+  badges; Deep Sea Tooth / Scale – Captain Stern's Scanner trade (one of them, vanilla) and the counter from two
+  badges (both). – Alt: plain levels with a gender or personality split (no player control); keep the trade for
+  these three only. – Both branches stay reachable in one save.
+- **D-218 The battle item counter** (feedback 1.33): a second clerk behind the counter of every town Poké Mart
+  (Oldale, Petalburg, Rustboro, Slateport, Mauville, Verdanturf, Fallarbor, Lavaridge, Fortree, Mossdeep,
+  Sootopolis) and the Battle Frontier Mart, at (1, 2) next to the vanilla clerk (the counter tile in front of it is
+  a counter, so the player talks across it from (3, 2)); a third clerk between the two on the Lilycove Department
+  Store 3F (the battle floor). Not the Pokémon League 1F: its counter has one talkable tile, and the Acts 6–7 work
+  owns that map. The stock grows with the **badge count** (any order), so it follows the level caps: 0 → the 18
+  type boosters; 2 → accuracy / damage / utility items and the branch items (D-217); 4 → Leftovers, Rocky Helmet,
+  Focus Sash, Eviolite, the herbs …; 6 → Choice items, Life Orb, Assault Vest … and the first Mega Stones; 8 →
+  every other competitive item (weather rocks, orbs, seeds, Loaded Dice, Clear Amulet …) and more Mega Stones;
+  after the Champion (`FLAG_IS_CHAMPION`) the rest of the Mega Stones. The tiers are **one list, newest first**:
+  each tier's label starts its new items and runs on through the lower tiers to one `ITEM_NONE`, so nothing is
+  listed twice and new stock shows at the top. Greeting by reputation (D-103); the goodbye is the Mart clerks'.
+  Booster Energy is not sold (no Paradox Pokémon to hold it). Table: docs/hack_items.md. – Alt: the expansion's
+  per-item `shopCriteriaFunc` (one list, but a global rule in `items.h` for every shop); stock by town (a late
+  town would have to be revisited for early items); Battle Points (the Frontier is post-game). – One script, one
+  list, no C code, and the badge count is what the caps follow.
+- **D-219 Prices climb with the tiers**: from the prize money a player earns per segment (all first battles:
+  ~15k by Roxanne, ~61k by Wattson, ~117k by Flannery, ~209k by Winona, ~463k by Juan) an item of a tier costs
+  a few percent to a fifth of what that stretch pays: type boosters **1,000** (`TYPE_BOOSTING_PRICE`, the Gen 7
+  price; Charcoal and Metal Coat too), tier 2 **4,000–6,000**, tier 3 **5,000–15,000** (Leftovers 15,000), tier 4
+  **20,000–40,000** (the Choice items 40,000, the most expensive held items), tier 5 and unchanged items at their
+  Gen 9 prices (5,000–30,000). Only the Gen 9 branch of each price block changed. – Alt: the Gen 9 prices as they
+  are (Rocky Helmet, Eviolite and Focus Sash at 50,000 when they unlock, Choice items at 100,000 – out of reach
+  before the League); `I_PRICE` GEN_7 (changes every item in the game). – Prices follow the money curve.
+- **D-220 Story gifts on top**: each Gym Leader hands over their type's booster after their TM (Hard Stone,
+  Black Belt, Magnet, Charcoal, Silk Scarf, Sharp Beak, Twisted Spoon, Mystic Water) with a line of their own –
+  one `call` in both vanilla TM paths (straight after the battle, and the later visit when the bag was full). A
+  full bag only costs the booster (the counter sells it). Vanilla item balls and hidden items for battle items
+  stay. – Alt: item balls on routes (new flags in a crowded range while other work adds flags too). – No new flag
+  (the TM flag already makes it once), and the gift says what the Leader's type is about.
+- **D-221 Mega Stones through the story** (the player's addition to 1.33): nothing before the Mega Ring (Jagged
+  Pass, Act 3); the second starter's stone stays the Lavaridge traveller's gift (D-126). After the Ring, **nine
+  stones lie on maps the story opens later**, at ORAS's spot where Emerald has it (Serebii's ORAS Mega Evolution
+  page, 2026-09-30): Manectite – New Mauville (ORAS: the Cycling Road, passed long before the Ring); Banettite –
+  Mt. Pyre 3F; Cameruptite – Magma Hideout; Absolite – Safari Zone NE; Gyaradosite – Route 123; Sharpedonite –
+  Aqua Hideout B2F; Metagrossite – Mossdeep (Steven's town; Beldum is the 1% Granite Cave find); Glalitite – Shoal
+  Cave; Garchompite – Victory Road B2F (Gabite's floor). The **counter** sells more (D-218): at six badges the
+  stones whose ORAS spots the player passes before the Ring (Alakazite, Aggronite, Mawilite, Sablenite,
+  Gardevoirite, Altarianite, Pinsirite, Heracronite) and those of early new wild species (Excadrite, Staraptite,
+  Hawluchanite, Chandelurite); at eight badges Charizardite Y and the Legends Z-A stones of Hoenn and late new
+  species (Skarmorite, Starminite, Chimechite, Raichunite X/Y, Absolite Z, Pyroarite, Golisopite, Barbaracite,
+  Dragalgite, Glimmoranite, Golurkite); after the Champion Salamencite, the Lati stones, Galladite, Garchompite Z
+  and the signature stones of the rivals, Nerine and Aster (Blazikenite, Sceptilite, Charizardite X, Feraligite).
+  **Only stones of species the player can get** (the Hoenn wild tables with the Gen 4–9 additions of D-193 –
+  D-197, gifts, the eggs and second starters, evolutions; Galladite as Wally's signature although the Dawn Stone
+  isn't in the game yet): no Venusaurite, Blastoisinite, Beedrillite, Pidgeotite, Slowbronite, Gengarite,
+  Kangaskhanite, Aerodactylite, Mewtwonite, Ampharosite, Steelixite, Scizorite, Houndoominite, Tyranitarite,
+  Swampertite, Medichamite, Lopunnite, Lucarionite (Riolu is on trainers only), Abomasite, Audinite, Froslassite,
+  Diancite or the other Z-A stones; docs/hack_items.md lists them to recheck against docs/hack_wild.md. – Alt: all
+  stones post-game (the player wants them "throughout the story"); ORAS's exact spots (most are towns and routes
+  the player passes before the Ring). – Paced like the counter tiers, and every stone has a Pokémon to use it.
+- **D-222 Mega Stone details**: placed stones **replace low-value vanilla items** (Paralyze Heal, Super Repel,
+  Escape Rope, Nugget, Ultra Ball, Nest Ball, Net Ball, Ice Heal, Full Heal) and keep their pickup flag's number,
+  renamed after the stone – no new flags. Sold stones cost **50,000** (`MEGA_STONE_PRICE` in `src/data/items.h`,
+  about a quarter of what the Winona → Tate & Liza stretch pays); stones that are only found or given stay at 0
+  (not sellable). – Alt: new item balls with new flags; one price per stone. – Flags are shared with parallel work;
+  one price is easy to read.

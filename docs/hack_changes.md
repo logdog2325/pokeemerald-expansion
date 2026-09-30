@@ -33,6 +33,9 @@ Grouped by area; each entry names the file(s).
 | Gen 4–9 trainer swaps (round 1, feedback 1.28, D-195): 122 generic trainers, 214 blocks with their tiers; `check_party.py` species pool + families of every species wild in Hoenn or on an ORAS Hoenn trainer (and species.h aliases); `report.py` lists the swaps after the source | `tools/hack/trainers/batch_gen49.party` (spliced into `src/data/trainers.party`), `tools/hack/trainers/gen49_swaps.json`, `tools/hack/trainers/check_party.py`, `tools/hack/trainers/report.py` | see docs/hack_trainers.md, "Gen 4–9 swaps" |
 | `wild.play` (National Dex flag, Granite Cave 1F and Petalburg Woods wild battles with species ids, Bug Catcher Rick's Kricketot); `gbarun` fix: `parse_keys` uses `strtok_r`, so key cycles in `until` (`LEFT,RIGHT`, `mash A,A,UP`) use every key instead of only the first | `tools/hack/emu/tests/wild.play`, `tools/hack/emu/gbarun.c` | rebuild `gbarun` (docs/hack_tools.md) |
 | Story-lock checker (round 1 follow-up, feedback 1.23): flag/var simulator over the compiled scripts + tile search across maps, story table in v2 order (Acts 1–5, 74 legs + 5 side trips), warp destination check (D-214) | `tools/hack/check_progression.py`, `tools/hack/progression.json`, `docs/hack_progression.md` | see docs/hack_tools.md, "Story locks" |
+| Evolution check (round 1 follow-up 3, D-216): `tools/hack/check_evos.py` – no `EVO_TRADE` / trade-partner condition left, no held-item level branch hidden behind an earlier entry, the table of former trade evolutions (`--markdown` → docs/hack_items.md) | `tools/hack/check_evos.py` |
+| Emulator test commands (round 1 follow-up 3): `givemon SPECIES LEVEL [ITEM]` / `giveitem ITEM` (debug hook), `expect_party SLOT SPECIES` (decrypts the party slot), `settrainer TRAINER 0/1` | `tools/hack/emu/play.py` |
+| `check_story.py`: an item ball's flag (object script `Common_EventScript_FindItem`) counts as written – picking the ball up sets it (for the Mega Stone balls, D-222) | `tools/hack/check_story.py` |
 
 ## Config options
 | Option | Old | New | File |
@@ -49,6 +52,7 @@ Grouped by area; each entry names the file(s).
 | Tests build: caps off (`B_EXP_CAP_TYPE`, `B_LEVEL_CAP_TYPE`, `B_RARE_CANDY_CAP`, `B_LEVEL_CAP_EXP_UP` back to vanilla) | – | – | `include/config/test.h` |
 | `OW_FIELD_MOVES_WITH_HM` (new, round 1 follow-up, D-190/D-191) | – | `TRUE` | `include/config/overworld.h` |
 | `P_CAN_FORGET_HIDDEN_MOVE` (round 1 follow-up, D-192) | `FALSE` | `TRUE` | `include/config/pokemon.h` |
+| `P_KADABRA_EVERSTONE` (D-216: an Everstone stops Kadabra's level evolution) | `GEN_LATEST` | `GEN_3` | `include/config/pokemon.h` |
 
 ## Flags
 | Flag | Meaning |
@@ -103,6 +107,7 @@ Grouped by area; each entry names the file(s).
 | `FLAG_SYS_NATIONAL_DEX` (vanilla, round 1, D-196) | set with `special EnableNationalPokedex` when Birch gives the Pokédex (vanilla: after the Hall of Fame) |
 | `FLAG_HIDE_AQUA_HIDEOUT_1F_GRUNT_1_BLOCKING_ENTRANCE`, `…_GRUNT_2_…`, `FLAG_MET_TEAM_AQUA_HARBOR`, `FLAG_HIDE_LILYCOVE_MOTEL_SCOTT` (vanilla, round 1 follow-up) | set by Maxie's promotion in the Magma Hideout (were: the Slateport harbor scene), so the Aqua Hideout is open when Maxie sends the player there (D-213) |
 | `FLAG_HIDE_SLATEPORT_CITY_HARBOR_CAPTAIN_STERN`, `FLAG_HIDE_SLATEPORT_CITY_CAPTAIN_STERN`, `FLAG_HIDE_SLATEPORT_CITY_GABBY_AND_TY` (vanilla, round 1 follow-up) | the promotion clears the harbor Stern (he laments the stolen submarine there); Stern and Gabby & Ty no longer appear in Slateport for the interview (D-213) |
+| Item-ball flags renamed after the Mega Stone that replaced the vanilla item (D-222; same numbers): `FLAG_ITEM_NEW_MAUVILLE_MANECTITE` (was `…_PARALYZE_HEAL`), `FLAG_ITEM_MT_PYRE_3F_BANETTITE` (`…_SUPER_REPEL`), `FLAG_ITEM_MAGMA_HIDEOUT_3F_3R_CAMERUPTITE` (`…_ECAPE_ROPE`), `FLAG_ITEM_SAFARI_ZONE_NORTH_EAST_ABSOLITE` (`…_NUGGET`), `FLAG_ITEM_ROUTE_123_GYARADOSITE` (`…_ULTRA_BALL`), `FLAG_ITEM_AQUA_HIDEOUT_B2F_SHARPEDONITE` (`…_NEST_BALL`), `FLAG_ITEM_MOSSDEEP_CITY_METAGROSSITE` (`…_NET_BALL`), `FLAG_ITEM_SHOAL_CAVE_STAIRS_ROOM_GLALITITE` (`…_ICE_HEAL`), `FLAG_ITEM_VICTORY_ROAD_B2F_GARCHOMPITE` (`…_FULL_HEAL`) | picked up the stone |
 
 ## Vars
 | Var | Values |
@@ -175,6 +180,12 @@ Grouped by area; each entry names the file(s).
 | Macro `trainerbattle_two_trainers_no_intro` (scripted two-trainer double; the script continues after it) | `asm/macros/event.inc` |
 | Route 103 rival object is always `OBJ_EVENT_GFX_RIVAL_MAY_NORMAL` | `data/maps/Route103/map.json` |
 | Route 101 coord triggers (0, 4) / (0, 5) on `VAR_ROUTE101_STATE` 1 | `data/maps/Route101/map.json` |
+| `DRACONID_TRADE_EVO_LEVEL_LOW` 30 / `_MID` 36 / `_HIGH` 42 / `_LATE` 48 (D-216) | `include/constants/draconid.h` |
+| No trade evolutions (D-216, D-217): the 30 `EVO_TRADE` entries are `EVO_LEVEL` (Politoed / Slowking / Huntail / Gorebyss keep their held item as `IF_HOLD_ITEM`; Slowking listed before Slowbro), the use-the-item-from-the-bag shortcuts of those lines removed; table in docs/hack_items.md | `src/data/pokemon/species_info/gen_{1,3,5,6}_families.h` |
+| `BATTLE_ITEMS_TIER_2_BADGES` 2, `_3_` 4, `_4_` 6, `_5_` 8 (D-218; the post-game tier opens with `FLAG_IS_CHAMPION`) | `include/constants/draconid.h` |
+| Prices (D-219, D-222): `TYPE_BOOSTING_PRICE` (Gen 9) 3000 → 1000; Charcoal, Metal Coat 1000; 25 battle items repriced for the counter tiers (Gen 9 branch only, each tagged); `MEGA_STONE_PRICE` 50000 for the 34 stones the counter sells | `src/data/items.h` |
+| Battle item clerks (D-218): `OBJ_EVENT_GFX_MART_EMPLOYEE` at (1, 2) facing right → `Draconid_EventScript_BattleItemClerk` in 12 Marts (Oldale, Petalburg, Rustboro, Slateport, Mauville, Verdanturf, Fallarbor, Lavaridge, Fortree, Mossdeep, Sootopolis, Battle Frontier); `OBJ_EVENT_GFX_WOMAN_3` at (9, 2) facing down on the Lilycove Department Store 3F; the Verdanturf Mart Lass moved from (3, 2) to (4, 2) | `data/maps/*_Mart/map.json`, `data/maps/LilycoveCity_DepartmentStore_3F/map.json` |
+| Mega Stone item balls in place of vanilla items (D-221, D-222): New Mauville (2, 11) Manectite, Mt. Pyre 3F (0, 7) Banettite, Magma Hideout 3F 3R (9, 19) Cameruptite, Safari Zone NE (8, 17) Absolite, Route 123 (27, 18) Gyaradosite, Aqua Hideout B2F (3, 13) Sharpedonite, Mossdeep City (62, 35) Metagrossite, Shoal Cave stairs room (13, 12) Glalitite, Victory Road B2F (13, 8) Garchompite | `data/maps/*/map.json` |
 
 ## C changes
 | Change | File |
@@ -210,6 +221,7 @@ Grouped by area; each entry names the file(s).
 | HM field moves without a Pokémon that knows them (round 1 follow-up, feedback 1.27, D-190): `FieldMove_GetHMItem`, `GetFieldMoveFromHMItem`, `CanUseFieldMoveWithHM` (HM in the bag + the move's badge), `GetFieldMoveUserSlot` (a Pokémon that knows the move, else with the HM + badge the first that could learn it, else the first non-Egg); `checkfieldmove` and `PartyHasMonWithSurf` use them (Cut, Rock Smash, Strength, Surf, Waterfall, Dive down / surfacing) | `src/field_move.c`, `include/field_move.h`, `src/scrcmd.c`, `src/field_player_avatar.c` |
 | HMs used from the bag (D-191): with the badge and something to use it on here, `ItemUseOutOfBattle_TMHM` asks "… can be used here. Would you like to use it?" (`TryOfferHMFieldMove`, `sText_HMFieldMoveUsableHere`) and runs the party-menu field move setup with the stand-in; No → the vanilla teach question. HM02 opens the Fly map through `CB2_OpenFlyMapFromBag` (cancel returns to the bag, `sFlyMapFromBag`) | `src/item_use.c`, `src/region_map.c`, `include/region_map.h` |
 | Emulator test hook: `DRACONID_TEST_GIVE_ITEM` (`item`), `DRACONID_TEST_GIVE_MON` (`species`, `level`) and `DRACONID_TEST_COUNT_HMS` (`partyHMMoves`, `CountPartyHMMoves`) requests for `play.py` `giveitem` / `givemon` / `expect_party_hms` (debug builds only) | `src/draconid.c`, `include/draconid.h` |
+| Test hook: `DRACONID_TEST_GIVE_MON` / `DRACONID_TEST_GIVE_ITEM` (species, level, item fields; debug builds only) for `givemon` / `giveitem` | `src/draconid.c`, `include/draconid.h` |
 
 ## Scripts
 | Script / label | File |
@@ -269,3 +281,7 @@ Grouped by area; each entry names the file(s).
 | Round 1 (feedback 1.28, D-196): `LittlerootTown_ProfessorBirchsLab_EventScript_DraconidWelcome` enables the National Pokédex right after `LittlerootTown_ProfessorBirchsLab_EventScript_ReceivePokedex` (+ one line from Birch); `TODO(dialogue)` for the post-game upgrade scene | `data/scripts/draconid/birch_intro.pory` |
 | **Round 1 follow-up: no story locks** (feedback 1.23): `MagmaHideout_4F_EventScript_DraconidAquaTakesSubmarine` (called by `MagmaHideout_4F_EventScript_Maxie` in place of the vanilla Slateport set-up) opens the Aqua Hideout with Maxie's order (D-213); audit of Acts 1–5 in docs/hack_progression.md | `data/scripts/draconid/progression.pory` (+ `.include` in `data/event_scripts.s`), `data/maps/MagmaHideout_4F/scripts.inc` (`@ Draconid Emerald`) |
 | Tests: `progression.play` (the promotion's flags, a walk through the Aqua Hideout entrance, Stern in the Slateport harbor); `act4.play` expects the new Slateport states | `tools/hack/emu/tests/` |
+| Test `trade_evos.play` (after `rustboro.play`): Kadabra Lv 35 + Rare Candy → Alakazam; Slowpoke Lv 36 holding a King's Rock + Rare Candy → Slowking (item used up) | `tools/hack/emu/tests/trade_evos.play` |
+| **Battle items and Mega Stones (round 1 follow-up 3, D-218 – D-222)**: `Draconid_EventScript_BattleItemClerk` (greeting by reputation, `pokemart` of the tier by badge count, the Mart goodbye), `Draconid_EventScript_CountBadges` (`VAR_RESULT`), the stock `Draconid_BattleItems_Tier1`…`_Tier5` / `_PostGame` (one list, newest tier first), the Gym Leaders' boosters `Draconid_EventScript_GymBooster{Roxanne,Brawly,Wattson,Flannery,Norman,Winona,TateAndLiza,Juan}`; included after the reputation files in `data/event_scripts.s` | `data/scripts/draconid/battle_items.pory` |
+| Gym TM paths call the Leader's booster after the TM (one `@ Draconid Emerald` line in each of the 14 TM paths of the 8 gyms) | `data/maps/{RustboroCity,DewfordTown,MauvilleCity,LavaridgeTown,PetalburgCity,FortreeCity,MossdeepCity,SootopolisCity}_Gym*/scripts.inc` |
+| Test `battle_items.play` (after `rustboro.play`): the counter at 0 / 4 / 8 badges and after the Champion (list screenshots), a Silk Scarf bought, Roxanne's Hard Stone with her TM, the Lilycove 3F clerk, the Mt. Pyre Banettite picked up | `tools/hack/emu/tests/battle_items.play` |

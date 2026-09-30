@@ -125,7 +125,7 @@ bool32 Draconid_TryTestWarp(void)
     if (request & DRACONID_TEST_GIVE_ITEM)
         AddBagItem(gDraconidTestWarp.item, 1);
     if (request & DRACONID_TEST_GIVE_MON)
-        ScriptGiveMon(gDraconidTestWarp.species, gDraconidTestWarp.level, ITEM_NONE);
+        ScriptGiveMon(gDraconidTestWarp.species, gDraconidTestWarp.level, gDraconidTestWarp.item);
     if (request & DRACONID_TEST_COUNT_HMS)
         gDraconidTestWarp.partyHMMoves = CountPartyHMMoves();
     if (!(request & DRACONID_TEST_WARP))

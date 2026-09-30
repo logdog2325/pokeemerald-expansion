@@ -977,6 +977,50 @@ Draconid Emerald: Aster's arc after Draconid Pass (Phase 4, reworked in round 1)
 - ASTER: …You know what the answer to all my riddles was? The sky. It was always the sky.
 - See you up there someday, {PLAYER}.
 
+## data/scripts/draconid/battle_items.pory
+
+Draconid Emerald round 1, feedback 1.33 (D-218 – D-222): battle items and Mega Stones through the story.  A second clerk behind the counter of every Poké Mart (and a third on the Lilycove Department Store 3F) runs the BATTLE ITEM counter. Its stock grows with the number of Gym Badges, so it follows the level caps (src/caps.c): type boosters from the start, Choice items and the first Mega Stones at six badges, the rest of the competitive items at eight, the remaining Mega Stones after the Champion. Tier table and prices: docs/hack_items.md. The Gym Leaders also hand over their type's booster with their TM (D-220).
+
+### `Draconid_EventScript_BattleItemClerk`
+- …Battle items for TEAM MAGMA. Wonderful.
+- Rules are rules. Your BADGES decide what I sell you. Not your uniform.
+- {PLAYER}! Everyone's talking about what you did in SOOTOPOLIS!
+- Here, have a look. Everything your BADGES allow!
+- Welcome to the BATTLE ITEM counter!
+- The more GYM BADGES you carry, the stronger the items I'm allowed to sell you.
+
+### `Draconid_EventScript_GymBoosterRoxanne`
+- ROXANNE: Please take this HARD STONE as well.
+- Held by a POKéMON, it strengthens ROCK-type moves.
+
+### `Draconid_EventScript_GymBoosterBrawly`
+- BRAWLY: Oh, and grab this BLACK BELT, too!
+- Hold it, and your FIGHTING-type moves hit like a big wave!
+
+### `Draconid_EventScript_GymBoosterWattson`
+- WATTSON: Wahahahaha! Take this MAGNET as well!
+- It charges up ELECTRIC-type moves. Zap!
+
+### `Draconid_EventScript_GymBoosterFlannery`
+- FLANNERY: And… take this CHARCOAL, too.
+- It makes FIRE-type moves burn hotter. Use it well!
+
+### `Draconid_EventScript_GymBoosterNorman`
+- NORMAN: Take this SILK SCARF, too.
+- It strengthens NORMAL-type moves. Simple, and strong.
+
+### `Draconid_EventScript_GymBoosterWinona`
+- WINONA: Please accept this SHARP BEAK as well.
+- It lends strength to FLYING-type moves.
+
+### `Draconid_EventScript_GymBoosterTateAndLiza`
+- TATE: We have one more gift for you…
+- LIZA: …a TWISTED SPOON! It sharpens PSYCHIC-type moves!
+
+### `Draconid_EventScript_GymBoosterJuan`
+- JUAN: Please, accept this MYSTIC WATER as well.
+- It lends grace to WATER-type moves.
+
 ## data/scripts/draconid/maxie_calls.pory
 
 Draconid Emerald round 1: Maxie's PokéNav calls to the Magma recruit (D-186). After each key story point he rings once the player has walked MAXIE_CALL_STEPS steps outdoors (Draconid_ShouldDoMaxieCall, src/draconid.c) and names the next place to go. The first call is on Mr. Briney's boat (Route104_EventScript_SailToDewfordDadCalls). Call texts use a 188-pixel line: the call window starts the text after the PokéNav icon.
