@@ -39,6 +39,7 @@ SlateportCity_OceanicMuseum_1F_EventScript_CheckMoneyForFee::
 	msgbox SlateportCity_OceanicMuseum_1F_Text_PleaseEnjoyYourself, MSGBOX_DEFAULT
 	setvar VAR_SLATEPORT_MUSEUM_1F_STATE, 1
 	hidemoneybox
+	call SlateportCity_OceanicMuseum_1F_EventScript_DraconidTabithaOrder  @ Draconid Emerald (act2.pory)
 	releaseall
 	end
 
@@ -56,6 +57,7 @@ SlateportCity_OceanicMuseum_1F_EventScript_AllowEntranceAnyway::
 	msgbox SlateportCity_OceanicMuseum_1F_Text_CatchUpWithYourGroup, MSGBOX_DEFAULT
 	setvar VAR_SLATEPORT_MUSEUM_1F_STATE, 1
 	hidemoneybox
+	call SlateportCity_OceanicMuseum_1F_EventScript_DraconidTabithaOrder  @ Draconid Emerald (act2.pory)
 	releaseall
 	end
 

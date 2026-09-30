@@ -35,7 +35,7 @@ SlateportCity_OceanicMuseum_2F_EventScript_CaptStern::
 	applymovement LOCALID_OCEANIC_MUSEUM_2F_GRUNT_1, SlateportCity_OceanicMuseum_2F_Movement_GruntApproachToBattle
 	waitmovement 0
 	msgbox SlateportCity_OceanicMuseum_2F_Text_LetMeTakeCareOfThis, MSGBOX_DEFAULT
-	trainerbattle_no_intro TRAINER_GRUNT_MUSEUM_2, SlateportCity_OceanicMuseum_2F_Text_Grunt2Defeat
+	trainerbattle_no_intro TRAINER_NERINE_SLATEPORT_DEINO_CHARMANDER, SlateportCity_OceanicMuseum_2F_Text_Grunt2Defeat  @ Draconid Emerald: Nerine (D-101)
 	applymovement LOCALID_OCEANIC_MUSEUM_2F_GRUNT_1, SlateportCity_OceanicMuseum_2F_Movement_GruntDefeated
 	waitmovement 0
 	applymovement LOCALID_OCEANIC_MUSEUM_2F_GRUNT_1, Common_Movement_WalkInPlaceFasterDown
@@ -82,7 +82,7 @@ SlateportCity_OceanicMuseum_2F_EventScript_CaptStern::
 	clearflag FLAG_HIDE_ROUTE_116_DEVON_EMPLOYEE
 	setflag FLAG_HIDE_RUSTBORO_CITY_DEVON_CORP_3F_EMPLOYEE
 	setvar VAR_SLATEPORT_OUTSIDE_MUSEUM_STATE, 1
-	call SlateportCity_OceanicMuseum_2F_EventScript_DraconidMayWaits  @ Draconid Emerald (rivals.pory)
+	call SlateportCity_OceanicMuseum_2F_EventScript_DraconidAfterRaid  @ Draconid Emerald (act2.pory)
 	fadescreen FADE_FROM_BLACK
 	release
 	end
@@ -277,7 +277,7 @@ SlateportCity_OceanicMuseum_2F_Text_ThankYouForTheParts:
 	.string "Thank you! That's great!\n"
 	.string "We can prepare for our expedition now.$"
 
-SlateportCity_OceanicMuseum_2F_Text_WellTakeThoseParts:
+SlateportCity_OceanicMuseum_2F_Text_WellTakeThoseParts:  @ Draconid Emerald
 	.string "Hehehe, hold it!\n"
 	.string "We'll take those parts!$"
 
@@ -285,10 +285,11 @@ SlateportCity_OceanicMuseum_2F_Text_SternWhoAreYou:
 	.string "CAPT. STERN: Wh-what?\n"
 	.string "Who are you people?$"
 
-SlateportCity_OceanicMuseum_2F_Text_WereTeamAqua:
-	.string "We're TEAM AQUA!\p"
+SlateportCity_OceanicMuseum_2F_Text_WereTeamAqua:  @ Draconid Emerald
+	.string "GRUNT: We're TEAM AQUA!\p"
 	.string "Our BOSS wants those parts!\n"
-	.string "Shut your yap and fork them over!$"
+	.string "…Huh? A MAGMA grunt?! Here?!\p"
+	.string "Doesn't matter! Fork them over!$"
 
 SlateportCity_OceanicMuseum_2F_Text_Grunt1Defeat:
 	.string "Awaaaah!\n"
@@ -298,56 +299,52 @@ SlateportCity_OceanicMuseum_2F_Text_BossGoingToBeFurious:
 	.string "Oh, man, what a disaster…\n"
 	.string "The BOSS is going to be furious…$"
 
-SlateportCity_OceanicMuseum_2F_Text_LetMeTakeCareOfThis:
-	.string "Humph, sniveling wimp!\n"
-	.string "Let me take care of this!$"
+SlateportCity_OceanicMuseum_2F_Text_LetMeTakeCareOfThis:  @ Draconid Emerald
+	.string "NERINE: Stand aside.\n"
+	.string "I'll handle this one.$"
 
-SlateportCity_OceanicMuseum_2F_Text_Grunt2Defeat:
-	.string "What?!\n"
-	.string "I lost, too!$"
+SlateportCity_OceanicMuseum_2F_Text_Grunt2Defeat:  @ Draconid Emerald
+	.string "A dragon against a dragon.\n"
+	.string "You noticed, didn't you?$"
 
-SlateportCity_OceanicMuseum_2F_Text_MeddlingKid:
-	.string "Now what? If we don't get the parts,\n"
-	.string "we're in for it!\p"
-	.string "Arrgh, I didn't count on being meddled\n"
-	.string "with by some meddling kid!$"
+SlateportCity_OceanicMuseum_2F_Text_MeddlingKid:  @ Draconid Emerald
+	.string "GRUNT: Now what? If we don't get the\n"
+	.string "parts, we're in for it!\p"
+	.string "NERINE: AQUA trains Water types.\n"
+	.string "Funny, isn't it?$"
 
 SlateportCity_OceanicMuseum_2F_Text_CameToSeeWhatsTakingSoLong:
 	.string "I came to see what was taking so\n"
 	.string "long to snatch some parts, and you\l"
 	.string "simps are held up by a mere child?$"
 
-SlateportCity_OceanicMuseum_2F_Text_ArchieWarning:
+SlateportCity_OceanicMuseum_2F_Text_ArchieWarning:  @ Draconid Emerald
 	.string "We are TEAM AQUA,\n"
 	.string "and we love the sea!\p"
 	.string "And I am TEAM AQUA's leader,\n"
 	.string "ARCHIE!\p"
-	.string "What makes you interfere with us?\p"
-	.string "…No! You can't be!\n"
-	.string "You're not one of TEAM MAGMA?\p"
-	.string "Wait, that can't be right.\n"
-	.string "You're not dressed for the part.\p"
+	.string "…That red uniform. So MAXIE sends\n"
+	.string "children to do his work now.\p"
 	.string "… … … … … …\n"
 	.string "… … … … … …\p"
 	.string "POKéMON, people… All life depends on\n"
 	.string "the sea.\p"
 	.string "So, TEAM AQUA is dedicated to\n"
 	.string "the expansion of the sea.\p"
-	.string "Don't you agree? What we are doing\n"
-	.string "is a magnificent undertaking.\p"
-	.string "Ah, fine…\n"
-	.string "You're still too young to understand\l"
-	.string "our noble objective.\p"
-	.string "But, I warn you, don't even consider\n"
-	.string "interfering with our plans again.\p"
+	.string "MAXIE will tell you the land matters\n"
+	.string "more. He's wrong.\p"
+	.string "Tell your master this: stay out of\n"
+	.string "TEAM AQUA's way.\p"
 	.string "The consequences will cost you\n"
 	.string "dearly!\p"
 	.string "And don't you forget it!$"
 
-SlateportCity_OceanicMuseum_2F_Text_SternThankYouForSavingUs:
+SlateportCity_OceanicMuseum_2F_Text_SternThankYouForSavingUs:  @ Draconid Emerald
 	.string "CAPT. STERN: You're…\n"
 	.string "Ah, okay, you're {PLAYER}{KUN}…\p"
-	.string "Anyway, that was a tense situation!\n"
+	.string "A TEAM MAGMA member, fighting off\n"
+	.string "TEAM AQUA… for my sake?\p"
+	.string "Well, that was a tense situation!\n"
 	.string "Thank you for saving us!\p"
 	.string "Oh, yes, I almost forgot that you\n"
 	.string "even brought the parts from DEVON!$"

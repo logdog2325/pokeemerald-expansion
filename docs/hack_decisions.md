@@ -283,3 +283,14 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   per NPC so the apology plays once; refusing service in uniform; hooks in every town's `scripts.inc`. – The
   services are the player's lifeline, a repeated line is how vanilla NPCs work, and redirecting the object keeps
   the vanilla scripts (which the story rework edits) untouched.
+- **D-118 The Devon Goods choice** (Rusturf Tunnel, after Nerine): "Return to DEVON" or "Keep for MAGMA"
+  (`FLAG_DEVON_GOODS_RETURNED`). Both continue the same way, as the add-on asks: the Devon employee catches the
+  player outside Devon either way (the "keep" path gets a line about it) and Mr. Stone sends them on; Tabitha's
+  museum order reacts to the flag (Magma wants Stern's submarine tracked, so the parts get delivered anyway).
+  – Alt: a YES/NO; skipping Mr. Stone on the "keep" path (would cut the PokéNav and the letter).
+- **D-119 Act 2 staging**: Tabitha gives the order in person twice – out of the Rustboro Gym right after the
+  theft, and past the Oceanic Museum ticket counter (he stays there, "watching" Aqua, until the raid ends).
+  Nerine is the Rustboro thief, the Rusturf "grunt" (she lets Peeko go unharmed) and the **second** museum
+  battle (the first is still a plain grunt, so she can say "Stand aside"). May's Route 110 battle is the vanilla
+  rival scene with her lines, and she registers in the PokéNav there (the vanilla Rustboro registration is
+  skipped, D-115); Brendan registers on Route 119 (Act 4). – Alt: a Magma messenger grunt.

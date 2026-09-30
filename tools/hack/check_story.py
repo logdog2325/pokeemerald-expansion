@@ -48,12 +48,21 @@ ALLOWED = {
 # Round 1 (v2 story) is being built act by act: states of acts that aren't scripted yet. Each is
 # reported as a NOTE until its act lands; take it out of this set then.
 PENDING = {
-    "MAGMA_STATE_DEVON_GOODS", "MAGMA_STATE_MUSEUM", "MAGMA_STATE_METEOR_FALLS", "MAGMA_STATE_MT_CHIMNEY",
+    "MAGMA_STATE_METEOR_FALLS", "MAGMA_STATE_MT_CHIMNEY",
     "MAGMA_STATE_WEATHER_INSTITUTE", "MAGMA_STATE_MT_PYRE", "MAGMA_STATE_PROMOTED", "MAGMA_STATE_SPACE_CENTER",
     "MAGMA_STATE_SEAFLOOR", "MAGMA_STATE_TURNED",
-    "NERINE_STATE_RUSTURF", "NERINE_STATE_SLATEPORT", "NERINE_STATE_MT_CHIMNEY", "NERINE_STATE_MT_PYRE",
+    "NERINE_STATE_MT_CHIMNEY", "NERINE_STATE_MT_PYRE",
     "NERINE_STATE_AQUA_HIDEOUT", "NERINE_STATE_REVEALED", "NERINE_STATE_SKY_PILLAR", "NERINE_STATE_POSTGAME",
     "REPUTATION_REVEALED",
+    "ASTER_STATE_RAYQUAZA_CALLED",
+    "BRENDAN_STATE_MT_CHIMNEY", "BRENDAN_STATE_ROUTE_119", "BRENDAN_STATE_LILYCOVE", "BRENDAN_STATE_MOSSDEEP",
+    "BRENDAN_STATE_POSTGAME",
+    "MAY_STATE_WEATHER_INSTITUTE", "MAY_STATE_LILYCOVE", "MAY_STATE_SOOTOPOLIS", "MAY_STATE_POSTGAME",
+}
+
+# flags whose scene belongs to an act that isn't scripted yet (NOTE instead of ERROR until it lands)
+PENDING_FLAGS = {
+    "FLAG_ENABLE_BRENDAN_MATCH_CALL": "Brendan registers on Route 119 (Act 4)",
 }
 
 READ_CMDS = r"(?:goto_if_set|goto_if_unset|call_if_set|call_if_unset|checkflag)"
@@ -120,6 +129,9 @@ def main():
         r = (re.search(r"\b%s %s\b" % (READ_CMDS, flag), scripts) or re.search(r"FlagGet\(%s\)" % flag, c)
              or hidden_objs or re.search(r"\b%s\b" % flag, c))
         if flag in ALLOWED:
+            continue
+        if flag in PENDING_FLAGS and not (w or removed):
+            report("NOTE", "%s: pending – %s" % (flag, PENDING_FLAGS[flag]))
             continue
         if not (w or removed):
             report("ERROR", "%s is never set or cleared" % flag)

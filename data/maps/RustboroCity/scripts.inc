@@ -308,6 +308,7 @@ RustboroCity_EventScript_StolenGoodsScene::
 	clearflag FLAG_HIDE_RUSTURF_TUNNEL_AQUA_GRUNT
 	setflag FLAG_HIDE_BRINEYS_HOUSE_MR_BRINEY
 	setflag FLAG_HIDE_BRINEYS_HOUSE_PEEKO
+	call RustboroCity_EventScript_DraconidTabithaGoodsOrder  @ Draconid Emerald (act2.pory)
 	releaseall
 	end
 
@@ -593,6 +594,7 @@ RustboroCity_EventScript_ReturnGoods::
 	call_if_eq VAR_TEMP_1, 4, RustboroCity_EventScript_EmployeeFacePlayerRight
 	msgbox RustboroCity_Text_YouGotItThankYou, MSGBOX_DEFAULT
 	giveitem ITEM_GREAT_BALL
+	call_if_unset FLAG_DEVON_GOODS_RETURNED, RustboroCity_EventScript_DraconidGoodsIntercepted  @ Draconid Emerald (act2.pory)
 	call_if_eq VAR_RESULT, FALSE, RustboroCity_EventScript_BagFull
 	msgbox RustboroCity_Text_PleaseComeWithMe, MSGBOX_DEFAULT
 	closemessage
@@ -1004,33 +1006,32 @@ RustboroCity_Text_TradePokemonGrowFast:
 	.string "But if you don't have certain GYM\n"
 	.string "BADGES, it may not obey you…$"
 
-RustboroCity_Text_OutOfTheWay:
-	.string "Get out!\n"
-	.string "Out of the way!$"
+RustboroCity_Text_OutOfTheWay:  @ Draconid Emerald
+	.string "NERINE: …Move.$"
 
 RustboroCity_Text_WaitDontTakeMyGoods:
 	.string "Wait! Pleeeaaase!\p"
 	.string "Don't take my GOODS!$"
 
-RustboroCity_Text_HelpMeIWasRobbed:
+RustboroCity_Text_HelpMeIWasRobbed:  @ Draconid Emerald
 	.string "Oh, it's you!\p"
-	.string "You're that fantastic TRAINER who\n"
-	.string "helped me in PETALBURG WOODS!\p"
-	.string "Help me! I was robbed by TEAM AQUA!\n"
-	.string "I have to get the DEVON GOODS back!\p"
-	.string "If I don't…\n"
+	.string "You're that TRAINER who helped me in\n"
+	.string "PETALBURG WOODS!\p"
+	.string "…Is that a TEAM MAGMA uniform?\p"
+	.string "I don't care! Help me! TEAM AQUA took\n"
+	.string "the DEVON GOODS!\p"
+	.string "If I don't get them back…\n"
 	.string "I'm going to be in serious trouble.$"
 
 RustboroCity_Text_ShadyCharacterTookOffTowardsTunnel:
 	.string "That shady character, I think he took\n"
 	.string "off towards the tunnel over there.$"
 
-RustboroCity_Text_YouGotItThankYou:
-	.string "Oh! How did it go?\n"
-	.string "The DEVON GOODS?\p"
-	.string "You did!\n"
-	.string "You got them back!\p"
-	.string "You really are a great TRAINER!\p"
+RustboroCity_Text_YouGotItThankYou:  @ Draconid Emerald
+	.string "Oh! The DEVON GOODS?\p"
+	.string "You did! You got them back!\p"
+	.string "Uniform or not, you really are\n"
+	.string "a great TRAINER!\p"
 	.string "I know! As my thanks, I'll give you\n"
 	.string "another GREAT BALL!$"
 

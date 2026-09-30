@@ -77,7 +77,7 @@
 #define FLAG_UNUSED_0x037    0x37 // Unused Flag
 #define FLAG_UNUSED_0x038    0x38 // Unused Flag
 #define FLAG_HIDE_RUSTBORO_CITY_TABITHA          0x39 // Draconid Emerald: Tabitha outside the Rustboro Gym after the Stone Badge (Act 1)
-#define FLAG_HIDE_SLATEPORT_CITY_MAY             0x3A // Draconid Emerald: May at Slateport's north exit
+#define FLAG_UNUSED_0x03A    0x3A // Unused Flag
 #define FLAG_HIDE_SOOTOPOLIS_CITY_RIVALS         0x3B // Draconid Emerald: Brendan and May outside the Sootopolis Gym
 #define FLAG_HIDE_PETALBURG_CITY_WALLY_GYM       0x3C // Draconid Emerald: Wally outside the Petalburg Gym (before Norman)
 #define FLAG_HIDE_LILYCOVE_CITY_WALLY            0x3D // Draconid Emerald: Wally in Lilycove
@@ -86,13 +86,13 @@
 #define FLAG_HIDE_RUSTBORO_CITY_BIRCH            0x40 // Draconid Emerald: Prof. Birch outside the Rustboro Gym (second starter)
 #define FLAG_HIDE_METEOR_FALLS_ASTER             0x41 // Draconid Emerald: Aster in Meteor Falls
 #define FLAG_HIDE_CABLE_CAR_STATION_ASTER        0x42 // Draconid Emerald: Aster at the Route 112 cable car (disguise)
-#define FLAG_UNUSED_0x043    0x43 // Unused Flag
+#define FLAG_DEVON_GOODS_RETURNED                0x43 // Draconid Emerald: the player chose to return the Devon Goods to Devon (Rusturf, Act 2)
 #define FLAG_HIDE_MAGMA_HIDEOUT_ASTER            0x44 // Draconid Emerald: Aster after Maxie in the Magma Hideout
 #define FLAG_HIDE_SKY_PILLAR_TOP_ASTER           0x45 // Draconid Emerald: Aster at the top of the Sky Pillar
 #define FLAG_RECEIVED_MEGA_RING                  0x46 // Draconid Emerald: the Elder gave the Mega Ring
 #define FLAG_HIDE_DRACONID_HOUSE_ELDER           0x47 // Draconid Emerald: the Elder visiting the player's house (post-game SS Ticket)
 #define FLAG_HIDE_PETALBURG_WOODS_COURTNEY       0x48 // Draconid Emerald: Courtney after Nerine is beaten (Act 1)
-#define FLAG_UNUSED_0x049    0x49 // Unused Flag
+#define FLAG_HIDE_OCEANIC_MUSEUM_TABITHA         0x49 // Draconid Emerald: Tabitha in the Oceanic Museum 1F (Act 2)
 #define FLAG_UNUSED_0x04A    0x4A // Unused Flag
 #define FLAG_UNUSED_0x04B    0x4B // Unused Flag
 #define FLAG_UNUSED_0x04C    0x4C // Unused Flag

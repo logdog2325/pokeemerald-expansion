@@ -9,9 +9,9 @@ Route110_OnResume:
 	end
 
 Route110_OnTransition:
-	@ Draconid Emerald: the rival on Route 110 is always Brendan
-	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL
-	setvar VAR_OBJ_GFX_ID_3, OBJ_EVENT_GFX_RIVAL_BRENDAN_MACH_BIKE
+	@ Draconid Emerald: the rival on Route 110 is May (round 1, D-106)
+	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_MAY_NORMAL
+	setvar VAR_OBJ_GFX_ID_3, OBJ_EVENT_GFX_RIVAL_MAY_MACH_BIKE
 	call_if_eq VAR_CYCLING_CHALLENGE_STATE, 1, Route110_EventScript_SaveCyclingMusic
 	end
 
@@ -371,7 +371,7 @@ Route110_EventScript_RivalTrigger3::
 
 Route110_EventScript_RivalScene::
 	lockall
-	call Route110_EventScript_PlayBrendanMusic
+	call Route110_EventScript_PlayMayMusic  @ Draconid Emerald
 	applymovement LOCALID_ROUTE110_RIVAL, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	applymovement LOCALID_ROUTE110_RIVAL, Common_Movement_ExclamationMark
@@ -382,24 +382,24 @@ Route110_EventScript_RivalScene::
 	call_if_eq VAR_0x8008, 1, Route110_EventScript_RivalApproachPlayer1
 	call_if_eq VAR_0x8008, 2, Route110_EventScript_RivalApproachPlayer2
 	call_if_eq VAR_0x8008, 3, Route110_EventScript_RivalApproachPlayer3
-	goto Route110_EventScript_BrendanBattle
+	goto Route110_EventScript_MayBattle  @ Draconid Emerald
 	end
 
-Route110_EventScript_PlayBrendanMusic::
-	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
+Route110_EventScript_PlayMayMusic::  @ Draconid Emerald
+	playbgm MUS_ENCOUNTER_MAY, TRUE
 	return
 
-Route110_EventScript_BrendanBattle::
-	msgbox Route110_Text_BrendanLetsBattle, MSGBOX_DEFAULT
-	trainerbattle_no_intro TRAINER_BRENDAN_MT_CHIMNEY, Route110_Text_BrendanDefeated
-	goto Route110_EventScript_BrendanDefeated
+Route110_EventScript_MayBattle::  @ Draconid Emerald
+	msgbox Route110_Text_MayLetsBattle, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_110, Route110_Text_MayDefeated
+	goto Route110_EventScript_MayDefeated
 	end
 
-Route110_EventScript_BrendanDefeated::
-	msgbox Route110_Text_BrendanTakeThis, MSGBOX_DEFAULT
+Route110_EventScript_MayDefeated::  @ Draconid Emerald
+	msgbox Route110_Text_MayTakeThis, MSGBOX_DEFAULT
 	call Route110_EventScript_GiveItemfinder
-	msgbox Route110_Text_BrendanExplainItemfinder, MSGBOX_DEFAULT
-	call Route110_EventScript_DraconidRegisterBrendan  @ Draconid Emerald (rivals.pory)
+	msgbox Route110_Text_MayExplainItemfinder, MSGBOX_DEFAULT
+	call Route110_EventScript_DraconidRegisterMay  @ Draconid Emerald (act2.pory)
 	goto Route110_EventScript_RivalExit
 	end
 
@@ -700,57 +700,34 @@ Route110_Text_AquaActionsBringSmiles:
 	.string "TEAM AQUA's actions should bring\n"
 	.string "smiles to people's faces!$"
 
-Route110_Text_MayLetsBattle:
-	.string "MAY: Hi, {PLAYER}{KUN}, long time no see!\p"
-	.string "While I was searching for other\n"
-	.string "POKéMON, my POKéMON grew stronger.\p"
-	.string "So…\n"
-	.string "How about a little battle?$"
+Route110_Text_MayLetsBattle:  @ Draconid Emerald
+	.string "MAY: {PLAYER}! I was hoping I'd run\n"
+	.string "into you.\p"
+	.string "…So it's true. You're with TEAM MAGMA.\p"
+	.string "BRENDAN won't even say your name.\n"
+	.string "But I want to see for myself.\p"
+	.string "Your POKéMON will tell me more\n"
+	.string "than you will!$"
 
-Route110_Text_MayDefeated:
-	.string "Yikes!\n"
-	.string "You're better than I expected!$"
+Route110_Text_MayDefeated:  @ Draconid Emerald
+	.string "MAGMA grunts don't raise\n"
+	.string "dragons like that.$"
 
-Route110_Text_MayTakeThis:
-	.string "MAY: {PLAYER}{KUN}, you've been busy\n"
-	.string "training, too, haven't you?\p"
-	.string "I think you deserve a reward!\n"
-	.string "This is from me!$"
-
-Route110_Text_MayExplainItemfinder:
-	.string "MAY: That's an ITEMFINDER.\p"
-	.string "Try it out. If there is an item that's\n"
-	.string "not visible, it emits a sound.\p"
-	.string "Okay, {PLAYER}{KUN}, let's meet again!\p"
-	.string "I know it's a little silly coming from\n"
-	.string "me, but I think you should train a lot\l"
-	.string "harder for the next time.$"
-
-Route110_Text_BrendanLetsBattle:
-	.string "BRENDAN: Hey, {PLAYER}.\n"
-	.string "So this is where you were.\l"
-	.string "How's it going?\p"
-	.string "Have you been raising your POKéMON?\n"
-	.string "I'll check for you.$"
-
-Route110_Text_BrendanDefeated:
-	.string "Hmm…\n"
-	.string "You're pretty good.$"
-
-Route110_Text_BrendanTakeThis:
-	.string "BRENDAN: {PLAYER}, you've trained\n"
-	.string "without me noticing…\p"
-	.string "Good enough!\n"
+Route110_Text_MayTakeThis:  @ Draconid Emerald
+	.string "MAY: I've watched MAGMA grunts.\n"
+	.string "They treat POKéMON like tools.\p"
+	.string "Yours trust you. Completely.\p"
+	.string "What are you really doing,\n"
+	.string "{PLAYER}?\p"
+	.string "…Fine. Keep your secret.\n"
 	.string "Here, take this.$"
 
-Route110_Text_BrendanExplainItemfinder:
-	.string "BRENDAN: That's an ITEMFINDER.\p"
+Route110_Text_MayExplainItemfinder:  @ Draconid Emerald
+	.string "MAY: That's an ITEMFINDER.\p"
 	.string "Use it to root around for items that\n"
 	.string "aren't visible.\p"
 	.string "If it senses something, it emits\n"
-	.string "a sound.\p"
-	.string "Anyway, I'm off to look for new\n"
-	.string "POKéMON.$"
+	.string "a sound.$"
 
 Route110_Text_RideBikeAtFullSpeed:
 	.string "Wouldn't it be great to ride a BIKE\n"

@@ -1,0 +1,129 @@
+# Act 2 flow test (data/scripts/draconid/act2.pory): Nerine steals the Devon Goods and Tabitha gives the
+# order (Rustboro), Nerine in Rusturf Tunnel + the goods choice, Mr. Stone, Steven, Tabitha and Nerine at the
+# Oceanic Museum, May on Route 110, Wally in Mauville. Needs rustboro_done.ss from tests/rustboro.play
+# (a one-Pokémon party, so a mashed battle ends when it faints); states are set by hand and scenes reached
+# with the debug warp; battles are mashed with the no-whiteout flag on (scripts, not balance).
+# Matrix parameters: EGGNAME (the player's egg), SECOND/SECONDNAME (the second starter, set by hand here),
+# GOODS 0 = return the goods to Devon, 1 = keep them for Magma (RETURNED = the flag it leaves).
+default EGGNAME DEINO
+default SECOND 1
+default SECONDNAME CHARMANDER
+default GOODS 0
+default RETURNED 1
+loadstate rustboro_done.ss
+setflag FLAG_DEBUG_NO_ENCOUNTER
+setflag FLAG_DEBUG_NO_TRAINER_SEE
+setflag FLAG_DRACONID_NO_WHITEOUT
+# after the Stone Badge and Birch (tests/second_starter.play does those scenes)
+setvar VAR_SECOND_STARTER ${SECOND}
+setvar VAR_DRACONID_STATE 8
+setvar VAR_MAGMA_STATE 2
+setflag FLAG_BADGE01_GET
+setflag FLAG_DEFEATED_RUSTBORO_GYM
+setvar VAR_RUSTBORO_CITY_STATE 1
+
+# --- Rustboro: Nerine steals the goods, Tabitha's order (trigger row 2 = y 22) ---
+warp MAP_RUSTBORO_CITY 25 22
+path RustboroCity 25 22 24 22
+press LEFT 2 10
+run 200
+shot a10_theft
+mash A 20000
+shot a11_after_tabitha
+expect_flag FLAG_DEVON_GOODS_STOLEN 1
+expect_var VAR_RUSTBORO_CITY_STATE 2
+expect_flag FLAG_HIDE_RUSTBORO_CITY_TABITHA 1
+
+# --- Rusturf Tunnel: Nerine, the goods, the choice ---
+heal
+warp MAP_RUSTURF_TUNNEL 8 5
+# (9, 5): Nerine backs up from (13, 5) to (14, 5)
+walk RIGHT 9
+mash A 3000
+path RusturfTunnel 9 5 13 5
+press RIGHT 2 10
+press A 2 30
+shot a20_nerine
+choose ${GOODS} 90000
+mash A 20000
+shot a21_after_choice
+expect_opponent TRAINER_NERINE_RUSTURF_${EGGNAME}_${SECONDNAME}
+expect_var VAR_NERINE_STATE 2
+expect_var VAR_MAGMA_STATE 3
+expect_flag FLAG_DEVON_GOODS_RETURNED ${RETURNED}
+expect_flag FLAG_RECOVERED_DEVON_GOODS 1
+expect_flag FLAG_HIDE_OCEANIC_MUSEUM_TABITHA 0
+
+# --- Rustboro: the employee takes the player to Mr. Stone ---
+warp MAP_RUSTBORO_CITY 27 12
+path RustboroCity 27 12 29 12
+press RIGHT 2 10
+run 120
+mash A 30000
+run 60
+mash A 30000
+shot a30_mr_stone
+expect_flag FLAG_RECEIVED_POKENAV 1
+expect_item ITEM_LETTER 1
+
+# --- Granite Cave: Steven ---
+warp MAP_GRANITE_CAVE_STEVENS_ROOM 7 10
+path GraniteCave_StevensRoom 7 10 7 9
+press UP 2 10
+press A 2 30
+mash A 20000
+shot a40_steven
+expect_item ITEM_LETTER 0
+
+# --- Oceanic Museum 1F: the fee, then Tabitha's order ---
+setvar VAR_SLATEPORT_MUSEUM_1F_STATE 0
+warp MAP_SLATEPORT_CITY_OCEANIC_MUSEUM_1F 9 8
+walk UP 7
+run 60
+mash A 20000
+shot a50_museum_tabitha
+expect_var VAR_SLATEPORT_MUSEUM_1F_STATE 1
+
+# --- Oceanic Museum 2F: Stern, the Aqua grunt, Nerine, Archie ---
+heal
+clearflag FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_2F_CAPTAIN_STERN
+warp MAP_SLATEPORT_CITY_OCEANIC_MUSEUM_2F 11 6
+path SlateportCity_OceanicMuseum_2F 11 6 12 6
+press RIGHT 2 10
+press A 2 30
+mash A 90000
+shot a60_after_museum
+expect_opponent TRAINER_NERINE_SLATEPORT_${EGGNAME}_${SECONDNAME}
+expect_flag FLAG_DELIVERED_DEVON_GOODS 1
+expect_var VAR_NERINE_STATE 3
+expect_var VAR_MAGMA_STATE 4
+expect_flag FLAG_HIDE_OCEANIC_MUSEUM_TABITHA 1
+
+# --- Route 110: May (trigger 2 = x 34, y 56) ---
+heal
+warp MAP_ROUTE110 34 58
+path Route110 34 58 34 57
+press UP 2 10
+run 200
+shot a70_may
+mash A 60000
+shot a71_after_may
+expect_opponent TRAINER_MAY_ROUTE_110
+expect_var VAR_MAY_STATE 1
+expect_flag FLAG_ENABLE_RIVAL_MATCH_CALL 1
+expect_var VAR_ROUTE110_STATE 1
+
+# --- Mauville: Wally (vanilla battle, new lines) ---
+heal
+warp MAP_MAUVILLE_CITY 8 9
+path MauvilleCity 8 9 8 7
+press A 2 30
+mash A 60000
+shot a80_after_wally
+expect_opponent TRAINER_WALLY_MAUVILLE
+expect_flag FLAG_HIDE_MAUVILLE_CITY_WALLY 1
+
+savestate act2_done.ss
+clearflag FLAG_DEBUG_NO_ENCOUNTER
+clearflag FLAG_DEBUG_NO_TRAINER_SEE
+clearflag FLAG_DRACONID_NO_WHITEOUT

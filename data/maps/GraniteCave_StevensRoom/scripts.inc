@@ -79,12 +79,13 @@ GraniteCave_StevensRoom_Movement_StevenExitSouth:
 	delay_8
 	step_end
 
-GraniteCave_StevensRoom_Text_ImStevenLetterForMe:
+GraniteCave_StevensRoom_Text_ImStevenLetterForMe:  @ Draconid Emerald
 	.string "My name is STEVEN.\p"
 	.string "I'm interested in rare stones,\n"
 	.string "so I travel here and there.\p"
-	.string "Oh?\n"
-	.string "A LETTER for me?$"
+	.string "Oh? A TEAM MAGMA member…\n"
+	.string "with a LETTER for me?\p"
+	.string "MAGMA doesn't usually deliver mail.$"
 
 GraniteCave_StevensRoom_Text_ThankYouTakeThis:
 	.string "STEVEN: Okay, thank you.\p"
@@ -95,15 +96,13 @@ GraniteCave_StevensRoom_Text_ThankYouTakeThis:
 	.string "It contains my favorite move,\n"
 	.string "STEEL WING.$"
 
-GraniteCave_StevensRoom_Text_CouldBecomeChampionLetsRegister:
-	.string "STEVEN: Your POKéMON appear quite\n"
-	.string "capable.\p"
-	.string "If you keep training, you could even\n"
-	.string "become the CHAMPION of the POKéMON\l"
-	.string "LEAGUE one day. That's what I think.\p"
-	.string "I know, since we've gotten to know each\n"
-	.string "other, let's register one another in\l"
-	.string "our POKéNAVS.\p"
+GraniteCave_StevensRoom_Text_CouldBecomeChampionLetsRegister:  @ Draconid Emerald
+	.string "STEVEN: Your POKéMON trust you.\n"
+	.string "That's hard to fake.\p"
+	.string "I wonder who you really work for.\p"
+	.string "Let's register one another in\n"
+	.string "our POKéNAVS. I'd like to keep an eye\l"
+	.string "on you… in a friendly way.\p"
 	.string "… … … … … …$"
 
 GraniteCave_StevensRoom_Text_RegisteredSteven:

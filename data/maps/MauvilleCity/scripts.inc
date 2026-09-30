@@ -482,12 +482,13 @@ MauvilleCity_Text_WallyWeCanBeatAnyone:
 	.string "If I combine forces with RALTS,\n"
 	.string "we can beat anyone!$"
 
-MauvilleCity_Text_WallyWillYouBattleMe:
-	.string "WALLY: Oh! Hi, {PLAYER}!\p"
-	.string "I've gotten a lot stronger since\n"
+MauvilleCity_Text_WallyWillYouBattleMe:  @ Draconid Emerald
+	.string "WALLY: Oh! {PLAYER}!\p"
+	.string "That uniform… You're… one of THEM\n"
+	.string "now? The people from the news?\p"
+	.string "…No. I want to see for myself.\n"
+	.string "I've gotten a lot stronger since\l"
 	.string "we met.\p"
-	.string "{PLAYER}, I want you and my UNCLE to\n"
-	.string "understand that.\p"
 	.string "{PLAYER}, please, will you have\n"
 	.string "a battle with me?$"
 
@@ -496,10 +497,11 @@ MauvilleCity_Text_WallyMyUncleWontKnowImStrong:
 	.string "{PLAYER}, my UNCLE won't know that I've\l"
 	.string "become really strong.$"
 
-MauvilleCity_Text_UncleCanYouBattleWally:
+MauvilleCity_Text_UncleCanYouBattleWally:  @ Draconid Emerald
 	.string "UNCLE: {PLAYER}{KUN}, was it?\n"
-	.string "On WALLY's behalf, can I ask you to\l"
-	.string "battle with him just this once?\p"
+	.string "I don't much like that uniform…\p"
+	.string "But WALLY trusts you. Can I ask you\n"
+	.string "to battle him just this once?\p"
 	.string "I don't think he's going to listen to\n"
 	.string "any reason the way he is now.$"
 
@@ -511,14 +513,17 @@ MauvilleCity_Text_WallyHereICome:
 	.string "WALLY: {PLAYER}, thank you.\p"
 	.string "Okay… Here I come!$"
 
-MauvilleCity_Text_WallyDefeat:
+MauvilleCity_Text_WallyDefeat:  @ Draconid Emerald
 	.string "WALLY: … … … … … … …\p"
-	.string "… … … … … … … …\p"
-	.string "I lost…$"
+	.string "I lost…\p"
+	.string "But your POKéMON looked happy.\n"
+	.string "Really happy.$"
 
-MauvilleCity_Text_WallyIllGoBackToVerdanturf:
+MauvilleCity_Text_WallyIllGoBackToVerdanturf:  @ Draconid Emerald
 	.string "WALLY: UNCLE…\n"
-	.string "I'll go back to VERDANTURF…$"
+	.string "I'll go back to VERDANTURF…\p"
+	.string "{PLAYER}… I don't think you're\n"
+	.string "one of them. Not really.$"
 
 MauvilleCity_Text_ThankYouNotEnoughToBattle:
 	.string "{PLAYER}, thank you.\n"

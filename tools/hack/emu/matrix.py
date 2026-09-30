@@ -6,7 +6,8 @@ matrix.py - run the flow tests for every player gender x egg x second starter (2
 
 Per gender and egg (6 chains, run in parallel): opening -> route103 -> woods (Nerine's team for the egg,
 the Magma sprite for the gender) -> rustboro, then rivals and postgame_home (their scenes don't depend on
-the egg, so only with Deino), then for each second starter second_starter (Tabitha + Birch's pick) and aster (Aster's trainer ids for the egg, the Mega Stone for the
+the egg, so only with Deino), then for each second starter second_starter (Tabitha + Birch's pick), aster
+and act2 (Nerine's teams for egg x second starter; the Totodile runs keep the Devon Goods for Magma) (Aster's trainer ids for the egg, the Mega Stone for the
 second starter, the Draconid / Magma sprites for the gender). Needs a debug build (the warp hook).
 Prints one line per test run and a summary table; exit 1 if any run failed. Logs are in -o.
 """
@@ -53,9 +54,13 @@ def chain(gender, egg, egg_id, root):
         steps.append(("second_starter", {"PICK": value - 1, "SECOND": value}))
         steps.append(("aster", {"EGGNAME": egg, "SECOND": value, "STONE": stone,
                                 "GFX": "DRACONID_" + gender, "MAGMA": "MAGMA_" + gender}))
+        # Act 2 (Nerine's teams for egg x second starter); Totodile runs keep the Devon Goods for Magma
+        goods = 1 if second == "TOTODILE" else 0
+        steps.append(("act2", {"EGGNAME": egg, "SECOND": value, "SECONDNAME": second,
+                               "GOODS": goods, "RETURNED": 1 - goods}))
     for test, defines in steps:
         ok, bad = run(test, out, defines, log)
-        label = test + ("" if test not in ("second_starter", "aster") else " " + SECONDS[defines["SECOND"] - 1][0])
+        label = test + ("" if test not in ("second_starter", "aster", "act2") else " " + SECONDS[defines["SECOND"] - 1][0])
         results.append((name, label, ok, bad))
         if not ok and test in ("opening", "route103", "woods", "rustboro"):
             break  # the rest needs their savestates

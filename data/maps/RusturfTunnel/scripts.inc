@@ -301,7 +301,7 @@ RusturfTunnel_EventScript_Grunt::
 	faceplayer
 	playbgm MUS_ENCOUNTER_AQUA, FALSE
 	msgbox RusturfTunnel_Text_GruntIntro, MSGBOX_DEFAULT
-	trainerbattle_no_intro TRAINER_GRUNT_RUSTURF_TUNNEL, RusturfTunnel_Text_GruntDefeat
+	trainerbattle_no_intro TRAINER_NERINE_RUSTURF_DEINO_CHARMANDER, RusturfTunnel_Text_GruntDefeat  @ Draconid Emerald: Nerine, team by egg and second starter (D-101)
 	msgbox RusturfTunnel_Text_GruntTakePackage, MSGBOX_DEFAULT
 	giveitem ITEM_DEVON_PARTS
 	closemessage
@@ -337,6 +337,7 @@ RusturfTunnel_EventScript_Grunt::
 	setvar VAR_RUSTBORO_CITY_STATE, 4
 	setvar VAR_BRINEY_HOUSE_STATE, 1
 	setflag FLAG_HIDE_ROUTE_116_MR_BRINEY
+	call RusturfTunnel_EventScript_DraconidGoodsChoice  @ Draconid Emerald (act2.pory)
 	release
 	end
 
@@ -418,42 +419,42 @@ RusturfTunnel_EventScript_Mike::
 	msgbox RusturfTunnel_Text_MikePostBattle, MSGBOX_AUTOCLOSE
 	end
 
-RusturfTunnel_Text_ComeAndGetSome:
-	.string "What, are you coming?\n"
-	.string "Come and get some, then!$"
+RusturfTunnel_Text_ComeAndGetSome:  @ Draconid Emerald
+	.string "NERINE: Following me?\n"
+	.string "…Fine. Come, then.$"
 
 RusturfTunnel_Text_Peeko:
 	.string "PEEKO: Pii pihyoh!$"
 
-RusturfTunnel_Text_GruntIntro:
-	.string "Grah, keelhaul it all!\p"
-	.string "That hostage POKéMON turned out to\n"
-	.string "be worthless!\p"
-	.string "And to think I made a getaway…\n"
-	.string "In this tunnel to nowhere!\p"
-	.string "Hey! You!\n"
-	.string "So you want to battle me?$"
+RusturfTunnel_Text_GruntIntro:  @ Draconid Emerald
+	.string "NERINE: You again.\n"
+	.string "The lowlander in red.\p"
+	.string "So MAGMA sends its children after\n"
+	.string "DEVON's parts now.\p"
+	.string "…This WINGULL? It got in my way.\n"
+	.string "It isn't hurt.\p"
+	.string "The parts, though…\n"
+	.string "Those you'll have to win.$"
 
-RusturfTunnel_Text_GruntDefeat:
-	.string "Urrrggh! My career in crime comes to\n"
-	.string "a dead end!$"
+RusturfTunnel_Text_GruntDefeat:  @ Draconid Emerald
+	.string "Hm. A second partner.\n"
+	.string "Interesting choice.$"
 
-RusturfTunnel_Text_GruntTakePackage:
-	.string "This is plain not right…\p"
-	.string "The BOSS told me this would be a\n"
-	.string "slick-and-easy job to pull.\p"
-	.string "All I had to do was steal some package\n"
-	.string "from DEVON.\p"
-	.string "Tch!\n"
-	.string "You want it back that badly, take it!$"
+RusturfTunnel_Text_GruntTakePackage:  @ Draconid Emerald
+	.string "NERINE: Water doesn't need\n"
+	.string "these parts.\p"
+	.string "Neither do I.\n"
+	.string "Remember that.\p"
+	.string "Take them. And take the bird home.$"
 
 RusturfTunnel_Text_PeekoGladToSeeYouSafe:
 	.string "PEEKO!\n"
 	.string "Am I glad to see you're safe!$"
 
-RusturfTunnel_Text_ThankYouLetsGoHomePeeko:
+RusturfTunnel_Text_ThankYouLetsGoHomePeeko:  @ Draconid Emerald
 	.string "PEEKO owes her life to you!\p"
-	.string "They call me MR. BRINEY.\n"
+	.string "Red uniform or not, you saved her.\n"
+	.string "They call me MR. BRINEY.\l"
 	.string "And, you are?\p"
 	.string "… … … … … … … …\n"
 	.string "… … … … … … … …\p"

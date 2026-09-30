@@ -7,19 +7,6 @@ setflag FLAG_DEBUG_NO_ENCOUNTER
 setflag FLAG_DEBUG_NO_TRAINER_SEE
 setflag FLAG_DRACONID_NO_WHITEOUT
 
-# --- Slateport: May at the north exit (after the Oceanic Museum) ---
-setvar VAR_MAY_STATE 1
-clearflag FLAG_HIDE_SLATEPORT_CITY_MAY
-warp MAP_SLATEPORT_CITY 18 7
-path SlateportCity 18 7 18 6
-press UP 2 10
-run 120
-shot 10_slateport_may
-press A 2 30
-mash A 60000
-expect_var VAR_MAY_STATE 2
-expect_flag FLAG_HIDE_SLATEPORT_CITY_MAY 1
-
 # --- Petalburg: Wally at the Gym door (after the Heat Badge) ---
 setvar VAR_WALLY_STATE 1
 clearflag FLAG_HIDE_PETALBURG_CITY_WALLY_GYM
@@ -59,13 +46,13 @@ shot 41_lilycove_need_two
 expect_flag FLAG_MET_RIVAL_LILYCOVE 0
 
 # --- Sootopolis: the Mega battles after the Rain Badge (OnFrame scene) ---
-setvar VAR_BRENDAN_STATE 2
+setvar VAR_BRENDAN_STATE 6
 clearflag FLAG_HIDE_SOOTOPOLIS_CITY_RIVALS
 warp MAP_SOOTOPOLIS_CITY 31 33 2000
 shot 50_sootopolis
 mash A 90000
 shot 51_after_sootopolis
-expect_var VAR_BRENDAN_STATE 3
+expect_var VAR_BRENDAN_STATE 7
 expect_flag FLAG_HIDE_SOOTOPOLIS_CITY_RIVALS 1
 
 # --- Littleroot lab after the Champion: Brendan's rematch ---

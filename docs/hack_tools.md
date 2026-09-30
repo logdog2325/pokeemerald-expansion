@@ -60,6 +60,11 @@ Poryscript instead (`data/scripts/draconid/act*.pory`).
 python3 tools/hack/retext.py data/maps/PetalburgCity_Gym/scripts.inc changes.json   # {"Label": [".string lines"]}
 ```
 
+## Script document – `tools/hack/gen_script_doc.py`
+Writes `docs/hack_script.md`: every new scene's dialogue (the `.pory` files in story order, one bullet per text
+box) and every vanilla text reworked in place (`@ Draconid Emerald` labels), so the text can be reviewed in one
+place. Rerun it after dialogue edits; `--check` fails when the document is stale.
+
 ## Porymap scripts – `tools/hack/porymap_scripts/`
 Register once with `python3 tools/hack/porymap_scripts/register.py` (writes `custom_scripts`
 into `porymap.user.cfg` and `use_poryscript=1` into `porymap.project.cfg`), then reopen the

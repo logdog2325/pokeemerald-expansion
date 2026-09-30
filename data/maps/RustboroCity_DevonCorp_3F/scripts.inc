@@ -194,14 +194,14 @@ RustboroCity_DevonCorp_3F_EventScript_RareRocksDisplay::
 	msgbox RustboroCity_DevonCorp_3F_Text_RareRocksDisplay, MSGBOX_SIGN
 	end
 
-RustboroCity_DevonCorp_3F_Text_MrStoneIHaveFavor:
+RustboroCity_DevonCorp_3F_Text_MrStoneIHaveFavor:  @ Draconid Emerald
 	.string "I'm MR. STONE, the PRESIDENT of\n"
 	.string "the DEVON CORPORATION.\p"
 	.string "I'd just got word about you!\p"
 	.string "You saved our staff not just once,\n"
-	.string "but twice!\p"
-	.string "I have a favor to ask of an amazing\n"
-	.string "person like you.\p"
+	.string "but twice! …In TEAM MAGMA's colors.\p"
+	.string "I won't pretend to understand that.\n"
+	.string "But I know what you did for DEVON.\p"
 	.string "I understand that you're delivering\n"
 	.string "a package to SLATEPORT's SHIPYARD.\p"
 	.string "Well, on the way, could you stop off in\n"

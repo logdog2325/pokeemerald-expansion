@@ -58,7 +58,7 @@ Grouped by area; each entry names the file(s).
 | `FLAG_DEBUG_NO_ENCOUNTER` (0x2E), `FLAG_DEBUG_NO_TRAINER_SEE` (0x2F), `FLAG_DEBUG_NO_COLLISION` (0x30) | the expansion's debug toggles (debug menu, emulator tests); never set by the game |
 | `FLAG_VISITED_DRACONID_VILLAGE` (`SYSTEM_FLAGS+0x21`, was `FLAG_UNUSED_0x881`) | fly destination |
 | `FLAG_HIDE_RUSTBORO_CITY_TABITHA` (0x39, was `FLAG_HIDE_ROUTE_104_BRENDAN`, round 1) | Tabitha beside the Rustboro Gym door (cleared by the Stone Badge; her order) |
-| `FLAG_HIDE_SLATEPORT_CITY_MAY` (0x3A) | May at Slateport's north exit (cleared after the Oceanic Museum) |
+| 0x3A (was `FLAG_HIDE_SLATEPORT_CITY_MAY`) | free again (round 1 removed the v1 Slateport May scene) |
 | `FLAG_HIDE_SOOTOPOLIS_CITY_RIVALS` (0x3B) | Brendan and May below the Sootopolis Gym (cleared by the Rain Badge) |
 | `FLAG_HIDE_PETALBURG_CITY_WALLY_GYM` (0x3C) | Wally beside the Petalburg Gym door (cleared by the Heat Badge) |
 | `FLAG_HIDE_LILYCOVE_CITY_WALLY` (0x3D) | Wally by the Lilycove Pokémon Center (cleared after the Petalburg battle) |
@@ -66,7 +66,8 @@ Grouped by area; each entry names the file(s).
 | `FLAG_HIDE_RUSTBORO_CITY_BIRCH` (0x40) | Prof. Birch outside the Rustboro Gym (cleared by the Stone Badge; second starter) |
 | `FLAG_HIDE_METEOR_FALLS_ASTER` (0x41) | Aster in Meteor Falls (after Magma takes the meteorite) |
 | `FLAG_HIDE_CABLE_CAR_STATION_ASTER` (0x42) | Aster at the Route 112 cable car station (the disguise) |
-| 0x43 (was `FLAG_HIDE_ROUTE_119_ASTER`) | free again (round 1 removed Aster's Route 119 battle) |
+| `FLAG_DEVON_GOODS_RETURNED` (0x43, was `FLAG_HIDE_ROUTE_119_ASTER`, round 1) | the player chose to return the Devon Goods to Devon in Rusturf Tunnel (D-118); read by Tabitha in the museum and the employee in Rustboro |
+| `FLAG_HIDE_OCEANIC_MUSEUM_TABITHA` (0x49, round 1) | Tabitha in the Oceanic Museum 1F (cleared by the goods choice, set after the raid) |
 | `FLAG_HIDE_MAGMA_HIDEOUT_ASTER` (0x44) | Aster in the Magma Hideout 4F (shown after Maxie) |
 | `FLAG_HIDE_SKY_PILLAR_TOP_ASTER` (0x45) | Aster at the top of the Sky Pillar |
 | `FLAG_RECEIVED_MEGA_RING` (0x46) | the Elder gave the Mega Ring (and the second starter's Mega Stone) |
@@ -84,9 +85,9 @@ Grouped by area; each entry names the file(s).
 | `VAR_ASTER_EGG` (0x40F8) | Aster's egg, `DRACONID_EGG_*` (counter-pick of the player's) |
 | `VAR_SECOND_STARTER` (0x40F9) | `SECOND_STARTER_*`: 0 none, 1 Charmander, 2 Totodile, 3 Treecko |
 | `VAR_PLAYER_OUTFIT` (0x40FA) | `PLAYER_OUTFIT_*`: 0 Draconid, 1 Magma – picks the player's sprites and trainer pics (`src/player_outfit.c`) |
-| `VAR_ASTER_STATE` (0x40FB) | `ASTER_STATE_*`: 0 start, 1 Meteor Falls done, 2 disguised, 3 Mt. Chimney done, 4 unused (Route 119 battle removed, round 1), 5 Magma Hideout done, 6 Mega Ring, 7 Sky Pillar done, 8 post-game done |
-| `VAR_BRENDAN_STATE` (0x40FC) | `BRENDAN_STATE_*`: 0 confronts the player at Rustboro's south edge (round 1; the vanilla rival triggers on row 53), 1 beaten there, 2 waits in Sootopolis, 3 Megas done (2–3: v1 scenes, reworked in Act 5) |
-| `VAR_MAY_STATE` (0x40FD) | `MAY_STATE_*`: 0, 1 waits at Slateport's north exit, 2 beaten there |
+| `VAR_ASTER_STATE` (0x40FB) | `ASTER_STATE_*` (round 1, story order; 2, 3, 5 are v1 steps the act reworks remove): 0 start, 1 Meteor Falls, 2 disguised, 3 Mt. Chimney done, 4 unused, 5 Magma Hideout, 6 Mega Ring, 7 Rayquaza called (Act 5), 8 Sky Pillar finale, 9 post-game. |
+| `VAR_BRENDAN_STATE` (0x40FC) | `BRENDAN_STATE_*` (round 1, story order): 0 confronts the player at Rustboro's south edge (the vanilla rival triggers on row 53), 1 beaten there, 2 Mt. Chimney, 3 Route 119 (PokéNav), 4 Lilycove, 5 Mossdeep, 6 Sootopolis, 7 v1 Sootopolis Megas (Act 5 reworks), 8 post-game |
+| `VAR_MAY_STATE` (0x40FD) | `MAY_STATE_*` (round 1, story order): 0, 1 Route 110 (PokéNav), 2 Weather Institute, 3 Lilycove, 4 Sootopolis, 5 post-game |
 | `VAR_WALLY_STATE` (0x40FE) | `WALLY_STATE_*`: 0, 1 waits at the Petalburg Gym, 2 waits in Lilycove, 3 beaten there |
 | `VAR_LITTLEROOT_HOUSES_STATE_MAY` (vanilla) | state 3 (after the Hall of Fame) now starts the SS Ticket / Lati TV scene in the Draconid house 1F, not in Littleroot |
 | `VAR_DRACONID_REPUTATION` (0x40FF, was unused) | `REPUTATION_*`: 0 pre-uniform, 1 uniform (Magma grunt), 2 revealed – NPC lines and the outfit follow it (D-103) |
@@ -205,3 +206,7 @@ Grouped by area; each entry names the file(s).
 | Reputation dialogue (D-103, D-117): uniform / revealed lines for 68 townsfolk in 16 towns, Wally's family (5), Mr. Briney's idle lines (2), 7 Gym Guides + Leaders (not Petalburg), and the shared NPCs; shared helpers `Draconid_EventScript_RepTurnAway`, `…_NurseGreeting`, `…_MartGreeting`/`…_MartGoodbye`, `…_CableClubAside`, `…_WirelessClubAttendant`; every line in `docs/reputation_dialogue.md` | `data/scripts/draconid/reputation/*.pory` (one file per town/area + `shared.pory`), included in `data/event_scripts.s` |
 | Reputation hooks (one `@ Draconid Emerald` line each): nurse greeting / "I'll take them" / "restored"; Poké Mart greeting + goodbye → `call Draconid_EventScript_Mart*` in 17 shops (11 town marts, Lilycove Department Store 2F–5F + rooftop, Pokémon League); Union Room + Direct Corner aside, TEALA's question; Day Care man's idle line, woman's offer; each Gym Leader and Gym Guide script (Rustboro, Dewford, Mauville, Lavaridge, Fortree, Mossdeep; Sootopolis only when revealed) | `data/scripts/{pkmn_center_nurse,cable_club,day_care}.inc`, `data/maps/*_Mart/`, `LilycoveCity_DepartmentStore*/`, `EverGrandeCity_PokemonLeague_1F/`, `*_Gym*/scripts.inc` |
 | Reputation townsfolk: the object's `script` in `map.json` → `<Map>_EventScript_DraconidRep<Name>` (falls back to `<Map>_EventScript_<Name>`) for 75 objects | `data/maps/*/map.json` (list in `docs/reputation_dialogue.md`) |
+| **Round 1, Act 2**: Nerine steals the Devon Goods in Rustboro (her sprite and line), Tabitha's order out of the Gym (`RustboroCity_EventScript_DraconidTabithaGoodsOrder`, called at the end of the theft), Nerine in Rusturf Tunnel (`TRAINER_NERINE_RUSTURF_DEINO_CHARMANDER`, variant by egg × second starter) and the goods choice (`RusturfTunnel_EventScript_DraconidGoodsChoice`), the employee and Mr. Stone about the uniform, Steven ("MAGMA doesn't usually deliver mail"), Tabitha past the museum counter (`SlateportCity_OceanicMuseum_1F_EventScript_DraconidTabithaOrder`, called after the fee), Nerine as the second museum battle (`TRAINER_NERINE_SLATEPORT_…`), Archie and Stern about the uniform, May on Route 110 (the vanilla rival scene, `TRAINER_MAY_ROUTE_110`, PokéNav registration `Route110_EventScript_DraconidRegisterMay`), Wally's Mauville lines; the v1 Slateport May scene and the v1 Route 110 Brendan registration are removed | `data/scripts/draconid/act2.pory`; `data/maps/{RustboroCity,RusturfTunnel,RustboroCity_DevonCorp_3F,GraniteCave_StevensRoom,SlateportCity_OceanicMuseum_1F,SlateportCity_OceanicMuseum_2F,Route110,MauvilleCity}/scripts.inc` (`@ Draconid Emerald`), their `map.json` |
+| New object `LOCALID_OCEANIC_MUSEUM_1F_TABITHA` (10, 4); Nerine's sprite on the Rustboro thief, the Rusturf grunt and museum 2F grunt 1; the Slateport May object and triggers removed | `data/maps/*/map.json` |
+| `act2.play` (theft + Tabitha, Rusturf + choice, Mr. Stone, Steven, museum, Route 110, Mauville; `-D EGGNAME SECOND SECONDNAME GOODS RETURNED`), in the matrix per egg × second starter (Totodile runs keep the goods) | `tools/hack/emu/tests/act2.play`, `tools/hack/emu/matrix.py` |
+| `docs/hack_script.md` (all new and reworked dialogue by scene) generated by `tools/hack/gen_script_doc.py` (`--check` for staleness) | `tools/hack/gen_script_doc.py`, `docs/hack_script.md` |

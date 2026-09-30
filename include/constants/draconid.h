@@ -40,27 +40,36 @@
 #define SECOND_STARTER_TREECKO         3
 #define SECOND_STARTER_LEVEL           10
 
-// VAR_ASTER_STATE: Aster's arc after Draconid Pass (data/scripts/draconid/aster.pory)
+// VAR_ASTER_STATE: Aster's arc after Draconid Pass (round 1 story, D-105; values in story order)
 #define ASTER_STATE_START              0 // Draconid Pass battle (FLAG_DEFEATED_ASTER_DRACONID_PASS)
-#define ASTER_STATE_METEOR_FALLS       1 // battled in Meteor Falls; waits at the Route 112 cable car
-#define ASTER_STATE_DISGUISED          2 // gave the Team Magma disguise (worn up Mt. Chimney)
-#define ASTER_STATE_CHIMNEY_DONE       3 // disguise off after Maxie on Mt. Chimney; waits on Route 119
+#define ASTER_STATE_METEOR_FALLS       1 // battled deep in Meteor Falls (Act 3)
+#define ASTER_STATE_DISGUISED          2 // v1: gave the Magma disguise at the cable car (Act 3 removes it)
+#define ASTER_STATE_CHIMNEY_DONE       3 // v1: disguise off after Mt. Chimney (Act 3 removes it)
                                          // 4 unused (the v1 Route 119 battle was removed in round 1)
-#define ASTER_STATE_HIDEOUT_DONE       5 // Magma Hideout done; the Elder waits with the Mega Ring
-#define ASTER_STATE_MEGA_RING          6 // got the Mega Ring
-#define ASTER_STATE_SKY_PILLAR         7 // climax at the Sky Pillar done
-#define ASTER_STATE_POSTGAME           8 // post-game battle at the shrine done
+#define ASTER_STATE_HIDEOUT_DONE       5 // v1: Magma Hideout done (Act 4 removes it)
+#define ASTER_STATE_MEGA_RING          6 // gave the Mega Ring (round 1: at Jagged Pass, Act 3)
+#define ASTER_STATE_RAYQUAZA_CALLED    7 // called Rayquaza with Nerine at the Sky Pillar (Act 5)
+#define ASTER_STATE_SKY_PILLAR         8 // the Sky Pillar finale done (Act 7)
+#define ASTER_STATE_POSTGAME           9 // post-game battle at the shrine done
 
-// VAR_BRENDAN_STATE: Brendan's battles that vanilla doesn't have (data/scripts/draconid/rivals.pory)
+// VAR_BRENDAN_STATE: Brendan's scenes (round 1 schedule, D-106; values in story order)
 #define BRENDAN_STATE_START            0 // confronts the player at Rustboro's south edge (Act 1)
 #define BRENDAN_STATE_RUSTBORO         1 // beaten at Rustboro
-#define BRENDAN_STATE_SOOTOPOLIS       2 // Rain Badge: Brendan and May wait outside the Sootopolis Gym
-#define BRENDAN_STATE_MEGAS_DONE       3 // Sootopolis Mega battles done
+#define BRENDAN_STATE_MT_CHIMNEY       2 // Mt. Chimney battle done (Act 3, not a must-win)
+#define BRENDAN_STATE_ROUTE_119        3 // beaten on Route 119, registered in the PokéNav (Act 4)
+#define BRENDAN_STATE_LILYCOVE         4 // Lilycove double battle with May done (Act 4)
+#define BRENDAN_STATE_MOSSDEEP         5 // Space Center tag battle done (Act 5, not a must-win)
+#define BRENDAN_STATE_SOOTOPOLIS       6 // after the Sootopolis turn: knows the truth (Act 5)
+#define BRENDAN_STATE_MEGAS_DONE       7 // v1: Sootopolis Mega battles done (Act 5 reworks them)
+#define BRENDAN_STATE_POSTGAME         8 // post-game battles (Act 7)
 
-// VAR_MAY_STATE: May's battles that vanilla doesn't have
+// VAR_MAY_STATE: May's scenes (round 1 schedule, D-106; values in story order)
 #define MAY_STATE_START                0
-#define MAY_STATE_SLATEPORT            1 // Oceanic Museum done: May waits at Slateport's north exit
-#define MAY_STATE_SLATEPORT_DONE       2
+#define MAY_STATE_ROUTE_110            1 // beaten on Route 110, registered in the PokéNav (Act 2)
+#define MAY_STATE_WEATHER_INSTITUTE    2 // covered for the player at the Weather Institute (Act 4)
+#define MAY_STATE_LILYCOVE             3 // Lilycove double battle done (Act 4)
+#define MAY_STATE_SOOTOPOLIS           4 // after the Sootopolis turn: knows the truth (Act 5)
+#define MAY_STATE_POSTGAME             5 // post-game battles (Act 7)
 
 // VAR_WALLY_STATE: Wally's battles that vanilla doesn't have
 #define WALLY_STATE_START              0
