@@ -49,14 +49,9 @@ ALLOWED = {
 # Round 1 (v2 story) is being built act by act: states of acts that aren't scripted yet. Each is
 # reported as a NOTE until its act lands; take it out of this set then.
 PENDING = {
-    "MAGMA_STATE_SPACE_CENTER",
-    "MAGMA_STATE_SEAFLOOR", "MAGMA_STATE_TURNED",
-    "NERINE_STATE_AQUA_HIDEOUT", "NERINE_STATE_REVEALED", "NERINE_STATE_SKY_PILLAR", "NERINE_STATE_POSTGAME",
-    "REPUTATION_REVEALED",
-    "ASTER_STATE_RAYQUAZA_CALLED",
-    "BRENDAN_STATE_MOSSDEEP",
+    "NERINE_STATE_SKY_PILLAR", "NERINE_STATE_POSTGAME",
     "BRENDAN_STATE_POSTGAME",
-    "MAY_STATE_SOOTOPOLIS", "MAY_STATE_POSTGAME",
+    "MAY_STATE_POSTGAME",
 }
 
 # flags whose scene belongs to an act that isn't scripted yet (NOTE instead of ERROR until it lands)

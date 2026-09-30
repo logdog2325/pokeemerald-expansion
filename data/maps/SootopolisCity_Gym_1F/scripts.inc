@@ -97,7 +97,6 @@ SootopolisCity_Gym_1F_EventScript_JuanDefeated::
 	msgbox SootopolisCity_Gym_1F_Text_ExplainRainBadgeTakeThis, MSGBOX_DEFAULT
 	setflag FLAG_DEFEATED_SOOTOPOLIS_GYM
 	setflag FLAG_BADGE08_GET
-	call SootopolisCity_Gym_1F_EventScript_DraconidRivalsWait  @ Draconid Emerald (rivals.pory)
 	setflag FLAG_HIDE_SOOTOPOLIS_CITY_RESIDENTS
 	setflag FLAG_HIDE_SOOTOPOLIS_CITY_STEVEN
 	setflag FLAG_HIDE_SOOTOPOLIS_CITY_WALLACE

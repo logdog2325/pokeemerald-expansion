@@ -79,7 +79,7 @@ MossdeepCity_Gym_EventScript_TateAndLizaDefeated::
 	clearflag FLAG_HIDE_MOSSDEEP_CITY_TEAM_MAGMA
 	clearflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_TEAM_MAGMA
 	clearflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_TEAM_MAGMA
-	clearflag FLAG_HIDE_MOSSDEEP_SPACE_CENTER_RIVALS  @ Draconid Emerald: Brendan and May come to help
+	clearflag FLAG_HIDE_MOSSDEEP_SPACE_CENTER_RIVALS  @ Draconid Emerald: Brendan waits with Steven at the Space Center (act5.pory)
 	clearflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_STEVEN
 	setvar VAR_MOSSDEEP_CITY_STATE, 1
 	setflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_STEVEN

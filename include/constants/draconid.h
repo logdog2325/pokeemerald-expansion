@@ -58,7 +58,7 @@
 #define BRENDAN_STATE_LILYCOVE         4 // Lilycove double battle with May done (Act 4)
 #define BRENDAN_STATE_MOSSDEEP         5 // Space Center tag battle done (Act 5, not a must-win)
 #define BRENDAN_STATE_SOOTOPOLIS       6 // after the Sootopolis turn: knows the truth (Act 5)
-#define BRENDAN_STATE_MEGAS_DONE       7 // v1: Sootopolis Mega battles done (Act 5 reworks them)
+                                         // 7 unused (the v1 Sootopolis Mega battles were removed in round 1 Act 5)
 #define BRENDAN_STATE_POSTGAME         8 // post-game battles (Act 7)
 
 // VAR_MAY_STATE: May's scenes (round 1 schedule, D-106; values in story order)

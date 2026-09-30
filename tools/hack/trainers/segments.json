@@ -667,7 +667,6 @@
   "TRAINER_CONOR": "S7",
   "TRAINER_EDWIN_1": "S3",
   "TRAINER_HECTOR": "S2",
-  "TRAINER_TABITHA_MOSSDEEP": "S8",
   "TRAINER_EDWIN_2": "S6",
   "TRAINER_EDWIN_3": "S7",
   "TRAINER_EDWIN_4": "S8",
@@ -878,7 +877,6 @@
   "TRAINER_GRUNT_MAGMA_HIDEOUT_16": "S7",
   "TRAINER_TABITHA_MAGMA_HIDEOUT": "S7",
   "TRAINER_DARCY": "S7",
-  "TRAINER_MAXIE_MOSSDEEP": "S8",
   "TRAINER_PETE": "S3",
   "TRAINER_ISABELLE": "S3",
   "TRAINER_ANDRES_1": "S6",
@@ -4441,12 +4439,6 @@
    "map": "Route115",
    "story": false
   },
-  "TRAINER_TABITHA_MOSSDEEP": {
-   "segment": "S8",
-   "role": "admin",
-   "map": "MossdeepCity_SpaceCenter_2F",
-   "story": false
-  },
   "TRAINER_EDWIN_2": {
    "segment": "S6",
    "role": "route",
@@ -4512,13 +4504,13 @@
   "TRAINER_BRENDAN_MOSSDEEP": {
    "segment": "S8",
    "role": "route",
-   "map": "SootopolisCity",
+   "map": "MossdeepCity_SpaceCenter_2F",
    "story": true
   },
   "TRAINER_STEVEN_MOSSDEEP": {
    "segment": "POST",
    "role": "route",
-   "map": "SootopolisCity",
+   "map": "MossdeepCity_SpaceCenter_2F",
    "story": true
   },
   "TRAINER_BRENDAN_POSTGAME": {
@@ -4566,19 +4558,19 @@
   "TRAINER_MAXIE_SOOTOPOLIS": {
    "segment": "S8",
    "role": "boss",
-   "map": null,
+   "map": "SootopolisCity",
    "story": true
   },
   "TRAINER_MAXIE_SOOTOPOLIS_MULTI": {
    "segment": "S8",
    "role": "boss",
-   "map": null,
+   "map": "SootopolisCity",
    "story": true
   },
   "TRAINER_ARCHIE_SOOTOPOLIS_MULTI": {
    "segment": "S8",
    "role": "boss",
-   "map": null,
+   "map": "SootopolisCity",
    "story": true
   },
   "TRAINER_ASTER_SKY_PILLAR_DEINO": {
@@ -5801,12 +5793,6 @@
    "map": "Route132",
    "story": false
   },
-  "TRAINER_MAXIE_MOSSDEEP": {
-   "segment": "S8",
-   "role": "boss",
-   "map": "MossdeepCity_SpaceCenter_2F",
-   "story": false
-  },
   "TRAINER_PETE": {
    "segment": "S3",
    "role": "route",
@@ -6852,7 +6838,7 @@
   "TRAINER_NERINE_AQUA_HIDEOUT_DEINO_CHARMANDER": {
    "segment": "S7",
    "role": "route",
-   "map": null,
+   "map": "AquaHideout_B2F",
    "story": true
   },
   "TRAINER_NERINE_AQUA_HIDEOUT_DEINO_TOTODILE": {
@@ -6906,7 +6892,7 @@
   "TRAINER_NERINE_SEAFLOOR_DEINO_CHARMANDER": {
    "segment": "S8",
    "role": "route",
-   "map": null,
+   "map": "SeafloorCavern_Room9",
    "story": true
   },
   "TRAINER_NERINE_SEAFLOOR_DEINO_TOTODILE": {

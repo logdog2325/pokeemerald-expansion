@@ -78,10 +78,10 @@
 #define FLAG_UNUSED_0x038    0x38 // Unused Flag
 #define FLAG_HIDE_RUSTBORO_CITY_TABITHA          0x39 // Draconid Emerald: Tabitha outside the Rustboro Gym after the Stone Badge (Act 1)
 #define FLAG_UNUSED_0x03A    0x3A // Unused Flag
-#define FLAG_HIDE_SOOTOPOLIS_CITY_RIVALS         0x3B // Draconid Emerald: Brendan and May outside the Sootopolis Gym
+#define FLAG_HIDE_SOOTOPOLIS_CITY_RIVALS         0x3B // Draconid Emerald: Brendan and May on the Sootopolis Gym island (the turn, Act 5)
 #define FLAG_HIDE_PETALBURG_CITY_WALLY_GYM       0x3C // Draconid Emerald: Wally outside the Petalburg Gym (before Norman)
 #define FLAG_HIDE_LILYCOVE_CITY_WALLY            0x3D // Draconid Emerald: Wally in Lilycove
-#define FLAG_HIDE_MOSSDEEP_SPACE_CENTER_RIVALS   0x3E // Draconid Emerald: Brendan and May at the Space Center
+#define FLAG_HIDE_MOSSDEEP_SPACE_CENTER_RIVALS   0x3E // Draconid Emerald: Brendan beside Steven at the Space Center 2F (Act 5)
 #define FLAG_ENABLE_BRENDAN_MATCH_CALL           0x3F // Draconid Emerald: Brendan registered in the PokéNav
 #define FLAG_HIDE_RUSTBORO_CITY_BIRCH            0x40 // Draconid Emerald: Prof. Birch outside the Rustboro Gym (second starter)
 #define FLAG_HIDE_METEOR_FALLS_ASTER             0x41 // Draconid Emerald: Aster in Meteor Falls
@@ -93,8 +93,8 @@
 #define FLAG_HIDE_DRACONID_HOUSE_ELDER           0x47 // Draconid Emerald: the Elder visiting the player's house (post-game SS Ticket)
 #define FLAG_HIDE_PETALBURG_WOODS_COURTNEY       0x48 // Draconid Emerald: Courtney after Nerine is beaten (Act 1)
 #define FLAG_HIDE_OCEANIC_MUSEUM_TABITHA         0x49 // Draconid Emerald: Tabitha in the Oceanic Museum 1F (Act 2)
-#define FLAG_UNUSED_0x04A    0x4A // Unused Flag
-#define FLAG_UNUSED_0x04B    0x4B // Unused Flag
+#define FLAG_HIDE_AQUA_HIDEOUT_NERINE            0x4A // Draconid Emerald: Nerine beside Matt in the Aqua Hideout B2F (Act 5)
+#define FLAG_HIDE_SEAFLOOR_CAVERN_NERINE         0x4B // Draconid Emerald: Nerine at the Seafloor Cavern Room 9 entrance (her reveal, Act 5)
 #define FLAG_UNUSED_0x04C    0x4C // Unused Flag
 #define FLAG_UNUSED_0x04D    0x4D // Unused Flag
 #define FLAG_UNUSED_0x04E    0x4E // Unused Flag

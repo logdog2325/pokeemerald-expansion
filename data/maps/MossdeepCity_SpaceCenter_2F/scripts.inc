@@ -162,6 +162,7 @@ MossdeepCity_SpaceCenter_2F_EventScript_Grunt5::
 	end
 
 MossdeepCity_SpaceCenter_2F_EventScript_Tabitha::
+	goto MossdeepCity_SpaceCenter_2F_EventScript_DraconidRaid  @ Draconid Emerald: the player + Tabitha vs Steven + Brendan (act5.pory)
 	lock
 	faceplayer
 	msgbox MossdeepCity_SpaceCenter_2F_Text_WellTakeCareOfYou, MSGBOX_DEFAULT
@@ -177,6 +178,7 @@ MossdeepCity_SpaceCenter_2F_EventScript_Maxie::
 	end
 
 MossdeepCity_SpaceCenter_2F_EventScript_Steven::
+	goto MossdeepCity_SpaceCenter_2F_EventScript_DraconidRaid  @ Draconid Emerald: the player + Tabitha vs Steven + Brendan (act5.pory)
 	lockall
 	goto_if_set FLAG_INTERACTED_WITH_STEVEN_SPACE_CENTER, MossdeepCity_SpaceCenter_2F_EventScript_ReadyForBattlePrompt
 	setflag FLAG_INTERACTED_WITH_STEVEN_SPACE_CENTER
@@ -226,8 +228,7 @@ MossdeepCity_SpaceCenter_2F_EventScript_ReadyForBattlePrompt::
 	applymovement VAR_LAST_TALKED, Common_Movement_FacePlayer
 	waitmovement 0
 	msgbox MossdeepCity_SpaceCenter_2F_Text_StevenAreYouReadyToBattle, MSGBOX_YESNO
-	@ Draconid Emerald: May or Brendan is the tag partner (rivals.pory)
-	goto_if_eq VAR_RESULT, YES, MossdeepCity_SpaceCenter_2F_EventScript_DraconidChoosePartner
+	goto_if_eq VAR_RESULT, YES, MossdeepCity_SpaceCenter_2F_EventScript_DraconidRaid  @ Draconid Emerald (act5.pory)
 	msgbox MossdeepCity_SpaceCenter_2F_Text_StevenHurryGetReadyQuickly, MSGBOX_DEFAULT
 	closemessage
 	applymovement VAR_LAST_TALKED, Common_Movement_WalkInPlaceFasterDown
@@ -236,20 +237,17 @@ MossdeepCity_SpaceCenter_2F_EventScript_ReadyForBattlePrompt::
 	end
 
 MossdeepCity_SpaceCenter_2F_EventScript_DefeatedMaxieTabitha::
-	msgbox MossdeepCity_SpaceCenter_2F_Text_MaxieWeFailedIsAquaAlsoMisguided, MSGBOX_DEFAULT
+	call MossdeepCity_SpaceCenter_2F_EventScript_DraconidFuelSealed  @ Draconid Emerald: the tanks are sealed, whoever won (act5.pory)
 	closemessage
 	delay 20
-	applymovement LOCALID_SPACE_CENTER_MAXIE, Common_Movement_WalkInPlaceFasterLeft
 	applymovement LOCALID_SPACE_CENTER_TABITHA, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	delay 60
-	applymovement LOCALID_SPACE_CENTER_MAXIE, Common_Movement_WalkInPlaceFasterUp
 	applymovement LOCALID_SPACE_CENTER_TABITHA, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
 	delay 20
 	msgbox MossdeepCity_SpaceCenter_2F_Text_MaxieWeWillGiveUp, MSGBOX_DEFAULT
 	closemessage
-	call MossdeepCity_SpaceCenter_2F_EventScript_DraconidRivalsLeave  @ Draconid Emerald (rivals.pory)
 	setvar VAR_MOSSDEEP_CITY_STATE, 3
 	fadedefaultbgm
 	fadescreen FADE_TO_BLACK
@@ -261,7 +259,6 @@ MossdeepCity_SpaceCenter_2F_EventScript_DefeatedMaxieTabitha::
 	removeobject LOCALID_SPACE_CENTER_GRUNT_7
 	removeobject LOCALID_SPACE_CENTER_GRUNT_5
 	removeobject LOCALID_SPACE_CENTER_TABITHA
-	removeobject LOCALID_SPACE_CENTER_MAXIE
 	setobjectxy LOCALID_SPACE_CENTER_2F_SCIENTIST, 5, 6
 	turnobject LOCALID_SPACE_CENTER_2F_SCIENTIST, DIR_SOUTH
 	setobjectxy LOCALID_SPACE_CENTER_2F_GENTLEMAN, 11, 8
@@ -270,6 +267,7 @@ MossdeepCity_SpaceCenter_2F_EventScript_DefeatedMaxieTabitha::
 	turnobject LOCALID_SPACE_CENTER_2F_RICH_BOY, DIR_NORTH
 	call MossdeepCity_SpaceCenter_2F_EventScript_StevenFacePlayer
 	fadescreen FADE_FROM_BLACK
+	call MossdeepCity_SpaceCenter_2F_EventScript_DraconidStevenAndBrendan  @ Draconid Emerald: Steven knows; Brendan storms off (act5.pory)
 	msgbox MossdeepCity_SpaceCenter_2F_Text_StevenThankYouComeSeeMeAtHome, MSGBOX_DEFAULT
 	closemessage
 	fadescreen FADE_TO_BLACK
@@ -354,14 +352,17 @@ MossdeepCity_SpaceCenter_2F_Text_DoesMagmaWantToGoToSpace:
 	.string "TEAM MAGMA…\n"
 	.string "Do they want to go to space, too?$"
 
-MossdeepCity_SpaceCenter_2F_Text_YoureOutnumberedTakeUsOn:
-	.string "What's wrong with you?\p"
-	.string "You're outnumbered three to one,\n"
-	.string "but you still want to take us on?$"
+MossdeepCity_SpaceCenter_2F_Text_YoureOutnumberedTakeUsOn:  @ Draconid Emerald
+	.string "Hold it, rookie!\p"
+	.string "So you're the one Leader MAXIE\n"
+	.string "promoted?\p"
+	.string "Hah! The three of us say you got lucky.\n"
+	.string "One after another, right here.\p"
+	.string "Well? Can you take all three of us?$"
 
-MossdeepCity_SpaceCenter_2F_Text_GoodAnswer:
-	.string "Good answer!\n"
-	.string "That's what a smart person'll do!$"
+MossdeepCity_SpaceCenter_2F_Text_GoodAnswer:  @ Draconid Emerald
+	.string "Hah! Chicken!\n"
+	.string "Come back when you've got the nerve.$"
 
 MossdeepCity_SpaceCenter_2F_Text_Grunt5Intro:
 	.string "A reckless go-getter, are you?\n"
@@ -458,18 +459,15 @@ MossdeepCity_SpaceCenter_2F_Text_MaxieWeFailedIsAquaAlsoMisguided:
 	.string "Then might TEAM AQUA's goal to expand\n"
 	.string "the sea also be equally misguided?$"
 
-MossdeepCity_SpaceCenter_2F_Text_MaxieWeWillGiveUp:
-	.string "MAXIE: All right…\n"
-	.string "We will give up on the fuel…\p"
-	.string "There appear to be more important\n"
-	.string "matters that I must examine…$"
+MossdeepCity_SpaceCenter_2F_Text_MaxieWeWillGiveUp:  @ Draconid Emerald
+	.string "TABITHA: …Leader MAXIE won't like this.\n"
+	.string "Not one bit.\p"
+	.string "MAGMA! Fall back!$"
 
-MossdeepCity_SpaceCenter_2F_Text_StevenThankYouComeSeeMeAtHome:
-	.string "STEVEN: Whew, that was too tense.\n"
-	.string "{PLAYER}{KUN}, thank you.\p"
-	.string "I have something to give you as\n"
-	.string "thanks for your support.\p"
-	.string "Please come see me at home\n"
-	.string "after this.\p"
-	.string "Oh, yes, I don't live in RUSTBORO CITY.\n"
-	.string "I live right here on this island.$"
+MossdeepCity_SpaceCenter_2F_Text_StevenThankYouComeSeeMeAtHome:  @ Draconid Emerald
+	.string "STEVEN: {PLAYER}{KUN}, please come see me at\n"
+	.string "home after this.\p"
+	.string "I have something you'll need, wherever\n"
+	.string "ARCHIE has gone.\p"
+	.string "Oh, yes, I don't live in RUSTBORO CITY. I\n"
+	.string "live right here on this island.$"

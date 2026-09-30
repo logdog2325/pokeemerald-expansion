@@ -1,5 +1,11 @@
 SeafloorCavern_Room9_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, SeafloorCavern_Room9_EventScript_DraconidOnTransition  @ Draconid Emerald: Nerine's reveal (act5.pory)
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, SeafloorCavern_Room9_OnFrame  @ Draconid Emerald
 	.byte 0
+
+SeafloorCavern_Room9_OnFrame:  @ Draconid Emerald
+	map_script_2 VAR_NERINE_STATE, NERINE_STATE_AQUA_HIDEOUT, SeafloorCavern_Room9_EventScript_DraconidNerineReveal
+	.2byte 0
 
 SeafloorCavern_Room9_EventScript_ArchieAwakenKyogre::
 	lockall
@@ -135,6 +141,7 @@ SeafloorCavern_Room9_EventScript_ArchieAwakenKyogre::
 	setflag FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_KYOGRE
 	setflag FLAG_HIDE_SEAFLOOR_CAVERN_AQUA_GRUNTS
 	setflag FLAG_HIDE_MAP_NAME_POPUP
+	setvar VAR_MAGMA_STATE, MAGMA_STATE_SEAFLOOR  @ Draconid Emerald: KYOGRE is awake (Maxie's next call)
 	warp MAP_ROUTE128, 38, 22
 	waitstate
 	releaseall
@@ -218,8 +225,9 @@ SeafloorCavern_Room9_Movement_Delay32:
 SeafloorCavern_Room9_Text_ArchieHoldItRightThere:
 	.string "ARCHIE: Hold it right there.$"
 
-SeafloorCavern_Room9_Text_ArchieSoItWasYou:
+SeafloorCavern_Room9_Text_ArchieSoItWasYou:  @ Draconid Emerald
 	.string "ARCHIE: Fufufu…\n"
+	.string "MAXIE's little red shadow.\p"
 	.string "So it was you, after all.$"
 
 SeafloorCavern_Room9_Text_ArchieBeholdKyogre:
