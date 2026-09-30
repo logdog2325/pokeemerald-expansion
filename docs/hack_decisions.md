@@ -168,7 +168,9 @@ when a playtest note overrides something here, the entry is updated and marked.
   tier (so tiers written separately stay one trainer); others use their ORAS rematch team when known with
   confidence, otherwise their own team made fuller. No ORAS data files are in the repo, so every team goes through
   `check_party.py` (moves, abilities, evolution levels, caps). – Alt: ORAS for everyone. – Reproducible and
-  checkable; the brief's "Emerald rematch if none".
+  checkable; the brief's "Emerald rematch if none". **Outcome**: no batch could vouch for an ORAS roster, so none
+  is used – 362 trainers have their Emerald rematch roster, 436 an enhanced own team (`sources.json`); real ORAS
+  rosters can replace blocks later through the same checks.
 - **D-064 AI**: route trainers `Basic Trainer` (+ `Smart Mon Choices` from S4), gym trainers `Basic Trainer /
   Smart Mon Choices`, bosses and rivals `Smart Trainer / Ace Pokemon`, Elite Four / Champion / post-game bosses
   `+ Prediction`. – Alt: Smart Trainer everywhere. – Bosses feel smart; route trainers stay quick to play.

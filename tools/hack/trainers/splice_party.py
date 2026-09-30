@@ -26,9 +26,10 @@ def main():
     ap.add_argument("batches", nargs="+")
     ap.add_argument("--check", action="store_true")
     ap.add_argument("--append", action="store_true")
+    ap.add_argument("--target", default=TARGET, help="party file to splice into (default src/data/trainers.party)")
     args = ap.parse_args()
 
-    pre, blocks = party.split(open(TARGET).read())
+    pre, blocks = party.split(open(args.target).read())
     index = {tid: i for i, (tid, _) in enumerate(blocks)}
     incoming = {}
     for path in args.batches:
@@ -52,7 +53,7 @@ def main():
             sys.exit("%s: unknown trainer %s (use --append for new ids)" % (path, tid))
     print("%d block(s) replaced, %d added" % (changed, added))
     if not args.check:
-        open(TARGET, "w").write(party.join(pre, blocks))
+        open(args.target, "w").write(party.join(pre, blocks))
 
 
 if __name__ == "__main__":

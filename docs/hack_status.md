@@ -8,6 +8,20 @@ Other docs: [decisions](hack_decisions.md) · [changes](hack_changes.md) · [too
 [art pipeline](hack_art_pipeline.md) · [trainers](hack_trainers.md) · [resources](hack_resources.md) ·
 [playtest guide](playtest_guide.md) · [feedback](hack_feedback.md)
 
+## Where things stand
+All seven phases are built and pushed. Every new scene, from the opening to the post-game, is flow-tested in the
+emulator for both genders and all 9 starter pairs (scenes reached by debug warps, battles mashed); nobody has yet
+played the whole game through by hand. Build: `make` (debug, R + Start menu) →
+`pokeemerald.gba`, `make release` → `pokeemerald-release.gba`. Next: playtest rounds through
+[hack_feedback.md](hack_feedback.md) ([guide](playtest_guide.md)).
+
+Open items, none blocking a playthrough:
+- `TODO(art)`: custom Porytiles tiles for the shrine / Rayquaza statue / meteorites; Acro Bike and watering-can
+  frames; the few pixel fixes listed in [hack_art_pipeline.md](hack_art_pipeline.md).
+- `TODO(dialogue)`: Magma grunts don't react to the disguise (D-044).
+- Trainers: no ORAS rematch rosters are used (none could be sourced); swapping them in later is a block edit.
+- A full hand playthrough of the vanilla story between the new scenes hasn't been automated.
+
 ## Phase 0 – Tools and extensions
 - [x] Toolchain (apt `gcc-arm-none-eabi` 13.2) – baseline `make` OK (2m30s, 79.7% ROM)
 - [x] Baseline `make check`: 5414 passed / 0 failed (18 known-failing, 9 expected-failing, 421 to-do)
@@ -65,8 +79,8 @@ Other docs: [decisions](hack_decisions.md) · [changes](hack_changes.md) · [too
 - [x] Aster arc: Meteor Falls, cable car, Route 119, Magma Hideout, Sky Pillar, post-game shrine (`aster.play`)
 - [x] Magma disguise arc (cable car → Mt. Chimney, Magma Hideout) + Mega Ring and the second starter's Mega Stone
       from the Elder (`aster.play`)
-- [ ] Vanilla flow verification end to end (Phase 7); grunt lines that should notice the disguise
-      `TODO(dialogue)`
+- [x] Vanilla flow verification of every new scene (Phase 7 matrix); open: grunt lines that should notice the
+      disguise `TODO(dialogue)`
 
 ## Phase 5 – Rival battles
 - [x] Decouple Brendan & May from player gender (scenes, sprites, PokéNav)
@@ -79,11 +93,17 @@ Other docs: [decisions](hack_decisions.md) · [changes](hack_changes.md) · [too
 ## Phase 6 – Trainers / difficulty
 - [x] Level caps (hard, per badge) + rematch tiers gated by badges – `make check` green
 - [x] Rulebook `docs/hack_trainers.md`, segments (`tools/hack/trainers/segments.json`), trainer tools
-- [~] Trainer batches 1–9 (798 trainers) being written; then splice + check + build **← in progress**
+- [x] Trainer overhaul merged: 798 trainers rewritten in 9 batches (362 Emerald rematch rosters, 436 enhanced own
+      teams, **no ORAS rosters**), rematch tiers made consistent; `check_party.py` 0 errors (11 allowed early-evolved
+      aces/bosses), `check_tiers.py` 0/0; table at the end of `docs/hack_trainers.md`; Roxanne's team checked in battle
 
 ## Phase 7 – Polish
 - [x] Script/flag reachability checks: `tools/hack/check_story.py` (0 errors; 3 record-only flags); Route 119
       Aster moved onto a real chokepoint after an elevation-aware path search showed the old spot could be skipped
-- [~] Both genders × 3 eggs × 3 second starters: `tools/hack/emu/matrix.py` (18 flows, emulator)
+- [x] Both genders × 3 eggs × 3 second starters: `tools/hack/emu/matrix.py` – 18 combinations, 58 emulator runs
+      (opening, Route 103/104, rivals, post-game home, second starter, Aster arc with opponent ids, Mega Stone,
+      Draconid/Magma sprites) all pass on the Phase 6 ROM. It caught two bugs, both fixed: the first May battle
+      could white out to the far-away Draconid bedroom (D-048), and early-rival battles fought a wild Zigzagoon
+- [ ] Not automated: a full hand playthrough of the vanilla story between the new scenes (see the playtest guide)
 - [x] `docs/playtest_guide.md`, `docs/hack_feedback.md`
 - [ ] Final summary

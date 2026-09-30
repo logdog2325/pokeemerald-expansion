@@ -61,5 +61,7 @@ python3 tools/hack/trainers/check_party.py [batch.party] --caps --proc   # legal
 python3 tools/hack/trainers/splice_party.py batch.party                  # merge blocks into trainers.party
 python3 tools/hack/trainers/build_segments.py [--list S3]                # segments.json (caps from src/caps.c)
 python3 tools/hack/trainers/learnset.py Grovyle --level 23 [--all]       # moves for writing sets
+python3 tools/hack/trainers/check_tiers.py                               # rematch tiers grow tier to tier
+python3 tools/hack/trainers/report.py                                    # trainer table in docs/hack_trainers.md
 ```
 Scratch output (previews, sheets) goes to the session scratchpad, not the repo.
