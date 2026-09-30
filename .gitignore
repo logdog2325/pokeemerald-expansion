@@ -66,3 +66,10 @@ tools/aif2pcm/aif2pcm
 *.smolTM
 __pycache__
 .map_version
+
+# Draconid Emerald: locally built tool binaries (see tools/hack/install_tools.sh)
+tools/poryscript/poryscript
+tools/porytiles/porytiles
+# Porymap decoration scripts are source, not build output
+!tools/hack/porymap_scripts/*.js
+__pycache__/
