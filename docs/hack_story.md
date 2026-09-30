@@ -200,3 +200,6 @@ Petalburg Woods recruitment/outfit change, Maxie's first meeting at Meteor Falls
 
 ### Follow-up note 23 (round 1)
 - "also maybe add a wallace battle at sky pillar like there is in oras for the delta episode"
+
+### Follow-up note 24 (round 1)
+- "also in the final sequence can we have the intense sunlight /rain effect on the overworld from ruby sapphir emerald since primal groudon and kyogre have been awakened should be posssible also wallace can use mega gyrados"

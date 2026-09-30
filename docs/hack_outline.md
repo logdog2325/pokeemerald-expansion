@@ -93,11 +93,12 @@ undercover. Everyone else may suspect (May's doubts, Steven's "strongest MAGMA g
 ## Act 7 – The prophecy fulfilled
 51. ⬜ The Elder calls the player home: the shrine's sealed wall opens – **Regidrago**.
 52. 🚧 Sky Pillar: **Wallace**, Sootopolis's guardian of the tower (as in ORAS's Delta Episode), tests the player
-    before anyone climbs to Rayquaza.
+    before anyone climbs to Rayquaza (Mega Gyarados).
     ☑️ **The trial** – the player + Nerine (Nerine 8, partner) vs **Aster battle 3**; **Zinnia** on
     3F; the summit – catch Rayquaza, Dragon Ascent, the **Deoxys** boss, Mega Rayquaza destroys the meteor.
 53. ⬜ The alarm: Maxie and Archie used the Orbs – Primal Groudon and Primal Kyogre – and attack the Draconid
-    village.
+    village. From here until the Primal battle is won, Emerald's intense sunlight and heavy rain alternate on the
+    overworld.
 54. ⬜ The village under attack: **four double battles** against Magma + Aqua grunts with **Brendan, May, Wally
     and Aster** as partners; Brendan and May get their Latis.
 55. ⬜ The final battle at the shrine: **the player + Brendan or May (Mega Lati) vs Maxie (Primal Groudon) and
