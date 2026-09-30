@@ -166,3 +166,6 @@ Petalburg Woods recruitment/outfit change, Maxie's first meeting at Meteor Falls
 
 ### Follow-up note 12 (round 1)
 - "Also Courtney and Tabitha should try to attack you after too maybe have them ambush you in victory road and hint that Archie and Maxie will have they'd vengeance against the draconids"
+
+### Follow-up note 13 (round 1)
+- "I like the idea of an ambush on the way to victory road too you get attacked by like 5 to 6 team aqua runs and maybe the aqua admin I forgot their names and yeah, they attack you on your way to victory Road and you have to fight like all five of them and there's no healing they should be easy to beat though besides, the admin will be like slightly stronger, but still nothing that you shouldn't be able to take care of"
