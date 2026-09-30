@@ -1716,6 +1716,14 @@ static const struct SpriteFrameImage sPicTable_Courtney[] = {
     overworld_ascending_frames(gObjectEventPic_Courtney, 2, 4),
 };
 
+static const struct SpriteFrameImage sPicTable_Wes[] = {
+    overworld_ascending_frames(gObjectEventPic_Wes, 2, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_FrontierBlue[] = {
+    overworld_ascending_frames(gObjectEventPic_FrontierBlue, 2, 4),
+};
+
 static const struct SpriteFrameImage sPicTable_DraconidEggDeino[] = {
     obj_frame_tiles(gObjectEventPic_DraconidEggDeino),
 };

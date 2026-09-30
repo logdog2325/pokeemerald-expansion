@@ -1,0 +1,410 @@
+// Draconid Emerald round 1 follow-up: the Battle Frontier legends (post-game, D-225 - D-229).
+// WES (Pokémon Colosseum) waits in the BATTLE PYRAMID's sands (58, 22), RED at the foot of the cliff below
+// ARTISAN CAVE (29, 10), BLUE by the BATTLE TOWER door (18, 15). They are there once the Hall of Fame is done
+// (FLAG_SYS_GAME_CLEAR) and battle again whenever asked. The LEGENDS' TAG attendant beside the TOWER door (14, 15)
+// pairs the player with a legend they have beaten (PARTNER_WES / _RED / _BLUE) against the other two: a multi
+// battle on the mat in front of the TOWER, three POKéMON each (the *_FRONTIER_MULTI teams).
+
+// BattleFrontier_OutsideEast_OnTransition: the legends only come after the Hall of Fame
+script BattleFrontier_OutsideEast_EventScript_DraconidLegends {
+    if (flag(FLAG_SYS_GAME_CLEAR)) {
+        clearflag(FLAG_HIDE_BATTLE_FRONTIER_WES)
+        clearflag(FLAG_HIDE_BATTLE_FRONTIER_RED)
+        clearflag(FLAG_HIDE_BATTLE_FRONTIER_BLUE)
+    } else {
+        setflag(FLAG_HIDE_BATTLE_FRONTIER_WES)
+        setflag(FLAG_HIDE_BATTLE_FRONTIER_RED)
+        setflag(FLAG_HIDE_BATTLE_FRONTIER_BLUE)
+    }
+    return
+}
+
+// ---------------------------------------------------------------------------
+// WES: cool and terse; he ran with a gang in ORRE and walked out on them, as the player did with MAGMA
+// ---------------------------------------------------------------------------
+
+script BattleFrontier_OutsideEast_EventScript_DraconidWes {
+    lock
+    faceplayer
+    if (defeated(TRAINER_WES_FRONTIER)) {
+        msgbox(format("WES: …Again?"), MSGBOX_YESNO)
+        if (var(VAR_RESULT) == NO) {
+            msgbox(format("WES: …Suit yourself."))
+            release
+            end
+        }
+        msgbox(BattleFrontier_OutsideEast_Text_DraconidWesGo)
+        trainerbattle_no_intro(TRAINER_WES_FRONTIER, BattleFrontier_OutsideEast_Text_DraconidWesDefeat)
+        msgbox(format("WES: …Good battle. You know where to find me."))
+        release
+        end
+    }
+    msgbox(format("WES: …\p"
+                  "You're the one who wore the red uniform. MAGMA.\p"
+                  "I ran with a gang once, too. Team SNAGEM, out in ORRE.\p"
+                  "Walked out on them one night. Took their best machine with me."))
+    msgbox(format("WES: SCOTT says you're the best TRAINER in HOENN.\p"
+                  "…Show me."), MSGBOX_YESNO)
+    if (var(VAR_RESULT) == NO) {
+        msgbox(format("WES: …Suit yourself. I'm not going anywhere."))
+        release
+        end
+    }
+    msgbox(BattleFrontier_OutsideEast_Text_DraconidWesGo)
+    trainerbattle_no_intro(TRAINER_WES_FRONTIER, BattleFrontier_OutsideEast_Text_DraconidWesDefeat)
+    msgbox(format("WES: You fight like someone with something to protect.\p"
+                  "…The attendant by the BATTLE TOWER door sets up tag battles.\p"
+                  "If you ever need a partner, I'm around."))
+    release
+}
+
+text BattleFrontier_OutsideEast_Text_DraconidWesGo {
+    format("WES: ESPEON. UMBREON. We're up.")
+}
+
+text BattleFrontier_OutsideEast_Text_DraconidWesDefeat {
+    format("WES: …Heh. Not bad.")
+}
+
+// ---------------------------------------------------------------------------
+// RED: silent, as in the games
+// ---------------------------------------------------------------------------
+
+script BattleFrontier_OutsideEast_EventScript_DraconidRed {
+    lock
+    faceplayer
+    if (defeated(TRAINER_RED_FRONTIER)) {
+        msgbox(format("RED: …"))
+        msgbox(format("Battle RED again?"), MSGBOX_YESNO)
+        if (var(VAR_RESULT) == NO) {
+            msgbox(format("RED: …"))
+            release
+            end
+        }
+        msgbox(BattleFrontier_OutsideEast_Text_DraconidRedGo)
+        trainerbattle_no_intro(TRAINER_RED_FRONTIER, BattleFrontier_OutsideEast_Text_DraconidRedDefeat)
+        msgbox(format("RED: …"))
+        msgbox(format("RED gave a small nod."))
+        release
+        end
+    }
+    msgbox(format("RED: …"))
+    msgbox(format("RED: …"))
+    msgbox(format("RED is looking at {PLAYER}'s POKéMON.\p"
+                  "…He seems to want a battle."))
+    msgbox(format("Battle RED?"), MSGBOX_YESNO)
+    if (var(VAR_RESULT) == NO) {
+        msgbox(format("RED: …"))
+        release
+        end
+    }
+    msgbox(BattleFrontier_OutsideEast_Text_DraconidRedGo)
+    trainerbattle_no_intro(TRAINER_RED_FRONTIER, BattleFrontier_OutsideEast_Text_DraconidRedDefeat)
+    msgbox(format("RED: …"))
+    msgbox(format("RED looked over at the BATTLE TOWER, then back at {PLAYER}.\p"
+                  "…It seems he'd team up with you."))
+    release
+}
+
+text BattleFrontier_OutsideEast_Text_DraconidRedGo {
+    format("RED: …!")
+}
+
+text BattleFrontier_OutsideEast_Text_DraconidRedDefeat {
+    format("…")
+}
+
+// ---------------------------------------------------------------------------
+// BLUE: cocky; RED's rival, and for five minutes the CHAMPION of KANTO
+// ---------------------------------------------------------------------------
+
+script BattleFrontier_OutsideEast_EventScript_DraconidBlue {
+    lock
+    faceplayer
+    if (defeated(TRAINER_BLUE_FRONTIER)) {
+        msgbox(format("BLUE: Back for more? I've been itching for a rematch!"), MSGBOX_YESNO)
+        if (var(VAR_RESULT) == NO) {
+            msgbox(format("BLUE: Tch. Fine. Smell ya later!"))
+            release
+            end
+        }
+        msgbox(format("BLUE: This time I win for real!"))
+        trainerbattle_no_intro(TRAINER_BLUE_FRONTIER, BattleFrontier_OutsideEast_Text_DraconidBlueDefeat)
+        msgbox(format("BLUE: Tch… Next time, for sure. Smell ya later!"))
+        release
+        end
+    }
+    msgbox(format("BLUE: Hey! You're {PLAYER}, right? Everybody here keeps talking about you.\p"
+                  "Wore a MAGMA uniform, then threw it off right in front of their boss. Ha! Gutsy."))
+    msgbox(format("BLUE: I'm BLUE. I was the CHAMPION of KANTO.\p"
+                  "…For about five minutes. Then RED showed up. Don't ask."))
+    msgbox(format("BLUE: SCOTT says you're the toughest TRAINER in HOENN.\p"
+                  "Well? Think you can take on the best in KANTO?"), MSGBOX_YESNO)
+    if (var(VAR_RESULT) == NO) {
+        msgbox(format("BLUE: Heh. Scared? I'll be right here when you're ready."))
+        release
+        end
+    }
+    msgbox(format("BLUE: That's more like it! Let's go!"))
+    trainerbattle_no_intro(TRAINER_BLUE_FRONTIER, BattleFrontier_OutsideEast_Text_DraconidBlueDefeat)
+    msgbox(format("BLUE: Alright, alright. You're the real deal.\p"
+                  "Hey, that attendant by the door runs tag battles. Two on two.\p"
+                  "You and me on the same side? Nobody'd stand a chance. Smell ya later!"))
+    release
+}
+
+text BattleFrontier_OutsideEast_Text_DraconidBlueDefeat {
+    format("BLUE: What?! No way… I picked the wrong POKéMON again, didn't I?")
+}
+
+// ---------------------------------------------------------------------------
+// The LEGENDS' TAG (D-227): the attendant beside the BATTLE TOWER door. The partner is a legend the player has
+// beaten; the other two are the opponents. VAR_TEMP_1 holds the partner through the scene.
+// ---------------------------------------------------------------------------
+
+script BattleFrontier_OutsideEast_EventScript_DraconidTagAttendant {
+    lockall
+    faceplayer
+    if (!flag(FLAG_SYS_GAME_CLEAR)) {
+        msgbox(format("Our special guests haven't arrived yet. Please come back another time!"))
+        releaseall
+        end
+    }
+    if (!defeated(TRAINER_WES_FRONTIER) && !defeated(TRAINER_RED_FRONTIER) && !defeated(TRAINER_BLUE_FRONTIER)) {
+        msgbox(format("Welcome to the LEGENDS' TAG!\p"
+                      "SCOTT has invited three legendary TRAINERS to the BATTLE FRONTIER.\p"
+                      "WES from the ORRE region, and RED and BLUE from KANTO.\p"
+                      "Win a battle against one of them, and they may agree to team up with you.\p"
+                      "Then the two of you take on the other two in a multi battle!"))
+        releaseall
+        end
+    }
+    msgbox(format("Welcome to the LEGENDS' TAG!\p"
+                  "Would you like to team up with a legend?"), MSGBOX_YESNO)
+    if (var(VAR_RESULT) == NO) {
+        msgbox(BattleFrontier_OutsideEast_Text_DraconidTagComeAgain)
+        releaseall
+        end
+    }
+    message(format("Which TRAINER will be your partner?"))
+    waitmessage
+    if (defeated(TRAINER_WES_FRONTIER)) {
+        dynmultipush("WES", PARTNER_WES)
+    }
+    if (defeated(TRAINER_RED_FRONTIER)) {
+        dynmultipush("RED", PARTNER_RED)
+    }
+    if (defeated(TRAINER_BLUE_FRONTIER)) {
+        dynmultipush("BLUE", PARTNER_BLUE)
+    }
+    dynmultipush("CANCEL", MULTI_B_PRESSED)
+    // the cursor starts on the first row (WES when he's in the list; an id that isn't there means row 0)
+    dynmultistack(19, 6, FALSE, 4, FALSE, PARTNER_WES, DYN_MULTICHOICE_CB_NONE)
+    closemessage
+    if (var(VAR_RESULT) == MULTI_B_PRESSED) {
+        msgbox(BattleFrontier_OutsideEast_Text_DraconidTagComeAgain)
+        releaseall
+        end
+    }
+    copyvar(VAR_TEMP_1, VAR_RESULT)
+    msgbox(format("Your POKéMON will be restored first."))
+    closemessage
+    playfanfare(MUS_HEAL)
+    special(HealPlayerParty)
+    waitfanfare
+    msgbox(format("Now, please take your place on the mat in front of the TOWER!"))
+    closemessage
+    call(BattleFrontier_OutsideEast_EventScript_DraconidTagWalkToMat)
+    call(BattleFrontier_OutsideEast_EventScript_DraconidTagBattle)
+    releaseall
+}
+
+text BattleFrontier_OutsideEast_Text_DraconidTagComeAgain {
+    format("Please come again!")
+}
+
+// The attendant (14, 15) is talked to from the left, the right or below; the player walks to (15, 18)
+script BattleFrontier_OutsideEast_EventScript_DraconidTagWalkToMat {
+    getplayerxy(VAR_TEMP_2, VAR_TEMP_3)
+    switch (var(VAR_TEMP_2)) {
+        case 13:
+            applymovement(LOCALID_PLAYER, BattleFrontier_OutsideEast_Movement_DraconidTagFromLeft)
+        case 15:
+            applymovement(LOCALID_PLAYER, BattleFrontier_OutsideEast_Movement_DraconidTagFromRight)
+        default:
+            applymovement(LOCALID_PLAYER, BattleFrontier_OutsideEast_Movement_DraconidTagFromBelow)
+    }
+    waitmovement(0)
+    return
+}
+
+movement BattleFrontier_OutsideEast_Movement_DraconidTagFromLeft {
+    walk_down
+    walk_right
+    walk_down * 2
+    walk_right
+    face_up
+}
+
+movement BattleFrontier_OutsideEast_Movement_DraconidTagFromRight {
+    walk_down * 3
+    face_up
+}
+
+movement BattleFrontier_OutsideEast_Movement_DraconidTagFromBelow {
+    walk_down * 2
+    walk_right
+    face_up
+}
+
+// Under a fade the three legends take their places: the partner beside the player (16, 18) facing the TOWER,
+// the opponents on the mat facing them (A at 15, 16 and B at 16, 16). Then the multi battle.
+script BattleFrontier_OutsideEast_EventScript_DraconidTagBattle {
+    fadescreen(FADE_TO_BLACK)
+    switch (var(VAR_TEMP_1)) {
+        case PARTNER_WES:
+            setvar(VAR_0x8004, LOCALID_FRONTIER_WES)
+            call(BattleFrontier_OutsideEast_EventScript_DraconidTagPartnerSpot)
+            setvar(VAR_0x8004, LOCALID_FRONTIER_RED)
+            call(BattleFrontier_OutsideEast_EventScript_DraconidTagOpponentASpot)
+            setvar(VAR_0x8004, LOCALID_FRONTIER_BLUE)
+            call(BattleFrontier_OutsideEast_EventScript_DraconidTagOpponentBSpot)
+        case PARTNER_RED:
+            setvar(VAR_0x8004, LOCALID_FRONTIER_RED)
+            call(BattleFrontier_OutsideEast_EventScript_DraconidTagPartnerSpot)
+            setvar(VAR_0x8004, LOCALID_FRONTIER_WES)
+            call(BattleFrontier_OutsideEast_EventScript_DraconidTagOpponentASpot)
+            setvar(VAR_0x8004, LOCALID_FRONTIER_BLUE)
+            call(BattleFrontier_OutsideEast_EventScript_DraconidTagOpponentBSpot)
+        default:
+            setvar(VAR_0x8004, LOCALID_FRONTIER_BLUE)
+            call(BattleFrontier_OutsideEast_EventScript_DraconidTagPartnerSpot)
+            setvar(VAR_0x8004, LOCALID_FRONTIER_WES)
+            call(BattleFrontier_OutsideEast_EventScript_DraconidTagOpponentASpot)
+            setvar(VAR_0x8004, LOCALID_FRONTIER_RED)
+            call(BattleFrontier_OutsideEast_EventScript_DraconidTagOpponentBSpot)
+    }
+    delay(20)
+    fadescreen(FADE_FROM_BLACK)
+    switch (var(VAR_TEMP_1)) {
+        case PARTNER_WES:
+            msgbox(format("BLUE: Heh! RED and me on the same side for once. You two don't stand a chance!"))
+            msgbox(format("RED: …"))
+            msgbox(format("WES: …Stay sharp, {PLAYER}."))
+        case PARTNER_RED:
+            msgbox(format("BLUE: So I'm stuck with Mr. Sunglasses. Fine! Let's finally beat RED!"))
+            msgbox(format("WES: …Just don't get in my way."))
+            msgbox(format("RED: …!"))
+        default:
+            msgbox(format("BLUE: Alright, {PLAYER}! You and me. Let's show RED who's boss!"))
+            msgbox(format("RED: …"))
+            msgbox(format("WES: …Let's go."))
+    }
+    closemessage
+    special(SavePlayerParty)
+    fadescreen(FADE_TO_BLACK)
+    special(ChooseHalfPartyForBattle)
+    while (var(VAR_RESULT) == FALSE) {
+        special(LoadPlayerParty)
+        msgbox(format("Choose the POKéMON that will battle beside your partner!"))
+        closemessage
+        special(SavePlayerParty)
+        fadescreen(FADE_TO_BLACK)
+        special(ChooseHalfPartyForBattle)
+    }
+    switch (var(VAR_TEMP_1)) {
+        case PARTNER_WES:
+            multi_2_vs_2(TRAINER_RED_FRONTIER_MULTI, BattleFrontier_OutsideEast_Text_DraconidRedTagDefeat, TRAINER_BLUE_FRONTIER_MULTI, BattleFrontier_OutsideEast_Text_DraconidBlueTagDefeat, PARTNER_WES)
+        case PARTNER_RED:
+            multi_2_vs_2(TRAINER_WES_FRONTIER_MULTI, BattleFrontier_OutsideEast_Text_DraconidWesTagDefeat, TRAINER_BLUE_FRONTIER_MULTI, BattleFrontier_OutsideEast_Text_DraconidBlueTagDefeat, PARTNER_RED)
+        default:
+            multi_2_vs_2(TRAINER_WES_FRONTIER_MULTI, BattleFrontier_OutsideEast_Text_DraconidWesTagDefeat, TRAINER_RED_FRONTIER_MULTI, BattleFrontier_OutsideEast_Text_DraconidRedTagDefeat, PARTNER_BLUE)
+    }
+    specialvar(VAR_RESULT, GetBattleOutcome)
+    if (var(VAR_RESULT) != B_OUTCOME_WON && !flag(FLAG_DRACONID_NO_WHITEOUT)) {
+        goto(BattleFrontier_OutsideEast_EventScript_DraconidTagWhiteOut)
+    }
+    if (var(VAR_RESULT) == B_OUTCOME_WON) {
+        switch (var(VAR_TEMP_1)) {
+            case PARTNER_WES:
+                msgbox(format("WES: …Not bad. We make a good team."))
+            case PARTNER_RED:
+                msgbox(format("RED: …"))
+                msgbox(format("RED gave {PLAYER} a quiet thumbs-up."))
+            default:
+                msgbox(format("BLUE: Ha! Did you see that?! Smell ya later, you two!"))
+        }
+    } else {
+        switch (var(VAR_TEMP_1)) {
+            case PARTNER_WES:
+                msgbox(format("WES: …We'll get them next time."))
+            case PARTNER_RED:
+                msgbox(format("RED: …"))
+            default:
+                msgbox(format("BLUE: Tch! Next time we win, got it?"))
+        }
+    }
+    closemessage
+    fadescreen(FADE_TO_BLACK)
+    call(BattleFrontier_OutsideEast_EventScript_DraconidTagSendHome)
+    fadescreen(FADE_FROM_BLACK)
+    msgbox(format("What a battle! The LEGENDS' TAG is open any time."))
+    return
+}
+
+script BattleFrontier_OutsideEast_EventScript_DraconidTagWhiteOut {
+    fadescreen(FADE_TO_BLACK)
+    special(SetCB2WhiteOut)
+    end
+}
+
+text BattleFrontier_OutsideEast_Text_DraconidWesTagDefeat {
+    format("WES: …Tch. Good teamwork.")
+}
+
+text BattleFrontier_OutsideEast_Text_DraconidRedTagDefeat {
+    format("RED: …")
+}
+
+text BattleFrontier_OutsideEast_Text_DraconidBlueTagDefeat {
+    format("BLUE: Two on two, and I STILL lose?!")
+}
+
+// VAR_0x8004 = the legend's local id; moved for good (the template) and on screen (spawned if it wasn't)
+script BattleFrontier_OutsideEast_EventScript_DraconidTagPartnerSpot {
+    setobjectxyperm(VAR_0x8004, 16, 18)
+    setobjectxy(VAR_0x8004, 16, 18)
+    addobject(VAR_0x8004)
+    turnobject(VAR_0x8004, DIR_NORTH)
+    return
+}
+
+script BattleFrontier_OutsideEast_EventScript_DraconidTagOpponentASpot {
+    setobjectxyperm(VAR_0x8004, 15, 16)
+    setobjectxy(VAR_0x8004, 15, 16)
+    addobject(VAR_0x8004)
+    turnobject(VAR_0x8004, DIR_SOUTH)
+    return
+}
+
+script BattleFrontier_OutsideEast_EventScript_DraconidTagOpponentBSpot {
+    setobjectxyperm(VAR_0x8004, 16, 16)
+    setobjectxy(VAR_0x8004, 16, 16)
+    addobject(VAR_0x8004)
+    turnobject(VAR_0x8004, DIR_SOUTH)
+    return
+}
+
+// Back to where they wait (the map.json positions)
+script BattleFrontier_OutsideEast_EventScript_DraconidTagSendHome {
+    setobjectxyperm(LOCALID_FRONTIER_WES, 58, 22)
+    setobjectxy(LOCALID_FRONTIER_WES, 58, 22)
+    turnobject(LOCALID_FRONTIER_WES, DIR_SOUTH)
+    setobjectxyperm(LOCALID_FRONTIER_RED, 29, 10)
+    setobjectxy(LOCALID_FRONTIER_RED, 29, 10)
+    turnobject(LOCALID_FRONTIER_RED, DIR_SOUTH)
+    setobjectxyperm(LOCALID_FRONTIER_BLUE, 18, 15)
+    setobjectxy(LOCALID_FRONTIER_BLUE, 18, 15)
+    turnobject(LOCALID_FRONTIER_BLUE, DIR_SOUTH)
+    return
+}

@@ -1,0 +1,11 @@
+{
+ "notes": "Wes (Pokemon Colosseum) front pic, from Steven's pic (silver spiky hair, suit): whiter hair and a light collar (Steven's silver-blue ramp 9/A/B), black sunglasses with a glint, the suit recoloured into a navy coat whose tails are drawn over the legs down to row 53 (a closed coat with a front opening, flaring slightly), charcoal trousers below it and a dark shirt (Steven's red tie). The coat rows were computed once from Steven's leg outline and are stored here as plain pixel rows.",
+ "steps": [
+  {"op": "load", "src": "graphics/trainers/front_pics/steven.png"},
+  {"op": "palette", "pal": [[112, 192, 160], [248, 216, 200], [216, 176, 144], [184, 144, 112], [120, 88, 80], [176, 192, 232], [72, 88, 144], [48, 56, 104], [24, 32, 64], [248, 248, 248], [208, 216, 232], [144, 152, 176], [72, 72, 88], [32, 32, 48], [248, 248, 248], [0, 0, 0]]},
+  {"op": "remap_region", "box": [0, 54, 64, 10], "map": {"5": 12, "6": 13, "7": 12, "8": 13}},
+  {"op": "pixels", "at": [19, 43], "rows": ["....F6777778F8777777788F....", "....F6777778F87777788F......", "....F6777778F877777788F.....", "...F67777778F8777777788F....", "..F677777778F87777777788F...", "..F677777778F87777777788F...", "..F677777778F87777777788F...", ".F6777777778F8777777777788F.", ".F6777777778F8777777777788F.", ".F6777777778F87777777777788F", "FFFFFFFFFFFFFFFFFFFFFFFFFFFF"], "key": {"F": 15, "6": 6, "7": 7, "8": 8}},
+  {"op": "pixels", "at": [29, 11], "rows": ["F9F88F9FF", "FFF..FFF."], "key": {"F": 15, "8": 8, "9": 9}},
+  {"op": "save", "dst": "graphics/trainers/front_pics/wes.png"}
+ ]
+}

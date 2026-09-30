@@ -1,0 +1,13 @@
+{
+ "notes": "Wes's partner back pic (D-228), from Steven's back pic (4 frames, sBackAnims_Hoenn): whiter hair, black sunglasses over the visible eye (lens + arm), and the suit from the shoulders down recoloured into the navy coat of his front pic; Steven's shirt collar and cuffs stay light (the coat's light collar).",
+ "steps": [
+  {"op": "load", "src": "graphics/trainers/back_pics/steven.png"},
+  {"op": "palette", "pal": [[112, 192, 160], [248, 216, 200], [216, 176, 144], [184, 144, 112], [120, 88, 80], [48, 56, 104], [24, 32, 64], [88, 88, 104], [48, 48, 56], [248, 248, 248], [216, 224, 232], [160, 168, 184], [72, 72, 88], [32, 32, 48], [248, 248, 248], [0, 0, 0]]},
+  {"op": "remap_region", "box": [0, 36, 64, 28], "map": {"7": 5, "8": 6}, "frames": [0, 1, 2, 3], "frame_h": 64, "axis": "y"},
+  {"op": "pixels", "at": [34, 26], "rows": ["FFFF", "..FF"], "key": {"F": 15}},
+  {"op": "pixels", "at": [36, 89], "rows": ["FFFF", "..FF"], "key": {"F": 15}},
+  {"op": "pixels", "at": [27, 153], "rows": ["FFFF", "..FF"], "key": {"F": 15}},
+  {"op": "pixels", "at": [37, 217], "rows": ["FFFF", "..FF"], "key": {"F": 15}},
+  {"op": "save", "dst": "graphics/trainers/back_pics/wes.png"}
+ ]
+}

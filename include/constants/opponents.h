@@ -931,14 +931,23 @@
 #define TRAINER_NERINE_POSTGAME_JANGMO_O_CHARMANDER 921
 #define TRAINER_NERINE_POSTGAME_JANGMO_O_TOTODILE 922
 #define TRAINER_NERINE_POSTGAME_JANGMO_O_TREECKO 923
+// Draconid Emerald: the Battle Frontier legends (post-game, D-225 - D-229): singles and their three-Pokemon
+// tag teams for the legends' tag multi battle (the same teams as PARTNER_WES/_RED/_BLUE)
+#define TRAINER_WES_FRONTIER                925
+#define TRAINER_RED_FRONTIER                926
+#define TRAINER_BLUE_FRONTIER               927
+#define TRAINER_WES_FRONTIER_MULTI          928
+#define TRAINER_RED_FRONTIER_MULTI          929
+#define TRAINER_BLUE_FRONTIER_MULTI         930
 
 // NOTE: Because each Trainer uses a flag to determine when they are defeated, there is only space for 9 additional trainers before trainer flag space overflows
 // Draconid Emerald: MAX_TRAINERS_COUNT_EMERALD raised from 864 so Nerine's variants fit (D-101); system flags move up
+//       928 -> 944 for the Battle Frontier legends and the finale (D-229): 16 more trainer flags, 2 save bytes
 //       More space can be made by shifting flags around in constants/flags.h or changing how trainer flags are handled
 //       MAX_TRAINERS_COUNT can be increased but will take up additional saveblock space
 
-#define TRAINERS_COUNT_EMERALD     924
-#define MAX_TRAINERS_COUNT_EMERALD 928
+#define TRAINERS_COUNT_EMERALD     931
+#define MAX_TRAINERS_COUNT_EMERALD 944
 
 #if IS_FRLG
 #define TRAINERS_COUNT                      TRAINERS_COUNT_FRLG
