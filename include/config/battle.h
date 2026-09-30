@@ -397,6 +397,8 @@
 #define B_PARTNER_MONS_MARKED_SEEN      FALSE      // If set to TRUE, if your Double Battle partner sends out a Pokémon you haven't encountered yet, it will be marked as SEEN in your Pokédex.
 #define B_MULTI_HALF_TEAMS              FALSE      // If TRUE, trainers will be capped at 3 Pokémon each when there are 2 trainers on one side in a battle. If FALSE, per-battle capping may still be set using `Multi Party: Half` in `trainers.party`
 #define B_TERA_ORB_ALWAYS_CHARGED       FALSE      // If TRUE, causes the Tera Orb to always be charged all the time in every case, overriding B_FLAG_TERA_ORB_CHARGED. Use that for modularity.
+#define B_ALLOW_TERASTALLIZATION        FALSE      // Draconid Emerald (D-266): if FALSE, no battler Terastallizes – trainers, partners, wild and Frontier Pokémon alike (the test suite still can). Mega Evolution is the hack's gimmick.
+#define B_ALLOW_DYNAMAX                 FALSE      // Draconid Emerald (D-266): if FALSE, no battler Dynamaxes or Gigantamaxes (the test suite still can).
 
 #define NUM_BEEPS_GEN_LATEST            4                    // Loops 4 times
 #define NUM_BEEPS_GEN_3                 -1                   // Loops infinitely

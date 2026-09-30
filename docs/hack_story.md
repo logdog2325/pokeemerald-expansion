@@ -206,3 +206,9 @@ Petalburg Woods recruitment/outfit change, Maxie's first meeting at Meteor Falls
 
 ### Follow-up note 25 (round 1)
 - "also maybe have lance be a post game boss have him come to the draconid village and challenge you with a mega dragonite and a strong team saying he heard about what you did and that hes also from the draconid clan shoudl be possible his sprites are in the game would be a cool post game event"
+
+### Follow-up note 26 (round 1)
+- "also in some screenshots im seeing pokemon terastilizing make sure that cannot happen only gimmick should be megas in this rom hack maybe z moves if theres a cool way to implement z moved id love to see it but no teras or dynamaxing/gigantamaxing and z moves should be rare and make sense"
+
+### Follow-up note 27 (round 1)
+- "do find a cool way to implement z moves and z crystals but make it make sense for the story think about how that would work"

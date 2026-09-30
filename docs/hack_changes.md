@@ -62,6 +62,8 @@ Grouped by area; each entry names the file(s).
 | `P_KADABRA_EVERSTONE` (D-216: an Everstone stops Kadabra's level evolution) | `GEN_LATEST` | `GEN_3` | `include/config/pokemon.h` |
 | `WE_FLAG_NO_RUNNING` | `0` | `FLAG_DRACONID_NO_RUNNING` (set around the finale's Rayquaza and Deoxys battles) | `include/config/wild_encounter.h` |
 | `WE_FLAG_NO_CATCHING` | `0` | `FLAG_DRACONID_NO_CATCHING` (set around the Deoxys boss battle) | `include/config/wild_encounter.h` |
+| `B_ALLOW_TERASTALLIZATION` (new, D-266) | – | `FALSE` (no battler Terastallizes outside the test suite) | `include/config/battle.h` |
+| `B_ALLOW_DYNAMAX` (new, D-266) | – | `FALSE` (no battler Dynamaxes or Gigantamaxes outside the test suite) | `include/config/battle.h` |
 
 ## Flags
 | Flag | Meaning |
@@ -281,6 +283,7 @@ Grouped by area; each entry names the file(s).
 | Round 1 v2 (D-250 – D-252): `sPostgameRematches` gains `TRAINER_STEVEN` → `TRAINER_STEVEN_REMATCH`; Steven's Match Call gets `Draconid_Text_StevenCallLeague` (`FLAG_BADGE08_GET`); Wallace's Match Call entry is "SOOTOPOLITAN" at `MAPSEC_SOOTOPOLIS_CITY` (was "CHAMPION", Ever Grande) | `src/draconid.c`, `src/pokenav_match_call_data.c` |
 | The Hall of Fame ends at home instead of rolling the credits (`CB2_ReturnHomeDraconid`: bedroom warp, the continue-game warp cleared); the credits end the same way instead of soft-resetting (D-150, D-152) | `src/hall_of_fame.c`, `src/credits.c`, `src/overworld.c`, `include/overworld.h` |
 | Finale natives (`callnative`): `Draconid_PrepareRayquaza` (Rayquaza to the party lead, from the PC if needed; Dragon Ascent), `Draconid_DoRayquazaFlightScene` (`DoRayquazaTakesFlightScene`: the "takes flight" shot of the Sootopolis cutscene alone), `Draconid_SaveBeforeCredits` (saves with the game continuing in the bedroom), `Draconid_StartCredits` | `src/draconid.c`, `include/draconid.h`, `src/rayquaza_scene.c`, `include/rayquaza_scene.h` |
+| No Terastallization or Dynamax (D-266): `CanTerastallize` (`src/battle_terastal.c`) and `CanDynamax` (`src/battle_dynamax.c`) return FALSE unless `TESTING` or `B_ALLOW_TERASTALLIZATION` / `B_ALLOW_DYNAMAX` |
 
 ## Scripts
 | Script / label | File |

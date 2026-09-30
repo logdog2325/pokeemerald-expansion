@@ -92,6 +92,9 @@ undercover. Everyone else may suspect (May's doubts, Steven's "strongest MAGMA g
 
 ## Act 7 – The prophecy fulfilled
 51. ⬜ The Elder calls the player home: the shrine's sealed wall opens – **Regidrago**.
+    ⬜ With Regidrago the Elder unseals the gifts Alola's dragon keepers sent with the Alolan egg: the **Z-Ring** and a
+    **Dragonium Z** (+ Kommonium Z for a Jangmo-o); Aster and Nerine get a crystal each. Z-Moves exist from here on,
+    once per battle, alongside the Mega.
 52. 🚧 Sky Pillar: **Wallace**, Sootopolis's guardian of the tower (as in ORAS's Delta Episode), tests the player
     before anyone climbs to Rayquaza (Mega Gyarados).
     ✅ **The trial** – the player + Nerine (Nerine 8, partner) vs **Aster battle 3**; **Zinnia** on
@@ -115,6 +118,7 @@ undercover. Everyone else may suspect (May's doubts, Steven's "strongest MAGMA g
 60a. 🚧 **Lance** comes to the Draconid village – Blackthorn's dragon clan is the Draconids' northern branch; he has
      heard what the player did and challenges them (Mega Dragonite); he leaves a Dragoninite and stays for rematches.
 61. ⬜ Groudon (Magma Hideout) and Kyogre (Seafloor Cavern) catchable.
+62. ⬜ Prof. Oak visits the lab with the Z-Crystal of the second partner's type (from his cousin Samson Oak in Alola).
 
 ## Rival battles at a glance
 | Rival | Battles (story order) |
@@ -138,6 +142,8 @@ order, each at its story point (`check_progression.py` walks all eight).
   evolve at 25 and 50.
 - ✅ Gen 4–9 Pokémon in the wild (Beldum 1% in Granite Cave), on ~60% of generic trainers, every gym trainer and
   the grunts; National Dex from the start.
+- ✅ Battle gimmicks: Mega Evolution only (no Terastallization, Dynamax or Gigantamax for anyone).  ⬜ Z-Moves from the
+  Regidrago chapter on – rare: the player's three crystals, Aster and Nerine.
 - ✅ The battle-item counter in every Mart, Gym Leaders' boosters, Mega Stones through the story.
 - ✅ Story-lock checker for Acts 1–5.  ⬜ Acts 6–7 and the post-game.
 - ⬜ Final phase: hard-lock sweep, base-Emerald contradiction scrub, per-act debug jumps + playtest guide, the

@@ -70,6 +70,10 @@ bool32 CanTerastallize(enum BattlerId battler)
 {
     enum HoldEffect holdEffect = GetBattlerHoldEffectIgnoreNegation(battler);
 
+    // Draconid Emerald: nobody Terastallizes outside the test suite (B_ALLOW_TERASTALLIZATION, D-266).
+    if (!TESTING && !B_ALLOW_TERASTALLIZATION)
+        return FALSE;
+
     if (gBattleMons[battler].volatiles.transformed && GET_BASE_SPECIES_ID(gBattleMons[battler].species) == SPECIES_TERAPAGOS)
         return FALSE;
 

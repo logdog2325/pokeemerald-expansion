@@ -1115,3 +1115,12 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   vanilla Wallace object (its flag is set by Juan's badge and its position follows the aftermath states); a battle
   once per Hall of Fame; Steven's cave battle kept under another id (a second Champion rematch). – The brief's
   post-game Wallace, with the ORAS title the data already had.
+- **D-266 Megas are the gimmick: no Terastallization, no Dynamax** (follow-up 26): `B_ALLOW_TERASTALLIZATION` and
+  `B_ALLOW_DYNAMAX` (new, `include/config/battle.h`) are FALSE, and `CanTerastallize` / `CanDynamax` return FALSE for
+  every battler outside the test suite. The trainer data never set a Tera type or Dynamax level (`check_party.py`
+  rejects the fields), but the expansion lets any opponent whose Pokémon wasn't built from trainer data use them: its
+  "don't use a gimmick" marker is only written by the trainer party loader, so AI-controlled wild Pokémon (roamers,
+  the finale's legendaries, smart wild AI) and Battle Frontier facility teams could Terastallize (Tera type = their own
+  type). – Alt: set the Tera type to `TYPE_MYSTERY` on every created Pokémon (touches every creation path; one missed
+  path brings it back); remove the Tera Orb only (opponents don't need one). – The playtester: "no teras or
+  dynamaxing/gigantamaxing". The test suite keeps testing both (`TESTING`), so `make check` is unaffected.

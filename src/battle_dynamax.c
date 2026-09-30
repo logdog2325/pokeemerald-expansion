@@ -75,6 +75,10 @@ bool32 CanDynamax(enum BattlerId battler)
     enum Species species = GetBattlerVisualSpecies(battler);
     enum HoldEffect holdEffect = GetBattlerHoldEffectIgnoreNegation(battler);
 
+    // Draconid Emerald: nobody Dynamaxes outside the test suite (B_ALLOW_DYNAMAX, D-266).
+    if (!TESTING && !B_ALLOW_DYNAMAX)
+        return FALSE;
+
     // Prevents Zigzagoon from dynamaxing in vanilla.
     if (gBattleTypeFlags & BATTLE_TYPE_FIRST_BATTLE && !IsOnPlayerSide(battler))
         return FALSE;
