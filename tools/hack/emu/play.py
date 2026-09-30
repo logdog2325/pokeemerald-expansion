@@ -37,7 +37,9 @@ A .play script is a gbarun script plus:
   path MAP X0 Y0 X1 Y1    walk from (X0,Y0) to (X1,Y1) on MAP along the shortest path over
                           walkable cells (collision 0), avoiding tall grass/water/warps when
                           it can; jumps down ledges; ignores NPCs. Expands to walk commands.
-  savestate/loadstate F   relative paths are inside the output directory
+  savestate/loadstate F   relative paths are inside the output directory; each savestate gets a F.rom stamp (the
+                          ROM's SHA-1), and loading one made by another ROM build prints a WARNING – rebuild the
+                          chain (opening.play → …) after every build
   gender M|F              set the player's gender (the sprite follows on the next map load)
   warp MAP_X X Y [MAX]    debug builds: warp to (X, Y) on MAP_X the next time the player is free
   heal                    debug builds: heal the party the next time the player is free
@@ -59,6 +61,7 @@ Exit code 1 if an expectation fails or an "until" times out.
 """
 
 import argparse
+import hashlib
 import os
 import re
 import subprocess
@@ -67,6 +70,27 @@ import tempfile
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
 GBARUN = os.path.join(ROOT, "tools/hack/emu/gbarun")
+GBARUN_CRASHED = 3  # gbarun's CRASH_EXIT_CODE: the game crashed (usually a savestate from another ROM build)
+
+
+def rom_stamp(rom):
+    """SHA-1 of the ROM: written next to every savestate (F.rom) and checked when one is loaded."""
+    return hashlib.sha1(open(rom, "rb").read()).hexdigest()
+
+
+def check_savestate(path, rom, stamp):
+    """A warning (or None) when the savestate PATH wasn't made by this ROM build."""
+    try:
+        made_by = open(path + ".rom").read().strip()
+    except OSError:
+        made_by = None
+    if made_by is not None:
+        if made_by != stamp:
+            return "savestate %s was made by another ROM build (%s, this ROM %s)" % (path, made_by[:10], stamp[:10])
+        return None
+    if os.path.exists(path) and os.path.getmtime(path) < os.path.getmtime(rom):
+        return "savestate %s is older than the ROM and has no .rom stamp" % path
+    return None
 
 
 def symbols(elf):
@@ -263,6 +287,7 @@ def main():
         return "%X" % (syms[name] | (1 if m.group(1) == "@@" else 0))
 
     out = []
+    saved, loaded = [], []  # savestate files the script writes and reads
     for l in lines:
         t = l.split()
         if not t or t[0].startswith("#"):
@@ -456,15 +481,26 @@ def main():
             out.append("read %X 2 player_y+7" % player_y)
         elif t[0] == "mapid":
             out.append("read %s+%X 2 map_group_num" % (sb1, loc_off))
-        elif t[0] in ("savestate", "loadstate", "shot") and len(t) > 1 and not os.path.isabs(t[1]) and t[0] != "shot":
+        elif t[0] in ("savestate", "loadstate") and len(t) > 1:
             # relative savestates live in the output directory
-            out.append("%s %s" % (t[0], os.path.abspath(os.path.join(args.out, t[1]))))
+            path = t[1] if os.path.isabs(t[1]) else os.path.abspath(os.path.join(args.out, t[1]))
+            (saved if t[0] == "savestate" else loaded).append(path)
+            out.append("%s %s" % (t[0], path))
         else:
             out.append(re.sub(r"(@@?)([A-Za-z_]\w*)", sym, l))
     os.makedirs(args.out, exist_ok=True)
+    stamp = rom_stamp(args.rom)
+    stale = [w for w in (check_savestate(p, args.rom, stamp) for p in loaded if p not in saved) if w]
+    for w in stale:
+        print("WARNING: %s – rebuild the savestate chain (opening.play → …) with this ROM" % w, file=sys.stderr)
     gs = os.path.join(args.out, "_gbarun.txt")
     open(gs, "w").write("\n".join(out) + "\n")
+    # gbarun prints at most a few emulator errors and exits with GBARUN_CRASHED when the game crashes, so its
+    # output stays small enough to capture
     res = subprocess.run([GBARUN, args.rom, gs, args.out], capture_output=True, text=True)
+    for path in saved:
+        if os.path.exists(path):
+            open(path + ".rom", "w").write(stamp + "\n")
     ok = True
     for line in res.stdout.splitlines():
         m = re.match(r"read (\S+?)(?:>>(\d))? = 0x([0-9A-F]+)", line)
@@ -519,6 +555,11 @@ def main():
         print(line)
     if res.stderr.strip():
         print(res.stderr.strip(), file=sys.stderr)
+    if res.returncode == GBARUN_CRASHED:
+        print("FAIL: the game crashed during %s%s" % (args.script, " – " + "; ".join(stale) if stale else
+              " – if it loads a savestate, rebuild the savestate chain with this ROM"), file=sys.stderr)
+    elif not ok and stale:
+        print("FAIL (the savestate may be stale): %s" % "; ".join(stale), file=sys.stderr)
     sys.exit(0 if ok and res.returncode == 0 else 1)
 
 

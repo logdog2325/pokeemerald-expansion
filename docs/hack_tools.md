@@ -236,6 +236,13 @@ python3 tools/hack/emu/play.py tools/hack/emu/tests/release_boot.play   -o /tmp/
 (`newgame`) nor the warp hook; `play.py` maps LTO-renamed symbols (`name.lto_priv.N`) back to their names.
 Flow tests set `FLAG_DRACONID_NO_WHITEOUT` so a battle lost by mashing A doesn't end the scene.
 Savestates only work with the ROM build that made them; rerun the chain after every rebuild.
+`play.py` stamps each savestate it writes with the ROM's SHA-1 (`F.ss.rom`) and prints a WARNING when a test loads
+one made by another build (or an unstamped one older than the ROM). A stale savestate either resets the game to the
+intro (the test then times out) or crashes it: mGBA logs "Jumped to invalid address: …" on every instruction.
+`gbarun` prints only the first 10 emulator errors, and after 100 it stops with exit code 3 and one line
+("gbarun: GAME CRASHED … is the savestate from an older ROM build?"), which `play.py` reports as
+"FAIL: the game crashed during …". (Before this, the error flood grew play.py's captured output by ~16 MB/s until
+the OOM killer stepped in – killing parallel runs.) A healthy run logs no emulator errors at all.
 Tips: the wall clock needs exact presses (`press A 2 450; press A 2 150; press A 2 40; press UP 2 20;
 press A 2 60; mash A 3000`); indoor door mats need an extra `hold DOWN 20`. Exit code 1 on any failed
 expectation or `until` timeout, so scripts double as regression tests.

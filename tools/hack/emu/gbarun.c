@@ -115,14 +115,35 @@ static void shot(const char *name)
 
 static void command(char *line);
 
+// A healthy run logs no emulator errors at all. A game that crashed – typically a savestate from an older ROM build,
+// whose stored code pointers no longer match – logs one ("Jumped to invalid address: ...") per instruction, which
+// used to flood stderr (and play.py's memory) until something killed the process. So only the first few errors are
+// printed, and after CRASH_LOG_LIMIT of them gbarun stops with CRASH_EXIT_CODE and one clear message.
+#define ERROR_LOG_PRINTED 10
+#define CRASH_LOG_LIMIT   100
+#define CRASH_EXIT_CODE   3
+
+static const char *sLastState = NULL;  // the last loadstate file, named in the crash message
+
 static void quiet_log(struct mLogger *logger, int category, enum mLogLevel level, const char *format, va_list args)
 {
+    static unsigned errors = 0;
     (void)logger;
     (void)category;
-    if (level & (mLOG_FATAL | mLOG_ERROR))
+    if (!(level & (mLOG_FATAL | mLOG_ERROR)))
+        return;
+    if (++errors <= ERROR_LOG_PRINTED)
     {
         vfprintf(stderr, format, args);
         fputc('\n', stderr);
+    }
+    if (errors >= CRASH_LOG_LIMIT)
+    {
+        fprintf(stderr, "gbarun: GAME CRASHED (%u emulator errors, e.g. \"Jumped to invalid address\") – "
+                        "is the savestate from an older ROM build? Rebuild the savestate chain (opening.play → …)%s%s\n",
+                errors, sLastState ? "; last loadstate: " : "", sLastState ? sLastState : "");
+        fflush(stdout);
+        exit(CRASH_EXIT_CODE);
     }
 }
 
@@ -170,6 +191,12 @@ static void command(char *line)
         bool ok = save ? mCoreSaveStateNamed(core, vf, SAVESTATE_SAVEDATA | SAVESTATE_RTC)
                        : mCoreLoadStateNamed(core, vf, SAVESTATE_SAVEDATA | SAVESTATE_RTC);
         vf->close(vf);
+        if (!save)
+        {
+            static char lastState[512];
+            snprintf(lastState, sizeof(lastState), "%s", a);
+            sLastState = lastState;
+        }
         printf("%s %s %s\n", cmd, a, ok ? "ok" : "FAILED");
     }
     else if (!strcmp(cmd, "until"))
