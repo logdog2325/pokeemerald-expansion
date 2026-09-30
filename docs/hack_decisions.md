@@ -347,6 +347,24 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
 - **D-175 Wallace unchanged**: ORAS has no Champion Wallace; its only other Wallace battle on Serebii
   ("Sootopolitan Wallace", Route 131 page) has exactly his Emerald Champion roster, which his current team already
   uses. – Alt: Steven's ORAS Champion roster (Steven is story-owned). – Nothing in the ORAS data improves him.
+- **D-180 Zinnia's look**: her ORAS Lorekeeper design at GBA size – a black chin-length bob with blunt bangs, a
+  **red bead** hair tie on her left side, red eyes (front pic), a ragged **cream cloak** with a wound high collar,
+  olive leaf-shaped shoulder pads, a black top with two red crescents, a red rope belt with cream ends, olive shorts
+  and boots, cream socks, and her blue-grey Mega Anklet on the right leg (front pic only). The cloak shows from every
+  side: behind her at the sides from the front, covering her back from behind, trailing from the side. – Alt: a dark
+  (charcoal) cloak for an all-dark outfit; a teal or crimson cloak in the clan colours. – Cream is her canon cloak
+  colour and nobody else in the cast wears it: Nerine has silver-blue hair and a teal shawl, Aster a crimson band and
+  gold horns, the player a teal band, ivory horns and teal/red clothes (the tamer scarf added to the player's outfit
+  should stay out of cream so the two scarves stay apart); Zinnia has no horns and no headband, so she reads as a
+  different kind of Draconid (the Lorekeeper), and a dark cloak would merge with her black hair at 16×32.
+- **D-181 Zinnia's art bases**: overworld from Frontier Brain **Anabel's** walk sheet (the only 9-frame NPC sheet with
+  a short bob; her hair and face keep their palette roles, the body is redrawn per frame over Anabel's poses); front
+  pic from the **Psychic F** pic (short hair, dark top, shorts, bare legs, arms spread wide as if calling the sky; the
+  psychic rings and the floating Poké Ball are erased, the cloak is painted behind the body). No back pic (she never
+  fights beside the player). – Alt: the Leaf pipeline like Aster (same silhouette as Aster and the player); Lucy's
+  sheet (long hair, taken by Nerine); Lance's caped FRLG pic (male build, trousers, new head needed); Anabel's
+  pic (pointing pose, trousers). – Short-haired bases give her a silhouette of her own next to the long-haired Nerine,
+  Aster and the player, and every step is a kitbash recipe, so the art can be polished without redrawing.
 - **D-185 Gen 6 Exp. Share**: `I_EXP_SHARE_ITEM` is `GEN_6` (a key item that shares EXP with the whole party
   while `FLAG_EXP_SHARE_ON` is set; using it toggles the flag). Mr. Stone hands it over **with the PokéNav** at
   the first Devon meeting and it starts switched on; vanilla gave a held Exp. Share only on a return visit after
