@@ -1165,6 +1165,141 @@ Draconid Emerald round 1: Maxie's PokéNav calls to the Magma recruit (D-186). A
 - Together, we can still set this right.
 - … … … … … Click!
 
+### `Draconid_Text_MaxieCallDewford`
+- … … … … … … … … … … … Beep!
+- MAXIE: Is this {PLAYER}? I am MAXIE, the leader of TEAM MAGMA.
+- TABITHA tells me our newest recruit raises dragons and wins BADGES.
+- So DEVON trusts you now. Excellent.
+- Take MR. STONE's LETTER to DEWFORD and the parts to SLATEPORT.
+- Keep your eyes open. We will speak again.
+- … … … … … Click!
+
+## data/scripts/draconid/rival_calls.pory
+
+Draconid Emerald: Brendan's and May's PokéNav Match Call texts (D-243). The PokéNav picks one with MatchCall_GetMessage_Rival (src/pokenav_match_call_data.c): the last entry of the rival's table whose state (VAR_BRENDAN_STATE / VAR_MAY_STATE) and flag are reached. While the player wears the uniform the rivals only keep the number to watch a MAGMA grunt (docs/hack_voices.md); after the Sootopolis turn they call as friends. May registers on Route 110 (Act 2), Brendan on Route 119 (Act 4). The call window is as wide as Maxie's calls.
+
+### `Draconid_Text_MayCallUniform1`
+- MAY: …Oh. It's you.
+- I only registered you to keep tabs on MAGMA.
+- So where are you headed next? …Fine. I'll find out anyway.
+
+### `Draconid_Text_MayCallUniform2`
+- MAY: I heard you beat WATTSON.
+- Does MAGMA hand out a prize for every BADGE, or what?
+- Don't call me just to brag.
+
+### `Draconid_Text_MayCallUniform3`
+- MAY: MT. CHIMNEY was shaking the other day. You could see the smoke from here.
+- If MAGMA hurt anyone up there, I'll find out.
+- …Were you there, {PLAYER}?
+
+### `Draconid_Text_MayCallUniform4`
+- MAY: You beat my dad.
+- He says you battled fair. He almost sounded proud.
+- I don't get you, {PLAYER}. I really don't.
+
+### `Draconid_Text_MayCallUniform5`
+- MAY: About the WEATHER INSTITUTE…
+- I did that for the scientists, okay?
+- So don't go telling MAGMA about it.
+
+### `Draconid_Text_MayCallUniform6`
+- MAY: BRENDAN and I will stop you next time.
+- We'll be ready for you. Both of us.
+
+### `Draconid_Text_MayCallUniform7`
+- MAY: My dad called. He asked if I'd seen you.
+- He still thinks there's some good in you.
+- …I told him I'd let him know.
+
+### `Draconid_Text_MayCallUniform8`
+- MAY: Everyone in MOSSDEEP keeps looking out at the sea.
+- AQUA took a submarine, and MAGMA's everywhere.
+- Whatever you're part of, it's getting worse. I just want it to stop.
+
+### `Draconid_Text_MayCallRevealed1`
+- MAY: Hi, {PLAYER}! Guess who's not mad at you anymore?
+- Go get JUAN's BADGE. I'll be cheering for you!
+
+### `Draconid_Text_MayCallRevealed2`
+- MAY: Eight BADGES! That's all of them!
+- The POKéMON LEAGUE is in EVER GRANDE CITY.
+- It's east of SOOTOPOLIS. Climb the waterfall there, then go through VICTORY ROAD.
+- You can do it!
+
+### `Draconid_Text_MayCallRevealed3`
+- MAY: CHAMPION {PLAYER}! Everyone in HOENN knows your name now.
+- Whatever's going on with the sky, I know you'll handle it.
+- Then come by the LAB. BRENDAN and I want a rematch!
+
+### `Draconid_Text_BrendanCallUniform1`
+- BRENDAN: Yeah? What do you want?
+- MAY says we have to keep an eye on you. So that's what I'm doing.
+- If MAGMA's planning something, you'd better not be in it.
+
+### `Draconid_Text_BrendanCallUniform2`
+- BRENDAN: WINONA says you battled her fair and square.
+- Doesn't change what you're wearing, {PLAYER}.
+
+### `Draconid_Text_BrendanCallUniform3`
+- BRENDAN: Two of us, and you still won.
+- Don't get cocky. Next time I'll be ready for you.
+
+### `Draconid_Text_BrendanCallUniform4`
+- BRENDAN: I heard MAGMA took an ORB from MT. PYRE.
+- Those old folks guarded it their whole lives.
+- …Tell me you weren't there, {PLAYER}.
+
+### `Draconid_Text_BrendanCallUniform5`
+- BRENDAN: I've got nothing to say to you.
+- STEVEN says you let us win at the SPACE CENTER. I don't buy it.
+- …Why would a MAGMA grunt do that?
+
+### `Draconid_Text_BrendanCallRevealed1`
+- BRENDAN: Hey, {PLAYER}. …So, uh. Go beat JUAN.
+- If you lose to him after all that, I'm never letting you hear the end of it.
+
+### `Draconid_Text_BrendanCallRevealed2`
+- BRENDAN: All eight BADGES, huh? Figures.
+- VICTORY ROAD starts past the waterfall in EVER GRANDE CITY.
+- The trainers in there are no joke. Don't lose before you reach the LEAGUE!
+
+### `Draconid_Text_BrendanCallRevealed3`
+- BRENDAN: CHAMPION, huh? …Man, you're strong.
+- Once things calm down, come by my dad's LAB.
+- MAY and I have a rematch waiting for you.
+
+### `Draconid_Text_WallyCallUniform1`
+- WALLY: …Oh. It's you.
+- I'm training every day now. For the next time I see MAGMA.
+- …For the next time I see you, {PLAYER}.
+
+### `Draconid_Text_WallyCallUniform2`
+- WALLY: People in VERDANTURF say MT. CHIMNEY nearly erupted.
+- The smoke reached all the way here. I could hardly breathe.
+- Was that MAGMA? …Was that you?
+
+### `Draconid_Text_WallyCallUniform3`
+- WALLY: I lost to you again at the GYM.
+- My POKéMON didn't give up, though. So I won't either.
+
+### `Draconid_Text_WallyCallUniform4`
+- WALLY: I'm heading for VICTORY ROAD soon.
+- If MAGMA ever comes near EVER GRANDE, I'll be waiting.
+
+### `Draconid_Text_WallyCallRevealed1`
+- WALLY: {PLAYER}! I heard about SOOTOPOLIS.
+- …I'm sorry for everything I said. I didn't know.
+- I'll be waiting at VICTORY ROAD. Let's have a real battle this time!
+
+### `Draconid_Text_WallyCallRevealed2`
+- WALLY: You're too strong, {PLAYER}!
+- I'm going to keep training with GALLADE. Someday I'll catch up to you!
+
+### `Draconid_Text_WallyCallRevealed3`
+- WALLY: CHAMPION {PLAYER}! My uncle can't stop talking about it.
+- He says he always knew. …He didn't, but that's okay.
+
 ## Reworked vanilla texts (`@ Draconid Emerald` labels in `data/maps/*/scripts.inc`)
 
 ### GraniteCave_StevensRoom
