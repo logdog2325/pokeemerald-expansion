@@ -6,7 +6,7 @@ matrix.py - run the flow tests for every player gender x egg x second starter (2
 
 Per gender and egg (6 chains, run in parallel): opening -> route103 -> woods (Nerine's team for the egg,
 the Magma sprite for the gender) -> rustboro, then rivals, rivals2, postgame_home, maxie_calls, elite_four, hm_free
-(HM field moves without a Pokémon that knows them), frontier_legends (post-game) and the checks of wild,
+(HM field moves without a Pokémon that knows them), frontier_legends and lance (post-game) and the checks of wild,
 progression, trade_evos, battle_items and rival_calls – none depends on the egg, so only with Deino – then for each
 second starter second_starter (Tabitha + Prof. Oak's pick), aster
 (Aster's trainer ids for the egg, the Draconid / Magma sprites for the gender), act2 (Nerine's teams for egg x
@@ -60,6 +60,7 @@ def chain(gender, egg, egg_id, root):
         steps += [("rivals", {}), ("rivals2", {}), ("postgame_home", {}), ("maxie_calls", {}), ("elite_four", {}),
                   ("hm_free", {"MAGMA": "MAGMA_" + gender})]
         steps.append(("frontier_legends", {}))  # the Battle Frontier legends (post-game, D-225 - D-229)
+        steps.append(("lance", {}))  # Lance in the Draconid village (post-game, D-260 - D-262)
         # wild tables + National Dex (D-193), the Aqua Hideout story-lock fix (D-213), level evolutions (D-216),
         # the battle-item counter (D-218)
         steps += [("wild", {}), ("progression", {}), ("trade_evos", {}), ("battle_items", {})]

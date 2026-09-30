@@ -4,6 +4,8 @@ mapscripts DraconidVillage_MapScripts {
     MAP_SCRIPT_ON_TRANSITION: DraconidVillage_OnTransition
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_DRACONID_STATE, DRACONID_STATE_EGG_HATCHED: DraconidVillage_EventScript_RunningShoes
+        // Post-game: LANCE lands in front of the player's house (data/scripts/draconid/lance.pory)
+        VAR_TEMP_C, 1: DraconidVillage_EventScript_LanceArrives
     ]
 }
 
@@ -15,6 +17,8 @@ script DraconidVillage_OnTransition {
     }
     // Acts 6-7: the sky stays dark from the meteor alert to the end of the finale (act7.pory)
     call(Draconid_EventScript_FinaleWeather)
+    // Post-game: LANCE and his DRAGONITE (lance.pory)
+    call(DraconidVillage_EventScript_LanceOnTransition)
 }
 
 // ---------------------------------------------------------------------------

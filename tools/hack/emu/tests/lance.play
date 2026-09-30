@@ -1,0 +1,704 @@
+# Lance in the Draconid village (data/scripts/draconid/lance.pory, D-260 - D-262). Post-game only: the first village
+# visit of the post-game (the one with the SS Ticket) arms the arrival, a later one at the fly spot (8, 15) plays it:
+# the Dragonite swoops down with Lance on its back, the Elder and Aster come over and Lance challenges the player.
+# Accepted, the battle starts at once (Mega Dragonite last), then the Dratini and the Dragoninite; declined, Lance
+# waits in the village and talking to him starts the battle; a loss whites out and he is still there; after the
+# first win he battles again whenever asked.
+# Needs rustboro_done.ss from tests/rustboro.play (the Deino chain: a one-Pokemon party); the post-game state is set
+# by hand (as act7.play leaves it). The lead is boosted to win (play.py "boost") with the move cursor on MOVE (Deino:
+# Dragon Breath, super effective against his all-dragon team), or set to 1 HP to lose. Frame series (lance_*): a the
+# arrival, b the scene up to the battle (accepted), c Mega Dragonite, e after the battle, d the declined scene.
+default START rustboro_done.ss
+default MOVE 2
+loadstate ${START}
+setvar VAR_DRACONID_REPUTATION 2
+setvar VAR_PLAYER_OUTFIT 0
+setvar VAR_MAGMA_STATE 12
+setvar VAR_NERINE_STATE 9
+setvar VAR_ASTER_STATE 9
+setvar VAR_BRENDAN_STATE 8
+setvar VAR_MAY_STATE 5
+setflag FLAG_SYS_GAME_CLEAR
+setflag FLAG_BADGE01_GET
+setflag FLAG_BADGE02_GET
+setflag FLAG_BADGE03_GET
+setflag FLAG_BADGE04_GET
+setflag FLAG_BADGE05_GET
+setflag FLAG_BADGE06_GET
+setflag FLAG_BADGE07_GET
+setflag FLAG_BADGE08_GET
+setflag FLAG_RECEIVED_SS_TICKET
+setflag FLAG_HIDE_DRACONID_HOUSE_ELDER
+clearflag FLAG_HIDE_DRACONID_ELDERS_HOUSE_ELDER
+clearflag FLAG_HIDE_DRACONID_VILLAGE_NERINE
+setflag FLAG_DEBUG_NO_ENCOUNTER
+setflag FLAG_DEBUG_NO_TRAINER_SEE
+setflag FLAG_DRACONID_NO_WHITEOUT
+# battle style SET (gSaveBlock2Ptr->optionsBattleStyle, bit 1 of byte 0x15): no "Will you switch?" prompt to mash
+pokebit *@gSaveBlock2Ptr+15 1 1
+# text speed FAST (optionsTextSpeed, bits 0-2 of byte 0x14 = 2), so the frame series show every text box
+pokebit *@gSaveBlock2Ptr+14 0 0
+pokebit *@gSaveBlock2Ptr+14 1 1
+pokebit *@gSaveBlock2Ptr+14 2 0
+
+# --- before the post-game: no Lance, nothing armed ---
+setvar VAR_DRACONID_FINALE_STATE 8
+warp MAP_DRACONID_VILLAGE 8 15
+run 60
+shot lance_00_before_postgame
+expect_flag FLAG_HIDE_DRACONID_VILLAGE_LANCE 1
+expect_flag FLAG_DRACONID_LANCE_ARMED 0
+expect_var VAR_TEMP_C 0
+
+# --- the first post-game visit (the SS Ticket's) only arms the arrival ---
+setvar VAR_DRACONID_FINALE_STATE 9
+warp MAP_DRACONID_VILLAGE 8 15
+run 60
+shot lance_01_first_postgame_visit
+expect_flag FLAG_DRACONID_LANCE_ARMED 1
+expect_flag FLAG_HIDE_DRACONID_VILLAGE_LANCE 1
+expect_var VAR_TEMP_C 0
+# a later visit away from the fly spot (out of the shrine): he waits for one at the fly spot
+warp MAP_DRACONID_VILLAGE 19 6
+run 60
+shot lance_02_shrine_door
+expect_flag FLAG_HIDE_DRACONID_VILLAGE_LANCE 1
+expect_var VAR_TEMP_C 0
+expect_trainer TRAINER_LANCE_DRACONID 0
+savestate lance_armed.ss
+
+# --- the arrival, accepted: the battle at once ---
+boost 0
+warp MAP_DRACONID_VILLAGE 8 15
+run 8
+shot lance_a00
+run 8
+shot lance_a01
+run 8
+shot lance_a02
+run 8
+shot lance_a03
+run 8
+shot lance_a04
+run 8
+shot lance_a05
+run 8
+shot lance_a06
+run 8
+shot lance_a07
+run 8
+shot lance_a08
+run 8
+shot lance_a09
+run 8
+shot lance_a10
+run 8
+shot lance_a11
+run 8
+shot lance_a12
+run 8
+shot lance_a13
+run 8
+shot lance_a14
+run 8
+shot lance_a15
+run 8
+shot lance_a16
+run 8
+shot lance_a17
+run 8
+shot lance_a18
+run 8
+shot lance_a19
+run 8
+shot lance_a20
+run 8
+shot lance_a21
+run 8
+shot lance_a22
+run 8
+shot lance_a23
+run 8
+shot lance_a24
+run 8
+shot lance_a25
+run 8
+shot lance_a26
+run 8
+shot lance_a27
+run 8
+shot lance_a28
+run 8
+shot lance_a29
+run 8
+shot lance_a30
+run 8
+shot lance_a31
+run 8
+shot lance_a32
+run 8
+shot lance_a33
+run 8
+shot lance_a34
+run 8
+shot lance_a35
+press A 2 38
+shot lance_b00
+press A 2 38
+shot lance_b01
+press A 2 38
+shot lance_b02
+press A 2 38
+shot lance_b03
+press A 2 38
+shot lance_b04
+press A 2 38
+shot lance_b05
+press A 2 38
+shot lance_b06
+press A 2 38
+shot lance_b07
+press A 2 38
+shot lance_b08
+press A 2 38
+shot lance_b09
+press A 2 38
+shot lance_b10
+press A 2 38
+shot lance_b11
+press A 2 38
+shot lance_b12
+press A 2 38
+shot lance_b13
+press A 2 38
+shot lance_b14
+press A 2 38
+shot lance_b15
+press A 2 38
+shot lance_b16
+press A 2 38
+shot lance_b17
+press A 2 38
+shot lance_b18
+press A 2 38
+shot lance_b19
+press A 2 38
+shot lance_b20
+press A 2 38
+shot lance_b21
+press A 2 38
+shot lance_b22
+press A 2 38
+shot lance_b23
+press A 2 38
+shot lance_b24
+press A 2 38
+shot lance_b25
+press A 2 38
+shot lance_b26
+press A 2 38
+shot lance_b27
+press A 2 38
+shot lance_b28
+press A 2 38
+shot lance_b29
+press A 2 38
+shot lance_b30
+press A 2 38
+shot lance_b31
+press A 2 38
+shot lance_b32
+press A 2 38
+shot lance_b33
+press A 2 38
+shot lance_b34
+press A 2 38
+shot lance_b35
+press A 2 38
+shot lance_b36
+press A 2 38
+shot lance_b37
+press A 2 38
+shot lance_b38
+press A 2 38
+shot lance_b39
+press A 2 38
+shot lance_b40
+press A 2 38
+shot lance_b41
+press A 2 38
+shot lance_b42
+press A 2 38
+shot lance_b43
+press A 2 38
+shot lance_b44
+press A 2 38
+shot lance_b45
+press A 2 38
+shot lance_b46
+press A 2 38
+shot lance_b47
+press A 2 38
+shot lance_b48
+press A 2 38
+shot lance_b49
+press A 2 38
+shot lance_b50
+press A 2 38
+shot lance_b51
+press A 2 38
+shot lance_b52
+press A 2 38
+shot lance_b53
+press A 2 38
+shot lance_b54
+press A 2 38
+shot lance_b55
+press A 2 38
+shot lance_b56
+press A 2 38
+shot lance_b57
+press A 2 38
+shot lance_b58
+press A 2 38
+shot lance_b59
+press A 2 38
+shot lance_b60
+press A 2 38
+shot lance_b61
+press A 2 38
+shot lance_b62
+press A 2 38
+shot lance_b63
+press A 2 38
+shot lance_b64
+press A 2 38
+shot lance_b65
+press A 2 38
+shot lance_b66
+press A 2 38
+shot lance_b67
+press A 2 38
+shot lance_b68
+press A 2 38
+shot lance_b69
+press A 2 38
+shot lance_b70
+press A 2 38
+shot lance_b71
+press A 2 38
+shot lance_b72
+press A 2 38
+shot lance_b73
+press A 2 38
+shot lance_b74
+press A 2 38
+shot lance_b75
+press A 2 38
+shot lance_b76
+press A 2 38
+shot lance_b77
+press A 2 38
+shot lance_b78
+press A 2 38
+shot lance_b79
+until @gMain+4 4 @@BattleMainCB2 30000 A 24
+run 60
+poke @gMoveSelectionCursor ${MOVE}
+wait_species 1 SPECIES_DRAGONITE_MEGA 200000
+press A 2 70
+shot lance_c00_mega_dragonite
+press A 2 70
+shot lance_c01_mega_dragonite
+press A 2 70
+shot lance_c02_mega_dragonite
+press A 2 70
+shot lance_c03_mega_dragonite
+press A 2 70
+shot lance_c04_mega_dragonite
+press A 2 70
+shot lance_c05_mega_dragonite
+press A 2 70
+shot lance_c06_mega_dragonite
+press A 2 70
+shot lance_c07_mega_dragonite
+press A 2 70
+shot lance_c08_mega_dragonite
+press A 2 70
+shot lance_c09_mega_dragonite
+press A 2 70
+shot lance_c10_mega_dragonite
+press A 2 70
+shot lance_c11_mega_dragonite
+until @gMain+4 4 @@CB2_Overworld 200000 A 24
+expect_opponent TRAINER_LANCE_DRACONID
+expect_trainer TRAINER_LANCE_DRACONID 1
+run 30
+press B 2 38
+shot lance_e00
+press B 2 38
+shot lance_e01
+press B 2 38
+shot lance_e02
+press B 2 38
+shot lance_e03
+press B 2 38
+shot lance_e04
+press B 2 38
+shot lance_e05
+press B 2 38
+shot lance_e06
+press B 2 38
+shot lance_e07
+press B 2 38
+shot lance_e08
+press B 2 38
+shot lance_e09
+press B 2 38
+shot lance_e10
+press B 2 38
+shot lance_e11
+press B 2 38
+shot lance_e12
+press B 2 38
+shot lance_e13
+press B 2 38
+shot lance_e14
+press B 2 38
+shot lance_e15
+press B 2 38
+shot lance_e16
+press B 2 38
+shot lance_e17
+press B 2 38
+shot lance_e18
+press B 2 38
+shot lance_e19
+press B 2 38
+shot lance_e20
+press B 2 38
+shot lance_e21
+press B 2 38
+shot lance_e22
+press B 2 38
+shot lance_e23
+press B 2 38
+shot lance_e24
+press B 2 38
+shot lance_e25
+press B 2 38
+shot lance_e26
+press B 2 38
+shot lance_e27
+press B 2 38
+shot lance_e28
+press B 2 38
+shot lance_e29
+press B 2 38
+shot lance_e30
+press B 2 38
+shot lance_e31
+press B 2 38
+shot lance_e32
+press B 2 38
+shot lance_e33
+press B 2 38
+shot lance_e34
+press B 2 38
+shot lance_e35
+press B 2 38
+shot lance_e36
+press B 2 38
+shot lance_e37
+press B 2 38
+shot lance_e38
+press B 2 38
+shot lance_e39
+mash B 60000
+shot lance_f00_after_scene
+expect_flag FLAG_RECEIVED_DRAGONINITE 1
+expect_item ITEM_DRAGONINITE 1
+expect_party 1 SPECIES_DRATINI
+expect_flag FLAG_HIDE_DRACONID_VILLAGE_LANCE 0
+expect_pos 13 14
+# the scene plays once: back at the fly spot, Lance and his Dragonite wait on the square
+warp MAP_DRACONID_VILLAGE 8 15
+run 60
+shot lance_f01_lance_waits
+expect_var VAR_TEMP_C 0
+expect_flag FLAG_HIDE_DRACONID_VILLAGE_LANCE 0
+# his Dragonite, from its left (12, 12)
+path DraconidVillage 8 15 12 14
+press UP 2 20
+press UP 2 20
+press RIGHT 2 20
+press A 2 30
+run 60
+shot lance_f02_dragonite
+mash B 20000
+
+# --- the arrival, declined: he waits in the village (B reads on and answers NO) ---
+loadstate lance_armed.ss
+warp MAP_DRACONID_VILLAGE 8 15
+run 60
+press B 2 38
+shot lance_d00
+press B 2 38
+shot lance_d01
+press B 2 38
+shot lance_d02
+press B 2 38
+shot lance_d03
+press B 2 38
+shot lance_d04
+press B 2 38
+shot lance_d05
+press B 2 38
+shot lance_d06
+press B 2 38
+shot lance_d07
+press B 2 38
+shot lance_d08
+press B 2 38
+shot lance_d09
+press B 2 38
+shot lance_d10
+press B 2 38
+shot lance_d11
+press B 2 38
+shot lance_d12
+press B 2 38
+shot lance_d13
+press B 2 38
+shot lance_d14
+press B 2 38
+shot lance_d15
+press B 2 38
+shot lance_d16
+press B 2 38
+shot lance_d17
+press B 2 38
+shot lance_d18
+press B 2 38
+shot lance_d19
+press B 2 38
+shot lance_d20
+press B 2 38
+shot lance_d21
+press B 2 38
+shot lance_d22
+press B 2 38
+shot lance_d23
+press B 2 38
+shot lance_d24
+press B 2 38
+shot lance_d25
+press B 2 38
+shot lance_d26
+press B 2 38
+shot lance_d27
+press B 2 38
+shot lance_d28
+press B 2 38
+shot lance_d29
+press B 2 38
+shot lance_d30
+press B 2 38
+shot lance_d31
+press B 2 38
+shot lance_d32
+press B 2 38
+shot lance_d33
+press B 2 38
+shot lance_d34
+press B 2 38
+shot lance_d35
+press B 2 38
+shot lance_d36
+press B 2 38
+shot lance_d37
+press B 2 38
+shot lance_d38
+press B 2 38
+shot lance_d39
+press B 2 38
+shot lance_d40
+press B 2 38
+shot lance_d41
+press B 2 38
+shot lance_d42
+press B 2 38
+shot lance_d43
+press B 2 38
+shot lance_d44
+press B 2 38
+shot lance_d45
+press B 2 38
+shot lance_d46
+press B 2 38
+shot lance_d47
+press B 2 38
+shot lance_d48
+press B 2 38
+shot lance_d49
+press B 2 38
+shot lance_d50
+press B 2 38
+shot lance_d51
+press B 2 38
+shot lance_d52
+press B 2 38
+shot lance_d53
+press B 2 38
+shot lance_d54
+press B 2 38
+shot lance_d55
+press B 2 38
+shot lance_d56
+press B 2 38
+shot lance_d57
+press B 2 38
+shot lance_d58
+press B 2 38
+shot lance_d59
+press B 2 38
+shot lance_d60
+press B 2 38
+shot lance_d61
+press B 2 38
+shot lance_d62
+press B 2 38
+shot lance_d63
+press B 2 38
+shot lance_d64
+press B 2 38
+shot lance_d65
+press B 2 38
+shot lance_d66
+press B 2 38
+shot lance_d67
+press B 2 38
+shot lance_d68
+press B 2 38
+shot lance_d69
+press B 2 38
+shot lance_d70
+press B 2 38
+shot lance_d71
+press B 2 38
+shot lance_d72
+press B 2 38
+shot lance_d73
+press B 2 38
+shot lance_d74
+press B 2 38
+shot lance_d75
+press B 2 38
+shot lance_d76
+press B 2 38
+shot lance_d77
+press B 2 38
+shot lance_d78
+press B 2 38
+shot lance_d79
+mash B 60000
+shot lance_g00_declined
+expect_flag FLAG_HIDE_DRACONID_VILLAGE_LANCE 0
+expect_trainer TRAINER_LANCE_DRACONID 0
+expect_flag FLAG_RECEIVED_DRAGONINITE 0
+expect_pos 13 14
+
+# --- talking to him: a loss whites out (no softlock), and he is still there ---
+clearflag FLAG_DRACONID_NO_WHITEOUT
+boost 0 1
+press UP 2 20
+press A 2 30
+until @gMain+4 4 @@BattleMainCB2 30000 A 24
+run 60
+shot lance_g01_battle_to_lose
+until @gMain+4 4 @@CB2_Overworld 120000 A 24
+mash A 30000
+mapid
+shot lance_g02_after_whiteout
+expect_opponent TRAINER_LANCE_DRACONID
+expect_trainer TRAINER_LANCE_DRACONID 0
+setflag FLAG_DRACONID_NO_WHITEOUT
+heal
+warp MAP_DRACONID_VILLAGE 8 15
+run 60
+shot lance_g03_back_in_the_village
+expect_flag FLAG_HIDE_DRACONID_VILLAGE_LANCE 0
+expect_var VAR_TEMP_C 0
+
+# --- talking to him again: won, then the Dratini and the Dragoninite ---
+boost 0
+path DraconidVillage 8 15 13 14
+press UP 2 20
+press A 2 30
+until @gMain+4 4 @@BattleMainCB2 30000 A 24
+run 60
+poke @gMoveSelectionCursor ${MOVE}
+until @gMain+4 4 @@CB2_Overworld 200000 A 24
+expect_opponent TRAINER_LANCE_DRACONID
+expect_trainer TRAINER_LANCE_DRACONID 1
+run 30
+press B 2 38
+shot lance_h00
+press B 2 38
+shot lance_h01
+press B 2 38
+shot lance_h02
+press B 2 38
+shot lance_h03
+press B 2 38
+shot lance_h04
+press B 2 38
+shot lance_h05
+press B 2 38
+shot lance_h06
+press B 2 38
+shot lance_h07
+press B 2 38
+shot lance_h08
+press B 2 38
+shot lance_h09
+press B 2 38
+shot lance_h10
+press B 2 38
+shot lance_h11
+press B 2 38
+shot lance_h12
+press B 2 38
+shot lance_h13
+press B 2 38
+shot lance_h14
+press B 2 38
+shot lance_h15
+press B 2 38
+shot lance_h16
+press B 2 38
+shot lance_h17
+press B 2 38
+shot lance_h18
+press B 2 38
+shot lance_h19
+mash B 60000
+expect_flag FLAG_RECEIVED_DRAGONINITE 1
+expect_item ITEM_DRAGONINITE 1
+expect_party 1 SPECIES_DRATINI
+
+# --- the rematch: whenever asked, the same team ---
+heal
+boost 0
+press UP 2 20
+press A 2 30
+shot lance_i00_rematch_offer
+until @gMain+4 4 @@BattleMainCB2 30000 A 24
+run 60
+poke @gMoveSelectionCursor ${MOVE}
+shot lance_i01_rematch
+until @gMain+4 4 @@CB2_Overworld 200000 A 24
+expect_opponent TRAINER_LANCE_DRACONID
+mash A 30000
+shot lance_i02_after_rematch
+expect_flag FLAG_RECEIVED_DRAGONINITE 1
