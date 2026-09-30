@@ -31,7 +31,7 @@ RustboroCity_OnFrame:
 
 RustboroCity_EventScript_ScientistAddMatchCall::
 	lockall
-	setvar VAR_ROUTE104_STATE, 2  @ Draconid Emerald: no May scene at Briney's cottage (May registers on Route 110)
+	setvar VAR_ROUTE104_STATE, 1  @ Draconid Emerald: BRENDAN waits at Briney's cottage (rivals2.pory); May registers on Route 110
 	applymovement LOCALID_PLAYER, RustboroCity_Movement_PlayerWalkDown
 	waitmovement 0
 	playse SE_EXIT

@@ -122,8 +122,10 @@ PetalburgCity_EventScript_DraconidWallyTrigger::
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
 	msgbox PetalburgCity_EventScript_DraconidWallyTrigger_Text_0
-	trainerbattle_no_intro TRAINER_WALLY_PETALBURG, PetalburgCity_Text_DraconidWallyDefeat
 	msgbox PetalburgCity_EventScript_DraconidWallyTrigger_Text_1
+	msgbox PetalburgCity_EventScript_DraconidWallyTrigger_Text_2
+	trainerbattle_no_intro TRAINER_WALLY_PETALBURG, PetalburgCity_Text_DraconidWallyDefeat
+	msgbox PetalburgCity_EventScript_DraconidWallyTrigger_Text_3
 	closemessage
 	applymovement LOCALID_PETALBURG_WALLY_GYM, PetalburgCity_Movement_DraconidWallyLeave
 	waitmovement 0
@@ -404,8 +406,9 @@ LilycoveCity_EventScript_DraconidWally::
 	lock
 	faceplayer
 	msgbox LilycoveCity_EventScript_DraconidWally_Text_0
-	trainerbattle_no_intro TRAINER_WALLY_LILYCOVE, LilycoveCity_Text_DraconidWallyDefeat
 	msgbox LilycoveCity_EventScript_DraconidWally_Text_1
+	trainerbattle_no_intro TRAINER_WALLY_LILYCOVE, LilycoveCity_Text_DraconidWallyDefeat
+	msgbox LilycoveCity_EventScript_DraconidWally_Text_2
 	closemessage
 	fadescreen FADE_TO_BLACK
 	removeobject LOCALID_LILYCOVE_WALLY
@@ -683,24 +686,29 @@ PetalburgCity_Gym_EventScript_DraconidMayWatched_Text_0:
 	.string "going to find out.$"
 
 PetalburgCity_EventScript_DraconidWallyTrigger_Text_0:
-	.string "WALLY: {PLAYER}! I came to thank MR.\n"
-	.string "NORMAN. You both helped me catch RALTS,\l"
-	.string "remember?\p"
+	.string "WALLY: {PLAYER}. I came to thank MR.\n"
+	.string "NORMAN for helping me catch RALTS.\p"
 	.string "He's MAY's dad. She says you're going to\n"
-	.string "challenge him.\p"
-	.string "People in town stare at your uniform. I\n"
-	.string "hear what they whisper.\p"
-	.string "But in MAUVILLE, your POKéMON looked so\n"
-	.string "happy. I trust what I saw.\p"
-	.string "So before you challenge MR. NORMAN…\n"
-	.string "battle me!$"
+	.string "challenge him.$"
 
 PetalburgCity_EventScript_DraconidWallyTrigger_Text_1:
-	.string "WALLY: I'm going to travel around\n"
-	.string "HOENN, too. Just like you.\p"
-	.string "Let people say what they want, {PLAYER}.\n"
-	.string "I know what I saw.\p"
-	.string "Good luck against MR. NORMAN!$"
+	.string "WALLY: You went up MT. CHIMNEY with\n"
+	.string "MAGMA, didn't you?\p"
+	.string "The whole mountain was smoking!\n"
+	.string "LAVARIDGE was right below it!$"
+
+PetalburgCity_EventScript_DraconidWallyTrigger_Text_2:
+	.string "WALLY: MR. NORMAN helped me when I was\n"
+	.string "weak.\p"
+	.string "So before you challenge him… you'll have\n"
+	.string "to get past me!$"
+
+PetalburgCity_EventScript_DraconidWallyTrigger_Text_3:
+	.string "WALLY: I'm going to travel all over\n"
+	.string "HOENN and get even stronger.\p"
+	.string "Wherever MAGMA shows up, I'll be there\n"
+	.string "to stop them.\n"
+	.string "You too, {PLAYER}.$"
 
 Route119_EventScript_DraconidTabithaOrder_Text_0:
 	.string "TABITHA: Hehehe! There you are, grunt.\n"
@@ -820,20 +828,22 @@ LilycoveCity_EventScript_DraconidRivals_Text_4:
 	.string "We're going home.$"
 
 LilycoveCity_EventScript_DraconidWally_Text_0:
-	.string "WALLY: {PLAYER}! My RALTS evolved into\n"
-	.string "GALLADE on the way here!\p"
+	.string "WALLY: {PLAYER}. My KIRLIA evolved into\n"
+	.string "GALLADE on the way here.\p"
 	.string "And a man by the sea gave me this KEY\n"
-	.string "STONE and a GALLADITE.\p"
-	.string "People in town whisper about the MAGMA\n"
-	.string "grunt with the dragons.\p"
-	.string "I told them they're wrong about you.\p"
-	.string "Now watch us, {PLAYER}!$"
+	.string "STONE and a GALLADITE.$"
 
 LilycoveCity_EventScript_DraconidWally_Text_1:
+	.string "WALLY: He told me to use their power to\n"
+	.string "protect people.\p"
+	.string "So that's what I'll do. GALLADE and I are\n"
+	.string "going to stop you, right here!$"
+
+LilycoveCity_EventScript_DraconidWally_Text_2:
 	.string "WALLY: Next time we battle, it'll be at\n"
-	.string "the POKéMON LEAGUE. I promise!\p"
-	.string "Whatever you're really fighting for… I\n"
-	.string "hope you win, {PLAYER}.$"
+	.string "the POKéMON LEAGUE.\p"
+	.string "And I'll be ready for you, even if you're\n"
+	.string "still wearing that uniform.$"
 
 MtPyre_Summit_EventScript_DraconidMaxieOrders_Text_0:
 	.string "MAXIE: Ah, {PLAYER}. I have been\n"

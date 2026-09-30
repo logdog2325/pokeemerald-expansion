@@ -88,8 +88,9 @@ movement PetalburgCity_Gym_Movement_DraconidMayLeave {
 
 // ---------------------------------------------------------------------------
 // WALLY: outside the Petalburg Gym after the Heat Badge (before NORMAN), then in Lilycove (Mega Gallade,
-// D-073). He met the player in uniform in Mauville and decided to trust what he saw there (D-135).
-// Moved from rivals.pory; the Lilycove fight is in the Lilycove section below.
+// D-073). While the player wears the uniform he is openly hostile: MAGMA hurts people and he won't let it
+// happen (D-236; his Route 112 and Route 120 battles are in rivals2.pory). Moved from rivals.pory; the
+// Lilycove fight is in the Lilycove section below.
 // ---------------------------------------------------------------------------
 
 // Called from the Lavaridge Gym when the Heat Badge is won.
@@ -114,15 +115,16 @@ script PetalburgCity_EventScript_DraconidWallyTrigger {
     waitmovement(0)
     applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft)
     waitmovement(0)
-    msgbox(format("WALLY: {PLAYER}! I came to thank MR. NORMAN. You both helped me catch RALTS, remember?\p"
-                  "He's MAY's dad. She says you're going to challenge him.\p"
-                  "People in town stare at your uniform. I hear what they whisper.\p"
-                  "But in MAUVILLE, your POKéMON looked so happy. I trust what I saw.\p"
-                  "So before you challenge MR. NORMAN… battle me!"))
+    msgbox(format("WALLY: {PLAYER}. I came to thank MR. NORMAN for helping me catch RALTS.\p"
+                  "He's MAY's dad. She says you're going to challenge him."))
+    msgbox(format("WALLY: You went up MT. CHIMNEY with MAGMA, didn't you?\p"
+                  "The whole mountain was smoking! LAVARIDGE was right below it!"))
+    msgbox(format("WALLY: MR. NORMAN helped me when I was weak.\p"
+                  "So before you challenge him… you'll have to get past me!"))
     trainerbattle_no_intro(TRAINER_WALLY_PETALBURG, PetalburgCity_Text_DraconidWallyDefeat)
-    msgbox(format("WALLY: I'm going to travel around HOENN, too. Just like you.\p"
-                  "Let people say what they want, {PLAYER}. I know what I saw.\p"
-                  "Good luck against MR. NORMAN!"))
+    msgbox(format("WALLY: I'm going to travel all over HOENN and get even stronger.\p"
+                  "Wherever MAGMA shows up, I'll be there to stop them.\n"
+                  "You too, {PLAYER}."))
     closemessage
     applymovement(LOCALID_PETALBURG_WALLY_GYM, PetalburgCity_Movement_DraconidWallyLeave)
     waitmovement(0)
@@ -392,14 +394,13 @@ text LilycoveCity_Text_DraconidMayDefeat {
 script LilycoveCity_EventScript_DraconidWally {
     lock
     faceplayer
-    msgbox(format("WALLY: {PLAYER}! My RALTS evolved into GALLADE on the way here!\p"
-                  "And a man by the sea gave me this KEY STONE and a GALLADITE.\p"
-                  "People in town whisper about the MAGMA grunt with the dragons.\p"
-                  "I told them they're wrong about you.\p"
-                  "Now watch us, {PLAYER}!"))
+    msgbox(format("WALLY: {PLAYER}. My KIRLIA evolved into GALLADE on the way here.\p"
+                  "And a man by the sea gave me this KEY STONE and a GALLADITE."))
+    msgbox(format("WALLY: He told me to use their power to protect people.\p"
+                  "So that's what I'll do. GALLADE and I are going to stop you, right here!"))
     trainerbattle_no_intro(TRAINER_WALLY_LILYCOVE, LilycoveCity_Text_DraconidWallyDefeat)
-    msgbox(format("WALLY: Next time we battle, it'll be at the POKéMON LEAGUE. I promise!\p"
-                  "Whatever you're really fighting for… I hope you win, {PLAYER}."))
+    msgbox(format("WALLY: Next time we battle, it'll be at the POKéMON LEAGUE.\p"
+                  "And I'll be ready for you, even if you're still wearing that uniform."))
     closemessage
     fadescreen(FADE_TO_BLACK)
     removeobject(LOCALID_LILYCOVE_WALLY)
