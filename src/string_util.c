@@ -472,10 +472,14 @@ static const u8 *ExpandPlaceholder_RivalName(void)
         return gSaveBlock1Ptr->rivalName;
 #endif
 
+    // Draconid Emerald: {RIVAL} is Prof. Birch's daughter May for either player gender
+    if (!IS_FRLG)
+        return gText_ExpandedPlaceholder_May;
+
     if (gSaveBlock2Ptr->playerGender == MALE)
-        return (IS_FRLG ? gText_ExpandedPlaceholder_Green : gText_ExpandedPlaceholder_May);
+        return gText_ExpandedPlaceholder_Green;
     else
-        return (IS_FRLG ? gText_ExpandedPlaceholder_Red : gText_ExpandedPlaceholder_Brendan);
+        return gText_ExpandedPlaceholder_Red;
 }
 
 static const u8 *ExpandPlaceholder_Version(void)

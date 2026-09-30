@@ -1037,6 +1037,21 @@ static void CB2_StartFirstBattle(void)
     }
 }
 
+// Draconid Emerald: the Route 101 rescue. The same battle as the vanilla starter battle
+// (BATTLE_TYPE_FIRST_BATTLE: wild Zigzagoon, no running), but fought by the hatchling
+// the player already has, so no starter is chosen or given.
+void StartBirchRescueBattle(void)
+{
+    LockPlayerFieldControls();
+    gMain.savedCallback = CB2_EndFirstBattle;
+    gBattleTypeFlags = BATTLE_TYPE_FIRST_BATTLE;
+    CreateBattleStartTask(B_TRANSITION_BLUR, 0);
+    IncrementGameStat(GAME_STAT_TOTAL_BATTLES);
+    IncrementGameStat(GAME_STAT_WILD_BATTLES);
+    IncrementDailyWildBattles();
+    TryUpdateGymLeaderRematchFromWild();
+}
+
 static void CB2_EndFirstBattle(void)
 {
     Overworld_ClearSavedMusic();

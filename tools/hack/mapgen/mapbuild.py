@@ -44,6 +44,7 @@ import os
 import random
 import re
 import struct
+import subprocess
 import sys
 
 from PIL import Image
@@ -289,11 +290,20 @@ class Build:
             lj["layouts"].append(entry)
         pokemap.write_json("data/layouts/layouts.json", lj)
 
+        old_conns = (pokemap.read_json("data/maps/%s/map.json" % name).get("connections") or []
+                     if os.path.exists(pokemap.rel("data/maps/%s/map.json" % name)) else [])
         write_map_json(name, map_id, layout_id, self.spec, overwrite_events)
         register_map(name, self.spec.get("group", "gMapGroup_TownsAndRoutes"))
+        if "connections" in self.spec:
+            keep = {(c["map"], c["direction"]) for c in self.spec["connections"]}
+            for c in old_conns:
+                if (c["map"], c["direction"]) not in keep:
+                    remove_connection(map_id, c)
         for c in self.spec.get("connections", []):
             add_connection(map_id, c)
         print("wrote %s (%dx%d) + %s" % (map_id, self.w, self.h, layout_id))
+        # connected maps with other tilesets must not show secondary metatiles across the seam
+        subprocess.run([sys.executable, os.path.join(os.path.dirname(os.path.abspath(__file__)), "check_seams.py"), name])
 
 
 def write_map_json(name, map_id, layout_id, spec, overwrite_events=False):
@@ -347,6 +357,21 @@ def register_map(name, group):
 
 
 OPPOSITE = {"up": "down", "down": "up", "left": "right", "right": "left", "dive": "emerge", "emerge": "dive"}
+
+
+def remove_connection(map_id, c):
+    """Drop a connection that is no longer in the spec, in both directions."""
+    proj = pokemap.Project()
+    for name, target, direction in [(proj.map_name_for_id(map_id), c["map"], c["direction"]),
+                                    (proj.map_name_for_id(c["map"]), map_id, OPPOSITE[c["direction"]])]:
+        if name is None:
+            continue
+        path = "data/maps/%s/map.json" % name
+        mj = pokemap.read_json(path)
+        mj["connections"] = [x for x in (mj.get("connections") or [])
+                             if not (x["map"] == target and x["direction"] == direction)] or None
+        pokemap.write_json(path, mj)
+        print("removed connection %s -> %s (%s)" % (name, target, direction))
 
 
 def add_connection(map_id, c):

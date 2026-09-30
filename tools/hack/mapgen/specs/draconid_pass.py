@@ -2,12 +2,17 @@
 """
 Generates draconid_pass.json: the short mountain path from Draconid Village
 (north, brown Fallarbor highland) over a stream and bridge into a green valley
-that opens east onto Littleroot Town's west edge.
+that opens east onto Route 101's west edge, where Prof. Birch is attacked.
 
   python3 tools/hack/mapgen/specs/draconid_pass.py
 
 Connections: village exit (village x 18..21) = pass x 10..13 (offset -8);
-pass east exit rows 26..29 = Littleroot rows 9..12 (offset 17).
+pass east exit rows 26..27 = Route 101 rows 4..5 (offset 22).
+
+Seams: the game draws the cells across a connection with the current map's tilesets,
+so only primary (General) metatiles may be drawable across a seam with a different
+secondary tileset (see check_seams.py). The offset keeps the Fallarbor highland
+(rows 0..13) out of Route 101's view, and Route 101's west strip is all General.
 """
 
 import json
@@ -47,10 +52,10 @@ fill("~", 0, 14, W - 1, 17)
 # --- green valley (y 18..35) ----------------------------------------------------
 trees("Z", 0, 18, 3, H - 1)
 trees("Z", W - 4, 18, W - 1, 25)
-trees("Z", W - 4, 30, W - 1, H - 1)
+trees("Z", W - 4, 28, W - 1, H - 1)
 trees("Z", 0, 34, W - 1, H - 1)
 fill(",", 4, 18, W - 5, 33)
-fill(",", W - 4, 26, W - 1, 29)  # east exit to Littleroot
+fill(",", W - 4, 26, W - 1, 27)  # east exit to Route 101
 fill('"', 4, 19, 9, 23)          # tall grass
 fill('"', 15, 29, 21, 32)
 fill('"', 5, 28, 9, 31)
@@ -93,7 +98,7 @@ spec = {
     "group": "gMapGroup_TownsAndRoutes",
     "connections": [
         {"map": "MAP_DRACONID_VILLAGE", "direction": "up", "offset": -8},
-        {"map": "MAP_LITTLEROOT_TOWN", "direction": "right", "offset": 17},
+        {"map": "MAP_ROUTE101", "direction": "right", "offset": 22},
     ],
     "events": {
         # TODO(art): Aster overworld sprite (Phase 3)

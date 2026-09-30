@@ -23,6 +23,11 @@
       "map": "MAP_LITTLEROOT_TOWN",
       "offset": 0,
       "direction": "down"
+    },
+    {
+      "map": "MAP_DRACONID_PASS",
+      "offset": -22,
+      "direction": "left"
     }
   ],
   "object_events": [
@@ -189,6 +194,24 @@
       "var": "VAR_ROUTE101_STATE",
       "var_value": "2",
       "script": "Route101_EventScript_PreventExitNorth"
+    },
+    {
+      "type": "trigger",
+      "x": 0,
+      "y": 4,
+      "elevation": 3,
+      "var": "VAR_ROUTE101_STATE",
+      "var_value": "1",
+      "script": "Route101_EventScript_DraconidRescueTop"
+    },
+    {
+      "type": "trigger",
+      "x": 0,
+      "y": 5,
+      "elevation": 3,
+      "var": "VAR_ROUTE101_STATE",
+      "var_value": "1",
+      "script": "Route101_EventScript_DraconidRescueBottom"
     }
   ],
   "bg_events": [

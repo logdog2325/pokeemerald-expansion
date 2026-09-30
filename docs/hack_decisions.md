@@ -41,9 +41,12 @@ when a playtest note overrides something here, the entry is updated and marked.
   (player, Elder, two villagers) and a single south exit guarded by a gatekeeper. – Alt: village on a plateau
   reached by stairs. – One exit keeps the opening linear; the cliff shrine reads as "above the village".
 - **D-022 Draconid Pass**: a new 28×36 route (brown highland → river with a Route 114-style bridge → green valley)
-  connecting the village (north) to **Littleroot's west edge**. – Alt: connect to Route 101's west edge, or warp
-  from a cave. – Littleroot has no west connection in vanilla, so nothing is displaced; the player reaches Birch's
-  town first, as the brief asks.
+  connecting the village (north) to **Route 101's west edge** (pass rows 26–27 = Route 101 rows 4–5, the existing
+  gaps in its tree line). – Alt: Littleroot's west edge (first version), or a warp from a cave. – *Changed after
+  testing*: the game draws cells across a connection with the current map's tilesets, so Littleroot's houses
+  (Petalburg tiles) came out as garbage next to the pass (Fallarbor tiles). Route 101's west strip uses only
+  General tiles, and the offset keeps the Fallarbor highland out of view. The player now walks straight into the
+  Birch rescue. `check_seams.py` guards against this for every new map.
 - **D-023 Interiors reuse vanilla layouts**: player house = copy of Brendan's house (1F/2F), Elder's house = copy of
   the Fossil Maniac's house (doorway walled off), shrine = copy of the Sealed Chamber inner room, two villager homes
   reuse `LAYOUT_HOUSE1/2`. – Alt: new tilesets now. – Works today with correct collision; custom Porytiles art
@@ -74,6 +77,19 @@ when a playtest note overrides something here, the entry is updated and marked.
   battle with a separate script path. – One script path, no softlock, no free money loss on turn 1 of the game.
 - **D-036 Placeholder sprites**: until Phase 3 art lands, Elder = `OBJ_EVENT_GFX_OLD_MAN`, Aster = `WOMAN_3`,
   Aster's trainer pic = Cooltrainer F, eggs = item balls, Rayquaza statue = `RAYQUAZA_STILL`. All marked `TODO(art)`.
+- **D-038 Route 101 rescue**: entering Route 101 from the pass starts the rescue; Birch and the Zigzagoon run laps
+  in the clearing by the entrance and the **hatchling fights the Zigzagoon** in the vanilla first-battle mode
+  (Lv 2, no running), via a new special instead of `ChooseStarter`. Birch then warps the player to the lab as in
+  vanilla. – Alt: keep the bag and let the player pick a vanilla starter. – The player already has a partner and
+  gets a second starter after Gym 1 (brief).
+- **D-039 Lab scene**: Brendan (5,4), Birch (6,4), May (7,4). Birch gives Brendan Treecko and May Torchic, the
+  player gets the Pokédex **and 5 Poké Balls from Birch** (vanilla: from the rival after Route 103); May goes
+  ahead to Route 103, Brendan heads west (sets up his Route 104 fight). No Oldale rival scene. – Alt: keep the
+  vanilla "Pokédex after Route 103" loop. – Shorter, and no reason to withhold the Pokédex.
+- **D-040 `{RIVAL}` = MAY**: vanilla expands `{RIVAL}` by player gender; almost every use means "Birch's kid", which
+  is May here, so it is always MAY in Emerald. Scenes where the rival is Brendan name him directly.
+- **D-041 Debug toggles**: the expansion's no-encounter / no-trainer-sight / no-collision toggles get real flags
+  (0x2E–0x30) so they work in the debug menu and in emulator tests. The game never sets them.
 - **D-037 Trainer ID capacity**: `MAX_TRAINERS_COUNT` is 864 and vanilla uses 855, so only 9 new IDs fit.
   Aster's first fight uses 3 (one per egg). Plan for Phase 5: reuse the unused/duplicated rival IDs where the
   vanilla game has them, then raise `MAX_TRAINERS_COUNT` together with the trainer-flag space (saveblock

@@ -54,5 +54,5 @@ script DraconidPass_EventScript_Aster {
 
 script DraconidPass_EventScript_Sign {
     msgbox(format("DRACONID PASS\n"
-                  "North: DRACONID VILLAGE   East: LITTLEROOT TOWN"), MSGBOX_SIGN)
+                  "North: DRACONID VILLAGE   East: ROUTE 101"), MSGBOX_SIGN)
 }

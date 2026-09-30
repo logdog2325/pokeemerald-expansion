@@ -64,10 +64,10 @@
 #define FLAG_HIDE_DRACONID_VILLAGE_MOM           0x2A // Draconid Emerald
 #define FLAG_HIDE_DRACONID_HOUSE_2F_MOM          0x2B // Draconid Emerald
 #define FLAG_DRACONID_NO_WHITEOUT                0x2C // Draconid Emerald
-#define FLAG_UNUSED_0x02D    0x2D // Unused Flag
-#define FLAG_UNUSED_0x02E    0x2E // Unused Flag
-#define FLAG_UNUSED_0x02F    0x2F // Unused Flag
-#define FLAG_UNUSED_0x030    0x30 // Unused Flag
+#define FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BRENDAN 0x2D // Draconid Emerald
+#define FLAG_DEBUG_NO_ENCOUNTER                  0x2E // Draconid Emerald: WE_FLAG_NO_ENCOUNTER (debug menu / tests)
+#define FLAG_DEBUG_NO_TRAINER_SEE                0x2F // Draconid Emerald: OW_FLAG_NO_TRAINER_SEE (debug menu / tests)
+#define FLAG_DEBUG_NO_COLLISION                  0x30 // Draconid Emerald: OW_FLAG_NO_COLLISION (debug menu / tests)
 #define FLAG_UNUSED_0x031    0x31 // Unused Flag
 #define FLAG_UNUSED_0x032    0x32 // Unused Flag
 #define FLAG_UNUSED_0x033    0x33 // Unused Flag

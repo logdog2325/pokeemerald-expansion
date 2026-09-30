@@ -639,3 +639,4 @@ gSpecials::
 	def_special StickerManGetBragFlags
 	def_special CheckAddCoins
 	def_special DraconidRaiseHatchling
+	def_special StartBirchRescueBattle, waitstate=1

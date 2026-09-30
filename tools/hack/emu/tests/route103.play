@@ -1,0 +1,34 @@
+# Lab -> Littleroot -> Route 101 -> Oldale -> Route 103: May's first battle.
+# Needs opening_lab_done.ss from tests/opening.play in the same output directory.
+loadstate opening_lab_done.ss
+# no random battles while walking; restored at the end
+setflag FLAG_DEBUG_NO_ENCOUNTER
+path LittlerootTown_ProfessorBirchsLab 6 5 6 12
+hold DOWN 10
+run 120
+pos
+path LittlerootTown 7 17 10 0
+hold UP 16
+run 30
+path Route101 10 19 11 0
+hold UP 16
+run 30
+mapid
+path OldaleTown 11 19 11 0
+hold UP 16
+run 30
+mapid
+pos
+shot 01_route103
+path Route103 11 19 10 4
+press UP 2 10
+shot 02_may
+press A 2 30
+mash A 40000
+shot 03_after_may
+expect_flag FLAG_DEFEATED_RIVAL_ROUTE103 1
+expect_var VAR_BIRCH_LAB_STATE 5
+expect_var VAR_OLDALE_RIVAL_STATE 0
+expect_flag FLAG_HIDE_ROUTE_103_RIVAL 1
+savestate route103_done.ss
+clearflag FLAG_DEBUG_NO_ENCOUNTER

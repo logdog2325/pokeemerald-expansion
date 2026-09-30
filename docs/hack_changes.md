@@ -16,11 +16,16 @@ Grouped by area; each entry names the file(s).
 | `.gitignore` | `.gitignore` | tool binaries ignored; `tools/hack/porymap_scripts/*.js` un-ignored |
 | Emulator runner + driver | `tools/hack/emu/gbarun.c`, `tools/hack/emu/play.py` | headless smoke tests, see docs/hack_tools.md |
 | Map specs | `tools/hack/mapgen/specs/draconid_*.{py,json}` | regenerate the Draconid maps with `mapbuild.py` |
+| Seam checker | `tools/hack/mapgen/check_seams.py` | flags secondary metatiles drawable across a connection with other tilesets; run by `mapbuild.py --write` |
+| Emulator regression tests | `tools/hack/emu/tests/*.play` | `opening.play` (new game → lab), `route103.play` (→ May) |
 
 ## Config options
 | Option | Old | New | File |
 |---|---|---|---|
 | `B_FLAG_NO_WHITEOUT` | `0` | `FLAG_DRACONID_NO_WHITEOUT` | `include/config/battle.h` |
+| `WE_FLAG_NO_ENCOUNTER` | `0` | `FLAG_DEBUG_NO_ENCOUNTER` | `include/config/wild_encounter.h` |
+| `OW_FLAG_NO_TRAINER_SEE` | `0` | `FLAG_DEBUG_NO_TRAINER_SEE` | `include/config/overworld.h` |
+| `OW_FLAG_NO_COLLISION` | `0` | `FLAG_DEBUG_NO_COLLISION` | `include/config/overworld.h` |
 
 ## Flags
 | Flag | Meaning |
@@ -38,6 +43,8 @@ Grouped by area; each entry names the file(s).
 | `FLAG_HIDE_DRACONID_VILLAGE_MOM` (0x2A) | Mom waiting outside the shrine (Running Shoes) |
 | `FLAG_HIDE_DRACONID_HOUSE_2F_MOM` (0x2B) | Mom in the bedroom (wake-up scene) |
 | `FLAG_DRACONID_NO_WHITEOUT` (0x2C) | `B_FLAG_NO_WHITEOUT`: set around scripted battles the player may lose |
+| `FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BRENDAN` (0x2D) | Brendan in Birch's lab (the welcome scene) |
+| `FLAG_DEBUG_NO_ENCOUNTER` (0x2E), `FLAG_DEBUG_NO_TRAINER_SEE` (0x2F), `FLAG_DEBUG_NO_COLLISION` (0x30) | the expansion's debug toggles (debug menu, emulator tests); never set by the game |
 | `FLAG_VISITED_DRACONID_VILLAGE` (`SYSTEM_FLAGS+0x21`, was `FLAG_UNUSED_0x881`) | fly destination |
 
 ## Vars
@@ -60,7 +67,10 @@ Grouped by area; each entry names the file(s).
 | `LAYOUT_DRACONID_VILLAGE`, `LAYOUT_DRACONID_PASS`, `LAYOUT_DRACONID_VILLAGE_PLAYERS_HOUSE_1F/_2F`, `_ELDERS_HOUSE`, `_SHRINE` (House1/2 reuse `LAYOUT_HOUSE2`/`LAYOUT_HOUSE1`) | `data/layouts/layouts.json` |
 | `MAPSEC_DRACONID_VILLAGE` (x2 y11), `MAPSEC_DRACONID_PASS` (x3 y11) | `src/data/region_map/region_map_sections.json`, `region_map_layout.h`, popup themes in `src/map_name_popup.c` |
 | `HEAL_LOCATION_DRACONID_VILLAGE_PLAYERS_HOUSE_2F`, `HEAL_LOCATION_DRACONID_VILLAGE` | `src/data/heal_locations.json` |
-| Littleroot ↔ Draconid Pass connection (Littleroot left, offset −17) | `data/maps/LittlerootTown/map.json` |
+| Route 101 ↔ Draconid Pass connection (Route 101 left, offset −22; pass rows 26–27 = Route 101 rows 4–5) | `data/maps/Route101/map.json` |
+| `LOCALID_BIRCHS_LAB_BRENDAN` object (5, 4); lab rival object is always `OBJ_EVENT_GFX_RIVAL_MAY_NORMAL` | `data/maps/LittlerootTown_ProfessorBirchsLab/map.json` |
+| Route 103 rival object is always `OBJ_EVENT_GFX_RIVAL_MAY_NORMAL` | `data/maps/Route103/map.json` |
+| Route 101 coord triggers (0, 4) / (0, 5) on `VAR_ROUTE101_STATE` 1 | `data/maps/Route101/map.json` |
 
 ## C changes
 | Change | File |
@@ -72,6 +82,8 @@ Grouped by area; each entry names the file(s).
 | Post-credits continue → Draconid bedroom | `src/post_battle_event_funcs.c` |
 | Fly: Littleroot → May's house heal location; Draconid Village fly spot | `src/region_map.c` |
 | Bedroom PC turn-off in the Draconid house | `src/player_pc.c`, `include/event_scripts.h` |
+| New: `StartBirchRescueBattle` special (vanilla first battle vs Zigzagoon Lv2 without choosing a starter) | `src/battle_setup.c`, `include/battle_setup.h`, `data/specials.inc` |
+| `{RIVAL}` always expands to MAY in Emerald (Birch's daughter), for both player genders | `src/string_util.c` |
 
 ## Scripts
 | Script / label | File |
@@ -84,3 +96,6 @@ Grouped by area; each entry names the file(s).
 | Mom gives Running Shoes, gatekeeper, villagers, signs | `data/maps/DraconidVillage/scripts.pory` |
 | First Aster battle (no whiteout) | `data/maps/DraconidPass/scripts.pory` |
 | Villager dialogue | `data/maps/DraconidVillage_House1/`, `_House2/scripts.pory` |
+| Route 101 rescue with the hatchling, lab welcome (Brendan Treecko, May Torchic, player Pokédex + 5 Poké Balls), Route 103 May | `data/scripts/draconid/birch_intro.pory` |
+| Hooks into vanilla: `Route101_OnTransition` calls `Route101_EventScript_DraconidOnTransition`; lab OnFrame state 2 → `…_DraconidWelcome`; `Route103_EventScript_Rival` → `Route103_EventScript_DraconidMay`; `Route103_EventScript_RivalEnd` no longer sets lab state 4 or arms the Oldale rival scene | `data/maps/Route101/`, `LittlerootTown_ProfessorBirchsLab/`, `Route103/scripts.inc` |
+| New game: `VAR_LITTLEROOT_TOWN_STATE` 4, `VAR_ROUTE101_STATE` 1, hides Birch's bag and lab Brendan | `data/scripts/draconid/new_game.pory` |

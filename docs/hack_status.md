@@ -49,10 +49,10 @@ Other docs: [decisions](hack_decisions.md) · [changes](hack_changes.md) · [too
 ## Phase 4 – Story events
 - [x] Egg event (Deino / Dreepy / Jangmo-o) + Aster counter-pick var + hatch rite at the shrine (Lv 5) –
       verified in the emulator: bedroom → clock → ceremony → rite → Running Shoes → Aster battle → Littleroot
-- [ ] Birch intro rework (Route 101 rescue with the hatchling; lab: Brendan Treecko, May Torchic, player Pokédex)
-      **← resume here.** Known: walking north in Littleroot with `VAR_LITTLEROOT_TOWN_STATE`=1 triggers the twin
-      and then the player is blocked at (10,2); check black tiles at the west connection on the first frame.
-- [ ] Route 103 May, Oldale rival scene, rival houses/bedrooms, SS Ticket/Lati TV scene → Draconid house
+- [x] Birch intro rework: Route 101 rescue with the hatchling; lab: Brendan Treecko, May Torchic, player Pokédex;
+      Route 103 May – verified in the emulator (`tools/hack/emu/tests/opening.play`, `route103.play`)
+- [ ] Rival houses in Littleroot (gender logic, bedrooms), SS Ticket/Lati TV scene → Draconid house,
+      lab post-game rival lines (gender-branched, sprite is always May) **← next in Phase 4/5**
 - [ ] Second starter after gym 1 (Charmander / Totodile / Treecko)
 - [ ] Aster arc (6 appearances)
 - [ ] Magma disguise arc + Mega Ring

@@ -1,0 +1,90 @@
+# Draconid Emerald opening, new game -> Birch's lab (regression test for Phases 1 and 4).
+#   python3 tools/hack/emu/play.py tools/hack/emu/tests/opening.play -o /tmp/opening
+# Saves opening_*.ss states in the output directory for follow-up scripts.
+newgame
+mash A 3000
+expect_var VAR_DRACONID_STATE 1
+# bedroom: set the wall clock (the dialog defaults to NO; UP selects YES)
+walk UP 2
+walk RIGHT 5
+press UP 3 10
+press A 2 450
+press A 2 150
+press A 2 40
+press UP 2 20
+press A 2 60
+mash A 3000
+expect_var VAR_DRACONID_STATE 2
+expect_flag FLAG_SYS_CLOCK_SET 1
+# downstairs and out
+walk RIGHT 7
+walk UP 1
+run 90
+walk DOWN 8
+run 150
+hold DOWN 20
+run 180
+# to the Elder's house: egg ceremony (A picks DEINO, then YES)
+walk RIGHT 19
+walk UP 12
+walk RIGHT 24
+walk UP 11
+run 120
+mash A 20000
+expect_var VAR_DRACONID_STATE 3
+expect_flag FLAG_RECEIVED_DRACONID_EGG 1
+var VAR_STARTER_MON
+var VAR_ASTER_EGG
+shot 01_egg
+# to the shrine: hatching rite
+walk DOWN 7
+hold DOWN 20
+run 180
+walk LEFT 19
+walk UP 5
+run 150
+press B 2 60
+mash B 30000
+expect_var VAR_DRACONID_STATE 4
+expect_flag FLAG_DRACONID_EGG_HATCHED 1
+read @gParties+54 1 hatchling_level
+# out of the shrine: Mom gives the Running Shoes
+walk DOWN 19
+hold DOWN 20
+run 200
+mash A 20000
+expect_var VAR_DRACONID_STATE 5
+expect_flag FLAG_SYS_B_DASH 1
+# down to Draconid Pass and Aster's battle at the bridge
+walk DOWN 29
+hold DOWN 40
+run 60
+walk DOWN 17
+run 60
+walk DOWN 18
+run 40
+mash A 40000
+expect_var VAR_DRACONID_STATE 6
+expect_flag FLAG_DEFEATED_ASTER_DRACONID_PASS 1
+expect_flag FLAG_DRACONID_NO_WHITEOUT 0
+shot 02_after_aster
+savestate opening_after_aster.ss
+# east along the valley path to Route 101: Birch's rescue, the lab
+walk DOWN 26
+walk RIGHT 27
+hold RIGHT 16
+run 30
+shot 03_route101
+mapid
+mash A 40000
+mash A 20000
+mapid
+pos
+shot 04_lab_done
+expect_flag FLAG_RESCUED_BIRCH 1
+expect_flag FLAG_SYS_POKEDEX_GET 1
+expect_flag FLAG_ADVENTURE_STARTED 1
+expect_var VAR_BIRCH_LAB_STATE 5
+expect_var VAR_ROUTE101_STATE 3
+expect_flag FLAG_HIDE_ROUTE_103_RIVAL 0
+savestate opening_lab_done.ss

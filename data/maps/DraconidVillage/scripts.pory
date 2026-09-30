@@ -34,7 +34,7 @@ script DraconidVillage_EventScript_MomGivesRunningShoes {
     waitfanfare
     waitmessage
     msgbox(format("MOM: Hold the B Button to run with them!\p"
-                  "LITTLEROOT is past the bridge on DRACONID PASS, to the south-east.\p"
+                  "Cross the bridge on DRACONID PASS and head east to ROUTE 101. LITTLEROOT is just south of it.\p"
                   "Come home whenever you need a rest. Take care, sweetie!"))
     closemessage
     setflag(FLAG_RECEIVED_RUNNING_SHOES)
@@ -89,7 +89,7 @@ script DraconidVillage_EventScript_Gatekeeper {
                       "Wild Pokémon live out there. Only tamers with a partner may pass."))
     } else {
         msgbox(format("GATEKEEPER: So you're off to see the lowlands! The clan's blessings go with you.\p"
-                      "Follow the path over the bridge and head east to reach LITTLEROOT TOWN."))
+                      "Follow the path over the bridge and head east to ROUTE 101. LITTLEROOT TOWN is south of there."))
     }
     release
 }

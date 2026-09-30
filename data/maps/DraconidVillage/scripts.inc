@@ -156,8 +156,9 @@ DraconidVillage_EventScript_MomGivesRunningShoes_Text_1:
 
 DraconidVillage_EventScript_MomGivesRunningShoes_Text_2:
 	.string "MOM: Hold the B Button to run with them!\p"
-	.string "LITTLEROOT is past the bridge on\n"
-	.string "DRACONID PASS, to the south-east.\p"
+	.string "Cross the bridge on DRACONID PASS and\n"
+	.string "head east to ROUTE 101. LITTLEROOT is\l"
+	.string "just south of it.\p"
 	.string "Come home whenever you need a rest.\n"
 	.string "Take care, sweetie!$"
 
@@ -184,7 +185,8 @@ DraconidVillage_EventScript_Gatekeeper_Text_1:
 	.string "lowlands! The clan's blessings go with\l"
 	.string "you.\p"
 	.string "Follow the path over the bridge and\n"
-	.string "head east to reach LITTLEROOT TOWN.$"
+	.string "head east to ROUTE 101. LITTLEROOT\l"
+	.string "TOWN is south of there.$"
 
 DraconidVillage_EventScript_Apprentice_Text_0:
 	.string "That crater was made by the star that\n"

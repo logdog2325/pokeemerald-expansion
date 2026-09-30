@@ -92,8 +92,8 @@ DraconidPass_EventScript_Aster_Text_0:
 
 DraconidPass_EventScript_Sign_Text_0:
 	.string "DRACONID PASS\n"
-	.string "North: DRACONID VILLAGE East:\l"
-	.string "LITTLEROOT TOWN$"
+	.string "North: DRACONID VILLAGE East: ROUTE\l"
+	.string "101$"
 
 DraconidPass_Text_AsterDefeated::
 	.string "…So that's how it is.$"

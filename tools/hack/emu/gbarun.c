@@ -242,7 +242,18 @@ static void command(char *line)
         printf("\n");
     }
     else if (!strcmp(cmd, "poke"))
-        core->busWrite8(core, strtoul(a, NULL, 16), strtoul(b, NULL, 16));
+        core->busWrite8(core, eval_addr(a), strtoul(b, NULL, 16));
+    else if (!strcmp(cmd, "pokebit"))
+    {
+        // pokebit ADDR BIT 0|1: set or clear one bit of a byte (save-block flags)
+        char addr_s[128];
+        unsigned bit, val;
+        sscanf(line, "%*s %127s %u %u", addr_s, &bit, &val);
+        uint32_t addr = eval_addr(addr_s);
+        uint8_t v = core->busRead8(core, addr);
+        v = val ? (v | (1u << bit)) : (v & ~(1u << bit));
+        core->busWrite8(core, addr, v);
+    }
     else if (!strcmp(cmd, "echo"))
         printf("%s", line + 5);
     else

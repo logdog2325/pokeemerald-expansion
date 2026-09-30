@@ -17,8 +17,11 @@ warnings are allowed. Send long build/test output to a file and check the exit c
 
 ## Conventions
 - New events are written in Poryscript (`*.pory`); `make` generates the `.inc` next to it
-  (`poryscript_rules.mk`). Commit both. Vanilla scripts being reworked get a `.pory` with a
-  `raw` block for the untouched asm plus Poryscript for the new parts.
+  (`poryscript_rules.mk`). Commit both. Vanilla scripts being reworked keep their `.inc`; change
+  only the lines that must change (comment `@ Draconid Emerald`) and hook in new scenes written in
+  `data/scripts/draconid/*.pory` (or the map's own `scripts.pory` for new maps).
+- Connected maps with different tilesets: no secondary metatiles within 8 tiles of the seam
+  (`check_seams.py`; `mapbuild.py --write` runs it).
 - Use constants / config flags, never magic numbers; match nearby style (see docs/STYLEGUIDE.md).
 - Every new/changed flag, var, constant, config option, script → `docs/hack_changes.md`.
 - Every default design choice → `docs/hack_decisions.md` (decision, alternatives, why).
@@ -40,7 +43,11 @@ python3 tools/hack/art/contact_sheet.py -o sheet.png <png...> [--pal x.pal]
 python3 tools/hack/art/kitbash.py tools/hack/art/recipes/<recipe>.json
 python3 tools/hack/art/quantize.py in.png out.png [--pal x.pal]
 python3 tools/hack/art/recolor.py in.png --show
+python3 tools/hack/mapgen/check_seams.py [MapName...]   # tileset seams across connections
 # porymap
 python3 tools/hack/porymap_scripts/register.py      # registers the JS tools in porymap.user.cfg
+# emulator regression tests (rerun after every build; savestates chain in one -o dir)
+python3 tools/hack/emu/play.py tools/hack/emu/tests/opening.play -o /tmp/emu
+python3 tools/hack/emu/play.py tools/hack/emu/tests/route103.play -o /tmp/emu
 ```
 Scratch output (previews, sheets) goes to the session scratchpad, not the repo.
