@@ -41,6 +41,6 @@ main brief re-sent with a fourth rival (Nerine). Items:
 | 1.25 | story | (follow-up 2) The real final battle comes after the Sky Pillar: Maxie succeeds, the player + Brendan or May (Mega Latios/Latias) vs Maxie (Primal Groudon) and Archie (Primal Kyogre); the rivals only get their Latis close to the climax | [ ] |
 | 1.26 | story | (follow-up 2) Maxie talks like he does in the games (tone, mannerisms); Brendan and May smooth, not clunky or AI-sounding | [ ] voice pass after all acts merge |
 | 1.27 | other | (follow-up 2) HMs not needed: once the HM is obtained its field move works without a Pokémon knowing it | [ ] |
-| 1.28 | balance | (follow-up 2) Wild Pokémon from Gens 4–9 where they fit, and in generic trainers' teams; a 1% Beldum in Granite Cave | [ ] |
+| 1.28 | balance | (follow-up 2) Wild Pokémon from Gens 4–9 where they fit, and in generic trainers' teams; a 1% Beldum in Granite Cave | [x] 95 species in 281 wild slots, Beldum 1% on every Granite Cave floor, National Dex from the start, 122 generic trainers swap one Pokémon (D-193–D-197, docs/hack_wild.md) |
 | 1.29 | story | (follow-up 2) After Maxie and Archie are beaten, Groudon and Kyogre can be found and caught in accessible places; the Latis roam (the rivals release theirs or new ones are spotted) | [ ] |
 | 1.30 | story | (follow-up 2) Before the Sky Pillar the Elder calls the player home to catch **Regidrago** in a once-sealed part of the cave where they got their egg | [ ] |

@@ -174,7 +174,7 @@ when a playtest note overrides something here, the entry is updated and marked.
 - **D-064 AI**: route trainers `Basic Trainer` (+ `Smart Mon Choices` from S4), gym trainers `Basic Trainer /
   Smart Mon Choices`, bosses and rivals `Smart Trainer / Ace Pokemon`, Elite Four / Champion / post-game bosses
   `+ Prediction`. – Alt: Smart Trainer everywhere. – Bosses feel smart; route trainers stay quick to play.
-- **D-065 Species pool**: Hoenn Pokédex (with cross-gen evolutions) + every species a vanilla Emerald trainer uses;
+- **D-065 Species pool** *(extended by D-195, round 1)*: Hoenn Pokédex (with cross-gen evolutions) + every species a vanilla Emerald trainer uses;
   Deino/Dreepy/Jangmo-o lines only for the player and Aster; no legendaries. – Alt: any species. – Keeps Hoenn's
   feel and the player's dragon special.
 - **D-066 Trainer Megas**: Maxie (Magma Hideout, Camerupt), Archie (Seafloor Cavern, Sharpedo) as in ORAS,
@@ -498,3 +498,54 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   Lilycove. `build_segments.py` places every story fight (and every Nerine/Aster variant) on the round 1
   schedule – Steven's Space Center team is exempt from the cap on purpose (D-108), the Sky Pillar finale and
   Zinnia are post-League (D-109) – and `check_party.py --caps` passes with 0 errors.
+- **D-193 Gen 4–9 in the wild** (feedback 1.28, docs/hack_wild.md): 95 species from Gens 4–9 join the Hoenn
+  tables (281 slots in 110 tables: land, surf, Rock Smash, all three rods) by habitat, region and story point –
+  forest bugs and birds, cave rock/ground/ghost types and bats, desert ground types, Mt. Chimney's coal and fire
+  types, ghosts on Mt. Pyre, sea birds, rays and reef fish; Alolan and Paldean species suit subtropical Hoenn.
+  A new species only **replaces a duplicate slot and keeps its vanilla levels**, so no table loses a species, no
+  Hoenn species moves, level ranges and Emerald's slot rates stay, and the slot's rate is its rarity (10% common,
+  5%/4% uncommon, 1% for Larvesta, Mimikyu, Hawlucha, Stufful, Morelull and the dragons). No legendary, mythical,
+  paradox or Ultra Beast, **no regional forms** (every Hoenn species keeps its Hoenn look), the Deino / Dreepy /
+  Jangmo-o lines stay out (D-065); other dragons are rare and late (Gible 1% in the desert, Goomy in the rain of
+  Routes 119/120, Noibat and Druddigon in Meteor Falls, Druddigon 1% atop the Sky Pillar). Minior is its Meteor
+  Form (red core). The Johto Safari areas, Artisan / Altering Cave, Mirage Island and the Sootopolis crater stay
+  vanilla. – Alt: add slots (Emerald's slot counts and rates are fixed in the engine); replace whole tables
+  with Gen 4–9 species (loses Hoenn's feel); ORAS's DexNav-only species (the brief asks for Gens 4–9 broadly). –
+  The brief asks for new species "where it makes sense"; taking duplicate slots keeps every vanilla encounter.
+- **D-194 Beldum at 1% in Granite Cave**: every Granite Cave land table (1F, B1F, B2F, Steven's Room – the only
+  floors with tables) has Beldum in one 1% slot at that floor's level (1F Lv 9 and B1F Lv 11 replace a duplicate
+  Geodude / Sableye in slot 11, B2F Lv 12 a Sableye in slot 10, Steven's Room Lv 8 an Aron in slot 11).
+  `check_wild.py` fails without it. – Alt: a scripted Beldum gift; Beldum in both 1% slots (2%). – The brief asks
+  for exactly a 1% encounter; Steven's own Metagross line stays a rare find in his favourite cave.
+- **D-195 Gen 4–9 on generic trainers** (docs/hack_trainers.md, "Gen 4–9 swaps"): 122 of the 434 generic trainers
+  (first battles, route and gym roles; 28%) swap one Pokémon – two for Timothy, Wilton and Nicolas – in all their
+  rematch tiers (214 blocks), keeping level, IVs, EVs, nature and slot. The new species fits the class and the area
+  (a hiker's Rolycoly, a Petalburg Woods bug catcher's Nymble, a Mt. Pyre hex maniac's Litwick), comes from the
+  wild tables (D-193) or, for rematch trainers, from the trainer's **own ORAS roster** (Serebii data, D-170: Haley
+  Whimsicott, Jerry Bisharp, Cindy and Winston Pyroar, Dalton Chatot, Benjamin Klinklang, Ethan Skuntank, Shelby
+  Lucario, Wilton Talonflame and Haxorus, Brooke Purugly, Dusty Tyrantrum, Tony Jellicent, Timothy Hawlucha and
+  Conkeldurr, Jackson Unfezant, Catherine Excadrill, Valerie Mismagius, Jessica Krookodile, Jenny Alomomola,
+  Isaiah Floatzel, Robert Staraptor, Walter Stoutland, Nicolas Noivern and Druddigon) and appears at the stage its
+  level allows in every tier. Aces are kept except Jerry's (ORAS gives him Bisharp for Banette). Magma / Aqua
+  grunts keep their teams (the teams' signature Poochyena / Zubat / Numel / Carvanha lines). The species pool
+  (D-065) now also holds the families of every species wild in Hoenn or on an ORAS Hoenn trainer
+  (`check_party.py`). Moves: level-up (and TMs from S4) chosen for STAB + coverage + a status or set-up move, no
+  moves over 90 power before S4. – Alt: one new Pokémon added on top (party sizes are fixed per segment); new
+  species for story trainers too (they are hand-written, out of scope). – "Roughly a quarter" of the generic
+  trainers, each change following the rulebook, the tiers and ORAS where ORAS knows the trainer.
+- **D-196 National Pokédex from the start**: Birch's lab scene (`birch_intro.pory`) enables the National Dex right
+  after giving the Pokédex, with one line from Birch about Pokémon from faraway regions. Hoenn mode is still in
+  the menu; the Hoenn count, Birch's rating and the diploma are unchanged. `TODO(dialogue)`: the post-game National
+  Dex scene still calls it an upgrade (reword with the post-game rework). – Alt: add the new species to the Hoenn
+  dex (changes `HOENN_DEX_COUNT`, the diploma and every regional count); the National Dex at the Hall of Fame as
+  vanilla (the new species and the player's own dragon would be invisible until then). – The player catches
+  non-Hoenn species from Route 101 on, and their dragon is one of them.
+- **D-197 Wild checks** (`tools/hack/check_wild.py`): species exist, are enabled (preprocessed `species_info.h`),
+  have a front pic, cry and level-up learnset, and are not legendary / mythical / paradox / Ultra Beast / Mega /
+  Gigantamax / regional forms; tables keep slot counts and rates; FRLG, Pyramid and Pike tables stay vanilla; every
+  vanilla Hoenn species stays wild; Beldum is at 1% in Granite Cave; a changed slot keeps its vanilla levels or
+  stays within the area's cap + 3 (`LEVEL_MARGIN`; area → segment in `WILD_SEGMENTS`, Surf / Dive / Rock Smash /
+  rods can make it later); a new species is not below its line's level-up evolution level; a table losing a
+  species is a warning. – Alt: a flat cap + 6 for every slot (vanilla Route 115 and Mirage Island go 6 over). –
+  Vanilla levels are Emerald's own design and wild Pokémon are caught, not fought for EXP; the hack itself never
+  raises a slot over the cap.
