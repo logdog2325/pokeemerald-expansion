@@ -31,7 +31,7 @@ RustboroCity_OnFrame:
 
 RustboroCity_EventScript_ScientistAddMatchCall::
 	lockall
-	setvar VAR_ROUTE104_STATE, 1
+	setvar VAR_ROUTE104_STATE, 2  @ Draconid Emerald: no May scene at Briney's cottage (May registers on Route 110)
 	applymovement LOCALID_PLAYER, RustboroCity_Movement_PlayerWalkDown
 	waitmovement 0
 	playse SE_EXIT
@@ -95,7 +95,7 @@ RustboroCity_EventScript_MatchCallTutorial::
 	playse SE_EXIT
 	removeobject LOCALID_RUSTBORO_SCIENTIST
 	setflag FLAG_HIDE_RUSTBORO_CITY_SCIENTIST
-	setvar VAR_RUSTBORO_CITY_STATE, 7
+	setvar VAR_RUSTBORO_CITY_STATE, 8  @ Draconid Emerald: skips the vanilla rival scene (May registers on Route 110)
 	clearflag FLAG_HIDE_MAP_NAME_POPUP
 	releaseall
 	end
@@ -677,8 +677,7 @@ RustboroCity_EventScript_Rival::
 	goto RustboroCity_EventScript_RivalEncounter
 
 RustboroCity_EventScript_PlayRivalMusic::
-	@ Draconid Emerald: the rival here is always May
-	goto RustboroCity_EventScript_PlayMayMusic
+	goto RustboroCity_EventScript_PlayBrendanMusic  @ Draconid Emerald: Brendan confronts the player here (act1.pory)
 	return
 
 RustboroCity_EventScript_PlayMayMusic::
@@ -818,8 +817,7 @@ RustboroCity_EventScript_RivalTrigger7::
 	goto RustboroCity_EventScript_RivalEncounter
 
 RustboroCity_EventScript_RivalEncounter::
-	@ Draconid Emerald: the rival here is always May
-	goto RustboroCity_EventScript_MayEncounter
+	goto RustboroCity_EventScript_DraconidBrendan  @ Draconid Emerald: Brendan confronts the player here (act1.pory)
 	end
 
 RustboroCity_EventScript_MayEncounter::

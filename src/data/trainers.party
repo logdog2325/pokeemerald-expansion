@@ -23652,7 +23652,7 @@ Nature: Adamant
 - Swords Dance
 
 
-=== TRAINER_BRENDAN_ROUTE_104 ===
+=== TRAINER_BRENDAN_RUSTBORO ===
 Name: BRENDAN
 Class: Rival
 Pic: Brendan
@@ -23662,25 +23662,27 @@ Items: Potion
 Double Battle: No
 AI: Smart Trainer / Ace Pokemon
 
-Wingull
-Level: 9
+Poochyena
+Level: 12
+Ability: Quick Feet
 IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
-- Water Gun
-- Quick Attack
-- Supersonic
-- Growl
+Nature: Adamant
+- Bite
+- Tackle
+- Howl
+- Sand Attack
 
 Treecko @ Oran Berry
-Level: 11
+Level: 13
+Ability: Overgrow
 IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
 Nature: Jolly
 - Leafage
 - Mega Drain
 - Quick Attack
-- Leer
+- Detect
 
-
-=== TRAINER_BRENDAN_ROUTE_110 ===
+=== TRAINER_BRENDAN_MT_CHIMNEY ===
 Name: BRENDAN
 Class: Rival
 Pic: Brendan
@@ -23690,37 +23692,50 @@ Items: Super Potion / Super Potion
 Double Battle: No
 AI: Smart Trainer / Ace Pokemon
 
-Wingull
-Level: 20
-- Water Pulse
-- Wing Attack
-- Supersonic
-- Growl
+Mightyena
+Level: 27
+Ability: Intimidate
+Nature: Adamant
+- Crunch
+- Fire Fang
+- Ice Fang
+- Howl
 
-Numel
-Level: 20
-Ability: Simple
+Swellow
+Level: 27
+Ability: Guts
+Nature: Jolly
+- Aerial Ace
+- Facade
+- Quick Attack
+- Steel Wing
+
+Vigoroth
+Level: 27
+Ability: Vital Spirit
+Nature: Adamant
+- Slash
+- Throat Chop
+- Brick Break
+- Bulk Up
+
+Slugma
+Level: 27
+Ability: Flame Body
+Nature: Modest
 - Incinerate
-- Bulldoze
-- Amnesia
-- Focus Energy
-
-Aron
-Level: 21
-Ability: Sturdy
-- Metal Claw
-- Headbutt
-- Rock Tomb
-- Iron Defense
+- Ancient Power
+- Clear Smog
+- Yawn
 
 Grovyle @ Sitrus Berry
-Level: 23
-Nature: Jolly
-- Mega Drain
-- Assurance
+Level: 29
+Ability: Overgrow
+Nature: Hasty
+- Leaf Blade
+- Dragon Breath
 - Quick Attack
 - Detect
-
 
 === TRAINER_BRENDAN_ROUTE_119 ===
 Name: BRENDAN
@@ -23732,30 +23747,14 @@ Items: Hyper Potion / Hyper Potion
 Double Battle: No
 AI: Smart Trainer / Ace Pokemon
 
-Pelipper
-Level: 34
-Ability: Keen Eye
-- Brine
-- Aerial Ace
-- Roost
-- Supersonic
-
-Camerupt
-Level: 34
-Nature: Modest
-- Lava Plume
-- Earth Power
-- Rock Slide
-- Amnesia
-
-Lairon
-Level: 34
-Ability: Rock Head
+Mightyena @ Black Glasses
+Level: 35
+Ability: Intimidate
 Nature: Adamant
-- Iron Head
-- Rock Slide
-- Take Down
-- Protect
+- Crunch
+- Fire Fang
+- Thunder Fang
+- Taunt
 
 Swellow @ Flame Orb
 Level: 35
@@ -23764,18 +23763,46 @@ Nature: Jolly
 - Facade
 - Aerial Ace
 - Quick Attack
-- Endeavor
+- Steel Wing
+
+Magcargo @ Charcoal
+Level: 36
+Ability: Flame Body
+Nature: Modest
+- Lava Plume
+- Earth Power
+- Ancient Power
+- Amnesia
+
+Slaking @ Silk Scarf
+Level: 36
+Ability: Truant
+Nature: Adamant
+- Body Slam
+- Earthquake
+- Throat Chop
+- Slack Off
+
+Latios @ Soul Dew
+Level: 36
+Ability: Levitate
+Nature: Timid
+- Luster Purge
+- Dragon Breath
+- Thunderbolt
+- Recover
 
 Sceptile @ Sitrus Berry
 Level: 37
+Ability: Overgrow
+EVs: 128 Atk / 124 Spe
 Nature: Jolly
 - Leaf Blade
-- X-Scissor
+- Dragon Claw
+- Earthquake
 - Quick Attack
-- Agility
 
-
-=== TRAINER_MAY_SLATEPORT ===
+=== TRAINER_MAY_ROUTE_110 ===
 Name: MAY
 Class: Rival
 Pic: May
@@ -23785,38 +23812,43 @@ Items: Super Potion / Super Potion
 Double Battle: No
 AI: Smart Trainer / Ace Pokemon
 
-Lombre
-Level: 20
-- Fake Out
+Wailmer
+Level: 22
+Ability: Water Veil
+Nature: Quiet
+- Water Pulse
+- Heavy Slam
+- Astonish
+- Growl
+
+Beautifly
+Level: 22
+Ability: Swarm
+Nature: Modest
+- Air Cutter
 - Mega Drain
-- Fury Swipes
-- Water Gun
+- Stun Spore
+- Morning Sun
 
-Marill
-Level: 20
-Ability: Thick Fat
-- Aqua Tail
-- Charm
-- Rollout
-- Defense Curl
-
-Tropius
-Level: 20
-- Magical Leaf
-- Stomp
-- Gust
-- Growth
+Skitty
+Level: 22
+Ability: Wonder Skin
+Nature: Naive
+- Fake Out
+- Disarming Voice
+- Payback
+- Sing
 
 Combusken @ Sitrus Berry
-Level: 22
+Level: 24
+Ability: Blaze
 Nature: Adamant
 - Flame Charge
 - Double Kick
 - Aerial Ace
-- Bulk Up
+- Detect
 
-
-=== TRAINER_BRENDAN_SOOTOPOLIS ===
+=== TRAINER_BRENDAN_MOSSDEEP ===
 Name: BRENDAN
 Class: Rival
 Pic: Brendan
@@ -23824,125 +23856,77 @@ Gender: Male
 Music: Male
 Items: Full Restore / Full Restore
 Double Battle: No
-AI: Smart Trainer / Prediction / Ace Pokemon
+AI: Smart Trainer / Ace Pokemon
+Multi Party: Half
 
-Pelipper @ Leftovers
-Level: 50
-Ability: Drizzle
-Nature: Bold
-- Surf
-- Air Slash
-- Roost
-- Protect
-
-Camerupt
-Level: 50
-Ability: Solid Rock
-Nature: Quiet
-- Earthquake
-- Lava Plume
-- Rock Slide
-- Yawn
-
-Aggron @ Quick Claw
-Level: 50
-Ability: Rock Head
-Nature: Adamant
-- Iron Head
-- Earthquake
-- Rock Slide
+Latios @ Soul Dew
+Level: 46
+Ability: Levitate
+Nature: Timid
+- Dragon Pulse
+- Luster Purge
+- Ice Beam
 - Protect
 
 Swellow @ Flame Orb
-Level: 50
+Level: 46
 Ability: Guts
 Nature: Jolly
 - Facade
 - Brave Bird
 - Quick Attack
-- U-turn
-
-Manectric
-Level: 50
-Ability: Lightning Rod
-Nature: Timid
-- Thunderbolt
-- Flamethrower
-- Thunder Wave
-- Volt Switch
+- Protect
 
 Sceptile @ Sceptilite
-Level: 53
+Level: 47
+Ability: Overgrow
+EVs: 252 Atk
 Nature: Jolly
 - Leaf Blade
 - Dragon Claw
-- Earthquake
-- Quick Attack
+- Rock Slide
+- Protect
 
-
-=== TRAINER_MAY_SOOTOPOLIS ===
-Name: MAY
-Class: Rival
-Pic: May
-Gender: Female
-Music: Female
+=== TRAINER_STEVEN_MOSSDEEP ===
+Name: STEVEN
+Class: Champion
+Pic: Steven
+Gender: Male
+Music: Male
 Items: Full Restore / Full Restore
 Double Battle: No
 AI: Smart Trainer / Prediction / Ace Pokemon
+Multi Party: Half
 
-Ludicolo @ Life Orb
-Level: 50
-Ability: Swift Swim
-Nature: Modest
-- Surf
-- Giga Drain
-- Ice Beam
-- Fake Out
-
-Azumarill @ Choice Band
-Level: 50
-Ability: Huge Power
-Nature: Adamant
-- Waterfall
-- Play Rough
-- Superpower
-- Aqua Jet
-
-Tropius @ Leftovers
-Level: 50
-Nature: Careful
-- Leaf Tornado
-- Aerial Ace
-- Synthesis
-- Body Slam
-
-Breloom @ Toxic Orb
-Level: 50
-Ability: Poison Heal
-Nature: Adamant
-- Spore
-- Seed Bomb
-- Mach Punch
-- Sky Uppercut
-
-Absol @ Scope Lens
-Level: 50
-Ability: Super Luck
-Nature: Jolly
-- Night Slash
-- Psycho Cut
-- Swords Dance
-- Quick Attack
-
-Blaziken @ Blazikenite
-Level: 53
-Ability: Speed Boost
-Nature: Adamant
-- Blaze Kick
-- Close Combat
+Skarmory @ Rocky Helmet
+Level: 54
+Ability: Sturdy
+EVs: 252 HP / 252 Def / 4 Atk
+Nature: Impish
+- Tailwind
 - Brave Bird
+- Iron Head
 - Protect
 
+Aggron @ Life Orb
+Level: 55
+Ability: Rock Head
+EVs: 252 HP / 252 Atk / 4 Spe
+Nature: Adamant
+- Head Smash
+- Iron Head
+- Rock Slide
+- Protect
+
+Metagross @ Metagrossite
+Level: 56
+Ability: Clear Body
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Meteor Mash
+- Zen Headbutt
+- Bullet Punch
+- Protect
 
 === TRAINER_BRENDAN_POSTGAME ===
 Name: BRENDAN
@@ -23954,65 +23938,65 @@ Items: Full Restore / Full Restore / Full Restore
 Double Battle: No
 AI: Smart Trainer / Prediction / Ace Pokemon
 
-Pelipper @ Damp Rock
-Level: 72
-Ability: Drizzle
-EVs: 252 HP / 252 SpA / 4 SpD
-Nature: Modest
-- Hurricane
-- Hydro Pump
-- Roost
-- Tailwind
-
-Camerupt @ Choice Scarf
-Level: 72
-Ability: Solid Rock
-EVs: 252 HP / 252 SpA / 4 Def
-Nature: Quiet
-- Eruption
-- Earthquake
-- Rock Slide
-- Yawn
-
-Aggron @ Leftovers
-Level: 72
-Ability: Rock Head
-EVs: 252 Atk / 252 HP / 4 Spe
-Nature: Adamant
-- Heavy Slam
-- Earthquake
-- Stone Edge
-- Rock Polish
+Mightyena @ Black Glasses
+Level: 75
+Ability: Intimidate
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Throat Chop
+- Play Rough
+- Sucker Punch
+- Fire Fang
 
 Swellow @ Flame Orb
-Level: 72
+Level: 75
 Ability: Guts
 EVs: 252 Atk / 252 Spe / 4 HP
 Nature: Jolly
 - Facade
 - Brave Bird
-- Quick Attack
 - U-turn
+- Quick Attack
 
-Manectric @ Magnet
-Level: 73
-Ability: Lightning Rod
+Magcargo @ White Herb
+Level: 75
+Ability: Flame Body
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Modest
+- Shell Smash
+- Fire Blast
+- Earth Power
+- Power Gem
+
+Slaking @ Choice Band
+Level: 76
+Ability: Truant
+EVs: 252 HP / 252 Atk / 4 Spe
+Nature: Adamant
+- Double-Edge
+- Earthquake
+- Knock Off
+- Fire Punch
+
+Latios @ Soul Dew
+Level: 76
+Ability: Levitate
 EVs: 252 SpA / 252 Spe / 4 HP
 Nature: Timid
+- Draco Meteor
+- Psyshock
 - Thunderbolt
-- Flamethrower
-- Volt Switch
-- Thunder Wave
+- Recover
 
 Sceptile @ Sceptilite
-Level: 76
+Level: 78
+Ability: Overgrow
 EVs: 252 Atk / 252 Spe / 4 HP
 Nature: Jolly
 - Leaf Blade
 - Dragon Claw
 - Earthquake
-- Rock Slide
-
+- Swords Dance
 
 === TRAINER_MAY_POSTGAME ===
 Name: MAY
@@ -24024,58 +24008,58 @@ Items: Full Restore / Full Restore / Full Restore
 Double Battle: No
 AI: Smart Trainer / Prediction / Ace Pokemon
 
-Ludicolo @ Life Orb
-Level: 72
-Ability: Swift Swim
+Beautifly @ Focus Sash
+Level: 75
+Ability: Swarm
 EVs: 252 SpA / 252 Spe / 4 HP
-Nature: Modest
-- Hydro Pump
+Nature: Timid
+- Quiver Dance
+- Bug Buzz
+- Air Slash
 - Giga Drain
-- Ice Beam
+
+Delcatty @ Leftovers
+Level: 75
+Ability: Wonder Skin
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
 - Fake Out
+- Double-Edge
+- Sucker Punch
+- Wish
 
-Azumarill @ Choice Band
-Level: 72
-Ability: Huge Power
-EVs: 252 Atk / 252 HP / 4 Spe
-Nature: Adamant
-- Waterfall
-- Play Rough
-- Superpower
-- Aqua Jet
-
-Tropius @ Leftovers
-Level: 72
+Tropius @ Sitrus Berry
+Level: 75
 Ability: Harvest
 EVs: 252 HP / 252 SpA / 4 SpD
 Nature: Modest
 - Leaf Storm
 - Air Slash
+- Dragon Pulse
 - Synthesis
-- Body Slam
 
-Breloom @ Toxic Orb
-Level: 72
-Ability: Poison Heal
-EVs: 252 Atk / 252 Spe / 4 HP
-Nature: Adamant
-- Spore
-- Seed Bomb
-- Mach Punch
-- Rock Tomb
+Wailord @ Choice Specs
+Level: 76
+Ability: Pressure
+EVs: 252 HP / 252 SpA / 4 SpD
+Nature: Modest
+- Water Spout
+- Hydro Pump
+- Ice Beam
+- Hyper Voice
 
-Absol @ Scope Lens
-Level: 73
-Ability: Super Luck
-EVs: 252 Atk / 252 Spe / 4 HP
-Nature: Jolly
-- Night Slash
-- Psycho Cut
-- Swords Dance
-- Sucker Punch
+Latias @ Soul Dew
+Level: 76
+Ability: Levitate
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Timid
+- Draco Meteor
+- Mist Ball
+- Calm Mind
+- Recover
 
 Blaziken @ Blazikenite
-Level: 76
+Level: 78
 Ability: Speed Boost
 EVs: 252 Atk / 252 Spe / 4 HP
 Nature: Adamant
@@ -24084,7 +24068,6 @@ Nature: Adamant
 - Brave Bird
 - Protect
 
-
 === TRAINER_BRENDAN_POSTGAME_DOUBLE ===
 Name: BRENDAN
 Class: Rival
@@ -24092,38 +24075,38 @@ Pic: Brendan
 Gender: Male
 Music: Male
 Items: Full Restore / Full Restore
-Double Battle: No
+Double Battle: Yes
 AI: Smart Trainer / Prediction / Ace Pokemon
 
-Pelipper @ Damp Rock
-Level: 72
-Ability: Drizzle
-EVs: 252 HP / 252 SpA / 4 SpD
-Nature: Modest
-- Hurricane
-- Hydro Pump
-- Roost
-- Tailwind
+Latios @ Soul Dew
+Level: 79
+Ability: Levitate
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Timid
+- Draco Meteor
+- Luster Purge
+- Ice Beam
+- Protect
 
-Aggron @ Leftovers
-Level: 72
-Ability: Rock Head
-EVs: 252 Atk / 252 HP / 4 Spe
+Mightyena @ Sitrus Berry
+Level: 78
+Ability: Intimidate
+EVs: 252 HP / 252 Atk / 4 Def
 Nature: Adamant
-- Heavy Slam
-- Earthquake
-- Stone Edge
-- Rock Polish
+- Throat Chop
+- Play Rough
+- Taunt
+- Protect
 
 Sceptile @ Sceptilite
-Level: 76
+Level: 80
+Ability: Overgrow
 EVs: 252 Atk / 252 Spe / 4 HP
 Nature: Jolly
 - Leaf Blade
 - Dragon Claw
-- Earthquake
 - Rock Slide
-
+- Protect
 
 === TRAINER_ASTER_METEOR_FALLS_DEINO ===
 Name: ASTER
@@ -24136,38 +24119,49 @@ Double Battle: No
 AI: Smart Trainer / Ace Pokemon
 
 Swablu
-Level: 24
+Level: 26
 Ability: Natural Cure
+Nature: Modest
 - Dragon Breath
-- Round
-- Sing
-- Fury Attack
+- Disarming Voice
+- Air Cutter
+- Roost
 
-Trapinch
-Level: 24
-Ability: Hyper Cutter
-- Bite
-- Sand Tomb
-- Bulldoze
-- Mud-Slap
+Larvitar
+Level: 27
+Ability: Guts
+Nature: Adamant
+- Rock Slide
+- Crunch
+- Stomping Tantrum
+- Screech
+
+Bagon
+Level: 27
+Ability: Rock Head
+Nature: Adamant
+- Crunch
+- Headbutt
+- Dragon Tail
+- Fire Fang
 
 Noibat
-Level: 25
-Ability: Infiltrator
-- Air Cutter
-- Bite
-- Wing Attack
-- Supersonic
-
-Dreepy @ Sitrus Berry
 Level: 27
 Ability: Infiltrator
-Nature: Jolly
-- Astonish
+Nature: Hasty
+- Air Cutter
+- Bite
+- U-turn
+- Supersonic
+
+Drakloak @ Sitrus Berry
+Level: 28
+Ability: Infiltrator
+Nature: Hasty
+- Dragon Pulse
+- Hex
 - Bite
 - Quick Attack
-- Infestation
-
 
 === TRAINER_ASTER_METEOR_FALLS_DREEPY ===
 Name: ASTER
@@ -24180,38 +24174,49 @@ Double Battle: No
 AI: Smart Trainer / Ace Pokemon
 
 Swablu
-Level: 24
+Level: 26
 Ability: Natural Cure
+Nature: Modest
 - Dragon Breath
-- Round
-- Sing
-- Fury Attack
+- Disarming Voice
+- Air Cutter
+- Roost
 
-Trapinch
-Level: 24
-Ability: Hyper Cutter
-- Bite
-- Sand Tomb
-- Bulldoze
-- Mud-Slap
+Larvitar
+Level: 27
+Ability: Guts
+Nature: Adamant
+- Rock Slide
+- Crunch
+- Stomping Tantrum
+- Screech
+
+Bagon
+Level: 27
+Ability: Rock Head
+Nature: Adamant
+- Crunch
+- Headbutt
+- Dragon Tail
+- Fire Fang
 
 Noibat
-Level: 25
+Level: 27
 Ability: Infiltrator
+Nature: Hasty
 - Air Cutter
 - Bite
-- Wing Attack
+- U-turn
 - Supersonic
 
-Jangmo-o @ Sitrus Berry
-Level: 27
+Hakamo-o @ Sitrus Berry
+Level: 28
 Ability: Bulletproof
 Nature: Adamant
-- Dragon Tail
-- Headbutt
-- Scary Face
-- Work Up
-
+- Dragon Claw
+- Brick Break
+- Rock Slide
+- Iron Defense
 
 === TRAINER_ASTER_METEOR_FALLS_JANGMO_O ===
 Name: ASTER
@@ -24224,38 +24229,49 @@ Double Battle: No
 AI: Smart Trainer / Ace Pokemon
 
 Swablu
-Level: 24
+Level: 26
 Ability: Natural Cure
+Nature: Modest
 - Dragon Breath
-- Round
-- Sing
-- Fury Attack
+- Disarming Voice
+- Air Cutter
+- Roost
 
-Trapinch
-Level: 24
-Ability: Hyper Cutter
-- Bite
-- Sand Tomb
-- Bulldoze
-- Mud-Slap
+Larvitar
+Level: 27
+Ability: Guts
+Nature: Adamant
+- Rock Slide
+- Crunch
+- Stomping Tantrum
+- Screech
+
+Bagon
+Level: 27
+Ability: Rock Head
+Nature: Adamant
+- Crunch
+- Headbutt
+- Dragon Tail
+- Fire Fang
 
 Noibat
-Level: 25
+Level: 27
 Ability: Infiltrator
+Nature: Hasty
 - Air Cutter
 - Bite
-- Wing Attack
+- U-turn
 - Supersonic
 
-Deino @ Sitrus Berry
-Level: 27
+Zweilous @ Sitrus Berry
+Level: 28
 Ability: Hustle
 Nature: Adamant
-- Dragon Breath
-- Headbutt
+- Dragon Tail
 - Bite
+- Double Hit
 - Work Up
-
 
 === TRAINER_MAY_ROUTE_103 ===
 Name: MAY
@@ -24272,171 +24288,148 @@ IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
 - Scratch
 - Growl
 
-
-=== TRAINER_ASTER_ROUTE_119_DEINO ===
-Name: ASTER
-Class: Draconid
-Pic: Aster
-Gender: Female
-Music: Intense
-Items: Hyper Potion / Hyper Potion
+=== TRAINER_MAXIE_SOOTOPOLIS ===
+Name: MAXIE
+Class: Magma Leader
+Pic: Magma Leader Maxie
+Gender: Male
+Music: Magma
+Items: Full Restore / Full Restore
 Double Battle: No
 AI: Smart Trainer / Ace Pokemon
 
-Shelgon
-Level: 34
-Ability: Rock Head
+Mightyena @ Black Glasses
+Level: 46
+Ability: Intimidate
 Nature: Adamant
-- Dragon Claw
 - Crunch
-- Headbutt
-- Scary Face
+- Play Rough
+- Ice Fang
+- Sucker Punch
 
-Vibrava
-Level: 35
+Crobat @ Sharp Beak
+Level: 46
+Ability: Inner Focus
+Nature: Jolly
+- Cross Poison
+- Brave Bird
+- U-turn
+- Taunt
+
+Houndoom @ Charcoal
+Level: 47
+Ability: Flash Fire
+Nature: Timid
+- Flamethrower
+- Dark Pulse
+- Sludge Bomb
+- Nasty Plot
+
+Donphan @ Sitrus Berry
+Level: 47
+Ability: Sturdy
 Nature: Adamant
-- Dragon Tail
-- Bug Buzz
-- Bulldoze
+- Earthquake
+- Knock Off
+- Ice Shard
 - Rock Slide
 
-Noibat
-Level: 35
-Ability: Infiltrator
-Nature: Timid
-- Air Cutter
-- Bite
-- Roost
-- Super Fang
+Torkoal @ Heat Rock
+Level: 47
+Ability: Drought
+Nature: Modest
+- Flamethrower
+- Solar Beam
+- Yawn
+- Stealth Rock
 
-Hakamo-o @ Sitrus Berry
-Level: 36
-Ability: Bulletproof
-Nature: Adamant
-- Dragon Claw
-- Sky Uppercut
-- Work Up
-- Iron Defense
+Camerupt @ Cameruptite
+Level: 48
+Ability: Solid Rock
+EVs: 252 SpA
+Nature: Modest
+- Flamethrower
+- Earth Power
+- Ancient Power
+- Will-O-Wisp
 
-Altaria @ Altarianite
-Level: 37
-Ability: Natural Cure
-Nature: Adamant
-- Dragon Dance
-- Dragon Breath
-- Take Down
-- Roost
-
-
-=== TRAINER_ASTER_ROUTE_119_DREEPY ===
-Name: ASTER
-Class: Draconid
-Pic: Aster
-Gender: Female
-Music: Intense
-Items: Hyper Potion / Hyper Potion
+=== TRAINER_MAXIE_SOOTOPOLIS_MULTI ===
+Name: MAXIE
+Class: Magma Leader
+Pic: Magma Leader Maxie
+Gender: Male
+Music: Magma
+Items: Full Restore / Full Restore
 Double Battle: No
 AI: Smart Trainer / Ace Pokemon
+Multi Party: Half
 
-Shelgon
-Level: 34
-Ability: Rock Head
+Mightyena @ Sitrus Berry
+Level: 46
+Ability: Intimidate
 Nature: Adamant
-- Dragon Claw
 - Crunch
-- Headbutt
-- Scary Face
+- Play Rough
+- Sucker Punch
+- Protect
 
-Vibrava
-Level: 35
-Nature: Adamant
-- Dragon Tail
-- Bug Buzz
-- Bulldoze
-- Rock Slide
+Weezing @ Black Sludge
+Level: 47
+Ability: Levitate
+Nature: Bold
+- Sludge Bomb
+- Flamethrower
+- Will-O-Wisp
+- Protect
 
-Noibat
-Level: 35
-Ability: Infiltrator
-Nature: Timid
-- Air Cutter
-- Bite
-- Roost
-- Super Fang
+Camerupt @ Cameruptite
+Level: 48
+Ability: Solid Rock
+EVs: 252 SpA
+Nature: Modest
+- Heat Wave
+- Earth Power
+- Ancient Power
+- Protect
 
-Deino @ Sitrus Berry
-Level: 36
-Ability: Hustle
-Nature: Adamant
-- Dragon Breath
-- Crunch
-- Slam
-- Work Up
-
-Altaria @ Altarianite
-Level: 37
-Ability: Natural Cure
-Nature: Adamant
-- Dragon Dance
-- Dragon Breath
-- Take Down
-- Roost
-
-
-=== TRAINER_ASTER_ROUTE_119_JANGMO_O ===
-Name: ASTER
-Class: Draconid
-Pic: Aster
-Gender: Female
-Music: Intense
-Items: Hyper Potion / Hyper Potion
+=== TRAINER_ARCHIE_SOOTOPOLIS_MULTI ===
+Name: ARCHIE
+Class: Aqua Leader
+Pic: Aqua Leader Archie
+Gender: Male
+Music: Aqua
+Items: Full Restore / Full Restore
 Double Battle: No
 AI: Smart Trainer / Ace Pokemon
+Multi Party: Half
 
-Shelgon
-Level: 34
-Ability: Rock Head
-Nature: Adamant
-- Dragon Claw
-- Crunch
-- Headbutt
-- Scary Face
-
-Vibrava
-Level: 35
-Nature: Adamant
-- Dragon Tail
-- Bug Buzz
-- Bulldoze
-- Rock Slide
-
-Noibat
-Level: 35
-Ability: Infiltrator
-Nature: Timid
-- Air Cutter
-- Bite
-- Roost
-- Super Fang
-
-Dreepy @ Sitrus Berry
-Level: 36
+Crobat @ Sharp Beak
+Level: 46
 Ability: Infiltrator
 Nature: Jolly
-- Dragon Tail
-- Bite
-- Quick Attack
-- Astonish
+- Tailwind
+- Cross Poison
+- Brave Bird
+- Protect
 
-Altaria @ Altarianite
-Level: 37
-Ability: Natural Cure
+Muk @ Black Sludge
+Level: 47
+Ability: Poison Touch
 Nature: Adamant
-- Dragon Dance
-- Dragon Breath
-- Take Down
-- Roost
+- Poison Jab
+- Knock Off
+- Shadow Sneak
+- Protect
 
+Sharpedo @ Sharpedonite
+Level: 48
+Ability: Speed Boost
+EVs: 252 Atk
+Nature: Adamant
+- Crunch
+- Waterfall
+- Ice Fang
+- Protect
 
 === TRAINER_ASTER_SKY_PILLAR_DEINO ===
 Name: ASTER
@@ -24445,53 +24438,69 @@ Pic: Aster
 Gender: Female
 Music: Intense
 Items: Full Restore / Full Restore
-Double Battle: No
+Double Battle: Yes
 AI: Smart Trainer / Prediction / Ace Pokemon
+Multi Party: Half
 
-Altaria @ Lum Berry
-Level: 45
+Altaria @ Sitrus Berry
+Level: 63
 Ability: Natural Cure
-Nature: Adamant
-- Dragon Claw
-- Dragon Dance
-- Double-Edge
-- Roost
+EVs: 252 HP / 252 SpA / 4 SpD
+Nature: Modest
+- Tailwind
+- Hyper Voice
+- Moonblast
+- Protect
 
-Flygon @ Soft Sand
-Level: 46
+Tyranitar @ Assault Vest
+Level: 63
+Ability: Unnerve
+EVs: 252 HP / 252 Atk / 4 SpD
+Nature: Adamant
+- Rock Slide
+- Crunch
+- Ice Punch
+- Low Kick
+
+Flygon @ Life Orb
+Level: 63
+Ability: Levitate
+EVs: 252 Atk / 252 Spe / 4 HP
 Nature: Jolly
 - Earthquake
 - Dragon Claw
 - Rock Slide
-- U-turn
+- Protect
 
-Noivern @ Sitrus Berry
-Level: 46
+Noivern @ Choice Specs
+Level: 64
 Ability: Infiltrator
+EVs: 252 SpA / 252 Spe / 4 HP
 Nature: Timid
+- Heat Wave
+- Hurricane
 - Dragon Pulse
-- Air Slash
 - Super Fang
-- Roost
 
-Drakloak @ Sitrus Berry
-Level: 47
-Ability: Infiltrator
+Dragapult @ Choice Band
+Level: 64
+Ability: Clear Body
+EVs: 252 Atk / 252 Spe / 4 HP
 Nature: Jolly
-- Dragon Pulse
+- Dragon Darts
 - Phantom Force
 - U-turn
-- Dragon Dance
+- Sucker Punch
 
 Salamence @ Salamencite
-Level: 48
+Level: 65
 Ability: Intimidate
-Nature: Adamant
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
 - Double-Edge
 - Dragon Claw
-- Earthquake
 - Dragon Dance
-
+- Protect
 
 === TRAINER_ASTER_SKY_PILLAR_DREEPY ===
 Name: ASTER
@@ -24500,53 +24509,69 @@ Pic: Aster
 Gender: Female
 Music: Intense
 Items: Full Restore / Full Restore
-Double Battle: No
+Double Battle: Yes
 AI: Smart Trainer / Prediction / Ace Pokemon
+Multi Party: Half
 
-Altaria @ Lum Berry
-Level: 45
+Altaria @ Sitrus Berry
+Level: 63
 Ability: Natural Cure
-Nature: Adamant
-- Dragon Claw
-- Dragon Dance
-- Double-Edge
-- Roost
+EVs: 252 HP / 252 SpA / 4 SpD
+Nature: Modest
+- Tailwind
+- Hyper Voice
+- Moonblast
+- Protect
 
-Flygon @ Soft Sand
-Level: 46
+Tyranitar @ Assault Vest
+Level: 63
+Ability: Unnerve
+EVs: 252 HP / 252 Atk / 4 SpD
+Nature: Adamant
+- Rock Slide
+- Crunch
+- Ice Punch
+- Low Kick
+
+Flygon @ Life Orb
+Level: 63
+Ability: Levitate
+EVs: 252 Atk / 252 Spe / 4 HP
 Nature: Jolly
 - Earthquake
 - Dragon Claw
 - Rock Slide
-- U-turn
+- Protect
 
-Noivern @ Sitrus Berry
-Level: 46
+Noivern @ Choice Specs
+Level: 64
 Ability: Infiltrator
+EVs: 252 SpA / 252 Spe / 4 HP
 Nature: Timid
+- Heat Wave
+- Hurricane
 - Dragon Pulse
-- Air Slash
 - Super Fang
-- Roost
 
-Kommo-o @ Sitrus Berry
-Level: 47
+Kommo-o @ Throat Spray
+Level: 64
 Ability: Bulletproof
-Nature: Adamant
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Timid
 - Clanging Scales
-- Sky Uppercut
-- Dragon Claw
-- Iron Defense
+- Aura Sphere
+- Flamethrower
+- Protect
 
 Salamence @ Salamencite
-Level: 48
+Level: 65
 Ability: Intimidate
-Nature: Adamant
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
 - Double-Edge
 - Dragon Claw
-- Earthquake
 - Dragon Dance
-
+- Protect
 
 === TRAINER_ISAAC_1 ===
 Name: ISAAC
@@ -27024,53 +27049,69 @@ Pic: Aster
 Gender: Female
 Music: Intense
 Items: Full Restore / Full Restore
-Double Battle: No
+Double Battle: Yes
 AI: Smart Trainer / Prediction / Ace Pokemon
+Multi Party: Half
 
-Altaria @ Lum Berry
-Level: 45
+Altaria @ Sitrus Berry
+Level: 63
 Ability: Natural Cure
-Nature: Adamant
-- Dragon Claw
-- Dragon Dance
-- Double-Edge
-- Roost
+EVs: 252 HP / 252 SpA / 4 SpD
+Nature: Modest
+- Tailwind
+- Hyper Voice
+- Moonblast
+- Protect
 
-Flygon @ Soft Sand
-Level: 46
+Tyranitar @ Assault Vest
+Level: 63
+Ability: Unnerve
+EVs: 252 HP / 252 Atk / 4 SpD
+Nature: Adamant
+- Rock Slide
+- Crunch
+- Ice Punch
+- Low Kick
+
+Flygon @ Life Orb
+Level: 63
+Ability: Levitate
+EVs: 252 Atk / 252 Spe / 4 HP
 Nature: Jolly
 - Earthquake
 - Dragon Claw
 - Rock Slide
-- U-turn
+- Protect
 
-Noivern @ Sitrus Berry
-Level: 46
+Noivern @ Choice Specs
+Level: 64
 Ability: Infiltrator
+EVs: 252 SpA / 252 Spe / 4 HP
 Nature: Timid
+- Heat Wave
+- Hurricane
 - Dragon Pulse
-- Air Slash
 - Super Fang
-- Roost
 
-Zweilous @ Sitrus Berry
-Level: 47
-Ability: Hustle
-Nature: Adamant
-- Dragon Rush
-- Crunch
-- Double Hit
-- Work Up
+Hydreigon @ Expert Belt
+Level: 64
+Ability: Levitate
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Timid
+- Dark Pulse
+- Dragon Pulse
+- Heat Wave
+- Protect
 
 Salamence @ Salamencite
-Level: 48
+Level: 65
 Ability: Intimidate
-Nature: Adamant
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
 - Double-Edge
 - Dragon Claw
-- Earthquake
 - Dragon Dance
-
+- Protect
 
 === TRAINER_ASTER_POSTGAME_DEINO ===
 Name: ASTER
@@ -27083,7 +27124,7 @@ Double Battle: No
 AI: Smart Trainer / Prediction / Ace Pokemon
 
 Altaria @ Leftovers
-Level: 74
+Level: 75
 Ability: Natural Cure
 EVs: 252 HP / 252 SpA / 4 SpD
 Nature: Modest
@@ -27092,44 +27133,45 @@ Nature: Modest
 - Roost
 - Cotton Guard
 
+Tyranitar @ Lum Berry
+Level: 75
+Ability: Unnerve
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Stone Edge
+- Crunch
+- Earthquake
+- Dragon Dance
+
 Flygon @ Choice Scarf
-Level: 74
+Level: 76
+Ability: Levitate
 EVs: 252 Atk / 252 Spe / 4 HP
 Nature: Jolly
 - Earthquake
 - Outrage
-- Stone Edge
 - U-turn
+- Stone Edge
 
 Noivern @ Choice Specs
-Level: 74
+Level: 76
 Ability: Infiltrator
 EVs: 252 SpA / 252 Spe / 4 HP
 Nature: Timid
 - Boomburst
 - Hurricane
-- Flamethrower
-- Roost
-
-Goodra @ Assault Vest
-Level: 74
-Ability: Sap Sipper
-EVs: 252 HP / 252 SpA / 4 SpD
-Nature: Modest
 - Draco Meteor
-- Sludge Bomb
-- Fire Blast
-- Thunderbolt
+- Flamethrower
 
 Dragapult @ Choice Band
-Level: 76
-Ability: Infiltrator
+Level: 77
+Ability: Clear Body
 EVs: 252 Atk / 252 Spe / 4 HP
 Nature: Jolly
 - Dragon Darts
 - Phantom Force
 - U-turn
-- Dragon Dance
+- Sucker Punch
 
 Salamence @ Salamencite
 Level: 78
@@ -27405,7 +27447,7 @@ Double Battle: No
 AI: Smart Trainer / Prediction / Ace Pokemon
 
 Altaria @ Leftovers
-Level: 74
+Level: 75
 Ability: Natural Cure
 EVs: 252 HP / 252 SpA / 4 SpD
 Nature: Modest
@@ -27414,44 +27456,45 @@ Nature: Modest
 - Roost
 - Cotton Guard
 
+Tyranitar @ Lum Berry
+Level: 75
+Ability: Unnerve
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Stone Edge
+- Crunch
+- Earthquake
+- Dragon Dance
+
 Flygon @ Choice Scarf
-Level: 74
+Level: 76
+Ability: Levitate
 EVs: 252 Atk / 252 Spe / 4 HP
 Nature: Jolly
 - Earthquake
 - Outrage
-- Stone Edge
 - U-turn
+- Stone Edge
 
 Noivern @ Choice Specs
-Level: 74
+Level: 76
 Ability: Infiltrator
 EVs: 252 SpA / 252 Spe / 4 HP
 Nature: Timid
 - Boomburst
 - Hurricane
-- Flamethrower
-- Roost
-
-Goodra @ Assault Vest
-Level: 74
-Ability: Sap Sipper
-EVs: 252 HP / 252 SpA / 4 SpD
-Nature: Modest
 - Draco Meteor
-- Sludge Bomb
-- Fire Blast
-- Thunderbolt
+- Flamethrower
 
 Kommo-o @ Throat Spray
-Level: 76
-Ability: Soundproof
-EVs: 252 Atk / 252 Spe / 4 HP
-Nature: Jolly
+Level: 77
+Ability: Bulletproof
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Timid
+- Clangorous Soul
 - Clanging Scales
-- Close Combat
-- Poison Jab
-- Dragon Dance
+- Aura Sphere
+- Flamethrower
 
 Salamence @ Salamencite
 Level: 78
@@ -27462,7 +27505,6 @@ Nature: Adamant
 - Dragon Claw
 - Earthquake
 - Dragon Dance
-
 
 === TRAINER_ASTER_POSTGAME_JANGMO_O ===
 Name: ASTER
@@ -27475,7 +27517,7 @@ Double Battle: No
 AI: Smart Trainer / Prediction / Ace Pokemon
 
 Altaria @ Leftovers
-Level: 74
+Level: 75
 Ability: Natural Cure
 EVs: 252 HP / 252 SpA / 4 SpD
 Nature: Modest
@@ -27484,44 +27526,45 @@ Nature: Modest
 - Roost
 - Cotton Guard
 
+Tyranitar @ Lum Berry
+Level: 75
+Ability: Unnerve
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Stone Edge
+- Crunch
+- Earthquake
+- Dragon Dance
+
 Flygon @ Choice Scarf
-Level: 74
+Level: 76
+Ability: Levitate
 EVs: 252 Atk / 252 Spe / 4 HP
 Nature: Jolly
 - Earthquake
 - Outrage
-- Stone Edge
 - U-turn
+- Stone Edge
 
 Noivern @ Choice Specs
-Level: 74
+Level: 76
 Ability: Infiltrator
 EVs: 252 SpA / 252 Spe / 4 HP
 Nature: Timid
 - Boomburst
 - Hurricane
-- Flamethrower
-- Roost
-
-Goodra @ Assault Vest
-Level: 74
-Ability: Sap Sipper
-EVs: 252 HP / 252 SpA / 4 SpD
-Nature: Modest
 - Draco Meteor
-- Sludge Bomb
-- Fire Blast
-- Thunderbolt
+- Flamethrower
 
 Hydreigon @ Life Orb
-Level: 76
+Level: 77
 Ability: Levitate
 EVs: 252 SpA / 252 Spe / 4 HP
-Nature: Modest
-- Draco Meteor
+Nature: Timid
 - Dark Pulse
+- Draco Meteor
 - Flamethrower
-- Earth Power
+- Nasty Plot
 
 Salamence @ Salamencite
 Level: 78
@@ -27532,7 +27575,6 @@ Nature: Adamant
 - Dragon Claw
 - Earthquake
 - Dragon Dance
-
 
 === TRAINER_MAXIE_MAGMA_HIDEOUT ===
 Name: MAXIE
@@ -30055,35 +30097,63 @@ Pic: Brendan
 Gender: Male
 Music: Male
 Items: Hyper Potion / Hyper Potion
-Double Battle: No
+Double Battle: Yes
 AI: Smart Trainer / Ace Pokemon
 
-Pelipper @ Leftovers
-Level: 41
-Ability: Drizzle
-Nature: Modest
-- Brine
-- Air Cutter
+Mightyena @ Sitrus Berry
+Level: 40
+Ability: Intimidate
+Nature: Adamant
+- Crunch
+- Play Rough
+- Fire Fang
 - Protect
-- Roost
 
-Camerupt
+Swellow @ Flame Orb
+Level: 40
+Ability: Guts
+Nature: Jolly
+- Facade
+- Brave Bird
+- Quick Attack
+- Protect
+
+Magcargo @ Charcoal
 Level: 41
-Ability: Solid Rock
+Ability: Flame Body
 Nature: Modest
-- Flamethrower
+- Heat Wave
 - Earth Power
-- Rock Slide
+- Power Gem
 - Protect
 
-Sceptile @ Sitrus Berry
+Slaking @ Silk Scarf
+Level: 41
+Ability: Truant
+Nature: Adamant
+- Double-Edge
+- Rock Slide
+- Throat Chop
+- Slack Off
+
+Latios @ Soul Dew
+Level: 42
+Ability: Levitate
+Nature: Timid
+- Luster Purge
+- Dragon Breath
+- Tailwind
+- Protect
+
+Sceptile @ Miracle Seed
 Level: 43
+Ability: Overgrow
+EVs: 252 Atk
 Nature: Jolly
 - Leaf Blade
-- X-Scissor
-- Detect
-- Quick Attack
-
+- Dragon Claw
+- Rock Slide
+- Protect
 
 === TRAINER_WALLY_LILYCOVE ===
 Name: WALLY
@@ -30148,39 +30218,38 @@ Pic: May
 Gender: Female
 Music: Female
 Items: Full Restore / Full Restore
-Double Battle: No
+Double Battle: Yes
 AI: Smart Trainer / Prediction / Ace Pokemon
 
-Ludicolo @ Life Orb
-Level: 72
-Ability: Swift Swim
+Latias @ Soul Dew
+Level: 79
+Ability: Levitate
 EVs: 252 SpA / 252 Spe / 4 HP
-Nature: Modest
-- Hydro Pump
-- Giga Drain
-- Ice Beam
-- Fake Out
+Nature: Timid
+- Tailwind
+- Mist Ball
+- Draco Meteor
+- Protect
 
-Azumarill @ Choice Band
-Level: 72
-Ability: Huge Power
-EVs: 252 Atk / 252 HP / 4 Spe
-Nature: Adamant
-- Waterfall
-- Play Rough
-- Superpower
-- Aqua Jet
+Wailord @ Sitrus Berry
+Level: 78
+Ability: Pressure
+EVs: 252 HP / 252 SpA / 4 SpD
+Nature: Modest
+- Water Spout
+- Ice Beam
+- Hydro Pump
+- Protect
 
 Blaziken @ Blazikenite
-Level: 76
+Level: 80
 Ability: Speed Boost
 EVs: 252 Atk / 252 Spe / 4 HP
 Nature: Adamant
 - Flare Blitz
 - Close Combat
-- Brave Bird
+- Rock Slide
 - Protect
-
 
 === TRAINER_DRACONID_SPARE_1 ===
 Name: MAY
@@ -30214,36 +30283,63 @@ Pic: May
 Gender: Female
 Music: Female
 Items: Hyper Potion / Hyper Potion
-Double Battle: No
+Double Battle: Yes
 AI: Smart Trainer / Ace Pokemon
 
-Ludicolo @ Leftovers
-Level: 41
-Ability: Swift Swim
-Nature: Modest
+Delcatty @ Sitrus Berry
+Level: 40
+Ability: Wonder Skin
+Nature: Jolly
 - Fake Out
-- Surf
-- Giga Drain
-- Ice Beam
+- Helping Hand
+- Double-Edge
+- Sucker Punch
 
-Azumarill
+Beautifly @ Silver Powder
+Level: 40
+Ability: Swarm
+Nature: Modest
+- Quiver Dance
+- Bug Buzz
+- Air Slash
+- Protect
+
+Tropius @ Sitrus Berry
 Level: 41
-Ability: Huge Power
-Nature: Adamant
-- Aqua Tail
-- Play Rough
+Ability: Harvest
+Nature: Modest
+- Air Slash
+- Energy Ball
+- Dragon Pulse
+- Wide Guard
+
+Wailord @ Leftovers
+Level: 41
+Ability: Water Veil
+Nature: Modest
+- Brine
+- Ice Beam
+- Hyper Voice
+- Protect
+
+Latias @ Soul Dew
+Level: 42
+Ability: Levitate
+Nature: Timid
+- Mist Ball
+- Dragon Breath
 - Helping Hand
 - Protect
 
-Blaziken @ Sitrus Berry
+Blaziken @ Charcoal
 Level: 43
 Ability: Speed Boost
+EVs: 252 Atk
 Nature: Adamant
 - Blaze Kick
 - Brick Break
-- Slash
+- Rock Slide
 - Protect
-
 
 === TRAINER_DRACONID_SPARE_2 ===
 Name: MAY
@@ -39030,11 +39126,12 @@ AI: Basic Trainer
 
 Dreepy
 Level: 5
+Ability: Clear Body
+IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
 Nature: Hasty
-IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
-- Bite
-- Quick Attack
 - Astonish
+- Quick Attack
+- Bite
 - Infestation
 
 === TRAINER_ASTER_PASS_DREEPY ===
@@ -39048,13 +39145,12 @@ AI: Basic Trainer
 
 Jangmo-o
 Level: 5
+Ability: Bulletproof
+IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
 Nature: Adamant
-IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
 - Tackle
 - Leer
 - Protect
-/* Draconid Emerald round 1: Nerine placeholder teams (counter egg + counter Mega starter, level-up moves);
-   the full teams come with the round 1 trainer batch. TODO: replace. */
 
 === TRAINER_ASTER_PASS_JANGMO_O ===
 Name: ASTER
@@ -39067,10 +39163,10 @@ AI: Basic Trainer
 
 Deino
 Level: 5
+Ability: Hustle
+IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
 Nature: Naughty
-IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
 - Tackle
-- Dragon Breath
 - Focus Energy
 
 === TRAINER_NERINE_PETALBURG_WOODS_DEINO ===
@@ -39079,17 +39175,29 @@ Class: Team Aqua
 Pic: Nerine Aqua
 Gender: Female
 Music: Aqua
+Items: Potion
 Double Battle: No
 AI: Smart Trainer / Ace Pokemon
 
 Carvanha
-Level: 8
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
-Jangmo-o
 Level: 9
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Rough Skin
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Adamant
+- Bite
+- Aqua Jet
+- Poison Fang
+- Leer
 
+Jangmo-o @ Oran Berry
+Level: 10
+Ability: Bulletproof
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Adamant
+- Dragon Tail
+- Tackle
+- Protect
+- Leer
 
 === TRAINER_NERINE_PETALBURG_WOODS_DREEPY ===
 Name: NERINE
@@ -39097,17 +39205,29 @@ Class: Team Aqua
 Pic: Nerine Aqua
 Gender: Female
 Music: Aqua
+Items: Potion
 Double Battle: No
 AI: Smart Trainer / Ace Pokemon
 
 Carvanha
-Level: 8
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
-Deino
 Level: 9
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Rough Skin
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Adamant
+- Bite
+- Aqua Jet
+- Poison Fang
+- Leer
 
+Deino @ Oran Berry
+Level: 10
+Ability: Hustle
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Adamant
+- Dragon Breath
+- Bite
+- Tackle
+- Focus Energy
 
 === TRAINER_NERINE_PETALBURG_WOODS_JANGMO_O ===
 Name: NERINE
@@ -39115,17 +39235,29 @@ Class: Team Aqua
 Pic: Nerine Aqua
 Gender: Female
 Music: Aqua
+Items: Potion
 Double Battle: No
 AI: Smart Trainer / Ace Pokemon
 
 Carvanha
-Level: 8
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
-Dreepy
 Level: 9
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Rough Skin
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Adamant
+- Bite
+- Aqua Jet
+- Poison Fang
+- Leer
 
+Dreepy @ Oran Berry
+Level: 10
+Ability: Clear Body
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Jolly
+- Astonish
+- Bite
+- Quick Attack
+- Infestation
 
 === TRAINER_NERINE_RUSTURF_DEINO_CHARMANDER ===
 Name: NERINE
@@ -39133,21 +39265,45 @@ Class: Team Aqua
 Pic: Nerine Aqua
 Gender: Female
 Music: Aqua
+Items: Potion / Potion
 Double Battle: No
 AI: Smart Trainer / Ace Pokemon
 
-Carvanha
+Poochyena
 Level: 14
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Quick Feet
+Nature: Adamant
+- Bite
+- Tackle
+- Howl
+- Sand Attack
+
+Carvanha
+Level: 15
+Ability: Rough Skin
+Nature: Adamant
+- Bite
+- Aqua Jet
+- Poison Fang
+- Scary Face
 
 Totodile
-Level: 15
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
-Jangmo-o
 Level: 16
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Torrent
+Nature: Adamant
+- Water Gun
+- Bite
+- Scary Face
+- Scratch
 
+Jangmo-o @ Oran Berry
+Level: 17
+Ability: Bulletproof
+Nature: Adamant
+- Dragon Tail
+- Headbutt
+- Scary Face
+- Protect
 
 === TRAINER_NERINE_RUSTURF_DEINO_TOTODILE ===
 Name: NERINE
@@ -39155,21 +39311,45 @@ Class: Team Aqua
 Pic: Nerine Aqua
 Gender: Female
 Music: Aqua
+Items: Potion / Potion
 Double Battle: No
 AI: Smart Trainer / Ace Pokemon
 
-Carvanha
+Poochyena
 Level: 14
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Quick Feet
+Nature: Adamant
+- Bite
+- Tackle
+- Howl
+- Sand Attack
 
-Treecko
+Carvanha
 Level: 15
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Rough Skin
+Nature: Adamant
+- Bite
+- Aqua Jet
+- Poison Fang
+- Scary Face
 
-Jangmo-o
+Grovyle
 Level: 16
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Overgrow
+Nature: Hasty
+- Leafage
+- Mega Drain
+- Quick Attack
+- Detect
 
+Jangmo-o @ Oran Berry
+Level: 17
+Ability: Bulletproof
+Nature: Adamant
+- Dragon Tail
+- Headbutt
+- Scary Face
+- Protect
 
 === TRAINER_NERINE_RUSTURF_DEINO_TREECKO ===
 Name: NERINE
@@ -39177,21 +39357,45 @@ Class: Team Aqua
 Pic: Nerine Aqua
 Gender: Female
 Music: Aqua
+Items: Potion / Potion
 Double Battle: No
 AI: Smart Trainer / Ace Pokemon
 
-Carvanha
+Poochyena
 Level: 14
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Quick Feet
+Nature: Adamant
+- Bite
+- Tackle
+- Howl
+- Sand Attack
 
-Charmander
+Carvanha
 Level: 15
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Rough Skin
+Nature: Adamant
+- Bite
+- Aqua Jet
+- Poison Fang
+- Scary Face
 
-Jangmo-o
+Charmeleon
 Level: 16
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Blaze
+Nature: Hasty
+- Ember
+- Dragon Breath
+- Scratch
+- Smokescreen
 
+Jangmo-o @ Oran Berry
+Level: 17
+Ability: Bulletproof
+Nature: Adamant
+- Dragon Tail
+- Headbutt
+- Scary Face
+- Protect
 
 === TRAINER_NERINE_RUSTURF_DREEPY_CHARMANDER ===
 Name: NERINE
@@ -39199,21 +39403,45 @@ Class: Team Aqua
 Pic: Nerine Aqua
 Gender: Female
 Music: Aqua
+Items: Potion / Potion
 Double Battle: No
 AI: Smart Trainer / Ace Pokemon
 
-Carvanha
+Poochyena
 Level: 14
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Quick Feet
+Nature: Adamant
+- Bite
+- Tackle
+- Howl
+- Sand Attack
+
+Carvanha
+Level: 15
+Ability: Rough Skin
+Nature: Adamant
+- Bite
+- Aqua Jet
+- Poison Fang
+- Scary Face
 
 Totodile
-Level: 15
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
-Deino
 Level: 16
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Torrent
+Nature: Adamant
+- Water Gun
+- Bite
+- Scary Face
+- Scratch
 
+Deino @ Oran Berry
+Level: 17
+Ability: Hustle
+Nature: Adamant
+- Dragon Breath
+- Bite
+- Assurance
+- Roar
 
 === TRAINER_NERINE_RUSTURF_DREEPY_TOTODILE ===
 Name: NERINE
@@ -39221,21 +39449,45 @@ Class: Team Aqua
 Pic: Nerine Aqua
 Gender: Female
 Music: Aqua
+Items: Potion / Potion
 Double Battle: No
 AI: Smart Trainer / Ace Pokemon
 
-Carvanha
+Poochyena
 Level: 14
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Quick Feet
+Nature: Adamant
+- Bite
+- Tackle
+- Howl
+- Sand Attack
 
-Treecko
+Carvanha
 Level: 15
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Rough Skin
+Nature: Adamant
+- Bite
+- Aqua Jet
+- Poison Fang
+- Scary Face
 
-Deino
+Grovyle
 Level: 16
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Overgrow
+Nature: Hasty
+- Leafage
+- Mega Drain
+- Quick Attack
+- Detect
 
+Deino @ Oran Berry
+Level: 17
+Ability: Hustle
+Nature: Adamant
+- Dragon Breath
+- Bite
+- Assurance
+- Roar
 
 === TRAINER_NERINE_RUSTURF_DREEPY_TREECKO ===
 Name: NERINE
@@ -39243,21 +39495,45 @@ Class: Team Aqua
 Pic: Nerine Aqua
 Gender: Female
 Music: Aqua
+Items: Potion / Potion
 Double Battle: No
 AI: Smart Trainer / Ace Pokemon
 
-Carvanha
+Poochyena
 Level: 14
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Quick Feet
+Nature: Adamant
+- Bite
+- Tackle
+- Howl
+- Sand Attack
 
-Charmander
+Carvanha
 Level: 15
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Rough Skin
+Nature: Adamant
+- Bite
+- Aqua Jet
+- Poison Fang
+- Scary Face
 
-Deino
+Charmeleon
 Level: 16
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Blaze
+Nature: Hasty
+- Ember
+- Dragon Breath
+- Scratch
+- Smokescreen
 
+Deino @ Oran Berry
+Level: 17
+Ability: Hustle
+Nature: Adamant
+- Dragon Breath
+- Bite
+- Assurance
+- Roar
 
 === TRAINER_NERINE_RUSTURF_JANGMO_O_CHARMANDER ===
 Name: NERINE
@@ -39265,21 +39541,45 @@ Class: Team Aqua
 Pic: Nerine Aqua
 Gender: Female
 Music: Aqua
+Items: Potion / Potion
 Double Battle: No
 AI: Smart Trainer / Ace Pokemon
 
-Carvanha
+Poochyena
 Level: 14
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Quick Feet
+Nature: Adamant
+- Bite
+- Tackle
+- Howl
+- Sand Attack
+
+Carvanha
+Level: 15
+Ability: Rough Skin
+Nature: Adamant
+- Bite
+- Aqua Jet
+- Poison Fang
+- Scary Face
 
 Totodile
-Level: 15
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
-Dreepy
 Level: 16
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Torrent
+Nature: Adamant
+- Water Gun
+- Bite
+- Scary Face
+- Scratch
 
+Dreepy @ Oran Berry
+Level: 17
+Ability: Infiltrator
+Nature: Jolly
+- Dragon Tail
+- Astonish
+- Bite
+- Quick Attack
 
 === TRAINER_NERINE_RUSTURF_JANGMO_O_TOTODILE ===
 Name: NERINE
@@ -39287,21 +39587,45 @@ Class: Team Aqua
 Pic: Nerine Aqua
 Gender: Female
 Music: Aqua
+Items: Potion / Potion
 Double Battle: No
 AI: Smart Trainer / Ace Pokemon
 
-Carvanha
+Poochyena
 Level: 14
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Quick Feet
+Nature: Adamant
+- Bite
+- Tackle
+- Howl
+- Sand Attack
 
-Treecko
+Carvanha
 Level: 15
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Rough Skin
+Nature: Adamant
+- Bite
+- Aqua Jet
+- Poison Fang
+- Scary Face
 
-Dreepy
+Grovyle
 Level: 16
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Overgrow
+Nature: Hasty
+- Leafage
+- Mega Drain
+- Quick Attack
+- Detect
 
+Dreepy @ Oran Berry
+Level: 17
+Ability: Infiltrator
+Nature: Jolly
+- Dragon Tail
+- Astonish
+- Bite
+- Quick Attack
 
 === TRAINER_NERINE_RUSTURF_JANGMO_O_TREECKO ===
 Name: NERINE
@@ -39309,21 +39633,45 @@ Class: Team Aqua
 Pic: Nerine Aqua
 Gender: Female
 Music: Aqua
+Items: Potion / Potion
 Double Battle: No
 AI: Smart Trainer / Ace Pokemon
 
-Carvanha
+Poochyena
 Level: 14
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Quick Feet
+Nature: Adamant
+- Bite
+- Tackle
+- Howl
+- Sand Attack
 
-Charmander
+Carvanha
 Level: 15
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Rough Skin
+Nature: Adamant
+- Bite
+- Aqua Jet
+- Poison Fang
+- Scary Face
 
-Dreepy
+Charmeleon
 Level: 16
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Blaze
+Nature: Hasty
+- Ember
+- Dragon Breath
+- Scratch
+- Smokescreen
 
+Dreepy @ Oran Berry
+Level: 17
+Ability: Infiltrator
+Nature: Jolly
+- Dragon Tail
+- Astonish
+- Bite
+- Quick Attack
 
 === TRAINER_NERINE_SLATEPORT_DEINO_CHARMANDER ===
 Name: NERINE
@@ -39331,21 +39679,45 @@ Class: Team Aqua
 Pic: Nerine Aqua
 Gender: Female
 Music: Aqua
+Items: Super Potion / Super Potion
 Double Battle: No
 AI: Smart Trainer / Ace Pokemon
 
-Carvanha
+Mightyena
 Level: 21
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Intimidate
+Nature: Adamant
+- Bite
+- Fire Fang
+- Thunder Fang
+- Howl
+
+Carvanha
+Level: 22
+Ability: Rough Skin
+Nature: Adamant
+- Bite
+- Ice Fang
+- Aqua Jet
+- Poison Fang
 
 Croconaw
 Level: 22
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Torrent
+Nature: Adamant
+- Water Gun
+- Bite
+- Ice Fang
+- Scary Face
 
-Jangmo-o
-Level: 23
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
+Jangmo-o @ Sitrus Berry
+Level: 24
+Ability: Bulletproof
+Nature: Adamant
+- Dragon Tail
+- Headbutt
+- Work Up
+- Protect
 
 === TRAINER_NERINE_SLATEPORT_DEINO_TOTODILE ===
 Name: NERINE
@@ -39353,21 +39725,45 @@ Class: Team Aqua
 Pic: Nerine Aqua
 Gender: Female
 Music: Aqua
+Items: Super Potion / Super Potion
 Double Battle: No
 AI: Smart Trainer / Ace Pokemon
 
-Carvanha
+Mightyena
 Level: 21
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Intimidate
+Nature: Adamant
+- Bite
+- Fire Fang
+- Thunder Fang
+- Howl
+
+Carvanha
+Level: 22
+Ability: Rough Skin
+Nature: Adamant
+- Bite
+- Ice Fang
+- Aqua Jet
+- Poison Fang
 
 Grovyle
 Level: 22
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Overgrow
+Nature: Hasty
+- Mega Drain
+- Leafage
+- Assurance
+- Detect
 
-Jangmo-o
-Level: 23
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
+Jangmo-o @ Sitrus Berry
+Level: 24
+Ability: Bulletproof
+Nature: Adamant
+- Dragon Tail
+- Headbutt
+- Work Up
+- Protect
 
 === TRAINER_NERINE_SLATEPORT_DEINO_TREECKO ===
 Name: NERINE
@@ -39375,21 +39771,45 @@ Class: Team Aqua
 Pic: Nerine Aqua
 Gender: Female
 Music: Aqua
+Items: Super Potion / Super Potion
 Double Battle: No
 AI: Smart Trainer / Ace Pokemon
 
-Carvanha
+Mightyena
 Level: 21
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Intimidate
+Nature: Adamant
+- Bite
+- Fire Fang
+- Thunder Fang
+- Howl
+
+Carvanha
+Level: 22
+Ability: Rough Skin
+Nature: Adamant
+- Bite
+- Ice Fang
+- Aqua Jet
+- Poison Fang
 
 Charmeleon
 Level: 22
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Blaze
+Nature: Hasty
+- Fire Fang
+- Dragon Breath
+- Ember
+- Smokescreen
 
-Jangmo-o
-Level: 23
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
+Jangmo-o @ Sitrus Berry
+Level: 24
+Ability: Bulletproof
+Nature: Adamant
+- Dragon Tail
+- Headbutt
+- Work Up
+- Protect
 
 === TRAINER_NERINE_SLATEPORT_DREEPY_CHARMANDER ===
 Name: NERINE
@@ -39397,21 +39817,45 @@ Class: Team Aqua
 Pic: Nerine Aqua
 Gender: Female
 Music: Aqua
+Items: Super Potion / Super Potion
 Double Battle: No
 AI: Smart Trainer / Ace Pokemon
 
-Carvanha
+Mightyena
 Level: 21
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Intimidate
+Nature: Adamant
+- Bite
+- Fire Fang
+- Thunder Fang
+- Howl
+
+Carvanha
+Level: 22
+Ability: Rough Skin
+Nature: Adamant
+- Bite
+- Ice Fang
+- Aqua Jet
+- Poison Fang
 
 Croconaw
 Level: 22
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Torrent
+Nature: Adamant
+- Water Gun
+- Bite
+- Ice Fang
+- Scary Face
 
-Deino
-Level: 23
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
+Deino @ Sitrus Berry
+Level: 24
+Ability: Hustle
+Nature: Adamant
+- Dragon Breath
+- Bite
+- Headbutt
+- Work Up
 
 === TRAINER_NERINE_SLATEPORT_DREEPY_TOTODILE ===
 Name: NERINE
@@ -39419,21 +39863,45 @@ Class: Team Aqua
 Pic: Nerine Aqua
 Gender: Female
 Music: Aqua
+Items: Super Potion / Super Potion
 Double Battle: No
 AI: Smart Trainer / Ace Pokemon
 
-Carvanha
+Mightyena
 Level: 21
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Intimidate
+Nature: Adamant
+- Bite
+- Fire Fang
+- Thunder Fang
+- Howl
+
+Carvanha
+Level: 22
+Ability: Rough Skin
+Nature: Adamant
+- Bite
+- Ice Fang
+- Aqua Jet
+- Poison Fang
 
 Grovyle
 Level: 22
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Overgrow
+Nature: Hasty
+- Mega Drain
+- Leafage
+- Assurance
+- Detect
 
-Deino
-Level: 23
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
+Deino @ Sitrus Berry
+Level: 24
+Ability: Hustle
+Nature: Adamant
+- Dragon Breath
+- Bite
+- Headbutt
+- Work Up
 
 === TRAINER_NERINE_SLATEPORT_DREEPY_TREECKO ===
 Name: NERINE
@@ -39441,21 +39909,45 @@ Class: Team Aqua
 Pic: Nerine Aqua
 Gender: Female
 Music: Aqua
+Items: Super Potion / Super Potion
 Double Battle: No
 AI: Smart Trainer / Ace Pokemon
 
-Carvanha
+Mightyena
 Level: 21
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Intimidate
+Nature: Adamant
+- Bite
+- Fire Fang
+- Thunder Fang
+- Howl
+
+Carvanha
+Level: 22
+Ability: Rough Skin
+Nature: Adamant
+- Bite
+- Ice Fang
+- Aqua Jet
+- Poison Fang
 
 Charmeleon
 Level: 22
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Blaze
+Nature: Hasty
+- Fire Fang
+- Dragon Breath
+- Ember
+- Smokescreen
 
-Deino
-Level: 23
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
+Deino @ Sitrus Berry
+Level: 24
+Ability: Hustle
+Nature: Adamant
+- Dragon Breath
+- Bite
+- Headbutt
+- Work Up
 
 === TRAINER_NERINE_SLATEPORT_JANGMO_O_CHARMANDER ===
 Name: NERINE
@@ -39463,21 +39955,45 @@ Class: Team Aqua
 Pic: Nerine Aqua
 Gender: Female
 Music: Aqua
+Items: Super Potion / Super Potion
 Double Battle: No
 AI: Smart Trainer / Ace Pokemon
 
-Carvanha
+Mightyena
 Level: 21
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Intimidate
+Nature: Adamant
+- Bite
+- Fire Fang
+- Thunder Fang
+- Howl
+
+Carvanha
+Level: 22
+Ability: Rough Skin
+Nature: Adamant
+- Bite
+- Ice Fang
+- Aqua Jet
+- Poison Fang
 
 Croconaw
 Level: 22
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Torrent
+Nature: Adamant
+- Water Gun
+- Bite
+- Ice Fang
+- Scary Face
 
-Dreepy
-Level: 23
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
+Dreepy @ Sitrus Berry
+Level: 24
+Ability: Infiltrator
+Nature: Jolly
+- Dragon Tail
+- Astonish
+- Bite
+- Quick Attack
 
 === TRAINER_NERINE_SLATEPORT_JANGMO_O_TOTODILE ===
 Name: NERINE
@@ -39485,21 +40001,45 @@ Class: Team Aqua
 Pic: Nerine Aqua
 Gender: Female
 Music: Aqua
+Items: Super Potion / Super Potion
 Double Battle: No
 AI: Smart Trainer / Ace Pokemon
 
-Carvanha
+Mightyena
 Level: 21
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Intimidate
+Nature: Adamant
+- Bite
+- Fire Fang
+- Thunder Fang
+- Howl
+
+Carvanha
+Level: 22
+Ability: Rough Skin
+Nature: Adamant
+- Bite
+- Ice Fang
+- Aqua Jet
+- Poison Fang
 
 Grovyle
 Level: 22
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Overgrow
+Nature: Hasty
+- Mega Drain
+- Leafage
+- Assurance
+- Detect
 
-Dreepy
-Level: 23
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
+Dreepy @ Sitrus Berry
+Level: 24
+Ability: Infiltrator
+Nature: Jolly
+- Dragon Tail
+- Astonish
+- Bite
+- Quick Attack
 
 === TRAINER_NERINE_SLATEPORT_JANGMO_O_TREECKO ===
 Name: NERINE
@@ -39507,21 +40047,45 @@ Class: Team Aqua
 Pic: Nerine Aqua
 Gender: Female
 Music: Aqua
+Items: Super Potion / Super Potion
 Double Battle: No
 AI: Smart Trainer / Ace Pokemon
 
-Carvanha
+Mightyena
 Level: 21
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Intimidate
+Nature: Adamant
+- Bite
+- Fire Fang
+- Thunder Fang
+- Howl
+
+Carvanha
+Level: 22
+Ability: Rough Skin
+Nature: Adamant
+- Bite
+- Ice Fang
+- Aqua Jet
+- Poison Fang
 
 Charmeleon
 Level: 22
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Blaze
+Nature: Hasty
+- Fire Fang
+- Dragon Breath
+- Ember
+- Smokescreen
 
-Dreepy
-Level: 23
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
+Dreepy @ Sitrus Berry
+Level: 24
+Ability: Infiltrator
+Nature: Jolly
+- Dragon Tail
+- Astonish
+- Bite
+- Quick Attack
 
 === TRAINER_NERINE_MT_CHIMNEY_DEINO_CHARMANDER ===
 Name: NERINE
@@ -39529,21 +40093,54 @@ Class: Team Aqua
 Pic: Nerine Aqua
 Gender: Female
 Music: Aqua
+Items: Super Potion / Super Potion
 Double Battle: No
 AI: Smart Trainer / Ace Pokemon
 
-Carvanha
+Mightyena
 Level: 27
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Intimidate
+Nature: Adamant
+- Crunch
+- Ice Fang
+- Thunder Fang
+- Howl
 
-Croconaw
+Wailmer
+Level: 27
+Ability: Water Veil
+Nature: Modest
+- Brine
+- Icy Wind
+- Heavy Slam
+- Protect
+
+Carvanha
 Level: 28
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Speed Boost
+Nature: Adamant
+- Waterfall
+- Bite
+- Ice Fang
+- Aqua Jet
 
-Hakamo-o
+Croconaw @ Mystic Water
+Level: 28
+Ability: Sheer Force
+Nature: Adamant
+- Waterfall
+- Crunch
+- Ice Fang
+- Dragon Dance
+
+Hakamo-o @ Sitrus Berry
 Level: 29
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
+Ability: Bulletproof
+Nature: Adamant
+- Dragon Claw
+- Brick Break
+- Rock Slide
+- Iron Defense
 
 === TRAINER_NERINE_MT_CHIMNEY_DEINO_TOTODILE ===
 Name: NERINE
@@ -39551,21 +40148,54 @@ Class: Team Aqua
 Pic: Nerine Aqua
 Gender: Female
 Music: Aqua
+Items: Super Potion / Super Potion
 Double Battle: No
 AI: Smart Trainer / Ace Pokemon
 
-Carvanha
+Mightyena
 Level: 27
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Intimidate
+Nature: Adamant
+- Crunch
+- Ice Fang
+- Thunder Fang
+- Howl
 
-Grovyle
+Wailmer
+Level: 27
+Ability: Water Veil
+Nature: Modest
+- Brine
+- Icy Wind
+- Heavy Slam
+- Protect
+
+Carvanha
 Level: 28
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Speed Boost
+Nature: Adamant
+- Waterfall
+- Bite
+- Ice Fang
+- Aqua Jet
 
-Hakamo-o
+Grovyle @ Miracle Seed
+Level: 28
+Ability: Overgrow
+Nature: Hasty
+- Giga Drain
+- Dragon Breath
+- Quick Attack
+- Detect
+
+Hakamo-o @ Sitrus Berry
 Level: 29
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
+Ability: Bulletproof
+Nature: Adamant
+- Dragon Claw
+- Brick Break
+- Rock Slide
+- Iron Defense
 
 === TRAINER_NERINE_MT_CHIMNEY_DEINO_TREECKO ===
 Name: NERINE
@@ -39573,21 +40203,54 @@ Class: Team Aqua
 Pic: Nerine Aqua
 Gender: Female
 Music: Aqua
+Items: Super Potion / Super Potion
 Double Battle: No
 AI: Smart Trainer / Ace Pokemon
 
-Carvanha
+Mightyena
 Level: 27
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Intimidate
+Nature: Adamant
+- Crunch
+- Ice Fang
+- Thunder Fang
+- Howl
 
-Charmeleon
+Wailmer
+Level: 27
+Ability: Water Veil
+Nature: Modest
+- Brine
+- Icy Wind
+- Heavy Slam
+- Protect
+
+Carvanha
 Level: 28
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Speed Boost
+Nature: Adamant
+- Waterfall
+- Bite
+- Ice Fang
+- Aqua Jet
 
-Hakamo-o
+Charmeleon @ Charcoal
+Level: 28
+Ability: Blaze
+Nature: Modest
+- Flamethrower
+- Dragon Breath
+- Air Cutter
+- Smokescreen
+
+Hakamo-o @ Sitrus Berry
 Level: 29
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
+Ability: Bulletproof
+Nature: Adamant
+- Dragon Claw
+- Brick Break
+- Rock Slide
+- Iron Defense
 
 === TRAINER_NERINE_MT_CHIMNEY_DREEPY_CHARMANDER ===
 Name: NERINE
@@ -39595,21 +40258,54 @@ Class: Team Aqua
 Pic: Nerine Aqua
 Gender: Female
 Music: Aqua
+Items: Super Potion / Super Potion
 Double Battle: No
 AI: Smart Trainer / Ace Pokemon
 
-Carvanha
+Mightyena
 Level: 27
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Intimidate
+Nature: Adamant
+- Crunch
+- Ice Fang
+- Thunder Fang
+- Howl
 
-Croconaw
+Wailmer
+Level: 27
+Ability: Water Veil
+Nature: Modest
+- Brine
+- Icy Wind
+- Heavy Slam
+- Protect
+
+Carvanha
 Level: 28
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Speed Boost
+Nature: Adamant
+- Waterfall
+- Bite
+- Ice Fang
+- Aqua Jet
 
-Zweilous
+Croconaw @ Mystic Water
+Level: 28
+Ability: Sheer Force
+Nature: Adamant
+- Waterfall
+- Crunch
+- Ice Fang
+- Dragon Dance
+
+Zweilous @ Sitrus Berry
 Level: 29
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
+Ability: Hustle
+Nature: Adamant
+- Dragon Tail
+- Bite
+- Double Hit
+- Work Up
 
 === TRAINER_NERINE_MT_CHIMNEY_DREEPY_TOTODILE ===
 Name: NERINE
@@ -39617,21 +40313,54 @@ Class: Team Aqua
 Pic: Nerine Aqua
 Gender: Female
 Music: Aqua
+Items: Super Potion / Super Potion
 Double Battle: No
 AI: Smart Trainer / Ace Pokemon
 
-Carvanha
+Mightyena
 Level: 27
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Intimidate
+Nature: Adamant
+- Crunch
+- Ice Fang
+- Thunder Fang
+- Howl
 
-Grovyle
+Wailmer
+Level: 27
+Ability: Water Veil
+Nature: Modest
+- Brine
+- Icy Wind
+- Heavy Slam
+- Protect
+
+Carvanha
 Level: 28
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Speed Boost
+Nature: Adamant
+- Waterfall
+- Bite
+- Ice Fang
+- Aqua Jet
 
-Zweilous
+Grovyle @ Miracle Seed
+Level: 28
+Ability: Overgrow
+Nature: Hasty
+- Giga Drain
+- Dragon Breath
+- Quick Attack
+- Detect
+
+Zweilous @ Sitrus Berry
 Level: 29
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
+Ability: Hustle
+Nature: Adamant
+- Dragon Tail
+- Bite
+- Double Hit
+- Work Up
 
 === TRAINER_NERINE_MT_CHIMNEY_DREEPY_TREECKO ===
 Name: NERINE
@@ -39639,21 +40368,54 @@ Class: Team Aqua
 Pic: Nerine Aqua
 Gender: Female
 Music: Aqua
+Items: Super Potion / Super Potion
 Double Battle: No
 AI: Smart Trainer / Ace Pokemon
 
-Carvanha
+Mightyena
 Level: 27
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Intimidate
+Nature: Adamant
+- Crunch
+- Ice Fang
+- Thunder Fang
+- Howl
 
-Charmeleon
+Wailmer
+Level: 27
+Ability: Water Veil
+Nature: Modest
+- Brine
+- Icy Wind
+- Heavy Slam
+- Protect
+
+Carvanha
 Level: 28
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Speed Boost
+Nature: Adamant
+- Waterfall
+- Bite
+- Ice Fang
+- Aqua Jet
 
-Zweilous
+Charmeleon @ Charcoal
+Level: 28
+Ability: Blaze
+Nature: Modest
+- Flamethrower
+- Dragon Breath
+- Air Cutter
+- Smokescreen
+
+Zweilous @ Sitrus Berry
 Level: 29
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
+Ability: Hustle
+Nature: Adamant
+- Dragon Tail
+- Bite
+- Double Hit
+- Work Up
 
 === TRAINER_NERINE_MT_CHIMNEY_JANGMO_O_CHARMANDER ===
 Name: NERINE
@@ -39661,21 +40423,54 @@ Class: Team Aqua
 Pic: Nerine Aqua
 Gender: Female
 Music: Aqua
+Items: Super Potion / Super Potion
 Double Battle: No
 AI: Smart Trainer / Ace Pokemon
 
-Carvanha
+Mightyena
 Level: 27
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Intimidate
+Nature: Adamant
+- Crunch
+- Ice Fang
+- Thunder Fang
+- Howl
 
-Croconaw
+Wailmer
+Level: 27
+Ability: Water Veil
+Nature: Modest
+- Brine
+- Icy Wind
+- Heavy Slam
+- Protect
+
+Carvanha
 Level: 28
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Speed Boost
+Nature: Adamant
+- Waterfall
+- Bite
+- Ice Fang
+- Aqua Jet
 
-Drakloak
+Croconaw @ Mystic Water
+Level: 28
+Ability: Sheer Force
+Nature: Adamant
+- Waterfall
+- Crunch
+- Ice Fang
+- Dragon Dance
+
+Drakloak @ Sitrus Berry
 Level: 29
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
+Ability: Infiltrator
+Nature: Timid
+- Dragon Pulse
+- Hex
+- Will-O-Wisp
+- Agility
 
 === TRAINER_NERINE_MT_CHIMNEY_JANGMO_O_TOTODILE ===
 Name: NERINE
@@ -39683,21 +40478,54 @@ Class: Team Aqua
 Pic: Nerine Aqua
 Gender: Female
 Music: Aqua
+Items: Super Potion / Super Potion
 Double Battle: No
 AI: Smart Trainer / Ace Pokemon
 
-Carvanha
+Mightyena
 Level: 27
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Intimidate
+Nature: Adamant
+- Crunch
+- Ice Fang
+- Thunder Fang
+- Howl
 
-Grovyle
+Wailmer
+Level: 27
+Ability: Water Veil
+Nature: Modest
+- Brine
+- Icy Wind
+- Heavy Slam
+- Protect
+
+Carvanha
 Level: 28
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Speed Boost
+Nature: Adamant
+- Waterfall
+- Bite
+- Ice Fang
+- Aqua Jet
 
-Drakloak
+Grovyle @ Miracle Seed
+Level: 28
+Ability: Overgrow
+Nature: Hasty
+- Giga Drain
+- Dragon Breath
+- Quick Attack
+- Detect
+
+Drakloak @ Sitrus Berry
 Level: 29
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
+Ability: Infiltrator
+Nature: Timid
+- Dragon Pulse
+- Hex
+- Will-O-Wisp
+- Agility
 
 === TRAINER_NERINE_MT_CHIMNEY_JANGMO_O_TREECKO ===
 Name: NERINE
@@ -39705,21 +40533,54 @@ Class: Team Aqua
 Pic: Nerine Aqua
 Gender: Female
 Music: Aqua
+Items: Super Potion / Super Potion
 Double Battle: No
 AI: Smart Trainer / Ace Pokemon
 
-Carvanha
+Mightyena
 Level: 27
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Intimidate
+Nature: Adamant
+- Crunch
+- Ice Fang
+- Thunder Fang
+- Howl
 
-Charmeleon
+Wailmer
+Level: 27
+Ability: Water Veil
+Nature: Modest
+- Brine
+- Icy Wind
+- Heavy Slam
+- Protect
+
+Carvanha
 Level: 28
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Speed Boost
+Nature: Adamant
+- Waterfall
+- Bite
+- Ice Fang
+- Aqua Jet
 
-Drakloak
+Charmeleon @ Charcoal
+Level: 28
+Ability: Blaze
+Nature: Modest
+- Flamethrower
+- Dragon Breath
+- Air Cutter
+- Smokescreen
+
+Drakloak @ Sitrus Berry
 Level: 29
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
+Ability: Infiltrator
+Nature: Timid
+- Dragon Pulse
+- Hex
+- Will-O-Wisp
+- Agility
 
 === TRAINER_NERINE_MT_PYRE_DEINO_CHARMANDER ===
 Name: NERINE
@@ -39727,21 +40588,55 @@ Class: Team Aqua
 Pic: Nerine Aqua
 Gender: Female
 Music: Aqua
+Items: Hyper Potion / Hyper Potion
 Double Battle: No
 AI: Smart Trainer / Ace Pokemon
 
-Sharpedo
+Mightyena @ Black Glasses
 Level: 40
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Intimidate
+Nature: Adamant
+- Crunch
+- Ice Fang
+- Fire Fang
+- Sucker Punch
 
-Feraligatr
+Wailord @ Leftovers
+Level: 40
+Ability: Water Veil
+Nature: Modest
+- Surf
+- Ice Beam
+- Heavy Slam
+- Protect
+
+Sharpedo @ Life Orb
 Level: 41
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Speed Boost
+Nature: Adamant
+- Crunch
+- Waterfall
+- Ice Fang
+- Protect
 
-Hakamo-o
+Hakamo-o @ Eviolite
 Level: 42
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Bulletproof
+Nature: Adamant
+- Dragon Claw
+- Drain Punch
+- Iron Head
+- Bulk Up
 
+Feraligatr @ Life Orb
+Level: 43
+Ability: Sheer Force
+EVs: 252 Atk
+Nature: Adamant
+- Waterfall
+- Crunch
+- Ice Punch
+- Dragon Dance
 
 === TRAINER_NERINE_MT_PYRE_DEINO_TOTODILE ===
 Name: NERINE
@@ -39749,21 +40644,55 @@ Class: Team Aqua
 Pic: Nerine Aqua
 Gender: Female
 Music: Aqua
+Items: Hyper Potion / Hyper Potion
 Double Battle: No
 AI: Smart Trainer / Ace Pokemon
 
-Sharpedo
+Mightyena @ Black Glasses
 Level: 40
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Intimidate
+Nature: Adamant
+- Crunch
+- Ice Fang
+- Fire Fang
+- Sucker Punch
 
-Sceptile
+Wailord @ Leftovers
+Level: 40
+Ability: Water Veil
+Nature: Modest
+- Surf
+- Ice Beam
+- Heavy Slam
+- Protect
+
+Sharpedo @ Life Orb
 Level: 41
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Speed Boost
+Nature: Adamant
+- Crunch
+- Waterfall
+- Ice Fang
+- Protect
 
-Hakamo-o
+Hakamo-o @ Eviolite
 Level: 42
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Bulletproof
+Nature: Adamant
+- Dragon Claw
+- Drain Punch
+- Iron Head
+- Bulk Up
 
+Sceptile @ Miracle Seed
+Level: 43
+Ability: Overgrow
+EVs: 252 Atk
+Nature: Jolly
+- Leaf Blade
+- Dragon Claw
+- Earthquake
+- Quick Attack
 
 === TRAINER_NERINE_MT_PYRE_DEINO_TREECKO ===
 Name: NERINE
@@ -39771,21 +40700,55 @@ Class: Team Aqua
 Pic: Nerine Aqua
 Gender: Female
 Music: Aqua
+Items: Hyper Potion / Hyper Potion
 Double Battle: No
 AI: Smart Trainer / Ace Pokemon
 
-Sharpedo
+Mightyena @ Black Glasses
 Level: 40
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Intimidate
+Nature: Adamant
+- Crunch
+- Ice Fang
+- Fire Fang
+- Sucker Punch
 
-Charizard
+Wailord @ Leftovers
+Level: 40
+Ability: Water Veil
+Nature: Modest
+- Surf
+- Ice Beam
+- Heavy Slam
+- Protect
+
+Sharpedo @ Life Orb
 Level: 41
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Speed Boost
+Nature: Adamant
+- Crunch
+- Waterfall
+- Ice Fang
+- Protect
 
-Hakamo-o
+Hakamo-o @ Eviolite
 Level: 42
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Bulletproof
+Nature: Adamant
+- Dragon Claw
+- Drain Punch
+- Iron Head
+- Bulk Up
 
+Charizard @ Charcoal
+Level: 43
+Ability: Blaze
+EVs: 252 Atk
+Nature: Adamant
+- Flare Blitz
+- Dragon Claw
+- Earthquake
+- Dragon Dance
 
 === TRAINER_NERINE_MT_PYRE_DREEPY_CHARMANDER ===
 Name: NERINE
@@ -39793,21 +40756,55 @@ Class: Team Aqua
 Pic: Nerine Aqua
 Gender: Female
 Music: Aqua
+Items: Hyper Potion / Hyper Potion
 Double Battle: No
 AI: Smart Trainer / Ace Pokemon
 
-Sharpedo
+Mightyena @ Black Glasses
 Level: 40
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Intimidate
+Nature: Adamant
+- Crunch
+- Ice Fang
+- Fire Fang
+- Sucker Punch
 
-Feraligatr
+Wailord @ Leftovers
+Level: 40
+Ability: Water Veil
+Nature: Modest
+- Surf
+- Ice Beam
+- Heavy Slam
+- Protect
+
+Sharpedo @ Life Orb
 Level: 41
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Speed Boost
+Nature: Adamant
+- Crunch
+- Waterfall
+- Ice Fang
+- Protect
 
-Zweilous
+Zweilous @ Eviolite
 Level: 42
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Hustle
+Nature: Adamant
+- Crunch
+- Dragon Tail
+- Ice Fang
+- Fire Fang
 
+Feraligatr @ Life Orb
+Level: 43
+Ability: Sheer Force
+EVs: 252 Atk
+Nature: Adamant
+- Waterfall
+- Crunch
+- Ice Punch
+- Dragon Dance
 
 === TRAINER_NERINE_MT_PYRE_DREEPY_TOTODILE ===
 Name: NERINE
@@ -39815,21 +40812,55 @@ Class: Team Aqua
 Pic: Nerine Aqua
 Gender: Female
 Music: Aqua
+Items: Hyper Potion / Hyper Potion
 Double Battle: No
 AI: Smart Trainer / Ace Pokemon
 
-Sharpedo
+Mightyena @ Black Glasses
 Level: 40
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Intimidate
+Nature: Adamant
+- Crunch
+- Ice Fang
+- Fire Fang
+- Sucker Punch
 
-Sceptile
+Wailord @ Leftovers
+Level: 40
+Ability: Water Veil
+Nature: Modest
+- Surf
+- Ice Beam
+- Heavy Slam
+- Protect
+
+Sharpedo @ Life Orb
 Level: 41
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Speed Boost
+Nature: Adamant
+- Crunch
+- Waterfall
+- Ice Fang
+- Protect
 
-Zweilous
+Zweilous @ Eviolite
 Level: 42
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Hustle
+Nature: Adamant
+- Crunch
+- Dragon Tail
+- Ice Fang
+- Fire Fang
 
+Sceptile @ Miracle Seed
+Level: 43
+Ability: Overgrow
+EVs: 252 Atk
+Nature: Jolly
+- Leaf Blade
+- Dragon Claw
+- Earthquake
+- Quick Attack
 
 === TRAINER_NERINE_MT_PYRE_DREEPY_TREECKO ===
 Name: NERINE
@@ -39837,21 +40868,55 @@ Class: Team Aqua
 Pic: Nerine Aqua
 Gender: Female
 Music: Aqua
+Items: Hyper Potion / Hyper Potion
 Double Battle: No
 AI: Smart Trainer / Ace Pokemon
 
-Sharpedo
+Mightyena @ Black Glasses
 Level: 40
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Intimidate
+Nature: Adamant
+- Crunch
+- Ice Fang
+- Fire Fang
+- Sucker Punch
 
-Charizard
+Wailord @ Leftovers
+Level: 40
+Ability: Water Veil
+Nature: Modest
+- Surf
+- Ice Beam
+- Heavy Slam
+- Protect
+
+Sharpedo @ Life Orb
 Level: 41
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Speed Boost
+Nature: Adamant
+- Crunch
+- Waterfall
+- Ice Fang
+- Protect
 
-Zweilous
+Zweilous @ Eviolite
 Level: 42
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Hustle
+Nature: Adamant
+- Crunch
+- Dragon Tail
+- Ice Fang
+- Fire Fang
 
+Charizard @ Charcoal
+Level: 43
+Ability: Blaze
+EVs: 252 Atk
+Nature: Adamant
+- Flare Blitz
+- Dragon Claw
+- Earthquake
+- Dragon Dance
 
 === TRAINER_NERINE_MT_PYRE_JANGMO_O_CHARMANDER ===
 Name: NERINE
@@ -39859,21 +40924,55 @@ Class: Team Aqua
 Pic: Nerine Aqua
 Gender: Female
 Music: Aqua
+Items: Hyper Potion / Hyper Potion
 Double Battle: No
 AI: Smart Trainer / Ace Pokemon
 
-Sharpedo
+Mightyena @ Black Glasses
 Level: 40
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Intimidate
+Nature: Adamant
+- Crunch
+- Ice Fang
+- Fire Fang
+- Sucker Punch
 
-Feraligatr
+Wailord @ Leftovers
+Level: 40
+Ability: Water Veil
+Nature: Modest
+- Surf
+- Ice Beam
+- Heavy Slam
+- Protect
+
+Sharpedo @ Life Orb
 Level: 41
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Speed Boost
+Nature: Adamant
+- Crunch
+- Waterfall
+- Ice Fang
+- Protect
 
-Drakloak
+Drakloak @ Eviolite
 Level: 42
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Infiltrator
+Nature: Timid
+- Dragon Pulse
+- Shadow Ball
+- Will-O-Wisp
+- U-turn
 
+Feraligatr @ Life Orb
+Level: 43
+Ability: Sheer Force
+EVs: 252 Atk
+Nature: Adamant
+- Waterfall
+- Crunch
+- Ice Punch
+- Dragon Dance
 
 === TRAINER_NERINE_MT_PYRE_JANGMO_O_TOTODILE ===
 Name: NERINE
@@ -39881,21 +40980,55 @@ Class: Team Aqua
 Pic: Nerine Aqua
 Gender: Female
 Music: Aqua
+Items: Hyper Potion / Hyper Potion
 Double Battle: No
 AI: Smart Trainer / Ace Pokemon
 
-Sharpedo
+Mightyena @ Black Glasses
 Level: 40
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Intimidate
+Nature: Adamant
+- Crunch
+- Ice Fang
+- Fire Fang
+- Sucker Punch
 
-Sceptile
+Wailord @ Leftovers
+Level: 40
+Ability: Water Veil
+Nature: Modest
+- Surf
+- Ice Beam
+- Heavy Slam
+- Protect
+
+Sharpedo @ Life Orb
 Level: 41
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Speed Boost
+Nature: Adamant
+- Crunch
+- Waterfall
+- Ice Fang
+- Protect
 
-Drakloak
+Drakloak @ Eviolite
 Level: 42
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Infiltrator
+Nature: Timid
+- Dragon Pulse
+- Shadow Ball
+- Will-O-Wisp
+- U-turn
 
+Sceptile @ Miracle Seed
+Level: 43
+Ability: Overgrow
+EVs: 252 Atk
+Nature: Jolly
+- Leaf Blade
+- Dragon Claw
+- Earthquake
+- Quick Attack
 
 === TRAINER_NERINE_MT_PYRE_JANGMO_O_TREECKO ===
 Name: NERINE
@@ -39903,21 +41036,55 @@ Class: Team Aqua
 Pic: Nerine Aqua
 Gender: Female
 Music: Aqua
+Items: Hyper Potion / Hyper Potion
 Double Battle: No
 AI: Smart Trainer / Ace Pokemon
 
-Sharpedo
+Mightyena @ Black Glasses
 Level: 40
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Intimidate
+Nature: Adamant
+- Crunch
+- Ice Fang
+- Fire Fang
+- Sucker Punch
 
-Charizard
+Wailord @ Leftovers
+Level: 40
+Ability: Water Veil
+Nature: Modest
+- Surf
+- Ice Beam
+- Heavy Slam
+- Protect
+
+Sharpedo @ Life Orb
 Level: 41
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Speed Boost
+Nature: Adamant
+- Crunch
+- Waterfall
+- Ice Fang
+- Protect
 
-Drakloak
+Drakloak @ Eviolite
 Level: 42
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Infiltrator
+Nature: Timid
+- Dragon Pulse
+- Shadow Ball
+- Will-O-Wisp
+- U-turn
 
+Charizard @ Charcoal
+Level: 43
+Ability: Blaze
+EVs: 252 Atk
+Nature: Adamant
+- Flare Blitz
+- Dragon Claw
+- Earthquake
+- Dragon Dance
 
 === TRAINER_NERINE_AQUA_HIDEOUT_DEINO_CHARMANDER ===
 Name: NERINE
@@ -39925,21 +41092,64 @@ Class: Team Aqua
 Pic: Nerine Aqua
 Gender: Female
 Music: Aqua
+Items: Hyper Potion / Hyper Potion
 Double Battle: No
 AI: Smart Trainer / Ace Pokemon
 
-Sharpedo
+Mightyena @ Black Glasses
+Level: 41
+Ability: Intimidate
+Nature: Adamant
+- Crunch
+- Ice Fang
+- Fire Fang
+- Sucker Punch
+
+Crawdaunt @ Mystic Water
+Level: 41
+Ability: Adaptability
+Nature: Adamant
+- Razor Shell
+- Knock Off
+- Aqua Jet
+- Swords Dance
+
+Wailord @ Leftovers
 Level: 42
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Water Veil
+Nature: Modest
+- Surf
+- Ice Beam
+- Heavy Slam
+- Protect
 
-Feraligatr
+Sharpedo @ Life Orb
+Level: 42
+Ability: Speed Boost
+Nature: Adamant
+- Crunch
+- Waterfall
+- Ice Fang
+- Protect
+
+Hakamo-o @ Eviolite
 Level: 43
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Bulletproof
+Nature: Adamant
+- Dragon Claw
+- Drain Punch
+- Iron Head
+- Bulk Up
 
-Hakamo-o
+Feraligatr @ Life Orb
 Level: 44
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
+Ability: Sheer Force
+EVs: 252 Atk
+Nature: Adamant
+- Waterfall
+- Crunch
+- Ice Punch
+- Dragon Dance
 
 === TRAINER_NERINE_AQUA_HIDEOUT_DEINO_TOTODILE ===
 Name: NERINE
@@ -39947,21 +41157,64 @@ Class: Team Aqua
 Pic: Nerine Aqua
 Gender: Female
 Music: Aqua
+Items: Hyper Potion / Hyper Potion
 Double Battle: No
 AI: Smart Trainer / Ace Pokemon
 
-Sharpedo
+Mightyena @ Black Glasses
+Level: 41
+Ability: Intimidate
+Nature: Adamant
+- Crunch
+- Ice Fang
+- Fire Fang
+- Sucker Punch
+
+Crawdaunt @ Mystic Water
+Level: 41
+Ability: Adaptability
+Nature: Adamant
+- Razor Shell
+- Knock Off
+- Aqua Jet
+- Swords Dance
+
+Wailord @ Leftovers
 Level: 42
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Water Veil
+Nature: Modest
+- Surf
+- Ice Beam
+- Heavy Slam
+- Protect
 
-Sceptile
+Sharpedo @ Life Orb
+Level: 42
+Ability: Speed Boost
+Nature: Adamant
+- Crunch
+- Waterfall
+- Ice Fang
+- Protect
+
+Hakamo-o @ Eviolite
 Level: 43
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Bulletproof
+Nature: Adamant
+- Dragon Claw
+- Drain Punch
+- Iron Head
+- Bulk Up
 
-Hakamo-o
+Sceptile @ Miracle Seed
 Level: 44
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
+Ability: Overgrow
+EVs: 252 Atk
+Nature: Jolly
+- Leaf Blade
+- Dragon Claw
+- Earthquake
+- Quick Attack
 
 === TRAINER_NERINE_AQUA_HIDEOUT_DEINO_TREECKO ===
 Name: NERINE
@@ -39969,21 +41222,64 @@ Class: Team Aqua
 Pic: Nerine Aqua
 Gender: Female
 Music: Aqua
+Items: Hyper Potion / Hyper Potion
 Double Battle: No
 AI: Smart Trainer / Ace Pokemon
 
-Sharpedo
+Mightyena @ Black Glasses
+Level: 41
+Ability: Intimidate
+Nature: Adamant
+- Crunch
+- Ice Fang
+- Fire Fang
+- Sucker Punch
+
+Crawdaunt @ Mystic Water
+Level: 41
+Ability: Adaptability
+Nature: Adamant
+- Razor Shell
+- Knock Off
+- Aqua Jet
+- Swords Dance
+
+Wailord @ Leftovers
 Level: 42
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Water Veil
+Nature: Modest
+- Surf
+- Ice Beam
+- Heavy Slam
+- Protect
 
-Charizard
+Sharpedo @ Life Orb
+Level: 42
+Ability: Speed Boost
+Nature: Adamant
+- Crunch
+- Waterfall
+- Ice Fang
+- Protect
+
+Hakamo-o @ Eviolite
 Level: 43
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Bulletproof
+Nature: Adamant
+- Dragon Claw
+- Drain Punch
+- Iron Head
+- Bulk Up
 
-Hakamo-o
+Charizard @ Charcoal
 Level: 44
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
+Ability: Blaze
+EVs: 252 Atk
+Nature: Adamant
+- Flare Blitz
+- Dragon Claw
+- Earthquake
+- Dragon Dance
 
 === TRAINER_NERINE_AQUA_HIDEOUT_DREEPY_CHARMANDER ===
 Name: NERINE
@@ -39991,21 +41287,64 @@ Class: Team Aqua
 Pic: Nerine Aqua
 Gender: Female
 Music: Aqua
+Items: Hyper Potion / Hyper Potion
 Double Battle: No
 AI: Smart Trainer / Ace Pokemon
 
-Sharpedo
+Mightyena @ Black Glasses
+Level: 41
+Ability: Intimidate
+Nature: Adamant
+- Crunch
+- Ice Fang
+- Fire Fang
+- Sucker Punch
+
+Crawdaunt @ Mystic Water
+Level: 41
+Ability: Adaptability
+Nature: Adamant
+- Razor Shell
+- Knock Off
+- Aqua Jet
+- Swords Dance
+
+Wailord @ Leftovers
 Level: 42
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Water Veil
+Nature: Modest
+- Surf
+- Ice Beam
+- Heavy Slam
+- Protect
 
-Feraligatr
+Sharpedo @ Life Orb
+Level: 42
+Ability: Speed Boost
+Nature: Adamant
+- Crunch
+- Waterfall
+- Ice Fang
+- Protect
+
+Zweilous @ Eviolite
 Level: 43
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Hustle
+Nature: Adamant
+- Crunch
+- Dragon Tail
+- Ice Fang
+- Fire Fang
 
-Zweilous
+Feraligatr @ Life Orb
 Level: 44
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
+Ability: Sheer Force
+EVs: 252 Atk
+Nature: Adamant
+- Waterfall
+- Crunch
+- Ice Punch
+- Dragon Dance
 
 === TRAINER_NERINE_AQUA_HIDEOUT_DREEPY_TOTODILE ===
 Name: NERINE
@@ -40013,21 +41352,64 @@ Class: Team Aqua
 Pic: Nerine Aqua
 Gender: Female
 Music: Aqua
+Items: Hyper Potion / Hyper Potion
 Double Battle: No
 AI: Smart Trainer / Ace Pokemon
 
-Sharpedo
+Mightyena @ Black Glasses
+Level: 41
+Ability: Intimidate
+Nature: Adamant
+- Crunch
+- Ice Fang
+- Fire Fang
+- Sucker Punch
+
+Crawdaunt @ Mystic Water
+Level: 41
+Ability: Adaptability
+Nature: Adamant
+- Razor Shell
+- Knock Off
+- Aqua Jet
+- Swords Dance
+
+Wailord @ Leftovers
 Level: 42
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Water Veil
+Nature: Modest
+- Surf
+- Ice Beam
+- Heavy Slam
+- Protect
 
-Sceptile
+Sharpedo @ Life Orb
+Level: 42
+Ability: Speed Boost
+Nature: Adamant
+- Crunch
+- Waterfall
+- Ice Fang
+- Protect
+
+Zweilous @ Eviolite
 Level: 43
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Hustle
+Nature: Adamant
+- Crunch
+- Dragon Tail
+- Ice Fang
+- Fire Fang
 
-Zweilous
+Sceptile @ Miracle Seed
 Level: 44
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
+Ability: Overgrow
+EVs: 252 Atk
+Nature: Jolly
+- Leaf Blade
+- Dragon Claw
+- Earthquake
+- Quick Attack
 
 === TRAINER_NERINE_AQUA_HIDEOUT_DREEPY_TREECKO ===
 Name: NERINE
@@ -40035,21 +41417,64 @@ Class: Team Aqua
 Pic: Nerine Aqua
 Gender: Female
 Music: Aqua
+Items: Hyper Potion / Hyper Potion
 Double Battle: No
 AI: Smart Trainer / Ace Pokemon
 
-Sharpedo
+Mightyena @ Black Glasses
+Level: 41
+Ability: Intimidate
+Nature: Adamant
+- Crunch
+- Ice Fang
+- Fire Fang
+- Sucker Punch
+
+Crawdaunt @ Mystic Water
+Level: 41
+Ability: Adaptability
+Nature: Adamant
+- Razor Shell
+- Knock Off
+- Aqua Jet
+- Swords Dance
+
+Wailord @ Leftovers
 Level: 42
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Water Veil
+Nature: Modest
+- Surf
+- Ice Beam
+- Heavy Slam
+- Protect
 
-Charizard
+Sharpedo @ Life Orb
+Level: 42
+Ability: Speed Boost
+Nature: Adamant
+- Crunch
+- Waterfall
+- Ice Fang
+- Protect
+
+Zweilous @ Eviolite
 Level: 43
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Hustle
+Nature: Adamant
+- Crunch
+- Dragon Tail
+- Ice Fang
+- Fire Fang
 
-Zweilous
+Charizard @ Charcoal
 Level: 44
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
+Ability: Blaze
+EVs: 252 Atk
+Nature: Adamant
+- Flare Blitz
+- Dragon Claw
+- Earthquake
+- Dragon Dance
 
 === TRAINER_NERINE_AQUA_HIDEOUT_JANGMO_O_CHARMANDER ===
 Name: NERINE
@@ -40057,21 +41482,64 @@ Class: Team Aqua
 Pic: Nerine Aqua
 Gender: Female
 Music: Aqua
+Items: Hyper Potion / Hyper Potion
 Double Battle: No
 AI: Smart Trainer / Ace Pokemon
 
-Sharpedo
+Mightyena @ Black Glasses
+Level: 41
+Ability: Intimidate
+Nature: Adamant
+- Crunch
+- Ice Fang
+- Fire Fang
+- Sucker Punch
+
+Crawdaunt @ Mystic Water
+Level: 41
+Ability: Adaptability
+Nature: Adamant
+- Razor Shell
+- Knock Off
+- Aqua Jet
+- Swords Dance
+
+Wailord @ Leftovers
 Level: 42
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Water Veil
+Nature: Modest
+- Surf
+- Ice Beam
+- Heavy Slam
+- Protect
 
-Feraligatr
+Sharpedo @ Life Orb
+Level: 42
+Ability: Speed Boost
+Nature: Adamant
+- Crunch
+- Waterfall
+- Ice Fang
+- Protect
+
+Drakloak @ Eviolite
 Level: 43
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Infiltrator
+Nature: Timid
+- Dragon Pulse
+- Shadow Ball
+- Will-O-Wisp
+- U-turn
 
-Drakloak
+Feraligatr @ Life Orb
 Level: 44
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
+Ability: Sheer Force
+EVs: 252 Atk
+Nature: Adamant
+- Waterfall
+- Crunch
+- Ice Punch
+- Dragon Dance
 
 === TRAINER_NERINE_AQUA_HIDEOUT_JANGMO_O_TOTODILE ===
 Name: NERINE
@@ -40079,21 +41547,64 @@ Class: Team Aqua
 Pic: Nerine Aqua
 Gender: Female
 Music: Aqua
+Items: Hyper Potion / Hyper Potion
 Double Battle: No
 AI: Smart Trainer / Ace Pokemon
 
-Sharpedo
+Mightyena @ Black Glasses
+Level: 41
+Ability: Intimidate
+Nature: Adamant
+- Crunch
+- Ice Fang
+- Fire Fang
+- Sucker Punch
+
+Crawdaunt @ Mystic Water
+Level: 41
+Ability: Adaptability
+Nature: Adamant
+- Razor Shell
+- Knock Off
+- Aqua Jet
+- Swords Dance
+
+Wailord @ Leftovers
 Level: 42
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Water Veil
+Nature: Modest
+- Surf
+- Ice Beam
+- Heavy Slam
+- Protect
 
-Sceptile
+Sharpedo @ Life Orb
+Level: 42
+Ability: Speed Boost
+Nature: Adamant
+- Crunch
+- Waterfall
+- Ice Fang
+- Protect
+
+Drakloak @ Eviolite
 Level: 43
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Infiltrator
+Nature: Timid
+- Dragon Pulse
+- Shadow Ball
+- Will-O-Wisp
+- U-turn
 
-Drakloak
+Sceptile @ Miracle Seed
 Level: 44
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
+Ability: Overgrow
+EVs: 252 Atk
+Nature: Jolly
+- Leaf Blade
+- Dragon Claw
+- Earthquake
+- Quick Attack
 
 === TRAINER_NERINE_AQUA_HIDEOUT_JANGMO_O_TREECKO ===
 Name: NERINE
@@ -40101,21 +41612,64 @@ Class: Team Aqua
 Pic: Nerine Aqua
 Gender: Female
 Music: Aqua
+Items: Hyper Potion / Hyper Potion
 Double Battle: No
 AI: Smart Trainer / Ace Pokemon
 
-Sharpedo
+Mightyena @ Black Glasses
+Level: 41
+Ability: Intimidate
+Nature: Adamant
+- Crunch
+- Ice Fang
+- Fire Fang
+- Sucker Punch
+
+Crawdaunt @ Mystic Water
+Level: 41
+Ability: Adaptability
+Nature: Adamant
+- Razor Shell
+- Knock Off
+- Aqua Jet
+- Swords Dance
+
+Wailord @ Leftovers
 Level: 42
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Water Veil
+Nature: Modest
+- Surf
+- Ice Beam
+- Heavy Slam
+- Protect
 
-Charizard
+Sharpedo @ Life Orb
+Level: 42
+Ability: Speed Boost
+Nature: Adamant
+- Crunch
+- Waterfall
+- Ice Fang
+- Protect
+
+Drakloak @ Eviolite
 Level: 43
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Infiltrator
+Nature: Timid
+- Dragon Pulse
+- Shadow Ball
+- Will-O-Wisp
+- U-turn
 
-Drakloak
+Charizard @ Charcoal
 Level: 44
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
+Ability: Blaze
+EVs: 252 Atk
+Nature: Adamant
+- Flare Blitz
+- Dragon Claw
+- Earthquake
+- Dragon Dance
 
 === TRAINER_NERINE_SEAFLOOR_DEINO_CHARMANDER ===
 Name: NERINE
@@ -40123,21 +41677,64 @@ Class: Draconid
 Pic: Nerine
 Gender: Female
 Music: Intense
+Items: Full Restore / Full Restore
 Double Battle: No
 AI: Smart Trainer / Prediction / Ace Pokemon
 
-Sharpedo
+Dragonair @ Eviolite
+Level: 45
+Ability: Marvel Scale
+Nature: Adamant
+- Dragon Dance
+- Dragon Rush
+- Aqua Tail
+- Extreme Speed
+
+Kingdra @ Mystic Water
 Level: 46
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Swift Swim
+Nature: Modest
+- Rain Dance
+- Surf
+- Dragon Pulse
+- Ice Beam
+
+Flygon @ Soft Sand
+Level: 46
+Ability: Levitate
+Nature: Jolly
+- Earthquake
+- Dragon Claw
+- Rock Slide
+- U-turn
+
+Dragalge @ Black Sludge
+Level: 46
+Ability: Adaptability
+Nature: Modest
+- Sludge Bomb
+- Dragon Pulse
+- Scald
+- Focus Blast
+
+Hakamo-o @ Eviolite
+Level: 47
+Ability: Bulletproof
+Nature: Adamant
+- Dragon Claw
+- Drain Punch
+- Iron Head
+- Dragon Dance
 
 Feraligatr @ Feraligite
-Level: 47
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
-Hakamo-o
 Level: 48
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
+Ability: Sheer Force
+EVs: 252 Atk
+Nature: Adamant
+- Waterfall
+- Body Slam
+- Earthquake
+- Dragon Dance
 
 === TRAINER_NERINE_SEAFLOOR_DEINO_TOTODILE ===
 Name: NERINE
@@ -40145,21 +41742,64 @@ Class: Draconid
 Pic: Nerine
 Gender: Female
 Music: Intense
+Items: Full Restore / Full Restore
 Double Battle: No
 AI: Smart Trainer / Prediction / Ace Pokemon
 
-Sharpedo
+Dragonair @ Eviolite
+Level: 45
+Ability: Marvel Scale
+Nature: Adamant
+- Dragon Dance
+- Dragon Rush
+- Aqua Tail
+- Extreme Speed
+
+Kingdra @ Mystic Water
 Level: 46
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Swift Swim
+Nature: Modest
+- Rain Dance
+- Surf
+- Dragon Pulse
+- Ice Beam
+
+Flygon @ Soft Sand
+Level: 46
+Ability: Levitate
+Nature: Jolly
+- Earthquake
+- Dragon Claw
+- Rock Slide
+- U-turn
+
+Dragalge @ Black Sludge
+Level: 46
+Ability: Adaptability
+Nature: Modest
+- Sludge Bomb
+- Dragon Pulse
+- Scald
+- Focus Blast
+
+Hakamo-o @ Eviolite
+Level: 47
+Ability: Bulletproof
+Nature: Adamant
+- Dragon Claw
+- Drain Punch
+- Iron Head
+- Dragon Dance
 
 Sceptile @ Sceptilite
-Level: 47
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
-Hakamo-o
 Level: 48
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
+Ability: Overgrow
+EVs: 252 Atk
+Nature: Jolly
+- Leaf Blade
+- Dragon Claw
+- Earthquake
+- Swords Dance
 
 === TRAINER_NERINE_SEAFLOOR_DEINO_TREECKO ===
 Name: NERINE
@@ -40167,21 +41807,64 @@ Class: Draconid
 Pic: Nerine
 Gender: Female
 Music: Intense
+Items: Full Restore / Full Restore
 Double Battle: No
 AI: Smart Trainer / Prediction / Ace Pokemon
 
-Sharpedo
+Dragonair @ Eviolite
+Level: 45
+Ability: Marvel Scale
+Nature: Adamant
+- Dragon Dance
+- Dragon Rush
+- Aqua Tail
+- Extreme Speed
+
+Kingdra @ Mystic Water
 Level: 46
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Swift Swim
+Nature: Modest
+- Rain Dance
+- Surf
+- Dragon Pulse
+- Ice Beam
+
+Flygon @ Soft Sand
+Level: 46
+Ability: Levitate
+Nature: Jolly
+- Earthquake
+- Dragon Claw
+- Rock Slide
+- U-turn
+
+Dragalge @ Black Sludge
+Level: 46
+Ability: Adaptability
+Nature: Modest
+- Sludge Bomb
+- Dragon Pulse
+- Scald
+- Focus Blast
+
+Hakamo-o @ Eviolite
+Level: 47
+Ability: Bulletproof
+Nature: Adamant
+- Dragon Claw
+- Drain Punch
+- Iron Head
+- Dragon Dance
 
 Charizard @ Charizardite X
-Level: 47
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
-Hakamo-o
 Level: 48
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
+Ability: Blaze
+EVs: 252 Atk
+Nature: Jolly
+- Flare Blitz
+- Dragon Claw
+- Earthquake
+- Dragon Dance
 
 === TRAINER_NERINE_SEAFLOOR_DREEPY_CHARMANDER ===
 Name: NERINE
@@ -40189,21 +41872,64 @@ Class: Draconid
 Pic: Nerine
 Gender: Female
 Music: Intense
+Items: Full Restore / Full Restore
 Double Battle: No
 AI: Smart Trainer / Prediction / Ace Pokemon
 
-Sharpedo
+Dragonair @ Eviolite
+Level: 45
+Ability: Marvel Scale
+Nature: Adamant
+- Dragon Dance
+- Dragon Rush
+- Aqua Tail
+- Extreme Speed
+
+Kingdra @ Mystic Water
 Level: 46
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Swift Swim
+Nature: Modest
+- Rain Dance
+- Surf
+- Dragon Pulse
+- Ice Beam
+
+Flygon @ Soft Sand
+Level: 46
+Ability: Levitate
+Nature: Jolly
+- Earthquake
+- Dragon Claw
+- Rock Slide
+- U-turn
+
+Dragalge @ Black Sludge
+Level: 46
+Ability: Adaptability
+Nature: Modest
+- Sludge Bomb
+- Dragon Pulse
+- Scald
+- Focus Blast
+
+Zweilous @ Eviolite
+Level: 47
+Ability: Hustle
+Nature: Adamant
+- Crunch
+- Dragon Tail
+- Ice Fang
+- Head Smash
 
 Feraligatr @ Feraligite
-Level: 47
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
-Zweilous
 Level: 48
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
+Ability: Sheer Force
+EVs: 252 Atk
+Nature: Adamant
+- Waterfall
+- Body Slam
+- Earthquake
+- Dragon Dance
 
 === TRAINER_NERINE_SEAFLOOR_DREEPY_TOTODILE ===
 Name: NERINE
@@ -40211,21 +41937,64 @@ Class: Draconid
 Pic: Nerine
 Gender: Female
 Music: Intense
+Items: Full Restore / Full Restore
 Double Battle: No
 AI: Smart Trainer / Prediction / Ace Pokemon
 
-Sharpedo
+Dragonair @ Eviolite
+Level: 45
+Ability: Marvel Scale
+Nature: Adamant
+- Dragon Dance
+- Dragon Rush
+- Aqua Tail
+- Extreme Speed
+
+Kingdra @ Mystic Water
 Level: 46
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Swift Swim
+Nature: Modest
+- Rain Dance
+- Surf
+- Dragon Pulse
+- Ice Beam
+
+Flygon @ Soft Sand
+Level: 46
+Ability: Levitate
+Nature: Jolly
+- Earthquake
+- Dragon Claw
+- Rock Slide
+- U-turn
+
+Dragalge @ Black Sludge
+Level: 46
+Ability: Adaptability
+Nature: Modest
+- Sludge Bomb
+- Dragon Pulse
+- Scald
+- Focus Blast
+
+Zweilous @ Eviolite
+Level: 47
+Ability: Hustle
+Nature: Adamant
+- Crunch
+- Dragon Tail
+- Ice Fang
+- Head Smash
 
 Sceptile @ Sceptilite
-Level: 47
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
-Zweilous
 Level: 48
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
+Ability: Overgrow
+EVs: 252 Atk
+Nature: Jolly
+- Leaf Blade
+- Dragon Claw
+- Earthquake
+- Swords Dance
 
 === TRAINER_NERINE_SEAFLOOR_DREEPY_TREECKO ===
 Name: NERINE
@@ -40233,21 +42002,64 @@ Class: Draconid
 Pic: Nerine
 Gender: Female
 Music: Intense
+Items: Full Restore / Full Restore
 Double Battle: No
 AI: Smart Trainer / Prediction / Ace Pokemon
 
-Sharpedo
+Dragonair @ Eviolite
+Level: 45
+Ability: Marvel Scale
+Nature: Adamant
+- Dragon Dance
+- Dragon Rush
+- Aqua Tail
+- Extreme Speed
+
+Kingdra @ Mystic Water
 Level: 46
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Swift Swim
+Nature: Modest
+- Rain Dance
+- Surf
+- Dragon Pulse
+- Ice Beam
+
+Flygon @ Soft Sand
+Level: 46
+Ability: Levitate
+Nature: Jolly
+- Earthquake
+- Dragon Claw
+- Rock Slide
+- U-turn
+
+Dragalge @ Black Sludge
+Level: 46
+Ability: Adaptability
+Nature: Modest
+- Sludge Bomb
+- Dragon Pulse
+- Scald
+- Focus Blast
+
+Zweilous @ Eviolite
+Level: 47
+Ability: Hustle
+Nature: Adamant
+- Crunch
+- Dragon Tail
+- Ice Fang
+- Head Smash
 
 Charizard @ Charizardite X
-Level: 47
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
-Zweilous
 Level: 48
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
+Ability: Blaze
+EVs: 252 Atk
+Nature: Jolly
+- Flare Blitz
+- Dragon Claw
+- Earthquake
+- Dragon Dance
 
 === TRAINER_NERINE_SEAFLOOR_JANGMO_O_CHARMANDER ===
 Name: NERINE
@@ -40255,21 +42067,64 @@ Class: Draconid
 Pic: Nerine
 Gender: Female
 Music: Intense
+Items: Full Restore / Full Restore
 Double Battle: No
 AI: Smart Trainer / Prediction / Ace Pokemon
 
-Sharpedo
+Dragonair @ Eviolite
+Level: 45
+Ability: Marvel Scale
+Nature: Adamant
+- Dragon Dance
+- Dragon Rush
+- Aqua Tail
+- Extreme Speed
+
+Kingdra @ Mystic Water
 Level: 46
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Swift Swim
+Nature: Modest
+- Rain Dance
+- Surf
+- Dragon Pulse
+- Ice Beam
+
+Flygon @ Soft Sand
+Level: 46
+Ability: Levitate
+Nature: Jolly
+- Earthquake
+- Dragon Claw
+- Rock Slide
+- U-turn
+
+Dragalge @ Black Sludge
+Level: 46
+Ability: Adaptability
+Nature: Modest
+- Sludge Bomb
+- Dragon Pulse
+- Scald
+- Focus Blast
+
+Drakloak @ Eviolite
+Level: 47
+Ability: Infiltrator
+Nature: Timid
+- Dragon Pulse
+- Shadow Ball
+- Will-O-Wisp
+- U-turn
 
 Feraligatr @ Feraligite
-Level: 47
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
-Drakloak
 Level: 48
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
+Ability: Sheer Force
+EVs: 252 Atk
+Nature: Adamant
+- Waterfall
+- Body Slam
+- Earthquake
+- Dragon Dance
 
 === TRAINER_NERINE_SEAFLOOR_JANGMO_O_TOTODILE ===
 Name: NERINE
@@ -40277,21 +42132,64 @@ Class: Draconid
 Pic: Nerine
 Gender: Female
 Music: Intense
+Items: Full Restore / Full Restore
 Double Battle: No
 AI: Smart Trainer / Prediction / Ace Pokemon
 
-Sharpedo
+Dragonair @ Eviolite
+Level: 45
+Ability: Marvel Scale
+Nature: Adamant
+- Dragon Dance
+- Dragon Rush
+- Aqua Tail
+- Extreme Speed
+
+Kingdra @ Mystic Water
 Level: 46
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Swift Swim
+Nature: Modest
+- Rain Dance
+- Surf
+- Dragon Pulse
+- Ice Beam
+
+Flygon @ Soft Sand
+Level: 46
+Ability: Levitate
+Nature: Jolly
+- Earthquake
+- Dragon Claw
+- Rock Slide
+- U-turn
+
+Dragalge @ Black Sludge
+Level: 46
+Ability: Adaptability
+Nature: Modest
+- Sludge Bomb
+- Dragon Pulse
+- Scald
+- Focus Blast
+
+Drakloak @ Eviolite
+Level: 47
+Ability: Infiltrator
+Nature: Timid
+- Dragon Pulse
+- Shadow Ball
+- Will-O-Wisp
+- U-turn
 
 Sceptile @ Sceptilite
-Level: 47
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
-Drakloak
 Level: 48
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
+Ability: Overgrow
+EVs: 252 Atk
+Nature: Jolly
+- Leaf Blade
+- Dragon Claw
+- Earthquake
+- Swords Dance
 
 === TRAINER_NERINE_SEAFLOOR_JANGMO_O_TREECKO ===
 Name: NERINE
@@ -40299,21 +42197,64 @@ Class: Draconid
 Pic: Nerine
 Gender: Female
 Music: Intense
+Items: Full Restore / Full Restore
 Double Battle: No
 AI: Smart Trainer / Prediction / Ace Pokemon
 
-Sharpedo
+Dragonair @ Eviolite
+Level: 45
+Ability: Marvel Scale
+Nature: Adamant
+- Dragon Dance
+- Dragon Rush
+- Aqua Tail
+- Extreme Speed
+
+Kingdra @ Mystic Water
 Level: 46
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Swift Swim
+Nature: Modest
+- Rain Dance
+- Surf
+- Dragon Pulse
+- Ice Beam
+
+Flygon @ Soft Sand
+Level: 46
+Ability: Levitate
+Nature: Jolly
+- Earthquake
+- Dragon Claw
+- Rock Slide
+- U-turn
+
+Dragalge @ Black Sludge
+Level: 46
+Ability: Adaptability
+Nature: Modest
+- Sludge Bomb
+- Dragon Pulse
+- Scald
+- Focus Blast
+
+Drakloak @ Eviolite
+Level: 47
+Ability: Infiltrator
+Nature: Timid
+- Dragon Pulse
+- Shadow Ball
+- Will-O-Wisp
+- U-turn
 
 Charizard @ Charizardite X
-Level: 47
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
-Drakloak
 Level: 48
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
+Ability: Blaze
+EVs: 252 Atk
+Nature: Jolly
+- Flare Blitz
+- Dragon Claw
+- Earthquake
+- Dragon Dance
 
 === TRAINER_NERINE_POSTGAME_DEINO_CHARMANDER ===
 Name: NERINE
@@ -40321,21 +42262,69 @@ Class: Draconid
 Pic: Nerine
 Gender: Female
 Music: Intense
+Items: Full Restore / Full Restore / Full Restore
 Double Battle: No
 AI: Smart Trainer / Prediction / Ace Pokemon
 
-Sharpedo
+Kingdra @ Scope Lens
+Level: 76
+Ability: Sniper
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Modest
+- Hydro Pump
+- Draco Meteor
+- Ice Beam
+- Focus Energy
+
+Flygon @ Choice Scarf
+Level: 76
+Ability: Levitate
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Earthquake
+- Outrage
+- U-turn
+- Stone Edge
+
+Dragalge @ Black Sludge
+Level: 76
+Ability: Adaptability
+EVs: 252 HP / 252 SpA / 4 SpD
+Nature: Modest
+- Sludge Bomb
+- Draco Meteor
+- Scald
+- Focus Blast
+
+Dragonite @ Weakness Policy
 Level: 77
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Multiscale
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Adamant
+- Dragon Dance
+- Outrage
+- Extreme Speed
+- Earthquake
+
+Kommo-o @ Lum Berry
+Level: 77
+Ability: Bulletproof
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Dragon Dance
+- Close Combat
+- Dragon Claw
+- Iron Head
 
 Feraligatr @ Feraligite
 Level: 78
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
-Kommo-o
-Level: 79
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
+Ability: Sheer Force
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Liquidation
+- Double-Edge
+- Earthquake
+- Dragon Dance
 
 === TRAINER_NERINE_POSTGAME_DEINO_TOTODILE ===
 Name: NERINE
@@ -40343,21 +42332,69 @@ Class: Draconid
 Pic: Nerine
 Gender: Female
 Music: Intense
+Items: Full Restore / Full Restore / Full Restore
 Double Battle: No
 AI: Smart Trainer / Prediction / Ace Pokemon
 
-Sharpedo
+Kingdra @ Scope Lens
+Level: 76
+Ability: Sniper
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Modest
+- Hydro Pump
+- Draco Meteor
+- Ice Beam
+- Focus Energy
+
+Flygon @ Choice Scarf
+Level: 76
+Ability: Levitate
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Earthquake
+- Outrage
+- U-turn
+- Stone Edge
+
+Dragalge @ Black Sludge
+Level: 76
+Ability: Adaptability
+EVs: 252 HP / 252 SpA / 4 SpD
+Nature: Modest
+- Sludge Bomb
+- Draco Meteor
+- Scald
+- Focus Blast
+
+Dragonite @ Weakness Policy
 Level: 77
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Multiscale
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Adamant
+- Dragon Dance
+- Outrage
+- Extreme Speed
+- Earthquake
+
+Kommo-o @ Lum Berry
+Level: 77
+Ability: Bulletproof
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Dragon Dance
+- Close Combat
+- Dragon Claw
+- Iron Head
 
 Sceptile @ Sceptilite
 Level: 78
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
-Kommo-o
-Level: 79
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
+Ability: Overgrow
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Leaf Blade
+- Outrage
+- Earthquake
+- Swords Dance
 
 === TRAINER_NERINE_POSTGAME_DEINO_TREECKO ===
 Name: NERINE
@@ -40365,21 +42402,69 @@ Class: Draconid
 Pic: Nerine
 Gender: Female
 Music: Intense
+Items: Full Restore / Full Restore / Full Restore
 Double Battle: No
 AI: Smart Trainer / Prediction / Ace Pokemon
 
-Sharpedo
+Kingdra @ Scope Lens
+Level: 76
+Ability: Sniper
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Modest
+- Hydro Pump
+- Draco Meteor
+- Ice Beam
+- Focus Energy
+
+Flygon @ Choice Scarf
+Level: 76
+Ability: Levitate
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Earthquake
+- Outrage
+- U-turn
+- Stone Edge
+
+Dragalge @ Black Sludge
+Level: 76
+Ability: Adaptability
+EVs: 252 HP / 252 SpA / 4 SpD
+Nature: Modest
+- Sludge Bomb
+- Draco Meteor
+- Scald
+- Focus Blast
+
+Dragonite @ Weakness Policy
 Level: 77
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Multiscale
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Adamant
+- Dragon Dance
+- Outrage
+- Extreme Speed
+- Earthquake
+
+Kommo-o @ Lum Berry
+Level: 77
+Ability: Bulletproof
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Dragon Dance
+- Close Combat
+- Dragon Claw
+- Iron Head
 
 Charizard @ Charizardite X
 Level: 78
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
-Kommo-o
-Level: 79
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
+Ability: Blaze
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Flare Blitz
+- Outrage
+- Earthquake
+- Dragon Dance
 
 === TRAINER_NERINE_POSTGAME_DREEPY_CHARMANDER ===
 Name: NERINE
@@ -40387,21 +42472,69 @@ Class: Draconid
 Pic: Nerine
 Gender: Female
 Music: Intense
+Items: Full Restore / Full Restore / Full Restore
 Double Battle: No
 AI: Smart Trainer / Prediction / Ace Pokemon
 
-Sharpedo
+Kingdra @ Scope Lens
+Level: 76
+Ability: Sniper
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Modest
+- Hydro Pump
+- Draco Meteor
+- Ice Beam
+- Focus Energy
+
+Flygon @ Choice Scarf
+Level: 76
+Ability: Levitate
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Earthquake
+- Outrage
+- U-turn
+- Stone Edge
+
+Dragalge @ Black Sludge
+Level: 76
+Ability: Adaptability
+EVs: 252 HP / 252 SpA / 4 SpD
+Nature: Modest
+- Sludge Bomb
+- Draco Meteor
+- Scald
+- Focus Blast
+
+Dragonite @ Weakness Policy
 Level: 77
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Multiscale
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Adamant
+- Dragon Dance
+- Outrage
+- Extreme Speed
+- Earthquake
+
+Hydreigon @ Life Orb
+Level: 77
+Ability: Levitate
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Timid
+- Dark Pulse
+- Draco Meteor
+- Flamethrower
+- Nasty Plot
 
 Feraligatr @ Feraligite
 Level: 78
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
-Hydreigon
-Level: 79
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
+Ability: Sheer Force
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Liquidation
+- Double-Edge
+- Earthquake
+- Dragon Dance
 
 === TRAINER_NERINE_POSTGAME_DREEPY_TOTODILE ===
 Name: NERINE
@@ -40409,21 +42542,69 @@ Class: Draconid
 Pic: Nerine
 Gender: Female
 Music: Intense
+Items: Full Restore / Full Restore / Full Restore
 Double Battle: No
 AI: Smart Trainer / Prediction / Ace Pokemon
 
-Sharpedo
+Kingdra @ Scope Lens
+Level: 76
+Ability: Sniper
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Modest
+- Hydro Pump
+- Draco Meteor
+- Ice Beam
+- Focus Energy
+
+Flygon @ Choice Scarf
+Level: 76
+Ability: Levitate
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Earthquake
+- Outrage
+- U-turn
+- Stone Edge
+
+Dragalge @ Black Sludge
+Level: 76
+Ability: Adaptability
+EVs: 252 HP / 252 SpA / 4 SpD
+Nature: Modest
+- Sludge Bomb
+- Draco Meteor
+- Scald
+- Focus Blast
+
+Dragonite @ Weakness Policy
 Level: 77
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Multiscale
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Adamant
+- Dragon Dance
+- Outrage
+- Extreme Speed
+- Earthquake
+
+Hydreigon @ Life Orb
+Level: 77
+Ability: Levitate
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Timid
+- Dark Pulse
+- Draco Meteor
+- Flamethrower
+- Nasty Plot
 
 Sceptile @ Sceptilite
 Level: 78
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
-Hydreigon
-Level: 79
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
+Ability: Overgrow
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Leaf Blade
+- Outrage
+- Earthquake
+- Swords Dance
 
 === TRAINER_NERINE_POSTGAME_DREEPY_TREECKO ===
 Name: NERINE
@@ -40431,21 +42612,69 @@ Class: Draconid
 Pic: Nerine
 Gender: Female
 Music: Intense
+Items: Full Restore / Full Restore / Full Restore
 Double Battle: No
 AI: Smart Trainer / Prediction / Ace Pokemon
 
-Sharpedo
+Kingdra @ Scope Lens
+Level: 76
+Ability: Sniper
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Modest
+- Hydro Pump
+- Draco Meteor
+- Ice Beam
+- Focus Energy
+
+Flygon @ Choice Scarf
+Level: 76
+Ability: Levitate
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Earthquake
+- Outrage
+- U-turn
+- Stone Edge
+
+Dragalge @ Black Sludge
+Level: 76
+Ability: Adaptability
+EVs: 252 HP / 252 SpA / 4 SpD
+Nature: Modest
+- Sludge Bomb
+- Draco Meteor
+- Scald
+- Focus Blast
+
+Dragonite @ Weakness Policy
 Level: 77
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Multiscale
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Adamant
+- Dragon Dance
+- Outrage
+- Extreme Speed
+- Earthquake
+
+Hydreigon @ Life Orb
+Level: 77
+Ability: Levitate
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Timid
+- Dark Pulse
+- Draco Meteor
+- Flamethrower
+- Nasty Plot
 
 Charizard @ Charizardite X
 Level: 78
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
-Hydreigon
-Level: 79
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
+Ability: Blaze
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Flare Blitz
+- Outrage
+- Earthquake
+- Dragon Dance
 
 === TRAINER_NERINE_POSTGAME_JANGMO_O_CHARMANDER ===
 Name: NERINE
@@ -40453,21 +42682,69 @@ Class: Draconid
 Pic: Nerine
 Gender: Female
 Music: Intense
+Items: Full Restore / Full Restore / Full Restore
 Double Battle: No
 AI: Smart Trainer / Prediction / Ace Pokemon
 
-Sharpedo
+Kingdra @ Scope Lens
+Level: 76
+Ability: Sniper
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Modest
+- Hydro Pump
+- Draco Meteor
+- Ice Beam
+- Focus Energy
+
+Flygon @ Choice Scarf
+Level: 76
+Ability: Levitate
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Earthquake
+- Outrage
+- U-turn
+- Stone Edge
+
+Dragalge @ Black Sludge
+Level: 76
+Ability: Adaptability
+EVs: 252 HP / 252 SpA / 4 SpD
+Nature: Modest
+- Sludge Bomb
+- Draco Meteor
+- Scald
+- Focus Blast
+
+Dragonite @ Weakness Policy
 Level: 77
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Multiscale
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Adamant
+- Dragon Dance
+- Outrage
+- Extreme Speed
+- Earthquake
+
+Dragapult @ Life Orb
+Level: 77
+Ability: Infiltrator
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Dragon Darts
+- Phantom Force
+- U-turn
+- Dragon Dance
 
 Feraligatr @ Feraligite
 Level: 78
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
-Dragapult
-Level: 79
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
+Ability: Sheer Force
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Liquidation
+- Double-Edge
+- Earthquake
+- Dragon Dance
 
 === TRAINER_NERINE_POSTGAME_JANGMO_O_TOTODILE ===
 Name: NERINE
@@ -40475,21 +42752,69 @@ Class: Draconid
 Pic: Nerine
 Gender: Female
 Music: Intense
+Items: Full Restore / Full Restore / Full Restore
 Double Battle: No
 AI: Smart Trainer / Prediction / Ace Pokemon
 
-Sharpedo
+Kingdra @ Scope Lens
+Level: 76
+Ability: Sniper
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Modest
+- Hydro Pump
+- Draco Meteor
+- Ice Beam
+- Focus Energy
+
+Flygon @ Choice Scarf
+Level: 76
+Ability: Levitate
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Earthquake
+- Outrage
+- U-turn
+- Stone Edge
+
+Dragalge @ Black Sludge
+Level: 76
+Ability: Adaptability
+EVs: 252 HP / 252 SpA / 4 SpD
+Nature: Modest
+- Sludge Bomb
+- Draco Meteor
+- Scald
+- Focus Blast
+
+Dragonite @ Weakness Policy
 Level: 77
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Multiscale
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Adamant
+- Dragon Dance
+- Outrage
+- Extreme Speed
+- Earthquake
+
+Dragapult @ Life Orb
+Level: 77
+Ability: Infiltrator
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Dragon Darts
+- Phantom Force
+- U-turn
+- Dragon Dance
 
 Sceptile @ Sceptilite
 Level: 78
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
-Dragapult
-Level: 79
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
+Ability: Overgrow
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Leaf Blade
+- Outrage
+- Earthquake
+- Swords Dance
 
 === TRAINER_NERINE_POSTGAME_JANGMO_O_TREECKO ===
 Name: NERINE
@@ -40497,18 +42822,67 @@ Class: Draconid
 Pic: Nerine
 Gender: Female
 Music: Intense
+Items: Full Restore / Full Restore / Full Restore
 Double Battle: No
 AI: Smart Trainer / Prediction / Ace Pokemon
 
-Sharpedo
+Kingdra @ Scope Lens
+Level: 76
+Ability: Sniper
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Modest
+- Hydro Pump
+- Draco Meteor
+- Ice Beam
+- Focus Energy
+
+Flygon @ Choice Scarf
+Level: 76
+Ability: Levitate
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Earthquake
+- Outrage
+- U-turn
+- Stone Edge
+
+Dragalge @ Black Sludge
+Level: 76
+Ability: Adaptability
+EVs: 252 HP / 252 SpA / 4 SpD
+Nature: Modest
+- Sludge Bomb
+- Draco Meteor
+- Scald
+- Focus Blast
+
+Dragonite @ Weakness Policy
 Level: 77
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Multiscale
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Adamant
+- Dragon Dance
+- Outrage
+- Extreme Speed
+- Earthquake
+
+Dragapult @ Life Orb
+Level: 77
+Ability: Infiltrator
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Dragon Darts
+- Phantom Force
+- U-turn
+- Dragon Dance
 
 Charizard @ Charizardite X
 Level: 78
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-
-Dragapult
-Level: 79
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Ability: Blaze
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Flare Blitz
+- Outrage
+- Earthquake
+- Dragon Dance
 

@@ -6,11 +6,13 @@ RustboroCity_Gym_EventScript_DraconidBirchWaits::
 RustboroCity_Gym_EventScript_DraconidBirchWaits_1:
 	setvar VAR_DRACONID_STATE, DRACONID_STATE_SECOND_STARTER
 	clearflag FLAG_HIDE_RUSTBORO_CITY_BIRCH
+	clearflag FLAG_HIDE_RUSTBORO_CITY_TABITHA
 	return
 
 
 RustboroCity_EventScript_DraconidSecondStarter::
 	lockall
+	call RustboroCity_EventScript_DraconidTabithaOrders
 	applymovement LOCALID_RUSTBORO_BIRCH, RustboroCity_Movement_DraconidBirchApproach
 	waitmovement 0
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterDown
@@ -140,18 +142,23 @@ RustboroCity_EventScript_DraconidSecondStarter_Text_2:
 	.string "TREECKO$"
 
 RustboroCity_Text_DraconidBirchCongrats::
-	.string "PROF. BIRCH: {PLAYER}! I saw the whole\n"
+	.string "PROF. BIRCH: {PLAYER}! I watched your\n"
 	.string "battle through the window. Your first\l"
 	.string "GYM BADGE!\p"
-	.string "I came to RUSTBORO on business, but I\n"
-	.string "also carried a letter from your village's\l"
-	.string "ELDER.\p"
-	.string "Draconid tamers traditionally raise a\n"
-	.string "second partner from a faraway land, to\l"
-	.string "learn balance.\p"
-	.string "So I brought three POKéMON that came\n"
-	.string "to my lab from other regions. Pick the\l"
-	.string "one you like!$"
+	.string "…But that uniform. And the man you were\n"
+	.string "just talking to…\p"
+	.string "BRENDAN told me. I didn't want to\n"
+	.string "believe him.\p"
+	.string "Your ELDER wrote to me before you came\n"
+	.string "down the mountain. Draconid tamers\l"
+	.string "raise a second partner from a faraway\l"
+	.string "land, to learn balance.\p"
+	.string "I brought three POKéMON for you. On the\n"
+	.string "way here, I nearly turned back.\p"
+	.string "But I saw how you protected me on\n"
+	.string "ROUTE 101.\p"
+	.string "Whatever you're doing… I'll trust that\n"
+	.string "version of you. Pick the one you like.$"
 
 RustboroCity_Text_DraconidBirchWhichOne::
 	.string "Which POKéMON will you take?$"
@@ -180,5 +187,6 @@ RustboroCity_Text_DraconidReceivedMon::
 
 RustboroCity_Text_DraconidBirchBye::
 	.string "PROF. BIRCH: Raise it well, alongside\n"
-	.string "your dragon. I'll be waiting to hear how\l"
-	.string "you do!$"
+	.string "your dragon.\p"
+	.string "And {PLAYER}… be careful. Whatever\n"
+	.string "those people want, it isn't good.$"

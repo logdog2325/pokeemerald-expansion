@@ -1,0 +1,43 @@
+# Petalburg Woods: Nerine robs the Devon researcher, Courtney recruits the player, the Magma
+# uniform goes on in the outpost cabin (act1.pory, PetalburgWoods_MagmaOutpost).
+# Needs route103_done.ss from tests/route103.play in the same output directory. Uses the
+# debug-build "warp" hook instead of walking through Oldale, Route 102 and Petalburg.
+# Matrix parameters: EGGNAME = the player's egg (Nerine's team is named after it), MAGMA = the
+# player's Magma sprite prefix.
+default EGGNAME DEINO
+default MAGMA MAGMA_M
+loadstate route103_done.ss
+setflag FLAG_DEBUG_NO_ENCOUNTER
+setflag FLAG_DEBUG_NO_TRAINER_SEE
+# flow test: the script must go on even if mashing A loses the battle
+setflag FLAG_DRACONID_NO_WHITEOUT
+expect_var VAR_DRACONID_REPUTATION 0
+expect_var VAR_PETALBURG_WOODS_STATE 0
+warp MAP_PETALBURG_WOODS 26 26
+path PetalburgWoods 26 26 26 24
+shot 01_woods
+press UP 2 10
+run 200
+shot 02_researcher
+mash A 90000
+# the cabin scene starts on the first frame after the warp
+run 60
+mash A 30000
+expect_opponent TRAINER_NERINE_PETALBURG_WOODS_${EGGNAME}
+expect_var VAR_NERINE_STATE 1
+expect_var VAR_PETALBURG_WOODS_STATE 3
+expect_var VAR_DRACONID_REPUTATION 1
+expect_gfx OBJ_EVENT_GFX_${MAGMA}_NORMAL
+mapid
+shot 03_outpost
+# out of the cabin door to Route 104 at the woods' north entrance
+path PetalburgWoods_MagmaOutpost 4 6 4 7
+press DOWN 2 10
+run 120
+mapid
+pos
+shot 04_route104
+savestate woods_done.ss
+clearflag FLAG_DEBUG_NO_ENCOUNTER
+clearflag FLAG_DEBUG_NO_TRAINER_SEE
+clearflag FLAG_DRACONID_NO_WHITEOUT

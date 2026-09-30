@@ -391,7 +391,7 @@ Route110_EventScript_PlayBrendanMusic::
 
 Route110_EventScript_BrendanBattle::
 	msgbox Route110_Text_BrendanLetsBattle, MSGBOX_DEFAULT
-	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_110, Route110_Text_BrendanDefeated
+	trainerbattle_no_intro TRAINER_BRENDAN_MT_CHIMNEY, Route110_Text_BrendanDefeated
 	goto Route110_EventScript_BrendanDefeated
 	end
 

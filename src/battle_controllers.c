@@ -1,4 +1,5 @@
 #include "global.h"
+#include "constants/draconid.h"
 #include "battle.h"
 #include "battle_ai_main.h"
 #include "battle_ai_util.h"
@@ -160,7 +161,7 @@ void SetUpBattleVarsAndBirchZigzagoon(void)
     BattleAI_SetupFlags();
 
     if (!IS_FRLG && gBattleTypeFlags & BATTLE_TYPE_FIRST_BATTLE)
-        CreateWildMon(SPECIES_ZIGZAGOON, 2);
+        CreateWildMon(DRACONID_RESCUE_SPECIES, DRACONID_RESCUE_LEVEL); // Draconid Emerald: was Zigzagoon Lv 2
 }
 
 void InitBattleControllers(void)

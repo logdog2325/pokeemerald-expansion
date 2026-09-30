@@ -26,7 +26,7 @@ PetalburgWoods_EventScript_DevonResearcherLeft::
 	applymovement LOCALID_PETALBURG_WOODS_GRUNT, PetalburgWoods_Movement_AquaApproachPlayer
 	waitmovement 0
 	msgbox PetalburgWoods_Text_NoOneCrossesTeamAqua, MSGBOX_DEFAULT
-	trainerbattle_no_intro TRAINER_GRUNT_PETALBURG_WOODS, PetalburgWoods_Text_YoureKiddingMe
+	trainerbattle_no_intro TRAINER_NERINE_PETALBURG_WOODS_DEINO, PetalburgWoods_Text_YoureKiddingMe  @ Draconid Emerald: Nerine, team by the player's egg (D-101)
 	applymovement LOCALID_PETALBURG_WOODS_GRUNT, PetalburgWoods_Movement_AquaBackOff
 	waitmovement 0
 	call PetalburgWoods_EventScript_DevonResearcherPostBattle
@@ -62,7 +62,7 @@ PetalburgWoods_EventScript_DevonResearcherRight::
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
 	msgbox PetalburgWoods_Text_NoOneCrossesTeamAqua, MSGBOX_DEFAULT
-	trainerbattle_no_intro TRAINER_GRUNT_PETALBURG_WOODS, PetalburgWoods_Text_YoureKiddingMe
+	trainerbattle_no_intro TRAINER_NERINE_PETALBURG_WOODS_DEINO, PetalburgWoods_Text_YoureKiddingMe  @ Draconid Emerald: Nerine, team by the player's egg (D-101)
 	applymovement LOCALID_PETALBURG_WOODS_GRUNT, PetalburgWoods_Movement_AquaBackOff
 	waitmovement 0
 	call PetalburgWoods_EventScript_DevonResearcherPostBattle
@@ -108,6 +108,7 @@ PetalburgWoods_EventScript_DevonResearcherFinish::
 
 PetalburgWoods_EventScript_RemoveDevonResearcher::
 	removeobject LOCALID_PETALBURG_WOODS_DEVON_EMPLOYEE
+	goto PetalburgWoods_EventScript_DraconidRecruitment  @ Draconid Emerald: Courtney recruits the player
 	setvar VAR_PETALBURG_WOODS_STATE, 1
 	releaseall
 	end
@@ -324,53 +325,50 @@ PetalburgWoods_Text_HaveYouSeenShroomish:
 	.string "called SHROOMISH around here?\p"
 	.string "I really love that POKéMON.$"
 
-PetalburgWoods_Text_IWasGoingToAmbushYou:
-	.string "I was going to ambush you, but you\n"
-	.string "had to dawdle in PETALBURG WOODS\l"
-	.string "forever, didn't you?\p"
-	.string "I got sick of waiting, so here I am!$"
+PetalburgWoods_Text_IWasGoingToAmbushYou:  @ Draconid Emerald
+	.string "NERINE: There you are.\p"
+	.string "I've waited in these woods all\n"
+	.string "morning. The trees hide the sky.\p"
+	.string "I don't like that.$"
 
-PetalburgWoods_Text_HandOverThosePapers:
-	.string "You! DEVON RESEARCHER!\p"
-	.string "Hand over those papers!$"
+PetalburgWoods_Text_HandOverThosePapers:  @ Draconid Emerald
+	.string "NERINE: DEVON RESEARCHER.\n"
+	.string "Hand over those papers.\p"
+	.string "TEAM AQUA wants them.\n"
+	.string "So I suppose I do, too.$"
 
 PetalburgWoods_Text_YouHaveToHelpMe:
 	.string "Aiyeeeh!\p"
 	.string "You're a POKéMON TRAINER, aren't you?\n"
 	.string "You've got to help me, please!$"
 
-PetalburgWoods_Text_NoOneCrossesTeamAqua:
-	.string "Hunh? What do you think you're doing?\n"
-	.string "What, you're going to protect him?\p"
-	.string "No one who crosses TEAM AQUA\n"
-	.string "gets any mercy, not even a kid!\p"
-	.string "Come on and battle me!$"
+PetalburgWoods_Text_NoOneCrossesTeamAqua:  @ Draconid Emerald
+	.string "NERINE: Hm? You're protecting him?\p"
+	.string "…That POKéMON of yours.\n"
+	.string "Where did a child find a dragon?\p"
+	.string "Show me, then.$"
 
-PetalburgWoods_Text_YoureKiddingMe:
-	.string "You're kidding me! You're tough!$"
+PetalburgWoods_Text_YoureKiddingMe:  @ Draconid Emerald
+	.string "Strong…\n"
+	.string "for a lowlander.$"
 
-PetalburgWoods_Text_YouveGotSomeNerve:
-	.string "Grrr… You've got some nerve\n"
-	.string "meddling with TEAM AQUA!\l"
-	.string "Come on and battle me again!\p"
-	.string "I wish I could say that, but I'm out of\n"
-	.string "POKéMON…\p"
-	.string "And, hey, we of TEAM AQUA are also\n"
-	.string "after something in RUSTBORO.\p"
-	.string "I'll let you go today!$"
+PetalburgWoods_Text_YouveGotSomeNerve:  @ Draconid Emerald
+	.string "NERINE: Strong… for a lowlander.\p"
+	.string "…Or are you?\p"
+	.string "Keep the papers.\n"
+	.string "They were never worth my time.$"
 
-PetalburgWoods_Text_ThatWasAwfullyClose:
+PetalburgWoods_Text_ThatWasAwfullyClose:  @ Draconid Emerald
 	.string "Whew…\n"
 	.string "That was awfully close!\p"
-	.string "Thanks to you, he didn't rob me of\n"
+	.string "Thanks to you, she didn't rob me of\n"
 	.string "these important papers.\p"
 	.string "I know, I'll give you a GREAT BALL as\n"
 	.string "my thanks!$"
 
-PetalburgWoods_Text_TeamAquaAfterSomethingInRustboro:
-	.string "Didn't that TEAM AQUA thug say\n"
-	.string "they were after something in\l"
-	.string "RUSTBORO, too?$"
+PetalburgWoods_Text_TeamAquaAfterSomethingInRustboro:  @ Draconid Emerald
+	.string "That TEAM AQUA woman…\n"
+	.string "Are they after DEVON in RUSTBORO, too?$"
 
 PetalburgWoods_Text_ICantBeWastingTime:
 	.string "Uh-oh! It's a crisis!\n"

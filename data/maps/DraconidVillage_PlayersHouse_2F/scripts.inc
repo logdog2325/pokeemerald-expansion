@@ -24,25 +24,39 @@ DraconidVillage_PlayersHouse_2F_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 
 DraconidVillage_PlayersHouse_2F_EventScript_WakeUp::
 	lockall
+	delay 60
+	fadescreen FADE_TO_BLACK
+	delay 30
+	msgbox DraconidVillage_PlayersHouse_2F_EventScript_WakeUp_Text_0
+	closemessage
+	playse SE_M_DETECT
+	fadescreenswapbuffers FADE_TO_WHITE
+	fadescreenswapbuffers FADE_FROM_WHITE
+	msgbox DraconidVillage_PlayersHouse_2F_EventScript_WakeUp_Text_1
+	closemessage
+	delay 40
+	fadescreen FADE_FROM_BLACK
 	delay 30
 	playse SE_EXIT
-	addobject LOCALID_DRACONID_HOUSE_2F_MOM
-	applymovement LOCALID_DRACONID_HOUSE_2F_MOM, DraconidVillage_PlayersHouse_2F_Movement_MomEnters
+	clearflag FLAG_HIDE_DRACONID_HOUSE_2F_ASTER
+	addobject LOCALID_DRACONID_HOUSE_2F_ASTER
+	applymovement LOCALID_DRACONID_HOUSE_2F_ASTER, DraconidVillage_PlayersHouse_2F_Movement_AsterEnters
 	waitmovement 0
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
-	msgbox DraconidVillage_PlayersHouse_2F_EventScript_WakeUp_Text_0
+	msgbox DraconidVillage_PlayersHouse_2F_EventScript_WakeUp_Text_2
+	msgbox DraconidVillage_PlayersHouse_2F_EventScript_WakeUp_Text_3
 	closemessage
-	applymovement LOCALID_DRACONID_HOUSE_2F_MOM, DraconidVillage_PlayersHouse_2F_Movement_MomExits
+	applymovement LOCALID_DRACONID_HOUSE_2F_ASTER, DraconidVillage_PlayersHouse_2F_Movement_AsterExits
 	waitmovement 0
 	playse SE_EXIT
-	removeobject LOCALID_DRACONID_HOUSE_2F_MOM
+	removeobject LOCALID_DRACONID_HOUSE_2F_ASTER
 	setvar VAR_DRACONID_STATE, DRACONID_STATE_SET_CLOCK
 	releaseall
 	return
 
 
-DraconidVillage_PlayersHouse_2F_Movement_MomEnters:
+DraconidVillage_PlayersHouse_2F_Movement_AsterEnters:
 	walk_down
 	walk_left
 	walk_left
@@ -52,7 +66,7 @@ DraconidVillage_PlayersHouse_2F_Movement_MomEnters:
 	walk_in_place_faster_left
 	step_end
 
-DraconidVillage_PlayersHouse_2F_Movement_MomExits:
+DraconidVillage_PlayersHouse_2F_Movement_AsterExits:
 	walk_up
 	walk_up
 	walk_right
@@ -118,21 +132,34 @@ DraconidVillage_PlayersHouse_2F_EventScript_TurnOffPC::
 
 
 DraconidVillage_PlayersHouse_2F_EventScript_WakeUp_Text_0:
-	.string "MOM: Good morning, {PLAYER}! You're\n"
-	.string "finally up!\p"
-	.string "Don't tell me you forgot what today is…\n"
-	.string "It's your egg ceremony!\p"
-	.string "The ELDER will be waiting at his house\n"
-	.string "to entrust you with a dragon egg.\p"
-	.string "Oh, and before you go… The clock on\n"
-	.string "your wall has stopped again.\p"
-	.string "Could you set it for me? Then come on\n"
-	.string "down!$"
+	.string "That night, the DRACONID village slept\n"
+	.string "under a clear, cold sky…$"
+
+DraconidVillage_PlayersHouse_2F_EventScript_WakeUp_Text_1:
+	.string "A falling star tore across the heavens\n"
+	.string "and vanished beyond the mountains.\p"
+	.string "In the ELDER's house, a lamp was lit, and\n"
+	.string "it burned until dawn.$"
+
+DraconidVillage_PlayersHouse_2F_EventScript_WakeUp_Text_2:
+	.string "ASTER: So you're awake. Finally.\p"
+	.string "The ELDER wants you. Now. He didn't\n"
+	.string "sleep at all last night.\p"
+	.string "Did you see it? The star that fell? No…\n"
+	.string "of course you didn't.\p"
+	.string "Hmph. And he calls for you, not me.$"
+
+DraconidVillage_PlayersHouse_2F_EventScript_WakeUp_Text_3:
+	.string "ASTER: Set that clock of yours before\n"
+	.string "you come. It's been dead for a week.\p"
+	.string "The ELDER's house is the one with the\n"
+	.string "red roof, by the shrine. Don't make him\l"
+	.string "wait.$"
 
 DraconidVillage_PlayersHouse_2F_EventScript_StairsBlocked_Text_0:
-	.string "MOM: {PLAYER}, did you set the clock\n"
-	.string "yet? It's on the wall next to the\l"
-	.string "window!$"
+	.string "{PLAYER} glanced at the stopped clock\n"
+	.string "on the wall. Better set it first, like\l"
+	.string "ASTER said.$"
 
 DraconidVillage_PlayersHouse_2F_EventScript_WallClock_Text_0:
 	.string "The clock has stopped. Better set it\n"

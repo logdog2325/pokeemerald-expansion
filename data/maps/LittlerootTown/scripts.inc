@@ -226,7 +226,7 @@ LittlerootTown_OnWarp:
 LittlerootTown_EventScript_SetRivalBirchPosForDexUpgrade::
 	addobject LOCALID_LITTLEROOT_BIRCH
 	addobject LOCALID_LITTLEROOT_RIVAL
-	goto LittlerootTown_EventScript_SetRivalBirchPosForDexUpgradeFemale  @ Draconid Emerald: outside May's (Birch's) house
+	goto LittlerootTown_EventScript_SetRivalBirchPosForDexUpgradeMale  @ Draconid Emerald: outside Brendan's (Birch's) house
 	end
 
 LittlerootTown_EventScript_SetRivalBirchPosForDexUpgradeMale::
@@ -395,7 +395,7 @@ LittlerootTown_EventScript_BirchsLabSign::
 
 LittlerootTown_EventScript_BrendansHouseSign::
 	lockall
-	msgbox LittlerootTown_Text_DraconidBrendansHouse, MSGBOX_DEFAULT  @ Draconid Emerald
+	msgbox LittlerootTown_Text_ProfBirchsHouse, MSGBOX_DEFAULT  @ Draconid Emerald: Brendan is Birch's son
 	releaseall
 	end
 
@@ -409,7 +409,7 @@ LittlerootTown_EventScript_BirchsHouseSignFemale::
 
 LittlerootTown_EventScript_MaysHouseSign::
 	lockall
-	call LittlerootTown_EventScript_BirchsHouseSignMale  @ Draconid Emerald: May is Birch's daughter
+	msgbox LittlerootTown_Text_DraconidMaysHouse, MSGBOX_DEFAULT  @ Draconid Emerald: Norman's family lives here
 	releaseall
 	end
 
@@ -1008,6 +1008,6 @@ LittlerootTown_Text_BirchSomethingToShowYouAtLab:
 	.string "I have something to show you.\n"
 	.string "Let's go to my LAB.$"
 
-@ Draconid Emerald: Brendan (Birch's nephew) and his family live here
-LittlerootTown_Text_DraconidBrendansHouse:
-	.string "BRENDAN's HOUSE$"
+@ Draconid Emerald: Norman's family (May's) lives here; the Birches live in Brendan's house
+LittlerootTown_Text_DraconidMaysHouse:
+	.string "MAY'S HOUSE$"

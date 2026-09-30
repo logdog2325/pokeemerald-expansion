@@ -44,6 +44,7 @@ EverGrandeCity_HallOfFame_EventScript_ReadyReceiveSSTicketEvent::
 	setvar VAR_LITTLEROOT_HOUSES_STATE_MAY, 3
 	setvar VAR_LITTLEROOT_HOUSES_STATE_BRENDAN, 3
 	clearflag FLAG_HIDE_PLAYERS_HOUSE_DAD
+	clearflag FLAG_HIDE_DRACONID_HOUSE_ELDER  @ Draconid Emerald: the Elder is home for the post-game scene (D-112)
 	return
 
 EverGrandeCity_HallOfFame_EventScript_ReadyDexUpgradeEvent::

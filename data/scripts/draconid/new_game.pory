@@ -13,7 +13,6 @@ script DraconidEmerald_EventScript_NewGameSetup {
     setflag(FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG)
     setflag(FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BRENDAN)
     // Rival scenes that vanilla doesn't have (rivals.pory) start hidden
-    setflag(FLAG_HIDE_ROUTE_104_BRENDAN)
     setflag(FLAG_HIDE_SLATEPORT_CITY_MAY)
     setflag(FLAG_HIDE_SOOTOPOLIS_CITY_RIVALS)
     setflag(FLAG_HIDE_PETALBURG_CITY_WALLY_GYM)
@@ -22,7 +21,6 @@ script DraconidEmerald_EventScript_NewGameSetup {
     setflag(FLAG_HIDE_RUSTBORO_CITY_BIRCH)
     setflag(FLAG_HIDE_METEOR_FALLS_ASTER)
     setflag(FLAG_HIDE_CABLE_CAR_STATION_ASTER)
-    setflag(FLAG_HIDE_ROUTE_119_ASTER)
     setflag(FLAG_HIDE_MAGMA_HIDEOUT_ASTER)
     setflag(FLAG_HIDE_SKY_PILLAR_TOP_ASTER)
     // 3 = rivals already met; stops the 2F "meet your new neighbour" scenes
@@ -47,9 +45,15 @@ script DraconidEmerald_EventScript_NewGameSetup {
     setflag(FLAG_HIDE_DRACONID_SHRINE_ELDER)
     setflag(FLAG_HIDE_DRACONID_SHRINE_ASTER)
     setflag(FLAG_HIDE_DRACONID_PASS_ASTER)
-    setflag(FLAG_HIDE_DRACONID_VILLAGE_MOM)
+    setflag(FLAG_HIDE_DRACONID_VILLAGE_SHOES_GIVER)
     setvar(VAR_DRACONID_STATE, DRACONID_STATE_NEW_GAME)
     setvar(VAR_PLAYER_OUTFIT, PLAYER_OUTFIT_DRACONID)
-    // blacking out before the first Pokémon Center brings the player home to Mom
+    setvar(VAR_DRACONID_REPUTATION, REPUTATION_PRE_UNIFORM)
+    setflag(FLAG_HIDE_DRACONID_HOUSE_ELDER)
+    setflag(FLAG_HIDE_DRACONID_HOUSE_2F_ASTER)
+    // Act 1: Courtney steps out of the trees after Nerine is beaten in Petalburg Woods
+    setflag(FLAG_HIDE_PETALBURG_WOODS_COURTNEY)
+    setflag(FLAG_HIDE_RUSTBORO_CITY_TABITHA)
+    // blacking out before the first Pokémon Center brings the player home
     setrespawn(HEAL_LOCATION_DRACONID_VILLAGE_PLAYERS_HOUSE_2F)
 }

@@ -16,37 +16,54 @@ mapscripts DraconidVillage_PlayersHouse_2F_MapScripts {
     ]
 }
 
+// New game (Act 1, D-102): a falling star in the night, then Aster comes to fetch the player for the Elder.
 script DraconidVillage_PlayersHouse_2F_EventScript_WakeUp {
     lockall
+    delay(60) // let the new game's own fade-in finish first
+    fadescreen(FADE_TO_BLACK)
+    delay(30)
+    msgbox(format("That night, the DRACONID village slept under a clear, cold sky…"))
+    closemessage
+    playse(SE_M_DETECT)
+    // the falling star: a hardware flash (a palette fade to white here would leave the map black afterwards)
+    fadescreenswapbuffers(FADE_TO_WHITE)
+    fadescreenswapbuffers(FADE_FROM_WHITE)
+    msgbox(format("A falling star tore across the heavens and vanished beyond the mountains.\p"
+                  "In the ELDER's house, a lamp was lit, and it burned until dawn."))
+    closemessage
+    delay(40)
+    fadescreen(FADE_FROM_BLACK)
     delay(30)
     playse(SE_EXIT)
-    addobject(LOCALID_DRACONID_HOUSE_2F_MOM)
-    applymovement(LOCALID_DRACONID_HOUSE_2F_MOM, DraconidVillage_PlayersHouse_2F_Movement_MomEnters)
+    clearflag(FLAG_HIDE_DRACONID_HOUSE_2F_ASTER)
+    addobject(LOCALID_DRACONID_HOUSE_2F_ASTER)
+    applymovement(LOCALID_DRACONID_HOUSE_2F_ASTER, DraconidVillage_PlayersHouse_2F_Movement_AsterEnters)
     waitmovement(0)
     applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight)
     waitmovement(0)
-    msgbox(format("MOM: Good morning, {PLAYER}! You're finally up!\p"
-                  "Don't tell me you forgot what today is… It's your egg ceremony!\p"
-                  "The ELDER will be waiting at his house to entrust you with a dragon egg.\p"
-                  "Oh, and before you go… The clock on your wall has stopped again.\p"
-                  "Could you set it for me? Then come on down!"))
+    msgbox(format("ASTER: So you're awake. Finally.\p"
+                  "The ELDER wants you. Now. He didn't sleep at all last night.\p"
+                  "Did you see it? The star that fell? No… of course you didn't.\p"
+                  "Hmph. And he calls for you, not me."))
+    msgbox(format("ASTER: Set that clock of yours before you come. It's been dead for a week.\p"
+                  "The ELDER's house is the one with the red roof, by the shrine. Don't make him wait."))
     closemessage
-    applymovement(LOCALID_DRACONID_HOUSE_2F_MOM, DraconidVillage_PlayersHouse_2F_Movement_MomExits)
+    applymovement(LOCALID_DRACONID_HOUSE_2F_ASTER, DraconidVillage_PlayersHouse_2F_Movement_AsterExits)
     waitmovement(0)
     playse(SE_EXIT)
-    removeobject(LOCALID_DRACONID_HOUSE_2F_MOM)
+    removeobject(LOCALID_DRACONID_HOUSE_2F_ASTER)
     setvar(VAR_DRACONID_STATE, DRACONID_STATE_SET_CLOCK)
     releaseall
 }
 
-movement DraconidVillage_PlayersHouse_2F_Movement_MomEnters {
+movement DraconidVillage_PlayersHouse_2F_Movement_AsterEnters {
     walk_down
     walk_left * 3
     walk_down * 2
     walk_in_place_faster_left
 }
 
-movement DraconidVillage_PlayersHouse_2F_Movement_MomExits {
+movement DraconidVillage_PlayersHouse_2F_Movement_AsterExits {
     walk_up * 2
     walk_right * 3
     walk_up
@@ -55,7 +72,7 @@ movement DraconidVillage_PlayersHouse_2F_Movement_MomExits {
 // Stairs: the clock has to be set first (it is the only way to start the real-time clock).
 script DraconidVillage_PlayersHouse_2F_EventScript_StairsBlocked {
     lockall
-    msgbox(format("MOM: {PLAYER}, did you set the clock yet? It's on the wall next to the window!"))
+    msgbox(format("{PLAYER} glanced at the stopped clock on the wall. Better set it first, like ASTER said."))
     closemessage
     applymovement(LOCALID_PLAYER, DraconidVillage_PlayersHouse_2F_Movement_StepAwayFromStairs)
     waitmovement(0)

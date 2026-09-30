@@ -30,6 +30,9 @@ STATE_VARS = {
     "VAR_BRENDAN_STATE": "BRENDAN_STATE_",
     "VAR_MAY_STATE": "MAY_STATE_",
     "VAR_WALLY_STATE": "WALLY_STATE_",
+    "VAR_NERINE_STATE": "NERINE_STATE_",
+    "VAR_MAGMA_STATE": "MAGMA_STATE_",
+    "VAR_DRACONID_REPUTATION": "REPUTATION_",
 }
 PLAIN_VARS = ["VAR_ASTER_EGG", "VAR_SECOND_STARTER", "VAR_PLAYER_OUTFIT"]
 
@@ -40,6 +43,17 @@ ALLOWED = {
     "FLAG_DEBUG_NO_COLLISION": "config flag (OW_FLAG_NO_COLLISION), toggled by the debug menu and tests",
     "FLAG_HIDE_DRACONID_VILLAGE_ASTER": "reserved for later village visits (docs/hack_changes.md)",
     "FLAG_DRACONID_NO_WHITEOUT": "config flag (B_FLAG_NO_WHITEOUT), read by the battle engine",
+}
+
+# Round 1 (v2 story) is being built act by act: states of acts that aren't scripted yet. Each is
+# reported as a NOTE until its act lands; take it out of this set then.
+PENDING = {
+    "MAGMA_STATE_DEVON_GOODS", "MAGMA_STATE_MUSEUM", "MAGMA_STATE_METEOR_FALLS", "MAGMA_STATE_MT_CHIMNEY",
+    "MAGMA_STATE_WEATHER_INSTITUTE", "MAGMA_STATE_MT_PYRE", "MAGMA_STATE_PROMOTED", "MAGMA_STATE_SPACE_CENTER",
+    "MAGMA_STATE_SEAFLOOR", "MAGMA_STATE_TURNED",
+    "NERINE_STATE_RUSTURF", "NERINE_STATE_SLATEPORT", "NERINE_STATE_MT_CHIMNEY", "NERINE_STATE_MT_PYRE",
+    "NERINE_STATE_AQUA_HIDEOUT", "NERINE_STATE_REVEALED", "NERINE_STATE_SKY_PILLAR", "NERINE_STATE_POSTGAME",
+    "REPUTATION_REVEALED",
 }
 
 READ_CMDS = r"(?:goto_if_set|goto_if_unset|call_if_set|call_if_unset|checkflag)"
@@ -129,6 +143,9 @@ def main():
             read = (re.search(r"\b%s %s, %s\b" % (VAR_READ_CMDS, var, name), scripts)
                     or (var, name) in coord_reads or (var, str(value)) in coord_reads)
             if value and not written:
+                if name in PENDING:
+                    report("NOTE", "%s = %s: pending (its act isn't scripted yet)" % (var, name))
+                    continue
                 report("ERROR", "%s = %s is never written" % (var, name))
             if not read:
                 report("NOTE", "%s = %s: no script compares against it (records progress only)" % (var, name))

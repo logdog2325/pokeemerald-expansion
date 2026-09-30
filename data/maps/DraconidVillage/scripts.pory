@@ -3,7 +3,7 @@
 mapscripts DraconidVillage_MapScripts {
     MAP_SCRIPT_ON_TRANSITION: DraconidVillage_OnTransition
     MAP_SCRIPT_ON_FRAME_TABLE [
-        VAR_DRACONID_STATE, DRACONID_STATE_EGG_HATCHED: DraconidVillage_EventScript_MomGivesRunningShoes
+        VAR_DRACONID_STATE, DRACONID_STATE_EGG_HATCHED: DraconidVillage_EventScript_RunningShoes
     ]
 }
 
@@ -16,43 +16,42 @@ script DraconidVillage_OnTransition {
 }
 
 // ---------------------------------------------------------------------------
-// Mom waits outside the shrine after the hatching rite: Running Shoes
+// An old villager waits outside the shrine after the hatching rite: Running Shoes (round 1, D-102)
 // ---------------------------------------------------------------------------
-script DraconidVillage_EventScript_MomGivesRunningShoes {
+script DraconidVillage_EventScript_RunningShoes {
     lockall
-    addobject(LOCALID_DRACONID_VILLAGE_MOM)
-    applymovement(LOCALID_DRACONID_VILLAGE_MOM, DraconidVillage_Movement_MomApproach)
+    addobject(LOCALID_DRACONID_VILLAGE_SHOES_GIVER)
+    applymovement(LOCALID_DRACONID_VILLAGE_SHOES_GIVER, DraconidVillage_Movement_ShoesGiverApproach)
     waitmovement(0)
     applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterDown)
     waitmovement(0)
-    msgbox(format("MOM: {PLAYER}! I couldn't wait at home any longer…\p"
-                  "Oh! Is that your partner? It hatched! How wonderful!\p"
-                  "The ELDER told me you're going to see PROF. BIRCH in LITTLEROOT TOWN.\p"
-                  "Then you'll need these! I've been saving them for the day you left the village."))
+    msgbox(format("OLD WOMAN: So the egg answered the sky. Let me see… Oh, what a bright little dragon!\p"
+                  "The ELDER told us all. You're going down to the lowlands, alone, and in secret.\p"
+                  "Then you'll need to move fast. Take these. Every tamer who leaves this village gets a pair."))
     playfanfare(MUS_OBTAIN_ITEM)
     message(format("{PLAYER} switched shoes with the RUNNING SHOES."))
     waitfanfare
     waitmessage
-    msgbox(format("MOM: Hold the B Button to run with them!\p"
+    msgbox(format("OLD WOMAN: Hold the B Button to run with them!\p"
                   "Cross the bridge on DRACONID PASS and head east to ROUTE 101. LITTLEROOT is just south of it.\p"
-                  "Come home whenever you need a rest. Take care, sweetie!"))
+                  "Your house will be waiting when you need a rest. The whole village will."))
     closemessage
     setflag(FLAG_RECEIVED_RUNNING_SHOES)
     setflag(FLAG_SYS_B_DASH)
-    applymovement(LOCALID_DRACONID_VILLAGE_MOM, DraconidVillage_Movement_MomLeave)
+    applymovement(LOCALID_DRACONID_VILLAGE_SHOES_GIVER, DraconidVillage_Movement_ShoesGiverLeave)
     waitmovement(0)
-    removeobject(LOCALID_DRACONID_VILLAGE_MOM)
+    removeobject(LOCALID_DRACONID_VILLAGE_SHOES_GIVER)
     setvar(VAR_DRACONID_STATE, DRACONID_STATE_READY_TO_LEAVE)
     setvar(VAR_TEMP_1, 1)
     releaseall
 }
 
-// the player steps out of the shrine's cave mouth onto (19, 6); Mom waits at (19, 8)
-movement DraconidVillage_Movement_MomApproach {
+// the player steps out of the shrine's cave mouth onto (19, 6); the old woman waits at (19, 8)
+movement DraconidVillage_Movement_ShoesGiverApproach {
     walk_up
 }
 
-movement DraconidVillage_Movement_MomLeave {
+movement DraconidVillage_Movement_ShoesGiverLeave {
     walk_down * 4
     walk_left * 8
 }

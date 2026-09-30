@@ -53,7 +53,7 @@ DraconidVillage_Shrine_EventScript_HatchingRite_1:
 	closemessage
 	setflag FLAG_HIDE_DRACONID_SHRINE_ELDER
 	clearflag FLAG_HIDE_DRACONID_ELDERS_HOUSE_ELDER
-	clearflag FLAG_HIDE_DRACONID_VILLAGE_MOM
+	clearflag FLAG_HIDE_DRACONID_VILLAGE_SHOES_GIVER
 	setvar VAR_DRACONID_STATE, DRACONID_STATE_EGG_HATCHED
 	releaseall
 	return

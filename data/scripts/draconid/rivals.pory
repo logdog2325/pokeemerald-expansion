@@ -12,95 +12,6 @@
 // Vanilla hooks are listed in docs/hack_changes.md ("Scripts").
 
 // ---------------------------------------------------------------------------
-// Brendan on Route 104, in front of the Petalburg Woods entrance (10, 39)
-// Coord triggers at (10, 41) and (11, 41), the only way to the entrance; VAR_0x8008 = 0 / 1.
-// ---------------------------------------------------------------------------
-
-script Route104_EventScript_DraconidBrendanTrigger0 {
-    setvar(VAR_0x8008, 0)
-    goto(Route104_EventScript_DraconidBrendan)
-}
-
-script Route104_EventScript_DraconidBrendanTrigger1 {
-    setvar(VAR_0x8008, 1)
-    goto(Route104_EventScript_DraconidBrendan)
-}
-
-// Talking to him directly (he stands in front of the woods entrance).
-script Route104_EventScript_DraconidBrendanTalk {
-    setvar(VAR_0x8008, 2)
-    goto(Route104_EventScript_DraconidBrendan)
-}
-
-script Route104_EventScript_DraconidBrendan {
-    lockall
-    playbgm(MUS_ENCOUNTER_BRENDAN, TRUE)
-    if (var(VAR_0x8008) != 2) {
-        applymovement(LOCALID_ROUTE104_BRENDAN, Common_Movement_ExclamationMark)
-        waitmovement(0)
-        applymovement(LOCALID_ROUTE104_BRENDAN, Common_Movement_Delay48)
-        waitmovement(0)
-        if (var(VAR_0x8008) == 0) {
-            applymovement(LOCALID_ROUTE104_BRENDAN, Route104_Movement_DraconidBrendanApproachLeft)
-        } else {
-            applymovement(LOCALID_ROUTE104_BRENDAN, Route104_Movement_DraconidBrendanApproachRight)
-        }
-        waitmovement(0)
-        applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp)
-        waitmovement(0)
-    } else {
-        applymovement(LOCALID_ROUTE104_BRENDAN, Common_Movement_FacePlayer)
-        waitmovement(0)
-    }
-    msgbox(Route104_Text_DraconidBrendanIntro, MSGBOX_DEFAULT)
-    trainerbattle_no_intro(TRAINER_BRENDAN_ROUTE_104, Route104_Text_DraconidBrendanDefeat)
-    msgbox(Route104_Text_DraconidBrendanAfter, MSGBOX_DEFAULT)
-    closemessage
-    if (var(VAR_0x8008) == 2) {
-        applymovement(LOCALID_ROUTE104_BRENDAN, Common_Movement_WalkUp)
-    } else {
-        applymovement(LOCALID_ROUTE104_BRENDAN, Route104_Movement_DraconidBrendanExit)
-    }
-    waitmovement(0)
-    removeobject(LOCALID_ROUTE104_BRENDAN)
-    setflag(FLAG_HIDE_ROUTE_104_BRENDAN)
-    setvar(VAR_BRENDAN_STATE, BRENDAN_STATE_ROUTE_104)
-    savebgm(MUS_DUMMY)
-    fadedefaultbgm
-    releaseall
-}
-
-movement Route104_Movement_DraconidBrendanApproachLeft {
-    walk_down
-}
-
-movement Route104_Movement_DraconidBrendanApproachRight {
-    walk_down
-    walk_right
-    face_down
-}
-
-// From (10, 40) or (11, 40) into the woods entrance two tiles up
-movement Route104_Movement_DraconidBrendanExit {
-    walk_up * 2
-}
-
-text Route104_Text_DraconidBrendanIntro {
-    format("BRENDAN: Hey, {PLAYER}! I figured you'd come this way.\p"
-           "Everyone going to RUSTBORO has to go through PETALBURG WOODS.\p"
-           "I've been training TREECKO all morning. Let's see how that dragon of yours is growing!")
-}
-
-text Route104_Text_DraconidBrendanDefeat {
-    format("Whoa! Your dragon hits hard!")
-}
-
-text Route104_Text_DraconidBrendanAfter {
-    format("BRENDAN: RUSTBORO's GYM LEADER, ROXANNE, uses ROCK-type POKéMON.\p"
-           "My TREECKO is going to love that. I'll see you on the other side of the woods!")
-}
-
-// ---------------------------------------------------------------------------
 // Brendan registers in the PokéNav after the Route 110 battle
 // (Route110_EventScript_BrendanDefeated calls this)
 // ---------------------------------------------------------------------------
@@ -194,7 +105,7 @@ script SlateportCity_EventScript_DraconidMay {
         waitmovement(0)
     }
     msgbox(SlateportCity_Text_DraconidMayIntro, MSGBOX_DEFAULT)
-    trainerbattle_no_intro(TRAINER_MAY_SLATEPORT, SlateportCity_Text_DraconidMayDefeat)
+    trainerbattle_no_intro(TRAINER_MAY_ROUTE_110, SlateportCity_Text_DraconidMayDefeat)
     msgbox(SlateportCity_Text_DraconidMayAfter, MSGBOX_DEFAULT)
     closemessage
     applymovement(LOCALID_SLATEPORT_MAY, SlateportCity_Movement_DraconidMayExit)
@@ -429,7 +340,7 @@ text MossdeepCity_SpaceCenter_2F_Text_DraconidBrendanJoins {
 // ---------------------------------------------------------------------------
 
 script SootopolisCity_Gym_1F_EventScript_DraconidRivalsWait {
-    if (var(VAR_BRENDAN_STATE) == BRENDAN_STATE_ROUTE_104) {
+    if (var(VAR_BRENDAN_STATE) == BRENDAN_STATE_RUSTBORO) {
         setvar(VAR_BRENDAN_STATE, BRENDAN_STATE_SOOTOPOLIS)
         clearflag(FLAG_HIDE_SOOTOPOLIS_CITY_RIVALS)
     }
@@ -450,13 +361,13 @@ script SootopolisCity_EventScript_DraconidMegaRivals {
     applymovement(LOCALID_SOOTOPOLIS_BRENDAN, Common_Movement_WalkInPlaceFasterUp)
     waitmovement(0)
     msgbox(SootopolisCity_Text_DraconidBrendanMegaIntro, MSGBOX_DEFAULT)
-    trainerbattle_no_intro(TRAINER_BRENDAN_SOOTOPOLIS, SootopolisCity_Text_DraconidBrendanMegaDefeat)
+    trainerbattle_no_intro(TRAINER_BRENDAN_MOSSDEEP, SootopolisCity_Text_DraconidBrendanMegaDefeat)
     special(HealPlayerParty)
     msgbox(SootopolisCity_Text_DraconidMayHeals, MSGBOX_DEFAULT)
     applymovement(LOCALID_SOOTOPOLIS_MAY, Common_Movement_WalkInPlaceFasterUp)
     waitmovement(0)
     msgbox(SootopolisCity_Text_DraconidMayMegaIntro, MSGBOX_DEFAULT)
-    trainerbattle_no_intro(TRAINER_MAY_SOOTOPOLIS, SootopolisCity_Text_DraconidMayMegaDefeat)
+    trainerbattle_no_intro(TRAINER_STEVEN_MOSSDEEP, SootopolisCity_Text_DraconidMayMegaDefeat)
     special(HealPlayerParty)
     msgbox(SootopolisCity_Text_DraconidMegaRivalsAfter, MSGBOX_DEFAULT)
     closemessage

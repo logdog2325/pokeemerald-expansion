@@ -1,84 +1,3 @@
-Route104_EventScript_DraconidBrendanTrigger0::
-	setvar VAR_0x8008, 0
-	goto Route104_EventScript_DraconidBrendan
-	return
-
-
-Route104_EventScript_DraconidBrendanTrigger1::
-	setvar VAR_0x8008, 1
-	goto Route104_EventScript_DraconidBrendan
-	return
-
-
-Route104_EventScript_DraconidBrendanTalk::
-	setvar VAR_0x8008, 2
-	goto Route104_EventScript_DraconidBrendan
-	return
-
-
-Route104_EventScript_DraconidBrendan::
-	lockall
-	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
-	compare VAR_0x8008, 2
-	goto_if_ne Route104_EventScript_DraconidBrendan_2
-	applymovement LOCALID_ROUTE104_BRENDAN, Common_Movement_FacePlayer
-	waitmovement 0
-Route104_EventScript_DraconidBrendan_1:
-	msgbox Route104_Text_DraconidBrendanIntro, MSGBOX_DEFAULT
-	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_104, Route104_Text_DraconidBrendanDefeat
-	msgbox Route104_Text_DraconidBrendanAfter, MSGBOX_DEFAULT
-	closemessage
-	compare VAR_0x8008, 2
-	goto_if_eq Route104_EventScript_DraconidBrendan_6
-	applymovement LOCALID_ROUTE104_BRENDAN, Route104_Movement_DraconidBrendanExit
-Route104_EventScript_DraconidBrendan_5:
-	waitmovement 0
-	removeobject LOCALID_ROUTE104_BRENDAN
-	setflag FLAG_HIDE_ROUTE_104_BRENDAN
-	setvar VAR_BRENDAN_STATE, BRENDAN_STATE_ROUTE_104
-	savebgm MUS_DUMMY
-	fadedefaultbgm
-	releaseall
-	return
-
-Route104_EventScript_DraconidBrendan_2:
-	applymovement LOCALID_ROUTE104_BRENDAN, Common_Movement_ExclamationMark
-	waitmovement 0
-	applymovement LOCALID_ROUTE104_BRENDAN, Common_Movement_Delay48
-	waitmovement 0
-	compare VAR_0x8008, 0
-	goto_if_eq Route104_EventScript_DraconidBrendan_10
-	applymovement LOCALID_ROUTE104_BRENDAN, Route104_Movement_DraconidBrendanApproachRight
-Route104_EventScript_DraconidBrendan_9:
-	waitmovement 0
-	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-	waitmovement 0
-	goto Route104_EventScript_DraconidBrendan_1
-
-Route104_EventScript_DraconidBrendan_6:
-	applymovement LOCALID_ROUTE104_BRENDAN, Common_Movement_WalkUp
-	goto Route104_EventScript_DraconidBrendan_5
-
-Route104_EventScript_DraconidBrendan_10:
-	applymovement LOCALID_ROUTE104_BRENDAN, Route104_Movement_DraconidBrendanApproachLeft
-	goto Route104_EventScript_DraconidBrendan_9
-
-
-Route104_Movement_DraconidBrendanApproachLeft:
-	walk_down
-	step_end
-
-Route104_Movement_DraconidBrendanApproachRight:
-	walk_down
-	walk_right
-	face_down
-	step_end
-
-Route104_Movement_DraconidBrendanExit:
-	walk_up
-	walk_up
-	step_end
-
 Route110_EventScript_DraconidRegisterBrendan::
 	goto_if_unset FLAG_ENABLE_BRENDAN_MATCH_CALL, Route110_EventScript_DraconidRegisterBrendan_1
 	return
@@ -152,7 +71,7 @@ SlateportCity_EventScript_DraconidMay::
 	waitmovement 0
 SlateportCity_EventScript_DraconidMay_1:
 	msgbox SlateportCity_Text_DraconidMayIntro, MSGBOX_DEFAULT
-	trainerbattle_no_intro TRAINER_MAY_SLATEPORT, SlateportCity_Text_DraconidMayDefeat
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_110, SlateportCity_Text_DraconidMayDefeat
 	msgbox SlateportCity_Text_DraconidMayAfter, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_SLATEPORT_MAY, SlateportCity_Movement_DraconidMayExit
@@ -374,7 +293,7 @@ MossdeepCity_SpaceCenter_2F_EventScript_DraconidRivalsLeave::
 
 
 SootopolisCity_Gym_1F_EventScript_DraconidRivalsWait::
-	compare VAR_BRENDAN_STATE, BRENDAN_STATE_ROUTE_104
+	compare VAR_BRENDAN_STATE, BRENDAN_STATE_RUSTBORO
 	goto_if_eq SootopolisCity_Gym_1F_EventScript_DraconidRivalsWait_1
 	return
 
@@ -399,13 +318,13 @@ SootopolisCity_EventScript_DraconidMegaRivals::
 	applymovement LOCALID_SOOTOPOLIS_BRENDAN, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
 	msgbox SootopolisCity_Text_DraconidBrendanMegaIntro, MSGBOX_DEFAULT
-	trainerbattle_no_intro TRAINER_BRENDAN_SOOTOPOLIS, SootopolisCity_Text_DraconidBrendanMegaDefeat
+	trainerbattle_no_intro TRAINER_BRENDAN_MOSSDEEP, SootopolisCity_Text_DraconidBrendanMegaDefeat
 	special HealPlayerParty
 	msgbox SootopolisCity_Text_DraconidMayHeals, MSGBOX_DEFAULT
 	applymovement LOCALID_SOOTOPOLIS_MAY, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
 	msgbox SootopolisCity_Text_DraconidMayMegaIntro, MSGBOX_DEFAULT
-	trainerbattle_no_intro TRAINER_MAY_SOOTOPOLIS, SootopolisCity_Text_DraconidMayMegaDefeat
+	trainerbattle_no_intro TRAINER_STEVEN_MOSSDEEP, SootopolisCity_Text_DraconidMayMegaDefeat
 	special HealPlayerParty
 	msgbox SootopolisCity_Text_DraconidMegaRivalsAfter, MSGBOX_DEFAULT
 	closemessage
@@ -591,24 +510,6 @@ LilycoveCity_EventScript_DraconidWally::
 	release
 	return
 
-
-Route104_Text_DraconidBrendanIntro::
-	.string "BRENDAN: Hey, {PLAYER}! I figured you'd\n"
-	.string "come this way.\p"
-	.string "Everyone going to RUSTBORO has to go\n"
-	.string "through PETALBURG WOODS.\p"
-	.string "I've been training TREECKO all morning.\n"
-	.string "Let's see how that dragon of yours is\l"
-	.string "growing!$"
-
-Route104_Text_DraconidBrendanDefeat::
-	.string "Whoa! Your dragon hits hard!$"
-
-Route104_Text_DraconidBrendanAfter::
-	.string "BRENDAN: RUSTBORO's GYM LEADER,\n"
-	.string "ROXANNE, uses ROCK-type POKéMON.\p"
-	.string "My TREECKO is going to love that. I'll\n"
-	.string "see you on the other side of the woods!$"
 
 Route110_Text_DraconidBrendanRegister::
 	.string "BRENDAN: Oh, and MAY said she put\n"

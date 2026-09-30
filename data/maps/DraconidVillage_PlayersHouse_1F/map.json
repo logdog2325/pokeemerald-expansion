@@ -16,18 +16,18 @@
   "connections": null,
   "object_events": [
     {
-      "local_id": "LOCALID_DRACONID_HOUSE_MOM",
-      "graphics_id": "OBJ_EVENT_GFX_MOM",
+      "local_id": "LOCALID_DRACONID_HOUSE_ELDER",
+      "graphics_id": "OBJ_EVENT_GFX_DRACONID_ELDER",
       "x": 2,
       "y": 6,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "DraconidVillage_PlayersHouse_1F_EventScript_Mom",
-      "flag": "0"
+      "script": "DraconidVillage_PlayersHouse_1F_EventScript_Elder",
+      "flag": "FLAG_HIDE_DRACONID_HOUSE_ELDER"
     },
     {
       "local_id": "LOCALID_DRACONID_HOUSE_DAD",

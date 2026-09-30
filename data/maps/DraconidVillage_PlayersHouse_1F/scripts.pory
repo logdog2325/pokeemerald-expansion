@@ -13,26 +13,12 @@ script DraconidVillage_PlayersHouse_1F_EventScript_SSTicketAndLatiTV {
     lockall
     setvar(VAR_0x8008, MALE)
     setvar(VAR_0x8009, LOCALID_DRACONID_HOUSE_DAD)
-    setvar(VAR_0x800A, LOCALID_DRACONID_HOUSE_MOM)
+    setvar(VAR_0x800A, LOCALID_DRACONID_HOUSE_ELDER)
     goto(PlayersHouse_1F_EventScript_SSTicketAndLatiTV)
 }
 
-script DraconidVillage_PlayersHouse_1F_EventScript_Mom {
-    lock
-    faceplayer
-    switch (var(VAR_DRACONID_STATE)) {
-        case DRACONID_STATE_NEW_GAME:
-        case DRACONID_STATE_SET_CLOCK:
-            msgbox(format("MOM: Did you set the clock upstairs? Thank you, sweetie."))
-        case DRACONID_STATE_CLOCK_SET:
-            msgbox(format("MOM: Go on, the ELDER is waiting for you!\p"
-                          "His is the house with the red roof, near the shrine at the foot of the cliff."))
-        case DRACONID_STATE_EGG_RECEIVED:
-            msgbox(format("MOM: Oh my… So that's your egg!\p"
-                          "Your father would be so proud. Hurry to the shrine, the rite is about to begin!"))
-        default:
-            release
-            goto(PlayersHouse_1F_EventScript_Mom)
-    }
-    release
+// The player lives alone (round 1: no Mom, D-100). The Elder only comes here after the finale (D-112).
+script DraconidVillage_PlayersHouse_1F_EventScript_Elder {
+    msgbox(format("ELDER: The sky's debt is paid, {PLAYER}. For now.\p"
+                  "Rest while you can. The world beyond the mountains still has need of you."), MSGBOX_NPC)
 }

@@ -22,14 +22,6 @@ script Draconid_EventScript_BattleAsterMeteorFalls {
     trainerbattle_no_intro(TRAINER_ASTER_METEOR_FALLS_DEINO, Draconid_Text_AsterDefeat)
 }
 
-script Draconid_EventScript_BattleAsterRoute119 {
-    switch (var(VAR_STARTER_MON)) {
-        case DRACONID_EGG_DEINO:  trainerbattle_no_intro(TRAINER_ASTER_ROUTE_119_DEINO, Draconid_Text_AsterDefeat)
-        case DRACONID_EGG_DREEPY: trainerbattle_no_intro(TRAINER_ASTER_ROUTE_119_DREEPY, Draconid_Text_AsterDefeat)
-        default:                  trainerbattle_no_intro(TRAINER_ASTER_ROUTE_119_JANGMO_O, Draconid_Text_AsterDefeat)
-    }
-}
-
 script Draconid_EventScript_BattleAsterSkyPillar {
     trainerbattle_no_intro(TRAINER_ASTER_SKY_PILLAR_DEINO, Draconid_Text_AsterSkyPillarDefeat)
 }
@@ -152,74 +144,11 @@ script MtChimney_EventScript_DraconidDisguiseOff {
     }
     if (var(VAR_ASTER_STATE) < ASTER_STATE_CHIMNEY_DONE) {
         setvar(VAR_ASTER_STATE, ASTER_STATE_CHIMNEY_DONE)
-        clearflag(FLAG_HIDE_ROUTE_119_ASTER)
     }
 }
 
 text MtChimney_Text_DraconidDisguiseOff {
     format("{PLAYER} took off the TEAM MAGMA uniform and packed it away.")
-}
-
-// ---------------------------------------------------------------------------
-// A4 Route 119: Aster on the path north to Fortree. She waits at (30, 17); the triggers fill row 19
-// (x 28-31 sand, 34-35 tall grass), which every way to Fortree crosses, after the rival spot at row 31.
-// ---------------------------------------------------------------------------
-
-script Route119_EventScript_DraconidAsterTalk {
-    goto(Route119_EventScript_DraconidAster)
-}
-
-script Route119_EventScript_DraconidAster {
-    lockall
-    playbgm(MUS_ENCOUNTER_INTENSE, TRUE)
-    applymovement(LOCALID_ROUTE119_ASTER, Common_Movement_ExclamationMark)
-    waitmovement(0)
-    applymovement(LOCALID_ROUTE119_ASTER, Common_Movement_WalkDown)
-    waitmovement(0)
-    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp)
-    waitmovement(0)
-    msgbox(Route119_Text_DraconidAsterRiddle, MSGBOX_DEFAULT)
-    special(HealPlayerParty)
-    playfanfare(MUS_HEAL)
-    message(Route119_Text_DraconidAsterHeal)
-    waitmessage
-    waitfanfare
-    msgbox(Route119_Text_DraconidAsterMega, MSGBOX_DEFAULT)
-    call(Draconid_EventScript_BattleAsterRoute119)
-    msgbox(Route119_Text_DraconidAsterAfter, MSGBOX_DEFAULT)
-    closemessage
-    applymovement(LOCALID_ROUTE119_ASTER, Route119_Movement_DraconidAsterLeave)
-    waitmovement(0)
-    removeobject(LOCALID_ROUTE119_ASTER)
-    setflag(FLAG_HIDE_ROUTE_119_ASTER)
-    setvar(VAR_ASTER_STATE, ASTER_STATE_ROUTE_119)
-    savebgm(MUS_DUMMY)
-    fadedefaultbgm
-    releaseall
-}
-
-movement Route119_Movement_DraconidAsterLeave {
-    walk_up * 5
-}
-
-text Route119_Text_DraconidAsterRiddle {
-    format("ASTER: The rain here never stops. Something up there is holding its breath.\p"
-           "What lives above the storm, eats the clouds, and has never touched the ground?\p"
-           "…You'll know the answer soon enough. But your team looks worn out. I won't win like that.")
-}
-
-text Route119_Text_DraconidAsterHeal {
-    format("ASTER healed {PLAYER}'s POKéMON with a clan remedy.")
-}
-
-text Route119_Text_DraconidAsterMega {
-    format("ASTER: There. Now look what my ALTARIA learned to do.\p"
-           "The Lorekeepers taught me to MEGA EVOLVE. You're still just a kid in a costume!")
-}
-
-text Route119_Text_DraconidAsterAfter {
-    format("ASTER: …You beat a MEGA EVOLVED POKéMON without one of your own.\p"
-           "Grandfather should have given you the ring, not me. Don't tell him I said that.")
 }
 
 // ---------------------------------------------------------------------------

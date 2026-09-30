@@ -1,8 +1,8 @@
 # Flow test for the rival scenes vanilla doesn't have (data/scripts/draconid/rivals.pory).
-# Needs route104_done.ss from tests/route104.play. Each scene is reached with the debug "warp"
+# Needs rustboro_done.ss from tests/rustboro.play. Each scene is reached with the debug "warp"
 # hook and its state vars/flags set by hand; battles are mashed with the no-whiteout flag on,
 # so this checks the scripts, not the balance.
-loadstate route104_done.ss
+loadstate rustboro_done.ss
 setflag FLAG_DEBUG_NO_ENCOUNTER
 setflag FLAG_DEBUG_NO_TRAINER_SEE
 setflag FLAG_DRACONID_NO_WHITEOUT

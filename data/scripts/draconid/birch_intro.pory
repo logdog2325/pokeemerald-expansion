@@ -1,7 +1,7 @@
 // Draconid Emerald: meeting Prof. Birch, Brendan and May (Phase 4, story event 2).
 //
 //   Draconid Pass -> Route 101 west edge: Birch is attacked; the hatchling fights the
-//   Zigzagoon (special StartBirchRescueBattle, the vanilla first battle without a starter)
+//   Poochyena (special StartBirchRescueBattle, the vanilla first battle without a starter)
 //   -> warp to the lab: Birch gives Brendan Treecko and May Torchic, the player gets the
 //   Pokédex and Poké Balls -> May waits on Route 103.
 //
@@ -13,7 +13,7 @@
 // Route 101: the rescue
 // ---------------------------------------------------------------------------
 
-// Before the rescue, Birch and the Zigzagoon wait just out of view of the west entrance
+// Before the rescue, Birch and the Poochyena (object LOCALID_ROUTE101_ZIGZAGOON) wait just out of view of the west entrance
 // (objects spawn within 10 tiles, so they exist when the scene starts).
 script Route101_EventScript_DraconidOnTransition {
     if (var(VAR_ROUTE101_STATE) == 1) {
@@ -40,7 +40,7 @@ script Route101_EventScript_DraconidRescue {
     playbgm(MUS_HELP, TRUE)
     msgbox(Route101_Text_HelpMe)
     closemessage
-    // Birch runs laps around the clearing (6..9, 2..4), the Zigzagoon one step behind
+    // Birch runs laps around the clearing (6..9, 2..4), the Poochyena one step behind
     applymovement(LOCALID_ROUTE101_BIRCH, Route101_Movement_DraconidBirchLaps)
     applymovement(LOCALID_ROUTE101_ZIGZAGOON, Route101_Movement_DraconidZigzagoonLaps)
     waitmovement(0)
@@ -57,10 +57,10 @@ script Route101_EventScript_DraconidRescue {
     waitmovement(0)
     msgbox(format("Hello! You over there!\p"
                   "Is that a POKéMON with you? Please, help me!\p"
-                  "Chase this ZIGZAGOON off!"))
+                  "Chase this POOCHYENA off!"))
     closemessage
     special(StartBirchRescueBattle)
-    // back from the battle: the Zigzagoon flees
+    // back from the battle: the Poochyena flees
     applymovement(LOCALID_ROUTE101_ZIGZAGOON, Route101_Movement_DraconidZigzagoonFlee)
     waitmovement(0)
     removeobject(LOCALID_ROUTE101_ZIGZAGOON)
@@ -79,7 +79,7 @@ script Route101_EventScript_DraconidRescue {
     setflag(FLAG_HIDE_ROUTE_101_BIRCH_ZIGZAGOON_BATTLE)
     setflag(FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG)
     clearflag(FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BIRCH)
-    // May (Birch's daughter) and Brendan (his nephew) wait in the lab; neither is in a bedroom
+    // Brendan (Birch's son) and May (Norman's daughter) wait in the lab; neither is in a bedroom
     clearflag(FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_RIVAL)
     clearflag(FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BRENDAN)
     setflag(FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_RIVAL_BEDROOM)
@@ -105,7 +105,7 @@ movement Route101_Movement_DraconidBirchLaps {
     walk_fast_up
 }
 
-// The Zigzagoon starts at (10, 3), follows Birch's path one step behind and stops at (9, 4).
+// The Poochyena starts at (10, 3), follows Birch's path one step behind and stops at (9, 4).
 movement Route101_Movement_DraconidZigzagoonLaps {
     walk_fast_left
     walk_fast_up
@@ -118,7 +118,7 @@ movement Route101_Movement_DraconidZigzagoonLaps {
     walk_fast_right * 3
 }
 
-// from (0, 4) or (0, 5) to (8, 4), next to the Zigzagoon
+// from (0, 4) or (0, 5) to (8, 4), next to the Poochyena
 movement Route101_Movement_DraconidPlayerApproachTop {
     walk_right * 8
     walk_in_place_faster_right
@@ -136,7 +136,7 @@ movement Route101_Movement_DraconidZigzagoonFlee {
     walk_fast_right * 3
 }
 
-// Birch steps down into the Zigzagoon's place, next to the player at (8, 4)
+// Birch steps down into the Poochyena's place, next to the player at (8, 4)
 movement Route101_Movement_DraconidBirchApproach {
     walk_down
     walk_in_place_faster_left
@@ -150,16 +150,17 @@ movement Route101_Movement_DraconidBirchApproach {
 script LittlerootTown_ProfessorBirchsLab_EventScript_DraconidWelcome {
     lockall
     msgbox(format("PROF. BIRCH: Welcome to my LAB, {PLAYER}! You've met me at my worst, I'm afraid.\p"
-                  "Let me introduce these two. This is my daughter, MAY…"))
-    applymovement(LOCALID_BIRCHS_LAB_RIVAL, Common_Movement_WalkInPlaceFasterDown)
-    waitmovement(0)
-    msgbox(format("MAY: Hi! Dad says you're from DRACONID VILLAGE.\p"
-                  "You raised a real dragon from an egg? That's amazing!"))
-    msgbox(format("PROF. BIRCH: …and my nephew, BRENDAN. He's staying with us to learn fieldwork."))
+                  "Let me introduce these two. This is my son, BRENDAN…"))
     applymovement(LOCALID_BIRCHS_LAB_BRENDAN, Common_Movement_WalkInPlaceFasterDown)
     waitmovement(0)
     msgbox(format("BRENDAN: Hey. A baby dragon, huh?\p"
                   "Everybody talks about the Draconid clan like they're legends. We'll see."))
+    msgbox(format("PROF. BIRCH: …and this is MAY. Her father, NORMAN, just took over the PETALBURG GYM.\p"
+                  "Their family moved here from JOHTO. She's been helping me with my research!"))
+    applymovement(LOCALID_BIRCHS_LAB_RIVAL, Common_Movement_WalkInPlaceFasterDown)
+    waitmovement(0)
+    msgbox(format("MAY: Hi! I'm MAY! The PROF. says you're from DRACONID VILLAGE.\p"
+                  "You raised a real dragon from an egg? That's amazing! I want to know everything!"))
     msgbox(format("PROF. BIRCH: Today's a big day for these two. I promised them their first POKéMON."))
     applymovement(LOCALID_BIRCHS_LAB_BIRCH, Common_Movement_WalkInPlaceFasterLeft)
     waitmovement(0)
@@ -191,7 +192,7 @@ script LittlerootTown_ProfessorBirchsLab_EventScript_DraconidWelcome {
                   "Let's see what your dragon can do!"))
     applymovement(LOCALID_BIRCHS_LAB_BRENDAN, Common_Movement_WalkInPlaceFasterDown)
     waitmovement(0)
-    msgbox(format("BRENDAN: I'm heading west, toward PETALBURG. No point in waiting around.\p"
+    msgbox(format("BRENDAN: I'm heading west, toward RUSTBORO. No point in waiting around.\p"
                   "See you out there, dragon tamer. Try to keep up."))
     closemessage
     applymovement(LOCALID_BIRCHS_LAB_RIVAL, LittlerootTown_ProfessorBirchsLab_Movement_DraconidMayLeaves)
@@ -205,8 +206,7 @@ script LittlerootTown_ProfessorBirchsLab_EventScript_DraconidWelcome {
     closemessage
     // May waits on Route 103; the vanilla Pokédex-after-Route 103 step is skipped
     clearflag(FLAG_HIDE_ROUTE_103_RIVAL)
-    // Brendan waits at the Petalburg Woods entrance on Route 104 (rivals.pory)
-    clearflag(FLAG_HIDE_ROUTE_104_BRENDAN)
+    // round 1: Brendan's first battle is at the Rustboro city edge, once the player wears red (act1.pory)
     clearflag(FLAG_HIDE_ROUTE_101_BOY)
     setvar(VAR_BIRCH_LAB_STATE, 5)
     setflag(FLAG_ADVENTURE_STARTED)
@@ -258,7 +258,7 @@ script Route103_EventScript_DraconidMay {
                       "Let your dragon rest and try again. Dad says every TRAINER loses at the start.\p"
                       "See you around, {PLAYER}!"))
     } else {
-        msgbox(format("MAY: Your dragon really listens to you. No wonder Dad was so excited.\p"
+        msgbox(format("MAY: Your dragon really listens to you. No wonder the PROF. was so excited.\p"
                       "I'm going to catch lots more POKéMON so I can beat you next time!\p"
                       "See you around, {PLAYER}!"))
     }

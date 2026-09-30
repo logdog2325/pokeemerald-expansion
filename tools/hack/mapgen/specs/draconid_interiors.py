@@ -53,8 +53,9 @@ specs.append({
     "header": INDOOR, "group": GROUP,
     "events": {
         "object_events": [
-            obj("OBJ_EVENT_GFX_MOM", 2, 6, "DraconidVillage_PlayersHouse_1F_EventScript_Mom",
-                local_id="LOCALID_DRACONID_HOUSE_MOM", movement="MOVEMENT_TYPE_FACE_UP"),
+            obj("OBJ_EVENT_GFX_DRACONID_ELDER", 2, 6, "DraconidVillage_PlayersHouse_1F_EventScript_Elder",
+                "FLAG_HIDE_DRACONID_HOUSE_ELDER", local_id="LOCALID_DRACONID_HOUSE_ELDER",
+                movement="MOVEMENT_TYPE_FACE_RIGHT"),
         ],
         "warp_events": [
             warp(9, 8, "MAP_DRACONID_VILLAGE", 0),
@@ -75,8 +76,8 @@ specs.append({
     "header": INDOOR, "group": GROUP,
     "events": {
         "object_events": decor + [
-            obj("OBJ_EVENT_GFX_MOM", 7, 1, "0x0", "FLAG_HIDE_DRACONID_HOUSE_2F_MOM",
-                local_id="LOCALID_DRACONID_HOUSE_2F_MOM"),
+            obj("OBJ_EVENT_GFX_ASTER", 7, 1, "0x0", "FLAG_HIDE_DRACONID_HOUSE_2F_ASTER",
+                local_id="LOCALID_DRACONID_HOUSE_2F_ASTER"),
         ],
         "warp_events": [warp(7, 1, "MAP_DRACONID_VILLAGE_PLAYERS_HOUSE_1F", 2)],
         "coord_events": [{"type": "trigger", "x": 7, "y": 2, "elevation": 3, "var": "VAR_DRACONID_STATE",

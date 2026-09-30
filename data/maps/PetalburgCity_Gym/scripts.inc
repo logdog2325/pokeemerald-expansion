@@ -38,6 +38,7 @@ PetalburgCity_Gym_EventScript_UnlockAllDoors::
 PetalburgCity_Gym_OnTransition:
 	call_if_eq VAR_PETALBURG_GYM_STATE, 1, PetalburgCity_Gym_EventScript_MoveWallyToEntrance
 	call_if_lt VAR_PETALBURG_GYM_STATE, 6, PetalburgCity_Gym_EventScript_MoveNormanToEntrance
+	call_if_ne VAR_PETALBURG_GYM_STATE, 6, PetalburgCity_Gym_EventScript_DraconidHideMay  @ Draconid Emerald
 	call_if_set FLAG_SYS_GAME_CLEAR, PetalburgCity_Gym_EventScript_CheckNormanForRematch
 	end
 
@@ -292,21 +293,25 @@ PetalburgCity_Gym_EventScript_WallyFaceDown::
 	return
 
 PetalburgCity_Gym_EventScript_NormanNoBadges::
+	goto_if_eq VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM, PetalburgCity_Gym_EventScript_DraconidNormanUniform  @ Draconid Emerald
 	msgbox PetalburgCity_Gym_Text_NormanGoToRustboro, MSGBOX_DEFAULT
 	release
 	end
 
 PetalburgCity_Gym_EventScript_NormanOneBadge::
+	goto_if_eq VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM, PetalburgCity_Gym_EventScript_DraconidNormanUniform  @ Draconid Emerald
 	msgbox PetalburgCity_Gym_Text_NormanGoToDewford, MSGBOX_DEFAULT
 	release
 	end
 
 PetalburgCity_Gym_EventScript_NormanTwoBadges::
+	goto_if_eq VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM, PetalburgCity_Gym_EventScript_DraconidNormanUniform  @ Draconid Emerald
 	msgbox PetalburgCity_Gym_Text_YouHaveGottenStronger, MSGBOX_DEFAULT
 	release
 	end
 
 PetalburgCity_Gym_EventScript_NormanThreeBadges::
+	goto_if_eq VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM, PetalburgCity_Gym_EventScript_DraconidNormanUniform  @ Draconid Emerald
 	msgbox PetalburgCity_Gym_Text_YouHaveGottenStronger, MSGBOX_DEFAULT
 	release
 	end
@@ -331,6 +336,7 @@ PetalburgCity_Gym_EventScript_NormanPostBattle::
 	goto_if_eq VAR_RESULT, TRUE, PetalburgCity_Gym_EventScript_GiveEnigmaBerry
 	goto_if_unset FLAG_RECEIVED_TM_FACADE, PetalburgCity_Gym_EventScript_GiveFacade2
 	goto_if_set FLAG_SYS_GAME_CLEAR, PetalburgCity_Gym_EventScript_NoAmountOfTrainingIsEnough
+	goto_if_eq VAR_DRACONID_REPUTATION, REPUTATION_REVEALED, PetalburgCity_Gym_EventScript_DraconidNormanRevealed  @ Draconid Emerald
 	msgbox PetalburgCity_Gym_Text_DadGoingToKeepTraining, MSGBOX_DEFAULT
 	release
 	end
@@ -391,6 +397,7 @@ PetalburgCity_Gym_EventScript_NormanBattle::
 	delay 30
 	msgbox PetalburgCity_Gym_Text_DadHappyAndSad, MSGBOX_DEFAULT
 	closemessage
+	call PetalburgCity_Gym_EventScript_DraconidMayWatched  @ Draconid Emerald
 	delay 40
 	playse SE_DOOR
 	delay 10
@@ -1137,25 +1144,23 @@ PetalburgCity_Gym_EventScript_GymStatue::
 	releaseall
 	end
 
-PetalburgCity_Gym_Text_DadYoureHereWithYourPokemon:
-	.string "DAD: Hm?\p"
-	.string "Well, if it isn't {PLAYER}!\n"
-	.string "So you're all finished moving in?\p"
-	.string "I'm surprised that you managed to\n"
-	.string "get here by yourself.\p"
-	.string "Oh, I see.\n"
-	.string "You're with your POKéMON.\p"
-	.string "Hm… Then I guess you're going to\n"
-	.string "become a TRAINER like me, {PLAYER}.\p"
-	.string "That's great news!\n"
-	.string "I'll be looking forward to it!$"
+PetalburgCity_Gym_Text_DadYoureHereWithYourPokemon:  @ Draconid Emerald
+	.string "NORMAN: Hm? A new face.\p"
+	.string "You must be the DRACONID tamer\n"
+	.string "PROF. BIRCH told me about.\p"
+	.string "I'm NORMAN, the LEADER of this GYM.\n"
+	.string "MAY is my daughter.\p"
+	.string "So, you're with your POKéMON.\n"
+	.string "Then you're a TRAINER, {PLAYER}.\p"
+	.string "Good. I'll be looking forward\n"
+	.string "to seeing how you grow.$"
 
 PetalburgCity_Gym_Text_WallyIdLikeAPokemon:
 	.string "Um… I…\n"
 	.string "I'd like to get a POKéMON, please…$"
 
-PetalburgCity_Gym_Text_DadOhYoureWallyRight:
-	.string "DAD: Hm? You're… Uh… Oh, right.\n"
+PetalburgCity_Gym_Text_DadOhYoureWallyRight:  @ Draconid Emerald
+	.string "NORMAN: Hm? You're… Uh… Oh, right.\n"
 	.string "You're WALLY, right?$"
 
 PetalburgCity_Gym_Text_WallyIveNeverCaughtAPokemon:
@@ -1166,24 +1171,24 @@ PetalburgCity_Gym_Text_WallyIveNeverCaughtAPokemon:
 	.string "But I've never caught a POKéMON before.\n"
 	.string "I don't know how…$"
 
-PetalburgCity_Gym_Text_DadHmISee:
-	.string "DAD: Hm. I see.$"
+PetalburgCity_Gym_Text_DadHmISee:  @ Draconid Emerald
+	.string "NORMAN: Hm. I see.$"
 
-PetalburgCity_Gym_Text_DadPlayerGoWithWally:
-	.string "DAD: {PLAYER}, you heard that,\n"
+PetalburgCity_Gym_Text_DadPlayerGoWithWally:  @ Draconid Emerald
+	.string "NORMAN: {PLAYER}, you heard that,\n"
 	.string "right?\p"
-	.string "Go with WALLY and make sure that he\n"
-	.string "safely catches a POKéMON.$"
+	.string "Would you go with WALLY and make sure\n"
+	.string "that he safely catches a POKéMON?$"
 
 PetalburgCity_Gym_Text_IllLoanYouMyZigzagoon:
 	.string "WALLY, here, I'll loan you my POKéMON.\p"
 	.string "WALLY received a ZIGZAGOON!$"
 
-PetalburgCity_Gym_Text_WallyThankYouAndDadGivesPokeBall:
+PetalburgCity_Gym_Text_WallyThankYouAndDadGivesPokeBall:  @ Draconid Emerald
 	.string "WALLY: Oh, wow!\n"
 	.string "A POKéMON!\p"
-	.string "DAD: Hm. I'll give you a POKé BALL, too.\n"
-	.string "Go for it!\p"
+	.string "NORMAN: Hm. I'll give you a POKé BALL,\n"
+	.string "too. Go for it!\p"
 	.string "WALLY received a POKé BALL!$"
 
 PetalburgCity_Gym_Text_WallyOhWowThankYou:
@@ -1194,8 +1199,8 @@ PetalburgCity_Gym_Text_WouldYouReallyComeWithMe:
 	.string "{PLAYER}… Would you really come\n"
 	.string "with me?$"
 
-PetalburgCity_Gym_Text_DadSoDidItWorkOut:
-	.string "DAD: So, did it work out?$"
+PetalburgCity_Gym_Text_DadSoDidItWorkOut:  @ Draconid Emerald
+	.string "NORMAN: So, did it work out?$"
 
 PetalburgCity_Gym_Text_WallyThankYouBye:
 	.string "WALLY: Thank you, yes, it did.\n"
@@ -1210,116 +1215,108 @@ PetalburgCity_Gym_Text_WallyThankYouBye:
 	.string "so I have to go!\p"
 	.string "Bye, {PLAYER}!$"
 
-PetalburgCity_Gym_Text_DadGoCollectBadges:
-	.string "DAD: Now…\p"
+PetalburgCity_Gym_Text_DadGoCollectBadges:  @ Draconid Emerald
+	.string "NORMAN: Now…\p"
 	.string "{PLAYER}, if you want to become a\n"
 	.string "strong TRAINER, here's my advice.\p"
 	.string "Head for RUSTBORO CITY beyond this\n"
-	.string "town.\p"
+	.string "town, through PETALBURG WOODS.\p"
 	.string "There, you should challenge\n"
 	.string "the GYM LEADER, ROXANNE.\p"
 	.string "After her, go on to other POKéMON\n"
 	.string "GYMS and defeat their LEADERS.\p"
-	.string "Collect BADGES from them,\n"
-	.string "understood?\p"
-	.string "Of course, I'm a GYM LEADER, too.\n"
+	.string "I'm a GYM LEADER, too.\n"
 	.string "We'll battle one day, {PLAYER}.\p"
 	.string "But that's only after you become\n"
 	.string "stronger.$"
 
-PetalburgCity_Gym_Text_NormanGoToRustboro:
-	.string "DAD: Hm? Aren't you going to the\n"
+PetalburgCity_Gym_Text_NormanGoToRustboro:  @ Draconid Emerald
+	.string "NORMAN: Hm? Aren't you going to the\n"
 	.string "POKéMON GYM in RUSTBORO CITY?\p"
-	.string "There's no challenge for me to\n"
-	.string "battle a greenhorn TRAINER.\p"
-	.string "{PLAYER}, I want you to challenge me\n"
-	.string "when you become a lot stronger.\p"
 	.string "I'll battle you, {PLAYER}, when you\n"
-	.string "can show me four GYM BADGES, okay?$"
+	.string "can show me four GYM BADGES.$"
 
-PetalburgCity_Gym_Text_NormanGoToDewford:
-	.string "DAD: I see… So, you've beaten\n"
+PetalburgCity_Gym_Text_NormanGoToDewford:  @ Draconid Emerald
+	.string "NORMAN: So, you've beaten\n"
 	.string "the GYM LEADER in RUSTBORO CITY.\p"
-	.string "But there are many more TRAINERS\n"
-	.string "who are stronger than you, {PLAYER}.\p"
 	.string "Across the sea in DEWFORD TOWN is a\n"
 	.string "GYM LEADER named BRAWLY.\p"
-	.string "You should go challenge him.$"
+	.string "Come back to me with four BADGES.$"
 
-PetalburgCity_Gym_Text_YouHaveGottenStronger:
-	.string "DAD: Hm… {PLAYER}, you have gotten\n"
+PetalburgCity_Gym_Text_YouHaveGottenStronger:  @ Draconid Emerald
+	.string "NORMAN: Hm… {PLAYER}, you have gotten\n"
 	.string "stronger.\p"
 	.string "I can tell by the number of BADGES\n"
 	.string "that you've earned.$"
 
-PetalburgCity_Gym_Text_NormanIntro:
-	.string "DAD: Hm…\n"
+PetalburgCity_Gym_Text_NormanIntro:  @ Draconid Emerald
+	.string "NORMAN: Hm…\n"
 	.string "So, you did get four GYM BADGES.\p"
-	.string "Fine, as I promised, we will have\n"
-	.string "a POKéMON battle.\p"
-	.string "{PLAYER}…\p"
-	.string "I'm so happy that I can have\n"
-	.string "a real battle with my own child.\p"
-	.string "But, a battle is a battle!\p"
+	.string "Even wearing that red uniform.\p"
+	.string "MAY keeps telling me there's more to\n"
+	.string "you than that uniform. I don't know.\p"
+	.string "But POKéMON don't lie.\n"
+	.string "Let's see what yours have to say.\p"
 	.string "I will do everything in my power as\n"
 	.string "a GYM LEADER to win.\p"
 	.string "{PLAYER}, you'd better give it your\n"
 	.string "best shot, too!$"
 
-PetalburgCity_Gym_Text_NormanDefeat:
+PetalburgCity_Gym_Text_NormanDefeat:  @ Draconid Emerald
 	.string "…\p"
-	.string "I… I can't…\p"
-	.string "I can't believe it. {PLAYER}…\p"
-	.string "I lost to {PLAYER}?\p"
-	.string "But, rules are rules!\n"
+	.string "I… I can't believe it.\p"
+	.string "Those weren't the POKéMON of a thief.\n"
+	.string "They fought for you, {PLAYER}.\p"
+	.string "Rules are rules!\n"
 	.string "Here, take this.$"
 
-PetalburgCity_Gym_Text_ReceivedBalanceBadge:
+PetalburgCity_Gym_Text_ReceivedBalanceBadge:  @ Draconid Emerald
 	.string "{PLAYER} received the BALANCE BADGE\n"
-	.string "from DAD!$"
+	.string "from NORMAN!$"
 
-PetalburgCity_Gym_Text_ExplainBalanceBadgeTakeThis:
-	.string "DAD: With that BADGE, the DEFENSE\n"
+PetalburgCity_Gym_Text_ExplainBalanceBadgeTakeThis:  @ Draconid Emerald
+	.string "NORMAN: With that BADGE, the DEFENSE\n"
 	.string "of all your POKéMON will increase.\p"
 	.string "POKéMON that know the HM move SURF\n"
 	.string "will be able to travel over water.\p"
-	.string "This is my gift to you. {PLAYER}, I'm\n"
-	.string "sure you can use it correctly.$"
+	.string "Take this, too. {PLAYER}, I trust\n"
+	.string "you'll use it correctly.$"
 
-PetalburgCity_Gym_Text_ExplainFacade:
-	.string "DAD: TM42 contains FACADE.\p"
+PetalburgCity_Gym_Text_ExplainFacade:  @ Draconid Emerald
+	.string "NORMAN: TM42 contains FACADE.\p"
 	.string "It doubles the power of moves if\n"
 	.string "the POKéMON is poisoned, paralyzed,\l"
 	.string "or burned.\p"
 	.string "It might be able to turn a bad\n"
 	.string "situation into an advantage.$"
 
-PetalburgCity_Gym_Text_DadHappyAndSad:
-	.string "DAD: As the GYM LEADER, I can't\n"
-	.string "express how upset I am…\p"
-	.string "But as a father, it makes me both\n"
-	.string "happy and a little sad. It's odd…$"
+PetalburgCity_Gym_Text_DadHappyAndSad:  @ Draconid Emerald
+	.string "NORMAN: As a GYM LEADER, I'm upset.\p"
+	.string "But I've seen how you and your POKéMON\n"
+	.string "trust each other.\p"
+	.string "Whatever that uniform means,\n"
+	.string "that trust is real.$"
 
 PetalburgCity_Gym_Text_PleaseComeWithMe:
 	.string "Ah, there you are, {PLAYER}{KUN}!\p"
 	.string "Please come with me.\n"
 	.string "I have something I want you to have.$"
 
-PetalburgCity_Gym_Text_LetMeBorrowPlayer:
+PetalburgCity_Gym_Text_LetMeBorrowPlayer:  @ Draconid Emerald
 	.string "NORMAN, you don't mind, do you?\p"
-	.string "Let me borrow your {PLAYER}{KUN} for\n"
+	.string "Let me borrow {PLAYER}{KUN} for\n"
 	.string "a minute or two.$"
 
-PetalburgCity_Gym_Text_DadGoingToKeepTraining:
-	.string "DAD: {PLAYER}, you should go visit\n"
-	.string "your mother every so often.\p"
-	.string "I'm going to stay here and redouble\n"
-	.string "my training.\p"
-	.string "It would bother me as a TRAINER to\n"
-	.string "not avenge my loss to you, {PLAYER}!$"
+PetalburgCity_Gym_Text_DadGoingToKeepTraining:  @ Draconid Emerald
+	.string "NORMAN: I'm going to stay here and\n"
+	.string "redouble my training.\p"
+	.string "And {PLAYER}… whatever you're really\n"
+	.string "doing in that uniform…\p"
+	.string "Don't make MAY regret believing\n"
+	.string "in you.$"
 
-PetalburgCity_Gym_Text_DadNoAmountOfTrainingIsEnough:
-	.string "DAD: {PLAYER}, how are things going?\p"
+PetalburgCity_Gym_Text_DadNoAmountOfTrainingIsEnough:  @ Draconid Emerald
+	.string "NORMAN: {PLAYER}, how are things going?\p"
 	.string "The world of POKéMON is deep.\p"
 	.string "I honestly think that no amount of\n"
 	.string "training would ever be enough.$"
@@ -1552,37 +1549,32 @@ PetalburgCity_Gym_Text_GymStatueCertified:
 	.string "NORMAN'S CERTIFIED TRAINERS:\n"
 	.string "{PLAYER}$"
 
-PetalburgCity_Gym_Text_NormanPreRematch:
-	.string "DAD: {PLAYER}…\n"
+PetalburgCity_Gym_Text_NormanPreRematch:  @ Draconid Emerald
+	.string "NORMAN: {PLAYER}…\n"
 	.string "I had a feeling that you would come.\p"
 	.string "I would never refuse to accept\n"
 	.string "a challenge from you.\p"
-	.string "You do understand, don't you?\p"
-	.string "Inside a GYM, it doesn't matter that\n"
-	.string "we are a parent and child.\p"
-	.string "…No, because we are parent and child,\n"
-	.string "we owe it to each other to do the best\l"
-	.string "we can. Isn't that right, {PLAYER}?$"
+	.string "You saved this region from MAXIE,\n"
+	.string "and MAY never lets me forget it.\p"
+	.string "So I owe you my very best.\n"
+	.string "Isn't that right, {PLAYER}?$"
 
 PetalburgCity_Gym_Text_NormanRematchDefeat:
 	.string "Uh… Haha…\n"
 	.string "Maybe that was going too hard…$"
 
-PetalburgCity_Gym_Text_NormanPostRematch:
-	.string "DAD: {PLAYER}…\n"
+PetalburgCity_Gym_Text_NormanPostRematch:  @ Draconid Emerald
+	.string "NORMAN: {PLAYER}…\n"
 	.string "What is your dream?\p"
-	.string "My dream…\n"
+	.string "Mine was to see MAY grow strong.\n"
 	.string "Hahaha…\l"
 	.string "It has already come true, actually.$"
 
-PetalburgCity_Gym_Text_NormanRematchNeedTwoMons:
-	.string "DAD: {PLAYER}…\n"
+PetalburgCity_Gym_Text_NormanRematchNeedTwoMons:  @ Draconid Emerald
+	.string "NORMAN: {PLAYER}…\n"
 	.string "I had a feeling that you would come.\p"
 	.string "I would never refuse to accept\n"
 	.string "a challenge from you.\p"
-	.string "You do understand, don't you?\p"
-	.string "Inside a GYM, it doesn't matter that\n"
-	.string "we are a parent and child.\p"
 	.string "Hm? Wait a second, {PLAYER}.\p"
 	.string "Do you only have one POKéMON that is\n"
 	.string "capable of battle?\p"

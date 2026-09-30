@@ -4,9 +4,9 @@ matrix.py - run the flow tests for every player gender x egg x second starter (2
 
   python3 tools/hack/emu/matrix.py -o /tmp/matrix [-j 3] [--only M_DEINO]
 
-Per gender and egg (6 chains, run in parallel): opening -> route103 -> route104, then rivals and
-postgame_home (their scenes don't depend on the egg, so only with Deino), then for each second starter
-second_starter (Birch's pick) and aster (Aster's trainer ids for the egg, the Mega Stone for the
+Per gender and egg (6 chains, run in parallel): opening -> route103 -> woods (Nerine's team for the egg,
+the Magma sprite for the gender) -> rustboro, then rivals and postgame_home (their scenes don't depend on
+the egg, so only with Deino), then for each second starter second_starter (Tabitha + Birch's pick) and aster (Aster's trainer ids for the egg, the Mega Stone for the
 second starter, the Draconid / Magma sprites for the gender). Needs a debug build (the warp hook).
 Prints one line per test run and a summary table; exit 1 if any run failed. Logs are in -o.
 """
@@ -45,7 +45,8 @@ def chain(gender, egg, egg_id, root):
     log = os.path.join(out, "log.txt")
     open(log, "w").close()
     results = []
-    steps = [("opening", {"GENDER": gender, "EGG": egg_id, "EGGNAME": egg}), ("route103", {}), ("route104", {})]
+    steps = [("opening", {"GENDER": gender, "EGG": egg_id, "EGGNAME": egg}), ("route103", {}),
+             ("woods", {"EGGNAME": egg, "MAGMA": "MAGMA_" + gender}), ("rustboro", {})]
     if egg_id == 0:
         steps += [("rivals", {}), ("postgame_home", {})]
     for second, value, stone in SECONDS:
@@ -56,7 +57,7 @@ def chain(gender, egg, egg_id, root):
         ok, bad = run(test, out, defines, log)
         label = test + ("" if test not in ("second_starter", "aster") else " " + SECONDS[defines["SECOND"] - 1][0])
         results.append((name, label, ok, bad))
-        if not ok and test in ("opening", "route103", "route104"):
+        if not ok and test in ("opening", "route103", "woods", "rustboro"):
             break  # the rest needs their savestates
     return results
 

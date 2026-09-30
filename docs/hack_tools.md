@@ -52,6 +52,14 @@ vanilla layout for interiors.
 `data/event_scripts.s`, and adds both directions of each connection. Existing `map.json` events
 are kept unless `--overwrite-events`, so Porymap edits survive a re-run.
 
+## Dialogue rewrites – `tools/hack/retext.py`
+Replaces the `.string` body of vanilla text labels in a `scripts.inc` (the label keeps its name and gets an
+`@ Draconid Emerald` comment); used for every reworked vanilla scene (round 1). New scenes are written in
+Poryscript instead (`data/scripts/draconid/act*.pory`).
+```sh
+python3 tools/hack/retext.py data/maps/PetalburgCity_Gym/scripts.inc changes.json   # {"Label": [".string lines"]}
+```
+
 ## Porymap scripts – `tools/hack/porymap_scripts/`
 Register once with `python3 tools/hack/porymap_scripts/register.py` (writes `custom_scripts`
 into `porymap.user.cfg` and `use_poryscript=1` into `porymap.project.cfg`), then reopen the
@@ -151,7 +159,8 @@ Regression tests live in `tools/hack/emu/tests/` and chain through savestates in
 ```sh
 python3 tools/hack/emu/play.py tools/hack/emu/tests/opening.play  -o /tmp/emu   # new game -> Birch's lab
 python3 tools/hack/emu/play.py tools/hack/emu/tests/route103.play -o /tmp/emu   # lab -> May on Route 103
-python3 tools/hack/emu/play.py tools/hack/emu/tests/route104.play -o /tmp/emu   # warp -> Brendan on Route 104
+python3 tools/hack/emu/play.py tools/hack/emu/tests/woods.play -o /tmp/emu      # warp -> Nerine, Courtney, the uniform
+python3 tools/hack/emu/play.py tools/hack/emu/tests/rustboro.play -o /tmp/emu   # Brendan at Rustboro's south edge
 python3 tools/hack/emu/play.py tools/hack/emu/tests/rivals.play   -o /tmp/emu   # the other new rival scenes
 python3 tools/hack/emu/play.py tools/hack/emu/tests/second_starter.play -o /tmp/emu   # Birch in Rustboro
 python3 tools/hack/emu/play.py tools/hack/emu/tests/aster.play          -o /tmp/emu   # Aster arc, disguise, Mega Ring

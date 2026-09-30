@@ -51,31 +51,32 @@ Gender: Female
 Music: Female
 AI: Smart Trainer
 
-Ludicolo @ Leftovers
-Level: 45
-Ability: Swift Swim
+Wailord @ Leftovers
+Level: 46
+Ability: Water Veil
 Nature: Modest
-- Surf
-- Giga Drain
+- Hydro Pump
 - Ice Beam
-- Fake Out
+- Hyper Voice
+- Protect
 
-Azumarill @ Sitrus Berry
-Level: 45
-Ability: Huge Power
-Nature: Adamant
-- Waterfall
-- Play Rough
-- Superpower
-- Aqua Jet
+Latias @ Soul Dew
+Level: 46
+Ability: Levitate
+Nature: Timid
+- Dragon Pulse
+- Mist Ball
+- Helping Hand
+- Protect
 
-Blaziken @ Charcoal
+Blaziken @ Blazikenite
 Level: 47
 Ability: Speed Boost
+EVs: 252 Atk
 Nature: Adamant
 - Blaze Kick
-- Brick Break
-- Slash
+- Close Combat
+- Rock Slide
 - Protect
 
 === PARTNER_BRENDAN ===
@@ -86,28 +87,408 @@ Gender: Male
 Music: Male
 AI: Smart Trainer
 
-Pelipper @ Leftovers
-Level: 45
-Ability: Drizzle
-Nature: Modest
-- Surf
-- Air Cutter
+Mightyena @ Sitrus Berry
+Level: 46
+Ability: Intimidate
+Nature: Adamant
+- Crunch
+- Play Rough
+- Fire Fang
 - Protect
-- Roost
 
-Camerupt @ Sitrus Berry
+Latios @ Soul Dew
+Level: 46
+Ability: Levitate
+Nature: Timid
+- Dragon Pulse
+- Luster Purge
+- Tailwind
+- Protect
+
+Sceptile @ Sceptilite
+Level: 47
+Ability: Overgrow
+EVs: 252 Atk
+Nature: Jolly
+- Leaf Blade
+- Dragon Claw
+- Rock Slide
+- Protect
+
+=== PARTNER_TABITHA ===
+Name: TABITHA
+Class: Magma Admin
+Pic: Magma Admin
+Gender: Male
+Music: Magma
+AI: Smart Trainer
+
+Mightyena @ Sitrus Berry
 Level: 45
+Ability: Intimidate
+Nature: Adamant
+- Crunch
+- Fire Fang
+- Play Rough
+- Protect
+
+Crobat @ Sharp Beak
+Level: 45
+Ability: Inner Focus
+Nature: Jolly
+- Cross Poison
+- Brave Bird
+- Tailwind
+- Protect
+
+Camerupt @ Charcoal
+Level: 46
 Ability: Solid Rock
 Nature: Modest
-- Flamethrower
+- Heat Wave
 - Earth Power
 - Rock Slide
 - Protect
 
-Sceptile @ Miracle Seed
-Level: 47
+=== PARTNER_NERINE_DEINO_CHARMANDER ===
+Name: NERINE
+Class: Draconid
+Pic: Nerine
+Gender: Female
+Music: Intense
+AI: Smart Trainer
+
+Kingdra @ Life Orb
+Level: 62
+Ability: Sniper
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Modest
+- Muddy Water
+- Ice Beam
+- Dragon Pulse
+- Protect
+
+Kommo-o @ Throat Spray
+Level: 63
+Ability: Bulletproof
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Timid
+- Clanging Scales
+- Aura Sphere
+- Flamethrower
+- Protect
+
+Feraligatr @ Feraligite
+Level: 64
+Ability: Sheer Force
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Liquidation
+- Double-Edge
+- Ice Punch
+- Protect
+
+=== PARTNER_NERINE_DEINO_TOTODILE ===
+Name: NERINE
+Class: Draconid
+Pic: Nerine
+Gender: Female
+Music: Intense
+AI: Smart Trainer
+
+Kingdra @ Life Orb
+Level: 62
+Ability: Sniper
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Modest
+- Muddy Water
+- Ice Beam
+- Dragon Pulse
+- Protect
+
+Kommo-o @ Throat Spray
+Level: 63
+Ability: Bulletproof
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Timid
+- Clanging Scales
+- Aura Sphere
+- Flamethrower
+- Protect
+
+Sceptile @ Sceptilite
+Level: 64
+Ability: Overgrow
+EVs: 252 Atk / 252 Spe / 4 HP
 Nature: Jolly
 - Leaf Blade
-- X-Scissor
-- Detect
-- Quick Attack
+- Dragon Claw
+- Rock Slide
+- Protect
+
+=== PARTNER_NERINE_DEINO_TREECKO ===
+Name: NERINE
+Class: Draconid
+Pic: Nerine
+Gender: Female
+Music: Intense
+AI: Smart Trainer
+
+Kingdra @ Life Orb
+Level: 62
+Ability: Sniper
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Modest
+- Muddy Water
+- Ice Beam
+- Dragon Pulse
+- Protect
+
+Kommo-o @ Throat Spray
+Level: 63
+Ability: Bulletproof
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Timid
+- Clanging Scales
+- Aura Sphere
+- Flamethrower
+- Protect
+
+Charizard @ Charizardite X
+Level: 64
+Ability: Blaze
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Flare Blitz
+- Dragon Claw
+- Rock Slide
+- Protect
+
+=== PARTNER_NERINE_DREEPY_CHARMANDER ===
+Name: NERINE
+Class: Draconid
+Pic: Nerine
+Gender: Female
+Music: Intense
+AI: Smart Trainer
+
+Kingdra @ Life Orb
+Level: 62
+Ability: Sniper
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Modest
+- Muddy Water
+- Ice Beam
+- Dragon Pulse
+- Protect
+
+Hydreigon @ Expert Belt
+Level: 63
+Ability: Levitate
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Timid
+- Dark Pulse
+- Dragon Pulse
+- Heat Wave
+- Protect
+
+Feraligatr @ Feraligite
+Level: 64
+Ability: Sheer Force
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Liquidation
+- Double-Edge
+- Ice Punch
+- Protect
+
+=== PARTNER_NERINE_DREEPY_TOTODILE ===
+Name: NERINE
+Class: Draconid
+Pic: Nerine
+Gender: Female
+Music: Intense
+AI: Smart Trainer
+
+Kingdra @ Life Orb
+Level: 62
+Ability: Sniper
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Modest
+- Muddy Water
+- Ice Beam
+- Dragon Pulse
+- Protect
+
+Hydreigon @ Expert Belt
+Level: 63
+Ability: Levitate
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Timid
+- Dark Pulse
+- Dragon Pulse
+- Heat Wave
+- Protect
+
+Sceptile @ Sceptilite
+Level: 64
+Ability: Overgrow
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Leaf Blade
+- Dragon Claw
+- Rock Slide
+- Protect
+
+=== PARTNER_NERINE_DREEPY_TREECKO ===
+Name: NERINE
+Class: Draconid
+Pic: Nerine
+Gender: Female
+Music: Intense
+AI: Smart Trainer
+
+Kingdra @ Life Orb
+Level: 62
+Ability: Sniper
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Modest
+- Muddy Water
+- Ice Beam
+- Dragon Pulse
+- Protect
+
+Hydreigon @ Expert Belt
+Level: 63
+Ability: Levitate
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Timid
+- Dark Pulse
+- Dragon Pulse
+- Heat Wave
+- Protect
+
+Charizard @ Charizardite X
+Level: 64
+Ability: Blaze
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Flare Blitz
+- Dragon Claw
+- Rock Slide
+- Protect
+
+=== PARTNER_NERINE_JANGMO_O_CHARMANDER ===
+Name: NERINE
+Class: Draconid
+Pic: Nerine
+Gender: Female
+Music: Intense
+AI: Smart Trainer
+
+Kingdra @ Life Orb
+Level: 62
+Ability: Sniper
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Modest
+- Muddy Water
+- Ice Beam
+- Dragon Pulse
+- Protect
+
+Dragapult @ Life Orb
+Level: 63
+Ability: Infiltrator
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Dragon Darts
+- Phantom Force
+- Sucker Punch
+- Protect
+
+Feraligatr @ Feraligite
+Level: 64
+Ability: Sheer Force
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Liquidation
+- Double-Edge
+- Ice Punch
+- Protect
+
+=== PARTNER_NERINE_JANGMO_O_TOTODILE ===
+Name: NERINE
+Class: Draconid
+Pic: Nerine
+Gender: Female
+Music: Intense
+AI: Smart Trainer
+
+Kingdra @ Life Orb
+Level: 62
+Ability: Sniper
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Modest
+- Muddy Water
+- Ice Beam
+- Dragon Pulse
+- Protect
+
+Dragapult @ Life Orb
+Level: 63
+Ability: Infiltrator
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Dragon Darts
+- Phantom Force
+- Sucker Punch
+- Protect
+
+Sceptile @ Sceptilite
+Level: 64
+Ability: Overgrow
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Leaf Blade
+- Dragon Claw
+- Rock Slide
+- Protect
+
+=== PARTNER_NERINE_JANGMO_O_TREECKO ===
+Name: NERINE
+Class: Draconid
+Pic: Nerine
+Gender: Female
+Music: Intense
+AI: Smart Trainer
+
+Kingdra @ Life Orb
+Level: 62
+Ability: Sniper
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Modest
+- Muddy Water
+- Ice Beam
+- Dragon Pulse
+- Protect
+
+Dragapult @ Life Orb
+Level: 63
+Ability: Infiltrator
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Dragon Darts
+- Phantom Force
+- Sucker Punch
+- Protect
+
+Charizard @ Charizardite X
+Level: 64
+Ability: Blaze
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Flare Blitz
+- Dragon Claw
+- Rock Slide
+- Protect
+

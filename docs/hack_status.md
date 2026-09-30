@@ -16,18 +16,25 @@ menu) → `pokeemerald.gba`, `make release` → `pokeemerald-release.gba`; zippe
 `dist/` (gitignored).
 
 ## Round 1 – v2 story (in progress)
-- [~] Docs: story saved, feedback checklist, superseded decisions marked, v2 decisions (D-100–D-112)
-- [ ] Quick fixes: dragon lines evolve at 25/50 (D-107), every Mega checked, player sprite audit (never Brendan/May)
-- [ ] Core: reputation var, outfit timeline, variant trainers (D-101), Nerine + Aster leftover egg, rival teams
-- [ ] Act 1–2: village without Mom, Poochyena rescue, families, Petalburg Woods recruitment + outpost cabin,
-      Rustboro Brendan, second starter lines, Rusturf goods choice, Steven, Slateport museum, Route 110, Wally
+- [x] Docs: story saved, feedback checklist, superseded decisions marked, v2 decisions (D-100–D-116)
+- [x] Quick fixes: dragon lines evolve at 25/50 (D-107), every Mega checked, player sprite audit (never Brendan/May)
+- [x] Core: reputation var, outfit timeline, variant trainers (D-101), Nerine + Aster leftover egg
+- [x] Story teams: Nerine (75), Aster (12), Brendan (7), May (5), Steven / Maxie / Archie; partners Tabitha,
+      May, Brendan, Nerine ×9 – rival trainer ids renamed to the round 1 schedule
+- [x] Act 1: village without Mom (prologue, Aster, Elder's prophecy), Poochyena rescue, families (Birch/Brendan,
+      Norman/May), Littleroot moms, Petalburg Woods (Nerine, Courtney, outpost cabin, uniform), Rustboro (Brendan,
+      Tabitha's order, Birch's lines); v1 Route 104 Brendan and Route 119 Aster removed – emulator-tested
+      (`woods.play`, `rustboro.play`, matrix 18/18)
+- [x] Act 4 part: Petalburg Gym – Norman is May's father, uniform lines, May watches the battle (tested by hand)
+- [ ] Act 2: Rusturf goods choice, Steven, Slateport museum, Route 110 May (PokéNav), Mauville Wally
 - [ ] Act 3–5: Meteor Falls, Mt. Chimney sabotage, Jagged Pass Mega Ring, Lavaridge, Weather Institute, Mt. Pyre,
       Magma Hideout promotion, Aqua Hideout, Mossdeep reversed tag battle, Seafloor reveal, Sootopolis turn,
-      Rayquaza calling, aftermath
+      Rayquaza calling, aftermath (v1 scenes still in place there: cable car disguise, Slateport May, Sootopolis
+      Megas, Elder's Mega Ring)
 - [ ] Act 6–7: Hall of Fame → meteor alert → Sky Pillar finale (double, Rayquaza catch, Deoxys, Mega Rayquaza),
-      credits, post-game
-- [ ] Reputation dialogue (shared NPCs, key NPCs, townsfolk) + `docs/hack_script.md`
-- [ ] Art: Nerine (Aqua disguise + true outfit), Courtney, outpost cabin map, tamer scarf (1.14)
+      credits, post-game (the Elder brings the SS Ticket)
+- [~] Reputation dialogue (shared NPCs, key NPCs, townsfolk) + `docs/hack_script.md` (agent working)
+- [~] Art: Nerine (Aqua disguise + true outfit), Courtney, back pics (agent working); tamer scarf (1.14)
 - [ ] Trainers from real ORAS rematch data (Serebii), Elite Four post-game rematches
 - [ ] Verification (matrix incl. Nerine/Aster variants, story checks, per-act debug warps) + v2 ROM
 

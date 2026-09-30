@@ -609,6 +609,7 @@ gStdScripts_End::
 	.include "data/maps/DraconidVillage_Shrine/scripts.inc"
 	.include "data/maps/DraconidVillage_House1/scripts.inc"
 	.include "data/maps/DraconidVillage_House2/scripts.inc"
+	.include "data/maps/PetalburgWoods_MagmaOutpost/scripts.inc"
 
 .if IS_FRLG
 
@@ -1067,6 +1068,8 @@ gStdScripts_End::
 	.include "data/scripts/draconid/rivals.inc"
 	.include "data/scripts/draconid/second_starter.inc"
 	.include "data/scripts/draconid/aster.inc"
+	.include "data/scripts/draconid/act1.inc"
+	.include "data/scripts/draconid/act4.inc"
 	.include "data/scripts/hall_of_fame.inc"
 	.include "data/scripts/hall_of_fame_frlg.inc"
 

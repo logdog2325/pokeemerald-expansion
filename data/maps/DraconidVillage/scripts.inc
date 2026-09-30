@@ -4,7 +4,7 @@ DraconidVillage_MapScripts::
 	.byte 0
 
 DraconidVillage_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
-	map_script_2 VAR_DRACONID_STATE, DRACONID_STATE_EGG_HATCHED, DraconidVillage_EventScript_MomGivesRunningShoes
+	map_script_2 VAR_DRACONID_STATE, DRACONID_STATE_EGG_HATCHED, DraconidVillage_EventScript_RunningShoes
 	.2byte 0
 
 
@@ -19,36 +19,36 @@ DraconidVillage_OnTransition_1:
 	return
 
 
-DraconidVillage_EventScript_MomGivesRunningShoes::
+DraconidVillage_EventScript_RunningShoes::
 	lockall
-	addobject LOCALID_DRACONID_VILLAGE_MOM
-	applymovement LOCALID_DRACONID_VILLAGE_MOM, DraconidVillage_Movement_MomApproach
+	addobject LOCALID_DRACONID_VILLAGE_SHOES_GIVER
+	applymovement LOCALID_DRACONID_VILLAGE_SHOES_GIVER, DraconidVillage_Movement_ShoesGiverApproach
 	waitmovement 0
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
-	msgbox DraconidVillage_EventScript_MomGivesRunningShoes_Text_0
+	msgbox DraconidVillage_EventScript_RunningShoes_Text_0
 	playfanfare MUS_OBTAIN_ITEM
-	message DraconidVillage_EventScript_MomGivesRunningShoes_Text_1
+	message DraconidVillage_EventScript_RunningShoes_Text_1
 	waitfanfare
 	waitmessage
-	msgbox DraconidVillage_EventScript_MomGivesRunningShoes_Text_2
+	msgbox DraconidVillage_EventScript_RunningShoes_Text_2
 	closemessage
 	setflag FLAG_RECEIVED_RUNNING_SHOES
 	setflag FLAG_SYS_B_DASH
-	applymovement LOCALID_DRACONID_VILLAGE_MOM, DraconidVillage_Movement_MomLeave
+	applymovement LOCALID_DRACONID_VILLAGE_SHOES_GIVER, DraconidVillage_Movement_ShoesGiverLeave
 	waitmovement 0
-	removeobject LOCALID_DRACONID_VILLAGE_MOM
+	removeobject LOCALID_DRACONID_VILLAGE_SHOES_GIVER
 	setvar VAR_DRACONID_STATE, DRACONID_STATE_READY_TO_LEAVE
 	setvar VAR_TEMP_1, 1
 	releaseall
 	return
 
 
-DraconidVillage_Movement_MomApproach:
+DraconidVillage_Movement_ShoesGiverApproach:
 	walk_up
 	step_end
 
-DraconidVillage_Movement_MomLeave:
+DraconidVillage_Movement_ShoesGiverLeave:
 	walk_down
 	walk_down
 	walk_down
@@ -140,27 +140,28 @@ DraconidVillage_EventScript_PlayersHouseSign::
 	return
 
 
-DraconidVillage_EventScript_MomGivesRunningShoes_Text_0:
-	.string "MOM: {PLAYER}! I couldn't wait at home\n"
-	.string "any longer…\p"
-	.string "Oh! Is that your partner? It hatched!\n"
-	.string "How wonderful!\p"
-	.string "The ELDER told me you're going to see\n"
-	.string "PROF. BIRCH in LITTLEROOT TOWN.\p"
-	.string "Then you'll need these! I've been saving\n"
-	.string "them for the day you left the village.$"
+DraconidVillage_EventScript_RunningShoes_Text_0:
+	.string "OLD WOMAN: So the egg answered the sky.\n"
+	.string "Let me see… Oh, what a bright little\l"
+	.string "dragon!\p"
+	.string "The ELDER told us all. You're going down\n"
+	.string "to the lowlands, alone, and in secret.\p"
+	.string "Then you'll need to move fast. Take\n"
+	.string "these. Every tamer who leaves this\l"
+	.string "village gets a pair.$"
 
-DraconidVillage_EventScript_MomGivesRunningShoes_Text_1:
+DraconidVillage_EventScript_RunningShoes_Text_1:
 	.string "{PLAYER} switched shoes with the\n"
 	.string "RUNNING SHOES.$"
 
-DraconidVillage_EventScript_MomGivesRunningShoes_Text_2:
-	.string "MOM: Hold the B Button to run with them!\p"
+DraconidVillage_EventScript_RunningShoes_Text_2:
+	.string "OLD WOMAN: Hold the B Button to run\n"
+	.string "with them!\p"
 	.string "Cross the bridge on DRACONID PASS and\n"
 	.string "head east to ROUTE 101. LITTLEROOT is\l"
 	.string "just south of it.\p"
-	.string "Come home whenever you need a rest.\n"
-	.string "Take care, sweetie!$"
+	.string "Your house will be waiting when you need\n"
+	.string "a rest. The whole village will.$"
 
 DraconidVillage_EventScript_GatekeeperStop_Text_0:
 	.string "GATEKEEPER: Whoa there, {PLAYER}! Isn't\n"

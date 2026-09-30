@@ -676,12 +676,12 @@
   "TRAINER_EDWIN_4": "S8",
   "TRAINER_EDWIN_5": "POST",
   "TRAINER_WALLY_VR_1": "S9",
-  "TRAINER_BRENDAN_ROUTE_104": "S1",
-  "TRAINER_BRENDAN_ROUTE_110": "S3",
+  "TRAINER_BRENDAN_RUSTBORO": "S1",
+  "TRAINER_BRENDAN_MT_CHIMNEY": "S3",
   "TRAINER_BRENDAN_ROUTE_119": "S6",
-  "TRAINER_MAY_SLATEPORT": "S3",
-  "TRAINER_BRENDAN_SOOTOPOLIS": "S9",
-  "TRAINER_MAY_SOOTOPOLIS": "S9",
+  "TRAINER_MAY_ROUTE_110": "S3",
+  "TRAINER_BRENDAN_MOSSDEEP": "S9",
+  "TRAINER_STEVEN_MOSSDEEP": "S9",
   "TRAINER_BRENDAN_POSTGAME": "POST",
   "TRAINER_MAY_POSTGAME": "POST",
   "TRAINER_BRENDAN_POSTGAME_DOUBLE": "POST",
@@ -689,9 +689,9 @@
   "TRAINER_ASTER_METEOR_FALLS_DREEPY": "S4",
   "TRAINER_ASTER_METEOR_FALLS_JANGMO_O": "S4",
   "TRAINER_MAY_ROUTE_103": "S1",
-  "TRAINER_ASTER_ROUTE_119_DEINO": "S6",
-  "TRAINER_ASTER_ROUTE_119_DREEPY": "S6",
-  "TRAINER_ASTER_ROUTE_119_JANGMO_O": "S6",
+  "TRAINER_MAXIE_SOOTOPOLIS": "S6",
+  "TRAINER_MAXIE_SOOTOPOLIS_MULTI": "S6",
+  "TRAINER_ARCHIE_SOOTOPOLIS_MULTI": "S6",
   "TRAINER_ASTER_SKY_PILLAR_DEINO": "S8",
   "TRAINER_ASTER_SKY_PILLAR_DREEPY": "S8",
   "TRAINER_ISAAC_1": "S3",
@@ -4443,13 +4443,13 @@
    "map": "VictoryRoad_1F",
    "story": true
   },
-  "TRAINER_BRENDAN_ROUTE_104": {
+  "TRAINER_BRENDAN_RUSTBORO": {
    "segment": "S1",
    "role": "route",
    "map": "Route104",
    "story": true
   },
-  "TRAINER_BRENDAN_ROUTE_110": {
+  "TRAINER_BRENDAN_MT_CHIMNEY": {
    "segment": "S3",
    "role": "route",
    "map": "Route110",
@@ -4461,19 +4461,19 @@
    "map": "Route119",
    "story": true
   },
-  "TRAINER_MAY_SLATEPORT": {
+  "TRAINER_MAY_ROUTE_110": {
    "segment": "S3",
    "role": "route",
    "map": "SlateportCity",
    "story": true
   },
-  "TRAINER_BRENDAN_SOOTOPOLIS": {
+  "TRAINER_BRENDAN_MOSSDEEP": {
    "segment": "S9",
    "role": "route",
    "map": "SootopolisCity",
    "story": true
   },
-  "TRAINER_MAY_SOOTOPOLIS": {
+  "TRAINER_STEVEN_MOSSDEEP": {
    "segment": "S9",
    "role": "route",
    "map": "SootopolisCity",
@@ -4521,19 +4521,19 @@
    "map": "Route103",
    "story": true
   },
-  "TRAINER_ASTER_ROUTE_119_DEINO": {
+  "TRAINER_MAXIE_SOOTOPOLIS": {
    "segment": "S6",
    "role": "route",
    "map": null,
    "story": true
   },
-  "TRAINER_ASTER_ROUTE_119_DREEPY": {
+  "TRAINER_MAXIE_SOOTOPOLIS_MULTI": {
    "segment": "S6",
    "role": "route",
    "map": null,
    "story": true
   },
-  "TRAINER_ASTER_ROUTE_119_JANGMO_O": {
+  "TRAINER_ARCHIE_SOOTOPOLIS_MULTI": {
    "segment": "S6",
    "role": "route",
    "map": null,

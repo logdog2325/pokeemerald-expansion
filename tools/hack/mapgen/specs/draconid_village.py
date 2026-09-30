@@ -122,8 +122,8 @@ spec = {
             obj("OBJ_EVENT_GFX_DRACONID_BOY", 10, 18, "DraconidVillage_EventScript_Boy", movement="MOVEMENT_TYPE_WANDER_AROUND", rx=2, ry=2),
             obj("OBJ_EVENT_GFX_DRACONID_GUARD", 22, 25, "DraconidVillage_EventScript_Gatekeeper",
                 movement="MOVEMENT_TYPE_FACE_LEFT", local_id="LOCALID_DRACONID_GATEKEEPER"),
-            obj("OBJ_EVENT_GFX_MOM", 19, 8, "0x0", "FLAG_HIDE_DRACONID_VILLAGE_MOM",
-                local_id="LOCALID_DRACONID_VILLAGE_MOM", movement="MOVEMENT_TYPE_FACE_UP"),
+            obj("OBJ_EVENT_GFX_DRACONID_OLD_WOMAN", 19, 8, "0x0", "FLAG_HIDE_DRACONID_VILLAGE_SHOES_GIVER",
+                local_id="LOCALID_DRACONID_VILLAGE_SHOES_GIVER", movement="MOVEMENT_TYPE_FACE_UP"),
         ],
         "warp_events": [
             warp(8, 14, "MAP_DRACONID_VILLAGE_PLAYERS_HOUSE_1F", 0),

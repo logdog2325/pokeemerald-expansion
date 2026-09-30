@@ -1,0 +1,87 @@
+// Draconid Emerald round 1, Act 4 (docs/hack_story.md): Petalburg Gym with MAY watching, Weather Institute,
+// Route 119, Fortree, Lilycove, Mt. Pyre, Magma Hideout. NPC lines follow VAR_DRACONID_REPUTATION (D-103).
+
+// ---------------------------------------------------------------------------
+// Petalburg Gym: NORMAN is MAY's father (D-100). MAY stands by the mat while the gym is open to the
+// player (VAR_PETALBURG_GYM_STATE 6); her object uses FLAG_TEMP_11, set on every other visit.
+// ---------------------------------------------------------------------------
+
+script PetalburgCity_Gym_EventScript_DraconidHideMay {
+    setflag(FLAG_TEMP_11)
+}
+
+// Norman before the fourth badge, while the player wears the Magma uniform (vanilla lines otherwise)
+script PetalburgCity_Gym_EventScript_DraconidNormanUniform {
+    switch (var(VAR_PETALBURG_GYM_STATE)) {
+        case 2:
+            msgbox(format("NORMAN: That's a MAGMA uniform, {PLAYER}. MAY told me. I didn't want to believe her.\p"
+                          "Still, a GYM LEADER doesn't choose his challengers. Come back with four BADGES."))
+        case 3:
+            msgbox(format("NORMAN: ROXANNE's BADGE… and that red uniform. An odd pair.\p"
+                          "Go on to DEWFORD. I'll battle you when you have four BADGES."))
+        default:
+            msgbox(format("NORMAN: Hm… You've gotten stronger. I can tell by your BADGES.\p"
+                          "I only wish I knew what you're getting stronger for."))
+    }
+    release
+}
+
+script PetalburgCity_Gym_EventScript_DraconidNormanRevealed {
+    msgbox(format("NORMAN: {PLAYER}. MAY told me everything about SOOTOPOLIS.\p"
+                  "I judged you by a uniform. A GYM LEADER should know better.\p"
+                  "Your POKéMON never doubted you. Neither will I, from now on."))
+    release
+}
+
+script PetalburgCity_Gym_EventScript_DraconidMay {
+    lock
+    faceplayer
+    msgbox(format("MAY: Don't mind me. I'm just here to watch.\p"
+                  "DAD won't go easy on you, {PLAYER}. Uniform or not."))
+    release
+}
+
+// Called after the badge and TM, before WALLY's father arrives (VAR_FACING is still the side the
+// player battled from; VAR_0x8008 is set by the vanilla script afterwards)
+script PetalburgCity_Gym_EventScript_DraconidMayWatched {
+    applymovement(LOCALID_PETALBURG_GYM_MAY, PetalburgCity_Gym_Movement_DraconidMayStepUp)
+    waitmovement(0)
+    if (var(VAR_FACING) == DIR_WEST) {
+        applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterDown)
+        applymovement(LOCALID_PETALBURG_GYM_MAY, Common_Movement_WalkInPlaceFasterUp)
+    } elif (var(VAR_FACING) == DIR_EAST) {
+        applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterDown)
+        applymovement(LOCALID_PETALBURG_GYM_MAY, Common_Movement_WalkInPlaceFasterLeft)
+    } else {
+        applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight)
+        applymovement(LOCALID_PETALBURG_GYM_MAY, Common_Movement_WalkInPlaceFasterLeft)
+    }
+    waitmovement(0)
+    msgbox(format("MAY: DAD says you fought honestly.\p"
+                  "That's not what MAGMA does.\p"
+                  "I don't know what you really are, {PLAYER}. But I'm going to find out."))
+    closemessage
+    applymovement(LOCALID_PETALBURG_GYM_MAY, PetalburgCity_Gym_Movement_DraconidMayLeave)
+    waitmovement(0)
+    removeobject(LOCALID_PETALBURG_GYM_MAY)
+    if (var(VAR_FACING) == DIR_WEST) {
+        applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft)
+    } elif (var(VAR_FACING) == DIR_EAST) {
+        applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight)
+    } else {
+        applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp)
+    }
+    waitmovement(0)
+}
+
+movement PetalburgCity_Gym_Movement_DraconidMayStepUp {
+    walk_left
+}
+
+// out through the door WALLY's father comes in by (1, 7)
+movement PetalburgCity_Gym_Movement_DraconidMayLeave {
+    walk_down * 3
+    walk_left * 5
+    walk_in_place_faster_down
+    set_invisible
+}

@@ -1,0 +1,56 @@
+// Draconid Emerald: the Team Magma outpost cabin at the edge of Petalburg Woods (Act 1, D-113).
+// Only reached by COURTNEY's cutscene (PetalburgWoods_EventScript_DraconidRecruitment); the door
+// leads out to the woods' north entrance on Route 104.
+
+mapscripts PetalburgWoods_MagmaOutpost_MapScripts {
+    MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE [
+        VAR_PETALBURG_WOODS_STATE, 2: PetalburgWoods_MagmaOutpost_EventScript_FaceCourtney
+    ]
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_PETALBURG_WOODS_STATE, 2: PetalburgWoods_MagmaOutpost_EventScript_Uniform
+    ]
+}
+
+script PetalburgWoods_MagmaOutpost_EventScript_FaceCourtney {
+    turnobject(LOCALID_PLAYER, DIR_NORTH)
+}
+
+script PetalburgWoods_MagmaOutpost_EventScript_Uniform {
+    lockall
+    delay(30)
+    applymovement(LOCALID_MAGMA_OUTPOST_GRUNT_M, Common_Movement_ExclamationMark)
+    waitmovement(0)
+    msgbox(format("GRUNT: COURTNEY! Who's the kid?"), MSGBOX_DEFAULT)
+    msgbox(format("COURTNEY: New member. Beat an AQUA woman in the woods. Alone."), MSGBOX_DEFAULT)
+    msgbox(format("GRUNT: Alone? At that age?\n"
+                  "…Well, we could use the muscle."), MSGBOX_DEFAULT)
+    msgbox(format("COURTNEY: Uniform. Put it on."), MSGBOX_DEFAULT)
+    closemessage
+    setvar(VAR_0x8004, PLAYER_OUTFIT_MAGMA)
+    call(Draconid_EventScript_ChangeOutfit)
+    setvar(VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM)
+    setvar(VAR_MAGMA_STATE, MAGMA_STATE_RECRUITED)
+    // Brendan waits at Rustboro's south edge (act1.pory)
+    clearflag(FLAG_HIDE_RUSTBORO_CITY_RIVAL)
+    msgbox(format("{PLAYER} put on the TEAM MAGMA uniform."), MSGBOX_DEFAULT)
+    msgbox(format("COURTNEY: …Red. It suits you.\p"
+                  "TABITHA leads the grunts in the field. He will find you.\p"
+                  "Until then: RUSTBORO. Get strong.\p"
+                  "Leader MAXIE… likes strong."), MSGBOX_DEFAULT)
+    setvar(VAR_PETALBURG_WOODS_STATE, 3)
+    releaseall
+}
+
+script PetalburgWoods_MagmaOutpost_EventScript_Courtney {
+    msgbox(format("COURTNEY: RUSTBORO. Get strong. TABITHA will find you."), MSGBOX_NPC)
+}
+
+script PetalburgWoods_MagmaOutpost_EventScript_GruntM {
+    msgbox(format("GRUNT: Welcome to the team, kid.\p"
+                  "Folks in town will stare at the uniform. Let 'em."), MSGBOX_NPC)
+}
+
+script PetalburgWoods_MagmaOutpost_EventScript_GruntF {
+    msgbox(format("GRUNT: A dragon, huh? Where are you from, anyway?\p"
+                  "…The mountains? Never heard of a village up there."), MSGBOX_NPC)
+}

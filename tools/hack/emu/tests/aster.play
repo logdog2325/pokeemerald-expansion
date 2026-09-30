@@ -1,5 +1,5 @@
 # Flow test for Aster's arc, the Team Magma disguise and the Mega Ring (aster.pory).
-# Needs route104_done.ss from tests/route104.play: a one-Pokemon party, so a mashed battle ends
+# Needs rustboro_done.ss from tests/rustboro.play: a one-Pokemon party, so a mashed battle ends
 # when it faints instead of stopping at the switch menu. VAR_SECOND_STARTER is set by hand.
 # States are set by hand and scenes reached with the debug warp; battles are mashed with the
 # no-whiteout flag on, so this checks the scripts, not the balance. Mt. Chimney's and the Magma
@@ -7,7 +7,7 @@
 # Matrix parameters (tools/hack/emu/matrix.py): EGGNAME = the player's egg in the savestate (Aster's
 # trainer ids are named after it), SECOND/STONE = the second starter and its Mega Stone, GFX/MAGMA = the
 # player's sprite prefix for the Draconid and Magma outfits.
-default START route104_done.ss
+default START rustboro_done.ss
 default EGGNAME DEINO
 default SECOND 1
 default STONE ITEM_CHARIZARDITE_X
@@ -42,21 +42,9 @@ expect_var VAR_ASTER_STATE 2
 expect_var VAR_PLAYER_OUTFIT 1
 expect_gfx OBJ_EVENT_GFX_${MAGMA}_NORMAL
 
-# --- A4 Route 119 (Mt. Chimney's Maxie would take the disguise off and set state 3) ---
+# (Mt. Chimney's Maxie takes the disguise off and sets state 3; the v1 Route 119 battle is gone)
 setvar VAR_PLAYER_OUTFIT 0
 setvar VAR_ASTER_STATE 3
-clearflag FLAG_HIDE_ROUTE_119_ASTER
-heal
-warp MAP_ROUTE119 30 22
-run 60
-walk UP 19
-run 60
-shot 30_route119
-mash A 90000
-expect_var VAR_ASTER_STATE 4
-expect_flag FLAG_HIDE_ROUTE_119_ASTER 1
-expect_opponent TRAINER_ASTER_ROUTE_119_${EGGNAME}
-expect_gfx OBJ_EVENT_GFX_${GFX}_NORMAL
 
 # --- Magma Hideout: the disguise goes back on ---
 warp MAP_MAGMA_HIDEOUT_1F 10 33 3000

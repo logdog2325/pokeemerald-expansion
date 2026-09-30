@@ -51,13 +51,13 @@ Grouped by area; each entry names the file(s).
 | `FLAG_HIDE_DRACONID_PASS_ASTER` (0x27) | Aster waiting on Draconid Pass |
 | `FLAG_DEFEATED_ASTER_DRACONID_PASS` (0x28) | first Aster battle done |
 | `FLAG_RECEIVED_SECOND_STARTER` (0x29) | Birch's second starter taken (Phase 4) |
-| `FLAG_HIDE_DRACONID_VILLAGE_MOM` (0x2A) | Mom waiting outside the shrine (Running Shoes) |
-| `FLAG_HIDE_DRACONID_HOUSE_2F_MOM` (0x2B) | Mom in the bedroom (wake-up scene) |
+| `FLAG_HIDE_DRACONID_VILLAGE_SHOES_GIVER` (0x2A, was `…_MOM`, round 1) | the old woman outside the shrine who gives the Running Shoes |
+| `FLAG_HIDE_DRACONID_HOUSE_2F_ASTER` (0x2B, was `…_2F_MOM`, round 1) | Aster at the bedroom door (prologue: the Elder calls) |
 | `FLAG_DRACONID_NO_WHITEOUT` (0x2C) | `B_FLAG_NO_WHITEOUT`: set around scripted battles the player may lose |
 | `FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BRENDAN` (0x2D) | Brendan in Birch's lab (the welcome scene) |
 | `FLAG_DEBUG_NO_ENCOUNTER` (0x2E), `FLAG_DEBUG_NO_TRAINER_SEE` (0x2F), `FLAG_DEBUG_NO_COLLISION` (0x30) | the expansion's debug toggles (debug menu, emulator tests); never set by the game |
 | `FLAG_VISITED_DRACONID_VILLAGE` (`SYSTEM_FLAGS+0x21`, was `FLAG_UNUSED_0x881`) | fly destination |
-| `FLAG_HIDE_ROUTE_104_BRENDAN` (0x39) | Brendan at the Petalburg Woods entrance (cleared by the lab welcome) |
+| `FLAG_HIDE_RUSTBORO_CITY_TABITHA` (0x39, was `FLAG_HIDE_ROUTE_104_BRENDAN`, round 1) | Tabitha beside the Rustboro Gym door (cleared by the Stone Badge; her order) |
 | `FLAG_HIDE_SLATEPORT_CITY_MAY` (0x3A) | May at Slateport's north exit (cleared after the Oceanic Museum) |
 | `FLAG_HIDE_SOOTOPOLIS_CITY_RIVALS` (0x3B) | Brendan and May below the Sootopolis Gym (cleared by the Rain Badge) |
 | `FLAG_HIDE_PETALBURG_CITY_WALLY_GYM` (0x3C) | Wally beside the Petalburg Gym door (cleared by the Heat Badge) |
@@ -66,11 +66,15 @@ Grouped by area; each entry names the file(s).
 | `FLAG_HIDE_RUSTBORO_CITY_BIRCH` (0x40) | Prof. Birch outside the Rustboro Gym (cleared by the Stone Badge; second starter) |
 | `FLAG_HIDE_METEOR_FALLS_ASTER` (0x41) | Aster in Meteor Falls (after Magma takes the meteorite) |
 | `FLAG_HIDE_CABLE_CAR_STATION_ASTER` (0x42) | Aster at the Route 112 cable car station (the disguise) |
-| `FLAG_HIDE_ROUTE_119_ASTER` (0x43) | Aster on Route 119's north path (cleared after Mt. Chimney) |
+| 0x43 (was `FLAG_HIDE_ROUTE_119_ASTER`) | free again (round 1 removed Aster's Route 119 battle) |
 | `FLAG_HIDE_MAGMA_HIDEOUT_ASTER` (0x44) | Aster in the Magma Hideout 4F (shown after Maxie) |
 | `FLAG_HIDE_SKY_PILLAR_TOP_ASTER` (0x45) | Aster at the top of the Sky Pillar |
 | `FLAG_RECEIVED_MEGA_RING` (0x46) | the Elder gave the Mega Ring (and the second starter's Mega Stone) |
 | `FLAG_HIDE_PLAYERS_HOUSE_DAD` (vanilla) | now also hides Norman in the Draconid house 1F (shown by the Hall of Fame) |
+| `FLAG_HIDE_DRACONID_HOUSE_ELDER` (0x47, round 1) | the Elder in the player's house 1F (cleared by the Hall of Fame for the post-game scene, D-112) |
+| `FLAG_HIDE_PETALBURG_WOODS_COURTNEY` (0x48, round 1) | Courtney in Petalburg Woods (cleared after Nerine is beaten) |
+| `FLAG_HIDE_RUSTBORO_CITY_RIVAL` (vanilla, round 1) | now Brendan at Rustboro's south edge: cleared by the outpost scene, set when he walks off; the Devon 3F no longer clears it |
+| `FLAG_TEMP_11` in `PetalburgCity_Gym` (round 1) | hides May (`LOCALID_PETALBURG_GYM_MAY`) unless `VAR_PETALBURG_GYM_STATE` is 6 (set by the gym's OnTransition) |
 | `FLAG_ENABLE_BRENDAN_MATCH_CALL` (0x3F) | Brendan in the PokéNav (registered after the Route 110 battle); May keeps `FLAG_ENABLE_RIVAL_MATCH_CALL` |
 
 ## Vars
@@ -80,14 +84,17 @@ Grouped by area; each entry names the file(s).
 | `VAR_ASTER_EGG` (0x40F8) | Aster's egg, `DRACONID_EGG_*` (counter-pick of the player's) |
 | `VAR_SECOND_STARTER` (0x40F9) | `SECOND_STARTER_*`: 0 none, 1 Charmander, 2 Totodile, 3 Treecko |
 | `VAR_PLAYER_OUTFIT` (0x40FA) | `PLAYER_OUTFIT_*`: 0 Draconid, 1 Magma – picks the player's sprites and trainer pics (`src/player_outfit.c`) |
-| `VAR_ASTER_STATE` (0x40FB) | `ASTER_STATE_*`: 0 start, 1 Meteor Falls done, 2 disguised, 3 Mt. Chimney done, 4 Route 119 done, 5 Magma Hideout done, 6 Mega Ring, 7 Sky Pillar done, 8 post-game done |
-| `VAR_BRENDAN_STATE` (0x40FC) | `BRENDAN_STATE_*`: 0 waits on Route 104, 1 beaten there, 2 waits in Sootopolis, 3 Megas done |
+| `VAR_ASTER_STATE` (0x40FB) | `ASTER_STATE_*`: 0 start, 1 Meteor Falls done, 2 disguised, 3 Mt. Chimney done, 4 unused (Route 119 battle removed, round 1), 5 Magma Hideout done, 6 Mega Ring, 7 Sky Pillar done, 8 post-game done |
+| `VAR_BRENDAN_STATE` (0x40FC) | `BRENDAN_STATE_*`: 0 confronts the player at Rustboro's south edge (round 1; the vanilla rival triggers on row 53), 1 beaten there, 2 waits in Sootopolis, 3 Megas done (2–3: v1 scenes, reworked in Act 5) |
 | `VAR_MAY_STATE` (0x40FD) | `MAY_STATE_*`: 0, 1 waits at Slateport's north exit, 2 beaten there |
 | `VAR_WALLY_STATE` (0x40FE) | `WALLY_STATE_*`: 0, 1 waits at the Petalburg Gym, 2 waits in Lilycove, 3 beaten there |
 | `VAR_LITTLEROOT_HOUSES_STATE_MAY` (vanilla) | state 3 (after the Hall of Fame) now starts the SS Ticket / Lati TV scene in the Draconid house 1F, not in Littleroot |
 | `VAR_DRACONID_REPUTATION` (0x40FF, was unused) | `REPUTATION_*`: 0 pre-uniform, 1 uniform (Magma grunt), 2 revealed – NPC lines and the outfit follow it (D-103) |
 | `VAR_NERINE_STATE` (0x40E5, was unused) | `NERINE_STATE_*`: Nerine's fights done, 0 start … 7 revealed … 9 post-game |
 | `VAR_ASTER_EGG` (changed meaning, round 1) | Aster's egg is the **leftover** one (D-105), not the counter-pick |
+| `VAR_MAGMA_STATE` (0x404E, was unused, round 1) | `MAGMA_STATE_*`: the player's Team Magma career, 0 none, 1 recruited (outpost), 2 Tabitha's order (Stone Badge), 3 Devon Goods … 9 promoted … 12 turned at Sootopolis |
+| `VAR_PETALBURG_WOODS_STATE` (vanilla, round 1) | 2 = on the way to the Magma outpost (its OnFrame runs the uniform scene), 3 = recruited; vanilla 1 is skipped |
+| `VAR_RUSTBORO_CITY_STATE`, `VAR_ROUTE104_STATE` (vanilla, round 1) | the PokéNav scene sets 8 and 2 directly: the vanilla May registration in Rustboro / at Briney's cottage never runs (May registers on Route 110) |
 | `VAR_STARTER_MON` (changed meaning) | now the player's egg, `DRACONID_EGG_*`; the starter table in `src/starter_choose.c` maps it to Deino/Dreepy/Jangmo-o |
 
 ## Constants
@@ -112,6 +119,11 @@ Grouped by area; each entry names the file(s).
 | `LOCALID_BIRCHS_LAB_BRENDAN` object (5, 4); lab rival object is always `OBJ_EVENT_GFX_RIVAL_MAY_NORMAL` | `data/maps/LittlerootTown_ProfessorBirchsLab/map.json` |
 | `BRENDAN_STATE_*`, `MAY_STATE_*`, `WALLY_STATE_*` | `include/constants/draconid.h` |
 | `REPUTATION_*`, `NERINE_STATE_*`, `DRACONID_EVO_LEVEL_MIDDLE/_FINAL` | `include/constants/draconid.h` |
+| `MAGMA_STATE_*` (0–12), `BRENDAN_STATE_RUSTBORO` (was `…_ROUTE_104`), `DRACONID_RESCUE_SPECIES` (Poochyena) / `DRACONID_RESCUE_LEVEL` (2) (round 1) | `include/constants/draconid.h` |
+| Round 1 trainer id renames (same numbers): 520 `TRAINER_BRENDAN_RUSTBORO`, 521 `…_MT_CHIMNEY`, 523 `TRAINER_MAY_ROUTE_110`, 524 `TRAINER_BRENDAN_MOSSDEEP`, 525 `TRAINER_STEVEN_MOSSDEEP`, 533–535 `TRAINER_MAXIE_SOOTOPOLIS`, `…_SOOTOPOLIS_MULTI`, `TRAINER_ARCHIE_SOOTOPOLIS_MULTI`; story teams for Nerine, Aster, Brendan, May, Steven, Maxie, Archie written against the round 1 schedule | `include/constants/opponents.h`, `src/data/trainers.party` |
+| `PARTNER_TABITHA` (4), `PARTNER_NERINE_{egg}_{starter}` (5–13), `PARTNER_COUNT` 14; `PARTNER_MAY/_BRENDAN` teams rewritten for the Sootopolis multi battle | `include/constants/battle_partner.h`, `src/data/battle_partners.party` |
+| `MAP_PETALBURG_WOODS_MAGMA_OUTPOST` (group `gMapGroup_IndoorRoute104`), `LAYOUT_PETALBURG_WOODS_MAGMA_OUTPOST` (copy of the Fossil Maniac's house without the tunnel), door → Route 104 warp 2 (woods north entrance) (D-113) | `tools/hack/mapgen/specs/petalburg_woods_magma_outpost.json`, `data/maps/PetalburgWoods_MagmaOutpost/`, `data/layouts/` |
+| Round 1 objects: `LOCALID_PETALBURG_WOODS_COURTNEY` (22, 17), the woods grunt is Nerine (`OBJ_EVENT_GFX_NERINE_AQUA`), `LOCALID_MAGMA_OUTPOST_COURTNEY/_GRUNT_M/_GRUNT_F`, `LOCALID_RUSTBORO_TABITHA` (25, 20; grunt sprite, as vanilla draws Tabitha), `LOCALID_PETALBURG_GYM_MAY` (7, 4), Rustboro's rival object is Brendan; removed: `LOCALID_ROUTE104_BRENDAN` + its triggers, `LOCALID_ROUTE119_ASTER` + its triggers | `data/maps/*/map.json` |
 | Nerine's trainer ids 858–923 (`TRAINER_NERINE_PETALBURG_WOODS_{egg}`, `TRAINER_NERINE_{RUSTURF,SLATEPORT,MT_CHIMNEY,MT_PYRE,AQUA_HIDEOUT,SEAFLOOR,POSTGAME}_{egg}_{starter}`, named after the player's choices); `TRAINERS_COUNT_EMERALD` 924, `MAX_TRAINERS_COUNT_EMERALD` 864 → 928 (system flags move up 64; SaveBlock1 +8 bytes, `test/save.c` updated as it asks) | `include/constants/opponents.h`, `test/save.c`, placeholder teams at the end of `src/data/trainers.party` |
 | `OBJ_EVENT_GFX_NERINE_AQUA`, `OBJ_EVENT_GFX_NERINE`, `OBJ_EVENT_GFX_COURTNEY` + palette tags 0x114B–0x114D (placeholder sheets: Aqua grunt F, Aster, Magma grunt F – `TODO(art)`) | `tools/hack/art/player/gen_outfit_code.py` (generated regions), `graphics/object_events/pics/people/draconid/`, `graphics/object_events/palettes/` |
 | `TRAINER_PIC_NERINE_AQUA`, `TRAINER_PIC_NERINE` (placeholders: Aqua grunt F, Aster – `TODO(art)`) | `include/constants/trainers.h`, `src/data/graphics/trainers.h`, `graphics/trainers/front_pics/nerine*.png` |
@@ -135,7 +147,8 @@ Grouped by area; each entry names the file(s).
 | Fly: Littleroot → May's house heal location; Draconid Village fly spot | `src/region_map.c` |
 | Bedroom PC turn-off in the Draconid house | `src/player_pc.c`, `include/event_scripts.h` |
 | New: `StartBirchRescueBattle` special (vanilla first battle vs Zigzagoon Lv2 without choosing a starter) | `src/battle_setup.c`, `include/battle_setup.h`, `data/specials.inc` |
-| `{RIVAL}` always expands to MAY in Emerald (Birch's daughter), for both player genders | `src/string_util.c` |
+| `{RIVAL}` always expands to BRENDAN (Birch's son, round 1 D-100; v1 had MAY) | `src/string_util.c` |
+| Birch's rescue battle is against `DRACONID_RESCUE_SPECIES` (Poochyena) at `DRACONID_RESCUE_LEVEL` (was Zigzagoon Lv 2) (round 1) | `src/battle_controllers.c`, `data/maps/Route101/map.json` (the chasing object) |
 | New: player outfits – `GetPlayerOutfit`, `GetPlayerOutfitAvatarGfx`, `GetPlayerOutfitDecoratingGfx`, `GetPlayerOutfitTrainerPic`, `IsFemaleOutfitAvatarGfx`, special `SetPlayerOutfit` | `src/player_outfit.c`, `include/player_outfit.h`, `data/specials.inc` |
 | Player avatar gfx come from the outfit (Emerald); state↔gfx lookups go through it | `src/field_player_avatar.c` |
 | Player trainer pics come from the outfit: battle back pic, front pic (transitions, Pokédex, Frontier), Hall of Fame, trainer card, new-game gender choice | `src/trainer.c`, `src/pokemon.c`, `src/trainer_pokemon_sprites.c`, `src/trainer_card.c`, `src/main_menu.c` |
@@ -183,3 +196,9 @@ Grouped by area; each entry names the file(s).
 | Dialogue: Rustboro's Mr. Briney hint (May, and Brendan's unused twin) and Rydel's bike speech no longer assume the player just moved to Littleroot | `data/maps/RustboroCity/scripts.inc`, `data/maps/MauvilleCity_BikeShop/scripts.inc` |
 | Route 103 May is an early-rival battle (`trainerbattle_earlyrival … RIVAL_BATTLE_HEAL_AFTER`): a loss heals and the scene continues with its own line (D-048) | `data/scripts/draconid/birch_intro.pory` |
 | Birch's new-game speech: the player is of the Draconid clan, not moving to Littleroot | `data/text/birch_speech.inc` |
+| **Round 1, Act 1** (`docs/hack_story.md`): night prologue with the falling star, Aster wakes the player (no Mom); the Elder's prophecy and mission in the egg ceremony, the leftover egg set aside for Aster, and the egg kept for "one who walks a far road" (Nerine); the old woman gives the Running Shoes | `data/maps/DraconidVillage*/scripts.pory` |
+| Round 1: Littleroot – Mrs. Birch in Brendan's house and May's mom in May's house, lines by reputation; house signs; the lab introduces Brendan as Birch's son and May as Norman's daughter | `data/scripts/draconid/act1.pory`, `birch_intro.pory`, `data/maps/LittlerootTown*/` |
+| Round 1: Petalburg Gym – Norman is May's father in every line (`@ Draconid Emerald`), uniform lines before the fourth badge, a revealed line after it; May watches the Norman battle and speaks after it (`…_DraconidMayWatched`) | `data/maps/PetalburgCity_Gym/scripts.inc`, `data/scripts/draconid/act4.pory` |
+| Round 1: Petalburg Woods – Nerine (Aqua disguise) robs the Devon researcher (`TRAINER_NERINE_PETALBURG_WOODS_DEINO`, resolved by egg), Courtney recruits the player (`PetalburgWoods_EventScript_DraconidRecruitment`), the outpost cabin puts the uniform on (reputation `UNIFORM`, `MAGMA_STATE_RECRUITED`) | `data/maps/PetalburgWoods/scripts.inc`, `data/scripts/draconid/act1.pory`, `data/maps/PetalburgWoods_MagmaOutpost/scripts.pory` |
+| Round 1: Rustboro – Brendan's confrontation (`RustboroCity_EventScript_DraconidBrendan`, hooked through `RivalEncounter`), Tabitha's order before Birch's second starter (`…_DraconidTabithaOrders`), Birch's lines about the uniform; the v1 Route 104 Brendan and Route 119 Aster scenes are removed | `data/scripts/draconid/act1.pory`, `second_starter.pory`, `data/maps/RustboroCity/scripts.inc` |
+| Emulator tests (round 1): `woods.play` (Nerine, Courtney, outpost, uniform; `-D EGGNAME -D MAGMA`), `rustboro.play` (Brendan) replace `route104.play`; `second_starter.play` also checks Tabitha; `matrix.py` chains opening → route103 → woods → rustboro; `check_story.py` knows `VAR_NERINE_STATE`, `VAR_MAGMA_STATE`, `VAR_DRACONID_REPUTATION` and lists the states of acts not scripted yet as pending | `tools/hack/emu/`, `tools/hack/check_story.py` |

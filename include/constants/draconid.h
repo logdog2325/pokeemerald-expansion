@@ -26,6 +26,9 @@
 
 // Level the hatchling is raised to after the rite (eggs hatch at EGG_HATCH_LEVEL = 1)
 #define DRACONID_HATCHLING_LEVEL       5
+// Route 101: the wild Pokemon chasing Prof. Birch (round 1: Poochyena, as in the story)
+#define DRACONID_RESCUE_SPECIES        SPECIES_POOCHYENA
+#define DRACONID_RESCUE_LEVEL          2
 // The three dragon egg lines evolve earlier than in the core games (round 1, D-107)
 #define DRACONID_EVO_LEVEL_MIDDLE      25 // Deino -> Zweilous, Dreepy -> Drakloak, Jangmo-o -> Hakamo-o
 #define DRACONID_EVO_LEVEL_FINAL       50 // Zweilous -> Hydreigon, Drakloak -> Dragapult, Hakamo-o -> Kommo-o
@@ -42,15 +45,15 @@
 #define ASTER_STATE_METEOR_FALLS       1 // battled in Meteor Falls; waits at the Route 112 cable car
 #define ASTER_STATE_DISGUISED          2 // gave the Team Magma disguise (worn up Mt. Chimney)
 #define ASTER_STATE_CHIMNEY_DONE       3 // disguise off after Maxie on Mt. Chimney; waits on Route 119
-#define ASTER_STATE_ROUTE_119          4 // battled on Route 119 (Mega Altaria)
+                                         // 4 unused (the v1 Route 119 battle was removed in round 1)
 #define ASTER_STATE_HIDEOUT_DONE       5 // Magma Hideout done; the Elder waits with the Mega Ring
 #define ASTER_STATE_MEGA_RING          6 // got the Mega Ring
 #define ASTER_STATE_SKY_PILLAR         7 // climax at the Sky Pillar done
 #define ASTER_STATE_POSTGAME           8 // post-game battle at the shrine done
 
 // VAR_BRENDAN_STATE: Brendan's battles that vanilla doesn't have (data/scripts/draconid/rivals.pory)
-#define BRENDAN_STATE_START            0 // waits at the Petalburg Woods entrance on Route 104
-#define BRENDAN_STATE_ROUTE_104        1 // beaten on Route 104
+#define BRENDAN_STATE_START            0 // confronts the player at Rustboro's south edge (Act 1)
+#define BRENDAN_STATE_RUSTBORO         1 // beaten at Rustboro
 #define BRENDAN_STATE_SOOTOPOLIS       2 // Rain Badge: Brendan and May wait outside the Sootopolis Gym
 #define BRENDAN_STATE_MEGAS_DONE       3 // Sootopolis Mega battles done
 
@@ -81,5 +84,21 @@
 #define NERINE_STATE_REVEALED          7 // Seafloor Cavern: the Aqua disguise comes off
 #define NERINE_STATE_SKY_PILLAR        8
 #define NERINE_STATE_POSTGAME          9
+
+// VAR_MAGMA_STATE: the player's Team Magma career (round 1 story, docs/hack_story.md); each value = that
+// step is done. VAR_DRACONID_REPUTATION says how Hoenn sees the player, this says how far in they are.
+#define MAGMA_STATE_NONE               0
+#define MAGMA_STATE_RECRUITED          1 // Petalburg Woods: Courtney, the uniform (Act 1)
+#define MAGMA_STATE_ORDERS             2 // Stone Badge: Tabitha's order outside the Rustboro Gym
+#define MAGMA_STATE_DEVON_GOODS        3 // Rusturf Tunnel: the goods taken from Nerine (FLAG_DEVON_GOODS_RETURNED)
+#define MAGMA_STATE_MUSEUM             4 // Slateport: the Oceanic Museum raid (Act 2)
+#define MAGMA_STATE_METEOR_FALLS       5 // Meteor Falls: Maxie meets the player (Act 3)
+#define MAGMA_STATE_MT_CHIMNEY         6 // Mt. Chimney: the meteorite sabotage
+#define MAGMA_STATE_WEATHER_INSTITUTE  7 // Weather Institute raid (Act 4)
+#define MAGMA_STATE_MT_PYRE            8 // Mt. Pyre summit
+#define MAGMA_STATE_PROMOTED           9 // Magma Hideout: Maxie's promotion
+#define MAGMA_STATE_SPACE_CENTER      10 // Mossdeep: the tag battle with Tabitha (Act 5)
+#define MAGMA_STATE_SEAFLOOR          11 // Seafloor Cavern: Nerine's reveal
+#define MAGMA_STATE_TURNED            12 // Sootopolis: the uniform comes off (reputation REVEALED)
 
 #endif // GUARD_CONSTANTS_DRACONID_H

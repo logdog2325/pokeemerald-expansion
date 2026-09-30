@@ -1,0 +1,24 @@
+# Rustboro: Brendan stops the Magma recruit at the city's south edge (act1.pory). Needs woods_done.ss
+# from tests/woods.play (the player in the Magma uniform on Route 104, north of the woods).
+loadstate woods_done.ss
+setflag FLAG_DEBUG_NO_ENCOUNTER
+setflag FLAG_DEBUG_NO_TRAINER_SEE
+# flow test: the script must go on even if mashing A loses the battle
+setflag FLAG_DRACONID_NO_WHITEOUT
+expect_var VAR_BRENDAN_STATE 0
+expect_flag FLAG_HIDE_RUSTBORO_CITY_RIVAL 0
+warp MAP_RUSTBORO_CITY 13 57
+path RustboroCity 13 57 13 54
+shot 01_rustboro_edge
+press UP 2 10
+run 200
+shot 02_brendan
+mash A 60000
+shot 03_after_brendan
+expect_opponent TRAINER_BRENDAN_RUSTBORO
+expect_var VAR_BRENDAN_STATE 1
+expect_flag FLAG_HIDE_RUSTBORO_CITY_RIVAL 1
+savestate rustboro_done.ss
+clearflag FLAG_DEBUG_NO_ENCOUNTER
+clearflag FLAG_DEBUG_NO_TRAINER_SEE
+clearflag FLAG_DRACONID_NO_WHITEOUT

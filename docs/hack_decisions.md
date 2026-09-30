@@ -256,3 +256,16 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
 - **D-112 Post-game start**: credits roll after the finale; the player wakes at home in the village, where the
   Elder brings the SS Ticket (sent by Captain Stern) and the Lati TV news airs. – Alt: Norman (now May's father).
 
+- **D-113 Magma outpost cabin**: a small cutscene map (`PetalburgWoods_MagmaOutpost`, a copy of the Fossil
+  Maniac's house with the tunnel walled up) reached by a fade after Courtney's offer; Courtney and two grunts are
+  inside, the uniform goes on there, and the door leads out to Route 104 at the woods' north entrance. It can't
+  be visited again. – Alt: a cabin building at the woods' edge on Route 104 (new exterior tiles, seam rules). – The
+  add-on asks for a small cutscene map; no new exterior art needed.
+- **D-114 Recruitment without a YES/NO**: the player remembers the Elder's words and nods. – Alt: a YES/NO that
+  loops until YES. – The Elder ordered it; a refusal the game can't honour would be a fake choice.
+- **D-115 Rustboro, Act 1**: Brendan uses the vanilla rival object and triggers on row 53 (the only way in from the
+  woods), now on `VAR_BRENDAN_STATE`; the vanilla May registration in Rustboro / at Briney's cottage is skipped
+  (May registers on Route 110, D-106). After the Stone Badge **Tabitha gives the order first, then Birch**, who
+  saw them talking. Tabitha's overworld sprite is the Magma grunt, as in vanilla. – Alt: Brendan inside the city.
+- **D-116 May at the Norman battle**: she stands by the mat whenever the gym is open to the fourth-badge
+  challenge (talkable), speaks her line after the badge and leaves before Wally's father comes in. – The add-on.

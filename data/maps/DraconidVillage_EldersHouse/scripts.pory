@@ -1,8 +1,7 @@
-// The Elder's house: the egg ceremony (Phase 4, story event 1).
-// VAR_STARTER_MON = the player's egg (DRACONID_EGG_*), VAR_ASTER_EGG = Aster's counter-pick:
-//   Deino -> Aster Jangmo-o (Fighting and Dragon hit Dark/Dragon)
-//   Dreepy -> Aster Deino   (Dark beats Ghost)
-//   Jangmo-o -> Aster Dreepy (Ghost is immune to Fighting)
+// The Elder's house: the prophecy, the mission and the egg ceremony (Act 1, docs/hack_story.md).
+// VAR_STARTER_MON = the player's egg (DRACONID_EGG_*). The counter egg is set aside for Nerine, who is away
+// (D-104: Deino -> Jangmo-o, Dreepy -> Deino, Jangmo-o -> Dreepy); Aster takes the leftover one
+// (VAR_ASTER_EGG, D-105: Deino -> Dreepy, Dreepy -> Jangmo-o, Jangmo-o -> Deino).
 
 mapscripts DraconidVillage_EldersHouse_MapScripts {
     MAP_SCRIPT_ON_TRANSITION: DraconidVillage_EldersHouse_OnTransition
@@ -23,15 +22,24 @@ script DraconidVillage_EldersHouse_EventScript_Ceremony {
     closemessage
     applymovement(LOCALID_PLAYER, DraconidVillage_EldersHouse_Movement_PlayerApproach)
     waitmovement(0)
-    msgbox(format("ELDER: Today you come of age as a tamer of the Draconid clan.\p"
-                  "As it has always been, a dragon egg will be entrusted to you.\p"
-                  "My granddaughter ASTER receives hers today as well."))
+    msgbox(format("ELDER: Last night a star fell over the mountains. I have seen that star before… in dreams.\p"
+                  "A great meteor is coming, {PLAYER}. And something alive is riding it.\p"
+                  "Only RAYQUAZA, the Guardian of the Sky, can turn it aside. That is the sky's debt to us, "
+                  "and ours to it."))
+    msgbox(format("ELDER: But the lowlands are restless. Two gangs, TEAM MAGMA and TEAM AQUA, "
+                  "chase the ancient powers of the land and the sea.\p"
+                  "If they wake those powers, there may be no world left for the meteor to strike."))
     applymovement(LOCALID_DRACONID_HOUSE_ASTER, Common_Movement_WalkInPlaceFasterRight)
     waitmovement(0)
-    msgbox(format("ASTER: …The sky has been restless lately. The clouds move against the wind.\p"
-                  "Let's see which dragon is foolish enough to follow you."))
-    msgbox(format("ELDER: Hohoho. Pay her no mind.\p"
-                  "These three eggs were brought up from the depths of METEOR FALLS.\p"
+    msgbox(format("ASTER: Then send me, ELDER! I've trained for this my whole life!"))
+    msgbox(format("ELDER: No, ASTER. I am sending {PLAYER}."))
+    msgbox(format("ASTER: …You can't be serious. {PLAYER} doesn't even have a partner yet!"))
+    msgbox(format("ELDER: Hear your task, {PLAYER}.\p"
+                  "Walk among the red ones. Learn what MAXIE, their leader, seeks.\p"
+                  "Wear their colors if you must. Undo their work from within.\p"
+                  "And when the sky splits, you must stand beside RAYQUAZA."))
+    msgbox(format("ELDER: No one outside this village may know why you go. Not even the kind ones.\p"
+                  "Now. A tamer needs a partner. These three eggs were brought up from METEOR FALLS.\p"
                   "Look closely, {PLAYER}. Which one calls to you?"))
     closemessage
     applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight)
@@ -80,6 +88,13 @@ script DraconidVillage_EldersHouse_EventScript_Ceremony {
     waitfanfare
     waitmessage
     msgbox(format("ELDER: Hold it close. It already knows your warmth."))
+    switch (var(VAR_STARTER_MON)) {
+        case DRACONID_EGG_DEINO:  bufferspeciesname(STR_VAR_1, SPECIES_JANGMO_O)
+        case DRACONID_EGG_DREEPY: bufferspeciesname(STR_VAR_1, SPECIES_DEINO)
+        default:                  bufferspeciesname(STR_VAR_1, SPECIES_DREEPY)
+    }
+    msgbox(format("ELDER: The {STR_VAR_1} egg I will keep aside.\p"
+                  "It belongs to one who already walks a far road for our clan. You will meet, in time."))
     applymovement(LOCALID_DRACONID_HOUSE_ASTER, Common_Movement_WalkInPlaceFasterRight)
     waitmovement(0)
     switch (var(VAR_ASTER_EGG)) {
@@ -121,14 +136,16 @@ script DraconidVillage_EldersHouse_EventScript_Elder {
     if (var(VAR_ASTER_STATE) == ASTER_STATE_HIDEOUT_DONE) {
         call(DraconidVillage_EldersHouse_EventScript_DraconidMegaRing) // data/scripts/draconid/aster.pory
     } elif (var(VAR_DRACONID_STATE) < DRACONID_STATE_READY_TO_LEAVE) {
-        msgbox(format("ELDER: Your mother is waiting for you outside the shrine, {PLAYER}."))
-    } elif (!flag(FLAG_BADGE01_GET)) {
-        msgbox(format("ELDER: PROF. BIRCH of LITTLEROOT TOWN studies how Pokémon live in the wild.\p"
-                      "Our clan and his family have shared what we know for many years. "
-                      "Show him your partner, {PLAYER}."))
+        msgbox(format("ELDER: The villagers are waiting for you outside the shrine, {PLAYER}."))
+    } elif (var(VAR_DRACONID_REPUTATION) == REPUTATION_PRE_UNIFORM) {
+        msgbox(format("ELDER: PROF. BIRCH of LITTLEROOT TOWN is an old friend of our clan. Show him your partner.\p"
+                      "The red ones will find you soon enough. Let them."))
+    } elif (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        msgbox(format("ELDER: So you wear their red. It suits the task, if not the heart.\p"
+                      "Remember who you are under it, {PLAYER}. The sky remembers."))
     } else {
-        msgbox(format("ELDER: You have grown, {PLAYER}. Your partner too.\p"
-                      "The sky has been restless of late… Keep your eyes open out there."))
+        msgbox(format("ELDER: You set the red aside when it mattered. I am proud of you, {PLAYER}.\p"
+                      "But the star still falls. Keep your eyes on the sky."))
     }
     release
 }

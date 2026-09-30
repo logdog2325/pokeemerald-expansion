@@ -1,12 +1,13 @@
 # The SS Ticket / Lati TV scene after the Hall of Fame, moved to the Draconid house
-# (DraconidVillage_PlayersHouse_1F). Needs route104_done.ss from tests/route104.play.
+# (DraconidVillage_PlayersHouse_1F). Needs rustboro_done.ss from tests/rustboro.play.
 # hall_of_fame.inc sets the houses state to 3 and shows Dad; this does the same by hand and
 # arrives on the stairs like the player coming down from the bedroom. Mashing A picks the first
 # colour (red) in the "What colour?" menu.
-loadstate route104_done.ss
+loadstate rustboro_done.ss
 setvar VAR_LITTLEROOT_HOUSES_STATE_MAY 3
 setvar VAR_LITTLEROOT_HOUSES_STATE_BRENDAN 3
 clearflag FLAG_HIDE_PLAYERS_HOUSE_DAD
+clearflag FLAG_HIDE_DRACONID_HOUSE_ELDER
 warp MAP_DRACONID_VILLAGE_PLAYERS_HOUSE_1F 8 2 3000
 run 150
 shot 10_dad_arrives

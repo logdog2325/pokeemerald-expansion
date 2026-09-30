@@ -161,11 +161,11 @@ Route101_Movement_DraconidBirchApproach:
 LittlerootTown_ProfessorBirchsLab_EventScript_DraconidWelcome::
 	lockall
 	msgbox LittlerootTown_ProfessorBirchsLab_EventScript_DraconidWelcome_Text_0
-	applymovement LOCALID_BIRCHS_LAB_RIVAL, Common_Movement_WalkInPlaceFasterDown
+	applymovement LOCALID_BIRCHS_LAB_BRENDAN, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	msgbox LittlerootTown_ProfessorBirchsLab_EventScript_DraconidWelcome_Text_1
 	msgbox LittlerootTown_ProfessorBirchsLab_EventScript_DraconidWelcome_Text_2
-	applymovement LOCALID_BIRCHS_LAB_BRENDAN, Common_Movement_WalkInPlaceFasterDown
+	applymovement LOCALID_BIRCHS_LAB_RIVAL, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	msgbox LittlerootTown_ProfessorBirchsLab_EventScript_DraconidWelcome_Text_3
 	msgbox LittlerootTown_ProfessorBirchsLab_EventScript_DraconidWelcome_Text_4
@@ -206,7 +206,6 @@ LittlerootTown_ProfessorBirchsLab_EventScript_DraconidWelcome::
 	msgbox LittlerootTown_ProfessorBirchsLab_EventScript_DraconidWelcome_Text_14
 	closemessage
 	clearflag FLAG_HIDE_ROUTE_103_RIVAL
-	clearflag FLAG_HIDE_ROUTE_104_BRENDAN
 	clearflag FLAG_HIDE_ROUTE_101_BOY
 	setvar VAR_BIRCH_LAB_STATE, 5
 	setflag FLAG_ADVENTURE_STARTED
@@ -279,7 +278,7 @@ Route101_EventScript_DraconidRescue_Text_0:
 	.string "Hello! You over there!\p"
 	.string "Is that a POKéMON with you? Please,\n"
 	.string "help me!\p"
-	.string "Chase this ZIGZAGOON off!$"
+	.string "Chase this POOCHYENA off!$"
 
 Route101_EventScript_DraconidRescue_Text_1:
 	.string "PROF. BIRCH: Whew… I was in the tall\n"
@@ -300,22 +299,26 @@ LittlerootTown_ProfessorBirchsLab_EventScript_DraconidWelcome_Text_0:
 	.string "{PLAYER}! You've met me at my worst, I'm\l"
 	.string "afraid.\p"
 	.string "Let me introduce these two. This is my\n"
-	.string "daughter, MAY…$"
+	.string "son, BRENDAN…$"
 
 LittlerootTown_ProfessorBirchsLab_EventScript_DraconidWelcome_Text_1:
-	.string "MAY: Hi! Dad says you're from DRACONID\n"
-	.string "VILLAGE.\p"
-	.string "You raised a real dragon from an egg?\n"
-	.string "That's amazing!$"
-
-LittlerootTown_ProfessorBirchsLab_EventScript_DraconidWelcome_Text_2:
-	.string "PROF. BIRCH: …and my nephew, BRENDAN.\n"
-	.string "He's staying with us to learn fieldwork.$"
-
-LittlerootTown_ProfessorBirchsLab_EventScript_DraconidWelcome_Text_3:
 	.string "BRENDAN: Hey. A baby dragon, huh?\p"
 	.string "Everybody talks about the Draconid\n"
 	.string "clan like they're legends. We'll see.$"
+
+LittlerootTown_ProfessorBirchsLab_EventScript_DraconidWelcome_Text_2:
+	.string "PROF. BIRCH: …and this is MAY. Her\n"
+	.string "father, NORMAN, just took over the\l"
+	.string "PETALBURG GYM.\p"
+	.string "Their family moved here from JOHTO.\n"
+	.string "She's been helping me with my research!$"
+
+LittlerootTown_ProfessorBirchsLab_EventScript_DraconidWelcome_Text_3:
+	.string "MAY: Hi! I'm MAY! The PROF. says you're\n"
+	.string "from DRACONID VILLAGE.\p"
+	.string "You raised a real dragon from an egg?\n"
+	.string "That's amazing! I want to know\l"
+	.string "everything!$"
 
 LittlerootTown_ProfessorBirchsLab_EventScript_DraconidWelcome_Text_4:
 	.string "PROF. BIRCH: Today's a big day for\n"
@@ -358,7 +361,7 @@ LittlerootTown_ProfessorBirchsLab_EventScript_DraconidWelcome_Text_12:
 
 LittlerootTown_ProfessorBirchsLab_EventScript_DraconidWelcome_Text_13:
 	.string "BRENDAN: I'm heading west, toward\n"
-	.string "PETALBURG. No point in waiting around.\p"
+	.string "RUSTBORO. No point in waiting around.\p"
 	.string "See you out there, dragon tamer. Try to\n"
 	.string "keep up.$"
 
@@ -387,7 +390,7 @@ Route103_EventScript_DraconidMay_Text_1:
 
 Route103_EventScript_DraconidMay_Text_2:
 	.string "MAY: Your dragon really listens to you.\n"
-	.string "No wonder Dad was so excited.\p"
+	.string "No wonder the PROF. was so excited.\p"
 	.string "I'm going to catch lots more POKéMON so\n"
 	.string "I can beat you next time!\p"
 	.string "See you around, {PLAYER}!$"

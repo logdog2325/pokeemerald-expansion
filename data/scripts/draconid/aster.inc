@@ -3,22 +3,6 @@ Draconid_EventScript_BattleAsterMeteorFalls::
 	return
 
 
-Draconid_EventScript_BattleAsterRoute119::
-	switch VAR_STARTER_MON
-	case DRACONID_EGG_DEINO, Draconid_EventScript_BattleAsterRoute119_2
-	case DRACONID_EGG_DREEPY, Draconid_EventScript_BattleAsterRoute119_3
-	trainerbattle_no_intro TRAINER_ASTER_ROUTE_119_JANGMO_O, Draconid_Text_AsterDefeat
-	return
-
-Draconid_EventScript_BattleAsterRoute119_2:
-	trainerbattle_no_intro TRAINER_ASTER_ROUTE_119_DEINO, Draconid_Text_AsterDefeat
-	return
-
-Draconid_EventScript_BattleAsterRoute119_3:
-	trainerbattle_no_intro TRAINER_ASTER_ROUTE_119_DREEPY, Draconid_Text_AsterDefeat
-	return
-
-
 Draconid_EventScript_BattleAsterSkyPillar::
 	trainerbattle_no_intro TRAINER_ASTER_SKY_PILLAR_DEINO, Draconid_Text_AsterSkyPillarDefeat
 	return
@@ -118,52 +102,8 @@ MtChimney_EventScript_DraconidDisguiseOff_2:
 
 MtChimney_EventScript_DraconidDisguiseOff_4:
 	setvar VAR_ASTER_STATE, ASTER_STATE_CHIMNEY_DONE
-	clearflag FLAG_HIDE_ROUTE_119_ASTER
 	return
 
-
-Route119_EventScript_DraconidAsterTalk::
-	goto Route119_EventScript_DraconidAster
-	return
-
-
-Route119_EventScript_DraconidAster::
-	lockall
-	playbgm MUS_ENCOUNTER_INTENSE, TRUE
-	applymovement LOCALID_ROUTE119_ASTER, Common_Movement_ExclamationMark
-	waitmovement 0
-	applymovement LOCALID_ROUTE119_ASTER, Common_Movement_WalkDown
-	waitmovement 0
-	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-	waitmovement 0
-	msgbox Route119_Text_DraconidAsterRiddle, MSGBOX_DEFAULT
-	special HealPlayerParty
-	playfanfare MUS_HEAL
-	message Route119_Text_DraconidAsterHeal
-	waitmessage
-	waitfanfare
-	msgbox Route119_Text_DraconidAsterMega, MSGBOX_DEFAULT
-	call Draconid_EventScript_BattleAsterRoute119
-	msgbox Route119_Text_DraconidAsterAfter, MSGBOX_DEFAULT
-	closemessage
-	applymovement LOCALID_ROUTE119_ASTER, Route119_Movement_DraconidAsterLeave
-	waitmovement 0
-	removeobject LOCALID_ROUTE119_ASTER
-	setflag FLAG_HIDE_ROUTE_119_ASTER
-	setvar VAR_ASTER_STATE, ASTER_STATE_ROUTE_119
-	savebgm MUS_DUMMY
-	fadedefaultbgm
-	releaseall
-	return
-
-
-Route119_Movement_DraconidAsterLeave:
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	step_end
 
 MagmaHideout_1F_EventScript_DraconidCheckDisguise::
 	compare VAR_ASTER_STATE, ASTER_STATE_CHIMNEY_DONE
@@ -366,34 +306,6 @@ Route112_CableCarStation_Text_DraconidAsterGoAhead::
 MtChimney_Text_DraconidDisguiseOff::
 	.string "{PLAYER} took off the TEAM MAGMA\n"
 	.string "uniform and packed it away.$"
-
-Route119_Text_DraconidAsterRiddle::
-	.string "ASTER: The rain here never stops.\n"
-	.string "Something up there is holding its\l"
-	.string "breath.\p"
-	.string "What lives above the storm, eats the\n"
-	.string "clouds, and has never touched the\l"
-	.string "ground?\p"
-	.string "…You'll know the answer soon enough.\n"
-	.string "But your team looks worn out. I won't\l"
-	.string "win like that.$"
-
-Route119_Text_DraconidAsterHeal::
-	.string "ASTER healed {PLAYER}'s POKéMON with a\n"
-	.string "clan remedy.$"
-
-Route119_Text_DraconidAsterMega::
-	.string "ASTER: There. Now look what my ALTARIA\n"
-	.string "learned to do.\p"
-	.string "The Lorekeepers taught me to MEGA\n"
-	.string "EVOLVE. You're still just a kid in a\l"
-	.string "costume!$"
-
-Route119_Text_DraconidAsterAfter::
-	.string "ASTER: …You beat a MEGA EVOLVED\n"
-	.string "POKéMON without one of your own.\p"
-	.string "Grandfather should have given you the\n"
-	.string "ring, not me. Don't tell him I said that.$"
 
 MagmaHideout_1F_Text_DraconidDisguiseOn::
 	.string "{PLAYER} put the TEAM MAGMA uniform\n"

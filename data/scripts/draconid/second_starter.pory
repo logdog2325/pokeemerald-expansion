@@ -1,7 +1,8 @@
-// Draconid Emerald: Prof. Birch's second partner after the first Gym (Phase 4).
+// Draconid Emerald: Prof. Birch's second partner after the first Gym (Phase 4; round 1: Tabitha's order first).
 //
 // Winning the Stone Badge sets VAR_DRACONID_STATE to DRACONID_STATE_SECOND_STARTER; walking out of
-// the Rustboro Gym starts the scene (RustboroCity_OnFrame). Birch offers Charmander, Totodile or
+// the Rustboro Gym starts the scene (RustboroCity_OnFrame): Tabitha gives the player their orders
+// (act1.pory), then Birch offers Charmander, Totodile or
 // Treecko at SECOND_STARTER_LEVEL; the choice is stored in VAR_SECOND_STARTER (SECOND_STARTER_*).
 // Each of them has a Dragon-type Mega (Charizard X, Feraligatr, Sceptile), handed out with the
 // Mega Ring later in the story.
@@ -11,11 +12,13 @@ script RustboroCity_Gym_EventScript_DraconidBirchWaits {
     if (var(VAR_DRACONID_STATE) == DRACONID_STATE_LEFT_VILLAGE) {
         setvar(VAR_DRACONID_STATE, DRACONID_STATE_SECOND_STARTER)
         clearflag(FLAG_HIDE_RUSTBORO_CITY_BIRCH)
+        clearflag(FLAG_HIDE_RUSTBORO_CITY_TABITHA)
     }
 }
 
 script RustboroCity_EventScript_DraconidSecondStarter {
     lockall
+    call(RustboroCity_EventScript_DraconidTabithaOrders)
     applymovement(LOCALID_RUSTBORO_BIRCH, RustboroCity_Movement_DraconidBirchApproach)
     waitmovement(0)
     applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterDown)
@@ -100,10 +103,14 @@ movement RustboroCity_Movement_DraconidBirchLeave {
 }
 
 text RustboroCity_Text_DraconidBirchCongrats {
-    format("PROF. BIRCH: {PLAYER}! I saw the whole battle through the window. Your first GYM BADGE!\p"
-           "I came to RUSTBORO on business, but I also carried a letter from your village's ELDER.\p"
-           "Draconid tamers traditionally raise a second partner from a faraway land, to learn balance.\p"
-           "So I brought three POKéMON that came to my lab from other regions. Pick the one you like!")
+    format("PROF. BIRCH: {PLAYER}! I watched your battle through the window. Your first GYM BADGE!\p"
+           "…But that uniform. And the man you were just talking to…\p"
+           "BRENDAN told me. I didn't want to believe him.\p"
+           "Your ELDER wrote to me before you came down the mountain. Draconid tamers raise a second "
+           "partner from a faraway land, to learn balance.\p"
+           "I brought three POKéMON for you. On the way here, I nearly turned back.\p"
+           "But I saw how you protected me on ROUTE 101.\p"
+           "Whatever you're doing… I'll trust that version of you. Pick the one you like.")
 }
 
 text RustboroCity_Text_DraconidBirchWhichOne {
@@ -130,5 +137,6 @@ text RustboroCity_Text_DraconidReceivedMon {
 }
 
 text RustboroCity_Text_DraconidBirchBye {
-    format("PROF. BIRCH: Raise it well, alongside your dragon. I'll be waiting to hear how you do!")
+    format("PROF. BIRCH: Raise it well, alongside your dragon.\p"
+           "And {PLAYER}… be careful. Whatever those people want, it isn't good.")
 }

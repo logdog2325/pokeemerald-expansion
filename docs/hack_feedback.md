@@ -16,13 +16,13 @@ main brief re-sent with a fourth rival (Nerine). Items:
 |---|---|---|---|
 | 1.1 | other | Provide the v1 ROM for phone / AYN Thor testing | [x] zipped release ROM sent (v1) |
 | 1.2 | other | Make the session reachable from the laptop | [x] cloud session: claude.ai/code on any device signed in to the account |
-| 1.3 | balance | Brendan: Sceptile, Mightyena, Swellow, Slaking, Magcargo, Latios, gained over the story like the ORAS rival | [ ] |
-| 1.4 | balance | May: Blaziken, Beautifly, Wailord, Tropius, Delcatty, Latias, same staging | [ ] |
+| 1.3 | balance | Brendan: Sceptile, Mightyena, Swellow, Slaking, Magcargo, Latios, gained over the story like the ORAS rival | [~] teams written for all 7 fights; scenes per act |
+| 1.4 | balance | May: Blaziken, Beautifly, Wailord, Tropius, Delcatty, Latias, same staging | [~] teams written for all 5 fights; scenes per act |
 | 1.5 | balance | Starter evolutions at 25 (second stage) and 50 (final) – Hydreigon evolves too late | [x] the three dragon lines (D-107) |
-| 1.6 | story | Dialogue with the evil teams matches the disguise; Brendan and May battle the player as a Magma grunt, react after losing and walk off | [ ] |
-| 1.7 | story | Fourth rival **Nerine**: Draconid undercover in Team Aqua, counters the egg and the Mega starter (9 team variants), reveal at Seafloor Cavern, schedule of 9 fights | [ ] |
+| 1.6 | story | Dialogue with the evil teams matches the disguise; Brendan and May battle the player as a Magma grunt, react after losing and walk off | [~] Rustboro Brendan done; the rest per act |
+| 1.7 | story | Fourth rival **Nerine**: Draconid undercover in Team Aqua, counters the egg and the Mega starter (9 team variants), reveal at Seafloor Cavern, schedule of 9 fights | [~] all 75 teams; Petalburg Woods fight scripted |
 | 1.8 | story | **Aster** raises the leftover third egg (neither the player's nor Nerine's); the Elder's apprentice | [ ] |
-| 1.9 | story | Story add-on Acts 1–7 (village prophecy without Mom, Petalburg Woods recruitment by Courtney, Magma uniform until the Sootopolis turn, Maxie's promotion, reversed Space Center tag battle, uniform removal, Rayquaza ritual, meteor finale with Rayquaza catch, Deoxys boss and Mega Rayquaza, credits after the finale) | [ ] |
+| 1.9 | story | Story add-on Acts 1–7 (village prophecy without Mom, Petalburg Woods recruitment by Courtney, Magma uniform until the Sootopolis turn, Maxie's promotion, reversed Space Center tag battle, uniform removal, Rayquaza ritual, meteor finale with Rayquaza catch, Deoxys boss and Mega Rayquaza, credits after the finale) | [~] Act 1 done (village, rescue, families, woods recruitment + outpost, Rustboro); Petalburg Gym (Act 4) done |
 | 1.10 | story | Reputation system (`pre_uniform` / `uniform` / `revealed`): shared NPC scripts, key NPCs, 3–5 townsfolk per town | [ ] |
 | 1.11 | story | The Mossdeep battle against Brendan / Steven is not a must-win; Steven is overlevelled | [ ] |
 | 1.12 | art | Before the Magma outfit the overworld sprite is the dragon tamer, never Brendan or May | [x] audit: the name-entry screen still drew the rival Brendan/May – fixed; link players too |
