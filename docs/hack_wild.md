@@ -89,7 +89,8 @@ National Dex scene in Birch's lab still calls it an upgrade – reword it with t
 
 95 species are new to the wild. **Trainers only** (their families are wild or on an ORAS Hoenn trainer, see
 hack_trainers.md): Cottonee, Pawniard, Riolu, Timburr, Chatot, Klink, Glameow, Fletchling, Axew, Tyrunt, Pidove,
-Lillipup, Misdreavus and the evolved forms.
+Lillipup, Misdreavus – and from the second trainer pass Cranidos, Munna, Blitzle, Throh, Sawk, Petilil, Scraggy,
+Zorua, Cubchoo, Mienfoo, Rufflet, Amaura – and the evolved forms.
 
 ## Species added that have a Mega Evolution
 
@@ -105,11 +106,11 @@ now; *trainers* = only on generic trainers, who never Mega Evolve.
 | Hawlucha (Mega) | Hawlucha (Route 115 1%) | Hawlucha |
 | Pyroar (Mega) | Litleo (Safari Zone South) | Litleo, Pyroar |
 | Chandelure (Mega) | Litwick (Mt. Pyre) | Litwick, Chandelure |
-| Golurk (Mega) | Golett (Cave of Origin, Sky Pillar) | Golett |
+| Golurk (Mega) | Golett (Cave of Origin, Sky Pillar) | Golett, Golurk |
 | Dragalge (Mega) | Skrelp (Routes 132–134, Super Rod) | Skrelp |
-| Barbaracle (Mega) | Binacle (Seafloor Cavern) | – |
-| Golisopod (Mega) | Wimpod (Shoal Cave) | – |
-| Glimmora (Mega) | Glimmet (Victory Road B1F, Rock Smash) | – |
+| Barbaracle (Mega) | Binacle (Seafloor Cavern) | Barbaracle |
+| Golisopod (Mega) | Wimpod (Shoal Cave) | Golisopod |
+| Glimmora (Mega) | Glimmet (Victory Road B1F, Rock Smash) | Glimmora |
 | Chimecho (Mega) | Chingling (Mt. Pyre summit) | – |
 | Lucario (Mega, Mega Z) | – | Riolu, Lucario |
 
@@ -117,7 +118,9 @@ now; *trainers* = only on generic trainers, who never Mega Evolve.
 
 122 generic trainers (28% of the 434 first battles, 214 blocks with their rematch tiers) swap one Pokémon (two for
 Timothy, Nicolas and Wilton) for a Gen 4–9 species of their class and area; see
-[hack_trainers.md](hack_trainers.md#gen-49-swaps-round-1) (D-195).
+[hack_trainers.md](hack_trainers.md#gen-49-swaps-round-1) (D-195). The second pass (feedback 1.40, D-240 – D-242)
+brings it to 269 generic trainers (62%), two in teams of 4+ from S5 on, a Gen 4–9 Pokémon of the gym's type for
+every gym trainer, and one for 44 of the 49 grunts.
 
 ## Checking
 

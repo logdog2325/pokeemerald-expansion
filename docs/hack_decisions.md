@@ -595,7 +595,7 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   Geodude / Sableye in slot 11, B2F Lv 12 a Sableye in slot 10, Steven's Room Lv 8 an Aron in slot 11).
   `check_wild.py` fails without it. – Alt: a scripted Beldum gift; Beldum in both 1% slots (2%). – The brief asks
   for exactly a 1% encounter; Steven's own Metagross line stays a rare find in his favourite cave.
-- **D-195 Gen 4–9 on generic trainers** (docs/hack_trainers.md, "Gen 4–9 swaps"): 122 of the 434 generic trainers
+- **D-195 Gen 4–9 on generic trainers** *(extended by D-240 – D-242: 60%, grunts too)* (docs/hack_trainers.md, "Gen 4–9 swaps"): 122 of the 434 generic trainers
   (first battles, route and gym roles; 28%) swap one Pokémon – two for Timothy, Wilton and Nicolas – in all their
   rematch tiers (214 blocks), keeping level, IVs, EVs, nature and slot. The new species fits the class and the area
   (a hiker's Rolycoly, a Petalburg Woods bug catcher's Nymble, a Mt. Pyre hex maniac's Litwick), comes from the
@@ -785,3 +785,34 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   about a quarter of what the Winona → Tate & Liza stretch pays); stones that are only found or given stay at 0
   (not sellable). – Alt: new item balls with new flags; one price per stone. – Flags are shared with parallel work;
   one price is easy to read.
+- **D-240 Gen 4–9 on ~60% of generic trainers** (feedback 1.40, docs/hack_trainers.md "Gen 4–9 swaps, second
+  pass"): 269 of the 434 generic trainers (62%; 60–65% in every segment) have a Gen 4–9 Pokémon – a species of
+  Gens 4–9 outside the Hoenn Pokédex, so Roserade or Gallade don't count – in their first battle and every rematch
+  tier, and from S5 on every such block with 4+ Pokémon has **two** (D-195's trainers and tiers included; a rematch
+  chain's second one comes from a family its earlier tiers don't have, so the tiers still only grow). Same rules as
+  D-195 (area, class, ORAS roster, ace kept, level / IVs / EVs / nature kept), plus: the new stage has at least 80%
+  of the replaced Pokémon's base stat total (no Skrelp at 39 – a line may still grow through the tiers), and moves
+  over 90 power are held back before S7 as the batches do. The swaps are data (`tools/hack/trainers/gen49_plan.py`)
+  and the Pokémon are written by rule (`gen49.py`), so the pass can be rerun and checked (`--coverage`). The
+  trade-evolution warnings (D-216) are fixed by pre-evolving (Clamperl holding its Deep Sea item, Seadra, Machoke,
+  Graveler), not by raising levels. – Alt: one per team at every size (a big late team would show a token
+  newcomer); raise the under-level Pokémon to the new evolution levels (out of the segments' route bands); new
+  species chosen at random per class. – The playtester wants the new species to "spice things up"; 60% leaves a
+  share of all-Hoenn teams, and two in the bigger teams makes them visible.
+- **D-241 Gym trainers get their gym's type**: all 57 trainers inside the gyms have a Gen 4–9 Pokémon of the gym's
+  type (Roggenrola, Sawk, Pawmo, Larvesta, Gumshoos, Staraptor, Musharna, Floatzel …), also where the trainer's
+  class is another type – Vivian, a Battle Girl in Wattson's gym, gets electric/fighting Pawmo; Danielle's D-195
+  Gurdurr in the fire gym became Heatmor; the Mossdeep Hex Maniacs get psychic ones. The species pool has only
+  five psychic lines (Bronzor, Munna, Woobat, Sigilyph, Bruxish), so Mossdeep repeats them. – Alt: the class's type
+  (Battle Girls with fighting types in every gym); only some gym trainers. – A gym is one theme, and the newcomers
+  should read as part of it.
+- **D-242 Grunts get one Gen 4–9 Pokémon** (reverses D-195's grunt exclusion): 44 of the 49 grunts swap one
+  Pokémon – Magma for fire / ground / rock (Salazzle, Excadrill, Heatmor, Coalossal, Mudsdale, Hippowdon …, the
+  Magma Hideout's own Carkol / Salandit / Heatmor lines among them), Aqua for water / dark (Clawitzer, Toxapex,
+  Barraskewda, Kilowattrel, Palafin, Thievul, Skuntank, Zoroark …). Never the Poochyena / Zubat / Numel / Carvanha
+  lines and never the ace, so the five grunts whose teams are only those lines keep them (Museum, both Mt. Chimney
+  grunts, Jagged Pass, Aqua Hideout 8). Purrloin is not in the species pool (not wild in Hoenn, not on an ORAS
+  Hoenn trainer), so the Nickit, Stunky, Scraggy and Zorua lines are the dark types. – Alt: two for the big grunt teams; only
+  Magma grunts (the player's side). – D-195 kept grunts as they were to keep the teams' identity; with the
+  signature lines kept on every team, one newcomer adds the new species without losing it, and grunts are the
+  trainers the player fights most in Acts 3–5.
