@@ -6,7 +6,7 @@ This is the resume point for any new session. Legend: `[x]` done, `[~]` in progr
 Base: pokeemerald-expansion 1.17.1 (`master` @ dfb0f843). Working branch: `draconid-emerald`.
 Other docs: [decisions](hack_decisions.md) · [changes](hack_changes.md) · [tools](hack_tools.md) ·
 [art pipeline](hack_art_pipeline.md) · [trainers](hack_trainers.md) · [wild Pokémon](hack_wild.md) · [resources](hack_resources.md) ·
-[playtest guide](playtest_guide.md) · [feedback](hack_feedback.md) ·
+[playtest guide](playtest_guide.md) · [feedback](hack_feedback.md) · [story outline + status](hack_outline.md) ·
 [items: evolutions, battle items, Mega Stones](hack_items.md)
 
 ## Where things stand
