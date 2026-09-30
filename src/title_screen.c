@@ -29,14 +29,28 @@ enum {
     TAG_VERSION = 1000,
     TAG_PRESS_START_COPYRIGHT,
     TAG_LOGO_SHINE,
+    TAG_REGIDRAGO,
 };
 
-#define VERSION_BANNER_RIGHT_TILEOFFSET 64
-#define VERSION_BANNER_LEFT_X 98
-#define VERSION_BANNER_RIGHT_X 162
-#define VERSION_BANNER_Y 2
-#define VERSION_BANNER_Y_GOAL 66
+// Draconid Emerald: the "DRACONID EMERALD" banner is 128x64 (two lines, D-277), two 64x64 8bpp
+// sprites centred on the screen (vanilla: "EMERALD VERSION", two 64x32 sprites at x 98 / 162)
+#define VERSION_BANNER_WIDTH 128
+#define VERSION_BANNER_HEIGHT 64
+#define VERSION_BANNER_RIGHT_TILEOFFSET ((VERSION_BANNER_WIDTH / 2) * VERSION_BANNER_HEIGHT / TILE_SIZE_4BPP) // 8bpp: a byte per pixel
+#define VERSION_BANNER_LEFT_X (DISPLAY_WIDTH / 2 - VERSION_BANNER_WIDTH / 4)
+#define VERSION_BANNER_RIGHT_X (DISPLAY_WIDTH / 2 + VERSION_BANNER_WIDTH / 4)
+#define VERSION_BANNER_Y_GOAL 82
+#define VERSION_BANNER_SLIDE 64 // it slides down this far while it fades in (vanilla: y 2 -> 66)
+#define VERSION_BANNER_Y (VERSION_BANNER_Y_GOAL - VERSION_BANNER_SLIDE)
 #define START_BANNER_X 128
+
+// Draconid Emerald: Regidrago replaces Rayquaza (D-276) – its own front pic, drawn at 2x as an
+// affine OBJ behind the clouds, its dragon energy (the core and the dots on it) pulsing
+#define TITLE_SCREEN_SPECIES  SPECIES_REGIDRAGO
+#define REGIDRAGO_X           (DISPLAY_WIDTH / 2)
+#define REGIDRAGO_Y           98 // 128x128 on screen: the horns behind the logo, the feet on the copyright line
+#define REGIDRAGO_SCALE       Q_8_8(2)
+STATIC_ASSERT(P_FAMILY_REGIDRAGO, TitleScreenSpeciesIsEnabled);
 
 #define CLEAR_SAVE_BUTTON_COMBO (B_BUTTON | SELECT_BUTTON | DPAD_UP)
 #define RESET_RTC_BUTTON_COMBO (B_BUTTON | SELECT_BUTTON | DPAD_LEFT)
@@ -52,7 +66,8 @@ static void CB2_GoToClearSaveDataScreen(void);
 static void CB2_GoToResetRtcScreen(void);
 static void CB2_GoToBerryFixScreen(void);
 static void CB2_GoToCopyrightScreen(void);
-static void UpdateLegendaryMarkingColor(u8);
+static void UpdateRegidragoGlow(u8);
+static void LoadRegidragoGfx(void);
 
 static void SpriteCB_VersionBannerLeft(struct Sprite *sprite);
 static void SpriteCB_VersionBannerRight(struct Sprite *sprite);
@@ -62,8 +77,9 @@ static void SpriteCB_PokemonLogoShine(struct Sprite *sprite);
 // const rom data
 static const u16 sUnusedUnknownPal[] = INCGFX_U16("graphics/title_screen/unused.pal", ".gbapal");
 
-static const u32 sTitleScreenRayquazaGfx[] = INCGFX_U32("graphics/title_screen/rayquaza.png", ".4bpp.smol");
-static const u32 sTitleScreenRayquazaTilemap[] = INCGFX_U32("graphics/title_screen/rayquaza.bin", ".smolTM");
+// Draconid Emerald: the sky behind Regidrago (vanilla's gradient without the Rayquaza silhouette)
+static const u32 sTitleScreenSkyGfx[] = INCGFX_U32("graphics/title_screen/sky.png", ".4bpp.smol");
+static const u32 sTitleScreenSkyTilemap[] = INCGFX_U32("graphics/title_screen/sky.bin", ".smolTM");
 static const u32 sTitleScreenLogoShineGfx[] = INCGFX_U32("graphics/title_screen/logo_shine.png", ".4bpp.smol");
 static const u32 sTitleScreenCloudsGfx[] = INCGFX_U32("graphics/title_screen/clouds.png", ".4bpp.smol");
 
@@ -115,10 +131,10 @@ static const struct OamData sVersionBannerLeftOamData =
     .objMode = ST_OAM_OBJ_NORMAL,
     .mosaic = FALSE,
     .bpp = ST_OAM_8BPP,
-    .shape = SPRITE_SHAPE(64x32),
+    .shape = SPRITE_SHAPE(64x64),
     .x = 0,
     .matrixNum = 0,
-    .size = SPRITE_SIZE(64x32),
+    .size = SPRITE_SIZE(64x64),
     .tileNum = 0,
     .priority = 0,
     .paletteNum = 0,
@@ -132,10 +148,10 @@ static const struct OamData sVersionBannerRightOamData =
     .objMode = ST_OAM_OBJ_NORMAL,
     .mosaic = FALSE,
     .bpp = ST_OAM_8BPP,
-    .shape = SPRITE_SHAPE(64x32),
+    .shape = SPRITE_SHAPE(64x64),
     .x = 0,
     .matrixNum = 0,
-    .size = SPRITE_SIZE(64x32),
+    .size = SPRITE_SIZE(64x64),
     .tileNum = 0,
     .priority = 0,
     .paletteNum = 0,
@@ -185,8 +201,8 @@ static const struct SpriteTemplate sVersionBannerRightSpriteTemplate =
 static const struct CompressedSpriteSheet sSpriteSheet_EmeraldVersion[] =
 {
     {
-        .data = gTitleScreenEmeraldVersionGfx,
-        .size = 0x1000,
+        .data = gTitleScreenDraconidEmeraldGfx,
+        .size = VERSION_BANNER_WIDTH * VERSION_BANNER_HEIGHT, // 8bpp: a byte per pixel
         .tag = TAG_VERSION
     },
     {},
@@ -352,6 +368,70 @@ static const struct CompressedSpriteSheet sPokemonLogoShineSpriteSheet[] =
         .tag = TAG_LOGO_SHINE
     },
     {},
+};
+
+// Draconid Emerald: Regidrago (D-276). Its front pic at 2x: the affine matrix halves the texture
+// step, so every pixel becomes a crisp 2x2 block. Priority 3 puts it behind the clouds (BG1).
+static const struct OamData sRegidragoOamData =
+{
+    .y = DISPLAY_HEIGHT,
+    .affineMode = ST_OAM_AFFINE_DOUBLE,
+    .objMode = ST_OAM_OBJ_NORMAL,
+    .mosaic = FALSE,
+    .bpp = ST_OAM_4BPP,
+    .shape = SPRITE_SHAPE(64x64),
+    .x = 0,
+    .matrixNum = 0,
+    .size = SPRITE_SIZE(64x64),
+    .tileNum = 0,
+    .priority = 3,
+    .paletteNum = 0,
+    .affineParam = 0,
+};
+
+static const union AffineAnimCmd sRegidragoAffineAnim[] =
+{
+    AFFINEANIMCMD_FRAME(REGIDRAGO_SCALE, REGIDRAGO_SCALE, 0, 0),
+    AFFINEANIMCMD_END,
+};
+
+static const union AffineAnimCmd *const sRegidragoAffineAnimTable[] =
+{
+    sRegidragoAffineAnim,
+};
+
+static const struct SpriteTemplate sRegidragoSpriteTemplate =
+{
+    .tileTag = TAG_REGIDRAGO,
+    .paletteTag = TAG_REGIDRAGO,
+    .oam = &sRegidragoOamData,
+    .anims = gDummySpriteAnimTable,
+    .affineAnims = sRegidragoAffineAnimTable,
+    .callback = SpriteCallbackDummy,
+};
+
+// Regidrago's palette (normal.pal): the dragon energy that pulses, and the colour each entry
+// brightens to at the peak of the pulse (the vanilla title pulsed Rayquaza's markings the same way)
+enum {
+    REGIDRAGO_PAL_CORE = 7,       // the red core
+    REGIDRAGO_PAL_CORE_LIGHT = 8,
+    REGIDRAGO_PAL_CORE_DARK = 10,
+    REGIDRAGO_PAL_DOT_LIGHT = 11, // the blue dots on the core
+    REGIDRAGO_PAL_DOT = 12,
+    REGIDRAGO_PAL_DOT_DARK = 13,
+};
+
+static const struct {
+    u8 index;
+    u16 glow;
+} sRegidragoGlow[] =
+{
+    {REGIDRAGO_PAL_CORE,       RGB(31, 14, 18)},
+    {REGIDRAGO_PAL_CORE_LIGHT, RGB(31, 22, 25)},
+    {REGIDRAGO_PAL_CORE_DARK,  RGB(28, 10, 14)},
+    {REGIDRAGO_PAL_DOT_LIGHT,  RGB(30, 31, 31)},
+    {REGIDRAGO_PAL_DOT,        RGB(18, 30, 31)},
+    {REGIDRAGO_PAL_DOT_DARK,   RGB(8, 24, 31)},
 };
 
 // Task data for the main title screen tasks (Task_TitleScreenPhase#)
@@ -599,8 +679,8 @@ void CB2_InitTitleScreen(void)
         DecompressDataWithHeaderVram(gTitleScreenPokemonLogoTilemap, (void *)(BG_SCREEN_ADDR(9)));
         LoadPalette(gTitleScreenBgPalettes, BG_PLTT_ID(0), 15 * PLTT_SIZE_4BPP);
         // bg3
-        DecompressDataWithHeaderVram(sTitleScreenRayquazaGfx, (void *)(BG_CHAR_ADDR(2)));
-        DecompressDataWithHeaderVram(sTitleScreenRayquazaTilemap, (void *)(BG_SCREEN_ADDR(26)));
+        DecompressDataWithHeaderVram(sTitleScreenSkyGfx, (void *)(BG_CHAR_ADDR(2)));
+        DecompressDataWithHeaderVram(sTitleScreenSkyTilemap, (void *)(BG_SCREEN_ADDR(26)));
         // bg1
         DecompressDataWithHeaderVram(sTitleScreenCloudsGfx, (void *)(BG_CHAR_ADDR(3)));
         DecompressDataWithHeaderVram(gTitleScreenCloudsTilemap, (void *)(BG_SCREEN_ADDR(27)));
@@ -612,8 +692,9 @@ void CB2_InitTitleScreen(void)
         LoadCompressedSpriteSheet(&sSpriteSheet_EmeraldVersion[0]);
         LoadCompressedSpriteSheet(&sSpriteSheet_PressStart[0]);
         LoadCompressedSpriteSheet(&sPokemonLogoShineSpriteSheet[0]);
-        LoadPalette(gTitleScreenEmeraldVersionPal, OBJ_PLTT_ID(0), PLTT_SIZE_4BPP);
+        LoadPalette(gTitleScreenDraconidEmeraldPal, OBJ_PLTT_ID(0), PLTT_SIZE_4BPP);
         LoadSpritePalette(&sSpritePalette_PressStart[0]);
+        LoadRegidragoGfx();
         gMain.state = 2;
         break;
     case 2:
@@ -746,15 +827,12 @@ static void Task_TitleScreenPhase2(u8 taskId)
     else
     {
         gTasks[taskId].tSkipToNext = TRUE;
-        SetGpuReg(REG_OFFSET_BLDCNT, BLDCNT_TGT1_BG1 | BLDCNT_EFFECT_BLEND | BLDCNT_TGT2_BG0 | BLDCNT_TGT2_BD);
+        // Draconid Emerald: the clouds also blend over Regidrago (an OBJ)
+        SetGpuReg(REG_OFFSET_BLDCNT, BLDCNT_TGT1_BG1 | BLDCNT_EFFECT_BLEND | BLDCNT_TGT2_BG0 | BLDCNT_TGT2_OBJ | BLDCNT_TGT2_BD);
         SetGpuReg(REG_OFFSET_BLDALPHA, BLDALPHA_BLEND(6, 15));
         SetGpuReg(REG_OFFSET_BLDY, 0);
-        SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_MODE_1
-                                    | DISPCNT_OBJ_1D_MAP
-                                    | DISPCNT_BG0_ON
-                                    | DISPCNT_BG1_ON
-                                    | DISPCNT_BG2_ON
-                                    | DISPCNT_OBJ_ON);
+        // Draconid Emerald: the sky and the clouds (BG0, BG1) come on in Task_TitleScreenPhase3
+        CreateSprite(&sRegidragoSpriteTemplate, REGIDRAGO_X, REGIDRAGO_Y, 0);
         CreatePressStartBanner(START_BANNER_X, 108);
         CreateCopyrightBanner(START_BANNER_X, 148);
         if (QUICKSTART && QUICKSTART_HUD)
@@ -777,9 +855,19 @@ static void Task_TitleScreenPhase2(u8 taskId)
     gTasks[taskId].data[6] = 6;  // Unused
 }
 
-// Show Rayquaza silhouette and process main title screen input
+// Show Regidrago and process main title screen input
 static void Task_TitleScreenPhase3(u8 taskId)
 {
+    // Draconid Emerald: the sky and the clouds come on a frame after Phase 2 created the sprites (a new
+    // sprite reaches the OAM a frame late), so Regidrago, an OBJ, appears together with them
+    if (!(GetGpuReg(REG_OFFSET_DISPCNT) & DISPCNT_BG0_ON))
+        SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_MODE_1
+                                    | DISPCNT_OBJ_1D_MAP
+                                    | DISPCNT_BG0_ON
+                                    | DISPCNT_BG1_ON
+                                    | DISPCNT_BG2_ON
+                                    | DISPCNT_OBJ_ON);
+
     if (QUICKSTART && JOY_NEW(SELECT_BUTTON))
         Quickstart();
 
@@ -816,7 +904,7 @@ static void Task_TitleScreenPhase3(u8 taskId)
             gBattle_BG1_Y = gTasks[taskId].tBg1Y / 2;
             gBattle_BG1_X = 0;
         }
-        UpdateLegendaryMarkingColor(gTasks[taskId].tCounter);
+        UpdateRegidragoGlow(gTasks[taskId].tCounter);
         if ((gMPlayInfo_BGM.status & 0xFFFF) == 0)
         {
             BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_WHITEALPHA);
@@ -858,16 +946,35 @@ static void CB2_GoToBerryFixScreen(void)
     }
 }
 
-static void UpdateLegendaryMarkingColor(u8 frameNum)
+// Draconid Emerald: Regidrago's dragon energy pulses (vanilla: Rayquaza's markings, BG palette 14)
+static void UpdateRegidragoGlow(u8 frameNum)
 {
     if ((frameNum % 4) == 0) // Change color every 4th frame
     {
-        s32 intensity = Cos(frameNum, Q_8_8(0.5)) + Q_8_8(0.5);
-        u32 r = 31 - Q_8_8_TO_INT(intensity * 31);
-        u32 g = 31 - Q_8_8_TO_INT(intensity * 22);
-        u32 b = 12;
+        const u16 *base = gSpeciesInfo[TITLE_SCREEN_SPECIES].palette;
+        u32 palOffset = OBJ_PLTT_ID(IndexOfSpritePaletteTag(TAG_REGIDRAGO));
+        s32 intensity = Q_8_8(0.5) - Cos(frameNum, Q_8_8(0.5)); // 0 (the base colours) .. 1 (the glow)
+        u32 i;
 
-        u16 color = RGB(r, g, b);
-        LoadPalette(&color, BG_PLTT_ID(14) + 15, sizeof(color));
-   }
+        for (i = 0; i < ARRAY_COUNT(sRegidragoGlow); i++)
+        {
+            u16 from = base[sRegidragoGlow[i].index];
+            u16 to = sRegidragoGlow[i].glow;
+            s32 r = GET_R(from) + Q_8_8_TO_INT((GET_R(to) - GET_R(from)) * intensity);
+            s32 g = GET_G(from) + Q_8_8_TO_INT((GET_G(to) - GET_G(from)) * intensity);
+            s32 b = GET_B(from) + Q_8_8_TO_INT((GET_B(to) - GET_B(from)) * intensity);
+            u16 color = RGB(r, g, b);
+
+            LoadPalette(&color, palOffset + sRegidragoGlow[i].index, sizeof(color));
+        }
+    }
+}
+
+static void LoadRegidragoGfx(void)
+{
+    struct CompressedSpriteSheet sheet = {gSpeciesInfo[TITLE_SCREEN_SPECIES].frontPic, MON_PIC_SIZE, TAG_REGIDRAGO};
+    struct SpritePalette palette = {gSpeciesInfo[TITLE_SCREEN_SPECIES].palette, TAG_REGIDRAGO};
+
+    LoadCompressedSpriteSheet(&sheet);
+    LoadSpritePalette(&palette);
 }

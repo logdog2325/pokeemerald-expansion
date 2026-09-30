@@ -9,6 +9,10 @@ Each input is shown on its own row, split into frames (profile guessed from
 the file name like validate.py), on a checkerboard so transparency is visible.
 --pal renders with an external JASC palette (what the game actually uses for
 object events) instead of the PNG's embedded palette.
+
+Emulator screenshots (RGB PNGs from play.py's "shot") are shown as they are;
+--cols N puts N inputs side by side per row (e.g. a frame series of a scene):
+  python3 tools/hack/art/contact_sheet.py -o sheet.png --scale 1 --cols 4 /tmp/emu/*.png
 """
 
 import argparse
@@ -39,11 +43,16 @@ def main():
     ap.add_argument("--scale", type=int, default=3)
     ap.add_argument("--pal", action="append", default=[], help="JASC palette per file (repeat) or one for all")
     ap.add_argument("--profile", choices=sorted(gbaart.PROFILES))
+    ap.add_argument("--cols", type=int, default=1, help="inputs per row (default 1)")
     args = ap.parse_args()
 
     rows = []
     for i, path in enumerate(args.files):
-        im = gbaart.load_indexed(path)
+        im = Image.open(path)
+        if im.mode != "P":
+            # a screenshot: no palette, no transparency
+            rows.append((path, [im.convert("RGBA")]))
+            continue
         if args.pal:
             pal = gbaart.read_jasc(args.pal[min(i, len(args.pal) - 1)])
             im = gbaart.set_palette(im.copy(), pal)
@@ -54,6 +63,11 @@ def main():
         else:
             frs = [im]
         rows.append((path, [gbaart.to_rgba(f) for f in frs]))
+    if args.cols > 1:
+        # several inputs per row: their frames side by side, labelled with the file names
+        rows = [(" | ".join(os.path.basename(p) for p, _ in rows[i:i + args.cols]),
+                 [f for _, frs in rows[i:i + args.cols] for f in frs])
+                for i in range(0, len(rows), args.cols)]
 
     s = args.scale
     pad = 4
@@ -64,7 +78,7 @@ def main():
     d = ImageDraw.Draw(sheet)
     y = 0
     for path, frs in rows:
-        d.text((pad, y + 1), os.path.relpath(path), fill=(255, 255, 160, 255))
+        d.text((pad, y + 1), path if args.cols > 1 else os.path.relpath(path), fill=(255, 255, 160, 255))
         y += label_h
         x = pad
         rh = max(f.height for f in frs) * s

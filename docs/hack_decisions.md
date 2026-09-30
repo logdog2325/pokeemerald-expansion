@@ -1440,6 +1440,39 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   of METEOR FALLS.", the Beldum as before. – Alt: Wattson keeps the key until the reveal (New Mauville and its Mega
   Stone would wait for Act 6); May's Key Stone from Steven (she never meets him before Mossdeep). – Nobody outside the
   clan, Birch and Oak knows before Sootopolis (D-244a), and every gift keeps its place.
+- **D-276 Regidrago on the title screen** (feedback 1.59, follow-up 28: "a title screen with regidrago using its in
+  game sprite and title"): Regidrago replaces the Rayquaza silhouette. It is the species' own front pic
+  (`graphics/pokemon/regidrago/front.png`, 64×64, loaded from `gSpeciesInfo[SPECIES_REGIDRAGO]` – no copy of the art)
+  shown as an **affine OBJ at exactly 2×** (matrix 0x80: every pixel a crisp 2×2 block; 128×128 on screen, centred
+  at (120, 98), so its horns rise behind the logo, the banner sits on its shoulders, PRESS START crosses its core and
+  its feet stand on the copyright line), OBJ priority 3 (behind the clouds, which blend over it as they did over
+  Rayquaza, and behind the logo and the banner), with its own palette (`normal.pal`, all 14 colours) in an OBJ
+  palette slot. The glow keeps vanilla's cycle (cosine, 256 frames, a step every 4th frame): Regidrago's **dragon
+  energy** pulses – the blue dots on its core go from the palette's blues to near white-cyan, the red core warms a
+  little (`sRegidragoGlow`: palette entries 7, 8, 10 and 11–13 and the colour each reaches at the peak). BG0 keeps
+  only vanilla's sky gradient (its 13 gradient tiles, `sky.png` / `sky.bin`), **retinted to a dusk sky** (deep
+  indigo at the top to a violet-pink horizon, lavender clouds; `sky_and_clouds.pal`): against vanilla's teal
+  Regidrago's slate body almost disappears, against the dusk it stands out and the yellow logo pops – and dusk is
+  when the Draconids' meteors fall. The sky and the clouds switch on a frame after the sprites are created (a new
+  sprite reaches the OAM a frame late), so the whole scene appears at once. – Alt: Regidrago drawn into BG0 like
+  `rayquaza.png` (BG palette 14 is shared by the sky gradient and the clouds; Regidrago's 14 colours and the 7 sky
+  colours don't fit one 16-colour palette without re-quantizing it, and tiles in a palette of its own would show the
+  backdrop instead of the sky through its transparent pixels); 3× (192 px, taller than the screen); a dark
+  silhouette with glowing markings like Rayquaza's (the playtester asked for its in-game sprite); vanilla's teal sky
+  (tried: poor contrast). – The in-game sprite, pixel for pixel, with the vanilla title's layout, clouds and pulse.
+- **D-277 The "DRACONID EMERALD" banner**: two lines, **"DRACONID" over "EMERALD"**, both in the big letters of the
+  vanilla "EMERALD VERSION" banner (white faces, grey bevels, a dark outline plate, the same 16 greys). "EMERALD" is
+  the vanilla line pixel for pixel ("VERSION" dropped, the outline closed where the two lines shared it); "DRACONID"
+  reuses vanilla's D, R and A (cut out with their outline, each outline pixel going to the nearest letter; the left D
+  sheared upright, it leans right like every letter at the right end of vanilla's arch) and **C, O, N, I drawn here**
+  to match (13 rows like R and A, 4–5 px strokes, dark counters, the bevel greys), on an arch like vanilla's
+  (lower at the ends, highest over C and O). The banner is 128×64 (two 64×64 8bpp OBJs, vanilla: two 64×32),
+  centred on the screen with its top where vanilla's was (y 50; it still fades in while sliding down 64 px over the
+  logo, as vanilla's did). Built by `tools/hack/art/title/build_banner.py` from `emerald_version.png`. – Alt: one line
+  (15 letters ≈ 225 px, the banner is 128); a big "DRACONID" with a small "EMERALD" in the "VERSION" letters (needs
+  a small M, A, L and D drawn as well, and the brand word would be the small one); a big "EMERALD" under a small
+  "DRACONID". – Every letter but C, O, N and I is Game Freak's, and both words read at the same weight, like the
+  title of the hack.
 - **D-278 Same-screen fades are fixed in the engine** (the task "Fix same-screen palette fades in Draconid scripts",
   suggested by the revenge-arc work): `fadescreen(FADE_TO_BLACK)` copies the displayed palettes – already tinted by the
   weather (rain, shade, drought, fog) and the day/night cycle (`OW_ENABLE_DNS`) – over the unfaded ones, so a script
