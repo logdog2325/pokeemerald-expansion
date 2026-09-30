@@ -11,12 +11,14 @@ DraconidVillage_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 DraconidVillage_OnTransition::
 	setflag FLAG_VISITED_DRACONID_VILLAGE
 	compare VAR_DRACONID_STATE, DRACONID_STATE_READY_TO_LEAVE
-	goto_if_ge DraconidVillage_OnTransition_1
+	goto_if_ge DraconidVillage_OnTransition_2
+DraconidVillage_OnTransition_1:
+	call Draconid_EventScript_FinaleWeather
 	return
 
-DraconidVillage_OnTransition_1:
+DraconidVillage_OnTransition_2:
 	setvar VAR_TEMP_1, 1
-	return
+	goto DraconidVillage_OnTransition_1
 
 
 DraconidVillage_EventScript_RunningShoes::

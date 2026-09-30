@@ -13,6 +13,9 @@ mapscripts DraconidVillage_PlayersHouse_2F_MapScripts {
     ]
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_DRACONID_STATE, DRACONID_STATE_NEW_GAME: DraconidVillage_PlayersHouse_2F_EventScript_WakeUp
+        // Acts 6-7: home after the Hall of Fame (act6.pory) and after the finale's credits (act7.pory)
+        VAR_DRACONID_FINALE_STATE, FINALE_STATE_HALL_OF_FAME: DraconidVillage_PlayersHouse_2F_EventScript_DraconidHomecoming
+        VAR_DRACONID_FINALE_STATE, FINALE_STATE_METEOR_DESTROYED: DraconidVillage_PlayersHouse_2F_EventScript_DraconidWakeUpAfterFinale
     ]
 }
 

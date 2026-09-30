@@ -692,8 +692,8 @@
   "TRAINER_MAXIE_SOOTOPOLIS": "S6",
   "TRAINER_MAXIE_SOOTOPOLIS_MULTI": "S6",
   "TRAINER_ARCHIE_SOOTOPOLIS_MULTI": "S6",
-  "TRAINER_ASTER_SKY_PILLAR_DEINO": "S8",
-  "TRAINER_ASTER_SKY_PILLAR_DREEPY": "S8",
+  "TRAINER_ASTER_SKY_PILLAR_DEINO": "POST",
+  "TRAINER_ASTER_SKY_PILLAR_DREEPY": "POST",
   "TRAINER_ISAAC_1": "S3",
   "TRAINER_DAVIS": "S7",
   "TRAINER_MITCHELL": "S9",
@@ -746,7 +746,7 @@
   "TRAINER_GRUNT_SPACE_CENTER_6": "S8",
   "TRAINER_GRUNT_SPACE_CENTER_7": "S8",
   "TRAINER_MACEY": "S7",
-  "TRAINER_ASTER_SKY_PILLAR_JANGMO_O": "S8",
+  "TRAINER_ASTER_SKY_PILLAR_JANGMO_O": "POST",
   "TRAINER_ASTER_POSTGAME_DEINO": "POST",
   "TRAINER_PAXTON": "S7",
   "TRAINER_ISABELLA": "S7",
@@ -4540,13 +4540,13 @@
    "story": true
   },
   "TRAINER_ASTER_SKY_PILLAR_DEINO": {
-   "segment": "S8",
+   "segment": "POST",
    "role": "route",
    "map": null,
    "story": true
   },
   "TRAINER_ASTER_SKY_PILLAR_DREEPY": {
-   "segment": "S8",
+   "segment": "POST",
    "role": "route",
    "map": null,
    "story": true
@@ -4896,7 +4896,7 @@
    "story": false
   },
   "TRAINER_ASTER_SKY_PILLAR_JANGMO_O": {
-   "segment": "S8",
+   "segment": "POST",
    "role": "route",
    "map": null,
    "story": true

@@ -1,0 +1,49 @@
+# Flow test for Act 6 (data/scripts/draconid/act6.pory): the Champion's room (Brendan runs in with Prof. Birch,
+# May follows), the Hall of Fame without credits (the Hall of Fame screen sends the player home), the homecoming
+# upstairs and the meteor alert downstairs; the Elder's dragon flies the player to the Sky Pillar (act7.play goes on
+# from there). Needs rustboro_done.ss from tests/rustboro.play; the Act 5 end state is set by hand. Wallace is
+# mashed with the no-whiteout flag on (the vanilla scene goes on either way).
+loadstate rustboro_done.ss
+setvar VAR_DRACONID_REPUTATION 2
+setvar VAR_PLAYER_OUTFIT 0
+setvar VAR_MAGMA_STATE 12
+setvar VAR_NERINE_STATE 7
+setvar VAR_ASTER_STATE 7
+setflag FLAG_DEBUG_NO_ENCOUNTER
+setflag FLAG_DEBUG_NO_TRAINER_SEE
+setflag FLAG_DRACONID_NO_WHITEOUT
+
+# --- the Champion's room (Wallace, Brendan, Prof. Birch, May), then the Hall of Fame ---
+warp MAP_EVER_GRANDE_CITY_CHAMPIONS_ROOM 6 12
+run 60
+shot 10_champion
+mash A 120000
+mapid
+run 60
+mash A 60000
+shot 11_home
+mapid
+expect_flag FLAG_SYS_GAME_CLEAR 1
+expect_flag FLAG_HIDE_DRACONID_HOUSE_ELDER 0
+expect_flag FLAG_HIDE_DRACONID_ELDERS_HOUSE_ELDER 1
+# the homecoming upstairs (FINALE_STATE_HALL_OF_FAME -> METEOR_ALERT)
+run 60
+mash A 60000
+shot 12_homecoming
+expect_var VAR_DRACONID_FINALE_STATE 2
+
+# --- the meteor alert downstairs; YES to the Elder's lift ---
+warp MAP_DRACONID_VILLAGE_PLAYERS_HOUSE_1F 8 2 3000
+run 150
+shot 20_alert
+mash A 30000
+run 60
+shot 21_sky_pillar
+mapid
+expect_var VAR_DRACONID_FINALE_STATE 3
+expect_flag FLAG_HIDE_DRACONID_HOUSE_ELDER 1
+savestate act6_done.ss
+
+clearflag FLAG_DEBUG_NO_ENCOUNTER
+clearflag FLAG_DEBUG_NO_TRAINER_SEE
+clearflag FLAG_DRACONID_NO_WHITEOUT

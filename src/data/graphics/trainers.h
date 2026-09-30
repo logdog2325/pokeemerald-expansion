@@ -284,6 +284,9 @@ const u32 gTrainerFrontPic_NerineAqua[] = INCGFX_U32("graphics/trainers/front_pi
 const u16 gTrainerPalette_NerineAqua[] = INCGFX_U16("graphics/trainers/front_pics/nerine_aqua.png", ".gbapal");
 const u32 gTrainerFrontPic_Nerine[] = INCGFX_U32("graphics/trainers/front_pics/nerine.png", ".4bpp.smol");
 const u16 gTrainerPalette_Nerine[] = INCGFX_U16("graphics/trainers/front_pics/nerine.png", ".gbapal");
+// Draconid Emerald: Zinnia (Act 7). TODO(art): placeholder (the Hex Maniac's pic) until her own pic is drawn
+const u32 gTrainerFrontPic_Zinnia[] = INCGFX_U32("graphics/trainers/front_pics/zinnia.png", ".4bpp.smol");
+const u16 gTrainerPalette_Zinnia[] = INCGFX_U16("graphics/trainers/front_pics/zinnia.png", ".gbapal");
 const u16 gTrainerPalette_Red[] = INCGFX_U16("graphics/trainers/front_pics/red.png", ".gbapal");
 
 const u32 gTrainerFrontPic_Leaf[] = INCGFX_U32("graphics/trainers/front_pics/leaf.png", ".4bpp.smol");
@@ -667,6 +670,10 @@ const struct TrainerPicInfo gTrainerPicInfo[TRAINER_PIC_COUNT] =
     {
         .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Nerine, gTrainerPalette_Nerine),
         .backPic = TRAINER_BACK_PIC(5, gTrainerBackPic_Nerine, gTrainerBackPicPalette_Nerine, sBackAnims_Kanto),
+    },
+    [TRAINER_PIC_ZINNIA] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Zinnia, gTrainerPalette_Zinnia),
     },
     [TRAINER_PIC_RS_BRENDAN] =
     {

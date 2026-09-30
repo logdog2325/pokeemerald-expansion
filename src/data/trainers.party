@@ -42886,3 +42886,63 @@ Nature: Jolly
 - Earthquake
 - Dragon Dance
 
+
+=== TRAINER_ZINNIA_SKY_PILLAR ===
+Name: ZINNIA
+Class: Lorekeeper
+Pic: Zinnia
+Gender: Female
+Music: Intense
+Items: Full Restore / Full Restore
+Double Battle: No
+AI: Smart Trainer / Prediction / Ace Pokemon
+
+Goodra @ Assault Vest
+Level: 60
+Ability: Sap Sipper
+EVs: 252 HP / 252 SpA / 4 SpD
+Nature: Modest
+- Dragon Pulse
+- Muddy Water
+- Thunderbolt
+- Ice Beam
+
+Noivern @ Life Orb
+Level: 60
+Ability: Infiltrator
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Timid
+- Dragon Pulse
+- Air Slash
+- Shadow Ball
+- Super Fang
+
+Altaria @ Leftovers
+Level: 60
+Ability: Natural Cure
+EVs: 252 HP / 252 SpA / 4 SpD
+Nature: Modest
+- Dragon Pulse
+- Moonblast
+- Flamethrower
+- Hyper Voice
+
+Tyrantrum @ Choice Band
+Level: 60
+Ability: Strong Jaw
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Adamant
+- Dragon Claw
+- Crunch
+- Earthquake
+- Stone Edge
+
+Salamence @ Salamencite
+Level: 62
+Ability: Intimidate
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Adamant
+- Dragon Claw
+- Crunch
+- Fire Fang
+- Thunder Fang

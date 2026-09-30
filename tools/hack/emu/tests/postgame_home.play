@@ -1,19 +1,21 @@
-# The SS Ticket / Lati TV scene after the Hall of Fame, moved to the Draconid house
-# (DraconidVillage_PlayersHouse_1F). Needs rustboro_done.ss from tests/rustboro.play.
-# hall_of_fame.inc sets the houses state to 3 and shows Dad; this does the same by hand and
-# arrives on the stairs like the player coming down from the bedroom. Mashing A picks the first
-# colour (red) in the "What colour?" menu.
+# The post-game home scene in the Draconid house (DraconidVillage_PlayersHouse_1F): after the finale's credits
+# the Elder brings the SS Ticket (sent by Captain Stern) and the Lati TV news airs (D-112, act7.pory).
+# Needs rustboro_done.ss from tests/rustboro.play. The finale leaves the Elder in the house and the player wakes
+# upstairs (FINALE_STATE_HOME); this sets that by hand and arrives on the stairs like the player coming down from
+# the bedroom. Mashing A picks the first colour (red) in the "What colour?" menu.
 loadstate rustboro_done.ss
-setvar VAR_LITTLEROOT_HOUSES_STATE_MAY 3
-setvar VAR_LITTLEROOT_HOUSES_STATE_BRENDAN 3
-clearflag FLAG_HIDE_PLAYERS_HOUSE_DAD
+setvar VAR_DRACONID_FINALE_STATE 8
 clearflag FLAG_HIDE_DRACONID_HOUSE_ELDER
+setflag FLAG_HIDE_DRACONID_ELDERS_HOUSE_ELDER
 warp MAP_DRACONID_VILLAGE_PLAYERS_HOUSE_1F 8 2 3000
 run 150
-shot 10_dad_arrives
+shot 10_elder_waits
 mash A 30000
 shot 11_after_scene
 expect_flag FLAG_RECEIVED_SS_TICKET 1
+expect_item ITEM_SS_TICKET 1
 expect_flag FLAG_LATIOS_OR_LATIAS_ROAMING 1
-expect_flag FLAG_HIDE_PLAYERS_HOUSE_DAD 1
+expect_flag FLAG_HIDE_DRACONID_HOUSE_ELDER 1
+expect_flag FLAG_HIDE_DRACONID_ELDERS_HOUSE_ELDER 0
 expect_var VAR_LITTLEROOT_HOUSES_STATE_MAY 4
+expect_var VAR_DRACONID_FINALE_STATE 9

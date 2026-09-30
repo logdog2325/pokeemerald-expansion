@@ -24,6 +24,9 @@ Grouped by area; each entry names the file(s).
 | Art manifest | `tools/hack/art/manifests/draconid.json` | `validate.py --manifest` for all player art; new `map_icon` profile in `gbaart.py` |
 | Art tool ops (round 1) | `tools/hack/art/kitbash.py`, `tools/hack/art/player/build_pics.py` | kitbash: `remap_inner`, `pattern`, `outline`, `save_pal` (+ reflection), `pixels` `under`, per-frame `frames`/`shift`/`axis: y` on box steps; build_pics: per-frame `remap` (`frames`) and `pattern`; existing specs build byte-identical |
 | Trainer tools | `tools/hack/trainers/`: `party.py` (reader/writer), `scan_maps.py` (map → trainers), `build_segments.py` → `segments.json` (segment, role, cap per trainer), `check_party.py` (legality, caps, headers, trainerproc), `splice_party.py` (merge batches, `--target`), `learnset.py`, `check_tiers.py` (rematch tiers grow), `report.py` (trainer table in hack_trainers.md), `sources.json` (where each team comes from) | see docs/hack_trainers.md |
+| Emulator tests (round 1, Acts 6–7): `act6.play` (Champion's room → Hall of Fame → home → meteor alert → the Elder's lift; in the matrix with Deino) and `act7.play` (Trial of Three → Zinnia → Rayquaza → Deoxys → credits → SS Ticket → Nerine, Aster and Deoxys post-game; `-D EGGNAME SECOND SECONDNAME`; in the matrix per egg × second starter); `aster.play` loses its Sky Pillar and shrine sections, `rivals.play` / `postgame_home.play` set the finale state; `play.py` gained `expect_partner`, `boost SLOT [VALUE]` (a party Pokémon at level 100 with VALUE HP/stats, so a flow test can win or quickly lose) and `until_var`; `gbarun` key cycles (`mash A,UP`, `until … B,R`) now really cycle (`parse_keys` used `strtok` inside the cycle's `strtok` loop, so only the first key was ever pressed) | `tools/hack/emu/tests/act6.play`, `act7.play`, `aster.play`, `rivals.play`, `postgame_home.play`, `tools/hack/emu/matrix.py`, `play.py`, `gbarun.c` |
+| Trainer tools: Zinnia is a story trainer (own roster) and may hold a Mega Stone; Aster's Sky Pillar battle is post-game now (segment S8 → POST: the Sky Pillar opens after the Champion, D-109) | `tools/hack/trainers/check_party.py` (`STORY_TRAINERS`, `MEGA_TRAINERS`), `build_segments.py` (`OVERRIDES`), `segments.json` (those three entries) |
+| Story checker knows `VAR_DRACONID_FINALE_STATE` (`FINALE_STATE_*`); the Acts 6–7 states are out of `PENDING`; the two battle config flags are in `ALLOWED` | `tools/hack/check_story.py` |
 
 ## Config options
 | Option | Old | New | File |
@@ -38,6 +41,8 @@ Grouped by area; each entry names the file(s).
 | `B_LEVEL_CAP_EXP_UP` | `FALSE` | `TRUE` | `include/config/caps.h` |
 | `OW_REMATCH_TIER_BADGES` (new) | – | `TRUE` | `include/config/overworld.h` |
 | Tests build: caps off (`B_EXP_CAP_TYPE`, `B_LEVEL_CAP_TYPE`, `B_RARE_CANDY_CAP`, `B_LEVEL_CAP_EXP_UP` back to vanilla) | – | – | `include/config/test.h` |
+| `WE_FLAG_NO_RUNNING` | `0` | `FLAG_DRACONID_NO_RUNNING` (set around the finale's Rayquaza and Deoxys battles) | `include/config/wild_encounter.h` |
+| `WE_FLAG_NO_CATCHING` | `0` | `FLAG_DRACONID_NO_CATCHING` (set around the Deoxys boss battle) | `include/config/wild_encounter.h` |
 
 ## Flags
 | Flag | Meaning |
@@ -78,6 +83,16 @@ Grouped by area; each entry names the file(s).
 | `FLAG_HIDE_RUSTBORO_CITY_RIVAL` (vanilla, round 1) | now Brendan at Rustboro's south edge: cleared by the outpost scene, set when he walks off; the Devon 3F no longer clears it |
 | `FLAG_TEMP_11` in `PetalburgCity_Gym` (round 1) | hides May (`LOCALID_PETALBURG_GYM_MAY`) unless `VAR_PETALBURG_GYM_STATE` is 6 (set by the gym's OnTransition) |
 | `FLAG_ENABLE_BRENDAN_MATCH_CALL` (0x3F) | Brendan in the PokéNav (registered after the Route 110 battle); May keeps `FLAG_ENABLE_RIVAL_MATCH_CALL` |
+| `FLAG_DRACONID_NO_RUNNING` (0x4E, round 1 Act 7) | `WE_FLAG_NO_RUNNING`: set around the Sky Pillar Rayquaza and Deoxys battles |
+| `FLAG_DRACONID_NO_CATCHING` (0x4F, round 1 Act 7) | `WE_FLAG_NO_CATCHING`: set around the Deoxys boss battle |
+| `FLAG_HIDE_DRACONID_VILLAGE_NERINE` (0x54, round 1 Act 7) | Nerine by the village pond (cleared by the finale; she stays after her post-game battle) |
+| `FLAG_HIDE_DRACONID_HOUSE_ELDER` (changed, Acts 6–7) | cleared by the first Hall of Fame (the meteor alert), set when his dragon takes the player to the Sky Pillar, cleared by the finale (the SS Ticket), set when he walks home |
+| `FLAG_HIDE_DRACONID_ELDERS_HOUSE_ELDER` (Acts 6–7) | also set by the first Hall of Fame and cleared after the post-game SS Ticket scene (he is in the player's house or at the Sky Pillar meanwhile) |
+| `FLAG_HIDE_SKY_PILLAR_TOP_ASTER` (reused, Act 7) | Aster at the summit during the finale (cleared by the summit's OnTransition, set when the finale ends) |
+| `FLAG_HIDE_PLAYERS_HOUSE_DAD` (vanilla, Act 6) | no longer cleared by the Hall of Fame (Norman in the rivals' Littleroot houses); the Draconid house has no Norman object any more |
+| `FLAG_DEFEATED_RAYQUAZA` (vanilla, Act 7) | set by the finale's catch, so the vanilla Rayquaza object never shows at the summit |
+| `FLAG_BATTLED_DEOXYS` / `FLAG_DEFEATED_DEOXYS` (vanilla, Act 7) | the post-game Deoxys at the Sky Pillar summit: caught / beaten (the Hall of Fame clears the second, so a beaten Deoxys comes back), as on Birth Island |
+| `FLAG_TEMP_11` / `FLAG_TEMP_12` in `SkyPillar_Outside`, `SkyPillar_3F`, `SkyPillar_Top` (Act 7) | hide the finale's NPCs (and the summit Deoxys) outside their finale state (set by each map's OnTransition hook) |
 
 ## Vars
 | Var | Values |
@@ -98,6 +113,11 @@ Grouped by area; each entry names the file(s).
 | `VAR_PETALBURG_WOODS_STATE` (vanilla, round 1) | 2 = on the way to the Magma outpost (its OnFrame runs the uniform scene), 3 = recruited; vanilla 1 is skipped |
 | `VAR_RUSTBORO_CITY_STATE`, `VAR_ROUTE104_STATE` (vanilla, round 1) | the PokéNav scene sets 8 and 2 directly: the vanilla May registration in Rustboro / at Briney's cottage never runs (May registers on Route 110) |
 | `VAR_STARTER_MON` (changed meaning) | now the player's egg, `DRACONID_EGG_*`; the starter table in `src/starter_choose.c` maps it to Deino/Dreepy/Jangmo-o |
+| `VAR_DRACONID_FINALE_STATE` (0x409B, was unused, round 1 Acts 6–7) | `FINALE_STATE_*`: 0 none, 1 Hall of Fame (home, no credits), 2 meteor alert, 3 summoned (Sky Pillar), 4 climb (Trial of Three won; Zinnia), 5 summit, 6 Rayquaza caught, 7 meteor destroyed (credits), 8 home, 9 post-game |
+| `VAR_TEMP_7` in the Sky Pillar maps (Act 7) | 1 = the map's finale scene runs on the next frame (set by the OnTransition hook from the finale state, cleared by the scene, so a lost battle doesn't loop it) |
+| `VAR_TEMP_8` (Act 7) | the finale's wild battle outcome inside the retry loops |
+| `VAR_SKY_PILLAR_RAYQUAZA_CRY_DONE` (vanilla, Act 7) | set to 1 once the finale starts: the vanilla "Rayquaza wakes" trigger at the summit stays off |
+| `VAR_LITTLEROOT_HOUSES_STATE_MAY` (changed back, Act 7) | no longer starts the Draconid house scene (state 3 is set by the Hall of Fame as in vanilla, 4 by the post-game SS Ticket scene) |
 
 ## Constants
 | Constant | Where |
@@ -138,6 +158,12 @@ Grouped by area; each entry names the file(s).
 | Macro `trainerbattle_two_trainers_no_intro` (scripted two-trainer double; the script continues after it) | `asm/macros/event.inc` |
 | Route 103 rival object is always `OBJ_EVENT_GFX_RIVAL_MAY_NORMAL` | `data/maps/Route103/map.json` |
 | Route 101 coord triggers (0, 4) / (0, 5) on `VAR_ROUTE101_STATE` 1 | `data/maps/Route101/map.json` |
+| `FINALE_STATE_*` (0–9), `DRACONID_RAYQUAZA_LEVEL` (70), `DRACONID_DEOXYS_BOSS_LEVEL` (72), `DRACONID_DEOXYS_LEVEL` (80) (round 1 Acts 6–7) | `include/constants/draconid.h` |
+| `TRAINER_ZINNIA_SKY_PILLAR` (924), `TRAINERS_COUNT_EMERALD` 924 → 925 (`MAX_TRAINERS_COUNT_EMERALD` stays 928: 3 spare ids); her ORAS Delta Episode team with the boss enhancements (D-155) | `include/constants/opponents.h`, `src/data/trainers.party` |
+| `TRAINER_CLASS_LOREKEEPER` ("LOREKEEPER", 25 money, Ultra Ball, battle music `MUS_VS_FRONTIER_BRAIN`), `TRAINER_PIC_ZINNIA` (front pic only) | `include/constants/trainers.h`, `src/battle_main.c`, `src/pokemon.c`, `src/data/graphics/trainers.h` |
+| `OBJ_EVENT_GFX_ZINNIA`, `OBJ_EVENT_PAL_TAG_ZINNIA` (0x114E) – placeholder art (the Hex Maniac's sheet, pic and `npc_4` palette) at `graphics/object_events/pics/people/draconid/zinnia.png`, `graphics/object_events/palettes/zinnia{,_reflection}.pal`, `graphics/trainers/front_pics/zinnia.png`, `TODO(art)` | `tools/hack/art/player/gen_outfit_code.py` (NPCS, NPC_PALETTES; generated regions) |
+| Rayquaza's catch rate 3 → 45, as in ORAS (the finale catch is mandatory, D-153) | `src/data/pokemon/species_info/gen_3_families.h` |
+| New objects (Act 7): `LOCALID_SKY_PILLAR_OUTSIDE_ASTER/_NERINE` (13/15, 7), `LOCALID_SKY_PILLAR_3F_ZINNIA` (3, 5), `_ASTER` (2, 2), `_NERINE` (2, 3), `LOCALID_SKY_PILLAR_TOP_ELDER` (14, 9), `_NERINE` (15, 11), `_ZINNIA` (16, 12), `_DEOXYS` (14, 7), `LOCALID_CHAMPIONS_ROOM_MAY` (6, 12), `LOCALID_DRACONID_VILLAGE_NERINE` (28, 7); removed: `LOCALID_DRACONID_HOUSE_DAD` (Norman in the Draconid house) | `data/maps/*/map.json` |
 
 ## C changes
 | Change | File |
@@ -170,6 +196,10 @@ Grouped by area; each entry names the file(s).
 | The name-entry screen shows the player's outfit sprite (vanilla drew the rival Brendan/May); linked Emerald players appear as Draconid tamers (`GetOutfitAvatarGfx`) | `src/naming_screen.c`, `src/overworld.c`, `src/player_outfit.c`, `include/player_outfit.h` |
 | Variant trainers: `Draconid_ResolveVariantTrainer` swaps a fight's first id for the variant of the player's egg (and second starter) when the battle loads (`TrainerBattleLoadArgs`); table in `src/data/draconid_variant_trainers.h` (Aster's 4 fights, Nerine's 8) (D-101) | `src/draconid.c`, `include/draconid.h`, `src/battle_setup.c`, `src/data/draconid_variant_trainers.h` |
 | Emulator test hook (debug builds only): `gDraconidTestWarp` + `Draconid_TryTestWarp` (warp / heal on request), called from `ProcessPlayerFieldInput` | `src/draconid.c`, `include/draconid.h`, `src/field_control_avatar.c` |
+| Variant partners: `Draconid_ResolveVariantPartner` (the egg × second starter table of Nerine's `PARTNER_NERINE_*`, sharing the trainer resolver); `SetMultiTrainerBattle` resolves the opponents and the partner (the Sky Pillar double: Aster's base id, Nerine's first partner id, D-151) | `src/draconid.c`, `include/draconid.h`, `src/battle_setup.c` |
+| `B_FLAG_NO_WHITEOUT` also covers scripted wild battles (`CB2_EndScriptedWildBattle` continues the script after a loss when the flag is set) – the finale's Rayquaza and Deoxys battles | `src/battle_setup.c` |
+| The Hall of Fame ends at home instead of rolling the credits (`CB2_ReturnHomeDraconid`: bedroom warp, the continue-game warp cleared); the credits end the same way instead of soft-resetting (D-150, D-152) | `src/hall_of_fame.c`, `src/credits.c`, `src/overworld.c`, `include/overworld.h` |
+| Finale natives (`callnative`): `Draconid_PrepareRayquaza` (Rayquaza to the party lead, from the PC if needed; Dragon Ascent), `Draconid_DoRayquazaFlightScene` (`DoRayquazaTakesFlightScene`: the "takes flight" shot of the Sootopolis cutscene alone), `Draconid_SaveBeforeCredits` (saves with the game continuing in the bedroom), `Draconid_StartCredits` | `src/draconid.c`, `include/draconid.h`, `src/rayquaza_scene.c`, `include/rayquaza_scene.h` |
 
 ## Scripts
 | Script / label | File |
@@ -212,3 +242,5 @@ Grouped by area; each entry names the file(s).
 | New object `LOCALID_OCEANIC_MUSEUM_1F_TABITHA` (10, 4); Nerine's sprite on the Rustboro thief, the Rusturf grunt and museum 2F grunt 1; the Slateport May object and triggers removed | `data/maps/*/map.json` |
 | `act2.play` (theft + Tabitha, Rusturf + choice, Mr. Stone, Steven, museum, Route 110, Mauville; `-D EGGNAME SECOND SECONDNAME GOODS RETURNED`), in the matrix per egg × second starter (Totodile runs keep the goods) | `tools/hack/emu/tests/act2.play`, `tools/hack/emu/matrix.py` |
 | `docs/hack_script.md` (all new and reworked dialogue by scene) generated by `tools/hack/gen_script_doc.py` (`--check` for staleness) | `tools/hack/gen_script_doc.py`, `docs/hack_script.md` |
+| **Round 1, Act 6**: Wally's Victory Road lines (he knows the truth), the Champion's room (Brendan runs in with his father, May follows: `EverGrandeCity_ChampionsRoom_EventScript_DraconidMayArrives` / `…_DraconidRivalsCongratulate`; Wallace's and Birch's lines), the Hall of Fame without credits (`EverGrandeCity_HallOfFame_EventScript_DraconidFinaleStart`), the homecoming and the meteor alert at home (`DraconidVillage_PlayersHouse_2F_EventScript_DraconidHomecoming`, `…_1F_EventScript_DraconidMeteorAlert`, the Elder's lift `…_DraconidOfferLift`) | `data/scripts/draconid/act6.pory`; `data/maps/{VictoryRoad_1F,EverGrandeCity_ChampionsRoom,EverGrandeCity_HallOfFame}/scripts.inc`, `data/scripts/hall_of_fame.inc` (`@ Draconid Emerald`), `DraconidVillage_PlayersHouse_{1F,2F}/scripts.pory` (OnFrame entries) |
+| **Round 1, Act 7**: the Trial of Three at the foot of the Sky Pillar (`SkyPillar_Outside_EventScript_DraconidTrialOfThree`, `…_DraconidDoubleBattle`: the player + Nerine vs Aster), Zinnia on 3F (`SkyPillar_3F_EventScript_DraconidZinniaScene`), the summit (`SkyPillar_Top_EventScript_DraconidSummit`: the Rayquaza catch, Dragon Ascent, Deoxys, Mega Rayquaza and the meteor, the credits), the wake-up at home, the post-game SS Ticket / Lati TV scene with the Elder (`DraconidVillage_PlayersHouse_1F_EventScript_SSTicketAndLatiTV`, rewritten), Brendan and May in the lab and Aster at the shrine (moved from `rivals.pory` / `aster.pory`, same labels), Nerine by the pond (`DraconidVillage_EventScript_DraconidNerine`), the post-game Deoxys (`SkyPillar_Top_EventScript_DraconidDeoxys`); the v1 Sky Pillar climax and its two hooks in `SkyPillar_Top_EventScript_AwakenRayquaza` are gone | `data/scripts/draconid/act7.pory`; hooks: `SkyPillar_{Outside,3F,Top}/scripts.inc` (OnTransition calls, OnFrame tables, the door in `SkyPillar_Outside_OnLoad`), `DraconidVillage/scripts.pory` (the dark sky), `DraconidVillage_Shrine/scripts.pory` (comment), `new_game.pory` (Nerine hidden) |

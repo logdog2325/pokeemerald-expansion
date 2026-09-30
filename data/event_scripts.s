@@ -1071,6 +1071,8 @@ gStdScripts_End::
 	.include "data/scripts/draconid/act1.inc"
 	.include "data/scripts/draconid/act2.inc"
 	.include "data/scripts/draconid/act4.inc"
+	.include "data/scripts/draconid/act6.inc"
+	.include "data/scripts/draconid/act7.inc"
 	.include "data/scripts/draconid/reputation/dewford.inc"
 	.include "data/scripts/draconid/reputation/ever_grande.inc"
 	.include "data/scripts/draconid/reputation/fallarbor.inc"

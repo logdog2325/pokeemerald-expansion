@@ -27,3 +27,11 @@ Record every imported asset, its author and its terms in `CREDITS.md` and in
 Use `tools/hack/art/quantize.py` (≤16 colours, transparent index 0, GBA colour grid) and
 `tools/hack/art/validate.py` before wiring anything into the build. Tiles go through Porytiles
 (`docs/hack_tools.md`). Render a contact sheet or map preview and review it before committing.
+
+## Game data sources
+Teams copied from the official games (species, levels, abilities, moves and items as listed there; our own
+natures, EVs and held items are added on top and recorded in `docs/hack_decisions.md`).
+
+| Trainer | Source | Notes |
+|---|---|---|
+| `TRAINER_ZINNIA_SKY_PILLAR` (Act 7, D-155) | [Serebii – ORAS Delta Episode](https://www.serebii.net/omegarubyalphasapphire/deltaepisode.shtml) (Zinnia at the Sky Pillar; also [pokearth Sky Pillar](https://www.serebii.net/pokearth/hoenn/skypillar.shtml)) | Goodra 60, Noivern 60, Altaria 60, Tyrantrum 60, Salamence 62 @ Salamencite |

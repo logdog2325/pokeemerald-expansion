@@ -104,7 +104,7 @@ OVERRIDES = {
     "WALLY_VR_2": "POST",  # Wally's rematches start after the Champion
     **{"ASTER_METEOR_FALLS_" + e: "S4" for e in ("DEINO", "DREEPY", "JANGMO_O")},
     **{"ASTER_ROUTE_119_" + e: "S6" for e in ("DEINO", "DREEPY", "JANGMO_O")},
-    **{"ASTER_SKY_PILLAR_" + e: "S8" for e in ("DEINO", "DREEPY", "JANGMO_O")},
+    **{"ASTER_SKY_PILLAR_" + e: "POST" for e in ("DEINO", "DREEPY", "JANGMO_O")},  # round 1: Act 7, after the Champion
     **{"ASTER_POSTGAME_" + e: "POST" for e in ("DEINO", "DREEPY", "JANGMO_O")},
     "BRENDAN_SOOTOPOLIS": "S9", "MAY_SOOTOPOLIS": "S9",
     **{t: "POST" for t in ["BRENDAN_POSTGAME", "MAY_POSTGAME", "BRENDAN_POSTGAME_DOUBLE", "MAY_POSTGAME_DOUBLE"]},

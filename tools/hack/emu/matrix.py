@@ -6,9 +6,10 @@ matrix.py - run the flow tests for every player gender x egg x second starter (2
 
 Per gender and egg (6 chains, run in parallel): opening -> route103 -> woods (Nerine's team for the egg,
 the Magma sprite for the gender) -> rustboro, then rivals and postgame_home (their scenes don't depend on
-the egg, so only with Deino), then for each second starter second_starter (Tabitha + Birch's pick), aster
+the egg, so only with Deino; act6 too), then for each second starter second_starter (Tabitha + Birch's pick), aster
 and act2 (Nerine's teams for egg x second starter; the Totodile runs keep the Devon Goods for Magma) (Aster's trainer ids for the egg, the Mega Stone for the
-second starter, the Draconid / Magma sprites for the gender). Needs a debug build (the warp hook).
+second starter, the Draconid / Magma sprites for the gender) and act7 (the Sky Pillar double: Aster's team by egg,
+Nerine's partner and post-game teams by egg x second starter). Needs a debug build (the warp hook).
 Prints one line per test run and a summary table; exit 1 if any run failed. Logs are in -o.
 """
 
@@ -23,6 +24,8 @@ PLAY = os.path.join(HERE, "play.py")
 TESTS = os.path.join(HERE, "tests")
 
 EGGS = [("DEINO", 0), ("DREEPY", 1), ("JANGMO_O", 2)]                # DRACONID_EGG_*
+# act7.play's attacking move slot for the egg Pokemon in rustboro_done.ss (Dragon Breath, Astonish, Tackle)
+MOVE_SLOT = {"DEINO": 2, "DREEPY": 2, "JANGMO_O": 0}
 SECONDS = [("CHARMANDER", 1, "ITEM_CHARIZARDITE_X"),                 # SECOND_STARTER_*, Mega Stone
            ("TOTODILE", 2, "ITEM_FERALIGITE"),
            ("TREECKO", 3, "ITEM_SCEPTILITE")]
@@ -49,7 +52,7 @@ def chain(gender, egg, egg_id, root):
     steps = [("opening", {"GENDER": gender, "EGG": egg_id, "EGGNAME": egg}), ("route103", {}),
              ("woods", {"EGGNAME": egg, "MAGMA": "MAGMA_" + gender}), ("rustboro", {})]
     if egg_id == 0:
-        steps += [("rivals", {}), ("postgame_home", {})]
+        steps += [("rivals", {}), ("postgame_home", {}), ("act6", {})]
     for second, value, stone in SECONDS:
         steps.append(("second_starter", {"PICK": value - 1, "SECOND": value}))
         steps.append(("aster", {"EGGNAME": egg, "SECOND": value, "STONE": stone,
@@ -58,9 +61,11 @@ def chain(gender, egg, egg_id, root):
         goods = 1 if second == "TOTODILE" else 0
         steps.append(("act2", {"EGGNAME": egg, "SECOND": value, "SECONDNAME": second,
                                "GOODS": goods, "RETURNED": 1 - goods}))
+        # Act 7: the Sky Pillar double picks Aster's team by egg and Nerine's partner team by egg x second starter
+        steps.append(("act7", {"EGGNAME": egg, "MOVE": MOVE_SLOT[egg], "SECOND": value, "SECONDNAME": second}))
     for test, defines in steps:
         ok, bad = run(test, out, defines, log)
-        label = test + ("" if test not in ("second_starter", "aster", "act2") else " " + SECONDS[defines["SECOND"] - 1][0])
+        label = test + ("" if test not in ("second_starter", "aster", "act2", "act7") else " " + SECONDS[defines["SECOND"] - 1][0])
         results.append((name, label, ok, bad))
         if not ok and test in ("opening", "route103", "woods", "rustboro"):
             break  # the rest needs their savestates

@@ -54,6 +54,8 @@ script DraconidEmerald_EventScript_NewGameSetup {
     // Act 1: Courtney steps out of the trees after Nerine is beaten in Petalburg Woods
     setflag(FLAG_HIDE_PETALBURG_WOODS_COURTNEY)
     setflag(FLAG_HIDE_RUSTBORO_CITY_TABITHA)
+    // Acts 6–7: Nerine comes home to the village pond after the finale
+    setflag(FLAG_HIDE_DRACONID_VILLAGE_NERINE)
     // blacking out before the first Pokémon Center brings the player home
     setrespawn(HEAL_LOCATION_DRACONID_VILLAGE_PLAYERS_HOUSE_2F)
 }

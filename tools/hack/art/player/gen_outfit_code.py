@@ -44,12 +44,15 @@ NPCS = [
     ("NerineAqua", "NERINE_AQUA", "draconid/nerine_aqua.png", "nerine_aqua"),
     ("Nerine", "NERINE", "draconid/nerine.png", "nerine"),
     ("Courtney", "COURTNEY", "draconid/courtney.png", "courtney"),
+    # Act 7: Zinnia, the Lorekeeper at the Sky Pillar. TODO(art): placeholder sheet + palette (the Hex Maniac's,
+    # npc_4.pal); the real Zinnia replaces draconid/zinnia.png and palettes/zinnia{,_reflection}.pal
+    ("Zinnia", "ZINNIA", "draconid/zinnia.png", "zinnia"),
 ]
 # palette stem -> (CamelName, tag CONST, tag value)
 NPC_PALETTES = [("DraconidNpc", "DRACONID_NPC", 0x1148, "draconid_npc"), ("Aster", "ASTER", 0x1149, "aster"),
                 ("DraconidEggs", "DRACONID_EGGS", 0x114A, "draconid_eggs"),
                 ("NerineAqua", "NERINE_AQUA", 0x114B, "nerine_aqua"), ("Nerine", "NERINE", 0x114C, "nerine"),
-                ("Courtney", "COURTNEY", 0x114D, "courtney")]
+                ("Courtney", "COURTNEY", 0x114D, "courtney"), ("Zinnia", "ZINNIA", 0x114E, "zinnia")]
 # single-frame inanimate 16x32 objects: (CamelName, CONST_NAME, png under pics/, palette stem)
 OBJECTS = [
     ("DraconidEggDeino", "DRACONID_EGG_DEINO", "misc/draconid_egg_deino.png", "draconid_eggs"),

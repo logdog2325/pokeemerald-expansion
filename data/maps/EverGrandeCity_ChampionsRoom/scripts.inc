@@ -5,7 +5,7 @@ EverGrandeCity_ChampionsRoom_MapScripts::
 	.byte 0
 
 EverGrandeCity_ChampionsRoom_OnTransition:
-	call Common_EventScript_SetupRivalGfxId
+	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL  @ Draconid Emerald: Brendan comes in with his father, Prof. Birch (act6.pory)
 	end
 
 EverGrandeCity_ChampionsRoom_OnWarp:
@@ -52,10 +52,10 @@ EverGrandeCity_ChampionsRoom_EventScript_Defeated::
 	msgbox EverGrandeCity_ChampionsRoom_Text_PostBattleSpeech, MSGBOX_DEFAULT
 	closemessage
 	playse SE_DOOR
-	call EverGrandeCity_ChampionsRoom_EventScript_PlayMayMusic  @ Draconid Emerald: the rival here is May (Birch's daughter)
+	call EverGrandeCity_ChampionsRoom_EventScript_PlayBrendanMusic  @ Draconid Emerald: the rival here is Brendan (Birch's son, round 1)
 	addobject LOCALID_CHAMPIONS_ROOM_RIVAL
 	call EverGrandeCity_ChampionsRoom_EventScript_RivalApproachPlayer
-	goto EverGrandeCity_ChampionsRoom_EventScript_MayAdvice  @ Draconid Emerald: the rival here is May (Birch's daughter)
+	goto EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice  @ Draconid Emerald: the rival here is Brendan (Birch's son, round 1)
 	end
 
 EverGrandeCity_ChampionsRoom_EventScript_PlayMayMusic::
@@ -102,6 +102,7 @@ EverGrandeCity_ChampionsRoom_EventScript_BirchArrivesExitForHoF::
 	msgbox EverGrandeCity_ChampionsRoom_Text_BirchArriveRatePokedex, MSGBOX_DEFAULT
 	call ProfBirch_EventScript_RatePokedex
 	msgbox EverGrandeCity_ChampionsRoom_Text_BirchCongratulations, MSGBOX_DEFAULT
+	call EverGrandeCity_ChampionsRoom_EventScript_DraconidMayArrives  @ Draconid Emerald: May follows them in (act6.pory)
 	applymovement LOCALID_CHAMPIONS_ROOM_WALLACE, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
 	delay 20
@@ -119,7 +120,7 @@ EverGrandeCity_ChampionsRoom_EventScript_BirchArrivesExitForHoF::
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	msgbox EverGrandeCity_ChampionsRoom_Text_WallaceWaitOutside, MSGBOX_DEFAULT
-	call EverGrandeCity_ChampionsRoom_EventScript_MayCongratulations  @ Draconid Emerald: the rival here is May (Birch's daughter)
+	call EverGrandeCity_ChampionsRoom_EventScript_DraconidRivalsCongratulate  @ Draconid Emerald: Brendan, then May (act6.pory)
 	closemessage
 	applymovement LOCALID_CHAMPIONS_ROOM_WALLACE, EverGrandeCity_ChampionsRoom_Movement_WallaceExit
 	applymovement LOCALID_PLAYER, EverGrandeCity_ChampionsRoom_Movement_PlayerExit
@@ -213,14 +214,15 @@ EverGrandeCity_ChampionsRoom_Movement_BirchArrives:
 	walk_in_place_faster_left
 	step_end
 
-EverGrandeCity_ChampionsRoom_Text_IntroSpeech:
+EverGrandeCity_ChampionsRoom_Text_IntroSpeech:  @ Draconid Emerald
 	.string "WALLACE: Welcome, {PLAYER}{KUN}.\p"
 	.string "That incident in SOOTOPOLIS CITY…\n"
-	.string "That was superb work, putting an end\l"
-	.string "to that crisis all by yourself.\p"
-	.string "Oops!\p"
-	.string "It wouldn't be fair to say that you\n"
-	.string "alone ended the crisis.\p"
+	.string "All of HOENN has heard how you cast\l"
+	.string "off that red uniform before MAXIE.\p"
+	.string "I confess I didn't know what to make\n"
+	.string "of a MAGMA grunt who raised dragons.\p"
+	.string "Now I do. But it wouldn't be fair to\n"
+	.string "say that you alone ended the crisis.\p"
 	.string "You overcame that difficult situation\n"
 	.string "by working as one with your POKéMON.\p"
 	.string "We TRAINERS raise POKéMON by giving\n"
@@ -282,18 +284,18 @@ EverGrandeCity_ChampionsRoom_Text_BrendanYouveWon:
 	.string "Are you trying to tell me…\n"
 	.string "You've beaten the CHAMPION?$"
 
-EverGrandeCity_ChampionsRoom_Text_BirchArriveRatePokedex:
+EverGrandeCity_ChampionsRoom_Text_BirchArriveRatePokedex:  @ Draconid Emerald
 	.string "PROF. BIRCH: See?\n"
 	.string "What did I tell you, {RIVAL}?\p"
-	.string "Didn't I tell you that you don't need\n"
+	.string "Didn't I tell you that you didn't need\n"
 	.string "to worry about {PLAYER}{KUN}?\p"
 	.string "… … … … … … … …\n"
 	.string "{PLAYER}{KUN}, you've finally done it.\p"
-	.string "When I heard that you defeated your\n"
-	.string "own father at the PETALBURG GYM,\l"
-	.string "I thought perhaps you had a chance…\p"
-	.string "But to think you've actually become\n"
-	.string "the CHAMPION!\p"
+	.string "The day we met, you and your little\n"
+	.string "dragon saved me on ROUTE 101.\p"
+	.string "Then came that red uniform…\n"
+	.string "But I never stopped trusting you.\p"
+	.string "And now look at you. The CHAMPION!\p"
 	.string "Ah, yes!\p"
 	.string "What became of your POKéDEX?\n"
 	.string "Here, let me see.$"

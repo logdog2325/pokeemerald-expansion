@@ -5132,6 +5132,8 @@ u16 GetBattleBGM(void)
             return MUS_VS_RIVAL;
         case TRAINER_CLASS_DRACONID: // Draconid Emerald: Aster fights to the rival theme
             return MUS_VS_RIVAL;
+        case TRAINER_CLASS_LOREKEEPER: // Draconid Emerald: Zinnia, a master outside the League (D-155)
+            return MUS_VS_FRONTIER_BRAIN;
         case TRAINER_CLASS_ELITE_FOUR:
             return MUS_VS_ELITE_FOUR;
         case TRAINER_CLASS_CHAMPION_FRLG:

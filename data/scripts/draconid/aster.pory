@@ -6,8 +6,7 @@
 //   A4 Route 119         battle on the path north (Mega Altaria)
 //      Magma Hideout     the disguise goes back on inside; after Maxie, Aster sends the player home
 //      Draconid Village  the Elder gives the Mega Ring and the second partner's Mega Stone
-//   A5 Sky Pillar        the climax before Rayquaza wakes (Mega Salamence)
-//   A6 after the League  rematch at the village shrine
+//   (the Sky Pillar finale and the post-game shrine battle are in act7.pory, round 1 Act 7)
 //
 // VAR_ASTER_STATE: ASTER_STATE_* (include/constants/draconid.h). Aster's team counter-picks the
 // player's egg; her trainer ids are named after the PLAYER's egg (VAR_STARTER_MON).
@@ -20,14 +19,6 @@
 
 script Draconid_EventScript_BattleAsterMeteorFalls {
     trainerbattle_no_intro(TRAINER_ASTER_METEOR_FALLS_DEINO, Draconid_Text_AsterDefeat)
-}
-
-script Draconid_EventScript_BattleAsterSkyPillar {
-    trainerbattle_no_intro(TRAINER_ASTER_SKY_PILLAR_DEINO, Draconid_Text_AsterSkyPillarDefeat)
-}
-
-script Draconid_EventScript_BattleAsterPostgame {
-    trainerbattle_no_intro(TRAINER_ASTER_POSTGAME_DEINO, Draconid_Text_AsterDefeat)
 }
 
 text Draconid_Text_AsterDefeat {
@@ -237,112 +228,4 @@ text DraconidVillage_EldersHouse_Text_DraconidMegaStone {
 text DraconidVillage_EldersHouse_Text_DraconidSkyPillar {
     format("ELDER: The two ancient POKéMON will not stay asleep for long. When the sky itself grows angry,\p"
            "seek the pillar that reaches the clouds, far to the east over the sea. ASTER is already looking for it.")
-}
-
-// ---------------------------------------------------------------------------
-// A5 Sky Pillar top: the climax, before Rayquaza wakes
-// (SkyPillar_Top_EventScript_AwakenRayquaza calls ..._DraconidAsterClimax first and
-//  ..._DraconidAsterAfterRayquaza at the end)
-// ---------------------------------------------------------------------------
-
-script SkyPillar_Top_EventScript_DraconidAsterClimax {
-    if (var(VAR_ASTER_STATE) >= ASTER_STATE_SKY_PILLAR) {
-        return
-    }
-    clearflag(FLAG_HIDE_SKY_PILLAR_TOP_ASTER)
-    addobject(LOCALID_SKY_PILLAR_TOP_ASTER)
-    // Not saved: after the battle the map music plays again, and the Rayquaza scene fades that one
-    // (a saved song plus fadedefaultbgm here left the music fading forever and froze the next warp)
-    playbgm(MUS_ENCOUNTER_INTENSE, FALSE)
-    applymovement(LOCALID_SKY_PILLAR_TOP_ASTER, Common_Movement_WalkUp2)
-    waitmovement(0)
-    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterDown)
-    waitmovement(0)
-    msgbox(SkyPillar_Top_Text_DraconidAsterClimax, MSGBOX_DEFAULT)
-    call(Draconid_EventScript_BattleAsterSkyPillar)
-    msgbox(SkyPillar_Top_Text_DraconidAsterYield, MSGBOX_DEFAULT)
-    closemessage
-    setvar(VAR_ASTER_STATE, ASTER_STATE_SKY_PILLAR)
-    setvar(VAR_TEMP_2, 1) // Aster watches Rayquaza wake; she leaves afterwards
-}
-
-script SkyPillar_Top_EventScript_DraconidAsterAfterRayquaza {
-    if (var(VAR_TEMP_2) != 1) {
-        return
-    }
-    setvar(VAR_TEMP_2, 0)
-    msgbox(SkyPillar_Top_Text_DraconidAsterAfterRayquaza, MSGBOX_DEFAULT)
-    closemessage
-    fadescreen(FADE_TO_BLACK)
-    removeobject(LOCALID_SKY_PILLAR_TOP_ASTER)
-    setflag(FLAG_HIDE_SKY_PILLAR_TOP_ASTER)
-    fadescreen(FADE_FROM_BLACK)
-}
-
-text SkyPillar_Top_Text_DraconidAsterClimax {
-    format("ASTER: So you found it too.\p"
-           "Every night since I was small I dreamed of this tower. Of the one who sleeps on top of it.\p"
-           "The Lorekeepers say RAYQUAZA answers the call of one who is worthy. Only one.\p"
-           "Last riddle, {PLAYER}: two dragons climb the same tower, but only one can reach the sky. Which one?\p"
-           "…The one still standing. SALAMENCE, show them what a dragon of the sky looks like!")
-}
-
-text Draconid_Text_AsterSkyPillarDefeat {
-    format("…So that's the answer.")
-}
-
-text SkyPillar_Top_Text_DraconidAsterYield {
-    format("ASTER: …Go on. Wake it. It was never going to listen to me if I couldn't even beat you.")
-}
-
-text SkyPillar_Top_Text_DraconidAsterAfterRayquaza {
-    format("ASTER: It looked at you before it flew. Did you see?\p"
-           "Hmph. Don't let it go to your head, {PLAYER}. The sky is big. I'll find my own way up.")
-}
-
-// ---------------------------------------------------------------------------
-// A6 after the League: rematch at the village shrine
-// ---------------------------------------------------------------------------
-
-// DraconidVillage_Shrine_OnTransition calls this.
-script DraconidVillage_Shrine_EventScript_DraconidAsterPostgame {
-    if (flag(FLAG_SYS_GAME_CLEAR) && var(VAR_ASTER_STATE) >= ASTER_STATE_SKY_PILLAR && var(VAR_ASTER_STATE) < ASTER_STATE_POSTGAME) {
-        clearflag(FLAG_HIDE_DRACONID_SHRINE_ASTER)
-        setobjectxyperm(LOCALID_DRACONID_SHRINE_ASTER, 10, 9)
-        setobjectmovementtype(LOCALID_DRACONID_SHRINE_ASTER, MOVEMENT_TYPE_FACE_UP)
-    }
-}
-
-script DraconidVillage_Shrine_EventScript_Aster {
-    lock
-    faceplayer
-    msgbox(DraconidVillage_Shrine_Text_DraconidAsterPostgame, MSGBOX_YESNO)
-    if (var(VAR_RESULT) == NO) {
-        msgbox(DraconidVillage_Shrine_Text_DraconidAsterLater, MSGBOX_DEFAULT)
-        release
-        end
-    }
-    call(Draconid_EventScript_BattleAsterPostgame)
-    msgbox(DraconidVillage_Shrine_Text_DraconidAsterPostgameAfter, MSGBOX_DEFAULT)
-    closemessage
-    fadescreen(FADE_TO_BLACK)
-    removeobject(LOCALID_DRACONID_SHRINE_ASTER)
-    setflag(FLAG_HIDE_DRACONID_SHRINE_ASTER)
-    setvar(VAR_ASTER_STATE, ASTER_STATE_POSTGAME)
-    fadescreen(FADE_FROM_BLACK)
-    release
-}
-
-text DraconidVillage_Shrine_Text_DraconidAsterPostgame {
-    format("ASTER: CHAMPION of HOENN, back where it all started.\p"
-           "No riddles today. Just you, me, and everything we've got. Ready?")
-}
-
-text DraconidVillage_Shrine_Text_DraconidAsterLater {
-    format("ASTER: I'll wait. The statue doesn't mind.")
-}
-
-text DraconidVillage_Shrine_Text_DraconidAsterPostgameAfter {
-    format("ASTER: …You know what the answer to all my riddles was? The sky. It was always the sky.\p"
-           "See you up there someday, {PLAYER}.")
 }

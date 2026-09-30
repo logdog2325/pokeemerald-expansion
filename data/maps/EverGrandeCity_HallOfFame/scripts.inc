@@ -45,6 +45,7 @@ EverGrandeCity_HallOfFame_EventScript_EnterHallOfFame::
 	call EverGrandeCity_HallOfFame_EventScript_SetGameClearFlags
 	@ Draconid Emerald: the player's home is in Draconid Village for both genders
 	setrespawn HEAL_LOCATION_DRACONID_VILLAGE_PLAYERS_HOUSE_2F
+	call EverGrandeCity_HallOfFame_EventScript_DraconidFinaleStart  @ Draconid Emerald: no credits; the meteor alert waits at home (act6.pory)
 	fadescreenspeed FADE_TO_BLACK, 24
 	special GameClear
 	releaseall

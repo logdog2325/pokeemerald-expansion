@@ -4,6 +4,14 @@
 // Draconid Emerald script specials (src/draconid.c)
 void DraconidRaiseHatchling(void);
 u16 Draconid_ResolveVariantTrainer(u16 trainerId);
+u16 Draconid_ResolveVariantPartner(u16 partnerId);
+
+// Acts 6-7: the Sky Pillar finale (callnative from data/scripts/draconid/act7.pory)
+struct ScriptContext;
+void Draconid_PrepareRayquaza(struct ScriptContext *ctx);
+void Draconid_DoRayquazaFlightScene(struct ScriptContext *ctx);
+void Draconid_SaveBeforeCredits(struct ScriptContext *ctx);
+void Draconid_StartCredits(struct ScriptContext *ctx);
 
 #if DEBUG_OVERWORLD_MENU
 // Emulator test hook (tools/hack/emu/play.py "warp"), debug builds only

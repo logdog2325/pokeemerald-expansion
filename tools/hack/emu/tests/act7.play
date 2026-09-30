@@ -1,0 +1,176 @@
+# Flow test for Act 7 (data/scripts/draconid/act7.pory): the Trial of Three at the foot of the Sky Pillar (the
+# player + Nerine vs Aster), Zinnia on 3F, the summit (the Rayquaza catch, Dragon Ascent, Deoxys, Mega Rayquaza and
+# the meteor), the save and the credits, the wake-up at home and the post-game battles (Nerine by the pond, Aster at
+# the shrine, Deoxys at the summit). Needs rustboro_done.ss from tests/rustboro.play (a one-Pokemon party: Deino);
+# the state act6.play ends in (summoned, the Elder's dragon lands the player at the cave mouth) is set by hand.
+# The party Pokemon is boosted where a battle must be won (play.py "boost"), and the move cursor is put on MOVE, a
+# damaging move (Deino: Dragon Breath, as a Ghost type in Aster's team is immune to Tackle); it has 1 HP and
+# 1 Attack for the must-catch Rayquaza.
+# Matrix parameters (tools/hack/emu/matrix.py): EGGNAME = the player's egg in the savestate (Aster's teams are named
+# after it), MOVE = that Pokemon's move slot to attack with (Jangmo-o: 0, Tackle), SECOND / SECONDNAME = the second
+# starter (Nerine's partner and post-game teams follow both).
+default START rustboro_done.ss
+default EGGNAME DEINO
+default MOVE 2
+default SECOND 1
+default SECONDNAME CHARMANDER
+loadstate ${START}
+setvar VAR_SECOND_STARTER ${SECOND}
+setvar VAR_DRACONID_REPUTATION 2
+setvar VAR_PLAYER_OUTFIT 0
+setvar VAR_MAGMA_STATE 12
+setvar VAR_NERINE_STATE 7
+setvar VAR_ASTER_STATE 7
+setflag FLAG_SYS_GAME_CLEAR
+# the Champion's eight badges (Rayquaza, met at Lv70, obeys them: B_OBEDIENCE_MECHANICS)
+setflag FLAG_BADGE01_GET
+setflag FLAG_BADGE02_GET
+setflag FLAG_BADGE03_GET
+setflag FLAG_BADGE04_GET
+setflag FLAG_BADGE05_GET
+setflag FLAG_BADGE06_GET
+setflag FLAG_BADGE07_GET
+setflag FLAG_BADGE08_GET
+setvar VAR_DRACONID_FINALE_STATE 3
+setflag FLAG_HIDE_DRACONID_HOUSE_ELDER
+setflag FLAG_HIDE_DRACONID_ELDERS_HOUSE_ELDER
+setflag FLAG_DEBUG_NO_ENCOUNTER
+setflag FLAG_DEBUG_NO_TRAINER_SEE
+setflag FLAG_DRACONID_NO_WHITEOUT
+# battle style SET (gSaveBlock2Ptr->optionsBattleStyle, bit 1 of byte 0x15): no "Will you switch?" prompt to mash
+pokebit *@gSaveBlock2Ptr+15 1 1
+
+# --- the Trial of Three (the player + Nerine vs Aster) ---
+warp MAP_SKY_PILLAR_OUTSIDE 17 14
+boost 0
+run 60
+until @gMain+4 4 @@CB2_UpdatePartyMenu 30000 A 24
+run 60
+shot 30_choose
+# the party menu: ENTER the (only) Pokemon, then CONFIRM
+press A 2 40
+press A 2 40
+press DOWN 2 30
+press A 2 40
+until @gMain+4 4 @@BattleMainCB2 3000
+run 60
+poke @gMoveSelectionCursor ${MOVE}
+run 200
+shot 31_double
+until @gMain+4 4 @@CB2_Overworld 90000 A 24
+expect_opponent TRAINER_ASTER_SKY_PILLAR_${EGGNAME}
+expect_partner PARTNER_NERINE_${EGGNAME}_${SECONDNAME}
+run 60
+shot 32_after_double
+mash A 30000
+shot 33_3f
+mapid
+expect_var VAR_DRACONID_FINALE_STATE 4
+expect_var VAR_ASTER_STATE 8
+expect_var VAR_NERINE_STATE 8
+savestate act7_3f.ss
+
+# --- Zinnia on 3F (the multi battle recalculated the party's stats when it restored the party) ---
+boost 0
+run 60
+until @gMain+4 4 @@BattleMainCB2 30000 A 24
+run 60
+poke @gMoveSelectionCursor ${MOVE}
+run 200
+shot 40_zinnia
+until @gMain+4 4 @@CB2_Overworld 90000 A 24
+expect_opponent TRAINER_ZINNIA_SKY_PILLAR
+mash A 30000
+shot 41_summit
+mapid
+expect_var VAR_DRACONID_FINALE_STATE 5
+savestate act7_summit.ss
+
+# --- the summit: Rayquaza, the must-catch battle ---
+# 1 HP / 1 Attack: R throws a ball (the last-used-ball shortcut, before Rayquaza's move), A,A attacks for 1 when
+# Rayquaza is up in the air (Fly); Rayquaza knocks the Deino out and the battle is fought again until a ball holds
+# (gBattleScripting.monCaught, sMON_CAUGHT). Then B reads on and answers NO to the nickname.
+boost 0 1
+run 60
+until @gMain+4 4 @@BattleMainCB2 60000 A 24
+run 400
+shot 50_rayquaza
+until @gBattleScripting+27 1 1 900000 R,R,R,A,A 24
+until @gBattleOutcome 1 7 30000 B 24
+until_var VAR_DRACONID_FINALE_STATE 6 30000 B
+shot 51_dragon_ascent
+expect_flag FLAG_DEFEATED_RAYQUAZA 1
+
+# --- Deoxys attacks: the boss battle (Rayquaza leads the party; boosted to win) ---
+boost 0
+until @gMain+4 4 @@BattleMainCB2 30000 A 24
+run 400
+shot 52_deoxys
+until_var VAR_DRACONID_FINALE_STATE 7 300000 A
+shot 53_meteor_destroyed
+expect_flag FLAG_HIDE_DRACONID_VILLAGE_NERINE 0
+expect_flag FLAG_HIDE_DRACONID_HOUSE_ELDER 0
+expect_flag FLAG_HIDE_SKY_PILLAR_TOP_ASTER 1
+savestate act7_meteor.ss
+
+# --- the save, the credits (A ends the last screen), and home ---
+until @gMain+4 4 @@CB2_Credits 30000 A 24
+run 3000
+shot 60_credits
+until @gMain+4 4 @@CB2_Overworld 400000 A 120
+run 120
+shot 61_home
+mapid
+until_var VAR_DRACONID_FINALE_STATE 8 3000 A
+savestate act7_postgame.ss
+
+# --- post-game: the Elder brings the SS Ticket (also postgame_home.play) ---
+warp MAP_DRACONID_VILLAGE_PLAYERS_HOUSE_1F 8 2 3000
+run 150
+mash A 30000
+expect_var VAR_DRACONID_FINALE_STATE 9
+expect_flag FLAG_RECEIVED_SS_TICKET 1
+
+# --- post-game: Nerine by the village pond ---
+heal
+boost 0
+warp MAP_DRACONID_VILLAGE 27 7
+run 60
+press RIGHT 2 20
+press A 2 30
+run 30
+shot 70_nerine
+mash A 60000
+expect_opponent TRAINER_NERINE_POSTGAME_${EGGNAME}_${SECONDNAME}
+expect_var VAR_NERINE_STATE 9
+
+# --- post-game: Aster at the shrine ---
+heal
+boost 0
+warp MAP_DRACONID_VILLAGE_SHRINE 10 11
+run 60
+walk UP 10
+press A 2 30
+run 30
+shot 71_shrine
+mash A 60000
+expect_opponent TRAINER_ASTER_POSTGAME_${EGGNAME}
+expect_var VAR_ASTER_STATE 9
+
+# --- post-game: Deoxys at the summit (beaten: gone until the next Hall of Fame) ---
+heal
+boost 0
+warp MAP_SKY_PILLAR_TOP 14 8
+run 60
+shot 72_deoxys
+press UP 2 10
+press A 2 30
+until @gMain+4 4 @@BattleMainCB2 30000 A 24
+until @gMain+4 4 @@CB2_Overworld 60000 A 24
+mash A 20000
+expect_flag FLAG_DEFEATED_DEOXYS 1
+savestate act7_done.ss
+
+clearflag FLAG_DEBUG_NO_ENCOUNTER
+clearflag FLAG_DEBUG_NO_TRAINER_SEE
+clearflag FLAG_DRACONID_NO_WHITEOUT

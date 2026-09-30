@@ -293,6 +293,67 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   battle (the first is still a plain grunt, so she can say "Stand aside"). May's Route 110 battle is the vanilla
   rival scene with her lines, and she registers in the PokéNav there (the vanilla Rustboro registration is
   skipped, D-115); Brendan registers on Route 119 (Act 4). – Alt: a Magma messenger grunt.
+- **D-150 After the Hall of Fame (Act 6)**: no credits; the Hall of Fame screen sends the new Champion home to the
+  village bedroom (the Hall of Fame save continues there too, so both paths agree). Upstairs a night of celebration
+  ends in a quake and a red glare; downstairs the TV breaks in with the meteor news and the Elder, waiting at the
+  table, speaks the prophecy's words and sends the player to the Sky Pillar; his dragon can fly the player there at
+  once (YES/NO; talk to him again later), or the player flies/surfs to Route 131. The sky stays dark (weather shade)
+  in the village and at the Sky Pillar until the meteor breaks. Later Hall of Fame entries also end at home, without
+  credits. – Alt: vanilla credits right after the Hall of Fame; the alert at Ever Grande City; a forced warp to the
+  Sky Pillar. – The save already continues at home, and it mirrors the prologue (a falling star, the Elder calls).
+- **D-151 The Trial of Three (Act 7)**: Aster and Nerine wait below the Sky Pillar's door and meet the player at the
+  cave mouth; the clan's last rite before anyone stands beside Rayquaza: the player + Nerine vs Aster, a
+  `multi_2_vs_1` in which the player picks three (Aster's teams are `Multi Party: Half`). The script names Aster's
+  base id and `PARTNER_NERINE_DEINO_CHARMANDER`; `SetMultiTrainerBattle` resolves both (the partner through the same
+  egg × second starter table as her trainer teams). The door opens when the trial is won (it stays shut before, so
+  the trial can't be walked past); Nerine heals the party and the three climb together (a fade to 3F). A loss: a
+  heal, and talking to Aster or Nerine starts it again. – Alt: nine script branches for the partner;
+  `multi_fixed_2_vs_1` (the first three Pokémon). – One line per battle, as D-101.
+- **D-152 The credits after the finale**: the game saves first (like the Hall of Fame: the save continues in the
+  bedroom), the vanilla credits roll, and they end in the bedroom instead of a soft reset; the player wakes the next
+  day and the Elder waits downstairs with the SS Ticket (D-112). – Alt: soft reset into the saved game (the vanilla
+  flow). – No progress can be lost to a cut-short credits sequence, and the post-game begins without the title screen.
+- **D-153 The must-catch Rayquaza**: at the summit the Elder calls it down (it lands in the vanilla spot); the wild
+  battle (Lv 70, its level-up moves) can't be run from and can't white out; if Rayquaza faints or the player loses,
+  a line, a heal and the battle again (D-110). The Elder hands over 5 Ultra Balls whenever the player has none.
+  Rayquaza's catch rate is 45, as in ORAS (3 in Emerald: under 1 % per Ultra Ball). After the catch it leads the
+  party (fetched from the PC if the party was full, the old lead takes its box slot) and learns Dragon Ascent (an
+  empty slot, else over Rest, else the last move). – Alt: a guaranteed "victory catch"; a Master Ball from the
+  Elder. – A catch the story requires should not need a hundred balls; ORAS made the same change.
+- **D-154 Deoxys and the meteor**: Deoxys (Normal Forme, Lv 72, its level-up moves: Zen Headbutt, Cosmic Power,
+  Recover, Psycho Boost) drops onto the summit right after the catch; a wild boss battle with no catching, no running
+  and no whiteout, fought again after a loss (with a heal); Rayquaza leads. After the win Deoxys breaks into light,
+  Rayquaza Mega Evolves on the field (flashes, cries), flies up, and the "Rayquaza takes flight" shot of the
+  Sootopolis cutscene plays on its own; then flashes, thunder, a quake, the shade weather clears, and Rayquaza comes
+  back and returns to its ball. The Elder: "The sky's debt is paid… for now." – Alt: Deoxys Attack Forme (Mega
+  Rayquaza one-shots it). – A boss that lasts a few turns, and an ending built from what the engine can show.
+- **D-155 Zinnia (the playtester's request)**: the Lorekeeper of the Meteor Falls Draconids, a sister clan, waits on
+  the Sky Pillar 3F between the trial and the summit and tests "the Elder's chosen"; Aster and Nerine know of her,
+  and the Elder greets her at the summit. Her ORAS Delta Episode Sky Pillar team (Serebii) with the boss
+  enhancements: held items (Assault Vest, Life Orb, Leftovers, Choice Band, the Salamencite), natures, EVs, IVs 31,
+  2 Full Restores, `Smart Trainer / Prediction / Ace Pokemon`. New class LOREKEEPER (25 money, Ultra Ball), battle
+  music `MUS_VS_FRONTIER_BRAIN` (a master outside the League). A loss doesn't white out: the climb is one scene, so
+  Nerine heals the party and talking to Zinnia starts the battle again. Placeholder art (the Hex Maniac) until the
+  art round, `TODO(art)`. – Alt: a normal boss battle that whites out (the player would climb the cracked floors
+  back alone); the Champion theme.
+- **D-156 Brendan and May after the finale**: their Littleroot lab battles (and Brendan in the lab) wait for the
+  finale, not the Hall of Fame; the lines are rewritten for the truth being out (Brendan's apology, May's "I told
+  you"). Each single battle sets that rival's post-game state; the double comes after both. – Alt: at the Hall of
+  Fame, as v1.
+- **D-157 Nerine and Aster at home**: Nerine waits by the village pond at (28, 7), by the waterfall (she spent years
+  among the sea people; the water of home), for one battle as herself (her post-game team by egg × second starter);
+  she stays in the village afterwards. Aster's shrine battle (v1) waits for the finale and ends with her admitting
+  the Elder chose right. – Alt: Nerine in the Elder's house; at the Sky Pillar.
+- **D-158 Deoxys later (D-111 in practice)**: Deoxys (Normal Forme, Lv 80 as in ORAS) floats at the summit after the
+  finale; caught = gone (`FLAG_BATTLED_DEOXYS`), beaten = gone until the next Hall of Fame, which clears
+  `FLAG_DEFEATED_DEOXYS` (the Birth Island rule; Birth Island itself is unreachable without the event ticket).
+- **D-159 Staging and the Champion's room**: the finale's scenes start from each map's OnFrame through `VAR_TEMP_7`
+  (set by the OnTransition hook), so a lost battle ends the scene instead of looping it; the climb from the base to
+  3F and from 3F to the summit are fades, not walks (the tower's cracked floors need the Mach Bike and would split
+  the three up). In the Champion's room Brendan runs in (Birch's son), and May follows Birch in; Wallace and Birch
+  speak of the uniform; Wally's Victory Road lines know the truth. The Hall of Fame no longer puts Norman in the
+  Littleroot houses (they are the rivals' homes) and the Draconid house has no Norman object. – Alt: the vanilla
+  Champion's room with May (v1).
 - **D-160 Nerine's disguise detail**: the female Aqua grunt sheet and pic unchanged except her own **silver-blue
   hair** under the bandana (the real grunts' is magenta/red). – Alt: a teal scale scarf; a gold horn clip on the
   bandana. – The hair is the one detail readable at 16×32 among grunts (a clip is 2–3 px), it is the same hair

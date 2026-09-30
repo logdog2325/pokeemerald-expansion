@@ -340,6 +340,7 @@ const struct TrainerClass gTrainerClasses[TRAINER_CLASS_COUNT] =
     [TRAINER_CLASS_TRIATHLETE] = { _("TRIATHLETE"), 10 },
     [TRAINER_CLASS_DRAGON_TAMER] = { _("DRAGON TAMER"), 12 },
     [TRAINER_CLASS_DRACONID] = { _("DRACONID"), 15 }, // Draconid Emerald: Aster
+    [TRAINER_CLASS_LOREKEEPER] = { _("LOREKEEPER"), 25, BALL_ULTRA }, // Draconid Emerald: Zinnia (a boss, like a Leader)
     [TRAINER_CLASS_NINJA_BOY] = { _("NINJA BOY"), 3 },
     [TRAINER_CLASS_BATTLE_GIRL] = { _("BATTLE GIRL"), 6 },
     [TRAINER_CLASS_PARASOL_LADY] = { _("PARASOL LADY"), 10 },

@@ -931,13 +931,15 @@
 #define TRAINER_NERINE_POSTGAME_JANGMO_O_CHARMANDER 921
 #define TRAINER_NERINE_POSTGAME_JANGMO_O_TOTODILE 922
 #define TRAINER_NERINE_POSTGAME_JANGMO_O_TREECKO 923
+#define TRAINER_ZINNIA_SKY_PILLAR           924 // Draconid Emerald: the Lorekeeper on the Sky Pillar 3F (Act 7)
 
 // NOTE: Because each Trainer uses a flag to determine when they are defeated, there is only space for 9 additional trainers before trainer flag space overflows
-// Draconid Emerald: MAX_TRAINERS_COUNT_EMERALD raised from 864 so Nerine's variants fit (D-101); system flags move up
+// Draconid Emerald: MAX_TRAINERS_COUNT_EMERALD raised from 864 so Nerine's variants fit (D-101); system flags move up.
+//       925 trainers of 928 are used (Zinnia, Act 7): 3 spare ids before MAX_TRAINERS_COUNT_EMERALD must grow again
 //       More space can be made by shifting flags around in constants/flags.h or changing how trainer flags are handled
 //       MAX_TRAINERS_COUNT can be increased but will take up additional saveblock space
 
-#define TRAINERS_COUNT_EMERALD     924
+#define TRAINERS_COUNT_EMERALD     925
 #define MAX_TRAINERS_COUNT_EMERALD 928
 
 #if IS_FRLG
