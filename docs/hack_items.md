@@ -174,12 +174,13 @@ Source for the ORAS spots: Serebii, "Omega Ruby & Alpha Sapphire – Mega Evolut
 | Galladite | Wally's signature (Gallade needs a Dawn Stone, not in the game yet) | counter, post-game | Cozmo (Delta) |
 | Blazikenite, Sceptilite, Charizardite X, Feraligite | the rivals' and Nerine's / Aster's signature Megas (Sceptilite and the Charizardite / Feraligite also for the second starter) | counter, post-game | Route 120 / Route 114 (Blazikenite, Sceptilite); Fiery Path (Charizardite X) |
 | Garchompite Z | Gible (second Mega form) | counter, post-game | – (Legends Z-A) |
+| Dragoninite | Dratini (Lance's gift with it) | Lance's gift after his first defeat, Draconid village, post-game (D-262) | – (Legends Z-A) |
 
 **Not in the game** – no species the player can get (recheck against the wild tables at merge time,
 [hack_wild.md](hack_wild.md), and add a stone to a counter tier if its species became obtainable): Venusaurite,
 Blastoisinite, Beedrillite, Pidgeotite, Slowbronite, Gengarite, Kangaskhanite, Aerodactylite, Mewtwonite X / Y,
 Ampharosite, Steelixite, Scizorite, Houndoominite, Tyranitarite, Swampertite, Medichamite, Lopunnite, Lucarionite
 (+ Z: Riolu is on trainers only), Abomasite, Audinite, Froslassite (Snorunt needs a Dawn Stone), Diancite and the
-other Legends Z-A stones (Clefable, Victreebel, Dragonite, Meganium, Emboar, Scolipede, Scrafty, Eelektross,
+other Legends Z-A stones (Clefable, Victreebel, Meganium, Emboar, Scolipede, Scrafty, Eelektross,
 Chesnaught, Delphox, Greninja, Floette, Malamar, Zygarde, Drampa, Falinks, Heatran, Darkrai, Zeraora, Meowstic,
 Crabominable, Magearna, Scovillain, Baxcalibur, Tatsugiri).

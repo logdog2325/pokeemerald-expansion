@@ -113,6 +113,8 @@ undercover. Everyone else may suspect (May's doubts, Steven's "strongest MAGMA g
     Cave of Origin.
 60. ✅ Battle Frontier: **Wes, Red, Blue** and the Legends' Tag.
 61. ⬜ Groudon (Magma Hideout) and Kyogre (Seafloor Cavern) catchable.
+62. ☑️ **Lance** lands in the Draconid village on a visit after the S.S. Ticket: his clan in Blackthorn is the
+    Draconids' Northern Wing; his PWT team with **Mega Dragonite**, then a Dratini and the Dragoninite; rematches.
 
 ## Rival battles at a glance
 | Rival | Battles (story order) |
