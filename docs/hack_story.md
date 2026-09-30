@@ -203,3 +203,6 @@ Petalburg Woods recruitment/outfit change, Maxie's first meeting at Meteor Falls
 
 ### Follow-up note 24 (round 1)
 - "also in the final sequence can we have the intense sunlight /rain effect on the overworld from ruby sapphir emerald since primal groudon and kyogre have been awakened should be posssible also wallace can use mega gyrados"
+
+### Follow-up note 25 (round 1)
+- "also maybe have lance be a post game boss have him come to the draconid village and challenge you with a mega dragonite and a strong team saying he heard about what you did and that hes also from the draconid clan shoudl be possible his sprites are in the game would be a cool post game event"

@@ -112,6 +112,8 @@ undercover. Everyone else may suspect (May's doubts, Steven's "strongest MAGMA g
 59. ✅ The Elite Four rematch (ORAS post-game teams).  🚧 Steven's Champion rematch; **Wallace's rematch** at the
     Cave of Origin.
 60. ✅ Battle Frontier: **Wes, Red, Blue** and the Legends' Tag.
+60a. 🚧 **Lance** comes to the Draconid village – Blackthorn's dragon clan is the Draconids' northern branch; he has
+     heard what the player did and challenges them (Mega Dragonite); he leaves a Dragoninite and stays for rematches.
 61. ⬜ Groudon (Magma Hideout) and Kyogre (Seafloor Cavern) catchable.
 
 ## Rival battles at a glance
