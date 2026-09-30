@@ -153,3 +153,6 @@ Petalburg Woods recruitment/outfit change, Maxie's first meeting at Meteor Falls
 
 ### Follow-up note 8 (round 1)
 - "no oak gives you the second starter the totodile treecko or charmander that you choose the elder still gives you the egg also have the elder tell you the eggs are from galar, unova and alola and make sure you script the egg selection scene and choice and have the egg hatch after like 5 steps"
+
+### Follow-up note 9 (round 1)
+- "also once 6-7 is done make sure theres no story locks until the post game also make sure trainers are getting gen 4-9 pokemon too to spice things up"
