@@ -2,6 +2,7 @@
 #include "draconid.h"
 #include "event_data.h"
 #include "field_screen_effect.h"
+#include "item.h"
 #include "overworld.h"
 #include "constants/flags.h"
 #include "constants/map_types.h"
@@ -99,6 +100,21 @@ void DraconidRaiseHatchling(void)
 // overworld warps to it the next time the player has control. Not in release builds.
 EWRAM_DATA struct DraconidTestWarp gDraconidTestWarp = {0};
 
+static u32 CountPartyHMMoves(void)
+{
+    u32 i, j, count = 0;
+
+    for (i = 0; i < PARTY_SIZE; i++)
+    {
+        for (j = 0; j < MAX_MON_MOVES; j++)
+        {
+            if (IsMoveHM(GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_MOVE1 + j)))
+                count++;
+        }
+    }
+    return count;
+}
+
 bool32 Draconid_TryTestWarp(void)
 {
     u32 request = gDraconidTestWarp.active;
@@ -106,6 +122,12 @@ bool32 Draconid_TryTestWarp(void)
     gDraconidTestWarp.active = 0;
     if (request & DRACONID_TEST_HEAL)
         HealPlayerParty();
+    if (request & DRACONID_TEST_GIVE_ITEM)
+        AddBagItem(gDraconidTestWarp.item, 1);
+    if (request & DRACONID_TEST_GIVE_MON)
+        ScriptGiveMon(gDraconidTestWarp.species, gDraconidTestWarp.level, ITEM_NONE);
+    if (request & DRACONID_TEST_COUNT_HMS)
+        gDraconidTestWarp.partyHMMoves = CountPartyHMMoves();
     if (!(request & DRACONID_TEST_WARP))
         return FALSE;
     SetWarpDestination(gDraconidTestWarp.mapGroup, gDraconidTestWarp.mapNum, WARP_ID_NONE,

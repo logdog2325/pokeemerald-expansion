@@ -26,6 +26,7 @@
 #include "decompress.h"
 #include "constants/region_map_sections.h"
 #include "heal_location.h"
+#include "item_menu.h"
 #include "constants/field_specials.h"
 #include "constants/heal_locations.h"
 #include "constants/rgb.h"
@@ -83,6 +84,7 @@ static EWRAM_DATA struct {
 } *sFlyMap = NULL;
 
 static bool32 sDrawFlyDestTextWindow;
+static EWRAM_DATA bool8 sFlyMapFromBag = FALSE; // Draconid Emerald (D-191): HM02 used from the bag
 
 static u8 ProcessRegionMapInput_Full(void);
 static u8 MoveRegionMapCursor_Full(void);
@@ -1963,6 +1965,13 @@ bool32 IsEventIslandMapSecId(mapsec_u8_t mapSecId)
     return FALSE;
 }
 
+// Draconid Emerald (D-191): the Fly map for HM02 used from the bag (no Pokémon needs to know Fly)
+void CB2_OpenFlyMapFromBag(void)
+{
+    sFlyMapFromBag = TRUE;
+    SetMainCallback2(CB2_OpenFlyMap);
+}
+
 void CB2_OpenFlyMap(void)
 {
     switch (gMain.state)
@@ -2516,8 +2525,10 @@ static void CB_ExitFlyMap(void)
             }
             else
             {
-                SetMainCallback2(CB2_ReturnToPartyMenuFromFlyMap);
+                // Draconid Emerald (D-191): cancelling Fly from the bag goes back to the bag
+                SetMainCallback2(sFlyMapFromBag ? CB2_ReturnToBagMenuPocket : CB2_ReturnToPartyMenuFromFlyMap);
             }
+            sFlyMapFromBag = FALSE;
             TRY_FREE_AND_SET_NULL(sFlyMap);
             FreeAllWindowBuffers();
         }

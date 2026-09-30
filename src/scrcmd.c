@@ -2295,7 +2295,7 @@ bool8 ScrCmd_checkfieldmove(struct ScriptContext *ctx)
 {
     enum FieldMove fieldMove = ScriptReadByte(ctx);
     bool32 doUnlockedCheck = ScriptReadByte(ctx);
-    enum Move move;
+    u32 slot;
 
     Script_RequestEffects(SCREFF_V1);
 
@@ -2303,18 +2303,12 @@ bool8 ScrCmd_checkfieldmove(struct ScriptContext *ctx)
     if (doUnlockedCheck && !IsFieldMoveUnlocked(fieldMove))
         return FALSE;
 
-    move = FieldMove_GetMoveId(fieldMove);
-    for (u32 i = 0; i < PARTY_SIZE; i++)
+    // Draconid Emerald (D-190): a Pokémon that knows the move, or a stand-in when the player has the HM and badge
+    slot = GetFieldMoveUserSlot(fieldMove);
+    if (slot < PARTY_SIZE)
     {
-        enum Species species = GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_SPECIES);
-        if (!species)
-            break;
-        if (!GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_IS_EGG) && MonKnowsMove(&gParties[B_TRAINER_PLAYER][i], move) == TRUE)
-        {
-            gSpecialVar_Result = i;
-            gSpecialVar_0x8004 = species;
-            break;
-        }
+        gSpecialVar_Result = slot;
+        gSpecialVar_0x8004 = GetMonData(&gParties[B_TRAINER_PLAYER][slot], MON_DATA_SPECIES);
     }
 
     return FALSE;
