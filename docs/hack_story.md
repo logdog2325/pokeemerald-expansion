@@ -175,3 +175,6 @@ Petalburg Woods recruitment/outfit change, Maxie's first meeting at Meteor Falls
 
 ### Follow-up note 15 (round 1)
 - "Also, I think it might be cool for the final sequence against Archie and Maxi if they do actually attack the draconid village and you your rival Brendan Maye Wally go and they help you fight the team Aqua and Maxima grunts and some double battles and then there's that final double battle against Archie and Maxi with primal ground on a coyote. See if you could code something like that. I think it would be cool. And raise the  emotional steaks."
+
+### Follow-up note 16 (round 1)
+- On restarting the Magma revenge work: "Yes and also the draconid rival helps too" (Aster joins the village defence)
