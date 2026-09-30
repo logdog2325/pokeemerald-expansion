@@ -829,3 +829,20 @@ Debug_EventScript_TellTheTime_Text_0:
 
 DebugEventScript_PrintWeekday_Text_0:
 	.string "Time of day: {STR_VAR_1}$"
+
+@ Draconid Emerald: same-screen fades for the emulator test tools/hack/emu/tests/fades.play (D-278, play.py "callscript")
+Debug_EventScript_DraconidTestFade::
+	lockall
+	fadescreen FADE_TO_BLACK
+	delay 30
+	fadescreen FADE_FROM_BLACK
+	releaseall
+	end
+
+Debug_EventScript_DraconidTestFadeWhite::
+	lockall
+	fadescreen FADE_TO_WHITE
+	delay 30
+	fadescreen FADE_FROM_WHITE
+	releaseall
+	end

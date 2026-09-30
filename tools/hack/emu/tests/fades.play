@@ -1,0 +1,33 @@
+# Same-screen fades (D-278): a script that fades to black (or white) and back without leaving the map must bring the
+# screen back exactly as it was – under weather (Petalburg Woods: shade; Cave of Origin B1F: horizontal fog) and the
+# day/night tint (Rustboro outdoors; the emulator's clock is the host's). Each case shoots before and after
+# Debug_EventScript_DraconidTestFade(White) (data/scripts/debug.inc) via "callscript" (debug builds). Compare the
+# pairs: tools/hack/emu/fade_check.py <out dir> (mean brightness per pair; they must match).
+# Needs rustboro_done.ss from tests/rustboro.play in the same output directory.
+loadstate rustboro_done.ss
+setflag FLAG_DEBUG_NO_TRAINER_SEE
+setflag FLAG_DEBUG_NO_ENCOUNTER
+# --- Petalburg Woods: WEATHER_SHADE
+warp MAP_PETALBURG_WOODS 26 26
+run 240
+shot fade_woods_before
+callscript Debug_EventScript_DraconidTestFade
+run 240
+shot fade_woods_after
+callscript Debug_EventScript_DraconidTestFadeWhite
+run 240
+shot fade_woods_after_white
+# --- Rustboro: no weather, the day/night tint
+warp MAP_RUSTBORO_CITY 13 57
+run 240
+shot fade_rustboro_before
+callscript Debug_EventScript_DraconidTestFade
+run 240
+shot fade_rustboro_after
+# --- Cave of Origin B1F: WEATHER_FOG_HORIZONTAL (alpha-blended)
+warp MAP_CAVE_OF_ORIGIN_B1F 9 4
+run 240
+shot fade_fog_before
+callscript Debug_EventScript_DraconidTestFade
+run 240
+shot fade_fog_after

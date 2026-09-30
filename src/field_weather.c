@@ -59,6 +59,14 @@ static bool32 IsSpritePalTagBlendImmune(u32 palIndex);
 
 EWRAM_DATA struct Weather gWeather = {0};
 EWRAM_DATA static u8 ALIGNED(2) sFieldEffectPaletteColorMapTypes[32] = {0};
+// Draconid Emerald (D-278): same-screen fades. A fade-out copies the displayed palettes – already tinted by the weather
+// and the day/night cycle – over the unfaded ones, so a fade back in on the same screen tints them a second time
+// (the screen comes back darker with every fade). The untinted palettes are kept here at the fade-out, with a
+// checksum of what the fade-out left in each unfaded palette; the fade-in puts back every palette that nothing
+// reloaded while the screen was dark. A map load (LoadMapTilesetPalettes) drops them: that's a new screen.
+EWRAM_DATA static u16 ALIGNED(4) sPreFadePalettes[PLTT_BUFFER_SIZE] = {0};
+EWRAM_DATA static u32 sPreFadeChecksums[PLTT_BUFFER_SIZE / 16] = {0};
+EWRAM_DATA static bool8 sPreFadePalettesKept = FALSE;
 
 static const u8 *sPaletteColorMapTypes;
 
@@ -733,6 +741,59 @@ void ApplyWeatherColorMapIfIdle_Gradual(u8 colorMapIndex, u8 targetColorMapIndex
     }
 }
 
+static u32 PaletteChecksum(const u16 *palette)
+{
+    u32 i, sum = 0;
+
+    for (i = 0; i < 16; i++)
+        sum = sum * 31 + palette[i];
+    return sum;
+}
+
+// Draconid Emerald (D-278): before a fade-out's faded -> unfaded copy
+static void KeepPreFadePalettes(void)
+{
+    u32 i;
+
+    for (i = 0; i < PLTT_BUFFER_SIZE / 16; i++)
+    {
+        // a second fade-out on the same screen keeps the first one's palettes, except those reloaded since
+        if (!sPreFadePalettesKept || PaletteChecksum(&gPlttBufferUnfaded[i * 16]) != sPreFadeChecksums[i])
+            CpuCopy16(&gPlttBufferUnfaded[i * 16], &sPreFadePalettes[i * 16], PLTT_SIZE_4BPP);
+    }
+    sPreFadePalettesKept = TRUE;
+}
+
+// Draconid Emerald (D-278): after the faded -> unfaded copy
+static void ChecksumPreFadePalettes(void)
+{
+    u32 i;
+
+    for (i = 0; i < PLTT_BUFFER_SIZE / 16; i++)
+        sPreFadeChecksums[i] = PaletteChecksum(&gPlttBufferUnfaded[i * 16]);
+}
+
+// Draconid Emerald (D-278): at a fade-in on the same screen
+static void RestorePreFadePalettes(void)
+{
+    u32 i;
+
+    if (!sPreFadePalettesKept)
+        return;
+    for (i = 0; i < PLTT_BUFFER_SIZE / 16; i++)
+    {
+        if (PaletteChecksum(&gPlttBufferUnfaded[i * 16]) == sPreFadeChecksums[i])
+            CpuCopy16(&sPreFadePalettes[i * 16], &gPlttBufferUnfaded[i * 16], PLTT_SIZE_4BPP);
+    }
+    sPreFadePalettesKept = FALSE;
+}
+
+// Draconid Emerald (D-278): a new screen's palettes are loaded; nothing to restore
+void ForgetPreFadePalettes(void)
+{
+    sPreFadePalettesKept = FALSE;
+}
+
 void FadeScreen(u8 mode, s8 delay)
 {
     FadeSelectedPals(mode, delay, PALETTES_ALL);
@@ -786,7 +847,10 @@ void FadeSelectedPals(u8 mode, s8 delay, u32 selectedPalettes)
         // Note: Copying faded -> unfaded like this works fine, except if the screen is faded back in
         // without transitioning to a different screen
         // For cases like that, use fadescreenswapbuffers
+        // Draconid Emerald (D-278): or the fade-in below restores the palettes kept here
+        KeepPreFadePalettes();
         CpuFastCopy(gPlttBufferFaded, gPlttBufferUnfaded, PLTT_BUFFER_SIZE * 2);
+        ChecksumPreFadePalettes();
 
         gPaletteFade.simultaneousFade = TRUE;
         BeginNormalPaletteFade(selectedPalettes, delay, 0, 16, fadeColor);
@@ -794,6 +858,7 @@ void FadeSelectedPals(u8 mode, s8 delay, u32 selectedPalettes)
     }
     else
     {
+        RestorePreFadePalettes(); // Draconid Emerald (D-278): a fade-in on the same screen tints the untinted palettes
         gWeatherPtr->fadeDestColor = fadeColor;
         UpdateTimeOfDay(TRUE);
         if (useWeatherPal)

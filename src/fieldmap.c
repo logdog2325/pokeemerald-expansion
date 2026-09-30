@@ -2,6 +2,7 @@
 #include "battle_pyramid.h"
 #include "bg.h"
 #include "fieldmap.h"
+#include "field_weather.h"
 #include "fldeff.h"
 #include "fldeff_misc.h"
 #include "frontier_util.h"
@@ -1043,6 +1044,7 @@ void CopyMapTilesetsToVram(struct MapLayout const *mapLayout)
 
 void LoadMapTilesetPalettes(struct MapLayout const *mapLayout)
 {
+    ForgetPreFadePalettes(); // Draconid Emerald (D-278): a new screen, not a same-screen fade
     if (mapLayout)
     {
         LoadPrimaryTilesetPalette(mapLayout);

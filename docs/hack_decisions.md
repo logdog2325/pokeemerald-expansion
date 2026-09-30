@@ -1124,3 +1124,18 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   type). – Alt: set the Tera type to `TYPE_MYSTERY` on every created Pokémon (touches every creation path; one missed
   path brings it back); remove the Tera Orb only (opponents don't need one). – The playtester: "no teras or
   dynamaxing/gigantamaxing". The test suite keeps testing both (`TESTING`), so `make check` is unaffected.
+- **D-278 Same-screen fades are fixed in the engine** (the task "Fix same-screen palette fades in Draconid scripts",
+  suggested by the revenge-arc work): `fadescreen(FADE_TO_BLACK)` copies the displayed palettes – already tinted by the
+  weather (rain, shade, drought, fog) and the day/night cycle (`OW_ENABLE_DNS`) – over the unfaded ones, so a script
+  that fades back in on the same map tints them again: measured with `tests/fades.play`, Petalburg Woods (shade) went
+  from mean RGB 26/54/45 to 2/12/18 after one black fade and to 0/0/3 after a white one; Rustboro at night from
+  63/81/95 to 23/32/55. Now `FadeSelectedPals` keeps the untinted palettes (and a checksum of what it left in each) at
+  the fade-out and, at the fade-in, puts back every palette nothing reloaded while the screen was dark; a map load
+  (`LoadMapTilesetPalettes`) forgets them, so fades into another screen, battles and menus work as before, and a
+  palette loaded during the black (a new object's) is kept. With the fix every pair in `fades.play` comes back
+  unchanged (`fade_check.py`: shift 0.0; the fog case 0.2, its drift). – Alt: switch each same-map fade to
+  `fadescreenswapbuffers` (the task's proposal): a hardware BLDY fade that leaves the palettes alone, but it darkens
+  every layer (a msgbox shown while black is invisible – several cutscenes print text over black) and its fade-in
+  sets BLDALPHA to 0 (breaks alpha-blended fog); it also has to be remembered in every future script. The scripts that
+  already use `fadescreenswapbuffers` (Act 5's turn, Act 7) keep working; plain `fadescreen` is now safe everywhere.
+  Costs 1.2 KB of EWRAM.

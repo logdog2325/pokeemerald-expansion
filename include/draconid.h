@@ -23,6 +23,7 @@ void Draconid_StartCredits(struct ScriptContext *ctx);
 #define DRACONID_TEST_GIVE_ITEM (1 << 2)  // play.py "giveitem": one item into the bag
 #define DRACONID_TEST_COUNT_HMS (1 << 3)  // play.py "expect_party_hms"
 #define DRACONID_TEST_GIVE_MON  (1 << 4)  // play.py "givemon": species at level, holding item
+#define DRACONID_TEST_SCRIPT    (1 << 5)  // play.py "callscript": run the script at `script`
 
 struct DraconidTestWarp
 {
@@ -35,6 +36,7 @@ struct DraconidTestWarp
     u16 item;        // DRACONID_TEST_GIVE_ITEM; DRACONID_TEST_GIVE_MON: the held item (ITEM_NONE for none)
     u16 species;     // DRACONID_TEST_GIVE_MON
     u8 level;        // DRACONID_TEST_GIVE_MON
+    const u8 *script; // DRACONID_TEST_SCRIPT
 };
 extern struct DraconidTestWarp gDraconidTestWarp;
 bool32 Draconid_TryTestWarp(void);

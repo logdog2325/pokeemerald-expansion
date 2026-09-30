@@ -276,6 +276,11 @@ bool32 Draconid_TryTestWarp(void)
         ScriptGiveMon(gDraconidTestWarp.species, gDraconidTestWarp.level, gDraconidTestWarp.item);
     if (request & DRACONID_TEST_COUNT_HMS)
         gDraconidTestWarp.partyHMMoves = CountPartyHMMoves();
+    if ((request & DRACONID_TEST_SCRIPT) && gDraconidTestWarp.script != NULL)
+    {
+        ScriptContext_SetupScript(gDraconidTestWarp.script);
+        return TRUE;
+    }
     if (!(request & DRACONID_TEST_WARP))
         return FALSE;
     SetWarpDestination(gDraconidTestWarp.mapGroup, gDraconidTestWarp.mapNum, WARP_ID_NONE,

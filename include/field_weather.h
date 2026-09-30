@@ -151,6 +151,7 @@ void ApplyWeatherColorMapIfIdle_Gradual(u8 colorMapIndex, u8 targetColorMapIndex
 void FadeScreen(u8 mode, s8 delay);
 void FadeSelectedPals(u8 mode, s8 delay, u32 selectedPalettes);
 void FadeScreenHardware(u32 mode, s32 delay);
+void ForgetPreFadePalettes(void); // Draconid Emerald (D-278)
 bool8 IsWeatherNotFadingIn(void);
 void UpdateSpritePaletteWithWeather(u8 spritePaletteIndex, bool8 allowFog);
 void ApplyWeatherColorMapToPals(u8 startPalIndex, u8 numPalettes);
