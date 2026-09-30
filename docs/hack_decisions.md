@@ -549,3 +549,33 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   Lilycove. `build_segments.py` places every story fight (and every Nerine/Aster variant) on the round 1
   schedule – Steven's Space Center team is exempt from the cap on purpose (D-108), the Sky Pillar finale and
   Zinnia are post-League (D-109) – and `check_party.py --caps` passes with 0 errors.
+- **D-216 No trade evolutions** (feedback 1.31): every `EVO_TRADE` (30 entries, Karrablast/Shelmet's
+  trade-partner ones included) is a level evolution. **Rule**: the level follows the evolved form's base stat total,
+  next to Hoenn's own level-up evolutions of that power, so it lands in the matching level-cap segment
+  (`src/caps.c`): up to ~480 → **30** (`DRACONID_TRADE_EVO_LEVEL_LOW`; Sharpedo/Crawdaunt, the Flannery cap) –
+  Trevenant, Aromatisse, Slurpuff; ~485–515 → **36** (`_MID`; the Hoenn starters' final stage, the Winona segment)
+  – Alakazam, Machamp, Golem (and Alolan), Gengar, Gigalith, Conkeldurr, Gourgeist (4 sizes), Escavalier,
+  Accelgor, Steelix, Scizor, Porygon2, Politoed, Huntail, Gorebyss; ~525–540 → **42** (`_HIGH`; Aggron, Glalie, the
+  Tate & Liza segment) – Kingdra, Electivire, Magmortar, Dusknoir, Porygon-Z; Rhyperior **48** (`_LATE`: Rhydon
+  itself comes at 42). Exceptions: **Slowking 37** (Slowbro's level, D-217); **Milotic 36** although it is a 540 –
+  Feebas lives only on Route 119 (cap 38) and, like Magikarp, its weak first stage is the price (Beauty still works).
+  The expansion's "use the item from the bag" shortcuts on these lines (Linking Cord, Metal Coat, King's Rock,
+  Dragon Scale, Up-Grade, Protector, …) are removed so the level is the one rule: Metal Coat and King's Rock are
+  sold from the first counter tiers (D-218) and would otherwise make Steelix or Slowking at any level. Everstone:
+  `P_KADABRA_EVERSTONE` is `GEN_3`, so an Everstone stops Kadabra like any other (the Gen 4 exception was a trade
+  quirk). In-game trades and link trades just never evolve now; the Pokédex does not show methods
+  (`POKEDEX_PLUS_HGSS` is off). `tools/hack/check_evos.py` checks and prints the table (docs/hack_items.md).
+  Trainers: `check_party.py` has 0 errors; 11 new warnings are generic trainers 1–2 levels under the new levels
+  (Kira & Dan's Huntail/Gorebyss, Thalia, Nob, Trent, Sawyer, Aaron) – left to the trainer pass that owns
+  `trainers.party`. – Alt: Linking Cord item from a shop (still a gate the playtester didn't want); one level for
+  all (36 would give Trevenant late and Kingdra early); the core games' "level + 1 after the pre-evolution".
+  – The playtester's note: "Pokémon just evolve at a set level".
+- **D-217 Branches keep an item**: where a trade shared its base with another method, the held item still picks
+  the branch, now on a level-up (`EVO_LEVEL` + `IF_HOLD_ITEM`, which `GetEvolutionTargetSpecies` supports and
+  which consumes the item like the trade did): Poliwhirl → **Politoed at 36 holding a King's Rock** (Poliwrath stays
+  on the Water Stone); Slowpoke → **Slowking at 37 holding a King's Rock**, listed before Slowbro at 37 (the first
+  matching entry wins); Clamperl → **Huntail / Gorebyss at 36 holding the Deep Sea Tooth / Scale** (no item, no
+  evolution, as before). Sources: King's Rock – the Mossdeep boy (vanilla) and the battle item counter from two
+  badges; Deep Sea Tooth / Scale – Captain Stern's Scanner trade (one of them, vanilla) and the counter from two
+  badges (both). – Alt: plain levels with a gender or personality split (no player control); keep the trade for
+  these three only. – Both branches stay reachable in one save.

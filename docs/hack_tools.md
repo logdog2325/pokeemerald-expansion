@@ -134,6 +134,9 @@ python3 tools/hack/emu/play.py test.play -o /tmp/out
 | `path MAP X0 Y0 X1 Y1` | shortest walk on MAP's collision grid (avoids tall grass, water, warps; jumps down ledges; ignores NPCs) |
 | `warp MAP_X X Y [MAX]` | debug builds: warp to (X, Y) on MAP_X the next time the player is free (`gDraconidTestWarp`) |
 | `heal` | debug builds: heal the party the next time the player is free |
+| `givemon SPECIES_X LEVEL [ITEM_X]`, `giveitem ITEM_X` | debug builds: add a Pokémon (holding ITEM_X) to the party / one item to the bag the next time the player is free |
+| `expect_party SLOT SPECIES_X` | the species in party slot SLOT (0 = first), decrypted from the box data |
+| `settrainer TRAINER_X 0/1` | set or clear a trainer's defeated flag |
 | `setvar NAME V`, `gender M/F`, `default NAME V` (+ `-D NAME=V`) | change a var, the player's gender, script defaults |
 | `setflag NAME`, `clearflag NAME` | change a save-block flag, e.g. `setflag FLAG_DEBUG_NO_ENCOUNTER` to walk without wild battles |
 | `choose N [MAX]` | tap A until a `dynmultichoice` menu opens, then pick entry N (0 = first) |
@@ -160,6 +163,14 @@ Static checks over the compiled scripts, map.json files and C: every Draconid fl
 every `FLAG_HIDE_*` flag hides an object and toggles (new game sets it and a script clears it, or the
 other way round), every story state (`DRACONID_STATE_*`, `ASTER_STATE_*`, …) other than 0 is written.
 Record-only flags are warnings; states nothing compares against are notes.
+
+## Evolution check – `tools/hack/check_evos.py`
+```sh
+python3 tools/hack/check_evos.py [--markdown]
+```
+No species may keep a trade evolution (D-216), and no held-item level branch may be hidden behind an earlier
+unconditional level entry (the first matching entry wins). Prints the former trade evolutions with level, held
+item and base stat totals; `--markdown` gives the table in [hack_items.md](hack_items.md).
 | `savestate F`, `loadstate F` | relative paths are inside the `-o` output directory |
 
 Regression tests live in `tools/hack/emu/tests/` and chain through savestates in one output dir:
@@ -177,6 +188,7 @@ python3 tools/hack/emu/play.py tools/hack/emu/tests/act4.play           -o /tmp/
 python3 tools/hack/emu/play.py tools/hack/emu/tests/maxie_calls.play    -o /tmp/emu   # Maxie's PokéNav calls
 python3 tools/hack/emu/play.py tools/hack/emu/tests/elite_four.play     -o /tmp/emu   # E4 post-game rematch swap
 python3 tools/hack/emu/play.py tools/hack/emu/tests/postgame_home.play  -o /tmp/emu   # SS Ticket / Lati TV at home
+python3 tools/hack/emu/play.py tools/hack/emu/tests/trade_evos.play     -o /tmp/emu   # Kadabra -> Alakazam, Slowpoke + King's Rock -> Slowking
 python3 tools/hack/emu/play.py tools/hack/emu/tests/release_boot.play   -o /tmp/rel --rom pokeemerald-release.gba
 ```
 `release_boot.play` goes through the real title and new-game menus, since release builds have neither Quickstart

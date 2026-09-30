@@ -1,0 +1,61 @@
+# No trade evolutions (round 1 follow-up 3, D-216 / D-217): former trade evolutions happen at a level.
+# Needs rustboro_done.ss (tests/rustboro.play). The debug hook gives the Pokemon and the Rare Candies
+# (givemon / giveitem); five badge flags raise the level cap to 38 (src/caps.c) so the candies work.
+# 1. Kadabra Lv 35 + a Rare Candy -> Lv 36 (DRACONID_TRADE_EVO_LEVEL_MID) -> Alakazam.
+# 2. Slowpoke Lv 36 holding a King's Rock + a Rare Candy -> Lv 37 -> Slowking, not Slowbro (the held-item
+#    branch is listed first, D-217), and the King's Rock is used up.
+# Only A during the evolution scene: B would stop it.
+loadstate rustboro_done.ss
+setflag FLAG_DEBUG_NO_ENCOUNTER
+setflag FLAG_DEBUG_NO_TRAINER_SEE
+setflag FLAG_BADGE01_GET
+setflag FLAG_BADGE02_GET
+setflag FLAG_BADGE03_GET
+setflag FLAG_BADGE04_GET
+setflag FLAG_BADGE05_GET
+
+# --- 1. Kadabra (party slot 1, after the dragon) ---
+givemon SPECIES_KADABRA 35
+giveitem ITEM_RARE_CANDY
+expect_party 1 SPECIES_KADABRA
+# START menu: POKéDEX, POKéMON, BAG -> the Items pocket holds only the candy -> USE -> slot 1
+press START 2 40
+press DOWN 2 10
+press DOWN 2 10
+press A 2 90
+press A 2 30
+press A 2 90
+press DOWN 2 20
+press A 2 60
+shot 01_kadabra_candy
+# "elevated to Lv. 36", the two stat boxes (and any new move), then the evolution scene: more A presses
+# than needed are harmless while it plays; once it is over, B leaves the message, the bag and the menu
+repeat 6 press A 2 60
+run 60
+shot 02_kadabra_evolving
+run 1200
+shot 03_alakazam
+mash B 3000
+shot 04_field
+expect_party 1 SPECIES_ALAKAZAM
+expect_item ITEM_RARE_CANDY 0
+
+# --- 2. Slowpoke holding a King's Rock (party slot 2) ---
+givemon SPECIES_SLOWPOKE 36 ITEM_KINGS_ROCK
+giveitem ITEM_RARE_CANDY
+expect_party 2 SPECIES_SLOWPOKE
+# the START menu cursor is still on BAG
+press START 2 60
+press A 2 90
+press A 2 30
+press A 2 90
+# the party menu remembers slot 1 (Alakazam): one step down to the Slowpoke
+press DOWN 2 20
+press A 2 60
+shot 05_slowpoke_candy
+repeat 6 press A 2 60
+run 1260
+shot 06_slowking
+mash B 3000
+expect_party 2 SPECIES_SLOWKING
+expect_item ITEM_KINGS_ROCK 0

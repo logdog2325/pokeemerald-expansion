@@ -11,6 +11,8 @@ u16 Draconid_GetDueMaxieCall(void);
 // Emulator test hook (tools/hack/emu/play.py "warp"), debug builds only
 #define DRACONID_TEST_WARP (1 << 0)
 #define DRACONID_TEST_HEAL (1 << 1)
+#define DRACONID_TEST_GIVE_MON (1 << 2)  // play.py "givemon": species at level, holding item
+#define DRACONID_TEST_GIVE_ITEM (1 << 3) // play.py "giveitem": one item
 
 struct DraconidTestWarp
 {
@@ -19,6 +21,9 @@ struct DraconidTestWarp
     s8 mapNum;
     s8 x;
     s8 y;
+    u8 level;    // DRACONID_TEST_GIVE_MON
+    u16 species; // DRACONID_TEST_GIVE_MON
+    u16 item;    // DRACONID_TEST_GIVE_ITEM; DRACONID_TEST_GIVE_MON: the held item
 };
 extern struct DraconidTestWarp gDraconidTestWarp;
 bool32 Draconid_TryTestWarp(void);

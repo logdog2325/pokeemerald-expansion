@@ -2,6 +2,7 @@
 #include "draconid.h"
 #include "event_data.h"
 #include "field_screen_effect.h"
+#include "item.h"
 #include "overworld.h"
 #include "constants/flags.h"
 #include "constants/map_types.h"
@@ -106,6 +107,10 @@ bool32 Draconid_TryTestWarp(void)
     gDraconidTestWarp.active = 0;
     if (request & DRACONID_TEST_HEAL)
         HealPlayerParty();
+    if (request & DRACONID_TEST_GIVE_MON)
+        ScriptGiveMon(gDraconidTestWarp.species, gDraconidTestWarp.level, gDraconidTestWarp.item);
+    if (request & DRACONID_TEST_GIVE_ITEM)
+        AddBagItem(gDraconidTestWarp.item, 1);
     if (!(request & DRACONID_TEST_WARP))
         return FALSE;
     SetWarpDestination(gDraconidTestWarp.mapGroup, gDraconidTestWarp.mapNum, WARP_ID_NONE,

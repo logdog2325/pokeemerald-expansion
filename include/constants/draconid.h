@@ -32,6 +32,13 @@
 // The three dragon egg lines evolve earlier than in the core games (round 1, D-107)
 #define DRACONID_EVO_LEVEL_MIDDLE      25 // Deino -> Zweilous, Dreepy -> Drakloak, Jangmo-o -> Hakamo-o
 #define DRACONID_EVO_LEVEL_FINAL       50 // Zweilous -> Hydreigon, Drakloak -> Dragapult, Hakamo-o -> Kommo-o
+// No trade evolutions (round 1, D-216): they happen at a level picked by the evolved form's base stat total,
+// next to Hoenn's own level-up evolutions of that power and the level caps (src/caps.c); a held item is only
+// needed where it picks a branch (D-217). Table: docs/hack_items.md, tools/hack/check_evos.py.
+#define DRACONID_TRADE_EVO_LEVEL_LOW   30 // up to ~480 (Sharpedo/Crawdaunt band): Trevenant, Aromatisse, Slurpuff
+#define DRACONID_TRADE_EVO_LEVEL_MID   36 // ~485-515 (the Hoenn starters' final stage): Alakazam, Machamp, Golem, Gengar ...
+#define DRACONID_TRADE_EVO_LEVEL_HIGH  42 // ~525-540 (Aggron, Glalie): Kingdra, Electivire, Magmortar, Dusknoir, Porygon-Z
+#define DRACONID_TRADE_EVO_LEVEL_LATE  48 // Rhyperior (Rhydon itself comes at 42)
 
 // VAR_SECOND_STARTER: Prof. Birch's gift after the first Gym
 #define SECOND_STARTER_NONE            0

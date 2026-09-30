@@ -21,6 +21,7 @@ A .play script is a gbarun script plus:
   expect_opponent TRAINER_X   the last trainer battle's opponent A (kept until the next battle is set
                           up; works when a mashed battle is lost, unlike expect_trainer)
   setflag NAME / clearflag NAME   change a flag in the save block (e.g. FLAG_DEBUG_NO_ENCOUNTER)
+  settrainer TRAINER_X 0|1        set or clear a trainer's "defeated" flag
   setvar NAME VALUE       change a var in the save block
   mapid                   print the current map group/num (gSaveBlock1Ptr->location)
   walk DIR COORD [MAX]    hold DIR until the player's x (LEFT/RIGHT) or y (UP/DOWN) is COORD
@@ -32,6 +33,10 @@ A .play script is a gbarun script plus:
   gender M|F              set the player's gender (the sprite follows on the next map load)
   warp MAP_X X Y [MAX]    debug builds: warp to (X, Y) on MAP_X the next time the player is free
   heal                    debug builds: heal the party the next time the player is free
+  givemon SPECIES_X LEVEL [ITEM_X]   debug builds: add a Pokemon (holding ITEM_X) to the party the next
+                          time the player is free
+  giveitem ITEM_X         debug builds: add one ITEM_X to the bag the next time the player is free
+  expect_party SLOT SPECIES_X   the species in party slot SLOT (0 = first; decrypts the box data)
   default NAME VALUE      default for ${NAME}; override with -D NAME=VALUE on the command line
 Lines are otherwise passed to gbarun unchanged (run/press/hold/repeat/shot/savestate/...).
 Exit code 1 if an expectation fails or an "until" times out.
@@ -63,11 +68,13 @@ def symbols(elf):
     return syms
 
 
-def probe(names):
+def probe(names, debug_hook=False):
     """Evaluate C constants (and SaveBlock1 offsets) with the project's own headers."""
     src = '#include "global.h"\n#include "constants/flags.h"\n#include "constants/vars.h"\n#include "constants/maps.h"\n'
     src += '#include "constants/items.h"\n#include "constants/opponents.h"\n#include "battle_setup.h"\n'
-    src += '#include "constants/event_objects.h"\n'
+    src += '#include "constants/event_objects.h"\n#include "pokemon.h"\n'
+    if debug_hook:
+        src += '#include "draconid.h"\n'
     src += "const u32 gProbe[] = {\n  offsetof(struct SaveBlock1, flags),\n  offsetof(struct SaveBlock1, vars),\n"
     src += "  offsetof(struct SaveBlock1, location),\n"
     src += "  offsetof(struct ObjectEvent, currentCoords),\n"
@@ -173,6 +180,11 @@ def plan_path(map_name, x0, y0, x1, y1):
 GFX_OFFSET = "offsetof(struct ObjectEvent, graphicsId)"
 OPPONENT_A_OFFSET = "offsetof(struct _TrainerBattleParameter, opponentA)"
 BAG_OFFSET, SLOT_SIZE, BAG_SIZE = "offsetof(struct SaveBlock1, bag)", "sizeof(struct ItemSlot)", "sizeof(struct Bag)"
+# party decoding (expect_party) and the debug hook's give requests (givemon / giveitem)
+MON_SIZE, SECURE_OFFSET, SUBSTRUCT_SIZE = "sizeof(struct Pokemon)", "offsetof(struct BoxPokemon, secure)", "NUM_SUBSTRUCT_BYTES"
+GIVE_FIELDS = ("offsetof(struct DraconidTestWarp, species)", "offsetof(struct DraconidTestWarp, level)",
+               "offsetof(struct DraconidTestWarp, item)", "DRACONID_TEST_GIVE_MON", "DRACONID_TEST_GIVE_ITEM")
+SUBSTRUCT0_POS = [0, 0, 0, 0, 0, 0, 1, 1, 2, 3, 2, 3, 1, 1, 2, 3, 2, 3, 1, 1, 2, 3, 2, 3]  # pokemon.c sSubstructOffsets[0]
 
 LEDGE_JUMP = {"DOWN": "MB_JUMP_SOUTH", "UP": "MB_JUMP_NORTH", "LEFT": "MB_JUMP_WEST", "RIGHT": "MB_JUMP_EAST"}
 
@@ -194,16 +206,22 @@ def main():
             defines.setdefault(t[1], t[2])
     defines.update(dict(d.split("=", 1) for d in args.defines))
     lines = [re.sub(r"\$\{(\w+)\}", lambda m: defines[m.group(1)], l) for l in lines if not l.startswith("default ")]
-    names = sorted({l.split()[1] for l in lines if l.split() and l.split()[0] in ("flag", "var", "expect_flag", "expect_var", "setflag", "clearflag", "setvar", "warp", "expect_trainer", "expect_item", "expect_opponent", "expect_gfx")})
+    names = sorted({l.split()[1] for l in lines if l.split() and l.split()[0] in ("flag", "var", "expect_flag", "expect_var", "setflag", "clearflag", "setvar", "warp", "expect_trainer", "expect_item", "expect_opponent", "expect_gfx", "givemon", "giveitem", "settrainer")})
+    names += sorted({l.split()[2] for l in lines if l.split() and l.split()[0] == "expect_party"})
+    names += sorted({l.split()[3] for l in lines if l.split() and l.split()[0] == "givemon" and len(l.split()) > 3})
     names += [OPPONENT_A_OFFSET, GFX_OFFSET]
-    names += [BAG_OFFSET, SLOT_SIZE, BAG_SIZE, "TRAINER_FLAGS_START"]
-    flags_off, vars_off, loc_off, coords_off, consts = probe(names)
+    names += [BAG_OFFSET, SLOT_SIZE, BAG_SIZE, "TRAINER_FLAGS_START", MON_SIZE, SECURE_OFFSET, SUBSTRUCT_SIZE]
+    debug_hook = any(l.split() and l.split()[0] in ("givemon", "giveitem") for l in lines)
+    if debug_hook:
+        names += list(GIVE_FIELDS)
+    flags_off, vars_off, loc_off, coords_off, consts = probe(names, debug_hook)
     # the player is object event 0 (spawned first on every map load); MAP_OFFSET is 7
     player_x = syms["gObjectEvents"] + coords_off
     player_y = player_x + 2
     sb1 = "*%X" % syms["gSaveBlock1Ptr"]
     expects = []
     item_checks = {}  # label -> [item name, item id, wanted, found]
+    party_checks = {}  # label -> [species name, species id, slot, {word key: value}]
 
     def sym(m):
         name = m.group(2)
@@ -260,6 +278,9 @@ def main():
             item_checks[label] = [t[1], consts[t[1]], int(t[2]), False]
             for off in range(0, consts[BAG_SIZE], consts[SLOT_SIZE]):
                 out.append("read %s+%X 2 %s" % (sb1, consts[BAG_OFFSET] + off, label))
+        elif t[0] == "settrainer":
+            f = consts["TRAINER_FLAGS_START"] + consts[t[1]]
+            out.append("pokebit %s+%X %d %d" % (sb1, flags_off + f // 8, f % 8, int(t[2])))
         elif t[0] in ("setflag", "clearflag"):
             f = consts[t[1]]
             out.append("pokebit %s+%X %d %d" % (sb1, flags_off + f // 8, f % 8, 1 if t[0] == "setflag" else 0))
@@ -300,6 +321,36 @@ def main():
             # debug builds only: HealPlayerParty() the next time the player is free
             out.append("poke %X 2" % syms["gDraconidTestWarp"])  # DRACONID_TEST_HEAL
             out.append("run 10")
+        elif t[0] in ("givemon", "giveitem"):
+            # debug builds only: Draconid_TryTestWarp gives the Pokemon / item when the player is free
+            if "gDraconidTestWarp" not in syms:
+                sys.exit("%s: gDraconidTestWarp not in the ELF (release build?)" % t[0])
+            w = syms["gDraconidTestWarp"]
+            if t[0] == "givemon":
+                sp = consts[t[1]]
+                out.append("poke %X %X" % (w + consts[GIVE_FIELDS[0]], sp & 0xFF))
+                out.append("poke %X %X" % (w + consts[GIVE_FIELDS[0]] + 1, sp >> 8))
+                out.append("poke %X %X" % (w + consts[GIVE_FIELDS[1]], int(t[2])))
+                held = consts[t[3]] if len(t) > 3 else 0
+                out.append("poke %X %X" % (w + consts[GIVE_FIELDS[2]], held & 0xFF))
+                out.append("poke %X %X" % (w + consts[GIVE_FIELDS[2]] + 1, held >> 8))
+                out.append("poke %X %X" % (w, consts[GIVE_FIELDS[3]]))
+            else:
+                it = consts[t[1]]
+                out.append("poke %X %X" % (w + consts[GIVE_FIELDS[2]], it & 0xFF))
+                out.append("poke %X %X" % (w + consts[GIVE_FIELDS[2]] + 1, it >> 8))
+                out.append("poke %X %X" % (w, consts[GIVE_FIELDS[4]]))
+            out.append("until %X 1 0 900" % w)  # the hook has taken the request (a later one would overwrite it)
+            out.append("run 10")
+        elif t[0] == "expect_party":
+            # gParties[B_TRAINER_PLAYER] (index 0) slot N: personality, OT id and the encrypted substructs
+            label = "party%d" % len(party_checks)
+            party_checks[label] = [t[2], consts[t[2]], int(t[1]), {}]
+            base = syms["gParties"] + int(t[1]) * consts[MON_SIZE]
+            out.append("read %X 4 %s_p" % (base, label))
+            out.append("read %X 4 %s_o" % (base + 4, label))
+            for i in range(consts[SUBSTRUCT_SIZE]):  # all four substructs, one u32 each (12 bytes = 3 words each)
+                out.append("read %X 4 %s_w%d" % (base + consts[SECURE_OFFSET] + 4 * i, label, i))
         elif t[0] == "gender":
             g = 0 if t[1].upper().startswith("M") else 1
             out.append("poke *%X+8 %X" % (syms["gSaveBlock2Ptr"], g))
@@ -320,6 +371,10 @@ def main():
     ok = True
     for line in res.stdout.splitlines():
         m = re.match(r"read (\S+?)(?:>>(\d))? = 0x([0-9A-F]+)", line)
+        if m and m.group(1).split("_")[0] in party_checks:
+            prefix, key = m.group(1).split("_", 1)
+            party_checks[prefix][3][key] = int(m.group(3), 16)
+            continue  # reported after the run
         if m and m.group(1) in item_checks:
             check = item_checks[m.group(1)]
             check[3] |= int(m.group(3), 16) == check[1]
@@ -340,6 +395,15 @@ def main():
         line = "%s in bag = %d" % (check[0], check[3])
         if int(check[3]) != check[2]:
             line += "   <-- EXPECTED %d" % check[2]
+            ok = False
+        print(line)
+    for name, want, slot, words in party_checks.values():
+        pers, otid = words.get("p", 0), words.get("o", 0)
+        pos = SUBSTRUCT0_POS[pers % 24] * consts[SUBSTRUCT_SIZE] // 4
+        species = (words.get("w%d" % pos, 0) ^ pers ^ otid) & 0x7FF  # PokemonSubstruct0.species:11
+        line = "party slot %d species = %d (%s = %d)" % (slot, species, name, want)
+        if species != want:
+            line += "   <-- EXPECTED %s" % name
             ok = False
         print(line)
     if res.stderr.strip():
