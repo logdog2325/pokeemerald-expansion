@@ -150,3 +150,6 @@ Petalburg Woods recruitment/outfit change, Maxie's first meeting at Meteor Falls
 ### Follow-up note 7 (round 1)
 - "also you should be gifted the mega stone for the starter you choose (sceptile feraligator mega charizard x) etc too" (already in: the Lavaridge gift after the Mega Ring)
 - "also have the professor who gives it to you be oak since he already has a in game sprite"
+
+### Follow-up note 8 (round 1)
+- "no oak gives you the second starter the totodile treecko or charmander that you choose the elder still gives you the egg also have the elder tell you the eggs are from galar, unova and alola and make sure you script the egg selection scene and choice and have the egg hatch after like 5 steps"
