@@ -1,0 +1,74 @@
+// Draconid Emerald: reputation dialogue – Littleroot Town (D-103; shared NPCs in shared.pory).
+// Each townsperson's map.json "script" points here; PRE_UNIFORM goes on to the vanilla script.
+// Lines collected in docs/reputation_dialogue.md.
+
+// Little girl at (16, 10) (vanilla: "Are you going to catch POKéMON? Good luck!")
+script LittlerootTown_EventScript_DraconidRepTwin {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LittlerootTown_Text_DraconidRepTwinUniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(LittlerootTown_Text_DraconidRepTwinRevealed, MSGBOX_NPC)
+        default:
+            goto(LittlerootTown_EventScript_Twin)
+    }
+}
+
+text LittlerootTown_Text_DraconidRepTwinUniform {
+    format("…You look scary in those clothes.\p"
+           "My mommy says TEAM MAGMA are bad people.\p"
+           "But you saved PROF. BIRCH… Are you a bad person now?")
+}
+
+text LittlerootTown_Text_DraconidRepTwinRevealed {
+    format("You were only pretending to be bad! I knew it!\p"
+           "When I grow up, I want to be brave like you!")
+}
+
+// Man at (12, 13) (vanilla: "The power of science is staggering!")
+script LittlerootTown_EventScript_DraconidRepFatMan {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LittlerootTown_Text_DraconidRepFatManUniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(LittlerootTown_Text_DraconidRepFatManRevealed, MSGBOX_NPC)
+        default:
+            goto(LittlerootTown_EventScript_FatMan)
+    }
+}
+
+text LittlerootTown_Text_DraconidRepFatManUniform {
+    format("Hm? Is that a TEAM MAGMA uniform?\p"
+           "You helped PROF. BIRCH on ROUTE 101! Why would you join them?\p"
+           "The power of people to surprise me is staggering…")
+}
+
+text LittlerootTown_Text_DraconidRepFatManRevealed {
+    format("So you were working against TEAM MAGMA all along!\p"
+           "The power of a good disguise is staggering!")
+}
+
+// Boy at (14, 17) (vanilla: "When does PROF. BIRCH spend time at home?")
+script LittlerootTown_EventScript_DraconidRepBoy {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            lock
+            faceplayer
+            msgbox(LittlerootTown_Text_DraconidRepBoyUniform, MSGBOX_DEFAULT)
+            goto(Draconid_EventScript_RepTurnAway)
+        case REPUTATION_REVEALED:
+            msgbox(LittlerootTown_Text_DraconidRepBoyRevealed, MSGBOX_NPC)
+        default:
+            goto(LittlerootTown_EventScript_Boy)
+    }
+}
+
+text LittlerootTown_Text_DraconidRepBoyUniform {
+    format("PROF. BIRCH's LAB is right over there.\p"
+           "…You're not here to steal his research for TEAM MAGMA, are you?")
+}
+
+text LittlerootTown_Text_DraconidRepBoyRevealed {
+    format("PROF. BIRCH says he never stopped believing in you.\p"
+           "…I wasn't so sure. Sorry about that.")
+}

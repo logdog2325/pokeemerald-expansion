@@ -1,0 +1,94 @@
+// Draconid Emerald: reputation dialogue – Oldale Town (D-103; shared NPCs in shared.pory).
+// Each townsperson's map.json "script" points here; PRE_UNIFORM goes on to the vanilla script.
+// Lines collected in docs/reputation_dialogue.md.
+
+// Girl at (16, 11) (vanilla: "I'm saving my progress.")
+script OldaleTown_EventScript_DraconidRepGirl {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            lock
+            faceplayer
+            msgbox(OldaleTown_Text_DraconidRepGirlUniform, MSGBOX_DEFAULT)
+            goto(Draconid_EventScript_RepTurnAway)
+        case REPUTATION_REVEALED:
+            msgbox(OldaleTown_Text_DraconidRepGirlRevealed, MSGBOX_NPC)
+        default:
+            goto(OldaleTown_EventScript_Girl)
+    }
+}
+
+text OldaleTown_Text_DraconidRepGirlUniform {
+    format("…I'm saving my progress, and then I'm leaving.\p"
+           "I'd rather not be seen near TEAM MAGMA.")
+}
+
+text OldaleTown_Text_DraconidRepGirlRevealed {
+    format("Hey, you're the TRAINER from SOOTOPOLIS!\p"
+           "I'm saving my progress right now, so I'll always remember I met you!")
+}
+
+// Man sketching footprints at (8, 9) (vanilla, after the adventure starts: "they were only my own footprints…")
+script OldaleTown_EventScript_DraconidRepFootprintsMan {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(OldaleTown_Text_DraconidRepFootprintsManUniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(OldaleTown_Text_DraconidRepFootprintsManRevealed, MSGBOX_NPC)
+        default:
+            goto(OldaleTown_EventScript_FootprintsMan)
+    }
+}
+
+text OldaleTown_Text_DraconidRepFootprintsManUniform {
+    format("Stay back! Don't step on my sketches!\p"
+           "These are the footprints of a TEAM MAGMA grunt. I'm keeping records.")
+}
+
+text OldaleTown_Text_DraconidRepFootprintsManRevealed {
+    format("I tore up my sketches of your footprints.\p"
+           "It turns out they were a hero's footprints! I'll have to start over.")
+}
+
+// Woman at (4, 4) (vanilla: "POKéMON level up and become stronger.")
+script OldaleTown_House2_EventScript_DraconidRepWoman {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(OldaleTown_House2_Text_DraconidRepWomanUniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(OldaleTown_House2_Text_DraconidRepWomanRevealed, MSGBOX_NPC)
+        default:
+            goto(OldaleTown_House2_EventScript_Woman)
+    }
+}
+
+text OldaleTown_House2_Text_DraconidRepWomanUniform {
+    format("…Please don't make any trouble in my house.\p"
+           "If you want to battle, you can do it outside.")
+}
+
+text OldaleTown_House2_Text_DraconidRepWomanRevealed {
+    format("Oh, it's you! Come in, come in!\p"
+           "I'm sorry I was so rude to you. We all were.")
+}
+
+// Boy in the Pokémon Center at (10, 6) (vanilla: "POKéMON CENTERS are great! It's all for free.")
+script OldaleTown_PokemonCenter_1F_EventScript_DraconidRepBoy {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(OldaleTown_PokemonCenter_1F_Text_DraconidRepBoyUniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(OldaleTown_PokemonCenter_1F_Text_DraconidRepBoyRevealed, MSGBOX_NPC)
+        default:
+            goto(OldaleTown_PokemonCenter_1F_EventScript_Boy)
+    }
+}
+
+text OldaleTown_PokemonCenter_1F_Text_DraconidRepBoyUniform {
+    format("POKéMON CENTERS are free for everyone…\p"
+           "Even for TEAM MAGMA. That doesn't seem fair.")
+}
+
+text OldaleTown_PokemonCenter_1F_Text_DraconidRepBoyRevealed {
+    format("POKéMON CENTERS are free for everyone!\p"
+           "I'm glad they never turned you away. You saved HOENN!")
+}

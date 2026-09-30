@@ -54,6 +54,7 @@ MossdeepCity_Gym_EventScript_SetSwitch4Metatiles::
 	end
 
 MossdeepCity_Gym_EventScript_TateAndLiza::
+	goto_if_ne VAR_DRACONID_REPUTATION, REPUTATION_PRE_UNIFORM, MossdeepCity_Gym_EventScript_DraconidRepTateAndLiza  @ Draconid Emerald (reputation/mossdeep.pory)
 	trainerbattle_double TRAINER_TATE_AND_LIZA_1, MossdeepCity_Gym_Text_TateAndLizaIntro, MossdeepCity_Gym_Text_TateAndLizaDefeat, MossdeepCity_Gym_Text_TateAndLizaNeedTwoMons, MossdeepCity_Gym_EventScript_TateAndLizaDefeated, NO_MUSIC
 	specialvar VAR_RESULT, ShouldTryRematchBattle
 	goto_if_eq VAR_RESULT, TRUE, MossdeepCity_Gym_EventScript_TateAndLizaRematch
@@ -272,6 +273,7 @@ MossdeepCity_Gym_EventScript_Kathleen::
 MossdeepCity_Gym_EventScript_GymGuide::
 	lock
 	faceplayer
+	goto_if_ne VAR_DRACONID_REPUTATION, REPUTATION_PRE_UNIFORM, MossdeepCity_Gym_EventScript_DraconidRepGymGuide  @ Draconid Emerald (reputation/mossdeep.pory)
 	goto_if_set FLAG_DEFEATED_MOSSDEEP_GYM, MossdeepCity_Gym_EventScript_GymGuidePostVictory
 	msgbox MossdeepCity_Gym_Text_GymGuideAdvice, MSGBOX_DEFAULT
 	release

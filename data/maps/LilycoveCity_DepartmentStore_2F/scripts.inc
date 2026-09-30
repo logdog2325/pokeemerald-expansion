@@ -16,10 +16,10 @@ LilycoveCity_DepartmentStore_2F_EventScript_Sailor::
 LilycoveCity_DepartmentStore_2F_EventScript_ClerkLeft::
 	lock
 	faceplayer
-	message gText_HowMayIServeYou
+	call Draconid_EventScript_MartGreeting  @ Draconid Emerald (reputation/shared.pory)
 	waitmessage
 	pokemart LilycoveCity_DepartmentStore_2F_Pokemart1
-	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
+	call Draconid_EventScript_MartGoodbye  @ Draconid Emerald (reputation/shared.pory)
 	release
 	end
 
@@ -41,10 +41,10 @@ LilycoveCity_DepartmentStore_2F_Pokemart1:
 LilycoveCity_DepartmentStore_2F_EventScript_ClerkRight::
 	lock
 	faceplayer
-	message gText_HowMayIServeYou
+	call Draconid_EventScript_MartGreeting  @ Draconid Emerald (reputation/shared.pory)
 	waitmessage
 	pokemart LilycoveCity_DepartmentStore_2F_Pokemart2
-	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
+	call Draconid_EventScript_MartGoodbye  @ Draconid Emerald (reputation/shared.pory)
 	release
 	end
 

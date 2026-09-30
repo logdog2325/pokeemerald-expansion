@@ -1,0 +1,200 @@
+// Draconid Emerald: reputation dialogue – Rustboro City and its Gym (D-103; shared NPCs in shared.pory).
+// Townsfolk: map.json "script" points here; PRE_UNIFORM goes on to the vanilla script.
+// Gym: RustboroCity_Gym_EventScript_Roxanne / _GymGuide jump here when the reputation isn't PRE_UNIFORM.
+// Lines collected in docs/reputation_dialogue.md.
+
+// Woman at (22, 34) (vanilla: FIRE types don't match up against ROXANNE's ROCK types)
+script RustboroCity_EventScript_DraconidRepWoman {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(RustboroCity_Text_DraconidRepWomanUniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(RustboroCity_Text_DraconidRepWomanRevealed, MSGBOX_NPC)
+        default:
+            goto(RustboroCity_EventScript_Woman)
+    }
+}
+
+text RustboroCity_Text_DraconidRepWomanUniform {
+    format("TEAM MAGMA loves FIRE, doesn't it?\p"
+           "FIRE doesn't match up well against ROCK. I hope ROXANNE teaches you that.")
+}
+
+text RustboroCity_Text_DraconidRepWomanRevealed {
+    format("You were on our side all along?\p"
+           "And I glared at you every time you walked past… I'm so embarrassed.")
+}
+
+// Little girl at (21, 46) (vanilla: "When I get bigger, I'm going to go places with POKéMON, too.")
+script RustboroCity_EventScript_DraconidRepTwin {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            lock
+            faceplayer
+            msgbox(RustboroCity_Text_DraconidRepTwinUniform, MSGBOX_DEFAULT)
+            goto(Draconid_EventScript_RepTurnAway)
+        case REPUTATION_REVEALED:
+            msgbox(RustboroCity_Text_DraconidRepTwinRevealed, MSGBOX_NPC)
+        default:
+            goto(RustboroCity_EventScript_Twin)
+    }
+}
+
+text RustboroCity_Text_DraconidRepTwinUniform {
+    format("Wow, your POKéMON are so cool!\p"
+           "…Oh. Mommy says I can't talk to TEAM MAGMA. Bye-bye!")
+}
+
+text RustboroCity_Text_DraconidRepTwinRevealed {
+    format("Mommy says you're a hero now!\p"
+           "When I get bigger, I'm going to go places with POKéMON, just like you!")
+}
+
+// Man at (19, 27) (vanilla: traded POKéMON grow fast but may not obey)
+script RustboroCity_EventScript_DraconidRepMan2 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            lock
+            faceplayer
+            msgbox(RustboroCity_Text_DraconidRepMan2Uniform, MSGBOX_DEFAULT)
+            goto(Draconid_EventScript_RepTurnAway)
+        case REPUTATION_REVEALED:
+            msgbox(RustboroCity_Text_DraconidRepMan2Revealed, MSGBOX_NPC)
+        default:
+            goto(RustboroCity_EventScript_Man2)
+    }
+}
+
+text RustboroCity_Text_DraconidRepMan2Uniform {
+    format("…Keep walking.\p"
+           "I've got nothing to say to TEAM MAGMA.")
+}
+
+text RustboroCity_Text_DraconidRepMan2Revealed {
+    format("Hey… I owe you an apology.\p"
+           "I treated you like dirt while you were risking everything for HOENN.")
+}
+
+// Boy at (31, 36) (vanilla: 2-on-2 battles)
+script RustboroCity_EventScript_DraconidRepBoy1 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(RustboroCity_Text_DraconidRepBoy1Uniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(RustboroCity_Text_DraconidRepBoy1Revealed, MSGBOX_NPC)
+        default:
+            goto(RustboroCity_EventScript_Boy1)
+    }
+}
+
+text RustboroCity_Text_DraconidRepBoy1Uniform {
+    format("Did you know? Everyone in town whispers about you.\p"
+           "A MAGMA grunt who raises DRAGON POKéMON…\p"
+           "Nobody knows what to make of you.")
+}
+
+text RustboroCity_Text_DraconidRepBoy1Revealed {
+    format("Did you know? You're famous now!\p"
+           "Everyone in RUSTBORO says they knew you were good all along. Hah!")
+}
+
+// Man at (26, 23) (vanilla: "Have you taken the POKéMON GYM challenge?")
+script RustboroCity_EventScript_DraconidRepMan1 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(RustboroCity_Text_DraconidRepMan1Uniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(RustboroCity_Text_DraconidRepMan1Revealed, MSGBOX_NPC)
+        default:
+            goto(RustboroCity_EventScript_Man1)
+    }
+}
+
+text RustboroCity_Text_DraconidRepMan1Uniform {
+    format("A TEAM MAGMA grunt, collecting GYM BADGES?\p"
+           "What does MAGMA want with those? …I don't like it one bit.")
+}
+
+text RustboroCity_Text_DraconidRepMan1Revealed {
+    format("So you collected BADGES to get close to TEAM MAGMA's boss?\p"
+           "That's the bravest GYM challenge I've ever heard of!")
+}
+
+// ---------------------------------------------------------------------------
+// Rustboro Gym: Gym Guide and ROXANNE (intro and post-battle lines; badge, TM and rematch are vanilla)
+// ---------------------------------------------------------------------------
+
+script RustboroCity_Gym_EventScript_DraconidRepGymGuide {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        if (flag(FLAG_DEFEATED_RUSTBORO_GYM)) {
+            msgbox(RustboroCity_Gym_Text_DraconidRepGymGuidePostVictoryUniform, MSGBOX_DEFAULT)
+        } else {
+            msgbox(RustboroCity_Gym_Text_DraconidRepGymGuideAdviceUniform, MSGBOX_DEFAULT)
+        }
+    } elif (flag(FLAG_DEFEATED_RUSTBORO_GYM)) {
+        msgbox(RustboroCity_Gym_Text_DraconidRepGymGuidePostVictoryRevealed, MSGBOX_DEFAULT)
+    } else {
+        msgbox(RustboroCity_Gym_Text_GymGuideAdvice, MSGBOX_DEFAULT)
+    }
+    release
+    end
+}
+
+text RustboroCity_Gym_Text_DraconidRepGymGuideAdviceUniform {
+    format("Yo, how's it… Hold on. You're with TEAM MAGMA?\p"
+           "Well… I give advice to every challenger. Rules are rules.\p"
+           "ROXANNE uses ROCK-type POKéMON. They can't stand WATER and GRASS moves.\p"
+           "…There. Now go.")
+}
+
+text RustboroCity_Gym_Text_DraconidRepGymGuidePostVictoryUniform {
+    format("You won the STONE BADGE… in that uniform.\p"
+           "I didn't cheer this time. But I have to admit, that was a real win.")
+}
+
+text RustboroCity_Gym_Text_DraconidRepGymGuidePostVictoryRevealed {
+    format("Yo, {PLAYER}! I heard everything!\p"
+           "A secret agent, climbing the stairs to the CHAMPIONSHIP…\p"
+           "That's got to feel awesome!")
+}
+
+script RustboroCity_Gym_EventScript_DraconidRepRoxanne {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        trainerbattle_single(TRAINER_ROXANNE_1, RustboroCity_Gym_Text_DraconidRepRoxanneIntroUniform, RustboroCity_Gym_Text_RoxanneDefeat, RustboroCity_Gym_EventScript_RoxanneDefeated, NO_MUSIC)
+    } else {
+        trainerbattle_single(TRAINER_ROXANNE_1, RustboroCity_Gym_Text_RoxanneIntro, RustboroCity_Gym_Text_RoxanneDefeat, RustboroCity_Gym_EventScript_RoxanneDefeated, NO_MUSIC)
+    }
+    specialvar(VAR_RESULT, ShouldTryRematchBattle)
+    if (var(VAR_RESULT) == TRUE) {
+        goto(RustboroCity_Gym_EventScript_RoxanneRematch)
+    }
+    if (!flag(FLAG_RECEIVED_TM_ROCK_TOMB)) {
+        goto(RustboroCity_Gym_EventScript_GiveRockTomb)
+    }
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        msgbox(RustboroCity_Gym_Text_DraconidRepRoxannePostBattleUniform, MSGBOX_DEFAULT)
+    } else {
+        msgbox(RustboroCity_Gym_Text_DraconidRepRoxannePostBattleRevealed, MSGBOX_DEFAULT)
+    }
+    release
+    end
+}
+
+text RustboroCity_Gym_Text_DraconidRepRoxanneIntroUniform {
+    format("Hello, I am ROXANNE, the RUSTBORO POKéMON GYM LEADER.\p"
+           "…That uniform. You are with TEAM MAGMA.\p"
+           "The POKéMON LEAGUE's rules say I must accept every challenger. So I will.\p"
+           "But I will watch closely how you treat your POKéMON. Let us battle!")
+}
+
+text RustboroCity_Gym_Text_DraconidRepRoxannePostBattleUniform {
+    format("Your POKéMON trust you completely.\p"
+           "That does not fit the uniform you wear.\p"
+           "I would like to understand why. Perhaps one day, you will tell me.")
+}
+
+text RustboroCity_Gym_Text_DraconidRepRoxannePostBattleRevealed {
+    format("{PLAYER}! I heard what happened in SOOTOPOLIS.\p"
+           "I judged you by your clothes. A good student should look deeper.\p"
+           "Please accept my apology.")
+}

@@ -1,0 +1,179 @@
+// Draconid Emerald: reputation dialogue – Sootopolis City and its Gym (D-103; shared NPCs in
+// shared.pory). The townsfolk outside follow the crisis (vanilla lines keyed to
+// VAR_SOOTOPOLIS_CITY_STATE, left to the story rework), so these are the people in the houses.
+// Townsfolk: map.json "script" points here; PRE_UNIFORM goes on to the vanilla script.
+// Gym: the door stays locked until the crisis is over (FLAG_SOOTOPOLIS_ARCHIE_MAXIE_LEAVE), which is
+// after the reveal, so JUAN and his guide only have REVEALED lines (they jump here only then).
+// Lines collected in docs/reputation_dialogue.md.
+
+// Man in the house with the Azumarill at (2, 4) (vanilla: ancient treasures waiting in the sea)
+script SootopolisCity_House4_EventScript_DraconidRepMan {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            lock
+            faceplayer
+            msgbox(SootopolisCity_House4_Text_DraconidRepManUniform, MSGBOX_DEFAULT)
+            goto(Draconid_EventScript_RepTurnAway)
+        case REPUTATION_REVEALED:
+            msgbox(SootopolisCity_House4_Text_DraconidRepManRevealed, MSGBOX_NPC)
+        default:
+            goto(SootopolisCity_House4_EventScript_Man)
+    }
+}
+
+text SootopolisCity_House4_Text_DraconidRepManUniform {
+    format("Treasures in the sea… Is that what TEAM MAGMA is after?\p"
+           "Whatever you're looking for, it isn't in this house. Out.")
+}
+
+text SootopolisCity_House4_Text_DraconidRepManRevealed {
+    format("Listen up, and I'll tell you something good.\p"
+           "The greatest treasure in SOOTOPOLIS is the city itself. And you saved it!")
+}
+
+// Woman in the same house at (5, 2) (vanilla: an underwater stroll with her POKéMON)
+script SootopolisCity_House4_EventScript_DraconidRepWoman {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SootopolisCity_House4_Text_DraconidRepWomanUniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(SootopolisCity_House4_Text_DraconidRepWomanRevealed, MSGBOX_NPC)
+        default:
+            goto(SootopolisCity_House4_EventScript_Woman)
+    }
+}
+
+text SootopolisCity_House4_Text_DraconidRepWomanUniform {
+    format("Our city sits inside the crater of an old volcano.\p"
+           "…Your TEAM MAGMA would love that, wouldn't it?")
+}
+
+text SootopolisCity_House4_Text_DraconidRepWomanRevealed {
+    format("I'd love to take an underwater stroll with my POKéMON again.\p"
+           "Now I can, without being afraid. Thank you.")
+}
+
+// Girl at (6, 3) (vanilla: "My big brother used to study the sea.")
+script SootopolisCity_House5_EventScript_DraconidRepGirl {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SootopolisCity_House5_Text_DraconidRepGirlUniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(SootopolisCity_House5_Text_DraconidRepGirlRevealed, MSGBOX_NPC)
+        default:
+            goto(SootopolisCity_House5_EventScript_Girl)
+    }
+}
+
+text SootopolisCity_House5_Text_DraconidRepGirlUniform {
+    format("My big brother used to study the sea.\p"
+           "He says TEAM MAGMA wants to dry it up. …Is that true?")
+}
+
+text SootopolisCity_House5_Text_DraconidRepGirlRevealed {
+    format("My big brother says you're the bravest TRAINER in HOENN!\p"
+           "He studied the sea, so he knows what you saved.")
+}
+
+// Old man at (5, 3) (vanilla: SOOTOPOLIS was born from an underwater volcano)
+script SootopolisCity_House7_EventScript_DraconidRepOldMan {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SootopolisCity_House7_Text_DraconidRepOldManUniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(SootopolisCity_House7_Text_DraconidRepOldManRevealed, MSGBOX_NPC)
+        default:
+            goto(SootopolisCity_House7_EventScript_OldMan)
+    }
+}
+
+text SootopolisCity_House7_Text_DraconidRepOldManUniform {
+    format("SOOTOPOLIS was born from an underwater volcano.\p"
+           "TEAM MAGMA loves volcanoes, doesn't it? Keep your hands off our city.")
+}
+
+text SootopolisCity_House7_Text_DraconidRepOldManRevealed {
+    format("SOOTOPOLIS was born from a volcano.\p"
+           "And it was nearly destroyed by the POKéMON of land and sea.\p"
+           "You stood between us and ruin, child. This old man thanks you.")
+}
+
+// Woman in the same house at (1, 4) (vanilla: the cave was made to keep something from getting out)
+script SootopolisCity_House7_EventScript_DraconidRepPokefanF {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SootopolisCity_House7_Text_DraconidRepPokefanFUniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(SootopolisCity_House7_Text_DraconidRepPokefanFRevealed, MSGBOX_NPC)
+        default:
+            goto(SootopolisCity_House7_EventScript_PokefanF)
+    }
+}
+
+text SootopolisCity_House7_Text_DraconidRepPokefanFUniform {
+    format("That cave was made to keep something from getting out.\p"
+           "…People like you should leave it alone.")
+}
+
+text SootopolisCity_House7_Text_DraconidRepPokefanFRevealed {
+    format("Something did get out, didn't it?\p"
+           "And you stood up to the men who woke it. Thank you, {PLAYER}.")
+}
+
+// ---------------------------------------------------------------------------
+// Sootopolis Gym (after the reveal only): Gym Guide and JUAN (intro and post-battle lines; badge,
+// TM, the Fortree reminder and rematch are vanilla)
+// ---------------------------------------------------------------------------
+
+script SootopolisCity_Gym_1F_EventScript_DraconidRepGymGuide {
+    if (flag(FLAG_DEFEATED_SOOTOPOLIS_GYM)) {
+        msgbox(SootopolisCity_Gym_1F_Text_DraconidRepGymGuidePostVictoryRevealed, MSGBOX_DEFAULT)
+    } else {
+        msgbox(SootopolisCity_Gym_1F_Text_DraconidRepGymGuideAdviceRevealed, MSGBOX_DEFAULT)
+    }
+    release
+    end
+}
+
+text SootopolisCity_Gym_1F_Text_DraconidRepGymGuideAdviceRevealed {
+    format("Yo! It's {PLAYER}! The whole city saw what you did!\p"
+           "JUAN is a master of WATER types. An icy floor stands between you and him.\p"
+           "That's all the advice I've got. The rest of the way is up to you!")
+}
+
+text SootopolisCity_Gym_1F_Text_DraconidRepGymGuidePostVictoryRevealed {
+    format("Yow! You beat JUAN, too!\p"
+           "Check your TRAINER CARD.\p"
+           "With all the BADGES, you're set for the POKéMON LEAGUE!")
+}
+
+script SootopolisCity_Gym_1F_EventScript_DraconidRepJuan {
+    trainerbattle_single(TRAINER_JUAN_1, SootopolisCity_Gym_1F_Text_DraconidRepJuanIntroRevealed, SootopolisCity_Gym_1F_Text_JuanDefeat, SootopolisCity_Gym_1F_EventScript_JuanDefeated, NO_MUSIC)
+    specialvar(VAR_RESULT, ShouldTryRematchBattle)
+    if (var(VAR_RESULT) == TRUE) {
+        goto(SootopolisCity_Gym_1F_EventScript_JuanRematch)
+    }
+    if (!flag(FLAG_RECEIVED_TM_WATER_PULSE)) {
+        goto(SootopolisCity_Gym_1F_EventScript_GiveWaterPulse2)
+    }
+    if (!flag(FLAG_BADGE06_GET)) {
+        goto(SootopolisCity_Gym_1F_EventScript_GoGetFortreeBadge)
+    }
+    msgbox(SootopolisCity_Gym_1F_Text_DraconidRepJuanPostBattleRevealed, MSGBOX_DEFAULT)
+    release
+    end
+}
+
+text SootopolisCity_Gym_1F_Text_DraconidRepJuanIntroRevealed {
+    format("Ah, {PLAYER}. All of SOOTOPOLIS saw you turn your back on MAXIE.\p"
+           "It was I who taught WALLACE everything there is to know about POKéMON.\p"
+           "Now I would see what you have learned on your own.\p"
+           "Bear witness to our artistry.\p"
+           "A grand illusion of water, sculpted by POKéMON and myself!")
+}
+
+text SootopolisCity_Gym_1F_Text_DraconidRepJuanPostBattleRevealed {
+    format("SOOTOPOLIS owes you far more than a BADGE, {PLAYER}.\p"
+           "TRAINERS with all the BADGES of HOENN should travel to EVER GRANDE.\p"
+           "There, at the easternmost reaches of HOENN, stands the POKéMON LEAGUE.")
+}

@@ -36,7 +36,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "FortreeCity_EventScript_Man",
+      "script": "FortreeCity_EventScript_DraconidRepMan",
       "flag": "0"
     },
     {
@@ -49,7 +49,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "FortreeCity_EventScript_Girl",
+      "script": "FortreeCity_EventScript_DraconidRepGirl",
       "flag": "0"
     },
     {
@@ -88,7 +88,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "FortreeCity_EventScript_OldMan",
+      "script": "FortreeCity_EventScript_DraconidRepOldMan",
       "flag": "0"
     },
     {
@@ -101,7 +101,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "FortreeCity_EventScript_GameboyKid",
+      "script": "FortreeCity_EventScript_DraconidRepGameboyKid",
       "flag": "0"
     },
     {

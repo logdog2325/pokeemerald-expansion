@@ -1,0 +1,177 @@
+// Draconid Emerald: reputation dialogue – Mauville City and its Gym (D-103; shared NPCs in shared.pory).
+// Townsfolk: map.json "script" points here; PRE_UNIFORM goes on to the vanilla script.
+// Gym: MauvilleCity_Gym_EventScript_Wattson / _GymGuide jump here when the reputation isn't PRE_UNIFORM.
+// Lines collected in docs/reputation_dialogue.md.
+
+// Boy at (29, 16) (vanilla: "you have to nurse it back to health.")
+script MauvilleCity_EventScript_DraconidRepBoy {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(MauvilleCity_Text_DraconidRepBoyUniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(MauvilleCity_Text_DraconidRepBoyRevealed, MSGBOX_NPC)
+        default:
+            goto(MauvilleCity_EventScript_Boy)
+    }
+}
+
+text MauvilleCity_Text_DraconidRepBoyUniform {
+    format("If your POKéMON gets hurt, you have to nurse it back to health.\p"
+           "…Do TEAM MAGMA grunts do that? Yours look really healthy. Weird.")
+}
+
+text MauvilleCity_Text_DraconidRepBoyRevealed {
+    format("Your POKéMON always looked so healthy and happy.\p"
+           "I should have known you weren't really a bad guy!")
+}
+
+// Rich boy at (24, 10) (vanilla: wild POKéMON can jump you on a BIKE)
+script MauvilleCity_EventScript_DraconidRepRichBoy {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            lock
+            faceplayer
+            msgbox(MauvilleCity_Text_DraconidRepRichBoyUniform, MSGBOX_DEFAULT)
+            goto(Draconid_EventScript_RepTurnAway)
+        case REPUTATION_REVEALED:
+            msgbox(MauvilleCity_Text_DraconidRepRichBoyRevealed, MSGBOX_NPC)
+        default:
+            goto(MauvilleCity_EventScript_RichBoy)
+    }
+}
+
+text MauvilleCity_Text_DraconidRepRichBoyUniform {
+    format("…I'm going to ride my BIKE the other way now.\p"
+           "Nothing personal. Okay, a little personal.")
+}
+
+text MauvilleCity_Text_DraconidRepRichBoyRevealed {
+    format("You're the one from SOOTOPOLIS!\p"
+           "Can I ride my BIKE next to you for a bit? That'd be so cool!")
+}
+
+// Man at (14, 11) (vanilla: all sorts of people come through MAUVILLE)
+script MauvilleCity_EventScript_DraconidRepManiac {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(MauvilleCity_Text_DraconidRepManiacUniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(MauvilleCity_Text_DraconidRepManiacRevealed, MSGBOX_NPC)
+        default:
+            goto(MauvilleCity_EventScript_Maniac)
+    }
+}
+
+text MauvilleCity_Text_DraconidRepManiacUniform {
+    format("We get all sorts of people coming through MAUVILLE.\p"
+           "But TEAM MAGMA is one sort I could do without.")
+}
+
+text MauvilleCity_Text_DraconidRepManiacRevealed {
+    format("We get all sorts of people coming through MAUVILLE.\p"
+           "But a real hero? That's a first!")
+}
+
+// Woman at (18, 6) (vanilla: "RYDEL, the owner, is a very generous man.")
+script MauvilleCity_EventScript_DraconidRepWoman {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            lock
+            faceplayer
+            msgbox(MauvilleCity_Text_DraconidRepWomanUniform, MSGBOX_DEFAULT)
+            goto(Draconid_EventScript_RepTurnAway)
+        case REPUTATION_REVEALED:
+            msgbox(MauvilleCity_Text_DraconidRepWomanRevealed, MSGBOX_NPC)
+        default:
+            goto(MauvilleCity_EventScript_Woman)
+    }
+}
+
+text MauvilleCity_Text_DraconidRepWomanUniform {
+    format("RYDEL is a very generous man. More generous than me.\p"
+           "…I have nothing to say to TEAM MAGMA.")
+}
+
+text MauvilleCity_Text_DraconidRepWomanRevealed {
+    format("RYDEL is a very generous man.\p"
+           "But you gave HOENN something far greater. Thank you.")
+}
+
+// ---------------------------------------------------------------------------
+// Mauville Gym: Gym Guide and WATTSON (intro and post-battle lines; badge, TM, New Mauville and
+// rematch are vanilla)
+// ---------------------------------------------------------------------------
+
+script MauvilleCity_Gym_EventScript_DraconidRepGymGuide {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        if (flag(FLAG_DEFEATED_MAUVILLE_GYM)) {
+            msgbox(MauvilleCity_Gym_Text_DraconidRepGymGuidePostVictoryUniform, MSGBOX_DEFAULT)
+        } else {
+            msgbox(MauvilleCity_Gym_Text_DraconidRepGymGuideAdviceUniform, MSGBOX_DEFAULT)
+        }
+    } elif (flag(FLAG_DEFEATED_MAUVILLE_GYM)) {
+        msgbox(MauvilleCity_Gym_Text_DraconidRepGymGuidePostVictoryRevealed, MSGBOX_DEFAULT)
+    } else {
+        msgbox(MauvilleCity_Gym_Text_GymGuideAdvice, MSGBOX_DEFAULT)
+    }
+    release
+    end
+}
+
+text MauvilleCity_Gym_Text_DraconidRepGymGuideAdviceUniform {
+    format("Hey, how's it… Oh. TEAM MAGMA.\p"
+           "Fine. WATTSON uses ELECTRIC types. They'll zap WATER types. Bzzt.\p"
+           "He's put switch-controlled doors all over his GYM. …Good luck, I guess.")
+}
+
+text MauvilleCity_Gym_Text_DraconidRepGymGuidePostVictoryUniform {
+    format("You powered the door open…\p"
+           "I don't know if I should cheer. But that was electrifying.")
+}
+
+text MauvilleCity_Gym_Text_DraconidRepGymGuidePostVictoryRevealed {
+    format("Whoa, it's {PLAYER}! You're electrifying!\p"
+           "You short-circuited TEAM MAGMA's whole plan!")
+}
+
+script MauvilleCity_Gym_EventScript_DraconidRepWattson {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        trainerbattle_single(TRAINER_WATTSON_1, MauvilleCity_Gym_Text_DraconidRepWattsonIntroUniform, MauvilleCity_Gym_Text_WattsonDefeat, MauvilleCity_Gym_EventScript_WattsonDefeated, NO_MUSIC)
+    } else {
+        trainerbattle_single(TRAINER_WATTSON_1, MauvilleCity_Gym_Text_WattsonIntro, MauvilleCity_Gym_Text_WattsonDefeat, MauvilleCity_Gym_EventScript_WattsonDefeated, NO_MUSIC)
+    }
+    specialvar(VAR_RESULT, ShouldTryRematchBattle)
+    if (var(VAR_RESULT) == TRUE) {
+        goto(MauvilleCity_Gym_EventScript_WattsonRematch)
+    }
+    if (!flag(FLAG_RECEIVED_TM_SHOCK_WAVE)) {
+        goto(MauvilleCity_Gym_EventScript_GiveShockWave2)
+    }
+    if (var(VAR_NEW_MAUVILLE_STATE) == 2) {
+        goto(MauvilleCity_Gym_EventScript_CompletedNewMauville)
+    }
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        msgbox(MauvilleCity_Gym_Text_DraconidRepWattsonPostBattleUniform, MSGBOX_DEFAULT)
+    } else {
+        msgbox(MauvilleCity_Gym_Text_DraconidRepWattsonPostBattleRevealed, MSGBOX_DEFAULT)
+    }
+    release
+    end
+}
+
+text MauvilleCity_Gym_Text_DraconidRepWattsonIntroUniform {
+    format("Wahahahah! A TEAM MAGMA grunt, is it?\p"
+           "If you've come to make trouble in my city, you'll get a nasty shock!\p"
+           "But you got past all my doors fair and square. So we'll battle fair and square!\p"
+           "I, WATTSON, the LEADER of MAUVILLE GYM, shall electrify you!")
+}
+
+text MauvilleCity_Gym_Text_DraconidRepWattsonPostBattleUniform {
+    format("Wahahah! You've got a real spark, youngster.\p"
+           "Why you'd waste it on TEAM MAGMA, I'll never understand!")
+}
+
+text MauvilleCity_Gym_Text_DraconidRepWattsonPostBattleRevealed {
+    format("Wahahahah! So you were never one of them!\p"
+           "You fooled this old man completely! What a shock, what a shock!")
+}

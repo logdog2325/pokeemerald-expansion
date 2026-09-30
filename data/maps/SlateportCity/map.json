@@ -194,7 +194,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "SlateportCity_EventScript_Sailor1",
+      "script": "SlateportCity_EventScript_DraconidRepSailor1",
       "flag": "0"
     },
     {
@@ -220,7 +220,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "SlateportCity_EventScript_PokefanF",
+      "script": "SlateportCity_EventScript_DraconidRepPokefanF",
       "flag": "0"
     },
     {
@@ -233,7 +233,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "SlateportCity_EventScript_Man2",
+      "script": "SlateportCity_EventScript_DraconidRepMan2",
       "flag": "0"
     },
     {
@@ -259,7 +259,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "SlateportCity_EventScript_Woman2",
+      "script": "SlateportCity_EventScript_DraconidRepWoman2",
       "flag": "0"
     },
     {
@@ -326,7 +326,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "SlateportCity_EventScript_Man3",
+      "script": "SlateportCity_EventScript_DraconidRepMan3",
       "flag": "0"
     },
     {

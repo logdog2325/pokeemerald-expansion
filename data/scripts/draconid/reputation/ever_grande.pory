@@ -1,0 +1,32 @@
+// Draconid Emerald: reputation dialogue – Ever Grande City (D-103; shared NPCs in shared.pory).
+// The player first reaches Ever Grande with WATERFALL (JUAN's badge), after the reveal, so these
+// townsfolk only have REVEALED lines; UNIFORM goes on to the vanilla script like PRE_UNIFORM.
+// Ever Grande has no other ordinary townsfolk (outside is empty; the League 1F has the door guards).
+// Lines collected in docs/reputation_dialogue.md.
+
+// Woman in the Pokémon Center at (5, 5) (vanilla: the POKéMON LEAGUE is just past VICTORY ROAD)
+script EverGrandeCity_PokemonCenter_1F_EventScript_DraconidRepWoman {
+    if (var(VAR_DRACONID_REPUTATION) != REPUTATION_REVEALED) {
+        goto(EverGrandeCity_PokemonCenter_1F_EventScript_Woman)
+    }
+    msgbox(EverGrandeCity_PokemonCenter_1F_Text_DraconidRepWomanRevealed, MSGBOX_NPC)
+}
+
+text EverGrandeCity_PokemonCenter_1F_Text_DraconidRepWomanRevealed {
+    format("The POKéMON LEAGUE is just past VICTORY ROAD.\p"
+           "Everyone here has heard about SOOTOPOLIS. We're all cheering for you!")
+}
+
+// Old man in the Pokémon Center at (10, 7) (vanilla: VICTORY ROAD is like the path one has traveled in life)
+script EverGrandeCity_PokemonCenter_1F_EventScript_DraconidRepExpertM {
+    if (var(VAR_DRACONID_REPUTATION) != REPUTATION_REVEALED) {
+        goto(EverGrandeCity_PokemonCenter_1F_EventScript_ExpertM)
+    }
+    msgbox(EverGrandeCity_PokemonCenter_1F_Text_DraconidRepExpertMRevealed, MSGBOX_NPC)
+}
+
+text EverGrandeCity_PokemonCenter_1F_Text_DraconidRepExpertMRevealed {
+    format("VICTORY ROAD is like the path one has traveled in life.\p"
+           "Yours led you through TEAM MAGMA and back out again.\p"
+           "Believe in your POKéMON and give it your very best!")
+}

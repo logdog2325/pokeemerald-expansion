@@ -1,0 +1,95 @@
+// Draconid Emerald: reputation dialogue – Pacifidlog Town (D-103; shared NPCs in shared.pory).
+// Each townsperson's map.json "script" points here; PRE_UNIFORM goes on to the vanilla script.
+// Lines collected in docs/reputation_dialogue.md.
+
+// Girl at (10, 23) (vanilla: the fast-running tide between PACIFIDLOG and SLATEPORT)
+script PacifidlogTown_EventScript_DraconidRepGirl {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(PacifidlogTown_Text_DraconidRepGirlUniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(PacifidlogTown_Text_DraconidRepGirlRevealed, MSGBOX_NPC)
+        default:
+            goto(PacifidlogTown_EventScript_Girl)
+    }
+}
+
+text PacifidlogTown_Text_DraconidRepGirlUniform {
+    format("The tide runs fast between here and SLATEPORT.\p"
+           "If TEAM MAGMA got swept away, nobody here would cry.")
+}
+
+text PacifidlogTown_Text_DraconidRepGirlRevealed {
+    format("The tide runs fast between here and SLATEPORT.\p"
+           "But news runs faster! Everyone knows what you did in SOOTOPOLIS!")
+}
+
+// Fisherman at (11, 14) (vanilla: the SKY PILLAR is too scary to climb)
+script PacifidlogTown_EventScript_DraconidRepFisherman {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(PacifidlogTown_Text_DraconidRepFishermanUniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(PacifidlogTown_Text_DraconidRepFishermanRevealed, MSGBOX_NPC)
+        default:
+            goto(PacifidlogTown_EventScript_Fisherman)
+    }
+}
+
+text PacifidlogTown_Text_DraconidRepFishermanUniform {
+    format("The SKY PILLAR? I won't tell TEAM MAGMA anything about it.\p"
+           "Leave that old tower alone.")
+}
+
+text PacifidlogTown_Text_DraconidRepFishermanRevealed {
+    format("They say the POKéMON of that tall tower came down to save SOOTOPOLIS.\p"
+           "And you were right there with it!\p"
+           "Life at sea level suits me fine. But I'm proud of you!")
+}
+
+// Boy at (9, 16) (vanilla: "These houses are on water! I was born here!")
+script PacifidlogTown_EventScript_DraconidRepNinjaBoy {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            lock
+            faceplayer
+            msgbox(PacifidlogTown_Text_DraconidRepNinjaBoyUniform, MSGBOX_DEFAULT)
+            goto(Draconid_EventScript_RepTurnAway)
+        case REPUTATION_REVEALED:
+            msgbox(PacifidlogTown_Text_DraconidRepNinjaBoyRevealed, MSGBOX_NPC)
+        default:
+            goto(PacifidlogTown_EventScript_NinjaBoy)
+    }
+}
+
+text PacifidlogTown_Text_DraconidRepNinjaBoyUniform {
+    format("These houses are on water! I was born here!\p"
+           "…Mom said to run if TEAM MAGMA ever came. Bye!")
+}
+
+text PacifidlogTown_Text_DraconidRepNinjaBoyRevealed {
+    format("These houses are on water! I was born here!\p"
+           "And you saved the sea they float on! Thank you!")
+}
+
+// Old man in the Pokémon Center at (10, 6) (vanilla: the ancestors lived on boats, searching for something)
+script PacifidlogTown_PokemonCenter_1F_EventScript_DraconidRepOldMan {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(PacifidlogTown_PokemonCenter_1F_Text_DraconidRepOldManUniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(PacifidlogTown_PokemonCenter_1F_Text_DraconidRepOldManRevealed, MSGBOX_NPC)
+        default:
+            goto(PacifidlogTown_PokemonCenter_1F_EventScript_OldMan)
+    }
+}
+
+text PacifidlogTown_PokemonCenter_1F_Text_DraconidRepOldManUniform {
+    format("Our ancestors lived on boats, always searching for something.\p"
+           "Your TEAM MAGMA searches, too. But what it seeks would sink us all.")
+}
+
+text PacifidlogTown_PokemonCenter_1F_Text_DraconidRepOldManRevealed {
+    format("Our ancestors lived on boats, always searching for something.\p"
+           "Perhaps they were searching for someone like you.")
+}

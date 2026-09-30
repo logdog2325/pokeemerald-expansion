@@ -4,7 +4,7 @@ RustboroCity_Mart_MapScripts::
 RustboroCity_Mart_EventScript_Clerk::
 	lock
 	faceplayer
-	message gText_HowMayIServeYou
+	call Draconid_EventScript_MartGreeting  @ Draconid Emerald (reputation/shared.pory)
 	waitmessage
 	goto_if_unset FLAG_MET_DEVON_EMPLOYEE, RustboroCity_Mart_EventScript_PokemartBasic
 	goto_if_set FLAG_MET_DEVON_EMPLOYEE, RustboroCity_Mart_EventScript_PokemartExpanded
@@ -12,7 +12,7 @@ RustboroCity_Mart_EventScript_Clerk::
 
 RustboroCity_Mart_EventScript_PokemartBasic::
 	pokemart RustboroCity_Mart_Pokemart_Basic
-	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
+	call Draconid_EventScript_MartGoodbye  @ Draconid Emerald (reputation/shared.pory)
 	release
 	end
 
@@ -32,7 +32,7 @@ RustboroCity_Mart_Pokemart_Basic:
 
 RustboroCity_Mart_EventScript_PokemartExpanded::
 	pokemart RustboroCity_Mart_Pokemart_Expanded
-	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
+	call Draconid_EventScript_MartGoodbye  @ Draconid Emerald (reputation/shared.pory)
 	release
 	end
 

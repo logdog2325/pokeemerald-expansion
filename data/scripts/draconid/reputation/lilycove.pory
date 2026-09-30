@@ -1,0 +1,117 @@
+// Draconid Emerald: reputation dialogue – Lilycove City (D-103; shared NPCs in shared.pory).
+// Each townsperson's map.json "script" points here; PRE_UNIFORM goes on to the vanilla script.
+// (The townsfolk whose lines follow Team Aqua's hideout are left to the story rework.)
+// Lines collected in docs/reputation_dialogue.md.
+
+// Rich boy at (21, 15) (vanilla: "I came from KANTO.")
+script LilycoveCity_EventScript_DraconidRepRichBoy {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_Text_DraconidRepRichBoyUniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(LilycoveCity_Text_DraconidRepRichBoyRevealed, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_EventScript_RichBoy)
+    }
+}
+
+text LilycoveCity_Text_DraconidRepRichBoyUniform {
+    format("I came from KANTO. We had TEAM ROCKET there.\p"
+           "I didn't think I'd see their kind in HOENN, too.")
+}
+
+text LilycoveCity_Text_DraconidRepRichBoyRevealed {
+    format("I came from KANTO. We had TEAM ROCKET there.\p"
+           "I wish KANTO had a TRAINER like you!")
+}
+
+// Man at (28, 28) (vanilla: the CONTEST HALL brings well-raised POKéMON)
+script LilycoveCity_EventScript_DraconidRepMan3 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_Text_DraconidRepMan3Uniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(LilycoveCity_Text_DraconidRepMan3Revealed, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_EventScript_Man3)
+    }
+}
+
+text LilycoveCity_Text_DraconidRepMan3Uniform {
+    format("Well-raised POKéMON come from all over for the CONTEST HALL.\p"
+           "Yours look well-raised, too… That's what makes me nervous.")
+}
+
+text LilycoveCity_Text_DraconidRepMan3Revealed {
+    format("Well-raised POKéMON come from all over for the CONTEST HALL.\p"
+           "You'd win the SMART contest. You outsmarted TEAM MAGMA!")
+}
+
+// Sailor at (16, 34) (vanilla: "It's called the SKY PILLAR, I hear.")
+script LilycoveCity_EventScript_DraconidRepSailor1 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            lock
+            faceplayer
+            msgbox(LilycoveCity_Text_DraconidRepSailor1Uniform, MSGBOX_DEFAULT)
+            goto(Draconid_EventScript_RepTurnAway)
+        case REPUTATION_REVEALED:
+            msgbox(LilycoveCity_Text_DraconidRepSailor1Revealed, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_EventScript_Sailor1)
+    }
+}
+
+text LilycoveCity_Text_DraconidRepSailor1Uniform {
+    format("There's a tower out on the sea routes…\p"
+           "No. I'm not telling TEAM MAGMA anything.")
+}
+
+text LilycoveCity_Text_DraconidRepSailor1Revealed {
+    format("Sailors say a great green POKéMON came down over SOOTOPOLIS.\p"
+           "And you were right there! Is it true?")
+}
+
+// Man next to the sailor at (16, 35) (vanilla: a tall tower around ROUTE 131)
+script LilycoveCity_EventScript_DraconidRepFatMan {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_Text_DraconidRepFatManUniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(LilycoveCity_Text_DraconidRepFatManRevealed, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_EventScript_FatMan)
+    }
+}
+
+text LilycoveCity_Text_DraconidRepFatManUniform {
+    format("…Don't look at me like that. I'm not saying anything.\p"
+           "Not to TEAM MAGMA.")
+}
+
+text LilycoveCity_Text_DraconidRepFatManRevealed {
+    format("That tall tower around ROUTE 131…\p"
+           "I hear it's tied to the POKéMON that saved SOOTOPOLIS. And you were there!")
+}
+
+// Old woman at (34, 37) (vanilla: her husband proposed here sixty years ago; she doesn't turn around)
+script LilycoveCity_EventScript_DraconidRepExpertF {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_Text_DraconidRepExpertFUniform, MSGBOX_SIGN)
+        case REPUTATION_REVEALED:
+            msgbox(LilycoveCity_Text_DraconidRepExpertFRevealed, MSGBOX_SIGN)
+        default:
+            goto(LilycoveCity_EventScript_ExpertF)
+    }
+}
+
+text LilycoveCity_Text_DraconidRepExpertFUniform {
+    format("Sixty years I've watched this sea.\p"
+           "I never thought I'd see children in gang uniforms on this shore.")
+}
+
+text LilycoveCity_Text_DraconidRepExpertFRevealed {
+    format("Sixty years ago, my husband proposed to me here.\p"
+           "Thanks to you, the sea will stay this beautiful. Mufufufu…")
+}

@@ -133,6 +133,7 @@ DewfordTown_Gym_EventScript_StopCountingTrainers::
 	return
 
 DewfordTown_Gym_EventScript_Brawly::
+	goto_if_ne VAR_DRACONID_REPUTATION, REPUTATION_PRE_UNIFORM, DewfordTown_Gym_EventScript_DraconidRepBrawly  @ Draconid Emerald (reputation/dewford.pory)
 	trainerbattle_single TRAINER_BRAWLY_1, DewfordTown_Gym_Text_BrawlyIntro, DewfordTown_Gym_Text_BrawlyDefeat, DewfordTown_Gym_EventScript_BrawlyDefeated, NO_MUSIC
 	specialvar VAR_RESULT, ShouldTryRematchBattle
 	goto_if_eq VAR_RESULT, TRUE, DewfordTown_Gym_EventScript_BrawlyRematch
@@ -250,6 +251,7 @@ DewfordTown_Gym_EventScript_LilithBrightenRoom::
 DewfordTown_Gym_EventScript_GymGuide::
 	lock
 	faceplayer
+	goto_if_ne VAR_DRACONID_REPUTATION, REPUTATION_PRE_UNIFORM, DewfordTown_Gym_EventScript_DraconidRepGymGuide  @ Draconid Emerald (reputation/dewford.pory)
 	goto_if_set FLAG_DEFEATED_DEWFORD_GYM, DewfordTown_Gym_EventScript_GymGuidePostVictory
 	msgbox DewfordTown_Gym_Text_GymGuideAdvice, MSGBOX_DEFAULT
 	release

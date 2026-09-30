@@ -2,6 +2,7 @@ RustboroCity_Gym_MapScripts::
 	.byte 0
 
 RustboroCity_Gym_EventScript_Roxanne::
+	goto_if_ne VAR_DRACONID_REPUTATION, REPUTATION_PRE_UNIFORM, RustboroCity_Gym_EventScript_DraconidRepRoxanne  @ Draconid Emerald (reputation/rustboro.pory)
 	trainerbattle_single TRAINER_ROXANNE_1, RustboroCity_Gym_Text_RoxanneIntro, RustboroCity_Gym_Text_RoxanneDefeat, RustboroCity_Gym_EventScript_RoxanneDefeated, NO_MUSIC
 	specialvar VAR_RESULT, ShouldTryRematchBattle
 	goto_if_eq VAR_RESULT, TRUE, RustboroCity_Gym_EventScript_RoxanneRematch
@@ -57,6 +58,7 @@ RustboroCity_Gym_EventScript_Marc::
 RustboroCity_Gym_EventScript_GymGuide::
 	lock
 	faceplayer
+	goto_if_ne VAR_DRACONID_REPUTATION, REPUTATION_PRE_UNIFORM, RustboroCity_Gym_EventScript_DraconidRepGymGuide  @ Draconid Emerald (reputation/rustboro.pory)
 	goto_if_set FLAG_DEFEATED_RUSTBORO_GYM, RustboroCity_Gym_EventScript_GymGuidePostVictory
 	msgbox RustboroCity_Gym_Text_GymGuideAdvice, MSGBOX_DEFAULT
 	release

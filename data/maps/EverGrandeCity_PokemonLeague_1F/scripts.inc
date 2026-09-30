@@ -25,10 +25,10 @@ EverGrandeCity_PokemonLeague_1F_EventScript_Nurse::
 EverGrandeCity_PokemonLeague_1F_EventScript_Clerk::
 	lock
 	faceplayer
-	message gText_HowMayIServeYou
+	call Draconid_EventScript_MartGreeting  @ Draconid Emerald (reputation/shared.pory)
 	waitmessage
 	pokemart EverGrandeCity_PokemonLeague_1F_Pokemart
-	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
+	call Draconid_EventScript_MartGoodbye  @ Draconid Emerald (reputation/shared.pory)
 	release
 	end
 

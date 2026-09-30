@@ -1,0 +1,171 @@
+// Draconid Emerald: reputation dialogue – Verdanturf Town and Wally's relatives (D-103; shared NPCs in
+// shared.pory). Each NPC's map.json "script" points here; PRE_UNIFORM goes on to the vanilla script.
+// Lines collected in docs/reputation_dialogue.md.
+
+// Man at (4, 17) (vanilla: "The air is clean and delicious here.")
+script VerdanturfTown_EventScript_DraconidRepMan {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(VerdanturfTown_Text_DraconidRepManUniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(VerdanturfTown_Text_DraconidRepManRevealed, MSGBOX_NPC)
+        default:
+            goto(VerdanturfTown_EventScript_Man)
+    }
+}
+
+text VerdanturfTown_Text_DraconidRepManUniform {
+    format("The volcano's ash never blows this way. Our air is clean.\p"
+           "…Unless TEAM MAGMA gets its way. Right?")
+}
+
+text VerdanturfTown_Text_DraconidRepManRevealed {
+    format("The air here is clean and delicious.\p"
+           "And it stays that way, thanks to you!")
+}
+
+// Camper at (7, 6) (vanilla: "I decided to make my BATTLE TENT debut.")
+script VerdanturfTown_EventScript_DraconidRepCamper {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            lock
+            faceplayer
+            msgbox(VerdanturfTown_Text_DraconidRepCamperUniform, MSGBOX_DEFAULT)
+            goto(Draconid_EventScript_RepTurnAway)
+        case REPUTATION_REVEALED:
+            msgbox(VerdanturfTown_Text_DraconidRepCamperRevealed, MSGBOX_NPC)
+        default:
+            goto(VerdanturfTown_EventScript_Camper)
+    }
+}
+
+text VerdanturfTown_Text_DraconidRepCamperUniform {
+    format("My POKéMON and I are on a hot winning streak.\p"
+           "…But I'm not battling TEAM MAGMA. Go away.")
+}
+
+text VerdanturfTown_Text_DraconidRepCamperRevealed {
+    format("My POKéMON and I are on a hot winning streak.\p"
+           "But losing to you would be an honor!")
+}
+
+// Little girl at (9, 2) (vanilla: her papa told her about the tunnel)
+script VerdanturfTown_EventScript_DraconidRepTwin {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(VerdanturfTown_Text_DraconidRepTwinUniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(VerdanturfTown_Text_DraconidRepTwinRevealed, MSGBOX_NPC)
+        default:
+            goto(VerdanturfTown_EventScript_Twin)
+    }
+}
+
+text VerdanturfTown_Text_DraconidRepTwinUniform {
+    format("My papa told me not to talk to the people in red.\p"
+           "…But your POKéMON are really cute.")
+}
+
+text VerdanturfTown_Text_DraconidRepTwinRevealed {
+    format("My papa says you're a hero now!\p"
+           "He says the red clothes were a trick. A good trick!")
+}
+
+// Boy at (7, 11) (vanilla: the man digging through the cave)
+script VerdanturfTown_EventScript_DraconidRepBoy {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(VerdanturfTown_Text_DraconidRepBoyUniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(VerdanturfTown_Text_DraconidRepBoyRevealed, MSGBOX_NPC)
+        default:
+            goto(VerdanturfTown_EventScript_Boy)
+    }
+}
+
+text VerdanturfTown_Text_DraconidRepBoyUniform {
+    format("…You're not going to dig up our mountain for TEAM MAGMA, are you?")
+}
+
+text VerdanturfTown_Text_DraconidRepBoyRevealed {
+    format("Hey! You're the one who stopped TEAM MAGMA!\p"
+           "I told everyone you looked too nice to be a real grunt.")
+}
+
+// ---------------------------------------------------------------------------
+// Wally's relatives (VerdanturfTown_WandasHouse). Idle lines only; Wally himself is left to the
+// story rework.
+// ---------------------------------------------------------------------------
+
+// Wally's uncle at (7, 2) (vanilla: WALLY's health → WALLY slipped off → WALLY went that far)
+script VerdanturfTown_WandasHouse_EventScript_DraconidRepWallysUncle {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(VerdanturfTown_WandasHouse_Text_DraconidRepWallysUncleUniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            if (flag(FLAG_DEFEATED_WALLY_VICTORY_ROAD)) {
+                goto(VerdanturfTown_WandasHouse_EventScript_WallysUncle)
+            }
+            msgbox(VerdanturfTown_WandasHouse_Text_DraconidRepWallysUncleRevealed, MSGBOX_NPC)
+        default:
+            goto(VerdanturfTown_WandasHouse_EventScript_WallysUncle)
+    }
+}
+
+text VerdanturfTown_WandasHouse_Text_DraconidRepWallysUncleUniform {
+    format("UNCLE: Oh. It's you, {PLAYER}.\p"
+           "WALLY says you were kind to him in MAUVILLE, even in that uniform.\p"
+           "I don't understand it. But I trust the boy.")
+}
+
+text VerdanturfTown_WandasHouse_Text_DraconidRepWallysUncleRevealed {
+    format("UNCLE: {PLAYER}! So WALLY was right about you all along!\p"
+           "That boy sees people better than the rest of us.")
+}
+
+// Wally's aunt at (2, 4) (vanilla: her daughter's boyfriend and the tunnel → worries about WALLY)
+script VerdanturfTown_WandasHouse_EventScript_DraconidRepWallysAunt {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(VerdanturfTown_WandasHouse_Text_DraconidRepWallysAuntUniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            if (flag(FLAG_DEFEATED_WALLY_VICTORY_ROAD)) {
+                goto(VerdanturfTown_WandasHouse_EventScript_WallysAunt)
+            }
+            msgbox(VerdanturfTown_WandasHouse_Text_DraconidRepWallysAuntRevealed, MSGBOX_NPC)
+        default:
+            goto(VerdanturfTown_WandasHouse_EventScript_WallysAunt)
+    }
+}
+
+text VerdanturfTown_WandasHouse_Text_DraconidRepWallysAuntUniform {
+    format("…Oh! TEAM MAGMA, in my house?\p"
+           "You're the one WALLY talks about? Well… if WALLY trusts you, I'll try to.")
+}
+
+text VerdanturfTown_WandasHouse_Text_DraconidRepWallysAuntRevealed {
+    format("WALLY was right about you!\p"
+           "I'm so glad I listened to him and not to the rumors.")
+}
+
+// Wanda, Wally's cousin at (5, 5) (vanilla: "Don't worry about WALLY.")
+script VerdanturfTown_WandasHouse_EventScript_DraconidRepWanda {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(VerdanturfTown_WandasHouse_Text_DraconidRepWandaUniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(VerdanturfTown_WandasHouse_Text_DraconidRepWandaRevealed, MSGBOX_NPC)
+        default:
+            goto(VerdanturfTown_WandasHouse_EventScript_Wanda)
+    }
+}
+
+text VerdanturfTown_WandasHouse_Text_DraconidRepWandaUniform {
+    format("WANDA: You're {PLAYER}? WALLY's friend… in TEAM MAGMA?\p"
+           "WALLY says you're not like the others. I'll believe it when I see it.")
+}
+
+text VerdanturfTown_WandasHouse_Text_DraconidRepWandaRevealed {
+    format("WANDA: I saw it! Well, I heard it. Everyone did!\p"
+           "My little cousin was right about you all along.")
+}

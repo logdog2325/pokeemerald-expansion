@@ -62,7 +62,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_EventScript_Man3",
+      "script": "LilycoveCity_EventScript_DraconidRepMan3",
       "flag": "0"
     },
     {
@@ -75,7 +75,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_EventScript_RichBoy",
+      "script": "LilycoveCity_EventScript_DraconidRepRichBoy",
       "flag": "0"
     },
     {
@@ -127,7 +127,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_EventScript_ExpertF",
+      "script": "LilycoveCity_EventScript_DraconidRepExpertF",
       "flag": "0"
     },
     {
@@ -299,7 +299,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_EventScript_Sailor1",
+      "script": "LilycoveCity_EventScript_DraconidRepSailor1",
       "flag": "0"
     },
     {
@@ -312,7 +312,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_EventScript_FatMan",
+      "script": "LilycoveCity_EventScript_DraconidRepFatMan",
       "flag": "0"
     },
     {

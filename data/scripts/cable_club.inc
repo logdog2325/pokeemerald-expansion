@@ -825,6 +825,7 @@ CableClub_EventScript_UnionRoomAttendant::
 	faceplayer
 	setvar VAR_FRONTIER_FACILITY, FACILITY_UNION_ROOM
 	goto_if_unset FLAG_SYS_POKEDEX_GET, CableClub_EventScript_WirelessClubAdjustements
+	call_if_ne VAR_DRACONID_REPUTATION, REPUTATION_PRE_UNIFORM, Draconid_EventScript_CableClubAside  @ Draconid Emerald (reputation/shared.pory)
 	specialvar VAR_RESULT, IsBadEggInParty
 	goto_if_eq VAR_RESULT, TRUE, CableClub_EventScript_AbortLinkPlayerHasBadEgg
 	copyvar VAR_0x8007, VAR_LAST_TALKED
@@ -910,6 +911,7 @@ CableClub_EventScript_WirelessClubAttendant::
 	lock
 	faceplayer
 	goto_if_unset FLAG_SYS_POKEDEX_GET, CableClub_EventScript_WirelessClubAdjustements
+	goto_if_ne VAR_DRACONID_REPUTATION, REPUTATION_PRE_UNIFORM, Draconid_EventScript_WirelessClubAttendant  @ Draconid Emerald (reputation/shared.pory)
 	msgbox CableClub_Text_AskAboutLinking, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, CableClub_EventScript_DontAskAboutLinking
 	msgbox CableClub_Text_ExplainWirelessClub, MSGBOX_DEFAULT
@@ -926,6 +928,7 @@ CableClub_EventScript_DirectCornerAttendant::
 	faceplayer
 	setvar VAR_FRONTIER_FACILITY, FACILITY_MULTI_OR_EREADER  @ Set preemptively for multi battles, ignored otherwise
 	goto_if_unset FLAG_SYS_POKEDEX_GET, CableClub_EventScript_WirelessClubAdjustements
+	call_if_ne VAR_DRACONID_REPUTATION, REPUTATION_PRE_UNIFORM, Draconid_EventScript_CableClubAside  @ Draconid Emerald (reputation/shared.pory)
 	specialvar VAR_RESULT, IsBadEggInParty
 	goto_if_eq VAR_RESULT, TRUE, CableClub_EventScript_AbortLinkPlayerHasBadEgg
 	specialvar VAR_RESULT, IsWirelessAdapterConnected
