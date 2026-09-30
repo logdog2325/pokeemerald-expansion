@@ -5388,6 +5388,26 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Courtney = {
 
 // END DRACONID PLAYER OUTFITS
 
+// Draconid Emerald: Prof. Oak's FRLG sprite in every build (he gives the second starter in Rustboro, D-233)
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ProfOak = {
+    .tileTag = TAG_NONE,
+    .paletteTag = OBJ_EVENT_PAL_TAG_NPC_WHITE,
+    .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
+    .size = 256,
+    .width = 16,
+    .height = 32,
+    .paletteSlot = PALSLOT_NPC_4,
+    .shadowSize = SHADOW_SIZE_M,
+    .inanimate = FALSE,
+    .compressed = FALSE,
+    .tracks = TRACKS_FOOT,
+    .oam = &gObjectEventBaseOam_16x32,
+    .subspriteTables = sOamTables_16x32,
+    .anims = sAnimTable_Standard,
+    .images = sPicTable_ProfOak,
+    .affineAnims = gDummySpriteAffineAnimTable,
+};
+
 #if IS_FRLG
 
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RedNormal = {
@@ -6527,25 +6547,6 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_NurseFrlg = {
     .subspriteTables = sOamTables_16x32,
     .anims = sAnimTable_Nurse,
     .images = sPicTable_NurseFrlg,
-    .affineAnims = gDummySpriteAffineAnimTable,
-};
-
-const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ProfOak = {
-    .tileTag = TAG_NONE,
-    .paletteTag = OBJ_EVENT_PAL_TAG_NPC_WHITE,
-    .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
-    .size = 256,
-    .width = 16,
-    .height = 32,
-    .paletteSlot = PALSLOT_NPC_4,
-    .shadowSize = SHADOW_SIZE_M,
-    .inanimate = FALSE,
-    .compressed = FALSE,
-    .tracks = TRACKS_FOOT,
-    .oam = &gObjectEventBaseOam_16x32,
-    .subspriteTables = sOamTables_16x32,
-    .anims = sAnimTable_Standard,
-    .images = sPicTable_ProfOak,
     .affineAnims = gDummySpriteAffineAnimTable,
 };
 

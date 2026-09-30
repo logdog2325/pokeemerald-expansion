@@ -19,49 +19,90 @@ DraconidVillage_OnTransition_1:
 	return
 
 
+DraconidVillage_EventScript_EggHatch::
+	lockall
+	msgbox DraconidVillage_EventScript_EggHatch_Text_0
+	closemessage
+	setvar VAR_0x8004, 0
+	special EggHatch
+	setvar VAR_0x8004, 0
+	special DraconidRaiseHatchling
+	setflag FLAG_DRACONID_EGG_HATCHED
+	clearflag FLAG_HIDE_DRACONID_VILLAGE_SHOES_GIVER
+	setvar VAR_DRACONID_STATE, DRACONID_STATE_EGG_HATCHED
+	releaseall
+	return
+
+
 DraconidVillage_EventScript_RunningShoes::
 	lockall
-	addobject LOCALID_DRACONID_VILLAGE_SHOES_GIVER
-	applymovement LOCALID_DRACONID_VILLAGE_SHOES_GIVER, DraconidVillage_Movement_ShoesGiverApproach
-	waitmovement 0
-	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-	waitmovement 0
+	getplayerxy VAR_0x8004, VAR_0x8005
+	specialvar VAR_0x8006, GetPlayerFacingDirection
+	switch VAR_0x8006
+	case DIR_NORTH, DraconidVillage_EventScript_RunningShoes_3
+	case DIR_SOUTH, DraconidVillage_EventScript_RunningShoes_4
+	case DIR_WEST, DraconidVillage_EventScript_RunningShoes_5
+	subvar VAR_0x8004, 1
+	setobjectmovementtype LOCALID_DRACONID_VILLAGE_SHOES_GIVER, MOVEMENT_TYPE_FACE_RIGHT
+DraconidVillage_EventScript_RunningShoes_1:
+	setobjectxyperm LOCALID_DRACONID_VILLAGE_SHOES_GIVER, VAR_0x8004, VAR_0x8005
 	msgbox DraconidVillage_EventScript_RunningShoes_Text_0
+	closemessage
+	addobject LOCALID_DRACONID_VILLAGE_SHOES_GIVER
+	switch VAR_0x8006
+	case DIR_NORTH, DraconidVillage_EventScript_RunningShoes_9
+	case DIR_SOUTH, DraconidVillage_EventScript_RunningShoes_10
+	case DIR_WEST, DraconidVillage_EventScript_RunningShoes_11
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+DraconidVillage_EventScript_RunningShoes_7:
+	waitmovement 0
+	msgbox DraconidVillage_EventScript_RunningShoes_Text_1
 	playfanfare MUS_OBTAIN_ITEM
-	message DraconidVillage_EventScript_RunningShoes_Text_1
+	message DraconidVillage_EventScript_RunningShoes_Text_2
 	waitfanfare
 	waitmessage
-	msgbox DraconidVillage_EventScript_RunningShoes_Text_2
+	msgbox DraconidVillage_EventScript_RunningShoes_Text_3
 	closemessage
 	setflag FLAG_RECEIVED_RUNNING_SHOES
 	setflag FLAG_SYS_B_DASH
-	applymovement LOCALID_DRACONID_VILLAGE_SHOES_GIVER, DraconidVillage_Movement_ShoesGiverLeave
-	waitmovement 0
-	removeobject LOCALID_DRACONID_VILLAGE_SHOES_GIVER
+	setflag FLAG_HIDE_DRACONID_VILLAGE_SHOES_GIVER
 	setvar VAR_DRACONID_STATE, DRACONID_STATE_READY_TO_LEAVE
 	setvar VAR_TEMP_1, 1
 	releaseall
 	return
 
+DraconidVillage_EventScript_RunningShoes_3:
+	addvar VAR_0x8005, 1
+	setobjectmovementtype LOCALID_DRACONID_VILLAGE_SHOES_GIVER, MOVEMENT_TYPE_FACE_UP
+	goto DraconidVillage_EventScript_RunningShoes_1
 
-DraconidVillage_Movement_ShoesGiverApproach:
-	walk_up
-	step_end
+DraconidVillage_EventScript_RunningShoes_4:
+	subvar VAR_0x8005, 1
+	setobjectmovementtype LOCALID_DRACONID_VILLAGE_SHOES_GIVER, MOVEMENT_TYPE_FACE_DOWN
+	goto DraconidVillage_EventScript_RunningShoes_1
 
-DraconidVillage_Movement_ShoesGiverLeave:
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	step_end
+DraconidVillage_EventScript_RunningShoes_5:
+	addvar VAR_0x8004, 1
+	setobjectmovementtype LOCALID_DRACONID_VILLAGE_SHOES_GIVER, MOVEMENT_TYPE_FACE_LEFT
+	goto DraconidVillage_EventScript_RunningShoes_1
+
+DraconidVillage_EventScript_RunningShoes_9:
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+	goto DraconidVillage_EventScript_RunningShoes_7
+
+DraconidVillage_EventScript_RunningShoes_10:
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	goto DraconidVillage_EventScript_RunningShoes_7
+
+DraconidVillage_EventScript_RunningShoes_11:
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	goto DraconidVillage_EventScript_RunningShoes_7
+
+
+DraconidVillage_EventScript_ShoesGiver::
+	msgbox DraconidVillage_EventScript_ShoesGiver_Text_0, MSGBOX_NPC
+	return
+
 
 DraconidVillage_EventScript_GatekeeperStop::
 	lockall
@@ -140,7 +181,15 @@ DraconidVillage_EventScript_PlayersHouseSign::
 	return
 
 
+DraconidVillage_EventScript_EggHatch_Text_0:
+	.string "Oh?\p"
+	.string "The egg is moving!$"
+
 DraconidVillage_EventScript_RunningShoes_Text_0:
+	.string "OLD WOMAN: Oh, my! Was that a dragon's\n"
+	.string "cry I heard?$"
+
+DraconidVillage_EventScript_RunningShoes_Text_1:
 	.string "OLD WOMAN: So the egg answered the sky.\n"
 	.string "Let me see… Oh, what a bright little\l"
 	.string "dragon!\p"
@@ -150,11 +199,11 @@ DraconidVillage_EventScript_RunningShoes_Text_0:
 	.string "these. Every tamer who leaves this\l"
 	.string "village gets a pair.$"
 
-DraconidVillage_EventScript_RunningShoes_Text_1:
+DraconidVillage_EventScript_RunningShoes_Text_2:
 	.string "{PLAYER} switched shoes with the\n"
 	.string "RUNNING SHOES.$"
 
-DraconidVillage_EventScript_RunningShoes_Text_2:
+DraconidVillage_EventScript_RunningShoes_Text_3:
 	.string "OLD WOMAN: Hold the B Button to run\n"
 	.string "with them!\p"
 	.string "Cross the bridge on DRACONID PASS and\n"
@@ -163,6 +212,11 @@ DraconidVillage_EventScript_RunningShoes_Text_2:
 	.string "Your house will be waiting when you need\n"
 	.string "a rest. The whole village will.$"
 
+DraconidVillage_EventScript_ShoesGiver_Text_0:
+	.string "OLD WOMAN: Hold the B Button to run!\p"
+	.string "Cross the bridge on DRACONID PASS and\n"
+	.string "head east to ROUTE 101.$"
+
 DraconidVillage_EventScript_GatekeeperStop_Text_0:
 	.string "GATEKEEPER: Whoa there, {PLAYER}! Isn't\n"
 	.string "today your egg ceremony?\p"
@@ -170,9 +224,10 @@ DraconidVillage_EventScript_GatekeeperStop_Text_0:
 	.string "leave the village without a partner!$"
 
 DraconidVillage_EventScript_GatekeeperStop_Text_1:
-	.string "GATEKEEPER: That egg needs the\n"
-	.string "shrine's blessing before it can hatch.\p"
-	.string "Go on up to the shrine in the cliff!$"
+	.string "GATEKEEPER: That egg of yours is about\n"
+	.string "to hatch, {PLAYER}!\p"
+	.string "Stay in the village until it does. The\n"
+	.string "lowlands are no place for an egg.$"
 
 DraconidVillage_EventScript_Gatekeeper_Text_0:
 	.string "GATEKEEPER: Beyond this path lies\n"

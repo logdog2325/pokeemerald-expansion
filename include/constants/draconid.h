@@ -6,12 +6,13 @@
 // VAR_DRACONID_STATE: progress through the opening in Draconid Village
 #define DRACONID_STATE_NEW_GAME        0 // waking up in the bedroom
 #define DRACONID_STATE_SET_CLOCK       1 // Mom asked the player to set the clock
-#define DRACONID_STATE_CLOCK_SET       2 // go to the Elder's house
-#define DRACONID_STATE_EGG_RECEIVED    3 // egg chosen, hatching rite at the shrine
-#define DRACONID_STATE_EGG_HATCHED     4 // hatched; Mom waits outside the shrine
+#define DRACONID_STATE_CLOCK_SET       2 // go to the Elder's house (the prophecy), then the egg ceremony in the
+                                         // shrine (the Elder is there: FLAG_HIDE_DRACONID_SHRINE_ELDER clear, D-230)
+#define DRACONID_STATE_EGG_RECEIVED    3 // egg chosen in the shrine; it hatches after DRACONID_EGG_HATCH_STEPS steps
+#define DRACONID_STATE_EGG_HATCHED     4 // hatched; the old woman brings the Running Shoes
 #define DRACONID_STATE_READY_TO_LEAVE  5 // got the Running Shoes, may leave the village
 #define DRACONID_STATE_LEFT_VILLAGE    6 // met Aster on Draconid Pass
-#define DRACONID_STATE_SECOND_STARTER  7 // Stone Badge: Prof. Birch waits outside the Rustboro Gym
+#define DRACONID_STATE_SECOND_STARTER  7 // Stone Badge: Prof. Oak waits outside the Rustboro Gym (D-233)
 #define DRACONID_STATE_GOT_SECOND_STARTER 8 // second partner received
 
 // VAR_STARTER_MON / VAR_ASTER_EGG: the three Draconid eggs (order of the Elder's choice)
@@ -24,8 +25,10 @@
 #define DRACONID_EGG_SPECIES_1         SPECIES_DREEPY
 #define DRACONID_EGG_SPECIES_2         SPECIES_JANGMO_O
 
-// Level the hatchling is raised to after the rite (eggs hatch at EGG_HATCH_LEVEL = 1)
+// Level the hatchling is raised to when it hatches (eggs hatch at EGG_HATCH_LEVEL = 1)
 #define DRACONID_HATCHLING_LEVEL       5
+// Steps outdoors after the shrine ceremony until the egg hatches (VAR_DRACONID_EGG_STEPS, src/draconid.c, D-231)
+#define DRACONID_EGG_HATCH_STEPS       5
 // Route 101: the wild Pokemon chasing Prof. Birch (round 1: Poochyena, as in the story)
 #define DRACONID_RESCUE_SPECIES        SPECIES_POOCHYENA
 #define DRACONID_RESCUE_LEVEL          2
@@ -33,7 +36,7 @@
 #define DRACONID_EVO_LEVEL_MIDDLE      25 // Deino -> Zweilous, Dreepy -> Drakloak, Jangmo-o -> Hakamo-o
 #define DRACONID_EVO_LEVEL_FINAL       50 // Zweilous -> Hydreigon, Drakloak -> Dragapult, Hakamo-o -> Kommo-o
 
-// VAR_SECOND_STARTER: Prof. Birch's gift after the first Gym
+// VAR_SECOND_STARTER: Prof. Oak's gift after the first Gym (D-233)
 #define SECOND_STARTER_NONE            0
 #define SECOND_STARTER_CHARMANDER      1
 #define SECOND_STARTER_TOTODILE        2

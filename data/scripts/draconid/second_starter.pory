@@ -1,17 +1,18 @@
-// Draconid Emerald: Prof. Birch's second partner after the first Gym (Phase 4; round 1: Tabitha's order first).
+// Draconid Emerald: Prof. Oak's second partner after the first Gym (Phase 4; round 1: Tabitha's order first,
+// Oak instead of Birch, D-233).
 //
 // Winning the Stone Badge sets VAR_DRACONID_STATE to DRACONID_STATE_SECOND_STARTER; walking out of
 // the Rustboro Gym starts the scene (RustboroCity_OnFrame): Tabitha gives the player their orders
-// (act1.pory), then Birch offers Charmander, Totodile or
-// Treecko at SECOND_STARTER_LEVEL; the choice is stored in VAR_SECOND_STARTER (SECOND_STARTER_*).
-// Each of them has a Dragon-type Mega (Charizard X, Feraligatr, Sceptile), handed out with the
-// Mega Ring later in the story.
+// (act1.pory), then Prof. Oak, visiting Hoenn (Birch told him about the Draconid tamer), offers Charmander,
+// Totodile or Treecko at SECOND_STARTER_LEVEL; the choice is stored in VAR_SECOND_STARTER (SECOND_STARTER_*).
+// Each of them has a Dragon-type Mega (Charizard X, Feraligatr, Sceptile); the Mega Stone is a Draconid
+// gift in Lavaridge (act3.pory, D-126).
 
 // Called from the Rustboro Gym when the Stone Badge is won.
-script RustboroCity_Gym_EventScript_DraconidBirchWaits {
+script RustboroCity_Gym_EventScript_DraconidOakWaits {
     if (var(VAR_DRACONID_STATE) == DRACONID_STATE_LEFT_VILLAGE) {
         setvar(VAR_DRACONID_STATE, DRACONID_STATE_SECOND_STARTER)
-        clearflag(FLAG_HIDE_RUSTBORO_CITY_BIRCH)
+        clearflag(FLAG_HIDE_RUSTBORO_CITY_OAK)
         clearflag(FLAG_HIDE_RUSTBORO_CITY_TABITHA)
     }
 }
@@ -19,26 +20,28 @@ script RustboroCity_Gym_EventScript_DraconidBirchWaits {
 script RustboroCity_EventScript_DraconidSecondStarter {
     lockall
     call(RustboroCity_EventScript_DraconidTabithaOrders)
-    applymovement(LOCALID_RUSTBORO_BIRCH, RustboroCity_Movement_DraconidBirchApproach)
+    applymovement(LOCALID_RUSTBORO_OAK, RustboroCity_Movement_DraconidOakApproach)
     waitmovement(0)
     applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterDown)
     waitmovement(0)
-    msgbox(RustboroCity_Text_DraconidBirchCongrats, MSGBOX_DEFAULT)
+    msgbox(RustboroCity_Text_DraconidOakHello, MSGBOX_DEFAULT)
+    msgbox(RustboroCity_Text_DraconidOakUniform, MSGBOX_DEFAULT)
+    msgbox(RustboroCity_Text_DraconidOakGift, MSGBOX_DEFAULT)
     setvar(VAR_0x8008, 0)
     while (var(VAR_0x8008) == 0) {
-        message(RustboroCity_Text_DraconidBirchWhichOne)
+        message(RustboroCity_Text_DraconidOakWhichOne)
         waitmessage
         dynmultichoice(18, 1, TRUE, 3, 0, DYN_MULTICHOICE_CB_NONE, "CHARMANDER", "TOTODILE", "TREECKO")
         switch (var(VAR_RESULT)) {
             case 0:
                 setvar(VAR_0x8009, SECOND_STARTER_CHARMANDER)
-                msgbox(RustboroCity_Text_DraconidBirchCharmander, MSGBOX_YESNO)
+                msgbox(RustboroCity_Text_DraconidOakCharmander, MSGBOX_YESNO)
             case 1:
                 setvar(VAR_0x8009, SECOND_STARTER_TOTODILE)
-                msgbox(RustboroCity_Text_DraconidBirchTotodile, MSGBOX_YESNO)
+                msgbox(RustboroCity_Text_DraconidOakTotodile, MSGBOX_YESNO)
             default:
                 setvar(VAR_0x8009, SECOND_STARTER_TREECKO)
-                msgbox(RustboroCity_Text_DraconidBirchTreecko, MSGBOX_YESNO)
+                msgbox(RustboroCity_Text_DraconidOakTreecko, MSGBOX_YESNO)
         }
         if (var(VAR_RESULT) == YES) {
             setvar(VAR_0x8008, 1)
@@ -73,12 +76,12 @@ script RustboroCity_EventScript_DraconidSecondStarter {
     }
     setflag(FLAG_RECEIVED_SECOND_STARTER)
     setvar(VAR_DRACONID_STATE, DRACONID_STATE_GOT_SECOND_STARTER)
-    msgbox(RustboroCity_Text_DraconidBirchBye, MSGBOX_DEFAULT)
+    msgbox(RustboroCity_Text_DraconidOakBye, MSGBOX_DEFAULT)
     closemessage
-    applymovement(LOCALID_RUSTBORO_BIRCH, RustboroCity_Movement_DraconidBirchLeave)
+    applymovement(LOCALID_RUSTBORO_OAK, RustboroCity_Movement_DraconidOakLeave)
     waitmovement(0)
-    removeobject(LOCALID_RUSTBORO_BIRCH)
-    setflag(FLAG_HIDE_RUSTBORO_CITY_BIRCH)
+    removeobject(LOCALID_RUSTBORO_OAK)
+    setflag(FLAG_HIDE_RUSTBORO_CITY_OAK)
     releaseall
 }
 
@@ -90,53 +93,64 @@ script RustboroCity_EventScript_DraconidReceivedSecondStarter {
 }
 
 // From (28, 23) to just below the Gym door, where the player comes out (27, 20).
-movement RustboroCity_Movement_DraconidBirchApproach {
+movement RustboroCity_Movement_DraconidOakApproach {
     walk_up
     walk_left
     walk_up
     face_up
 }
 
-movement RustboroCity_Movement_DraconidBirchLeave {
+movement RustboroCity_Movement_DraconidOakLeave {
     walk_down * 2
     walk_right * 3
 }
 
-text RustboroCity_Text_DraconidBirchCongrats {
-    format("PROF. BIRCH: {PLAYER}! I watched your battle through the window. Your first GYM BADGE!\p"
-           "…But that uniform. And the man you were just talking to…\p"
-           "BRENDAN told me. I didn't want to believe him.\p"
-           "Your ELDER wrote to me before you came down the mountain. Draconid tamers raise a second "
-           "partner from a faraway land, to learn balance.\p"
-           "I brought three POKéMON for you. On the way here, I nearly turned back.\p"
-           "But I saw how you protected me on ROUTE 101.\p"
-           "Whatever you're doing… I'll trust that version of you. Pick the one you like.")
+text RustboroCity_Text_DraconidOakHello {
+    format("PROF. OAK: Ah, {PLAYER}! So you're the young dragon tamer BIRCH told me about!\p"
+           "I'm OAK. I study POKéMON in PALLET TOWN, far away in KANTO.\p"
+           "I'm in HOENN visiting my old friend BIRCH. And I watched your GYM battle through the window. Splendid!")
 }
 
-text RustboroCity_Text_DraconidBirchWhichOne {
+text RustboroCity_Text_DraconidOakUniform {
+    format("PROF. OAK: …Hm? But that red uniform. TEAM MAGMA, isn't it? And the fellow you were just talking to…\p"
+           "BIRCH warned me. His boy BRENDAN came home terribly upset about it.\p"
+           "But BIRCH told me something else, too.\p"
+           "“I saw how that child protected me on ROUTE 101. I'll trust that version of them.”\p"
+           "I've studied POKéMON for a long time, {PLAYER}. A POKéMON knows its TRAINER's heart better than any uniform.\p"
+           "And your dragon trusts you. That's good enough for me!")
+}
+
+text RustboroCity_Text_DraconidOakGift {
+    format("PROF. OAK: Now then! Your ELDER wrote to BIRCH before you came down the mountain.\p"
+           "Draconid tamers raise a second partner from a faraway land, to learn balance.\p"
+           "So I brought three POKéMON with me, each from a land I know well. Go on, choose!")
+}
+
+text RustboroCity_Text_DraconidOakWhichOne {
     format("Which POKéMON will you take?")
 }
 
-text RustboroCity_Text_DraconidBirchCharmander {
-    format("CHARMANDER, the Fire-type from KANTO. They say the flame on its tail shows its spirit.\p"
+text RustboroCity_Text_DraconidOakCharmander {
+    format("CHARMANDER, the Fire-type from my home, KANTO. The flame on its tail shows how it feels.\p"
            "Will you take CHARMANDER?")
 }
 
-text RustboroCity_Text_DraconidBirchTotodile {
-    format("TOTODILE, the Water-type from JOHTO. It bites anything that moves, even its TRAINER!\p"
+text RustboroCity_Text_DraconidOakTotodile {
+    format("TOTODILE, the Water-type from JOHTO. It bites anything that moves. Even its TRAINER!\p"
            "Will you take TOTODILE?")
 }
 
-text RustboroCity_Text_DraconidBirchTreecko {
-    format("TREECKO, the Grass-type from right here in HOENN. BRENDAN's partner has a sibling!\p"
+text RustboroCity_Text_DraconidOakTreecko {
+    format("TREECKO, the Grass-type from right here in HOENN. BIRCH picked it out himself.\p"
            "Will you take TREECKO?")
 }
 
 text RustboroCity_Text_DraconidReceivedMon {
-    format("{PLAYER} received the {STR_VAR_1} from PROF. BIRCH!")
+    format("{PLAYER} received the {STR_VAR_1} from PROF. OAK!")
 }
 
-text RustboroCity_Text_DraconidBirchBye {
-    format("PROF. BIRCH: Raise it well, alongside your dragon.\p"
-           "And {PLAYER}… be careful. Whatever those people want, it isn't good.")
+text RustboroCity_Text_DraconidOakBye {
+    format("PROF. OAK: Raise it well, side by side with your dragon. POKéMON and people grow strong together.\p"
+           "And {PLAYER}… whatever put you in that uniform, don't let it change who you are.\p"
+           "Well! BIRCH is waiting for me at DEVON. Take care, now!")
 }

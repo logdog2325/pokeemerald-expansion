@@ -246,8 +246,8 @@
       "flag": "0"
     },
     {
-      "local_id": "LOCALID_RUSTBORO_BIRCH",
-      "graphics_id": "OBJ_EVENT_GFX_PROF_BIRCH",
+      "local_id": "LOCALID_RUSTBORO_OAK",
+      "graphics_id": "OBJ_EVENT_GFX_PROF_OAK",
       "x": 28,
       "y": 23,
       "elevation": 3,
@@ -257,7 +257,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "0x0",
-      "flag": "FLAG_HIDE_RUSTBORO_CITY_BIRCH"
+      "flag": "FLAG_HIDE_RUSTBORO_CITY_OAK"
     },
     {
       "local_id": "LOCALID_RUSTBORO_TABITHA",

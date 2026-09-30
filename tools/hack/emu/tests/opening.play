@@ -1,4 +1,4 @@
-# Draconid Emerald opening, new game -> Birch's lab (regression test for Phases 1 and 4).
+# Draconid Emerald opening, new game -> Birch's lab (regression test for Phases 1 and 4, round 1 D-230/D-231).
 #   python3 tools/hack/emu/play.py tools/hack/emu/tests/opening.play -o /tmp/opening
 # Saves opening_*.ss states in the output directory for follow-up scripts.
 # The quickstart gender is random: -D GENDER=F tests the female player.
@@ -30,7 +30,8 @@ walk DOWN 8
 run 150
 hold DOWN 20
 run 180
-# to the Elder's house: egg ceremony (pick egg ${EGG}, then YES)
+# to the Elder's house: the prophecy and the mission, then the Elder takes the player up to the shrine
+# (a warp), where the egg ceremony runs: pick egg ${EGG}, then YES
 walk RIGHT 19
 walk UP 12
 walk RIGHT 24
@@ -41,28 +42,39 @@ mash A 20000
 expect_var VAR_DRACONID_STATE 3
 expect_var VAR_STARTER_MON ${EGG}
 expect_flag FLAG_RECEIVED_DRACONID_EGG 1
+expect_flag FLAG_SYS_POKEMON_GET 1
+expect_flag FLAG_DRACONID_EGG_HATCHED 0
+expect_flag FLAG_HIDE_DRACONID_PASS_ASTER 0
+expect_flag FLAG_HIDE_DRACONID_SHRINE_ELDER 1
+expect_flag FLAG_HIDE_DRACONID_ELDERS_HOUSE_ELDER 0
 var VAR_STARTER_MON
 var VAR_ASTER_EGG
+mapid
+pos
 shot 01_egg
-# to the shrine: hatching rite
-walk DOWN 7
-hold DOWN 20
-run 180
-walk LEFT 19
-walk UP 5
-run 150
-press B 2 60
-mash B 30000
-expect_var VAR_DRACONID_STATE 4
-expect_flag FLAG_DRACONID_EGG_HATCHED 1
-read @gParties+54 1 hatchling_level
-# out of the shrine: Mom gives the Running Shoes
+# out of the shrine (steps inside don't count): the egg hatches on the 5th step outdoors
+# (DRACONID_EGG_HATCH_STEPS), not before
 walk DOWN 19
 hold DOWN 20
 run 200
-mash A 20000
+pos
+walk DOWN 10
+run 30
+expect_var VAR_DRACONID_EGG_STEPS 4
+expect_flag FLAG_DRACONID_EGG_HATCHED 0
+expect_var VAR_DRACONID_STATE 3
+walk DOWN 11
+run 30
+# the hatch (B answers NO to the nickname), then the old woman brings the Running Shoes
+mash B 30000
+run 60
+mash B 20000
+expect_flag FLAG_DRACONID_EGG_HATCHED 1
 expect_var VAR_DRACONID_STATE 5
 expect_flag FLAG_SYS_B_DASH 1
+expect_flag FLAG_HIDE_DRACONID_VILLAGE_SHOES_GIVER 1
+read @gParties+54 1 hatchling_level
+shot 02_hatched
 # down to Draconid Pass and Aster's battle at the bridge
 walk DOWN 29
 hold DOWN 40
@@ -77,20 +89,20 @@ expect_var VAR_DRACONID_STATE 6
 expect_flag FLAG_DEFEATED_ASTER_DRACONID_PASS 1
 expect_opponent TRAINER_ASTER_PASS_${EGGNAME}
 expect_flag FLAG_DRACONID_NO_WHITEOUT 0
-shot 02_after_aster
+shot 03_after_aster
 savestate opening_after_aster.ss
 # east along the valley path to Route 101: Birch's rescue, the lab
 walk DOWN 26
 walk RIGHT 27
 hold RIGHT 16
 run 30
-shot 03_route101
+shot 04_route101
 mapid
 mash A 40000
 mash A 20000
 mapid
 pos
-shot 04_lab_done
+shot 05_lab_done
 expect_flag FLAG_RESCUED_BIRCH 1
 expect_flag FLAG_SYS_POKEDEX_GET 1
 expect_flag FLAG_ADVENTURE_STARTED 1

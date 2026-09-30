@@ -778,6 +778,12 @@ static bool8 TryStartStepCountScript(u16 metatileBehavior)
             ScriptContext_SetupScript(EventScript_EggHatch);
             return TRUE;
         }
+        if (Draconid_ShouldHatchEgg()) // Draconid Emerald: the egg from the shrine ceremony (D-231)
+        {
+            IncrementGameStat(GAME_STAT_HATCHED_EGGS);
+            ScriptContext_SetupScript(DraconidVillage_EventScript_EggHatch);
+            return TRUE;
+        }
         if (AbnormalWeatherHasExpired() == TRUE)
         {
             ScriptContext_SetupScript(AbnormalWeather_EventScript_EndEventAndCleanup_1);

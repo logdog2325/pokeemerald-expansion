@@ -42,48 +42,6 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "DraconidVillage_EldersHouse_EventScript_Aster",
       "flag": "FLAG_HIDE_DRACONID_ELDERS_HOUSE_ASTER"
-    },
-    {
-      "local_id": "LOCALID_DRACONID_EGG_1",
-      "graphics_id": "OBJ_EVENT_GFX_DRACONID_EGG_DEINO",
-      "x": 6,
-      "y": 4,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "DraconidVillage_EldersHouse_EventScript_Egg",
-      "flag": "FLAG_RECEIVED_DRACONID_EGG"
-    },
-    {
-      "local_id": "LOCALID_DRACONID_EGG_2",
-      "graphics_id": "OBJ_EVENT_GFX_DRACONID_EGG_DREEPY",
-      "x": 7,
-      "y": 4,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "DraconidVillage_EldersHouse_EventScript_Egg",
-      "flag": "FLAG_RECEIVED_DRACONID_EGG"
-    },
-    {
-      "local_id": "LOCALID_DRACONID_EGG_3",
-      "graphics_id": "OBJ_EVENT_GFX_DRACONID_EGG_JANGMO_O",
-      "x": 8,
-      "y": 4,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "DraconidVillage_EldersHouse_EventScript_Egg",
-      "flag": "FLAG_RECEIVED_DRACONID_EGG"
     }
   ],
   "warp_events": [
