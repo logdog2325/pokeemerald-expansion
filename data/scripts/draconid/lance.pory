@@ -1,0 +1,343 @@
+// Draconid Emerald round 1 follow-up 25 (feedback 1.56): LANCE, a post-game boss in the Draconid village
+// (D-260 - D-262).
+//
+//   Lore (D-260)     LANCE's dragon clan of BLACKTHORN CITY (JOHTO) is the DRACONIDS' NORTHERN WING: generations ago
+//                    some DRACONIDS followed their dragons north and founded it. Both branches kept the old stories
+//                    but lost touch; the ELDER knows the old name from the clan's songs.
+//   Arrival (D-261)  post-game only (VAR_DRACONID_FINALE_STATE >= FINALE_STATE_POSTGAME: the ELDER has brought the
+//                    SS TICKET). The first village visit after that only arms it (FLAG_DRACONID_LANCE_ARMED); on a
+//                    later one, when the player comes out of their house or flies home (both put them on the fly
+//                    spot, LANCE_ARRIVAL_X/Y), a DRAGONITE swoops down onto the square with LANCE on its back, the
+//                    ELDER and ASTER come over, and LANCE challenges the player. Declined, he waits in the village.
+//   Battle (D-262)   TRAINER_LANCE_DRACONID: his PWT team with MEGA DRAGONITE last. A loss whites out, like ASTER's
+//                    and NERINE's post-game battles; he stays. The first win brings a DRATINI from the DRAGON'S DEN
+//                    and the DRAGONINITE (FLAG_RECEIVED_DRAGONINITE); after that he battles again whenever asked.
+//
+// Objects (DraconidVillage/map.json, the last four): LANCE (13, 13) with his DRAGONITE (13, 12) behind him, hidden by
+// FLAG_HIDE_DRACONID_VILLAGE_LANCE until he lands (then cleared for good); the scene's ELDER (21, 13) and ASTER
+// (12, 9), hidden by FLAG_TEMP_1D, which the OnTransition hook sets (scene-only objects, D-136).
+// Hooks: DraconidVillage_OnTransition calls ..._LanceOnTransition; the village's OnFrame table runs ..._LanceArrives
+// while VAR_TEMP_C is 1.
+
+// The fly spot (HEAL_LOCATION_DRACONID_VILLAGE), one step out of the player's door
+const LANCE_ARRIVAL_X = 8
+const LANCE_ARRIVAL_Y = 15
+// The DRAGON'S DEN gift (HGSS: a Lv 15 DRATINI that knows EXTREME SPEED)
+const LANCE_DRATINI_LEVEL = 15
+
+// ---------------------------------------------------------------------------
+// OnTransition hook
+// ---------------------------------------------------------------------------
+
+script DraconidVillage_EventScript_LanceOnTransition {
+    setflag(FLAG_TEMP_1D) // the scene's ELDER and ASTER only appear through addobject
+    if (var(VAR_DRACONID_FINALE_STATE) < FINALE_STATE_POSTGAME) {
+        setflag(FLAG_HIDE_DRACONID_VILLAGE_LANCE)
+    } elif (!flag(FLAG_DRACONID_LANCE_ARMED)) {
+        // the visit with the SS TICKET: LANCE comes on a later one (D-261)
+        setflag(FLAG_DRACONID_LANCE_ARMED)
+        setflag(FLAG_HIDE_DRACONID_VILLAGE_LANCE)
+    } elif (flag(FLAG_HIDE_DRACONID_VILLAGE_LANCE)) {
+        setvar(VAR_TEMP_C, 1)
+    }
+}
+
+// ---------------------------------------------------------------------------
+// The arrival (OnFrame): only on the fly spot in front of the player's house, where the square is in view;
+// anywhere else it waits for the next visit
+// ---------------------------------------------------------------------------
+
+script DraconidVillage_EventScript_LanceArrives {
+    lockall
+    setvar(VAR_TEMP_C, 0)
+    getplayerxy(VAR_0x8004, VAR_0x8005)
+    if (var(VAR_0x8004) != LANCE_ARRIVAL_X || var(VAR_0x8005) != LANCE_ARRIVAL_Y) {
+        releaseall
+        end
+    }
+    delay(20)
+    playmoncry(SPECIES_DRAGONITE, CRY_MODE_ENCOUNTER)
+    applymovement(LOCALID_PLAYER, Common_Movement_ExclamationMark)
+    waitmovement(0)
+    waitmoncry
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight)
+    waitmovement(0)
+    // the DRAGONITE swoops down onto the square with LANCE on its back (he rides behind its head, one tile up)
+    addobject(LOCALID_DRACONID_VILLAGE_LANCE_DRAGONITE)
+    addobject(LOCALID_DRACONID_VILLAGE_LANCE)
+    setobjectxy(LOCALID_DRACONID_VILLAGE_LANCE, 13, 11)
+    playse(SE_M_FLY)
+    applymovement(LOCALID_DRACONID_VILLAGE_LANCE_DRAGONITE, DraconidVillage_Movement_LanceFlyDown)
+    applymovement(LOCALID_DRACONID_VILLAGE_LANCE, DraconidVillage_Movement_LanceFlyDown)
+    waitmovement(0)
+    clearflag(FLAG_HIDE_DRACONID_VILLAGE_LANCE) // he has landed: from now on he waits in the village
+    playse(SE_M_STRENGTH)
+    fadescreenswapbuffers(FADE_TO_WHITE)
+    fadescreenswapbuffers(FADE_FROM_WHITE)
+    playmoncry(SPECIES_DRAGONITE, CRY_MODE_ENCOUNTER)
+    waitmoncry
+    // LANCE leaps down in front of his DRAGONITE, cape and all
+    applymovement(LOCALID_DRACONID_VILLAGE_LANCE, DraconidVillage_Movement_LanceLeapDown)
+    waitmovement(0)
+    playbgm(MUS_ENCOUNTER_CHAMPION, FALSE)
+    applymovement(LOCALID_PLAYER, DraconidVillage_Movement_LancePlayerToSquare)
+    waitmovement(0)
+    msgbox(format("LANCE: So this is the DRACONID village.\p"
+                  "The falls, the shrine on the cliff…\nIt's just like the old stories."))
+    msgbox(format("LANCE: And you must be {PLAYER}.\p"
+                  "I'm LANCE, the CHAMPION of the POKéMON LEAGUE in JOHTO and KANTO."))
+    msgbox(format("LANCE: News of you has reached as far as BLACKTHORN CITY.\p"
+                  "They say a young DRACONID wore\nTEAM MAGMA's red for the clan's sake.\p"
+                  "And that when the titans of land and sea woke, you held your ground."))
+    msgbox(format("LANCE: They even say you stood beside RAYQUAZA when the sky split open.\p"
+                  "My DRAGONITE and I flew a long way to see if it was true."))
+    closemessage
+    // the ELDER comes over from his house
+    addobject(LOCALID_DRACONID_VILLAGE_LANCE_ELDER)
+    applymovement(LOCALID_DRACONID_VILLAGE_LANCE_ELDER, DraconidVillage_Movement_LanceElderArrives)
+    waitmovement(0)
+    msgbox(format("ELDER: A DRAGONITE, landing\nin our village…"))
+    closemessage
+    applymovement(LOCALID_DRACONID_VILLAGE_LANCE, Common_Movement_WalkInPlaceFasterRight)
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight)
+    waitmovement(0)
+    msgbox(format("ELDER: Few travellers find this valley, and fewer still come on the wind.\p"
+                  "Who are you, young man?"))
+    msgbox(format("LANCE: Forgive me for dropping in\nlike this, ELDER.\p"
+                  "My name is LANCE. I come from the dragon clan of BLACKTHORN."))
+    msgbox(format("LANCE: Our clan's elder tells\nan old story.\p"
+                  "Long ago, our ancestors lived in the\nsouth, below the sky dragon's shrine."))
+    msgbox(format("LANCE: Then some of them followed their dragons north across the sea.\p"
+                  "They settled under a black mountain, and that became BLACKTHORN."))
+    msgbox(format("LANCE: At our shrine, the elders still call us by an old name…\p"
+                  "The NORTHERN WING."))
+    msgbox(format("ELDER: …The NORTHERN WING."))
+    msgbox(format("ELDER: Our songs remember you.\p"
+                  "“One wing stayed to guard the sky. One wing flew north, and did not come back.”"))
+    msgbox(format("ELDER: We have sung that verse for generations, and wondered.\p"
+                  "The NORTHERN WING has come home. Welcome, LANCE."))
+    msgbox(format("LANCE: Our elder would give anything to hear that song."))
+    closemessage
+    // ASTER runs down from the shrine path
+    addobject(LOCALID_DRACONID_VILLAGE_LANCE_ASTER)
+    applymovement(LOCALID_DRACONID_VILLAGE_LANCE_ASTER, DraconidVillage_Movement_LanceAsterArrives)
+    waitmovement(0)
+    msgbox(format("ASTER: ELDER! Did you see that DRAGONITE? It landed right in the…"))
+    closemessage
+    applymovement(LOCALID_DRACONID_VILLAGE_LANCE_ASTER, Common_Movement_WalkInPlaceFasterRight)
+    waitmovement(0)
+    applymovement(LOCALID_DRACONID_VILLAGE_LANCE_ASTER, Common_Movement_ExclamationMark)
+    waitmovement(0)
+    applymovement(LOCALID_DRACONID_VILLAGE_LANCE, Common_Movement_WalkInPlaceFasterLeft)
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft)
+    waitmovement(0)
+    msgbox(format("ASTER: LANCE? The DRAGON MASTER of BLACKTHORN? Here?!"))
+    msgbox(format("ELDER: He is of the NORTHERN WING, ASTER. Family, from far away."))
+    msgbox(format("ASTER: …Family. Hmph. Of course the famous LANCE turns out to be one of us."))
+    msgbox(format("ASTER: Riddle: what flies across the sea to battle someone it has never met?\p"
+                  "A show-off. You're here for {PLAYER}, aren't you?"))
+    closemessage
+    applymovement(LOCALID_DRACONID_VILLAGE_LANCE, Common_Movement_WalkInPlaceFasterDown)
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp)
+    waitmovement(0)
+    msgbox(format("LANCE: Ha! She's got me.\p"
+                  "A dragon master can't hear a story like that and not see it for himself."))
+    msgbox(DraconidVillage_Text_LanceChallenge, MSGBOX_YESNO)
+    if (var(VAR_RESULT) == NO) {
+        msgbox(format("LANCE: Not yet? Fair enough. A tamer should choose the time.\p"
+                      "My DRAGONITE could use a rest after that flight. I'll wait here."))
+        msgbox(format("ELDER: Stay as long as you wish, LANCE. This village is yours as much as ours."))
+        msgbox(format("ASTER: Hmph. Then I'll battle\nhim myself!\p"
+                      "…After some more training."))
+        goto(DraconidVillage_EventScript_LanceSceneEnd)
+    }
+    msgbox(DraconidVillage_Text_LanceGo)
+    closemessage
+    call(DraconidVillage_EventScript_LanceBattle)
+    msgbox(DraconidVillage_Text_LanceBloodRunsHot)
+    call(DraconidVillage_EventScript_LanceGifts)
+    msgbox(format("ELDER: Both wings of the clan, meeting in battle at last.\p"
+                  "The old songs never\ndared hope for this."))
+    msgbox(format("ASTER: …Okay. I'm next.\p"
+                  "Don't you dare fly off before I get my turn, LANCE."))
+    msgbox(format("LANCE: Ha ha! I'm not going anywhere just yet.\p"
+                  "{PLAYER}, come and battle me whenever you like."))
+    goto(DraconidVillage_EventScript_LanceSceneEnd)
+}
+
+// The ELDER goes back to his house and ASTER up to the shrine; LANCE and his DRAGONITE stay
+script DraconidVillage_EventScript_LanceSceneEnd {
+    closemessage
+    // the ELDER's walk is the longer one: waitmovement(0) waits for the last object moved
+    applymovement(LOCALID_DRACONID_VILLAGE_LANCE_ASTER, DraconidVillage_Movement_LanceAsterLeaves)
+    applymovement(LOCALID_DRACONID_VILLAGE_LANCE_ELDER, DraconidVillage_Movement_LanceElderLeaves)
+    waitmovement(0)
+    removeobject(LOCALID_DRACONID_VILLAGE_LANCE_ELDER)
+    removeobject(LOCALID_DRACONID_VILLAGE_LANCE_ASTER)
+    savebgm(MUS_DUMMY)
+    fadedefaultbgm
+    releaseall
+}
+
+// ---------------------------------------------------------------------------
+// LANCE and his DRAGONITE in the village
+// ---------------------------------------------------------------------------
+
+script DraconidVillage_EventScript_Lance {
+    lock
+    faceplayer
+    if (!defeated(TRAINER_LANCE_DRACONID)) {
+        msgbox(format("LANCE: {PLAYER}! Ready to show me the tamer RAYQUAZA chose?"), MSGBOX_YESNO)
+        if (var(VAR_RESULT) == NO) {
+            msgbox(format("LANCE: Take your time.\nI'm enjoying the view."))
+            release
+            end
+        }
+        msgbox(DraconidVillage_Text_LanceGo)
+        closemessage
+        call(DraconidVillage_EventScript_LanceBattle)
+        msgbox(DraconidVillage_Text_LanceBloodRunsHot)
+        call(DraconidVillage_EventScript_LanceGifts)
+        msgbox(format("LANCE: Come and battle me whenever you like, {PLAYER}. I'll be here a while."))
+        release
+        end
+    }
+    if (!flag(FLAG_RECEIVED_DRAGONINITE)) {
+        call(DraconidVillage_EventScript_LanceGifts)
+        release
+        end
+    }
+    msgbox(format("LANCE: My dragons are still fired up from our last battle.\p"
+                  "How about another round?"), MSGBOX_YESNO)
+    if (var(VAR_RESULT) == NO) {
+        msgbox(format("LANCE: The ELDER is teaching me the old songs. I'll be here a while."))
+        release
+        end
+    }
+    msgbox(format("LANCE: Then let's go! DRAGONITE and I won't hold back!"))
+    closemessage
+    call(DraconidVillage_EventScript_LanceBattle)
+    msgbox(format("LANCE: Ha! Every battle with you teaches me something new."))
+    release
+}
+
+// The same team every time (D-262). A loss whites out, as ASTER's and NERINE's post-game battles do; LANCE stays.
+script DraconidVillage_EventScript_LanceBattle {
+    trainerbattle_no_intro(TRAINER_LANCE_DRACONID, DraconidVillage_Text_LanceDefeat)
+}
+
+// After the first win: a DRATINI from the DRAGON'S DEN and the DRAGONINITE. Nothing is given unless both fit, so
+// the gifts can't come twice (FLAG_RECEIVED_DRAGONINITE is set once both are given).
+script DraconidVillage_EventScript_LanceGifts {
+    msgbox(format("LANCE: A tamer who earns our clan's respect receives a DRATINI.\p"
+                  "I brought one from the DRAGON'S DEN, in case the stories were true."))
+    checkitemspace(ITEM_DRAGONINITE)
+    if (var(VAR_RESULT) == FALSE) {
+        msgbox(gText_TooBadBagIsFull)
+        msgbox(DraconidVillage_Text_LanceComeBack)
+        return
+    }
+    givemon(SPECIES_DRATINI, LANCE_DRATINI_LEVEL, ITEM_NONE, move1=MOVE_EXTREME_SPEED, move2=MOVE_TWISTER, move3=MOVE_THUNDER_WAVE, move4=MOVE_WRAP)
+    if (var(VAR_RESULT) == MON_GIVEN_TO_PARTY) {
+        call(DraconidVillage_EventScript_LanceReceivedDratini)
+        msgbox(gText_NicknameThisPokemon, MSGBOX_YESNO)
+        if (var(VAR_RESULT) == YES) {
+            call(Common_EventScript_GetGiftMonPartySlot)
+            call(Common_EventScript_NameReceivedPartyMon)
+        }
+    } elif (var(VAR_RESULT) == MON_GIVEN_TO_PC) {
+        call(DraconidVillage_EventScript_LanceReceivedDratini)
+        msgbox(gText_NicknameThisPokemon, MSGBOX_YESNO)
+        if (var(VAR_RESULT) == YES) {
+            call(Common_EventScript_NameReceivedBoxMon)
+        }
+        call(Common_EventScript_TransferredToPC)
+    } else {
+        msgbox(gText_NoMoreRoomForPokemon)
+        msgbox(DraconidVillage_Text_LanceComeBack)
+        return
+    }
+    msgbox(format("LANCE: And take this, too."))
+    giveitem(ITEM_DRAGONINITE)
+    msgbox(format("LANCE: That's a DRAGONINITE, a MEGA STONE.\p"
+                  "Raise your DRATINI into a DRAGONITE,\nand the two of you can MEGA EVOLVE."))
+    setflag(FLAG_RECEIVED_DRAGONINITE)
+}
+
+script DraconidVillage_EventScript_LanceReceivedDratini {
+    bufferspeciesname(STR_VAR_1, SPECIES_DRATINI)
+    playfanfare(MUS_OBTAIN_ITEM)
+    message(format("{PLAYER} received a DRATINI from LANCE!"))
+    waitmessage
+    waitfanfare
+}
+
+script DraconidVillage_EventScript_LanceDragonite {
+    lock
+    faceplayer
+    waitse
+    playmoncry(SPECIES_DRAGONITE, CRY_MODE_NORMAL)
+    msgbox(format("DRAGONITE: Grooh!"))
+    waitmoncry
+    msgbox(format("LANCE's DRAGONITE is gazing up at the cliffs, as if it remembers them."))
+    release
+}
+
+text DraconidVillage_Text_LanceChallenge {
+    format("LANCE: {PLAYER}! As a CHAMPION, and as a DRACONID of the NORTHERN WING…\p"
+           "I, LANCE the dragon master, challenge you! Will you battle me?")
+}
+
+text DraconidVillage_Text_LanceGo {
+    format("LANCE: That's the spirit! Show me the tamer RAYQUAZA chose!")
+}
+
+text DraconidVillage_Text_LanceDefeat {
+    format("…It's over. The stories didn't\ndo you justice.")
+}
+
+text DraconidVillage_Text_LanceBloodRunsHot {
+    format("LANCE: It's been a long time since a battle made my blood run this hot.")
+}
+
+text DraconidVillage_Text_LanceComeBack {
+    format("LANCE: Come back when you have room. I'll hold on to my gifts until then.")
+}
+
+// ---------------------------------------------------------------------------
+// Movements
+// ---------------------------------------------------------------------------
+
+// down from the sky onto its tile (the DRAGONITE at (13, 12), LANCE on its back at (13, 11))
+movement DraconidVillage_Movement_LanceFlyDown {
+    fly_down
+}
+
+// LANCE from the DRAGONITE's back (13, 11) over its head to (13, 13)
+movement DraconidVillage_Movement_LanceLeapDown {
+    jump_2_down
+}
+
+// the player from the fly spot (8, 15) to below LANCE, (13, 14)
+movement DraconidVillage_Movement_LancePlayerToSquare {
+    walk_right * 5
+    walk_up
+}
+
+// the ELDER from (21, 13), on the path from his house, to LANCE's right, (14, 13)
+movement DraconidVillage_Movement_LanceElderArrives {
+    walk_left * 7
+}
+
+movement DraconidVillage_Movement_LanceElderLeaves {
+    walk_right * 7
+}
+
+// ASTER from (12, 9), below the shrine path, to LANCE's left, (12, 13)
+movement DraconidVillage_Movement_LanceAsterArrives {
+    walk_fast_down * 4
+}
+
+movement DraconidVillage_Movement_LanceAsterLeaves {
+    walk_up * 4
+}

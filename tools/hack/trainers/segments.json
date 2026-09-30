@@ -1085,7 +1085,8 @@
   "TRAINER_GRUNT_VICTORY_ROAD_EXIT": "S9",
   "TRAINER_GRUNT_POKEMON_LEAGUE_1": "S9",
   "TRAINER_GRUNT_POKEMON_LEAGUE_2": "S9",
-  "TRAINER_STEVEN_REMATCH": "POST"
+  "TRAINER_STEVEN_REMATCH": "POST",
+  "TRAINER_LANCE_DRACONID": "POST"
  },
  "info": {
   "TRAINER_SAWYER_1": {
@@ -7212,6 +7213,12 @@
    "segment": "POST",
    "role": "elite",
    "map": null,
+   "story": false
+  },
+  "TRAINER_LANCE_DRACONID": {
+   "segment": "POST",
+   "role": "route",
+   "map": "DraconidVillage",
    "story": false
   }
  }

@@ -112,7 +112,8 @@ Round 1 (feedback 1.28, D-195): also the evolution families of every species wil
 (`oras/oras_trainers.json`). Not used: legendaries and mythicals, and the Deino / Dreepy / Jangmo-o lines (reserved
 for the player and Aster).
 Exception: the Elite Four use their ORAS post-game rosters, which include species from all regions (D-173), and the
-Battle Frontier legends bring their own (Wes's Colosseum team, Red's and Blue's PWT teams; `LEGEND_TRAINERS`, D-226).
+Battle Frontier legends and Lance bring their own (Wes's Colosseum team, Red's, Blue's and Lance's PWT teams;
+`LEGEND_TRAINERS`, D-226, D-262).
 Story trainers (Brendan, May, Wally, Aster) have their own rosters (docs/hack_changes.md, Phase 5).
 
 ## Moves, abilities, items
@@ -138,7 +139,7 @@ Story trainers (Brendan, May, Wally, Aster) have their own rosters (docs/hack_ch
   Pillar (Act 7) and after the finale (Gyarados, D-252), gym leaders' last rematch tier (one thematic Mega, e.g.
   Roxanne's Aerodactyl, Wattson's Manectric, Flannery's Camerupt, Winona's Altaria), the Elite Four's post-game
   rematch (their ORAS Megas: Absol, Sableye, Glalie, Salamence; D-174), the story trainers late in the game, and
-  the Battle Frontier legends (Red's Charizard X, Blue's Alakazam; D-226).
+  the Battle Frontier legends (Red's Charizard X, Blue's Alakazam; D-226) and Lance (Dragonite; D-262).
   No Tera, Dynamax or Z-Moves.
 
 ## AI
@@ -371,6 +372,15 @@ multi battle. Blocks: `tools/hack/trainers/pwt/batch_frontier_legends.party` (+ 
 | `TRAINER_WES_FRONTIER_MULTI` / `PARTNER_WES` | Espeon (Reflect, Light Screen), Umbreon, Ho-Oh |
 | `TRAINER_RED_FRONTIER_MULTI` / `PARTNER_RED` | Pikachu (Fake Out), Venusaur, Charizard @ Charizardite X |
 | `TRAINER_BLUE_FRONTIER_MULTI` / `PARTNER_BLUE` | Arcanine, Gyarados (two Intimidates), Alakazam @ Alakazite |
+
+Lance (round 1 follow-up 25, D-262) waits in the Draconid village, not at the Frontier, but his team follows the
+same rules: his PWT team from the same page, Dragonite's Focus Sash turned into the Dragoninite and Dragonite moved
+last; levels 82–84, the ace 86; 3 Full Restores, the same AI. No tag team.
+
+| Id | Team (ace last) |
+|---|---|
+| `TRAINER_LANCE_DRACONID` | Salamence, Kingdra, Hydreigon, Haxorus, Flygon, Dragonite @ Dragoninite (Lv 82–86) |
+
 ### Second pass (round 1 follow-up, feedback 1.40, D-240 – D-242)
 
 "Make sure trainers are getting Gen 4–9 Pokémon too to spice things up." A **Gen 4–9 Pokémon** here is a species
@@ -1405,3 +1415,4 @@ give a species. `check_party.py` now resolves species aliases before it takes a 
 | RED_FRONTIER_MULTI | BattleFrontier_OutsideEast | route | 3 | 82–85 | Charizard 85 | pwt |
 | BLUE_FRONTIER_MULTI | BattleFrontier_OutsideEast | route | 3 | 83–85 | Alakazam 85 | pwt |
 | STEVEN_REMATCH |  | elite | 6 | 77–79 | Metagross 79 | oras-rematch |
+| LANCE_DRACONID | DraconidVillage | route | 6 | 82–86 | Dragonite 86 | pwt |

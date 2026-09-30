@@ -128,10 +128,10 @@ undercover. Everyone else may suspect (May's doubts, Steven's "strongest MAGMA g
 59. ✅ The Elite Four and **Champion Steven** rematch (ORAS post-game teams); after the finale **Wallace's rematch**
     (Mega Gyarados) by the Cave of Origin; Steven chats in his Meteor Falls cave.
 60. ✅ Battle Frontier: **Wes, Red, Blue** and the Legends' Tag.
-60a. 🚧 **Lance** comes to the Draconid village – Blackthorn's dragon clan is the Draconids' northern branch; he has
-     heard what the player did and challenges them (Mega Dragonite); he leaves a Dragoninite and stays for rematches.
 61. ⬜ Groudon (Magma Hideout) and Kyogre (Seafloor Cavern) catchable.
 62. ⬜ Prof. Oak visits the lab with the Z-Crystal of the second partner's type (from his cousin Samson Oak in Alola).
+63. ☑️ **Lance** lands in the Draconid village on a visit after the S.S. Ticket: his clan in Blackthorn is the
+    Draconids' Northern Wing; his PWT team with **Mega Dragonite**, then a Dratini and the Dragoninite; rematches.
 
 ## Rival battles at a glance
 | Rival | Battles (story order) |

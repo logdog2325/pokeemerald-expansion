@@ -172,7 +172,8 @@ ORAS_ROSTER_TRAINERS = re.compile(r"^TRAINER_(SIDNEY|PHOEBE|GLACIA|DRAKE)(_REMAT
 ORAS_MEGA_TRAINERS = re.compile(r"^TRAINER_(SIDNEY|PHOEBE|GLACIA|DRAKE)_REMATCH$")
 # Round 1 Battle Frontier legends (D-225, D-226): Wes's Colosseum team (Eeveelutions, the legendary beasts, Ho-Oh)
 # and Red's / Blue's PWT teams, species from every region; Red's Charizard and Blue's Alakazam Mega Evolve.
-LEGEND_TRAINERS = re.compile(r"^(TRAINER_(WES|RED|BLUE)_FRONTIER(_MULTI)?|PARTNER_(WES|RED|BLUE))$")
+# Lance in the Draconid village (D-262): his PWT team, Dragonite Mega Evolves.
+LEGEND_TRAINERS = re.compile(r"^(TRAINER_(WES|RED|BLUE)_FRONTIER(_MULTI)?|PARTNER_(WES|RED|BLUE)|TRAINER_LANCE_DRACONID)$")
 
 
 def min_level(species, parents):

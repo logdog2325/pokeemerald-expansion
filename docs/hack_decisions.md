@@ -1342,6 +1342,63 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   Fortree's badge for Fly). – Alt: May throws them at the player; Fly from Brendan "because May made him promise"
   (the audit's point: the same non-reason). – A hostile rival wouldn't give a MAGMA grunt a present, and Magma
   arming its own grunt fits Tabitha's orders.
+- **D-260 Lance's clan is the Draconids' NORTHERN WING** (feedback 1.56, follow-up 25: "he's also from the draconid
+  clan"): in canon Lance comes from the dragon clan of BLACKTHORN CITY in Johto (the Dragon's Den, the clan elder,
+  his cousin Clair). Here that clan is the Draconids' northern branch: generations ago some Draconid families followed
+  their dragons north across the sea and settled under a black mountain, which became Blackthorn; both branches kept
+  the old stories but lost touch. Lance tells it the way his clan's elder does (a southern home below the sky
+  dragon's shrine, the journey north) and names what their shrine still calls them, **the NORTHERN WING**; the Elder
+  knows the name from the clan's song ("One wing stayed to guard the sky. One wing flew north, and did not come
+  back.") and welcomes him home; Aster hears "Family, from far away". Lance calls himself a DRACONID of the NORTHERN
+  WING in his challenge. Left open: Clair, how many generations, and whether the Dragon's Den elder is Lance's
+  grandfather (canon doesn't settle it, so he says "our clan's elder"). – Alt: Blackthorn as a separate clan that
+  only admires the Draconids (not what the playtester asked); Lance learning his roots from the Elder (he would come
+  without a reason to). – Canon Blackthorn stays whole (the Dragon's Den and its Dratini, D-262), the playtester's
+  "also from the Draconid clan" is literal, and "wing" fits the Elder's sky imagery.
+- **D-261 Lance's arrival** (`data/scripts/draconid/lance.pory`): post-game only, from `VAR_DRACONID_FINALE_STATE` ≥
+  `FINALE_STATE_POSTGAME` (the Elder has brought the SS Ticket; the Act 7 village finale keeps that state). The
+  village's OnTransition **arms** it on the first post-game visit (`FLAG_DRACONID_LANCE_ARMED`) – that visit is the
+  SS Ticket's, as the ticket is given in the player's house – and it plays on a **later visit when the player stands
+  on the fly spot (8, 15)**: coming out of their front door, flying home, or walking out after a whiteout at home.
+  Entering anywhere else (the shrine, the other houses, up Draconid Pass) leaves it for the next visit. The scene: a
+  Dragonite's cry, the player looks round, the Dragonite swoops down (`fly_down`; its shadow runs ahead) onto the
+  square with Lance on its back, a flash as it lands, Lance leaps down in front of it (`jump_2_down`) and the player
+  walks over; the Elder comes along the path from his house and Aster runs down from the shrine path (scene-only
+  objects hidden by `FLAG_TEMP_1D`, D-136), then both walk back. **The square**: Lance at (13, 13) with his Dragonite
+  behind him at (13, 12), between the player's house and the main path – off the paths, away from the doors, the
+  Elder's house and the shrine path (where the Act 7 attack puts its grunts), and in view from the fly spot. Lance
+  heard that a Draconid wore Magma's red for the clan, "when the titans of land and sea woke, you held your ground"
+  (true of Sootopolis and of the village attack) and stood beside Rayquaza when the sky split. Declined, he waits on
+  the square and talking to him repeats the challenge. His FRLG overworld sprite has three frames and no walking
+  frames, so he never walks (`TODO(art)` if a later scene needs it). – Alt: the same visit as the SS Ticket (two big
+  scenes back to back); a day later by the clock (the playtester could wait without knowing why); any map change
+  (walking out of the house after the ticket would already count); landing wherever the player enters (seven
+  entrances, seven stagings to keep clear of the Act 7 objects); a coord trigger on the square (the village's map
+  events stay as they are for the Act 7 branch). – One staging, checked in screenshots; every way home (Fly, the
+  front door, a whiteout) ends on the fly spot; three flags, as budgeted.
+- **D-262 Lance's battle, gifts and rematch**: `TRAINER_LANCE_DRACONID` = 978 (937–977 are left to the other round 1
+  follow-up branches; `TRAINERS_COUNT_EMERALD` 979) and `MAX_TRAINERS_COUNT_EMERALD` 944 → **992** (the value the
+  Steven branch uses): 48 more trainer flags move the system flags to 0x8E0 and `SaveBlock1` grows 15580 → 15584
+  (`test/save.c`); saves from before don't carry over, as with D-229. Class **CHAMPION** (Emerald's; he is the
+  Champion of the Johto and Kanto League), so the Champion's battle music and prize (≈17,200 per win); FRLG pic;
+  `Music: Elite Four` (he was one in Kanto); the Blue mugshot (Drake's, Hoenn's dragon master); 3 Full Restores and
+  the legends' AI (`Smart Trainer / Prediction / Ace Pokemon`). **Team**: his **PWT Champions Tournament** team from
+  Serebii (`tools/hack/trainers/pwt/pwt_champions.json`, the source of D-226) – Salamence, Kingdra, Hydreigon, Haxorus,
+  Flygon, Dragonite, all dragons (not the Gyarados / Aerodactyl / Charizard of his Johto teams) – with the listed
+  items and moves; Dragonite's Focus Sash becomes the **Dragoninite** and Dragonite moves last as the ace (Mega
+  Dragonite, his only Mega). Levels 82–84, the ace 86 (Salamence 84, Hydreigon and Haxorus 83, Kingdra and Flygon
+  82), IVs 31; abilities, natures and EVs chosen here (Intimidate, Sniper, Levitate, Mold Breaker, Multiscale; Mega
+  Dragonite has the higher Sp. Atk, so a mixed Mild set). A **loss** is a normal whiteout, as with Aster's and
+  Nerine's post-game battles and the legends; Lance stays. The **first win**: "It's been a long time since a battle
+  made my blood run this hot.", then a **Dratini** (Lv 15 with Extreme Speed: the Dragon's Den gift of HGSS) and the
+  Dragoninite (`FLAG_RECEIVED_DRAGONINITE`; nothing is given unless both fit, so a full bag or PC means "come back"
+  and never a second Dratini). The Dratini is there because no Dratini line can be caught in this Hoenn (the only
+  wild Dratini slots are FireRed's Safari Zone maps), so the stone would have nobody to hold it. **Rematch**: whenever
+  asked (a YES/NO), the same team, like the Frontier legends (D-225). – Alt: a new "DRAGON MASTER" class (13
+  letters; a class name holds 12); his HGSS rematch team (the brief's fallback, but the PWT data exists); once a day
+  (a `FLAG_DAILY_*` flag; the legends' precedent is every time); the Dragoninite alone (useless without a Dratini);
+  Dratini in a Hoenn wild table (wild tables have their own rules and owner, docs/hack_wild.md). – The PWT roster is
+  the one the brief asked for, and the gifts make the Mega he shows off one the player can earn.
 - **D-266 Megas are the gimmick: no Terastallization, no Dynamax** (follow-up 26): `B_ALLOW_TERASTALLIZATION` and
   `B_ALLOW_DYNAMAX` (new, `include/config/battle.h`) are FALSE, and `CanTerastallize` / `CanDynamax` return FALSE for
   every battler outside the test suite. The trainer data never set a Tera type or Dynamax level (`check_party.py`

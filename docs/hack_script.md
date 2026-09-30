@@ -1756,6 +1756,89 @@ Draconid Emerald round 1 follow-up: the Battle Frontier legends (post-game, D-22
 - BLUE: Tch! Next time we win, got it?
 - What a battle! The LEGENDS' TAG is open any time.
 
+## data/scripts/draconid/lance.pory
+
+Draconid Emerald round 1 follow-up 25 (feedback 1.56): LANCE, a post-game boss in the Draconid village (D-260 - D-262).  Lore (D-260)     LANCE's dragon clan of BLACKTHORN CITY (JOHTO) is the DRACONIDS' NORTHERN WING: generations ago some DRACONIDS followed their dragons north and founded it. Both branches kept the old stories but lost touch; the ELDER knows the old name from the clan's songs. Arrival (D-261)  post-game only (VAR_DRACONID_FINALE_STATE >= FINALE_STATE_POSTGAME: the ELDER has brought the SS TICKET). The first village visit after that only arms it (FLAG_DRACONID_LANCE_ARMED); on a later one, when the player comes out of their house or flies home (both put them on the fly spot, LANCE_ARRIVAL_X/Y), a DRAGONITE swoops down onto the square with LANCE on its back, the ELDER and ASTER come over, and LANCE challenges the player. Declined, he waits in the village. Battle (D-262)   TRAINER_LANCE_DRACONID: his PWT team with MEGA DRAGONITE last. A loss whites out, like ASTER's and NERINE's post-game battles; he stays. The first win brings a DRATINI from the DRAGON'S DEN and the DRAGONINITE (FLAG_RECEIVED_DRAGONINITE); after that he battles again whenever asked.  Objects (DraconidVillage/map.json, the last four): LANCE (13, 13) with his DRAGONITE (13, 12) behind him, hidden by FLAG_HIDE_DRACONID_VILLAGE_LANCE until he lands (then cleared for good); the scene's ELDER (21, 13) and ASTER (12, 9), hidden by FLAG_TEMP_1D, which the OnTransition hook sets (scene-only objects, D-136). Hooks: DraconidVillage_OnTransition calls ..._LanceOnTransition; the village's OnFrame table runs ..._LanceArrives while VAR_TEMP_C is 1.
+
+### `DraconidVillage_EventScript_LanceArrives`
+- LANCE: So this is the DRACONID village.
+- The falls, the shrine on the cliff… It's just like the old stories.
+- LANCE: And you must be {PLAYER}.
+- I'm LANCE, the CHAMPION of the POKéMON LEAGUE in JOHTO and KANTO.
+- LANCE: News of you has reached as far as BLACKTHORN CITY.
+- They say a young DRACONID wore TEAM MAGMA's red for the clan's sake.
+- And that when the titans of land and sea woke, you held your ground.
+- LANCE: They even say you stood beside RAYQUAZA when the sky split open.
+- My DRAGONITE and I flew a long way to see if it was true.
+- ELDER: A DRAGONITE, landing in our village…
+- ELDER: Few travellers find this valley, and fewer still come on the wind.
+- Who are you, young man?
+- LANCE: Forgive me for dropping in like this, ELDER.
+- My name is LANCE. I come from the dragon clan of BLACKTHORN.
+- LANCE: Our clan's elder tells an old story.
+- Long ago, our ancestors lived in the south, below the sky dragon's shrine.
+- LANCE: Then some of them followed their dragons north across the sea.
+- They settled under a black mountain, and that became BLACKTHORN.
+- LANCE: At our shrine, the elders still call us by an old name…
+- The NORTHERN WING.
+- ELDER: …The NORTHERN WING.
+- ELDER: Our songs remember you.
+- “One wing stayed to guard the sky. One wing flew north, and did not come back.”
+- ELDER: We have sung that verse for generations, and wondered.
+- The NORTHERN WING has come home. Welcome, LANCE.
+- LANCE: Our elder would give anything to hear that song.
+- ASTER: ELDER! Did you see that DRAGONITE? It landed right in the…
+- ASTER: LANCE? The DRAGON MASTER of BLACKTHORN? Here?!
+- ELDER: He is of the NORTHERN WING, ASTER. Family, from far away.
+- ASTER: …Family. Hmph. Of course the famous LANCE turns out to be one of us.
+- ASTER: Riddle: what flies across the sea to battle someone it has never met?
+- A show-off. You're here for {PLAYER}, aren't you?
+- LANCE: Ha! She's got me.
+- A dragon master can't hear a story like that and not see it for himself.
+- LANCE: {PLAYER}! As a CHAMPION, and as a DRACONID of the NORTHERN WING…
+- I, LANCE the dragon master, challenge you! Will you battle me?
+- LANCE: Not yet? Fair enough. A tamer should choose the time.
+- My DRAGONITE could use a rest after that flight. I'll wait here.
+- ELDER: Stay as long as you wish, LANCE. This village is yours as much as ours.
+- ASTER: Hmph. Then I'll battle him myself!
+- …After some more training.
+- LANCE: That's the spirit! Show me the tamer RAYQUAZA chose!
+- LANCE: It's been a long time since a battle made my blood run this hot.
+- ELDER: Both wings of the clan, meeting in battle at last.
+- The old songs never dared hope for this.
+- ASTER: …Okay. I'm next.
+- Don't you dare fly off before I get my turn, LANCE.
+- LANCE: Ha ha! I'm not going anywhere just yet.
+- {PLAYER}, come and battle me whenever you like.
+
+### `DraconidVillage_EventScript_Lance`
+- LANCE: {PLAYER}! Ready to show me the tamer RAYQUAZA chose?
+- LANCE: Take your time. I'm enjoying the view.
+- LANCE: That's the spirit! Show me the tamer RAYQUAZA chose!
+- LANCE: It's been a long time since a battle made my blood run this hot.
+- LANCE: Come and battle me whenever you like, {PLAYER}. I'll be here a while.
+- LANCE: My dragons are still fired up from our last battle.
+- How about another round?
+- LANCE: The ELDER is teaching me the old songs. I'll be here a while.
+- LANCE: Then let's go! DRAGONITE and I won't hold back!
+- LANCE: Ha! Every battle with you teaches me something new.
+
+### `DraconidVillage_EventScript_LanceGifts`
+- LANCE: A tamer who earns our clan's respect receives a DRATINI.
+- I brought one from the DRAGON'S DEN, in case the stories were true.
+- LANCE: Come back when you have room. I'll hold on to my gifts until then.
+- LANCE: Come back when you have room. I'll hold on to my gifts until then.
+- LANCE: And take this, too.
+- LANCE: That's a DRAGONINITE, a MEGA STONE.
+- Raise your DRATINI into a DRAGONITE, and the two of you can MEGA EVOLVE.
+
+### `DraconidVillage_EventScript_LanceReceivedDratini`
+- {PLAYER} received a DRATINI from LANCE!
+
+### `DraconidVillage_EventScript_LanceDragonite`
+- DRAGONITE: Grooh!
+- LANCE's DRAGONITE is gazing up at the cliffs, as if it remembers them.
+
 ## data/scripts/draconid/maxie_calls.pory
 
 Draconid Emerald round 1: Maxie's PokéNav calls to the Magma recruit (D-186). After each key story point he rings once the player has walked MAXIE_CALL_STEPS steps outdoors (Draconid_ShouldDoMaxieCall, src/draconid.c) and names the next place to go. The first call is on Mr. Briney's boat (Route104_EventScript_SailToDewfordDadCalls). Call texts use a 188-pixel line: the call window starts the text after the PokéNav icon.

@@ -5,6 +5,7 @@ DraconidVillage_MapScripts::
 
 DraconidVillage_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	map_script_2 VAR_DRACONID_STATE, DRACONID_STATE_EGG_HATCHED, DraconidVillage_EventScript_RunningShoes
+	map_script_2 VAR_TEMP_C, 1, DraconidVillage_EventScript_LanceArrives
 	.2byte 0
 
 
@@ -14,6 +15,7 @@ DraconidVillage_OnTransition::
 	goto_if_ge DraconidVillage_OnTransition_2
 DraconidVillage_OnTransition_1:
 	call Draconid_EventScript_FinaleWeather
+	call DraconidVillage_EventScript_LanceOnTransition
 	return
 
 DraconidVillage_OnTransition_2:

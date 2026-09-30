@@ -1104,6 +1104,7 @@ gStdScripts_End::
 	.include "data/scripts/draconid/battle_items.inc"
 	.include "data/scripts/draconid/contradictions.inc"
 	.include "data/scripts/draconid/audit_fixes.inc"
+	.include "data/scripts/draconid/lance.inc"
 	.include "data/scripts/hall_of_fame.inc"
 	.include "data/scripts/hall_of_fame_frlg.inc"
 

@@ -971,18 +971,20 @@
 #define TRAINER_GRUNT_VICTORY_ROAD_EXIT     951
 #define TRAINER_GRUNT_POKEMON_LEAGUE_1      952
 #define TRAINER_GRUNT_POKEMON_LEAGUE_2      953
+// Draconid Emerald: LANCE of BLACKTHORN, the post-game boss in the Draconid village (lance.pory, D-262)
+#define TRAINER_LANCE_DRACONID              978
 
 // NOTE: Because each Trainer uses a flag to determine when they are defeated, there is only space for 9 additional trainers before trainer flag space overflows
 // Draconid Emerald: MAX_TRAINERS_COUNT_EMERALD raised from 864 so Nerine's variants fit (D-101); system flags move up
 //       928 -> 944 for the Battle Frontier legends and the finale (D-229): 16 more trainer flags, 2 save bytes
 //       937 of 944 used (924: Zinnia, Act 7): 7 spare ids before MAX_TRAINERS_COUNT_EMERALD must grow again
 //       937 - 956 for Team Magma's revenge and the Aqua gauntlet (D-249); 957+ the village finale
-//       944 -> 992 for the round 1 v2 follow-ups (D-251): 976 is Steven's Champion rematch; 48 more trainer flags,
+//       944 -> 992 for the round 1 v2 follow-ups (D-251): 976 is Steven's Champion rematch, 978 Lance (D-262); 48 more trainer flags,
 //       6 flag bytes (SaveBlock1 +4, test/save.c)
 //       More space can be made by shifting flags around in constants/flags.h or changing how trainer flags are handled
 //       MAX_TRAINERS_COUNT can be increased but will take up additional saveblock space
 
-#define TRAINERS_COUNT_EMERALD     977
+#define TRAINERS_COUNT_EMERALD     979
 #define MAX_TRAINERS_COUNT_EMERALD 992
 
 #if IS_FRLG

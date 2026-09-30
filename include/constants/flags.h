@@ -683,9 +683,9 @@
 #define FLAG_UNUSED_0x274  0x274 // Unused Flag
 #define FLAG_UNUSED_0x275  0x275 // Unused Flag
 #define FLAG_UNUSED_0x276  0x276 // Unused Flag
-#define FLAG_UNUSED_0x277  0x277 // Unused Flag
-#define FLAG_UNUSED_0x278  0x278 // Unused Flag
-#define FLAG_UNUSED_0x279  0x279 // Unused Flag
+#define FLAG_DRACONID_LANCE_ARMED           0x277 // Draconid Emerald: set on the first village visit of the post-game; LANCE lands on a later one (D-261)
+#define FLAG_HIDE_DRACONID_VILLAGE_LANCE    0x278 // Draconid Emerald: LANCE and his DRAGONITE in the village; cleared for good when he lands (D-261)
+#define FLAG_RECEIVED_DRAGONINITE           0x279 // Draconid Emerald: LANCE's gifts after the first win, a DRATINI and the DRAGONINITE (D-262)
 #define FLAG_UNUSED_0x27A  0x27A // Unused Flag
 #define FLAG_UNUSED_0x27B  0x27B // Unused Flag
 #define FLAG_UNUSED_0x27C  0x27C // Unused Flag
