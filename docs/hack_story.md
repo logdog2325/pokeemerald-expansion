@@ -139,3 +139,6 @@ Petalburg Woods recruitment/outfit change, Maxie's first meeting at Meteor Falls
 
 ### Follow-up note 3 (round 1)
 - "also make it so theres no trade evolutions pokemon just evovle at a set level and if possible add a few more brendan and may battles and have it be so you can get battle items throughout the story start with simple type boosting items like black glasses spell tag etc and then as the game progresses choice band choice scarf rocky helmet etc maybe make them sold in stores? figure out the best way to implement that scales with the games difficulty"
+
+### Follow-up note 4 (round 1)
+- "and also more wally battles and have them be really hostile to you because there trying to stop team magma and protect hoenn not knowing your true mission"
