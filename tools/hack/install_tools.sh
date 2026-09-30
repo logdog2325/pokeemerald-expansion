@@ -73,7 +73,19 @@ if [ ! -x "$PORYSCRIPT_BIN" ] || [ "$("$PORYSCRIPT_BIN" -v 2>/dev/null)" != "$PO
     (cd "$TOOLS_SRC/poryscript" && go build -o "$PORYSCRIPT_BIN" .)
 fi
 
-# 4. Porytiles (optional) -> tools/porytiles/porytiles
+# 4. Headless emulator runner (libmgba) -> tools/hack/emu/gbarun, used for screenshot smoke tests
+GBARUN_BIN="$ROOT/tools/hack/emu/gbarun"
+if [ ! -x "$GBARUN_BIN" ] || [ "$ROOT/tools/hack/emu/gbarun.c" -nt "$GBARUN_BIN" ]; then
+    if [ ! -f /usr/include/mgba/core/core.h ]; then apt_install libmgba-dev; fi
+    if [ -f /usr/include/mgba/core/core.h ]; then
+        log "building gbarun"
+        gcc -O2 -Wall -o "$GBARUN_BIN" "$ROOT/tools/hack/emu/gbarun.c" -lmgba -lpng
+    else
+        log "libmgba-dev missing; skipping tools/hack/emu/gbarun"
+    fi
+fi
+
+# 5. Porytiles (optional) -> tools/porytiles/porytiles
 PORYTILES_BIN="$ROOT/tools/porytiles/porytiles"
 if [ "$WANT_PORYTILES" = 1 ] && [ ! -x "$PORYTILES_BIN" ]; then
     log "building porytiles (this takes a while)"

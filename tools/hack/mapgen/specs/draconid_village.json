@@ -1,0 +1,228 @@
+{
+  "name": "DraconidVillage",
+  "map_id": "MAP_DRACONID_VILLAGE",
+  "layout_id": "LAYOUT_DRACONID_VILLAGE",
+  "brush": "general_fallarbor",
+  "grid": [
+    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT~~~~TTTTTT",
+    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT~~~~TTTTTT",
+    "TTTT..........................~~~~..TTTT",
+    "TTTT##########################||||##TTTT",
+    "TTTT##########################||||##TTTT",
+    "TTTT##########################||||##TTTT",
+    "TTTT........TT...............~~~~~~.TTTT",
+    "TTTT........TT...............~~~~~~.TTTT",
+    "TTTT.........................~~~~~~.TTTT",
+    "TTTT................................TTTT",
+    "TTTT...............==.............TTTTTT",
+    "TTTT...............==.............TTTTTT",
+    "TTTT...............======.........TTTTTT",
+    "TTTT...............======.........TTTTTT",
+    "TTTT...............==...............TTTT",
+    "TTTT....=============...............TTTT",
+    "TTTT....=============...............TTTT",
+    "TTTT...............==...............TTTT",
+    "TTTT...............===========......TTTT",
+    "TTTT...............===========......TTTT",
+    "TTTTTT.............==...............TTTT",
+    "TTTTTT.............==...............TTTT",
+    "TTTTTT.............==...TT....TTTT..TTTT",
+    "TTTTTT.............==...TT....TTTT..TTTT",
+    "TTTT........=========...TT....TTTT..TTTT",
+    "TTTT........=========...TT....TTTT..TTTT",
+    "TTTTTTTTTTTTTTTTTT.==.TTTTTTTTTTTTTTTTTT",
+    "TTTTTTTTTTTTTTTTTT.==.TTTTTTTTTTTTTTTTTT",
+    "TTTTTTTTTTTTTTTTTT.==.TTTTTTTTTTTTTTTTTT",
+    "TTTTTTTTTTTTTTTTTT.==.TTTTTTTTTTTTTTTTTT"
+  ],
+  "variety": {
+    "ground": 0.06
+  },
+  "stamps": [
+    {
+      "from": "FallarborTown",
+      "rect": [
+        5,
+        13,
+        4,
+        5
+      ],
+      "at": [
+        7,
+        10
+      ],
+      "mask": [
+        "..xx",
+        "xxxx",
+        "xxxx",
+        "xxxx",
+        "xxxx"
+      ]
+    },
+    {
+      "from": "Route114",
+      "rect": [
+        25,
+        33,
+        5,
+        4
+      ],
+      "at": [
+        22,
+        8
+      ]
+    },
+    {
+      "from": "Route113",
+      "rect": [
+        32,
+        2,
+        4,
+        4
+      ],
+      "at": [
+        28,
+        14
+      ]
+    },
+    {
+      "from": "FallarborTown",
+      "rect": [
+        5,
+        13,
+        4,
+        5
+      ],
+      "at": [
+        11,
+        19
+      ],
+      "mask": [
+        "..xx",
+        "xxxx",
+        "xxxx",
+        "xxxx",
+        "xxxx"
+      ]
+    },
+    {
+      "from": "FallarborTown",
+      "rect": [
+        1,
+        14,
+        3,
+        3
+      ],
+      "at": [
+        18,
+        7
+      ]
+    },
+    {
+      "from": "Route113",
+      "rect": [
+        3,
+        7,
+        4,
+        3
+      ],
+      "at": [
+        6,
+        18
+      ]
+    },
+    {
+      "from": "Route113",
+      "rect": [
+        8,
+        7,
+        4,
+        3
+      ],
+      "at": [
+        32,
+        15
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "at": [
+        19,
+        4
+      ],
+      "block": "347:1:0"
+    },
+    {
+      "at": [
+        19,
+        5
+      ],
+      "block": "34F:0:3"
+    },
+    {
+      "at": [
+        17,
+        6
+      ],
+      "block": "2AF:1:0"
+    },
+    {
+      "at": [
+        21,
+        6
+      ],
+      "block": "2BF:1:0"
+    },
+    {
+      "at": [
+        16,
+        9
+      ],
+      "block": "2BF:1:0"
+    },
+    {
+      "at": [
+        27,
+        21
+      ],
+      "block": "2AF:1:0"
+    },
+    {
+      "at": [
+        18,
+        11
+      ],
+      "block": "003:1:0"
+    },
+    {
+      "at": [
+        6,
+        14
+      ],
+      "block": "003:1:0"
+    }
+  ],
+  "border": {
+    "blocks": [
+      "26B:0:0",
+      "26C:0:0",
+      "273:0:0",
+      "274:0:0"
+    ]
+  },
+  "header": {
+    "music": "MUS_FALLARBOR",
+    "region_map_section": "MAPSEC_DRACONID_VILLAGE",
+    "weather": "WEATHER_SUNNY",
+    "map_type": "MAP_TYPE_TOWN",
+    "show_map_name": true
+  },
+  "group": "gMapGroup_TownsAndRoutes",
+  "events": {
+    "object_events": [],
+    "warp_events": [],
+    "coord_events": [],
+    "bg_events": []
+  }
+}

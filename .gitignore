@@ -73,3 +73,4 @@ tools/porytiles/porytiles
 # Porymap decoration scripts are source, not build output
 !tools/hack/porymap_scripts/*.js
 __pycache__/
+tools/hack/emu/gbarun

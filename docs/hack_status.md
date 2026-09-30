@@ -14,11 +14,12 @@ Other docs: [decisions](hack_decisions.md) · [changes](hack_changes.md) · [too
 - [x] Poryscript 3.6.1 wired into the build (`poryscript_rules.mk`, generated `.inc` committed)
 - [x] Porytiles 2.0.0 built from source (clang + libc++), `tools/porytiles/porytiles`
 - [ ] Porytiles build integration (`make tilesets`) + first custom tileset
-- [ ] Porymap scripts (`tools/hack/porymap_scripts/`: decorate + auto-tile) + register script
-- [~] Map tools (`tools/hack/mapgen/`): renderer [x], inspector [x], learner/auto-tiler [ ], builder [ ], new-map writer [ ]
+- [x] Porymap scripts (`tools/hack/porymap_scripts/`: decorate + auto-tile) + register script (logic checked under a Node API mock)
+- [x] Map tools (`tools/hack/mapgen/`): renderer, inspector, learner/auto-tiler (self-test 90%+), spec builder + writer
 - [x] Art tools (`tools/hack/art/`): validate, quantize, recolor, kitbash, contact sheet
-- [ ] `CLAUDE.md` + SessionStart hook
-- [ ] `docs/hack_resources.md`
+- [x] `CLAUDE.md` + SessionStart hook (validated: toolchain, Pillow, Poryscript)
+- [x] `docs/hack_resources.md`, `docs/hack_tools.md`
+- [x] Headless emulator runner `tools/hack/emu/gbarun` (libmgba): scripted input + screenshots
 - [x] Debug menu: expansion default `DISABLED_ON_RELEASE` = on in `make`, off in `make release` (R + Start)
 
 ## Phase 1 – Draconid village

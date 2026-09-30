@@ -393,3 +393,25 @@ class ObjectGfx:
 @lru_cache(maxsize=None)
 def object_gfx():
     return ObjectGfx()
+
+
+@lru_cache(maxsize=None)
+def behavior_names():
+    """MB_* names indexed by value, parsed from include/constants/metatile_behaviors.h."""
+    text = open(rel("include/constants/metatile_behaviors.h")).read()
+    body = text[text.index("{") + 1:text.index("}")]
+    names, value = [], 0
+    for line in body.splitlines():
+        line = line.split("//")[0].strip().rstrip(",")
+        if not line.startswith("MB_"):
+            continue
+        if "=" in line:
+            name, v = [s.strip() for s in line.split("=")]
+            value = int(v, 0)
+        else:
+            name = line
+        while len(names) <= value:
+            names.append(None)
+        names[value] = name
+        value += 1
+    return names
