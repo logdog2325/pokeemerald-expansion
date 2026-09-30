@@ -1,0 +1,425 @@
+// Draconid Emerald round 1 follow-ups (feedback 1.32, 1.34, part of 1.25; D-234 – D-239): two more battles
+// each for BRENDAN, MAY and WALLY in Acts 1–5, and the rivals' Littleroot bedrooms by reputation.
+// While the player wears the MAGMA uniform they don't know the mission: they fight to stop TEAM MAGMA and
+// protect HOENN, so every line here is hostile (docs/hack_voices.md). The full rival schedule is in the
+// header of data/scripts/draconid/rivals.pory.
+//
+// Each fight is marked done by its trainer's own flag (defeated(...)), no new state values: the states
+// in include/constants/draconid.h stay as they were. Standalone fights are must-win (a loss whites out
+// and the trigger is still armed on the way back); fights the story doesn't bring the player back to,
+// or that come straight after a Gym, use trainerbattle_earlyrival with RIVAL_BATTLE_HEAL_AFTER (D-235).
+
+// ---------------------------------------------------------------------------
+// BRENDAN, Route 104 (S2): after MR. STONE's letter, BRENDAN comes out of MR. BRINEY's cottage, the vanilla
+// rival spot. The DEVON scientist's PokéNav scene in Rustboro arms VAR_ROUTE104_STATE 1 (the vanilla
+// trigger (17, 51) below the cottage door, the only way in), Route104_EventScript_RivalTrigger comes here.
+// The rival object (LOCALID_ROUTE104_RIVAL, VAR_OBJ_GFX_ID_0 = BRENDAN from Route104_OnTransition) stays
+// hidden by FLAG_HIDE_ROUTE_104_RIVAL: addobject shows it for the scene only.
+// ---------------------------------------------------------------------------
+
+script Route104_EventScript_DraconidBrendan {
+    lockall
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp)
+    waitmovement(0)
+    delay(10)
+    playse(SE_DOOR)
+    addobject(LOCALID_ROUTE104_RIVAL)
+    applymovement(LOCALID_PLAYER, Route104_Movement_PlayerBackUp)
+    waitmovement(0)
+    applymovement(LOCALID_ROUTE104_RIVAL, Route104_Movement_RivalExitBrineysCottage)
+    waitmovement(0)
+    playbgm(MUS_ENCOUNTER_BRENDAN, FALSE)
+    playse(SE_PIN)
+    applymovement(LOCALID_ROUTE104_RIVAL, Common_Movement_ExclamationMark)
+    waitmovement(0)
+    msgbox(format("BRENDAN: There you are, {PLAYER}.\p"
+                  "I figured you'd come for MR. BRINEY's boat sooner or later."))
+    msgbox(format("BRENDAN: I told my dad about you, like I said I would.\p"
+                  "You know what he said? “Give {PLAYER} a chance.”\p"
+                  "A chance?! You're wearing THEIR uniform!"))
+    msgbox(format("BRENDAN: So where's MAGMA sending you now?\p"
+                  "…Fine, don't tell me. Then battle me!"))
+    closemessage
+    trainerbattle_no_intro(TRAINER_BRENDAN_ROUTE_104, Route104_Text_DraconidBrendanDefeat)
+    msgbox(format("BRENDAN: Tch… Go on, then. Get on your boat.\p"
+                  "But if MAGMA hurts anyone in DEWFORD, I'm coming after you."))
+    closemessage
+    applymovement(LOCALID_ROUTE104_RIVAL, Route104_Movement_DraconidBrendanLeave)
+    waitmovement(0)
+    removeobject(LOCALID_ROUTE104_RIVAL)
+    settrainerflag(TRAINER_BRENDAN_ROUTE_104)
+    setvar(VAR_ROUTE104_STATE, 2)
+    savebgm(MUS_DUMMY)
+    fadedefaultbgm
+    releaseall
+}
+
+text Route104_Text_DraconidBrendanDefeat {
+    format("Tch… You got even stronger.")
+}
+
+// from (17, 51), in front of the door, past the sign (20, 50) and north toward PETALBURG WOODS
+movement Route104_Movement_DraconidBrendanLeave {
+    walk_right * 4
+    walk_up * 8
+}
+
+// ---------------------------------------------------------------------------
+// WALLY, Route 112 (S4): after METEOR FALLS, before MT. CHIMNEY. The MAGMA grunts who blocked the cable car
+// have gone up the mountain, and WALLY (who wanted the LAVARIDGE hot springs for his lungs) stands where
+// they stood, behind the gap in the fence (26/27, 30), the only way to the station door. Shown while
+// VAR_MAGMA_STATE is MAGMA_STATE_METEOR_FALLS and he was beaten in MAUVILLE (FLAG_TEMP_11 otherwise);
+// VAR_TEMP_2 1 arms the triggers. Must-win.
+// ---------------------------------------------------------------------------
+
+script Route112_EventScript_DraconidOnTransition {
+    if (var(VAR_MAGMA_STATE) == MAGMA_STATE_METEOR_FALLS && flag(FLAG_DEFEATED_WALLY_MAUVILLE) && !defeated(TRAINER_WALLY_ROUTE_112)) {
+        setvar(VAR_TEMP_2, 1)
+    } else {
+        setflag(FLAG_TEMP_11)
+    }
+}
+
+// the coord triggers (26, 30) / (27, 30) and WALLY's object (27, 29) run this
+script Route112_EventScript_DraconidWally {
+    lockall
+    playbgm(MUS_ENCOUNTER_MAY, FALSE)
+    playse(SE_PIN)
+    applymovement(LOCALID_ROUTE112_WALLY, Common_Movement_ExclamationMark)
+    waitmovement(0)
+    getplayerxy(VAR_0x8004, VAR_0x8005)
+    if (var(VAR_0x8004) == 26) {
+        applymovement(LOCALID_ROUTE112_WALLY, Route112_Movement_DraconidWallyStepLeft)
+        waitmovement(0)
+    }
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp)
+    waitmovement(0)
+    msgbox(format("WALLY: {PLAYER}! Stop right there!"))
+    msgbox(format("WALLY: MAGMA grunts blocked this station for days.\p"
+                  "My uncle and I were going up to the hot springs in LAVARIDGE. They're good for my lungs."))
+    msgbox(format("WALLY: Now everyone says MAGMA is up on MT. CHIMNEY.\p"
+                  "Something terrible is going to happen, isn't it?\p"
+                  "I won't let you go up there!"))
+    closemessage
+    trainerbattle_no_intro(TRAINER_WALLY_ROUTE_112, Route112_Text_DraconidWallyDefeat)
+    msgbox(format("WALLY: …Go, then. I can't stop you.\p"
+                  "But if anything happens to LAVARIDGE, I'll never forgive you, {PLAYER}!"))
+    closemessage
+    getplayerxy(VAR_0x8004, VAR_0x8005)
+    if (var(VAR_0x8004) == 26) {
+        applymovement(LOCALID_ROUTE112_WALLY, Route112_Movement_DraconidWallyLeaveRight)
+    } else {
+        applymovement(LOCALID_ROUTE112_WALLY, Route112_Movement_DraconidWallyLeaveLeft)
+    }
+    waitmovement(0)
+    removeobject(LOCALID_ROUTE112_WALLY)
+    settrainerflag(TRAINER_WALLY_ROUTE_112)
+    setvar(VAR_TEMP_2, 0)
+    savebgm(MUS_DUMMY)
+    fadedefaultbgm
+    releaseall
+}
+
+text Route112_Text_DraconidWallyDefeat {
+    format("I lost… But I'm not scared of you!")
+}
+
+// the player came into the left tile of the gap (26, 30): WALLY faces them from (26, 29)
+movement Route112_Movement_DraconidWallyStepLeft {
+    walk_left
+    face_down
+}
+
+// from (26, 29), round the player through the right tile of the gap and down the path
+movement Route112_Movement_DraconidWallyLeaveRight {
+    walk_right
+    walk_down * 4
+    walk_left
+    walk_down * 4
+}
+
+// from (27, 29), round the player through the left tile of the gap and down the path
+movement Route112_Movement_DraconidWallyLeaveLeft {
+    walk_left
+    walk_down * 8
+}
+
+// ---------------------------------------------------------------------------
+// MAY, Lavaridge (S5): the vanilla GO-GOGGLES scene (OnFrame, VAR_LAVARIDGE_TOWN_STATE 1 after the Heat
+// Badge) battles first: LavaridgeTown_EventScript_MayGiveGoGoggles calls this, then gives the GO-GOGGLES
+// with her reworked hand-over line. It comes straight out of the GYM, and the GO-GOGGLES are needed for the
+// desert, so a loss heals and the scene goes on (early-rival battle).
+// ---------------------------------------------------------------------------
+
+script LavaridgeTown_EventScript_DraconidMayBattle {
+    msgbox(format("MAY: {PLAYER}. So you're still wearing that uniform.\p"
+                  "The whole town is talking about what MAGMA tried on MT. CHIMNEY."))
+    msgbox(format("MAY: People here nearly lost their homes!\p"
+                  "I'm not letting a MAGMA grunt walk away from that. Battle me!"))
+    closemessage
+    trainerbattle_earlyrival(TRAINER_MAY_LAVARIDGE, RIVAL_BATTLE_HEAL_AFTER, LavaridgeTown_Text_DraconidMayDefeat, LavaridgeTown_Text_DraconidMayVictory)
+    if (var(VAR_RESULT) == TRUE) {
+        msgbox(format("MAY: See? MAGMA can't win every time."))
+    } else {
+        msgbox(format("MAY: Tch… You're even stronger than on ROUTE 110."))
+    }
+}
+
+text LavaridgeTown_Text_DraconidMayDefeat {
+    format("Yikes! Still too strong…")
+}
+
+text LavaridgeTown_Text_DraconidMayVictory {
+    format("That one was for LAVARIDGE!")
+}
+
+// ---------------------------------------------------------------------------
+// WALLY, Route 120 (S6): after the WEATHER INSTITUTE, at the east end of the south bridge (x 34, rows 67 and
+// 68), which every way from FORTREE to LILYCOVE crosses (a two-tile cut of the route). He waits on the
+// bridge (33, 67) while VAR_WALLY_STATE is WALLY_STATE_LILYCOVE (beaten in PETALBURG, not yet in LILYCOVE);
+// if the player reached LILYCOVE another way and beat him there first, this fight is skipped. Must-win.
+// ---------------------------------------------------------------------------
+
+script Route120_EventScript_DraconidOnTransition {
+    if (var(VAR_WALLY_STATE) == WALLY_STATE_LILYCOVE && !defeated(TRAINER_WALLY_ROUTE_120)) {
+        setvar(VAR_TEMP_2, 1)
+    } else {
+        setflag(FLAG_TEMP_13)
+    }
+}
+
+// the coord triggers (34, 67) / (34, 68) and WALLY's object (33, 67) run this
+script Route120_EventScript_DraconidWally {
+    lockall
+    playbgm(MUS_ENCOUNTER_MAY, FALSE)
+    playse(SE_PIN)
+    applymovement(LOCALID_ROUTE120_WALLY, Common_Movement_ExclamationMark)
+    waitmovement(0)
+    getplayerxy(VAR_0x8004, VAR_0x8005)
+    if (var(VAR_0x8005) == 68) {
+        applymovement(LOCALID_ROUTE120_WALLY, Route120_Movement_DraconidWallyStepDown)
+        waitmovement(0)
+    }
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft)
+    waitmovement(0)
+    msgbox(format("WALLY: {PLAYER}. I knew you'd come this way."))
+    msgbox(format("WALLY: The people at the WEATHER INSTITUTE were tied up in their own building!\p"
+                  "Everyone on ROUTE 119 says MAGMA was there, too."))
+    msgbox(format("WALLY: I'm not the boy who needed help catching RALTS anymore.\p"
+                  "This time, I'm going to stop you!"))
+    closemessage
+    trainerbattle_no_intro(TRAINER_WALLY_ROUTE_120, Route120_Text_DraconidWallyDefeat)
+    msgbox(format("WALLY: …I'll get stronger. Strong enough to protect everyone from MAGMA.\p"
+                  "Next time, {PLAYER}, I won't lose."))
+    closemessage
+    applymovement(LOCALID_ROUTE120_WALLY, Route120_Movement_DraconidWallyLeave)
+    waitmovement(0)
+    removeobject(LOCALID_ROUTE120_WALLY)
+    settrainerflag(TRAINER_WALLY_ROUTE_120)
+    setvar(VAR_TEMP_2, 0)
+    savebgm(MUS_DUMMY)
+    fadedefaultbgm
+    releaseall
+}
+
+text Route120_Text_DraconidWallyDefeat {
+    format("Why…? Why can't I beat you?")
+}
+
+movement Route120_Movement_DraconidWallyStepDown {
+    walk_down
+    face_right
+}
+
+// west across the bridge, the way the player is going
+movement Route120_Movement_DraconidWallyLeave {
+    walk_left * 10
+}
+
+// ---------------------------------------------------------------------------
+// BRENDAN, Jagged Pass (S7): GROUDON has just woken in the MAGMA HIDEOUT (MAGMA_STATE_PROMOTED). When the
+// player comes out of the hideout (its door (16, 18); the player steps out to (16, 19)) BRENDAN runs up
+// the pass. JaggedPass_OnTransition calls ..._DraconidOnTransition (VAR_TEMP_2 1 = the OnFrame scene;
+// his object is scene-only, FLAG_TEMP_11). The story doesn't bring the player back here, so a loss heals
+// and the scene goes on (early-rival battle).
+// ---------------------------------------------------------------------------
+
+script JaggedPass_EventScript_DraconidOnTransition {
+    setflag(FLAG_TEMP_11)
+    if (var(VAR_MAGMA_STATE) == MAGMA_STATE_PROMOTED && !defeated(TRAINER_BRENDAN_JAGGED_PASS)) {
+        getplayerxy(VAR_0x8004, VAR_0x8005)
+        if (var(VAR_0x8004) == 16 && var(VAR_0x8005) >= 18 && var(VAR_0x8005) <= 19) {
+            setvar(VAR_TEMP_2, 1)
+        }
+    }
+}
+
+script JaggedPass_EventScript_DraconidBrendan {
+    lockall
+    setvar(VAR_TEMP_2, 0)
+    playbgm(MUS_ENCOUNTER_BRENDAN, FALSE)
+    addobject(LOCALID_JAGGED_PASS_BRENDAN)
+    applymovement(LOCALID_JAGGED_PASS_BRENDAN, JaggedPass_Movement_DraconidBrendanApproach)
+    waitmovement(0)
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft)
+    waitmovement(0)
+    msgbox(format("BRENDAN: {PLAYER}! What did MAGMA do in there?!"))
+    msgbox(format("BRENDAN: The ground shook all the way to LITTLEROOT.\p"
+                  "My dad says something huge woke up under this mountain."))
+    msgbox(format("BRENDAN: MAY keeps saying you're one of the good guys.\p"
+                  "Then why did you just walk out of MAGMA's hideout?!\p"
+                  "Forget it. Battle me!"))
+    closemessage
+    trainerbattle_earlyrival(TRAINER_BRENDAN_JAGGED_PASS, RIVAL_BATTLE_HEAL_AFTER, JaggedPass_Text_DraconidBrendanDefeat, JaggedPass_Text_DraconidBrendanVictory)
+    if (var(VAR_RESULT) == TRUE) {
+        msgbox(format("BRENDAN: I beat you. …But whatever woke up in there is still loose."))
+    } else {
+        msgbox(format("BRENDAN: Tch… All that strength, and you use it for MAGMA."))
+    }
+    msgbox(format("BRENDAN: I'm going to find out what MAGMA did down there.\p"
+                  "And if MAGMA gets in my way again, that means you, too!"))
+    closemessage
+    applymovement(LOCALID_JAGGED_PASS_BRENDAN, JaggedPass_Movement_DraconidBrendanLeave)
+    waitmovement(0)
+    removeobject(LOCALID_JAGGED_PASS_BRENDAN)
+    savebgm(MUS_DUMMY)
+    fadedefaultbgm
+    releaseall
+}
+
+text JaggedPass_Text_DraconidBrendanDefeat {
+    format("Argh! Not again!")
+}
+
+text JaggedPass_Text_DraconidBrendanVictory {
+    format("How's that?! MAGMA's not so tough!")
+}
+
+// from (8, 18), off-screen to the west, along row 19 to (15, 19), beside the player
+movement JaggedPass_Movement_DraconidBrendanApproach {
+    walk_fast_down
+    walk_fast_right * 7
+}
+
+movement JaggedPass_Movement_DraconidBrendanLeave {
+    walk_left * 8
+}
+
+// ---------------------------------------------------------------------------
+// MAY, Mossdeep (S8): after the SPACE CENTER raid (MAGMA_STATE_SPACE_CENTER), BRENDAN has called her. When
+// the player comes out of the SPACE CENTER (its door (64, 15)) she runs up the steps from the south.
+// MossdeepCity_OnTransition calls ..._DraconidOnTransition (VAR_TEMP_2 1 = the OnFrame scene; her object
+// is scene-only, FLAG_TEMP_11). The player doesn't come back to this door, so a loss heals and the scene
+// goes on (early-rival battle). Then she flies off, as in LILYCOVE.
+// ---------------------------------------------------------------------------
+
+script MossdeepCity_EventScript_DraconidOnTransition {
+    setflag(FLAG_TEMP_11)
+    if (var(VAR_MAGMA_STATE) == MAGMA_STATE_SPACE_CENTER && !defeated(TRAINER_MAY_MOSSDEEP)) {
+        getplayerxy(VAR_0x8004, VAR_0x8005)
+        if (var(VAR_0x8004) == 64 && var(VAR_0x8005) <= 16) {
+            setvar(VAR_TEMP_2, 1)
+        }
+    }
+}
+
+script MossdeepCity_EventScript_DraconidMay {
+    lockall
+    setvar(VAR_TEMP_2, 0)
+    playbgm(MUS_ENCOUNTER_MAY, FALSE)
+    addobject(LOCALID_MOSSDEEP_MAY)
+    applymovement(LOCALID_MOSSDEEP_MAY, MossdeepCity_Movement_DraconidMayApproach)
+    waitmovement(0)
+    msgbox(format("MAY: {PLAYER}!"))
+    msgbox(format("MAY: BRENDAN called me from the SPACE CENTER. MAGMA tried to steal ROCKET FUEL?!\p"
+                  "And you were right there with them again!"))
+    msgbox(format("MAY: He says STEVEN is sticking up for you. …Why would he?\p"
+                  "Forget it! I'll find out for myself. Battle me!"))
+    closemessage
+    trainerbattle_earlyrival(TRAINER_MAY_MOSSDEEP, RIVAL_BATTLE_HEAL_AFTER, MossdeepCity_Text_DraconidMayDefeat, MossdeepCity_Text_DraconidMayVictory)
+    if (var(VAR_RESULT) == TRUE) {
+        msgbox(format("MAY: MAGMA's going to lose, {PLAYER}. Just like you did."))
+    } else {
+        msgbox(format("MAY: Tch… Fine. You win this one."))
+    }
+    msgbox(format("MAY: Whatever MAGMA does next, BRENDAN and I will be there to stop it.\p"
+                  "And that means stopping you, too."))
+    closemessage
+    applymovement(LOCALID_MOSSDEEP_MAY, Common_Movement_WalkInPlaceFasterDown)
+    waitmovement(0)
+    delay(30)
+    setfieldeffectargument(0, 1)
+    dofieldeffect(FLDEFF_NPCFLY_OUT)
+    delay(15)
+    removeobject(LOCALID_MOSSDEEP_MAY)
+    waitfieldeffect(FLDEFF_NPCFLY_OUT)
+    savebgm(MUS_DUMMY)
+    fadedefaultbgm
+    releaseall
+}
+
+text MossdeepCity_Text_DraconidMayDefeat {
+    format("No way… Not even BLAZIKEN's MEGA EVOLUTION?!")
+}
+
+text MossdeepCity_Text_DraconidMayVictory {
+    format("That's what you get for helping MAGMA!")
+}
+
+// from (64, 23), below the steps, up to (64, 17), in front of the player at the door
+movement MossdeepCity_Movement_DraconidMayApproach {
+    walk_fast_up * 6
+}
+
+// ---------------------------------------------------------------------------
+// Littleroot bedrooms: BRENDAN and MAY are home from LILYCOVE (act4.pory) until the Hall of Fame. Their
+// objects' script (map.json) is one of these: hostile while the player wears the uniform, warm after the
+// SOOTOPOLIS turn; the vanilla RivalsHouse_2F_EventScript_Rival otherwise (never reached: they only come
+// home after LILYCOVE).
+// ---------------------------------------------------------------------------
+
+script LittlerootTown_BrendansHouse_2F_EventScript_DraconidBrendan {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(format("BRENDAN: {PLAYER}?! What are you doing in my room?\p"
+                      "You've got some nerve, walking into LITTLEROOT in that uniform."))
+        msgbox(format("BRENDAN: My dad still thinks you're a good kid.\p"
+                      "…Get out before he sees you."))
+        release
+        end
+    } elif (var(VAR_DRACONID_REPUTATION) == REPUTATION_REVEALED) {
+        lock
+        faceplayer
+        msgbox(format("BRENDAN: Oh… {PLAYER}. Hey.\p"
+                      "I was just checking my POKéDEX."))
+        msgbox(format("BRENDAN: About SOOTOPOLIS… I said some pretty rotten things to you.\p"
+                      "Don't make me say sorry twice, okay?"))
+        release
+        end
+    }
+    goto(RivalsHouse_2F_EventScript_Rival)
+}
+
+script LittlerootTown_MaysHouse_2F_EventScript_DraconidMay {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(format("MAY: {PLAYER}? You walked all the way into LITTLEROOT in that uniform?\p"
+                      "If MAGMA sent you to spy on us, you can go right back."))
+        msgbox(format("MAY: I'm not battling you in my own room.\p"
+                      "But I'm not letting you out of my sight, either."))
+        release
+        end
+    } elif (var(VAR_DRACONID_REPUTATION) == REPUTATION_REVEALED) {
+        lock
+        faceplayer
+        msgbox(format("MAY: {PLAYER}! Come in, come in!\p"
+                      "I was just checking my POKéDEX. Look how many POKéMON we've seen!"))
+        msgbox(format("MAY: Hehe! My mom keeps asking about you.\p"
+                      "The MAGMA grunt who saved HOENN, right here in my room!"))
+        release
+        end
+    }
+    goto(RivalsHouse_2F_EventScript_Rival)
+}

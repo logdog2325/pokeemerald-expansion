@@ -234,7 +234,7 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   Pass, battle deep in Meteor Falls, the **Mega Ring at Jagged Pass** (made from the meteorite fragment; no
   battle), the Rayquaza calling at Sky Pillar with Nerine (scene), the Sky Pillar finale double battle, post-game.
   The second starter's Mega Stone is a Draconid gift in Lavaridge.
-- **D-106 Rival schedule (round 1)**: May – Route 103, Route 110, Lilycove (double), Sootopolis partner option,
+- **D-106 Rival schedule (round 1)** *(more battles: D-234; the Latis: D-237)*: May – Route 103, Route 110, Lilycove (double), Sootopolis partner option,
   post-game; Brendan – Rustboro city edge, Mt. Chimney (not a must-win), Route 119, Lilycove (double), Mossdeep
   with Steven (not a must-win), Sootopolis partner option, post-game. Teams from the round 1 notes: Brendan
   Sceptile / Mightyena / Swellow / Slaking / Magcargo / Latios, May Blaziken / Beautifly / Wailord / Tropius /
@@ -375,7 +375,7 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   to the Elder (a narrated letter a traveller carries to the mountains). Maxie's Magma Hideout team (and its Mega
   Camerupt, D-066) is not fought here any more. – Alt: keep the battle as a "test"; a call to the Elder (he has
   no PokéNav). – The story cuts the battle; a letter needs no new object or item.
-- **D-135 Lilycove and Wally (round 1)** *(the rivals' tone: D-211)*: the v1 fights and staging stay, with new lines. Before the double,
+- **D-135 Lilycove and Wally (round 1)** *(the rivals' tone: D-211; Wally's: D-236)*: the v1 fights and staging stay, with new lines. Before the double,
   Brendan and May argue about the player (Brendan hurt but unsure since Route 119, May sure the player is secretly
   good); afterwards both go home to Littleroot as in v1. Wally trusts what he saw in Mauville, at the Petalburg
   Gym door ("MR. NORMAN", May's dad) and in Lilycove. – The add-on.
@@ -542,7 +542,7 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   and the Seafloor Cavern (story states, `src/draconid.c`). Only the latest due call plays; none after the
   Sootopolis turn. – Alt: calls at the end of each scene (they would ring in the middle of the aftermath);
   Maxie in the Match Call list (needs a new entry with his own call texts). – The playtester's note.
-- **D-187 Rival staging and the level audit**: Brendan's first fight (Rustboro, after Petalburg Woods) is
+- **D-187 Rival staging and the level audit** *(the Latis: D-237)*: Brendan's first fight (Rustboro, after Petalburg Woods) is
   Poochyena, Taillow, Slakoth and Treecko at 10–13 (IVs 15, since the player may have only their dragon there);
   each later fight grows the team the way ORAS does (Mt. Chimney 5 with Grovyle and Slugma, the Latis after the
   Balance Badge, all six from Route 119 / Lilycove). May: Torchic on Route 103, four on Route 110, six at
@@ -844,6 +844,66 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   (as with D-101). The partners are `PARTNER_WES`/`_RED`/`_BLUE` (14–16, `PARTNER_COUNT` 17). – Alt: reuse the
   unused vanilla `TRAINER_RED` (851; still no room for the rest); 936 (only three spare ids). – One raise for this
   round.
+- **D-234 More rival battles: the schedule** (feedback 1.32 "a few more Brendan and May battles", 1.34 "more Wally
+  battles"): two more each in Acts 1–5, placed where a rival had no fight for two segments and the story gives them
+  a reason to be there, on the player's only way forward (segment = level-cap band, docs/hack_trainers.md).
+  **Brendan**: Route 104 at Mr. Briney's cottage (S2, after Mr. Stone's letter – he told his dad, and Birch's "give
+  them a chance" makes him angrier; the vanilla rival spot and trigger, armed again by the Devon scientist) and
+  Jagged Pass as the player walks out of the Magma Hideout (S7, Groudon has just woken: the ground shook "all the
+  way to LITTLEROOT"). **May**: Lavaridge before the Go-Goggles (S5, the vanilla scene out of the Gym: the town
+  nearly lost its homes to MT. CHIMNEY) and Mossdeep outside the Space Center (S8, Brendan called her after the
+  raid; her one crack is "STEVEN is sticking up for you. …Why would he?"). **Wally**: Route 112 at the cable car
+  (S4, after Meteor Falls, where the Magma grunts had blocked it – he wanted the Lavaridge hot springs for his
+  lungs – and Magma has gone up the mountain) and Route 120's south bridge (S6, after the Weather Institute; the
+  bridge is a two-tile cut of every way from Fortree to Lilycove). Every segment from S1 to S8 now has a rival
+  fight; the closest pair is Wally's Route 120 and Lilycove battles (Route 121 apart; the Lilycove one is talk-to,
+  so the player picks when). The fights are marked done by their own trainer flags, so no
+  state value was added or renumbered and none of the free flags (0x36–0x38, 0x44, 0x4C, 0x4D) is used; scene-only
+  objects use temp flags (D-136). Out of the uniform era, Wally's Victory Road battle stays with Acts 6–7. – Alt
+  (the brief's list): May in Slateport after the museum (right before her Route 110 fight, which is where she first
+  sees the uniform); Brendan on Route 117 or at Fortree (Route 117 is a dead end off the way, Fortree comes right
+  after his Route 119 fight); Wally in Verdanturf (optional, easily missed) or at Mt. Pyre's foot (right after his
+  Lilycove fight, no level growth). – On the way, spread out, and each one reacts to something Magma just did.
+- **D-235 Can the new fights be lost?** The existing rule: a fight on its own is a must-win vanilla battle (a loss
+  whites out and the trigger is still armed when the player comes back, as in Rustboro, Route 110, Route 119 and
+  Petalburg), a fight inside a scene the player can't come back to is `trainerbattle_earlyrival` with
+  `RIVAL_BATTLE_HEAL_AFTER` (a loss heals and the rival's line follows the result, D-122/D-124). So Route 104,
+  Route 112 and Route 120 are must-win (the boat, the cable car and the way to Lilycove bring the player back);
+  Lavaridge (straight out of the Gym, and the Go-Goggles are needed for the desert), Jagged Pass and Mossdeep (the
+  story never returns to the hideout or the Space Center door) are early-rival. Each scene also sets its trainer
+  flag at its end, so a mashed test run with no whiteout can't replay it. – Alt: all must-win (a lost Jagged Pass or
+  Mossdeep fight would be gone for good); all early-rival (rivals would stop blocking anything).
+- **D-236 Wally in the uniform era** (feedback 1.34 "really hostile … trying to stop Team Magma and protect Hoenn,
+  not knowing your true mission"; supersedes D-135's "Wally trusts what he saw"): normally gentle, now angry and
+  brave. Mauville: "You helped me catch RALTS! How could you join TEAM MAGMA?", his uncle wants the player away
+  from him and from Verdanturf, and his PokéNav registration is to know where to find the player "if MAGMA hurts
+  anyone"; Route 112: he won't let the player up the mountain; Petalburg: the smoke over Mt. Chimney, "you'll have
+  to get past me"; Route 120: the Weather Institute; Lilycove: the Key Stone is "to protect people". Short, plain
+  sentences like Brendan's and May's (docs/hack_voices.md); his health shows (the hot springs, "I didn't cough
+  once") but not as self-pity. His Lilycove line says KIRLIA evolved (he had Kirlia since Petalburg). – Alt: Wally
+  scared but trusting (D-135, the round 1 story's version). – The playtester's note.
+- **D-237 No Latis before the finale** (part of feedback 1.25: "they shouldn't get their Lati until close to the
+  climax"; supersedes the Lati part of D-106 and D-187): Latios and Latias are gone from every Brendan / May team
+  and partner team of Acts 1–5 (Route 119, the Lilycove double, the Space Center tag, the Sootopolis partners). The
+  singles and the double keep five; the half parties that need three take a member of the given team instead:
+  Brendan's Space Center Mightyena, the Sootopolis partners May's Tropius (Wide Guard for the multi battle) and
+  Brendan's Swellow. The post-game lab teams keep theirs; the Acts 6–7 work brings the Latis in near the climax.
+  – Alt: another species in the sixth slot (the round 1 notes give each rival exactly six). – The note.
+- **D-238 Teams of the new fights**: from the round 1 rosters, growing between the neighbouring fights at the top of
+  each segment's band (the rivals are bosses, default IVs): Brendan Route 104 Poochyena / Taillow / Slakoth 17,
+  Grovyle 19 (between Rustboro's four at 10–13 and Mt. Chimney's five at 27–29); Jagged Pass Mightyena / Swellow /
+  Magcargo 42, Slaking 43, Sceptile 44. May Lavaridge Wailmer / Beautifly / Skitty / Tropius 31, Combusken 33
+  (Tropius joins); Mossdeep Delcatty / Beautifly 45, Tropius / Wailord 46, Blaziken 47 with its **Blazikenite** –
+  her Mega shows up in the same segment as Brendan's at the Space Center (D-106: the rivals' Megas from Mossdeep).
+  Wally Route 112 Roselia / Swablu 25, Kirlia 27; Route 120 Roselia / Altaria / Magneton / Delcatty 36, Kirlia 38
+  (Gallade only in Lilycove, with the Dawn Stone story). `check_party.py --caps --proc` 0 errors. – Alt: May's
+  Mega only at Sootopolis (her Mossdeep fight would be weaker than Brendan's tag half a segment earlier).
+- **D-239 The rivals' bedrooms**: after Lilycove both go home (act4) and stay until the Hall of Fame, so their
+  Littleroot bedroom lines only meet the uniform and the revealed player: in uniform Brendan tells the player to
+  get out before his dad sees them and May won't let them out of her sight; after the turn Brendan is awkward
+  ("Don't make me say sorry twice, okay?") and May cheerful. Each object's `script` in `map.json` points at its own
+  line (both used to run May's vanilla text). – Alt: a reputation branch inside the vanilla shared script (it can't
+  tell the two houses apart without a map check).
 - **D-243 The rivals' PokéNav calls follow the story and the reputation**: Brendan's, May's and Wally's Match Call
   texts (vanilla neighbour chat and tips) are replaced by `data/scripts/draconid/rival_calls.pory`. Each rival has two
   tables in `src/pokenav_match_call_data.c`: one while the player wears the uniform and one after the Sootopolis

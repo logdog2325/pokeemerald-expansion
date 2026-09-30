@@ -2,6 +2,7 @@ JaggedPass_MapScripts::
 	map_script MAP_SCRIPT_ON_RESUME, JaggedPass_OnResume
 	map_script MAP_SCRIPT_ON_TRANSITION, JaggedPass_OnTransition
 	map_script MAP_SCRIPT_ON_LOAD, JaggedPass_OnLoad
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, JaggedPass_OnFrame  @ Draconid Emerald: BRENDAN after GROUDON wakes (rivals2.pory)
 	.byte 0
 
 JaggedPass_OnResume:
@@ -20,7 +21,12 @@ JaggedPass_EventScript_SetReadyToOpenHideout::
 
 JaggedPass_OnTransition:
 	call_if_eq VAR_JAGGED_PASS_ASH_WEATHER, 1, JaggedPass_EventScript_SetWeatherAsh
+	call JaggedPass_EventScript_DraconidOnTransition  @ Draconid Emerald
 	end
+
+JaggedPass_OnFrame:  @ Draconid Emerald
+	map_script_2 VAR_TEMP_2, 1, JaggedPass_EventScript_DraconidBrendan
+	.2byte 0
 
 JaggedPass_EventScript_SetWeatherAsh::
 	setweather WEATHER_VOLCANIC_ASH

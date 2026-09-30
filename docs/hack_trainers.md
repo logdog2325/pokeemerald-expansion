@@ -444,6 +444,7 @@ multi battle. Blocks: `tools/hack/trainers/pwt/batch_frontier_legends.party` (+ 
 | NERINE_RUSTURF_JANGMO_O_CHARMANDER |  | route | 4 | 14–17 | Dreepy 17 | story |
 | NERINE_RUSTURF_JANGMO_O_TOTODILE |  | route | 4 | 14–17 | Dreepy 17 | story |
 | NERINE_RUSTURF_JANGMO_O_TREECKO |  | route | 4 | 14–17 | Dreepy 17 | story |
+| BRENDAN_ROUTE_104 | Route104 | route | 4 | 17–19 | Grovyle 19 | story |
 
 ### S3 (cap 25) – Slateport, Route 110, Mauville, Wattson
 
@@ -591,6 +592,7 @@ multi battle. Blocks: `tools/hack/trainers/pwt/batch_frontier_legends.party` (+ 
 | NERINE_MT_CHIMNEY_JANGMO_O_CHARMANDER |  | route | 5 | 27–29 | Drakloak 29 | story |
 | NERINE_MT_CHIMNEY_JANGMO_O_TOTODILE |  | route | 5 | 27–29 | Drakloak 29 | story |
 | NERINE_MT_CHIMNEY_JANGMO_O_TREECKO |  | route | 5 | 27–29 | Drakloak 29 | story |
+| WALLY_ROUTE_112 | Route112 | route | 3 | 25–27 | Kirlia 27 | story |
 
 ### S5 (cap 34) – Desert, Norman
 
@@ -617,6 +619,7 @@ multi battle. Blocks: `tools/hack/trainers/pwt/batch_frontier_legends.party` (+ 
 | BRYAN | Route111 | route | 3 | 28–29 | Sandslash 29 | enhanced + Sigilyph |
 | BRANDEN | Route111 | route | 3 | 28–29 | Nuzleaf 29 | enhanced |
 | WALLY_PETALBURG | PetalburgCity | route | 4 | 30–33 | Kirlia 33 | story |
+| MAY_LAVARIDGE | LavaridgeTown | route | 5 | 31–33 | Combusken 33 | story |
 
 ### S6 (cap 38) – Surf routes, Abandoned Ship, Route 119, Weather Institute, Winona
 
@@ -705,7 +708,7 @@ multi battle. Blocks: `tools/hack/trainers/pwt/batch_frontier_legends.party` (+ 
 | AMY_AND_LIV_2 | Route103 | route t2 | 4 | 32–34 | Minun 34 | emerald-rematch |
 | DUNCAN | AbandonedShip_Corridors_B1F | route | 4 | 33–34 | Machoke 34 | enhanced + Frillish |
 | EDWIN_2 | Route110 | route t2 | 4 | 33–34 | Shiftry 34 | emerald-rematch |
-| BRENDAN_ROUTE_119 | Route119 | route | 6 | 35–37 | Sceptile 37 | story |
+| BRENDAN_ROUTE_119 | Route119 | route | 5 | 35–37 | Sceptile 37 | story |
 | ISAAC_2 | Route117 | route t2 | 4 | 33–34 | Hariyama 34 | emerald-rematch |
 | GARRISON | AbandonedShip_Rooms2_1F | route | 4 | 32–34 | Sandslash 34 | enhanced |
 | LYDIA_2 | Route117 | route t2 | 4 | 33–34 | Azumarill 34 | emerald-rematch |
@@ -746,6 +749,7 @@ multi battle. Blocks: `tools/hack/trainers/pwt/batch_frontier_legends.party` (+ 
 | CORY_2 | Route108 | route t2 | 4 | 33–35 | Tentacruel 35 | emerald-rematch |
 | SAWYER_2 | MtChimney | route t2 | 4 | 33–35 | Golem 35 | emerald-rematch + Coalossal |
 | THALIA_2 | AbandonedShip_Rooms_1F | route t2 | 4 | 34–35 | Seadra 35 | emerald-rematch |
+| WALLY_ROUTE_120 | Route120 | route | 5 | 36–38 | Kirlia 38 | story |
 
 ### S7 (cap 44) – Routes 120-134, Mt. Pyre, Lilycove, both hideouts, Tate & Liza
 
@@ -947,9 +951,9 @@ multi battle. Blocks: `tools/hack/trainers/pwt/batch_frontier_legends.party` (+ 
 | KIRA_AND_DAN_3 | AbandonedShip_Rooms2_1F | route t3 | 4 | 39–40 | Illumise 40 | emerald-rematch |
 | KEIGO | Route120 | route | 4 | 35–36 | Ninjask 36 | enhanced + Skuntank |
 | RILEY | Route120 | route | 4 | 35–36 | Ninjask 36 | enhanced |
-| BRENDAN_LILYCOVE | LilycoveCity | route | 6 | 40–43 | Sceptile 43 | story |
+| BRENDAN_LILYCOVE | LilycoveCity | route | 5 | 40–43 | Sceptile 43 | story |
 | WALLY_LILYCOVE | LilycoveCity | route | 5 | 40–43 | Gallade 43 | story |
-| MAY_LILYCOVE | LilycoveCity | route | 6 | 40–43 | Blaziken 43 | story |
+| MAY_LILYCOVE | LilycoveCity | route | 5 | 40–43 | Blaziken 43 | story |
 | JONAH | Route127 | route | 4 | 37–39 | Sharpedo 39 | enhanced + Wishiwashi |
 | HENRY | Route127 | route | 4 | 37–39 | Tentacruel 39 | enhanced |
 | ROGER | Route127 | route | 4 | 37–39 | Sharpedo 39 | oras-first |
@@ -1022,6 +1026,7 @@ multi battle. Blocks: `tools/hack/trainers/pwt/batch_frontier_legends.party` (+ 
 | NERINE_AQUA_HIDEOUT_JANGMO_O_CHARMANDER |  | route | 6 | 41–44 | Feraligatr 44 | story |
 | NERINE_AQUA_HIDEOUT_JANGMO_O_TOTODILE |  | route | 6 | 41–44 | Sceptile 44 | story |
 | NERINE_AQUA_HIDEOUT_JANGMO_O_TREECKO |  | route | 6 | 41–44 | Charizard 44 | story |
+| BRENDAN_JAGGED_PASS | JaggedPass | route | 5 | 42–44 | Sceptile 44 | story |
 
 ### S8 (cap 48) – Space Center, Seafloor Cavern, Sky Pillar, Juan
 
@@ -1131,6 +1136,7 @@ multi battle. Blocks: `tools/hack/trainers/pwt/batch_frontier_legends.party` (+ 
 | NERINE_SEAFLOOR_JANGMO_O_CHARMANDER |  | route | 6 | 45–48 | Feraligatr 48 | story |
 | NERINE_SEAFLOOR_JANGMO_O_TOTODILE |  | route | 6 | 45–48 | Sceptile 48 | story |
 | NERINE_SEAFLOOR_JANGMO_O_TREECKO |  | route | 6 | 45–48 | Charizard 48 | story |
+| MAY_MOSSDEEP | MossdeepCity | route | 5 | 45–47 | Blaziken 47 | story |
 
 ### S9 (cap 60) – Victory Road, Elite Four, Champion
 

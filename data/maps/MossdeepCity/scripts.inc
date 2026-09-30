@@ -1,5 +1,6 @@
 MossdeepCity_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, MossdeepCity_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, MossdeepCity_OnFrame  @ Draconid Emerald: MAY after the SPACE CENTER raid (rivals2.pory)
 	.byte 0
 
 MossdeepCity_OnTransition:
@@ -8,7 +9,12 @@ MossdeepCity_OnTransition:
 	clearflag FLAG_MOSSDEEP_GYM_SWITCH_3
 	clearflag FLAG_MOSSDEEP_GYM_SWITCH_4
 	call_if_set FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetAbnormalWeather
+	call MossdeepCity_EventScript_DraconidOnTransition  @ Draconid Emerald
 	end
+
+MossdeepCity_OnFrame:  @ Draconid Emerald
+	map_script_2 VAR_TEMP_2, 1, MossdeepCity_EventScript_DraconidMay
+	.2byte 0
 
 MossdeepCity_EventScript_PokefanF::
 	lock

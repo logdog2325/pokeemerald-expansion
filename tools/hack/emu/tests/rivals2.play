@@ -1,0 +1,127 @@
+# Flow test for the rival battles of D-234 (data/scripts/draconid/rivals2.pory): Brendan at Mr. Briney's
+# cottage (Route 104), Wally at the Route 112 cable car, May before the Go-Goggles (Lavaridge), Wally on
+# Route 120's south bridge, Brendan outside the Magma Hideout (Jagged Pass), May outside the Space Center
+# (Mossdeep), and Brendan's and May's bedrooms by reputation. Needs rustboro_done.ss from tests/rustboro.play
+# (a one-Pokémon party, so a mashed battle ends when it faints); each scene's story state is set by hand and
+# the scene reached with the debug warp (doors are warped onto, so the real door exit plays). Battles are
+# mashed with the no-whiteout flag on, so this checks the scripts, not the balance.
+loadstate rustboro_done.ss
+setflag FLAG_DEBUG_NO_ENCOUNTER
+setflag FLAG_DEBUG_NO_TRAINER_SEE
+setflag FLAG_DRACONID_NO_WHITEOUT
+
+# --- Route 104: Brendan comes out of Mr. Briney's cottage (the trigger (17, 51) below its door) ---
+# VAR_ROUTE104_STATE 1 is what the Devon scientist's PokéNav scene leaves behind
+setvar VAR_ROUTE104_STATE 1
+warp MAP_ROUTE104 17 54
+path Route104 17 54 17 52
+walk UP 51
+run 90
+shot r2_10_route104_brendan
+mash A 60000
+shot r2_11_after_route104
+expect_opponent TRAINER_BRENDAN_ROUTE_104
+expect_trainer TRAINER_BRENDAN_ROUTE_104 1
+expect_var VAR_ROUTE104_STATE 2
+expect_flag FLAG_HIDE_ROUTE_104_RIVAL 1
+
+# --- Route 112: Wally behind the gap in the fence below the cable car (after Meteor Falls) ---
+heal
+# what Meteor Falls leaves behind: MAGMA_STATE_METEOR_FALLS (5), the cable car grunts gone
+setvar VAR_MAGMA_STATE 5
+setflag FLAG_HIDE_ROUTE_112_TEAM_MAGMA
+setflag FLAG_DEFEATED_WALLY_MAUVILLE
+warp MAP_ROUTE112 26 33
+path Route112 26 33 26 31
+walk UP 30
+run 60
+shot r2_20_route112_wally
+mash A 60000
+shot r2_21_after_route112
+expect_opponent TRAINER_WALLY_ROUTE_112
+expect_trainer TRAINER_WALLY_ROUTE_112 1
+
+# --- Lavaridge: May battles before the Go-Goggles (out of the Gym, after the Heat Badge; a loss heals) ---
+heal
+setvar VAR_MAGMA_STATE 6
+setflag FLAG_BADGE04_GET
+setvar VAR_LAVARIDGE_TOWN_STATE 1
+warp MAP_LAVARIDGE_TOWN 5 15
+run 150
+shot r2_30_lavaridge_may
+mash A 90000
+shot r2_31_after_lavaridge
+expect_opponent TRAINER_MAY_LAVARIDGE
+expect_trainer TRAINER_MAY_LAVARIDGE 1
+expect_flag FLAG_RECEIVED_GO_GOGGLES 1
+expect_item ITEM_GO_GOGGLES 1
+expect_var VAR_LAVARIDGE_TOWN_STATE 2
+
+# --- Route 120: Wally on the south bridge (beaten in Petalburg, not yet in Lilycove); the lower row ---
+heal
+setvar VAR_MAGMA_STATE 7
+setvar VAR_WALLY_STATE 2
+warp MAP_ROUTE120 36 68
+walk LEFT 34
+run 60
+shot r2_40_route120_wally
+mash A 60000
+shot r2_41_after_route120
+expect_opponent TRAINER_WALLY_ROUTE_120
+expect_trainer TRAINER_WALLY_ROUTE_120 1
+expect_var VAR_WALLY_STATE 2
+
+# --- Jagged Pass: Brendan as the player comes out of the Magma Hideout (after the promotion) ---
+heal
+setvar VAR_MAGMA_STATE 9
+setvar VAR_JAGGED_PASS_STATE 2
+warp MAP_JAGGED_PASS 16 18
+run 180
+shot r2_50_jagged_brendan
+mash A 90000
+shot r2_51_after_jagged
+expect_opponent TRAINER_BRENDAN_JAGGED_PASS
+expect_trainer TRAINER_BRENDAN_JAGGED_PASS 1
+
+# --- Mossdeep: May as the player comes out of the Space Center (after the raid) ---
+heal
+setvar VAR_MAGMA_STATE 10
+warp MAP_MOSSDEEP_CITY 64 15
+run 180
+shot r2_60_mossdeep_may
+mash A 90000
+shot r2_61_after_mossdeep
+expect_opponent TRAINER_MAY_MOSSDEEP
+expect_trainer TRAINER_MAY_MOSSDEEP 1
+
+# --- Littleroot bedrooms (they come home after Lilycove): hostile in uniform, warm after the turn ---
+heal
+clearflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_BEDROOM
+clearflag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_RIVAL_BEDROOM
+setvar VAR_DRACONID_REPUTATION 1
+warp MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F 7 3
+path LittlerootTown_BrendansHouse_2F 7 3 7 2
+press A 2 60
+shot r2_70_brendan_room_uniform
+mash A 20000
+warp MAP_LITTLEROOT_TOWN_MAYS_HOUSE_2F 1 3
+path LittlerootTown_MaysHouse_2F 1 3 1 2
+press A 2 60
+shot r2_71_may_room_uniform
+mash A 20000
+setvar VAR_DRACONID_REPUTATION 2
+warp MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F 7 3
+path LittlerootTown_BrendansHouse_2F 7 3 7 2
+press A 2 60
+shot r2_72_brendan_room_revealed
+mash A 20000
+warp MAP_LITTLEROOT_TOWN_MAYS_HOUSE_2F 1 3
+path LittlerootTown_MaysHouse_2F 1 3 1 2
+press A 2 60
+shot r2_73_may_room_revealed
+mash A 20000
+savestate rivals2_done.ss
+
+clearflag FLAG_DEBUG_NO_ENCOUNTER
+clearflag FLAG_DEBUG_NO_TRAINER_SEE
+clearflag FLAG_DRACONID_NO_WHITEOUT

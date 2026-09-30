@@ -604,6 +604,20 @@
       "trainer_sight_or_berry_tree_id": "ITEM_REVIVE",
       "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_ROUTE_120_REVIVE"
+    },
+    {
+      "local_id": "LOCALID_ROUTE120_WALLY",
+      "graphics_id": "OBJ_EVENT_GFX_WALLY",
+      "x": 33,
+      "y": 67,
+      "elevation": 4,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Route120_EventScript_DraconidWally",
+      "flag": "FLAG_TEMP_13"
     }
   ],
   "warp_events": [
@@ -755,6 +769,24 @@
       "y": 75,
       "elevation": 3,
       "weather": "COORD_EVENT_WEATHER_SUNNY_CLOUDS"
+    },
+    {
+      "type": "trigger",
+      "x": 34,
+      "y": 67,
+      "elevation": 0,
+      "var": "VAR_TEMP_2",
+      "var_value": "1",
+      "script": "Route120_EventScript_DraconidWally"
+    },
+    {
+      "type": "trigger",
+      "x": 34,
+      "y": 68,
+      "elevation": 0,
+      "var": "VAR_TEMP_2",
+      "var_value": "1",
+      "script": "Route120_EventScript_DraconidWally"
     }
   ],
   "bg_events": [

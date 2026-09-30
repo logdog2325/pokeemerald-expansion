@@ -5,6 +5,7 @@ Route112_MapScripts::
 Route112_OnTransition:
 	clearflag FLAG_FORCE_MIRAGE_TOWER_VISIBLE
 	setvar VAR_JAGGED_PASS_ASH_WEATHER, 0
+	call Route112_EventScript_DraconidOnTransition  @ Draconid Emerald: WALLY at the cable car (rivals2.pory)
 	end
 
 Route112_EventScript_MagmaGrunts::

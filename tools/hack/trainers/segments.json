@@ -1060,7 +1060,13 @@
   "TRAINER_BLUE_FRONTIER": "POST",
   "TRAINER_WES_FRONTIER_MULTI": "POST",
   "TRAINER_RED_FRONTIER_MULTI": "POST",
-  "TRAINER_BLUE_FRONTIER_MULTI": "POST"
+  "TRAINER_BLUE_FRONTIER_MULTI": "POST",
+  "TRAINER_BRENDAN_ROUTE_104": "S2",
+  "TRAINER_WALLY_ROUTE_112": "S4",
+  "TRAINER_MAY_LAVARIDGE": "S5",
+  "TRAINER_WALLY_ROUTE_120": "S6",
+  "TRAINER_BRENDAN_JAGGED_PASS": "S7",
+  "TRAINER_MAY_MOSSDEEP": "S8"
  },
  "info": {
   "TRAINER_SAWYER_1": {
@@ -7038,6 +7044,42 @@
    "role": "route",
    "map": "BattleFrontier_OutsideEast",
    "story": false
+  },
+  "TRAINER_BRENDAN_ROUTE_104": {
+   "segment": "S2",
+   "role": "route",
+   "map": "Route104",
+   "story": true
+  },
+  "TRAINER_WALLY_ROUTE_112": {
+   "segment": "S4",
+   "role": "route",
+   "map": "Route112",
+   "story": true
+  },
+  "TRAINER_MAY_LAVARIDGE": {
+   "segment": "S5",
+   "role": "route",
+   "map": "LavaridgeTown",
+   "story": true
+  },
+  "TRAINER_WALLY_ROUTE_120": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route120",
+   "story": true
+  },
+  "TRAINER_BRENDAN_JAGGED_PASS": {
+   "segment": "S7",
+   "role": "route",
+   "map": "JaggedPass",
+   "story": true
+  },
+  "TRAINER_MAY_MOSSDEEP": {
+   "segment": "S8",
+   "role": "route",
+   "map": "MossdeepCity",
+   "story": true
   }
  }
 }

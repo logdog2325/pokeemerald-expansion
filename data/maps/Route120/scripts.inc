@@ -55,6 +55,7 @@ Route120_EventScript_SetBridgeKecleonMovement::
 
 Route120_OnTransition:
 	call GabbyAndTy_EventScript_UpdateLocation
+	call Route120_EventScript_DraconidOnTransition  @ Draconid Emerald: WALLY on the south bridge (rivals2.pory)
 	call Route120_EventScript_SetWeather
 	end
 

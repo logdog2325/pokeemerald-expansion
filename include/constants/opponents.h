@@ -939,6 +939,13 @@
 #define TRAINER_WES_FRONTIER_MULTI          928
 #define TRAINER_RED_FRONTIER_MULTI          929
 #define TRAINER_BLUE_FRONTIER_MULTI         930
+// Draconid Emerald: more rival battles in Acts 1-5 (rivals2.pory, D-234)
+#define TRAINER_BRENDAN_ROUTE_104           931
+#define TRAINER_WALLY_ROUTE_112             932
+#define TRAINER_MAY_LAVARIDGE               933
+#define TRAINER_WALLY_ROUTE_120             934
+#define TRAINER_BRENDAN_JAGGED_PASS         935
+#define TRAINER_MAY_MOSSDEEP                936
 
 // NOTE: Because each Trainer uses a flag to determine when they are defeated, there is only space for 9 additional trainers before trainer flag space overflows
 // Draconid Emerald: MAX_TRAINERS_COUNT_EMERALD raised from 864 so Nerine's variants fit (D-101); system flags move up
@@ -946,7 +953,7 @@
 //       More space can be made by shifting flags around in constants/flags.h or changing how trainer flags are handled
 //       MAX_TRAINERS_COUNT can be increased but will take up additional saveblock space
 
-#define TRAINERS_COUNT_EMERALD     931
+#define TRAINERS_COUNT_EMERALD     937
 #define MAX_TRAINERS_COUNT_EMERALD 944
 
 #if IS_FRLG

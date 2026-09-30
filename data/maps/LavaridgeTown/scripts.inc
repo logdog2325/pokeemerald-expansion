@@ -54,6 +54,7 @@ LavaridgeTown_EventScript_RivalGiveGoGoggles::
 	end
 
 LavaridgeTown_EventScript_MayGiveGoGoggles::
+	call LavaridgeTown_EventScript_DraconidMayBattle  @ Draconid Emerald: MAY battles first (rivals2.pory)
 	msgbox LavaridgeTown_Text_MayNiceBadgesTakeThis, MSGBOX_DEFAULT
 	giveitem ITEM_GO_GOGGLES
 	setflag FLAG_RECEIVED_GO_GOGGLES
@@ -270,13 +271,10 @@ LavaridgeTown_EventScript_HerbShopSign::
 	end
 
 LavaridgeTown_Text_MayNiceBadgesTakeThis:  @ Draconid Emerald
-	.string "MAY: {PLAYER}. So you're still wearing\n"
-	.string "that uniform.\p"
-	.string "The whole town is talking about what\n"
-	.string "MAGMA tried on MT. CHIMNEY.\p"
-	.string "…Were you really up there with them?\p"
-	.string "Forget it. Here, I don't need these\n"
-	.string "anymore. Just stay out of LAVARIDGE.$"
+	.string "MAY: …Were you really up there with\n"
+	.string "them, on MT. CHIMNEY?\p"
+	.string "Forget it. I don't need these anymore.\p"
+	.string "Take them, and stay out of LAVARIDGE.$"
 
 LavaridgeTown_Text_MayExplainGoGogglesChallengeDad:  @ Draconid Emerald
 	.string "MAY: With those GO-GOGGLES, you'll have\n"

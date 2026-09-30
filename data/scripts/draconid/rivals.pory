@@ -1,10 +1,17 @@
 // Draconid Emerald: rival scenes that belong to no single act (Phase 5, cut down in round 1).
 //
-// The story fights live in the act files now: Brendan – Rustboro (act1), Mt. Chimney (act3), Route 119 and
-// Lilycove (act4), the Space Center (act5); May – Route 103 (vanilla), Route 110 (act2), the Weather Institute
-// and Lilycove (act4), the Sootopolis partner choice (act5); Wally – Mauville (act2), the Petalburg Gym door and
-// Lilycove (act4), Victory Road (vanilla). Left here: the post-game battles in the Littleroot lab and two
-// Lilycove lines they share.
+// The rival schedule (round 1 + the follow-up battles of D-234; segment = level cap band, docs/hack_trainers.md):
+//   BRENDAN – Rustboro S1 (act1), Route 104 at MR. BRINEY's cottage S2 (rivals2), Mt. Chimney S4 (act3),
+//             Route 119 S6 and the Lilycove double S7 (act4), Jagged Pass after GROUDON wakes S7 (rivals2),
+//             the Space Center tag S8 (act5), the Sootopolis partner (act5), post-game (below).
+//   MAY     – Route 103 S1 (birch_intro), Route 110 S3 (act2), Lavaridge before the GO-GOGGLES S5 (rivals2),
+//             the Weather Institute (no battle) and the Lilycove double S7 (act4), Mossdeep after the Space
+//             Center S8 (rivals2), the Sootopolis partner (act5), post-game (below).
+//   WALLY   – Mauville S3 (vanilla, lines reworked), Route 112 at the cable car S4 (rivals2), the Petalburg Gym
+//             door S5 and Lilycove S7 (act4), Route 120's south bridge S6 (rivals2), Victory Road (vanilla).
+// While the player wears the uniform all three are openly hostile (D-211, D-236). No Latios / Latias before
+// the finale (D-237): the Latis come back with the Acts 6–7 work. Left here: the post-game battles in the
+// Littleroot lab and two Lilycove lines they share; the bedrooms by reputation are in rivals2.pory.
 //
 // State vars: VAR_BRENDAN_STATE, VAR_MAY_STATE, VAR_WALLY_STATE (include/constants/draconid.h).
 // Vanilla hooks are listed in docs/hack_changes.md ("Scripts").
