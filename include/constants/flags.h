@@ -83,7 +83,7 @@
 #define FLAG_HIDE_LILYCOVE_CITY_WALLY            0x3D // Draconid Emerald: Wally in Lilycove
 #define FLAG_HIDE_MOSSDEEP_SPACE_CENTER_RIVALS   0x3E // Draconid Emerald: Brendan beside Steven at the Space Center 2F (Act 5)
 #define FLAG_ENABLE_BRENDAN_MATCH_CALL           0x3F // Draconid Emerald: Brendan registered in the PokéNav
-#define FLAG_HIDE_RUSTBORO_CITY_BIRCH            0x40 // Draconid Emerald: Prof. Birch outside the Rustboro Gym (second starter)
+#define FLAG_HIDE_RUSTBORO_CITY_OAK              0x40 // Draconid Emerald: Prof. Oak outside the Rustboro Gym (second starter)
 #define FLAG_HIDE_METEOR_FALLS_ASTER             0x41 // Draconid Emerald: Aster in Meteor Falls
 #define FLAG_HIDE_JAGGED_PASS_ASTER              0x42 // Draconid Emerald: Aster at the top of Jagged Pass with the Mega Ring (Act 3)
 #define FLAG_DEVON_GOODS_RETURNED                0x43 // Draconid Emerald: the player chose to return the Devon Goods to Devon (Rusturf, Act 2)

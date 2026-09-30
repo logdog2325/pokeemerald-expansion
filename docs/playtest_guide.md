@@ -16,9 +16,10 @@ in-game saves do as long as the save layout hasn't changed (every change to it i
 ## What's different from Emerald
 - You're a **Draconid dragon tamer** from Draconid Village (west of Route 101), not a new kid in
   Littleroot. Pick male or female; the sprites, trainer card and battle back pic are your own.
-- **Starter**: a dragon **egg** from the Elder (Deino, Dreepy or Jangmo-o). It hatches at the shrine at Lv 5.
-- **Second partner** after the Stone Badge: Prof. Birch waits outside the Rustboro Gym with Charmander,
-  Totodile or Treecko (Lv 10).
+- **Starter**: a dragon **egg** from the Elder in the shrine (Deino from Unova, Dreepy from Galar or Jangmo-o
+  from Alola). It hatches after 5 steps outside, at Lv 5.
+- **Second partner** after the Stone Badge: Prof. Oak (visiting Birch) waits outside the Rustboro Gym with
+  Charmander, Totodile or Treecko (Lv 10).
 - **Rivals**: May (Birch's daughter, Blaziken) and Brendan (Sceptile) are separate characters, and you fight
   both of them. **Aster**, the Elder's granddaughter, is a third rival: she speaks in riddles, is obsessed with
   Rayquaza, and her dragon counter-picks your egg. Wally has two extra battles.
@@ -35,15 +36,15 @@ Tick each checkpoint as you pass it; note anything odd with where it happened.
 | # | Where | What should happen | Check |
 |---|---|---|---|
 | 1 | Bedroom, Draconid Village | Mom wakes you; set the wall clock; go downstairs | sprites, clock, stairs |
-| 2 | Elder's house | Egg ceremony: pick an egg; Aster reacts to your pick | the three eggs, her counter-pick line |
-| 3 | Shrine | Hatching rite (normal hatch animation), partner at Lv 5 | hatch, level, moves |
-| 4 | Outside the shrine | Mom gives the Running Shoes | B to run |
+| 2 | Elder's house → shrine | The prophecy; the Elder takes you up to the shrine for the egg ceremony: pick an egg; Aster takes the leftover one | the three eggs before the statue, her line |
+| 3 | Outside the shrine | The egg hatches on the 5th step outside (normal hatch animation), partner at Lv 5 | not before the 5th step, level, moves |
+| 4 | Village | An old villager hurries over and gives the Running Shoes | B to run |
 | 5 | Draconid Pass | First Aster battle (can't white out; you're healed after) | her Pokémon counters yours |
 | 6 | Route 101 | Birch chased by Zigzagoon; your hatchling fights it | battle, warp to the lab |
 | 7 | Birch's lab | Birch gives Brendan Treecko and May Torchic; you get the Pokédex and 5 Poké Balls | text, Pokédex works |
 | 8 | Route 103 | May battle (losing heals you and the story goes on) | May sends out Torchic |
 | 9 | Route 104 (Petalburg Woods entrance) | Brendan battle | |
-| 10 | Rustboro | May battle; after the Stone Badge, **Birch outside the Gym** with the second partner | pick, nickname, Lv 10 |
+| 10 | Rustboro | May battle; after the Stone Badge, **Prof. Oak outside the Gym** with the second partner | pick, nickname, Lv 10, Oak's sprite |
 | 11 | Slateport (north exit, after the Oceanic Museum) | May battle | |
 | 12 | Mauville / Route 110 | Wally (vanilla); Brendan on Route 110, then he registers in the PokéNav | |
 | 13 | Meteor Falls | After Magma takes the meteorite: Aster's riddle and battle | |

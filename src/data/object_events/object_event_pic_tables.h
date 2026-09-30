@@ -1738,6 +1738,11 @@ static const struct SpriteFrameImage sPicTable_DraconidEggJangmoO[] = {
 
 // END DRACONID PLAYER OUTFITS
 
+// Draconid Emerald: Prof. Oak's FRLG sprite in every build (he gives the second starter in Rustboro, D-233)
+static const struct SpriteFrameImage sPicTable_ProfOak[] = {
+    overworld_ascending_frames(gObjectEventPic_ProfOak, 2, 4),
+};
+
 #if IS_FRLG
 
 static const struct SpriteFrameImage sPicTable_RedNormal[] = {
@@ -2068,10 +2073,6 @@ static const struct SpriteFrameImage sPicTable_NurseFrlg[] = {
     overworld_frame(gObjectEventPic_NurseFrlg, 2, 4, 2),
     overworld_frame(gObjectEventPic_NurseFrlg, 2, 4, 2),
     overworld_frame(gObjectEventPic_NurseFrlg, 2, 4, 3),
-};
-
-static const struct SpriteFrameImage sPicTable_ProfOak[] = {
-    overworld_ascending_frames(gObjectEventPic_ProfOak, 2, 4),
 };
 
 static const struct SpriteFrameImage sPicTable_Man[] = {

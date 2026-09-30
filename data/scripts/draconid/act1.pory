@@ -127,7 +127,7 @@ movement RustboroCity_Movement_DraconidBrendanLeave {
 }
 
 // ---------------------------------------------------------------------------
-// Rustboro Gym door, Stone Badge: TABITHA's order, before PROF. BIRCH's second starter (second_starter.pory)
+// Rustboro Gym door, Stone Badge: TABITHA's order, before PROF. OAK's second starter (second_starter.pory)
 // ---------------------------------------------------------------------------
 
 script RustboroCity_EventScript_DraconidTabithaOrders {
