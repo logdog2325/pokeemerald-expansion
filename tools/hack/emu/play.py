@@ -24,6 +24,8 @@ A .play script is a gbarun script plus:
   expect_partner PARTNER_X      the last multi battle's in-game partner (gPartnerTrainerId)
   wait_species N SPECIES_X [MAX] [KEY]   tap KEY (default A) until battler N (gBattleMons[N]; 1 = the
                           opponent in a single battle) is SPECIES_X, e.g. a Mega Evolution
+  wait_opponent TRAINER_X [MAX] [KEY]   tap KEY (default A) until the trainer battle being set up is against
+                          TRAINER_X (opponent A), e.g. the next battle of a gauntlet; stops before it starts
   setflag NAME / clearflag NAME   change a flag in the save block (e.g. FLAG_DEBUG_NO_ENCOUNTER)
   settrainer TRAINER_X 0|1        set or clear a trainer's "defeated" flag
   setvar NAME VALUE       change a var in the save block
@@ -225,7 +227,7 @@ def main():
             defines.setdefault(t[1], t[2])
     defines.update(dict(d.split("=", 1) for d in args.defines))
     lines = [re.sub(r"\$\{(\w+)\}", lambda m: defines[m.group(1)], l) for l in lines if not l.startswith("default ")]
-    names = sorted({l.split()[1] for l in lines if l.split() and l.split()[0] in ("flag", "var", "expect_flag", "expect_var", "setflag", "clearflag", "setvar", "warp", "expect_trainer", "expect_item", "expect_opponent", "expect_opponent_b", "expect_gfx", "giveitem", "givemon", "expect_map", "bagcursor", "settrainer")})
+    names = sorted({l.split()[1] for l in lines if l.split() and l.split()[0] in ("flag", "var", "expect_flag", "expect_var", "setflag", "clearflag", "setvar", "warp", "expect_trainer", "expect_item", "expect_opponent", "expect_opponent_b", "expect_gfx", "giveitem", "givemon", "expect_map", "bagcursor", "settrainer", "wait_opponent")})
     names += sorted({l.split()[2] for l in lines if l.split() and l.split()[0] == "expect_party"})
     names += sorted({l.split()[3] for l in lines if l.split() and l.split()[0] == "givemon" and len(l.split()) > 3})
     names += ["TRAINER_PARTNER(%s)" % l.split()[1] for l in lines if l.split()[:1] == ["expect_partner"]]
@@ -309,6 +311,11 @@ def main():
             addr = syms["gBattleMons"] + int(t[1]) * consts[BATTLE_MON_SIZE] + consts[BATTLE_MON_SPECIES]
             out.append("until %X 2 %X %s %s 24" % (addr, consts[t[2]], t[3] if len(t) > 3 else "60000",
                                                   t[4] if len(t) > 4 else "A"))
+        elif t[0] == "wait_opponent":
+            # a scene with several battles in a row: stop when the next one is set up (before it starts)
+            addr = syms["gTrainerBattleParameter"] + consts[OPPONENT_A_OFFSET]
+            out.append("until %X 2 %X %s %s 24" % (addr, consts[t[1]], t[2] if len(t) > 2 else "60000",
+                                                  t[3] if len(t) > 3 else "A"))
         elif t[0] == "expect_gfx":
             label = "player_gfx_%s#%d" % (t[1], len(expects))
             expects.append((label, consts[t[1]]))

@@ -4,6 +4,7 @@ EverGrandeCity_MapScripts::
 
 EverGrandeCity_OnTransition:
 	call_if_set FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetAbnormalWeather
+	call EverGrandeCity_EventScript_DraconidRevengeOnTransition  @ Draconid Emerald: Team Magma's revenge (magma_revenge.pory)
 	end
 
 EverGrandeCity_EventScript_VictoryRoadSign::

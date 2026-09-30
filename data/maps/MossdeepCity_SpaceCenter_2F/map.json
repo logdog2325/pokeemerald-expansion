@@ -140,6 +140,20 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "MossdeepCity_SpaceCenter_2F_EventScript_DraconidRaid",
       "flag": "FLAG_HIDE_MOSSDEEP_SPACE_CENTER_RIVALS"
+    },
+    {
+      "local_id": "LOCALID_SPACE_CENTER_COURTNEY",
+      "graphics_id": "OBJ_EVENT_GFX_COURTNEY",
+      "x": 6,
+      "y": 8,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "MossdeepCity_SpaceCenter_2F_EventScript_DraconidCourtney",
+      "flag": "FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_TEAM_MAGMA"
     }
   ],
   "warp_events": [

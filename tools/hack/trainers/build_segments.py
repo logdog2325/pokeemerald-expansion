@@ -113,6 +113,13 @@ OVERRIDES = {
     # Steven at the Space Center is overlevelled on purpose: he's the Champion (D-108), so no cap applies
     "STEVEN_MOSSDEEP": "POST",
     "MAXIE_SOOTOPOLIS": "S8", "MAXIE_SOOTOPOLIS_MULTI": "S8", "ARCHIE_SOOTOPOLIS_MULTI": "S8",
+    # Team Magma's revenge (data/scripts/draconid/magma_revenge.pory, D-244 - D-249): from the Rain Badge to the
+    # League door, so the Sootopolis ambush (out of Juan's Gym) is S9 like the Ever Grande and Victory Road ones
+    **{t: "S9" for t in ["GRUNT_SOOTOPOLIS_REVENGE_1", "GRUNT_SOOTOPOLIS_REVENGE_2", "GRUNT_EVER_GRANDE_SHORE_1",
+                         "GRUNT_EVER_GRANDE_SHORE_2", "GRUNT_EVER_GRANDE_CENTER", "SHELLY_EVER_GRANDE",
+                         "MAXIE_VICTORY_ROAD", "TABITHA_VICTORY_ROAD", "COURTNEY_VICTORY_ROAD",
+                         "GRUNT_VICTORY_ROAD_EXIT", "GRUNT_POKEMON_LEAGUE_1", "GRUNT_POKEMON_LEAGUE_2"]
+       + ["GRUNT_AQUA_GAUNTLET_%d" % i for i in range(1, 6)]},
     **{"ASTER_PASS_" + e: "S1" for e in EGGS},
     **{"ASTER_METEOR_FALLS_" + e: "S4" for e in EGGS},
     # the Sky Pillar finale is after the League (D-109)
@@ -134,16 +141,19 @@ OVERRIDES = {
     "GABBY_AND_TY_4": "S6", "GABBY_AND_TY_5": "S7", "GABBY_AND_TY_6": "S8",
 }
 # every id the game uses (TRAINERS_COUNT_EMERALD)
-MAX_ID = 937
+MAX_ID = 954
 
 TIER_MIN = {2: "S6", 3: "S7", 4: "S8", 5: "POST", 6: "POST"}
 
 LEADERS = ["ROXANNE_1", "BRAWLY_1", "WATTSON_1", "FLANNERY_1", "NORMAN_1", "WINONA_1", "TATE_AND_LIZA_1", "JUAN_1"]
 ELITE = ["SIDNEY", "PHOEBE", "GLACIA", "DRAKE", "WALLACE", "STEVEN"]
 BOSSES = ["MAXIE", "ARCHIE"]
-ADMINS = ["TABITHA", "SHELLY", "MATT"]
+ADMINS = ["TABITHA", "SHELLY", "MATT", "COURTNEY"]
 # Battles written by hand with the story (Phase 5): not in the trainer batches.
-STORY = re.compile(r"^TRAINER_(BRENDAN|MAY|WALLY|ASTER|NERINE|ZINNIA|STEVEN_MOSSDEEP|MAXIE_SOOTOPOLIS|ARCHIE_SOOTOPOLIS)")
+STORY = re.compile(r"^TRAINER_(BRENDAN|MAY|WALLY|ASTER|NERINE|ZINNIA|STEVEN_MOSSDEEP|MAXIE_SOOTOPOLIS|ARCHIE_SOOTOPOLIS|"
+                   # Team Magma's revenge (magma_revenge.pory, D-245 - D-247)
+                   r"GRUNT_SOOTOPOLIS_REVENGE|GRUNT_EVER_GRANDE|GRUNT_AQUA_GAUNTLET|SHELLY_EVER_GRANDE|MAXIE_VICTORY_ROAD|"
+                   r"TABITHA_VICTORY_ROAD|COURTNEY_VICTORY_ROAD|GRUNT_VICTORY_ROAD_EXIT|GRUNT_POKEMON_LEAGUE)")
 SKIP = {"TRAINER_BRENDAN_PLACEHOLDER", "TRAINER_MAY_PLACEHOLDER", "TRAINER_RED", "TRAINER_LEAF",
         "TRAINER_GRUNT_UNUSED", "TRAINER_CINDY_2", "TRAINER_AMY_AND_LIV_3", "TRAINER_GINA_AND_MIA_2",
         "TRAINER_LUCAS_2", "TRAINER_MIKE_1", "TRAINER_DUDLEY", "TRAINER_KAYLEE", "TRAINER_TERRY",

@@ -287,6 +287,9 @@ const u16 gTrainerPalette_Nerine[] = INCGFX_U16("graphics/trainers/front_pics/ne
 // Draconid Emerald: Wes, a Battle Frontier legend (docs/hack_art_pipeline.md, D-228)
 const u32 gTrainerFrontPic_Wes[] = INCGFX_U32("graphics/trainers/front_pics/wes.png", ".4bpp.smol");
 const u16 gTrainerPalette_Wes[] = INCGFX_U16("graphics/trainers/front_pics/wes.png", ".gbapal");
+// Draconid Emerald: Magma admin Courtney (tools/hack/art/recipes/courtney_front_pic.json, D-246)
+const u32 gTrainerFrontPic_Courtney[] = INCGFX_U32("graphics/trainers/front_pics/courtney.png", ".4bpp.smol");
+const u16 gTrainerPalette_Courtney[] = INCGFX_U16("graphics/trainers/front_pics/courtney.png", ".gbapal");
 const u16 gTrainerPalette_Red[] = INCGFX_U16("graphics/trainers/front_pics/red.png", ".gbapal");
 
 const u32 gTrainerFrontPic_Leaf[] = INCGFX_U32("graphics/trainers/front_pics/leaf.png", ".4bpp.smol");
@@ -680,6 +683,10 @@ const struct TrainerPicInfo gTrainerPicInfo[TRAINER_PIC_COUNT] =
     {
         .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Wes, gTrainerPalette_Wes),
         .backPic = TRAINER_BACK_PIC(4, gTrainerBackPic_Wes, gTrainerBackPicPalette_Wes, sBackAnims_Hoenn),
+    },
+    [TRAINER_PIC_COURTNEY] = // Draconid Emerald: Magma admin, front pic only (she never battles beside the player)
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Courtney, gTrainerPalette_Courtney),
     },
     [TRAINER_PIC_RS_BRENDAN] =
     {

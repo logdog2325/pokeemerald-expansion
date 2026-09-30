@@ -176,6 +176,20 @@
     {"id": "5.15", "act": 5, "name": "Rain Badge (end of Act 5)",
      "scenes": [{"label": "SootopolisCity_Gym_1F_EventScript_Juan", "expect": ["FLAG_BADGE08_GET"]}]},
     {"id": "5.15b", "act": 5, "side": true, "name": "Way on to Act 6: out of Sootopolis, up the waterfall to Victory Road",
-     "to": "MAP_VICTORY_ROAD_1F"}
+     "to": "MAP_VICTORY_ROAD_1F"},
+    {"id": "6.R1", "act": 6, "name": "Team Magma's revenge (D-247): two grunts out of Juan's Gym door; out of Sootopolis, up Ever Grande's waterfall",
+     "scenes": ["SootopolisCity_EventScript_DraconidRevengeAmbush"]},
+    {"id": "6.R2", "act": 6, "name": "Two grunts on Ever Grande's shore; up the steps to the flower field",
+     "scenes": ["EverGrandeCity_EventScript_DraconidShoreAmbush"]},
+    {"id": "6.R3", "act": 6, "name": "The Aqua gauntlet (five grunts, Shelly); to Victory Road's mouth",
+     "scenes": ["EverGrandeCity_EventScript_DraconidAquaGauntlet"]},
+    {"id": "6.R4", "act": 6, "name": "Maxie #2 at Victory Road's mouth; through Victory Road to B1F's last ladder",
+     "scenes": ["EverGrandeCity_EventScript_DraconidMaxie"]},
+    {"id": "6.R5", "act": 6, "name": "Tabitha + Courtney in Victory Road B1F; out of Victory Road",
+     "scenes": ["VictoryRoad_B1F_EventScript_DraconidAdmins"]},
+    {"id": "6.R6", "act": 6, "name": "A grunt on the stairs out of Victory Road; to the League's forecourt",
+     "scenes": ["EverGrandeCity_EventScript_DraconidExitGrunt"]},
+    {"id": "6.R7", "act": 6, "name": "The last two grunts; to the League door",
+     "scenes": ["EverGrandeCity_EventScript_DraconidLeagueGrunts"], "to": "MAP_EVER_GRANDE_CITY_POKEMON_LEAGUE_1F"}
   ]
 }

@@ -44,6 +44,7 @@ STORY_TRAINERS = re.compile(r"^TRAINER_(BRENDAN|MAY|WALLY|ASTER|NERINE|ZINNIA)_"
 HEADER_FIELDS = ("Name", "Class", "Pic", "Gender", "Music", "Double Battle", "Battle Type")
 # Trainers allowed to hold a Mega Stone (docs/hack_trainers.md, "Megas").
 MEGA_TRAINERS = re.compile(r"^(PARTNER_|TRAINER_(BRENDAN|MAY|WALLY|ASTER|NERINE|ZINNIA|MAXIE_MAGMA_HIDEOUT|MAXIE_SOOTOPOLIS|ARCHIE|STEVEN|"
+                           r"MAXIE_VICTORY_ROAD|TABITHA_VICTORY_ROAD|COURTNEY_VICTORY_ROAD|SHELLY_EVER_GRANDE|"
                            r"(ROXANNE|BRAWLY|WATTSON|FLANNERY|NORMAN|WINONA|TATE_AND_LIZA|JUAN)_5))")
 
 

@@ -293,6 +293,76 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SootopolisCity_EventScript_DraconidRivalTalk",
       "flag": "FLAG_HIDE_SOOTOPOLIS_CITY_RIVALS"
+    },
+    {
+      "local_id": "LOCALID_SOOTOPOLIS_TABITHA",
+      "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_M",
+      "x": 27,
+      "y": 34,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "SootopolisCity_EventScript_DraconidTabitha",
+      "flag": "FLAG_TEMP_11"
+    },
+    {
+      "local_id": "LOCALID_SOOTOPOLIS_MAGMA_GRUNT_1",
+      "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_M",
+      "x": 27,
+      "y": 36,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "SootopolisCity_EventScript_DraconidMagmaGrunt1",
+      "flag": "FLAG_TEMP_11"
+    },
+    {
+      "local_id": "LOCALID_SOOTOPOLIS_MAGMA_GRUNT_2",
+      "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_F",
+      "x": 34,
+      "y": 36,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "SootopolisCity_EventScript_DraconidMagmaGrunt2",
+      "flag": "FLAG_TEMP_11"
+    },
+    {
+      "local_id": "LOCALID_SOOTOPOLIS_REVENGE_GRUNT_1",
+      "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_M",
+      "x": 31,
+      "y": 32,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "0x0",
+      "flag": "FLAG_TEMP_12"
+    },
+    {
+      "local_id": "LOCALID_SOOTOPOLIS_REVENGE_GRUNT_2",
+      "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_F",
+      "x": 31,
+      "y": 32,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "0x0",
+      "flag": "FLAG_TEMP_12"
     }
   ],
   "warp_events": [
@@ -388,7 +458,35 @@
       "dest_warp_id": "0"
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 30,
+      "y": 33,
+      "elevation": 3,
+      "var": "VAR_TEMP_3",
+      "var_value": "1",
+      "script": "SootopolisCity_EventScript_DraconidRevengeAmbush"
+    },
+    {
+      "type": "trigger",
+      "x": 32,
+      "y": 33,
+      "elevation": 3,
+      "var": "VAR_TEMP_3",
+      "var_value": "1",
+      "script": "SootopolisCity_EventScript_DraconidRevengeAmbush"
+    },
+    {
+      "type": "trigger",
+      "x": 31,
+      "y": 34,
+      "elevation": 3,
+      "var": "VAR_TEMP_3",
+      "var_value": "1",
+      "script": "SootopolisCity_EventScript_DraconidRevengeAmbush"
+    }
+  ],
   "bg_events": [
     {
       "type": "sign",

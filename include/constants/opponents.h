@@ -946,15 +946,36 @@
 #define TRAINER_WALLY_ROUTE_120             934
 #define TRAINER_BRENDAN_JAGGED_PASS         935
 #define TRAINER_MAY_MOSSDEEP                936
+// Draconid Emerald: Team Magma's revenge after the Sootopolis reveal (magma_revenge.pory, D-244 - D-249), in
+// story order: the Magma ambushes, the Aqua gauntlet on the Ever Grande path, Maxie at Victory Road's mouth,
+// Tabitha + Courtney in Victory Road B1F, the last grunts before the POKEMON LEAGUE
+#define TRAINER_GRUNT_SOOTOPOLIS_REVENGE_1  937
+#define TRAINER_GRUNT_SOOTOPOLIS_REVENGE_2  938
+#define TRAINER_GRUNT_EVER_GRANDE_SHORE_1   939
+#define TRAINER_GRUNT_EVER_GRANDE_SHORE_2   940
+#define TRAINER_GRUNT_EVER_GRANDE_CENTER    941
+#define TRAINER_GRUNT_AQUA_GAUNTLET_1       942
+#define TRAINER_GRUNT_AQUA_GAUNTLET_2       943
+#define TRAINER_GRUNT_AQUA_GAUNTLET_3       944
+#define TRAINER_GRUNT_AQUA_GAUNTLET_4       945
+#define TRAINER_GRUNT_AQUA_GAUNTLET_5       946
+#define TRAINER_SHELLY_EVER_GRANDE          947
+#define TRAINER_MAXIE_VICTORY_ROAD          948
+#define TRAINER_TABITHA_VICTORY_ROAD        949
+#define TRAINER_COURTNEY_VICTORY_ROAD       950
+#define TRAINER_GRUNT_VICTORY_ROAD_EXIT     951
+#define TRAINER_GRUNT_POKEMON_LEAGUE_1      952
+#define TRAINER_GRUNT_POKEMON_LEAGUE_2      953
 
 // NOTE: Because each Trainer uses a flag to determine when they are defeated, there is only space for 9 additional trainers before trainer flag space overflows
 // Draconid Emerald: MAX_TRAINERS_COUNT_EMERALD raised from 864 so Nerine's variants fit (D-101); system flags move up
 //       928 -> 944 for the Battle Frontier legends and the finale (D-229): 16 more trainer flags, 2 save bytes
+//       944 -> 960 for Team Magma's revenge (937 - 956) and the village finale (957+) (D-249): 16 more trainer flags
 //       More space can be made by shifting flags around in constants/flags.h or changing how trainer flags are handled
 //       MAX_TRAINERS_COUNT can be increased but will take up additional saveblock space
 
-#define TRAINERS_COUNT_EMERALD     937
-#define MAX_TRAINERS_COUNT_EMERALD 944
+#define TRAINERS_COUNT_EMERALD     954
+#define MAX_TRAINERS_COUNT_EMERALD 960
 
 #if IS_FRLG
 #define TRAINERS_COUNT                      TRAINERS_COUNT_FRLG

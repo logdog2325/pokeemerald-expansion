@@ -1066,7 +1066,24 @@
   "TRAINER_MAY_LAVARIDGE": "S5",
   "TRAINER_WALLY_ROUTE_120": "S6",
   "TRAINER_BRENDAN_JAGGED_PASS": "S7",
-  "TRAINER_MAY_MOSSDEEP": "S8"
+  "TRAINER_MAY_MOSSDEEP": "S8",
+  "TRAINER_GRUNT_SOOTOPOLIS_REVENGE_1": "S9",
+  "TRAINER_GRUNT_SOOTOPOLIS_REVENGE_2": "S9",
+  "TRAINER_GRUNT_EVER_GRANDE_SHORE_1": "S9",
+  "TRAINER_GRUNT_EVER_GRANDE_SHORE_2": "S9",
+  "TRAINER_GRUNT_EVER_GRANDE_CENTER": "S9",
+  "TRAINER_GRUNT_AQUA_GAUNTLET_1": "S9",
+  "TRAINER_GRUNT_AQUA_GAUNTLET_2": "S9",
+  "TRAINER_GRUNT_AQUA_GAUNTLET_3": "S9",
+  "TRAINER_GRUNT_AQUA_GAUNTLET_4": "S9",
+  "TRAINER_GRUNT_AQUA_GAUNTLET_5": "S9",
+  "TRAINER_SHELLY_EVER_GRANDE": "S9",
+  "TRAINER_MAXIE_VICTORY_ROAD": "S9",
+  "TRAINER_TABITHA_VICTORY_ROAD": "S9",
+  "TRAINER_COURTNEY_VICTORY_ROAD": "S9",
+  "TRAINER_GRUNT_VICTORY_ROAD_EXIT": "S9",
+  "TRAINER_GRUNT_POKEMON_LEAGUE_1": "S9",
+  "TRAINER_GRUNT_POKEMON_LEAGUE_2": "S9"
  },
  "info": {
   "TRAINER_SAWYER_1": {
@@ -7079,6 +7096,108 @@
    "segment": "S8",
    "role": "route",
    "map": "MossdeepCity",
+   "story": true
+  },
+  "TRAINER_GRUNT_SOOTOPOLIS_REVENGE_1": {
+   "segment": "S9",
+   "role": "grunt",
+   "map": "SootopolisCity",
+   "story": true
+  },
+  "TRAINER_GRUNT_SOOTOPOLIS_REVENGE_2": {
+   "segment": "S9",
+   "role": "grunt",
+   "map": "SootopolisCity",
+   "story": true
+  },
+  "TRAINER_GRUNT_EVER_GRANDE_SHORE_1": {
+   "segment": "S9",
+   "role": "grunt",
+   "map": "EverGrandeCity",
+   "story": true
+  },
+  "TRAINER_GRUNT_EVER_GRANDE_SHORE_2": {
+   "segment": "S9",
+   "role": "grunt",
+   "map": "EverGrandeCity",
+   "story": true
+  },
+  "TRAINER_GRUNT_EVER_GRANDE_CENTER": {
+   "segment": "S9",
+   "role": "grunt",
+   "map": "EverGrandeCity",
+   "story": true
+  },
+  "TRAINER_GRUNT_AQUA_GAUNTLET_1": {
+   "segment": "S9",
+   "role": "grunt",
+   "map": "EverGrandeCity",
+   "story": true
+  },
+  "TRAINER_GRUNT_AQUA_GAUNTLET_2": {
+   "segment": "S9",
+   "role": "grunt",
+   "map": "EverGrandeCity",
+   "story": true
+  },
+  "TRAINER_GRUNT_AQUA_GAUNTLET_3": {
+   "segment": "S9",
+   "role": "grunt",
+   "map": "EverGrandeCity",
+   "story": true
+  },
+  "TRAINER_GRUNT_AQUA_GAUNTLET_4": {
+   "segment": "S9",
+   "role": "grunt",
+   "map": "EverGrandeCity",
+   "story": true
+  },
+  "TRAINER_GRUNT_AQUA_GAUNTLET_5": {
+   "segment": "S9",
+   "role": "grunt",
+   "map": "EverGrandeCity",
+   "story": true
+  },
+  "TRAINER_SHELLY_EVER_GRANDE": {
+   "segment": "S9",
+   "role": "admin",
+   "map": "EverGrandeCity",
+   "story": true
+  },
+  "TRAINER_MAXIE_VICTORY_ROAD": {
+   "segment": "S9",
+   "role": "boss",
+   "map": "EverGrandeCity",
+   "story": true
+  },
+  "TRAINER_TABITHA_VICTORY_ROAD": {
+   "segment": "S9",
+   "role": "admin",
+   "map": "VictoryRoad_B1F",
+   "story": true
+  },
+  "TRAINER_COURTNEY_VICTORY_ROAD": {
+   "segment": "S9",
+   "role": "admin",
+   "map": "VictoryRoad_B1F",
+   "story": true
+  },
+  "TRAINER_GRUNT_VICTORY_ROAD_EXIT": {
+   "segment": "S9",
+   "role": "grunt",
+   "map": "EverGrandeCity",
+   "story": true
+  },
+  "TRAINER_GRUNT_POKEMON_LEAGUE_1": {
+   "segment": "S9",
+   "role": "grunt",
+   "map": "EverGrandeCity",
+   "story": true
+  },
+  "TRAINER_GRUNT_POKEMON_LEAGUE_2": {
+   "segment": "S9",
+   "role": "grunt",
+   "map": "EverGrandeCity",
    "story": true
   }
  }

@@ -574,6 +574,11 @@ class Sim:
                 cmp_state = (UNK if v == UNK else int(v), 1)
                 pc += 1
                 continue
+            if op == "checktrainerflag":  # Poryscript's defeated(TRAINER): checktrainerflag, goto_if 0/1
+                v = st.flag(self.trainer_flag(args[0]))
+                cmp_state = (UNK if v == UNK else int(v), 1)
+                pc += 1
+                continue
             if op == "goto_if" or op == "call_if":  # after checkflag: goto_if TRUE/FALSE, dest
                 v = cmp_state[0] if cmp_state else UNK
                 want = self.c.value(args[0])
@@ -708,6 +713,8 @@ class Sim:
             st.flags[self.fkey(args[0])] = True
         elif op == "clearflag":
             st.flags[self.fkey(args[0])] = False
+        elif op in ("settrainerflag", "cleartrainerflag") and args:  # Poryscript's defeated() scenes (D-245)
+            st.flags[self.trainer_flag(args[0])] = op == "settrainerflag"
         elif op in ("setvar", "setorcopyvar") and len(args) >= 2:
             if op == "setorcopyvar" and self.is_var(args[1]):
                 st.vars[self.vkey(args[0])] = self.val(args[1], st)

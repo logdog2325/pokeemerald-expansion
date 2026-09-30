@@ -1078,6 +1078,7 @@ gStdScripts_End::
 	.include "data/scripts/draconid/rival_calls.inc"
 	.include "data/scripts/draconid/progression.inc"
 	.include "data/scripts/draconid/frontier_legends.inc"
+	.include "data/scripts/draconid/magma_revenge.inc"
 	.include "data/scripts/draconid/reputation/dewford.inc"
 	.include "data/scripts/draconid/reputation/ever_grande.inc"
 	.include "data/scripts/draconid/reputation/fallarbor.inc"

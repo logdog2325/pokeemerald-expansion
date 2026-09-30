@@ -1,0 +1,633 @@
+# Team Magma's revenge flow test (data/scripts/draconid/magma_revenge.pory, D-244 – D-249): after the Sootopolis
+# reveal, the ambush out of Juan's Gym, the Ever Grande shore, the grunt by the Pokémon Center, the Aqua gauntlet
+# (all six battles in one run, then a second run that loses mid-gauntlet and starts over from the first grunt),
+# Maxie #2 at Victory Road's mouth (Mega Camerupt), Tabitha + Courtney in Victory Road B1F (both Mega Evolve), the
+# grunt out of Victory Road and the last two at the League's forecourt.
+# Needs rustboro_done.ss from tests/rustboro.play; the states after the turn and Juan's badge are set by hand,
+# scenes are reached with the debug warp. A second Pokémon is given for the double battles. Every battle is won by
+# a boosted lead, poked before it starts (gParties[B_TRAINER_PLAYER] slot 0: level 100 and 999 in every stat,
+# +0x54, +0x56..+0x63 – the stats are recalculated when the battle ends), so each scene's "done" trainer flag is
+# checked; the one battle meant to be lost (the gauntlet's third, with the whiteout on) keeps the weak lead. The
+# battle style is SET, so a won battle doesn't ask to switch. -D GFX=DRACONID_M|DRACONID_F (the tamer sprites).
+default GFX DRACONID_M
+loadstate rustboro_done.ss
+setflag FLAG_DEBUG_NO_ENCOUNTER
+setflag FLAG_DEBUG_NO_TRAINER_SEE
+setflag FLAG_DRACONID_NO_WHITEOUT
+# after the Sootopolis turn (act5.play) and Juan's Rain Badge
+setvar VAR_SECOND_STARTER 1
+setvar VAR_DRACONID_STATE 8
+setvar VAR_PLAYER_OUTFIT 0
+setvar VAR_DRACONID_REPUTATION 2
+setvar VAR_MAGMA_STATE 12
+setvar VAR_NERINE_STATE 7
+setvar VAR_ASTER_STATE 7
+setvar VAR_BRENDAN_STATE 6
+setvar VAR_MAY_STATE 4
+setvar VAR_SOOTOPOLIS_CITY_STATE 6
+setvar VAR_SKY_PILLAR_STATE 3
+setflag FLAG_SOOTOPOLIS_ARCHIE_MAXIE_LEAVE
+setflag FLAG_HIDE_SOOTOPOLIS_CITY_MAXIE
+setflag FLAG_HIDE_SOOTOPOLIS_CITY_ARCHIE
+setflag FLAG_HIDE_SOOTOPOLIS_CITY_RIVALS
+setflag FLAG_RECEIVED_POKENAV
+setflag FLAG_BADGE01_GET
+setflag FLAG_BADGE02_GET
+setflag FLAG_BADGE03_GET
+setflag FLAG_BADGE04_GET
+setflag FLAG_BADGE05_GET
+setflag FLAG_BADGE06_GET
+setflag FLAG_BADGE07_GET
+setflag FLAG_BADGE08_GET
+giveitem ITEM_HM_SURF
+giveitem ITEM_HM_WATERFALL
+givemon SPECIES_TREECKO 10
+heal
+# battle style SET (gSaveBlock2 optionsBattleStyle, bit 9 of the u16 at +0x14): a won single battle doesn't stop
+# at "Will you change POKéMON?" between the opponent's Pokémon (mashing A would open the party menu)
+pokebit *@gSaveBlock2Ptr+15 1 1
+
+# --- 1. Sootopolis: out of Juan's Gym, two grunts come out of the door behind the player (double battle) ---
+warp MAP_SOOTOPOLIS_CITY 31 33
+run 60
+expect_var VAR_TEMP_3 1
+walk DOWN 34
+run 60
+shot r1_10_sootopolis_ambush
+poke @gParties+54 64
+poke @gParties+56 E7
+poke @gParties+57 3
+poke @gParties+58 E7
+poke @gParties+59 3
+poke @gParties+5A E7
+poke @gParties+5B 3
+poke @gParties+5C E7
+poke @gParties+5D 3
+poke @gParties+5E E7
+poke @gParties+5F 3
+poke @gParties+60 E7
+poke @gParties+61 3
+poke @gParties+62 E7
+poke @gParties+63 3
+mash A 60000
+shot r1_11_after
+expect_opponent TRAINER_GRUNT_SOOTOPOLIS_REVENGE_1
+expect_opponent_b TRAINER_GRUNT_SOOTOPOLIS_REVENGE_2
+expect_trainer TRAINER_GRUNT_SOOTOPOLIS_REVENGE_2 1
+expect_var VAR_TEMP_3 0
+expect_gfx OBJ_EVENT_GFX_${GFX}_NORMAL
+# gone for good: back out of the Gym, nothing happens
+warp MAP_SOOTOPOLIS_CITY 31 33
+run 60
+expect_var VAR_TEMP_3 0
+walk DOWN 34
+run 30
+expect_pos 31 34
+
+# --- 2. Ever Grande: the shore at the top of the waterfall (the player surfs up to row 57) ---
+heal
+warp MAP_EVER_GRANDE_CITY 21 59
+run 60
+expect_var VAR_TEMP_2 1
+walk UP 57
+run 60
+shot r2_10_shore_ambush
+poke @gParties+54 64
+poke @gParties+56 E7
+poke @gParties+57 3
+poke @gParties+58 E7
+poke @gParties+59 3
+poke @gParties+5A E7
+poke @gParties+5B 3
+poke @gParties+5C E7
+poke @gParties+5D 3
+poke @gParties+5E E7
+poke @gParties+5F 3
+poke @gParties+60 E7
+poke @gParties+61 3
+poke @gParties+62 E7
+poke @gParties+63 3
+mash A 60000
+shot r2_11_after
+expect_opponent TRAINER_GRUNT_EVER_GRANDE_SHORE_1
+expect_opponent_b TRAINER_GRUNT_EVER_GRANDE_SHORE_2
+expect_trainer TRAINER_GRUNT_EVER_GRANDE_SHORE_2 1
+expect_var VAR_TEMP_2 0
+
+# --- 3. the grunt beside the Pokémon Center door (a sight trainer), then the player heals there ---
+heal
+clearflag FLAG_DEBUG_NO_TRAINER_SEE
+warp MAP_EVER_GRANDE_CITY 27 52
+run 60
+walk UP 49
+run 60
+shot r3_10_center_grunt
+poke @gParties+54 64
+poke @gParties+56 E7
+poke @gParties+57 3
+poke @gParties+58 E7
+poke @gParties+59 3
+poke @gParties+5A E7
+poke @gParties+5B 3
+poke @gParties+5C E7
+poke @gParties+5D 3
+poke @gParties+5E E7
+poke @gParties+5F 3
+poke @gParties+60 E7
+poke @gParties+61 3
+poke @gParties+62 E7
+poke @gParties+63 3
+mash A 60000
+shot r3_11_after
+expect_opponent TRAINER_GRUNT_EVER_GRANDE_CENTER
+expect_trainer TRAINER_GRUNT_EVER_GRANDE_CENTER 1
+setflag FLAG_DEBUG_NO_TRAINER_SEE
+# into the Pokémon Center: the respawn point is Ever Grande now
+hold UP 30
+run 90
+expect_map MAP_EVER_GRANDE_CITY_POKEMON_CENTER_1F
+heal
+
+# --- 4. the Aqua gauntlet, all six battles in one run, each won by the boosted lead (no heal in between) ---
+warp MAP_EVER_GRANDE_CITY 19 52
+run 60
+expect_var VAR_TEMP_3 1
+walk UP 50
+run 30
+savestate revenge_gauntlet.ss
+wait_opponent TRAINER_GRUNT_AQUA_GAUNTLET_1 20000
+shot r4_10_surrounded
+expect_opponent TRAINER_GRUNT_AQUA_GAUNTLET_1
+poke @gParties+54 64
+poke @gParties+56 E7
+poke @gParties+57 3
+poke @gParties+58 E7
+poke @gParties+59 3
+poke @gParties+5A E7
+poke @gParties+5B 3
+poke @gParties+5C E7
+poke @gParties+5D 3
+poke @gParties+5E E7
+poke @gParties+5F 3
+poke @gParties+60 E7
+poke @gParties+61 3
+poke @gParties+62 E7
+poke @gParties+63 3
+wait_opponent TRAINER_GRUNT_AQUA_GAUNTLET_2 60000
+expect_trainer TRAINER_GRUNT_AQUA_GAUNTLET_1 1
+expect_opponent TRAINER_GRUNT_AQUA_GAUNTLET_2
+poke @gParties+54 64
+poke @gParties+56 E7
+poke @gParties+57 3
+poke @gParties+58 E7
+poke @gParties+59 3
+poke @gParties+5A E7
+poke @gParties+5B 3
+poke @gParties+5C E7
+poke @gParties+5D 3
+poke @gParties+5E E7
+poke @gParties+5F 3
+poke @gParties+60 E7
+poke @gParties+61 3
+poke @gParties+62 E7
+poke @gParties+63 3
+wait_opponent TRAINER_GRUNT_AQUA_GAUNTLET_3 60000
+expect_trainer TRAINER_GRUNT_AQUA_GAUNTLET_2 1
+expect_opponent TRAINER_GRUNT_AQUA_GAUNTLET_3
+poke @gParties+54 64
+poke @gParties+56 E7
+poke @gParties+57 3
+poke @gParties+58 E7
+poke @gParties+59 3
+poke @gParties+5A E7
+poke @gParties+5B 3
+poke @gParties+5C E7
+poke @gParties+5D 3
+poke @gParties+5E E7
+poke @gParties+5F 3
+poke @gParties+60 E7
+poke @gParties+61 3
+poke @gParties+62 E7
+poke @gParties+63 3
+wait_opponent TRAINER_GRUNT_AQUA_GAUNTLET_4 60000
+expect_trainer TRAINER_GRUNT_AQUA_GAUNTLET_3 1
+expect_opponent TRAINER_GRUNT_AQUA_GAUNTLET_4
+poke @gParties+54 64
+poke @gParties+56 E7
+poke @gParties+57 3
+poke @gParties+58 E7
+poke @gParties+59 3
+poke @gParties+5A E7
+poke @gParties+5B 3
+poke @gParties+5C E7
+poke @gParties+5D 3
+poke @gParties+5E E7
+poke @gParties+5F 3
+poke @gParties+60 E7
+poke @gParties+61 3
+poke @gParties+62 E7
+poke @gParties+63 3
+wait_opponent TRAINER_GRUNT_AQUA_GAUNTLET_5 60000
+expect_trainer TRAINER_GRUNT_AQUA_GAUNTLET_4 1
+expect_opponent TRAINER_GRUNT_AQUA_GAUNTLET_5
+poke @gParties+54 64
+poke @gParties+56 E7
+poke @gParties+57 3
+poke @gParties+58 E7
+poke @gParties+59 3
+poke @gParties+5A E7
+poke @gParties+5B 3
+poke @gParties+5C E7
+poke @gParties+5D 3
+poke @gParties+5E E7
+poke @gParties+5F 3
+poke @gParties+60 E7
+poke @gParties+61 3
+poke @gParties+62 E7
+poke @gParties+63 3
+wait_opponent TRAINER_SHELLY_EVER_GRANDE 60000
+expect_trainer TRAINER_GRUNT_AQUA_GAUNTLET_5 1
+expect_opponent TRAINER_SHELLY_EVER_GRANDE
+poke @gParties+54 64
+poke @gParties+56 E7
+poke @gParties+57 3
+poke @gParties+58 E7
+poke @gParties+59 3
+poke @gParties+5A E7
+poke @gParties+5B 3
+poke @gParties+5C E7
+poke @gParties+5D 3
+poke @gParties+5E E7
+poke @gParties+5F 3
+poke @gParties+60 E7
+poke @gParties+61 3
+poke @gParties+62 E7
+poke @gParties+63 3
+wait_species 1 SPECIES_GYARADOS_MEGA 120000
+run 150
+shot r4_20_mega_gyarados_01
+run 300
+shot r4_20_mega_gyarados_02
+run 300
+shot r4_20_mega_gyarados_03
+mash A 60000
+shot r4_21_after_gauntlet
+expect_trainer TRAINER_SHELLY_EVER_GRANDE 1
+expect_var VAR_TEMP_3 0
+
+# --- 4b. the gauntlet again from its start: the first two grunts beaten (boosted), the third one lost with the
+# whiteout on (the weak lead, the second Pokémon at 0 HP: +0xBA): back to the Pokémon Center, and the next try
+# starts over at the first grunt ---
+loadstate revenge_gauntlet.ss
+wait_opponent TRAINER_GRUNT_AQUA_GAUNTLET_1 20000
+poke @gParties+54 64
+poke @gParties+56 E7
+poke @gParties+57 3
+poke @gParties+58 E7
+poke @gParties+59 3
+poke @gParties+5A E7
+poke @gParties+5B 3
+poke @gParties+5C E7
+poke @gParties+5D 3
+poke @gParties+5E E7
+poke @gParties+5F 3
+poke @gParties+60 E7
+poke @gParties+61 3
+poke @gParties+62 E7
+poke @gParties+63 3
+wait_opponent TRAINER_GRUNT_AQUA_GAUNTLET_2 60000
+poke @gParties+54 64
+poke @gParties+56 E7
+poke @gParties+57 3
+poke @gParties+58 E7
+poke @gParties+59 3
+poke @gParties+5A E7
+poke @gParties+5B 3
+poke @gParties+5C E7
+poke @gParties+5D 3
+poke @gParties+5E E7
+poke @gParties+5F 3
+poke @gParties+60 E7
+poke @gParties+61 3
+poke @gParties+62 E7
+poke @gParties+63 3
+wait_opponent TRAINER_GRUNT_AQUA_GAUNTLET_3 60000
+expect_trainer TRAINER_GRUNT_AQUA_GAUNTLET_1 1
+expect_trainer TRAINER_GRUNT_AQUA_GAUNTLET_2 1
+poke @gParties+BA 0
+poke @gParties+BB 0
+clearflag FLAG_DRACONID_NO_WHITEOUT
+mash A 90000
+run 120
+mash A 20000
+shot r4_30_whited_out
+expect_map MAP_EVER_GRANDE_CITY_POKEMON_CENTER_1F
+expect_trainer TRAINER_GRUNT_AQUA_GAUNTLET_3 0
+expect_trainer TRAINER_SHELLY_EVER_GRANDE 0
+setflag FLAG_DRACONID_NO_WHITEOUT
+warp MAP_EVER_GRANDE_CITY 19 52
+run 60
+expect_var VAR_TEMP_3 1
+walk UP 50
+wait_opponent TRAINER_GRUNT_AQUA_GAUNTLET_1 20000
+shot r4_31_starts_over
+expect_opponent TRAINER_GRUNT_AQUA_GAUNTLET_1
+expect_trainer TRAINER_GRUNT_AQUA_GAUNTLET_1 0
+expect_trainer TRAINER_GRUNT_AQUA_GAUNTLET_2 0
+poke @gParties+54 64
+poke @gParties+56 E7
+poke @gParties+57 3
+poke @gParties+58 E7
+poke @gParties+59 3
+poke @gParties+5A E7
+poke @gParties+5B 3
+poke @gParties+5C E7
+poke @gParties+5D 3
+poke @gParties+5E E7
+poke @gParties+5F 3
+poke @gParties+60 E7
+poke @gParties+61 3
+poke @gParties+62 E7
+poke @gParties+63 3
+wait_opponent TRAINER_GRUNT_AQUA_GAUNTLET_2 60000
+poke @gParties+54 64
+poke @gParties+56 E7
+poke @gParties+57 3
+poke @gParties+58 E7
+poke @gParties+59 3
+poke @gParties+5A E7
+poke @gParties+5B 3
+poke @gParties+5C E7
+poke @gParties+5D 3
+poke @gParties+5E E7
+poke @gParties+5F 3
+poke @gParties+60 E7
+poke @gParties+61 3
+poke @gParties+62 E7
+poke @gParties+63 3
+wait_opponent TRAINER_GRUNT_AQUA_GAUNTLET_3 60000
+poke @gParties+54 64
+poke @gParties+56 E7
+poke @gParties+57 3
+poke @gParties+58 E7
+poke @gParties+59 3
+poke @gParties+5A E7
+poke @gParties+5B 3
+poke @gParties+5C E7
+poke @gParties+5D 3
+poke @gParties+5E E7
+poke @gParties+5F 3
+poke @gParties+60 E7
+poke @gParties+61 3
+poke @gParties+62 E7
+poke @gParties+63 3
+wait_opponent TRAINER_GRUNT_AQUA_GAUNTLET_4 60000
+poke @gParties+54 64
+poke @gParties+56 E7
+poke @gParties+57 3
+poke @gParties+58 E7
+poke @gParties+59 3
+poke @gParties+5A E7
+poke @gParties+5B 3
+poke @gParties+5C E7
+poke @gParties+5D 3
+poke @gParties+5E E7
+poke @gParties+5F 3
+poke @gParties+60 E7
+poke @gParties+61 3
+poke @gParties+62 E7
+poke @gParties+63 3
+wait_opponent TRAINER_GRUNT_AQUA_GAUNTLET_5 60000
+poke @gParties+54 64
+poke @gParties+56 E7
+poke @gParties+57 3
+poke @gParties+58 E7
+poke @gParties+59 3
+poke @gParties+5A E7
+poke @gParties+5B 3
+poke @gParties+5C E7
+poke @gParties+5D 3
+poke @gParties+5E E7
+poke @gParties+5F 3
+poke @gParties+60 E7
+poke @gParties+61 3
+poke @gParties+62 E7
+poke @gParties+63 3
+wait_opponent TRAINER_SHELLY_EVER_GRANDE 60000
+poke @gParties+54 64
+poke @gParties+56 E7
+poke @gParties+57 3
+poke @gParties+58 E7
+poke @gParties+59 3
+poke @gParties+5A E7
+poke @gParties+5B 3
+poke @gParties+5C E7
+poke @gParties+5D 3
+poke @gParties+5E E7
+poke @gParties+5F 3
+poke @gParties+60 E7
+poke @gParties+61 3
+poke @gParties+62 E7
+poke @gParties+63 3
+mash A 90000
+expect_trainer TRAINER_GRUNT_AQUA_GAUNTLET_3 1
+expect_trainer TRAINER_SHELLY_EVER_GRANDE 1
+expect_var VAR_TEMP_3 0
+
+# --- 5. Maxie at Victory Road's mouth (Mega Camerupt) ---
+heal
+warp MAP_EVER_GRANDE_CITY 18 45
+run 60
+expect_var VAR_TEMP_4 1
+walk UP 43
+run 60
+shot r5_10_maxie
+poke @gParties+54 64
+poke @gParties+56 E7
+poke @gParties+57 3
+poke @gParties+58 E7
+poke @gParties+59 3
+poke @gParties+5A E7
+poke @gParties+5B 3
+poke @gParties+5C E7
+poke @gParties+5D 3
+poke @gParties+5E E7
+poke @gParties+5F 3
+poke @gParties+60 E7
+poke @gParties+61 3
+poke @gParties+62 E7
+poke @gParties+63 3
+wait_species 1 SPECIES_CAMERUPT_MEGA 120000
+run 150
+shot r5_11_mega_camerupt_01
+run 300
+shot r5_11_mega_camerupt_02
+run 300
+shot r5_11_mega_camerupt_03
+mash A 60000
+shot r5_12_after
+expect_opponent TRAINER_MAXIE_VICTORY_ROAD
+expect_trainer TRAINER_MAXIE_VICTORY_ROAD 1
+expect_var VAR_TEMP_4 0
+
+# --- 6. Victory Road B1F: Tabitha and Courtney come down the last ladder (two-trainer double, both Megas);
+# B1F is dark: the player has used Flash ---
+heal
+setflag FLAG_SYS_USE_FLASH
+warp MAP_VICTORY_ROAD_B1F 22 25
+run 60
+expect_var VAR_TEMP_2 1
+walk UP 23
+run 60
+shot r6_10_admins
+# both party slots boosted here: the admins' double is the hardest, and one boosted POKéMON alone can lose it
+poke @gParties+54 64
+poke @gParties+56 E7
+poke @gParties+57 3
+poke @gParties+58 E7
+poke @gParties+59 3
+poke @gParties+5A E7
+poke @gParties+5B 3
+poke @gParties+5C E7
+poke @gParties+5D 3
+poke @gParties+5E E7
+poke @gParties+5F 3
+poke @gParties+60 E7
+poke @gParties+61 3
+poke @gParties+62 E7
+poke @gParties+63 3
+poke @gParties+B8 64
+poke @gParties+BA E7
+poke @gParties+BB 3
+poke @gParties+BC E7
+poke @gParties+BD 3
+poke @gParties+BE E7
+poke @gParties+BF 3
+poke @gParties+C0 E7
+poke @gParties+C1 3
+poke @gParties+C2 E7
+poke @gParties+C3 3
+poke @gParties+C4 E7
+poke @gParties+C5 3
+poke @gParties+C6 E7
+poke @gParties+C7 3
+# the admins' POKéMON still in their balls come in with 1 HP (gParties[B_TRAINER_OPPONENT_A] at +0x258 and
+# [B_TRAINER_OPPONENT_B] at +0x708, slots 1–3, hp at +0x56): mashed, this double against Will-O-Wisp, Intimidate,
+# Reflect, Protect and Full Restores can run long enough for poison and burn to lose it; the Megas still come out
+until @gMain+4 4 @@BattleMainCB2 20000 A 24
+poke @gParties+312 1
+poke @gParties+313 0
+poke @gParties+376 1
+poke @gParties+377 0
+poke @gParties+3DA 1
+poke @gParties+3DB 0
+poke @gParties+7C2 1
+poke @gParties+7C3 0
+poke @gParties+826 1
+poke @gParties+827 0
+poke @gParties+88A 1
+poke @gParties+88B 0
+# in a double battle the "…is reacting" message waits for a button
+wait_species 1 SPECIES_CHARIZARD_MEGA_Y 150000
+run 150
+shot r6_11_mega_charizard_y_01
+press A 2 30
+run 150
+shot r6_11_mega_charizard_y_02
+press A 2 30
+run 150
+shot r6_11_mega_charizard_y_03
+press A 2 30
+run 150
+shot r6_11_mega_charizard_y_04
+press A 2 30
+run 150
+shot r6_11_mega_charizard_y_05
+wait_species 3 SPECIES_HOUNDOOM_MEGA 150000
+run 150
+shot r6_12_mega_houndoom_01
+press A 2 30
+run 150
+shot r6_12_mega_houndoom_02
+press A 2 30
+run 150
+shot r6_12_mega_houndoom_03
+press A 2 30
+run 150
+shot r6_12_mega_houndoom_04
+press A 2 30
+run 150
+shot r6_12_mega_houndoom_05
+mash A 60000
+shot r6_13_after
+expect_opponent TRAINER_TABITHA_VICTORY_ROAD
+expect_opponent_b TRAINER_COURTNEY_VICTORY_ROAD
+expect_trainer TRAINER_COURTNEY_VICTORY_ROAD 1
+expect_var VAR_TEMP_2 0
+
+# --- 7. out of Victory Road: a grunt on the stairs north ---
+heal
+warp MAP_EVER_GRANDE_CITY 26 28
+run 60
+expect_var VAR_TEMP_5 1
+walk UP 26
+run 60
+shot r7_10_exit_grunt
+poke @gParties+54 64
+poke @gParties+56 E7
+poke @gParties+57 3
+poke @gParties+58 E7
+poke @gParties+59 3
+poke @gParties+5A E7
+poke @gParties+5B 3
+poke @gParties+5C E7
+poke @gParties+5D 3
+poke @gParties+5E E7
+poke @gParties+5F 3
+poke @gParties+60 E7
+poke @gParties+61 3
+poke @gParties+62 E7
+poke @gParties+63 3
+mash A 60000
+shot r7_11_after
+expect_opponent TRAINER_GRUNT_VICTORY_ROAD_EXIT
+expect_trainer TRAINER_GRUNT_VICTORY_ROAD_EXIT 1
+expect_var VAR_TEMP_5 0
+
+# --- 8. the League's forecourt: the last two grunts (double battle) ---
+heal
+warp MAP_EVER_GRANDE_CITY 18 16
+run 60
+expect_var VAR_TEMP_6 1
+walk UP 14
+run 60
+shot r8_10_league_grunts
+poke @gParties+54 64
+poke @gParties+56 E7
+poke @gParties+57 3
+poke @gParties+58 E7
+poke @gParties+59 3
+poke @gParties+5A E7
+poke @gParties+5B 3
+poke @gParties+5C E7
+poke @gParties+5D 3
+poke @gParties+5E E7
+poke @gParties+5F 3
+poke @gParties+60 E7
+poke @gParties+61 3
+poke @gParties+62 E7
+poke @gParties+63 3
+mash A 60000
+shot r8_11_after
+expect_opponent TRAINER_GRUNT_POKEMON_LEAGUE_1
+expect_opponent_b TRAINER_GRUNT_POKEMON_LEAGUE_2
+expect_trainer TRAINER_GRUNT_POKEMON_LEAGUE_2 1
+expect_var VAR_TEMP_6 0
+# the way to the League door is open
+walk UP 6
+expect_pos 18 6
+savestate revenge_done.ss
+
+clearflag FLAG_DEBUG_NO_ENCOUNTER
+clearflag FLAG_DEBUG_NO_TRAINER_SEE
+clearflag FLAG_DRACONID_NO_WHITEOUT
