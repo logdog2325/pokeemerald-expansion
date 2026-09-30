@@ -4055,23 +4055,25 @@ Items: Full Restore
 Double Battle: No
 AI: Basic Trainer / Smart Mon Choices
 
-Magneton @ Magnet
+Lairon @ Sitrus Berry
 Level: 39
 Ability: Sturdy
 IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
-- Thunderbolt
-- Flash Cannon
-- Thunder Wave
-- Tri Attack
-
-Claydol @ Light Clay
-Level: 39
-Ability: Levitate
-IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Adamant
+- Iron Head
+- Rock Slide
 - Earthquake
-- Psychic
-- Reflect
-- Light Screen
+- Roar
+
+Manectric
+Level: 40
+Ability: Lightning Rod
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Timid
+- Thunderbolt
+- Overheat
+- Quick Attack
+- Thunder Wave
 
 Golem @ Hard Stone
 Level: 40
@@ -4082,15 +4084,6 @@ IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
 - Fire Punch
 - Rock Polish
 
-Absol @ Scope Lens
-Level: 40
-Ability: Super Luck
-IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
-- Swords Dance
-- Night Slash
-- Sucker Punch
-- Rock Slide
-
 Ludicolo @ Leftovers
 Level: 41
 Ability: Swift Swim
@@ -4100,6 +4093,17 @@ Nature: Modest
 - Giga Drain
 - Ice Beam
 - Rain Dance
+
+Alakazam @ Twisted Spoon
+Level: 41
+Ability: Inner Focus
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Timid
+- Psychic
+- Shadow Ball
+- Recover
+- Calm Mind
+
 
 === TRAINER_MARY ===
 Name: MARY
@@ -5128,6 +5132,15 @@ Music: Suspicious
 Double Battle: No
 AI: Basic Trainer / Smart Mon Choices
 
+Banette
+Level: 38
+Ability: Insomnia
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Shadow Claw
+- Sucker Punch
+- Knock Off
+- Will-O-Wisp
+
 Solrock
 Level: 38
 IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
@@ -5144,21 +5157,16 @@ IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
 - Fake Out
 - Taunt
 
-Dusclops
-Level: 38
-IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
-- Hex
-- Will-O-Wisp
-- Ice Punch
-- Confuse Ray
-
-Banette @ Spell Tag
+Xatu @ Sitrus Berry
 Level: 39
+Ability: Synchronize
 IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
-- Shadow Claw
-- Sucker Punch
-- Knock Off
-- Will-O-Wisp
+Nature: Timid
+- Psychic
+- Air Slash
+- Confuse Ray
+- Calm Mind
+
 
 === TRAINER_VALERIE_2 ===
 Name: VALERIE
@@ -5535,6 +5543,16 @@ Items: Full Restore
 Double Battle: No
 AI: Basic Trainer / Smart Mon Choices
 
+Clamperl @ Deep Sea Tooth
+Level: 45
+Ability: Shell Armor
+IVs: 29 HP / 29 Atk / 29 Def / 29 SpA / 29 SpD / 29 Spe
+Nature: Modest
+- Surf
+- Ice Beam
+- Iron Defense
+- Toxic
+
 Lanturn
 Level: 44
 Ability: Volt Absorb
@@ -5555,26 +5573,6 @@ Nature: Modest
 - Ice Beam
 - Calm Mind
 
-Relicanth
-Level: 45
-Ability: Rock Head
-IVs: 29 HP / 29 Atk / 29 Def / 29 SpA / 29 SpD / 29 Spe
-Nature: Adamant
-- Waterfall
-- Rock Slide
-- Earthquake
-- Yawn
-
-Masquerain
-Level: 45
-Ability: Intimidate
-IVs: 29 HP / 29 Atk / 29 Def / 29 SpA / 29 SpD / 29 Spe
-Nature: Modest
-- Bug Buzz
-- Air Slash
-- Stun Spore
-- Giga Drain
-
 Seaking @ Mystic Water
 Level: 46
 Ability: Swift Swim
@@ -5584,6 +5582,17 @@ Nature: Adamant
 - Megahorn
 - Drill Run
 - Agility
+
+Corsola @ Sitrus Berry
+Level: 46
+Ability: Natural Cure
+IVs: 29 HP / 29 Atk / 29 Def / 29 SpA / 29 SpD / 29 Spe
+Nature: Bold
+- Scald
+- Power Gem
+- Recover
+- Stealth Rock
+
 
 === TRAINER_NAOMI ===
 Name: NAOMI
@@ -6167,25 +6176,15 @@ Music: Female
 Double Battle: No
 AI: Basic Trainer / Smart Mon Choices
 
-Sharpedo
+Golduck
 Level: 44
-Ability: Rough Skin
-IVs: 29 HP / 29 Atk / 29 Def / 29 SpA / 29 SpD / 29 Spe
-Nature: Adamant
-- Waterfall
-- Crunch
-- Ice Fang
-- Poison Fang
-
-Wailord
-Level: 44
-Ability: Water Veil
+Ability: Cloud Nine
 IVs: 29 HP / 29 Atk / 29 Def / 29 SpA / 29 SpD / 29 Spe
 Nature: Modest
 - Surf
+- Psychic
 - Ice Beam
-- Body Slam
-- Amnesia
+- Calm Mind
 
 Relicanth
 Level: 45
@@ -6214,8 +6213,19 @@ IVs: 29 HP / 29 Atk / 29 Def / 29 SpA / 29 SpD / 29 Spe
 Nature: Adamant
 - Liquidation
 - Crunch
-- Psychic Fangs
+- Ice Fang
 - Aqua Jet
+
+Wailord @ Sitrus Berry
+Level: 46
+Ability: Water Veil
+IVs: 29 HP / 29 Atk / 29 Def / 29 SpA / 29 SpD / 29 Spe
+Nature: Modest
+- Surf
+- Ice Beam
+- Body Slam
+- Amnesia
+
 
 === TRAINER_JESSICA_2 ===
 Name: JESSICA
@@ -7291,6 +7301,15 @@ Music: Swimmer
 Double Battle: No
 AI: Basic Trainer / Smart Mon Choices
 
+Tentacruel
+Level: 32
+Ability: Clear Body
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Surf
+- Sludge Bomb
+- Hex
+- Toxic
+
 Wailmer
 Level: 32
 IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
@@ -7307,21 +7326,16 @@ IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
 - Double Hit
 - Protect
 
-Seadra
-Level: 32
-IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
-- Bubble Beam
-- Dragon Breath
-- Smokescreen
-- Agility
-
-Tentacruel @ Poison Barb
+Pelipper @ Mystic Water
 Level: 33
+Ability: Keen Eye
 IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Modest
 - Surf
-- Sludge Bomb
-- Hex
-- Toxic
+- Air Slash
+- Ice Beam
+- Protect
+
 
 === TRAINER_MATTHEW ===
 Name: MATTHEW
@@ -7644,32 +7658,23 @@ Music: Swimmer
 Double Battle: No
 AI: Basic Trainer / Smart Mon Choices
 
-Sharpedo
+Wailmer
 Level: 37
-Ability: Rough Skin
+Ability: Water Veil
 IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
-- Surf
-- Crunch
+- Water Pulse
+- Heavy Slam
 - Ice Beam
-- Taunt
+- Body Slam
 
-Pelipper
-Level: 37
-Ability: Keen Eye
+Staryu
+Level: 38
+Ability: Natural Cure
 IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
 - Surf
-- Air Slash
-- Protect
-- Toxic
-
-Relicanth
-Level: 38
-Ability: Rock Head
-IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
-- Double-Edge
-- Waterfall
-- Rock Slide
-- Yawn
+- Power Gem
+- Psybeam
+- Confuse Ray
 
 Sharpedo @ Scope Lens
 Level: 39
@@ -7680,6 +7685,17 @@ Nature: Jolly
 - Waterfall
 - Ice Fang
 - Aqua Jet
+
+Golduck @ Sitrus Berry
+Level: 39
+Ability: Cloud Nine
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Modest
+- Surf
+- Psychic
+- Ice Beam
+- Calm Mind
+
 
 === TRAINER_RODNEY ===
 Name: RODNEY
@@ -7920,6 +7936,16 @@ Music: Swimmer
 Double Battle: No
 AI: Basic Trainer / Smart Mon Choices
 
+Seadra
+Level: 40
+Ability: Sniper
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Modest
+- Focus Energy
+- Surf
+- Dragon Pulse
+- Agility
+
 Sealeo
 Level: 39
 Ability: Thick Fat
@@ -7938,24 +7964,16 @@ IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
 - Protect
 - Toxic
 
-Tentacruel
-Level: 40
-Ability: Clear Body
-IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
-- Surf
-- Sludge Bomb
-- Giga Drain
-- Acid Armor
-
-Wailord @ Sitrus Berry
+Whiscash @ Sitrus Berry
 Level: 41
 Ability: Oblivious
 IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
 Nature: Adamant
-- Waterfall
-- Body Slam
 - Earthquake
-- Bounce
+- Aqua Tail
+- Rock Slide
+- Dragon Dance
+
 
 === TRAINER_KEVIN ===
 Name: KEVIN
@@ -8012,6 +8030,15 @@ Music: Swimmer
 Double Battle: No
 AI: Basic Trainer / Smart Mon Choices
 
+Staryu
+Level: 40
+Ability: Natural Cure
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Surf
+- Power Gem
+- Psybeam
+- Confuse Ray
+
 Tentacruel
 Level: 40
 Ability: Clear Body
@@ -8020,24 +8047,6 @@ IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
 - Sludge Bomb
 - Ice Beam
 - Toxic
-
-Sharpedo
-Level: 40
-Ability: Rough Skin
-IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
-- Crunch
-- Waterfall
-- Ice Fang
-- Aqua Jet
-
-Whiscash
-Level: 40
-Ability: Oblivious
-IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
-- Earthquake
-- Waterfall
-- Ice Beam
-- Amnesia
 
 Gyarados @ Leftovers
 Level: 41
@@ -8048,6 +8057,16 @@ Nature: Adamant
 - Waterfall
 - Crunch
 - Earthquake
+
+Sharpedo @ Sitrus Berry
+Level: 41
+Ability: Rough Skin
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Crunch
+- Waterfall
+- Ice Fang
+- Aqua Jet
+
 
 === TRAINER_DUDLEY ===
 Name: DUDLEY
@@ -8372,6 +8391,15 @@ Music: Intense
 Double Battle: No
 AI: Basic Trainer / Smart Mon Choices
 
+Machoke
+Level: 40
+Ability: Guts
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Brick Break
+- Rock Tomb
+- Scary Face
+- Earthquake
+
 Hitmonchan
 Level: 39
 Ability: Iron Fist
@@ -8390,24 +8418,16 @@ IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
 - Knock Off
 - Bulk Up
 
-Machoke
-Level: 40
+Heracross @ Flame Orb
+Level: 41
 Ability: Guts
 IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
-- Brick Break
-- Rock Tomb
-- Thunder Punch
-- Scary Face
-
-Machamp @ Black Belt
-Level: 41
-Ability: No Guard
-IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
 Nature: Adamant
-- Dynamic Punch
-- Knock Off
+- Facade
+- Brick Break
+- Pin Missile
 - Rock Slide
-- Bulk Up
+
 
 === TRAINER_KIYO ===
 Name: KIYO
@@ -9818,15 +9838,6 @@ Music: Male
 Double Battle: No
 AI: Basic Trainer / Smart Mon Choices
 
-Linoone
-Level: 22
-Ability: Pickup
-IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
-- Headbutt
-- Pin Missile
-- Shock Wave
-- Sand Attack
-
 Swellow
 Level: 22
 Ability: Guts
@@ -9844,6 +9855,16 @@ IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
 - Payback
 - Fake Out
 - Sunny Day
+
+Golbat @ Poison Barb
+Level: 23
+Ability: Inner Focus
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+- Poison Fang
+- Supersonic
+- Astonish
+- Brave Bird
+
 
 === TRAINER_SHANE ===
 Name: SHANE
@@ -10227,6 +10248,15 @@ Music: Suspicious
 Double Battle: No
 AI: Basic Trainer / Smart Mon Choices
 
+Masquerain
+Level: 31
+Ability: Intimidate
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Bubble Beam
+- Stun Spore
+- Scary Face
+- Aerial Ace
+
 Volbeat
 Level: 31
 IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
@@ -10243,21 +10273,15 @@ IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
 - Double Hit
 - Rock Tomb
 
-Heracross
-Level: 31
-IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
-- Horn Attack
-- Brick Break
-- Aerial Ace
-- Endure
-
-Masquerain @ Silver Powder
+Ninjask @ Silver Powder
 Level: 32
+Ability: Speed Boost
 IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
-- Air Slash
-- Bubble Beam
-- Stun Spore
-- Scary Face
+- Bug Bite
+- Aerial Ace
+- Agility
+- Screech
+
 
 === TRAINER_DONALD ===
 Name: DONALD
@@ -10391,16 +10415,18 @@ Music: Suspicious
 Double Battle: No
 AI: Basic Trainer
 
-Illumise
+Ninjask
 Level: 20
+Ability: Speed Boost
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Struggle Bug
-- Quick Attack
-- Charm
-- Moonlight
+- Fury Cutter
+- Aerial Ace
+- Screech
+- Sand Attack
 
 Dustox
 Level: 20
+Ability: Shield Dust
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Venoshock
 - Confusion
@@ -10409,11 +10435,13 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Beautifly
 Level: 21
+Ability: Swarm
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Air Cutter
 - Bug Bite
 - Absorb
 - Stun Spore
+
 
 === TRAINER_JEFFREY_2 ===
 Name: JEFFREY
@@ -10721,6 +10749,16 @@ Music: Intense
 Double Battle: No
 AI: Basic Trainer / Smart Mon Choices
 
+Kadabra
+Level: 40
+Ability: Inner Focus
+IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
+Nature: Timid
+- Psychic
+- Shadow Ball
+- Recover
+- Calm Mind
+
 Claydol
 Level: 39
 IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
@@ -10729,22 +10767,6 @@ IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
 - Ancient Power
 - Cosmic Power
 
-Chimecho
-Level: 39
-IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
-- Extrasensory
-- Shadow Ball
-- Yawn
-- Calm Mind
-
-Starmie
-Level: 40
-IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
-- Surf
-- Psychic
-- Thunderbolt
-- Recover
-
 Gardevoir @ Sitrus Berry
 Level: 41
 IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
@@ -10752,6 +10774,16 @@ IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
 - Dazzling Gleam
 - Shadow Ball
 - Calm Mind
+
+Girafarig @ Twisted Spoon
+Level: 41
+Ability: Early Bird
+IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
+- Psychic
+- Thunderbolt
+- Shadow Ball
+- Calm Mind
+
 
 === TRAINER_BLAKE ===
 Name: BLAKE
@@ -10803,12 +10835,13 @@ Music: Intense
 Double Battle: No
 AI: Basic Trainer / Smart Mon Choices
 
-Grumpig
+Staryu
 Level: 37
+Ability: Natural Cure
 IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
-- Psychic
+- Surf
 - Power Gem
-- Shadow Ball
+- Psybeam
 - Confuse Ray
 
 Xatu
@@ -10819,14 +10852,6 @@ IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
 - Night Shade
 - Confuse Ray
 
-Gallade
-Level: 37
-IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
-- Sacred Sword
-- Night Slash
-- Leaf Blade
-- Swords Dance
-
 Gardevoir @ Sitrus Berry
 Level: 38
 IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
@@ -10834,6 +10859,17 @@ IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
 - Dazzling Gleam
 - Thunderbolt
 - Calm Mind
+
+Grumpig @ Leftovers
+Level: 38
+Ability: Thick Fat
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Modest
+- Psychic
+- Power Gem
+- Shadow Ball
+- Confuse Ray
+
 
 === TRAINER_JOSHUA ===
 Name: JOSHUA
@@ -12038,55 +12074,55 @@ Double Battle: No
 AI: Smart Trainer / Prediction / Ace Pokemon
 Mugshot: Purple
 
-Mightyena @ Sitrus Berry
+Scrafty @ Sitrus Berry
 Level: 54
 Ability: Intimidate
-EVs: 252 Atk / 4 Def / 252 Spe
-Nature: Jolly
+EVs: 252 HP / 252 Atk / 4 SpD
+Nature: Adamant
 - Crunch
-- Play Rough
-- Sucker Punch
-- Taunt
-
-Cacturne @ Focus Sash
-Level: 54
-Ability: Water Absorb
-EVs: 252 SpA / 4 SpD / 252 Spe
-Nature: Modest
-- Giga Drain
-- Dark Pulse
-- Focus Blast
-- Spikes
+- Drain Punch
+- Poison Jab
+- Bulk Up
 
 Shiftry @ Life Orb
 Level: 54
 Ability: Pickpocket
 EVs: 252 Atk / 4 HP / 252 Spe
 Nature: Adamant
+- Fake Out
 - Leaf Blade
 - Knock Off
 - Sucker Punch
-- Swords Dance
-
-Crawdaunt @ Mystic Water
-Level: 54
-Ability: Adaptability
-EVs: 252 HP / 252 Atk / 4 Spe
-Nature: Adamant
-- Crabhammer
-- Knock Off
-- Brick Break
-- Swords Dance
 
 Sharpedo @ Black Glasses
 Level: 54
 Ability: Speed Boost
 EVs: 252 Atk / 4 HP / 252 Spe
 Nature: Adamant
-- Liquidation
 - Crunch
-- Close Combat
+- Liquidation
+- Aqua Jet
 - Protect
+
+Zoroark @ Life Orb
+Level: 54
+Ability: Illusion
+EVs: 252 SpA / 4 SpD / 252 Spe
+Nature: Timid
+- Dark Pulse
+- Flamethrower
+- Focus Blast
+- Nasty Plot
+
+Mandibuzz @ Leftovers
+Level: 54
+Ability: Overcoat
+EVs: 252 HP / 252 Def / 4 SpD
+Nature: Impish
+- Foul Play
+- Bone Rush
+- Roost
+- Tailwind
 
 Absol @ Scope Lens
 Level: 55
@@ -12097,6 +12133,7 @@ Nature: Adamant
 - Psycho Cut
 - Stone Edge
 - Sucker Punch
+
 
 === TRAINER_PHOEBE ===
 Name: PHOEBE
@@ -12109,16 +12146,6 @@ Double Battle: No
 AI: Smart Trainer / Prediction / Ace Pokemon
 Mugshot: Green
 
-Dusclops @ Eviolite
-Level: 54
-Ability: Frisk
-EVs: 252 HP / 252 Def / 4 SpD
-Nature: Relaxed
-- Trick Room
-- Night Shade
-- Will-O-Wisp
-- Confuse Ray
-
 Banette @ Life Orb
 Level: 54
 Ability: Insomnia
@@ -12129,35 +12156,45 @@ Nature: Adamant
 - Sucker Punch
 - Swords Dance
 
+Mismagius @ Spell Tag
+Level: 54
+Ability: Levitate
+EVs: 252 SpA / 4 SpD / 252 Spe
+Nature: Timid
+- Shadow Ball
+- Thunderbolt
+- Power Gem
+- Pain Split
+
+Drifblim @ Sitrus Berry
+Level: 55
+Ability: Unburden
+EVs: 252 Atk / 4 HP / 252 Spe
+Nature: Adamant
+- Phantom Force
+- Acrobatics
+- Will-O-Wisp
+- Destiny Bond
+
+Chandelure @ Wise Glasses
+Level: 55
+Ability: Flash Fire
+EVs: 252 SpA / 4 SpD / 252 Spe
+Nature: Modest
+- Hex
+- Flamethrower
+- Energy Ball
+- Will-O-Wisp
+
 Sableye @ Leftovers
 Level: 55
 Ability: Prankster
 EVs: 252 HP / 4 Def / 252 SpD
 Nature: Careful
+- Foul Play
 - Will-O-Wisp
-- Taunt
-- Knock Off
-- Shadow Claw
-
-Shedinja @ Lum Berry
-Level: 55
-Ability: Wonder Guard
-EVs: 252 Atk / 4 Def / 252 Spe
-Nature: Adamant
-- X-Scissor
-- Shadow Claw
-- Shadow Sneak
-- Will-O-Wisp
-
-Banette @ Spell Tag
-Level: 55
-Ability: Cursed Body
-EVs: 252 HP / 252 Atk / 4 SpD
-Nature: Brave
-- Poltergeist
-- Shadow Sneak
-- Will-O-Wisp
-- Thunder Wave
+- Recover
+- Fake Out
 
 Dusknoir @ Leftovers
 Level: 56
@@ -12165,9 +12202,10 @@ Ability: Pressure
 EVs: 252 HP / 252 Atk / 4 SpD
 Nature: Brave
 - Poltergeist
-- Earthquake
 - Ice Punch
+- Fire Punch
 - Shadow Sneak
+
 
 === TRAINER_GLACIA ===
 Name: GLACIA
@@ -12180,65 +12218,66 @@ Double Battle: No
 AI: Smart Trainer / Prediction / Ace Pokemon
 Mugshot: Pink
 
-Glalie @ Focus Sash
+Abomasnow @ Icy Rock
 Level: 55
-Ability: Inner Focus
-EVs: 252 Atk / 4 SpA / 252 Spe
-Nature: Naive
-- Freeze-Dry
+Ability: Snow Warning
+EVs: 4 HP / 252 Atk / 252 SpA
+Nature: Lonely
+- Blizzard
+- Wood Hammer
+- Ice Shard
 - Earthquake
-- Taunt
-- Explosion
 
-Walrein @ Leftovers
+Beartic @ Never-Melt Ice
 Level: 55
-Ability: Thick Fat
-EVs: 252 HP / 252 Def / 4 SpA
-Nature: Bold
-- Surf
-- Ice Beam
-- Toxic
-- Protect
+Ability: Slush Rush
+EVs: 252 Atk / 4 HP / 252 Spe
+Nature: Adamant
+- Icicle Crash
+- Superpower
+- Aqua Jet
+- Swords Dance
 
-Lapras @ Sitrus Berry
-Level: 56
-Ability: Water Absorb
-EVs: 252 HP / 252 SpA / 4 SpD
-Nature: Modest
-- Hydro Pump
-- Ice Beam
-- Thunderbolt
-- Confuse Ray
-
-Froslass @ Spell Tag
+Froslass @ Focus Sash
 Level: 56
 Ability: Cursed Body
 EVs: 252 SpA / 4 HP / 252 Spe
 Nature: Timid
-- Ice Beam
+- Blizzard
 - Shadow Ball
 - Will-O-Wisp
 - Destiny Bond
 
+Vanilluxe @ Leftovers
+Level: 56
+Ability: Ice Body
+EVs: 252 HP / 252 SpA / 4 SpD
+Nature: Modest
+- Freeze-Dry
+- Blizzard
+- Flash Cannon
+- Mirror Coat
+
 Glalie @ Never-Melt Ice
 Level: 56
 Ability: Inner Focus
-EVs: 252 Atk / 4 HP / 252 Spe
-Nature: Jolly
-- Icicle Crash
-- Crunch
-- Earthquake
+EVs: 252 Atk / 4 SpA / 252 Spe
+Nature: Naive
+- Freeze-Dry
 - Ice Shard
+- Earthquake
+- Crunch
 
-Walrein @ Sitrus Berry
+Walrein @ Leftovers
 Level: 57
-Ability: Thick Fat
+Ability: Ice Body
 EVs: 252 HP / 252 SpA / 4 SpD
 Nature: Modest
-- Ice Beam
+- Blizzard
 - Surf
-- Earthquake
 - Yawn
+- Protect
+
 
 === TRAINER_DRAKE ===
 Name: DRAKE
@@ -12251,25 +12290,25 @@ Double Battle: No
 AI: Smart Trainer / Prediction / Ace Pokemon
 Mugshot: Blue
 
-Shelgon @ Eviolite
-Level: 56
-Ability: Rock Head
-EVs: 252 HP / 252 Def / 4 Atk
-Nature: Impish
-- Double-Edge
-- Dragon Claw
-- Rock Slide
-- Protect
-
 Altaria @ Leftovers
 Level: 56
 Ability: Natural Cure
-EVs: 252 HP / 252 Atk / 4 Spe
-Nature: Adamant
-- Dragon Dance
-- Dragon Claw
-- Earthquake
-- Aerial Ace
+EVs: 252 HP / 4 Def / 252 SpA
+Nature: Modest
+- Dragon Pulse
+- Moonblast
+- Cotton Guard
+- Roost
+
+Dragalge @ Black Sludge
+Level: 56
+Ability: Adaptability
+EVs: 252 HP / 252 SpA / 4 SpD
+Nature: Modest
+- Dragon Pulse
+- Hydro Pump
+- Sludge Wave
+- Thunderbolt
 
 Kingdra @ Scope Lens
 Level: 57
@@ -12291,15 +12330,15 @@ Nature: Jolly
 - Stone Edge
 - U-turn
 
-Dragonite @ Lum Berry
+Haxorus @ Lum Berry
 Level: 57
-Ability: Multiscale
+Ability: Mold Breaker
 EVs: 252 Atk / 4 HP / 252 Spe
 Nature: Adamant
-- Extreme Speed
+- Dragon Dance
 - Dragon Claw
 - Earthquake
-- Roost
+- X-Scissor
 
 Salamence @ Life Orb
 Level: 58
@@ -12307,9 +12346,10 @@ Ability: Moxie
 EVs: 252 Atk / 4 HP / 252 Spe
 Nature: Adamant
 - Dragon Dance
-- Dragon Claw
+- Dragon Rush
 - Earthquake
 - Fire Fang
+
 
 === TRAINER_ROXANNE_1 ===
 Name: ROXANNE
@@ -15316,12 +15356,13 @@ Music: Male
 Double Battle: No
 AI: Basic Trainer
 
-Zigzagoon
+Ninjask
 Level: 21
+Ability: Speed Boost
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Headbutt
-- Pin Missile
-- Baby-Doll Eyes
+- Fury Cutter
+- Aerial Ace
+- Screech
 - Sand Attack
 
 Linoone
@@ -15331,6 +15372,16 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Pin Missile
 - Hone Claws
 - Baby-Doll Eyes
+
+Geodude
+Level: 22
+Ability: Sturdy
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Rock Throw
+- Bulldoze
+- Rollout
+- Defense Curl
+
 
 === TRAINER_ALLEN ===
 Name: ALLEN
@@ -15365,29 +15416,33 @@ Music: Male
 Double Battle: No
 AI: Basic Trainer
 
-Zigzagoon
+Poochyena
 Level: 17
+Ability: Quick Feet
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Bite
+- Tackle
+- Roar
+- Sand Attack
+
+Aron
+Level: 17
+Ability: Sturdy
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Headbutt
-- Covet
-- Sand Attack
-- Tail Whip
+- Metal Claw
+- Rock Tomb
+- Harden
 
 Electrike
-Level: 17
+Level: 18
+Ability: Static
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Shock Wave
 - Quick Attack
 - Howl
 - Thunder Wave
 
-Aron
-Level: 18
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Headbutt
-- Metal Claw
-- Rock Tomb
-- Harden
 
 === TRAINER_WALLACE ===
 Name: WALLACE
@@ -18202,6 +18257,16 @@ Music: Intense
 Double Battle: No
 AI: Basic Trainer / Smart Mon Choices
 
+Shelgon
+Level: 40
+Ability: Rock Head
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Adamant
+- Dragon Claw
+- Double-Edge
+- Crunch
+- Toxic
+
 Vibrava
 Level: 39
 Ability: Levitate
@@ -18220,24 +18285,16 @@ IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
 - Thunder Wave
 - Agility
 
-Altaria
-Level: 40
-Ability: Natural Cure
-IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
-- Dragon Pulse
-- Flamethrower
-- Cotton Guard
-- Sing
-
-Shelgon @ Dragon Fang
+Kingdra @ Mystic Water
 Level: 41
-Ability: Rock Head
+Ability: Sniper
 IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
-Nature: Adamant
-- Dragon Dance
-- Dragon Claw
-- Double-Edge
-- Crunch
+Nature: Modest
+- Surf
+- Dragon Pulse
+- Ice Beam
+- Focus Energy
+
 
 === TRAINER_PERRY ===
 Name: PERRY
@@ -18672,6 +18729,15 @@ Music: Cool
 Double Battle: No
 AI: Basic Trainer / Smart Mon Choices
 
+Swablu
+Level: 31
+Ability: Natural Cure
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Dragon Breath
+- Aerial Ace
+- Disarming Voice
+- Sing
+
 Noctowl
 Level: 31
 IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
@@ -18688,21 +18754,15 @@ IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
 - Supersonic
 - Protect
 
-Swellow
-Level: 31
-IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
-- Wing Attack
-- Quick Attack
-- Focus Energy
-- Agility
-
 Swellow @ Sharp Beak
 Level: 32
+Ability: Guts
 IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
 - Aerial Ace
 - Air Slash
 - Quick Attack
 - Steel Wing
+
 
 === TRAINER_ROBERT_2 ===
 Name: ROBERT
@@ -20458,29 +20518,24 @@ Music: Swimmer
 Double Battle: No
 AI: Basic Trainer / Smart Mon Choices
 
-Lanturn
+Pelipper
 Level: 32
+Ability: Drizzle
 IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
-- Spark
-- Bubble Beam
-- Confuse Ray
-- Thunder Wave
+Nature: Modest
+- Surf
+- Air Slash
+- Ice Beam
+- Tailwind
 
-Luvdisc
+Whiscash
 Level: 32
+Ability: Oblivious
 IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
-- Water Pulse
-- Draining Kiss
-- Sweet Kiss
-- Agility
-
-Sealeo
-Level: 32
-IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
-- Aurora Beam
-- Brine
-- Rollout
-- Defense Curl
+- Aqua Tail
+- Earthquake
+- Zen Headbutt
+- Rest
 
 Seaking @ Oran Berry
 Level: 33
@@ -20489,6 +20544,16 @@ IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
 - Waterfall
 - Agility
 - Supersonic
+
+Wailmer @ Mystic Water
+Level: 33
+Ability: Water Veil
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Water Pulse
+- Heavy Slam
+- Ice Beam
+- Rest
+
 
 === TRAINER_ALICE ===
 Name: ALICE
@@ -20586,6 +20651,15 @@ Music: Swimmer
 Double Battle: No
 AI: Basic Trainer / Smart Mon Choices
 
+Wailmer
+Level: 36
+Ability: Water Veil
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Surf
+- Body Slam
+- Ice Beam
+- Rest
+
 Luvdisc
 Level: 35
 Ability: Swift Swim
@@ -20604,15 +20678,6 @@ IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
 - Protect
 - Toxic
 
-Seaking
-Level: 36
-Ability: Swift Swim
-IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
-- Waterfall
-- Horn Attack
-- Agility
-- Aqua Ring
-
 Azumarill @ Sitrus Berry
 Level: 37
 Ability: Huge Power
@@ -20622,6 +20687,7 @@ Nature: Adamant
 - Play Rough
 - Ice Punch
 - Aqua Ring
+
 
 === TRAINER_TANYA ===
 Name: TANYA
@@ -20678,6 +20744,16 @@ Music: Swimmer
 Double Battle: No
 AI: Basic Trainer / Smart Mon Choices
 
+Seaking
+Level: 37
+Ability: Swift Swim
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Adamant
+- Waterfall
+- Double-Edge
+- Swords Dance
+- Agility
+
 Luvdisc
 Level: 36
 Ability: Swift Swim
@@ -20696,24 +20772,16 @@ IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
 - Ice Beam
 - Tailwind
 
-Azumarill
-Level: 37
-Ability: Thick Fat
-IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
-- Aqua Tail
-- Play Rough
-- Rollout
-- Aqua Ring
-
-Seaking @ Mystic Water
+Clamperl @ Deep Sea Tooth
 Level: 38
-Ability: Swift Swim
+Ability: Shell Armor
 IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
-Nature: Adamant
-- Waterfall
-- Double-Edge
-- Swords Dance
-- Agility
+Nature: Modest
+- Surf
+- Ice Beam
+- Iron Defense
+- Toxic
+
 
 === TRAINER_NIKKI ===
 Name: NIKKI
@@ -21092,15 +21160,6 @@ Music: Swimmer
 Double Battle: No
 AI: Basic Trainer / Smart Mon Choices
 
-Seadra
-Level: 39
-Ability: Poison Point
-IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
-- Surf
-- Dragon Breath
-- Ice Beam
-- Agility
-
 Pelipper
 Level: 39
 Ability: Drizzle
@@ -21128,6 +21187,17 @@ Nature: Modest
 - Dragon Breath
 - Focus Energy
 - Ice Beam
+
+Seaking @ Mystic Water
+Level: 41
+Ability: Swift Swim
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Adamant
+- Waterfall
+- Double-Edge
+- Swords Dance
+- Agility
+
 
 === TRAINER_KAYLEE ===
 Name: KAYLEE
@@ -22303,21 +22373,24 @@ Music: Male
 Double Battle: No
 AI: Basic Trainer
 
-Tentacool
-Level: 15
-IVs: 9 HP / 9 Atk / 9 Def / 9 SpA / 9 SpD / 9 Spe
-- Acid
-- Water Gun
-- Supersonic
-- Wrap
-
 Wingull
-Level: 16
+Level: 15
+Ability: Hydration
 IVs: 9 HP / 9 Atk / 9 Def / 9 SpA / 9 SpD / 9 Spe
 - Wing Attack
 - Water Gun
 - Quick Attack
 - Growl
+
+Machop
+Level: 16
+Ability: Guts
+IVs: 9 HP / 9 Atk / 9 Def / 9 SpA / 9 SpD / 9 Spe
+- Low Sweep
+- Revenge
+- Focus Energy
+- Leer
+
 
 === TRAINER_ERNEST_1 ===
 Name: ERNEST
@@ -25432,6 +25505,16 @@ Items: Full Restore
 Double Battle: No
 AI: Basic Trainer / Smart Mon Choices
 
+Cacturne
+Level: 43
+Ability: Sand Veil
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Nature: Adamant
+- Needle Arm
+- Sucker Punch
+- Drain Punch
+- Spikes
+
 Breloom
 Level: 42
 Ability: Effect Spore
@@ -25452,25 +25535,15 @@ Nature: Modest
 - Sunny Day
 - Razor Leaf
 
-Donphan
-Level: 43
-Ability: Sturdy
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-Nature: Adamant
-- Earthquake
-- Rock Slide
-- Knock Off
-- Rapid Spin
-
-Cacturne @ Miracle Seed
+Aggron @ Leftovers
 Level: 44
-Ability: Sand Veil
+Ability: Rock Head
 IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-Nature: Adamant
-- Seed Bomb
-- Sucker Punch
-- Drain Punch
-- Spikes
+- Iron Head
+- Rock Slide
+- Earthquake
+- Thunder Punch
+
 
 === TRAINER_JACKSON_2 ===
 Name: JACKSON
@@ -28273,6 +28346,15 @@ Music: Male
 Double Battle: No
 AI: Basic Trainer / Smart Mon Choices
 
+Volbeat
+Level: 31
+Ability: Swarm
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Struggle Bug
+- Quick Attack
+- Confuse Ray
+- Tail Glow
+
 Pinsir
 Level: 31
 IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
@@ -28281,22 +28363,6 @@ IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
 - Double Hit
 - Harden
 
-Masquerain
-Level: 31
-IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
-- Air Cutter
-- Bubble Beam
-- Scary Face
-- Quick Attack
-
-Shedinja
-Level: 31
-IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
-- Shadow Claw
-- Metal Claw
-- Confuse Ray
-- Sand Attack
-
 Ninjask @ Silver Powder
 Level: 32
 IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
@@ -28304,6 +28370,17 @@ IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
 - Aerial Ace
 - Agility
 - Screech
+
+Illumise @ Sitrus Berry
+Level: 32
+Ability: Tinted Lens
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Modest
+- Struggle Bug
+- Shadow Ball
+- Encore
+- Moonlight
+
 
 === TRAINER_GREG ===
 Name: GREG
@@ -30467,6 +30544,16 @@ Music: Hiker
 Double Battle: No
 AI: Basic Trainer / Smart Mon Choices
 
+Wailmer
+Level: 38
+Ability: Water Veil
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Modest
+- Surf
+- Ice Beam
+- Body Slam
+- Rest
+
 Whiscash
 Level: 37
 Ability: Oblivious
@@ -30475,24 +30562,6 @@ IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
 - Waterfall
 - Ice Beam
 - Rest
-
-Tentacruel
-Level: 37
-Ability: Clear Body
-IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
-- Surf
-- Sludge Bomb
-- Toxic
-- Protect
-
-Gyarados
-Level: 38
-Ability: Intimidate
-IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
-- Aqua Tail
-- Bite
-- Thunder Wave
-- Ice Fang
 
 Gyarados @ Sitrus Berry
 Level: 39
@@ -30503,6 +30572,17 @@ Nature: Adamant
 - Waterfall
 - Crunch
 - Earthquake
+
+Sharpedo @ Scope Lens
+Level: 39
+Ability: Rough Skin
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Jolly
+- Night Slash
+- Waterfall
+- Ice Fang
+- Aqua Jet
+
 
 === TRAINER_ALEXA ===
 Name: ALEXA
@@ -30809,32 +30889,23 @@ Music: Swimmer
 Double Battle: No
 AI: Basic Trainer / Smart Mon Choices
 
-Pelipper
-Level: 38
-Ability: Drizzle
-IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
-- Surf
-- Air Slash
-- Tailwind
-- Protect
-
-Seaking
+Luvdisc
 Level: 38
 Ability: Swift Swim
 IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
-- Waterfall
-- Horn Attack
-- Agility
-- Aqua Ring
+- Water Pulse
+- Ice Beam
+- Wish
+- Charm
 
-Azumarill
+Corsola
 Level: 39
-Ability: Thick Fat
+Ability: Natural Cure
 IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
-- Aqua Tail
-- Play Rough
-- Ice Punch
-- Aqua Ring
+- Surf
+- Ancient Power
+- Ice Beam
+- Calm Mind
 
 Lanturn @ Magnet
 Level: 40
@@ -30845,6 +30916,16 @@ Nature: Modest
 - Surf
 - Ice Beam
 - Confuse Ray
+
+Azumarill @ Sitrus Berry
+Level: 40
+Ability: Thick Fat
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Aqua Tail
+- Play Rough
+- Ice Punch
+- Aqua Ring
+
 
 === TRAINER_TORI_AND_TIA ===
 Name: TORI & TIA

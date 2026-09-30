@@ -10,6 +10,12 @@ rulebook; `tools/hack/trainers/` checks it.
 > the batches rewrote, **362 use their Emerald rematch roster** and **436 an enhanced own team** (0 ORAS).
 > `tools/hack/trainers/sources.json` lists the source per trainer; the story trainers (rivals, Aster, Wally)
 > have hand-written teams. Swapping in real ORAS rosters later only needs new blocks through the same checks.
+>
+> **Round 1 (feedback 1.15):** real ORAS data is now in the repository (scraped from Serebii, see
+> [ORAS data](#oras-data-round-1)). Every ORAS rematch trainer that exists in Emerald already has Emerald rematch
+> tiers (rule 1 keeps those), so the ORAS rosters used are: the **Elite Four's ORAS post-game rosters** (4,
+> `oras-rematch`) and **27 ORAS first-battle teams** richer than the trainer's Emerald team (`oras-first`);
+> 362 trainers keep their Emerald rematch roster and 405 their enhanced own team.
 
 ## Level caps
 
@@ -91,15 +97,18 @@ Scaling down: a species appears at the evolution stage its level allows (Salamen
 30; the check allows **aces and bosses** up to 3 levels early and reports it as a warning). Keep the roster's
 identity: Calvin's Swellow / Linoone / Mightyena become Taillow / Zigzagoon / Poochyena at Lv 5–8.
 
-Each batch records its source per trainer (`oras-rematch`, `emerald-rematch`, `enhanced`) in a sidecar file;
-the table at the end of this page is generated from them. ORAS data is from memory (there are no ORAS data files
-in this repository), which is why every team is still run through the legality checks below.
+Each batch records its source per trainer (`oras-rematch`, `oras-first`, `emerald-rematch`, `enhanced`) in a
+sidecar file; the table at the end of this page is generated from them. ORAS rosters come from
+`tools/hack/trainers/oras/oras_trainers.json` (Serebii, [ORAS data](#oras-data-round-1)); Serebii lists species,
+levels and held items (moves only for the Elite Four), so every team is still run through the legality checks
+below.
 
 ## Species pool
 
 The Hoenn Pokédex (with the cross-generation evolutions the expansion lists there: Gallade, Froslass, Probopass,
 Dusknoir, Roserade, Magnezone, …) plus every species some vanilla Emerald trainer uses (Kabuto, Aerodactyl, …).
 Not used: legendaries and mythicals, and the Deino / Dreepy / Jangmo-o lines (reserved for the player and Aster).
+Exception: the Elite Four use their ORAS post-game rosters, which include species from all regions (D-173).
 Story trainers (Brendan, May, Wally, Aster) have their own rosters (docs/hack_changes.md, Phase 5).
 
 ## Moves, abilities, items
@@ -122,8 +131,9 @@ Story trainers (Brendan, May, Wally, Aster) have their own rosters (docs/hack_ch
   Full Restore (S8+); E4 and Champion 2–4 Full Restores. Route trainers keep what they have.
 - **Megas** (`MEGA_TRAINERS` in `check_party.py`): only Maxie in the Magma Hideout (Camerupt), Archie in the
   Seafloor Cavern (Sharpedo), Steven (Metagross), gym leaders' last rematch tier (one thematic Mega, e.g.
-  Roxanne's Aerodactyl, Wattson's Manectric, Flannery's Camerupt, Winona's Altaria), and the story trainers late
-  in the game. No Tera, Dynamax or Z-Moves.
+  Roxanne's Aerodactyl, Wattson's Manectric, Flannery's Camerupt, Winona's Altaria), the Elite Four's post-game
+  rematch (their ORAS Megas: Absol, Sableye, Glalie, Salamence; D-174), and the story trainers late in the game.
+  No Tera, Dynamax or Z-Moves.
 
 ## AI
 
@@ -157,7 +167,142 @@ checked).
 
 Tools: `scan_maps.py` (which map fights which trainer), `build_segments.py` (segments.json),
 `check_party.py`, `check_tiers.py`, `splice_party.py` (`--target` to merge into another file), `report.py`,
-`party.py` (the `.party` reader/writer they share).
+`party.py` (the `.party` reader/writer they share), and the ORAS tools in `oras/` (below).
+
+## ORAS data (round 1)
+
+Source: Serebii.net, fetched 2026-09-30 (docs/hack_resources.md) – the Pokéarth "Gen VI" location pages
+(`https://www.serebii.net/pokearth/hoenn/<location>.shtml`: routes, towns and their gyms, caves, Victory Road,
+the League) and the ORAS Elite Four page (`https://www.serebii.net/omegarubyalphasapphire/elitefour.shtml`, with
+moves). Files in `tools/hack/trainers/oras/`:
+
+| File | What |
+|---|---|
+| `scrape_serebii.py --cache DIR` | fetches the pages once (2 s apart, cached in `DIR`, not the repo) and parses them |
+| `oras_trainers.json` | every ORAS trainer table (58 pages, 761 tables), and per trainer the first team + later / rematch teams |
+| `match_oras.py` (`--list`, `--show ID`, `--tiers`) | Emerald trainer ↔ ORAS trainer → `oras_matches.json` (D-171) |
+| `build_oras_batch.py -o DRAFT` (`--check FILES`) | drafts the `oras-first` blocks (D-172); `--check`: every move known at its level under the segment rules |
+| `batch_oras_first.party` + `.sources.json` | the 27 `oras-first` teams (reviewed draft) |
+| `batch_elite_four.party` + `.sources.json` | the Elite Four's first battle (D-173) |
+| `elite_four_rematch.party` | the Elite Four's post-game rematch, ready but **not in the ROM** (no trainer ids yet, D-174) |
+
+**Matching** (D-171): of the 438 named, non-story trainers (first tiers), 228 match exactly (same name and class
+on the Serebii page of their map), 4 with another class (ORAS "Teammates": Anna & Meg, Kate & Joy, Kim & Iris,
+Tyra & Ivy), 8 only have a namesake elsewhere (not used: Julie, Patricia, Kindra, Melissa, Joshua, Georgia,
+Martha – and Shelby, the same Expert moved from Mt. Chimney to Jagged Pass), 8 are ambiguous (Gabby & Ty's six
+battles are spread over three route pages; Marlene is a Route 128 Tuber in ORAS; Wallace is not ORAS's Champion)
+and 190 have no ORAS counterpart. ORAS replaced the Abandoned Ship with Sea Mauville; its trainers are matched there.
+
+**ORAS rematch teams**: every ORAS trainer with rematch teams that exists in Emerald has Emerald rematch tiers, so
+rule 1 keeps their Emerald roster; no regular trainer changes to `oras-rematch`. The ORAS rosters differ as below
+(the ORAS post-game tier mostly adds one Pokémon from another region; not applied):
+
+| Trainer | Emerald rematch roster (last tier) | ORAS last rematch | New families in ORAS |
+|---|---|---|---|
+| ROSE_1 | Breloom, Gloom, Roselia | Bellossom 48, Sunflora 48, Roserade 48 | Sunflora |
+| DUSTY_1 | Sandslash | Sandslash 46, Tyrantrum 46, Aurorus 46, Claydol 46, Aerodactyl 46 | Tyrantrum, Aurorus, Claydol, Aerodactyl |
+| LOLA_1 | Azumarill, Azumarill | Azumarill 50 | – |
+| RICKY_1 | Linoone | Linoone 50 | – |
+| WILTON_1 | Manectric, Wailmer, Hariyama | Talonflame 50, Manectric 51, Wailord 51, Hariyama 51, Haxorus 52 | Talonflame, Haxorus |
+| BROOKE_1 | Pelipper, Camerupt, Roselia | Purugly 50, Pelipper 51, Camerupt 51, Roserade 51, Lapras 52 | Purugly, Lapras |
+| VALERIE_1 | Duskull, Sableye, Grumpig | Sableye 47, Banette 48, Mismagius 49 | Banette, Mismagius |
+| CINDY_1 | Linoone | Linoone 49, Pyroar 49 | Pyroar |
+| JESSICA_1 | Kecleon, Seviper | Kecleon 47, Seviper 48, Krookodile 49 | Krookodile |
+| WINSTON_1 | Linoone | Linoone 49, Pyroar 49 | Pyroar |
+| STEVE_1 | Aggron, Rhydon | Ampharos 47, Slowbro 47, Aggron 47, Rhyperior 47 | Ampharos, Slowbro |
+| TONY_1 | Starmie, Sharpedo | Tentacruel 49, Jellicent 49 | Tentacruel, Jellicent |
+| NOB_1 | Machop, Machoke, Machoke, Machamp | Primeape 50, Hitmonlee 50, Machamp 50 | Primeape, Hitmonlee |
+| DALTON_1 | Magneton, Exploud, Magneton | Chatot 48, Exploud 48, Magnezone 48 | Chatot |
+| BERNIE_1 | Magcargo, Pelipper | Magcargo 48, Pelipper 50 | – |
+| ETHAN_1 | Swellow, Sandslash, Linoone | Swalot 47, Skuntank 47, Crobat 47 | Swalot, Skuntank, Crobat |
+| CAMERON_1 | Solrock, Alakazam | Solrock 49, Exeggutor 50, Alakazam 51 | Exeggutor |
+| WALTER_1 | Linoone, Golduck, Manectric | Manectric 48, Stoutland 50 | Stoutland |
+| JERRY_1 | Kirlia, Banette, Medicham | Gardevoir 48, Medicham 47, Bisharp 46 | Bisharp |
+| KAREN_1 | Breloom, Exploud | Breloom 47, Dewgong 47, Exploud 47 | Dewgong |
+| ANNA_AND_MEG_1 | Linoone, Hariyama | Linoone 50, Hariyama 51 | – |
+| MIGUEL_1 | Delcatty | Delcatty 51 | – |
+| ISABEL_1 | Plusle, Minun | Plusle 49, Minun 49 | – |
+| TIMOTHY_1 | Hariyama | Hawlucha 54, Hariyama 55, Conkeldurr 56 | Hawlucha, Conkeldurr |
+| SHELBY_1 (ORAS: Jagged Pass) | Medicham, Hariyama | Medicham 54, Hariyama 55, Lucario 56 | Lucario |
+| CALVIN_1 | Swellow, Linoone, Mightyena | Swellow 47, Linoone 47, Lickilicky 47 | Lickilicky |
+| ELLIOT_1 | Gyarados, Sharpedo, Gyarados, Tentacruel | Tentacruel 46, Octillery 47, Whiscash 47, Gyarados 48 | Octillery, Whiscash |
+| BENJAMIN_1 | Magneton | Electrode 49, Klinklang 49 | Electrode, Klinklang |
+| DYLAN_1 | Dodrio | Dodrio 48, Arcanine 50 | Arcanine |
+| ISAIAH_1 | Starmie | Floatzel 49, Starmie 49 | Floatzel |
+| NICOLAS_1 | Altaria, Altaria, Shelgon | Noivern 50, Druddigon 50, Flygon 50 | Noivern, Druddigon, Flygon |
+| ROBERT_1 | Altaria, Xatu | Fearow 47, Altaria 48, Staraptor 49 | Fearow, Staraptor |
+| LAO_1 | Koffing, Koffing, Koffing, Weezing | Weezing 46, Weezing 47, Weezing 48 | – |
+| CYNDY_1 | Medicham, Hariyama | Hitmonchan 50, Medicham 52 | Hitmonchan |
+| MADELINE_1 | Roselia, Camerupt | Starmie 48, Walrein 48, Camerupt 48 | Starmie, Walrein |
+| JENNY_1 | Luvdisc, Wailmer, Starmie | Luvdisc 49, Alomomola 49 | Alomomola |
+| DIANA_1 | Breloom, Vileplume, Altaria | Vileplume 48, Altaria 48 | – |
+| AMY_AND_LIV_1 | Plusle, Minun | Plusle 50, Minun 50 | – |
+| ERNEST_1 | Pelipper, Machoke, Tentacruel | Tentacruel 48, Wailord 48, Machamp 48 | Wailord |
+| EDWIN_1 | Ludicolo, Shiftry | Ludicolo 49, Shiftry 49 | – |
+| ISAAC_1 | Loudred, Linoone, Lairon, Mightyena, Swellow, Hariyama | Whismur 50, Zigzagoon 50, Aron 50, Poochyena 50, Taillow 50, Makuhita 50 | – |
+| LYDIA_1 | Pelipper, Breloom, Azumarill, Roselia, Delcatty, Seaking | Wingull 50, Shroomish 50, Azurill 50, Budew 50, Skitty 50, Goldeen 50 | – |
+| JACKSON_1 | Kecleon, Breloom | Seviper 49, Unfezant 49, Slaking 49 | Seviper, Unfezant, Slaking |
+| CATHERINE_1 | Bellossom, Roselia | Breloom 49, Raichu 49, Excadrill 49 | Breloom, Raichu, Excadrill |
+| HALEY_1 | Swellow, Lombre, Breloom | Whimsicott 47, Breloom 47, Ludicolo 47 | Whimsicott |
+| JAMES_1 | Surskit, Ninjask, Dustox, Ninjask | Masquerain 46, Ariados 46, Ninjask 46, Ledian 46 | Ariados, Ledian |
+| TRENT_1 | Graveler, Graveler, Graveler, Golem | Golem 48, Golem 48, Golem 48 | – |
+| JOHN_AND_JAY_1 | Medicham, Hariyama | Medicham 58, Hariyama 58 | – |
+
+(`python3 tools/hack/trainers/oras/match_oras.py --tiers` prints this table.) No ORAS rematch data for the other
+16 trainers with tiers: Sawyer, Gabrielle, Thalia, Fernando, Jeffrey, Jacki, Abigail, Maria, Pablo, Katelyn,
+Kira & Dan, Lila & Roy, Andres, Cory, Cristin (no ORAS counterpart) and Koji (one team in ORAS). Gabby & Ty's
+six ORAS battles are the same families as their six Emerald ones (ORAS's last one has Magnezone); unchanged.
+
+**`oras-first`** (D-172): an ORAS first-battle team is used when it has more evolution families (from the species
+pool) than the trainer's vanilla Emerald team – 29 trainers; Gilbert and Cole already had exactly the ORAS
+species, so 27 change. The ORAS roster is scaled to the slot's level (level-up evolutions only: Cacnea →
+Cacturne, Zubat → Golbat), filled up with the current team (Emerald families first), the ORAS ace last.
+
+| Trainer | Seg. | Emerald team | ORAS first team | New team (ace last) |
+|---|---|---|---|---|
+| WARREN | S7 | Graveler, Ludicolo | Lairon 38, Manectric 38, Alakazam 38 | Lairon 39, Manectric 40, Golem 40, Ludicolo 41, Alakazam 41 |
+| TASHA | S7 | Shuppet | Shuppet 34, Xatu 34 | Banette 38, Solrock 38, Sableye 38, Xatu 39 |
+| BRIANNA | S8 | Seaking | Clamperl 41, Corsola 41 | Clamperl 45, Lanturn 44, Golduck 44, Seaking 46, Corsola 46 |
+| TIFFANY | S8 | Carvanha, Sharpedo | Golduck 41, Wailord 41 | Golduck 44, Relicanth 45, Gyarados 45, Sharpedo 46, Wailord 46 |
+| JEROME | S6 | Tentacruel | Tentacool 25, Pelipper 25 | Tentacruel 32, Wailmer 32, Crawdaunt 32, Pelipper 33 |
+| DEAN | S7 | Carvanha, Wingull, Carvanha | Wailmer 35, Staryu 36, Golduck 37 | Wailmer 37, Staryu 38, Sharpedo 39, Golduck 39 |
+| FRANKLIN | S7 | Sealeo | Whiscash 38, Seadra 36 | Seadra 40, Sealeo 39, Pelipper 39, Whiscash 41 |
+| JACK | S7 | Gyarados | Staryu 36, Sharpedo 38 | Staryu 40, Tentacruel 40, Gyarados 41, Sharpedo 41 |
+| HITOSHI | S7 | Machop, Machoke | Machoke 37, Heracross 39 | Machoke 40, Hitmonchan 39, Hariyama 39, Heracross 41 |
+| LARRY | S4 | Nuzleaf | Taillow 16, Zubat 18 | Swellow 22, Nuzleaf 23, Golbat 23 |
+| BRENT | S6 | Surskit | Masquerain 28, Ninjask 28 | Masquerain 31, Volbeat 31, Pinsir 31, Ninjask 32 |
+| DEREK | S3 | Dustox, Beautifly | Nincada 15, Dustox 15, Beautifly 15 | Ninjask 20, Dustox 20, Beautifly 21 |
+| VIRGIL | S7 | Ralts | Kadabra 40, Girafarig 40 | Kadabra 40, Claydol 39, Gardevoir 41, Girafarig 41 |
+| WILLIAM | S7 | Ralts, Ralts, Kirlia | Staryu 35, Grumpig 35 | Staryu 37, Xatu 37, Gardevoir 38, Grumpig 38 |
+| EDDIE | S3 | Zigzagoon, Zigzagoon | Nincada 14, Geodude 14 | Ninjask 21, Linoone 22, Geodude 22 |
+| TIMMY | S3 | Aron, Electrike | Poochyena 12, Aron 13, Electrike 14 | Poochyena 17, Aron 17, Electrike 18 |
+| AARON | S7 | Bagon | Shelgon 39, Kingdra 39 | Shelgon 40, Vibrava 39, Dragonair 40, Kingdra 41 |
+| CHESTER | S6 | Taillow, Swellow | Swablu 26, Swellow 28 | Swablu 31, Noctowl 31, Pelipper 31, Swellow 32 |
+| MISSY | S6 | Goldeen | Wingull 24, Barboach 24, Wailmer 24 | Pelipper 32, Whiscash 32, Seaking 33, Wailmer 33 |
+| GRACE | S7 | Marill | Wailmer 36, Azumarill 38 | Wailmer 36, Luvdisc 35, Pelipper 35, Azumarill 37 |
+| SHARON | S7 | Seaking | Clamperl 38, Seaking 36 | Seaking 37, Luvdisc 36, Pelipper 36, Clamperl 38 (Deep Sea Tooth) |
+| LINDA | S7 | Horsea, Seadra | Pelipper 37, Seaking 37 | Pelipper 39, Lanturn 40, Seadra 41, Seaking 41 |
+| EDMOND | S2 | Wingull | Wingull 12, Machop 14 | Wingull 15, Machop 16 |
+| SEBASTIAN | S8 | Cacturne | Cacnea 16, Aron 18 | Cacturne 43, Breloom 42, Tropius 43, Aggron 44 |
+| DOUG | S6 | Nincada, Ninjask | Volbeat 26, Illumise 28 | Volbeat 31, Pinsir 31, Ninjask 32, Illumise 32 |
+| ROGER | S7 | Magikarp, Magikarp, Gyarados | Wailmer 37, Sharpedo 37 | Wailmer 38, Whiscash 37, Gyarados 39, Sharpedo 39 |
+| TISHA | S7 | Chinchou | Luvdisc 36, Corsola 36, Azumarill 36 | Luvdisc 38, Corsola 39, Lanturn 40, Azumarill 40 |
+
+**Elite Four** (D-173, D-174): their ORAS post-game rematch rosters, moves from Serebii's ORAS sets made into
+full competitive sets (EVs, natures, items; Full Restores as before).
+
+| | First battle (S9, no Mega) | Post-game rematch (ORAS levels, Mega ace; not in the ROM yet) |
+|---|---|---|
+| Sidney | Scrafty, Shiftry, Sharpedo, Zoroark, Mandibuzz 54, Absol 55 | same, Lv 70, Mega Absol 72 |
+| Phoebe | Banette, Mismagius 54, Drifblim, Chandelure, Sableye 55, Dusknoir 56 | Banette … Dusknoir 71, Mega Sableye 73 |
+| Glacia | Abomasnow, Beartic 55, Froslass, Vanilluxe, Glalie 56, Walrein 57 | Abomasnow … Walrein 72, Mega Glalie 74 |
+| Drake | Altaria, Dragalge 56, Kingdra, Flygon, Haxorus 57, Salamence 58 | Altaria … Haxorus 73, Mega Salamence 75 |
+
+The rematch needs four trainer ids (`TRAINER_SIDNEY_REMATCH` …) and the Elite Four rooms (or a game-clear
+variant rule) to pick them after the Champion; then `splice_party.py --append tools/hack/trainers/oras/elite_four_rematch.party`.
+**Wallace** keeps his team: ORAS has no Champion Wallace, and the one ORAS Wallace battle outside his gym
+("Sootopolitan Wallace", Serebii's Route 131 page) uses exactly the Emerald Champion roster he already has
+(Wailord, Tentacruel, Ludicolo, Whiscash, Gyarados, Milotic).
 
 ## Trainer table
 <!-- generated by tools/hack/trainers/report.py -->
@@ -180,7 +325,7 @@ Tools: `scan_maps.py` (which map fights which trainer), `build_segments.py` (seg
 | ALLEN | Route102 | route | 2 | 6–7 | Taillow 7 | enhanced |
 | IVAN | Route104 | route | 3 | 9–11 | Tentacool 11 | enhanced |
 | GINA_AND_MIA_1 | Route104 | route | 2 | 10–11 | Lotad 11 | enhanced |
-| BRENDAN_ROUTE_104 | Route104 | route | 2 | 9–11 | Treecko 11 | story |
+| BRENDAN_RUSTBORO | Route104 | route | 2 | 12–13 | Treecko 13 | story |
 | MAY_ROUTE_103 | Route103 | route | 1 | 5–5 | Torchic 5 | story |
 | MARC | RustboroCity_Gym | gym | 2 | 12–13 | Onix 13 | enhanced |
 | TIANA | Route102 | route | 2 | 6–7 | Shroomish 7 | enhanced |
@@ -196,9 +341,9 @@ Tools: `scan_maps.py` (which map fights which trainer), `build_segments.py` (seg
 | DARIAN | Route104 | route | 2 | 7–8 | Tentacool 8 | enhanced |
 | DEVAN | Route116 | route | 2 | 11–12 | Geodude 12 | enhanced |
 | JOHNSON | Route116 | route | 2 | 11–12 | Shroomish 12 | enhanced |
-| ASTER_PASS_DEINO | DraconidPass | route | 1 | 5–5 | Deino 5 | story |
-| ASTER_PASS_DREEPY | DraconidPass | route | 1 | 5–5 | Dreepy 5 | story |
-| ASTER_PASS_JANGMO_O | DraconidPass | route | 1 | 5–5 | Jangmo-o 5 | story |
+| ASTER_PASS_DEINO | DraconidPass | route | 1 | 5–5 | Dreepy 5 | story |
+| ASTER_PASS_DREEPY | DraconidPass | route | 1 | 5–5 | Jangmo-o 5 | story |
+| ASTER_PASS_JANGMO_O | DraconidPass | route | 1 | 5–5 | Deino 5 | story |
 
 ### S2 (cap 20) – Rusturf Tunnel, Dewford, Brawly
 
@@ -217,7 +362,7 @@ Tools: `scan_maps.py` (which map fights which trainer), `build_segments.py` (seg
 | LAURA | DewfordTown_Gym | gym | 2 | 16–17 | Meditite 17 | enhanced |
 | CYNDY_1 | Route115 | route | 2 | 16–17 | Makuhita 17 | emerald-rematch |
 | HUEY | Route109 | route | 2 | 16–17 | Machop 17 | enhanced |
-| EDMOND | Route109 | route | 2 | 15–16 | Wingull 16 | enhanced |
+| EDMOND | Route109 | route | 2 | 15–16 | Machop 16 | oras-first |
 | DWAYNE | Route109_SeashoreHouse | route | 3 | 16–17 | Machop 17 | enhanced |
 | HECTOR | Route115 | route | 2 | 16–17 | Zangoose 17 | enhanced |
 | BRENDEN | DewfordTown_Gym | gym | 2 | 16–17 | Machop 17 | enhanced |
@@ -241,7 +386,7 @@ Tools: `scan_maps.py` (which map fights which trainer), `build_segments.py` (seg
 | KIRK | MauvilleCity_Gym | gym | 3 | 21–22 | Electrike 22 | enhanced |
 | SHAWN | MauvilleCity_Gym | gym | 3 | 22–23 | Magnemite 23 | enhanced |
 | DALTON_1 | Route118 | route | 2 | 21–22 | Loudred 22 | emerald-rematch |
-| DEREK | Route117 | route | 3 | 20–21 | Beautifly 21 | enhanced |
+| DEREK | Route117 | route | 3 | 20–21 | Beautifly 21 | oras-first |
 | EDWARD | Route110 | route | 2 | 19–20 | Kadabra 20 | enhanced |
 | JACLYN | Route110 | route | 3 | 20–21 | Kadabra 21 | enhanced |
 | WATTSON_1 | MauvilleCity_Gym | leader | 5 | 22–25 | Manectric 25 | emerald-rematch |
@@ -249,8 +394,8 @@ Tools: `scan_maps.py` (which map fights which trainer), `build_segments.py` (seg
 | MIGUEL_1 | Route103 | route | 2 | 18–19 | Skitty 19 | emerald-rematch |
 | ISABEL_1 | Route110 | route | 2 | 17–18 | Minun 18 | emerald-rematch |
 | BEN | MauvilleCity_Gym | gym | 3 | 21–22 | Linoone 22 | enhanced |
-| EDDIE | Route110_TrickHousePuzzle1 | route | 2 | 21–22 | Linoone 22 | enhanced |
-| TIMMY | Route110 | route | 3 | 17–18 | Aron 18 | enhanced |
+| EDDIE | Route110_TrickHousePuzzle1 | route | 3 | 21–22 | Geodude 22 | oras-first |
+| TIMMY | Route110 | route | 3 | 17–18 | Electrike 18 | oras-first |
 | ANDREW | Route103 | route | 3 | 18–20 | Gyarados 20 | enhanced |
 | DALE | Route110 | route | 4 | 19–21 | Wailmer 21 | enhanced |
 | WADE | Route118 | route | 2 | 20–21 | Carvanha 21 | enhanced |
@@ -263,8 +408,8 @@ Tools: `scan_maps.py` (which map fights which trainer), `build_segments.py` (seg
 | MARIA_1 | Route117 | route | 2 | 19–20 | Doduo 20 | emerald-rematch |
 | AMY_AND_LIV_1 | Route103 | route | 2 | 18–19 | Minun 19 | emerald-rematch |
 | EDWIN_1 | Route110 | route | 2 | 19–20 | Nuzleaf 20 | emerald-rematch |
-| BRENDAN_ROUTE_110 | Route110 | route | 4 | 20–23 | Grovyle 23 | story |
-| MAY_SLATEPORT | SlateportCity | route | 4 | 20–22 | Combusken 22 | story |
+| BRENDAN_MT_CHIMNEY | Route110 | route | 5 | 27–29 | Grovyle 29 | story |
+| MAY_ROUTE_110 | SlateportCity | route | 4 | 22–24 | Combusken 24 | story |
 | ISAAC_1 | Route117 | route | 4 | 19–20 | Loudred 20 | emerald-rematch |
 | LYDIA_1 | Route117 | route | 4 | 20–22 | Roselia 22 | emerald-rematch |
 | SALLY | Route110_TrickHousePuzzle1 | route | 2 | 20–21 | Gloom 21 | enhanced |
@@ -305,7 +450,7 @@ Tools: `scan_maps.py` (which map fights which trainer), `build_segments.py` (seg
 | JACE | LavaridgeTown_Gym_1F | gym | 3 | 26–27 | Slugma 27 | enhanced |
 | KEEGAN | LavaridgeTown_Gym_1F | gym | 3 | 27–28 | Slugma 28 | enhanced |
 | BERNIE_1 | Route114 | route | 3 | 24–25 | Pelipper 25 | emerald-rematch |
-| LARRY | Route112 | route | 3 | 22–23 | Nuzleaf 23 | enhanced |
+| LARRY | Route112 | route | 3 | 22–23 | Golbat 23 | oras-first |
 | SHANE | Route114 | route | 3 | 24–25 | Nuzleaf 25 | enhanced |
 | ETHAN_1 | JaggedPass | route | 3 | 26–27 | Linoone 27 | emerald-rematch |
 | AUTUMN | JaggedPass | route | 3 | 26–27 | Breloom 27 | enhanced |
@@ -330,9 +475,9 @@ Tools: `scan_maps.py` (which map fights which trainer), `build_segments.py` (seg
 | DIANA_1 | JaggedPass | route | 3 | 26–27 | Breloom 27 | emerald-rematch |
 | IRENE | Route111 | route | 3 | 21–22 | Azumarill 22 | enhanced |
 | ELI | LavaridgeTown_Gym_1F | gym | 3 | 26–27 | Graveler 27 | enhanced |
-| ASTER_METEOR_FALLS_DEINO |  | route | 4 | 24–27 | Jangmo-o 27 | story |
-| ASTER_METEOR_FALLS_DREEPY |  | route | 4 | 24–27 | Deino 27 | story |
-| ASTER_METEOR_FALLS_JANGMO_O |  | route | 4 | 24–27 | Dreepy 27 | story |
+| ASTER_METEOR_FALLS_DEINO |  | route | 5 | 26–28 | Drakloak 28 | story |
+| ASTER_METEOR_FALLS_DREEPY |  | route | 5 | 26–28 | Hakamo-o 28 | story |
+| ASTER_METEOR_FALLS_JANGMO_O |  | route | 5 | 26–28 | Zweilous 28 | story |
 | JULIO | JaggedPass | route | 3 | 26–27 | Manectric 27 | enhanced |
 | GRUNT_JAGGED_PASS | JaggedPass | grunt | 3 | 26–27 | Mightyena 27 | enhanced |
 | GRUNT_MT_CHIMNEY_2 | MtChimney | grunt | 3 | 25–26 | Golbat 26 | enhanced |
@@ -417,7 +562,7 @@ Tools: `scan_maps.py` (which map fights which trainer), `build_segments.py` (seg
 | DOUGLAS | Route106 | route | 4 | 30–31 | Tentacruel 31 | enhanced |
 | DARRIN | Route107 | route | 4 | 31–32 | Tentacruel 32 | enhanced |
 | TONY_1 | Route107 | route | 4 | 31–32 | Sharpedo 32 | emerald-rematch |
-| JEROME | Route108 | route | 4 | 32–33 | Tentacruel 33 | enhanced |
+| JEROME | Route108 | route | 4 | 32–33 | Pelipper 33 | oras-first |
 | MATTHEW | Route108 | route | 4 | 32–33 | Sharpedo 33 | enhanced |
 | DAVID | Route109 | route | 4 | 32–33 | Sharpedo 33 | enhanced |
 | TONY_2 | Route107 | route t2 | 4 | 33–35 | Sharpedo 35 | emerald-rematch |
@@ -427,7 +572,7 @@ Tools: `scan_maps.py` (which map fights which trainer), `build_segments.py` (seg
 | DALTON_2 | Route118 | route t2 | 4 | 32–35 | Loudred 35 | emerald-rematch |
 | BERNIE_2 | Route114 | route t2 | 4 | 33–35 | Camerupt 35 | emerald-rematch |
 | ETHAN_2 | JaggedPass | route t2 | 4 | 33–35 | Linoone 35 | emerald-rematch |
-| BRENT | Route119 | route | 4 | 31–32 | Masquerain 32 | enhanced |
+| BRENT | Route119 | route | 4 | 31–32 | Ninjask 32 | oras-first |
 | DONALD | Route119 | route | 4 | 31–32 | Beautifly 32 | enhanced |
 | TAYLOR | Route119 | route | 4 | 32–33 | Dustox 33 | enhanced |
 | WINONA_1 | FortreeCity_Gym | leader | 6 | 35–38 | Altaria 38 | emerald-rematch |
@@ -454,7 +599,7 @@ Tools: `scan_maps.py` (which map fights which trainer), `build_segments.py` (seg
 | JARED | FortreeCity_Gym | gym | 4 | 34–35 | Tropius 35 | enhanced |
 | HUMBERTO | FortreeCity_Gym | gym | 4 | 35–36 | Skarmory 36 | enhanced |
 | EDWARDO | FortreeCity_Gym | gym | 4 | 34–35 | Pelipper 35 | enhanced |
-| CHESTER | Route118 | route | 4 | 31–32 | Swellow 32 | enhanced |
+| CHESTER | Route118 | route | 4 | 31–32 | Swellow 32 | oras-first |
 | YASU | Route119 | route | 4 | 32–33 | Ninjask 33 | enhanced |
 | TAKASHI | Route119 | route | 4 | 32–33 | Ninjask 33 | enhanced |
 | JANI | AbandonedShip_Rooms2_1F | route | 4 | 32–33 | Azumarill 33 | enhanced |
@@ -469,16 +614,16 @@ Tools: `scan_maps.py` (which map fights which trainer), `build_segments.py` (seg
 | DENISE | Route107 | route | 4 | 31–32 | Pelipper 32 | enhanced |
 | BETH | Route107 | route | 4 | 31–33 | Seaking 33 | enhanced |
 | TARA | Route108 | route | 4 | 32–33 | Seadra 33 | enhanced |
-| MISSY | Route108 | route | 4 | 32–33 | Seaking 33 | enhanced |
+| MISSY | Route108 | route | 4 | 32–33 | Wailmer 33 | oras-first |
 | ALICE | Route109 | route | 4 | 32–34 | Seaking 34 | enhanced |
 | DIANA_2 | JaggedPass | route t2 | 4 | 33–35 | Altaria 35 | emerald-rematch |
 | AMY_AND_LIV_2 | Route103 | route t2 | 4 | 32–34 | Minun 34 | emerald-rematch |
 | DUNCAN | AbandonedShip_Corridors_B1F | route | 4 | 33–34 | Machoke 34 | enhanced |
 | EDWIN_2 | Route110 | route t2 | 4 | 33–34 | Shiftry 34 | emerald-rematch |
-| BRENDAN_ROUTE_119 | Route119 | route | 5 | 34–37 | Sceptile 37 | story |
-| ASTER_ROUTE_119_DEINO |  | route | 5 | 34–37 | Altaria 37 | story |
-| ASTER_ROUTE_119_DREEPY |  | route | 5 | 34–37 | Altaria 37 | story |
-| ASTER_ROUTE_119_JANGMO_O |  | route | 5 | 34–37 | Altaria 37 | story |
+| BRENDAN_ROUTE_119 | Route119 | route | 6 | 35–37 | Sceptile 37 | story |
+| MAXIE_SOOTOPOLIS |  | route | 6 | 46–48 | Camerupt 48 | story |
+| MAXIE_SOOTOPOLIS_MULTI |  | route | 3 | 46–48 | Camerupt 48 | story |
+| ARCHIE_SOOTOPOLIS_MULTI |  | route | 3 | 46–48 | Sharpedo 48 | story |
 | ISAAC_2 | Route117 | route t2 | 4 | 33–34 | Hariyama 34 | emerald-rematch |
 | GARRISON | AbandonedShip_Rooms2_1F | route | 4 | 32–34 | Sandslash 34 | enhanced |
 | LYDIA_2 | Route117 | route t2 | 4 | 33–34 | Azumarill 34 | emerald-rematch |
@@ -488,7 +633,7 @@ Tools: `scan_maps.py` (which map fights which trainer), `build_segments.py` (seg
 | CATHERINE_2 | Route119 | route t2 | 4 | 34–35 | Roselia 35 | emerald-rematch |
 | GRUNT_WEATHER_INST_5 | Route119_WeatherInstitute_2F | grunt | 4 | 33–34 | Golbat 34 | enhanced |
 | HALEY_2 | Route104 | route t2 | 4 | 32–34 | Breloom 34 | emerald-rematch |
-| DOUG | Route119 | route | 4 | 31–32 | Ninjask 32 | enhanced |
+| DOUG | Route119 | route | 4 | 31–32 | Illumise 32 | oras-first |
 | GREG | Route119 | route | 4 | 31–32 | Illumise 32 | enhanced |
 | KENT | Route119 | route | 4 | 31–32 | Ninjask 32 | enhanced |
 | JAMES_2 | PetalburgWoods | route t2 | 4 | 32–34 | Ninjask 34 | emerald-rematch |
@@ -551,14 +696,14 @@ Tools: `scan_maps.py` (which map fights which trainer), `build_segments.py` (seg
 | RICKY_3 | Route109 | route t3 | 4 | 38–39 | Linoone 39 | emerald-rematch |
 | BRAXTON | Route123 | route | 5 | 37–39 | Shiftry 39 | enhanced |
 | WILTON_3 | Route111 | route t3 | 5 | 38–40 | Hariyama 40 | emerald-rematch |
-| WARREN | Route133 | route | 5 | 39–41 | Ludicolo 41 | enhanced |
+| WARREN | Route133 | route | 5 | 39–41 | Alakazam 41 | oras-first |
 | WENDY | Route123 | route | 4 | 37–39 | Altaria 39 | enhanced |
 | JENNIFER | Route120 | route | 4 | 35–36 | Sableye 36 | enhanced |
 | BROOKE_3 | Route111 | route t3 | 5 | 38–40 | Roselia 40 | emerald-rematch |
 | KINDRA | Route123 | route | 4 | 37–39 | Dusclops 39 | enhanced |
 | TAMMY | Route121 | route | 4 | 36–38 | Dusclops 38 | enhanced |
 | VALERIE_1 | MtPyre_6F | route | 4 | 38–39 | Sableye 39 | emerald-rematch |
-| TASHA | MtPyre_5F | route | 4 | 38–39 | Banette 39 | enhanced |
+| TASHA | MtPyre_5F | route | 4 | 38–39 | Xatu 39 | oras-first |
 | VALERIE_2 | MtPyre_6F | route t2 | 4 | 38–40 | Grumpig 40 | emerald-rematch |
 | VALERIE_3 | MtPyre_6F | route t3 | 5 | 39–41 | Grumpig 41 | emerald-rematch |
 | CINDY_4 | Route104 | route t3 | 4 | 37–39 | Linoone 39 | emerald-rematch |
@@ -574,18 +719,18 @@ Tools: `scan_maps.py` (which map fights which trainer), `build_segments.py` (seg
 | NOLEN | Route125 | route | 4 | 36–38 | Tentacruel 38 | enhanced |
 | STAN | Route125 | route | 4 | 37–39 | Seadra 39 | enhanced |
 | BARRY | Route126 | route | 4 | 37–39 | Gyarados 39 | enhanced |
-| DEAN | Route126 | route | 4 | 37–39 | Sharpedo 39 | enhanced |
+| DEAN | Route126 | route | 4 | 37–39 | Golduck 39 | oras-first |
 | RODNEY | Route130 | route | 4 | 38–40 | Gyarados 40 | enhanced |
 | RICHARD | Route131 | route | 4 | 38–40 | Pelipper 40 | enhanced |
 | HERMAN | Route131 | route | 4 | 39–40 | Tentacruel 40 | enhanced |
 | SANTIAGO | Route130 | route | 4 | 38–40 | Wailord 40 | enhanced |
 | GILBERT | Route132 | route | 4 | 39–41 | Sharpedo 41 | enhanced |
-| FRANKLIN | Route133 | route | 4 | 39–41 | Wailord 41 | enhanced |
+| FRANKLIN | Route133 | route | 4 | 39–41 | Whiscash 41 | oras-first |
 | KEVIN | Route131 | route | 4 | 38–40 | Gyarados 40 | enhanced |
-| JACK | Route134 | route | 4 | 40–41 | Gyarados 41 | enhanced |
+| JACK | Route134 | route | 4 | 40–41 | Sharpedo 41 | oras-first |
 | CHAD | Route124 | route | 4 | 36–38 | Tentacruel 38 | enhanced |
 | TONY_3 | Route107 | route t3 | 5 | 38–40 | Sharpedo 40 | emerald-rematch |
-| HITOSHI | Route134 | route | 4 | 39–41 | Machamp 41 | enhanced |
+| HITOSHI | Route134 | route | 4 | 39–41 | Heracross 41 | oras-first |
 | KIYO | Route132 | route | 4 | 39–41 | Hariyama 41 | enhanced |
 | NOB_3 | Route115 | route t3 | 5 | 37–39 | Machamp 39 | emerald-rematch |
 | ATSUSHI | MtPyre_4F | route | 4 | 37–38 | Hariyama 38 | enhanced |
@@ -599,9 +744,9 @@ Tools: `scan_maps.py` (which map fights which trainer), `build_segments.py` (seg
 | JEFFREY_2 | Route120 | route t2 | 4 | 37–39 | Masquerain 39 | emerald-rematch |
 | JEFFREY_3 | Route120 | route t3 | 5 | 39–41 | Masquerain 41 | emerald-rematch |
 | PRESTON | MossdeepCity_Gym | gym | 4 | 39–41 | Gallade 41 | enhanced |
-| VIRGIL | MossdeepCity_Gym | gym | 4 | 39–41 | Gardevoir 41 | enhanced |
+| VIRGIL | MossdeepCity_Gym | gym | 4 | 39–41 | Girafarig 41 | oras-first |
 | BLAKE | MossdeepCity_Gym | gym | 4 | 39–41 | Girafarig 41 | enhanced |
-| WILLIAM | MtPyre_3F | route | 4 | 37–38 | Gardevoir 38 | enhanced |
+| WILLIAM | MtPyre_3F | route | 4 | 37–38 | Grumpig 38 | oras-first |
 | CAMERON_1 | Route123 | route | 4 | 37–38 | Solrock 38 | emerald-rematch |
 | CAMERON_2 | Route123 | route t2 | 4 | 37–39 | Kadabra 39 | emerald-rematch |
 | CAMERON_3 | Route123 | route t3 | 5 | 39–41 | Alakazam 41 | emerald-rematch |
@@ -645,7 +790,7 @@ Tools: `scan_maps.py` (which map fights which trainer), `build_segments.py` (seg
 | ALLISON | Route129 | route | 4 | 38–40 | Starmie 40 | enhanced |
 | KATELYN_2 | Route128 | route t2 | 4 | 39–41 | Starmie 41 | emerald-rematch |
 | KATELYN_3 | Route128 | route t3 | 5 | 40–42 | Starmie 42 | emerald-rematch |
-| AARON | Route134 | route | 4 | 39–41 | Shelgon 41 | enhanced |
+| AARON | Route134 | route | 4 | 39–41 | Kingdra 41 | oras-first |
 | PRESLEY | Route125 | route | 4 | 37–39 | Xatu 39 | enhanced |
 | COLIN | Route120 | route | 4 | 35–36 | Pelipper 36 | enhanced |
 | ROBERT_1 | Route120 | route | 4 | 35–36 | Altaria 36 | emerald-rematch |
@@ -659,9 +804,9 @@ Tools: `scan_maps.py` (which map fights which trainer), `build_segments.py` (seg
 | ANGELICA | Route120 | route | 4 | 35–36 | Castform 36 | enhanced |
 | MADELINE_3 | Route113 | route t3 | 5 | 38–40 | Camerupt 40 | emerald-rematch |
 | JENNY_1 | Route124 | route | 4 | 36–38 | Starmie 38 | emerald-rematch |
-| GRACE | Route124 | route | 4 | 35–37 | Azumarill 37 | enhanced |
+| GRACE | Route124 | route | 4 | 35–37 | Azumarill 37 | oras-first |
 | TANYA | Route125 | route | 4 | 37–39 | Lanturn 39 | enhanced |
-| SHARON | Route125 | route | 4 | 36–38 | Seaking 38 | enhanced |
+| SHARON | Route125 | route | 4 | 36–38 | Clamperl 38 | oras-first |
 | NIKKI | Route126 | route | 4 | 37–39 | Azumarill 39 | enhanced |
 | BRENDA | Route126 | route | 4 | 37–39 | Seaking 39 | enhanced |
 | KATIE | Route130 | route | 4 | 38–40 | Seaking 40 | enhanced |
@@ -670,7 +815,7 @@ Tools: `scan_maps.py` (which map fights which trainer), `build_segments.py` (seg
 | DANA | Route132 | route | 4 | 39–41 | Azumarill 41 | enhanced |
 | SIENNA | Route126 | route | 4 | 37–39 | Milotic 39 | enhanced |
 | DEBRA | Route133 | route | 4 | 39–41 | Seaking 41 | enhanced |
-| LINDA | Route133 | route | 4 | 39–41 | Seadra 41 | enhanced |
+| LINDA | Route133 | route | 4 | 39–41 | Seaking 41 | oras-first |
 | LAUREL | Route134 | route | 4 | 39–41 | Lanturn 41 | enhanced |
 | CARLEE | Route128 | route | 4 | 38–40 | Seaking 40 | enhanced |
 | JENNY_2 | Route124 | route t2 | 4 | 37–39 | Starmie 39 | emerald-rematch |
@@ -721,19 +866,19 @@ Tools: `scan_maps.py` (which map fights which trainer), `build_segments.py` (seg
 | KIRA_AND_DAN_3 | AbandonedShip_Rooms2_1F | route t3 | 4 | 39–40 | Illumise 40 | emerald-rematch |
 | KEIGO | Route120 | route | 4 | 35–36 | Ninjask 36 | enhanced |
 | RILEY | Route120 | route | 4 | 35–36 | Ninjask 36 | enhanced |
-| BRENDAN_LILYCOVE | LilycoveCity | route | 3 | 41–43 | Sceptile 43 | story |
+| BRENDAN_LILYCOVE | LilycoveCity | route | 6 | 40–43 | Sceptile 43 | story |
 | WALLY_LILYCOVE | LilycoveCity | route | 5 | 40–43 | Gallade 43 | story |
-| MAY_LILYCOVE | LilycoveCity | route | 3 | 41–43 | Blaziken 43 | story |
+| MAY_LILYCOVE | LilycoveCity | route | 6 | 40–43 | Blaziken 43 | story |
 | JONAH | Route127 | route | 4 | 37–39 | Sharpedo 39 | enhanced |
 | HENRY | Route127 | route | 4 | 37–39 | Tentacruel 39 | enhanced |
-| ROGER | Route127 | route | 4 | 37–39 | Gyarados 39 | enhanced |
+| ROGER | Route127 | route | 4 | 37–39 | Sharpedo 39 | oras-first |
 | ALEXA | Route128 | route | 5 | 38–40 | Azumarill 40 | enhanced |
 | RUBEN | Route128 | route | 5 | 38–40 | Shiftry 40 | enhanced |
 | KOJI_1 | Route127 | route | 4 | 38–40 | Machamp 40 | emerald-rematch |
 | WAYNE | Route128 | route | 4 | 38–40 | Wailord 40 | enhanced |
 | AIDAN | Route127 | route | 4 | 37–39 | Skarmory 39 | enhanced |
 | REED | Route129 | route | 4 | 38–40 | Sharpedo 40 | enhanced |
-| TISHA | Route129 | route | 4 | 38–40 | Lanturn 40 | enhanced |
+| TISHA | Route129 | route | 4 | 38–40 | Azumarill 40 | oras-first |
 | KIM_AND_IRIS | Route125 | route | 4 | 36–38 | Camerupt 38 | enhanced |
 | RELI_AND_IAN | Route131 | route | 4 | 39–41 | Azumarill 41 | enhanced |
 | LILA_AND_ROY_1 | Route124 | route | 4 | 35–37 | Sharpedo 37 | emerald-rematch |
@@ -800,12 +945,12 @@ Tools: `scan_maps.py` (which map fights which trainer), `build_segments.py` (seg
 | VALERIE_4 | MtPyre_6F | route t4 | 5 | 42–45 | Grumpig 45 | emerald-rematch |
 | DAPHNE | SootopolisCity_Gym_B1F | gym | 5 | 44–46 | Starmie 46 | enhanced |
 | GRUNT_SPACE_CENTER_2 | MossdeepCity_SpaceCenter_1F | grunt | 4 | 41–42 | Camerupt 42 | enhanced |
-| BRIANNA | SootopolisCity_Gym_B1F | gym | 5 | 44–46 | Seaking 46 | enhanced |
+| BRIANNA | SootopolisCity_Gym_B1F | gym | 5 | 44–46 | Corsola 46 | oras-first |
 | CINDY_5 | Route104 | route t4 | 4 | 42–45 | Linoone 45 | emerald-rematch |
 | CONNIE | SootopolisCity_Gym_B1F | gym | 5 | 44–46 | Seaking 46 | enhanced |
 | BRIDGET | SootopolisCity_Gym_B1F | gym | 5 | 44–46 | Azumarill 46 | enhanced |
 | OLIVIA | SootopolisCity_Gym_B1F | gym | 5 | 44–46 | Ludicolo 46 | enhanced |
-| TIFFANY | SootopolisCity_Gym_B1F | gym | 5 | 44–46 | Sharpedo 46 | enhanced |
+| TIFFANY | SootopolisCity_Gym_B1F | gym | 5 | 44–46 | Wailord 46 | oras-first |
 | JESSICA_4 | Route121 | route t4 | 4 | 42–45 | Seviper 45 | emerald-rematch |
 | WINSTON_4 | Route104 | route t4 | 4 | 42–45 | Linoone 45 | emerald-rematch |
 | STEVE_4 | Route114 | route t4 | 4 | 42–45 | Rhydon 45 | emerald-rematch |
@@ -847,11 +992,11 @@ Tools: `scan_maps.py` (which map fights which trainer), `build_segments.py` (seg
 | ANNIKA | SootopolisCity_Gym_B1F | gym | 5 | 44–46 | Milotic 46 | enhanced |
 | TABITHA_MOSSDEEP | MossdeepCity_SpaceCenter_2F | admin | 3 | 44–46 | Camerupt 46 | enhanced |
 | EDWIN_4 | Route110 | route t4 | 5 | 42–45 | Shiftry 45 | emerald-rematch |
-| ASTER_SKY_PILLAR_DEINO |  | route | 5 | 45–48 | Salamence 48 | story |
-| ASTER_SKY_PILLAR_DREEPY |  | route | 5 | 45–48 | Salamence 48 | story |
+| ASTER_SKY_PILLAR_DEINO |  | route | 6 | 63–65 | Salamence 65 | story |
+| ASTER_SKY_PILLAR_DREEPY |  | route | 6 | 63–65 | Salamence 65 | story |
 | ISAAC_4 | Route117 | route t4 | 6 | 42–45 | Hariyama 45 | emerald-rematch |
 | LYDIA_4 | Route117 | route t4 | 6 | 42–45 | Azumarill 45 | emerald-rematch |
-| SEBASTIAN | Route110_TrickHousePuzzle6 | route | 4 | 42–44 | Cacturne 44 | enhanced |
+| SEBASTIAN | Route110_TrickHousePuzzle6 | route | 4 | 42–44 | Aggron 44 | oras-first |
 | JACKSON_4 | Route119 | route t4 | 5 | 42–45 | Breloom 45 | emerald-rematch |
 | SOPHIA | Route110_TrickHousePuzzle6 | route | 4 | 42–44 | Altaria 44 | enhanced |
 | CATHERINE_4 | Route119 | route t4 | 4 | 42–45 | Roserade 45 | emerald-rematch |
@@ -861,7 +1006,7 @@ Tools: `scan_maps.py` (which map fights which trainer), `build_segments.py` (seg
 | GRUNT_SPACE_CENTER_5 | MossdeepCity_SpaceCenter_2F | grunt | 4 | 42–43 | Crobat 43 | enhanced |
 | GRUNT_SPACE_CENTER_6 | MossdeepCity_SpaceCenter_2F | grunt | 4 | 42–43 | Mightyena 43 | enhanced |
 | GRUNT_SPACE_CENTER_7 | MossdeepCity_SpaceCenter_2F | grunt | 4 | 42–43 | Claydol 43 | enhanced |
-| ASTER_SKY_PILLAR_JANGMO_O |  | route | 5 | 45–48 | Salamence 48 | story |
+| ASTER_SKY_PILLAR_JANGMO_O |  | route | 6 | 63–65 | Salamence 65 | story |
 | HALEY_4 | Route104 | route t4 | 4 | 42–45 | Breloom 45 | emerald-rematch |
 | ANDREA | SootopolisCity_Gym_B1F | gym | 5 | 44–46 | Lapras 46 | enhanced |
 | CRISSY | SootopolisCity_Gym_B1F | gym | 5 | 44–46 | Wailord 46 | enhanced |
@@ -898,10 +1043,10 @@ Tools: `scan_maps.py` (which map fights which trainer), `build_segments.py` (seg
 | PATRICIA | Route110_TrickHousePuzzle7 | route | 4 | 48–50 | Banette 50 | enhanced |
 | JOSHUA | Route110_TrickHousePuzzle7 | route | 4 | 48–50 | Alakazam 50 | enhanced |
 | ALEXIS | Route110_TrickHousePuzzle7 | route | 4 | 48–50 | Gardevoir 50 | enhanced |
-| SIDNEY | EverGrandeCity_SidneysRoom | elite | 6 | 54–55 | Absol 55 | enhanced |
-| PHOEBE | EverGrandeCity_PhoebesRoom | elite | 6 | 54–56 | Dusknoir 56 | enhanced |
-| GLACIA | EverGrandeCity_GlaciasRoom | elite | 6 | 55–57 | Walrein 57 | enhanced |
-| DRAKE | EverGrandeCity_DrakesRoom | elite | 6 | 56–58 | Salamence 58 | enhanced |
+| SIDNEY | EverGrandeCity_SidneysRoom | elite | 6 | 54–55 | Absol 55 | oras-rematch |
+| PHOEBE | EverGrandeCity_PhoebesRoom | elite | 6 | 54–56 | Dusknoir 56 | oras-rematch |
+| GLACIA | EverGrandeCity_GlaciasRoom | elite | 6 | 55–57 | Walrein 57 | oras-rematch |
+| DRAKE | EverGrandeCity_DrakesRoom | elite | 6 | 56–58 | Salamence 58 | oras-rematch |
 | QUINCY | VictoryRoad_1F | route | 5 | 49–51 | Slaking 51 | enhanced |
 | KATELYNN | VictoryRoad_1F | route | 5 | 49–51 | Gardevoir 51 | enhanced |
 | WALLACE | EverGrandeCity_ChampionsRoom | elite | 6 | 57–60 | Milotic 60 | enhanced |
@@ -911,8 +1056,8 @@ Tools: `scan_maps.py` (which map fights which trainer), `build_segments.py` (seg
 | NICOLAS_4 | MeteorFalls_1F_2R | route t4 | 5 | 54–55 | Salamence 55 | emerald-rematch |
 | DIANNE | VictoryRoad_B2F | route | 5 | 53–55 | Lanturn 55 | enhanced |
 | WALLY_VR_1 | VictoryRoad_1F | route | 5 | 54–57 | Gallade 57 | story |
-| BRENDAN_SOOTOPOLIS | SootopolisCity | route | 6 | 50–53 | Sceptile 53 | story |
-| MAY_SOOTOPOLIS | SootopolisCity | route | 6 | 50–53 | Blaziken 53 | story |
+| BRENDAN_MOSSDEEP | SootopolisCity | route | 3 | 46–47 | Sceptile 47 | story |
+| STEVEN_MOSSDEEP | SootopolisCity | route | 3 | 54–56 | Metagross 56 | story |
 | MITCHELL | VictoryRoad_B1F | route | 5 | 50–52 | Solrock 52 | enhanced |
 | HALLE | VictoryRoad_B1F | route | 5 | 50–52 | Absol 52 | enhanced |
 | JOHN_AND_JAY_1 | MeteorFalls_1F_2R | route | 4 | 48–49 | Hariyama 49 | emerald-rematch |
@@ -982,16 +1127,16 @@ Tools: `scan_maps.py` (which map fights which trainer), `build_segments.py` (seg
 | LEONARD | SSTidalCorridor | route | 4 | 64–66 | Machamp 66 | enhanced |
 | ERNEST_5 | Route125 | route t5 | 5 | 65–67 | Machamp 67 | emerald-rematch |
 | EDWIN_5 | Route110 | route t5 | 5 | 60–62 | Shiftry 62 | emerald-rematch |
-| BRENDAN_POSTGAME | LittlerootTown_ProfessorBirchsLab | route | 6 | 72–76 | Sceptile 76 | story |
-| MAY_POSTGAME | LittlerootTown_ProfessorBirchsLab | route | 6 | 72–76 | Blaziken 76 | story |
-| BRENDAN_POSTGAME_DOUBLE | LittlerootTown_ProfessorBirchsLab | route | 3 | 72–76 | Sceptile 76 | story |
+| BRENDAN_POSTGAME | LittlerootTown_ProfessorBirchsLab | route | 6 | 75–78 | Sceptile 78 | story |
+| MAY_POSTGAME | LittlerootTown_ProfessorBirchsLab | route | 6 | 75–78 | Blaziken 78 | story |
+| BRENDAN_POSTGAME_DOUBLE | LittlerootTown_ProfessorBirchsLab | route | 3 | 78–80 | Sceptile 80 | story |
 | ISAAC_5 | Route117 | route t5 | 6 | 60–61 | Hariyama 61 | emerald-rematch |
 | LYDIA_5 | Route117 | route t5 | 6 | 60–61 | Azumarill 61 | emerald-rematch |
 | JACKSON_5 | Route119 | route t5 | 5 | 62–64 | Breloom 64 | emerald-rematch |
 | CATHERINE_5 | Route119 | route t5 | 4 | 62–64 | Roserade 64 | emerald-rematch |
-| ASTER_POSTGAME_DEINO |  | route | 6 | 74–78 | Salamence 78 | story |
-| ASTER_POSTGAME_DREEPY |  | route | 6 | 74–78 | Salamence 78 | story |
-| ASTER_POSTGAME_JANGMO_O |  | route | 6 | 74–78 | Salamence 78 | story |
+| ASTER_POSTGAME_DEINO |  | route | 6 | 75–78 | Salamence 78 | story |
+| ASTER_POSTGAME_DREEPY |  | route | 6 | 75–78 | Salamence 78 | story |
+| ASTER_POSTGAME_JANGMO_O |  | route | 6 | 75–78 | Salamence 78 | story |
 | HALEY_5 | Route104 | route t5 | 4 | 60–61 | Breloom 61 | emerald-rematch |
 | JAMES_5 | PetalburgWoods | route t5 | 5 | 60–61 | Ninjask 61 | emerald-rematch |
 | TRENT_5 | Route112 | route t5 | 5 | 60–61 | Golem 61 | emerald-rematch |
@@ -1001,7 +1146,7 @@ Tools: `scan_maps.py` (which map fights which trainer), `build_segments.py` (seg
 | WALLY_VR_3 | VictoryRoad_1F | route t2 | 5 | 67–70 | Gallade 70 | story |
 | WALLY_VR_4 | VictoryRoad_1F | route t3 | 5 | 71–74 | Gallade 74 | story |
 | WALLY_VR_5 | VictoryRoad_1F | route t4 | 5 | 75–78 | Gallade 78 | story |
-| MAY_POSTGAME_DOUBLE | LittlerootTown_ProfessorBirchsLab | route | 3 | 72–76 | Blaziken 76 | story |
+| MAY_POSTGAME_DOUBLE | LittlerootTown_ProfessorBirchsLab | route | 3 | 78–80 | Blaziken 80 | story |
 | JOHN_AND_JAY_5 | MeteorFalls_1F_2R | route t5 | 4 | 68–70 | Hariyama 70 | emerald-rematch |
 | LILA_AND_ROY_5 | Route124 | route t5 | 4 | 68–70 | Sharpedo 70 | emerald-rematch |
 | ROXANNE_2 | RustboroCity_Gym | leader t2 | 6 | 66–70 | Probopass 70 | emerald-rematch |

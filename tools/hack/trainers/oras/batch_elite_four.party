@@ -1,0 +1,288 @@
+=== TRAINER_SIDNEY ===
+Name: SIDNEY
+Class: Elite Four
+Pic: Elite Four Sidney
+Gender: Male
+Music: Elite Four
+Items: Full Restore / Full Restore
+Double Battle: No
+AI: Smart Trainer / Prediction / Ace Pokemon
+Mugshot: Purple
+
+Scrafty @ Sitrus Berry
+Level: 54
+Ability: Intimidate
+EVs: 252 HP / 252 Atk / 4 SpD
+Nature: Adamant
+- Crunch
+- Drain Punch
+- Poison Jab
+- Bulk Up
+
+Shiftry @ Life Orb
+Level: 54
+Ability: Pickpocket
+EVs: 252 Atk / 4 HP / 252 Spe
+Nature: Adamant
+- Fake Out
+- Leaf Blade
+- Knock Off
+- Sucker Punch
+
+Sharpedo @ Black Glasses
+Level: 54
+Ability: Speed Boost
+EVs: 252 Atk / 4 HP / 252 Spe
+Nature: Adamant
+- Crunch
+- Liquidation
+- Aqua Jet
+- Protect
+
+Zoroark @ Life Orb
+Level: 54
+Ability: Illusion
+EVs: 252 SpA / 4 SpD / 252 Spe
+Nature: Timid
+- Dark Pulse
+- Flamethrower
+- Focus Blast
+- Nasty Plot
+
+Mandibuzz @ Leftovers
+Level: 54
+Ability: Overcoat
+EVs: 252 HP / 252 Def / 4 SpD
+Nature: Impish
+- Foul Play
+- Bone Rush
+- Roost
+- Tailwind
+
+Absol @ Scope Lens
+Level: 55
+Ability: Super Luck
+EVs: 252 Atk / 4 HP / 252 Spe
+Nature: Adamant
+- Night Slash
+- Psycho Cut
+- Stone Edge
+- Sucker Punch
+
+
+=== TRAINER_PHOEBE ===
+Name: PHOEBE
+Class: Elite Four
+Pic: Elite Four Phoebe
+Gender: Female
+Music: Elite Four
+Items: Full Restore / Full Restore
+Double Battle: No
+AI: Smart Trainer / Prediction / Ace Pokemon
+Mugshot: Green
+
+Banette @ Life Orb
+Level: 54
+Ability: Insomnia
+EVs: 252 Atk / 4 HP / 252 Spe
+Nature: Adamant
+- Shadow Claw
+- Knock Off
+- Sucker Punch
+- Swords Dance
+
+Mismagius @ Spell Tag
+Level: 54
+Ability: Levitate
+EVs: 252 SpA / 4 SpD / 252 Spe
+Nature: Timid
+- Shadow Ball
+- Thunderbolt
+- Power Gem
+- Pain Split
+
+Drifblim @ Sitrus Berry
+Level: 55
+Ability: Unburden
+EVs: 252 Atk / 4 HP / 252 Spe
+Nature: Adamant
+- Phantom Force
+- Acrobatics
+- Will-O-Wisp
+- Destiny Bond
+
+Chandelure @ Wise Glasses
+Level: 55
+Ability: Flash Fire
+EVs: 252 SpA / 4 SpD / 252 Spe
+Nature: Modest
+- Hex
+- Flamethrower
+- Energy Ball
+- Will-O-Wisp
+
+Sableye @ Leftovers
+Level: 55
+Ability: Prankster
+EVs: 252 HP / 4 Def / 252 SpD
+Nature: Careful
+- Foul Play
+- Will-O-Wisp
+- Recover
+- Fake Out
+
+Dusknoir @ Leftovers
+Level: 56
+Ability: Pressure
+EVs: 252 HP / 252 Atk / 4 SpD
+Nature: Brave
+- Poltergeist
+- Ice Punch
+- Fire Punch
+- Shadow Sneak
+
+
+=== TRAINER_GLACIA ===
+Name: GLACIA
+Class: Elite Four
+Pic: Elite Four Glacia
+Gender: Female
+Music: Elite Four
+Items: Full Restore / Full Restore / Full Restore
+Double Battle: No
+AI: Smart Trainer / Prediction / Ace Pokemon
+Mugshot: Pink
+
+Abomasnow @ Icy Rock
+Level: 55
+Ability: Snow Warning
+EVs: 4 HP / 252 Atk / 252 SpA
+Nature: Lonely
+- Blizzard
+- Wood Hammer
+- Ice Shard
+- Earthquake
+
+Beartic @ Never-Melt Ice
+Level: 55
+Ability: Slush Rush
+EVs: 252 Atk / 4 HP / 252 Spe
+Nature: Adamant
+- Icicle Crash
+- Superpower
+- Aqua Jet
+- Swords Dance
+
+Froslass @ Focus Sash
+Level: 56
+Ability: Cursed Body
+EVs: 252 SpA / 4 HP / 252 Spe
+Nature: Timid
+- Blizzard
+- Shadow Ball
+- Will-O-Wisp
+- Destiny Bond
+
+Vanilluxe @ Leftovers
+Level: 56
+Ability: Ice Body
+EVs: 252 HP / 252 SpA / 4 SpD
+Nature: Modest
+- Freeze-Dry
+- Blizzard
+- Flash Cannon
+- Mirror Coat
+
+Glalie @ Never-Melt Ice
+Level: 56
+Ability: Inner Focus
+EVs: 252 Atk / 4 SpA / 252 Spe
+Nature: Naive
+- Freeze-Dry
+- Ice Shard
+- Earthquake
+- Crunch
+
+Walrein @ Leftovers
+Level: 57
+Ability: Ice Body
+EVs: 252 HP / 252 SpA / 4 SpD
+Nature: Modest
+- Blizzard
+- Surf
+- Yawn
+- Protect
+
+
+=== TRAINER_DRAKE ===
+Name: DRAKE
+Class: Elite Four
+Pic: Elite Four Drake
+Gender: Male
+Music: Elite Four
+Items: Full Restore / Full Restore / Full Restore
+Double Battle: No
+AI: Smart Trainer / Prediction / Ace Pokemon
+Mugshot: Blue
+
+Altaria @ Leftovers
+Level: 56
+Ability: Natural Cure
+EVs: 252 HP / 4 Def / 252 SpA
+Nature: Modest
+- Dragon Pulse
+- Moonblast
+- Cotton Guard
+- Roost
+
+Dragalge @ Black Sludge
+Level: 56
+Ability: Adaptability
+EVs: 252 HP / 252 SpA / 4 SpD
+Nature: Modest
+- Dragon Pulse
+- Hydro Pump
+- Sludge Wave
+- Thunderbolt
+
+Kingdra @ Scope Lens
+Level: 57
+Ability: Sniper
+EVs: 252 SpA / 4 HP / 252 Spe
+Nature: Modest
+- Focus Energy
+- Hydro Pump
+- Dragon Pulse
+- Ice Beam
+
+Flygon @ Life Orb
+Level: 57
+Ability: Levitate
+EVs: 252 Atk / 4 Def / 252 Spe
+Nature: Jolly
+- Earthquake
+- Dragon Claw
+- Stone Edge
+- U-turn
+
+Haxorus @ Lum Berry
+Level: 57
+Ability: Mold Breaker
+EVs: 252 Atk / 4 HP / 252 Spe
+Nature: Adamant
+- Dragon Dance
+- Dragon Claw
+- Earthquake
+- X-Scissor
+
+Salamence @ Life Orb
+Level: 58
+Ability: Moxie
+EVs: 252 Atk / 4 HP / 252 Spe
+Nature: Adamant
+- Dragon Dance
+- Dragon Rush
+- Earthquake
+- Fire Fang
+
+
