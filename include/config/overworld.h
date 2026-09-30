@@ -146,6 +146,7 @@
 
 // Trainer Rematches
 #define OW_REMATCH_BADGE_COUNT      5 // Number of badges necessary before the match call or vs seeker features allow rematches
+#define OW_REMATCH_TIER_BADGES      TRUE // Draconid Emerald: each further rematch tier needs one more badge than the one before (5, 6, 7), the last one needs the game cleared. Keeps rematch teams under the level cap.
 
 // Ambient Cries
 // Constants

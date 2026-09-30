@@ -49,5 +49,10 @@ python3 tools/hack/porymap_scripts/register.py      # registers the JS tools in 
 # emulator regression tests (rerun after every build; savestates chain in one -o dir)
 python3 tools/hack/emu/play.py tools/hack/emu/tests/opening.play -o /tmp/emu
 python3 tools/hack/emu/play.py tools/hack/emu/tests/route103.play -o /tmp/emu
+# trainers (rules: docs/hack_trainers.md)
+python3 tools/hack/trainers/check_party.py [batch.party] --caps --proc   # legality, caps, headers, trainerproc
+python3 tools/hack/trainers/splice_party.py batch.party                  # merge blocks into trainers.party
+python3 tools/hack/trainers/build_segments.py [--list S3]                # segments.json (caps from src/caps.c)
+python3 tools/hack/trainers/learnset.py Grovyle --level 23 [--all]       # moves for writing sets
 ```
 Scratch output (previews, sheets) goes to the session scratchpad, not the repo.

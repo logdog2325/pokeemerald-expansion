@@ -70,8 +70,9 @@ Other docs: [decisions](hack_decisions.md) · [changes](hack_changes.md) · [too
 - [ ] Wally extra fights
 
 ## Phase 6 – Trainers / difficulty
-- [ ] Level caps + AI config
-- [ ] Trainer batches (see hack_trainers.md)
+- [x] Level caps (hard, per badge) + rematch tiers gated by badges – `make check` green
+- [x] Rulebook `docs/hack_trainers.md`, segments (`tools/hack/trainers/segments.json`), trainer tools
+- [~] Trainer batches 1–9 (798 trainers) being written; then splice + check + build **← in progress**
 
 ## Phase 7 – Polish
 - [ ] Script/flag reachability checks, both genders × 9 starter combos

@@ -1992,6 +1992,29 @@ static bool8 IsTrainerReadyForRematch_(const struct RematchTrainer *table, u16 t
     return TRUE;
 }
 
+static u32 GetBadgeCount(void)
+{
+    u32 i, count;
+
+    for (count = 0, i = 0; i < ARRAY_COUNT(gBadgeFlags); i++)
+    {
+        if (FlagGet(gBadgeFlags[i]) == TRUE)
+            count++;
+    }
+    return count;
+}
+
+// Draconid Emerald: rematch tier i (index into trainerIds) needs OW_REMATCH_BADGE_COUNT + i - 1 badges,
+// the last tier needs the game cleared.
+static bool32 IsRematchTierUnlocked(s32 tier)
+{
+    if (!OW_REMATCH_TIER_BADGES)
+        return TRUE;
+    if (tier == REMATCHES_COUNT - 1)
+        return FlagGet(FLAG_SYS_GAME_CLEAR);
+    return GetBadgeCount() >= OW_REMATCH_BADGE_COUNT + tier - 1;
+}
+
 u16 GetRematchTrainerIdFromTable(const struct RematchTrainer *table, u16 firstBattleTrainerId)
 {
     const struct RematchTrainer *trainerEntry;
@@ -2005,6 +2028,8 @@ u16 GetRematchTrainerIdFromTable(const struct RematchTrainer *table, u16 firstBa
     for (i = 1; i < REMATCHES_COUNT; i++)
     {
         if (trainerEntry->trainerIds[i] == 0) // previous entry was this trainer's last one
+            return trainerEntry->trainerIds[i - 1];
+        if (!IsRematchTierUnlocked(i)) // Draconid Emerald: stay on the last unlocked tier
             return trainerEntry->trainerIds[i - 1];
         if (!HasTrainerBeenFought(trainerEntry->trainerIds[i]))
             return trainerEntry->trainerIds[i];

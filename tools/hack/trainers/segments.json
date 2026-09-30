@@ -1,0 +1,6609 @@
+{
+ "segments": {
+  "S1": {
+   "cap": 15,
+   "label": "Draconid Pass to Roxanne",
+   "route": [
+    5,
+    12
+   ],
+   "gym": [
+    11,
+    13
+   ],
+   "ace": [
+    13,
+    15
+   ]
+  },
+  "S2": {
+   "cap": 20,
+   "label": "Rusturf Tunnel, Dewford, Brawly",
+   "route": [
+    12,
+    17
+   ],
+   "gym": [
+    16,
+    18
+   ],
+   "ace": [
+    18,
+    20
+   ]
+  },
+  "S3": {
+   "cap": 25,
+   "label": "Slateport, Route 110, Mauville, Wattson",
+   "route": [
+    17,
+    22
+   ],
+   "gym": [
+    21,
+    23
+   ],
+   "ace": [
+    23,
+    25
+   ]
+  },
+  "S4": {
+   "cap": 30,
+   "label": "Routes 111-114, Mt. Chimney, Jagged Pass, Flannery",
+   "route": [
+    21,
+    27
+   ],
+   "gym": [
+    26,
+    28
+   ],
+   "ace": [
+    28,
+    30
+   ]
+  },
+  "S5": {
+   "cap": 34,
+   "label": "Desert, Norman",
+   "route": [
+    26,
+    31
+   ],
+   "gym": [
+    30,
+    32
+   ],
+   "ace": [
+    32,
+    34
+   ]
+  },
+  "S6": {
+   "cap": 38,
+   "label": "Surf routes, Abandoned Ship, Route 119, Weather Institute, Winona",
+   "route": [
+    30,
+    35
+   ],
+   "gym": [
+    34,
+    36
+   ],
+   "ace": [
+    36,
+    38
+   ]
+  },
+  "S7": {
+   "cap": 44,
+   "label": "Routes 120-134, Mt. Pyre, Lilycove, both hideouts, Tate & Liza",
+   "route": [
+    34,
+    41
+   ],
+   "gym": [
+    39,
+    42
+   ],
+   "ace": [
+    42,
+    44
+   ]
+  },
+  "S8": {
+   "cap": 48,
+   "label": "Space Center, Seafloor Cavern, Sky Pillar, Juan",
+   "route": [
+    40,
+    45
+   ],
+   "gym": [
+    44,
+    46
+   ],
+   "ace": [
+    46,
+    48
+   ]
+  },
+  "S9": {
+   "cap": 60,
+   "label": "Victory Road, Elite Four, Champion",
+   "route": [
+    48,
+    55
+   ],
+   "gym": [
+    54,
+    57
+   ],
+   "ace": [
+    57,
+    60
+   ]
+  },
+  "POST": {
+   "cap": 100,
+   "label": "After the Champion (no cap)",
+   "route": [
+    60,
+    70
+   ],
+   "gym": [
+    66,
+    72
+   ],
+   "ace": [
+    70,
+    80
+   ]
+  }
+ },
+ "trainers": {
+  "TRAINER_SAWYER_1": "S4",
+  "TRAINER_GRUNT_AQUA_HIDEOUT_1": "S7",
+  "TRAINER_GRUNT_AQUA_HIDEOUT_2": "S7",
+  "TRAINER_GRUNT_AQUA_HIDEOUT_3": "S7",
+  "TRAINER_GRUNT_AQUA_HIDEOUT_4": "S7",
+  "TRAINER_GRUNT_SEAFLOOR_CAVERN_1": "S8",
+  "TRAINER_GRUNT_SEAFLOOR_CAVERN_2": "S8",
+  "TRAINER_GRUNT_SEAFLOOR_CAVERN_3": "S8",
+  "TRAINER_GABRIELLE_1": "S7",
+  "TRAINER_GRUNT_PETALBURG_WOODS": "S1",
+  "TRAINER_MARCEL": "S7",
+  "TRAINER_ALBERTO": "S7",
+  "TRAINER_ED": "S7",
+  "TRAINER_GRUNT_SEAFLOOR_CAVERN_4": "S8",
+  "TRAINER_DECLAN": "S7",
+  "TRAINER_GRUNT_RUSTURF_TUNNEL": "S2",
+  "TRAINER_GRUNT_WEATHER_INST_1": "S6",
+  "TRAINER_GRUNT_WEATHER_INST_2": "S6",
+  "TRAINER_GRUNT_WEATHER_INST_3": "S6",
+  "TRAINER_GRUNT_MUSEUM_1": "S3",
+  "TRAINER_GRUNT_MUSEUM_2": "S3",
+  "TRAINER_GRUNT_SPACE_CENTER_1": "S8",
+  "TRAINER_GRUNT_MT_PYRE_1": "S7",
+  "TRAINER_GRUNT_MT_PYRE_2": "S7",
+  "TRAINER_GRUNT_MT_PYRE_3": "S7",
+  "TRAINER_GRUNT_WEATHER_INST_4": "S6",
+  "TRAINER_GRUNT_AQUA_HIDEOUT_5": "S7",
+  "TRAINER_GRUNT_AQUA_HIDEOUT_6": "S7",
+  "TRAINER_FREDRICK": "S7",
+  "TRAINER_MATT": "S7",
+  "TRAINER_ZANDER": "S7",
+  "TRAINER_SHELLY_WEATHER_INSTITUTE": "S6",
+  "TRAINER_SHELLY_SEAFLOOR_CAVERN": "S8",
+  "TRAINER_ARCHIE": "S8",
+  "TRAINER_LEAH": "S7",
+  "TRAINER_DAISY": "S3",
+  "TRAINER_ROSE_1": "S3",
+  "TRAINER_FELIX": "S9",
+  "TRAINER_VIOLET": "S7",
+  "TRAINER_ROSE_2": "S6",
+  "TRAINER_ROSE_3": "S7",
+  "TRAINER_ROSE_4": "S8",
+  "TRAINER_ROSE_5": "POST",
+  "TRAINER_DUSTY_1": "S5",
+  "TRAINER_CHIP": "S7",
+  "TRAINER_FOSTER": "S6",
+  "TRAINER_DUSTY_2": "S6",
+  "TRAINER_DUSTY_3": "S7",
+  "TRAINER_DUSTY_4": "S8",
+  "TRAINER_DUSTY_5": "POST",
+  "TRAINER_GABBY_AND_TY_1": "S4",
+  "TRAINER_GABBY_AND_TY_2": "S4",
+  "TRAINER_GABBY_AND_TY_3": "S5",
+  "TRAINER_GABBY_AND_TY_4": "S6",
+  "TRAINER_GABBY_AND_TY_5": "S7",
+  "TRAINER_GABBY_AND_TY_6": "S8",
+  "TRAINER_LOLA_1": "S2",
+  "TRAINER_AUSTINA": "S6",
+  "TRAINER_GWEN": "S6",
+  "TRAINER_LOLA_2": "S6",
+  "TRAINER_LOLA_3": "S7",
+  "TRAINER_LOLA_4": "S8",
+  "TRAINER_LOLA_5": "POST",
+  "TRAINER_RICKY_1": "S2",
+  "TRAINER_SIMON": "S2",
+  "TRAINER_CHARLIE": "S6",
+  "TRAINER_RICKY_2": "S6",
+  "TRAINER_RICKY_3": "S7",
+  "TRAINER_RICKY_4": "S8",
+  "TRAINER_RICKY_5": "POST",
+  "TRAINER_RANDALL": "S5",
+  "TRAINER_PARKER": "S5",
+  "TRAINER_GEORGE": "S5",
+  "TRAINER_BERKE": "S5",
+  "TRAINER_BRAXTON": "S7",
+  "TRAINER_VINCENT": "POST",
+  "TRAINER_LEROY": "POST",
+  "TRAINER_WILTON_1": "S4",
+  "TRAINER_EDGAR": "S9",
+  "TRAINER_ALBERT": "S9",
+  "TRAINER_SAMUEL": "S9",
+  "TRAINER_VITO": "S9",
+  "TRAINER_OWEN": "S9",
+  "TRAINER_WILTON_2": "S6",
+  "TRAINER_WILTON_3": "S7",
+  "TRAINER_WILTON_4": "S8",
+  "TRAINER_WILTON_5": "POST",
+  "TRAINER_WARREN": "S7",
+  "TRAINER_MARY": "S5",
+  "TRAINER_ALEXIA": "S5",
+  "TRAINER_JODY": "S5",
+  "TRAINER_WENDY": "S7",
+  "TRAINER_KEIRA": "POST",
+  "TRAINER_BROOKE_1": "S4",
+  "TRAINER_JENNIFER": "S7",
+  "TRAINER_HOPE": "S9",
+  "TRAINER_SHANNON": "S9",
+  "TRAINER_MICHELLE": "S9",
+  "TRAINER_CAROLINE": "S9",
+  "TRAINER_JULIE": "S9",
+  "TRAINER_BROOKE_2": "S6",
+  "TRAINER_BROOKE_3": "S7",
+  "TRAINER_BROOKE_4": "S8",
+  "TRAINER_BROOKE_5": "POST",
+  "TRAINER_PATRICIA": "S9",
+  "TRAINER_KINDRA": "S7",
+  "TRAINER_TAMMY": "S7",
+  "TRAINER_VALERIE_1": "S7",
+  "TRAINER_TASHA": "S7",
+  "TRAINER_VALERIE_2": "S7",
+  "TRAINER_VALERIE_3": "S7",
+  "TRAINER_VALERIE_4": "S8",
+  "TRAINER_VALERIE_5": "POST",
+  "TRAINER_CINDY_1": "S1",
+  "TRAINER_DAPHNE": "S8",
+  "TRAINER_GRUNT_SPACE_CENTER_2": "S8",
+  "TRAINER_BRIANNA": "S8",
+  "TRAINER_NAOMI": "POST",
+  "TRAINER_CINDY_3": "S6",
+  "TRAINER_CINDY_4": "S7",
+  "TRAINER_CINDY_5": "S8",
+  "TRAINER_CINDY_6": "POST",
+  "TRAINER_MELISSA": "S4",
+  "TRAINER_SHEILA": "S4",
+  "TRAINER_SHIRLEY": "S4",
+  "TRAINER_JESSICA_1": "S7",
+  "TRAINER_CONNIE": "S8",
+  "TRAINER_BRIDGET": "S8",
+  "TRAINER_OLIVIA": "S8",
+  "TRAINER_TIFFANY": "S8",
+  "TRAINER_JESSICA_2": "S7",
+  "TRAINER_JESSICA_3": "S7",
+  "TRAINER_JESSICA_4": "S8",
+  "TRAINER_JESSICA_5": "POST",
+  "TRAINER_WINSTON_1": "S1",
+  "TRAINER_MOLLIE": "S7",
+  "TRAINER_GARRET": "POST",
+  "TRAINER_WINSTON_2": "S6",
+  "TRAINER_WINSTON_3": "S7",
+  "TRAINER_WINSTON_4": "S8",
+  "TRAINER_WINSTON_5": "POST",
+  "TRAINER_STEVE_1": "S4",
+  "TRAINER_THALIA_1": "S6",
+  "TRAINER_MARK": "S7",
+  "TRAINER_GRUNT_MT_CHIMNEY_1": "S4",
+  "TRAINER_STEVE_2": "S6",
+  "TRAINER_STEVE_3": "S7",
+  "TRAINER_STEVE_4": "S8",
+  "TRAINER_STEVE_5": "POST",
+  "TRAINER_LUIS": "S6",
+  "TRAINER_DOMINIK": "S6",
+  "TRAINER_DOUGLAS": "S6",
+  "TRAINER_DARRIN": "S6",
+  "TRAINER_TONY_1": "S6",
+  "TRAINER_JEROME": "S6",
+  "TRAINER_MATTHEW": "S6",
+  "TRAINER_DAVID": "S6",
+  "TRAINER_SPENCER": "S7",
+  "TRAINER_ROLAND": "S7",
+  "TRAINER_NOLEN": "S7",
+  "TRAINER_STAN": "S7",
+  "TRAINER_BARRY": "S7",
+  "TRAINER_DEAN": "S7",
+  "TRAINER_RODNEY": "S7",
+  "TRAINER_RICHARD": "S7",
+  "TRAINER_HERMAN": "S7",
+  "TRAINER_SANTIAGO": "S7",
+  "TRAINER_GILBERT": "S7",
+  "TRAINER_FRANKLIN": "S7",
+  "TRAINER_KEVIN": "S7",
+  "TRAINER_JACK": "S7",
+  "TRAINER_CHAD": "S7",
+  "TRAINER_TONY_2": "S6",
+  "TRAINER_TONY_3": "S7",
+  "TRAINER_TONY_4": "S8",
+  "TRAINER_TONY_5": "POST",
+  "TRAINER_TAKAO": "S2",
+  "TRAINER_HITOSHI": "S7",
+  "TRAINER_KIYO": "S7",
+  "TRAINER_KOICHI": "S6",
+  "TRAINER_NOB_1": "S2",
+  "TRAINER_NOB_2": "S6",
+  "TRAINER_NOB_3": "S7",
+  "TRAINER_NOB_4": "S8",
+  "TRAINER_NOB_5": "POST",
+  "TRAINER_YUJI": "S6",
+  "TRAINER_DAISUKE": "S4",
+  "TRAINER_ATSUSHI": "S7",
+  "TRAINER_KIRK": "S3",
+  "TRAINER_GRUNT_AQUA_HIDEOUT_7": "S7",
+  "TRAINER_GRUNT_AQUA_HIDEOUT_8": "S7",
+  "TRAINER_SHAWN": "S3",
+  "TRAINER_FERNANDO_1": "S7",
+  "TRAINER_DALTON_1": "S3",
+  "TRAINER_DALTON_2": "S6",
+  "TRAINER_DALTON_3": "S7",
+  "TRAINER_DALTON_4": "S8",
+  "TRAINER_DALTON_5": "POST",
+  "TRAINER_COLE": "S4",
+  "TRAINER_JEFF": "S4",
+  "TRAINER_AXLE": "S4",
+  "TRAINER_JACE": "S4",
+  "TRAINER_KEEGAN": "S4",
+  "TRAINER_BERNIE_1": "S4",
+  "TRAINER_BERNIE_2": "S6",
+  "TRAINER_BERNIE_3": "S7",
+  "TRAINER_BERNIE_4": "S8",
+  "TRAINER_BERNIE_5": "POST",
+  "TRAINER_DREW": "S5",
+  "TRAINER_BEAU": "S5",
+  "TRAINER_LARRY": "S4",
+  "TRAINER_SHANE": "S4",
+  "TRAINER_JUSTIN": "S5",
+  "TRAINER_ETHAN_1": "S4",
+  "TRAINER_AUTUMN": "S4",
+  "TRAINER_TRAVIS": "S4",
+  "TRAINER_ETHAN_2": "S6",
+  "TRAINER_ETHAN_3": "S7",
+  "TRAINER_ETHAN_4": "S8",
+  "TRAINER_ETHAN_5": "POST",
+  "TRAINER_BRENT": "S6",
+  "TRAINER_DONALD": "S6",
+  "TRAINER_TAYLOR": "S6",
+  "TRAINER_JEFFREY_1": "S7",
+  "TRAINER_DEREK": "S3",
+  "TRAINER_JEFFREY_2": "S7",
+  "TRAINER_JEFFREY_3": "S7",
+  "TRAINER_JEFFREY_4": "S8",
+  "TRAINER_JEFFREY_5": "POST",
+  "TRAINER_EDWARD": "S3",
+  "TRAINER_PRESTON": "S7",
+  "TRAINER_VIRGIL": "S7",
+  "TRAINER_BLAKE": "S7",
+  "TRAINER_WILLIAM": "S7",
+  "TRAINER_JOSHUA": "S9",
+  "TRAINER_CAMERON_1": "S7",
+  "TRAINER_CAMERON_2": "S7",
+  "TRAINER_CAMERON_3": "S7",
+  "TRAINER_CAMERON_4": "S8",
+  "TRAINER_CAMERON_5": "POST",
+  "TRAINER_JACLYN": "S3",
+  "TRAINER_HANNAH": "S7",
+  "TRAINER_SAMANTHA": "S7",
+  "TRAINER_MAURA": "S7",
+  "TRAINER_KAYLA": "S7",
+  "TRAINER_ALEXIS": "S9",
+  "TRAINER_JACKI_1": "S7",
+  "TRAINER_JACKI_2": "S7",
+  "TRAINER_JACKI_3": "S7",
+  "TRAINER_JACKI_4": "S8",
+  "TRAINER_JACKI_5": "POST",
+  "TRAINER_WALTER_1": "S7",
+  "TRAINER_MICAH": "POST",
+  "TRAINER_THOMAS": "POST",
+  "TRAINER_WALTER_2": "S7",
+  "TRAINER_WALTER_3": "S7",
+  "TRAINER_WALTER_4": "S8",
+  "TRAINER_WALTER_5": "POST",
+  "TRAINER_SIDNEY": "S9",
+  "TRAINER_PHOEBE": "S9",
+  "TRAINER_GLACIA": "S9",
+  "TRAINER_DRAKE": "S9",
+  "TRAINER_ROXANNE_1": "S1",
+  "TRAINER_BRAWLY_1": "S2",
+  "TRAINER_WATTSON_1": "S3",
+  "TRAINER_FLANNERY_1": "S4",
+  "TRAINER_NORMAN_1": "S5",
+  "TRAINER_WINONA_1": "S6",
+  "TRAINER_TATE_AND_LIZA_1": "S7",
+  "TRAINER_JUAN_1": "S8",
+  "TRAINER_JERRY_1": "S1",
+  "TRAINER_TED": "S4",
+  "TRAINER_PAUL": "S4",
+  "TRAINER_JERRY_2": "S6",
+  "TRAINER_JERRY_3": "S7",
+  "TRAINER_JERRY_4": "S8",
+  "TRAINER_JERRY_5": "POST",
+  "TRAINER_KAREN_1": "S1",
+  "TRAINER_GEORGIA": "S4",
+  "TRAINER_KAREN_2": "S6",
+  "TRAINER_KAREN_3": "S7",
+  "TRAINER_KAREN_4": "S8",
+  "TRAINER_KAREN_5": "POST",
+  "TRAINER_KATE_AND_JOY": "S7",
+  "TRAINER_ANNA_AND_MEG_1": "S3",
+  "TRAINER_ANNA_AND_MEG_2": "S6",
+  "TRAINER_ANNA_AND_MEG_3": "S7",
+  "TRAINER_ANNA_AND_MEG_4": "S8",
+  "TRAINER_ANNA_AND_MEG_5": "POST",
+  "TRAINER_VICTOR": "S4",
+  "TRAINER_MIGUEL_1": "S3",
+  "TRAINER_COLTON": "POST",
+  "TRAINER_MIGUEL_2": "S6",
+  "TRAINER_MIGUEL_3": "S7",
+  "TRAINER_MIGUEL_4": "S8",
+  "TRAINER_MIGUEL_5": "POST",
+  "TRAINER_VICTORIA": "S4",
+  "TRAINER_VANESSA": "S7",
+  "TRAINER_BETHANY": "S8",
+  "TRAINER_ISABEL_1": "S3",
+  "TRAINER_ISABEL_2": "S6",
+  "TRAINER_ISABEL_3": "S7",
+  "TRAINER_ISABEL_4": "S8",
+  "TRAINER_ISABEL_5": "POST",
+  "TRAINER_TIMOTHY_1": "S6",
+  "TRAINER_TIMOTHY_2": "S6",
+  "TRAINER_TIMOTHY_3": "S7",
+  "TRAINER_TIMOTHY_4": "S8",
+  "TRAINER_TIMOTHY_5": "POST",
+  "TRAINER_VICKY": "S4",
+  "TRAINER_SHELBY_1": "S4",
+  "TRAINER_SHELBY_2": "S6",
+  "TRAINER_SHELBY_3": "S7",
+  "TRAINER_SHELBY_4": "S8",
+  "TRAINER_SHELBY_5": "POST",
+  "TRAINER_CALVIN_1": "S1",
+  "TRAINER_BILLY": "S1",
+  "TRAINER_JOSH": "S1",
+  "TRAINER_TOMMY": "S1",
+  "TRAINER_JOEY": "S1",
+  "TRAINER_BEN": "S3",
+  "TRAINER_QUINCY": "S9",
+  "TRAINER_KATELYNN": "S9",
+  "TRAINER_JAYLEN": "S4",
+  "TRAINER_DILLON": "S4",
+  "TRAINER_CALVIN_2": "S6",
+  "TRAINER_CALVIN_3": "S7",
+  "TRAINER_CALVIN_4": "S8",
+  "TRAINER_CALVIN_5": "POST",
+  "TRAINER_EDDIE": "S3",
+  "TRAINER_ALLEN": "S1",
+  "TRAINER_TIMMY": "S3",
+  "TRAINER_WALLACE": "S9",
+  "TRAINER_ANDREW": "S3",
+  "TRAINER_IVAN": "S1",
+  "TRAINER_CLAUDE": "S4",
+  "TRAINER_ELLIOT_1": "S2",
+  "TRAINER_NED": "S2",
+  "TRAINER_DALE": "S3",
+  "TRAINER_NOLAN": "S4",
+  "TRAINER_BARNY": "S6",
+  "TRAINER_WADE": "S3",
+  "TRAINER_CARTER": "S6",
+  "TRAINER_ELLIOT_2": "S6",
+  "TRAINER_ELLIOT_3": "S7",
+  "TRAINER_ELLIOT_4": "S8",
+  "TRAINER_ELLIOT_5": "POST",
+  "TRAINER_RONALD": "S7",
+  "TRAINER_JACOB": "S3",
+  "TRAINER_ANTHONY": "S3",
+  "TRAINER_BENJAMIN_1": "S3",
+  "TRAINER_BENJAMIN_2": "S6",
+  "TRAINER_BENJAMIN_3": "S7",
+  "TRAINER_BENJAMIN_4": "S8",
+  "TRAINER_BENJAMIN_5": "POST",
+  "TRAINER_ABIGAIL_1": "S3",
+  "TRAINER_JASMINE": "S3",
+  "TRAINER_ABIGAIL_2": "S6",
+  "TRAINER_ABIGAIL_3": "S7",
+  "TRAINER_ABIGAIL_4": "S8",
+  "TRAINER_ABIGAIL_5": "POST",
+  "TRAINER_DYLAN_1": "S3",
+  "TRAINER_DYLAN_2": "S6",
+  "TRAINER_DYLAN_3": "S7",
+  "TRAINER_DYLAN_4": "S8",
+  "TRAINER_DYLAN_5": "POST",
+  "TRAINER_MARIA_1": "S3",
+  "TRAINER_MARIA_2": "S6",
+  "TRAINER_MARIA_3": "S7",
+  "TRAINER_MARIA_4": "S8",
+  "TRAINER_MARIA_5": "POST",
+  "TRAINER_CAMDEN": "S7",
+  "TRAINER_DEMETRIUS": "S6",
+  "TRAINER_ISAIAH_1": "S7",
+  "TRAINER_PABLO_1": "S7",
+  "TRAINER_CHASE": "S7",
+  "TRAINER_ISAIAH_2": "S7",
+  "TRAINER_ISAIAH_3": "S7",
+  "TRAINER_ISAIAH_4": "S8",
+  "TRAINER_ISAIAH_5": "POST",
+  "TRAINER_ISOBEL": "S7",
+  "TRAINER_DONNY": "S7",
+  "TRAINER_TALIA": "S7",
+  "TRAINER_KATELYN_1": "S7",
+  "TRAINER_ALLISON": "S7",
+  "TRAINER_KATELYN_2": "S7",
+  "TRAINER_KATELYN_3": "S7",
+  "TRAINER_KATELYN_4": "S8",
+  "TRAINER_KATELYN_5": "POST",
+  "TRAINER_NICOLAS_1": "S9",
+  "TRAINER_NICOLAS_2": "S9",
+  "TRAINER_NICOLAS_3": "S9",
+  "TRAINER_NICOLAS_4": "S9",
+  "TRAINER_NICOLAS_5": "POST",
+  "TRAINER_AARON": "S7",
+  "TRAINER_PERRY": "S6",
+  "TRAINER_HUGH": "S6",
+  "TRAINER_PHIL": "S6",
+  "TRAINER_JARED": "S6",
+  "TRAINER_HUMBERTO": "S6",
+  "TRAINER_PRESLEY": "S7",
+  "TRAINER_EDWARDO": "S6",
+  "TRAINER_COLIN": "S7",
+  "TRAINER_ROBERT_1": "S7",
+  "TRAINER_BENNY": "S8",
+  "TRAINER_CHESTER": "S6",
+  "TRAINER_ROBERT_2": "S7",
+  "TRAINER_ROBERT_3": "S7",
+  "TRAINER_ROBERT_4": "S8",
+  "TRAINER_ROBERT_5": "POST",
+  "TRAINER_ALEX": "S7",
+  "TRAINER_BECK": "S7",
+  "TRAINER_YASU": "S6",
+  "TRAINER_TAKASHI": "S6",
+  "TRAINER_DIANNE": "S9",
+  "TRAINER_JANI": "S6",
+  "TRAINER_LAO_1": "S4",
+  "TRAINER_LUNG": "S4",
+  "TRAINER_LAO_2": "S6",
+  "TRAINER_LAO_3": "S7",
+  "TRAINER_LAO_4": "S8",
+  "TRAINER_LAO_5": "POST",
+  "TRAINER_JOCELYN": "S2",
+  "TRAINER_LAURA": "S2",
+  "TRAINER_CYNDY_1": "S2",
+  "TRAINER_CORA": "S6",
+  "TRAINER_PAULA": "S6",
+  "TRAINER_CYNDY_2": "S6",
+  "TRAINER_CYNDY_3": "S7",
+  "TRAINER_CYNDY_4": "S8",
+  "TRAINER_CYNDY_5": "POST",
+  "TRAINER_MADELINE_1": "S4",
+  "TRAINER_CLARISSA": "S7",
+  "TRAINER_ANGELICA": "S7",
+  "TRAINER_MADELINE_2": "S6",
+  "TRAINER_MADELINE_3": "S7",
+  "TRAINER_MADELINE_4": "S8",
+  "TRAINER_MADELINE_5": "POST",
+  "TRAINER_BEVERLY": "S6",
+  "TRAINER_IMANI": "S6",
+  "TRAINER_KYLA": "S6",
+  "TRAINER_DENISE": "S6",
+  "TRAINER_BETH": "S6",
+  "TRAINER_TARA": "S6",
+  "TRAINER_MISSY": "S6",
+  "TRAINER_ALICE": "S6",
+  "TRAINER_JENNY_1": "S7",
+  "TRAINER_GRACE": "S7",
+  "TRAINER_TANYA": "S7",
+  "TRAINER_SHARON": "S7",
+  "TRAINER_NIKKI": "S7",
+  "TRAINER_BRENDA": "S7",
+  "TRAINER_KATIE": "S7",
+  "TRAINER_SUSIE": "S7",
+  "TRAINER_KARA": "S7",
+  "TRAINER_DANA": "S7",
+  "TRAINER_SIENNA": "S7",
+  "TRAINER_DEBRA": "S7",
+  "TRAINER_LINDA": "S7",
+  "TRAINER_LAUREL": "S7",
+  "TRAINER_CARLEE": "S7",
+  "TRAINER_JENNY_2": "S7",
+  "TRAINER_JENNY_3": "S7",
+  "TRAINER_JENNY_4": "S8",
+  "TRAINER_JENNY_5": "POST",
+  "TRAINER_HEIDI": "S5",
+  "TRAINER_BECKY": "S5",
+  "TRAINER_CAROL": "S4",
+  "TRAINER_NANCY": "S4",
+  "TRAINER_MARTHA": "S5",
+  "TRAINER_DIANA_1": "S4",
+  "TRAINER_CEDRIC": "S7",
+  "TRAINER_IRENE": "S4",
+  "TRAINER_DIANA_2": "S6",
+  "TRAINER_DIANA_3": "S7",
+  "TRAINER_DIANA_4": "S8",
+  "TRAINER_DIANA_5": "POST",
+  "TRAINER_AMY_AND_LIV_1": "S3",
+  "TRAINER_AMY_AND_LIV_2": "S6",
+  "TRAINER_GINA_AND_MIA_1": "S1",
+  "TRAINER_MIU_AND_YUKI": "S7",
+  "TRAINER_AMY_AND_LIV_4": "S7",
+  "TRAINER_AMY_AND_LIV_5": "S8",
+  "TRAINER_AMY_AND_LIV_6": "POST",
+  "TRAINER_HUEY": "S2",
+  "TRAINER_EDMOND": "S2",
+  "TRAINER_ERNEST_1": "S7",
+  "TRAINER_DWAYNE": "S2",
+  "TRAINER_PHILLIP": "POST",
+  "TRAINER_LEONARD": "POST",
+  "TRAINER_DUNCAN": "S6",
+  "TRAINER_ERNEST_2": "S7",
+  "TRAINER_ERNEST_3": "S7",
+  "TRAINER_ERNEST_4": "S8",
+  "TRAINER_ERNEST_5": "POST",
+  "TRAINER_ELI": "S4",
+  "TRAINER_ANNIKA": "S8",
+  "TRAINER_JAZMYN": "S7",
+  "TRAINER_JONAS": "S7",
+  "TRAINER_KAYLEY": "S7",
+  "TRAINER_AURON": "S7",
+  "TRAINER_KELVIN": "S7",
+  "TRAINER_MARLEY": "S7",
+  "TRAINER_REYNA": "S7",
+  "TRAINER_HUDSON": "S7",
+  "TRAINER_CONOR": "S7",
+  "TRAINER_EDWIN_1": "S3",
+  "TRAINER_HECTOR": "S2",
+  "TRAINER_TABITHA_MOSSDEEP": "S8",
+  "TRAINER_EDWIN_2": "S6",
+  "TRAINER_EDWIN_3": "S7",
+  "TRAINER_EDWIN_4": "S8",
+  "TRAINER_EDWIN_5": "POST",
+  "TRAINER_WALLY_VR_1": "S9",
+  "TRAINER_BRENDAN_ROUTE_103_MUDKIP": "S3",
+  "TRAINER_BRENDAN_ROUTE_110_MUDKIP": "S3",
+  "TRAINER_BRENDAN_ROUTE_119_MUDKIP": "S6",
+  "TRAINER_BRENDAN_ROUTE_103_TREECKO": "S3",
+  "TRAINER_BRENDAN_ROUTE_110_TREECKO": "S3",
+  "TRAINER_BRENDAN_ROUTE_119_TREECKO": "S6",
+  "TRAINER_BRENDAN_ROUTE_103_TORCHIC": "S3",
+  "TRAINER_BRENDAN_ROUTE_110_TORCHIC": "S3",
+  "TRAINER_BRENDAN_ROUTE_119_TORCHIC": "S6",
+  "TRAINER_MAY_ROUTE_103_MUDKIP": "S3",
+  "TRAINER_MAY_ROUTE_110_MUDKIP": "S3",
+  "TRAINER_MAY_ROUTE_119_MUDKIP": "S6",
+  "TRAINER_MAY_ROUTE_103_TREECKO": "S3",
+  "TRAINER_MAY_ROUTE_110_TREECKO": "S3",
+  "TRAINER_MAY_ROUTE_119_TREECKO": "S6",
+  "TRAINER_MAY_ROUTE_103_TORCHIC": "S3",
+  "TRAINER_MAY_ROUTE_110_TORCHIC": "S3",
+  "TRAINER_MAY_ROUTE_119_TORCHIC": "S6",
+  "TRAINER_ISAAC_1": "S3",
+  "TRAINER_DAVIS": "S7",
+  "TRAINER_MITCHELL": "S9",
+  "TRAINER_ISAAC_2": "S6",
+  "TRAINER_ISAAC_3": "S7",
+  "TRAINER_ISAAC_4": "S8",
+  "TRAINER_ISAAC_5": "POST",
+  "TRAINER_LYDIA_1": "S3",
+  "TRAINER_HALLE": "S9",
+  "TRAINER_GARRISON": "S6",
+  "TRAINER_LYDIA_2": "S6",
+  "TRAINER_LYDIA_3": "S7",
+  "TRAINER_LYDIA_4": "S8",
+  "TRAINER_LYDIA_5": "POST",
+  "TRAINER_JACKSON_1": "S6",
+  "TRAINER_LORENZO": "S7",
+  "TRAINER_SEBASTIAN": "S8",
+  "TRAINER_JACKSON_2": "S6",
+  "TRAINER_JACKSON_3": "S7",
+  "TRAINER_JACKSON_4": "S8",
+  "TRAINER_JACKSON_5": "POST",
+  "TRAINER_CATHERINE_1": "S6",
+  "TRAINER_JENNA": "S7",
+  "TRAINER_SOPHIA": "S8",
+  "TRAINER_CATHERINE_2": "S6",
+  "TRAINER_CATHERINE_3": "S7",
+  "TRAINER_CATHERINE_4": "S8",
+  "TRAINER_CATHERINE_5": "POST",
+  "TRAINER_JULIO": "S4",
+  "TRAINER_GRUNT_SEAFLOOR_CAVERN_5": "S8",
+  "TRAINER_GRUNT_MT_PYRE_4": "S7",
+  "TRAINER_GRUNT_JAGGED_PASS": "S4",
+  "TRAINER_MARC": "S1",
+  "TRAINER_BRENDEN": "S2",
+  "TRAINER_LILITH": "S2",
+  "TRAINER_CRISTIAN": "S2",
+  "TRAINER_SYLVIA": "S7",
+  "TRAINER_LEONARDO": "S7",
+  "TRAINER_ATHENA": "S7",
+  "TRAINER_HARRISON": "S7",
+  "TRAINER_GRUNT_MT_CHIMNEY_2": "S4",
+  "TRAINER_CLARENCE": "S7",
+  "TRAINER_NATE": "S7",
+  "TRAINER_KATHLEEN": "S7",
+  "TRAINER_CLIFFORD": "S7",
+  "TRAINER_NICHOLAS": "S7",
+  "TRAINER_GRUNT_SPACE_CENTER_3": "S8",
+  "TRAINER_GRUNT_SPACE_CENTER_4": "S8",
+  "TRAINER_GRUNT_SPACE_CENTER_5": "S8",
+  "TRAINER_GRUNT_SPACE_CENTER_6": "S8",
+  "TRAINER_GRUNT_SPACE_CENTER_7": "S8",
+  "TRAINER_MACEY": "S7",
+  "TRAINER_BRENDAN_RUSTBORO_TREECKO": "S1",
+  "TRAINER_BRENDAN_RUSTBORO_MUDKIP": "S1",
+  "TRAINER_PAXTON": "S7",
+  "TRAINER_ISABELLA": "S7",
+  "TRAINER_GRUNT_WEATHER_INST_5": "S6",
+  "TRAINER_TABITHA_MT_CHIMNEY": "S4",
+  "TRAINER_JONATHAN": "S7",
+  "TRAINER_BRENDAN_RUSTBORO_TORCHIC": "S1",
+  "TRAINER_MAY_RUSTBORO_MUDKIP": "S1",
+  "TRAINER_MAXIE_MAGMA_HIDEOUT": "S7",
+  "TRAINER_MAXIE_MT_CHIMNEY": "S4",
+  "TRAINER_TIANA": "S1",
+  "TRAINER_HALEY_1": "S1",
+  "TRAINER_JANICE": "S1",
+  "TRAINER_VIVI": "S4",
+  "TRAINER_HALEY_2": "S6",
+  "TRAINER_HALEY_3": "S7",
+  "TRAINER_HALEY_4": "S8",
+  "TRAINER_HALEY_5": "POST",
+  "TRAINER_SALLY": "S3",
+  "TRAINER_ROBIN": "S3",
+  "TRAINER_ANDREA": "S8",
+  "TRAINER_CRISSY": "S8",
+  "TRAINER_RICK": "S1",
+  "TRAINER_LYLE": "S1",
+  "TRAINER_JOSE": "S1",
+  "TRAINER_DOUG": "S6",
+  "TRAINER_GREG": "S6",
+  "TRAINER_KENT": "S6",
+  "TRAINER_JAMES_1": "S1",
+  "TRAINER_JAMES_2": "S6",
+  "TRAINER_JAMES_3": "S7",
+  "TRAINER_JAMES_4": "S8",
+  "TRAINER_JAMES_5": "POST",
+  "TRAINER_BRICE": "S4",
+  "TRAINER_TRENT_1": "S4",
+  "TRAINER_LENNY": "S4",
+  "TRAINER_LUCAS_1": "S4",
+  "TRAINER_ALAN": "S5",
+  "TRAINER_CLARK": "S1",
+  "TRAINER_ERIC": "S4",
+  "TRAINER_MIKE_2": "S2",
+  "TRAINER_TRENT_2": "S6",
+  "TRAINER_TRENT_3": "S7",
+  "TRAINER_TRENT_4": "S8",
+  "TRAINER_TRENT_5": "POST",
+  "TRAINER_DEZ_AND_LUKE": "S7",
+  "TRAINER_LEA_AND_JED": "POST",
+  "TRAINER_KIRA_AND_DAN_1": "S6",
+  "TRAINER_KIRA_AND_DAN_2": "S6",
+  "TRAINER_KIRA_AND_DAN_3": "S7",
+  "TRAINER_KIRA_AND_DAN_4": "S8",
+  "TRAINER_KIRA_AND_DAN_5": "POST",
+  "TRAINER_JOHANNA": "S2",
+  "TRAINER_GERALD": "S4",
+  "TRAINER_VIVIAN": "S3",
+  "TRAINER_DANIELLE": "S4",
+  "TRAINER_HIDEO": "S6",
+  "TRAINER_KEIGO": "S7",
+  "TRAINER_RILEY": "S7",
+  "TRAINER_FLINT": "S6",
+  "TRAINER_ASHLEY": "S6",
+  "TRAINER_WALLY_MAUVILLE": "S3",
+  "TRAINER_WALLY_VR_2": "S9",
+  "TRAINER_WALLY_VR_3": "POST",
+  "TRAINER_WALLY_VR_4": "POST",
+  "TRAINER_WALLY_VR_5": "POST",
+  "TRAINER_BRENDAN_LILYCOVE_MUDKIP": "S7",
+  "TRAINER_BRENDAN_LILYCOVE_TREECKO": "S7",
+  "TRAINER_BRENDAN_LILYCOVE_TORCHIC": "S7",
+  "TRAINER_MAY_LILYCOVE_MUDKIP": "S7",
+  "TRAINER_MAY_LILYCOVE_TREECKO": "S7",
+  "TRAINER_MAY_LILYCOVE_TORCHIC": "S7",
+  "TRAINER_JONAH": "S7",
+  "TRAINER_HENRY": "S7",
+  "TRAINER_ROGER": "S7",
+  "TRAINER_ALEXA": "S7",
+  "TRAINER_RUBEN": "S7",
+  "TRAINER_KOJI_1": "S7",
+  "TRAINER_WAYNE": "S7",
+  "TRAINER_AIDAN": "S7",
+  "TRAINER_REED": "S7",
+  "TRAINER_TISHA": "S7",
+  "TRAINER_TORI_AND_TIA": "S4",
+  "TRAINER_KIM_AND_IRIS": "S7",
+  "TRAINER_TYRA_AND_IVY": "S4",
+  "TRAINER_MEL_AND_PAUL": "S6",
+  "TRAINER_JOHN_AND_JAY_1": "S9",
+  "TRAINER_JOHN_AND_JAY_2": "S9",
+  "TRAINER_JOHN_AND_JAY_3": "S9",
+  "TRAINER_JOHN_AND_JAY_4": "S9",
+  "TRAINER_JOHN_AND_JAY_5": "POST",
+  "TRAINER_RELI_AND_IAN": "S7",
+  "TRAINER_LILA_AND_ROY_1": "S7",
+  "TRAINER_LILA_AND_ROY_2": "S7",
+  "TRAINER_LILA_AND_ROY_3": "S7",
+  "TRAINER_LILA_AND_ROY_4": "S8",
+  "TRAINER_LILA_AND_ROY_5": "POST",
+  "TRAINER_LISA_AND_RAY": "S6",
+  "TRAINER_CHRIS": "S6",
+  "TRAINER_DAWSON": "S1",
+  "TRAINER_SARAH": "S1",
+  "TRAINER_DARIAN": "S1",
+  "TRAINER_HAILEY": "S2",
+  "TRAINER_CHANDLER": "S2",
+  "TRAINER_KALEB": "S3",
+  "TRAINER_JOSEPH": "S3",
+  "TRAINER_ALYSSA": "S3",
+  "TRAINER_MARCOS": "S3",
+  "TRAINER_RHETT": "S3",
+  "TRAINER_TYRON": "S4",
+  "TRAINER_CELINA": "S4",
+  "TRAINER_BIANCA": "S4",
+  "TRAINER_HAYDEN": "S4",
+  "TRAINER_SOPHIE": "S4",
+  "TRAINER_COBY": "S4",
+  "TRAINER_LAWRENCE": "S4",
+  "TRAINER_WYATT": "S4",
+  "TRAINER_ANGELINA": "S4",
+  "TRAINER_KAI": "S4",
+  "TRAINER_CHARLOTTE": "S4",
+  "TRAINER_DEANDRE": "S3",
+  "TRAINER_GRUNT_MAGMA_HIDEOUT_1": "S7",
+  "TRAINER_GRUNT_MAGMA_HIDEOUT_2": "S7",
+  "TRAINER_GRUNT_MAGMA_HIDEOUT_3": "S7",
+  "TRAINER_GRUNT_MAGMA_HIDEOUT_4": "S7",
+  "TRAINER_GRUNT_MAGMA_HIDEOUT_5": "S7",
+  "TRAINER_GRUNT_MAGMA_HIDEOUT_6": "S7",
+  "TRAINER_GRUNT_MAGMA_HIDEOUT_7": "S7",
+  "TRAINER_GRUNT_MAGMA_HIDEOUT_8": "S7",
+  "TRAINER_GRUNT_MAGMA_HIDEOUT_9": "S7",
+  "TRAINER_GRUNT_MAGMA_HIDEOUT_10": "S7",
+  "TRAINER_GRUNT_MAGMA_HIDEOUT_11": "S7",
+  "TRAINER_GRUNT_MAGMA_HIDEOUT_12": "S7",
+  "TRAINER_GRUNT_MAGMA_HIDEOUT_13": "S7",
+  "TRAINER_GRUNT_MAGMA_HIDEOUT_14": "S7",
+  "TRAINER_GRUNT_MAGMA_HIDEOUT_15": "S7",
+  "TRAINER_GRUNT_MAGMA_HIDEOUT_16": "S7",
+  "TRAINER_TABITHA_MAGMA_HIDEOUT": "S7",
+  "TRAINER_DARCY": "S7",
+  "TRAINER_MAXIE_MOSSDEEP": "S8",
+  "TRAINER_PETE": "S3",
+  "TRAINER_ISABELLE": "S3",
+  "TRAINER_ANDRES_1": "S6",
+  "TRAINER_JOSUE": "S6",
+  "TRAINER_CAMRON": "S6",
+  "TRAINER_CORY_1": "S6",
+  "TRAINER_CAROLINA": "S6",
+  "TRAINER_ELIJAH": "S6",
+  "TRAINER_CELIA": "S5",
+  "TRAINER_BRYAN": "S5",
+  "TRAINER_BRANDEN": "S5",
+  "TRAINER_BRYANT": "S4",
+  "TRAINER_SHAYLA": "S4",
+  "TRAINER_KYRA": "S6",
+  "TRAINER_JAIDEN": "S6",
+  "TRAINER_ALIX": "S6",
+  "TRAINER_HELENE": "S6",
+  "TRAINER_MARLENE": "S2",
+  "TRAINER_DEVAN": "S1",
+  "TRAINER_JOHNSON": "S1",
+  "TRAINER_MELINA": "S3",
+  "TRAINER_BRANDI": "S3",
+  "TRAINER_AISHA": "S3",
+  "TRAINER_MAKAYLA": "S7",
+  "TRAINER_FABIAN": "S6",
+  "TRAINER_DAYTON": "S6",
+  "TRAINER_RACHEL": "S6",
+  "TRAINER_LEONEL": "S7",
+  "TRAINER_CALLIE": "S7",
+  "TRAINER_CALE": "S7",
+  "TRAINER_MYLES": "S7",
+  "TRAINER_PAT": "S7",
+  "TRAINER_CRISTIN_1": "S7",
+  "TRAINER_MAY_RUSTBORO_TREECKO": "S1",
+  "TRAINER_MAY_RUSTBORO_TORCHIC": "S1",
+  "TRAINER_ROXANNE_2": "POST",
+  "TRAINER_ROXANNE_3": "POST",
+  "TRAINER_ROXANNE_4": "POST",
+  "TRAINER_ROXANNE_5": "POST",
+  "TRAINER_BRAWLY_2": "POST",
+  "TRAINER_BRAWLY_3": "POST",
+  "TRAINER_BRAWLY_4": "POST",
+  "TRAINER_BRAWLY_5": "POST",
+  "TRAINER_WATTSON_2": "POST",
+  "TRAINER_WATTSON_3": "POST",
+  "TRAINER_WATTSON_4": "POST",
+  "TRAINER_WATTSON_5": "POST",
+  "TRAINER_FLANNERY_2": "POST",
+  "TRAINER_FLANNERY_3": "POST",
+  "TRAINER_FLANNERY_4": "POST",
+  "TRAINER_FLANNERY_5": "POST",
+  "TRAINER_NORMAN_2": "POST",
+  "TRAINER_NORMAN_3": "POST",
+  "TRAINER_NORMAN_4": "POST",
+  "TRAINER_NORMAN_5": "POST",
+  "TRAINER_WINONA_2": "POST",
+  "TRAINER_WINONA_3": "POST",
+  "TRAINER_WINONA_4": "POST",
+  "TRAINER_WINONA_5": "POST",
+  "TRAINER_TATE_AND_LIZA_2": "POST",
+  "TRAINER_TATE_AND_LIZA_3": "POST",
+  "TRAINER_TATE_AND_LIZA_4": "POST",
+  "TRAINER_TATE_AND_LIZA_5": "POST",
+  "TRAINER_JUAN_2": "POST",
+  "TRAINER_JUAN_3": "POST",
+  "TRAINER_JUAN_4": "POST",
+  "TRAINER_JUAN_5": "POST",
+  "TRAINER_ANGELO": "S3",
+  "TRAINER_DARIUS": "S6",
+  "TRAINER_STEVEN": "POST",
+  "TRAINER_ANDRES_2": "S6",
+  "TRAINER_ANDRES_3": "S7",
+  "TRAINER_ANDRES_4": "S8",
+  "TRAINER_ANDRES_5": "POST",
+  "TRAINER_CORY_2": "S6",
+  "TRAINER_CORY_3": "S7",
+  "TRAINER_CORY_4": "S8",
+  "TRAINER_CORY_5": "POST",
+  "TRAINER_PABLO_2": "S7",
+  "TRAINER_PABLO_3": "S7",
+  "TRAINER_PABLO_4": "S8",
+  "TRAINER_PABLO_5": "POST",
+  "TRAINER_KOJI_2": "S7",
+  "TRAINER_KOJI_3": "S7",
+  "TRAINER_KOJI_4": "S8",
+  "TRAINER_KOJI_5": "POST",
+  "TRAINER_CRISTIN_2": "S7",
+  "TRAINER_CRISTIN_3": "S7",
+  "TRAINER_CRISTIN_4": "S8",
+  "TRAINER_CRISTIN_5": "POST",
+  "TRAINER_FERNANDO_2": "S7",
+  "TRAINER_FERNANDO_3": "S7",
+  "TRAINER_FERNANDO_4": "S8",
+  "TRAINER_FERNANDO_5": "POST",
+  "TRAINER_SAWYER_2": "S6",
+  "TRAINER_SAWYER_3": "S7",
+  "TRAINER_SAWYER_4": "S8",
+  "TRAINER_SAWYER_5": "POST",
+  "TRAINER_GABRIELLE_2": "S7",
+  "TRAINER_GABRIELLE_3": "S7",
+  "TRAINER_GABRIELLE_4": "S8",
+  "TRAINER_GABRIELLE_5": "POST",
+  "TRAINER_THALIA_2": "S6",
+  "TRAINER_THALIA_3": "S7",
+  "TRAINER_THALIA_4": "S8",
+  "TRAINER_THALIA_5": "POST",
+  "TRAINER_MARIELA": "S9",
+  "TRAINER_ALVARO": "S9",
+  "TRAINER_EVERETT": "S9",
+  "TRAINER_ASTER_PASS_DEINO": "S1",
+  "TRAINER_ASTER_PASS_DREEPY": "S1",
+  "TRAINER_ASTER_PASS_JANGMO_O": "S1"
+ },
+ "info": {
+  "TRAINER_SAWYER_1": {
+   "segment": "S4",
+   "role": "route",
+   "map": "MtChimney",
+   "story": false
+  },
+  "TRAINER_GRUNT_AQUA_HIDEOUT_1": {
+   "segment": "S7",
+   "role": "grunt",
+   "map": "AquaHideout_1F",
+   "story": false
+  },
+  "TRAINER_GRUNT_AQUA_HIDEOUT_2": {
+   "segment": "S7",
+   "role": "grunt",
+   "map": "AquaHideout_B1F",
+   "story": false
+  },
+  "TRAINER_GRUNT_AQUA_HIDEOUT_3": {
+   "segment": "S7",
+   "role": "grunt",
+   "map": "AquaHideout_B1F",
+   "story": false
+  },
+  "TRAINER_GRUNT_AQUA_HIDEOUT_4": {
+   "segment": "S7",
+   "role": "grunt",
+   "map": "AquaHideout_B2F",
+   "story": false
+  },
+  "TRAINER_GRUNT_SEAFLOOR_CAVERN_1": {
+   "segment": "S8",
+   "role": "grunt",
+   "map": "SeafloorCavern_Room1",
+   "story": false
+  },
+  "TRAINER_GRUNT_SEAFLOOR_CAVERN_2": {
+   "segment": "S8",
+   "role": "grunt",
+   "map": "SeafloorCavern_Room1",
+   "story": false
+  },
+  "TRAINER_GRUNT_SEAFLOOR_CAVERN_3": {
+   "segment": "S8",
+   "role": "grunt",
+   "map": "SeafloorCavern_Room4",
+   "story": false
+  },
+  "TRAINER_GABRIELLE_1": {
+   "segment": "S7",
+   "role": "route",
+   "map": "MtPyre_3F",
+   "story": false
+  },
+  "TRAINER_GRUNT_PETALBURG_WOODS": {
+   "segment": "S1",
+   "role": "grunt",
+   "map": "PetalburgWoods",
+   "story": false
+  },
+  "TRAINER_MARCEL": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route121",
+   "story": false
+  },
+  "TRAINER_ALBERTO": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route123",
+   "story": false
+  },
+  "TRAINER_ED": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route123",
+   "story": false
+  },
+  "TRAINER_GRUNT_SEAFLOOR_CAVERN_4": {
+   "segment": "S8",
+   "role": "grunt",
+   "map": "SeafloorCavern_Room4",
+   "story": false
+  },
+  "TRAINER_DECLAN": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route124",
+   "story": false
+  },
+  "TRAINER_GRUNT_RUSTURF_TUNNEL": {
+   "segment": "S2",
+   "role": "grunt",
+   "map": "RusturfTunnel",
+   "story": false
+  },
+  "TRAINER_GRUNT_WEATHER_INST_1": {
+   "segment": "S6",
+   "role": "grunt",
+   "map": "Route119_WeatherInstitute_1F",
+   "story": false
+  },
+  "TRAINER_GRUNT_WEATHER_INST_2": {
+   "segment": "S6",
+   "role": "grunt",
+   "map": "Route119_WeatherInstitute_2F",
+   "story": false
+  },
+  "TRAINER_GRUNT_WEATHER_INST_3": {
+   "segment": "S6",
+   "role": "grunt",
+   "map": "Route119_WeatherInstitute_2F",
+   "story": false
+  },
+  "TRAINER_GRUNT_MUSEUM_1": {
+   "segment": "S3",
+   "role": "grunt",
+   "map": "SlateportCity_OceanicMuseum_2F",
+   "story": false
+  },
+  "TRAINER_GRUNT_MUSEUM_2": {
+   "segment": "S3",
+   "role": "grunt",
+   "map": "SlateportCity_OceanicMuseum_2F",
+   "story": false
+  },
+  "TRAINER_GRUNT_SPACE_CENTER_1": {
+   "segment": "S8",
+   "role": "grunt",
+   "map": "MossdeepCity_SpaceCenter_1F",
+   "story": false
+  },
+  "TRAINER_GRUNT_MT_PYRE_1": {
+   "segment": "S7",
+   "role": "grunt",
+   "map": "MtPyre_Summit",
+   "story": false
+  },
+  "TRAINER_GRUNT_MT_PYRE_2": {
+   "segment": "S7",
+   "role": "grunt",
+   "map": "MtPyre_Summit",
+   "story": false
+  },
+  "TRAINER_GRUNT_MT_PYRE_3": {
+   "segment": "S7",
+   "role": "grunt",
+   "map": "MtPyre_Summit",
+   "story": false
+  },
+  "TRAINER_GRUNT_WEATHER_INST_4": {
+   "segment": "S6",
+   "role": "grunt",
+   "map": "Route119_WeatherInstitute_1F",
+   "story": false
+  },
+  "TRAINER_GRUNT_AQUA_HIDEOUT_5": {
+   "segment": "S7",
+   "role": "grunt",
+   "map": "AquaHideout_B1F",
+   "story": false
+  },
+  "TRAINER_GRUNT_AQUA_HIDEOUT_6": {
+   "segment": "S7",
+   "role": "grunt",
+   "map": "AquaHideout_B2F",
+   "story": false
+  },
+  "TRAINER_FREDRICK": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route123",
+   "story": false
+  },
+  "TRAINER_MATT": {
+   "segment": "S7",
+   "role": "boss",
+   "map": "AquaHideout_B2F",
+   "story": false
+  },
+  "TRAINER_ZANDER": {
+   "segment": "S7",
+   "role": "route",
+   "map": "MtPyre_2F",
+   "story": false
+  },
+  "TRAINER_SHELLY_WEATHER_INSTITUTE": {
+   "segment": "S6",
+   "role": "boss",
+   "map": "Route119_WeatherInstitute_2F",
+   "story": false
+  },
+  "TRAINER_SHELLY_SEAFLOOR_CAVERN": {
+   "segment": "S8",
+   "role": "boss",
+   "map": "SeafloorCavern_Room3",
+   "story": false
+  },
+  "TRAINER_ARCHIE": {
+   "segment": "S8",
+   "role": "boss",
+   "map": "SeafloorCavern_Room9",
+   "story": false
+  },
+  "TRAINER_LEAH": {
+   "segment": "S7",
+   "role": "route",
+   "map": "MtPyre_2F",
+   "story": false
+  },
+  "TRAINER_DAISY": {
+   "segment": "S3",
+   "role": "route",
+   "map": "Route103",
+   "story": false
+  },
+  "TRAINER_ROSE_1": {
+   "segment": "S3",
+   "role": "route",
+   "map": "Route118",
+   "story": false
+  },
+  "TRAINER_FELIX": {
+   "segment": "S9",
+   "role": "route",
+   "map": "VictoryRoad_B2F",
+   "story": false
+  },
+  "TRAINER_VIOLET": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route123",
+   "story": false
+  },
+  "TRAINER_ROSE_2": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route118",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_ROSE_1"
+  },
+  "TRAINER_ROSE_3": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route118",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_ROSE_1"
+  },
+  "TRAINER_ROSE_4": {
+   "segment": "S8",
+   "role": "route",
+   "map": "Route118",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_ROSE_1"
+  },
+  "TRAINER_ROSE_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "Route118",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_ROSE_1"
+  },
+  "TRAINER_DUSTY_1": {
+   "segment": "S5",
+   "role": "route",
+   "map": "Route111",
+   "story": false
+  },
+  "TRAINER_CHIP": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route120",
+   "story": false
+  },
+  "TRAINER_FOSTER": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route105",
+   "story": false
+  },
+  "TRAINER_DUSTY_2": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route111",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_DUSTY_1"
+  },
+  "TRAINER_DUSTY_3": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route111",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_DUSTY_1"
+  },
+  "TRAINER_DUSTY_4": {
+   "segment": "S8",
+   "role": "route",
+   "map": "Route111",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_DUSTY_1"
+  },
+  "TRAINER_DUSTY_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "Route111",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_DUSTY_1"
+  },
+  "TRAINER_GABBY_AND_TY_1": {
+   "segment": "S4",
+   "role": "route",
+   "map": null,
+   "story": false
+  },
+  "TRAINER_GABBY_AND_TY_2": {
+   "segment": "S4",
+   "role": "route",
+   "map": null,
+   "story": false
+  },
+  "TRAINER_GABBY_AND_TY_3": {
+   "segment": "S5",
+   "role": "route",
+   "map": null,
+   "story": false
+  },
+  "TRAINER_GABBY_AND_TY_4": {
+   "segment": "S6",
+   "role": "route",
+   "map": null,
+   "story": false
+  },
+  "TRAINER_GABBY_AND_TY_5": {
+   "segment": "S7",
+   "role": "route",
+   "map": null,
+   "story": false
+  },
+  "TRAINER_GABBY_AND_TY_6": {
+   "segment": "S8",
+   "role": "route",
+   "map": null,
+   "story": false
+  },
+  "TRAINER_LOLA_1": {
+   "segment": "S2",
+   "role": "route",
+   "map": "Route109",
+   "story": false
+  },
+  "TRAINER_AUSTINA": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route109",
+   "story": false
+  },
+  "TRAINER_GWEN": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route109",
+   "story": false
+  },
+  "TRAINER_LOLA_2": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route109",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_LOLA_1"
+  },
+  "TRAINER_LOLA_3": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route109",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_LOLA_1"
+  },
+  "TRAINER_LOLA_4": {
+   "segment": "S8",
+   "role": "route",
+   "map": "Route109",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_LOLA_1"
+  },
+  "TRAINER_LOLA_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "Route109",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_LOLA_1"
+  },
+  "TRAINER_RICKY_1": {
+   "segment": "S2",
+   "role": "route",
+   "map": "Route109",
+   "story": false
+  },
+  "TRAINER_SIMON": {
+   "segment": "S2",
+   "role": "route",
+   "map": "Route109_SeashoreHouse",
+   "story": false
+  },
+  "TRAINER_CHARLIE": {
+   "segment": "S6",
+   "role": "route",
+   "map": "AbandonedShip_Corridors_1F",
+   "story": false
+  },
+  "TRAINER_RICKY_2": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route109",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_RICKY_1"
+  },
+  "TRAINER_RICKY_3": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route109",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_RICKY_1"
+  },
+  "TRAINER_RICKY_4": {
+   "segment": "S8",
+   "role": "route",
+   "map": "Route109",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_RICKY_1"
+  },
+  "TRAINER_RICKY_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "Route109",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_RICKY_1"
+  },
+  "TRAINER_RANDALL": {
+   "segment": "S5",
+   "role": "gym",
+   "map": "PetalburgCity_Gym",
+   "story": false
+  },
+  "TRAINER_PARKER": {
+   "segment": "S5",
+   "role": "gym",
+   "map": "PetalburgCity_Gym",
+   "story": false
+  },
+  "TRAINER_GEORGE": {
+   "segment": "S5",
+   "role": "gym",
+   "map": "PetalburgCity_Gym",
+   "story": false
+  },
+  "TRAINER_BERKE": {
+   "segment": "S5",
+   "role": "gym",
+   "map": "PetalburgCity_Gym",
+   "story": false
+  },
+  "TRAINER_BRAXTON": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route123",
+   "story": false
+  },
+  "TRAINER_VINCENT": {
+   "segment": "POST",
+   "role": "route",
+   "map": "Route110_TrickHousePuzzle8",
+   "story": false
+  },
+  "TRAINER_LEROY": {
+   "segment": "POST",
+   "role": "route",
+   "map": "Route110_TrickHousePuzzle8",
+   "story": false
+  },
+  "TRAINER_WILTON_1": {
+   "segment": "S4",
+   "role": "route",
+   "map": "Route111",
+   "story": false
+  },
+  "TRAINER_EDGAR": {
+   "segment": "S9",
+   "role": "route",
+   "map": "VictoryRoad_1F",
+   "story": false
+  },
+  "TRAINER_ALBERT": {
+   "segment": "S9",
+   "role": "route",
+   "map": "VictoryRoad_1F",
+   "story": false
+  },
+  "TRAINER_SAMUEL": {
+   "segment": "S9",
+   "role": "route",
+   "map": "VictoryRoad_B1F",
+   "story": false
+  },
+  "TRAINER_VITO": {
+   "segment": "S9",
+   "role": "route",
+   "map": "VictoryRoad_B2F",
+   "story": false
+  },
+  "TRAINER_OWEN": {
+   "segment": "S9",
+   "role": "route",
+   "map": "VictoryRoad_B2F",
+   "story": false
+  },
+  "TRAINER_WILTON_2": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route111",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_WILTON_1"
+  },
+  "TRAINER_WILTON_3": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route111",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_WILTON_1"
+  },
+  "TRAINER_WILTON_4": {
+   "segment": "S8",
+   "role": "route",
+   "map": "Route111",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_WILTON_1"
+  },
+  "TRAINER_WILTON_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "Route111",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_WILTON_1"
+  },
+  "TRAINER_WARREN": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route133",
+   "story": false
+  },
+  "TRAINER_MARY": {
+   "segment": "S5",
+   "role": "gym",
+   "map": "PetalburgCity_Gym",
+   "story": false
+  },
+  "TRAINER_ALEXIA": {
+   "segment": "S5",
+   "role": "gym",
+   "map": "PetalburgCity_Gym",
+   "story": false
+  },
+  "TRAINER_JODY": {
+   "segment": "S5",
+   "role": "gym",
+   "map": "PetalburgCity_Gym",
+   "story": false
+  },
+  "TRAINER_WENDY": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route123",
+   "story": false
+  },
+  "TRAINER_KEIRA": {
+   "segment": "POST",
+   "role": "route",
+   "map": "Route110_TrickHousePuzzle8",
+   "story": false
+  },
+  "TRAINER_BROOKE_1": {
+   "segment": "S4",
+   "role": "route",
+   "map": "Route111",
+   "story": false
+  },
+  "TRAINER_JENNIFER": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route120",
+   "story": false
+  },
+  "TRAINER_HOPE": {
+   "segment": "S9",
+   "role": "route",
+   "map": "VictoryRoad_1F",
+   "story": false
+  },
+  "TRAINER_SHANNON": {
+   "segment": "S9",
+   "role": "route",
+   "map": "VictoryRoad_B1F",
+   "story": false
+  },
+  "TRAINER_MICHELLE": {
+   "segment": "S9",
+   "role": "route",
+   "map": "VictoryRoad_B1F",
+   "story": false
+  },
+  "TRAINER_CAROLINE": {
+   "segment": "S9",
+   "role": "route",
+   "map": "VictoryRoad_B2F",
+   "story": false
+  },
+  "TRAINER_JULIE": {
+   "segment": "S9",
+   "role": "route",
+   "map": "VictoryRoad_B2F",
+   "story": false
+  },
+  "TRAINER_BROOKE_2": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route111",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_BROOKE_1"
+  },
+  "TRAINER_BROOKE_3": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route111",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_BROOKE_1"
+  },
+  "TRAINER_BROOKE_4": {
+   "segment": "S8",
+   "role": "route",
+   "map": "Route111",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_BROOKE_1"
+  },
+  "TRAINER_BROOKE_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "Route111",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_BROOKE_1"
+  },
+  "TRAINER_PATRICIA": {
+   "segment": "S9",
+   "role": "route",
+   "map": "Route110_TrickHousePuzzle7",
+   "story": false
+  },
+  "TRAINER_KINDRA": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route123",
+   "story": false
+  },
+  "TRAINER_TAMMY": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route121",
+   "story": false
+  },
+  "TRAINER_VALERIE_1": {
+   "segment": "S7",
+   "role": "route",
+   "map": "MtPyre_6F",
+   "story": false
+  },
+  "TRAINER_TASHA": {
+   "segment": "S7",
+   "role": "route",
+   "map": "MtPyre_5F",
+   "story": false
+  },
+  "TRAINER_VALERIE_2": {
+   "segment": "S7",
+   "role": "route",
+   "map": "MtPyre_6F",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_VALERIE_1"
+  },
+  "TRAINER_VALERIE_3": {
+   "segment": "S7",
+   "role": "route",
+   "map": "MtPyre_6F",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_VALERIE_1"
+  },
+  "TRAINER_VALERIE_4": {
+   "segment": "S8",
+   "role": "route",
+   "map": "MtPyre_6F",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_VALERIE_1"
+  },
+  "TRAINER_VALERIE_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "MtPyre_6F",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_VALERIE_1"
+  },
+  "TRAINER_CINDY_1": {
+   "segment": "S1",
+   "role": "route",
+   "map": "Route104",
+   "story": false
+  },
+  "TRAINER_DAPHNE": {
+   "segment": "S8",
+   "role": "gym",
+   "map": "SootopolisCity_Gym_B1F",
+   "story": false
+  },
+  "TRAINER_GRUNT_SPACE_CENTER_2": {
+   "segment": "S8",
+   "role": "grunt",
+   "map": "MossdeepCity_SpaceCenter_1F",
+   "story": false
+  },
+  "TRAINER_BRIANNA": {
+   "segment": "S8",
+   "role": "gym",
+   "map": "SootopolisCity_Gym_B1F",
+   "story": false
+  },
+  "TRAINER_NAOMI": {
+   "segment": "POST",
+   "role": "route",
+   "map": "SSTidalCorridor",
+   "story": false
+  },
+  "TRAINER_CINDY_3": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route104",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_CINDY_1"
+  },
+  "TRAINER_CINDY_4": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route104",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_CINDY_1"
+  },
+  "TRAINER_CINDY_5": {
+   "segment": "S8",
+   "role": "route",
+   "map": "Route104",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_CINDY_1"
+  },
+  "TRAINER_CINDY_6": {
+   "segment": "POST",
+   "role": "route",
+   "map": "Route104",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_CINDY_1"
+  },
+  "TRAINER_MELISSA": {
+   "segment": "S4",
+   "role": "route",
+   "map": "MtChimney",
+   "story": false
+  },
+  "TRAINER_SHEILA": {
+   "segment": "S4",
+   "role": "route",
+   "map": "MtChimney",
+   "story": false
+  },
+  "TRAINER_SHIRLEY": {
+   "segment": "S4",
+   "role": "route",
+   "map": "MtChimney",
+   "story": false
+  },
+  "TRAINER_JESSICA_1": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route121",
+   "story": false
+  },
+  "TRAINER_CONNIE": {
+   "segment": "S8",
+   "role": "gym",
+   "map": "SootopolisCity_Gym_B1F",
+   "story": false
+  },
+  "TRAINER_BRIDGET": {
+   "segment": "S8",
+   "role": "gym",
+   "map": "SootopolisCity_Gym_B1F",
+   "story": false
+  },
+  "TRAINER_OLIVIA": {
+   "segment": "S8",
+   "role": "gym",
+   "map": "SootopolisCity_Gym_B1F",
+   "story": false
+  },
+  "TRAINER_TIFFANY": {
+   "segment": "S8",
+   "role": "gym",
+   "map": "SootopolisCity_Gym_B1F",
+   "story": false
+  },
+  "TRAINER_JESSICA_2": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route121",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_JESSICA_1"
+  },
+  "TRAINER_JESSICA_3": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route121",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_JESSICA_1"
+  },
+  "TRAINER_JESSICA_4": {
+   "segment": "S8",
+   "role": "route",
+   "map": "Route121",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_JESSICA_1"
+  },
+  "TRAINER_JESSICA_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "Route121",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_JESSICA_1"
+  },
+  "TRAINER_WINSTON_1": {
+   "segment": "S1",
+   "role": "route",
+   "map": "Route104",
+   "story": false
+  },
+  "TRAINER_MOLLIE": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route133",
+   "story": false
+  },
+  "TRAINER_GARRET": {
+   "segment": "POST",
+   "role": "route",
+   "map": "SSTidalCorridor",
+   "story": false
+  },
+  "TRAINER_WINSTON_2": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route104",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_WINSTON_1"
+  },
+  "TRAINER_WINSTON_3": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route104",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_WINSTON_1"
+  },
+  "TRAINER_WINSTON_4": {
+   "segment": "S8",
+   "role": "route",
+   "map": "Route104",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_WINSTON_1"
+  },
+  "TRAINER_WINSTON_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "Route104",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_WINSTON_1"
+  },
+  "TRAINER_STEVE_1": {
+   "segment": "S4",
+   "role": "route",
+   "map": "Route114",
+   "story": false
+  },
+  "TRAINER_THALIA_1": {
+   "segment": "S6",
+   "role": "route",
+   "map": "AbandonedShip_Rooms_1F",
+   "story": false
+  },
+  "TRAINER_MARK": {
+   "segment": "S7",
+   "role": "route",
+   "map": "MtPyre_2F",
+   "story": false
+  },
+  "TRAINER_GRUNT_MT_CHIMNEY_1": {
+   "segment": "S4",
+   "role": "grunt",
+   "map": "MtChimney",
+   "story": false
+  },
+  "TRAINER_STEVE_2": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route114",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_STEVE_1"
+  },
+  "TRAINER_STEVE_3": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route114",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_STEVE_1"
+  },
+  "TRAINER_STEVE_4": {
+   "segment": "S8",
+   "role": "route",
+   "map": "Route114",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_STEVE_1"
+  },
+  "TRAINER_STEVE_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "Route114",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_STEVE_1"
+  },
+  "TRAINER_LUIS": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route105",
+   "story": false
+  },
+  "TRAINER_DOMINIK": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route105",
+   "story": false
+  },
+  "TRAINER_DOUGLAS": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route106",
+   "story": false
+  },
+  "TRAINER_DARRIN": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route107",
+   "story": false
+  },
+  "TRAINER_TONY_1": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route107",
+   "story": false
+  },
+  "TRAINER_JEROME": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route108",
+   "story": false
+  },
+  "TRAINER_MATTHEW": {
+   "segment": "S6",
+   "role": "boss",
+   "map": "Route108",
+   "story": false
+  },
+  "TRAINER_DAVID": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route109",
+   "story": false
+  },
+  "TRAINER_SPENCER": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route124",
+   "story": false
+  },
+  "TRAINER_ROLAND": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route124",
+   "story": false
+  },
+  "TRAINER_NOLEN": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route125",
+   "story": false
+  },
+  "TRAINER_STAN": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route125",
+   "story": false
+  },
+  "TRAINER_BARRY": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route126",
+   "story": false
+  },
+  "TRAINER_DEAN": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route126",
+   "story": false
+  },
+  "TRAINER_RODNEY": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route130",
+   "story": false
+  },
+  "TRAINER_RICHARD": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route131",
+   "story": false
+  },
+  "TRAINER_HERMAN": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route131",
+   "story": false
+  },
+  "TRAINER_SANTIAGO": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route130",
+   "story": false
+  },
+  "TRAINER_GILBERT": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route132",
+   "story": false
+  },
+  "TRAINER_FRANKLIN": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route133",
+   "story": false
+  },
+  "TRAINER_KEVIN": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route131",
+   "story": false
+  },
+  "TRAINER_JACK": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route134",
+   "story": false
+  },
+  "TRAINER_CHAD": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route124",
+   "story": false
+  },
+  "TRAINER_TONY_2": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route107",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_TONY_1"
+  },
+  "TRAINER_TONY_3": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route107",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_TONY_1"
+  },
+  "TRAINER_TONY_4": {
+   "segment": "S8",
+   "role": "route",
+   "map": "Route107",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_TONY_1"
+  },
+  "TRAINER_TONY_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "Route107",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_TONY_1"
+  },
+  "TRAINER_TAKAO": {
+   "segment": "S2",
+   "role": "gym",
+   "map": "DewfordTown_Gym",
+   "story": false
+  },
+  "TRAINER_HITOSHI": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route134",
+   "story": false
+  },
+  "TRAINER_KIYO": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route132",
+   "story": false
+  },
+  "TRAINER_KOICHI": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route115",
+   "story": false
+  },
+  "TRAINER_NOB_1": {
+   "segment": "S2",
+   "role": "route",
+   "map": "Route115",
+   "story": false
+  },
+  "TRAINER_NOB_2": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route115",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_NOB_1"
+  },
+  "TRAINER_NOB_3": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route115",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_NOB_1"
+  },
+  "TRAINER_NOB_4": {
+   "segment": "S8",
+   "role": "route",
+   "map": "Route115",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_NOB_1"
+  },
+  "TRAINER_NOB_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "Route115",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_NOB_1"
+  },
+  "TRAINER_YUJI": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route110_TrickHousePuzzle4",
+   "story": false
+  },
+  "TRAINER_DAISUKE": {
+   "segment": "S4",
+   "role": "route",
+   "map": "Route111",
+   "story": false
+  },
+  "TRAINER_ATSUSHI": {
+   "segment": "S7",
+   "role": "route",
+   "map": "MtPyre_4F",
+   "story": false
+  },
+  "TRAINER_KIRK": {
+   "segment": "S3",
+   "role": "gym",
+   "map": "MauvilleCity_Gym",
+   "story": false
+  },
+  "TRAINER_GRUNT_AQUA_HIDEOUT_7": {
+   "segment": "S7",
+   "role": "grunt",
+   "map": "AquaHideout_B1F",
+   "story": false
+  },
+  "TRAINER_GRUNT_AQUA_HIDEOUT_8": {
+   "segment": "S7",
+   "role": "grunt",
+   "map": "AquaHideout_B2F",
+   "story": false
+  },
+  "TRAINER_SHAWN": {
+   "segment": "S3",
+   "role": "gym",
+   "map": "MauvilleCity_Gym",
+   "story": false
+  },
+  "TRAINER_FERNANDO_1": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route123",
+   "story": false
+  },
+  "TRAINER_DALTON_1": {
+   "segment": "S3",
+   "role": "route",
+   "map": "Route118",
+   "story": false
+  },
+  "TRAINER_DALTON_2": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route118",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_DALTON_1"
+  },
+  "TRAINER_DALTON_3": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route118",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_DALTON_1"
+  },
+  "TRAINER_DALTON_4": {
+   "segment": "S8",
+   "role": "route",
+   "map": "Route118",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_DALTON_1"
+  },
+  "TRAINER_DALTON_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "Route118",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_DALTON_1"
+  },
+  "TRAINER_COLE": {
+   "segment": "S4",
+   "role": "gym",
+   "map": "LavaridgeTown_Gym_1F",
+   "story": false
+  },
+  "TRAINER_JEFF": {
+   "segment": "S4",
+   "role": "gym",
+   "map": "LavaridgeTown_Gym_1F",
+   "story": false
+  },
+  "TRAINER_AXLE": {
+   "segment": "S4",
+   "role": "gym",
+   "map": "LavaridgeTown_Gym_1F",
+   "story": false
+  },
+  "TRAINER_JACE": {
+   "segment": "S4",
+   "role": "gym",
+   "map": "LavaridgeTown_Gym_1F",
+   "story": false
+  },
+  "TRAINER_KEEGAN": {
+   "segment": "S4",
+   "role": "gym",
+   "map": "LavaridgeTown_Gym_1F",
+   "story": false
+  },
+  "TRAINER_BERNIE_1": {
+   "segment": "S4",
+   "role": "route",
+   "map": "Route114",
+   "story": false
+  },
+  "TRAINER_BERNIE_2": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route114",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_BERNIE_1"
+  },
+  "TRAINER_BERNIE_3": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route114",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_BERNIE_1"
+  },
+  "TRAINER_BERNIE_4": {
+   "segment": "S8",
+   "role": "route",
+   "map": "Route114",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_BERNIE_1"
+  },
+  "TRAINER_BERNIE_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "Route114",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_BERNIE_1"
+  },
+  "TRAINER_DREW": {
+   "segment": "S5",
+   "role": "route",
+   "map": "Route111",
+   "story": false
+  },
+  "TRAINER_BEAU": {
+   "segment": "S5",
+   "role": "route",
+   "map": "Route111",
+   "story": false
+  },
+  "TRAINER_LARRY": {
+   "segment": "S4",
+   "role": "route",
+   "map": "Route112",
+   "story": false
+  },
+  "TRAINER_SHANE": {
+   "segment": "S4",
+   "role": "route",
+   "map": "Route114",
+   "story": false
+  },
+  "TRAINER_JUSTIN": {
+   "segment": "S5",
+   "role": "route",
+   "map": "Route110_TrickHousePuzzle3",
+   "story": false
+  },
+  "TRAINER_ETHAN_1": {
+   "segment": "S4",
+   "role": "route",
+   "map": "JaggedPass",
+   "story": false
+  },
+  "TRAINER_AUTUMN": {
+   "segment": "S4",
+   "role": "route",
+   "map": "JaggedPass",
+   "story": false
+  },
+  "TRAINER_TRAVIS": {
+   "segment": "S4",
+   "role": "route",
+   "map": "Route111",
+   "story": false
+  },
+  "TRAINER_ETHAN_2": {
+   "segment": "S6",
+   "role": "route",
+   "map": "JaggedPass",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_ETHAN_1"
+  },
+  "TRAINER_ETHAN_3": {
+   "segment": "S7",
+   "role": "route",
+   "map": "JaggedPass",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_ETHAN_1"
+  },
+  "TRAINER_ETHAN_4": {
+   "segment": "S8",
+   "role": "route",
+   "map": "JaggedPass",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_ETHAN_1"
+  },
+  "TRAINER_ETHAN_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "JaggedPass",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_ETHAN_1"
+  },
+  "TRAINER_BRENT": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route119",
+   "story": false
+  },
+  "TRAINER_DONALD": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route119",
+   "story": false
+  },
+  "TRAINER_TAYLOR": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route119",
+   "story": false
+  },
+  "TRAINER_JEFFREY_1": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route120",
+   "story": false
+  },
+  "TRAINER_DEREK": {
+   "segment": "S3",
+   "role": "route",
+   "map": "Route117",
+   "story": false
+  },
+  "TRAINER_JEFFREY_2": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route120",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_JEFFREY_1"
+  },
+  "TRAINER_JEFFREY_3": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route120",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_JEFFREY_1"
+  },
+  "TRAINER_JEFFREY_4": {
+   "segment": "S8",
+   "role": "route",
+   "map": "Route120",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_JEFFREY_1"
+  },
+  "TRAINER_JEFFREY_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "Route120",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_JEFFREY_1"
+  },
+  "TRAINER_EDWARD": {
+   "segment": "S3",
+   "role": "route",
+   "map": "Route110",
+   "story": false
+  },
+  "TRAINER_PRESTON": {
+   "segment": "S7",
+   "role": "gym",
+   "map": "MossdeepCity_Gym",
+   "story": false
+  },
+  "TRAINER_VIRGIL": {
+   "segment": "S7",
+   "role": "gym",
+   "map": "MossdeepCity_Gym",
+   "story": false
+  },
+  "TRAINER_BLAKE": {
+   "segment": "S7",
+   "role": "gym",
+   "map": "MossdeepCity_Gym",
+   "story": false
+  },
+  "TRAINER_WILLIAM": {
+   "segment": "S7",
+   "role": "route",
+   "map": "MtPyre_3F",
+   "story": false
+  },
+  "TRAINER_JOSHUA": {
+   "segment": "S9",
+   "role": "route",
+   "map": "Route110_TrickHousePuzzle7",
+   "story": false
+  },
+  "TRAINER_CAMERON_1": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route123",
+   "story": false
+  },
+  "TRAINER_CAMERON_2": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route123",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_CAMERON_1"
+  },
+  "TRAINER_CAMERON_3": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route123",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_CAMERON_1"
+  },
+  "TRAINER_CAMERON_4": {
+   "segment": "S8",
+   "role": "route",
+   "map": "Route123",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_CAMERON_1"
+  },
+  "TRAINER_CAMERON_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "Route123",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_CAMERON_1"
+  },
+  "TRAINER_JACLYN": {
+   "segment": "S3",
+   "role": "route",
+   "map": "Route110",
+   "story": false
+  },
+  "TRAINER_HANNAH": {
+   "segment": "S7",
+   "role": "gym",
+   "map": "MossdeepCity_Gym",
+   "story": false
+  },
+  "TRAINER_SAMANTHA": {
+   "segment": "S7",
+   "role": "gym",
+   "map": "MossdeepCity_Gym",
+   "story": false
+  },
+  "TRAINER_MAURA": {
+   "segment": "S7",
+   "role": "gym",
+   "map": "MossdeepCity_Gym",
+   "story": false
+  },
+  "TRAINER_KAYLA": {
+   "segment": "S7",
+   "role": "route",
+   "map": "MtPyre_3F",
+   "story": false
+  },
+  "TRAINER_ALEXIS": {
+   "segment": "S9",
+   "role": "route",
+   "map": "Route110_TrickHousePuzzle7",
+   "story": false
+  },
+  "TRAINER_JACKI_1": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route123",
+   "story": false
+  },
+  "TRAINER_JACKI_2": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route123",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_JACKI_1"
+  },
+  "TRAINER_JACKI_3": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route123",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_JACKI_1"
+  },
+  "TRAINER_JACKI_4": {
+   "segment": "S8",
+   "role": "route",
+   "map": "Route123",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_JACKI_1"
+  },
+  "TRAINER_JACKI_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "Route123",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_JACKI_1"
+  },
+  "TRAINER_WALTER_1": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route121",
+   "story": false
+  },
+  "TRAINER_MICAH": {
+   "segment": "POST",
+   "role": "route",
+   "map": "SSTidalCorridor",
+   "story": false
+  },
+  "TRAINER_THOMAS": {
+   "segment": "POST",
+   "role": "route",
+   "map": "SSTidalCorridor",
+   "story": false
+  },
+  "TRAINER_WALTER_2": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route121",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_WALTER_1"
+  },
+  "TRAINER_WALTER_3": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route121",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_WALTER_1"
+  },
+  "TRAINER_WALTER_4": {
+   "segment": "S8",
+   "role": "route",
+   "map": "Route121",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_WALTER_1"
+  },
+  "TRAINER_WALTER_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "Route121",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_WALTER_1"
+  },
+  "TRAINER_SIDNEY": {
+   "segment": "S9",
+   "role": "elite",
+   "map": "EverGrandeCity_SidneysRoom",
+   "story": false
+  },
+  "TRAINER_PHOEBE": {
+   "segment": "S9",
+   "role": "elite",
+   "map": "EverGrandeCity_PhoebesRoom",
+   "story": false
+  },
+  "TRAINER_GLACIA": {
+   "segment": "S9",
+   "role": "elite",
+   "map": "EverGrandeCity_GlaciasRoom",
+   "story": false
+  },
+  "TRAINER_DRAKE": {
+   "segment": "S9",
+   "role": "elite",
+   "map": "EverGrandeCity_DrakesRoom",
+   "story": false
+  },
+  "TRAINER_ROXANNE_1": {
+   "segment": "S1",
+   "role": "leader",
+   "map": "RustboroCity_Gym",
+   "story": false
+  },
+  "TRAINER_BRAWLY_1": {
+   "segment": "S2",
+   "role": "leader",
+   "map": "DewfordTown_Gym",
+   "story": false
+  },
+  "TRAINER_WATTSON_1": {
+   "segment": "S3",
+   "role": "leader",
+   "map": "MauvilleCity_Gym",
+   "story": false
+  },
+  "TRAINER_FLANNERY_1": {
+   "segment": "S4",
+   "role": "leader",
+   "map": "LavaridgeTown_Gym_1F",
+   "story": false
+  },
+  "TRAINER_NORMAN_1": {
+   "segment": "S5",
+   "role": "leader",
+   "map": "PetalburgCity_Gym",
+   "story": false
+  },
+  "TRAINER_WINONA_1": {
+   "segment": "S6",
+   "role": "leader",
+   "map": "FortreeCity_Gym",
+   "story": false
+  },
+  "TRAINER_TATE_AND_LIZA_1": {
+   "segment": "S7",
+   "role": "leader",
+   "map": "MossdeepCity_Gym",
+   "story": false
+  },
+  "TRAINER_JUAN_1": {
+   "segment": "S8",
+   "role": "leader",
+   "map": "SootopolisCity_Gym_1F",
+   "story": false
+  },
+  "TRAINER_JERRY_1": {
+   "segment": "S1",
+   "role": "route",
+   "map": "Route116",
+   "story": false
+  },
+  "TRAINER_TED": {
+   "segment": "S4",
+   "role": "route",
+   "map": "Route110_TrickHousePuzzle2",
+   "story": false
+  },
+  "TRAINER_PAUL": {
+   "segment": "S4",
+   "role": "route",
+   "map": "Route110_TrickHousePuzzle2",
+   "story": false
+  },
+  "TRAINER_JERRY_2": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route116",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_JERRY_1"
+  },
+  "TRAINER_JERRY_3": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route116",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_JERRY_1"
+  },
+  "TRAINER_JERRY_4": {
+   "segment": "S8",
+   "role": "route",
+   "map": "Route116",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_JERRY_1"
+  },
+  "TRAINER_JERRY_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "Route116",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_JERRY_1"
+  },
+  "TRAINER_KAREN_1": {
+   "segment": "S1",
+   "role": "route",
+   "map": "Route116",
+   "story": false
+  },
+  "TRAINER_GEORGIA": {
+   "segment": "S4",
+   "role": "route",
+   "map": "Route110_TrickHousePuzzle2",
+   "story": false
+  },
+  "TRAINER_KAREN_2": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route116",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_KAREN_1"
+  },
+  "TRAINER_KAREN_3": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route116",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_KAREN_1"
+  },
+  "TRAINER_KAREN_4": {
+   "segment": "S8",
+   "role": "route",
+   "map": "Route116",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_KAREN_1"
+  },
+  "TRAINER_KAREN_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "Route116",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_KAREN_1"
+  },
+  "TRAINER_KATE_AND_JOY": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route121",
+   "story": false
+  },
+  "TRAINER_ANNA_AND_MEG_1": {
+   "segment": "S3",
+   "role": "route",
+   "map": "Route117",
+   "story": false
+  },
+  "TRAINER_ANNA_AND_MEG_2": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route117",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_ANNA_AND_MEG_1"
+  },
+  "TRAINER_ANNA_AND_MEG_3": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route117",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_ANNA_AND_MEG_1"
+  },
+  "TRAINER_ANNA_AND_MEG_4": {
+   "segment": "S8",
+   "role": "route",
+   "map": "Route117",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_ANNA_AND_MEG_1"
+  },
+  "TRAINER_ANNA_AND_MEG_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "Route117",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_ANNA_AND_MEG_1"
+  },
+  "TRAINER_VICTOR": {
+   "segment": "S4",
+   "role": "route",
+   "map": "Route111",
+   "story": false
+  },
+  "TRAINER_MIGUEL_1": {
+   "segment": "S3",
+   "role": "route",
+   "map": "Route103",
+   "story": false
+  },
+  "TRAINER_COLTON": {
+   "segment": "POST",
+   "role": "route",
+   "map": "SSTidalCorridor",
+   "story": false
+  },
+  "TRAINER_MIGUEL_2": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route103",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_MIGUEL_1"
+  },
+  "TRAINER_MIGUEL_3": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route103",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_MIGUEL_1"
+  },
+  "TRAINER_MIGUEL_4": {
+   "segment": "S8",
+   "role": "route",
+   "map": "Route103",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_MIGUEL_1"
+  },
+  "TRAINER_MIGUEL_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "Route103",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_MIGUEL_1"
+  },
+  "TRAINER_VICTORIA": {
+   "segment": "S4",
+   "role": "route",
+   "map": "Route111",
+   "story": false
+  },
+  "TRAINER_VANESSA": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route121",
+   "story": false
+  },
+  "TRAINER_BETHANY": {
+   "segment": "S8",
+   "role": "gym",
+   "map": "SootopolisCity_Gym_B1F",
+   "story": false
+  },
+  "TRAINER_ISABEL_1": {
+   "segment": "S3",
+   "role": "route",
+   "map": "Route110",
+   "story": false
+  },
+  "TRAINER_ISABEL_2": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route110",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_ISABEL_1"
+  },
+  "TRAINER_ISABEL_3": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route110",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_ISABEL_1"
+  },
+  "TRAINER_ISABEL_4": {
+   "segment": "S8",
+   "role": "route",
+   "map": "Route110",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_ISABEL_1"
+  },
+  "TRAINER_ISABEL_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "Route110",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_ISABEL_1"
+  },
+  "TRAINER_TIMOTHY_1": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route115",
+   "story": false
+  },
+  "TRAINER_TIMOTHY_2": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route115",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_TIMOTHY_1"
+  },
+  "TRAINER_TIMOTHY_3": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route115",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_TIMOTHY_1"
+  },
+  "TRAINER_TIMOTHY_4": {
+   "segment": "S8",
+   "role": "route",
+   "map": "Route115",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_TIMOTHY_1"
+  },
+  "TRAINER_TIMOTHY_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "Route115",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_TIMOTHY_1"
+  },
+  "TRAINER_VICKY": {
+   "segment": "S4",
+   "role": "route",
+   "map": "Route111",
+   "story": false
+  },
+  "TRAINER_SHELBY_1": {
+   "segment": "S4",
+   "role": "route",
+   "map": "MtChimney",
+   "story": false
+  },
+  "TRAINER_SHELBY_2": {
+   "segment": "S6",
+   "role": "route",
+   "map": "MtChimney",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_SHELBY_1"
+  },
+  "TRAINER_SHELBY_3": {
+   "segment": "S7",
+   "role": "route",
+   "map": "MtChimney",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_SHELBY_1"
+  },
+  "TRAINER_SHELBY_4": {
+   "segment": "S8",
+   "role": "route",
+   "map": "MtChimney",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_SHELBY_1"
+  },
+  "TRAINER_SHELBY_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "MtChimney",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_SHELBY_1"
+  },
+  "TRAINER_CALVIN_1": {
+   "segment": "S1",
+   "role": "route",
+   "map": "Route102",
+   "story": false
+  },
+  "TRAINER_BILLY": {
+   "segment": "S1",
+   "role": "route",
+   "map": "Route104",
+   "story": false
+  },
+  "TRAINER_JOSH": {
+   "segment": "S1",
+   "role": "gym",
+   "map": "RustboroCity_Gym",
+   "story": false
+  },
+  "TRAINER_TOMMY": {
+   "segment": "S1",
+   "role": "gym",
+   "map": "RustboroCity_Gym",
+   "story": false
+  },
+  "TRAINER_JOEY": {
+   "segment": "S1",
+   "role": "route",
+   "map": "Route116",
+   "story": false
+  },
+  "TRAINER_BEN": {
+   "segment": "S3",
+   "role": "gym",
+   "map": "MauvilleCity_Gym",
+   "story": false
+  },
+  "TRAINER_QUINCY": {
+   "segment": "S9",
+   "role": "route",
+   "map": "VictoryRoad_1F",
+   "story": false
+  },
+  "TRAINER_KATELYNN": {
+   "segment": "S9",
+   "role": "route",
+   "map": "VictoryRoad_1F",
+   "story": false
+  },
+  "TRAINER_JAYLEN": {
+   "segment": "S4",
+   "role": "route",
+   "map": "Route113",
+   "story": false
+  },
+  "TRAINER_DILLON": {
+   "segment": "S4",
+   "role": "route",
+   "map": "Route113",
+   "story": false
+  },
+  "TRAINER_CALVIN_2": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route102",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_CALVIN_1"
+  },
+  "TRAINER_CALVIN_3": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route102",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_CALVIN_1"
+  },
+  "TRAINER_CALVIN_4": {
+   "segment": "S8",
+   "role": "route",
+   "map": "Route102",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_CALVIN_1"
+  },
+  "TRAINER_CALVIN_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "Route102",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_CALVIN_1"
+  },
+  "TRAINER_EDDIE": {
+   "segment": "S3",
+   "role": "route",
+   "map": "Route110_TrickHousePuzzle1",
+   "story": false
+  },
+  "TRAINER_ALLEN": {
+   "segment": "S1",
+   "role": "route",
+   "map": "Route102",
+   "story": false
+  },
+  "TRAINER_TIMMY": {
+   "segment": "S3",
+   "role": "route",
+   "map": "Route110",
+   "story": false
+  },
+  "TRAINER_WALLACE": {
+   "segment": "S9",
+   "role": "elite",
+   "map": "EverGrandeCity_ChampionsRoom",
+   "story": false
+  },
+  "TRAINER_ANDREW": {
+   "segment": "S3",
+   "role": "route",
+   "map": "Route103",
+   "story": false
+  },
+  "TRAINER_IVAN": {
+   "segment": "S1",
+   "role": "route",
+   "map": "Route104",
+   "story": false
+  },
+  "TRAINER_CLAUDE": {
+   "segment": "S4",
+   "role": "route",
+   "map": "Route114",
+   "story": false
+  },
+  "TRAINER_ELLIOT_1": {
+   "segment": "S2",
+   "role": "route",
+   "map": "Route106",
+   "story": false
+  },
+  "TRAINER_NED": {
+   "segment": "S2",
+   "role": "route",
+   "map": "Route106",
+   "story": false
+  },
+  "TRAINER_DALE": {
+   "segment": "S3",
+   "role": "route",
+   "map": "Route110",
+   "story": false
+  },
+  "TRAINER_NOLAN": {
+   "segment": "S4",
+   "role": "route",
+   "map": "Route114",
+   "story": false
+  },
+  "TRAINER_BARNY": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route118",
+   "story": false
+  },
+  "TRAINER_WADE": {
+   "segment": "S3",
+   "role": "route",
+   "map": "Route118",
+   "story": false
+  },
+  "TRAINER_CARTER": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route109",
+   "story": false
+  },
+  "TRAINER_ELLIOT_2": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route106",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_ELLIOT_1"
+  },
+  "TRAINER_ELLIOT_3": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route106",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_ELLIOT_1"
+  },
+  "TRAINER_ELLIOT_4": {
+   "segment": "S8",
+   "role": "route",
+   "map": "Route106",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_ELLIOT_1"
+  },
+  "TRAINER_ELLIOT_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "Route106",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_ELLIOT_1"
+  },
+  "TRAINER_RONALD": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route132",
+   "story": false
+  },
+  "TRAINER_JACOB": {
+   "segment": "S3",
+   "role": "route",
+   "map": "Route110",
+   "story": false
+  },
+  "TRAINER_ANTHONY": {
+   "segment": "S3",
+   "role": "route",
+   "map": "Route110",
+   "story": false
+  },
+  "TRAINER_BENJAMIN_1": {
+   "segment": "S3",
+   "role": "route",
+   "map": "Route110",
+   "story": false
+  },
+  "TRAINER_BENJAMIN_2": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route110",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_BENJAMIN_1"
+  },
+  "TRAINER_BENJAMIN_3": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route110",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_BENJAMIN_1"
+  },
+  "TRAINER_BENJAMIN_4": {
+   "segment": "S8",
+   "role": "route",
+   "map": "Route110",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_BENJAMIN_1"
+  },
+  "TRAINER_BENJAMIN_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "Route110",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_BENJAMIN_1"
+  },
+  "TRAINER_ABIGAIL_1": {
+   "segment": "S3",
+   "role": "route",
+   "map": "Route110",
+   "story": false
+  },
+  "TRAINER_JASMINE": {
+   "segment": "S3",
+   "role": "route",
+   "map": "Route110",
+   "story": false
+  },
+  "TRAINER_ABIGAIL_2": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route110",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_ABIGAIL_1"
+  },
+  "TRAINER_ABIGAIL_3": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route110",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_ABIGAIL_1"
+  },
+  "TRAINER_ABIGAIL_4": {
+   "segment": "S8",
+   "role": "route",
+   "map": "Route110",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_ABIGAIL_1"
+  },
+  "TRAINER_ABIGAIL_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "Route110",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_ABIGAIL_1"
+  },
+  "TRAINER_DYLAN_1": {
+   "segment": "S3",
+   "role": "route",
+   "map": "Route117",
+   "story": false
+  },
+  "TRAINER_DYLAN_2": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route117",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_DYLAN_1"
+  },
+  "TRAINER_DYLAN_3": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route117",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_DYLAN_1"
+  },
+  "TRAINER_DYLAN_4": {
+   "segment": "S8",
+   "role": "route",
+   "map": "Route117",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_DYLAN_1"
+  },
+  "TRAINER_DYLAN_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "Route117",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_DYLAN_1"
+  },
+  "TRAINER_MARIA_1": {
+   "segment": "S3",
+   "role": "route",
+   "map": "Route117",
+   "story": false
+  },
+  "TRAINER_MARIA_2": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route117",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_MARIA_1"
+  },
+  "TRAINER_MARIA_3": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route117",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_MARIA_1"
+  },
+  "TRAINER_MARIA_4": {
+   "segment": "S8",
+   "role": "route",
+   "map": "Route117",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_MARIA_1"
+  },
+  "TRAINER_MARIA_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "Route117",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_MARIA_1"
+  },
+  "TRAINER_CAMDEN": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route127",
+   "story": false
+  },
+  "TRAINER_DEMETRIUS": {
+   "segment": "S6",
+   "role": "route",
+   "map": "AbandonedShip_Rooms_1F",
+   "story": false
+  },
+  "TRAINER_ISAIAH_1": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route128",
+   "story": false
+  },
+  "TRAINER_PABLO_1": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route126",
+   "story": false
+  },
+  "TRAINER_CHASE": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route129",
+   "story": false
+  },
+  "TRAINER_ISAIAH_2": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route128",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_ISAIAH_1"
+  },
+  "TRAINER_ISAIAH_3": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route128",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_ISAIAH_1"
+  },
+  "TRAINER_ISAIAH_4": {
+   "segment": "S8",
+   "role": "route",
+   "map": "Route128",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_ISAIAH_1"
+  },
+  "TRAINER_ISAIAH_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "Route128",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_ISAIAH_1"
+  },
+  "TRAINER_ISOBEL": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route126",
+   "story": false
+  },
+  "TRAINER_DONNY": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route127",
+   "story": false
+  },
+  "TRAINER_TALIA": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route131",
+   "story": false
+  },
+  "TRAINER_KATELYN_1": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route128",
+   "story": false
+  },
+  "TRAINER_ALLISON": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route129",
+   "story": false
+  },
+  "TRAINER_KATELYN_2": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route128",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_KATELYN_1"
+  },
+  "TRAINER_KATELYN_3": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route128",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_KATELYN_1"
+  },
+  "TRAINER_KATELYN_4": {
+   "segment": "S8",
+   "role": "route",
+   "map": "Route128",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_KATELYN_1"
+  },
+  "TRAINER_KATELYN_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "Route128",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_KATELYN_1"
+  },
+  "TRAINER_NICOLAS_1": {
+   "segment": "S9",
+   "role": "route",
+   "map": "MeteorFalls_1F_2R",
+   "story": false
+  },
+  "TRAINER_NICOLAS_2": {
+   "segment": "S9",
+   "role": "route",
+   "map": "MeteorFalls_1F_2R",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_NICOLAS_1"
+  },
+  "TRAINER_NICOLAS_3": {
+   "segment": "S9",
+   "role": "route",
+   "map": "MeteorFalls_1F_2R",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_NICOLAS_1"
+  },
+  "TRAINER_NICOLAS_4": {
+   "segment": "S9",
+   "role": "route",
+   "map": "MeteorFalls_1F_2R",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_NICOLAS_1"
+  },
+  "TRAINER_NICOLAS_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "MeteorFalls_1F_2R",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_NICOLAS_1"
+  },
+  "TRAINER_AARON": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route134",
+   "story": false
+  },
+  "TRAINER_PERRY": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route118",
+   "story": false
+  },
+  "TRAINER_HUGH": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route119",
+   "story": false
+  },
+  "TRAINER_PHIL": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route119",
+   "story": false
+  },
+  "TRAINER_JARED": {
+   "segment": "S6",
+   "role": "gym",
+   "map": "FortreeCity_Gym",
+   "story": false
+  },
+  "TRAINER_HUMBERTO": {
+   "segment": "S6",
+   "role": "gym",
+   "map": "FortreeCity_Gym",
+   "story": false
+  },
+  "TRAINER_PRESLEY": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route125",
+   "story": false
+  },
+  "TRAINER_EDWARDO": {
+   "segment": "S6",
+   "role": "gym",
+   "map": "FortreeCity_Gym",
+   "story": false
+  },
+  "TRAINER_COLIN": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route120",
+   "story": false
+  },
+  "TRAINER_ROBERT_1": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route120",
+   "story": false
+  },
+  "TRAINER_BENNY": {
+   "segment": "S8",
+   "role": "route",
+   "map": "Route110_TrickHousePuzzle6",
+   "story": false
+  },
+  "TRAINER_CHESTER": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route118",
+   "story": false
+  },
+  "TRAINER_ROBERT_2": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route120",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_ROBERT_1"
+  },
+  "TRAINER_ROBERT_3": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route120",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_ROBERT_1"
+  },
+  "TRAINER_ROBERT_4": {
+   "segment": "S8",
+   "role": "route",
+   "map": "Route120",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_ROBERT_1"
+  },
+  "TRAINER_ROBERT_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "Route120",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_ROBERT_1"
+  },
+  "TRAINER_ALEX": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route134",
+   "story": false
+  },
+  "TRAINER_BECK": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route133",
+   "story": false
+  },
+  "TRAINER_YASU": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route119",
+   "story": false
+  },
+  "TRAINER_TAKASHI": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route119",
+   "story": false
+  },
+  "TRAINER_DIANNE": {
+   "segment": "S9",
+   "role": "route",
+   "map": "VictoryRoad_B2F",
+   "story": false
+  },
+  "TRAINER_JANI": {
+   "segment": "S6",
+   "role": "route",
+   "map": "AbandonedShip_Rooms2_1F",
+   "story": false
+  },
+  "TRAINER_LAO_1": {
+   "segment": "S4",
+   "role": "route",
+   "map": "Route113",
+   "story": false
+  },
+  "TRAINER_LUNG": {
+   "segment": "S4",
+   "role": "route",
+   "map": "Route113",
+   "story": false
+  },
+  "TRAINER_LAO_2": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route113",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_LAO_1"
+  },
+  "TRAINER_LAO_3": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route113",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_LAO_1"
+  },
+  "TRAINER_LAO_4": {
+   "segment": "S8",
+   "role": "route",
+   "map": "Route113",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_LAO_1"
+  },
+  "TRAINER_LAO_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "Route113",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_LAO_1"
+  },
+  "TRAINER_JOCELYN": {
+   "segment": "S2",
+   "role": "gym",
+   "map": "DewfordTown_Gym",
+   "story": false
+  },
+  "TRAINER_LAURA": {
+   "segment": "S2",
+   "role": "gym",
+   "map": "DewfordTown_Gym",
+   "story": false
+  },
+  "TRAINER_CYNDY_1": {
+   "segment": "S2",
+   "role": "route",
+   "map": "Route115",
+   "story": false
+  },
+  "TRAINER_CORA": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route110_TrickHousePuzzle4",
+   "story": false
+  },
+  "TRAINER_PAULA": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route110_TrickHousePuzzle4",
+   "story": false
+  },
+  "TRAINER_CYNDY_2": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route115",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_CYNDY_1"
+  },
+  "TRAINER_CYNDY_3": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route115",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_CYNDY_1"
+  },
+  "TRAINER_CYNDY_4": {
+   "segment": "S8",
+   "role": "route",
+   "map": "Route115",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_CYNDY_1"
+  },
+  "TRAINER_CYNDY_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "Route115",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_CYNDY_1"
+  },
+  "TRAINER_MADELINE_1": {
+   "segment": "S4",
+   "role": "route",
+   "map": "Route113",
+   "story": false
+  },
+  "TRAINER_CLARISSA": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route120",
+   "story": false
+  },
+  "TRAINER_ANGELICA": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route120",
+   "story": false
+  },
+  "TRAINER_MADELINE_2": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route113",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_MADELINE_1"
+  },
+  "TRAINER_MADELINE_3": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route113",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_MADELINE_1"
+  },
+  "TRAINER_MADELINE_4": {
+   "segment": "S8",
+   "role": "route",
+   "map": "Route113",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_MADELINE_1"
+  },
+  "TRAINER_MADELINE_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "Route113",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_MADELINE_1"
+  },
+  "TRAINER_BEVERLY": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route105",
+   "story": false
+  },
+  "TRAINER_IMANI": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route105",
+   "story": false
+  },
+  "TRAINER_KYLA": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route106",
+   "story": false
+  },
+  "TRAINER_DENISE": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route107",
+   "story": false
+  },
+  "TRAINER_BETH": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route107",
+   "story": false
+  },
+  "TRAINER_TARA": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route108",
+   "story": false
+  },
+  "TRAINER_MISSY": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route108",
+   "story": false
+  },
+  "TRAINER_ALICE": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route109",
+   "story": false
+  },
+  "TRAINER_JENNY_1": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route124",
+   "story": false
+  },
+  "TRAINER_GRACE": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route124",
+   "story": false
+  },
+  "TRAINER_TANYA": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route125",
+   "story": false
+  },
+  "TRAINER_SHARON": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route125",
+   "story": false
+  },
+  "TRAINER_NIKKI": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route126",
+   "story": false
+  },
+  "TRAINER_BRENDA": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route126",
+   "story": false
+  },
+  "TRAINER_KATIE": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route130",
+   "story": false
+  },
+  "TRAINER_SUSIE": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route131",
+   "story": false
+  },
+  "TRAINER_KARA": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route131",
+   "story": false
+  },
+  "TRAINER_DANA": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route132",
+   "story": false
+  },
+  "TRAINER_SIENNA": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route126",
+   "story": false
+  },
+  "TRAINER_DEBRA": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route133",
+   "story": false
+  },
+  "TRAINER_LINDA": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route133",
+   "story": false
+  },
+  "TRAINER_LAUREL": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route134",
+   "story": false
+  },
+  "TRAINER_CARLEE": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route128",
+   "story": false
+  },
+  "TRAINER_JENNY_2": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route124",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_JENNY_1"
+  },
+  "TRAINER_JENNY_3": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route124",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_JENNY_1"
+  },
+  "TRAINER_JENNY_4": {
+   "segment": "S8",
+   "role": "route",
+   "map": "Route124",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_JENNY_1"
+  },
+  "TRAINER_JENNY_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "Route124",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_JENNY_1"
+  },
+  "TRAINER_HEIDI": {
+   "segment": "S5",
+   "role": "route",
+   "map": "Route111",
+   "story": false
+  },
+  "TRAINER_BECKY": {
+   "segment": "S5",
+   "role": "route",
+   "map": "Route111",
+   "story": false
+  },
+  "TRAINER_CAROL": {
+   "segment": "S4",
+   "role": "route",
+   "map": "Route112",
+   "story": false
+  },
+  "TRAINER_NANCY": {
+   "segment": "S4",
+   "role": "route",
+   "map": "Route114",
+   "story": false
+  },
+  "TRAINER_MARTHA": {
+   "segment": "S5",
+   "role": "route",
+   "map": "Route110_TrickHousePuzzle3",
+   "story": false
+  },
+  "TRAINER_DIANA_1": {
+   "segment": "S4",
+   "role": "route",
+   "map": "JaggedPass",
+   "story": false
+  },
+  "TRAINER_CEDRIC": {
+   "segment": "S7",
+   "role": "route",
+   "map": "MtPyre_6F",
+   "story": false
+  },
+  "TRAINER_IRENE": {
+   "segment": "S4",
+   "role": "route",
+   "map": "Route111",
+   "story": false
+  },
+  "TRAINER_DIANA_2": {
+   "segment": "S6",
+   "role": "route",
+   "map": "JaggedPass",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_DIANA_1"
+  },
+  "TRAINER_DIANA_3": {
+   "segment": "S7",
+   "role": "route",
+   "map": "JaggedPass",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_DIANA_1"
+  },
+  "TRAINER_DIANA_4": {
+   "segment": "S8",
+   "role": "route",
+   "map": "JaggedPass",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_DIANA_1"
+  },
+  "TRAINER_DIANA_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "JaggedPass",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_DIANA_1"
+  },
+  "TRAINER_AMY_AND_LIV_1": {
+   "segment": "S3",
+   "role": "route",
+   "map": "Route103",
+   "story": false
+  },
+  "TRAINER_AMY_AND_LIV_2": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route103",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_AMY_AND_LIV_1"
+  },
+  "TRAINER_GINA_AND_MIA_1": {
+   "segment": "S1",
+   "role": "route",
+   "map": "Route104",
+   "story": false
+  },
+  "TRAINER_MIU_AND_YUKI": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route123",
+   "story": false
+  },
+  "TRAINER_AMY_AND_LIV_4": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route103",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_AMY_AND_LIV_1"
+  },
+  "TRAINER_AMY_AND_LIV_5": {
+   "segment": "S8",
+   "role": "route",
+   "map": "Route103",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_AMY_AND_LIV_1"
+  },
+  "TRAINER_AMY_AND_LIV_6": {
+   "segment": "POST",
+   "role": "route",
+   "map": "Route103",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_AMY_AND_LIV_1"
+  },
+  "TRAINER_HUEY": {
+   "segment": "S2",
+   "role": "route",
+   "map": "Route109",
+   "story": false
+  },
+  "TRAINER_EDMOND": {
+   "segment": "S2",
+   "role": "route",
+   "map": "Route109",
+   "story": false
+  },
+  "TRAINER_ERNEST_1": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route125",
+   "story": false
+  },
+  "TRAINER_DWAYNE": {
+   "segment": "S2",
+   "role": "route",
+   "map": "Route109_SeashoreHouse",
+   "story": false
+  },
+  "TRAINER_PHILLIP": {
+   "segment": "POST",
+   "role": "route",
+   "map": "SSTidalCorridor",
+   "story": false
+  },
+  "TRAINER_LEONARD": {
+   "segment": "POST",
+   "role": "route",
+   "map": "SSTidalCorridor",
+   "story": false
+  },
+  "TRAINER_DUNCAN": {
+   "segment": "S6",
+   "role": "route",
+   "map": "AbandonedShip_Corridors_B1F",
+   "story": false
+  },
+  "TRAINER_ERNEST_2": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route125",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_ERNEST_1"
+  },
+  "TRAINER_ERNEST_3": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route125",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_ERNEST_1"
+  },
+  "TRAINER_ERNEST_4": {
+   "segment": "S8",
+   "role": "route",
+   "map": "Route125",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_ERNEST_1"
+  },
+  "TRAINER_ERNEST_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "Route125",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_ERNEST_1"
+  },
+  "TRAINER_ELI": {
+   "segment": "S4",
+   "role": "gym",
+   "map": "LavaridgeTown_Gym_1F",
+   "story": false
+  },
+  "TRAINER_ANNIKA": {
+   "segment": "S8",
+   "role": "gym",
+   "map": "SootopolisCity_Gym_B1F",
+   "story": false
+  },
+  "TRAINER_JAZMYN": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route123",
+   "story": false
+  },
+  "TRAINER_JONAS": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route123",
+   "story": false
+  },
+  "TRAINER_KAYLEY": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route123",
+   "story": false
+  },
+  "TRAINER_AURON": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route125",
+   "story": false
+  },
+  "TRAINER_KELVIN": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route134",
+   "story": false
+  },
+  "TRAINER_MARLEY": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route134",
+   "story": false
+  },
+  "TRAINER_REYNA": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route134",
+   "story": false
+  },
+  "TRAINER_HUDSON": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route134",
+   "story": false
+  },
+  "TRAINER_CONOR": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route133",
+   "story": false
+  },
+  "TRAINER_EDWIN_1": {
+   "segment": "S3",
+   "role": "route",
+   "map": "Route110",
+   "story": false
+  },
+  "TRAINER_HECTOR": {
+   "segment": "S2",
+   "role": "route",
+   "map": "Route115",
+   "story": false
+  },
+  "TRAINER_TABITHA_MOSSDEEP": {
+   "segment": "S8",
+   "role": "boss",
+   "map": "MossdeepCity_SpaceCenter_2F",
+   "story": false
+  },
+  "TRAINER_EDWIN_2": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route110",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_EDWIN_1"
+  },
+  "TRAINER_EDWIN_3": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route110",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_EDWIN_1"
+  },
+  "TRAINER_EDWIN_4": {
+   "segment": "S8",
+   "role": "route",
+   "map": "Route110",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_EDWIN_1"
+  },
+  "TRAINER_EDWIN_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "Route110",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_EDWIN_1"
+  },
+  "TRAINER_WALLY_VR_1": {
+   "segment": "S9",
+   "role": "route",
+   "map": "VictoryRoad_1F",
+   "story": true
+  },
+  "TRAINER_BRENDAN_ROUTE_103_MUDKIP": {
+   "segment": "S3",
+   "role": "route",
+   "map": "Route103",
+   "story": true
+  },
+  "TRAINER_BRENDAN_ROUTE_110_MUDKIP": {
+   "segment": "S3",
+   "role": "route",
+   "map": "Route110",
+   "story": true
+  },
+  "TRAINER_BRENDAN_ROUTE_119_MUDKIP": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route119",
+   "story": true
+  },
+  "TRAINER_BRENDAN_ROUTE_103_TREECKO": {
+   "segment": "S3",
+   "role": "route",
+   "map": "Route103",
+   "story": true
+  },
+  "TRAINER_BRENDAN_ROUTE_110_TREECKO": {
+   "segment": "S3",
+   "role": "route",
+   "map": "Route110",
+   "story": true
+  },
+  "TRAINER_BRENDAN_ROUTE_119_TREECKO": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route119",
+   "story": true
+  },
+  "TRAINER_BRENDAN_ROUTE_103_TORCHIC": {
+   "segment": "S3",
+   "role": "route",
+   "map": "Route103",
+   "story": true
+  },
+  "TRAINER_BRENDAN_ROUTE_110_TORCHIC": {
+   "segment": "S3",
+   "role": "route",
+   "map": "Route110",
+   "story": true
+  },
+  "TRAINER_BRENDAN_ROUTE_119_TORCHIC": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route119",
+   "story": true
+  },
+  "TRAINER_MAY_ROUTE_103_MUDKIP": {
+   "segment": "S3",
+   "role": "route",
+   "map": "Route103",
+   "story": true
+  },
+  "TRAINER_MAY_ROUTE_110_MUDKIP": {
+   "segment": "S3",
+   "role": "route",
+   "map": "Route110",
+   "story": true
+  },
+  "TRAINER_MAY_ROUTE_119_MUDKIP": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route119",
+   "story": true
+  },
+  "TRAINER_MAY_ROUTE_103_TREECKO": {
+   "segment": "S3",
+   "role": "route",
+   "map": "Route103",
+   "story": true
+  },
+  "TRAINER_MAY_ROUTE_110_TREECKO": {
+   "segment": "S3",
+   "role": "route",
+   "map": "Route110",
+   "story": true
+  },
+  "TRAINER_MAY_ROUTE_119_TREECKO": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route119",
+   "story": true
+  },
+  "TRAINER_MAY_ROUTE_103_TORCHIC": {
+   "segment": "S3",
+   "role": "route",
+   "map": "Route103",
+   "story": true
+  },
+  "TRAINER_MAY_ROUTE_110_TORCHIC": {
+   "segment": "S3",
+   "role": "route",
+   "map": "Route110",
+   "story": true
+  },
+  "TRAINER_MAY_ROUTE_119_TORCHIC": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route119",
+   "story": true
+  },
+  "TRAINER_ISAAC_1": {
+   "segment": "S3",
+   "role": "route",
+   "map": "Route117",
+   "story": false
+  },
+  "TRAINER_DAVIS": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route123",
+   "story": false
+  },
+  "TRAINER_MITCHELL": {
+   "segment": "S9",
+   "role": "route",
+   "map": "VictoryRoad_B1F",
+   "story": false
+  },
+  "TRAINER_ISAAC_2": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route117",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_ISAAC_1"
+  },
+  "TRAINER_ISAAC_3": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route117",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_ISAAC_1"
+  },
+  "TRAINER_ISAAC_4": {
+   "segment": "S8",
+   "role": "route",
+   "map": "Route117",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_ISAAC_1"
+  },
+  "TRAINER_ISAAC_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "Route117",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_ISAAC_1"
+  },
+  "TRAINER_LYDIA_1": {
+   "segment": "S3",
+   "role": "route",
+   "map": "Route117",
+   "story": false
+  },
+  "TRAINER_HALLE": {
+   "segment": "S9",
+   "role": "route",
+   "map": "VictoryRoad_B1F",
+   "story": false
+  },
+  "TRAINER_GARRISON": {
+   "segment": "S6",
+   "role": "route",
+   "map": "AbandonedShip_Rooms2_1F",
+   "story": false
+  },
+  "TRAINER_LYDIA_2": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route117",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_LYDIA_1"
+  },
+  "TRAINER_LYDIA_3": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route117",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_LYDIA_1"
+  },
+  "TRAINER_LYDIA_4": {
+   "segment": "S8",
+   "role": "route",
+   "map": "Route117",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_LYDIA_1"
+  },
+  "TRAINER_LYDIA_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "Route117",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_LYDIA_1"
+  },
+  "TRAINER_JACKSON_1": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route119",
+   "story": false
+  },
+  "TRAINER_LORENZO": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route120",
+   "story": false
+  },
+  "TRAINER_SEBASTIAN": {
+   "segment": "S8",
+   "role": "route",
+   "map": "Route110_TrickHousePuzzle6",
+   "story": false
+  },
+  "TRAINER_JACKSON_2": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route119",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_JACKSON_1"
+  },
+  "TRAINER_JACKSON_3": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route119",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_JACKSON_1"
+  },
+  "TRAINER_JACKSON_4": {
+   "segment": "S8",
+   "role": "route",
+   "map": "Route119",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_JACKSON_1"
+  },
+  "TRAINER_JACKSON_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "Route119",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_JACKSON_1"
+  },
+  "TRAINER_CATHERINE_1": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route119",
+   "story": false
+  },
+  "TRAINER_JENNA": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route120",
+   "story": false
+  },
+  "TRAINER_SOPHIA": {
+   "segment": "S8",
+   "role": "route",
+   "map": "Route110_TrickHousePuzzle6",
+   "story": false
+  },
+  "TRAINER_CATHERINE_2": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route119",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_CATHERINE_1"
+  },
+  "TRAINER_CATHERINE_3": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route119",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_CATHERINE_1"
+  },
+  "TRAINER_CATHERINE_4": {
+   "segment": "S8",
+   "role": "route",
+   "map": "Route119",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_CATHERINE_1"
+  },
+  "TRAINER_CATHERINE_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "Route119",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_CATHERINE_1"
+  },
+  "TRAINER_JULIO": {
+   "segment": "S4",
+   "role": "route",
+   "map": "JaggedPass",
+   "story": false
+  },
+  "TRAINER_GRUNT_SEAFLOOR_CAVERN_5": {
+   "segment": "S8",
+   "role": "grunt",
+   "map": "SeafloorCavern_Room3",
+   "story": false
+  },
+  "TRAINER_GRUNT_MT_PYRE_4": {
+   "segment": "S7",
+   "role": "grunt",
+   "map": "MtPyre_Summit",
+   "story": false
+  },
+  "TRAINER_GRUNT_JAGGED_PASS": {
+   "segment": "S4",
+   "role": "grunt",
+   "map": "JaggedPass",
+   "story": false
+  },
+  "TRAINER_MARC": {
+   "segment": "S1",
+   "role": "gym",
+   "map": "RustboroCity_Gym",
+   "story": false
+  },
+  "TRAINER_BRENDEN": {
+   "segment": "S2",
+   "role": "gym",
+   "map": "DewfordTown_Gym",
+   "story": false
+  },
+  "TRAINER_LILITH": {
+   "segment": "S2",
+   "role": "gym",
+   "map": "DewfordTown_Gym",
+   "story": false
+  },
+  "TRAINER_CRISTIAN": {
+   "segment": "S2",
+   "role": "gym",
+   "map": "DewfordTown_Gym",
+   "story": false
+  },
+  "TRAINER_SYLVIA": {
+   "segment": "S7",
+   "role": "gym",
+   "map": "MossdeepCity_Gym",
+   "story": false
+  },
+  "TRAINER_LEONARDO": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route126",
+   "story": false
+  },
+  "TRAINER_ATHENA": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route127",
+   "story": false
+  },
+  "TRAINER_HARRISON": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route128",
+   "story": false
+  },
+  "TRAINER_GRUNT_MT_CHIMNEY_2": {
+   "segment": "S4",
+   "role": "grunt",
+   "map": "MtChimney",
+   "story": false
+  },
+  "TRAINER_CLARENCE": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route129",
+   "story": false
+  },
+  "TRAINER_NATE": {
+   "segment": "S7",
+   "role": "gym",
+   "map": "MossdeepCity_Gym",
+   "story": false
+  },
+  "TRAINER_KATHLEEN": {
+   "segment": "S7",
+   "role": "gym",
+   "map": "MossdeepCity_Gym",
+   "story": false
+  },
+  "TRAINER_CLIFFORD": {
+   "segment": "S7",
+   "role": "gym",
+   "map": "MossdeepCity_Gym",
+   "story": false
+  },
+  "TRAINER_NICHOLAS": {
+   "segment": "S7",
+   "role": "gym",
+   "map": "MossdeepCity_Gym",
+   "story": false
+  },
+  "TRAINER_GRUNT_SPACE_CENTER_3": {
+   "segment": "S8",
+   "role": "grunt",
+   "map": "MossdeepCity_SpaceCenter_1F",
+   "story": false
+  },
+  "TRAINER_GRUNT_SPACE_CENTER_4": {
+   "segment": "S8",
+   "role": "grunt",
+   "map": "MossdeepCity_SpaceCenter_1F",
+   "story": false
+  },
+  "TRAINER_GRUNT_SPACE_CENTER_5": {
+   "segment": "S8",
+   "role": "grunt",
+   "map": "MossdeepCity_SpaceCenter_2F",
+   "story": false
+  },
+  "TRAINER_GRUNT_SPACE_CENTER_6": {
+   "segment": "S8",
+   "role": "grunt",
+   "map": "MossdeepCity_SpaceCenter_2F",
+   "story": false
+  },
+  "TRAINER_GRUNT_SPACE_CENTER_7": {
+   "segment": "S8",
+   "role": "grunt",
+   "map": "MossdeepCity_SpaceCenter_2F",
+   "story": false
+  },
+  "TRAINER_MACEY": {
+   "segment": "S7",
+   "role": "gym",
+   "map": "MossdeepCity_Gym",
+   "story": false
+  },
+  "TRAINER_BRENDAN_RUSTBORO_TREECKO": {
+   "segment": "S1",
+   "role": "route",
+   "map": "Route104",
+   "story": true
+  },
+  "TRAINER_BRENDAN_RUSTBORO_MUDKIP": {
+   "segment": "S1",
+   "role": "route",
+   "map": "Route104",
+   "story": true
+  },
+  "TRAINER_PAXTON": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route132",
+   "story": false
+  },
+  "TRAINER_ISABELLA": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route124",
+   "story": false
+  },
+  "TRAINER_GRUNT_WEATHER_INST_5": {
+   "segment": "S6",
+   "role": "grunt",
+   "map": "Route119_WeatherInstitute_2F",
+   "story": false
+  },
+  "TRAINER_TABITHA_MT_CHIMNEY": {
+   "segment": "S4",
+   "role": "boss",
+   "map": "MtChimney",
+   "story": false
+  },
+  "TRAINER_JONATHAN": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route132",
+   "story": false
+  },
+  "TRAINER_BRENDAN_RUSTBORO_TORCHIC": {
+   "segment": "S1",
+   "role": "route",
+   "map": "Route104",
+   "story": true
+  },
+  "TRAINER_MAY_RUSTBORO_MUDKIP": {
+   "segment": "S1",
+   "role": "route",
+   "map": "Route104",
+   "story": true
+  },
+  "TRAINER_MAXIE_MAGMA_HIDEOUT": {
+   "segment": "S7",
+   "role": "boss",
+   "map": "MagmaHideout_4F",
+   "story": false
+  },
+  "TRAINER_MAXIE_MT_CHIMNEY": {
+   "segment": "S4",
+   "role": "boss",
+   "map": "MtChimney",
+   "story": false
+  },
+  "TRAINER_TIANA": {
+   "segment": "S1",
+   "role": "route",
+   "map": "Route102",
+   "story": false
+  },
+  "TRAINER_HALEY_1": {
+   "segment": "S1",
+   "role": "route",
+   "map": "Route104",
+   "story": false
+  },
+  "TRAINER_JANICE": {
+   "segment": "S1",
+   "role": "route",
+   "map": "Route116",
+   "story": false
+  },
+  "TRAINER_VIVI": {
+   "segment": "S4",
+   "role": "route",
+   "map": "Route111",
+   "story": false
+  },
+  "TRAINER_HALEY_2": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route104",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_HALEY_1"
+  },
+  "TRAINER_HALEY_3": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route104",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_HALEY_1"
+  },
+  "TRAINER_HALEY_4": {
+   "segment": "S8",
+   "role": "route",
+   "map": "Route104",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_HALEY_1"
+  },
+  "TRAINER_HALEY_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "Route104",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_HALEY_1"
+  },
+  "TRAINER_SALLY": {
+   "segment": "S3",
+   "role": "route",
+   "map": "Route110_TrickHousePuzzle1",
+   "story": false
+  },
+  "TRAINER_ROBIN": {
+   "segment": "S3",
+   "role": "route",
+   "map": "Route110_TrickHousePuzzle1",
+   "story": false
+  },
+  "TRAINER_ANDREA": {
+   "segment": "S8",
+   "role": "gym",
+   "map": "SootopolisCity_Gym_B1F",
+   "story": false
+  },
+  "TRAINER_CRISSY": {
+   "segment": "S8",
+   "role": "gym",
+   "map": "SootopolisCity_Gym_B1F",
+   "story": false
+  },
+  "TRAINER_RICK": {
+   "segment": "S1",
+   "role": "route",
+   "map": "Route102",
+   "story": false
+  },
+  "TRAINER_LYLE": {
+   "segment": "S1",
+   "role": "route",
+   "map": "PetalburgWoods",
+   "story": false
+  },
+  "TRAINER_JOSE": {
+   "segment": "S1",
+   "role": "route",
+   "map": "Route116",
+   "story": false
+  },
+  "TRAINER_DOUG": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route119",
+   "story": false
+  },
+  "TRAINER_GREG": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route119",
+   "story": false
+  },
+  "TRAINER_KENT": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route119",
+   "story": false
+  },
+  "TRAINER_JAMES_1": {
+   "segment": "S1",
+   "role": "route",
+   "map": "PetalburgWoods",
+   "story": false
+  },
+  "TRAINER_JAMES_2": {
+   "segment": "S6",
+   "role": "route",
+   "map": "PetalburgWoods",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_JAMES_1"
+  },
+  "TRAINER_JAMES_3": {
+   "segment": "S7",
+   "role": "route",
+   "map": "PetalburgWoods",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_JAMES_1"
+  },
+  "TRAINER_JAMES_4": {
+   "segment": "S8",
+   "role": "route",
+   "map": "PetalburgWoods",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_JAMES_1"
+  },
+  "TRAINER_JAMES_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "PetalburgWoods",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_JAMES_1"
+  },
+  "TRAINER_BRICE": {
+   "segment": "S4",
+   "role": "route",
+   "map": "Route112",
+   "story": false
+  },
+  "TRAINER_TRENT_1": {
+   "segment": "S4",
+   "role": "route",
+   "map": "Route112",
+   "story": false
+  },
+  "TRAINER_LENNY": {
+   "segment": "S4",
+   "role": "route",
+   "map": "Route114",
+   "story": false
+  },
+  "TRAINER_LUCAS_1": {
+   "segment": "S4",
+   "role": "route",
+   "map": "Route114",
+   "story": false
+  },
+  "TRAINER_ALAN": {
+   "segment": "S5",
+   "role": "route",
+   "map": "Route110_TrickHousePuzzle3",
+   "story": false
+  },
+  "TRAINER_CLARK": {
+   "segment": "S1",
+   "role": "route",
+   "map": "Route116",
+   "story": false
+  },
+  "TRAINER_ERIC": {
+   "segment": "S4",
+   "role": "route",
+   "map": "JaggedPass",
+   "story": false
+  },
+  "TRAINER_MIKE_2": {
+   "segment": "S2",
+   "role": "route",
+   "map": "RusturfTunnel",
+   "story": false
+  },
+  "TRAINER_TRENT_2": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route112",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_TRENT_1"
+  },
+  "TRAINER_TRENT_3": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route112",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_TRENT_1"
+  },
+  "TRAINER_TRENT_4": {
+   "segment": "S8",
+   "role": "route",
+   "map": "Route112",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_TRENT_1"
+  },
+  "TRAINER_TRENT_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "Route112",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_TRENT_1"
+  },
+  "TRAINER_DEZ_AND_LUKE": {
+   "segment": "S7",
+   "role": "route",
+   "map": "MtPyre_2F",
+   "story": false
+  },
+  "TRAINER_LEA_AND_JED": {
+   "segment": "POST",
+   "role": "route",
+   "map": "SSTidalCorridor",
+   "story": false
+  },
+  "TRAINER_KIRA_AND_DAN_1": {
+   "segment": "S6",
+   "role": "route",
+   "map": "AbandonedShip_Rooms2_1F",
+   "story": false
+  },
+  "TRAINER_KIRA_AND_DAN_2": {
+   "segment": "S6",
+   "role": "route",
+   "map": "AbandonedShip_Rooms2_1F",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_KIRA_AND_DAN_1"
+  },
+  "TRAINER_KIRA_AND_DAN_3": {
+   "segment": "S7",
+   "role": "route",
+   "map": "AbandonedShip_Rooms2_1F",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_KIRA_AND_DAN_1"
+  },
+  "TRAINER_KIRA_AND_DAN_4": {
+   "segment": "S8",
+   "role": "route",
+   "map": "AbandonedShip_Rooms2_1F",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_KIRA_AND_DAN_1"
+  },
+  "TRAINER_KIRA_AND_DAN_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "AbandonedShip_Rooms2_1F",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_KIRA_AND_DAN_1"
+  },
+  "TRAINER_JOHANNA": {
+   "segment": "S2",
+   "role": "route",
+   "map": "Route109_SeashoreHouse",
+   "story": false
+  },
+  "TRAINER_GERALD": {
+   "segment": "S4",
+   "role": "gym",
+   "map": "LavaridgeTown_Gym_1F",
+   "story": false
+  },
+  "TRAINER_VIVIAN": {
+   "segment": "S3",
+   "role": "gym",
+   "map": "MauvilleCity_Gym",
+   "story": false
+  },
+  "TRAINER_DANIELLE": {
+   "segment": "S4",
+   "role": "gym",
+   "map": "LavaridgeTown_Gym_1F",
+   "story": false
+  },
+  "TRAINER_HIDEO": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route119",
+   "story": false
+  },
+  "TRAINER_KEIGO": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route120",
+   "story": false
+  },
+  "TRAINER_RILEY": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route120",
+   "story": false
+  },
+  "TRAINER_FLINT": {
+   "segment": "S6",
+   "role": "gym",
+   "map": "FortreeCity_Gym",
+   "story": false
+  },
+  "TRAINER_ASHLEY": {
+   "segment": "S6",
+   "role": "gym",
+   "map": "FortreeCity_Gym",
+   "story": false
+  },
+  "TRAINER_WALLY_MAUVILLE": {
+   "segment": "S3",
+   "role": "route",
+   "map": "MauvilleCity",
+   "story": true
+  },
+  "TRAINER_WALLY_VR_2": {
+   "segment": "S9",
+   "role": "route",
+   "map": "VictoryRoad_1F",
+   "story": true
+  },
+  "TRAINER_WALLY_VR_3": {
+   "segment": "POST",
+   "role": "route",
+   "map": "VictoryRoad_1F",
+   "story": true,
+   "tier": 2,
+   "first": "TRAINER_WALLY_VR_2"
+  },
+  "TRAINER_WALLY_VR_4": {
+   "segment": "POST",
+   "role": "route",
+   "map": "VictoryRoad_1F",
+   "story": true,
+   "tier": 3,
+   "first": "TRAINER_WALLY_VR_2"
+  },
+  "TRAINER_WALLY_VR_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "VictoryRoad_1F",
+   "story": true,
+   "tier": 4,
+   "first": "TRAINER_WALLY_VR_2"
+  },
+  "TRAINER_BRENDAN_LILYCOVE_MUDKIP": {
+   "segment": "S7",
+   "role": "route",
+   "map": "LilycoveCity",
+   "story": true
+  },
+  "TRAINER_BRENDAN_LILYCOVE_TREECKO": {
+   "segment": "S7",
+   "role": "route",
+   "map": "LilycoveCity",
+   "story": true
+  },
+  "TRAINER_BRENDAN_LILYCOVE_TORCHIC": {
+   "segment": "S7",
+   "role": "route",
+   "map": "LilycoveCity",
+   "story": true
+  },
+  "TRAINER_MAY_LILYCOVE_MUDKIP": {
+   "segment": "S7",
+   "role": "route",
+   "map": "LilycoveCity",
+   "story": true
+  },
+  "TRAINER_MAY_LILYCOVE_TREECKO": {
+   "segment": "S7",
+   "role": "route",
+   "map": "LilycoveCity",
+   "story": true
+  },
+  "TRAINER_MAY_LILYCOVE_TORCHIC": {
+   "segment": "S7",
+   "role": "route",
+   "map": "LilycoveCity",
+   "story": true
+  },
+  "TRAINER_JONAH": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route127",
+   "story": false
+  },
+  "TRAINER_HENRY": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route127",
+   "story": false
+  },
+  "TRAINER_ROGER": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route127",
+   "story": false
+  },
+  "TRAINER_ALEXA": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route128",
+   "story": false
+  },
+  "TRAINER_RUBEN": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route128",
+   "story": false
+  },
+  "TRAINER_KOJI_1": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route127",
+   "story": false
+  },
+  "TRAINER_WAYNE": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route128",
+   "story": false
+  },
+  "TRAINER_AIDAN": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route127",
+   "story": false
+  },
+  "TRAINER_REED": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route129",
+   "story": false
+  },
+  "TRAINER_TISHA": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route129",
+   "story": false
+  },
+  "TRAINER_TORI_AND_TIA": {
+   "segment": "S4",
+   "role": "route",
+   "map": "Route113",
+   "story": false
+  },
+  "TRAINER_KIM_AND_IRIS": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route125",
+   "story": false
+  },
+  "TRAINER_TYRA_AND_IVY": {
+   "segment": "S4",
+   "role": "route",
+   "map": "Route114",
+   "story": false
+  },
+  "TRAINER_MEL_AND_PAUL": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route109",
+   "story": false
+  },
+  "TRAINER_JOHN_AND_JAY_1": {
+   "segment": "S9",
+   "role": "route",
+   "map": "MeteorFalls_1F_2R",
+   "story": false
+  },
+  "TRAINER_JOHN_AND_JAY_2": {
+   "segment": "S9",
+   "role": "route",
+   "map": "MeteorFalls_1F_2R",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_JOHN_AND_JAY_1"
+  },
+  "TRAINER_JOHN_AND_JAY_3": {
+   "segment": "S9",
+   "role": "route",
+   "map": "MeteorFalls_1F_2R",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_JOHN_AND_JAY_1"
+  },
+  "TRAINER_JOHN_AND_JAY_4": {
+   "segment": "S9",
+   "role": "route",
+   "map": "MeteorFalls_1F_2R",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_JOHN_AND_JAY_1"
+  },
+  "TRAINER_JOHN_AND_JAY_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "MeteorFalls_1F_2R",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_JOHN_AND_JAY_1"
+  },
+  "TRAINER_RELI_AND_IAN": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route131",
+   "story": false
+  },
+  "TRAINER_LILA_AND_ROY_1": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route124",
+   "story": false
+  },
+  "TRAINER_LILA_AND_ROY_2": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route124",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_LILA_AND_ROY_1"
+  },
+  "TRAINER_LILA_AND_ROY_3": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route124",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_LILA_AND_ROY_1"
+  },
+  "TRAINER_LILA_AND_ROY_4": {
+   "segment": "S8",
+   "role": "route",
+   "map": "Route124",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_LILA_AND_ROY_1"
+  },
+  "TRAINER_LILA_AND_ROY_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "Route124",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_LILA_AND_ROY_1"
+  },
+  "TRAINER_LISA_AND_RAY": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route107",
+   "story": false
+  },
+  "TRAINER_CHRIS": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route119",
+   "story": false
+  },
+  "TRAINER_DAWSON": {
+   "segment": "S1",
+   "role": "route",
+   "map": "Route116",
+   "story": false
+  },
+  "TRAINER_SARAH": {
+   "segment": "S1",
+   "role": "route",
+   "map": "Route116",
+   "story": false
+  },
+  "TRAINER_DARIAN": {
+   "segment": "S1",
+   "role": "route",
+   "map": "Route104",
+   "story": false
+  },
+  "TRAINER_HAILEY": {
+   "segment": "S2",
+   "role": "route",
+   "map": "Route109",
+   "story": false
+  },
+  "TRAINER_CHANDLER": {
+   "segment": "S2",
+   "role": "route",
+   "map": "Route109",
+   "story": false
+  },
+  "TRAINER_KALEB": {
+   "segment": "S3",
+   "role": "route",
+   "map": "Route110",
+   "story": false
+  },
+  "TRAINER_JOSEPH": {
+   "segment": "S3",
+   "role": "route",
+   "map": "Route110",
+   "story": false
+  },
+  "TRAINER_ALYSSA": {
+   "segment": "S3",
+   "role": "route",
+   "map": "Route110",
+   "story": false
+  },
+  "TRAINER_MARCOS": {
+   "segment": "S3",
+   "role": "route",
+   "map": "Route103",
+   "story": false
+  },
+  "TRAINER_RHETT": {
+   "segment": "S3",
+   "role": "route",
+   "map": "Route103",
+   "story": false
+  },
+  "TRAINER_TYRON": {
+   "segment": "S4",
+   "role": "route",
+   "map": "Route111",
+   "story": false
+  },
+  "TRAINER_CELINA": {
+   "segment": "S4",
+   "role": "route",
+   "map": "Route111",
+   "story": false
+  },
+  "TRAINER_BIANCA": {
+   "segment": "S4",
+   "role": "route",
+   "map": "Route111",
+   "story": false
+  },
+  "TRAINER_HAYDEN": {
+   "segment": "S4",
+   "role": "route",
+   "map": "Route111",
+   "story": false
+  },
+  "TRAINER_SOPHIE": {
+   "segment": "S4",
+   "role": "route",
+   "map": "Route113",
+   "story": false
+  },
+  "TRAINER_COBY": {
+   "segment": "S4",
+   "role": "route",
+   "map": "Route113",
+   "story": false
+  },
+  "TRAINER_LAWRENCE": {
+   "segment": "S4",
+   "role": "route",
+   "map": "Route113",
+   "story": false
+  },
+  "TRAINER_WYATT": {
+   "segment": "S4",
+   "role": "route",
+   "map": "Route113",
+   "story": false
+  },
+  "TRAINER_ANGELINA": {
+   "segment": "S4",
+   "role": "route",
+   "map": "Route114",
+   "story": false
+  },
+  "TRAINER_KAI": {
+   "segment": "S4",
+   "role": "route",
+   "map": "Route114",
+   "story": false
+  },
+  "TRAINER_CHARLOTTE": {
+   "segment": "S4",
+   "role": "route",
+   "map": "Route114",
+   "story": false
+  },
+  "TRAINER_DEANDRE": {
+   "segment": "S3",
+   "role": "route",
+   "map": "Route118",
+   "story": false
+  },
+  "TRAINER_GRUNT_MAGMA_HIDEOUT_1": {
+   "segment": "S7",
+   "role": "grunt",
+   "map": "MagmaHideout_1F",
+   "story": false
+  },
+  "TRAINER_GRUNT_MAGMA_HIDEOUT_2": {
+   "segment": "S7",
+   "role": "grunt",
+   "map": "MagmaHideout_1F",
+   "story": false
+  },
+  "TRAINER_GRUNT_MAGMA_HIDEOUT_3": {
+   "segment": "S7",
+   "role": "grunt",
+   "map": "MagmaHideout_2F_1R",
+   "story": false
+  },
+  "TRAINER_GRUNT_MAGMA_HIDEOUT_4": {
+   "segment": "S7",
+   "role": "grunt",
+   "map": "MagmaHideout_2F_1R",
+   "story": false
+  },
+  "TRAINER_GRUNT_MAGMA_HIDEOUT_5": {
+   "segment": "S7",
+   "role": "grunt",
+   "map": "MagmaHideout_2F_1R",
+   "story": false
+  },
+  "TRAINER_GRUNT_MAGMA_HIDEOUT_6": {
+   "segment": "S7",
+   "role": "grunt",
+   "map": "MagmaHideout_2F_2R",
+   "story": false
+  },
+  "TRAINER_GRUNT_MAGMA_HIDEOUT_7": {
+   "segment": "S7",
+   "role": "grunt",
+   "map": "MagmaHideout_2F_2R",
+   "story": false
+  },
+  "TRAINER_GRUNT_MAGMA_HIDEOUT_8": {
+   "segment": "S7",
+   "role": "grunt",
+   "map": "MagmaHideout_2F_2R",
+   "story": false
+  },
+  "TRAINER_GRUNT_MAGMA_HIDEOUT_9": {
+   "segment": "S7",
+   "role": "grunt",
+   "map": "MagmaHideout_3F_1R",
+   "story": false
+  },
+  "TRAINER_GRUNT_MAGMA_HIDEOUT_10": {
+   "segment": "S7",
+   "role": "grunt",
+   "map": "MagmaHideout_3F_2R",
+   "story": false
+  },
+  "TRAINER_GRUNT_MAGMA_HIDEOUT_11": {
+   "segment": "S7",
+   "role": "grunt",
+   "map": "MagmaHideout_4F",
+   "story": false
+  },
+  "TRAINER_GRUNT_MAGMA_HIDEOUT_12": {
+   "segment": "S7",
+   "role": "grunt",
+   "map": "MagmaHideout_4F",
+   "story": false
+  },
+  "TRAINER_GRUNT_MAGMA_HIDEOUT_13": {
+   "segment": "S7",
+   "role": "grunt",
+   "map": "MagmaHideout_4F",
+   "story": false
+  },
+  "TRAINER_GRUNT_MAGMA_HIDEOUT_14": {
+   "segment": "S7",
+   "role": "grunt",
+   "map": "MagmaHideout_2F_1R",
+   "story": false
+  },
+  "TRAINER_GRUNT_MAGMA_HIDEOUT_15": {
+   "segment": "S7",
+   "role": "grunt",
+   "map": "MagmaHideout_2F_2R",
+   "story": false
+  },
+  "TRAINER_GRUNT_MAGMA_HIDEOUT_16": {
+   "segment": "S7",
+   "role": "grunt",
+   "map": "MagmaHideout_3F_1R",
+   "story": false
+  },
+  "TRAINER_TABITHA_MAGMA_HIDEOUT": {
+   "segment": "S7",
+   "role": "boss",
+   "map": "MagmaHideout_4F",
+   "story": false
+  },
+  "TRAINER_DARCY": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route132",
+   "story": false
+  },
+  "TRAINER_MAXIE_MOSSDEEP": {
+   "segment": "S8",
+   "role": "boss",
+   "map": "MossdeepCity_SpaceCenter_2F",
+   "story": false
+  },
+  "TRAINER_PETE": {
+   "segment": "S3",
+   "role": "route",
+   "map": "Route103",
+   "story": false
+  },
+  "TRAINER_ISABELLE": {
+   "segment": "S3",
+   "role": "route",
+   "map": "Route103",
+   "story": false
+  },
+  "TRAINER_ANDRES_1": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route105",
+   "story": false
+  },
+  "TRAINER_JOSUE": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route105",
+   "story": false
+  },
+  "TRAINER_CAMRON": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route107",
+   "story": false
+  },
+  "TRAINER_CORY_1": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route108",
+   "story": false
+  },
+  "TRAINER_CAROLINA": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route108",
+   "story": false
+  },
+  "TRAINER_ELIJAH": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route109",
+   "story": false
+  },
+  "TRAINER_CELIA": {
+   "segment": "S5",
+   "role": "route",
+   "map": "Route111",
+   "story": false
+  },
+  "TRAINER_BRYAN": {
+   "segment": "S5",
+   "role": "route",
+   "map": "Route111",
+   "story": false
+  },
+  "TRAINER_BRANDEN": {
+   "segment": "S5",
+   "role": "route",
+   "map": "Route111",
+   "story": false
+  },
+  "TRAINER_BRYANT": {
+   "segment": "S4",
+   "role": "route",
+   "map": "Route112",
+   "story": false
+  },
+  "TRAINER_SHAYLA": {
+   "segment": "S4",
+   "role": "route",
+   "map": "Route112",
+   "story": false
+  },
+  "TRAINER_KYRA": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route115",
+   "story": false
+  },
+  "TRAINER_JAIDEN": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route115",
+   "story": false
+  },
+  "TRAINER_ALIX": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route115",
+   "story": false
+  },
+  "TRAINER_HELENE": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route115",
+   "story": false
+  },
+  "TRAINER_MARLENE": {
+   "segment": "S2",
+   "role": "route",
+   "map": "Route115",
+   "story": false
+  },
+  "TRAINER_DEVAN": {
+   "segment": "S1",
+   "role": "route",
+   "map": "Route116",
+   "story": false
+  },
+  "TRAINER_JOHNSON": {
+   "segment": "S1",
+   "role": "route",
+   "map": "Route116",
+   "story": false
+  },
+  "TRAINER_MELINA": {
+   "segment": "S3",
+   "role": "route",
+   "map": "Route117",
+   "story": false
+  },
+  "TRAINER_BRANDI": {
+   "segment": "S3",
+   "role": "route",
+   "map": "Route117",
+   "story": false
+  },
+  "TRAINER_AISHA": {
+   "segment": "S3",
+   "role": "route",
+   "map": "Route117",
+   "story": false
+  },
+  "TRAINER_MAKAYLA": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route132",
+   "story": false
+  },
+  "TRAINER_FABIAN": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route119",
+   "story": false
+  },
+  "TRAINER_DAYTON": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route119",
+   "story": false
+  },
+  "TRAINER_RACHEL": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route119",
+   "story": false
+  },
+  "TRAINER_LEONEL": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route120",
+   "story": false
+  },
+  "TRAINER_CALLIE": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route120",
+   "story": false
+  },
+  "TRAINER_CALE": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route121",
+   "story": false
+  },
+  "TRAINER_MYLES": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route121",
+   "story": false
+  },
+  "TRAINER_PAT": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route121",
+   "story": false
+  },
+  "TRAINER_CRISTIN_1": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route121",
+   "story": false
+  },
+  "TRAINER_MAY_RUSTBORO_TREECKO": {
+   "segment": "S1",
+   "role": "route",
+   "map": "Route104",
+   "story": true
+  },
+  "TRAINER_MAY_RUSTBORO_TORCHIC": {
+   "segment": "S1",
+   "role": "route",
+   "map": "Route104",
+   "story": true
+  },
+  "TRAINER_ROXANNE_2": {
+   "segment": "POST",
+   "role": "leader",
+   "map": "RustboroCity_Gym",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_ROXANNE_1"
+  },
+  "TRAINER_ROXANNE_3": {
+   "segment": "POST",
+   "role": "leader",
+   "map": "RustboroCity_Gym",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_ROXANNE_1"
+  },
+  "TRAINER_ROXANNE_4": {
+   "segment": "POST",
+   "role": "leader",
+   "map": "RustboroCity_Gym",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_ROXANNE_1"
+  },
+  "TRAINER_ROXANNE_5": {
+   "segment": "POST",
+   "role": "leader",
+   "map": "RustboroCity_Gym",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_ROXANNE_1"
+  },
+  "TRAINER_BRAWLY_2": {
+   "segment": "POST",
+   "role": "leader",
+   "map": "DewfordTown_Gym",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_BRAWLY_1"
+  },
+  "TRAINER_BRAWLY_3": {
+   "segment": "POST",
+   "role": "leader",
+   "map": "DewfordTown_Gym",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_BRAWLY_1"
+  },
+  "TRAINER_BRAWLY_4": {
+   "segment": "POST",
+   "role": "leader",
+   "map": "DewfordTown_Gym",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_BRAWLY_1"
+  },
+  "TRAINER_BRAWLY_5": {
+   "segment": "POST",
+   "role": "leader",
+   "map": "DewfordTown_Gym",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_BRAWLY_1"
+  },
+  "TRAINER_WATTSON_2": {
+   "segment": "POST",
+   "role": "leader",
+   "map": "MauvilleCity_Gym",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_WATTSON_1"
+  },
+  "TRAINER_WATTSON_3": {
+   "segment": "POST",
+   "role": "leader",
+   "map": "MauvilleCity_Gym",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_WATTSON_1"
+  },
+  "TRAINER_WATTSON_4": {
+   "segment": "POST",
+   "role": "leader",
+   "map": "MauvilleCity_Gym",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_WATTSON_1"
+  },
+  "TRAINER_WATTSON_5": {
+   "segment": "POST",
+   "role": "leader",
+   "map": "MauvilleCity_Gym",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_WATTSON_1"
+  },
+  "TRAINER_FLANNERY_2": {
+   "segment": "POST",
+   "role": "leader",
+   "map": "LavaridgeTown_Gym_1F",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_FLANNERY_1"
+  },
+  "TRAINER_FLANNERY_3": {
+   "segment": "POST",
+   "role": "leader",
+   "map": "LavaridgeTown_Gym_1F",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_FLANNERY_1"
+  },
+  "TRAINER_FLANNERY_4": {
+   "segment": "POST",
+   "role": "leader",
+   "map": "LavaridgeTown_Gym_1F",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_FLANNERY_1"
+  },
+  "TRAINER_FLANNERY_5": {
+   "segment": "POST",
+   "role": "leader",
+   "map": "LavaridgeTown_Gym_1F",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_FLANNERY_1"
+  },
+  "TRAINER_NORMAN_2": {
+   "segment": "POST",
+   "role": "leader",
+   "map": "PetalburgCity_Gym",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_NORMAN_1"
+  },
+  "TRAINER_NORMAN_3": {
+   "segment": "POST",
+   "role": "leader",
+   "map": "PetalburgCity_Gym",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_NORMAN_1"
+  },
+  "TRAINER_NORMAN_4": {
+   "segment": "POST",
+   "role": "leader",
+   "map": "PetalburgCity_Gym",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_NORMAN_1"
+  },
+  "TRAINER_NORMAN_5": {
+   "segment": "POST",
+   "role": "leader",
+   "map": "PetalburgCity_Gym",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_NORMAN_1"
+  },
+  "TRAINER_WINONA_2": {
+   "segment": "POST",
+   "role": "leader",
+   "map": "FortreeCity_Gym",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_WINONA_1"
+  },
+  "TRAINER_WINONA_3": {
+   "segment": "POST",
+   "role": "leader",
+   "map": "FortreeCity_Gym",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_WINONA_1"
+  },
+  "TRAINER_WINONA_4": {
+   "segment": "POST",
+   "role": "leader",
+   "map": "FortreeCity_Gym",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_WINONA_1"
+  },
+  "TRAINER_WINONA_5": {
+   "segment": "POST",
+   "role": "leader",
+   "map": "FortreeCity_Gym",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_WINONA_1"
+  },
+  "TRAINER_TATE_AND_LIZA_2": {
+   "segment": "POST",
+   "role": "leader",
+   "map": "MossdeepCity_Gym",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_TATE_AND_LIZA_1"
+  },
+  "TRAINER_TATE_AND_LIZA_3": {
+   "segment": "POST",
+   "role": "leader",
+   "map": "MossdeepCity_Gym",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_TATE_AND_LIZA_1"
+  },
+  "TRAINER_TATE_AND_LIZA_4": {
+   "segment": "POST",
+   "role": "leader",
+   "map": "MossdeepCity_Gym",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_TATE_AND_LIZA_1"
+  },
+  "TRAINER_TATE_AND_LIZA_5": {
+   "segment": "POST",
+   "role": "leader",
+   "map": "MossdeepCity_Gym",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_TATE_AND_LIZA_1"
+  },
+  "TRAINER_JUAN_2": {
+   "segment": "POST",
+   "role": "leader",
+   "map": "SootopolisCity_Gym_1F",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_JUAN_1"
+  },
+  "TRAINER_JUAN_3": {
+   "segment": "POST",
+   "role": "leader",
+   "map": "SootopolisCity_Gym_1F",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_JUAN_1"
+  },
+  "TRAINER_JUAN_4": {
+   "segment": "POST",
+   "role": "leader",
+   "map": "SootopolisCity_Gym_1F",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_JUAN_1"
+  },
+  "TRAINER_JUAN_5": {
+   "segment": "POST",
+   "role": "leader",
+   "map": "SootopolisCity_Gym_1F",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_JUAN_1"
+  },
+  "TRAINER_ANGELO": {
+   "segment": "S3",
+   "role": "gym",
+   "map": "MauvilleCity_Gym",
+   "story": false
+  },
+  "TRAINER_DARIUS": {
+   "segment": "S6",
+   "role": "gym",
+   "map": "FortreeCity_Gym",
+   "story": false
+  },
+  "TRAINER_STEVEN": {
+   "segment": "POST",
+   "role": "elite",
+   "map": "MeteorFalls_StevensCave",
+   "story": false
+  },
+  "TRAINER_ANDRES_2": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route105",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_ANDRES_1"
+  },
+  "TRAINER_ANDRES_3": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route105",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_ANDRES_1"
+  },
+  "TRAINER_ANDRES_4": {
+   "segment": "S8",
+   "role": "route",
+   "map": "Route105",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_ANDRES_1"
+  },
+  "TRAINER_ANDRES_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "Route105",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_ANDRES_1"
+  },
+  "TRAINER_CORY_2": {
+   "segment": "S6",
+   "role": "route",
+   "map": "Route108",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_CORY_1"
+  },
+  "TRAINER_CORY_3": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route108",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_CORY_1"
+  },
+  "TRAINER_CORY_4": {
+   "segment": "S8",
+   "role": "route",
+   "map": "Route108",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_CORY_1"
+  },
+  "TRAINER_CORY_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "Route108",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_CORY_1"
+  },
+  "TRAINER_PABLO_2": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route126",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_PABLO_1"
+  },
+  "TRAINER_PABLO_3": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route126",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_PABLO_1"
+  },
+  "TRAINER_PABLO_4": {
+   "segment": "S8",
+   "role": "route",
+   "map": "Route126",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_PABLO_1"
+  },
+  "TRAINER_PABLO_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "Route126",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_PABLO_1"
+  },
+  "TRAINER_KOJI_2": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route127",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_KOJI_1"
+  },
+  "TRAINER_KOJI_3": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route127",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_KOJI_1"
+  },
+  "TRAINER_KOJI_4": {
+   "segment": "S8",
+   "role": "route",
+   "map": "Route127",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_KOJI_1"
+  },
+  "TRAINER_KOJI_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "Route127",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_KOJI_1"
+  },
+  "TRAINER_CRISTIN_2": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route121",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_CRISTIN_1"
+  },
+  "TRAINER_CRISTIN_3": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route121",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_CRISTIN_1"
+  },
+  "TRAINER_CRISTIN_4": {
+   "segment": "S8",
+   "role": "route",
+   "map": "Route121",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_CRISTIN_1"
+  },
+  "TRAINER_CRISTIN_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "Route121",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_CRISTIN_1"
+  },
+  "TRAINER_FERNANDO_2": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route123",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_FERNANDO_1"
+  },
+  "TRAINER_FERNANDO_3": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route123",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_FERNANDO_1"
+  },
+  "TRAINER_FERNANDO_4": {
+   "segment": "S8",
+   "role": "route",
+   "map": "Route123",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_FERNANDO_1"
+  },
+  "TRAINER_FERNANDO_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "Route123",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_FERNANDO_1"
+  },
+  "TRAINER_SAWYER_2": {
+   "segment": "S6",
+   "role": "route",
+   "map": "MtChimney",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_SAWYER_1"
+  },
+  "TRAINER_SAWYER_3": {
+   "segment": "S7",
+   "role": "route",
+   "map": "MtChimney",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_SAWYER_1"
+  },
+  "TRAINER_SAWYER_4": {
+   "segment": "S8",
+   "role": "route",
+   "map": "MtChimney",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_SAWYER_1"
+  },
+  "TRAINER_SAWYER_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "MtChimney",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_SAWYER_1"
+  },
+  "TRAINER_GABRIELLE_2": {
+   "segment": "S7",
+   "role": "route",
+   "map": "MtPyre_3F",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_GABRIELLE_1"
+  },
+  "TRAINER_GABRIELLE_3": {
+   "segment": "S7",
+   "role": "route",
+   "map": "MtPyre_3F",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_GABRIELLE_1"
+  },
+  "TRAINER_GABRIELLE_4": {
+   "segment": "S8",
+   "role": "route",
+   "map": "MtPyre_3F",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_GABRIELLE_1"
+  },
+  "TRAINER_GABRIELLE_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "MtPyre_3F",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_GABRIELLE_1"
+  },
+  "TRAINER_THALIA_2": {
+   "segment": "S6",
+   "role": "route",
+   "map": "AbandonedShip_Rooms_1F",
+   "story": false,
+   "tier": 2,
+   "first": "TRAINER_THALIA_1"
+  },
+  "TRAINER_THALIA_3": {
+   "segment": "S7",
+   "role": "route",
+   "map": "AbandonedShip_Rooms_1F",
+   "story": false,
+   "tier": 3,
+   "first": "TRAINER_THALIA_1"
+  },
+  "TRAINER_THALIA_4": {
+   "segment": "S8",
+   "role": "route",
+   "map": "AbandonedShip_Rooms_1F",
+   "story": false,
+   "tier": 4,
+   "first": "TRAINER_THALIA_1"
+  },
+  "TRAINER_THALIA_5": {
+   "segment": "POST",
+   "role": "route",
+   "map": "AbandonedShip_Rooms_1F",
+   "story": false,
+   "tier": 5,
+   "first": "TRAINER_THALIA_1"
+  },
+  "TRAINER_MARIELA": {
+   "segment": "S9",
+   "role": "route",
+   "map": "Route110_TrickHousePuzzle7",
+   "story": false
+  },
+  "TRAINER_ALVARO": {
+   "segment": "S9",
+   "role": "route",
+   "map": "Route110_TrickHousePuzzle7",
+   "story": false
+  },
+  "TRAINER_EVERETT": {
+   "segment": "S9",
+   "role": "route",
+   "map": "Route110_TrickHousePuzzle7",
+   "story": false
+  },
+  "TRAINER_ASTER_PASS_DEINO": {
+   "segment": "S1",
+   "role": "route",
+   "map": "DraconidPass",
+   "story": true
+  },
+  "TRAINER_ASTER_PASS_DREEPY": {
+   "segment": "S1",
+   "role": "route",
+   "map": "DraconidPass",
+   "story": true
+  },
+  "TRAINER_ASTER_PASS_JANGMO_O": {
+   "segment": "S1",
+   "role": "route",
+   "map": "DraconidPass",
+   "story": true
+  }
+ }
+}

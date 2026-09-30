@@ -1129,6 +1129,16 @@
 #undef P_FAMILY_PECHARUNT
 #define P_FAMILY_PECHARUNT               TRUE
 
+// Draconid Emerald: the hack's level caps would stop EXP gain in tests (no badges there)
+#undef B_EXP_CAP_TYPE
+#define B_EXP_CAP_TYPE                  EXP_CAP_NONE
+#undef B_LEVEL_CAP_TYPE
+#define B_LEVEL_CAP_TYPE                LEVEL_CAP_NONE
+#undef B_RARE_CANDY_CAP
+#define B_RARE_CANDY_CAP                FALSE
+#undef B_LEVEL_CAP_EXP_UP
+#define B_LEVEL_CAP_EXP_UP              FALSE
+
 // Vars
 #undef B_VAR_DIFFICULTY
 #define B_VAR_DIFFICULTY                TESTING_VAR_DIFFICULTY

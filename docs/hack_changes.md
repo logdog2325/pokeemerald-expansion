@@ -21,6 +21,7 @@ Grouped by area; each entry names the file(s).
 | Player outfit art builders | `tools/hack/art/player/build_player.py`, `build_pics.py`, specs `draconid_m/f.json`, `magma_m/f.json`, `*_pics.json` | see docs/hack_art_pipeline.md |
 | Outfit C code generator | `tools/hack/art/player/gen_outfit_code.py` | writes between `DRACONID PLAYER OUTFITS` markers |
 | Art manifest | `tools/hack/art/manifests/draconid.json` | `validate.py --manifest` for all player art; new `map_icon` profile in `gbaart.py` |
+| Trainer tools | `tools/hack/trainers/`: `party.py` (reader/writer), `scan_maps.py` (map → trainers), `build_segments.py` → `segments.json` (segment, role, cap per trainer), `check_party.py` (legality, caps, headers, trainerproc), `splice_party.py` (merge batches), `learnset.py` | see docs/hack_trainers.md |
 
 ## Config options
 | Option | Old | New | File |
@@ -29,6 +30,12 @@ Grouped by area; each entry names the file(s).
 | `WE_FLAG_NO_ENCOUNTER` | `0` | `FLAG_DEBUG_NO_ENCOUNTER` | `include/config/wild_encounter.h` |
 | `OW_FLAG_NO_TRAINER_SEE` | `0` | `FLAG_DEBUG_NO_TRAINER_SEE` | `include/config/overworld.h` |
 | `OW_FLAG_NO_COLLISION` | `0` | `FLAG_DEBUG_NO_COLLISION` | `include/config/overworld.h` |
+| `B_EXP_CAP_TYPE` | `EXP_CAP_NONE` | `EXP_CAP_HARD` | `include/config/caps.h` |
+| `B_LEVEL_CAP_TYPE` | `LEVEL_CAP_NONE` | `LEVEL_CAP_FLAG_LIST` | `include/config/caps.h` |
+| `B_RARE_CANDY_CAP` | `FALSE` | `TRUE` | `include/config/caps.h` |
+| `B_LEVEL_CAP_EXP_UP` | `FALSE` | `TRUE` | `include/config/caps.h` |
+| `OW_REMATCH_TIER_BADGES` (new) | – | `TRUE` | `include/config/overworld.h` |
+| Tests build: caps off (`B_EXP_CAP_TYPE`, `B_LEVEL_CAP_TYPE`, `B_RARE_CANDY_CAP`, `B_LEVEL_CAP_EXP_UP` back to vanilla) | – | – | `include/config/test.h` |
 
 ## Flags
 | Flag | Meaning |
@@ -101,6 +108,8 @@ Grouped by area; each entry names the file(s).
 | Decorating sprite and easy-chat interview sprite follow the outfit | `src/decoration.c`, `src/easy_chat.c` |
 | Region map / PokéNav player icon: Draconid or Magma head per outfit | `src/region_map.c`, `graphics/pokenav/region_map/*_icon.png` |
 | Outfit sprite data, palettes, reflection sets (generated) | `src/data/object_events/*.h`, `src/event_object_movement.c` |
+| Level caps per badge: 15/20/25/30/34/38/44/48, 60 until the Champion (was 15/19/24/29/31/33/42/46/58) | `src/caps.c` (`sLevelCapFlagMap`) |
+| Rematch tiers gated by badges (`IsRematchTierUnlocked`, `GetBadgeCount`) | `src/battle_setup.c` (`GetRematchTrainerIdFromTable`) |
 
 ## Scripts
 | Script / label | File |

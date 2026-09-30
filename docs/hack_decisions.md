@@ -115,6 +115,32 @@ when a playtest note overrides something here, the entry is updated and marked.
 - **D-056 Aster's class and music**: new class **DRACONID**; battles use the rival theme (`MUS_VS_RIVAL`), encounter
   music is the "intense" theme. – Alt: new music. – No composing tools in the pipeline; these tracks fit a rival
   from a warrior clan. The Sky Pillar climax can switch to a bigger track by script later.
+- **D-060 Level caps**: hard caps (`EXP_CAP_HARD`) from the badge list: 15, 20, 25, 30, 34, 38, 44, 48, 60 until
+  the Champion, none after. Rare Candies respect the cap; Pokémon under the cap get extra EXP.
+  – Alt: soft caps (reduced EXP), the expansion's defaults (15…58), a cap var. – Hard caps make the "every trainer
+  is a rematch team" difficulty fair: trainer levels can be tuned knowing exactly how strong the player can be.
+  The numbers leave each gym leader's ace at the cap. The tests build keeps caps off (vanilla EXP tests).
+- **D-061 Trainer segments**: each trainer is placed in the earliest segment (between two badges) the player can
+  reach it in, per trainer where maps are split by Surf, the desert, Waterfall or Rock Smash; Trick House puzzles
+  follow their badge gates; the S.S. Tidal is post-game. – Alt: vanilla map order only. – A trainer's levels then
+  never exceed the cap in force. Table: `tools/hack/trainers/segments.json`.
+- **D-062 Rematch tiers need badges**: tier 2/3/4 need 5/6/7 badges, the last tier the game cleared
+  (`OW_REMATCH_TIER_BADGES`). – Alt: vanilla (all tiers after 5 badges). – Otherwise a tier-5 team could be met
+  under the Balance Badge cap.
+- **D-063 Where teams come from**: trainers with Emerald rematch tiers use their Emerald rematch roster for every
+  tier (so tiers written separately stay one trainer); others use their ORAS rematch team when known with
+  confidence, otherwise their own team made fuller. No ORAS data files are in the repo, so every team goes through
+  `check_party.py` (moves, abilities, evolution levels, caps). – Alt: ORAS for everyone. – Reproducible and
+  checkable; the brief's "Emerald rematch if none".
+- **D-064 AI**: route trainers `Basic Trainer` (+ `Smart Mon Choices` from S4), gym trainers `Basic Trainer /
+  Smart Mon Choices`, bosses and rivals `Smart Trainer / Ace Pokemon`, Elite Four / Champion / post-game bosses
+  `+ Prediction`. – Alt: Smart Trainer everywhere. – Bosses feel smart; route trainers stay quick to play.
+- **D-065 Species pool**: Hoenn Pokédex (with cross-gen evolutions) + every species a vanilla Emerald trainer uses;
+  Deino/Dreepy/Jangmo-o lines only for the player and Aster; no legendaries. – Alt: any species. – Keeps Hoenn's
+  feel and the player's dragon special.
+- **D-066 Trainer Megas**: Maxie (Magma Hideout, Camerupt), Archie (Seafloor Cavern, Sharpedo) as in ORAS,
+  Steven (Metagross), gym leaders' last rematch tier, and the story trainers late. – Alt: Megas for all bosses.
+  – Megas stay special; the ORAS villains' Megas are canon.
 - **D-037 Trainer ID capacity**: `MAX_TRAINERS_COUNT` is 864 and vanilla uses 855, so only 9 new IDs fit.
   Aster's first fight uses 3 (one per egg). Plan for Phase 5: reuse the unused/duplicated rival IDs where the
   vanilla game has them, then raise `MAX_TRAINERS_COUNT` together with the trainer-flag space (saveblock
