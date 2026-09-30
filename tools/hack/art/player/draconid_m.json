@@ -1,6 +1,6 @@
 {
  "name": "draconid_m",
- "note": "Draconid dragon tamer (male). Base: FRLG Red (recoloured, new head). See docs/hack_art_pipeline.md.",
+ "note": "Draconid dragon tamer (male). Base: FRLG Red (recoloured, new head, the red scale scarf drawn by the scarf_* overlays). See docs/hack_art_pipeline.md.",
  "base_dir": "graphics/object_events/pics/people/red",
  "out_dir": "graphics/object_events/pics/people/draconid_m",
  "palette_out": "graphics/object_events/palettes/draconid_m.pal",
@@ -191,6 +191,17 @@
     "up",
     "left",
     "left"
+   ],
+   "overlays": [
+    "scarf_down",
+    "scarf_up",
+    "scarf_left",
+    "scarf_down",
+    "scarf_down",
+    "scarf_up",
+    "scarf_up",
+    "scarf_left",
+    "scarf_left"
    ]
   },
   {
@@ -219,6 +230,17 @@
     "up",
     "left",
     "left"
+   ],
+   "overlays": [
+    "scarf_down_run",
+    "scarf_up_short",
+    "scarf_left_run",
+    "scarf_down_run",
+    "scarf_down_run",
+    "scarf_up_short",
+    "scarf_up_short",
+    "scarf_left_run",
+    "scarf_left_run"
    ]
   },
   {
@@ -235,6 +257,11 @@
     "down",
     "up",
     "left"
+   ],
+   "overlays": [
+    "scarf_down",
+    "scarf_up_short",
+    "scarf_left"
    ]
   },
   {
@@ -252,6 +279,17 @@
     "up",
     "left",
     "left"
+   ],
+   "overlays": [
+    "scarf_down_bike",
+    "scarf_up",
+    "scarf_left_fly",
+    "scarf_down_bike",
+    "scarf_down_bike",
+    "scarf_up",
+    "scarf_up",
+    "scarf_left_fly",
+    "scarf_left_fly"
    ]
   },
   {
@@ -272,6 +310,13 @@
     "down",
     "down",
     "down"
+   ],
+   "overlays": [
+    "scarf_down",
+    "scarf_down",
+    "scarf_down",
+    "scarf_down",
+    "scarf_down"
    ]
   },
   {
@@ -292,6 +337,20 @@
     "down",
     "down",
     "down"
+   ],
+   "overlays": [
+    "scarf_left",
+    "scarf_left",
+    "scarf_left",
+    "scarf_left",
+    "scarf_up_short",
+    "scarf_up_short",
+    "scarf_up_short",
+    "scarf_up_short",
+    "scarf_down",
+    "scarf_down",
+    "scarf_down",
+    "scarf_down"
    ]
   }
  ],
@@ -777,8 +836,8 @@
       ],
       "rows": [
        "..KKK.",
-       "KKRRRK",
-       ".KrRRK",
+       "KKtttK",
+       ".KTttK",
        "..KKK."
       ]
      }
@@ -797,8 +856,8 @@
       ],
       "rows": [
        "..KKK.",
-       "KKRRRK",
-       "WKrRRK",
+       "KKtttK",
+       "WKTttK",
        "..KKK.",
        "W.....",
        "..W..."
@@ -819,7 +878,7 @@
       ],
       "rows": [
        "KK",
-       "RK"
+       "tK"
       ]
      }
     },
@@ -837,7 +896,7 @@
       ],
       "rows": [
        "KK",
-       "RK"
+       "tK"
       ]
      }
     },
@@ -855,8 +914,8 @@
       ],
       "rows": [
        "..KKK.",
-       "KKRRRK",
-       ".KrRRK",
+       "KKtttK",
+       ".KTttK",
        "..KKK."
       ]
      }
@@ -875,8 +934,8 @@
       ],
       "rows": [
        "KK.KK..",
-       "WKKRRK.",
-       "..KrRRK",
+       "WKKttK.",
+       "..KTttK",
        "W..KKK.",
        ".W.....",
        "W......"
@@ -916,5 +975,130 @@
     }
    ]
   }
- ]
+ ],
+ "overlays": {
+  "scarf_down": {
+   "anchor": [
+    0,
+    12
+   ],
+   "under": [
+    "................",
+    ".............K..",
+    ".............KRK",
+    "..............rRK",
+    ".............KrK",
+    "..............K."
+   ],
+   "rows": [
+    ".....R....R.....",
+    ".....RRRrRRr....",
+    "........RrK.....",
+    "........Kr......"
+   ]
+  },
+  "scarf_up": {
+   "anchor": [
+    0,
+    11
+   ],
+   "rows": [
+    ".....KrrrrK.....",
+    "....KRRRRRRK....",
+    "....KRrRRrRK....",
+    "....KRRRRRRK....",
+    "...KrRRrRRrRK...",
+    "...KRrKRRKrRK...",
+    "....KHKrKKHK...."
+   ]
+  },
+  "scarf_up_short": {
+   "anchor": [
+    0,
+    11
+   ],
+   "rows": [
+    ".....KrrrrK.....",
+    "....KRRRRRRK....",
+    "....KRrRRrRK....",
+    "...KrRRRRRRrK...",
+    "...KRrKRRKrRK...",
+    "....KHKrKKHK...."
+   ]
+  },
+  "scarf_left": {
+   "anchor": [
+    0,
+    12
+   ],
+   "rows": [
+    ".........RRK....",
+    "....KRRRRRrRK...",
+    "..........KRrK..",
+    "..........KRRrK.",
+    "...........KrRK.",
+    "............KRrK",
+    ".............KK."
+   ]
+  },
+  "scarf_left_fly": {
+   "anchor": [
+    0,
+    12
+   ],
+   "rows": [
+    ".........RRKK.......",
+    "....KRRRRRrRRRKK....",
+    "..........KrRRrRRKK.",
+    "...........KRRrKKrRK",
+    "............KKK..KK."
+   ]
+  },
+  "scarf_left_run": {
+   "anchor": [
+    0,
+    12
+   ],
+   "rows": [
+    ".........RRKK...",
+    ".......KRRrRRRK.",
+    "..........KrRRrK",
+    "...........KRrRK",
+    "............KKK."
+   ]
+  },
+  "scarf_down_run": {
+   "anchor": [
+    0,
+    13
+   ],
+   "under": [
+    ".............K..",
+    ".............KRK",
+    "..............rRK",
+    "..............K."
+   ],
+   "rows": [
+    ".....R....R.....",
+    ".....RRRrRRr....",
+    "........rK......"
+   ]
+  },
+  "scarf_down_bike": {
+   "anchor": [
+    0,
+    12
+   ],
+   "under": [
+    ".............K..",
+    "............KRK.",
+    ".............K.."
+   ],
+   "rows": [
+    ".....R....R.....",
+    ".....RRRrRRr....",
+    "........RrK....."
+   ]
+  }
+ }
 }

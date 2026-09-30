@@ -212,6 +212,14 @@
   "profile": "trainer_front"
  },
  {
+  "path": "graphics/intro/scene_2/draconid_m_credits.png",
+  "profile": "credits_run"
+ },
+ {
+  "path": "graphics/intro/scene_2/draconid_f_credits.png",
+  "profile": "credits_run"
+ },
+ {
   "path": "graphics/object_events/pics/people/draconid/elder.png",
   "profile": "ow_npc16"
  },

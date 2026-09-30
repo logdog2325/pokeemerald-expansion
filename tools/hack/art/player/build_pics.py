@@ -15,8 +15,13 @@ Spec (JSON), one entry per pic in "pics":
    "fix": {"3": {"dx": 0, "dy": 0}},      per-frame nudges
    "remap": [{"rect": [x0, y0, x1, y1], "map": {"4": 6}}],  per-frame recolours (frame coords), after the head;
                                           "frames": [1, 2] limits one to those frames (default: all)
+   "overlays": [{"at": [x, y], "rows": [...], "under": [...], "frames": [...]}],
+                                          ASCII shapes (the Draconid scarf, written by scarf_pics.py) drawn
+                                          after the remaps: "under" rows paint only transparent pixels
+                                          (behind the body), then "rows" paint over it ('.' keeps, '_' clears)
    "pattern": [{"rect": [...], "on": [6], "tile": ["dT", "Td"], "frames": [...]}],
                                           tile an ASCII pattern (roles) over the pixels of indices `on`
+                                          (after the overlays)
    "pixels": {"0": ["x,y,ROLE"]}}
 """
 
@@ -28,7 +33,7 @@ import sys
 from PIL import Image
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from build_player import ROOT, gba_color, load_indexed, swap_head  # noqa: E402
+from build_player import ROOT, draw_overlay, gba_color, load_indexed, swap_head  # noqa: E402
 
 
 def build_pic(p):
@@ -56,6 +61,10 @@ def build_pic(p):
                 for x in range(x0, x1 + 1):
                     if px[x, fy + y] in m:
                         px[x, fy + y] = m[px[x, fy + y]]
+        for o in p.get("overlays", []):
+            if "frames" in o and i not in o["frames"]:
+                continue
+            draw_overlay(px, 0, fy, w, fh, dict(o, anchor=o["at"]), roles, (0, 0), {})
         for t in p.get("pattern", []):
             if "frames" in t and i not in t["frames"]:
                 continue
