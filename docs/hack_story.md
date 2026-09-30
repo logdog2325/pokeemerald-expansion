@@ -181,3 +181,7 @@ Petalburg Woods recruitment/outfit change, Maxie's first meeting at Meteor Falls
 
 ### Follow-up note 17 (round 1)
 - "Sure you give table and Courtney strong teams with fire type Megas and same for the team aqua admin when they attack you for with water type Megas I'm thinking maybe hound doom mega hound doom for Courtney here something like that"
+
+### Follow-up note 18 (round 1)
+- "What is the Jim order? Are we completing all a gems and make sure that fits into the storyline and two is it the same order as a regular story if not, it's OK to change it. Just make sure that the scripts and coding work for that." (answered: the vanilla order, all 8, each at its story point; `check_progression.py` walks them)
+- "Wanted to make sure that it worked and we were in the right place at the right time. Also, is Steven the champion and if not, can we make him the champion?"
