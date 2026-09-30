@@ -169,3 +169,6 @@ Petalburg Woods recruitment/outfit change, Maxie's first meeting at Meteor Falls
 
 ### Follow-up note 13 (round 1)
 - "I like the idea of an ambush on the way to victory road too you get attacked by like 5 to 6 team aqua runs and maybe the aqua admin I forgot their names and yeah, they attack you on your way to victory Road and you have to fight like all five of them and there's no healing they should be easy to beat though besides, the admin will be like slightly stronger, but still nothing that you shouldn't be able to take care of"
+
+### Follow-up note 14 (round 1)
+- "Once you are finished with these remaining tax, do one last check to make sure there's no story locks or hard locks and also make sure to scrub any contradictions that are in the game from like base emerald with the updated story and everything and then give me the test and I'll let you know if there's any other other things I bought or more things we could add"

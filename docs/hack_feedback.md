@@ -59,3 +59,4 @@ main brief re-sent with a fourth rival (Nerine). Items:
 | 1.43 | story | (follow-up 11) The reveal to Maxie is a big scene: he hates the player for lying to him and betraying him; afterwards multiple battles with Maxie and Team Magma grunts | [ ] |
 | 1.44 | story | (follow-up 12) Courtney and Tabitha also come after the player: an ambush in Victory Road, hinting that Maxie and Archie will take their vengeance on the Draconids | [ ] with the revenge arc (1.43) |
 | 1.45 | story | (follow-up 13) An Aqua ambush on the way to Victory Road: 5–6 Aqua grunts and an Aqua admin back to back with no healing; easy grunts, the admin slightly stronger | [ ] Shelly leads it (with the revenge arc, 1.43) |
+| 1.46 | bug | (follow-up 14) When the remaining work is done: one last check for story locks and hard locks, scrub every contradiction between leftover base-Emerald content and the updated story, then hand over the test ROM | [ ] final phase |
