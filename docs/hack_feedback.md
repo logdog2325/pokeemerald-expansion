@@ -50,3 +50,4 @@ main brief re-sent with a fourth rival (Nerine). Items:
 | 1.34 | story | (follow-up 4) More Wally battles; while the player wears the uniform Wally (and Brendan and May) are openly hostile – they're trying to stop Team Magma and protect Hoenn, not knowing the player's true mission | [ ] |
 | 1.35 | story | (follow-up 5) Post-game at the Battle Frontier: Wes (Colosseum; Espeon, Umbreon, Raikou, Entei, Suicune, Ho-Oh), Red (PWT team, Mega Charizard X), Blue (PWT team, Mega Alakazam); all three can also be multi-battle partners | [ ] |
 | 1.36 | balance | (follow-up 6) Mega Stones obtainable throughout the story | [ ] |
+| 1.37 | story | (follow-up 7) The second starter's Mega Stone is given by Prof. Oak (he has an in-game sprite) | [ ] replaces the Lavaridge Draconid traveller (D-126) |

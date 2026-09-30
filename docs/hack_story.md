@@ -146,3 +146,7 @@ Petalburg Woods recruitment/outfit change, Maxie's first meeting at Meteor Falls
 ### Follow-up notes 5 and 6 (round 1)
 - "also id love to add a post game battle against Wes from pokemon colloseum, his team is espeon, umbreon, raikou, entei suicune, and ho-oh also Red with his pwt team but mega charizard x and also blue with his pwt team and mega alakazam at the battle frontier make them multi battle partners too that you can team up with as well"
 - "also make sure you get access to the mega stones throughout the story"
+
+### Follow-up note 7 (round 1)
+- "also you should be gifted the mega stone for the starter you choose (sceptile feraligator mega charizard x) etc too" (already in: the Lavaridge gift after the Mega Ring)
+- "also have the professor who gives it to you be oak since he already has a in game sprite"
