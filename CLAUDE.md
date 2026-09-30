@@ -65,6 +65,7 @@ python3 tools/hack/emu/play.py tools/hack/emu/tests/wild.play -o /tmp/emu       
 python3 tools/hack/emu/play.py tools/hack/emu/tests/rival_calls.play -o /tmp/emu  # rivals' PokéNav calls (expect_text)
 python3 tools/hack/emu/play.py tools/hack/emu/tests/gen49_trainers.play -o /tmp/emu  # four trainers' Gen 4-9 send-outs
 python3 tools/hack/emu/play.py tools/hack/emu/tests/frontier_legends.play -o /tmp/emu   # Wes, Red, Blue + the tag
+python3 tools/hack/emu/play.py tools/hack/emu/tests/title.play -o /tmp/emu      # title screen from power-on (Regidrago, banner)
 python3 tools/hack/emu/matrix.py -o /tmp/matrix       # all 18 gender x egg x second-starter flows
 python3 tools/hack/check_story.py                     # every new flag / story state set and read
 python3 tools/hack/check_wild.py [--info X|--doc]     # wild tables: species legal, levels, Hoenn species kept, 1% Beldum

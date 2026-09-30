@@ -88,7 +88,7 @@ resolver was checked to give identical output to the Python one.
 | Tool | What it does |
 |---|---|
 | `validate.py <png…> [--profile P] [--manifest m.json]` | indexed PNG, ≤16 colours, index 0 transparent corners, frame size/count per profile |
-| `contact_sheet.py -o out.png <png…> [--pal x.pal]` | enlarged frames on a checkerboard, one row per sheet |
+| `contact_sheet.py -o out.png <png…> [--pal x.pal] [--cols N]` | enlarged frames on a checkerboard, one row per sheet (`--cols N`: N inputs per row); emulator screenshots are shown as they are |
 | `quantize.py in.png out.png [--pal x.pal] [--key r,g,b]` | RGBA → indexed, GBA 15-bit colours, index 0 transparent |
 | `recolor.py in.png out.png --pal/--set/--remap`, `recolor.py in.png --show` | palette swaps and index remaps |
 | `kitbash.py recipe.json` | reproducible sprite builds: load, palette, remap, paste regions, ASCII pixel overlays, frame reorder, save |
@@ -163,6 +163,8 @@ python3 tools/hack/emu/matrix.py -o /tmp/matrix [-j 3] [--only F_DREEPY]
 `-D EGGNAME=… -D SECOND=… -D SECONDNAME=… -D MAGMA=…` (see the comments at the top of each).
 `frontier_legends.play` (the Battle Frontier legends and the LEGENDS' TAG, post-game) needs only `rustboro_done.ss`
 and runs in the Deino chains.
+`title.play` (the title screen: the movie into the title, the banner, Regidrago's glow, START → main menu) boots
+from power-on, needs no savestate and runs in the Deino chains.
 
 ## Story checks – `tools/hack/check_story.py`
 ```sh

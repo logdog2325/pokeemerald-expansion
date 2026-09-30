@@ -1,0 +1,36 @@
+# Draconid Emerald title screen (round 1 v2, D-276 / D-277): the whole opening movie runs into the title
+# (no key pressed), then Regidrago's glow cycle, then START -> the main menu.
+#   python3 tools/hack/emu/play.py tools/hack/emu/tests/title.play -o /tmp/title
+# Shots: intro_end (the movie's last scene), logo_1 (the POKéMON logo alone), logo_2..4 (the banner
+# fading in and sliding down while the logo slides up), glow_0..6 (the full title every 40 frames across one 256-frame
+# glow cycle; PRESS START blinks every 16 frames, so it shows on every other shot), menu (after START).
+run 3300
+shot intro_end
+# the movie hands over to the title screen
+until @gMain+4 4 @@CB2_InitTitleScreen 1200
+run 120
+shot logo_1
+run 190
+shot logo_2
+run 16
+shot logo_3
+run 16
+shot logo_4
+run 180
+shot glow_0
+run 40
+shot glow_1
+run 40
+shot glow_2
+run 40
+shot glow_3
+run 40
+shot glow_4
+run 40
+shot glow_5
+run 40
+shot glow_6
+press START 2 10
+until @gMain+4 4 @@CB2_MainMenu 600
+run 120
+shot menu

@@ -271,3 +271,48 @@ How they were made:
 Known gaps (`TODO(art)`, polish only): Wes shares Steven's pose and build (he is recognisable by the shades, coat and
 colours, not by a new silhouette); there is no Snag Machine on his arm (2–3 px at 16×32); the lens on the back pic
 is only a darker eye.
+
+## Round 1 v2: the title screen (Regidrago, "DRACONID EMERALD"; feedback 1.59)
+
+The vanilla layout (logo with its shine, banner, PRESS START, copyright, clouds) with Regidrago instead of
+Rayquaza and a "DRACONID EMERALD" banner (D-276, D-277). Everything comes from the repository's own art; the only
+new pixels are four letters drawn in `build_banner.py`.
+
+| Piece | File(s) | Built by | Source |
+|---|---|---|---|
+| Regidrago | none: `graphics/pokemon/regidrago/front.png` + `normal.pal`, read from `gSpeciesInfo` | – | the species' front pic, shown at 2× by an affine OBJ |
+| Banner (128×64, 8bpp OBJs) | `graphics/title_screen/draconid_emerald.png` | `tools/hack/art/title/build_banner.py` | `emerald_version.png` (vanilla letters) + C, O, N, I drawn in the script |
+| Sky (BG0) | `graphics/title_screen/sky.png` (14 tiles), `sky.bin` | `tools/hack/art/title/build_sky.py` | the 13 gradient tiles of `rayquaza.png` / `rayquaza.bin` |
+| Sky + clouds palette (BG palette 14) | `graphics/title_screen/sky_and_clouds.pal` | `build_sky.py` (`SKY`, `CLOUDS`) | `rayquaza_and_clouds.pal`, gradient and cloud tint recoloured |
+
+Rebuild: `python3 tools/hack/art/title/build_banner.py && python3 tools/hack/art/title/build_sky.py`, then `make`.
+`build_banner.py --preview x.png` also writes a 6× preview (scratchpad). The vanilla files stay in the repository as
+the builders' sources (`rayquaza.png` / `.bin` and `emerald_version.png` are no longer in the ROM).
+
+How they were made:
+- **Regidrago**: no new art. The 64×64 front pic is an OBJ in double-size affine mode with the matrix at 0x80 (a
+  texture step of ½), so each pixel is an exact 2×2 block – 128×128 on screen, crisp, all 14 colours of its palette
+  in an OBJ palette slot of its own. The glow recolours palette entries at run time (vanilla's cosine cycle): the
+  blue dots on the core (11–13) toward white-cyan, the red core (7, 8, 10) a little warmer.
+- **Sky**: vanilla's BG0 is a gradient with the Rayquaza silhouette drawn into it; one gradient tile per screen row
+  is kept (the same dithered steps), Rayquaza's tiles are dropped. The palette's gradient entries (4 = horizon …
+  10 = top) go from vanilla's blue-teal to a dusk sky – (16,16,56) at the top through indigo and violet to
+  (152,80,136) at the horizon – and the clouds' tint (12) to lavender (200,176,232); their white (2) is kept. The
+  clouds' blend (6/16 over the sky and Regidrago) is vanilla's.
+- **Banner**: the vanilla banner is read as brightness levels (its 15 greys, `0` darkest … `e` white). Each letter
+  is a component of bright face pixels (R and A touch at the foot of R's leg and are split at x 63/64); every other
+  opaque pixel (outline, bevel) belongs to the nearest face, so each letter is cut out with its share of the dark
+  plate. "EMERALD" is placed as it was (without "VERSION"); "DRACONID" places D, R, A (R and A as the pair they
+  are in vanilla; the left D sheared 2 px upright) and the drawn C, O, N, I (`GLYPHS`: level maps with the vanilla
+  conventions – a top bevel row of mid greys, white faces, a left bevel `3`, a greyish bottom row and a darker bottom
+  bevel, `0` counters and notches; 13 rows tall like R and A, strokes 4–5 px) on an arch: tops 8, 6, 6, 5, 5, 6, 7, 8
+  px from D to D, as vanilla's "EMERALD" is lower at the ends. Where cut letters overlap, the pixel closer to its
+  own face wins; then every pixel within 2 px of a face becomes outline and pinholes up to 3 px in the plate
+  (between the lines) are filled.
+- **Checks**: `build_banner.py --preview` and zoomed crops at 6–12× next to the vanilla letters; in the emulator
+  (`title.play`) the movie's end, the logo, the banner fading in over it, the full title across a glow cycle (with
+  and without PRESS START) and the main menu, as a contact sheet (`contact_sheet.py --scale 1 --cols 4`): Regidrago
+  in 2×2 blocks, no stray tiles, the logo's and the banner's colours unchanged, nothing clipped at the edges.
+
+Known gaps (polish only): the drawn letters have fewer stray grey pixels than vanilla's hand-anti-aliased ones; the
+intro movie still ends on Rayquaza's eyes in the clouds (`src/intro.c`, Emerald's own scene) before the title.

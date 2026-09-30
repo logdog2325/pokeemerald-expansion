@@ -7,8 +7,8 @@ matrix.py - run the flow tests for every player gender x egg x second starter (2
 Per gender and egg (6 chains, run in parallel): opening -> route103 -> woods (Nerine's team for the egg,
 the Magma sprite for the gender) -> rustboro, then rivals, rivals2, postgame_home, maxie_calls, elite_four, hm_free
 (HM field moves without a Pokémon that knows them), frontier_legends (post-game) and the checks of wild,
-progression, trade_evos, battle_items and rival_calls – none depends on the egg, so only with Deino – then for each
-second starter second_starter (Tabitha + Prof. Oak's pick), aster
+progression, trade_evos, battle_items and rival_calls, and the title screen – none depends on the egg, so only with
+Deino – then for each second starter second_starter (Tabitha + Prof. Oak's pick), aster
 (Aster's trainer ids for the egg, the Draconid / Magma sprites for the gender), act2 (Nerine's teams for egg x
 second starter; the Totodile runs keep the Devon Goods for Magma), act3 (Aster's and Nerine's teams, the
 Mega Stone for the second starter), act4 (Nerine's Mt. Pyre team for egg x second starter, the Magma
@@ -57,6 +57,7 @@ def chain(gender, egg, egg_id, root):
     steps = [("opening", {"GENDER": gender, "EGG": egg_id, "EGGNAME": egg}), ("route103", {}),
              ("woods", {"EGGNAME": egg, "MAGMA": "MAGMA_" + gender}), ("rustboro", {})]
     if egg_id == 0:
+        steps.append(("title", {}))  # the title screen from power-on (D-276, D-277); needs no savestate
         steps += [("rivals", {}), ("rivals2", {}), ("postgame_home", {}), ("maxie_calls", {}), ("elite_four", {}),
                   ("hm_free", {"MAGMA": "MAGMA_" + gender})]
         steps.append(("frontier_legends", {}))  # the Battle Frontier legends (post-game, D-225 - D-229)
