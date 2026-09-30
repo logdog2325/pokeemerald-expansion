@@ -92,7 +92,9 @@ undercover. Everyone else may suspect (May's doubts, Steven's "strongest MAGMA g
 
 ## Act 7 – The prophecy fulfilled
 51. ⬜ The Elder calls the player home: the shrine's sealed wall opens – **Regidrago**.
-52. ☑️ Sky Pillar: **the trial** – the player + Nerine (Nerine 8, partner) vs **Aster battle 3**; **Zinnia** on
+52. 🚧 Sky Pillar: **Wallace**, Sootopolis's guardian of the tower (as in ORAS's Delta Episode), tests the player
+    before anyone climbs to Rayquaza.
+    ☑️ **The trial** – the player + Nerine (Nerine 8, partner) vs **Aster battle 3**; **Zinnia** on
     3F; the summit – catch Rayquaza, Dragon Ascent, the **Deoxys** boss, Mega Rayquaza destroys the meteor.
 53. ⬜ The alarm: Maxie and Archie used the Orbs – Primal Groudon and Primal Kyogre – and attack the Draconid
     village.
@@ -106,8 +108,8 @@ undercover. Everyone else may suspect (May's doubts, Steven's "strongest MAGMA g
 57. ☑️ The Elder brings the S.S. Ticket; the Lati news.  ⬜ Both Latis roam.
 58. ☑️ **Brendan and May** in Birch's lab (singles and a double); **Aster** at the shrine; **Nerine** by the
     village pond; **Deoxys** on the Sky Pillar summit.
-59. ✅ The Elite Four rematch (ORAS post-game teams).  🚧 Steven's Champion rematch; **Wallace** as Sootopolis's
-    guardian at the Cave of Origin.
+59. ✅ The Elite Four rematch (ORAS post-game teams).  🚧 Steven's Champion rematch; **Wallace's rematch** at the
+    Cave of Origin.
 60. ✅ Battle Frontier: **Wes, Red, Blue** and the Legends' Tag.
 61. ⬜ Groudon (Magma Hideout) and Kyogre (Seafloor Cavern) catchable.
 

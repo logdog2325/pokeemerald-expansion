@@ -197,3 +197,6 @@ Petalburg Woods recruitment/outfit change, Maxie's first meeting at Meteor Falls
 
 ### Follow-up note 22 (round 1)
 - "also have a agent look for any other contradictions with the games story and come up with fixes besides the ones I found already"
+
+### Follow-up note 23 (round 1)
+- "also maybe add a wallace battle at sky pillar like there is in oras for the delta episode"
