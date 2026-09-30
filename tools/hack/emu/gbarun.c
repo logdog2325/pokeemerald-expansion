@@ -40,7 +40,9 @@ static uint32_t parse_keys(const char *s)
     uint32_t keys = 0;
     char buf[128];
     snprintf(buf, sizeof(buf), "%s", s);
-    for (char *tok = strtok(buf, "+"); tok; tok = strtok(NULL, "+"))
+    // strtok_r: "until" splits its key cycle with strtok while calling this for each entry
+    char *save = NULL;
+    for (char *tok = strtok_r(buf, "+", &save); tok; tok = strtok_r(NULL, "+", &save))
     {
         int found = 0;
         for (unsigned i = 0; i < sizeof(names) / sizeof(names[0]); i++)
