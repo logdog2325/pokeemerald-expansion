@@ -1,22 +1,28 @@
-# The rivals' PokéNav Match Call texts follow their story state and the player's reputation (D-243,
-# data/scripts/draconid/rival_calls.pory, src/pokenav_match_call_data.c). Needs rustboro_done.ss
-# (tests/rustboro.play). States are set by hand; each call is made through the real PokéNav (START, POKéNAV,
-# MATCH CALL, the contact, CALL) and expect_text checks gStringVar4 holds the text the table should pick.
-# The Match Call list shows Mr. Stone, Brendan, May and Wally in that order (the header order).
-loadstate rustboro_done.ss
+# The PokéNav Match Call texts of the rivals (D-243) and Mr. Stone (D-258). No rival registers the player while
+# they wear the uniform (D-256): the Sootopolis aftermath swaps Brendan's and May's numbers, Brendan passes on
+# Steven's and May Wally's (data/scripts/draconid/rival_numbers.pory), so this test starts from act5_turn.ss
+# (tests/act5.play, run in the same -o directory first), checks the four flags the scene set, and calls the rivals' revealed
+# tables (data/scripts/draconid/rival_calls.pory); then Mr. Stone's calls by the Devon Goods choice
+# (data/scripts/draconid/devon_goods.pory). act5.play never meets the Rustboro scientist, so the PokéNav's Match
+# Call feature is switched on by hand. Each call is made through the real PokéNav (START, POKéNAV, MATCH CALL,
+# the contact, CALL) and expect_text checks gStringVar4 holds the text the table should pick. The Match Call list
+# shows Mr. Stone, Brendan, May and Wally in that order (the header order).
+loadstate act5_turn.ss
 setflag FLAG_DEBUG_NO_ENCOUNTER
 setflag FLAG_DEBUG_NO_TRAINER_SEE
+expect_var VAR_DRACONID_REPUTATION 2
+expect_flag FLAG_ENABLE_RIVAL_MATCH_CALL 1
+expect_flag FLAG_ENABLE_BRENDAN_MATCH_CALL 1
+expect_flag FLAG_ENABLE_WALLY_MATCH_CALL 1
+expect_flag FLAG_REGISTERED_STEVEN_POKENAV 1
 setflag FLAG_SYS_POKENAV_GET
 setflag FLAG_HAS_MATCH_CALL
 setflag FLAG_ADDED_MATCH_CALL_TO_POKENAV
-setflag FLAG_ENABLE_RIVAL_MATCH_CALL
-setflag FLAG_ENABLE_BRENDAN_MATCH_CALL
-setflag FLAG_ENABLE_WALLY_MATCH_CALL
-setvar VAR_DRACONID_REPUTATION 1
+# (the saved state ends a scene: let the field settle before the first START)
+run 120
+mash B 300
 
-# --- in uniform: May after the third badge (Route 110 state)
-setvar VAR_MAY_STATE 1
-setflag FLAG_BADGE03_GET
+# --- right after the turn: each rival's first call as a friend (Wally says sorry)
 bagcursor POCKET_ITEMS 0
 run 20
 press START 2 40
@@ -32,34 +38,10 @@ press DOWN 2 20
 press A 2 60
 press A 2 150
 press A 2 90
-shot 01_may_uniform
-expect_text Draconid_Text_MayCallUniform2
-mash B 900
+shot 01_may_after_turn
+expect_text Draconid_Text_MayCallRevealed1
+mash B 1800
 
-# --- May after the Mt. Pyre Orbs (Lilycove state)
-setvar VAR_MAY_STATE 3
-setflag FLAG_RECEIVED_RED_OR_BLUE_ORB
-bagcursor POCKET_ITEMS 0
-run 20
-press START 2 40
-press DOWN 2 10
-press DOWN 2 10
-press DOWN 2 10
-press A 2 200
-press DOWN 2 20
-press DOWN 2 20
-press A 2 150
-press DOWN 2 20
-press DOWN 2 20
-press A 2 60
-press A 2 150
-press A 2 90
-shot 02_may_orbs
-expect_text Draconid_Text_MayCallUniform7
-mash B 900
-
-# --- Brendan after the Space Center
-setvar VAR_BRENDAN_STATE 5
 bagcursor POCKET_ITEMS 0
 run 20
 press START 2 40
@@ -74,13 +56,10 @@ press DOWN 2 20
 press A 2 60
 press A 2 150
 press A 2 90
-shot 03_brendan_space_center
-expect_text Draconid_Text_BrendanCallUniform5
-mash B 900
+shot 02_brendan_after_turn
+expect_text Draconid_Text_BrendanCallRevealed1
+mash B 1800
 
-# --- Wally after the fourth badge
-setvar VAR_WALLY_STATE 0
-setflag FLAG_BADGE04_GET
 bagcursor POCKET_ITEMS 0
 run 20
 press START 2 40
@@ -97,14 +76,11 @@ press DOWN 2 20
 press A 2 60
 press A 2 150
 press A 2 90
-shot 04_wally_uniform
-expect_text Draconid_Text_WallyCallUniform2
-mash B 900
+shot 03_wally_sorry
+expect_text Draconid_Text_WallyCallRevealed1
+mash B 1800
 
-# --- after the Sootopolis turn: the revealed tables (eight badges)
-setvar VAR_DRACONID_REPUTATION 2
-setvar VAR_MAY_STATE 4
-setvar VAR_BRENDAN_STATE 6
+# --- eight badges
 setflag FLAG_BADGE08_GET
 bagcursor POCKET_ITEMS 0
 run 20
@@ -121,9 +97,9 @@ press DOWN 2 20
 press A 2 60
 press A 2 150
 press A 2 90
-shot 05_may_revealed
+shot 04_may_badges
 expect_text Draconid_Text_MayCallRevealed2
-mash B 900
+mash B 1800
 
 bagcursor POCKET_ITEMS 0
 run 20
@@ -139,9 +115,9 @@ press DOWN 2 20
 press A 2 60
 press A 2 150
 press A 2 90
-shot 06_brendan_revealed
+shot 05_brendan_badges
 expect_text Draconid_Text_BrendanCallRevealed2
-mash B 900
+mash B 1800
 
 # --- Wally after Victory Road
 setflag FLAG_DEFEATED_WALLY_VICTORY_ROAD
@@ -161,9 +137,9 @@ press DOWN 2 20
 press A 2 60
 press A 2 150
 press A 2 90
-shot 07_wally_revealed
+shot 06_wally_victory_road
 expect_text Draconid_Text_WallyCallRevealed2
-mash B 900
+mash B 1800
 
 # --- after the Hall of Fame
 setflag FLAG_SYS_GAME_CLEAR
@@ -182,6 +158,146 @@ press DOWN 2 20
 press A 2 60
 press A 2 150
 press A 2 90
-shot 08_may_champion
+shot 07_may_champion
 expect_text Draconid_Text_MayCallRevealed3
-mash B 900
+mash B 1800
+
+# --- Mr. Stone after the turn, by the Devon Goods choice (D-258): forgiven, or thanked
+clearflag FLAG_SYS_GAME_CLEAR
+clearflag FLAG_DEVON_GOODS_RETURNED
+bagcursor POCKET_ITEMS 0
+run 20
+press START 2 40
+press DOWN 2 10
+press DOWN 2 10
+press DOWN 2 10
+press A 2 200
+press DOWN 2 20
+press DOWN 2 20
+press A 2 150
+press A 2 60
+press A 2 150
+press A 2 90
+shot 08_stone_revealed_kept
+expect_text Draconid_Text_MrStoneCallRevealedKept
+mash B 1800
+
+setflag FLAG_DEVON_GOODS_RETURNED
+bagcursor POCKET_ITEMS 0
+run 20
+press START 2 40
+press DOWN 2 10
+press DOWN 2 10
+press DOWN 2 10
+press A 2 200
+press DOWN 2 20
+press DOWN 2 20
+press A 2 150
+press A 2 60
+press A 2 150
+press A 2 90
+shot 09_stone_revealed_returned
+expect_text Draconid_Text_MrStoneCallRevealedReturned
+mash B 1800
+
+# --- Mr. Stone in uniform, once the parts have reached Captain Stern (the later story flags cleared)
+setvar VAR_DRACONID_REPUTATION 1
+setflag FLAG_RECEIVED_EXP_SHARE
+setflag FLAG_DELIVERED_STEVEN_LETTER
+setflag FLAG_DELIVERED_DEVON_GOODS
+clearflag FLAG_BADGE03_GET
+clearflag FLAG_RECEIVED_HM_STRENGTH
+clearflag FLAG_DEFEATED_PETALBURG_GYM
+clearflag FLAG_RECEIVED_CASTFORM
+clearflag FLAG_GROUDON_AWAKENED_MAGMA_HIDEOUT
+clearflag FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE
+bagcursor POCKET_ITEMS 0
+run 20
+press START 2 40
+press DOWN 2 10
+press DOWN 2 10
+press DOWN 2 10
+press A 2 200
+press DOWN 2 20
+press DOWN 2 20
+press A 2 150
+press A 2 60
+press A 2 150
+press A 2 90
+shot 10_stone_stern_returned
+expect_text Draconid_Text_MrStoneCallSternReturned
+mash B 1800
+
+clearflag FLAG_DEVON_GOODS_RETURNED
+bagcursor POCKET_ITEMS 0
+run 20
+press START 2 40
+press DOWN 2 10
+press DOWN 2 10
+press DOWN 2 10
+press A 2 200
+press DOWN 2 20
+press DOWN 2 20
+press A 2 150
+press A 2 60
+press A 2 150
+press A 2 90
+shot 11_stone_stern_kept
+expect_text Draconid_Text_MrStoneCallSternKept
+mash B 1800
+
+# --- Mr. Stone's vanilla calls after that (the table order: Mauville's badge, HM Strength, Norman's badge;
+# calls 5 and 6 in the contradiction scrub's wording, D-254)
+setflag FLAG_BADGE03_GET
+bagcursor POCKET_ITEMS 0
+run 20
+press START 2 40
+press DOWN 2 10
+press DOWN 2 10
+press DOWN 2 10
+press A 2 200
+press DOWN 2 20
+press DOWN 2 20
+press A 2 150
+press A 2 60
+press A 2 150
+press A 2 90
+shot 12_stone_tunnel
+expect_text MatchCall_Text_MrStone4
+mash B 1800
+
+setflag FLAG_RECEIVED_HM_STRENGTH
+bagcursor POCKET_ITEMS 0
+run 20
+press START 2 40
+press DOWN 2 10
+press DOWN 2 10
+press DOWN 2 10
+press A 2 200
+press DOWN 2 20
+press DOWN 2 20
+press A 2 150
+press A 2 60
+press A 2 150
+press A 2 90
+shot 13_stone_strength
+expect_text MatchCall_Text_MrStone5
+mash B 1800
+
+setflag FLAG_DEFEATED_PETALBURG_GYM
+bagcursor POCKET_ITEMS 0
+run 20
+press START 2 40
+press DOWN 2 10
+press DOWN 2 10
+press DOWN 2 10
+press A 2 200
+press DOWN 2 20
+press DOWN 2 20
+press A 2 150
+press A 2 60
+press A 2 150
+press A 2 90
+shot 14_stone_petalburg
+expect_text MatchCall_Text_MrStone6
+mash B 1800

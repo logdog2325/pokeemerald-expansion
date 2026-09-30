@@ -158,11 +158,6 @@ RustboroCity_Movement_DraconidTabithaBackFromRow4:
 	set_invisible
 	step_end
 
-RustboroCity_EventScript_DraconidGoodsIntercepted::
-	msgbox RustboroCity_EventScript_DraconidGoodsIntercepted_Text_0
-	return
-
-
 RusturfTunnel_EventScript_DraconidGoodsChoice::
 	setvar VAR_NERINE_STATE, NERINE_STATE_RUSTURF
 	msgbox RusturfTunnel_EventScript_DraconidGoodsChoice_Text_0
@@ -193,8 +188,13 @@ SlateportCity_OceanicMuseum_1F_EventScript_DraconidTabithaOrder::
 	waitmovement 0
 	goto_if_set FLAG_DEVON_GOODS_RETURNED, SlateportCity_OceanicMuseum_1F_EventScript_DraconidTabithaOrder_5
 	msgbox SlateportCity_OceanicMuseum_1F_EventScript_DraconidTabithaOrder_Text_1
-SlateportCity_OceanicMuseum_1F_EventScript_DraconidTabithaOrder_4:
+	call SlateportCity_OceanicMuseum_1F_EventScript_DraconidTabithaPays
 	msgbox SlateportCity_OceanicMuseum_1F_EventScript_DraconidTabithaOrder_Text_2
+SlateportCity_OceanicMuseum_1F_EventScript_DraconidTabithaOrder_4:
+	msgbox SlateportCity_OceanicMuseum_1F_EventScript_DraconidTabithaOrder_Text_3
+	msgbox SlateportCity_OceanicMuseum_1F_EventScript_DraconidTabithaOrder_Text_4
+	giveitem ITEM_DOWSING_MACHINE
+	msgbox SlateportCity_OceanicMuseum_1F_EventScript_DraconidTabithaOrder_Text_5
 	closemessage
 	applymovement LOCALID_OCEANIC_MUSEUM_1F_TABITHA, SlateportCity_OceanicMuseum_1F_Movement_DraconidTabithaAside
 	waitmovement 0
@@ -230,18 +230,9 @@ SlateportCity_OceanicMuseum_2F_EventScript_DraconidAfterRaid::
 	return
 
 
-Route110_EventScript_DraconidRegisterMay::
-	msgbox Route110_EventScript_DraconidRegisterMay_Text_0
-	closemessage
-	delay 30
-	playfanfare MUS_REGISTER_MATCH_CALL
-	msgbox Route110_EventScript_DraconidRegisterMay_Text_1
-	waitfanfare
-	closemessage
-	delay 30
-	setflag FLAG_ENABLE_RIVAL_MATCH_CALL
+Route110_EventScript_DraconidMayLeaves::
 	setvar VAR_MAY_STATE, MAY_STATE_ROUTE_110
-	msgbox Route110_EventScript_DraconidRegisterMay_Text_2
+	msgbox Route110_EventScript_DraconidMayLeaves_Text_0
 	return
 
 
@@ -251,6 +242,7 @@ RustboroCity_DevonCorp_3F_EventScript_DraconidGiveExpShare::
 	setflag FLAG_RECEIVED_EXP_SHARE
 	setflag FLAG_EXP_SHARE_ON
 	msgbox RustboroCity_DevonCorp_3F_Text_ExplainExpShare, MSGBOX_DEFAULT
+	call RustboroCity_DevonCorp_3F_EventScript_DraconidThankYouGift
 	return
 
 
@@ -262,10 +254,6 @@ RustboroCity_EventScript_DraconidTabithaGoodsOrder_Text_0:
 	.string "She ran for RUSTURF TUNNEL, east of\n"
 	.string "town. Get that package back.\p"
 	.string "Not for DEVON. For MAGMA. Understood?$"
-
-RustboroCity_EventScript_DraconidGoodsIntercepted_Text_0:
-	.string "{PLAYER} couldn't very well refuse him in\n"
-	.string "the middle of the street…$"
 
 RusturfTunnel_EventScript_DraconidGoodsChoice_Text_0:
 	.string "{PLAYER} looked at the DEVON GOODS.\p"
@@ -284,27 +272,38 @@ RusturfTunnel_EventScript_DraconidGoodsChoice_Text_3:
 RusturfTunnel_EventScript_DraconidGoodsChoice_Text_4:
 	.string "{PLAYER} decided to return the GOODS to\n"
 	.string "DEVON.\p"
-	.string "Quietly. TABITHA doesn't need to know.$"
+	.string "If TABITHA asks, DEVON's people got to\n"
+	.string "them first.$"
 
 RusturfTunnel_EventScript_DraconidGoodsChoice_Text_5:
 	.string "{PLAYER} tucked the GOODS away for\n"
 	.string "MAGMA.\p"
-	.string "The ELDER said to earn their trust. This\n"
-	.string "is how.$"
+	.string "DEVON will have to think the thief got\n"
+	.string "away with them.\p"
+	.string "The ELDER said to earn MAGMA's trust.\n"
+	.string "This is how.$"
 
 SlateportCity_OceanicMuseum_1F_EventScript_DraconidTabithaOrder_Text_0:
 	.string "TABITHA: Hehehe! There you are. DEVON\n"
 	.string "got its package back, I hear.\p"
-	.string "Sloppy. …But it doesn't matter. The\n"
-	.string "package is going to STERN anyway.$"
+	.string "Sloppy. No pay for sloppy work.\p"
+	.string "…But it doesn't matter. The package is\n"
+	.string "going to STERN anyway.$"
 
 SlateportCity_OceanicMuseum_1F_EventScript_DraconidTabithaOrder_Text_1:
 	.string "TABITHA: Hehehe! There you are. You\n"
-	.string "kept the package for us? Good grunt!\p"
-	.string "Now, here's the fun part. Deliver it to\n"
-	.string "STERN, just like DEVON asked.$"
+	.string "kept DEVON's package, and DEVON thinks\l"
+	.string "the thief got away!\p"
+	.string "Good grunt! Leader MAXIE pays for\n"
+	.string "results.$"
 
 SlateportCity_OceanicMuseum_1F_EventScript_DraconidTabithaOrder_Text_2:
+	.string "TABITHA: Now, here's the fun part. Take\n"
+	.string "the package to STERN.\p"
+	.string "Tell him you found it. A grateful man\n"
+	.string "doesn't ask questions.$"
+
+SlateportCity_OceanicMuseum_1F_EventScript_DraconidTabithaOrder_Text_3:
 	.string "TABITHA: STERN is building a submarine.\n"
 	.string "Leader MAXIE wants to know where it\l"
 	.string "goes.\p"
@@ -314,22 +313,25 @@ SlateportCity_OceanicMuseum_1F_EventScript_DraconidTabithaOrder_Text_2:
 	.string "they move on STERN, stop them.\p"
 	.string "For MAGMA, of course. Hehehe!$"
 
+SlateportCity_OceanicMuseum_1F_EventScript_DraconidTabithaOrder_Text_4:
+	.string "TABITHA: Oh, and take this. MAGMA digs,\n"
+	.string "grunt. Every one of us carries one.$"
+
+SlateportCity_OceanicMuseum_1F_EventScript_DraconidTabithaOrder_Text_5:
+	.string "TABITHA: A DOWSING MACHINE. It beeps\n"
+	.string "when something's buried nearby.\p"
+	.string "If it's worth digging up, MAGMA wants it.\n"
+	.string "Hehehe!$"
+
 SlateportCity_OceanicMuseum_1F_EventScript_DraconidTabitha_Text_0:
 	.string "TABITHA: Upstairs. STERN. Go on.\p"
 	.string "…And don't stare at the AQUA fools.\n"
 	.string "They'll notice.$"
 
-Route110_EventScript_DraconidRegisterMay_Text_0:
-	.string "MAY: One more thing. I'm registering you\n"
-	.string "in my POKéNAV.\p"
-	.string "If MAGMA tries anything, I want to know\n"
-	.string "where you are.$"
-
-Route110_EventScript_DraconidRegisterMay_Text_1:
-	.string "Registered MAY in the POKéNAV.$"
-
-Route110_EventScript_DraconidRegisterMay_Text_2:
-	.string "MAY: Next time, I won't lose.\n"
+Route110_EventScript_DraconidMayLeaves_Text_0:
+	.string "MAY: If MAGMA hurts anyone on this\n"
+	.string "route, I'll know who to look for.\p"
+	.string "Next time, I won't lose.\n"
 	.string "You'll see, {PLAYER}!$"
 
 RustboroCity_DevonCorp_3F_EventScript_DraconidGiveExpShare_Text_0:

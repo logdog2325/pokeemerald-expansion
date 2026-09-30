@@ -29,10 +29,10 @@ SSTidalCorridor_EventScript_DraconidRepBriney_2:
 SlateportCity_SternsShipyard_1F_Text_DraconidRepBrineyUniform::
 	.string "MR. BRINEY: Ah, {PLAYER}! It's been too\n"
 	.string "long!\p"
-	.string "Hm? That red getup… So you've taken up\n"
-	.string "with TEAM MAGMA.\p"
-	.string "Well, PEEKO doesn't mind it, so neither\n"
-	.string "will I.\p"
+	.string "Still in that red getup, I see. Well, I\n"
+	.string "told you before. I don't care what\l"
+	.string "colors you wear.\p"
+	.string "PEEKO doesn't mind it, so neither will I.\p"
 	.string "I'm helping DOCK build a ferry, aye! Mind\n"
 	.string "you don't sink it.$"
 

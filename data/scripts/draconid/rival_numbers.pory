@@ -1,0 +1,45 @@
+// Draconid Emerald (D-256): nobody who isn't a Draconid swaps PokéNav numbers with a MAGMA grunt. Brendan and
+// May do it once they make up, at the end of the Sootopolis aftermath
+// (SootopolisCity_EventScript_DraconidRivalsAftermath in act5.pory calls this before they fly home); Brendan
+// passes on STEVEN's number (he saw the uniform come off; vanilla registered him in Granite Cave) and May
+// passes on Wally's. From here the rivals' calls are the friendly ones (rival_calls.pory, D-243).
+
+script SootopolisCity_EventScript_DraconidRivalNumbers {
+    msgbox(format("MAY: Oh! Before we go…\p"
+                  "{PLAYER}, let's register each other in our POKéNAVS!"))
+    msgbox(format("MAY: I wasn't going to give my number to a MAGMA grunt.\p"
+                  "But you were never really one of them. Hehe!"))
+    msgbox(format("BRENDAN: Yeah, fine. Mine, too.\p"
+                  "Somebody's got to tell you when you're slacking off."))
+    closemessage
+    delay(30)
+    playfanfare(MUS_REGISTER_MATCH_CALL)
+    msgbox(format("Registered MAY and BRENDAN\nin the POKéNAV."))
+    waitfanfare
+    closemessage
+    delay(30)
+    setflag(FLAG_ENABLE_RIVAL_MATCH_CALL)
+    setflag(FLAG_ENABLE_BRENDAN_MATCH_CALL)
+    msgbox(format("BRENDAN: Oh, right. STEVEN gave me his number for you.\p"
+                  "He said he'd like to talk to you without a battle in the way."))
+    closemessage
+    delay(30)
+    playfanfare(MUS_REGISTER_MATCH_CALL)
+    msgbox(format("Registered STEVEN in the POKéNAV."))
+    waitfanfare
+    closemessage
+    delay(30)
+    setflag(FLAG_REGISTERED_STEVEN_POKENAV)
+    msgbox(format("MAY: And here's WALLY's number, too. My dad gave it to me."))
+    msgbox(format("MAY: WALLY's been so angry at MAGMA.\nAt you, too.\p"
+                  "Once he hears the truth, he'll want to say sorry. Let him, okay?"))
+    closemessage
+    delay(30)
+    playfanfare(MUS_REGISTER_MATCH_CALL)
+    msgbox(format("Registered WALLY in the POKéNAV."))
+    waitfanfare
+    closemessage
+    delay(30)
+    setflag(FLAG_ENABLE_WALLY_MATCH_CALL)
+    msgbox(format("MAY: Okay! Now we're really going.\nSee you, {PLAYER}!"))
+}

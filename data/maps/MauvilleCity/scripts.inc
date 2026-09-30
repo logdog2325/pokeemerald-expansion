@@ -157,7 +157,7 @@ MauvilleCity_EventScript_DefeatedWally::
 	clearflag FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WALLYS_UNCLE
 	setflag FLAG_DEFEATED_WALLY_MAUVILLE
 	setvar VAR_WALLY_CALL_STEP_COUNTER, 0
-	setflag FLAG_ENABLE_FIRST_WALLY_POKENAV_CALL
+	@ Draconid Emerald: no setflag FLAG_ENABLE_FIRST_WALLY_POKENAV_CALL – WALLY doesn't register a MAGMA grunt; May gives the player his number at Sootopolis (D-256)
 	call_if_eq VAR_FACING, DIR_NORTH, MauvilleCity_EventScript_ScottApproachPlayerNorth
 	call_if_eq VAR_FACING, DIR_EAST, MauvilleCity_EventScript_ScottApproachPlayerEast
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterDown
@@ -546,14 +546,14 @@ MauvilleCity_Text_UncleVisitUsSometime:  @ Draconid Emerald
 	.string "But please, stay away from VERDANTURF.$"
 
 
-MauvilleCity_Text_WallyPokenavCall:  @ Draconid Emerald
+MauvilleCity_Text_WallyPokenavCall:
 	.string "… … … … … …\n"
 	.string "… … … … … Beep!\p"
-	.string "WALLY: {PLAYER}… It's WALLY.\p"
-	.string "My uncle bought me a POKéNAV. I'm\n"
-	.string "registering you in it.\p"
-	.string "If MAGMA hurts anyone, I'll know where\n"
-	.string "to find you.\p"
+	.string "WALLY: Oh, hello, {PLAYER}!\p"
+	.string "I just wanted to tell you that\n"
+	.string "my uncle bought me a POKéNAV!\p"
+	.string "Now I can get in touch with you\n"
+	.string "anytime, {PLAYER}!\p"
 	.string "… … … … … …\n"
 	.string "… … … … … Click!$"
 
@@ -561,16 +561,15 @@ MauvilleCity_Text_RegisteredWally:
 	.string "Registered WALLY\n"
 	.string "in the POKéNAV.$"
 
-MauvilleCity_Text_ScottYouDidntHoldBack:
+MauvilleCity_Text_ScottYouDidntHoldBack:  @ Draconid Emerald
 	.string "SCOTT: Hehe…\n"
 	.string "I was watching that match!\p"
-	.string "You're friends with that boy WALLY,\n"
-	.string "aren't you?\p"
+	.string "That boy WALLY really let you have it,\n"
+	.string "huh? And about your uniform, too.\p"
 	.string "But you didn't hold anything back\n"
 	.string "and beat him impressively.\p"
 	.string "Yeah! That's what a real POKéMON\n"
 	.string "battle is all about!\p"
-	.string "I idolize TRAINERS like that!\p"
 	.string "… … … … … …\n"
 	.string "I'll be cheering for you!$"
 

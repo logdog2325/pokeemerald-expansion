@@ -12,14 +12,7 @@ GraniteCave_StevensRoom_EventScript_Steven::
 	giveitem ITEM_TM_STEEL_WING
 	call_if_eq VAR_RESULT, FALSE, GraniteCave_StevensRoom_EventScript_BagFull
 	msgbox GraniteCave_StevensRoom_Text_CouldBecomeChampionLetsRegister, MSGBOX_DEFAULT
-	closemessage
-	delay 30
-	playfanfare MUS_REGISTER_MATCH_CALL
-	msgbox GraniteCave_StevensRoom_Text_RegisteredSteven, MSGBOX_DEFAULT
-	waitfanfare
-	closemessage
-	delay 30
-	setflag FLAG_REGISTERED_STEVEN_POKENAV
+	@ Draconid Emerald: no registration in uniform – BRENDAN passes on STEVEN's number at Sootopolis (rival_numbers.pory, D-256)
 	msgbox GraniteCave_StevensRoom_Text_IveGotToHurryAlong, MSGBOX_DEFAULT
 	closemessage
 	call_if_eq VAR_FACING, DIR_NORTH, GraniteCave_StevensRoom_EventScript_StevenExitNorth
@@ -100,10 +93,9 @@ GraniteCave_StevensRoom_Text_CouldBecomeChampionLetsRegister:  @ Draconid Emeral
 	.string "STEVEN: Your POKéMON trust you.\n"
 	.string "That's hard to fake.\p"
 	.string "I wonder who you really work for.\p"
-	.string "Let's register one another in\n"
-	.string "our POKéNAVS. I'd like to keep an eye\l"
-	.string "on you… in a friendly way.\p"
-	.string "… … … … … …$"
+	.string "I'd ask for your POKéNAV number.\n"
+	.string "…But I don't think MAGMA would like\l"
+	.string "that. Another time, perhaps.$"
 
 GraniteCave_StevensRoom_Text_RegisteredSteven:
 	.string "Registered STEVEN\n"

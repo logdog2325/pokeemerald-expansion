@@ -418,7 +418,9 @@ DewfordTown_Gym_Text_ExplainBulkUp:
 	.string "and DEFENSE stats.\p"
 	.string "… … … … … …$"
 
-DewfordTown_Gym_Text_RegisteredBrawly:
+DewfordTown_Gym_Text_RegisteredBrawly:  @ Draconid Emerald
+	.string "For rematches, the POKéMON LEAGUE\n"
+	.string "registers every challenger.\p"
 	.string "Registered GYM LEADER BRAWLY\n"
 	.string "in the POKéNAV.$"
 

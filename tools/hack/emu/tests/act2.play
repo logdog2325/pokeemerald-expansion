@@ -4,12 +4,17 @@
 # (a one-Pokémon party, so a mashed battle ends when it faints); states are set by hand and scenes reached
 # with the debug warp; battles are mashed with the no-whiteout flag on (scripts, not balance).
 # Matrix parameters: EGGNAME (the player's egg), SECOND/SECONDNAME (the second starter, set by hand here),
-# GOODS 0 = return the goods to Devon, 1 = keep them for Magma (RETURNED = the flag it leaves).
+# GOODS 0 = return the goods to Devon, 1 = keep them for Magma (RETURNED = the flag it leaves, GOODSNAME
+# Returned / Kept = the variant of Maxie's first call). What the choice changes (D-258): the employee's GREAT
+# BALL and Mr. Stone's AMULET COIN (returned), Tabitha's pay and FIRE STONE (kept), Maxie's call, Stern.
+# No rival (nor Steven) registers the player in uniform (D-256): Granite Cave, Route 110 and Mauville leave the
+# PokéNav flags unset. May gives nothing on Route 110: Tabitha hands out the Dowsing Machine (D-259).
 default EGGNAME DEINO
 default SECOND 1
 default SECONDNAME CHARMANDER
 default GOODS 0
 default RETURNED 1
+default GOODSNAME Returned
 loadstate rustboro_done.ss
 setflag FLAG_DEBUG_NO_ENCOUNTER
 setflag FLAG_DEBUG_NO_TRAINER_SEE
@@ -68,8 +73,12 @@ expect_item ITEM_LETTER 1
 # the Gen 6 Exp. Share comes with the PokéNav, switched on (D-185)
 expect_item ITEM_EXP_SHARE 1
 expect_flag FLAG_EXP_SHARE_ON 1
+# returned: Mr. Stone's thank-you gift (D-258)
+expect_item ITEM_AMULET_COIN ${RETURNED}
+expect_flag FLAG_RECEIVED_AMULET_COIN ${RETURNED}
 
-# --- Mr. Briney's boat to Dewford: Maxie's first call (not "Dad" Norman, D-186) ---
+# --- Mr. Briney's boat to Dewford: he doesn't care about the uniform, he pays his debts (D-257); Maxie's first
+# call (not "Dad" Norman, D-186), its text by the goods choice (D-258) ---
 # after Peeko's rescue Briney paces (9, 3) <-> (9, 4) (a table blocks the rest of his loop): wait below him
 # facing up and tap A until he's in front
 warp MAP_ROUTE104_MR_BRINEYS_HOUSE 9 6
@@ -134,6 +143,10 @@ press A 2 12
 press A 2 12
 press A 2 12
 press A 2 12
+until_var VAR_BOARD_BRINEY_BOAT_STATE 1 20000 A
+run 2000
+shot a34_maxie_call
+expect_text Draconid_Text_MaxieCallDewford${GOODSNAME}
 mash A 60000
 run 60
 mash A 60000
@@ -151,6 +164,8 @@ press A 2 30
 mash A 20000
 shot a40_steven
 expect_item ITEM_LETTER 0
+# no PokéNav number for a MAGMA grunt (D-256): Brendan passes it on at Sootopolis
+expect_flag FLAG_REGISTERED_STEVEN_POKENAV 0
 
 # --- Oceanic Museum 1F: the fee, then Tabitha's order ---
 setvar VAR_SLATEPORT_MUSEUM_1F_STATE 0
@@ -160,6 +175,10 @@ run 60
 mash A 20000
 shot a50_museum_tabitha
 expect_var VAR_SLATEPORT_MUSEUM_1F_STATE 1
+# kept: Tabitha pays (money and a FIRE STONE, D-258)
+expect_item ITEM_FIRE_STONE ${GOODS}
+# Magma equips its own grunt: the Dowsing Machine (D-259; May gave it on Route 110)
+expect_item ITEM_DOWSING_MACHINE 1
 
 # --- Oceanic Museum 2F: Stern, the Aqua grunt, Nerine, Archie ---
 heal
@@ -187,7 +206,7 @@ mash A 60000
 shot a71_after_may
 expect_opponent TRAINER_MAY_ROUTE_110
 expect_var VAR_MAY_STATE 1
-expect_flag FLAG_ENABLE_RIVAL_MATCH_CALL 1
+expect_flag FLAG_ENABLE_RIVAL_MATCH_CALL 0
 expect_var VAR_ROUTE110_STATE 1
 
 # --- Mauville: Wally (vanilla battle, new lines) ---
@@ -199,6 +218,8 @@ mash A 60000
 shot a80_after_wally
 expect_opponent TRAINER_WALLY_MAUVILLE
 expect_flag FLAG_HIDE_MAUVILLE_CITY_WALLY 1
+expect_flag FLAG_ENABLE_FIRST_WALLY_POKENAV_CALL 0
+expect_flag FLAG_ENABLE_WALLY_MATCH_CALL 0
 
 savestate act2_done.ss
 clearflag FLAG_DEBUG_NO_ENCOUNTER

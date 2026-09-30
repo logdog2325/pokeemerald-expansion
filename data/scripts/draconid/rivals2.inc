@@ -155,6 +155,33 @@ LavaridgeTown_EventScript_DraconidMayBattle_1:
 	return
 
 
+LavaridgeTown_EventScript_DraconidFindGoGoggles::
+	goto_if_set FLAG_RECEIVED_GO_GOGGLES, LavaridgeTown_EventScript_DraconidFindGoGoggles_2
+	delay 20
+	playse SE_PIN
+	applymovement LOCALID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement 0
+	msgbox LavaridgeTown_EventScript_DraconidFindGoGoggles_Text_0
+	additem ITEM_GO_GOGGLES
+	setflag FLAG_RECEIVED_GO_GOGGLES
+	setvar VAR_0x8006, ITEM_GO_GOGGLES
+	bufferitemname STR_VAR_2, ITEM_GO_GOGGLES
+	bufferstdstring STR_VAR_3, STDSTRING_KEYITEMS
+	playfanfare MUS_OBTAIN_ITEM
+	message LavaridgeTown_EventScript_DraconidFindGoGoggles_Text_1
+	delay 10
+	showitemdescription
+	waitfanfare
+	waitmessage
+	msgbox gText_PutItemInPocket, MSGBOX_DEFAULT
+	hideitemdescription
+	msgbox LavaridgeTown_EventScript_DraconidFindGoGoggles_Text_2
+	return
+
+LavaridgeTown_EventScript_DraconidFindGoGoggles_2:
+	return
+
+
 Route120_EventScript_DraconidOnTransition::
 	compare VAR_WALLY_STATE, WALLY_STATE_LILYCOVE
 	goto_if_eq Route120_EventScript_DraconidOnTransition_3
@@ -498,6 +525,18 @@ LavaridgeTown_EventScript_DraconidMayBattle_Text_2:
 LavaridgeTown_EventScript_DraconidMayBattle_Text_3:
 	.string "MAY: Tch… You're even stronger than on\n"
 	.string "ROUTE 110.$"
+
+LavaridgeTown_EventScript_DraconidFindGoGoggles_Text_0:
+	.string "MAY dropped something as she stormed\n"
+	.string "off…$"
+
+LavaridgeTown_EventScript_DraconidFindGoGoggles_Text_1:
+	.string "{PLAYER} found the {STR_VAR_2}!$"
+
+LavaridgeTown_EventScript_DraconidFindGoGoggles_Text_2:
+	.string "There's a tag on the strap.\p"
+	.string "“Property of MAY. For the sandstorm on\n"
+	.string "ROUTE 111!”$"
 
 Route120_EventScript_DraconidWally_Text_0:
 	.string "WALLY: {PLAYER}. I knew you'd come this\n"

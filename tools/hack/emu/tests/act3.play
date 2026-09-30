@@ -88,7 +88,8 @@ mash A 20000
 expect_item ${STONE} 1
 expect_flag FLAG_HIDE_LAVARIDGE_TOWN_DRACONID_TRAVELLER 1
 
-# --- Lavaridge: May's Go-Goggles after the Heat Badge (vanilla scene, her lines) ---
+# --- Lavaridge: May after the Heat Badge (vanilla scene, her lines): she battles, storms off and drops the
+# Go-Goggles, which the player picks up (D-259); still no PokéNav registration (D-256) ---
 setflag FLAG_BADGE04_GET
 setvar VAR_LAVARIDGE_TOWN_STATE 1
 warp MAP_LAVARIDGE_TOWN 5 16
@@ -98,6 +99,7 @@ mash A 20000
 expect_flag FLAG_RECEIVED_GO_GOGGLES 1
 expect_var VAR_LAVARIDGE_TOWN_STATE 2
 expect_item ITEM_GO_GOGGLES 1
+expect_flag FLAG_ENABLE_RIVAL_MATCH_CALL 0
 
 savestate act3_done.ss
 clearflag FLAG_DEBUG_NO_ENCOUNTER

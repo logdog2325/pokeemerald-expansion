@@ -48,8 +48,9 @@ Hoenn, not knowing your true mission").
   MAGMA hurts people and he won't let it happen ("You helped me catch RALTS! How could you join TEAM MAGMA?",
   "I won't let you go up there!"). Short, plain sentences; his health may show (the hot springs, "I didn't cough
   once"), never self-pity, and no trust in the player until the turn.
-- Things they hand over (the Dowsing Machine, Go-Goggles, HM Fly) come grudgingly ("The winner gets this.
-  That's the rule, even for MAGMA."); the PokéNav registrations are to keep tabs on a MAGMA grunt.
+- They hand a MAGMA grunt nothing and never ask for the grunt's number (D-256, D-259): May drops the
+  Go-Goggles as she storms off, Tabitha equips her grunt with the Dowsing Machine and HM Fly, and Brendan and
+  May swap PokéNav numbers with the player only when they make up at Sootopolis.
 - **After the turn** (Sootopolis and later) they warm up as the story says: May's "I KNEW it!" and Brendan's
   awkward apology are saved for then.
 

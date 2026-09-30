@@ -234,6 +234,13 @@ script Route119_WeatherInstitute_2F_EventScript_DraconidMayCovers {
                   "And the eggheads left their notes lying around. Weather records… something about ancient ORBS.\p"
                   "Leader MAXIE will love this. I'll take it to him myself.\p"
                   "Keep your POKéNAV on. He'll have orders for you soon. Hehehe!"))
+    // TEAM MAGMA equips its own grunt: HM FLY (it was BRENDAN's hand-over on Route 119, D-259)
+    msgbox(format("TABITHA: Oh, and Leader MAXIE wants his best grunts where he needs them. Fast.\p"
+                  "Take this."))
+    giveitem(ITEM_HM_FLY)
+    setflag(FLAG_RECEIVED_HM_FLY)
+    msgbox(format("TABITHA: FLY. Your POKéMON will carry you to any town you've been to.\p"
+                  "Once you have FORTREE's GYM BADGE, that is. So go and get it. Hehehe!"))
     closemessage
     applymovement(LOCALID_WEATHER_INSTITUTE_2F_TABITHA, Route119_WeatherInstitute_2F_Movement_DraconidTabithaLeave)
     waitmovement(0)
@@ -285,22 +292,13 @@ movement Route119_WeatherInstitute_2F_Movement_DraconidMayLeave {
 }
 
 // ---------------------------------------------------------------------------
-// Route 119: BRENDAN at the vanilla rival spot (his lines are in data/maps/Route119/scripts.inc). He hands
-// over the HM because MAY asked him to, registers in the PokéNav, then rides off as in vanilla (D-131).
-// Route119_EventScript_DefeatedBrendan calls this after the FLY explanation.
+// Route 119: BRENDAN at the vanilla rival spot (his lines are in data/maps/Route119/scripts.inc). He battles
+// and rides off as in vanilla (D-131); he hands a MAGMA grunt nothing (HM FLY comes from TABITHA at the
+// WEATHER INSTITUTE, D-259) and doesn't register in the PokéNav (D-256: the rivals swap numbers at
+// Sootopolis, rival_numbers.pory). Route119_EventScript_DefeatedBrendan calls this after the battle.
 // ---------------------------------------------------------------------------
 
-script Route119_EventScript_DraconidRegisterBrendan {
-    msgbox(format("BRENDAN: And MAY wants us registered in each other's POKéNAVS.\p"
-                  "Fine by me. If MAGMA makes a move, I'll know where to find you."))
-    closemessage
-    delay(30)
-    playfanfare(MUS_REGISTER_MATCH_CALL)
-    msgbox(format("Registered BRENDAN in the POKéNAV."))
-    waitfanfare
-    closemessage
-    delay(30)
-    setflag(FLAG_ENABLE_BRENDAN_MATCH_CALL)
+script Route119_EventScript_DraconidBrendanLeaves {
     setvar(VAR_BRENDAN_STATE, BRENDAN_STATE_ROUTE_119)
     msgbox(format("BRENDAN: If MAY's wrong about you, I'm the one who stops you.\p"
                   "I'll be watching, {PLAYER}."))

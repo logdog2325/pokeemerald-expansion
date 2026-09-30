@@ -146,9 +146,10 @@ movement Route112_Movement_DraconidWallyLeaveLeft {
 
 // ---------------------------------------------------------------------------
 // MAY, Lavaridge (S5): the vanilla GO-GOGGLES scene (OnFrame, VAR_LAVARIDGE_TOWN_STATE 1 after the Heat
-// Badge) battles first: LavaridgeTown_EventScript_MayGiveGoGoggles calls this, then gives the GO-GOGGLES
-// with her reworked hand-over line. It comes straight out of the GYM, and the GO-GOGGLES are needed for the
-// desert, so a loss heals and the scene goes on (early-rival battle).
+// Badge) battles first: LavaridgeTown_EventScript_MayGiveGoGoggles calls this, then MAY storms off on her
+// BIKE and drops the GO-GOGGLES, which the player picks up (…_DraconidFindGoGoggles, D-259: she wouldn't hand
+// a MAGMA grunt anything). It comes straight out of the GYM, and the GO-GOGGLES are needed for the desert, so
+// a loss heals and the scene goes on (early-rival battle).
 // ---------------------------------------------------------------------------
 
 script LavaridgeTown_EventScript_DraconidMayBattle {
@@ -171,6 +172,34 @@ text LavaridgeTown_Text_DraconidMayDefeat {
 
 text LavaridgeTown_Text_DraconidMayVictory {
     format("That one was for LAVARIDGE!")
+}
+
+// After MAY rides off (LavaridgeTown_EventScript_RivalExit calls this once her BIKE is gone): the GO-GOGGLES
+// she dropped. FLAG_RECEIVED_GO_GOGGLES and the key item are set as vanilla's hand-over set them.
+script LavaridgeTown_EventScript_DraconidFindGoGoggles {
+    if (flag(FLAG_RECEIVED_GO_GOGGLES)) {
+        return
+    }
+    delay(20)
+    playse(SE_PIN)
+    applymovement(LOCALID_PLAYER, Common_Movement_ExclamationMark)
+    waitmovement(0)
+    msgbox(format("MAY dropped something as she stormed off…"))
+    additem(ITEM_GO_GOGGLES)
+    setflag(FLAG_RECEIVED_GO_GOGGLES)
+    setvar(VAR_0x8006, ITEM_GO_GOGGLES)
+    bufferitemname(STR_VAR_2, ITEM_GO_GOGGLES)
+    bufferstdstring(STR_VAR_3, STDSTRING_KEYITEMS)
+    playfanfare(MUS_OBTAIN_ITEM)
+    message(format("{PLAYER} found the {STR_VAR_2}!"))
+    delay(10)
+    showitemdescription
+    waitfanfare
+    waitmessage
+    msgbox(gText_PutItemInPocket, MSGBOX_DEFAULT)
+    hideitemdescription
+    msgbox(format("There's a tag on the strap.\p"
+                  "“Property of MAY. For the sandstorm on ROUTE 111!”"))
 }
 
 // ---------------------------------------------------------------------------

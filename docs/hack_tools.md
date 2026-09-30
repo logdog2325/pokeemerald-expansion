@@ -229,7 +229,7 @@ python3 tools/hack/emu/play.py tools/hack/emu/tests/wild.play           -o /tmp/
 python3 tools/hack/emu/play.py tools/hack/emu/tests/progression.play    -o /tmp/emu   # story-lock fixes: the Aqua Hideout opens with Maxie's order
 python3 tools/hack/emu/play.py tools/hack/emu/tests/trade_evos.play     -o /tmp/emu   # Kadabra -> Alakazam, Slowpoke + King's Rock -> Slowking
 python3 tools/hack/emu/play.py tools/hack/emu/tests/battle_items.play   -o /tmp/emu   # battle item counter by badges, a Gym booster, a Mega Stone ball
-python3 tools/hack/emu/play.py tools/hack/emu/tests/rival_calls.play    -o /tmp/emu   # Brendan's, May's and Wally's PokéNav calls (D-243)
+python3 tools/hack/emu/play.py tools/hack/emu/tests/rival_calls.play    -o /tmp/emu   # after act5.play: the rivals' and Mr. Stone's PokéNav calls (D-243, D-256, D-258)
 python3 tools/hack/emu/play.py tools/hack/emu/tests/release_boot.play   -o /tmp/rel --rom pokeemerald-release.gba
 ```
 `release_boot.play` goes through the real title and new-game menus, since release builds have neither Quickstart

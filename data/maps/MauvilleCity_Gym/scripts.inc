@@ -373,7 +373,9 @@ MauvilleCity_Gym_Text_ExplainShockWave:
 	.string "misses! You can count on it!\p"
 	.string "… … … … … …$"
 
-MauvilleCity_Gym_Text_RegisteredWattson:
+MauvilleCity_Gym_Text_RegisteredWattson:  @ Draconid Emerald
+	.string "For rematches, the POKéMON LEAGUE\n"
+	.string "registers every challenger.\p"
 	.string "Registered GYM LEADER WATTSON\n"
 	.string "in the POKéNAV.$"
 

@@ -397,9 +397,8 @@ Route110_EventScript_MayBattle::  @ Draconid Emerald
 
 Route110_EventScript_MayDefeated::  @ Draconid Emerald
 	msgbox Route110_Text_MayTakeThis, MSGBOX_DEFAULT
-	call Route110_EventScript_GiveItemfinder
-	msgbox Route110_Text_MayExplainItemfinder, MSGBOX_DEFAULT
-	call Route110_EventScript_DraconidRegisterMay  @ Draconid Emerald (act2.pory)
+	@ Draconid Emerald: no DOWSING MACHINE from MAY – TABITHA hands it out at the museum (act2.pory, D-259)
+	call Route110_EventScript_DraconidMayLeaves  @ Draconid Emerald: no PokéNav in uniform (act2.pory, D-256)
 	goto Route110_EventScript_RivalExit
 	end
 
@@ -716,16 +715,16 @@ Route110_Text_MayTakeThis:  @ Draconid Emerald
 	.string "MAY: I've seen how MAGMA grunts treat\n"
 	.string "their POKéMON. Like tools.\p"
 	.string "But yours trust you.\n"
-	.string "…What are you really doing, {PLAYER}?\p"
-	.string "Forget it. The winner gets this.\n"
-	.string "That's the rule, even for MAGMA.$"
+	.string "…What are you really doing, {PLAYER}?$"
 
-Route110_Text_MayExplainItemfinder:  @ Draconid Emerald
-	.string "MAY: That's a DOWSING MACHINE.\p"
-	.string "Use it to root around for items that\n"
-	.string "aren't visible.\p"
-	.string "If it senses something,\n"
-	.string "it makes a sound.$"
+Route110_Text_MayExplainItemfinder:
+	.string "MAY: That's an ITEMFINDER.\p"
+	.string "Try it out. If there is an item that's\n"
+	.string "not visible, it emits a sound.\p"
+	.string "Okay, {PLAYER}{KUN}, let's meet again!\p"
+	.string "I know it's a little silly coming from\n"
+	.string "me, but I think you should train a lot\l"
+	.string "harder for the next time.$"
 
 Route110_Text_RideBikeAtFullSpeed:
 	.string "Wouldn't it be great to ride a BIKE\n"

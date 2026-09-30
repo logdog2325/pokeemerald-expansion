@@ -899,6 +899,7 @@ script SootopolisCity_EventScript_DraconidRivalsAftermath {
     msgbox(format("BRENDAN: I did NOT!"))
     msgbox(format("MAY: We're going home to tell our\ndads everything!\p"
                   "{PLAYER}, come visit LITTLEROOT\nwhen you can!"))
+    call(SootopolisCity_EventScript_DraconidRivalNumbers) // the PokéNav numbers (rival_numbers.pory, D-256)
     closemessage
     setvar(VAR_BRENDAN_STATE, BRENDAN_STATE_SOOTOPOLIS)
     setvar(VAR_MAY_STATE, MAY_STATE_SOOTOPOLIS)

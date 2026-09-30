@@ -4,7 +4,7 @@ SlateportCity_OceanicMuseum_2F_MapScripts::
 SlateportCity_OceanicMuseum_2F_EventScript_CaptStern::
 	lock
 	faceplayer
-	msgbox SlateportCity_OceanicMuseum_2F_Text_ThankYouForTheParts, MSGBOX_DEFAULT
+	call SlateportCity_OceanicMuseum_2F_EventScript_DraconidSternSeesParts  @ Draconid Emerald: from DEVON or found by a MAGMA grunt (devon_goods.pory, D-258)
 	closemessage
 	playbgm MUS_ENCOUNTER_AQUA, TRUE
 	addobject LOCALID_OCEANIC_MUSEUM_2F_GRUNT_1
@@ -65,7 +65,7 @@ SlateportCity_OceanicMuseum_2F_EventScript_CaptStern::
 	setflag FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_AQUA_GRUNTS
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
-	msgbox SlateportCity_OceanicMuseum_2F_Text_SternThankYouForSavingUs, MSGBOX_DEFAULT
+	call SlateportCity_OceanicMuseum_2F_EventScript_DraconidSternThanks  @ Draconid Emerald: by the goods choice (devon_goods.pory, D-258)
 	setvar VAR_0x8004, ITEM_DEVON_PARTS
 	call Common_EventScript_PlayerHandedOverTheItem
 	msgbox SlateportCity_OceanicMuseum_2F_Text_SternIveGotToGo, MSGBOX_DEFAULT

@@ -41,7 +41,8 @@ shot r2_21_after_route112
 expect_opponent TRAINER_WALLY_ROUTE_112
 expect_trainer TRAINER_WALLY_ROUTE_112 1
 
-# --- Lavaridge: May battles before the Go-Goggles (out of the Gym, after the Heat Badge; a loss heals) ---
+# --- Lavaridge: May battles out of the Gym (after the Heat Badge; a loss heals), storms off and drops the
+# Go-Goggles; the player picks them up (D-259) ---
 heal
 setvar VAR_MAGMA_STATE 6
 setflag FLAG_BADGE04_GET
@@ -49,8 +50,22 @@ setvar VAR_LAVARIDGE_TOWN_STATE 1
 warp MAP_LAVARIDGE_TOWN 5 15
 run 150
 shot r2_30_lavaridge_may
-mash A 90000
-shot r2_31_after_lavaridge
+until_var VAR_LAVARIDGE_TOWN_STATE 2 90000 A
+run 40
+shot r2_31_player_notices
+run 150
+shot r2_32_may_dropped
+run 60
+press A 2 120
+shot r2_33_found_goggles
+run 330
+shot r2_34_put_away
+press A 2 150
+shot r2_35_tag
+press A 2 240
+shot r2_36_tag_2
+mash A 20000
+shot r2_37_after_lavaridge
 expect_opponent TRAINER_MAY_LAVARIDGE
 expect_trainer TRAINER_MAY_LAVARIDGE 1
 expect_flag FLAG_RECEIVED_GO_GOGGLES 1

@@ -592,10 +592,7 @@ RustboroCity_EventScript_ReturnGoods::
 	call_if_eq VAR_TEMP_1, 2, RustboroCity_EventScript_EmployeeFacePlayerDown2
 	call_if_eq VAR_TEMP_1, 3, RustboroCity_EventScript_EmployeeApproachPlayerDown2
 	call_if_eq VAR_TEMP_1, 4, RustboroCity_EventScript_EmployeeFacePlayerRight
-	msgbox RustboroCity_Text_YouGotItThankYou, MSGBOX_DEFAULT
-	giveitem ITEM_GREAT_BALL
-	call_if_unset FLAG_DEVON_GOODS_RETURNED, RustboroCity_EventScript_DraconidGoodsIntercepted  @ Draconid Emerald (act2.pory)
-	call_if_eq VAR_RESULT, FALSE, RustboroCity_EventScript_BagFull
+	call RustboroCity_EventScript_DraconidEmployeeAsksForGoods  @ Draconid Emerald: the thanks and GREAT BALL only if the goods come back (devon_goods.pory, D-258)
 	msgbox RustboroCity_Text_PleaseComeWithMe, MSGBOX_DEFAULT
 	closemessage
 	setflag FLAG_RETURNED_DEVON_GOODS

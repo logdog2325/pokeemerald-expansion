@@ -7,7 +7,7 @@ matrix.py - run the flow tests for every player gender x egg x second starter (2
 Per gender and egg (6 chains, run in parallel): opening -> route103 -> woods (Nerine's team for the egg,
 the Magma sprite for the gender) -> rustboro, then rivals, rivals2, postgame_home, maxie_calls, elite_four, hm_free
 (HM field moves without a Pokémon that knows them), frontier_legends (post-game) and the checks of wild,
-progression, trade_evos, battle_items, rival_calls, gen49_trainers, magma_revenge (Team Magma's revenge after the
+progression, trade_evos, battle_items, gen49_trainers, magma_revenge (Team Magma's revenge after the
 Sootopolis reveal) and fades – none depends on the egg, so only with Deino – then for each
 second starter second_starter (Tabitha + Prof. Oak's pick), aster
 (Aster's trainer ids for the egg, the Draconid / Magma sprites for the gender), act2 (Nerine's teams for egg x
@@ -15,7 +15,8 @@ second starter; the Totodile runs keep the Devon Goods for Magma), act3 (Aster's
 Mega Stone for the second starter), act4 (Nerine's Mt. Pyre team for egg x second starter, the Magma
 sprite for the gender) and act5 (Nerine's teams for egg x second starter; the Totodile runs take May as the
 Sootopolis partner), and act7 (the Sky Pillar double: Aster's team by egg, Nerine's partner and post-game
-teams by egg x second starter; act6 before it, once, with Deino). Needs a debug build (the warp hook).
+teams by egg x second starter; act6 before it, once, with Deino); last, with Deino, rival_calls (it starts from
+act5's Sootopolis aftermath, where the rivals register, D-256). Needs a debug build (the warp hook).
 Prints one line per test run and a summary table; exit 1 if any run failed. Logs are in -o.
 """
 
@@ -73,7 +74,7 @@ def chain(gender, egg, egg_id, root):
         # wild tables + National Dex (D-193), the Aqua Hideout story-lock fix (D-213), level evolutions (D-216),
         # the battle-item counter (D-218)
         steps += [("wild", {}), ("progression", {}), ("trade_evos", {}), ("battle_items", {})]
-        steps.append(("rival_calls", {}))  # the rivals' PokéNav calls by story and reputation (D-243)
+        # (rival_calls runs after act5, below: the rivals register in the Sootopolis aftermath, D-256)
         steps.append(("gen49_trainers", {}))  # Gen 4-9 Pokémon on generic trainers and grunts (D-240 - D-242)
         steps.append(("act6", {}))  # the Champion's room, the Hall of Fame, the meteor alert (Act 6)
         # Team Magma's revenge after the Sootopolis reveal, to the League door (D-244 - D-249)
@@ -86,7 +87,7 @@ def chain(gender, egg, egg_id, root):
         # Act 2 (Nerine's teams for egg x second starter); Totodile runs keep the Devon Goods for Magma
         goods = 1 if second == "TOTODILE" else 0
         steps.append(("act2", {"EGGNAME": egg, "SECOND": value, "SECONDNAME": second,
-                               "GOODS": goods, "RETURNED": 1 - goods}))
+                               "GOODS": goods, "RETURNED": 1 - goods, "GOODSNAME": "Kept" if goods else "Returned"}))
         # Act 3 (Aster's team for the egg, Nerine's for egg x second starter, the second starter's Mega Stone)
         steps.append(("act3", {"EGGNAME": egg, "SECOND": value, "SECONDNAME": second, "STONE": stone}))
         # Act 4 (Nerine's Mt. Pyre team for egg x second starter)
@@ -96,6 +97,8 @@ def chain(gender, egg, egg_id, root):
                                "PARTNER": 1 if second == "TOTODILE" else 0, "GFX": "DRACONID_" + gender}))
         # Act 7: the Sky Pillar double picks Aster's team by egg and Nerine's partner team by egg x second starter
         steps.append(("act7", {"EGGNAME": egg, "MOVE": MOVE_SLOT[egg], "SECOND": value, "SECONDNAME": second}))
+    if egg_id == 0:
+        steps.append(("rival_calls", {}))  # the PokéNav calls of the rivals (D-243, D-256) and Mr. Stone (D-258)
     for test, defines in steps:
         ok, bad = run(test, out, defines, log)
         label = test + ("" if test not in ("second_starter", "aster", "act2", "act3", "act4", "act5", "act7")

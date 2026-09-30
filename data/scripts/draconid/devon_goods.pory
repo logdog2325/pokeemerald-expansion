@@ -1,0 +1,313 @@
+// Draconid Emerald (D-258): what the Devon Goods choice in Rusturf Tunnel (FLAG_DEVON_GOODS_RETURNED, act2.pory)
+// changes. "Return to DEVON": the employee gets the parcel back at the edge of town, Mr. Stone sends the
+// player on with it and adds a thank-you gift, the AMULET COIN. "Keep for MAGMA": the player says nothing, so
+// DEVON believes the thief got away; Mr. Stone asks the player to tell CAPT. STERN, the player hands STERN the
+// parts as a MAGMA grunt who "found" them, STERN tells Mr. Stone, and TABITHA pays for the job (money and a
+// FIRE STONE, SlateportCity_OceanicMuseum_1F_EventScript_DraconidTabithaOrder). The Devon staff, Mr. Stone
+// (his lines and his PokéNav calls), STERN and Rustboro's townsfolk (reputation/rustboro.pory) react while the
+// player wears the uniform and after the Sootopolis reveal (Mr. Stone forgives; some of his staff remember).
+// Maxie's first call (maxie_calls.pory) and TABITHA follow it too.
+
+// ---------------------------------------------------------------------------
+// Rustboro: the DEVON employee meets the player coming back from RUSTURF TUNNEL
+// (RustboroCity_EventScript_ReturnGoods calls this in place of the thanks and the GREAT BALL)
+// ---------------------------------------------------------------------------
+
+script RustboroCity_EventScript_DraconidEmployeeAsksForGoods {
+    if (flag(FLAG_DEVON_GOODS_RETURNED)) {
+        msgbox(RustboroCity_Text_YouGotItThankYou, MSGBOX_DEFAULT)
+        giveitem(ITEM_GREAT_BALL)
+        if (var(VAR_RESULT) == FALSE) {
+            msgbox(RustboroCity_Text_YoureLoadedWithItems, MSGBOX_DEFAULT)
+        }
+    } else {
+        msgbox(format("Oh! You're the TRAINER who went after that thief!\p"
+                      "Did you get our DEVON GOODS back?"))
+        msgbox(format("{PLAYER} said nothing.\p"
+                      "The GOODS stayed at the bottom of the BAG."))
+        msgbox(format("…The thief got away with them? Oh, no…\p"
+                      "Well, you tried, and in that uniform, too. Thank you for that."))
+    }
+}
+
+// ---------------------------------------------------------------------------
+// DEVON CORPORATION 3F: the employee's welcome and MR. STONE's favor
+// (RustboroCity_DevonCorp_3F_EventScript_MeetPresident calls these in place of the vanilla texts)
+// ---------------------------------------------------------------------------
+
+script RustboroCity_DevonCorp_3F_EventScript_DraconidEmployeeWaitHere {
+    if (flag(FLAG_DEVON_GOODS_RETURNED)) {
+        msgbox(RustboroCity_DevonCorp_3F_Text_ThisIs3rdFloorWaitHere, MSGBOX_DEFAULT)
+    } else {
+        msgbox(format("This is the DEVON CORPORATION's third floor.\p"
+                      "Our PRESIDENT's OFFICE is on this floor.\p"
+                      "It's a shame about that parcel…\p"
+                      "CAPT. STERN in SLATEPORT was waiting for those parts. Now we have to tell him they're gone.\p"
+                      "Oh, that's right.\nCould you wait here a second?"))
+    }
+}
+
+script RustboroCity_DevonCorp_3F_EventScript_DraconidMrStoneFavor {
+    if (flag(FLAG_DEVON_GOODS_RETURNED)) {
+        msgbox(RustboroCity_DevonCorp_3F_Text_MrStoneIHaveFavor, MSGBOX_DEFAULT)
+    } else {
+        msgbox(format("I'm MR. STONE, the PRESIDENT of the DEVON CORPORATION.\p"
+                      "I'd just got word about you!\p"
+                      "You saved our researcher in PETALBURG WOODS, and you chased that thief all the way to RUSTURF TUNNEL.\p"
+                      "…In TEAM MAGMA's colors. I won't pretend to understand that.\p"
+                      "Our parts are gone, I'm told. Well, that can't be helped.\p"
+                      "CAPT. STERN in SLATEPORT was waiting for them. Would you tell him what happened?\p"
+                      "And on the way, could you stop off in DEWFORD TOWN?\p"
+                      "I was hoping that you'd deliver a LETTER to STEVEN in DEWFORD."))
+    }
+}
+
+// The thank-you gift for bringing the parts back (after the EXP. SHARE, and from MR. STONE's desk if the BAG
+// was full). The AMULET COIN was Mom's gift in vanilla; with Mom gone (D-100) it comes from here.
+script RustboroCity_DevonCorp_3F_EventScript_DraconidThankYouGift {
+    if (!flag(FLAG_DEVON_GOODS_RETURNED) || flag(FLAG_RECEIVED_AMULET_COIN)) {
+        return
+    }
+    msgbox(format("MR. STONE: And this one is from me, for bringing our parts back.\p"
+                  "A TRAINER who returns what was stolen deserves a little luck!"))
+    giveitem(DRACONID_GOODS_THANKS_ITEM)
+    if (var(VAR_RESULT) == FALSE) {
+        msgbox(format("MR. STONE: Oh? Your BAG is full!\p"
+                      "Come and see me when you've made some room."))
+        return
+    }
+    setflag(FLAG_RECEIVED_AMULET_COIN)
+    msgbox(format("MR. STONE: That's an AMULET COIN.\p"
+                  "Have a POKéMON hold it in battle, and the prize money doubles!\p"
+                  "Business sense, you see. Wahahaha!"))
+}
+
+// MR. STONE at his desk after the meeting (RustboroCity_DevonCorp_3F_EventScript_MrStoneAfterFavor)
+script RustboroCity_DevonCorp_3F_EventScript_DraconidMrStoneTalk {
+    call(RustboroCity_DevonCorp_3F_EventScript_DraconidThankYouGift)
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_REVEALED) {
+        if (flag(FLAG_DEVON_GOODS_RETURNED)) {
+            msgbox(format("MR. STONE: {PLAYER}{KUN}! So you were a DRACONID all along!\p"
+                          "A TEAM MAGMA grunt who brought our parts back… I should have guessed! Wahahaha!"))
+        } else {
+            msgbox(format("MR. STONE: {PLAYER}{KUN}! So you were a DRACONID all along!\p"
+                          "That's why you kept our parts, then. TEAM MAGMA had to believe you were one of them.\p"
+                          "All is forgiven, my friend. Wahahaha!"))
+        }
+    } elif (flag(FLAG_DEVON_GOODS_RETURNED)) {
+        msgbox(format("MR. STONE: My staff are still talking about it.\p"
+                      "A TEAM MAGMA grunt who brings back what was stolen!\p"
+                      "Since my youth, I've immersed myself in work. I don't understand young people at all. Wahaha!"))
+    } elif (flag(FLAG_DELIVERED_DEVON_GOODS)) {
+        msgbox(format("MR. STONE: CAPT. STERN tells me our parts reached him after all.\p"
+                      "In your hands, {PLAYER}{KUN}.\p"
+                      "I'm a patient man. But I do keep count."))
+    } else {
+        msgbox(format("MR. STONE: I'm counting on you!\p"
+                      "My LETTER for STEVEN, and the news for poor CAPT. STERN."))
+    }
+}
+
+// ---------------------------------------------------------------------------
+// DEVON staff (map.json "script" of the objects; the vanilla script until the goods are back)
+// ---------------------------------------------------------------------------
+
+// 1F, the employee wandering by the door (vanilla: "It sounds like they've recovered the DEVON GOODS.")
+script RustboroCity_DevonCorp_1F_EventScript_DraconidEmployee {
+    if (!flag(FLAG_RETURNED_DEVON_GOODS)) {
+        goto(RustboroCity_DevonCorp_1F_EventScript_Employee)
+    }
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_REVEALED) {
+        if (flag(FLAG_DEVON_GOODS_RETURNED)) {
+            msgbox(format("You brought our GOODS back even while you wore that uniform.\p"
+                          "No wonder the PRESIDENT trusted you!"), MSGBOX_NPC)
+        } else {
+            msgbox(format("So keeping our GOODS was part of your act?\p"
+                          "The PRESIDENT says all is forgiven.\p"
+                          "…I'm still thinking about it."), MSGBOX_NPC)
+        }
+    } elif (flag(FLAG_DEVON_GOODS_RETURNED)) {
+        msgbox(format("Hey, you're the TEAM MAGMA grunt who brought our GOODS back!\p"
+                      "I still can't believe it. …Thanks, I guess."), MSGBOX_NPC)
+    } elif (flag(FLAG_DELIVERED_DEVON_GOODS)) {
+        msgbox(format("Our missing GOODS turned up in SLATEPORT!\p"
+                      "CAPT. STERN says a TEAM MAGMA grunt brought them in. Said they “found” them.\p"
+                      "…Found them. Sure."), MSGBOX_NPC)
+    } else {
+        msgbox(format("Our stolen GOODS are gone for good.\p"
+                      "You chased the thief, didn't you? And came back with nothing?\p"
+                      "…Some of us here don't believe that story."), MSGBOX_NPC)
+    }
+}
+
+// 1F, the guard by the stairs (vanilla: "Hi, there! You're always welcome here!")
+script RustboroCity_DevonCorp_1F_EventScript_DraconidStairGuard {
+    if (!flag(FLAG_RETURNED_DEVON_GOODS)) {
+        goto(RustboroCity_DevonCorp_1F_EventScript_StairGuard)
+    }
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_REVEALED) {
+        if (flag(FLAG_DEVON_GOODS_RETURNED)) {
+            goto(RustboroCity_DevonCorp_1F_EventScript_StairGuard)
+        }
+        msgbox(format("The PRESIDENT says to let you through.\p"
+                      "He's forgiven you for the GOODS.\nSo… welcome back, I suppose."), MSGBOX_NPC)
+    } elif (flag(FLAG_DEVON_GOODS_RETURNED)) {
+        msgbox(format("Hi, there! The PRESIDENT says you're always welcome here.\p"
+                      "Uniform and all."), MSGBOX_NPC)
+    } else {
+        msgbox(format("The PRESIDENT says to let you through.\p"
+                      "…I'll be watching you, though."), MSGBOX_NPC)
+    }
+}
+
+// 2F, the scientist who built the POKéNAV (vanilla: "Oh, wow! That's a POKéNAV!")
+script RustboroCity_DevonCorp_2F_EventScript_DraconidPokenavScientist {
+    if (!flag(FLAG_RECEIVED_POKENAV)) {
+        goto(RustboroCity_DevonCorp_2F_EventScript_PokenavScientist)
+    }
+    lock
+    faceplayer
+    if (var(VAR_FOSSIL_RESURRECTION_STATE) == 1) {
+        call(RustboroCity_DevonCorp_2F_EventScript_SetFossilReady)
+    }
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_REVEALED) {
+        msgbox(format("Oh, wow! A DRACONID, using my POKéNAV to fool TEAM MAGMA!\p"
+                      "I'd love to hear how it held up out there!"))
+    } elif (flag(FLAG_DEVON_GOODS_RETURNED)) {
+        msgbox(format("Oh, wow! That's the POKéNAV I built!\p"
+                      "You brought our GOODS back, so I suppose you earned it. Even in that uniform."))
+    } else {
+        msgbox(format("That's the POKéNAV I built.\p"
+                      "The PRESIDENT gave one to you, even after what happened to our GOODS?\p"
+                      "He trusts people far too easily."))
+    }
+    release
+}
+
+// 3F, the employee who brought the player up (shown until the parts reach STERN)
+script RustboroCity_DevonCorp_3F_EventScript_DraconidEmployee {
+    if (flag(FLAG_DEVON_GOODS_RETURNED) || flag(FLAG_DELIVERED_DEVON_GOODS)) {
+        goto(RustboroCity_DevonCorp_3F_EventScript_Employee)
+    }
+    msgbox(format("Poor CAPT. STERN. He's been waiting for those parts for weeks.\p"
+                  "If you visit the SHIPYARD in SLATEPORT, please tell him what happened."), MSGBOX_NPC)
+}
+
+// ---------------------------------------------------------------------------
+// Oceanic Museum: TABITHA pays for the kept parts (SlateportCity_OceanicMuseum_1F_EventScript_DraconidTabithaOrder),
+// and CAPT. STERN on 2F gets them from DEVON's courier or from a MAGMA grunt who "found" them
+// ---------------------------------------------------------------------------
+
+script SlateportCity_OceanicMuseum_1F_EventScript_DraconidTabithaPays {
+    showmoneybox(0, 0)
+    addmoney(DRACONID_GOODS_REWARD_MONEY)
+    updatemoneybox
+    buffernumberstring(STR_VAR_1, DRACONID_GOODS_REWARD_MONEY)
+    playse(SE_SHOP)
+    msgbox(format("{PLAYER} received ¥{STR_VAR_1}\nfrom TABITHA."))
+    hidemoneybox
+    msgbox(format("TABITHA: And a little something from MT. CHIMNEY. Our people dig them up all the time. Hehehe!"))
+    giveitem(DRACONID_GOODS_REWARD_ITEM)
+}
+
+// SlateportCity_OceanicMuseum_2F_EventScript_CaptStern, when the player talks to STERN
+script SlateportCity_OceanicMuseum_2F_EventScript_DraconidSternSeesParts {
+    if (flag(FLAG_DEVON_GOODS_RETURNED)) {
+        msgbox(SlateportCity_OceanicMuseum_2F_Text_ThankYouForTheParts, MSGBOX_DEFAULT)
+    } else {
+        msgbox(format("CAPT. STERN: Hm? Those parts… They're the ones I ordered from DEVON!\p"
+                      "MR. STONE phoned me. He said a thief ran off with them!\p"
+                      "You found them? …In that uniform?\p"
+                      "Well, I won't ask. Thank you! We can prepare for our expedition now."))
+    }
+}
+
+// the same scene, after TEAM AQUA leaves (before the parts are handed over)
+script SlateportCity_OceanicMuseum_2F_EventScript_DraconidSternThanks {
+    if (flag(FLAG_DEVON_GOODS_RETURNED)) {
+        msgbox(SlateportCity_OceanicMuseum_2F_Text_SternThankYouForSavingUs, MSGBOX_DEFAULT)
+    } else {
+        msgbox(format("CAPT. STERN: You're…\nAh, okay, you're {PLAYER}{KUN}…\p"
+                      "A TEAM MAGMA member, fighting off TEAM AQUA… for my sake?\p"
+                      "Well, that was a tense situation! Thank you for saving us!\p"
+                      "And the parts DEVON lost… I'll let MR. STONE know they turned up.\p"
+                      "In your hands."))
+    }
+}
+
+// Slateport Harbor after the Sootopolis reveal (SlateportCity_Harbor_EventScript_CaptSternFerryOrScannerComment)
+script SlateportCity_Harbor_EventScript_DraconidSternFerry {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_REVEALED) {
+        if (flag(FLAG_DEVON_GOODS_RETURNED)) {
+            msgbox(format("CAPT. STERN: {PLAYER}{KUN}! I heard about SOOTOPOLIS!\p"
+                          "Undercover in TEAM MAGMA, and you still brought DEVON's parts to me at the MUSEUM.\p"
+                          "I'm proud to have met you!"))
+        } else {
+            msgbox(format("CAPT. STERN: {PLAYER}{KUN}! I heard about SOOTOPOLIS!\p"
+                          "So that's why a MAGMA grunt “found” my parts from DEVON.\p"
+                          "MR. STONE laughed when I told him. I think he's forgiven you!"))
+        }
+    }
+    msgbox(SlateportCity_Harbor_Text_WontBeLongBeforeWeFinishFerry, MSGBOX_DEFAULT)
+}
+
+// ---------------------------------------------------------------------------
+// MR. STONE's PokéNav calls (sDraconidMrStoneCalls, src/pokenav_match_call_data.c): the errand, STEVEN's LETTER,
+// STERN's news, and the call after the Sootopolis turn, by the goods choice. The call window
+// starts the text after the PokéNav icon (188 pixels).
+// ---------------------------------------------------------------------------
+
+text Draconid_Text_MrStoneCallErrandReturned {
+    format("MR. STONE: Oh? {PLAYER}{KUN}!\p"
+           "Since you called me, the POKéNAV must be working properly!\p"
+           "Now, don't forget my errand. My LETTER goes to STEVEN in DEWFORD.\p"
+           "And our parcel goes to CAPT. STERN in SLATEPORT.\p"
+           "Since I am a busy PRESIDENT, I have to go! Bye-bye!", 188)
+}
+
+text Draconid_Text_MrStoneCallErrandKept {
+    format("MR. STONE: Oh? {PLAYER}{KUN}!\p"
+           "Since you called me, the POKéNAV must be working properly!\p"
+           "Now, don't forget my errand. My LETTER goes to STEVEN in DEWFORD.\p"
+           "And please tell CAPT. STERN in SLATEPORT about his parts. He'll be so disappointed…\p"
+           "Since I am a busy PRESIDENT, I have to go! Bye-bye!", 188)
+}
+
+text Draconid_Text_MrStoneCallLetterReturned {
+    format("MR. STONE: Oh! {PLAYER}{KUN}!\p"
+           "Ah, so you've met STEVEN! Thank you kindly!\p"
+           "Now there's only our parcel for CAPT. STERN. I'm counting on you!", 188)
+}
+
+text Draconid_Text_MrStoneCallLetterKept {
+    format("MR. STONE: Oh! {PLAYER}{KUN}!\p"
+           "Ah, so you've met STEVEN! Thank you kindly!\p"
+           "Have you been to SLATEPORT yet? Poor CAPT. STERN…", 188)
+}
+
+text Draconid_Text_MrStoneCallSternReturned {
+    format("MR. STONE: {PLAYER}{KUN}! CAPT. STERN just called me!\p"
+           "Our parts reached him safe and sound, and you fought off TEAM AQUA, too!\p"
+           "A TEAM MAGMA grunt, protecting DEVON's parts… I'll never understand it. Wahaha!", 188)
+}
+
+text Draconid_Text_MrStoneCallSternKept {
+    format("MR. STONE: …{PLAYER}{KUN}. CAPT. STERN just called me.\p"
+           "It seems our missing parts turned up in SLATEPORT. In your hands.\p"
+           "He says you “found” them.\p"
+           "I won't ask. But I will remember.", 188)
+}
+
+text Draconid_Text_MrStoneCallRevealedReturned {
+    format("MR. STONE: {PLAYER}{KUN}! It's me!\p"
+           "I heard everything! A DRACONID, undercover in TEAM MAGMA!\p"
+           "And even then, you brought our parts back to DEVON.\p"
+           "I always said I could spot a good TRAINER. Wahahaha!", 188)
+}
+
+text Draconid_Text_MrStoneCallRevealedKept {
+    format("MR. STONE: {PLAYER}{KUN}! It's me!\p"
+           "I heard everything! A DRACONID, undercover in TEAM MAGMA!\p"
+           "So that's why you kept our parts. TEAM MAGMA had to believe you were theirs.\p"
+           "All is forgiven. But I did count every screw! Wahahaha!", 188)
+}

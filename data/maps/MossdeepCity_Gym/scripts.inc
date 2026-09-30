@@ -595,7 +595,9 @@ MossdeepCity_Gym_Text_ExplainCalmMind:
 	.string "LIZA: For PSYCHIC POKéMON!\p"
 	.string "… … … … … …$"
 
-MossdeepCity_Gym_Text_RegisteredTateAndLiza:
+MossdeepCity_Gym_Text_RegisteredTateAndLiza:  @ Draconid Emerald
+	.string "For rematches, the POKéMON LEAGUE\n"
+	.string "registers every challenger.\p"
 	.string "Registered GYM LEADERS TATE & LIZA\n"
 	.string "in the POKéNAV.$"
 

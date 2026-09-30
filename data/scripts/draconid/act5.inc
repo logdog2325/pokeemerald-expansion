@@ -838,6 +838,7 @@ SootopolisCity_EventScript_DraconidRivalsAftermath_1:
 	msgbox SootopolisCity_EventScript_DraconidRivalsAftermath_Text_2
 	msgbox SootopolisCity_EventScript_DraconidRivalsAftermath_Text_3
 	msgbox SootopolisCity_EventScript_DraconidRivalsAftermath_Text_4
+	call SootopolisCity_EventScript_DraconidRivalNumbers
 	closemessage
 	setvar VAR_BRENDAN_STATE, BRENDAN_STATE_SOOTOPOLIS
 	setvar VAR_MAY_STATE, MAY_STATE_SOOTOPOLIS

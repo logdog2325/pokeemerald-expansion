@@ -56,9 +56,7 @@ LavaridgeTown_EventScript_RivalGiveGoGoggles::
 LavaridgeTown_EventScript_MayGiveGoGoggles::
 	call LavaridgeTown_EventScript_DraconidMayBattle  @ Draconid Emerald: MAY battles first (rivals2.pory)
 	msgbox LavaridgeTown_Text_MayNiceBadgesTakeThis, MSGBOX_DEFAULT
-	giveitem ITEM_GO_GOGGLES
-	setflag FLAG_RECEIVED_GO_GOGGLES
-	msgbox LavaridgeTown_Text_MayExplainGoGogglesChallengeDad, MSGBOX_DEFAULT
+	msgbox LavaridgeTown_Text_MayExplainGoGogglesChallengeDad, MSGBOX_DEFAULT  @ Draconid Emerald: no hand-over; she drops the GO-GOGGLES as she rides off (rivals2.pory, D-259)
 	goto LavaridgeTown_EventScript_RivalExit
 	end
 
@@ -82,6 +80,7 @@ LavaridgeTown_EventScript_RivalExit::
 	clearflag FLAG_HIDE_MAP_NAME_POPUP
 	savebgm MUS_DUMMY
 	fadedefaultbgm
+	call LavaridgeTown_EventScript_DraconidFindGoGoggles  @ Draconid Emerald: the GO-GOGGLES MAY dropped (rivals2.pory, D-259)
 	releaseall
 	end
 
@@ -273,17 +272,14 @@ LavaridgeTown_EventScript_HerbShopSign::
 LavaridgeTown_Text_MayNiceBadgesTakeThis:  @ Draconid Emerald
 	.string "MAY: …Were you really up there with\n"
 	.string "them, on MT. CHIMNEY?\p"
-	.string "Forget it. I don't need these anymore.\p"
-	.string "Take them, and stay out of LAVARIDGE.$"
+	.string "Forget it. I don't even want\n"
+	.string "to know!$"
 
 LavaridgeTown_Text_MayExplainGoGogglesChallengeDad:  @ Draconid Emerald
-	.string "MAY: With those GO-GOGGLES, you'll have\n"
-	.string "no trouble getting through the desert\l"
-	.string "near ROUTE 111.\p"
-	.string "Four BADGES… So my dad's GYM in\n"
+	.string "MAY: Four BADGES… So my dad's GYM in\n"
 	.string "PETALBURG is next for you.\p"
 	.string "He'll stop you, {PLAYER}.\n"
-	.string "And I'll be there to see it.$"
+	.string "And I'll be there to see it!$"
 
 LavaridgeTown_Text_BrendanNiceBadgesTakeThis:
 	.string "BRENDAN: {PLAYER}, hey, it's been a while.\n"

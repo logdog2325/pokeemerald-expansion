@@ -27,7 +27,7 @@ RustboroCity_DevonCorp_3F_OnFrame:
 
 RustboroCity_DevonCorp_3F_EventScript_MeetPresident::
 	lockall
-	msgbox RustboroCity_DevonCorp_3F_Text_ThisIs3rdFloorWaitHere, MSGBOX_DEFAULT
+	call RustboroCity_DevonCorp_3F_EventScript_DraconidEmployeeWaitHere  @ Draconid Emerald: by the goods choice (devon_goods.pory, D-258)
 	closemessage
 	applymovement LOCALID_DEVON_CORP_3F_EMPLOYEE, RustboroCity_DevonCorp_3F_Movement_EmployeeWalkOffscreen
 	waitmovement 0
@@ -46,7 +46,7 @@ RustboroCity_DevonCorp_3F_EventScript_MeetPresident::
 	applymovement LOCALID_DEVON_CORP_3F_EMPLOYEE, RustboroCity_DevonCorp_3F_Movement_EmployeeFaceDesk
 	applymovement LOCALID_PLAYER, RustboroCity_DevonCorp_3F_Movement_PlayerApproachDesk
 	waitmovement 0
-	msgbox RustboroCity_DevonCorp_3F_Text_MrStoneIHaveFavor, MSGBOX_DEFAULT
+	call RustboroCity_DevonCorp_3F_EventScript_DraconidMrStoneFavor  @ Draconid Emerald: by the goods choice (devon_goods.pory, D-258)
 	giveitem ITEM_LETTER
 	msgbox RustboroCity_DevonCorp_3F_Text_MrStoneWantYouToHaveThis, MSGBOX_DEFAULT
 	playfanfare MUS_OBTAIN_ITEM
@@ -171,7 +171,7 @@ RustboroCity_DevonCorp_3F_EventScript_GiveExpShare::
 	end
 
 RustboroCity_DevonCorp_3F_EventScript_MrStoneAfterFavor::
-	msgbox RustboroCity_DevonCorp_3F_Text_NotFamiliarWithTrends, MSGBOX_DEFAULT
+	call RustboroCity_DevonCorp_3F_EventScript_DraconidMrStoneTalk  @ Draconid Emerald: the goods choice and the reveal (devon_goods.pory, D-258)
 	closemessage
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
 	waitmovement 0
@@ -220,7 +220,7 @@ RustboroCity_DevonCorp_3F_Text_MrStoneWantYouToHaveThis:
 RustboroCity_DevonCorp_3F_Text_ReceivedPokenav:
 	.string "{PLAYER} received a POKéNAV.$"
 
-RustboroCity_DevonCorp_3F_Text_MrStoneExplainPokenavRestUp:
+RustboroCity_DevonCorp_3F_Text_MrStoneExplainPokenavRestUp:  @ Draconid Emerald
 	.string "MR. STONE: That device…\p"
 	.string "It's a POKéMON NAVIGATOR, or POKéNAV\n"
 	.string "for short.\p"
@@ -229,11 +229,11 @@ RustboroCity_DevonCorp_3F_Text_MrStoneExplainPokenavRestUp:
 	.string "It has a map of the HOENN region.\p"
 	.string "You can check the locations of\n"
 	.string "DEWFORD and SLATEPORT easily!\p"
-	.string "By the way, I've heard that sinister\n"
-	.string "criminals--MAGMA and AQUA, I believe--\l"
-	.string "have been making trouble far and wide.\p"
-	.string "I think it would be best if you rested\n"
-	.string "up before you go on your way.$"
+	.string "By the way, TEAM AQUA has been making\n"
+	.string "trouble far and wide.\p"
+	.string "…Your own people, too, I'm told.\p"
+	.string "Whatever you are, I think you should\n"
+	.string "rest up before you go on your way.$"
 
 RustboroCity_DevonCorp_3F_Text_MrStoneGoWithCautionAndCare:
 	.string "MR. STONE: Well, then, {PLAYER}{KUN},\n"

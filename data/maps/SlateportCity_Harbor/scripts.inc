@@ -317,7 +317,7 @@ SlateportCity_Harbor_EventScript_CaptSternFerryOrScannerComment::
 	checkitem ITEM_SCANNER
 	goto_if_eq VAR_RESULT, TRUE, SlateportCity_Harbor_EventScript_AskToTradeScanner
 	goto_if_set FLAG_SYS_GAME_CLEAR, SlateportCity_Harbor_EventScript_FerryFinished
-	msgbox SlateportCity_Harbor_Text_WontBeLongBeforeWeFinishFerry, MSGBOX_DEFAULT
+	call SlateportCity_Harbor_EventScript_DraconidSternFerry  @ Draconid Emerald: the goods choice after the reveal (devon_goods.pory, D-258)
 	release
 	end
 
