@@ -32,6 +32,18 @@ def trainer_ids():
     return ids
 
 
+def scan_pory(ids, maps):
+    """Draconid story scripts (data/scripts/draconid/*.pory): a script's map is its label prefix
+    (MossdeepCity_SpaceCenter_2F_EventScript_X -> MossdeepCity_SpaceCenter_2F)."""
+    for path in sorted(glob.glob(os.path.join(ROOT, "data/scripts/draconid/*.pory"))):
+        text = open(path).read()
+        for m in re.finditer(r"^script (\w+?)_EventScript_\w+ \{(.*?)^\}", text, re.M | re.S):
+            for t in TRAINER_RE.findall(m.group(2)):
+                if t in ids and ids[t] != 0 and t not in maps.setdefault(m.group(1), []):
+                    maps[m.group(1)].append(t)
+    return {k: v for k, v in maps.items() if v}
+
+
 def scan(ids):
     maps = {}
     for d in sorted(glob.glob(os.path.join(ROOT, "data/maps/*"))):
@@ -47,7 +59,7 @@ def scan(ids):
                         found.append(t)
         if found:
             maps[name] = found
-    return maps
+    return scan_pory(ids, maps)
 
 
 def rematches():

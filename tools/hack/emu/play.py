@@ -21,9 +21,11 @@ A .play script is a gbarun script plus:
   pos                     print the player's map coordinates (+7 MAP_OFFSET)
   path MAP X0 Y0 X1 Y1    walk from (X0,Y0) to (X1,Y1) on MAP along the shortest path over
                           walkable cells (collision 0), avoiding tall grass/water/warps when
-                          it can; ignores NPCs and ledges. Expands to walk commands.
+                          it can; jumps down ledges; ignores NPCs. Expands to walk commands.
   savestate/loadstate F   relative paths are inside the output directory
   gender M|F              set the player's gender (the sprite follows on the next map load)
+  warp MAP_X X Y [MAX]    debug builds: warp to (X, Y) on MAP_X the next time the player is free
+  heal                    debug builds: heal the party the next time the player is free
   default NAME VALUE      default for ${NAME}; override with -D NAME=VALUE on the command line
 Lines are otherwise passed to gbarun unchanged (run/press/hold/repeat/shot/savestate/...).
 Exit code 1 if an expectation fails or an "until" times out.
@@ -52,7 +54,7 @@ def symbols(elf):
 
 def probe(names):
     """Evaluate C constants (and SaveBlock1 offsets) with the project's own headers."""
-    src = '#include "global.h"\n#include "constants/flags.h"\n#include "constants/vars.h"\n'
+    src = '#include "global.h"\n#include "constants/flags.h"\n#include "constants/vars.h"\n#include "constants/maps.h"\n'
     src += "const u32 gProbe[] = {\n  offsetof(struct SaveBlock1, flags),\n  offsetof(struct SaveBlock1, vars),\n"
     src += "  offsetof(struct SaveBlock1, location),\n"
     src += "  offsetof(struct ObjectEvent, currentCoords),\n"
@@ -93,11 +95,16 @@ def plan_path(map_name, x0, y0, x1, y1):
     names = pokemap.behavior_names()
     warps = {(w["x"], w["y"]) for w in mj.get("warp_events") or []}
 
+    def behavior(x, y):
+        return names[pair.behavior(lay.block(x, y) & 0x3FF)] or ""
+
     def cost(x, y):
         b = lay.block(x, y)
         if (b >> 10) & 3:
             return None
-        name = names[pair.behavior(b & 0x3FF)] or ""
+        name = behavior(x, y)
+        if name.startswith("MB_JUMP_"):
+            return None  # ledges are crossed by the jump rule below
         if "WATER" in name or "WATERFALL" in name:
             return None
         if (x, y) in warps and (x, y) != (x1, y1):
@@ -118,6 +125,11 @@ def plan_path(map_name, x0, y0, x1, y1):
             nx, ny = x + dx, y + dy
             if not (0 <= nx < lay.width and 0 <= ny < lay.height):
                 continue
+            # a ledge facing this way: the player jumps over it and lands one tile further
+            if behavior(nx, ny) == LEDGE_JUMP.get(dname):
+                nx, ny = nx + dx, ny + dy
+                if not (0 <= nx < lay.width and 0 <= ny < lay.height):
+                    continue
             c = cost(nx, ny)
             if c is None:
                 continue
@@ -145,6 +157,9 @@ def plan_path(map_name, x0, y0, x1, y1):
     return segs
 
 
+LEDGE_JUMP = {"DOWN": "MB_JUMP_SOUTH", "UP": "MB_JUMP_NORTH", "LEFT": "MB_JUMP_WEST", "RIGHT": "MB_JUMP_EAST"}
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("script")
@@ -162,7 +177,7 @@ def main():
             defines.setdefault(t[1], t[2])
     defines.update(dict(d.split("=", 1) for d in args.defines))
     lines = [re.sub(r"\$\{(\w+)\}", lambda m: defines[m.group(1)], l) for l in lines if not l.startswith("default ")]
-    names = sorted({l.split()[1] for l in lines if l.split() and l.split()[0] in ("flag", "var", "expect_flag", "expect_var", "setflag", "clearflag", "setvar")})
+    names = sorted({l.split()[1] for l in lines if l.split() and l.split()[0] in ("flag", "var", "expect_flag", "expect_var", "setflag", "clearflag", "setvar", "warp")})
     flags_off, vars_off, loc_off, coords_off, consts = probe(names)
     # the player is object event 0 (spawned first on every map load); MAP_OFFSET is 7
     player_x = syms["gObjectEvents"] + coords_off
@@ -223,6 +238,23 @@ def main():
             for dname, coord in plan_path(t[1], *map(int, t[2:6])):
                 addr = player_x if dname in ("LEFT", "RIGHT") else player_y
                 out.append("untilhold %X 2 %X 900 %s" % (addr, coord + 7, dname))
+        elif t[0] == "warp":
+            # debug builds only: src/draconid.c Draconid_TryTestWarp picks this up when the player is free
+            if "gDraconidTestWarp" not in syms:
+                sys.exit("warp: gDraconidTestWarp not in the ELF (release build?)")
+            w, m = syms["gDraconidTestWarp"], consts[t[1]]
+            out.append("poke %X %X" % (w + 1, m >> 8))
+            out.append("poke %X %X" % (w + 2, m & 0xFF))
+            out.append("poke %X %X" % (w + 3, int(t[2])))
+            out.append("poke %X %X" % (w + 4, int(t[3])))
+            out.append("poke %X 1" % w)  # DRACONID_TEST_WARP
+            out.append("run 30")
+            out.append("until %X 1 0 %s" % (syms["sLockFieldControls"], t[4] if len(t) > 4 else "900"))
+            out.append("run 20")
+        elif t[0] == "heal":
+            # debug builds only: HealPlayerParty() the next time the player is free
+            out.append("poke %X 2" % syms["gDraconidTestWarp"])  # DRACONID_TEST_HEAL
+            out.append("run 10")
         elif t[0] == "gender":
             g = 0 if t[1].upper().startswith("M") else 1
             out.append("poke *%X+8 %X" % (syms["gSaveBlock2Ptr"], g))

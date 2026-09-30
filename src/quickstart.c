@@ -79,8 +79,9 @@ static void CB2_SkipToNewGame(void)
     static const u8 sText_PlayerFemale[] = _("LEAF");
     static const u8 sText_Rival[] = _("BLUE");
 #else
-    static const u8 sText_PlayerMale[] = _("BRENDAN");
-    static const u8 sText_PlayerFemale[] = _("MAY");
+    // Draconid Emerald: Brendan and May are the rivals, so the quickstart player gets other names
+    static const u8 sText_PlayerMale[] = _("KAI");
+    static const u8 sText_PlayerFemale[] = _("ZARA");
 #endif  // IS_FRLG
 
     if (!UpdatePaletteFade())

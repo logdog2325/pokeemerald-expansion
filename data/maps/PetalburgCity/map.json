@@ -147,6 +147,20 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "0x0",
       "flag": "FLAG_HIDE_PETALBURG_CITY_SCOTT"
+    },
+    {
+      "local_id": "LOCALID_PETALBURG_WALLY_GYM",
+      "graphics_id": "OBJ_EVENT_GFX_WALLY",
+      "x": 13,
+      "y": 9,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "PetalburgCity_EventScript_DraconidWallyTalk",
+      "flag": "FLAG_HIDE_PETALBURG_CITY_WALLY_GYM"
     }
   ],
   "warp_events": [
@@ -265,6 +279,15 @@
       "var": "VAR_SCOTT_PETALBURG_ENCOUNTER",
       "var_value": "0",
       "script": "PetalburgCity_EventScript_Scott3"
+    },
+    {
+      "type": "trigger",
+      "x": 15,
+      "y": 9,
+      "elevation": 3,
+      "var": "VAR_WALLY_STATE",
+      "var_value": "WALLY_STATE_PETALBURG",
+      "script": "PetalburgCity_EventScript_DraconidWallyTrigger"
     }
   ],
   "bg_events": [

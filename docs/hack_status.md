@@ -64,10 +64,13 @@ Other docs: [decisions](hack_decisions.md) · [changes](hack_changes.md) · [too
 - [ ] Vanilla flow verification
 
 ## Phase 5 – Rival battles
-- [ ] Decouple Brendan & May from player gender
-- [ ] 10-battle schedule
-- [ ] Aster fights by egg
-- [ ] Wally extra fights
+- [x] Decouple Brendan & May from player gender (scenes, sprites, PokéNav)
+- [x] 10-battle schedule (D-070) – new scenes in `data/scripts/draconid/rivals.pory`, teams in trainers.party;
+      flow-tested in the emulator (`route104.play`, `rivals.play`; Space Center partner checked by hand)
+- [p] Aster fights by egg: teams for Meteor Falls / Route 119 / Sky Pillar / post-game exist; the scenes come with
+      the Aster arc (Phase 4)
+- [x] Wally extra fights (Petalburg Gym door, Lilycove; Mega Gallade)
+- [ ] Dialogue polish: vanilla rival lines still say "you just moved here" etc. – `TODO(dialogue)`
 
 ## Phase 6 – Trainers / difficulty
 - [x] Level caps (hard, per badge) + rematch tiers gated by badges – `make check` green

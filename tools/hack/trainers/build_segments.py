@@ -79,7 +79,7 @@ MAP_SEGMENT = [
     ("MossdeepCity_Gym", "S7"),
     ("MossdeepCity_SpaceCenter", "S8"), ("SeafloorCavern", "S8"), ("SootopolisCity", "S8"),
     ("VictoryRoad", "S9"), ("EverGrandeCity", "S9"), ("MeteorFalls_1F_2R", "S9"),
-    ("MeteorFalls_StevensCave", "POST"), ("SSTidal", "POST"),
+    ("MeteorFalls_StevensCave", "POST"), ("SSTidal", "POST"), ("LittlerootTown_ProfessorBirchsLab", "POST"),
 ]
 
 # Trainers whose part of a map is reached at another time (checked against map.json coordinates).
@@ -99,6 +99,15 @@ OVERRIDES = {
     # League
     **{t: "S9" for t in ["SIDNEY", "PHOEBE", "GLACIA", "DRAKE", "WALLACE", "WALLY_VR_1"]},
     "STEVEN": "POST",
+    # Story battles (data/scripts/draconid/*.pory)
+    "MAY_ROUTE_103": "S1", "MAY_RUSTBORO": "S2", "WALLY_PETALBURG": "S5", "BRENDAN_ROUTE_119": "S6",
+    "WALLY_VR_2": "POST",  # Wally's rematches start after the Champion
+    **{"ASTER_METEOR_FALLS_" + e: "S4" for e in ("DEINO", "DREEPY", "JANGMO_O")},
+    **{"ASTER_ROUTE_119_" + e: "S6" for e in ("DEINO", "DREEPY", "JANGMO_O")},
+    **{"ASTER_SKY_PILLAR_" + e: "S8" for e in ("DEINO", "DREEPY", "JANGMO_O")},
+    **{"ASTER_POSTGAME_" + e: "POST" for e in ("DEINO", "DREEPY", "JANGMO_O")},
+    "BRENDAN_SOOTOPOLIS": "S9", "MAY_SOOTOPOLIS": "S9",
+    **{t: "POST" for t in ["BRENDAN_POSTGAME", "MAY_POSTGAME", "BRENDAN_POSTGAME_DOUBLE", "MAY_POSTGAME_DOUBLE"]},
     # Gabby & Ty move on after every battle (Route 111 -> 118 -> 120 ...)
     "GABBY_AND_TY_1": "S4", "GABBY_AND_TY_2": "S4", "GABBY_AND_TY_3": "S5",
     "GABBY_AND_TY_4": "S6", "GABBY_AND_TY_5": "S7", "GABBY_AND_TY_6": "S8",
@@ -107,7 +116,8 @@ TIER_MIN = {2: "S6", 3: "S7", 4: "S8", 5: "POST", 6: "POST"}
 
 LEADERS = ["ROXANNE_1", "BRAWLY_1", "WATTSON_1", "FLANNERY_1", "NORMAN_1", "WINONA_1", "TATE_AND_LIZA_1", "JUAN_1"]
 ELITE = ["SIDNEY", "PHOEBE", "GLACIA", "DRAKE", "WALLACE", "STEVEN"]
-BOSSES = ["MAXIE", "ARCHIE", "TABITHA", "SHELLY", "MATT"]
+BOSSES = ["MAXIE", "ARCHIE"]
+ADMINS = ["TABITHA", "SHELLY", "MATT"]
 # Battles written by hand with the story (Phase 5): not in the trainer batches.
 STORY = re.compile(r"^TRAINER_(BRENDAN|MAY|WALLY|ASTER)_")
 SKIP = {"TRAINER_BRENDAN_PLACEHOLDER", "TRAINER_MAY_PLACEHOLDER", "TRAINER_RED", "TRAINER_LEAF",
@@ -139,8 +149,10 @@ def role_of(tid, mapname):
         return "leader"
     if short in ELITE:
         return "elite"
-    if any(short.startswith(b) for b in BOSSES):
+    if any(short == b or short.startswith(b + "_") for b in BOSSES):
         return "boss"
+    if any(short == b or short.startswith(b + "_") for b in ADMINS):
+        return "admin"
     if short.startswith("GRUNT"):
         return "grunt"
     if mapname and "_Gym" in mapname:

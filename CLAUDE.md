@@ -49,6 +49,8 @@ python3 tools/hack/porymap_scripts/register.py      # registers the JS tools in 
 # emulator regression tests (rerun after every build; savestates chain in one -o dir)
 python3 tools/hack/emu/play.py tools/hack/emu/tests/opening.play -o /tmp/emu
 python3 tools/hack/emu/play.py tools/hack/emu/tests/route103.play -o /tmp/emu
+python3 tools/hack/emu/play.py tools/hack/emu/tests/route104.play -o /tmp/emu   # warp hook (debug build)
+python3 tools/hack/emu/play.py tools/hack/emu/tests/rivals.play -o /tmp/emu
 # trainers (rules: docs/hack_trainers.md)
 python3 tools/hack/trainers/check_party.py [batch.party] --caps --proc   # legality, caps, headers, trainerproc
 python3 tools/hack/trainers/splice_party.py batch.party                  # merge blocks into trainers.party

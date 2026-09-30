@@ -271,9 +271,9 @@
 #define VAR_SECOND_STARTER                               0x40F9 // Birch's second starter: 0 none yet, 1 Charmander, 2 Totodile, 3 Treecko
 #define VAR_PLAYER_OUTFIT                                0x40FA // Player outfit: PLAYER_OUTFIT_* (include/constants/outfits.h)
 #define VAR_ASTER_STATE                                  0x40FB // Aster story arc progress
-#define VAR_UNUSED_0x40FC                                0x40FC // Unused Var
-#define VAR_UNUSED_0x40FD                                0x40FD // Unused Var
-#define VAR_UNUSED_0x40FE                                0x40FE // Unused Var
+#define VAR_BRENDAN_STATE                                0x40FC // Draconid Emerald: Brendan's new battles (RIVAL_STATE_*, include/constants/draconid.h)
+#define VAR_MAY_STATE                                    0x40FD // Draconid Emerald: May's new battles (RIVAL_STATE_*)
+#define VAR_WALLY_STATE                                  0x40FE // Draconid Emerald: Wally's new battles (WALLY_STATE_*)
 #define VAR_UNUSED_0x40FF                                0x40FF // Unused Var
 
 #define VARS_END                                         0x40FF

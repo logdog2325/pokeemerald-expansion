@@ -117,7 +117,10 @@ python3 tools/hack/emu/play.py test.play -o /tmp/out
 | `flag NAME`, `var NAME`, `expect_flag NAME 0/1`, `expect_var NAME V` | read the save block; `expect_*` fail the run |
 | `walk DIR COORD [MAX]` | hold DIR until the player's x (LEFT/RIGHT) or y (UP/DOWN) equals COORD |
 | `pos`, `mapid` | print player coordinates / map group+num |
-| `path MAP X0 Y0 X1 Y1` | shortest walk on MAP's collision grid (avoids tall grass, water, warps; ignores NPCs and ledges) |
+| `path MAP X0 Y0 X1 Y1` | shortest walk on MAP's collision grid (avoids tall grass, water, warps; jumps down ledges; ignores NPCs) |
+| `warp MAP_X X Y [MAX]` | debug builds: warp to (X, Y) on MAP_X the next time the player is free (`gDraconidTestWarp`) |
+| `heal` | debug builds: heal the party the next time the player is free |
+| `setvar NAME V`, `gender M/F`, `default NAME V` (+ `-D NAME=V`) | change a var, the player's gender, script defaults |
 | `setflag NAME`, `clearflag NAME` | change a save-block flag, e.g. `setflag FLAG_DEBUG_NO_ENCOUNTER` to walk without wild battles |
 | `savestate F`, `loadstate F` | relative paths are inside the `-o` output directory |
 
@@ -125,7 +128,10 @@ Regression tests live in `tools/hack/emu/tests/` and chain through savestates in
 ```sh
 python3 tools/hack/emu/play.py tools/hack/emu/tests/opening.play  -o /tmp/emu   # new game -> Birch's lab
 python3 tools/hack/emu/play.py tools/hack/emu/tests/route103.play -o /tmp/emu   # lab -> May on Route 103
+python3 tools/hack/emu/play.py tools/hack/emu/tests/route104.play -o /tmp/emu   # warp -> Brendan on Route 104
+python3 tools/hack/emu/play.py tools/hack/emu/tests/rivals.play   -o /tmp/emu   # the other new rival scenes
 ```
+Flow tests set `FLAG_DRACONID_NO_WHITEOUT` so a battle lost by mashing A doesn't end the scene.
 Savestates only work with the ROM build that made them; rerun the chain after every rebuild.
 Tips: the wall clock needs exact presses (`press A 2 450; press A 2 150; press A 2 40; press UP 2 20;
 press A 2 60; mash A 3000`); indoor door mats need an extra `hold DOWN 20`. Exit code 1 on any failed

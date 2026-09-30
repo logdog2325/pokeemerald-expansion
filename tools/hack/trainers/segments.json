@@ -676,24 +676,24 @@
   "TRAINER_EDWIN_4": "S8",
   "TRAINER_EDWIN_5": "POST",
   "TRAINER_WALLY_VR_1": "S9",
-  "TRAINER_BRENDAN_ROUTE_103_MUDKIP": "S3",
-  "TRAINER_BRENDAN_ROUTE_110_MUDKIP": "S3",
-  "TRAINER_BRENDAN_ROUTE_119_MUDKIP": "S6",
-  "TRAINER_BRENDAN_ROUTE_103_TREECKO": "S3",
-  "TRAINER_BRENDAN_ROUTE_110_TREECKO": "S3",
-  "TRAINER_BRENDAN_ROUTE_119_TREECKO": "S6",
-  "TRAINER_BRENDAN_ROUTE_103_TORCHIC": "S3",
-  "TRAINER_BRENDAN_ROUTE_110_TORCHIC": "S3",
-  "TRAINER_BRENDAN_ROUTE_119_TORCHIC": "S6",
-  "TRAINER_MAY_ROUTE_103_MUDKIP": "S3",
-  "TRAINER_MAY_ROUTE_110_MUDKIP": "S3",
-  "TRAINER_MAY_ROUTE_119_MUDKIP": "S6",
-  "TRAINER_MAY_ROUTE_103_TREECKO": "S3",
-  "TRAINER_MAY_ROUTE_110_TREECKO": "S3",
-  "TRAINER_MAY_ROUTE_119_TREECKO": "S6",
-  "TRAINER_MAY_ROUTE_103_TORCHIC": "S3",
-  "TRAINER_MAY_ROUTE_110_TORCHIC": "S3",
-  "TRAINER_MAY_ROUTE_119_TORCHIC": "S6",
+  "TRAINER_BRENDAN_ROUTE_104": "S1",
+  "TRAINER_BRENDAN_ROUTE_110": "S3",
+  "TRAINER_BRENDAN_ROUTE_119": "S6",
+  "TRAINER_MAY_SLATEPORT": "S3",
+  "TRAINER_BRENDAN_SOOTOPOLIS": "S9",
+  "TRAINER_MAY_SOOTOPOLIS": "S9",
+  "TRAINER_BRENDAN_POSTGAME": "POST",
+  "TRAINER_MAY_POSTGAME": "POST",
+  "TRAINER_BRENDAN_POSTGAME_DOUBLE": "POST",
+  "TRAINER_ASTER_METEOR_FALLS_DEINO": "S4",
+  "TRAINER_ASTER_METEOR_FALLS_DREEPY": "S4",
+  "TRAINER_ASTER_METEOR_FALLS_JANGMO_O": "S4",
+  "TRAINER_MAY_ROUTE_103": "S1",
+  "TRAINER_ASTER_ROUTE_119_DEINO": "S6",
+  "TRAINER_ASTER_ROUTE_119_DREEPY": "S6",
+  "TRAINER_ASTER_ROUTE_119_JANGMO_O": "S6",
+  "TRAINER_ASTER_SKY_PILLAR_DEINO": "S8",
+  "TRAINER_ASTER_SKY_PILLAR_DREEPY": "S8",
   "TRAINER_ISAAC_1": "S3",
   "TRAINER_DAVIS": "S7",
   "TRAINER_MITCHELL": "S9",
@@ -746,15 +746,15 @@
   "TRAINER_GRUNT_SPACE_CENTER_6": "S8",
   "TRAINER_GRUNT_SPACE_CENTER_7": "S8",
   "TRAINER_MACEY": "S7",
-  "TRAINER_BRENDAN_RUSTBORO_TREECKO": "S1",
-  "TRAINER_BRENDAN_RUSTBORO_MUDKIP": "S1",
+  "TRAINER_ASTER_SKY_PILLAR_JANGMO_O": "S8",
+  "TRAINER_ASTER_POSTGAME_DEINO": "POST",
   "TRAINER_PAXTON": "S7",
   "TRAINER_ISABELLA": "S7",
   "TRAINER_GRUNT_WEATHER_INST_5": "S6",
   "TRAINER_TABITHA_MT_CHIMNEY": "S4",
   "TRAINER_JONATHAN": "S7",
-  "TRAINER_BRENDAN_RUSTBORO_TORCHIC": "S1",
-  "TRAINER_MAY_RUSTBORO_MUDKIP": "S1",
+  "TRAINER_ASTER_POSTGAME_DREEPY": "POST",
+  "TRAINER_ASTER_POSTGAME_JANGMO_O": "POST",
   "TRAINER_MAXIE_MAGMA_HIDEOUT": "S7",
   "TRAINER_MAXIE_MT_CHIMNEY": "S4",
   "TRAINER_TIANA": "S1",
@@ -809,16 +809,14 @@
   "TRAINER_FLINT": "S6",
   "TRAINER_ASHLEY": "S6",
   "TRAINER_WALLY_MAUVILLE": "S3",
-  "TRAINER_WALLY_VR_2": "S9",
+  "TRAINER_WALLY_VR_2": "POST",
   "TRAINER_WALLY_VR_3": "POST",
   "TRAINER_WALLY_VR_4": "POST",
   "TRAINER_WALLY_VR_5": "POST",
-  "TRAINER_BRENDAN_LILYCOVE_MUDKIP": "S7",
-  "TRAINER_BRENDAN_LILYCOVE_TREECKO": "S7",
-  "TRAINER_BRENDAN_LILYCOVE_TORCHIC": "S7",
-  "TRAINER_MAY_LILYCOVE_MUDKIP": "S7",
-  "TRAINER_MAY_LILYCOVE_TREECKO": "S7",
-  "TRAINER_MAY_LILYCOVE_TORCHIC": "S7",
+  "TRAINER_BRENDAN_LILYCOVE": "S7",
+  "TRAINER_WALLY_LILYCOVE": "S7",
+  "TRAINER_MAY_POSTGAME_DOUBLE": "POST",
+  "TRAINER_MAY_LILYCOVE": "S7",
   "TRAINER_JONAH": "S7",
   "TRAINER_HENRY": "S7",
   "TRAINER_ROGER": "S7",
@@ -920,8 +918,8 @@
   "TRAINER_MYLES": "S7",
   "TRAINER_PAT": "S7",
   "TRAINER_CRISTIN_1": "S7",
-  "TRAINER_MAY_RUSTBORO_TREECKO": "S1",
-  "TRAINER_MAY_RUSTBORO_TORCHIC": "S1",
+  "TRAINER_MAY_RUSTBORO": "S2",
+  "TRAINER_WALLY_PETALBURG": "S5",
   "TRAINER_ROXANNE_2": "POST",
   "TRAINER_ROXANNE_3": "POST",
   "TRAINER_ROXANNE_4": "POST",
@@ -1177,7 +1175,7 @@
   },
   "TRAINER_MATT": {
    "segment": "S7",
-   "role": "boss",
+   "role": "admin",
    "map": "AquaHideout_B2F",
    "story": false
   },
@@ -1189,13 +1187,13 @@
   },
   "TRAINER_SHELLY_WEATHER_INSTITUTE": {
    "segment": "S6",
-   "role": "boss",
+   "role": "admin",
    "map": "Route119_WeatherInstitute_2F",
    "story": false
   },
   "TRAINER_SHELLY_SEAFLOOR_CAVERN": {
    "segment": "S8",
-   "role": "boss",
+   "role": "admin",
    "map": "SeafloorCavern_Room3",
    "story": false
   },
@@ -2021,7 +2019,7 @@
   },
   "TRAINER_MATTHEW": {
    "segment": "S6",
-   "role": "boss",
+   "role": "route",
    "map": "Route108",
    "story": false
   },
@@ -4403,7 +4401,7 @@
   },
   "TRAINER_TABITHA_MOSSDEEP": {
    "segment": "S8",
-   "role": "boss",
+   "role": "admin",
    "map": "MossdeepCity_SpaceCenter_2F",
    "story": false
   },
@@ -4445,112 +4443,112 @@
    "map": "VictoryRoad_1F",
    "story": true
   },
-  "TRAINER_BRENDAN_ROUTE_103_MUDKIP": {
-   "segment": "S3",
+  "TRAINER_BRENDAN_ROUTE_104": {
+   "segment": "S1",
    "role": "route",
-   "map": "Route103",
+   "map": "Route104",
    "story": true
   },
-  "TRAINER_BRENDAN_ROUTE_110_MUDKIP": {
-   "segment": "S3",
-   "role": "route",
-   "map": "Route110",
-   "story": true
-  },
-  "TRAINER_BRENDAN_ROUTE_119_MUDKIP": {
-   "segment": "S6",
-   "role": "route",
-   "map": "Route119",
-   "story": true
-  },
-  "TRAINER_BRENDAN_ROUTE_103_TREECKO": {
-   "segment": "S3",
-   "role": "route",
-   "map": "Route103",
-   "story": true
-  },
-  "TRAINER_BRENDAN_ROUTE_110_TREECKO": {
+  "TRAINER_BRENDAN_ROUTE_110": {
    "segment": "S3",
    "role": "route",
    "map": "Route110",
    "story": true
   },
-  "TRAINER_BRENDAN_ROUTE_119_TREECKO": {
+  "TRAINER_BRENDAN_ROUTE_119": {
    "segment": "S6",
    "role": "route",
    "map": "Route119",
    "story": true
   },
-  "TRAINER_BRENDAN_ROUTE_103_TORCHIC": {
+  "TRAINER_MAY_SLATEPORT": {
    "segment": "S3",
+   "role": "route",
+   "map": "SlateportCity",
+   "story": true
+  },
+  "TRAINER_BRENDAN_SOOTOPOLIS": {
+   "segment": "S9",
+   "role": "route",
+   "map": "SootopolisCity",
+   "story": true
+  },
+  "TRAINER_MAY_SOOTOPOLIS": {
+   "segment": "S9",
+   "role": "route",
+   "map": "SootopolisCity",
+   "story": true
+  },
+  "TRAINER_BRENDAN_POSTGAME": {
+   "segment": "POST",
+   "role": "route",
+   "map": "LittlerootTown_ProfessorBirchsLab",
+   "story": true
+  },
+  "TRAINER_MAY_POSTGAME": {
+   "segment": "POST",
+   "role": "route",
+   "map": "LittlerootTown_ProfessorBirchsLab",
+   "story": true
+  },
+  "TRAINER_BRENDAN_POSTGAME_DOUBLE": {
+   "segment": "POST",
+   "role": "route",
+   "map": "LittlerootTown_ProfessorBirchsLab",
+   "story": true
+  },
+  "TRAINER_ASTER_METEOR_FALLS_DEINO": {
+   "segment": "S4",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_ASTER_METEOR_FALLS_DREEPY": {
+   "segment": "S4",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_ASTER_METEOR_FALLS_JANGMO_O": {
+   "segment": "S4",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_MAY_ROUTE_103": {
+   "segment": "S1",
    "role": "route",
    "map": "Route103",
    "story": true
   },
-  "TRAINER_BRENDAN_ROUTE_110_TORCHIC": {
-   "segment": "S3",
-   "role": "route",
-   "map": "Route110",
-   "story": true
-  },
-  "TRAINER_BRENDAN_ROUTE_119_TORCHIC": {
+  "TRAINER_ASTER_ROUTE_119_DEINO": {
    "segment": "S6",
    "role": "route",
-   "map": "Route119",
+   "map": null,
    "story": true
   },
-  "TRAINER_MAY_ROUTE_103_MUDKIP": {
-   "segment": "S3",
-   "role": "route",
-   "map": "Route103",
-   "story": true
-  },
-  "TRAINER_MAY_ROUTE_110_MUDKIP": {
-   "segment": "S3",
-   "role": "route",
-   "map": "Route110",
-   "story": true
-  },
-  "TRAINER_MAY_ROUTE_119_MUDKIP": {
+  "TRAINER_ASTER_ROUTE_119_DREEPY": {
    "segment": "S6",
    "role": "route",
-   "map": "Route119",
+   "map": null,
    "story": true
   },
-  "TRAINER_MAY_ROUTE_103_TREECKO": {
-   "segment": "S3",
-   "role": "route",
-   "map": "Route103",
-   "story": true
-  },
-  "TRAINER_MAY_ROUTE_110_TREECKO": {
-   "segment": "S3",
-   "role": "route",
-   "map": "Route110",
-   "story": true
-  },
-  "TRAINER_MAY_ROUTE_119_TREECKO": {
+  "TRAINER_ASTER_ROUTE_119_JANGMO_O": {
    "segment": "S6",
    "role": "route",
-   "map": "Route119",
+   "map": null,
    "story": true
   },
-  "TRAINER_MAY_ROUTE_103_TORCHIC": {
-   "segment": "S3",
+  "TRAINER_ASTER_SKY_PILLAR_DEINO": {
+   "segment": "S8",
    "role": "route",
-   "map": "Route103",
+   "map": null,
    "story": true
   },
-  "TRAINER_MAY_ROUTE_110_TORCHIC": {
-   "segment": "S3",
+  "TRAINER_ASTER_SKY_PILLAR_DREEPY": {
+   "segment": "S8",
    "role": "route",
-   "map": "Route110",
-   "story": true
-  },
-  "TRAINER_MAY_ROUTE_119_TORCHIC": {
-   "segment": "S6",
-   "role": "route",
-   "map": "Route119",
+   "map": null,
    "story": true
   },
   "TRAINER_ISAAC_1": {
@@ -4897,16 +4895,16 @@
    "map": "MossdeepCity_Gym",
    "story": false
   },
-  "TRAINER_BRENDAN_RUSTBORO_TREECKO": {
-   "segment": "S1",
+  "TRAINER_ASTER_SKY_PILLAR_JANGMO_O": {
+   "segment": "S8",
    "role": "route",
-   "map": "Route104",
+   "map": null,
    "story": true
   },
-  "TRAINER_BRENDAN_RUSTBORO_MUDKIP": {
-   "segment": "S1",
+  "TRAINER_ASTER_POSTGAME_DEINO": {
+   "segment": "POST",
    "role": "route",
-   "map": "Route104",
+   "map": null,
    "story": true
   },
   "TRAINER_PAXTON": {
@@ -4929,7 +4927,7 @@
   },
   "TRAINER_TABITHA_MT_CHIMNEY": {
    "segment": "S4",
-   "role": "boss",
+   "role": "admin",
    "map": "MtChimney",
    "story": false
   },
@@ -4939,16 +4937,16 @@
    "map": "Route132",
    "story": false
   },
-  "TRAINER_BRENDAN_RUSTBORO_TORCHIC": {
-   "segment": "S1",
+  "TRAINER_ASTER_POSTGAME_DREEPY": {
+   "segment": "POST",
    "role": "route",
-   "map": "Route104",
+   "map": null,
    "story": true
   },
-  "TRAINER_MAY_RUSTBORO_MUDKIP": {
-   "segment": "S1",
+  "TRAINER_ASTER_POSTGAME_JANGMO_O": {
+   "segment": "POST",
    "role": "route",
-   "map": "Route104",
+   "map": null,
    "story": true
   },
   "TRAINER_MAXIE_MAGMA_HIDEOUT": {
@@ -5308,7 +5306,7 @@
    "story": true
   },
   "TRAINER_WALLY_VR_2": {
-   "segment": "S9",
+   "segment": "POST",
    "role": "route",
    "map": "VictoryRoad_1F",
    "story": true
@@ -5337,37 +5335,25 @@
    "tier": 4,
    "first": "TRAINER_WALLY_VR_2"
   },
-  "TRAINER_BRENDAN_LILYCOVE_MUDKIP": {
+  "TRAINER_BRENDAN_LILYCOVE": {
    "segment": "S7",
    "role": "route",
    "map": "LilycoveCity",
    "story": true
   },
-  "TRAINER_BRENDAN_LILYCOVE_TREECKO": {
+  "TRAINER_WALLY_LILYCOVE": {
    "segment": "S7",
    "role": "route",
    "map": "LilycoveCity",
    "story": true
   },
-  "TRAINER_BRENDAN_LILYCOVE_TORCHIC": {
-   "segment": "S7",
+  "TRAINER_MAY_POSTGAME_DOUBLE": {
+   "segment": "POST",
    "role": "route",
-   "map": "LilycoveCity",
+   "map": "LittlerootTown_ProfessorBirchsLab",
    "story": true
   },
-  "TRAINER_MAY_LILYCOVE_MUDKIP": {
-   "segment": "S7",
-   "role": "route",
-   "map": "LilycoveCity",
-   "story": true
-  },
-  "TRAINER_MAY_LILYCOVE_TREECKO": {
-   "segment": "S7",
-   "role": "route",
-   "map": "LilycoveCity",
-   "story": true
-  },
-  "TRAINER_MAY_LILYCOVE_TORCHIC": {
+  "TRAINER_MAY_LILYCOVE": {
    "segment": "S7",
    "role": "route",
    "map": "LilycoveCity",
@@ -5781,7 +5767,7 @@
   },
   "TRAINER_TABITHA_MAGMA_HIDEOUT": {
    "segment": "S7",
-   "role": "boss",
+   "role": "admin",
    "map": "MagmaHideout_4F",
    "story": false
   },
@@ -5995,16 +5981,16 @@
    "map": "Route121",
    "story": false
   },
-  "TRAINER_MAY_RUSTBORO_TREECKO": {
-   "segment": "S1",
+  "TRAINER_MAY_RUSTBORO": {
+   "segment": "S2",
    "role": "route",
    "map": "Route104",
    "story": true
   },
-  "TRAINER_MAY_RUSTBORO_TORCHIC": {
-   "segment": "S1",
+  "TRAINER_WALLY_PETALBURG": {
+   "segment": "S5",
    "role": "route",
-   "map": "Route104",
+   "map": "PetalburgCity",
    "story": true
   },
   "TRAINER_ROXANNE_2": {

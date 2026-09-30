@@ -8,7 +8,7 @@ round-trip byte for byte; parse_block() gives a structured view for checks.
 
 import re
 
-HEADER = re.compile(r"^=== (TRAINER_\w+) ===\s*$", re.M)
+HEADER = re.compile(r"^=== ((?:TRAINER|PARTNER)_\w+) ===\s*$", re.M)
 
 
 def split(text):

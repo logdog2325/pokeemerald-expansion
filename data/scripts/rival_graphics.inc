@@ -1,7 +1,7 @@
+@ Draconid Emerald: the rival is May (Birch's daughter) for both player genders;
+@ scenes with Brendan set VAR_OBJ_GFX_ID_0 / _3 themselves.
 Common_EventScript_SetupRivalGfxId::
-	checkplayergender
-	goto_if_eq VAR_RESULT, MALE, EventScript_SetupRivalGfxIdFemale
-	goto_if_eq VAR_RESULT, FEMALE, EventScript_SetupRivalGfxIdMale
+	goto EventScript_SetupRivalGfxIdFemale
 	end
 
 EventScript_SetupRivalGfxIdFemale::
@@ -13,9 +13,7 @@ EventScript_SetupRivalGfxIdMale::
 	return
 
 Common_EventScript_SetupRivalOnBikeGfxId::
-	checkplayergender
-	goto_if_eq VAR_RESULT, MALE, EventScript_SetupRivalOnBikeGfxIdFemale
-	goto_if_eq VAR_RESULT, FEMALE, EventScript_SetupRivalOnBikeGfxIdMale
+	goto EventScript_SetupRivalOnBikeGfxIdFemale
 	end
 
 EventScript_SetupRivalOnBikeGfxIdFemale::

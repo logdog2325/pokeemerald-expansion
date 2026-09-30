@@ -205,6 +205,8 @@ script LittlerootTown_ProfessorBirchsLab_EventScript_DraconidWelcome {
     closemessage
     // May waits on Route 103; the vanilla Pokédex-after-Route 103 step is skipped
     clearflag(FLAG_HIDE_ROUTE_103_RIVAL)
+    // Brendan waits at the Petalburg Woods entrance on Route 104 (rivals.pory)
+    clearflag(FLAG_HIDE_ROUTE_104_BRENDAN)
     clearflag(FLAG_HIDE_ROUTE_101_BOY)
     setvar(VAR_BIRCH_LAB_STATE, 5)
     setflag(FLAG_ADVENTURE_STARTED)
@@ -224,6 +226,11 @@ movement LittlerootTown_ProfessorBirchsLab_Movement_DraconidBrendanLeaves {
 }
 
 script LittlerootTown_ProfessorBirchsLab_EventScript_Brendan {
+    if (flag(FLAG_SYS_GAME_CLEAR)) {
+        lock
+        faceplayer
+        goto(LittlerootTown_ProfessorBirchsLab_EventScript_DraconidPostgameBrendan)
+    }
     msgbox(format("BRENDAN: TREECKO and me are going to be the strongest team in HOENN."), MSGBOX_NPC)
 }
 
@@ -245,7 +252,7 @@ script Route103_EventScript_DraconidMay {
     msgbox(format("MAY: There you are, {PLAYER}! TORCHIC and I have been practicing.\p"
                   "Let's see what a real dragon can do!"))
     // TODO(Phase 5): MAY_ROUTE_103 team from the rival schedule (docs/hack_trainers.md)
-    trainerbattle_no_intro(TRAINER_MAY_ROUTE_103_TREECKO, Route103_Text_DraconidMayDefeated)
+    trainerbattle_no_intro(TRAINER_MAY_ROUTE_103, Route103_Text_DraconidMayDefeated)
     msgbox(format("MAY: Your dragon really listens to you. No wonder Dad was so excited.\p"
                   "I'm going to catch lots more POKéMON so I can beat you next time!\p"
                   "See you around, {PLAYER}!"))

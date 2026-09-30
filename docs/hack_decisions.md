@@ -142,6 +142,25 @@ when a playtest note overrides something here, the entry is updated and marked.
   Steven (Metagross), gym leaders' last rematch tier, and the story trainers late. – Alt: Megas for all bosses.
   – Megas stay special; the ORAS villains' Megas are canon.
 - **D-037 Trainer ID capacity**: `MAX_TRAINERS_COUNT` is 864 and vanilla uses 855, so only 9 new IDs fit.
-  Aster's first fight uses 3 (one per egg). Plan for Phase 5: reuse the unused/duplicated rival IDs where the
-  vanilla game has them, then raise `MAX_TRAINERS_COUNT` together with the trainer-flag space (saveblock
-  `FREE_*` options) when that runs out. – Decided when Phase 5 starts; recorded here so nobody burns the last IDs.
+  Aster's first fight uses 3 (one per egg). **Phase 5 (done)**: the 30 vanilla rival ids (3 starters × Brendan/May ×
+  Routes 103/110/119, Rustboro, Lilycove) are renamed in place for the 28 Draconid story battles; 2 are spare and
+  858–863 stay free. – Alt: raise `MAX_TRAINERS_COUNT` (costs save space). – Same numbers, so trainer flags and
+  save data layout don't move.
+- **D-070 Rival schedule**: Route 103 May → Route 104 Brendan (Petalburg Woods entrance) → Rustboro May → Slateport
+  May (after the museum; the brief's "Slateport/Mauville") → Route 110 Brendan → Route 119 Brendan → Lilycove both
+  (two-on-two) → Space Center tag with the rival of the player's choice → Sootopolis both with Megas (right after the
+  Rain Badge, before Victory Road) → post-game in the lab: a single with each, then a double. Brendan's ace is
+  Sceptile, May's Blaziken; their teams don't depend on the player's egg. – Alt: Megas only post-game. – The brief's
+  list; Sootopolis after Juan is the first moment both Key Stones make sense (Birch sends them).
+- **D-071 Who the rival is in vanilla scenes**: `{RIVAL}` and the common rival sprite are May; Rustboro/Route 104 and
+  Lavaridge are May's, Routes 110/119 Brendan's; both register in the PokéNav (May in Rustboro, Brendan after
+  Route 110). – Alt: keep the player-gender switch. – Brendan and May are separate characters now (D-031).
+- **D-072 Space Center partner**: Steven stays and leads the scene; May and Brendan come to help and the player picks
+  one (YES = May, NO = Brendan) as the multi-battle partner. – Alt: replace Steven. – Keeps Steven's Dive/house
+  follow-up untouched while making it a rival tag battle.
+- **D-073 Wally**: vanilla Mauville and Victory Road, plus Petalburg Gym door (after the Heat Badge, before Norman)
+  and Lilycove (Mega Gallade). His Ralts line becomes **Gallade** (ORAS Wally), Mega from Lilycove on. – Alt: Mega
+  Gardevoir. – ORAS canon; one Ralts can't be both.
+- **D-074 Test hooks**: debug builds get `gDraconidTestWarp` (warp/heal on request) so emulator tests can reach any
+  scene; release builds compile it out. Flow tests set `FLAG_DRACONID_NO_WHITEOUT` so a mashed battle doesn't end
+  the script. – Alt: walking every route in tests (fragile: NPCs block paths).

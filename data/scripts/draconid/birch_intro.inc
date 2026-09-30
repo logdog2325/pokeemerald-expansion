@@ -206,6 +206,7 @@ LittlerootTown_ProfessorBirchsLab_EventScript_DraconidWelcome::
 	msgbox LittlerootTown_ProfessorBirchsLab_EventScript_DraconidWelcome_Text_14
 	closemessage
 	clearflag FLAG_HIDE_ROUTE_103_RIVAL
+	clearflag FLAG_HIDE_ROUTE_104_BRENDAN
 	clearflag FLAG_HIDE_ROUTE_101_BOY
 	setvar VAR_BIRCH_LAB_STATE, 5
 	setflag FLAG_ADVENTURE_STARTED
@@ -237,8 +238,16 @@ LittlerootTown_ProfessorBirchsLab_Movement_DraconidBrendanLeaves:
 	step_end
 
 LittlerootTown_ProfessorBirchsLab_EventScript_Brendan::
+	goto_if_set FLAG_SYS_GAME_CLEAR, LittlerootTown_ProfessorBirchsLab_EventScript_Brendan_2
+LittlerootTown_ProfessorBirchsLab_EventScript_Brendan_1:
 	msgbox LittlerootTown_ProfessorBirchsLab_EventScript_Brendan_Text_0, MSGBOX_NPC
 	return
+
+LittlerootTown_ProfessorBirchsLab_EventScript_Brendan_2:
+	lock
+	faceplayer
+	goto LittlerootTown_ProfessorBirchsLab_EventScript_DraconidPostgameBrendan
+	goto LittlerootTown_ProfessorBirchsLab_EventScript_Brendan_1
 
 
 Route103_EventScript_DraconidMay::
@@ -253,7 +262,7 @@ Route103_EventScript_DraconidMay::
 	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_Delay48
 	waitmovement 0
 	msgbox Route103_EventScript_DraconidMay_Text_0
-	trainerbattle_no_intro TRAINER_MAY_ROUTE_103_TREECKO, Route103_Text_DraconidMayDefeated
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_103, Route103_Text_DraconidMayDefeated
 	msgbox Route103_EventScript_DraconidMay_Text_1
 	goto Route103_EventScript_RivalExit
 	return

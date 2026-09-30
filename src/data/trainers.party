@@ -9462,377 +9462,949 @@ Gender: Male
 Music: Male
 Items: Full Restore / Full Restore
 Double Battle: No
+AI: Smart Trainer / Prediction / Ace Pokemon
+
+Altaria @ Lum Berry
+Level: 55
+Ability: Natural Cure
+Nature: Adamant
+- Dragon Claw
+- Dragon Dance
+- Earthquake
+- Roost
+
+Delcatty @ Silk Scarf
+Level: 54
+Ability: Wonder Skin
+Nature: Jolly
+- Fake Out
+- Double-Edge
+- Sucker Punch
+- Wild Charge
+
+Roserade @ Black Sludge
+Level: 55
+Ability: Natural Cure
+Nature: Timid
+- Sludge Bomb
+- Giga Drain
+- Shadow Ball
+- Sleep Powder
+
+Magnezone @ Leftovers
+Level: 54
+Ability: Sturdy
+Nature: Modest
+- Thunderbolt
+- Flash Cannon
+- Volt Switch
+- Thunder Wave
+
+Gallade @ Galladite
+Level: 57
+Ability: Justified
+Nature: Adamant
+- Close Combat
+- Psycho Cut
+- Leaf Blade
+- Swords Dance
+
+
+=== TRAINER_BRENDAN_ROUTE_104 ===
+Name: BRENDAN
+Class: Rival
+Pic: Brendan
+Gender: Male
+Music: Male
+Items: Potion
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Wingull
+Level: 9
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Water Gun
+- Quick Attack
+- Supersonic
+- Growl
+
+Treecko @ Oran Berry
+Level: 11
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Jolly
+- Leafage
+- Mega Drain
+- Quick Attack
+- Leer
+
+
+=== TRAINER_BRENDAN_ROUTE_110 ===
+Name: BRENDAN
+Class: Rival
+Pic: Brendan
+Gender: Male
+Music: Male
+Items: Super Potion / Super Potion
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Wingull
+Level: 20
+- Water Pulse
+- Wing Attack
+- Supersonic
+- Growl
+
+Numel
+Level: 20
+Ability: Simple
+- Incinerate
+- Bulldoze
+- Amnesia
+- Focus Energy
+
+Aron
+Level: 21
+Ability: Sturdy
+- Metal Claw
+- Headbutt
+- Rock Tomb
+- Iron Defense
+
+Grovyle @ Sitrus Berry
+Level: 23
+Nature: Jolly
+- Mega Drain
+- Assurance
+- Quick Attack
+- Detect
+
+
+=== TRAINER_BRENDAN_ROUTE_119 ===
+Name: BRENDAN
+Class: Rival
+Pic: Brendan
+Gender: Male
+Music: Male
+Items: Hyper Potion / Hyper Potion
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Pelipper
+Level: 34
+Ability: Keen Eye
+- Brine
+- Aerial Ace
+- Roost
+- Supersonic
+
+Camerupt
+Level: 34
+Nature: Modest
+- Lava Plume
+- Earth Power
+- Rock Slide
+- Amnesia
+
+Lairon
+Level: 34
+Ability: Rock Head
+Nature: Adamant
+- Iron Head
+- Rock Slide
+- Take Down
+- Protect
+
+Swellow @ Flame Orb
+Level: 35
+Ability: Guts
+Nature: Jolly
+- Facade
+- Aerial Ace
+- Quick Attack
+- Endeavor
+
+Sceptile @ Sitrus Berry
+Level: 37
+Nature: Jolly
+- Leaf Blade
+- X-Scissor
+- Quick Attack
+- Agility
+
+
+=== TRAINER_MAY_SLATEPORT ===
+Name: MAY
+Class: Rival
+Pic: May
+Gender: Female
+Music: Female
+Items: Super Potion / Super Potion
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Lombre
+Level: 20
+- Fake Out
+- Mega Drain
+- Fury Swipes
+- Water Gun
+
+Marill
+Level: 20
+Ability: Thick Fat
+- Aqua Tail
+- Charm
+- Rollout
+- Defense Curl
+
+Tropius
+Level: 20
+- Magical Leaf
+- Stomp
+- Gust
+- Growth
+
+Combusken @ Sitrus Berry
+Level: 22
+Nature: Adamant
+- Flame Charge
+- Double Kick
+- Aerial Ace
+- Bulk Up
+
+
+=== TRAINER_BRENDAN_SOOTOPOLIS ===
+Name: BRENDAN
+Class: Rival
+Pic: Brendan
+Gender: Male
+Music: Male
+Items: Full Restore / Full Restore
+Double Battle: No
+AI: Smart Trainer / Prediction / Ace Pokemon
+
+Pelipper @ Leftovers
+Level: 50
+Ability: Drizzle
+Nature: Bold
+- Surf
+- Air Slash
+- Roost
+- Protect
+
+Camerupt
+Level: 50
+Ability: Solid Rock
+Nature: Quiet
+- Earthquake
+- Lava Plume
+- Rock Slide
+- Yawn
+
+Aggron @ Quick Claw
+Level: 50
+Ability: Rock Head
+Nature: Adamant
+- Iron Head
+- Earthquake
+- Rock Slide
+- Protect
+
+Swellow @ Flame Orb
+Level: 50
+Ability: Guts
+Nature: Jolly
+- Facade
+- Brave Bird
+- Quick Attack
+- U-turn
+
+Manectric
+Level: 50
+Ability: Lightning Rod
+Nature: Timid
+- Thunderbolt
+- Flamethrower
+- Thunder Wave
+- Volt Switch
+
+Sceptile @ Sceptilite
+Level: 53
+Nature: Jolly
+- Leaf Blade
+- Dragon Claw
+- Earthquake
+- Quick Attack
+
+
+=== TRAINER_MAY_SOOTOPOLIS ===
+Name: MAY
+Class: Rival
+Pic: May
+Gender: Female
+Music: Female
+Items: Full Restore / Full Restore
+Double Battle: No
+AI: Smart Trainer / Prediction / Ace Pokemon
+
+Ludicolo @ Life Orb
+Level: 50
+Ability: Swift Swim
+Nature: Modest
+- Surf
+- Giga Drain
+- Ice Beam
+- Fake Out
+
+Azumarill @ Choice Band
+Level: 50
+Ability: Huge Power
+Nature: Adamant
+- Waterfall
+- Play Rough
+- Superpower
+- Aqua Jet
+
+Tropius @ Leftovers
+Level: 50
+Nature: Careful
+- Leaf Tornado
+- Aerial Ace
+- Synthesis
+- Body Slam
+
+Breloom @ Toxic Orb
+Level: 50
+Ability: Poison Heal
+Nature: Adamant
+- Spore
+- Seed Bomb
+- Mach Punch
+- Sky Uppercut
+
+Absol @ Scope Lens
+Level: 50
+Ability: Super Luck
+Nature: Jolly
+- Night Slash
+- Psycho Cut
+- Swords Dance
+- Quick Attack
+
+Blaziken @ Blazikenite
+Level: 53
+Ability: Speed Boost
+Nature: Adamant
+- Blaze Kick
+- Close Combat
+- Brave Bird
+- Protect
+
+
+=== TRAINER_BRENDAN_POSTGAME ===
+Name: BRENDAN
+Class: Rival
+Pic: Brendan
+Gender: Male
+Music: Male
+Items: Full Restore / Full Restore / Full Restore
+Double Battle: No
+AI: Smart Trainer / Prediction / Ace Pokemon
+
+Pelipper @ Damp Rock
+Level: 72
+Ability: Drizzle
+EVs: 252 HP / 252 SpA / 4 SpD
+Nature: Modest
+- Hurricane
+- Hydro Pump
+- Roost
+- Tailwind
+
+Camerupt @ Choice Scarf
+Level: 72
+Ability: Solid Rock
+EVs: 252 HP / 252 SpA / 4 Def
+Nature: Quiet
+- Eruption
+- Earthquake
+- Rock Slide
+- Yawn
+
+Aggron @ Leftovers
+Level: 72
+Ability: Rock Head
+EVs: 252 Atk / 252 HP / 4 Spe
+Nature: Adamant
+- Heavy Slam
+- Earthquake
+- Stone Edge
+- Rock Polish
+
+Swellow @ Flame Orb
+Level: 72
+Ability: Guts
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Facade
+- Brave Bird
+- Quick Attack
+- U-turn
+
+Manectric @ Magnet
+Level: 73
+Ability: Lightning Rod
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Timid
+- Thunderbolt
+- Flamethrower
+- Volt Switch
+- Thunder Wave
+
+Sceptile @ Sceptilite
+Level: 76
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Leaf Blade
+- Dragon Claw
+- Earthquake
+- Rock Slide
+
+
+=== TRAINER_MAY_POSTGAME ===
+Name: MAY
+Class: Rival
+Pic: May
+Gender: Female
+Music: Female
+Items: Full Restore / Full Restore / Full Restore
+Double Battle: No
+AI: Smart Trainer / Prediction / Ace Pokemon
+
+Ludicolo @ Life Orb
+Level: 72
+Ability: Swift Swim
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Modest
+- Hydro Pump
+- Giga Drain
+- Ice Beam
+- Fake Out
+
+Azumarill @ Choice Band
+Level: 72
+Ability: Huge Power
+EVs: 252 Atk / 252 HP / 4 Spe
+Nature: Adamant
+- Waterfall
+- Play Rough
+- Superpower
+- Aqua Jet
+
+Tropius @ Leftovers
+Level: 72
+Ability: Harvest
+EVs: 252 HP / 252 SpA / 4 SpD
+Nature: Modest
+- Leaf Storm
+- Air Slash
+- Synthesis
+- Body Slam
+
+Breloom @ Toxic Orb
+Level: 72
+Ability: Poison Heal
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Adamant
+- Spore
+- Seed Bomb
+- Mach Punch
+- Rock Tomb
+
+Absol @ Scope Lens
+Level: 73
+Ability: Super Luck
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Night Slash
+- Psycho Cut
+- Swords Dance
+- Sucker Punch
+
+Blaziken @ Blazikenite
+Level: 76
+Ability: Speed Boost
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Adamant
+- Flare Blitz
+- Close Combat
+- Brave Bird
+- Protect
+
+
+=== TRAINER_BRENDAN_POSTGAME_DOUBLE ===
+Name: BRENDAN
+Class: Rival
+Pic: Brendan
+Gender: Male
+Music: Male
+Items: Full Restore / Full Restore
+Double Battle: No
+AI: Smart Trainer / Prediction / Ace Pokemon
+
+Pelipper @ Damp Rock
+Level: 72
+Ability: Drizzle
+EVs: 252 HP / 252 SpA / 4 SpD
+Nature: Modest
+- Hurricane
+- Hydro Pump
+- Roost
+- Tailwind
+
+Aggron @ Leftovers
+Level: 72
+Ability: Rock Head
+EVs: 252 Atk / 252 HP / 4 Spe
+Nature: Adamant
+- Heavy Slam
+- Earthquake
+- Stone Edge
+- Rock Polish
+
+Sceptile @ Sceptilite
+Level: 76
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Leaf Blade
+- Dragon Claw
+- Earthquake
+- Rock Slide
+
+
+=== TRAINER_ASTER_METEOR_FALLS_DEINO ===
+Name: ASTER
+Class: Draconid
+Pic: Aster
+Gender: Female
+Music: Intense
+Items: Super Potion / Super Potion
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Swablu
+Level: 24
+Ability: Natural Cure
+- Dragon Breath
+- Round
+- Sing
+- Fury Attack
+
+Trapinch
+Level: 24
+Ability: Hyper Cutter
+- Bite
+- Sand Tomb
+- Bulldoze
+- Mud-Slap
+
+Noibat
+Level: 25
+Ability: Infiltrator
+- Air Cutter
+- Bite
+- Wing Attack
+- Supersonic
+
+Jangmo-o @ Sitrus Berry
+Level: 27
+Ability: Bulletproof
+Nature: Adamant
+- Dragon Tail
+- Headbutt
+- Scary Face
+- Work Up
+
+
+=== TRAINER_ASTER_METEOR_FALLS_DREEPY ===
+Name: ASTER
+Class: Draconid
+Pic: Aster
+Gender: Female
+Music: Intense
+Items: Super Potion / Super Potion
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Swablu
+Level: 24
+Ability: Natural Cure
+- Dragon Breath
+- Round
+- Sing
+- Fury Attack
+
+Trapinch
+Level: 24
+Ability: Hyper Cutter
+- Bite
+- Sand Tomb
+- Bulldoze
+- Mud-Slap
+
+Noibat
+Level: 25
+Ability: Infiltrator
+- Air Cutter
+- Bite
+- Wing Attack
+- Supersonic
+
+Deino @ Sitrus Berry
+Level: 27
+Ability: Hustle
+Nature: Adamant
+- Dragon Breath
+- Headbutt
+- Bite
+- Work Up
+
+
+=== TRAINER_ASTER_METEOR_FALLS_JANGMO_O ===
+Name: ASTER
+Class: Draconid
+Pic: Aster
+Gender: Female
+Music: Intense
+Items: Super Potion / Super Potion
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Swablu
+Level: 24
+Ability: Natural Cure
+- Dragon Breath
+- Round
+- Sing
+- Fury Attack
+
+Trapinch
+Level: 24
+Ability: Hyper Cutter
+- Bite
+- Sand Tomb
+- Bulldoze
+- Mud-Slap
+
+Noibat
+Level: 25
+Ability: Infiltrator
+- Air Cutter
+- Bite
+- Wing Attack
+- Supersonic
+
+Dreepy @ Sitrus Berry
+Level: 27
+Ability: Infiltrator
+Nature: Jolly
+- Astonish
+- Bite
+- Quick Attack
+- Infestation
+
+
+=== TRAINER_MAY_ROUTE_103 ===
+Name: MAY
+Class: Rival
+Pic: May
+Gender: Female
+Music: Female
+Double Battle: No
 AI: Basic Trainer
 
-Altaria
-Level: 44
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Aerial Ace
-- Safeguard
+Torchic
+Level: 5
+IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+- Scratch
+- Growl
+
+
+=== TRAINER_ASTER_ROUTE_119_DEINO ===
+Name: ASTER
+Class: Draconid
+Pic: Aster
+Gender: Female
+Music: Intense
+Items: Hyper Potion / Hyper Potion
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Shelgon
+Level: 34
+Ability: Rock Head
+Nature: Adamant
+- Dragon Claw
+- Crunch
+- Headbutt
+- Scary Face
+
+Vibrava
+Level: 35
+Nature: Adamant
+- Dragon Tail
+- Bug Buzz
+- Bulldoze
+- Rock Slide
+
+Noibat
+Level: 35
+Ability: Infiltrator
+Nature: Timid
+- Air Cutter
+- Bite
+- Roost
+- Super Fang
+
+Hakamo-o @ Sitrus Berry
+Level: 36
+Ability: Bulletproof
+Nature: Adamant
+- Dragon Claw
+- Sky Uppercut
+- Work Up
+- Iron Defense
+
+Altaria @ Altarianite
+Level: 37
+Ability: Natural Cure
+Nature: Adamant
+- Dragon Dance
 - Dragon Breath
+- Take Down
+- Roost
+
+
+=== TRAINER_ASTER_ROUTE_119_DREEPY ===
+Name: ASTER
+Class: Draconid
+Pic: Aster
+Gender: Female
+Music: Intense
+Items: Hyper Potion / Hyper Potion
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Shelgon
+Level: 34
+Ability: Rock Head
+Nature: Adamant
+- Dragon Claw
+- Crunch
+- Headbutt
+- Scary Face
+
+Vibrava
+Level: 35
+Nature: Adamant
+- Dragon Tail
+- Bug Buzz
+- Bulldoze
+- Rock Slide
+
+Noibat
+Level: 35
+Ability: Infiltrator
+Nature: Timid
+- Air Cutter
+- Bite
+- Roost
+- Super Fang
+
+Deino @ Sitrus Berry
+Level: 36
+Ability: Hustle
+Nature: Adamant
+- Dragon Breath
+- Crunch
+- Slam
+- Work Up
+
+Altaria @ Altarianite
+Level: 37
+Ability: Natural Cure
+Nature: Adamant
+- Dragon Dance
+- Dragon Breath
+- Take Down
+- Roost
+
+
+=== TRAINER_ASTER_ROUTE_119_JANGMO_O ===
+Name: ASTER
+Class: Draconid
+Pic: Aster
+Gender: Female
+Music: Intense
+Items: Hyper Potion / Hyper Potion
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Shelgon
+Level: 34
+Ability: Rock Head
+Nature: Adamant
+- Dragon Claw
+- Crunch
+- Headbutt
+- Scary Face
+
+Vibrava
+Level: 35
+Nature: Adamant
+- Dragon Tail
+- Bug Buzz
+- Bulldoze
+- Rock Slide
+
+Noibat
+Level: 35
+Ability: Infiltrator
+Nature: Timid
+- Air Cutter
+- Bite
+- Roost
+- Super Fang
+
+Dreepy @ Sitrus Berry
+Level: 36
+Ability: Infiltrator
+Nature: Jolly
+- Dragon Tail
+- Bite
+- Quick Attack
+- Astonish
+
+Altaria @ Altarianite
+Level: 37
+Ability: Natural Cure
+Nature: Adamant
+- Dragon Dance
+- Dragon Breath
+- Take Down
+- Roost
+
+
+=== TRAINER_ASTER_SKY_PILLAR_DEINO ===
+Name: ASTER
+Class: Draconid
+Pic: Aster
+Gender: Female
+Music: Intense
+Items: Full Restore / Full Restore
+Double Battle: No
+AI: Smart Trainer / Prediction / Ace Pokemon
+
+Altaria @ Lum Berry
+Level: 45
+Ability: Natural Cure
+Nature: Adamant
+- Dragon Claw
+- Dragon Dance
+- Double-Edge
+- Roost
+
+Flygon @ Soft Sand
+Level: 46
+Nature: Jolly
+- Earthquake
+- Dragon Claw
+- Rock Slide
+- U-turn
+
+Noivern @ Sitrus Berry
+Level: 46
+Ability: Infiltrator
+Nature: Timid
+- Dragon Pulse
+- Air Slash
+- Super Fang
+- Roost
+
+Kommo-o @ Sitrus Berry
+Level: 47
+Ability: Bulletproof
+Nature: Adamant
+- Clanging Scales
+- Sky Uppercut
+- Dragon Claw
+- Iron Defense
+
+Salamence @ Salamencite
+Level: 48
+Ability: Intimidate
+Nature: Adamant
+- Double-Edge
+- Dragon Claw
+- Earthquake
 - Dragon Dance
 
-Delcatty
-Level: 43
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Sing
-- Assist
-- Charm
-- Feint Attack
 
-Roselia
-Level: 44
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Magical Leaf
-- Leech Seed
-- Giga Drain
-- Toxic
+=== TRAINER_ASTER_SKY_PILLAR_DREEPY ===
+Name: ASTER
+Class: Draconid
+Pic: Aster
+Gender: Female
+Music: Intense
+Items: Full Restore / Full Restore
+Double Battle: No
+AI: Smart Trainer / Prediction / Ace Pokemon
 
-Magneton
-Level: 41
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Supersonic
-- Thunderbolt
-- Tri Attack
-- Screech
-
-Gardevoir
+Altaria @ Lum Berry
 Level: 45
-IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
-- Double Team
-- Calm Mind
-- Psychic
-- Future Sight
+Ability: Natural Cure
+Nature: Adamant
+- Dragon Claw
+- Dragon Dance
+- Double-Edge
+- Roost
 
-=== TRAINER_BRENDAN_ROUTE_103_MUDKIP ===
-Name: BRENDAN
-Class: Rival
-Pic: Brendan
-Gender: Male
-Music: Male
-Double Battle: No
-AI: Basic Trainer
+Flygon @ Soft Sand
+Level: 46
+Nature: Jolly
+- Earthquake
+- Dragon Claw
+- Rock Slide
+- U-turn
 
-Treecko
-Level: 5
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Noivern @ Sitrus Berry
+Level: 46
+Ability: Infiltrator
+Nature: Timid
+- Dragon Pulse
+- Air Slash
+- Super Fang
+- Roost
 
-=== TRAINER_BRENDAN_ROUTE_110_MUDKIP ===
-Name: BRENDAN
-Class: Rival
-Pic: Brendan
-Gender: Male
-Music: Male
-Double Battle: No
-AI: Basic Trainer
+Zweilous @ Sitrus Berry
+Level: 47
+Ability: Hustle
+Nature: Adamant
+- Dragon Rush
+- Crunch
+- Double Hit
+- Work Up
 
-Slugma
-Level: 18
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+Salamence @ Salamencite
+Level: 48
+Ability: Intimidate
+Nature: Adamant
+- Double-Edge
+- Dragon Claw
+- Earthquake
+- Dragon Dance
 
-Wingull
-Level: 18
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
-
-Grovyle
-Level: 20
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-=== TRAINER_BRENDAN_ROUTE_119_MUDKIP ===
-Name: BRENDAN
-Class: Rival
-Pic: Brendan
-Gender: Male
-Music: Male
-Double Battle: No
-AI: Basic Trainer
-
-Slugma
-Level: 29
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-Pelipper
-Level: 29
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-Grovyle
-Level: 31
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-
-=== TRAINER_BRENDAN_ROUTE_103_TREECKO ===
-Name: BRENDAN
-Class: Rival
-Pic: Brendan
-Gender: Male
-Music: Male
-Double Battle: No
-AI: Check Bad Move / Try To Faint / Force Setup First Turn
-
-Torchic
-Level: 5
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_BRENDAN_ROUTE_110_TREECKO ===
-Name: BRENDAN
-Class: Rival
-Pic: Brendan
-Gender: Male
-Music: Male
-Double Battle: No
-AI: Basic Trainer
-
-Wingull
-Level: 18
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
-
-Lombre
-Level: 18
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
-
-Combusken
-Level: 20
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-=== TRAINER_BRENDAN_ROUTE_119_TREECKO ===
-Name: BRENDAN
-Class: Rival
-Pic: Brendan
-Gender: Male
-Music: Male
-Double Battle: No
-AI: Basic Trainer
-
-Pelipper
-Level: 29
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-Lombre
-Level: 29
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-Combusken
-Level: 31
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-
-=== TRAINER_BRENDAN_ROUTE_103_TORCHIC ===
-Name: BRENDAN
-Class: Rival
-Pic: Brendan
-Gender: Male
-Music: Male
-Double Battle: No
-AI: Basic Trainer
-
-Mudkip
-Level: 5
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_BRENDAN_ROUTE_110_TORCHIC ===
-Name: BRENDAN
-Class: Rival
-Pic: Brendan
-Gender: Male
-Music: Male
-Double Battle: No
-AI: Basic Trainer
-
-Lombre
-Level: 18
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
-
-Slugma
-Level: 18
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
-
-Marshtomp
-Level: 20
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-=== TRAINER_BRENDAN_ROUTE_119_TORCHIC ===
-Name: BRENDAN
-Class: Rival
-Pic: Brendan
-Gender: Male
-Music: Male
-Double Battle: No
-AI: Basic Trainer
-
-Lombre
-Level: 29
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-Slugma
-Level: 29
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-Marshtomp
-Level: 31
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-
-=== TRAINER_MAY_ROUTE_103_MUDKIP ===
-Name: MAY
-Class: Rival
-Pic: May
-Gender: Female
-Music: Female
-Double Battle: No
-AI: Basic Trainer
-
-Treecko
-Level: 5
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_MAY_ROUTE_110_MUDKIP ===
-Name: MAY
-Class: Rival
-Pic: May
-Gender: Female
-Music: Female
-Double Battle: No
-AI: Basic Trainer
-
-Wingull
-Level: 18
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
-
-Slugma
-Level: 18
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
-
-Grovyle
-Level: 20
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-=== TRAINER_MAY_ROUTE_119_MUDKIP ===
-Name: MAY
-Class: Rival
-Pic: May
-Gender: Female
-Music: Female
-Double Battle: No
-AI: Basic Trainer
-
-Slugma
-Level: 29
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-Lombre
-Level: 29
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-Grovyle
-Level: 31
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-
-=== TRAINER_MAY_ROUTE_103_TREECKO ===
-Name: MAY
-Class: Rival
-Pic: May
-Gender: Female
-Music: Female
-Double Battle: No
-AI: Basic Trainer
-
-Torchic
-Level: 5
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_MAY_ROUTE_110_TREECKO ===
-Name: MAY
-Class: Rival
-Pic: May
-Gender: Female
-Music: Female
-Double Battle: No
-AI: Basic Trainer
-
-Wingull
-Level: 18
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
-
-Lombre
-Level: 18
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
-
-Combusken
-Level: 20
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-=== TRAINER_MAY_ROUTE_119_TREECKO ===
-Name: MAY
-Class: Rival
-Pic: May
-Gender: Female
-Music: Female
-Double Battle: No
-AI: Basic Trainer
-
-Pelipper
-Level: 29
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-Lombre
-Level: 29
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-Combusken
-Level: 31
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-
-=== TRAINER_MAY_ROUTE_103_TORCHIC ===
-Name: MAY
-Class: Rival
-Pic: May
-Gender: Female
-Music: Female
-Double Battle: No
-AI: Basic Trainer
-
-Mudkip
-Level: 5
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_MAY_ROUTE_110_TORCHIC ===
-Name: MAY
-Class: Rival
-Pic: May
-Gender: Female
-Music: Female
-Double Battle: No
-AI: Basic Trainer
-
-Lombre
-Level: 18
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
-
-Slugma
-Level: 18
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
-
-Marshtomp
-Level: 20
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-=== TRAINER_MAY_ROUTE_119_TORCHIC ===
-Name: MAY
-Class: Rival
-Pic: May
-Gender: Female
-Music: Female
-Double Battle: No
-AI: Basic Trainer
-
-Lombre
-Level: 29
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-Slugma
-Level: 29
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-Marshtomp
-Level: 31
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_ISAAC_1 ===
 Name: ISAAC
@@ -10845,39 +11417,130 @@ Natu
 Level: 36
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_BRENDAN_RUSTBORO_TREECKO ===
-Name: BRENDAN
-Class: Rival
-Pic: Brendan
-Gender: Male
-Music: Male
+=== TRAINER_ASTER_SKY_PILLAR_JANGMO_O ===
+Name: ASTER
+Class: Draconid
+Pic: Aster
+Gender: Female
+Music: Intense
+Items: Full Restore / Full Restore
 Double Battle: No
-AI: Check Bad Move
+AI: Smart Trainer / Prediction / Ace Pokemon
 
-Lotad
-Level: 13
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+Altaria @ Lum Berry
+Level: 45
+Ability: Natural Cure
+Nature: Adamant
+- Dragon Claw
+- Dragon Dance
+- Double-Edge
+- Roost
 
-Torchic
-Level: 15
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+Flygon @ Soft Sand
+Level: 46
+Nature: Jolly
+- Earthquake
+- Dragon Claw
+- Rock Slide
+- U-turn
 
-=== TRAINER_BRENDAN_RUSTBORO_MUDKIP ===
-Name: BRENDAN
-Class: Rival
-Pic: Brendan
-Gender: Male
-Music: Male
+Noivern @ Sitrus Berry
+Level: 46
+Ability: Infiltrator
+Nature: Timid
+- Dragon Pulse
+- Air Slash
+- Super Fang
+- Roost
+
+Drakloak @ Sitrus Berry
+Level: 47
+Ability: Infiltrator
+Nature: Jolly
+- Dragon Pulse
+- Phantom Force
+- U-turn
+- Dragon Dance
+
+Salamence @ Salamencite
+Level: 48
+Ability: Intimidate
+Nature: Adamant
+- Double-Edge
+- Dragon Claw
+- Earthquake
+- Dragon Dance
+
+
+=== TRAINER_ASTER_POSTGAME_DEINO ===
+Name: ASTER
+Class: Draconid
+Pic: Aster
+Gender: Female
+Music: Intense
+Items: Full Restore / Full Restore / Full Restore
 Double Battle: No
-AI: Check Bad Move
+AI: Smart Trainer / Prediction / Ace Pokemon
 
-Wingull
-Level: 13
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+Altaria @ Leftovers
+Level: 74
+Ability: Natural Cure
+EVs: 252 HP / 252 SpA / 4 SpD
+Nature: Modest
+- Moonblast
+- Dragon Pulse
+- Roost
+- Cotton Guard
 
-Treecko
-Level: 15
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+Flygon @ Choice Scarf
+Level: 74
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Earthquake
+- Outrage
+- Stone Edge
+- U-turn
+
+Noivern @ Choice Specs
+Level: 74
+Ability: Infiltrator
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Timid
+- Boomburst
+- Hurricane
+- Flamethrower
+- Roost
+
+Goodra @ Assault Vest
+Level: 74
+Ability: Sap Sipper
+EVs: 252 HP / 252 SpA / 4 SpD
+Nature: Modest
+- Draco Meteor
+- Sludge Bomb
+- Fire Blast
+- Thunderbolt
+
+Kommo-o @ Throat Spray
+Level: 76
+Ability: Soundproof
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Clanging Scales
+- Close Combat
+- Poison Jab
+- Dragon Dance
+
+Salamence @ Salamencite
+Level: 78
+Ability: Intimidate
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Adamant
+- Double-Edge
+- Dragon Claw
+- Earthquake
+- Dragon Dance
+
 
 === TRAINER_PAXTON ===
 Name: PAXTON
@@ -10969,39 +11632,144 @@ Loudred
 Level: 33
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_BRENDAN_RUSTBORO_TORCHIC ===
-Name: BRENDAN
-Class: Rival
-Pic: Brendan
-Gender: Male
-Music: Male
-Double Battle: No
-AI: Basic Trainer
-
-Slugma
-Level: 13
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
-
-Mudkip
-Level: 15
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
-
-=== TRAINER_MAY_RUSTBORO_MUDKIP ===
-Name: MAY
-Class: Rival
-Pic: May
+=== TRAINER_ASTER_POSTGAME_DREEPY ===
+Name: ASTER
+Class: Draconid
+Pic: Aster
 Gender: Female
-Music: Female
+Music: Intense
+Items: Full Restore / Full Restore / Full Restore
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Force Setup First Turn
+AI: Smart Trainer / Prediction / Ace Pokemon
 
-Wingull
-Level: 13
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+Altaria @ Leftovers
+Level: 74
+Ability: Natural Cure
+EVs: 252 HP / 252 SpA / 4 SpD
+Nature: Modest
+- Moonblast
+- Dragon Pulse
+- Roost
+- Cotton Guard
 
-Treecko
-Level: 15
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+Flygon @ Choice Scarf
+Level: 74
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Earthquake
+- Outrage
+- Stone Edge
+- U-turn
+
+Noivern @ Choice Specs
+Level: 74
+Ability: Infiltrator
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Timid
+- Boomburst
+- Hurricane
+- Flamethrower
+- Roost
+
+Goodra @ Assault Vest
+Level: 74
+Ability: Sap Sipper
+EVs: 252 HP / 252 SpA / 4 SpD
+Nature: Modest
+- Draco Meteor
+- Sludge Bomb
+- Fire Blast
+- Thunderbolt
+
+Hydreigon @ Life Orb
+Level: 76
+Ability: Levitate
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Modest
+- Draco Meteor
+- Dark Pulse
+- Flamethrower
+- Earth Power
+
+Salamence @ Salamencite
+Level: 78
+Ability: Intimidate
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Adamant
+- Double-Edge
+- Dragon Claw
+- Earthquake
+- Dragon Dance
+
+
+=== TRAINER_ASTER_POSTGAME_JANGMO_O ===
+Name: ASTER
+Class: Draconid
+Pic: Aster
+Gender: Female
+Music: Intense
+Items: Full Restore / Full Restore / Full Restore
+Double Battle: No
+AI: Smart Trainer / Prediction / Ace Pokemon
+
+Altaria @ Leftovers
+Level: 74
+Ability: Natural Cure
+EVs: 252 HP / 252 SpA / 4 SpD
+Nature: Modest
+- Moonblast
+- Dragon Pulse
+- Roost
+- Cotton Guard
+
+Flygon @ Choice Scarf
+Level: 74
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Earthquake
+- Outrage
+- Stone Edge
+- U-turn
+
+Noivern @ Choice Specs
+Level: 74
+Ability: Infiltrator
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Timid
+- Boomburst
+- Hurricane
+- Flamethrower
+- Roost
+
+Goodra @ Assault Vest
+Level: 74
+Ability: Sap Sipper
+EVs: 252 HP / 252 SpA / 4 SpD
+Nature: Modest
+- Draco Meteor
+- Sludge Bomb
+- Fire Blast
+- Thunderbolt
+
+Dragapult @ Choice Band
+Level: 76
+Ability: Infiltrator
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Dragon Darts
+- Phantom Force
+- U-turn
+- Dragon Dance
+
+Salamence @ Salamencite
+Level: 78
+Ability: Intimidate
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Adamant
+- Double-Edge
+- Dragon Claw
+- Earthquake
+- Dragon Dance
 
 === TRAINER_MAXIE_MAGMA_HIDEOUT ===
 Name: MAXIE
@@ -12041,12 +12809,19 @@ Class: Rival
 Pic: Wally
 Gender: Male
 Music: Male
+Items: Super Potion
 Double Battle: No
-AI: Basic Trainer
+AI: Smart Trainer / Ace Pokemon
 
-Ralts
-Level: 16
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+Ralts @ Oran Berry
+Level: 19
+Ability: Trace
+Nature: Modest
+- Psybeam
+- Draining Kiss
+- Hypnosis
+- Disarming Voice
+
 
 === TRAINER_WALLY_VR_2 ===
 Name: WALLY
@@ -12054,49 +12829,58 @@ Class: Rival
 Pic: Wally
 Gender: Male
 Music: Male
-Items: Full Restore / Full Restore
+Items: Full Restore / Full Restore / Full Restore
 Double Battle: No
-AI: Basic Trainer
+AI: Smart Trainer / Prediction / Ace Pokemon
 
-Altaria
-Level: 47
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Aerial Ace
-- Safeguard
-- Dragon Breath
+Altaria @ Lum Berry
+Level: 64
+Ability: Natural Cure
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Adamant
+- Dragon Claw
 - Dragon Dance
+- Earthquake
+- Roost
 
-Delcatty
-Level: 46
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Sing
-- Assist
-- Charm
-- Feint Attack
+Delcatty @ Silk Scarf
+Level: 63
+Ability: Wonder Skin
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Fake Out
+- Double-Edge
+- Sucker Punch
+- Wild Charge
 
-Roselia
-Level: 47
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Magical Leaf
-- Leech Seed
+Roserade @ Black Sludge
+Level: 64
+Ability: Natural Cure
+Nature: Timid
+- Sludge Bomb
 - Giga Drain
-- Toxic
+- Shadow Ball
+- Sleep Powder
 
-Magneton
-Level: 44
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Supersonic
+Magnezone @ Leftovers
+Level: 63
+Ability: Sturdy
+Nature: Modest
 - Thunderbolt
-- Tri Attack
-- Screech
+- Flash Cannon
+- Volt Switch
+- Thunder Wave
 
-Gardevoir
-Level: 48
-IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
-- Double Team
-- Calm Mind
-- Psychic
-- Future Sight
+Gallade @ Galladite
+Level: 66
+Ability: Justified
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Adamant
+- Close Combat
+- Psycho Cut
+- Leaf Blade
+- Swords Dance
+
 
 === TRAINER_WALLY_VR_3 ===
 Name: WALLY
@@ -12104,49 +12888,58 @@ Class: Rival
 Pic: Wally
 Gender: Male
 Music: Male
-Items: Full Restore / Full Restore
+Items: Full Restore / Full Restore / Full Restore
 Double Battle: No
-AI: Basic Trainer
+AI: Smart Trainer / Prediction / Ace Pokemon
 
-Altaria
-Level: 50
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Aerial Ace
-- Safeguard
-- Dragon Breath
+Altaria @ Lum Berry
+Level: 68
+Ability: Natural Cure
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Adamant
+- Dragon Claw
 - Dragon Dance
+- Earthquake
+- Roost
 
-Delcatty
-Level: 49
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Sing
-- Assist
-- Charm
-- Feint Attack
+Delcatty @ Silk Scarf
+Level: 67
+Ability: Wonder Skin
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Fake Out
+- Double-Edge
+- Sucker Punch
+- Wild Charge
 
-Roselia
-Level: 50
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Magical Leaf
-- Leech Seed
+Roserade @ Black Sludge
+Level: 68
+Ability: Natural Cure
+Nature: Timid
+- Sludge Bomb
 - Giga Drain
-- Toxic
+- Shadow Ball
+- Sleep Powder
 
-Magneton
-Level: 47
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Supersonic
+Magnezone @ Leftovers
+Level: 67
+Ability: Sturdy
+Nature: Modest
 - Thunderbolt
-- Tri Attack
-- Screech
+- Flash Cannon
+- Volt Switch
+- Thunder Wave
 
-Gardevoir
-Level: 51
-IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
-- Double Team
-- Calm Mind
-- Psychic
-- Future Sight
+Gallade @ Galladite
+Level: 70
+Ability: Justified
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Adamant
+- Close Combat
+- Psycho Cut
+- Leaf Blade
+- Swords Dance
+
 
 === TRAINER_WALLY_VR_4 ===
 Name: WALLY
@@ -12154,49 +12947,58 @@ Class: Rival
 Pic: Wally
 Gender: Male
 Music: Male
-Items: Full Restore / Full Restore
+Items: Full Restore / Full Restore / Full Restore
 Double Battle: No
-AI: Basic Trainer
+AI: Smart Trainer / Prediction / Ace Pokemon
 
-Altaria
-Level: 53
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Aerial Ace
-- Safeguard
-- Dragon Breath
+Altaria @ Lum Berry
+Level: 72
+Ability: Natural Cure
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Adamant
+- Dragon Claw
 - Dragon Dance
+- Earthquake
+- Roost
 
-Delcatty
-Level: 52
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Sing
-- Assist
-- Charm
-- Feint Attack
+Delcatty @ Silk Scarf
+Level: 71
+Ability: Wonder Skin
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Fake Out
+- Double-Edge
+- Sucker Punch
+- Wild Charge
 
-Roselia
-Level: 53
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Magical Leaf
-- Leech Seed
+Roserade @ Black Sludge
+Level: 72
+Ability: Natural Cure
+Nature: Timid
+- Sludge Bomb
 - Giga Drain
-- Toxic
+- Shadow Ball
+- Sleep Powder
 
-Magneton
-Level: 50
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Supersonic
+Magnezone @ Leftovers
+Level: 71
+Ability: Sturdy
+Nature: Modest
 - Thunderbolt
-- Tri Attack
-- Screech
+- Flash Cannon
+- Volt Switch
+- Thunder Wave
 
-Gardevoir
-Level: 54
-IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
-- Double Team
-- Calm Mind
-- Psychic
-- Future Sight
+Gallade @ Galladite
+Level: 74
+Ability: Justified
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Adamant
+- Close Combat
+- Psycho Cut
+- Leaf Blade
+- Swords Dance
+
 
 === TRAINER_WALLY_VR_5 ===
 Name: WALLY
@@ -12204,126 +13006,194 @@ Class: Rival
 Pic: Wally
 Gender: Male
 Music: Male
-Items: Full Restore / Full Restore
+Items: Full Restore / Full Restore / Full Restore
 Double Battle: No
-AI: Basic Trainer
+AI: Smart Trainer / Prediction / Ace Pokemon
 
-Altaria
-Level: 56
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Aerial Ace
-- Safeguard
-- Dragon Breath
+Altaria @ Lum Berry
+Level: 76
+Ability: Natural Cure
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Adamant
+- Dragon Claw
 - Dragon Dance
+- Earthquake
+- Roost
 
-Delcatty
-Level: 55
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Sing
-- Assist
-- Charm
-- Feint Attack
+Delcatty @ Silk Scarf
+Level: 75
+Ability: Wonder Skin
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Fake Out
+- Double-Edge
+- Sucker Punch
+- Wild Charge
+
+Roserade @ Black Sludge
+Level: 76
+Ability: Natural Cure
+Nature: Timid
+- Sludge Bomb
+- Giga Drain
+- Shadow Ball
+- Sleep Powder
+
+Magnezone @ Leftovers
+Level: 75
+Ability: Sturdy
+Nature: Modest
+- Thunderbolt
+- Flash Cannon
+- Volt Switch
+- Thunder Wave
+
+Gallade @ Galladite
+Level: 78
+Ability: Justified
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Adamant
+- Close Combat
+- Psycho Cut
+- Leaf Blade
+- Swords Dance
+
+
+=== TRAINER_BRENDAN_LILYCOVE ===
+Name: BRENDAN
+Class: Rival
+Pic: Brendan
+Gender: Male
+Music: Male
+Items: Hyper Potion / Hyper Potion
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Pelipper @ Leftovers
+Level: 41
+Ability: Drizzle
+Nature: Modest
+- Brine
+- Air Cutter
+- Protect
+- Roost
+
+Camerupt
+Level: 41
+Ability: Solid Rock
+Nature: Modest
+- Flamethrower
+- Earth Power
+- Rock Slide
+- Protect
+
+Sceptile @ Sitrus Berry
+Level: 43
+Nature: Jolly
+- Leaf Blade
+- X-Scissor
+- Detect
+- Quick Attack
+
+
+=== TRAINER_WALLY_LILYCOVE ===
+Name: WALLY
+Class: Rival
+Pic: Wally
+Gender: Male
+Music: Male
+Items: Hyper Potion / Hyper Potion
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
 
 Roselia
-Level: 56
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Magical Leaf
-- Leech Seed
+Level: 40
+Ability: Natural Cure
+Nature: Modest
 - Giga Drain
-- Toxic
+- Sludge Bomb
+- Stun Spore
+- Leech Seed
+
+Altaria
+Level: 40
+Ability: Natural Cure
+Nature: Adamant
+- Dragon Breath
+- Take Down
+- Sing
+- Dragon Dance
 
 Magneton
-Level: 53
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Supersonic
-- Thunderbolt
-- Tri Attack
-- Screech
+Level: 40
+Ability: Sturdy
+Nature: Modest
+- Electro Ball
+- Flash Cannon
+- Thunder Wave
+- Magnet Bomb
 
-Gardevoir
-Level: 57
-IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
-- Double Team
-- Calm Mind
-- Psychic
-- Future Sight
+Delcatty
+Level: 40
+Ability: Wonder Skin
+Nature: Jolly
+- Fake Out
+- Sing
+- Double-Edge
+- Shadow Ball
 
-=== TRAINER_BRENDAN_LILYCOVE_MUDKIP ===
-Name: BRENDAN
+Gallade @ Galladite
+Level: 43
+Ability: Justified
+Nature: Adamant
+- Psycho Cut
+- Leaf Blade
+- Night Slash
+- Swords Dance
+
+
+=== TRAINER_MAY_POSTGAME_DOUBLE ===
+Name: MAY
 Class: Rival
-Pic: Brendan
-Gender: Male
-Music: Male
+Pic: May
+Gender: Female
+Music: Female
+Items: Full Restore / Full Restore
 Double Battle: No
-AI: Basic Trainer
+AI: Smart Trainer / Prediction / Ace Pokemon
 
-Tropius
-Level: 31
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+Ludicolo @ Life Orb
+Level: 72
+Ability: Swift Swim
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Modest
+- Hydro Pump
+- Giga Drain
+- Ice Beam
+- Fake Out
 
-Slugma
-Level: 32
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+Azumarill @ Choice Band
+Level: 72
+Ability: Huge Power
+EVs: 252 Atk / 252 HP / 4 Spe
+Nature: Adamant
+- Waterfall
+- Play Rough
+- Superpower
+- Aqua Jet
 
-Pelipper
-Level: 32
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+Blaziken @ Blazikenite
+Level: 76
+Ability: Speed Boost
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Adamant
+- Flare Blitz
+- Close Combat
+- Brave Bird
+- Protect
 
-Grovyle
-Level: 34
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 
-=== TRAINER_BRENDAN_LILYCOVE_TREECKO ===
-Name: BRENDAN
-Class: Rival
-Pic: Brendan
-Gender: Male
-Music: Male
-Double Battle: No
-AI: Basic Trainer
-
-Tropius
-Level: 31
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-
-Pelipper
-Level: 32
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-
-Ludicolo
-Level: 32
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-
-Combusken
-Level: 34
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-
-=== TRAINER_BRENDAN_LILYCOVE_TORCHIC ===
-Name: BRENDAN
-Class: Rival
-Pic: Brendan
-Gender: Male
-Music: Male
-Double Battle: No
-AI: Basic Trainer
-
-Tropius
-Level: 31
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-
-Ludicolo
-Level: 32
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-
-Slugma
-Level: 32
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-
-Marshtomp
-Level: 34
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-
-=== TRAINER_MAY_LILYCOVE_MUDKIP ===
+=== TRAINER_DRACONID_SPARE_1 ===
 Name: MAY
 Class: Rival
 Pic: May
@@ -12348,32 +13218,45 @@ Grovyle
 Level: 34
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 
-=== TRAINER_MAY_LILYCOVE_TREECKO ===
+=== TRAINER_MAY_LILYCOVE ===
 Name: MAY
 Class: Rival
 Pic: May
 Gender: Female
 Music: Female
+Items: Hyper Potion / Hyper Potion
 Double Battle: No
-AI: Basic Trainer
+AI: Smart Trainer / Ace Pokemon
 
-Tropius
-Level: 31
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+Ludicolo @ Leftovers
+Level: 41
+Ability: Swift Swim
+Nature: Modest
+- Fake Out
+- Surf
+- Giga Drain
+- Ice Beam
 
-Pelipper
-Level: 32
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+Azumarill
+Level: 41
+Ability: Huge Power
+Nature: Adamant
+- Aqua Tail
+- Play Rough
+- Helping Hand
+- Protect
 
-Ludicolo
-Level: 32
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+Blaziken @ Sitrus Berry
+Level: 43
+Ability: Speed Boost
+Nature: Adamant
+- Blaze Kick
+- Brick Break
+- Slash
+- Protect
 
-Combusken
-Level: 34
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 
-=== TRAINER_MAY_LILYCOVE_TORCHIC ===
+=== TRAINER_DRACONID_SPARE_2 ===
 Name: MAY
 Class: Rival
 Pic: May
@@ -14123,39 +15006,85 @@ Vigoroth
 Level: 29
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
-=== TRAINER_MAY_RUSTBORO_TREECKO ===
+=== TRAINER_MAY_RUSTBORO ===
 Name: MAY
 Class: Rival
 Pic: May
 Gender: Female
 Music: Female
+Items: Potion / Potion
 Double Battle: No
-AI: Basic Trainer
+AI: Smart Trainer / Ace Pokemon
 
 Lotad
-Level: 13
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
-
-Torchic
 Level: 15
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Water Gun
+- Mega Drain
+- Mist
+- Growl
 
-=== TRAINER_MAY_RUSTBORO_TORCHIC ===
-Name: MAY
+Marill
+Level: 15
+Ability: Thick Fat
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Bubble Beam
+- Rollout
+- Defense Curl
+- Charm
+
+Combusken @ Oran Berry
+Level: 17
+Nature: Adamant
+- Flame Charge
+- Double Kick
+- Quick Attack
+- Detect
+
+
+=== TRAINER_WALLY_PETALBURG ===
+Name: WALLY
 Class: Rival
-Pic: May
-Gender: Female
-Music: Female
+Pic: Wally
+Gender: Male
+Music: Male
+Items: Hyper Potion / Hyper Potion
 Double Battle: No
-AI: Basic Trainer
+AI: Smart Trainer / Ace Pokemon
 
-Torkoal
-Level: 13
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+Roselia
+Level: 30
+Ability: Natural Cure
+- Magical Leaf
+- Stun Spore
+- Leech Seed
+- Poison Sting
 
-Mudkip
-Level: 15
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+Swablu
+Level: 30
+Ability: Natural Cure
+- Dragon Breath
+- Sing
+- Round
+- Fury Attack
+
+Magneton
+Level: 31
+Ability: Sturdy
+- Spark
+- Gyro Ball
+- Thunder Wave
+- Supersonic
+
+Kirlia @ Sitrus Berry
+Level: 33
+Ability: Trace
+Nature: Modest
+- Psybeam
+- Draining Kiss
+- Calm Mind
+- Magical Leaf
+
 
 === TRAINER_ROXANNE_2 ===
 Name: ROXANNE

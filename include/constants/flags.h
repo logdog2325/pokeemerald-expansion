@@ -76,13 +76,13 @@
 #define FLAG_UNUSED_0x036    0x36 // Unused Flag
 #define FLAG_UNUSED_0x037    0x37 // Unused Flag
 #define FLAG_UNUSED_0x038    0x38 // Unused Flag
-#define FLAG_UNUSED_0x039    0x39 // Unused Flag
-#define FLAG_UNUSED_0x03A    0x3A // Unused Flag
-#define FLAG_UNUSED_0x03B    0x3B // Unused Flag
-#define FLAG_UNUSED_0x03C    0x3C // Unused Flag
-#define FLAG_UNUSED_0x03D    0x3D // Unused Flag
-#define FLAG_UNUSED_0x03E    0x3E // Unused Flag
-#define FLAG_UNUSED_0x03F    0x3F // Unused Flag
+#define FLAG_HIDE_ROUTE_104_BRENDAN              0x39 // Draconid Emerald: Brendan at the Petalburg Woods entrance
+#define FLAG_HIDE_SLATEPORT_CITY_MAY             0x3A // Draconid Emerald: May at Slateport's north exit
+#define FLAG_HIDE_SOOTOPOLIS_CITY_RIVALS         0x3B // Draconid Emerald: Brendan and May outside the Sootopolis Gym
+#define FLAG_HIDE_PETALBURG_CITY_WALLY_GYM       0x3C // Draconid Emerald: Wally outside the Petalburg Gym (before Norman)
+#define FLAG_HIDE_LILYCOVE_CITY_WALLY            0x3D // Draconid Emerald: Wally in Lilycove
+#define FLAG_HIDE_MOSSDEEP_SPACE_CENTER_RIVALS   0x3E // Draconid Emerald: Brendan and May at the Space Center
+#define FLAG_ENABLE_BRENDAN_MATCH_CALL           0x3F // Draconid Emerald: Brendan registered in the PokéNav
 #define FLAG_UNUSED_0x040    0x40 // Unused Flag
 #define FLAG_UNUSED_0x041    0x41 // Unused Flag
 #define FLAG_UNUSED_0x042    0x42 // Unused Flag

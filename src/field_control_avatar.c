@@ -4,6 +4,7 @@
 #include "coord_event_weather.h"
 #include "daycare.h"
 #include "debug.h"
+#include "draconid.h"
 #include "dexnav.h"
 #include "faraway_island.h"
 #include "follower_npc.h"
@@ -171,6 +172,11 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
     playerDirection = GetPlayerFacingDirection();
     GetPlayerPosition(&position);
     metatileBehavior = MapGridGetMetatileBehaviorAt(position.x, position.y);
+
+#if DEBUG_OVERWORLD_MENU
+    if (Draconid_TryTestWarp()) // Draconid Emerald: emulator test hook, debug builds only
+        return TRUE;
+#endif
 
     if (CheckForTrainersWantingBattle() == TRUE)
         return TRUE;

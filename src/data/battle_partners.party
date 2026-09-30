@@ -42,3 +42,72 @@ EVs: 252 Atk / 252 SpA / 6 SpD
 - Protect
 - Solar Beam
 - Dragon Claw
+
+=== PARTNER_MAY ===
+Name: MAY
+Class: Rival
+Pic: May
+Gender: Female
+Music: Female
+AI: Smart Trainer
+
+Ludicolo @ Leftovers
+Level: 45
+Ability: Swift Swim
+Nature: Modest
+- Surf
+- Giga Drain
+- Ice Beam
+- Fake Out
+
+Azumarill @ Sitrus Berry
+Level: 45
+Ability: Huge Power
+Nature: Adamant
+- Waterfall
+- Play Rough
+- Superpower
+- Aqua Jet
+
+Blaziken @ Charcoal
+Level: 47
+Ability: Speed Boost
+Nature: Adamant
+- Blaze Kick
+- Brick Break
+- Slash
+- Protect
+
+=== PARTNER_BRENDAN ===
+Name: BRENDAN
+Class: Rival
+Pic: Brendan
+Gender: Male
+Music: Male
+AI: Smart Trainer
+
+Pelipper @ Leftovers
+Level: 45
+Ability: Drizzle
+Nature: Modest
+- Surf
+- Air Cutter
+- Protect
+- Roost
+
+Camerupt @ Sitrus Berry
+Level: 45
+Ability: Solid Rock
+Nature: Modest
+- Flamethrower
+- Earth Power
+- Rock Slide
+- Protect
+
+Sceptile @ Miracle Seed
+Level: 47
+Nature: Jolly
+- Leaf Blade
+- X-Scissor
+- Detect
+- Quick Attack

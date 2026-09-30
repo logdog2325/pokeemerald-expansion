@@ -1,7 +1,10 @@
 #include "global.h"
 #include "draconid.h"
 #include "event_data.h"
+#include "field_screen_effect.h"
+#include "overworld.h"
 #include "pokemon.h"
+#include "script_pokemon_util.h"
 #include "constants/draconid.h"
 
 // Draconid Emerald: script specials for the Draconid clan storyline.
@@ -30,3 +33,24 @@ void DraconidRaiseHatchling(void)
     hp = GetMonData(mon, MON_DATA_MAX_HP);
     SetMonData(mon, MON_DATA_HP, &hp);
 }
+
+#if DEBUG_OVERWORLD_MENU
+// Emulator test hook (tools/hack/emu/play.py "warp"): a test writes a destination here and the
+// overworld warps to it the next time the player has control. Not in release builds.
+EWRAM_DATA struct DraconidTestWarp gDraconidTestWarp = {0};
+
+bool32 Draconid_TryTestWarp(void)
+{
+    u32 request = gDraconidTestWarp.active;
+
+    gDraconidTestWarp.active = 0;
+    if (request & DRACONID_TEST_HEAL)
+        HealPlayerParty();
+    if (!(request & DRACONID_TEST_WARP))
+        return FALSE;
+    SetWarpDestination(gDraconidTestWarp.mapGroup, gDraconidTestWarp.mapNum, WARP_ID_NONE,
+                       gDraconidTestWarp.x, gDraconidTestWarp.y);
+    DoWarp();
+    return TRUE;
+}
+#endif

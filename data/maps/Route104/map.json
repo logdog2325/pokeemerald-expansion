@@ -475,6 +475,20 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route104_EventScript_Rival",
       "flag": "FLAG_HIDE_ROUTE_104_RIVAL"
+    },
+    {
+      "local_id": "LOCALID_ROUTE104_BRENDAN",
+      "graphics_id": "OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL",
+      "x": 10,
+      "y": 39,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Route104_EventScript_DraconidBrendanTalk",
+      "flag": "FLAG_HIDE_ROUTE_104_BRENDAN"
     }
   ],
   "warp_events": [
@@ -544,6 +558,24 @@
       "var": "VAR_ROUTE104_STATE",
       "var_value": "1",
       "script": "Route104_EventScript_RivalTrigger"
+    },
+    {
+      "type": "trigger",
+      "x": 10,
+      "y": 41,
+      "elevation": 3,
+      "var": "VAR_BRENDAN_STATE",
+      "var_value": "BRENDAN_STATE_START",
+      "script": "Route104_EventScript_DraconidBrendanTrigger0"
+    },
+    {
+      "type": "trigger",
+      "x": 11,
+      "y": 41,
+      "elevation": 3,
+      "var": "VAR_BRENDAN_STATE",
+      "var_value": "BRENDAN_STATE_START",
+      "script": "Route104_EventScript_DraconidBrendanTrigger1"
     }
   ],
   "bg_events": [

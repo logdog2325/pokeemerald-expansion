@@ -304,7 +304,7 @@ static const struct MatchCallRival sBrendanMatchCallHeader =
 {
     .type = MC_TYPE_RIVAL,
     .playerGender = FEMALE,
-    .flag = FLAG_ENABLE_RIVAL_MATCH_CALL,
+    .flag = FLAG_ENABLE_BRENDAN_MATCH_CALL, // Draconid Emerald: registered on Route 110
     .desc = gText_MayBrendanMatchCallDesc,
     .name = gText_ExpandedPlaceholder_Brendan,
     .textData = (const match_call_text_data_t[]) {
@@ -765,7 +765,8 @@ static bool32 MatchCall_GetEnabled_Wally(match_call_t matchCall)
 
 static bool32 MatchCall_GetEnabled_Rival(match_call_t matchCall)
 {
-    if (matchCall.rival->playerGender != gSaveBlock2Ptr->playerGender)
+    // Draconid Emerald: Brendan and May are both rivals, whatever the player's gender
+    if (IS_FRLG && matchCall.rival->playerGender != gSaveBlock2Ptr->playerGender)
         return FALSE;
     if (matchCall.rival->flag == 0xFFFF)
         return TRUE;

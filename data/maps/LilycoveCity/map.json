@@ -245,7 +245,8 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "LilycoveCity_EventScript_Rival",
-      "flag": "FLAG_HIDE_LILYCOVE_CITY_RIVAL"
+      "flag": "FLAG_HIDE_LILYCOVE_CITY_RIVAL",
+      "local_id": "LOCALID_LILYCOVE_MAY"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SCHOOL_KID_M",
@@ -313,6 +314,34 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "LilycoveCity_EventScript_FatMan",
       "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_LILYCOVE_BRENDAN",
+      "graphics_id": "OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL",
+      "x": 28,
+      "y": 7,
+      "elevation": 5,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "LilycoveCity_EventScript_Rival",
+      "flag": "FLAG_HIDE_LILYCOVE_CITY_RIVAL"
+    },
+    {
+      "local_id": "LOCALID_LILYCOVE_WALLY",
+      "graphics_id": "OBJ_EVENT_GFX_WALLY",
+      "x": 26,
+      "y": 16,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "LilycoveCity_EventScript_DraconidWally",
+      "flag": "FLAG_HIDE_LILYCOVE_CITY_WALLY"
     }
   ],
   "warp_events": [

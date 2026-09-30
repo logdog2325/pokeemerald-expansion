@@ -182,7 +182,7 @@ def main():
             b = party.parse_block(raw)
             f = b["fields"]
             n = len(b["mons"])
-            if tid != "TRAINER_NONE" and not 1 <= n <= 6:
+            if tid not in ("TRAINER_NONE", "PARTNER_NONE") and not 1 <= n <= 6:
                 err("%s: %d Pokemon" % (tid, n))
             doubles = f.get("Double Battle", "No") == "Yes" or f.get("Battle Type", "") == "Doubles"
             if doubles and n < 2:

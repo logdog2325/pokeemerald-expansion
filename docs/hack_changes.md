@@ -17,7 +17,7 @@ Grouped by area; each entry names the file(s).
 | Emulator runner + driver | `tools/hack/emu/gbarun.c`, `tools/hack/emu/play.py` | headless smoke tests, see docs/hack_tools.md |
 | Map specs | `tools/hack/mapgen/specs/draconid_*.{py,json}` | regenerate the Draconid maps with `mapbuild.py` |
 | Seam checker | `tools/hack/mapgen/check_seams.py` | flags secondary metatiles drawable across a connection with other tilesets; run by `mapbuild.py --write` |
-| Emulator regression tests | `tools/hack/emu/tests/*.play` | `opening.play` (new game → lab, `-D GENDER=F`), `route103.play` (→ May) |
+| Emulator regression tests | `tools/hack/emu/tests/*.play` | `opening.play` (new game → lab, `-D GENDER=F`), `route103.play` (→ May), `route104.play` (Brendan), `rivals.play` (the other new rival scenes); `play.py` gained `warp`, `heal` (debug builds) and ledge-aware `path` |
 | Player outfit art builders | `tools/hack/art/player/build_player.py`, `build_pics.py`, specs `draconid_m/f.json`, `magma_m/f.json`, `*_pics.json` | see docs/hack_art_pipeline.md |
 | Outfit C code generator | `tools/hack/art/player/gen_outfit_code.py` | writes between `DRACONID PLAYER OUTFITS` markers |
 | Art manifest | `tools/hack/art/manifests/draconid.json` | `validate.py --manifest` for all player art; new `map_icon` profile in `gbaart.py` |
@@ -56,6 +56,13 @@ Grouped by area; each entry names the file(s).
 | `FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BRENDAN` (0x2D) | Brendan in Birch's lab (the welcome scene) |
 | `FLAG_DEBUG_NO_ENCOUNTER` (0x2E), `FLAG_DEBUG_NO_TRAINER_SEE` (0x2F), `FLAG_DEBUG_NO_COLLISION` (0x30) | the expansion's debug toggles (debug menu, emulator tests); never set by the game |
 | `FLAG_VISITED_DRACONID_VILLAGE` (`SYSTEM_FLAGS+0x21`, was `FLAG_UNUSED_0x881`) | fly destination |
+| `FLAG_HIDE_ROUTE_104_BRENDAN` (0x39) | Brendan at the Petalburg Woods entrance (cleared by the lab welcome) |
+| `FLAG_HIDE_SLATEPORT_CITY_MAY` (0x3A) | May at Slateport's north exit (cleared after the Oceanic Museum) |
+| `FLAG_HIDE_SOOTOPOLIS_CITY_RIVALS` (0x3B) | Brendan and May below the Sootopolis Gym (cleared by the Rain Badge) |
+| `FLAG_HIDE_PETALBURG_CITY_WALLY_GYM` (0x3C) | Wally beside the Petalburg Gym door (cleared by the Heat Badge) |
+| `FLAG_HIDE_LILYCOVE_CITY_WALLY` (0x3D) | Wally by the Lilycove Pokémon Center (cleared after the Petalburg battle) |
+| `FLAG_HIDE_MOSSDEEP_SPACE_CENTER_RIVALS` (0x3E) | Brendan and May at the Space Center (cleared by the Mind Badge) |
+| `FLAG_ENABLE_BRENDAN_MATCH_CALL` (0x3F) | Brendan in the PokéNav (registered after the Route 110 battle); May keeps `FLAG_ENABLE_RIVAL_MATCH_CALL` |
 
 ## Vars
 | Var | Values |
@@ -65,6 +72,9 @@ Grouped by area; each entry names the file(s).
 | `VAR_SECOND_STARTER` (0x40F9) | `SECOND_STARTER_*`: 0 none, 1 Charmander, 2 Totodile, 3 Treecko |
 | `VAR_PLAYER_OUTFIT` (0x40FA) | `PLAYER_OUTFIT_*`: 0 Draconid, 1 Magma – picks the player's sprites and trainer pics (`src/player_outfit.c`) |
 | `VAR_ASTER_STATE` (0x40FB) | Aster arc progress (Phase 4) |
+| `VAR_BRENDAN_STATE` (0x40FC) | `BRENDAN_STATE_*`: 0 waits on Route 104, 1 beaten there, 2 waits in Sootopolis, 3 Megas done |
+| `VAR_MAY_STATE` (0x40FD) | `MAY_STATE_*`: 0, 1 waits at Slateport's north exit, 2 beaten there |
+| `VAR_WALLY_STATE` (0x40FE) | `WALLY_STATE_*`: 0, 1 waits at the Petalburg Gym, 2 waits in Lilycove, 3 beaten there |
 | `VAR_STARTER_MON` (changed meaning) | now the player's egg, `DRACONID_EGG_*`; the starter table in `src/starter_choose.c` maps it to Deino/Dreepy/Jangmo-o |
 
 ## Constants
@@ -87,6 +97,11 @@ Grouped by area; each entry names the file(s).
 | `HEAL_LOCATION_DRACONID_VILLAGE_PLAYERS_HOUSE_2F`, `HEAL_LOCATION_DRACONID_VILLAGE` | `src/data/heal_locations.json` |
 | Route 101 ↔ Draconid Pass connection (Route 101 left, offset −22; pass rows 26–27 = Route 101 rows 4–5) | `data/maps/Route101/map.json` |
 | `LOCALID_BIRCHS_LAB_BRENDAN` object (5, 4); lab rival object is always `OBJ_EVENT_GFX_RIVAL_MAY_NORMAL` | `data/maps/LittlerootTown_ProfessorBirchsLab/map.json` |
+| `BRENDAN_STATE_*`, `MAY_STATE_*`, `WALLY_STATE_*` | `include/constants/draconid.h` |
+| Rival trainer ids renamed (same numbers, 520–537, 592/593/599/600, 661–666, 768/769): `TRAINER_BRENDAN_{ROUTE_104,ROUTE_110,ROUTE_119,LILYCOVE,SOOTOPOLIS,POSTGAME,POSTGAME_DOUBLE}`, `TRAINER_MAY_{ROUTE_103,RUSTBORO,SLATEPORT,LILYCOVE,SOOTOPOLIS,POSTGAME,POSTGAME_DOUBLE}`, `TRAINER_ASTER_{METEOR_FALLS,ROUTE_119,SKY_PILLAR,POSTGAME}_{DEINO,DREEPY,JANGMO_O}` (named after the player's egg), `TRAINER_WALLY_{PETALBURG,LILYCOVE}`, spares `TRAINER_DRACONID_SPARE_1/2` | `include/constants/opponents.h`, teams in `src/data/trainers.party` |
+| `PARTNER_MAY` (2), `PARTNER_BRENDAN` (3), `PARTNER_COUNT` 4 | `include/constants/battle_partner.h`, `src/data/battle_partners.party` |
+| New objects: `LOCALID_ROUTE104_BRENDAN` (10, 39), `LOCALID_SLATEPORT_MAY` (18, 2), `LOCALID_LILYCOVE_MAY` (existing rival object) + `LOCALID_LILYCOVE_BRENDAN` (28, 7), `LOCALID_LILYCOVE_WALLY` (26, 16), `LOCALID_SOOTOPOLIS_MAY/_BRENDAN` (30/32, 35), `LOCALID_PETALBURG_WALLY_GYM` (13, 9), `LOCALID_SPACE_CENTER_2F_MAY/_BRENDAN` (4/5, 5); coord triggers on Route 104 (10–11, 41), Slateport (16–20, 5), Petalburg (15, 9) | `data/maps/*/map.json` |
+| Macro `trainerbattle_two_trainers_no_intro` (scripted two-trainer double; the script continues after it) | `asm/macros/event.inc` |
 | Route 103 rival object is always `OBJ_EVENT_GFX_RIVAL_MAY_NORMAL` | `data/maps/Route103/map.json` |
 | Route 101 coord triggers (0, 4) / (0, 5) on `VAR_ROUTE101_STATE` 1 | `data/maps/Route101/map.json` |
 
@@ -110,6 +125,9 @@ Grouped by area; each entry names the file(s).
 | Outfit sprite data, palettes, reflection sets (generated) | `src/data/object_events/*.h`, `src/event_object_movement.c` |
 | Level caps per badge: 15/20/25/30/34/38/44/48, 60 until the Champion (was 15/19/24/29/31/33/42/46/58) | `src/caps.c` (`sLevelCapFlagMap`) |
 | Rematch tiers gated by badges (`IsRematchTierUnlocked`, `GetBadgeCount`) | `src/battle_setup.c` (`GetRematchTrainerIdFromTable`) |
+| Match call: Brendan and May are both rivals for either gender; Brendan's entry uses `FLAG_ENABLE_BRENDAN_MATCH_CALL` | `src/pokenav_match_call_data.c` |
+| Quickstart (debug) names the player KAI / ZARA instead of the rivals' names | `src/quickstart.c` |
+| Emulator test hook (debug builds only): `gDraconidTestWarp` + `Draconid_TryTestWarp` (warp / heal on request), called from `ProcessPlayerFieldInput` | `src/draconid.c`, `include/draconid.h`, `src/field_control_avatar.c` |
 
 ## Scripts
 | Script / label | File |
@@ -125,3 +143,6 @@ Grouped by area; each entry names the file(s).
 | Route 101 rescue with the hatchling, lab welcome (Brendan Treecko, May Torchic, player Pokédex + 5 Poké Balls), Route 103 May | `data/scripts/draconid/birch_intro.pory` |
 | Hooks into vanilla: `Route101_OnTransition` calls `Route101_EventScript_DraconidOnTransition`; lab OnFrame state 2 → `…_DraconidWelcome`; `Route103_EventScript_Rival` → `Route103_EventScript_DraconidMay`; `Route103_EventScript_RivalEnd` no longer sets lab state 4 or arms the Oldale rival scene | `data/maps/Route101/`, `LittlerootTown_ProfessorBirchsLab/`, `Route103/scripts.inc` |
 | New game: `VAR_LITTLEROOT_TOWN_STATE` 4, `VAR_ROUTE101_STATE` 1, hides Birch's bag and lab Brendan | `data/scripts/draconid/new_game.pory` |
+| Rival battles vanilla doesn't have: Brendan on Route 104, May in Slateport, Brendan's PokéNav registration, Lilycove two-on-two, Space Center partner choice, Sootopolis Megas, post-game lab singles + double, Wally at the Petalburg Gym and in Lilycove | `data/scripts/draconid/rivals.pory` |
+| Rival scenes no longer depend on the player's gender: `Common_EventScript_SetupRivalGfxId`/`OnBikeGfxId` always May; Rustboro/Route 104 always May (`TRAINER_MAY_RUSTBORO`); Route 110 and Route 119 always Brendan (gfx set in their OnTransition); per-starter battle branches replaced by one battle each; Route 103's vanilla branches removed | `data/scripts/rival_graphics.inc`, `data/maps/{RustboroCity,Route104,Route110,Route119,Route103}/scripts.inc` |
+| Hooks: Lilycove rival → `LilycoveCity_EventScript_DraconidRivals`; Space Center "ready?" → `…_DraconidChoosePartner`, rivals leave after Maxie gives up; Mossdeep Gym shows the Space Center rivals; Sootopolis Gym → `…_DraconidRivalsWait`, Sootopolis OnFrame → Mega scene; Lavaridge Gym → `…_DraconidWallyWaits`; Oceanic Museum 2F → `…_DraconidMayWaits`; Route 110 → `…_DraconidRegisterBrendan`; lab OnTransition/rival/Brendan → post-game scripts; debug menu's Steven multi battle → partner choice | `data/maps/*/scripts.inc`, `data/scripts/debug.inc` |

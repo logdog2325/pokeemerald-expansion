@@ -226,30 +226,14 @@ MossdeepCity_SpaceCenter_2F_EventScript_ReadyForBattlePrompt::
 	applymovement VAR_LAST_TALKED, Common_Movement_FacePlayer
 	waitmovement 0
 	msgbox MossdeepCity_SpaceCenter_2F_Text_StevenAreYouReadyToBattle, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, YES, MossdeepCity_SpaceCenter_2F_EventScript_ChoosePartyForMultiBattle
+	@ Draconid Emerald: May or Brendan is the tag partner (rivals.pory)
+	goto_if_eq VAR_RESULT, YES, MossdeepCity_SpaceCenter_2F_EventScript_DraconidChoosePartner
 	msgbox MossdeepCity_SpaceCenter_2F_Text_StevenHurryGetReadyQuickly, MSGBOX_DEFAULT
 	closemessage
 	applymovement VAR_LAST_TALKED, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	releaseall
 	end
-
-MossdeepCity_SpaceCenter_2F_EventScript_ChoosePartyForMultiBattle::
-	applymovement VAR_LAST_TALKED, Common_Movement_WalkInPlaceFasterDown
-	waitmovement 0
-	special SavePlayerParty
-	fadescreen FADE_TO_BLACK
-	special ChooseHalfPartyForBattle
-	goto_if_ne VAR_RESULT, 0, MossdeepCity_SpaceCenter_2F_EventScript_DoStevenMultiBattle
-	special LoadPlayerParty
-	goto MossdeepCity_SpaceCenter_2F_EventScript_ReadyForBattlePrompt
-
-MossdeepCity_SpaceCenter_2F_EventScript_DoStevenMultiBattle::
-	multi_2_vs_2 TRAINER_MAXIE_MOSSDEEP, MossdeepCity_SpaceCenter_2F_Text_JustWantToExpandLand, TRAINER_TABITHA_MOSSDEEP, MossdeepCity_SpaceCenter_Text_TabithaDefeat, PARTNER_STEVEN
-	switch VAR_RESULT
-	case 1, MossdeepCity_SpaceCenter_2F_EventScript_DefeatedMaxieTabitha
-	fadescreen FADE_TO_BLACK
-	special SetCB2WhiteOut
 
 MossdeepCity_SpaceCenter_2F_EventScript_DefeatedMaxieTabitha::
 	msgbox MossdeepCity_SpaceCenter_2F_Text_MaxieWeFailedIsAquaAlsoMisguided, MSGBOX_DEFAULT
@@ -265,6 +249,7 @@ MossdeepCity_SpaceCenter_2F_EventScript_DefeatedMaxieTabitha::
 	delay 20
 	msgbox MossdeepCity_SpaceCenter_2F_Text_MaxieWeWillGiveUp, MSGBOX_DEFAULT
 	closemessage
+	call MossdeepCity_SpaceCenter_2F_EventScript_DraconidRivalsLeave  @ Draconid Emerald (rivals.pory)
 	setvar VAR_MOSSDEEP_CITY_STATE, 3
 	fadedefaultbgm
 	fadescreen FADE_TO_BLACK

@@ -82,6 +82,7 @@ SlateportCity_OceanicMuseum_2F_EventScript_CaptStern::
 	clearflag FLAG_HIDE_ROUTE_116_DEVON_EMPLOYEE
 	setflag FLAG_HIDE_RUSTBORO_CITY_DEVON_CORP_3F_EMPLOYEE
 	setvar VAR_SLATEPORT_OUTSIDE_MUSEUM_STATE, 1
+	call SlateportCity_OceanicMuseum_2F_EventScript_DraconidMayWaits  @ Draconid Emerald (rivals.pory)
 	fadescreen FADE_FROM_BLACK
 	release
 	end
