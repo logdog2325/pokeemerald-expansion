@@ -220,23 +220,23 @@ PetalburgWoods_EventScript_DraconidRecruitment_Text_3:
 	.string "of the woods.$"
 
 RustboroCity_EventScript_DraconidBrendan_Text_0:
-	.string "BRENDAN: {PLAYER}?!\p"
-	.string "…That's a TEAM MAGMA uniform.\p"
-	.string "You saved DAD on ROUTE 101. He hasn't\n"
-	.string "stopped talking about you!\p"
-	.string "And now you're one of THEM?\p"
-	.string "You joined MAGMA?!$"
+	.string "BRENDAN: Huh? {PLAYER}?\p"
+	.string "Wait a second.\n"
+	.string "Is that a TEAM MAGMA uniform?\p"
+	.string "You saved my dad on ROUTE 101! He\n"
+	.string "hasn't stopped talking about you since.\p"
+	.string "And now you've joined MAGMA?! Those\n"
+	.string "guys want to wreck HOENN!$"
 
 RustboroCity_EventScript_DraconidBrendan_Text_1:
-	.string "BRENDAN: …Say something!\p"
-	.string "…Fine. Then my POKéMON will ask for me!$"
+	.string "BRENDAN: Well? Say something!\p"
+	.string "…Fine. Then I'll stop you myself!$"
 
 RustboroCity_EventScript_DraconidBrendan_Text_2:
-	.string "BRENDAN: You're strong. You were always\n"
-	.string "going to be strong.\p"
-	.string "That's what makes it worse.\p"
-	.string "…I'm going to tell DAD. Don't expect a\n"
-	.string "warm welcome at the lab.$"
+	.string "BRENDAN: Man, you're strong. Way too\n"
+	.string "strong to be running errands for MAGMA.\p"
+	.string "I'm telling my dad about this. Don't\n"
+	.string "expect a warm welcome at the LAB.$"
 
 RustboroCity_EventScript_DraconidTabithaOrders_Text_0:
 	.string "TABITHA: Hehehe! So you're the new\n"
@@ -253,5 +253,5 @@ RustboroCity_EventScript_DraconidTabithaOrders_Text_0:
 	.string "When I need you, I'll find you. Hehehe!$"
 
 RustboroCity_Text_DraconidBrendanDefeat::
-	.string "…Why?! Why would someone like you join\n"
-	.string "them?$"
+	.string "Tch… Why would someone like you\n"
+	.string "join THEM?$"

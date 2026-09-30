@@ -99,17 +99,15 @@ movement PetalburgWoods_Movement_DraconidCourtneyApproachRight {
 // ---------------------------------------------------------------------------
 
 script RustboroCity_EventScript_DraconidBrendan {
-    msgbox(format("BRENDAN: {PLAYER}?!\p"
-                  "…That's a TEAM MAGMA uniform.\p"
-                  "You saved DAD on ROUTE 101. He hasn't stopped talking about you!\p"
-                  "And now you're one of THEM?\p"
-                  "You joined MAGMA?!"))
-    msgbox(format("BRENDAN: …Say something!\p"
-                  "…Fine. Then my POKéMON will ask for me!"))
+    msgbox(format("BRENDAN: Huh? {PLAYER}?\p"
+                  "Wait a second.\nIs that a TEAM MAGMA uniform?\p"
+                  "You saved my dad on ROUTE 101! He hasn't stopped talking about you since.\p"
+                  "And now you've joined MAGMA?! Those guys want to wreck HOENN!"))
+    msgbox(format("BRENDAN: Well? Say something!\p"
+                  "…Fine. Then I'll stop you myself!"))
     trainerbattle_no_intro(TRAINER_BRENDAN_RUSTBORO, RustboroCity_Text_DraconidBrendanDefeat)
-    msgbox(format("BRENDAN: You're strong. You were always going to be strong.\p"
-                  "That's what makes it worse.\p"
-                  "…I'm going to tell DAD. Don't expect a warm welcome at the lab."))
+    msgbox(format("BRENDAN: Man, you're strong. Way too strong to be running errands for MAGMA.\p"
+                  "I'm telling my dad about this. Don't expect a warm welcome at the LAB."))
     closemessage
     applymovement(LOCALID_RUSTBORO_RIVAL, RustboroCity_Movement_DraconidBrendanLeave)
     waitmovement(0)
@@ -121,7 +119,7 @@ script RustboroCity_EventScript_DraconidBrendan {
 }
 
 text RustboroCity_Text_DraconidBrendanDefeat {
-    format("…Why?! Why would someone like you join them?")
+    format("Tch… Why would someone like you\njoin THEM?")
 }
 
 movement RustboroCity_Movement_DraconidBrendanLeave {

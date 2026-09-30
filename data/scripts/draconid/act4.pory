@@ -36,8 +36,8 @@ script PetalburgCity_Gym_EventScript_DraconidNormanRevealed {
 script PetalburgCity_Gym_EventScript_DraconidMay {
     lock
     faceplayer
-    msgbox(format("MAY: Don't mind me. I'm just here to watch.\p"
-                  "DAD won't go easy on you, {PLAYER}. Uniform or not."))
+    msgbox(format("MAY: I'm here to watch my dad beat you.\p"
+                  "He won't go easy on a MAGMA grunt."))
     release
 }
 
@@ -57,9 +57,9 @@ script PetalburgCity_Gym_EventScript_DraconidMayWatched {
         applymovement(LOCALID_PETALBURG_GYM_MAY, Common_Movement_WalkInPlaceFasterLeft)
     }
     waitmovement(0)
-    msgbox(format("MAY: DAD says you fought honestly.\p"
-                  "That's not what MAGMA does.\p"
-                  "I don't know what you really are, {PLAYER}. But I'm going to find out."))
+    msgbox(format("MAY: Dad says you fought honestly. That's not what MAGMA does.\p"
+                  "…So why are you wearing that uniform?\p"
+                  "Whatever you're up to, {PLAYER}, I'm going to find out."))
     closemessage
     applymovement(LOCALID_PETALBURG_GYM_MAY, PetalburgCity_Gym_Movement_DraconidMayLeave)
     waitmovement(0)
@@ -205,15 +205,15 @@ script Route119_WeatherInstitute_2F_EventScript_DraconidMayCovers {
     applymovement(LOCALID_WEATHER_INSTITUTE_2F_MAY, Route119_WeatherInstitute_2F_Movement_DraconidMayArrive)
     applymovement(LOCALID_PLAYER, Route119_WeatherInstitute_2F_Movement_DraconidPlayerHearsMay)
     waitmovement(0)
-    msgbox(format("MAY: I heard shouting from the road! Is AQUA still-\p"
-                  "…{PLAYER}?!\p"
-                  "That uniform… So MAGMA is here, too."))
+    msgbox(format("MAY: I heard shouting from the road! Is TEAM AQUA still here?\p"
+                  "{PLAYER}?! So MAGMA is here, too!\p"
+                  "What did you do to these people?!"))
     applymovement(LOCALID_WEATHER_INSTITUTE_2F_MAY, Common_Movement_ExclamationMark)
     waitmovement(0)
-    msgbox(format("MAY: Wait. Those people in the back… They're untied."))
+    msgbox(format("MAY: Huh? Those people in the back room are untied…"))
     msgbox(format("SCIENTIST: It's true! That trainer drove AQUA off and set us free!"))
-    msgbox(format("MAY: I KNEW it!\p"
-                  "{PLAYER}, you're not really one of-"))
+    msgbox(format("MAY: You set them free?\p"
+                  "{PLAYER}, you're not really one of…"))
     closemessage
     playbgm(MUS_ENCOUNTER_MAGMA, FALSE)
     addobject(LOCALID_WEATHER_INSTITUTE_2F_TABITHA)
@@ -224,8 +224,8 @@ script Route119_WeatherInstitute_2F_EventScript_DraconidMayCovers {
     applymovement(LOCALID_WEATHER_INSTITUTE_2F_MAY, Common_Movement_WalkInPlaceFasterRight)
     waitmovement(0)
     delay(30)
-    msgbox(format("MAY: …Not really one of the TRAINERS I'd waste my time on! Hmph!\p"
-                  "Chasing off a few AQUA grunts? Anyone could do that.\p"
+    msgbox(format("MAY: …One of the TRAINERS worth my time! Hmph!\p"
+                  "Chasing off a few AQUA grunts? Anybody could do that!\p"
                   "You MAGMA people are all the same!"))
     msgbox(format("TABITHA: Hehehe! Feisty.\p"
                   "AQUA ran like rats, grunt. Good work.\p"
@@ -239,9 +239,8 @@ script Route119_WeatherInstitute_2F_EventScript_DraconidMayCovers {
     playbgm(MUS_ENCOUNTER_MAY, FALSE)
     applymovement(LOCALID_WEATHER_INSTITUTE_2F_MAY, Common_Movement_WalkInPlaceFasterLeft)
     waitmovement(0)
-    msgbox(format("MAY: …That was close.\p"
-                  "I'll pretend I didn't see you save them, {PLAYER}.\p"
-                  "But I did see it. And I won't forget."))
+    msgbox(format("MAY: I'll pretend I didn't see you save them, {PLAYER}.\p"
+                  "But don't think this changes anything. You still work for MAGMA."))
     closemessage
     applymovement(LOCALID_WEATHER_INSTITUTE_2F_MAY, Route119_WeatherInstitute_2F_Movement_DraconidMayLeave)
     waitmovement(0)
@@ -290,8 +289,8 @@ movement Route119_WeatherInstitute_2F_Movement_DraconidMayLeave {
 // ---------------------------------------------------------------------------
 
 script Route119_EventScript_DraconidRegisterBrendan {
-    msgbox(format("BRENDAN: And… MAY says we should stay in touch.\p"
-                  "So I can keep an eye on you. That's all it is."))
+    msgbox(format("BRENDAN: And MAY wants us registered in each other's POKéNAVS.\p"
+                  "Fine by me. If MAGMA makes a move, I'll know where to find you."))
     closemessage
     delay(30)
     playfanfare(MUS_REGISTER_MATCH_CALL)
@@ -301,7 +300,7 @@ script Route119_EventScript_DraconidRegisterBrendan {
     delay(30)
     setflag(FLAG_ENABLE_BRENDAN_MATCH_CALL)
     setvar(VAR_BRENDAN_STATE, BRENDAN_STATE_ROUTE_119)
-    msgbox(format("BRENDAN: If you really are what MAY thinks you are… then prove it.\p"
+    msgbox(format("BRENDAN: If MAY's wrong about you, I'm the one who stops you.\p"
                   "I'll be watching, {PLAYER}."))
 }
 
@@ -316,19 +315,18 @@ script LilycoveCity_EventScript_DraconidRivals {
     faceplayer
     playbgm(MUS_ENCOUNTER_MAY, TRUE)
     if (flag(FLAG_DECLINED_RIVAL_BATTLE_LILYCOVE)) {
-        msgbox(format("BRENDAN: Changed your mind? MAY won't stop talking until we settle this."), MSGBOX_YESNO)
+        msgbox(format("BRENDAN: Back again?\nReady to settle this?"), MSGBOX_YESNO)
     } else {
-        msgbox(format("MAY: {PLAYER}! BRENDAN and I were shopping at the DEPARTMENT STORE.\p"
-                      "BRENDAN: And arguing. About you.\p"
-                      "MAY: He thinks MAGMA is using you. I think you're using MAGMA.\p"
-                      "BRENDAN: Either way, you're still wearing red.\p"
-                      "So we settle it like TRAINERS. You against both of us!\p"
-                      "MAY: Well, {PLAYER}? Two on two?"), MSGBOX_YESNO)
+        msgbox(format("MAY: {PLAYER}. BRENDAN and I have been looking for you.\p"
+                      "BRENDAN: MAGMA raided the\nWEATHER INSTITUTE, and you were there!\p"
+                      "MAY: Whatever your reason is, you're still helping MAGMA.\p"
+                      "BRENDAN: So we're stopping you right here!\p"
+                      "MAY: The two of us against you, {PLAYER}. Ready?"), MSGBOX_YESNO)
     }
     if (var(VAR_RESULT) == NO) {
         setflag(FLAG_DECLINED_RIVAL_BATTLE_LILYCOVE)
-        msgbox(format("MAY: Running off? That's what a real MAGMA grunt would do…\p"
-                      "We'll be right here, {PLAYER}."))
+        msgbox(format("MAY: Running away? That's just what a MAGMA grunt would do.\p"
+                      "We're not going anywhere, {PLAYER}."))
         savebgm(MUS_DUMMY)
         fadedefaultbgm
         release
@@ -342,14 +340,12 @@ script LilycoveCity_EventScript_DraconidRivals {
         release
         end
     }
-    msgbox(format("BRENDAN: Don't hold back. I won't.\p"
-                  "MAY: Show us who you really are, {PLAYER}!"))
+    msgbox(format("BRENDAN: MAGMA stops here!\p"
+                  "MAY: {PLAYER}, show us who you\nreally are!"))
     trainerbattle_two_trainers_no_intro(TRAINER_BRENDAN_LILYCOVE, LilycoveCity_Text_DraconidBrendanDefeat, TRAINER_MAY_LILYCOVE, LilycoveCity_Text_DraconidMayDefeat)
-    msgbox(format("BRENDAN: I don't get you, {PLAYER}.\p"
-                  "You beat AQUA. You help people. And you still wear that.\p"
-                  "MAY: One day you'll tell us the truth. And then I get to say “I told you so.”\p"
-                  "BRENDAN: We're going home to LITTLEROOT.\p"
-                  "…Take care of yourself. Whoever you really are."))
+    msgbox(format("BRENDAN: Tch… MAGMA's up to something, and you're right in the middle of it.\p"
+                  "MAY: {PLAYER}… Is there something you're not telling us?\p"
+                  "BRENDAN: Forget it, MAY.\nWe're going home."))
     closemessage
     // Both go home to Littleroot (their bedrooms show them again)
     clearflag(FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_RIVAL_BEDROOM)
@@ -385,11 +381,11 @@ script LilycoveCity_EventScript_DraconidFlyAway {
 }
 
 text LilycoveCity_Text_DraconidBrendanDefeat {
-    format("BRENDAN: …Even two on one.")
+    format("BRENDAN: Tch… Even with two of us?")
 }
 
 text LilycoveCity_Text_DraconidMayDefeat {
-    format("MAY: See? Nobody fights like that for MAGMA.")
+    format("MAY: …Why do you battle like that\nfor MAGMA?")
 }
 
 // WALLY by the Pokémon Center after the Petalburg battle (Mega Gallade)
@@ -457,20 +453,16 @@ script MtPyre_Summit_EventScript_DraconidMaxieOrders {
     }
     applymovement(LOCALID_MT_PYRE_SUMMIT_MAXIE, MtPyre_Summit_Movement_DraconidMaxieApproach)
     waitmovement(0)
-    msgbox(format("MAXIE: {PLAYER}. You came. Good.\p"
-                  "TABITHA tells me AQUA fled the WEATHER INSTITUTE with their tails between their legs.\p"
-                  "Your doing, I hear."))
-    msgbox(format("MAXIE: Look. The BLUE ORB.\p"
-                  "Hold it to the light and you can almost hear the land breathing."))
-    msgbox(format("MAXIE: But ARCHIE's rabble followed us up the mountain. They're swarming the summit.\p"
-                  "He's after the RED ORB… and after this one.\p"
-                  "I will not lose it on a mountain of graves.\p"
-                  "Hold them off, {PLAYER}. Keep AQUA busy up there while we take the ORB down the mountain."))
-    msgbox(format("MAXIE: And take this. The MAGMA EMBLEM.\p"
-                  "Only those I trust carry one. You've earned it."))
+    msgbox(format("MAXIE: Ah, {PLAYER}. I have been expecting you.\p"
+                  "TABITHA tells me AQUA fled the\nWEATHER INSTITUTE in disgrace, and that it was your doing."))
+    msgbox(format("MAXIE: Look at this. The BLUE ORB, kept on this mountain since ancient times.\p"
+                  "The land itself seems to stir inside it. Magnificent, is it not?"))
+    msgbox(format("MAXIE: Unfortunately, ARCHIE's rabble followed us here. They want the RED ORB, and this one too.\p"
+                  "Hold them off at the summit, {PLAYER}. We will take the ORB down the mountain."))
+    msgbox(format("MAXIE: Take this as well. It is the MAGMA EMBLEM.\p"
+                  "Only those I trust carry one. You have earned it."))
     giveitem(ITEM_MAGMA_EMBLEM)
-    msgbox(format("MAXIE: Keep it close. When this is over, I'll call for you.\p"
-                  "It's time you saw what we are truly working for."))
+    msgbox(format("MAXIE: Keep it with you. When the time comes, I will call for you."))
     closemessage
     applymovement(LOCALID_MT_PYRE_SUMMIT_MAXIE, MtPyre_Summit_Movement_DraconidMaxieLeave)
     applymovement(LOCALID_PLAYER, MtPyre_Summit_Movement_DraconidPlayerWatchMaxie)
@@ -623,12 +615,10 @@ script MagmaHideout_4F_EventScript_DraconidPromotion {
     applymovement(LOCALID_MAGMA_HIDEOUT_4F_MAXIE, Common_Movement_WalkInPlaceFasterRight)
     applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft)
     waitmovement(0)
-    msgbox(format("MAXIE: {PLAYER}. Come, stand here.\p"
-                  "TABITHA told me how you held MT. PYRE. Alone, against ARCHIE's whole crew."))
-    msgbox(format("MAXIE: I have watched you since METEOR FALLS.\p"
-                  "You fight for your POKéMON, not for yourself. That is rarer than you think.\p"
-                  "So I will say it plainly. From today, you are no grunt.\p"
-                  "You are one of my own."))
+    msgbox(format("MAXIE: Come here, {PLAYER}.\p"
+                  "TABITHA told me how you held MT. PYRE alone against ARCHIE's whole crew."))
+    msgbox(format("MAXIE: I have watched you since\nMETEOR FALLS.\p"
+                  "You have exceeded every expectation.\nFrom now on, you are my right hand."))
     msgbox(format("MAXIE: Stand beside me, {PLAYER}, as the land is reborn."))
     closemessage
     applymovement(LOCALID_MAGMA_HIDEOUT_4F_MAXIE, Common_Movement_WalkInPlaceFasterUp)

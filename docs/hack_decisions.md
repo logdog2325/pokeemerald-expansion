@@ -375,7 +375,7 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   to the Elder (a narrated letter a traveller carries to the mountains). Maxie's Magma Hideout team (and its Mega
   Camerupt, D-066) is not fought here any more. – Alt: keep the battle as a "test"; a call to the Elder (he has
   no PokéNav). – The story cuts the battle; a letter needs no new object or item.
-- **D-135 Lilycove and Wally (round 1)**: the v1 fights and staging stay, with new lines. Before the double,
+- **D-135 Lilycove and Wally (round 1)** *(the rivals' tone: D-211)*: the v1 fights and staging stay, with new lines. Before the double,
   Brendan and May argue about the player (Brendan hurt but unsure since Route 119, May sure the player is secretly
   good); afterwards both go home to Littleroot as in v1. Wally trusts what he saw in Mauville, at the Petalburg
   Gym door ("MR. NORMAN", May's dad) and in Lilycove. – The add-on.
@@ -549,3 +549,42 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   Lilycove. `build_segments.py` places every story fight (and every Nerine/Aster variant) on the round 1
   schedule – Steven's Space Center team is exempt from the cap on purpose (D-108), the Sky Pillar finale and
   Zinnia are post-League (D-109) – and `check_party.py --caps` passes with 0 errors.
+- **D-210 Maxie's voice** (feedback 1.26): composed and formal, full sentences with few contractions, grandiose and
+  sincere about the land, humankind and "our ideal"; dry pride ("That is the difference between us"); short and
+  sharp only when something goes wrong ("What?! The METEORITE is gone!"), then composed again. He praises the player
+  rarely and exactly, so the promotion ("you are my right hand") and the betrayal ("After everything I gave you?!")
+  land. Vanilla's own words come back where they fit: "Fufufu…", "Humph", "No matter", "Even without the METEORITE,
+  there is still the ORB" (his Mt. Chimney line), "I, MAXIE, beaten by my own recruit?!" (after his "I, MAXIE, was
+  caught off guard?!"), and the vanilla Groudon, Seafloor and Route 128 lines stay verbatim. At most one aphorism a
+  scene. His calls keep naming the next place, in fewer, shorter boxes. Tabitha is a man (vanilla, the trainer data
+  and the other lines): Maxie's "she speaks well of you" was a slip. – Alt: an ORAS-style Maxie (more lecturing, "my
+  ideal world" speeches). – The note asks for Maxie as he is in the games; Emerald's Maxie is terse and proud, and
+  short boxes are what the playtester reads on a phone.
+- **D-211 Brendan's and May's voices** (feedback 1.26 and the follow-up "have them be really hostile to you because
+  they're trying to stop Team Magma and protect Hoenn, not knowing your true mission"): Brendan casual, confident
+  and blunt, short sentences, "Huh?", "Hmm…", "Tch…", "Man,"; May warm, curious and quick, with exclamations and a
+  researcher's eye for how POKéMON act. **While the player wears the uniform** (`REPUTATION_UNIFORM`: Rustboro to
+  the Sootopolis turn) both treat the player as an enemy of HOENN: every line before and after a battle is hostile
+  and earnest – they want to stop MAGMA and protect people, and they are angry the player joined ("Those guys want
+  to wreck HOENN!", "I'm going to stop you right here!"). Brendan is betrayed and angry; May fights just as hard,
+  and her suspicion shows only as a small crack, one hesitation or question a scene ("…What are you really doing,
+  {PLAYER}?"), never as warmth – even her cover at the Weather Institute ends "But don't think this changes
+  anything. You still work for MAGMA." What they hand over (the Dowsing Machine, Go-Goggles, HM Fly) is given
+  grudgingly, and the PokéNav registrations are to keep tabs on a MAGMA grunt. **After the turn** they warm up as
+  the story says (May's "I KNEW it!" moved from the Weather Institute to Sootopolis only, Brendan's awkward
+  apology). Both say "my dad" / "Dad" as vanilla does (the round 1 lines had "DAD" like a name). Vanilla reference
+  lines, habits to use and to avoid: [hack_voices.md](hack_voices.md). – Alt: keep the round 1 lines with light
+  edits (May friendly and sure of the player from Route 110 on). – The playtester called them clunky and asked for
+  real hostility; the story's beats (May's doubt on Route 110, her cover at the Institute) survive as cracks in it.
+- **D-212 The voice pass rules and scope**: every round 1 Maxie / Brendan / May line of Acts 1–5 was reread against
+  these rules and rewritten where it broke one: one idea per box and 1–3 boxes a beat; no "Not X. Y." or "X, not Y"
+  antitheses, no rhetorical triplets, no stacked fragments, no em dashes (a cut-off line ends in "…"), at most one
+  "…" per box, nobody narrates their own feelings, no modern phrasing; `\n` placed by hand where `format()` would
+  split a name ("MT. CHIMNEY") or leave one word on a line. Only text changed – labels, scripts, flags and movements
+  are untouched (the emulator tests mash through text, so box counts don't matter); every story fact, place and
+  quote from the add-on is kept ("…you've joined MAGMA?!", "I'll pretend I didn't see you save them", "Stand beside
+  me as the land is reborn", "After everything I gave you?!", "I KNEW it!"). Verbatim vanilla lines keep their
+  punctuation even where it breaks a rule ("Fu… Fuhahaha…"). Out of scope: the lab intro and Route 103 (v1, already
+  in voice), and the post-game lab battles (`rivals.pory`, owned by the Acts 6–7 work). Other characters' lines
+  changed only where a reply had to follow (none needed it). – Alt: rewrite everything from scratch. – The facts and
+  staging were tested act by act; the note is about how the lines sound.

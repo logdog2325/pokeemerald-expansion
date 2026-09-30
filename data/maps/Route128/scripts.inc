@@ -261,21 +261,17 @@ Route128_Text_MaxieDoYouUnderstandNow:
 
 Route128_Text_MaxieResposibilityFallsToArchieAndMe:  @ Draconid Emerald
 	.string "MAXIE: {PLAYER}, don't say anything.\p"
-	.string "That rain is KYOGRE's. It will drown\n"
-	.string "everything we worked for.\p"
-	.string "There is only one power in this world\n"
-	.string "that can answer it.\p"
-	.string "GROUDON. The BLUE ORB failed me once,\n"
-	.string "but GROUDON is out there, and it is\l"
-	.string "angry.\p"
-	.string "I will find it. And this time, I will make\n"
-	.string "it listen.$"
+	.string "This rain is KYOGRE's doing. If it goes\n"
+	.string "on, it will drown everything we have\l"
+	.string "worked for.\p"
+	.string "Only GROUDON can stand against it. I\n"
+	.string "will find it and make it obey.$"
 
 Route128_Text_MaxieThisDefiesBelief:  @ Draconid Emerald
 	.string "MAXIE: This defies belief…\p"
-	.string "KYOGRE's power is beyond anything I\n"
-	.string "imagined.\p"
-	.string "…But GROUDON is its equal. It must be.$"
+	.string "KYOGRE's power is far beyond\n"
+	.string "anything I imagined.\p"
+	.string "But GROUDON is every bit its equal.$"
 
 Route128_Text_StevenWhatIsHappening:
 	.string "STEVEN: {PLAYER}{KUN}!\n"

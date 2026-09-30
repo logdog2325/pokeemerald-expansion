@@ -672,16 +672,15 @@ PetalburgCity_Gym_EventScript_DraconidNormanRevealed_Text_0:
 	.string "Neither will I, from now on.$"
 
 PetalburgCity_Gym_EventScript_DraconidMay_Text_0:
-	.string "MAY: Don't mind me. I'm just here to\n"
-	.string "watch.\p"
-	.string "DAD won't go easy on you, {PLAYER}.\n"
-	.string "Uniform or not.$"
+	.string "MAY: I'm here to watch my dad beat you.\p"
+	.string "He won't go easy on a MAGMA grunt.$"
 
 PetalburgCity_Gym_EventScript_DraconidMayWatched_Text_0:
-	.string "MAY: DAD says you fought honestly.\p"
+	.string "MAY: Dad says you fought honestly.\n"
 	.string "That's not what MAGMA does.\p"
-	.string "I don't know what you really are,\n"
-	.string "{PLAYER}. But I'm going to find out.$"
+	.string "…So why are you wearing that uniform?\p"
+	.string "Whatever you're up to, {PLAYER}, I'm\n"
+	.string "going to find out.$"
 
 PetalburgCity_EventScript_DraconidWallyTrigger_Text_0:
 	.string "WALLY: {PLAYER}! I came to thank MR.\n"
@@ -728,31 +727,31 @@ Route119_WeatherInstitute_2F_EventScript_DraconidMayCovers_Text_0:
 
 Route119_WeatherInstitute_2F_EventScript_DraconidMayCovers_Text_1:
 	.string "MAY: I heard shouting from the road! Is\n"
-	.string "AQUA still-\p"
-	.string "…{PLAYER}?!\p"
-	.string "That uniform… So MAGMA is here, too.$"
+	.string "TEAM AQUA still here?\p"
+	.string "{PLAYER}?! So MAGMA is here, too!\p"
+	.string "What did you do to these people?!$"
 
 Route119_WeatherInstitute_2F_EventScript_DraconidMayCovers_Text_2:
-	.string "MAY: Wait. Those people in the back…\n"
-	.string "They're untied.$"
+	.string "MAY: Huh? Those people in the back room\n"
+	.string "are untied…$"
 
 Route119_WeatherInstitute_2F_EventScript_DraconidMayCovers_Text_3:
 	.string "SCIENTIST: It's true! That trainer\n"
 	.string "drove AQUA off and set us free!$"
 
 Route119_WeatherInstitute_2F_EventScript_DraconidMayCovers_Text_4:
-	.string "MAY: I KNEW it!\p"
-	.string "{PLAYER}, you're not really one of-$"
+	.string "MAY: You set them free?\p"
+	.string "{PLAYER}, you're not really one of…$"
 
 Route119_WeatherInstitute_2F_EventScript_DraconidMayCovers_Text_5:
 	.string "TABITHA: Hehehe! Not really one of\n"
 	.string "what, little girl?$"
 
 Route119_WeatherInstitute_2F_EventScript_DraconidMayCovers_Text_6:
-	.string "MAY: …Not really one of the TRAINERS\n"
-	.string "I'd waste my time on! Hmph!\p"
-	.string "Chasing off a few AQUA grunts? Anyone\n"
-	.string "could do that.\p"
+	.string "MAY: …One of the TRAINERS worth my\n"
+	.string "time! Hmph!\p"
+	.string "Chasing off a few AQUA grunts? Anybody\n"
+	.string "could do that!\p"
 	.string "You MAGMA people are all the same!$"
 
 Route119_WeatherInstitute_2F_EventScript_DraconidMayCovers_Text_7:
@@ -767,61 +766,58 @@ Route119_WeatherInstitute_2F_EventScript_DraconidMayCovers_Text_7:
 	.string "for you soon. Hehehe!$"
 
 Route119_WeatherInstitute_2F_EventScript_DraconidMayCovers_Text_8:
-	.string "MAY: …That was close.\p"
-	.string "I'll pretend I didn't see you save them,\n"
-	.string "{PLAYER}.\p"
-	.string "But I did see it. And I won't forget.$"
+	.string "MAY: I'll pretend I didn't see you save\n"
+	.string "them, {PLAYER}.\p"
+	.string "But don't think this changes anything.\n"
+	.string "You still work for MAGMA.$"
 
 Route119_EventScript_DraconidRegisterBrendan_Text_0:
-	.string "BRENDAN: And… MAY says we should stay\n"
-	.string "in touch.\p"
-	.string "So I can keep an eye on you. That's all\n"
-	.string "it is.$"
+	.string "BRENDAN: And MAY wants us registered\n"
+	.string "in each other's POKéNAVS.\p"
+	.string "Fine by me. If MAGMA makes a move, I'll\n"
+	.string "know where to find you.$"
 
 Route119_EventScript_DraconidRegisterBrendan_Text_1:
 	.string "Registered BRENDAN in the POKéNAV.$"
 
 Route119_EventScript_DraconidRegisterBrendan_Text_2:
-	.string "BRENDAN: If you really are what MAY\n"
-	.string "thinks you are… then prove it.\p"
+	.string "BRENDAN: If MAY's wrong about you, I'm\n"
+	.string "the one who stops you.\p"
 	.string "I'll be watching, {PLAYER}.$"
 
 LilycoveCity_EventScript_DraconidRivals_Text_0:
-	.string "BRENDAN: Changed your mind? MAY won't\n"
-	.string "stop talking until we settle this.$"
+	.string "BRENDAN: Back again?\n"
+	.string "Ready to settle this?$"
 
 LilycoveCity_EventScript_DraconidRivals_Text_1:
-	.string "MAY: {PLAYER}! BRENDAN and I were\n"
-	.string "shopping at the DEPARTMENT STORE.\p"
-	.string "BRENDAN: And arguing. About you.\p"
-	.string "MAY: He thinks MAGMA is using you. I\n"
-	.string "think you're using MAGMA.\p"
-	.string "BRENDAN: Either way, you're still\n"
-	.string "wearing red.\p"
-	.string "So we settle it like TRAINERS. You\n"
-	.string "against both of us!\p"
-	.string "MAY: Well, {PLAYER}? Two on two?$"
+	.string "MAY: {PLAYER}. BRENDAN and I have been\n"
+	.string "looking for you.\p"
+	.string "BRENDAN: MAGMA raided the\n"
+	.string "WEATHER INSTITUTE, and you were there!\p"
+	.string "MAY: Whatever your reason is, you're\n"
+	.string "still helping MAGMA.\p"
+	.string "BRENDAN: So we're stopping you right\n"
+	.string "here!\p"
+	.string "MAY: The two of us against you,\n"
+	.string "{PLAYER}. Ready?$"
 
 LilycoveCity_EventScript_DraconidRivals_Text_2:
-	.string "MAY: Running off? That's what a real\n"
-	.string "MAGMA grunt would do…\p"
-	.string "We'll be right here, {PLAYER}.$"
+	.string "MAY: Running away? That's just what a\n"
+	.string "MAGMA grunt would do.\p"
+	.string "We're not going anywhere, {PLAYER}.$"
 
 LilycoveCity_EventScript_DraconidRivals_Text_3:
-	.string "BRENDAN: Don't hold back. I won't.\p"
-	.string "MAY: Show us who you really are,\n"
-	.string "{PLAYER}!$"
+	.string "BRENDAN: MAGMA stops here!\p"
+	.string "MAY: {PLAYER}, show us who you\n"
+	.string "really are!$"
 
 LilycoveCity_EventScript_DraconidRivals_Text_4:
-	.string "BRENDAN: I don't get you, {PLAYER}.\p"
-	.string "You beat AQUA. You help people. And you\n"
-	.string "still wear that.\p"
-	.string "MAY: One day you'll tell us the truth.\n"
-	.string "And then I get to say “I told you so.”\p"
-	.string "BRENDAN: We're going home to\n"
-	.string "LITTLEROOT.\p"
-	.string "…Take care of yourself. Whoever you\n"
-	.string "really are.$"
+	.string "BRENDAN: Tch… MAGMA's up to something,\n"
+	.string "and you're right in the middle of it.\p"
+	.string "MAY: {PLAYER}… Is there something\n"
+	.string "you're not telling us?\p"
+	.string "BRENDAN: Forget it, MAY.\n"
+	.string "We're going home.$"
 
 LilycoveCity_EventScript_DraconidWally_Text_0:
 	.string "WALLY: {PLAYER}! My RALTS evolved into\n"
@@ -840,39 +836,34 @@ LilycoveCity_EventScript_DraconidWally_Text_1:
 	.string "hope you win, {PLAYER}.$"
 
 MtPyre_Summit_EventScript_DraconidMaxieOrders_Text_0:
-	.string "MAXIE: {PLAYER}. You came. Good.\p"
-	.string "TABITHA tells me AQUA fled the WEATHER\n"
-	.string "INSTITUTE with their tails between\l"
-	.string "their legs.\p"
-	.string "Your doing, I hear.$"
+	.string "MAXIE: Ah, {PLAYER}. I have been\n"
+	.string "expecting you.\p"
+	.string "TABITHA tells me AQUA fled the\n"
+	.string "WEATHER INSTITUTE in disgrace, and\l"
+	.string "that it was your doing.$"
 
 MtPyre_Summit_EventScript_DraconidMaxieOrders_Text_1:
-	.string "MAXIE: Look. The BLUE ORB.\p"
-	.string "Hold it to the light and you can almost\n"
-	.string "hear the land breathing.$"
+	.string "MAXIE: Look at this. The BLUE ORB, kept\n"
+	.string "on this mountain since ancient times.\p"
+	.string "The land itself seems to stir inside it.\n"
+	.string "Magnificent, is it not?$"
 
 MtPyre_Summit_EventScript_DraconidMaxieOrders_Text_2:
-	.string "MAXIE: But ARCHIE's rabble followed us\n"
-	.string "up the mountain. They're swarming the\l"
-	.string "summit.\p"
-	.string "He's after the RED ORB… and after this\n"
-	.string "one.\p"
-	.string "I will not lose it on a mountain of\n"
-	.string "graves.\p"
-	.string "Hold them off, {PLAYER}. Keep AQUA busy\n"
-	.string "up there while we take the ORB down the\l"
-	.string "mountain.$"
+	.string "MAXIE: Unfortunately, ARCHIE's rabble\n"
+	.string "followed us here. They want the RED ORB,\l"
+	.string "and this one too.\p"
+	.string "Hold them off at the summit, {PLAYER}.\n"
+	.string "We will take the ORB down the mountain.$"
 
 MtPyre_Summit_EventScript_DraconidMaxieOrders_Text_3:
-	.string "MAXIE: And take this. The MAGMA EMBLEM.\p"
-	.string "Only those I trust carry one. You've\n"
+	.string "MAXIE: Take this as well. It is the\n"
+	.string "MAGMA EMBLEM.\p"
+	.string "Only those I trust carry one. You have\n"
 	.string "earned it.$"
 
 MtPyre_Summit_EventScript_DraconidMaxieOrders_Text_4:
-	.string "MAXIE: Keep it close. When this is over,\n"
-	.string "I'll call for you.\p"
-	.string "It's time you saw what we are truly\n"
-	.string "working for.$"
+	.string "MAXIE: Keep it with you. When the time\n"
+	.string "comes, I will call for you.$"
 
 MtPyre_Summit_EventScript_DraconidNerine_Text_0:
 	.string "NERINE: …You again.\p"
@@ -910,18 +901,15 @@ JaggedPass_EventScript_DraconidGuardGoesIn_Text_0:
 	.string "bottom. I'll tell them you're coming!$"
 
 MagmaHideout_4F_EventScript_DraconidPromotion_Text_0:
-	.string "MAXIE: {PLAYER}. Come, stand here.\p"
-	.string "TABITHA told me how you held MT. PYRE.\n"
-	.string "Alone, against ARCHIE's whole crew.$"
+	.string "MAXIE: Come here, {PLAYER}.\p"
+	.string "TABITHA told me how you held MT. PYRE\n"
+	.string "alone against ARCHIE's whole crew.$"
 
 MagmaHideout_4F_EventScript_DraconidPromotion_Text_1:
-	.string "MAXIE: I have watched you since METEOR\n"
-	.string "FALLS.\p"
-	.string "You fight for your POKéMON, not for\n"
-	.string "yourself. That is rarer than you think.\p"
-	.string "So I will say it plainly. From today, you\n"
-	.string "are no grunt.\p"
-	.string "You are one of my own.$"
+	.string "MAXIE: I have watched you since\n"
+	.string "METEOR FALLS.\p"
+	.string "You have exceeded every expectation.\n"
+	.string "From now on, you are my right hand.$"
 
 MagmaHideout_4F_EventScript_DraconidPromotion_Text_2:
 	.string "MAXIE: Stand beside me, {PLAYER}, as the\n"
@@ -945,11 +933,11 @@ PetalburgCity_Text_DraconidWallyDefeat::
 	.string "I lost… but I didn't cough once!$"
 
 LilycoveCity_Text_DraconidBrendanDefeat::
-	.string "BRENDAN: …Even two on one.$"
+	.string "BRENDAN: Tch… Even with two of us?$"
 
 LilycoveCity_Text_DraconidMayDefeat::
-	.string "MAY: See? Nobody fights like that for\n"
-	.string "MAGMA.$"
+	.string "MAY: …Why do you battle like that\n"
+	.string "for MAGMA?$"
 
 LilycoveCity_Text_DraconidWallyDefeat::
 	.string "Still not enough…$"

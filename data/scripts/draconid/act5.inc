@@ -843,10 +843,12 @@ MossdeepCity_SpaceCenter_2F_EventScript_DraconidRaid_Text_1:
 	.string "some kid.$"
 
 MossdeepCity_SpaceCenter_2F_EventScript_DraconidRaid_Text_2:
-	.string "BRENDAN: …{PLAYER}. Of course. Wherever\n"
-	.string "MAGMA goes, you go.\p"
-	.string "I came to help STEVEN. I never thought\n"
-	.string "I'd be fighting you over rocket fuel.$"
+	.string "BRENDAN: {PLAYER}… Figures.\n"
+	.string "Wherever MAGMA goes, you go.\p"
+	.string "I came to help STEVEN protect\n"
+	.string "this place.\p"
+	.string "And you're here to steal rocket\n"
+	.string "fuel for MAGMA?!$"
 
 MossdeepCity_SpaceCenter_2F_EventScript_DraconidRaid_Text_3:
 	.string "STEVEN: TABITHA. What does MAGMA want\n"
@@ -876,7 +878,7 @@ MossdeepCity_SpaceCenter_2F_EventScript_DraconidRaid_Text_8:
 	.string "STEVEN: BRENDAN, with me.$"
 
 MossdeepCity_SpaceCenter_2F_EventScript_DraconidRaid_Text_9:
-	.string "BRENDAN: Right behind you.$"
+	.string "BRENDAN: Right behind you!$"
 
 MossdeepCity_SpaceCenter_2F_EventScript_DraconidTagBattle_Text_0:
 	.string "TABITHA: Well? Pick your POKéMON,\n"
@@ -925,15 +927,15 @@ MossdeepCity_SpaceCenter_2F_EventScript_DraconidStevenAndBrendan_Text_1:
 	.string "part.$"
 
 MossdeepCity_SpaceCenter_2F_EventScript_DraconidStevenAndBrendan_Text_2:
-	.string "BRENDAN: LET us?! STEVEN, you saw it!\n"
-	.string "{PLAYER} battled for MAGMA!$"
+	.string "BRENDAN: LET us?! STEVEN, you saw it\n"
+	.string "yourself! {PLAYER} battled for MAGMA!$"
 
 MossdeepCity_SpaceCenter_2F_EventScript_DraconidStevenAndBrendan_Text_3:
 	.string "BRENDAN: I don't care what you “let”\n"
 	.string "happen, {PLAYER}.\p"
-	.string "You stood next to them. Every single\n"
-	.string "time.\p"
-	.string "…I'm done trying to understand you.$"
+	.string "You were right there with MAGMA again!\p"
+	.string "That's it. I give up trying to\n"
+	.string "figure you out.$"
 
 MossdeepCity_SpaceCenter_2F_EventScript_DraconidStevenAndBrendan_Text_4:
 	.string "STEVEN: He'll understand one day. I\n"
@@ -989,29 +991,28 @@ SeafloorCavern_Room9_EventScript_DraconidNerineReveal_Text_7:
 	.string "pretend she isn't worried about you.$"
 
 SootopolisCity_EventScript_DraconidMaxie_Text_0:
-	.string "MAXIE: {PLAYER}. You came. Good.\p"
-	.string "Stand with me. I want you to see this.$"
+	.string "MAXIE: {PLAYER}.\n"
+	.string "You came, as I knew you would.\p"
+	.string "Stand here with me.\n"
+	.string "I want you to see this.$"
 
 SootopolisCity_EventScript_DraconidMaxie_Text_1:
-	.string "MAXIE: You again.\p"
-	.string "Have you come to beg for your place\n"
-	.string "back? Or to finish this?$"
+	.string "MAXIE: You again. Have you come to beg\n"
+	.string "for your place back, or to finish this?$"
 
 SootopolisCity_EventScript_DraconidMaxie_Text_2:
-	.string "MAXIE: …Beaten. By a child who wore my\n"
-	.string "colors.$"
+	.string "MAXIE: Humph… Beaten by a child who\n"
+	.string "wore my own colors.$"
 
 SootopolisCity_EventScript_DraconidTheTurn_Text_0:
-	.string "MAXIE: Look at them. ARCHIE's KYOGRE is\n"
-	.string "drowning the world, one storm at a time.\p"
-	.string "And GROUDON fights back. It always has.\n"
-	.string "It only needs a guiding hand.\p"
-	.string "The BLUE ORB failed me in the HIDEOUT.\n"
-	.string "It will not fail me twice.\p"
-	.string "Help me take control of GROUDON,\n"
-	.string "{PLAYER}. You and I, together.\p"
-	.string "When the rain ends, the land will be ours\n"
-	.string "to shape.$"
+	.string "MAXIE: Look at them, {PLAYER}. KYOGRE\n"
+	.string "would drown the world, and only GROUDON\l"
+	.string "stands against it.\p"
+	.string "The BLUE ORB failed me once. This time,\n"
+	.string "with your help, I will bring GROUDON\l"
+	.string "under control.\p"
+	.string "When the rain ends, we will shape the\n"
+	.string "land together. Our ideal world, {PLAYER}!$"
 
 SootopolisCity_EventScript_DraconidTheTurn_Text_1:
 	.string "{PLAYER} looked out at GROUDON and\n"
@@ -1022,8 +1023,8 @@ SootopolisCity_EventScript_DraconidTheTurn_Text_1:
 	.string "beside RAYQUAZA.”$"
 
 SootopolisCity_EventScript_DraconidTheTurn_Text_2:
-	.string "MAXIE: {PLAYER}? What are you waiting\n"
-	.string "for?$"
+	.string "MAXIE: {PLAYER}?\n"
+	.string "What are you waiting for?$"
 
 SootopolisCity_EventScript_DraconidTheTurn_Text_3:
 	.string "{PLAYER} pulled off the red hood…\p"
@@ -1031,17 +1032,14 @@ SootopolisCity_EventScript_DraconidTheTurn_Text_3:
 	.string "the ground.$"
 
 SootopolisCity_EventScript_DraconidTheTurn_Text_4:
-	.string "MAXIE: Those colors…\p"
-	.string "The mountain clan. The DRACONID.\p"
-	.string "…You were never mine. Not for a single\n"
-	.string "day.$"
+	.string "MAXIE: Those colors… I know them.\n"
+	.string "You are one of the DRACONID.\p"
+	.string "So you were never truly one of us.$"
 
 SootopolisCity_EventScript_DraconidTheTurn_Text_5:
 	.string "MAXIE: After everything I gave you?!\p"
 	.string "I trusted you with my plans. I made you\n"
-	.string "my right hand!\p"
-	.string "And all that time, you were waiting for\n"
-	.string "this moment.$"
+	.string "my right hand!$"
 
 SootopolisCity_EventScript_DraconidTheTurn_Text_6:
 	.string "MAXIE: Very well. I will take GROUDON\n"
@@ -1056,39 +1054,40 @@ SootopolisCity_EventScript_DraconidMultiBattle_Text_0:
 	.string "mine to take.$"
 
 SootopolisCity_EventScript_DraconidMultiBattle_Text_1:
-	.string "MAXIE: ARCHIE… For once, we agree on\n"
-	.string "something.\p"
+	.string "MAXIE: For once, ARCHIE,\n"
+	.string "we agree on something.\p"
 	.string "This child stands in both our ways.$"
 
 SootopolisCity_EventScript_DraconidMultiBattle_Text_2:
 	.string "???: {PLAYER}!$"
 
 SootopolisCity_EventScript_DraconidMultiBattle_Text_3:
-	.string "MAY: We saw it all from the sky! You\n"
-	.string "threw the uniform away!\p"
-	.string "Right in front of MAXIE!$"
+	.string "MAY: We saw everything from the sky!\n"
+	.string "You threw that uniform away right in\l"
+	.string "front of MAXIE!$"
 
 SootopolisCity_EventScript_DraconidMultiBattle_Text_4:
-	.string "BRENDAN: {PLAYER}… What ARE you?$"
+	.string "BRENDAN: {PLAYER}… Just who ARE you?$"
 
 SootopolisCity_EventScript_DraconidMultiBattle_Text_5:
-	.string "MAY: Later, BRENDAN! Two against one\n"
-	.string "isn't fair.\p"
-	.string "{PLAYER}, one of us fights with you!$"
+	.string "MAY: Save it for later, BRENDAN! Two\n"
+	.string "against one isn't fair.\p"
+	.string "{PLAYER}, one of us will fight with you!$"
 
 SootopolisCity_EventScript_DraconidMultiBattle_Text_6:
 	.string "BRENDAN: Their ADMINS are crossing the\n"
 	.string "water, too.\p"
-	.string "Whoever doesn't fight here holds them\n"
-	.string "back.$"
+	.string "Whoever doesn't fight here has to hold\n"
+	.string "them back.$"
 
 SootopolisCity_EventScript_DraconidMultiBattle_Text_7:
-	.string "MAY: {PLAYER}! You're back! We kept them\n"
+	.string "MAY: {PLAYER}, you're back! We kept them\n"
 	.string "busy for you.\p"
-	.string "Let's try that again. Pick a partner!$"
+	.string "Let's try that again!\n"
+	.string "Who's your partner?$"
 
 SootopolisCity_EventScript_DraconidMultiBattle_Text_8:
-	.string "MAY: But first… your POKéMON are worn\n"
+	.string "MAY: But first, your POKéMON look worn\n"
 	.string "out. Hold still!$"
 
 SootopolisCity_EventScript_DraconidMultiBattle_Text_9:
@@ -1104,16 +1103,16 @@ SootopolisCity_EventScript_DraconidMultiBattle_Text_12:
 	.string "MAY$"
 
 SootopolisCity_EventScript_DraconidMultiBattle_Text_13:
-	.string "BRENDAN: …Me? After everything I said\n"
-	.string "to you?\p"
-	.string "…Fine. Let's go, {PLAYER}.$"
+	.string "BRENDAN: Me? After all the things I\n"
+	.string "said to you?\p"
+	.string "…All right. Let's go, {PLAYER}!$"
 
 SootopolisCity_EventScript_DraconidMultiBattle_Text_14:
 	.string "MAY: Then the ADMINS are mine!$"
 
 SootopolisCity_EventScript_DraconidMultiBattle_Text_15:
-	.string "MAY: BLAZIKEN, keep them off the\n"
-	.string "island!$"
+	.string "MAY: BLAZIKEN!\n"
+	.string "Keep them off the island!$"
 
 SootopolisCity_EventScript_DraconidMultiBattle_Text_16:
 	.string "MAY: I was hoping you'd say that!$"
@@ -1135,20 +1134,20 @@ SootopolisCity_EventScript_DraconidMultiBattle_Text_20:
 	.string "beside your partner!$"
 
 SootopolisCity_EventScript_DraconidMultiBattle_Text_21:
-	.string "MAXIE: The land… slipping through my\n"
-	.string "fingers…$"
+	.string "MAXIE: The land is slipping\n"
+	.string "through my fingers…$"
 
 SootopolisCity_EventScript_DraconidMultiBattle_Text_22:
 	.string "ARCHIE: KYOGRE won't even look at the\n"
 	.string "RED ORB anymore…$"
 
 SootopolisCity_EventScript_DraconidMultiBattle_Text_23:
-	.string "MAY: Their ADMINS turned tail! And you\n"
-	.string "two beat MAXIE and ARCHIE both!$"
+	.string "MAY: Their ADMINS ran off! And you two\n"
+	.string "beat MAXIE and ARCHIE!$"
 
 SootopolisCity_EventScript_DraconidMultiBattle_Text_24:
-	.string "BRENDAN: Their ADMINS turned tail! …And\n"
-	.string "you two actually did it.$"
+	.string "BRENDAN: The ADMINS turned tail! And\n"
+	.string "you two actually beat them!$"
 
 SootopolisCity_EventScript_DraconidRivalTalk_Text_0:
 	.string "MAY: We're right here, {PLAYER}. Talk to\n"
@@ -1187,21 +1186,19 @@ SootopolisCity_EventScript_DraconidRayquaza_Text_7:
 	.string "the clouds.$"
 
 SootopolisCity_EventScript_DraconidRivalsAftermath_Text_0:
-	.string "MAY: It's over… That was RAYQUAZA! A\n"
-	.string "real, live RAYQUAZA!\p"
-	.string "And you! DRACONID! Undercover in TEAM\n"
-	.string "MAGMA the whole time!\p"
+	.string "MAY: Did you see that? That was\n"
+	.string "RAYQUAZA! A real, live RAYQUAZA!\p"
+	.string "And you were a DRACONID, undercover in\n"
+	.string "TEAM MAGMA this whole time!\p"
 	.string "I KNEW it! I knew it, I knew it, I KNEW it!\p"
 	.string "Nobody who raises dragons like yours\n"
 	.string "could ever be one of THEM.$"
 
 SootopolisCity_EventScript_DraconidRivalsAftermath_Text_1:
-	.string "BRENDAN: …Hey. {PLAYER}.\p"
-	.string "About RUSTBORO. And MOSSDEEP. And…\n"
-	.string "everything I said.\p"
-	.string "I, uh… I was wrong. Okay? I was wrong\n"
-	.string "about you.\p"
-	.string "…Don't make me say it twice.$"
+	.string "BRENDAN: Hey, {PLAYER}… About the\n"
+	.string "things I said in RUSTBORO and MOSSDEEP.\p"
+	.string "I was wrong about you, okay? I'm sorry.\p"
+	.string "…Don't make me say that twice.$"
 
 SootopolisCity_EventScript_DraconidRivalsAftermath_Text_2:
 	.string "MAY: Hehe! He practiced that the whole\n"
@@ -1211,10 +1208,10 @@ SootopolisCity_EventScript_DraconidRivalsAftermath_Text_3:
 	.string "BRENDAN: I did NOT!$"
 
 SootopolisCity_EventScript_DraconidRivalsAftermath_Text_4:
-	.string "MAY: We're going home to tell our dads\n"
-	.string "everything.\p"
-	.string "Come visit LITTLEROOT when you can,\n"
-	.string "{PLAYER}!$"
+	.string "MAY: We're going home to tell our\n"
+	.string "dads everything!\p"
+	.string "{PLAYER}, come visit LITTLEROOT\n"
+	.string "when you can!$"
 
 SootopolisCity_EventScript_DraconidSteven_Text_0:
 	.string "STEVEN: So that's RAYQUAZA…\p"
@@ -1249,17 +1246,18 @@ MossdeepCity_SpaceCenter_2F_Text_DraconidStevenDefeat::
 	.string "STEVEN: Well fought. …Both of you.$"
 
 MossdeepCity_SpaceCenter_2F_Text_DraconidBrendanDefeat::
-	.string "BRENDAN: Why are you this strong… for\n"
-	.string "THEM?$"
+	.string "BRENDAN: Why waste strength like that\n"
+	.string "on THEM?!$"
 
 SeafloorCavern_Room9_Text_DraconidNerineDefeat::
 	.string "So this is what the ELDER saw in you.$"
 
 SootopolisCity_Text_DraconidMaxieDefeat::
-	.string "Why…? I gave you everything…$"
+	.string "Impossible! I, MAXIE, beaten\n"
+	.string "by my own recruit?!$"
 
 SootopolisCity_Text_DraconidMaxieMultiDefeat::
-	.string "Children… All of you…$"
+	.string "This cannot be happening…$"
 
 SootopolisCity_Text_DraconidArchieMultiDefeat::
 	.string "Blast it! Beaten by a pack of kids!$"
