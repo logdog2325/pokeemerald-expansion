@@ -77,3 +77,6 @@ tools/hack/emu/gbarun
 
 # Draconid Emerald: zipped ROMs handed to the playtester
 dist/
+
+# agent worktrees (Claude Code), never part of the ROM
+.claude/worktrees/
