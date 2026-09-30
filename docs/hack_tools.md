@@ -156,7 +156,10 @@ python3 tools/hack/emu/play.py tools/hack/emu/tests/rivals.play   -o /tmp/emu   
 python3 tools/hack/emu/play.py tools/hack/emu/tests/second_starter.play -o /tmp/emu   # Birch in Rustboro
 python3 tools/hack/emu/play.py tools/hack/emu/tests/aster.play          -o /tmp/emu   # Aster arc, disguise, Mega Ring
 python3 tools/hack/emu/play.py tools/hack/emu/tests/postgame_home.play  -o /tmp/emu   # SS Ticket / Lati TV at home
+python3 tools/hack/emu/play.py tools/hack/emu/tests/release_boot.play   -o /tmp/rel --rom pokeemerald-release.gba
 ```
+`release_boot.play` goes through the real title and new-game menus, since release builds have neither Quickstart
+(`newgame`) nor the warp hook; `play.py` maps LTO-renamed symbols (`name.lto_priv.N`) back to their names.
 Flow tests set `FLAG_DRACONID_NO_WHITEOUT` so a battle lost by mashing A doesn't end the scene.
 Savestates only work with the ROM build that made them; rerun the chain after every rebuild.
 Tips: the wall clock needs exact presses (`press A 2 450; press A 2 150; press A 2 40; press UP 2 20;

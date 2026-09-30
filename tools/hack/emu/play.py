@@ -55,6 +55,11 @@ def symbols(elf):
         parts = line.split()
         if len(parts) == 3:
             syms.setdefault(parts[2], int(parts[0], 16))
+    # release builds use LTO, which renames file-local symbols (sLockFieldControls.lto_priv.0)
+    for name, addr in list(syms.items()):
+        base = name.split(".lto_priv.")[0]
+        if base != name:
+            syms.setdefault(base, addr)
     return syms
 
 

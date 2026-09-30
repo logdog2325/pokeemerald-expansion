@@ -106,4 +106,5 @@ Open items, none blocking a playthrough:
       could white out to the far-away Draconid bedroom (D-048), and early-rival battles fought a wild Zigzagoon
 - [ ] Not automated: a full hand playthrough of the vanilla story between the new scenes (see the playtest guide)
 - [x] `docs/playtest_guide.md`, `docs/hack_feedback.md`
-- [ ] Final summary
+- [x] Release build (`make release`) boots through the real menus into the Draconid bedroom (`release_boot.play`)
+- [x] Final summary

@@ -1,0 +1,14 @@
+# Release build smoke test: opening movie -> title -> NEW GAME through the real menus (no Quickstart or
+# debug warp in release) -> the Draconid bedroom.
+#   python3 tools/hack/emu/play.py tools/hack/emu/tests/release_boot.play -o /tmp/rel --rom pokeemerald-release.gba
+run 900
+shot 01_title
+press START 2 120
+run 120
+shot 02_menu
+# NEW GAME, then the Birch speech, gender and name (A picks, START ends naming)
+until @gMain+4 4 @@CB2_Overworld 60000 A,A,A,START 20
+run 120
+shot 03_bedroom
+mapid
+expect_var VAR_DRACONID_STATE 0
