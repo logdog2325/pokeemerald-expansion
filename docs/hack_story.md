@@ -178,3 +178,6 @@ Petalburg Woods recruitment/outfit change, Maxie's first meeting at Meteor Falls
 
 ### Follow-up note 16 (round 1)
 - On restarting the Magma revenge work: "Yes and also the draconid rival helps too" (Aster joins the village defence)
+
+### Follow-up note 17 (round 1)
+- "Sure you give table and Courtney strong teams with fire type Megas and same for the team aqua admin when they attack you for with water type Megas I'm thinking maybe hound doom mega hound doom for Courtney here something like that"
