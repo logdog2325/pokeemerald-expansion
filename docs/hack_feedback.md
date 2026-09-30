@@ -48,3 +48,5 @@ main brief re-sent with a fourth rival (Nerine). Items:
 | 1.32 | story | (follow-up 3) A few more Brendan and May battles | [ ] |
 | 1.33 | balance | (follow-up 3) Battle items through the story, scaling with the game: type boosters (Black Glasses, Spell Tag …) early, Choice Band / Choice Scarf / Rocky Helmet … later, maybe sold in stores | [ ] |
 | 1.34 | story | (follow-up 4) More Wally battles; while the player wears the uniform Wally (and Brendan and May) are openly hostile – they're trying to stop Team Magma and protect Hoenn, not knowing the player's true mission | [ ] |
+| 1.35 | story | (follow-up 5) Post-game at the Battle Frontier: Wes (Colosseum; Espeon, Umbreon, Raikou, Entei, Suicune, Ho-Oh), Red (PWT team, Mega Charizard X), Blue (PWT team, Mega Alakazam); all three can also be multi-battle partners | [ ] |
+| 1.36 | balance | (follow-up 6) Mega Stones obtainable throughout the story | [ ] |

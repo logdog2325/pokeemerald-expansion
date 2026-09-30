@@ -142,3 +142,7 @@ Petalburg Woods recruitment/outfit change, Maxie's first meeting at Meteor Falls
 
 ### Follow-up note 4 (round 1)
 - "and also more wally battles and have them be really hostile to you because there trying to stop team magma and protect hoenn not knowing your true mission"
+
+### Follow-up notes 5 and 6 (round 1)
+- "also id love to add a post game battle against Wes from pokemon colloseum, his team is espeon, umbreon, raikou, entei suicune, and ho-oh also Red with his pwt team but mega charizard x and also blue with his pwt team and mega alakazam at the battle frontier make them multi battle partners too that you can team up with as well"
+- "also make sure you get access to the mega stones throughout the story"
