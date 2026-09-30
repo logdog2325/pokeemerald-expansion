@@ -5,6 +5,7 @@ MtChimney_MapScripts::
 
 MtChimney_OnTransition:
 	setvar VAR_JAGGED_PASS_ASH_WEATHER, 1
+	call MtChimney_EventScript_DraconidOnTransition  @ Draconid Emerald (act3.pory)
 	end
 
 MtChimney_OnResume:
@@ -32,6 +33,7 @@ MtChimney_EventScript_ArchieBusyFighting::
 	return
 
 MtChimney_EventScript_Maxie::
+	goto MtChimney_EventScript_DraconidMaxie  @ Draconid Emerald: the player guards the path and sabotages the machine (act3.pory)
 	lockall
 	playbgm MUS_ENCOUNTER_MAGMA, FALSE
 	msgbox MtChimney_Text_MeteoriteWillActivateVolcano, MSGBOX_DEFAULT
@@ -70,7 +72,6 @@ MtChimney_EventScript_Maxie::
 	clearflag FLAG_HIDE_FALLARBOR_HOUSE_PROF_COZMO
 	setflag FLAG_HIDE_METEOR_FALLS_1F_1R_COZMO
 	clearflag FLAG_HIDE_MT_CHIMNEY_LAVA_COOKIE_LADY
-	call MtChimney_EventScript_DraconidDisguiseOff  @ Draconid Emerald (aster.pory)
 	releaseall
 	end
 
@@ -407,6 +408,7 @@ MtChimney_EventScript_BusyAquaGrunt3::
 	end
 
 MtChimney_EventScript_Tabitha::
+	goto MtChimney_EventScript_DraconidTabitha  @ Draconid Emerald: no battle, the player is one of hers (act3.pory)
 	trainerbattle_single TRAINER_TABITHA_MT_CHIMNEY, MtChimney_Text_TabithaIntro, MtChimney_Text_TabithaDefeat
 	msgbox MtChimney_Text_TabithaPostBattle, MSGBOX_AUTOCLOSE
 	end
@@ -609,12 +611,13 @@ MtChimney_Text_TabithaPostBattle:
 	.string "Give it the METEORITE's energy!\p"
 	.string "Hehehe…$"
 
-MtChimney_Text_Grunt2Intro:
-	.string "We of TEAM MAGMA are working hard for\n"
-	.string "everyone's sake.\p"
-	.string "Like, if that thing's power made more\n"
-	.string "land, there'd be more places to live.\p"
-	.string "Everyone'd be happy!$"
+MtChimney_Text_Grunt2Intro:  @ Draconid Emerald
+	.string "Hold it, rookie! The LEADER's waiting for\n"
+	.string "you at the top.\p"
+	.string "But nobody walks past me without a\n"
+	.string "test!\p"
+	.string "We of TEAM MAGMA work hard for\n"
+	.string "everyone's sake. Show me you do, too!$"
 
 MtChimney_Text_Grunt2Defeat:
 	.string "Hunh?\n"
@@ -626,17 +629,19 @@ MtChimney_Text_Grunt2PostBattle:
 	.string "But why does everyone keep getting\n"
 	.string "in our way?$"
 
-MtChimney_Text_Grunt1Intro:
-	.string "If there were more land, I'd be able\n"
-	.string "to get a big house of my own!\p"
-	.string "I'm going to build it on hardened lava!$"
+MtChimney_Text_Grunt1Intro:  @ Draconid Emerald
+	.string "So you're TABITHA's new favorite? Show\n"
+	.string "me what the LEADER sees in you!\p"
+	.string "When there's more land, I'm getting a big\n"
+	.string "house of my own. Built on hardened lava!$"
 
 MtChimney_Text_Grunt1Defeat:
 	.string "My dream of a big house…$"
 
-MtChimney_Text_Grunt1PostBattle:
-	.string "A kid like you, you ought to be\n"
-	.string "splashing about in the waves!$"
+MtChimney_Text_Grunt1PostBattle:  @ Draconid Emerald
+	.string "Hmph. Fine, you've earned it.\p"
+	.string "Go on up. The LEADER doesn't like\n"
+	.string "waiting.$"
 
 MtChimney_Text_TeamAquaAlwaysMessingWithPlans:
 	.string "That annoying TEAM AQUA…\n"
@@ -645,10 +650,10 @@ MtChimney_Text_TeamAquaAlwaysMessingWithPlans:
 MtChimney_Text_MeteoritesPackAmazingPower:
 	.string "METEORITES pack amazing power!$"
 
-MtChimney_Text_YouBetterNotMessWithUs:
-	.string "You'd better not mess with us!\p"
-	.string "We're trying to awaken that thing\n"
-	.string "for the benefit of everyone!$"
+MtChimney_Text_YouBetterNotMessWithUs:  @ Draconid Emerald
+	.string "Hey, rookie! Don't just stand there!\p"
+	.string "The LEADER's waiting for you at the top.\n"
+	.string "We'll hold AQUA off down here!$"
 
 MtChimney_Text_AquasNameSimilar:
 	.string "We're TEAM MAGMA!\p"
@@ -666,15 +671,16 @@ MtChimney_Text_KeepMakingMoreLand:
 MtChimney_Text_Bufoh:
 	.string "Bufoh!$"
 
-MtChimney_Text_ArchieGoStopTeamMagma:
-	.string "ARCHIE: Grr, {PLAYER}!\n"
-	.string "I should've guessed you'd show up!\p"
-	.string "See for yourself what the fanatics\n"
-	.string "of TEAM MAGMA are up to!\p"
-	.string "They're trying to inject the stolen\n"
-	.string "METEORITE's power into the volcano!\p"
-	.string "Doing something like that will cause\n"
-	.string "the volcano's eruption!$"
+MtChimney_Text_ArchieGoStopTeamMagma:  @ Draconid Emerald
+	.string "ARCHIE: Grr! You again! MAXIE's little\n"
+	.string "recruit from the falls!\p"
+	.string "You held those stairs well. Too well.\p"
+	.string "Now he's up there feeding that\n"
+	.string "METEORITE to the volcano!\p"
+	.string "If this mountain blows, the town below\n"
+	.string "goes with it!\p"
+	.string "Get out of my sight, kid. I've got my\n"
+	.string "hands full!$"
 
 MtChimney_Text_ArchieIHaveMyHandsFull:
 	.string "ARCHIE: Grrr…\p"

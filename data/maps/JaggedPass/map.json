@@ -106,6 +106,20 @@
       "trainer_sight_or_berry_tree_id": "3",
       "script": "JaggedPass_EventScript_Julio",
       "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_JAGGED_PASS_ASTER",
+      "graphics_id": "OBJ_EVENT_GFX_ASTER",
+      "x": 17,
+      "y": 8,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "0x0",
+      "flag": "FLAG_HIDE_JAGGED_PASS_ASTER"
     }
   ],
   "warp_events": [
@@ -225,6 +239,24 @@
       "var": "VAR_JAGGED_PASS_STATE",
       "var_value": "1",
       "script": "JaggedPass_EventScript_OpenMagmaHideout"
+    },
+    {
+      "type": "trigger",
+      "x": 13,
+      "y": 8,
+      "elevation": 3,
+      "var": "VAR_ASTER_STATE",
+      "var_value": "ASTER_STATE_METEOR_FALLS",
+      "script": "JaggedPass_EventScript_DraconidAster"
+    },
+    {
+      "type": "trigger",
+      "x": 14,
+      "y": 8,
+      "elevation": 3,
+      "var": "VAR_ASTER_STATE",
+      "var_value": "ASTER_STATE_METEOR_FALLS",
+      "script": "JaggedPass_EventScript_DraconidAster"
     }
   ],
   "bg_events": [

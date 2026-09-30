@@ -14,6 +14,7 @@ MeteorFalls_1F_1R_EventScript_OpenStevensCave::
 	return
 
 MeteorFalls_1F_1R_EventScript_MagmaStealsMeteoriteScene::
+	goto MeteorFalls_1F_1R_EventScript_DraconidMeteoriteScene  @ Draconid Emerald: Maxie meets the player (act3.pory)
 	lockall
 	playbgm MUS_ENCOUNTER_MAGMA, FALSE
 	applymovement LOCALID_PLAYER, Common_Movement_FaceDown
@@ -87,7 +88,6 @@ MeteorFalls_1F_1R_EventScript_MagmaStealsMeteoriteScene::
 	setflag FLAG_MET_ARCHIE_METEOR_FALLS
 	setflag FLAG_HIDE_FALLARBOR_TOWN_BATTLE_TENT_SCOTT
 	setvar VAR_METEOR_FALLS_STATE, 1
-	call MeteorFalls_1F_1R_EventScript_DraconidAster  @ Draconid Emerald (aster.pory)
 	releaseall
 	end
 
@@ -221,6 +221,7 @@ MeteorFalls_1F_1R_Movement_PushPlayerOutOfWay:
 MeteorFalls_1F_1R_EventScript_ProfCozmo::
 	lock
 	faceplayer
+	goto_if_eq VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM, MeteorFalls_1F_1R_EventScript_DraconidCozmo  @ Draconid Emerald (act3.pory)
 	goto_if_set FLAG_MET_PROF_COZMO, MeteorFalls_1F_1R_EventScript_MetCozmo
 	setflag FLAG_MET_PROF_COZMO
 	msgbox MeteorFalls_1F_1R_Text_MeetProfCozmo, MSGBOX_DEFAULT

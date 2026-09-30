@@ -49,17 +49,12 @@ ALLOWED = {
 # Round 1 (v2 story) is being built act by act: states of acts that aren't scripted yet. Each is
 # reported as a NOTE until its act lands; take it out of this set then.
 PENDING = {
-    "MAGMA_STATE_METEOR_FALLS", "MAGMA_STATE_MT_CHIMNEY",
     "MAGMA_STATE_SPACE_CENTER",
     "MAGMA_STATE_SEAFLOOR", "MAGMA_STATE_TURNED",
-    "NERINE_STATE_MT_CHIMNEY",
     "NERINE_STATE_AQUA_HIDEOUT", "NERINE_STATE_REVEALED", "NERINE_STATE_SKY_PILLAR", "NERINE_STATE_POSTGAME",
     "REPUTATION_REVEALED",
     "ASTER_STATE_RAYQUAZA_CALLED",
-    # v1 Magma Hideout state (its scene was removed in Act 4); only the v1 Elder's Mega Ring still reads it,
-    # until Act 3 moves the ring to Jagged Pass - then delete the constant and this entry
-    "ASTER_STATE_HIDEOUT_DONE",
-    "BRENDAN_STATE_MT_CHIMNEY", "BRENDAN_STATE_MOSSDEEP",
+    "BRENDAN_STATE_MOSSDEEP",
     "BRENDAN_STATE_POSTGAME",
     "MAY_STATE_SOOTOPOLIS", "MAY_STATE_POSTGAME",
 }

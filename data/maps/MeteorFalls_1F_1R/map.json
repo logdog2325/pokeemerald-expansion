@@ -153,16 +153,30 @@
     {
       "local_id": "LOCALID_METEOR_FALLS_ASTER",
       "graphics_id": "OBJ_EVENT_GFX_ASTER",
-      "x": 17,
-      "y": 18,
-      "elevation": 4,
-      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "x": 6,
+      "y": 20,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "0x0",
       "flag": "FLAG_HIDE_METEOR_FALLS_ASTER"
+    },
+    {
+      "local_id": "LOCALID_METEOR_FALLS_MAXIE",
+      "graphics_id": "OBJ_EVENT_GFX_MAXIE",
+      "x": 13,
+      "y": 22,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "0x0",
+      "flag": "FLAG_HIDE_METEOR_FALLS_TEAM_MAGMA"
     }
   ],
   "warp_events": [

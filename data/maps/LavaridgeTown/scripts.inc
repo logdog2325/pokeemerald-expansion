@@ -47,10 +47,10 @@ LavaridgeTown_EventScript_RivalGiveGoGoggles::
 	call_if_eq VAR_0x8008, 9, LavaridgeTown_EventScript_RivalNoticePlayer
 	call_if_ne VAR_0x8008, 9, LavaridgeTown_EventScript_RivalExitHerbShop
 	delay 20
-	call LavaridgeTown_EventScript_PlayMayMusic  @ Draconid Emerald: the rival here is May (Birch's daughter)
+	call LavaridgeTown_EventScript_PlayMayMusic  @ Draconid Emerald: the rival here is May (Norman's daughter, D-100)
 	call_if_eq VAR_0x8008, 9, LavaridgeTown_EventScript_RivalApproachPlayer1
 	call_if_ne VAR_0x8008, 9, LavaridgeTown_EventScript_RivalApproachPlayer2
-	goto LavaridgeTown_EventScript_MayGiveGoGoggles  @ Draconid Emerald: the rival here is May (Birch's daughter)
+	goto LavaridgeTown_EventScript_MayGiveGoGoggles  @ Draconid Emerald: the rival here is May (Norman's daughter, D-100)
 	end
 
 LavaridgeTown_EventScript_MayGiveGoGoggles::
@@ -269,27 +269,25 @@ LavaridgeTown_EventScript_HerbShopSign::
 	msgbox LavaridgeTown_Text_HerbShopSign, MSGBOX_SIGN
 	end
 
-LavaridgeTown_Text_MayNiceBadgesTakeThis:
-	.string "MAY: {PLAYER}{KUN}! Long time no see!\p"
-	.string "Oh? While I visited the hot springs,\n"
-	.string "you got the LAVARIDGE GYM BADGE.\p"
-	.string "You must have collected\n"
-	.string "good POKéMON…\l"
-	.string "No, I believe you raised some.\p"
-	.string "I guess it would be okay for you to\n"
-	.string "have this.$"
+LavaridgeTown_Text_MayNiceBadgesTakeThis:  @ Draconid Emerald
+	.string "MAY: {PLAYER}! Long time no see!\p"
+	.string "Still in that red uniform, I see…\p"
+	.string "People here won't stop talking about\n"
+	.string "MT. CHIMNEY.\p"
+	.string "Were you really up there with them?\p"
+	.string "…You don't have to answer.\p"
+	.string "You got FLANNERY's BADGE anyway, didn't\n"
+	.string "you? Here. I think you'll need these.$"
 
-LavaridgeTown_Text_MayExplainGoGogglesChallengeDad:
-	.string "MAY: With those GO-GOGGLES, you'll\n"
-	.string "have no trouble getting through the\l"
-	.string "desert near ROUTE 111.\p"
-	.string "But, wow, {PLAYER}{KUN}…\n"
-	.string "Challenging GYMS…\p"
-	.string "You're trying hard because you don't\n"
-	.string "want to lose to me, I bet!\p"
-	.string "{PLAYER}{KUN}, I think I should challenge\n"
-	.string "your dad in PETALBURG GYM.\p"
-	.string "See you again!$"
+LavaridgeTown_Text_MayExplainGoGogglesChallengeDad:  @ Draconid Emerald
+	.string "MAY: With those GO-GOGGLES, you'll have\n"
+	.string "no trouble getting through the desert\l"
+	.string "near ROUTE 111.\p"
+	.string "Four BADGES… That means my DAD's GYM in\n"
+	.string "PETALBURG is next for you.\p"
+	.string "I'll be there. I want to see how you\n"
+	.string "battle when someone's watching.\p"
+	.string "See you, {PLAYER}!$"
 
 LavaridgeTown_Text_BrendanNiceBadgesTakeThis:
 	.string "BRENDAN: {PLAYER}, hey, it's been a while.\n"

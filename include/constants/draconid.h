@@ -42,12 +42,10 @@
 
 // VAR_ASTER_STATE: Aster's arc after Draconid Pass (round 1 story, D-105; values in story order)
 #define ASTER_STATE_START              0 // Draconid Pass battle (FLAG_DEFEATED_ASTER_DRACONID_PASS)
-#define ASTER_STATE_METEOR_FALLS       1 // battled deep in Meteor Falls (Act 3)
-#define ASTER_STATE_DISGUISED          2 // v1: gave the Magma disguise at the cable car (Act 3 removes it)
-#define ASTER_STATE_CHIMNEY_DONE       3 // v1: disguise off after Mt. Chimney (Act 3 removes it)
-                                         // 4 unused (the v1 Route 119 battle was removed in round 1)
-#define ASTER_STATE_HIDEOUT_DONE       5 // v1: Magma Hideout done (Act 4 removes it)
-#define ASTER_STATE_MEGA_RING          6 // gave the Mega Ring (round 1: at Jagged Pass, Act 3)
+#define ASTER_STATE_METEOR_FALLS       1 // battled deep in Meteor Falls, took Maxie's meteorite shard (Act 3)
+                                         // 2-5 unused (v1: the cable car disguise and Mt. Chimney (Act 3),
+                                         // the Route 119 battle (round 1), the Magma Hideout (Act 4))
+#define ASTER_STATE_MEGA_RING          6 // gave the Mega Ring at Jagged Pass (Act 3)
 #define ASTER_STATE_RAYQUAZA_CALLED    7 // called Rayquaza with Nerine at the Sky Pillar (Act 5)
 #define ASTER_STATE_SKY_PILLAR         8 // the Sky Pillar finale done (Act 7)
 #define ASTER_STATE_POSTGAME           9 // post-game battle at the shrine done

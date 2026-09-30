@@ -1070,6 +1070,7 @@ gStdScripts_End::
 	.include "data/scripts/draconid/aster.inc"
 	.include "data/scripts/draconid/act1.inc"
 	.include "data/scripts/draconid/act2.inc"
+	.include "data/scripts/draconid/act3.inc"
 	.include "data/scripts/draconid/act4.inc"
 	.include "data/scripts/draconid/maxie_calls.inc"
 	.include "data/scripts/draconid/reputation/dewford.inc"

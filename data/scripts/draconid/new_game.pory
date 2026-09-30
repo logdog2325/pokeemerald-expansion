@@ -20,7 +20,6 @@ script DraconidEmerald_EventScript_NewGameSetup {
     setflag(FLAG_HIDE_MOSSDEEP_SPACE_CENTER_RIVALS)
     setflag(FLAG_HIDE_RUSTBORO_CITY_BIRCH)
     setflag(FLAG_HIDE_METEOR_FALLS_ASTER)
-    setflag(FLAG_HIDE_CABLE_CAR_STATION_ASTER)
     setflag(FLAG_HIDE_SKY_PILLAR_TOP_ASTER)
     // 3 = rivals already met; stops the 2F "meet your new neighbour" scenes
     setvar(VAR_LITTLEROOT_RIVAL_STATE, 3)
@@ -53,6 +52,9 @@ script DraconidEmerald_EventScript_NewGameSetup {
     // Act 1: Courtney steps out of the trees after Nerine is beaten in Petalburg Woods
     setflag(FLAG_HIDE_PETALBURG_WOODS_COURTNEY)
     setflag(FLAG_HIDE_RUSTBORO_CITY_TABITHA)
+    // Act 3: Aster waits at the top of Jagged Pass after Mt. Chimney; the Draconid traveller in Lavaridge
+    setflag(FLAG_HIDE_JAGGED_PASS_ASTER)
+    setflag(FLAG_HIDE_LAVARIDGE_TOWN_DRACONID_TRAVELLER)
     // blacking out before the first Pokémon Center brings the player home
     setrespawn(HEAL_LOCATION_DRACONID_VILLAGE_PLAYERS_HOUSE_2F)
 }

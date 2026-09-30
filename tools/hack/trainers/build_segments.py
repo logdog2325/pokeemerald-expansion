@@ -148,7 +148,9 @@ SKIP = {"TRAINER_BRENDAN_PLACEHOLDER", "TRAINER_MAY_PLACEHOLDER", "TRAINER_RED",
         # round 1: a vanilla Aqua grunt whose battle is Nerine's now
         "TRAINER_GRUNT_RUSTURF_TUNNEL",
         # round 1 Act 4: Maxie promotes the player in the Magma Hideout instead of battling (D-134)
-        "TRAINER_MAXIE_MAGMA_HIDEOUT"}
+        "TRAINER_MAXIE_MAGMA_HIDEOUT",
+        # round 1 Act 3: Mt. Chimney is one scene with Nerine and Brendan; Tabitha and Maxie don't battle (D-123)
+        "TRAINER_TABITHA_MT_CHIMNEY", "TRAINER_MAXIE_MT_CHIMNEY"}
 
 
 def read_caps():
