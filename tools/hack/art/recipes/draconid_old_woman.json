@@ -1,0 +1,17 @@
+{
+ "notes": "Draconid old woman: expert_f recoloured (red robe)",
+ "steps": [
+  {
+   "op": "load",
+   "src": "graphics/object_events/pics/people/expert_f.png"
+  },
+  {
+   "op": "palette",
+   "pal": "graphics/object_events/palettes/draconid_npc.pal"
+  },
+  {
+   "op": "save",
+   "dst": "graphics/object_events/pics/people/draconid/old_woman.png"
+  }
+ ]
+}

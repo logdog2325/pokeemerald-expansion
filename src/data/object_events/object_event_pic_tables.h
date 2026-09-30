@@ -1676,6 +1676,46 @@ static const struct SpriteFrameImage sPicTable_MagmaFDecorating[] = {
     obj_frame_tiles(gObjectEventPic_MagmaFDecorating),
 };
 
+static const struct SpriteFrameImage sPicTable_DraconidElder[] = {
+    overworld_ascending_frames(gObjectEventPic_DraconidElder, 2, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_DraconidOldWoman[] = {
+    overworld_ascending_frames(gObjectEventPic_DraconidOldWoman, 2, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_DraconidMan[] = {
+    overworld_ascending_frames(gObjectEventPic_DraconidMan, 2, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_DraconidWoman[] = {
+    overworld_ascending_frames(gObjectEventPic_DraconidWoman, 2, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_DraconidBoy[] = {
+    overworld_ascending_frames(gObjectEventPic_DraconidBoy, 2, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_DraconidGuard[] = {
+    overworld_ascending_frames(gObjectEventPic_DraconidGuard, 2, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_Aster[] = {
+    overworld_ascending_frames(gObjectEventPic_Aster, 2, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_DraconidEggDeino[] = {
+    obj_frame_tiles(gObjectEventPic_DraconidEggDeino),
+};
+
+static const struct SpriteFrameImage sPicTable_DraconidEggDreepy[] = {
+    obj_frame_tiles(gObjectEventPic_DraconidEggDreepy),
+};
+
+static const struct SpriteFrameImage sPicTable_DraconidEggJangmoO[] = {
+    obj_frame_tiles(gObjectEventPic_DraconidEggJangmoO),
+};
+
 // END DRACONID PLAYER OUTFITS
 
 #if IS_FRLG

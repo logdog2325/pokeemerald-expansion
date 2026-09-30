@@ -41,14 +41,15 @@ Other docs: [decisions](hack_decisions.md) · [changes](hack_changes.md) · [too
 - [x] Gender choice, trainer card, Hall of Fame, battle transitions, Pokédex size screen, region map/PokéNav icon,
       decorating, easy-chat interview follow the outfit; contests/Union Room use the player's object
 - [ ] Opening movie + credits bike scenes still show Brendan/May – `TODO(art)`
-- [x] Validation (`tools/hack/art/manifests/player.json`, 50 files OK) + in-game checks (walk/run, both genders,
+- [x] Validation (`tools/hack/art/manifests/draconid.json`, 50 files OK) + in-game checks (walk/run, both genders,
       battle back pic, trainer card, Magma outfit); Brendan/May files unchanged
 
 ## Phase 3 – Other sprites
-- [ ] Elder, Aster, Draconid villager overworld sprites
-- [ ] Aster trainer class, front pic, battle music
-- [ ] Mega placeholders (none needed yet: all required Megas exist, see decisions)
-- [x] `docs/hack_art_pipeline.md` (player pipeline; NPC section comes with the NPC sprites)
+- [x] Elder, Aster, Draconid villager overworld sprites (shared Draconid NPC palette) + dragon egg objects
+- [x] Aster trainer class (DRACONID), front pic, music (intense encounter theme, rival battle theme)
+- [x] Mega placeholders: none needed (all required Megas exist, D-010)
+- [x] `docs/hack_art_pipeline.md` (player, NPCs, objects)
+- [ ] Rayquaza shrine statue / meteorites as custom Porytiles tiles – `TODO(art)`, later
 
 ## Phase 4 – Story events
 - [x] Egg event (Deino / Dreepy / Jangmo-o) + Aster counter-pick var + hatch rite at the shrine (Lv 5) –

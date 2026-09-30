@@ -277,6 +277,8 @@ const u32 gTrainerFrontPic_DraconidM[] = INCGFX_U32("graphics/trainers/front_pic
 const u16 gTrainerPalette_DraconidM[] = INCGFX_U16("graphics/trainers/front_pics/draconid_m.png", ".gbapal");
 const u32 gTrainerFrontPic_DraconidF[] = INCGFX_U32("graphics/trainers/front_pics/draconid_f.png", ".4bpp.smol");
 const u16 gTrainerPalette_DraconidF[] = INCGFX_U16("graphics/trainers/front_pics/draconid_f.png", ".gbapal");
+const u32 gTrainerFrontPic_Aster[] = INCGFX_U32("graphics/trainers/front_pics/aster.png", ".4bpp.smol");
+const u16 gTrainerPalette_Aster[] = INCGFX_U16("graphics/trainers/front_pics/aster.png", ".gbapal");
 const u16 gTrainerPalette_Red[] = INCGFX_U16("graphics/trainers/front_pics/red.png", ".gbapal");
 
 const u32 gTrainerFrontPic_Leaf[] = INCGFX_U32("graphics/trainers/front_pics/leaf.png", ".4bpp.smol");
@@ -642,6 +644,10 @@ const struct TrainerPicInfo gTrainerPicInfo[TRAINER_PIC_COUNT] =
     {
         .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_MagmaGruntF, gTrainerPalette_MagmaGruntF),
         .backPic = TRAINER_BACK_PIC(5, gTrainerBackPic_PlayerMagmaF, gTrainerBackPicPalette_PlayerMagmaF, sBackAnims_Kanto),
+    },
+    [TRAINER_PIC_ASTER] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Aster, gTrainerPalette_Aster),
     },
     [TRAINER_PIC_RS_BRENDAN] =
     {

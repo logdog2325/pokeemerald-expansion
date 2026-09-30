@@ -515,6 +515,19 @@ const u32 gObjectEventPic_MagmaFWatering[] = INCGFX_U32("graphics/object_events/
 const u32 gObjectEventPic_MagmaFDecorating[] = INCGFX_U32("graphics/object_events/pics/people/magma_f/decorating.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u16 gObjectEventPal_MagmaF[] = INCGFX_U16("graphics/object_events/palettes/magma_f.pal", ".gbapal");
 const u16 gObjectEventPal_MagmaFReflection[] = INCGFX_U16("graphics/object_events/palettes/magma_f_reflection.pal", ".gbapal");
+const u32 gObjectEventPic_DraconidElder[] = INCGFX_U32("graphics/object_events/pics/people/draconid/elder.png", ".4bpp", "-mwidth 2 -mheight 4");
+const u32 gObjectEventPic_DraconidOldWoman[] = INCGFX_U32("graphics/object_events/pics/people/draconid/old_woman.png", ".4bpp", "-mwidth 2 -mheight 4");
+const u32 gObjectEventPic_DraconidMan[] = INCGFX_U32("graphics/object_events/pics/people/draconid/man.png", ".4bpp", "-mwidth 2 -mheight 4");
+const u32 gObjectEventPic_DraconidWoman[] = INCGFX_U32("graphics/object_events/pics/people/draconid/woman.png", ".4bpp", "-mwidth 2 -mheight 4");
+const u32 gObjectEventPic_DraconidBoy[] = INCGFX_U32("graphics/object_events/pics/people/draconid/boy.png", ".4bpp", "-mwidth 2 -mheight 4");
+const u32 gObjectEventPic_DraconidGuard[] = INCGFX_U32("graphics/object_events/pics/people/draconid/guard.png", ".4bpp", "-mwidth 2 -mheight 4");
+const u32 gObjectEventPic_Aster[] = INCGFX_U32("graphics/object_events/pics/people/draconid/aster.png", ".4bpp", "-mwidth 2 -mheight 4");
+const u32 gObjectEventPic_DraconidEggDeino[] = INCGFX_U32("graphics/object_events/pics/misc/draconid_egg_deino.png", ".4bpp");
+const u32 gObjectEventPic_DraconidEggDreepy[] = INCGFX_U32("graphics/object_events/pics/misc/draconid_egg_dreepy.png", ".4bpp");
+const u32 gObjectEventPic_DraconidEggJangmoO[] = INCGFX_U32("graphics/object_events/pics/misc/draconid_egg_jangmo_o.png", ".4bpp");
+const u16 gObjectEventPal_DraconidNpc[] = INCGFX_U16("graphics/object_events/palettes/draconid_npc.pal", ".gbapal");
+const u16 gObjectEventPal_Aster[] = INCGFX_U16("graphics/object_events/palettes/aster.pal", ".gbapal");
+const u16 gObjectEventPal_DraconidEggs[] = INCGFX_U16("graphics/object_events/palettes/draconid_eggs.pal", ".gbapal");
 // END DRACONID PLAYER OUTFITS
 
 #if IS_FRLG

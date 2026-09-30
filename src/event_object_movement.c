@@ -540,6 +540,9 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_MagmaMReflection, OBJ_EVENT_PAL_TAG_MAGMA_M_REFLECTION},
     {gObjectEventPal_MagmaF, OBJ_EVENT_PAL_TAG_MAGMA_F},
     {gObjectEventPal_MagmaFReflection, OBJ_EVENT_PAL_TAG_MAGMA_F_REFLECTION},
+    {gObjectEventPal_DraconidNpc, OBJ_EVENT_PAL_TAG_DRACONID_NPC},
+    {gObjectEventPal_Aster, OBJ_EVENT_PAL_TAG_ASTER},
+    {gObjectEventPal_DraconidEggs, OBJ_EVENT_PAL_TAG_DRACONID_EGGS},
     // END DRACONID PLAYER OUTFITS
 #if IS_FRLG
     {gObjectEventPal_PlayerFrlg,            OBJ_EVENT_PAL_TAG_PLAYER_RED},

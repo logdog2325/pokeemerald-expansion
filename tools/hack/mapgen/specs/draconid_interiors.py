@@ -101,19 +101,17 @@ specs.append({
     "header": INDOOR, "group": GROUP,
     "events": {
         "object_events": [
-            # TODO(art): Draconid elder overworld sprite (Phase 3)
-            obj("OBJ_EVENT_GFX_OLD_MAN", 4, 3, "DraconidVillage_EldersHouse_EventScript_Elder",
+            obj("OBJ_EVENT_GFX_DRACONID_ELDER", 4, 3, "DraconidVillage_EldersHouse_EventScript_Elder",
                 "FLAG_HIDE_DRACONID_ELDERS_HOUSE_ELDER", local_id="LOCALID_DRACONID_ELDER"),
-            # TODO(art): Aster overworld sprite (Phase 3)
-            obj("OBJ_EVENT_GFX_WOMAN_3", 2, 3, "DraconidVillage_EldersHouse_EventScript_Aster",
+            obj("OBJ_EVENT_GFX_ASTER", 2, 3, "DraconidVillage_EldersHouse_EventScript_Aster",
                 "FLAG_HIDE_DRACONID_ELDERS_HOUSE_ASTER", local_id="LOCALID_DRACONID_HOUSE_ASTER",
                 movement="MOVEMENT_TYPE_FACE_RIGHT"),
-            # the three eggs on the table (TODO(art): egg object sprite)
-            obj("OBJ_EVENT_GFX_ITEM_BALL", 6, 4, "DraconidVillage_EldersHouse_EventScript_Egg",
+            # the three eggs on the table (Deino, Dreepy, Jangmo-o)
+            obj("OBJ_EVENT_GFX_DRACONID_EGG_DEINO", 6, 4, "DraconidVillage_EldersHouse_EventScript_Egg",
                 "FLAG_RECEIVED_DRACONID_EGG", local_id="LOCALID_DRACONID_EGG_1"),
-            obj("OBJ_EVENT_GFX_ITEM_BALL", 7, 4, "DraconidVillage_EldersHouse_EventScript_Egg",
+            obj("OBJ_EVENT_GFX_DRACONID_EGG_DREEPY", 7, 4, "DraconidVillage_EldersHouse_EventScript_Egg",
                 "FLAG_RECEIVED_DRACONID_EGG", local_id="LOCALID_DRACONID_EGG_2"),
-            obj("OBJ_EVENT_GFX_ITEM_BALL", 8, 4, "DraconidVillage_EldersHouse_EventScript_Egg",
+            obj("OBJ_EVENT_GFX_DRACONID_EGG_JANGMO_O", 8, 4, "DraconidVillage_EldersHouse_EventScript_Egg",
                 "FLAG_RECEIVED_DRACONID_EGG", local_id="LOCALID_DRACONID_EGG_3"),
         ],
         "warp_events": [
@@ -141,9 +139,9 @@ specs.append({
             # TODO(art): custom Porytiles Rayquaza statue; the still Rayquaza sprite stands in for it
             obj("OBJ_EVENT_GFX_RAYQUAZA_STILL", 10, 6, "DraconidVillage_Shrine_EventScript_Statue",
                 local_id="LOCALID_DRACONID_SHRINE_STATUE"),
-            obj("OBJ_EVENT_GFX_OLD_MAN", 10, 8, "0x0", "FLAG_HIDE_DRACONID_SHRINE_ELDER",
+            obj("OBJ_EVENT_GFX_DRACONID_ELDER", 10, 8, "0x0", "FLAG_HIDE_DRACONID_SHRINE_ELDER",
                 local_id="LOCALID_DRACONID_SHRINE_ELDER", movement="MOVEMENT_TYPE_FACE_UP"),
-            obj("OBJ_EVENT_GFX_WOMAN_3", 12, 9, "0x0", "FLAG_HIDE_DRACONID_SHRINE_ASTER",
+            obj("OBJ_EVENT_GFX_ASTER", 12, 9, "0x0", "FLAG_HIDE_DRACONID_SHRINE_ASTER",
                 local_id="LOCALID_DRACONID_SHRINE_ASTER", movement="MOVEMENT_TYPE_FACE_UP"),
         ],
         "warp_events": [warp(10, 19, "MAP_DRACONID_VILLAGE", 4, elevation=3)],
@@ -169,7 +167,7 @@ specs.append({
     "header": INDOOR, "group": GROUP,
     "events": {
         "object_events": [
-            obj("OBJ_EVENT_GFX_EXPERT_F", 4, 4, "DraconidVillage_House1_EventScript_Weaver"),
+            obj("OBJ_EVENT_GFX_DRACONID_OLD_WOMAN", 4, 4, "DraconidVillage_House1_EventScript_Weaver"),
             obj("OBJ_EVENT_GFX_LITTLE_GIRL", 6, 5, "DraconidVillage_House1_EventScript_Girl",
                 movement="MOVEMENT_TYPE_WANDER_AROUND", rx=1, ry=1),
         ],
@@ -183,8 +181,8 @@ specs.append({
     "header": INDOOR, "group": GROUP,
     "events": {
         "object_events": [
-            obj("OBJ_EVENT_GFX_HIKER", 6, 4, "DraconidVillage_House2_EventScript_Hunter"),
-            obj("OBJ_EVENT_GFX_WOMAN_2", 5, 6, "DraconidVillage_House2_EventScript_Wife",
+            obj("OBJ_EVENT_GFX_DRACONID_MAN", 6, 4, "DraconidVillage_House2_EventScript_Hunter"),
+            obj("OBJ_EVENT_GFX_DRACONID_WOMAN", 5, 6, "DraconidVillage_House2_EventScript_Wife",
                 movement="MOVEMENT_TYPE_FACE_UP"),
         ],
         "warp_events": [warp(3, 8, "MAP_DRACONID_VILLAGE", 3), warp(4, 8, "MAP_DRACONID_VILLAGE", 3)],

@@ -101,8 +101,7 @@ spec = {
         {"map": "MAP_ROUTE101", "direction": "right", "offset": 22},
     ],
     "events": {
-        # TODO(art): Aster overworld sprite (Phase 3)
-        "object_events": [{"local_id": "LOCALID_DRACONID_PASS_ASTER", "graphics_id": "OBJ_EVENT_GFX_WOMAN_3",
+        "object_events": [{"local_id": "LOCALID_DRACONID_PASS_ASTER", "graphics_id": "OBJ_EVENT_GFX_ASTER",
                            "x": 13, "y": 19, "elevation": 3, "movement_type": "MOVEMENT_TYPE_FACE_UP",
                            "movement_range_x": 0, "movement_range_y": 0, "trainer_type": "TRAINER_TYPE_NONE",
                            "trainer_sight_or_berry_tree_id": "0", "script": "DraconidPass_EventScript_Aster",

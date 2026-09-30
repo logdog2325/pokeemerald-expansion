@@ -1,0 +1,27 @@
+{
+ "notes": "Draconid villager: woman_2 recoloured (red dress, black hair)",
+ "steps": [
+  {
+   "op": "load",
+   "src": "graphics/object_events/pics/people/woman_2.png"
+  },
+  {
+   "op": "remap",
+   "map": {
+    "11": 12,
+    "12": 13,
+    "13": 15,
+    "5": 11,
+    "7": 13
+   }
+  },
+  {
+   "op": "palette",
+   "pal": "graphics/object_events/palettes/draconid_npc.pal"
+  },
+  {
+   "op": "save",
+   "dst": "graphics/object_events/pics/people/draconid/woman.png"
+  }
+ ]
+}

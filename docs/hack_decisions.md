@@ -106,6 +106,15 @@ when a playtest note overrides something here, the entry is updated and marked.
 - **D-053 Outfit system**: built here (the expansion 1.17.1 has none): `VAR_PLAYER_OUTFIT` + `src/player_outfit.c`
   tables + `special SetPlayerOutfit`; all player gfx/pic lookups go through it, so it is saved with the game.
   Link partners in other games still appear as Brendan/May (their game's data).
+- **D-054 Draconid NPCs**: recoloured vanilla NPCs on one shared palette (teal/red clan colours, black hair),
+  the Elder with an ivory horned circlet like the player's. – Alt: new sprites per villager. – Consistent look,
+  one palette slot for a whole village.
+- **D-055 Aster's look**: maroon-black hair, crimson headband with **gold** horns, black top – a mirror of the
+  player (teal, ivory horns). Front pic from Cooltrainer F's energetic pose (Zinnia-like). – Alt: a cloaked
+  Lorekeeper design. – Reads as "the other Draconid" at a glance.
+- **D-056 Aster's class and music**: new class **DRACONID**; battles use the rival theme (`MUS_VS_RIVAL`), encounter
+  music is the "intense" theme. – Alt: new music. – No composing tools in the pipeline; these tracks fit a rival
+  from a warrior clan. The Sky Pillar climax can switch to a bigger track by script later.
 - **D-037 Trainer ID capacity**: `MAX_TRAINERS_COUNT` is 864 and vanilla uses 855, so only 9 new IDs fit.
   Aster's first fight uses 3 (one per egg). Plan for Phase 5: reuse the unused/duplicated rival IDs where the
   vanilla game has them, then raise `MAX_TRAINERS_COUNT` together with the trainer-flag space (saveblock

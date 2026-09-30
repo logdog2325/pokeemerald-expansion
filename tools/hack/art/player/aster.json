@@ -1,0 +1,201 @@
+{
+ "name": "aster",
+ "note": "Aster (Draconid rival NPC). Base: FRLG Leaf walk frames, recoloured, own head (gold horns, crimson band).",
+ "base_dir": "graphics/object_events/pics/people/leaf",
+ "out_dir": "graphics/object_events/pics/people/draconid",
+ "palette_out": "graphics/object_events/palettes/aster.pal",
+ "palette": [
+  [
+   131,
+   123,
+   164
+  ],
+  [
+   88,
+   40,
+   56
+  ],
+  [
+   255,
+   205,
+   160
+  ],
+  [
+   226,
+   152,
+   120
+  ],
+  [
+   48,
+   20,
+   32
+  ],
+  [
+   64,
+   64,
+   80
+  ],
+  [
+   32,
+   32,
+   40
+  ],
+  [
+   104,
+   104,
+   120
+  ],
+  [
+   112,
+   16,
+   24
+  ],
+  [
+   240,
+   232,
+   216
+  ],
+  [
+   176,
+   168,
+   160
+  ],
+  [
+   232,
+   72,
+   64
+  ],
+  [
+   176,
+   32,
+   40
+  ],
+  [
+   232,
+   192,
+   64
+  ],
+  [
+   160,
+   112,
+   32
+  ],
+  [
+   0,
+   0,
+   0
+  ]
+ ],
+ "roles": {
+  "K": 15,
+  "H": 4,
+  "h": 1,
+  "T": 12,
+  "t": 11,
+  "d": 8,
+  "W": 13,
+  "w": 14,
+  "S": 2,
+  "s": 3,
+  "R": 12,
+  "r": 8,
+  "B": 1,
+  "P": 6
+ },
+ "cap": [
+  9,
+  10,
+  11,
+  12
+ ],
+ "clear": [
+  6,
+  9,
+  10,
+  11,
+  12,
+  15,
+  4,
+  1
+ ],
+ "heads": {
+  "down": {
+   "anchor": [
+    -4,
+    -2
+   ],
+   "rows": [
+    ".....KKKKKK.....",
+    "....KHHhhHHK....",
+    "..K.KHHHHHHK.K..",
+    ".KWKHhHHHHHHKWK.",
+    ".KWwKHHHHHHKwWK.",
+    "..KwdttttttdwK..",
+    ".KKdTTTTTTTTdKK.",
+    ".KHHHHHHHKHHHHK.",
+    ".KHHSHHHSSHHHHK.",
+    ".KHsSSSSSSSSsHK."
+   ],
+   "clear_above": 3
+  },
+  "up": {
+   "anchor": [
+    -4,
+    -2
+   ],
+   "rows": [
+    ".....KKKKKK.....",
+    "....KHHhhHHK....",
+    "..K.KHHHHHHK.K..",
+    ".KWKHHHHHhHHKWK.",
+    ".KWwKHHHHHHKwWK.",
+    "..KwdttttttdwK..",
+    ".KKdTTTddTTTdKK.",
+    ".KHHHHKddKHHHHK.",
+    ".KHHhHKdTKHhHHK.",
+    ".KHHHHHKKHHHHHK."
+   ],
+   "clear_above": 3
+  },
+  "left": {
+   "anchor": [
+    -4,
+    -2
+   ],
+   "rows": [
+    ".....KKKKK......",
+    "....KHhhHHK.K...",
+    "...KHHHHHHKKWK..",
+    "..KHHHHHhHKWwK..",
+    "..KHHHHHHHHKK...",
+    ".KttttttttdHHK..",
+    ".KTTTTTTTTdHHHK.",
+    ".KHHHHHHHHHHdTK.",
+    ".KSHHHHHHHHHHdK.",
+    "..KsSHHHHHHHHTK."
+   ],
+   "clear_above": 3
+  }
+ },
+ "sheets": [
+  {
+   "src": "green_normal.png",
+   "out": "aster.png",
+   "w": 16,
+   "h": 32,
+   "heads": [
+    "down",
+    "up",
+    "left",
+    "down",
+    "down",
+    "up",
+    "up",
+    "left",
+    "left"
+   ]
+  }
+ ],
+ "reflection_palette_out": "graphics/object_events/palettes/aster_reflection.pal",
+ "derived": []
+}

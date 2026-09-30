@@ -438,6 +438,16 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MagmaFFishi
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MagmaFUnderwater;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MagmaFWatering;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MagmaFDecorating;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DraconidElder;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DraconidOldWoman;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DraconidMan;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DraconidWoman;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DraconidBoy;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DraconidGuard;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Aster;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DraconidEggDeino;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DraconidEggDreepy;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DraconidEggJangmoO;
 // END DRACONID PLAYER OUTFITS
 
 const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM_OBJ_EVENT_GFX] = {
@@ -721,6 +731,16 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_MAGMA_F_UNDERWATER] = &gObjectEventGraphicsInfo_MagmaFUnderwater,
     [OBJ_EVENT_GFX_MAGMA_F_WATERING] = &gObjectEventGraphicsInfo_MagmaFWatering,
     [OBJ_EVENT_GFX_MAGMA_F_DECORATING] = &gObjectEventGraphicsInfo_MagmaFDecorating,
+    [OBJ_EVENT_GFX_DRACONID_ELDER] = &gObjectEventGraphicsInfo_DraconidElder,
+    [OBJ_EVENT_GFX_DRACONID_OLD_WOMAN] = &gObjectEventGraphicsInfo_DraconidOldWoman,
+    [OBJ_EVENT_GFX_DRACONID_MAN] = &gObjectEventGraphicsInfo_DraconidMan,
+    [OBJ_EVENT_GFX_DRACONID_WOMAN] = &gObjectEventGraphicsInfo_DraconidWoman,
+    [OBJ_EVENT_GFX_DRACONID_BOY] = &gObjectEventGraphicsInfo_DraconidBoy,
+    [OBJ_EVENT_GFX_DRACONID_GUARD] = &gObjectEventGraphicsInfo_DraconidGuard,
+    [OBJ_EVENT_GFX_ASTER] = &gObjectEventGraphicsInfo_Aster,
+    [OBJ_EVENT_GFX_DRACONID_EGG_DEINO] = &gObjectEventGraphicsInfo_DraconidEggDeino,
+    [OBJ_EVENT_GFX_DRACONID_EGG_DREEPY] = &gObjectEventGraphicsInfo_DraconidEggDreepy,
+    [OBJ_EVENT_GFX_DRACONID_EGG_JANGMO_O] = &gObjectEventGraphicsInfo_DraconidEggJangmoO,
     // END DRACONID PLAYER OUTFITS
 #if IS_FRLG
     [OBJ_EVENT_GFX_RED_NORMAL] =               &gObjectEventGraphicsInfo_RedNormal,

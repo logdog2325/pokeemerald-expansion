@@ -222,7 +222,7 @@
   "events": {
     "object_events": [
       {
-        "graphics_id": "OBJ_EVENT_GFX_EXPERT_M",
+        "graphics_id": "OBJ_EVENT_GFX_DRACONID_MAN",
         "x": 16,
         "y": 8,
         "elevation": 3,
@@ -235,7 +235,7 @@
         "flag": "0"
       },
       {
-        "graphics_id": "OBJ_EVENT_GFX_OLD_WOMAN",
+        "graphics_id": "OBJ_EVENT_GFX_DRACONID_OLD_WOMAN",
         "x": 22,
         "y": 6,
         "elevation": 3,
@@ -248,7 +248,7 @@
         "flag": "0"
       },
       {
-        "graphics_id": "OBJ_EVENT_GFX_WOMAN_5",
+        "graphics_id": "OBJ_EVENT_GFX_DRACONID_WOMAN",
         "x": 30,
         "y": 10,
         "elevation": 3,
@@ -261,7 +261,7 @@
         "flag": "0"
       },
       {
-        "graphics_id": "OBJ_EVENT_GFX_BOY_1",
+        "graphics_id": "OBJ_EVENT_GFX_DRACONID_BOY",
         "x": 10,
         "y": 18,
         "elevation": 3,
@@ -275,7 +275,7 @@
       },
       {
         "local_id": "LOCALID_DRACONID_GATEKEEPER",
-        "graphics_id": "OBJ_EVENT_GFX_HIKER",
+        "graphics_id": "OBJ_EVENT_GFX_DRACONID_GUARD",
         "x": 22,
         "y": 25,
         "elevation": 3,

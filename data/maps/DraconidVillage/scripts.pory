@@ -95,7 +95,7 @@ script DraconidVillage_EventScript_Gatekeeper {
 }
 
 // ---------------------------------------------------------------------------
-// Villagers (TODO(art): Draconid villager sprites replace the vanilla placeholders)
+// Villagers
 // ---------------------------------------------------------------------------
 script DraconidVillage_EventScript_Apprentice {
     msgbox(format("That crater was made by the star that fell here long ago.\p"

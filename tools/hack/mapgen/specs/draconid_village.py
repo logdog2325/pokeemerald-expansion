@@ -115,13 +115,12 @@ spec = {
     },
     "group": "gMapGroup_TownsAndRoutes",
     "events": {
-        # TODO(art): villagers use vanilla placeholder sprites until the Draconid sprites exist (Phase 3)
         "object_events": [
-            obj("OBJ_EVENT_GFX_EXPERT_M", 16, 8, "DraconidVillage_EventScript_Apprentice", movement="MOVEMENT_TYPE_FACE_RIGHT"),
-            obj("OBJ_EVENT_GFX_OLD_WOMAN", 22, 6, "DraconidVillage_EventScript_OldWoman", movement="MOVEMENT_TYPE_FACE_LEFT"),
-            obj("OBJ_EVENT_GFX_WOMAN_5", 30, 10, "DraconidVillage_EventScript_PondWoman", movement="MOVEMENT_TYPE_FACE_UP"),
-            obj("OBJ_EVENT_GFX_BOY_1", 10, 18, "DraconidVillage_EventScript_Boy", movement="MOVEMENT_TYPE_WANDER_AROUND", rx=2, ry=2),
-            obj("OBJ_EVENT_GFX_HIKER", 22, 25, "DraconidVillage_EventScript_Gatekeeper",
+            obj("OBJ_EVENT_GFX_DRACONID_MAN", 16, 8, "DraconidVillage_EventScript_Apprentice", movement="MOVEMENT_TYPE_FACE_RIGHT"),
+            obj("OBJ_EVENT_GFX_DRACONID_OLD_WOMAN", 22, 6, "DraconidVillage_EventScript_OldWoman", movement="MOVEMENT_TYPE_FACE_LEFT"),
+            obj("OBJ_EVENT_GFX_DRACONID_WOMAN", 30, 10, "DraconidVillage_EventScript_PondWoman", movement="MOVEMENT_TYPE_FACE_UP"),
+            obj("OBJ_EVENT_GFX_DRACONID_BOY", 10, 18, "DraconidVillage_EventScript_Boy", movement="MOVEMENT_TYPE_WANDER_AROUND", rx=2, ry=2),
+            obj("OBJ_EVENT_GFX_DRACONID_GUARD", 22, 25, "DraconidVillage_EventScript_Gatekeeper",
                 movement="MOVEMENT_TYPE_FACE_LEFT", local_id="LOCALID_DRACONID_GATEKEEPER"),
             obj("OBJ_EVENT_GFX_MOM", 19, 8, "0x0", "FLAG_HIDE_DRACONID_VILLAGE_MOM",
                 local_id="LOCALID_DRACONID_VILLAGE_MOM", movement="MOVEMENT_TYPE_FACE_UP"),

@@ -44,7 +44,7 @@ Four sets: Draconid tamer M/F (`draconid_m`, `draconid_f`) and Team Magma disgui
 
 After changing a spec: rebuild the PNGs, then `python3 tools/hack/art/player/gen_outfit_code.py`
 (regenerates the C data between `DRACONID PLAYER OUTFITS` markers), then `make`. Validate with
-`python3 tools/hack/art/validate.py --manifest tools/hack/art/manifests/player.json`.
+`python3 tools/hack/art/validate.py --manifest tools/hack/art/manifests/draconid.json`.
 
 ### Look
 - **Draconid tamer**: black hair (spiky for M, long for F), a teal headband with two ivory
@@ -56,6 +56,20 @@ After changing a spec: rebuild the PNGs, then `python3 tools/hack/art/player/gen
 decorating sprite, trainer pic (`TRAINER_PIC_DRACONID_M/F`, `TRAINER_PIC_PLAYER_MAGMA_M/F`).
 `special SetPlayerOutfit` (VAR_0x8004 = `PLAYER_OUTFIT_*`) changes the sprite immediately; the var
 is saved, so the outfit survives saving and map changes.
+
+## Draconid NPCs and objects (Phase 3)
+
+| Sprite | Built by | Base |
+|---|---|---|
+| Elder, old woman, villager man/woman/boy, gatekeeper (`pics/people/draconid/*.png`) | `tools/hack/art/recipes/draconid_*.json` (`kitbash.py`) | `expert_m` (+ ivory horned circlet), `expert_f`, `man_2`, `woman_2`, `boy_1`, `black_belt` |
+| Aster overworld (`draconid/aster.png`) | `tools/hack/art/player/aster.json` (`build_player.py`) | Leaf walk frames, own head (crimson band, gold horns) |
+| Aster front pic | `tools/hack/art/player/aster_pics.json` (`build_pics.py`) | Cooltrainer F front pic, recoloured + band/horns |
+| Dragon eggs (`pics/misc/draconid_egg_*.png`) | `tools/hack/art/objects/draconid_eggs.py` | drawn from scratch |
+
+All villagers share **one palette** (`graphics/object_events/palettes/draconid_npc.pal`: skin 1–4, teal 5–7,
+red 8–10, ivory/grey/charcoal 11–13), so a village map never runs out of sprite palettes; the recipes only
+move the bases' indices onto those roles. Aster and the eggs have their own palettes. The C data comes from
+`gen_outfit_code.py` (`NPCS`, `OBJECTS`, `NPC_PALETTES`).
 
 ### Known gaps (`TODO(art)`)
 - Acro Bike wheelies and hops are shifted/sheared Mach Bike frames.

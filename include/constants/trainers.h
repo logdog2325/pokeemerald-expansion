@@ -182,6 +182,7 @@ enum __attribute__((packed)) TrainerPicID
     TRAINER_PIC_DRACONID_F,
     TRAINER_PIC_PLAYER_MAGMA_M, // Team Magma disguise: grunt front pic, own back pic
     TRAINER_PIC_PLAYER_MAGMA_F,
+    TRAINER_PIC_ASTER, // Draconid Emerald: Aster (front pic only)
     TRAINER_PIC_COUNT,
 };
 
@@ -526,6 +527,7 @@ enum TrainerClassID
     TRAINER_CLASS_RUIN_MANIAC_FRLG,
     TRAINER_CLASS_LADY_FRLG,
     TRAINER_CLASS_PAINTER_FRLG,
+    TRAINER_CLASS_DRACONID, // Draconid Emerald: Aster
 
     TRAINER_CLASS_COUNT,
 };

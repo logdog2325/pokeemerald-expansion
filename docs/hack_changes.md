@@ -20,7 +20,7 @@ Grouped by area; each entry names the file(s).
 | Emulator regression tests | `tools/hack/emu/tests/*.play` | `opening.play` (new game → lab, `-D GENDER=F`), `route103.play` (→ May) |
 | Player outfit art builders | `tools/hack/art/player/build_player.py`, `build_pics.py`, specs `draconid_m/f.json`, `magma_m/f.json`, `*_pics.json` | see docs/hack_art_pipeline.md |
 | Outfit C code generator | `tools/hack/art/player/gen_outfit_code.py` | writes between `DRACONID PLAYER OUTFITS` markers |
-| Art manifest | `tools/hack/art/manifests/player.json` | `validate.py --manifest` for all player art; new `map_icon` profile in `gbaart.py` |
+| Art manifest | `tools/hack/art/manifests/draconid.json` | `validate.py --manifest` for all player art; new `map_icon` profile in `gbaart.py` |
 
 ## Config options
 | Option | Old | New | File |
@@ -68,6 +68,11 @@ Grouped by area; each entry names the file(s).
 | `OBJ_EVENT_GFX_{DRACONID,MAGMA}_{M,F}_{NORMAL,MACH_BIKE,ACRO_BIKE,SURFING,FIELD_MOVE,FISHING,UNDERWATER,WATERING,DECORATING}` (36 ids) | `include/constants/event_objects.h` (generated region) |
 | `OBJ_EVENT_PAL_TAG_{DRACONID,MAGMA}_{M,F}` + `_REFLECTION` (0x1140–0x1147) | `include/constants/event_objects.h` |
 | `TRAINER_PIC_DRACONID_M/F`, `TRAINER_PIC_PLAYER_MAGMA_M/F` (Magma: grunt front pic + own back pic) | `include/constants/trainers.h`, `src/data/graphics/trainers.h` |
+| `TRAINER_PIC_ASTER` (front only), `TRAINER_CLASS_DRACONID` ("DRACONID", 15 money, battle music `MUS_VS_RIVAL`) | `include/constants/trainers.h`, `src/data/graphics/trainers.h`, `src/battle_main.c`, `src/pokemon.c` |
+| `OBJ_EVENT_GFX_DRACONID_{ELDER,OLD_WOMAN,MAN,WOMAN,BOY,GUARD}`, `OBJ_EVENT_GFX_ASTER`, `OBJ_EVENT_GFX_DRACONID_EGG_{DEINO,DREEPY,JANGMO_O}` | `include/constants/event_objects.h` (generated) |
+| `OBJ_EVENT_PAL_TAG_DRACONID_NPC` (0x1148), `_ASTER` (0x1149), `_DRACONID_EGGS` (0x114A) | `include/constants/event_objects.h` (generated) |
+| Aster's pass teams: `Class: Draconid`, `Pic: Aster`, `Music: Intense` | `src/data/trainers.party` |
+| Draconid maps use the new NPC/egg sprites | `data/maps/Draconid*/map.json`, `tools/hack/mapgen/specs/` |
 | `TRAINER_ASTER_PASS_DEINO/_DREEPY/_JANGMO_O` (855–857), `TRAINERS_COUNT_EMERALD` 855→858 | `include/constants/opponents.h`, teams in `src/data/trainers.party` |
 | `MAP_DRACONID_VILLAGE`, `MAP_DRACONID_PASS` (group TownsAndRoutes); `MAP_DRACONID_VILLAGE_PLAYERS_HOUSE_1F/_2F`, `_ELDERS_HOUSE`, `_SHRINE`, `_HOUSE1`, `_HOUSE2` (new group `gMapGroup_IndoorDraconid`) | `data/maps/map_groups.json`, `data/maps/Draconid*/` |
 | `LAYOUT_DRACONID_VILLAGE`, `LAYOUT_DRACONID_PASS`, `LAYOUT_DRACONID_VILLAGE_PLAYERS_HOUSE_1F/_2F`, `_ELDERS_HOUSE`, `_SHRINE` (House1/2 reuse `LAYOUT_HOUSE2`/`LAYOUT_HOUSE1`) | `data/layouts/layouts.json` |

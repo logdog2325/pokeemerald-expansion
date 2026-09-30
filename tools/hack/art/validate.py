@@ -4,7 +4,7 @@ validate.py - check sprite sheets against Gen 3 constraints.
 
   python3 tools/hack/art/validate.py graphics/object_events/pics/people/draconid_m/*.png
   python3 tools/hack/art/validate.py --profile trainer_back graphics/trainers/back_pics/draconid_m.png
-  python3 tools/hack/art/validate.py --manifest tools/hack/art/manifests/player.json
+  python3 tools/hack/art/validate.py --manifest tools/hack/art/manifests/draconid.json
 
 Checks: indexed PNG, <= 16 palette entries in use, index 0 used for the
 background (all four corners of every frame are index 0 for sprites), size is a

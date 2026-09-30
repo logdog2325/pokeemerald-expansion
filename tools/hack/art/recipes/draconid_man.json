@@ -1,0 +1,30 @@
+{
+ "notes": "Draconid villager: man_2 recoloured (teal jacket, black hair)",
+ "steps": [
+  {
+   "op": "load",
+   "src": "graphics/object_events/pics/people/man_2.png"
+  },
+  {
+   "op": "remap",
+   "map": {
+    "8": 5,
+    "9": 6,
+    "10": 7,
+    "11": 12,
+    "12": 13,
+    "13": 15,
+    "6": 12,
+    "7": 13
+   }
+  },
+  {
+   "op": "palette",
+   "pal": "graphics/object_events/palettes/draconid_npc.pal"
+  },
+  {
+   "op": "save",
+   "dst": "graphics/object_events/pics/people/draconid/man.png"
+  }
+ ]
+}

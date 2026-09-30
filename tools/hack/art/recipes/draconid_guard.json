@@ -1,0 +1,26 @@
+{
+ "notes": "Draconid gatekeeper: black_belt recoloured (teal gi, red belt, black hair)",
+ "steps": [
+  {
+   "op": "load",
+   "src": "graphics/object_events/pics/people/black_belt.png"
+  },
+  {
+   "op": "remap",
+   "map": {
+    "14": 11,
+    "11": 12,
+    "12": 13,
+    "13": 15
+   }
+  },
+  {
+   "op": "palette",
+   "pal": "graphics/object_events/palettes/draconid_npc.pal"
+  },
+  {
+   "op": "save",
+   "dst": "graphics/object_events/pics/people/draconid/guard.png"
+  }
+ ]
+}
