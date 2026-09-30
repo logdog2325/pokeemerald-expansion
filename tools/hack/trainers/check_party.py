@@ -115,6 +115,13 @@ def species_pool():
     return pool
 
 
+# Round 1 ORAS data (docs/hack_trainers.md, "ORAS data"): the Elite Four use their ORAS post-game rosters,
+# species from all regions included, so they skip the species-pool warning (D-173); their post-game rematch
+# holds the ORAS Mega Stones, like the trainers in MEGA_TRAINERS (D-174).
+ORAS_ROSTER_TRAINERS = re.compile(r"^TRAINER_(SIDNEY|PHOEBE|GLACIA|DRAKE)(_REMATCH)?$")
+ORAS_MEGA_TRAINERS = re.compile(r"^TRAINER_(SIDNEY|PHOEBE|GLACIA|DRAKE)_REMATCH$")
+
+
 def min_level(species, parents):
     """Lowest level a species can have when every level-up evolution in its line is respected."""
     lv, cur, seen = 1, species, set()
@@ -210,7 +217,7 @@ def main():
                     item = party.const_name(mon["item"], "ITEM_")
                     if item not in items_ok:
                         err("%s: unknown item %s" % (where, mon["item"]))
-                    elif item in stones and not MEGA_TRAINERS.match(tid):
+                    elif item in stones and not MEGA_TRAINERS.match(tid) and not ORAS_MEGA_TRAINERS.match(tid):
                         warn("%s: Mega Stone on a trainer outside MEGA_TRAINERS" % where)
                 if "nature" in mon and party.const_name(mon["nature"], "NATURE_") not in natures_ok:
                     err("%s: unknown nature %s" % (where, mon["nature"]))
@@ -242,7 +249,7 @@ def main():
                     err("%s: evolves by level-up at %d" % (where, ml))
                 elif mon["level"] < ml - args.evo_slack:
                     warn("%s: evolves by level-up at %d (only aces/bosses may be under)" % (where, ml))
-                if sp not in pool and not STORY_TRAINERS.match(tid):
+                if sp not in pool and not STORY_TRAINERS.match(tid) and not ORAS_ROSTER_TRAINERS.match(tid):
                     warn("%s: not in the Hoenn dex or a vanilla Emerald team" % where)
                 if tid in caps and mon["level"] > caps[tid]:
                     err("%s: above the segment cap %d" % (where, caps[tid]))

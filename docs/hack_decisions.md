@@ -311,6 +311,42 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   `TRAINER_PIC_NERINE` / `TRAINER_PIC_MAGMA_ADMIN` partner. Tabitha's is the Magma disguise back pic (Red's build)
   recoloured into his crimson hooded jacket. – Alt: draw a heavier build for him (`TODO(art)` if wanted). – Partners
   are drawn from behind; reusing the player's rigs keeps the 5-frame Kanto throw animation.
+- **D-170 ORAS data source**: Serebii's Pokéarth "Gen VI" location pages and its ORAS Elite Four page, scraped once
+  (2026-09-30, one request at a time, cached outside the repo) into `tools/hack/trainers/oras/oras_trainers.json`
+  with the scraper next to it. – Alt: rosters from memory (v1: none could be vouched for); Bulbapedia (HTTP 403).
+  – A recorded, re-parsable source; Serebii lists species, levels and items, so sets are still written and
+  checked here.
+- **D-171 Matching Emerald ↔ ORAS**: same name on the Serebii page of the trainer's map, class mapped (Cooltrainer =
+  Ace Trainer, …); a namesake on another page or two candidates on one page are recorded, not used; the Abandoned
+  Ship's trainers are looked up in Sea Mauville (ORAS replaced it). – Alt: fuzzy names, name-only anywhere. – The
+  brief's "record ambiguous ones instead of guessing": ORAS moved and renamed many trainers (Julie, Georgia, …
+  are other people in ORAS).
+- **D-172 `oras-first` teams**: ORAS rematch teams exist only for trainers that already have Emerald tiers (rule 1),
+  so the ORAS data reaches regular trainers through their first-battle team: used when it has **more evolution
+  families** (species pool only) than the trainer's vanilla Emerald team (27 trainers; Gilbert and Cole already
+  had the ORAS species). The new team keeps the block's header, party size and levels: the ORAS roster (the ORAS
+  ace last, level-up evolutions to the slot's level, stone / trade / friendship evolutions not applied, e.g.
+  Clamperl stays Clamperl, with a Deep Sea Tooth), filled with the current members, Emerald families first (one
+  more slot if none would survive and the party band allows it); sets from the same species elsewhere in
+  `trainers.party`, only moves known at that level (`build_oras_batch.py --check`). – Alt: ORAS first teams for
+  every matched trainer (would replace the richer enhanced teams with 1–3 Pokémon); only when the ORAS team is
+  bigger than the current one (never true). – "Richer" is read against the team the enhanced one was built from.
+- **D-173 Elite Four rosters**: the first battle uses their **ORAS post-game rosters** (species from all regions:
+  Scrafty, Zoroark, Mandibuzz, Mismagius, Drifblim, Chandelure, Abomasnow, Beartic, Vanilluxe, Dragalge,
+  Haxorus – exempt from the species pool, D-065) at the S9 levels they had (aces 55–58), no Megas; the ace is the
+  ORAS first battle's ace (Absol, Dusknoir, Walrein, Salamence), because the rematch aces Sableye and Glalie lean on
+  their Megas. Sets start from Serebii's ORAS moves, made into full competitive sets. – Alt: the ORAS first-battle
+  rosters (nearly the Emerald ones); Hoenn-only replacements. – The brief and the playtester ask for the post-game
+  teams; the League is where a wider roster fits.
+- **D-174 Elite Four rematch**: blocks at the ORAS rematch levels (70–75, the POST ace band) with the ORAS Mega
+  Stones (Absolite, Sablenite, Glalitite, Salamencite) as `TRAINER_{SIDNEY,PHOEBE,GLACIA,DRAKE}_REMATCH` in
+  `tools/hack/trainers/oras/elite_four_rematch.party`, allowed Megas in `check_party.py`; **not in the ROM**: it needs
+  four trainer ids (`include/constants/opponents.h`, 924–927 are free) and a game-clear switch in the Elite Four
+  rooms or a variant rule (`src/draconid.c`), files owned by the story work this round. – Alt: Megas in the first
+  battle. – Megas stay a post-game treat (D-066) and the rematch is ready to wire.
+- **D-175 Wallace unchanged**: ORAS has no Champion Wallace; its only other Wallace battle on Serebii
+  ("Sootopolitan Wallace", Route 131 page) has exactly his Emerald Champion roster, which his current team already
+  uses. – Alt: Steven's ORAS Champion roster (Steven is story-owned). – Nothing in the ORAS data improves him.
 - **D-185 Gen 6 Exp. Share**: `I_EXP_SHARE_ITEM` is `GEN_6` (a key item that shares EXP with the whole party
   while `FLAG_EXP_SHARE_ON` is set; using it toggles the flag). Mr. Stone hands it over **with the PokéNav** at
   the first Devon meeting and it starts switched on; vanilla gave a held Exp. Share only on a return visit after
