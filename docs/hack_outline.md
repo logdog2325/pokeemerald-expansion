@@ -77,7 +77,8 @@ being merged · 🚧 being built now · ⬜ not built yet (planned)
 
 ## Act 6 – Champion (Victory Road → Pokémon League)  🔨 built on its branch, being merged
 40. 🔨 Victory Road: Wally (Mega Gallade).
-41. 🔨 The Elite Four (ORAS rosters) and Wallace; Brendan and May reach the Champion's room.
+41. 🔨 The Elite Four (ORAS rosters) and Champion Steven (his ORAS team, Mega Metagross); Brendan and May reach the
+    Champion's room.
 42. 🔨 Hall of Fame without credits → home; the meteor on TV; the Elder's summons (his dragon flies the player).
 
 ## Act 7 – The prophecy fulfilled
@@ -97,7 +98,8 @@ being merged · 🚧 being built now · ⬜ not built yet (planned)
 49. 🔨 The Elder brings the S.S. Ticket; the Lati news.  ⬜ Both Latis roam Hoenn.
 50. 🔨 Brendan and May in the lab (singles and a double); Aster at the shrine; Nerine by the village pond;
     Deoxys on the Sky Pillar summit.
-51. ✅ The Elite Four rematch with their ORAS post-game teams.
+51. ✅ The Elite Four and Champion Steven rematch with their ORAS post-game teams; after the finale Wallace battles by
+    the Cave of Origin; Steven chats at Meteor Falls.
 52. ✅ Battle Frontier: Wes, Red and Blue; the Legends' Tag (team with a beaten legend against the other two).
 53. ⬜ Groudon (Magma Hideout) and Kyogre (Seafloor Cavern) catchable.
 

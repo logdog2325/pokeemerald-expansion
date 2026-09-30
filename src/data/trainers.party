@@ -15525,17 +15525,17 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_WALLACE ===
 Name: WALLACE
-Class: Champion
+Class: Sootopolitan
 Pic: Champion Wallace
 Gender: Male
 Music: Male
-Items: Full Restore / Full Restore / Full Restore / Full Restore
+Items: Full Restore / Full Restore / Full Restore
 Double Battle: No
 AI: Smart Trainer / Prediction / Ace Pokemon
 Mugshot: Yellow
 
 Wailord @ Damp Rock
-Level: 57
+Level: 75
 Ability: Pressure
 EVs: 252 HP / 252 SpA / 4 SpD
 Nature: Modest
@@ -15545,7 +15545,7 @@ Nature: Modest
 - Heavy Slam
 
 Tentacruel @ Black Sludge
-Level: 58
+Level: 75
 Ability: Rain Dish
 EVs: 252 HP / 4 SpA / 252 Spe
 Nature: Timid
@@ -15555,17 +15555,17 @@ Nature: Timid
 - Toxic Spikes
 
 Ludicolo @ Life Orb
-Level: 58
+Level: 75
 Ability: Swift Swim
 EVs: 252 SpA / 4 HP / 252 Spe
 Nature: Modest
 - Hydro Pump
-- Giga Drain
+- Energy Ball
 - Ice Beam
-- Rain Dance
+- Focus Blast
 
 Whiscash @ Leftovers
-Level: 58
+Level: 75
 Ability: Hydration
 EVs: 252 HP / 252 Atk / 4 Def
 Nature: Adamant
@@ -15574,8 +15574,8 @@ Nature: Adamant
 - Stone Edge
 - Rest
 
-Gyarados @ Lum Berry
-Level: 59
+Gyarados @ Gyaradosite
+Level: 76
 Ability: Intimidate
 EVs: 252 Atk / 4 HP / 252 Spe
 Nature: Adamant
@@ -15585,7 +15585,7 @@ Nature: Adamant
 - Crunch
 
 Milotic @ Leftovers
-Level: 60
+Level: 78
 Ability: Marvel Scale
 EVs: 252 HP / 252 SpA / 4 SpD
 Nature: Modest
@@ -37314,16 +37314,17 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 
 === TRAINER_STEVEN ===
 Name: STEVEN
-Class: Rival
+Class: Champion
 Pic: Steven
 Gender: Male
 Music: Male
 Items: Full Restore / Full Restore / Full Restore / Full Restore
 Double Battle: No
 AI: Smart Trainer / Prediction / Ace Pokemon
+Mugshot: Yellow
 
 Skarmory @ Rocky Helmet
-Level: 77
+Level: 57
 Ability: Sturdy
 EVs: 252 HP / 252 Def / 4 SpD
 Nature: Impish
@@ -37333,17 +37334,17 @@ Nature: Impish
 - Whirlwind
 
 Claydol @ Light Clay
-Level: 77
+Level: 58
 Ability: Levitate
 EVs: 252 HP / 252 Def / 4 SpD
 Nature: Bold
 - Reflect
 - Light Screen
-- Earthquake
+- Earth Power
 - Stealth Rock
 
 Aggron @ Life Orb
-Level: 78
+Level: 58
 Ability: Rock Head
 EVs: 4 HP / 252 Atk / 252 Spe
 Nature: Adamant
@@ -37353,7 +37354,7 @@ Nature: Adamant
 - Rock Polish
 
 Cradily @ Leftovers
-Level: 78
+Level: 58
 Ability: Storm Drain
 EVs: 252 HP / 4 Def / 252 SpD
 Nature: Calm
@@ -37363,7 +37364,7 @@ Nature: Calm
 - Toxic
 
 Armaldo @ Weakness Policy
-Level: 78
+Level: 59
 Ability: Battle Armor
 EVs: 252 HP / 252 Atk / 4 SpD
 Nature: Adamant
@@ -37373,7 +37374,78 @@ Nature: Adamant
 - Earthquake
 
 Metagross @ Metagrossite
-Level: 80
+Level: 60
+Ability: Clear Body
+EVs: 4 HP / 252 Atk / 252 Spe
+Nature: Jolly
+- Meteor Mash
+- Zen Headbutt
+- Earthquake
+- Bullet Punch
+
+=== TRAINER_STEVEN_REMATCH ===
+Name: STEVEN
+Class: Champion
+Pic: Steven
+Gender: Male
+Music: Male
+Items: Full Restore / Full Restore / Full Restore / Full Restore
+Double Battle: No
+AI: Smart Trainer / Prediction / Ace Pokemon
+Mugshot: Yellow
+
+Skarmory @ Rocky Helmet
+Level: 77
+Ability: Sturdy
+EVs: 252 HP / 252 Def / 4 SpD
+Nature: Impish
+- Spikes
+- Brave Bird
+- Roost
+- Toxic
+
+Claydol @ Light Clay
+Level: 77
+Ability: Levitate
+EVs: 252 HP / 252 Def / 4 SpD
+Nature: Bold
+- Reflect
+- Light Screen
+- Earth Power
+- Extrasensory
+
+Carbink @ Leftovers
+Level: 77
+Ability: Sturdy
+EVs: 252 HP / 4 Def / 252 SpD
+Nature: Calm
+- Moonblast
+- Power Gem
+- Stealth Rock
+- Psychic
+
+Aerodactyl @ Focus Sash
+Level: 77
+Ability: Unnerve
+EVs: 252 Atk / 4 HP / 252 Spe
+Nature: Jolly
+- Rock Slide
+- Earthquake
+- Ice Fang
+- Fire Fang
+
+Aggron @ Life Orb
+Level: 77
+Ability: Rock Head
+EVs: 4 HP / 252 Atk / 252 Spe
+Nature: Adamant
+- Head Smash
+- Iron Head
+- Earthquake
+- Rock Polish
+
+Metagross @ Metagrossite
+Level: 79
 Ability: Clear Body
 EVs: 4 HP / 252 Atk / 252 Spe
 Nature: Jolly

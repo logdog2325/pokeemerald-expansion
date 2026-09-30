@@ -34,7 +34,7 @@ catches up quickly). The caps are the table in `src/caps.c` (`sLevelCapFlagMap`)
 | S7 | Mind Badge | 44 | Routes 120–134, Mt. Pyre, Lilycove, Magma and Aqua Hideouts, Mossdeep Gym |
 | S8 | Rain Badge | 48 | Space Center, Seafloor Cavern, Sky Pillar, Sootopolis Gym, Trick House 6 |
 | S9 | Champion | 60 | Meteor Falls (Waterfall), Victory Road, Elite Four, Champion, Trick House 7 |
-| POST | – | none | Steven, S.S. Tidal, Trick House 8, gym leader rematches, last rematch tier |
+| POST | – | none | Champion Steven's rematch, Wallace (Sootopolis), S.S. Tidal, Trick House 8, gym leader rematches, last rematch tier |
 
 A trainer belongs to the **earliest** segment in which the player can reach it (maps split by Surf, the desert or
 Rock Smash are split per trainer), so a trainer's levels never beat the cap in force. The per-trainer table is
@@ -134,7 +134,8 @@ Story trainers (Brendan, May, Wally, Aster) have their own rosters (docs/hack_ch
 - **Bag items** (`Items:`): leaders and bosses 2 – Potion (S1–S2), Super Potion (S3–S4), Hyper Potion (S5–S7),
   Full Restore (S8+); E4 and Champion 2–4 Full Restores. Route trainers keep what they have.
 - **Megas** (`MEGA_TRAINERS` in `check_party.py`): only Maxie in the Magma Hideout (Camerupt), Archie in the
-  Seafloor Cavern (Sharpedo), Steven (Metagross), gym leaders' last rematch tier (one thematic Mega, e.g.
+  Seafloor Cavern (Sharpedo), Steven (Metagross, the Champion from his first battle on, D-250), Wallace at the Sky
+  Pillar (Act 7) and after the finale (Gyarados, D-252), gym leaders' last rematch tier (one thematic Mega, e.g.
   Roxanne's Aerodactyl, Wattson's Manectric, Flannery's Camerupt, Winona's Altaria), the Elite Four's post-game
   rematch (their ORAS Megas: Absol, Sableye, Glalie, Salamence; D-174), the story trainers late in the game, and
   the Battle Frontier legends (Red's Charizard X, Blue's Alakazam; D-226).
@@ -147,7 +148,7 @@ Story trainers (Brendan, May, Wally, Aster) have their own rosters (docs/hack_ch
 | Route trainers, grunts | `Basic Trainer` (S1–S3); `Basic Trainer / Smart Mon Choices` (S4+) |
 | Gym trainers | `Basic Trainer / Smart Mon Choices` |
 | Admins, leaders, Maxie/Archie, rivals, Wally, Aster | `Smart Trainer / Ace Pokemon` |
-| Elite Four, Champion, Steven, POST leaders, Aster at Sky Pillar | `Smart Trainer / Prediction / Ace Pokemon` |
+| Elite Four, Champion Steven, post-game Wallace, POST leaders, Aster at Sky Pillar | `Smart Trainer / Prediction / Ace Pokemon` |
 
 `Smart Trainer` = omniscient + smart switching + PP-stall prevention; `Ace Pokemon` keeps the last Pokémon for
 last, so the ace must be the last entry. Double-battle AI is added by the engine.
@@ -306,9 +307,15 @@ full competitive sets (EVs, natures, items; Full Restores as before).
 
 The rematch needs four trainer ids (`TRAINER_SIDNEY_REMATCH` …) and the Elite Four rooms (or a game-clear
 variant rule) to pick them after the Champion; then `splice_party.py --append tools/hack/trainers/oras/elite_four_rematch.party`.
-**Wallace** keeps his team: ORAS has no Champion Wallace, and the one ORAS Wallace battle outside his gym
-("Sootopolitan Wallace", Serebii's Route 131 page) uses exactly the Emerald Champion roster he already has
-(Wailord, Tentacruel, Ludicolo, Whiscash, Gyarados, Milotic).
+**The Champion is Steven** (round 1 v2, D-250 – D-252; `tools/hack/trainers/oras/champion.party`): his ORAS Champion
+roster at the S9 Champion band and his ORAS post-game roster at Serebii's levels, sets made from his ORAS moves.
+**Wallace** keeps his Emerald Champion roster, which is ORAS's "Sootopolitan Wallace" (Serebii's Route 131 page),
+for his post-game battle in Sootopolis, class SOOTOPOLITAN.
+
+| | First battle | Post-game |
+|---|---|---|
+| Steven (`TRAINER_STEVEN`, Champion's room) | Skarmory 57, Claydol, Aggron, Cradily 58, Armaldo 59, Mega Metagross 60 | `TRAINER_STEVEN_REMATCH`: Skarmory, Claydol, Carbink, Aerodactyl, Aggron 77, Mega Metagross 79 |
+| Wallace (`TRAINER_WALLACE`, Sootopolis, after the finale: his rematch after Act 7's Sky Pillar battle) | – | Wailord, Tentacruel, Ludicolo, Whiscash 75, Mega Gyarados 76, Milotic 78 |
 
 ## Gen 4–9 swaps (round 1)
 
@@ -1220,7 +1227,6 @@ give a species. `check_party.py` now resolves species aliases before it takes a 
 | DRAKE | EverGrandeCity_DrakesRoom | elite | 6 | 56–58 | Salamence 58 | oras-rematch |
 | QUINCY | VictoryRoad_1F | route | 5 | 49–51 | Slaking 51 | enhanced |
 | KATELYNN | VictoryRoad_1F | route | 5 | 49–51 | Gardevoir 51 | enhanced |
-| WALLACE | EverGrandeCity_ChampionsRoom | elite | 6 | 57–60 | Milotic 60 | enhanced |
 | NICOLAS_1 | MeteorFalls_1F_2R | route | 4 | 48–49 | Shelgon 49 | emerald-rematch + Druddigon, Noivern |
 | NICOLAS_2 | MeteorFalls_1F_2R | route t2 | 4 | 50–52 | Salamence 52 | emerald-rematch + Druddigon, Noivern |
 | NICOLAS_3 | MeteorFalls_1F_2R | route t3 | 5 | 52–54 | Salamence 54 | emerald-rematch + Druddigon, Noivern |
@@ -1233,6 +1239,7 @@ give a species. `check_party.py` now resolves species aliases before it takes a 
 | JOHN_AND_JAY_2 | MeteorFalls_1F_2R | route t2 | 4 | 50–52 | Hariyama 52 | emerald-rematch |
 | JOHN_AND_JAY_3 | MeteorFalls_1F_2R | route t3 | 4 | 52–54 | Hariyama 54 | emerald-rematch |
 | JOHN_AND_JAY_4 | MeteorFalls_1F_2R | route t4 | 4 | 54–55 | Hariyama 55 | emerald-rematch |
+| STEVEN | EverGrandeCity_ChampionsRoom | elite | 6 | 57–60 | Metagross 60 | oras-champion |
 | MARIELA | Route110_TrickHousePuzzle7 | route | 4 | 48–50 | Starmie 50 | enhanced |
 | ALVARO | Route110_TrickHousePuzzle7 | route | 4 | 48–50 | Alakazam 50 | enhanced |
 | EVERETT | Route110_TrickHousePuzzle7 | route | 4 | 48–50 | Arcanine 50 | enhanced + Stoutland, Purugly |
@@ -1277,6 +1284,7 @@ give a species. `check_party.py` now resolves species aliases before it takes a 
 | TIMOTHY_5 | Route115 | route t5 | 4 | 63–65 | Hariyama 65 | emerald-rematch + Hawlucha, Conkeldurr |
 | SHELBY_5 | MtChimney | route t5 | 4 | 62–64 | Hariyama 64 | emerald-rematch + Lucario, Hawlucha |
 | CALVIN_5 | Route102 | route t5 | 4 | 60–62 | Mightyena 62 | emerald-rematch + Greedent, Gumshoos |
+| WALLACE | SootopolisCity | elite | 6 | 75–78 | Milotic 78 | enhanced |
 | ELLIOT_5 | Route106 | route t5 | 5 | 60–62 | Gyarados 62 | emerald-rematch |
 | BENJAMIN_5 | Route110 | route t5 | 4 | 62–64 | Magnezone 64 | emerald-rematch + Klinklang, Zebstrika |
 | ABIGAIL_5 | Route110 | route t5 | 4 | 61–63 | Magnezone 63 | emerald-rematch |
@@ -1354,7 +1362,6 @@ give a species. `check_party.py` now resolves species aliases before it takes a 
 | JUAN_3 | SootopolisCity_Gym_1F | leader t3 | 6 | 70–74 | Kingdra 74 | emerald-rematch |
 | JUAN_4 | SootopolisCity_Gym_1F | leader t4 | 6 | 73–77 | Kingdra 77 | emerald-rematch |
 | JUAN_5 | SootopolisCity_Gym_1F | leader t5 | 6 | 76–80 | Kingdra 80 | emerald-rematch |
-| STEVEN | MeteorFalls_StevensCave | elite | 6 | 77–80 | Metagross 80 | enhanced |
 | ANDRES_5 | Route105 | route t5 | 5 | 61–63 | Sandslash 63 | emerald-rematch |
 | CORY_5 | Route108 | route t5 | 4 | 60–62 | Machamp 62 | emerald-rematch |
 | PABLO_5 | Route126 | route t5 | 5 | 64–66 | Starmie 66 | emerald-rematch |
@@ -1380,3 +1387,4 @@ give a species. `check_party.py` now resolves species aliases before it takes a 
 | WES_FRONTIER_MULTI | BattleFrontier_OutsideEast | route | 3 | 82–85 | Ho-Oh 85 | colosseum |
 | RED_FRONTIER_MULTI | BattleFrontier_OutsideEast | route | 3 | 82–85 | Charizard 85 | pwt |
 | BLUE_FRONTIER_MULTI | BattleFrontier_OutsideEast | route | 3 | 83–85 | Alakazam 85 | pwt |
+| STEVEN_REMATCH |  | elite | 6 | 77–79 | Metagross 79 | oras-rematch |

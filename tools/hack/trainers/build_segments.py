@@ -100,8 +100,9 @@ OVERRIDES = {
     # Winstrate family's house (Route 111 south)
     **{t: "S4" for t in ["VICTOR", "VICTORIA", "VIVI", "VICKY"]},
     # League
-    **{t: "S9" for t in ["SIDNEY", "PHOEBE", "GLACIA", "DRAKE", "WALLACE", "WALLY_VR_1"]},
-    "STEVEN": "POST",
+    **{t: "S9" for t in ["SIDNEY", "PHOEBE", "GLACIA", "DRAKE", "WALLY_VR_1"]},
+    # Steven is the Champion; his ORAS post-game team after the Hall of Fame; Wallace guards Sootopolis (D-250 - D-252)
+    "STEVEN": "S9", "STEVEN_REMATCH": "POST", "WALLACE": "POST",
     # Story battles (round 1 schedule, data/scripts/draconid/*.pory); variant ids (D-101) share their fight's segment
     "MAY_ROUTE_103": "S1", "BRENDAN_RUSTBORO": "S1", "MAY_ROUTE_110": "S3", "BRENDAN_MT_CHIMNEY": "S4",
     "BRENDAN_ROUTE_119": "S6", "BRENDAN_LILYCOVE": "S7", "MAY_LILYCOVE": "S7", "BRENDAN_MOSSDEEP": "S8",
@@ -134,12 +135,12 @@ OVERRIDES = {
     "GABBY_AND_TY_4": "S6", "GABBY_AND_TY_5": "S7", "GABBY_AND_TY_6": "S8",
 }
 # every id the game uses (TRAINERS_COUNT_EMERALD)
-MAX_ID = 937
+MAX_ID = 977
 
 TIER_MIN = {2: "S6", 3: "S7", 4: "S8", 5: "POST", 6: "POST"}
 
 LEADERS = ["ROXANNE_1", "BRAWLY_1", "WATTSON_1", "FLANNERY_1", "NORMAN_1", "WINONA_1", "TATE_AND_LIZA_1", "JUAN_1"]
-ELITE = ["SIDNEY", "PHOEBE", "GLACIA", "DRAKE", "WALLACE", "STEVEN"]
+ELITE = ["SIDNEY", "PHOEBE", "GLACIA", "DRAKE", "WALLACE", "STEVEN", "STEVEN_REMATCH"]
 BOSSES = ["MAXIE", "ARCHIE"]
 ADMINS = ["TABITHA", "SHELLY", "MATT"]
 # Battles written by hand with the story (Phase 5): not in the trainer batches.

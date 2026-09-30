@@ -267,6 +267,9 @@ static const struct MatchCallStructNPC sMomMatchCallHeader =
     }
 };
 
+// Draconid Emerald: STEVEN is the CHAMPION; once the player has all eight BADGES he waits at the LEAGUE (act6.pory, D-250)
+extern const u8 Draconid_Text_StevenCallLeague[];
+
 static const struct MatchCallStructNPC sStevenMatchCallHeader =
 {
     .type = MC_TYPE_NPC,
@@ -281,6 +284,7 @@ static const struct MatchCallStructNPC sStevenMatchCallHeader =
         { MatchCall_Text_Steven4, FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE, NO_FLAG_TO_SET },
         { MatchCall_Text_Steven5, FLAG_DEFEATED_MOSSDEEP_GYM,          NO_FLAG_TO_SET },
         { MatchCall_Text_Steven6, FLAG_KYOGRE_ESCAPED_SEAFLOOR_CAVERN, NO_FLAG_TO_SET },
+        { Draconid_Text_StevenCallLeague, FLAG_BADGE08_GET,            NO_FLAG_TO_SET }, // Draconid Emerald (D-250)
         { MatchCall_Text_Steven7, FLAG_SYS_GAME_CLEAR,                 NO_FLAG_TO_SET },
         MATCH_CALL_TEXT_END,
     }
@@ -656,10 +660,10 @@ static const struct MatchCallStructTrainer sDrakeMatchCallHeader =
 static const struct MatchCallStructTrainer sWallaceMatchCallHeader =
 {
     .type = MC_TYPE_LEADER,
-    .mapSec = MAPSEC_EVER_GRANDE_CITY,
+    .mapSec = MAPSEC_SOOTOPOLIS_CITY, // Draconid Emerald: SOOTOPOLIS's guardian, not the CHAMPION (D-252)
     .flag = FLAG_REGISTERED_WALLACE,
     .rematchTableIdx = REMATCH_WALLACE,
-    .desc = COMPOUND_STRING("CHAMPION"),
+    .desc = COMPOUND_STRING("SOOTOPOLITAN"), // Draconid Emerald: his ORAS title (D-252)
     .name = NULL,
     .textData = (const match_call_text_data_t[]) {
         { MatchCall_Text_Wallace, ALWAYS_AVAILABLE, NO_FLAG_TO_SET },
