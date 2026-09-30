@@ -160,3 +160,6 @@ Petalburg Woods recruitment/outfit change, Maxie's first meeting at Meteor Falls
 ### Follow-up note 10 (round 1)
 - "Rewrite rivals' PokéNav Match Call texts by reputation" (a queued task the playtester asked to do)
 - "also make sure the kommo-o and dragapult lines also evolve to second stage at 25 and final stage at 50"
+
+### Follow-up note 11 (round 1)
+- "Also when is your identify revealed to Maxie? That should be a big scene and he should hate you for lying to him and betraying him and there should be multiple battles with him and team magma grunts after"
