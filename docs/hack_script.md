@@ -1248,6 +1248,38 @@ Draconid Emerald round 1, feedback 1.33 (D-218 – D-222): battle items and Mega
 - JUAN: Please, accept this MYSTIC WATER as well.
 - It lends grace to WATER-type moves.
 
+## data/scripts/draconid/contradictions.pory
+
+Draconid Emerald: base-Emerald leftovers that contradicted the v2 story (feedback 1.46, D-253 – D-255). The full list, what was fixed and where, is docs/hack_contradictions.md. Most fixes are retexted vanilla labels (tools/hack/retext.py) and reputation branches in reputation/*.pory; the scenes whose vanilla scripts needed new lines, and whose town file belongs to someone else, live here.
+
+### `Draconid_EventScript_AfterWhiteOutHomeHeal`
+- OLD WOMAN: There you are. The whole village saw you come home limping.
+- Rest now. A tamer who falls and gets up again is still a tamer.
+- OLD WOMAN: The lowlanders' POKéMON CENTERS will heal your partners, too.
+
+### `RustboroCity_CuttersHouse_EventScript_DraconidRepCutterUniform`
+- Hm? That red getup… TEAM MAGMA, eh?
+- No, don't say a word. That determined expression…
+- A skilled TRAINER is a skilled TRAINER.
+- I'm sure that you can put this HIDDEN MACHINE to good use. Go on, take it!
+
+### `GraniteCave_1F_EventScript_DraconidRepHikerUniform`
+- Hey, you. Whoa… TEAM MAGMA?
+- Well, it gets awfully dark ahead. Even a MAGMA kid can get lost in there.
+- For us HIKERS, helping out those that we meet is our motto. Whoever they are.
+- Here you go, I'll pass this on to you.
+
+### `MauvilleCity_House1_EventScript_DraconidRepRockSmashDudeUniform`
+- Woohoo!
+- I'm the ROCK SMASH DUDE! Don't call me the ROCK SMASH GUY.
+- TEAM MAGMA, huh? Rocks don't care what you wear!
+- Your POKéMON look pretty strong. I like that!
+- Here, take this HIDDEN MACHINE!
+
+### `MauvilleCity_BikeShop_EventScript_DraconidRepRydelUniform`
+- RYDEL: …Hm? That red uniform. TEAM MAGMA, is it?
+- Well! A BIKE doesn't ask who's riding it!
+
 ## data/scripts/draconid/frontier_legends.pory
 
 Draconid Emerald round 1 follow-up: the Battle Frontier legends (post-game, D-225 - D-229). WES (Pokémon Colosseum) waits in the BATTLE PYRAMID's sands (58, 22), RED at the foot of the cliff below ARTISAN CAVE (29, 10), BLUE by the BATTLE TOWER door (18, 15). They are there once the Hall of Fame is done (FLAG_SYS_GAME_CLEAR) and battle again whenever asked. The LEGENDS' TAG attendant beside the TOWER door (14, 15) pairs the player with a legend they have beaten (PARTNER_WES / _RED / _BLUE) against the other two: a multi battle on the mat in front of the TOWER, three POKéMON each (the *_FRONTIER_MULTI teams).
@@ -1618,6 +1650,9 @@ Draconid Emerald round 1 follow-ups (feedback 1.32, 1.34, part of 1.25; D-234 �
 - `EverGrandeCity_ChampionsRoom_Text_IntroSpeech`: WALLACE: Welcome, {PLAYER}{KUN}. / That incident in SOOTOPOLIS CITY… All of HOENN has heard how you cast off that red uniform before MAXIE. / I confess I didn't know what to make of a MAGMA grunt who raised dragons. / Now I do. But it wouldn't be fair to say that you alone ended the crisis. / You overcame that difficult situation by working as one with your POKéMON. / We TRAINERS raise POKéMON by giving them items and by teaching them new techniques for battle. / But we ourselves also learn many things from POKéMON. / And this is where your achievements are put to the test against what others like you have achieved. / Now! / Who can most elegantly dance with their POKéMON in HOENN? / Show me right here and now!
 - `EverGrandeCity_ChampionsRoom_Text_BirchArriveRatePokedex`: PROF. BIRCH: See? What did I tell you, {RIVAL}? / Didn't I tell you that you didn't need to worry about {PLAYER}{KUN}? / … … … … … … … … {PLAYER}{KUN}, you've finally done it. / The day we met, you and your little dragon saved me on ROUTE 101. / Then came that red uniform… But I never stopped trusting you. / And now look at you. The CHAMPION! / Ah, yes! / What became of your POKéDEX? Here, let me see.
 
+### FallarborTown_CozmosHouse
+- `FallarborTown_CozmosHouse_Text_CozmoWentToMeteorFalls`: PROF. COZMO went off to METEOR FALLS on ROUTE 114 with some people from TEAM MAGMA. / …That red uniform. You're one of them, aren't you? / Please… Just bring my husband home safe.
+
 ### GraniteCave_StevensRoom
 - `GraniteCave_StevensRoom_Text_ImStevenLetterForMe`: My name is STEVEN. / I'm interested in rare stones, so I travel here and there. / Oh? A TEAM MAGMA member… with a LETTER for me? / MAGMA doesn't usually deliver mail.
 - `GraniteCave_StevensRoom_Text_CouldBecomeChampionLetsRegister`: STEVEN: Your POKéMON trust you. That's hard to fake. / I wonder who you really work for. / Let's register one another in our POKéNAVS. I'd like to keep an eye on you… in a friendly way. / … … … … … …
@@ -1630,6 +1665,18 @@ Draconid Emerald round 1 follow-ups (feedback 1.32, 1.34, part of 1.25; D-234 �
 ### LavaridgeTown
 - `LavaridgeTown_Text_MayNiceBadgesTakeThis`: MAY: …Were you really up there with them, on MT. CHIMNEY? / Forget it. I don't need these anymore. / Take them, and stay out of LAVARIDGE.
 - `LavaridgeTown_Text_MayExplainGoGogglesChallengeDad`: MAY: With those GO-GOGGLES, you'll have no trouble getting through the desert near ROUTE 111. / Four BADGES… So my dad's GYM in PETALBURG is next for you. / He'll stop you, {PLAYER}. And I'll be there to see it.
+
+### LilycoveCity_PokemonTrainerFanClub
+- `LilycoveCity_PokemonTrainerFanClub_Text_YouveSurpassedYourFather`: You've surpassed even NORMAN in every regard! / I'm telling you, so there's no question about it at all!
+- `LilycoveCity_PokemonTrainerFanClub_Text_YourFatherNeverGaveUpSoKeepOnBattling`: Even when things turned bleak, NORMAN never gave up. / This I know to be true. / You're the same! You never give up even if you lose! / So keep on battling!
+- `LilycoveCity_PokemonTrainerFanClub_Text_LongWayToGoComparedToNorman`: NORMAN battled with more power, charisma, and showmanship than you. / Even though people may say that you're strong… / You've still got a long way to go compared to NORMAN.
+
+### LittlerootTown_MaysHouse_1F
+- `RivalsHouse_1F_Text_DoYouHavePokemon`: Hi! / Do you already have your own POKéMON?
+
+### LittlerootTown_ProfessorBirchsLab
+- `LittlerootTown_ProfessorBirchsLab_Text_OtherRegionsUpgradeToNational`: PROF. BIRCH: Now… / {PLAYER}{KUN} and MAY, I've had the two of you help me study POKéMON. / Thanks to your help, new facts are coming to light. / The POKéMON from faraway regions are settling in all over HOENN. / It goes to show how rich and varied the natural environments of HOENN happen to be. / I've gathered everything we've learned about them. / Here, let me see your POKéDEX units. I'll add the new data.
+- `LittlerootTown_ProfessorBirchsLab_Text_PokedexUpgradedToNational`: {PLAYER}'s POKéDEX was updated with PROF. BIRCH's new data!
 
 ### MagmaHideout_2F_1R
 - `MagmaHideout_2F_1R_Text_Grunt14Intro`: What, what, what? / A face I don't know, in a TEAM MAGMA uniform? / They say the LEADER gave some new grunt his own EMBLEM… / You rouse my suspicion! Rank test! Battle with me!
@@ -1730,9 +1777,19 @@ Draconid Emerald round 1 follow-ups (feedback 1.32, 1.34, part of 1.25; D-234 �
 - `PetalburgCity_Gym_Text_LetMeBorrowPlayer`: NORMAN, you don't mind, do you? / Let me borrow {PLAYER}{KUN} for a minute or two.
 - `PetalburgCity_Gym_Text_DadGoingToKeepTraining`: NORMAN: I'm going to stay here and redouble my training. / And {PLAYER}… whatever you're really doing in that uniform… / Don't make MAY regret believing in you.
 - `PetalburgCity_Gym_Text_DadNoAmountOfTrainingIsEnough`: NORMAN: {PLAYER}, how are things going? / The world of POKéMON is deep. / I honestly think that no amount of training would ever be enough.
+- `PetalburgCity_Gym_Text_GymGuidePostVictory`: {PLAYER}! Whoa! You've overcome even NORMAN himself! / Like, whoa! What a stunning turn of events!
+- `PetalburgCity_Gym_Text_GeorgePostBattle`: I should have expected no less from someone with four GYM BADGES. / No, wait! A TRAINER's abilities are earned only through effort. / I lost because my own efforts weren't enough. / Go on! The ONE-HIT KO ROOM is next.
+- `PetalburgCity_Gym_Text_BerkeIntro`: I'm not going to take it easy just because you've got four BADGES. / I'll show you how horrid it is for a POKéMON to take a critical hit!
+- `PetalburgCity_Gym_Text_BerkePostBattle`: Our LEADER, NORMAN, really is strong. He's a TRAINER worth my respect. / And, I sense the same glow coming from you as from him. / I hope that you'll stage a terrific battle with NORMAN!
+- `PetalburgCity_Gym_Text_BerkePostBadge`: Since NORMAN became the LEADER, the TRAINERS of PETALBURG CITY have become a lot tougher.
+- `PetalburgCity_Gym_Text_JodyIntro`: Our GYM LEADER told us to go all out and beat you. / No matter who you happen to be!
+- `PetalburgCity_Gym_Text_JodyPostBattle`: The way you use your POKéMON… It's a lot like our LEADER's style. / Go on through! The GYM LEADER, NORMAN, is waiting!
 - `PetalburgCity_Gym_Text_NormanPreRematch`: NORMAN: {PLAYER}… I had a feeling that you would come. / I would never refuse to accept a challenge from you. / You saved this region from MAXIE, and MAY never lets me forget it. / So I owe you my very best. Isn't that right, {PLAYER}?
 - `PetalburgCity_Gym_Text_NormanPostRematch`: NORMAN: {PLAYER}… What is your dream? / Mine was to see MAY grow strong. Hahaha… It has already come true, actually.
 - `PetalburgCity_Gym_Text_NormanRematchNeedTwoMons`: NORMAN: {PLAYER}… I had a feeling that you would come. / I would never refuse to accept a challenge from you. / Hm? Wait a second, {PLAYER}. / Do you only have one POKéMON that is capable of battle? / Sorry, but you'll have to come back with at least two POKéMON.
+
+### PetalburgCity_WallysHouse
+- `PetalburgCity_WallysHouse_Text_PleaseExcuseUs`: {PLAYER}{KUN}! Please excuse us for dragging you here this way. / Our WALLY's become very healthy since he went to VERDANTURF TOWN. / When WALLY left town, you helped him catch a POKéMON. That's where it all started. / …I see you're wearing that uniform. I won't pretend I understand it. / WALLY is very angry with you. But I can't forget what you did for him that day. / This isn't a bribe or anything, but I'd really like you to have this.
 
 ### PetalburgWoods
 - `PetalburgWoods_Text_IWasGoingToAmbushYou`: NERINE: There you are. / I've waited in these woods all morning. The trees hide the sky. / I don't like that.
@@ -1749,6 +1806,9 @@ Draconid Emerald round 1 follow-ups (feedback 1.32, 1.34, part of 1.25; D-234 �
 - `Route110_Text_MayTakeThis`: MAY: I've seen how MAGMA grunts treat their POKéMON. Like tools. / But yours trust you. …What are you really doing, {PLAYER}? / Forget it. The winner gets this. That's the rule, even for MAGMA.
 - `Route110_Text_MayExplainItemfinder`: MAY: That's a DOWSING MACHINE. / Use it to root around for items that aren't visible. / If it senses something, it makes a sound.
 
+### Route110_TrickHousePuzzle5
+- `Route110_TrickHousePuzzle5_Text_Mechadoll2Quiz1`: MECHADOLL 2 QUIZ. / Which of these POKéMON did WALLY borrow from NORMAN?
+
 ### Route112
 - `Route112_Text_CantLetAnyonePassUntilTheyreBack`: You got it. And until they come back, we're not to let anyone pass, right. / …Hey, you! The rookie! / What are you standing around for? The LEADER's squad went to METEOR FALLS, past FALLARBOR. / Get over there and catch up!
 
@@ -1757,6 +1817,8 @@ Draconid Emerald round 1 follow-ups (feedback 1.32, 1.34, part of 1.25; D-234 �
 - `Route119_Text_BrendanDefeat`: Tch… You don't battle like a bad guy.
 - `Route119_Text_BrendanIllGiveYouThis`: BRENDAN: MAY made me promise to give you this. So here. / Don't make me regret it.
 - `Route119_Text_BrendanExplainFly`: BRENDAN: Use FLY, and your POKéMON carries you to any town you've already visited. / But you need the FORTREE GYM BADGE to do that.
+- `Route119_Text_StayAwayFromWeatherInstitute`: We're standing lookout here. / …A MAGMA grunt?! Beat it! This INSTITUTE is AQUA business!
+- `Route119_Text_DontGoNearWeatherInstitute`: Lookout duty is surprisingly boring. / …Huh? TEAM MAGMA? Don't you dare go near that INSTITUTE!
 
 ### Route119_WeatherInstitute_1F
 - `Route119_WeatherInstitute_1F_Text_Grunt1Intro`: A MAGMA grunt? Here? / The BOSS got interested in the research they have going here, so he sent us out. / You quit meddling!
@@ -1795,6 +1857,10 @@ Draconid Emerald round 1 follow-ups (feedback 1.32, 1.34, part of 1.25; D-234 �
 - `RusturfTunnel_Text_GruntTakePackage`: NERINE: Water doesn't need these parts. / Neither do I. Remember that. / Take them. And take the bird home.
 - `RusturfTunnel_Text_ThankYouLetsGoHomePeeko`: PEEKO owes her life to you! / Red uniform or not, you saved her. They call me MR. BRINEY. And, you are? / … … … … … … … … … … … … … … … … / Ah, so you are {PLAYER}{KUN}! I sincerely thank you! / Now, if there's anything that troubles you, don't hesitate to tell me! / You can usually find me in my cottage by the sea near PETALBURG WOODS. / Come, PEEKO, we should make our way home. / PEEKO: Pihyoh!
 
+### SeafloorCavern_Entrance
+- `SeafloorCavern_Entrance_Text_HearMagmaNearMossdeep`: Hey! I remember your face! / You're the MAGMA brat from the SPACE CENTER! / Your whole team couldn't steal one tank of fuel, and now you follow us down here? / A punk like you, do you really think you can take on TEAM AQUA? / I'd say you're too early by about a trillion years!
+- `SeafloorCavern_Entrance_Text_HearMagmaNearMossdeepShort`: A MAGMA punk like you, do you really think you can take on TEAM AQUA? / I'd say you're too early by about a trillion years! / Go back to your volcano! Your bunch sure doesn't look good near the sea!
+
 ### SeafloorCavern_Room9
 - `SeafloorCavern_Room9_Text_ArchieSoItWasYou`: ARCHIE: Fufufu… MAXIE's little red shadow. / So it was you, after all.
 
@@ -1814,6 +1880,10 @@ Draconid Emerald round 1 follow-ups (feedback 1.32, 1.34, part of 1.25; D-234 �
 - `SootopolisCity_Text_HaventYouScaledSkyPillar`: WALLACE: {PLAYER}{KUN}… / The SKY PILLAR's doors are sealed, and I won't open them. / Whatever called RAYQUAZA down, it wasn't me.
 - `SootopolisCity_Text_AquaMagmaDidntMeanHarm`: WALLACE: So you are {PLAYER}{KUN}. STEVEN told me about you. / I saw it all from across the water. A TEAM MAGMA grunt who threw the uniform away, right in front of MAXIE. / And then RAYQUAZA. The SKY PILLAR has been sealed for generations, yet something called it down. / The leaders of MAGMA and AQUA are over there. It wouldn't hurt to hear what they have to say for themselves.
 - `SootopolisCity_Text_ThankYouForHelpAcceptThis`: WALLACE: {PLAYER}{KUN}… My eyes didn't deceive me. / You stood between MAXIE and the storm, and you held on until the sky answered. / SOOTOPOLIS… No, all of HOENN was saved. / On behalf of the people, I thank you. / This is a gift from me. Please accept it.
+
+### VerdanturfTown_WandasHouse
+- `VerdanturfTown_WandasHouse_Text_StrongerSpeech`: WALLY: …{PLAYER}. / I lost to you in MAUVILLE. But I'm not giving up. / RALTS and I are going to challenge the POKéMON GYMS. / We'll get strong enough to stop you and the rest of TEAM MAGMA! / Next time we battle, I'll win.
+- `VerdanturfTown_WandasHouse_Text_StrongerSpeechShort`: WALLY: I'm training every day. / Next time we battle, I'll stop you. You'll see.
 
 ### VictoryRoad_1F
 - `VictoryRoad_1F_Text_WallyNotGoingToLoseAnymore`: WALLY: Hi! {PLAYER}! / I bet you're surprised to see me here! / Everyone is talking about SOOTOPOLIS. How you threw off the MAGMA uniform… / In MAUVILLE, I was scared of you. I'm sorry, {PLAYER}. / I should have trusted what I saw in PETALBURG, when you helped me catch my very first POKéMON. / I made it all the way here, and it's all thanks to you! / But I'm not going to lose anymore! / GALLADE and I are going to win! Okay… Here I come!

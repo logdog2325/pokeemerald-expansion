@@ -1051,3 +1051,38 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   mustn't know yet); Brendan's Space Center call quotes Steven's "strongest grunt" instead of "you let us win".
   – Alt: Steven guesses the truth at the Space Center (the earlier version). – The playtester: "I don't think anybody
   should know that you're undercover besides the Draconids and Birch and Oak."
+- **D-253 What the contradiction scrub fixes** (feedback 1.46; the list is [hack_contradictions.md](hack_contradictions.md)):
+  a leftover base-Emerald line is a contradiction when the game can still show it in the v2 flow and it disagrees with
+  the story (the player's family and home, Norman as the player's father, the rivals as neighbours, a friendly Wally
+  or an unsuspecting townsperson while the player wears the uniform, quiz answers about retold events). Those are
+  retexted in place with `retext.py` (the label, its flags and its script stay) or get a reputation branch. Lines the
+  v2 flow can no longer reach – the truck, Mom and Dad in the Littleroot houses, the rivals' "new neighbour"
+  scenes, the Oldale rival, Mom's and Norman's PokéNav calls, the vanilla scenes Acts 1–7 replaced – are listed as
+  unreachable and left as they are (two exceptions the story audit asked for, cheap and harmless: a guard that
+  keeps vanilla's MOM out of a whiteout at home, today never reached because the village's rest points have no
+  healer NPC; the Seafloor Cavern entrance grunt; both noted as unreachable); lines in files other agents own are
+  listed with a suggested fix. The post-game National Dex "upgrade" becomes Birch adding his new data (the Pokédex
+  is National from the lab, D-196), with MAY named (she is the one standing there). The vanilla rival call about a
+  "giant green POKéMON" after the Space Center is switched off (`ShouldDoRivalRayquazaCall`): its caller was picked
+  by the player's gender, it was friendly in the uniform era, and RAYQUAZA only rises at the Sootopolis turn.
+  – Alt: rewrite every dead text too (hundreds of lines nobody sees, and more merge conflicts with the act owners);
+  delete the dead scripts (vanilla labels other scripts still name).
+  – Fix what a player can meet, record the rest.
+- **D-254 Who replaces the player's family**: the clan raised the player (D-100), so vanilla's family lines name the
+  Draconids instead: "DAD's advice…" (an item used in the wrong place) becomes "The ELDER's words…"; a TV with nothing
+  on says "The ELDER / ASTER might like this program"; the Trend Watcher's trend-setter is "from DRACONID VILLAGE";
+  Mr. Stone hears that the player comes from the DRACONID clan. Where vanilla meant Norman ("your father", "our
+  LEADER's kid"), the line names NORMAN or the player's four badges. – Alt: neutral text ("Some advice…"); a Draconid
+  foster parent in the player's house. – The Elder is the figure who sent the player out, and Aster the closest thing
+  to a sibling.
+- **D-255 The uniform in leftover lines**: a line only reachable while the player wears red is retexted to see the
+  uniform (Cozmo's wife before Mt. Chimney, Wally in Wanda's house after Mauville, Wally's father at the Surf gift – in
+  the voices of D-236 and docs/hack_voices.md); a line reachable in more than one reputation state gets a branch (the
+  Petalburg Gym Guide, the only guide D-117 left out; PROF. COZMO, who asks for his METEORITE in his own words in the
+  uniform and says "So THAT's why you gave it back!" after the reveal; the Cutter, the Granite Cave hiker and the Rock
+  Smash Dude, whose uniform speech rejoins the vanilla gift, and Rydel, who adds one line; every gift and flag stays
+  vanilla's); lines meant for any state avoid the question (the Petalburg Gym trainers: "four BADGES", "No matter who
+  you happen to be"). Aqua lines that treat the player as a passer-by are retexted to see the red (the Route 119
+  lookouts, the Seafloor Cavern entrance grunt); Aqua's "meddler / kid" lines and the Magma grunts' rank-test-like
+  lines stay (D-103). – Alt: a reputation branch everywhere (more scripts for lines that can only show one way).
+  – The story audit's items 2, 8, 10, 12, 20 and 26 are handled by these rules.

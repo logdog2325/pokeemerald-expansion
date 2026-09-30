@@ -1,0 +1,281 @@
+# Base-Emerald contradictions (feedback 1.46, D-253 – D-255, docs/hack_contradictions.md): a few of the fixed
+# lines in the real ROM. Needs rustboro_done.ss (opening.play … rustboro.play in the same output directory).
+#   - a TV without a show: "The ELDER / ASTER might like this program." (screenshot only: the name is random);
+#   - an item used where it can't be: "The ELDER's words…" (the Wailmer Pail facing a TV);
+#   - Mr. Stone's PokéNav calls after the Strength HM and after NORMAN (no "NORMAN's child" / "your father");
+#   - the Petalburg Gym Guide in the uniform, after the badge, and after the reveal;
+#   - PROF. BIRCH's post-game data scene in the lab ("{PLAYER} and MAY", no National "upgrade").
+# expect_text can't check a text that starts with a placeholder ({PLAYER}), so the revealed Gym Guide line is a
+# screenshot only. (Whiting out at home was checked by hand: the village rest points have no healer NPC, so no
+# Gen 4 whiteout cutscene and no vanilla "MOM: Welcome home" – see docs/hack_contradictions.md.)
+
+# --- the uniform era (rustboro_done.ss) ---
+loadstate rustboro_done.ss
+setflag FLAG_DEBUG_NO_TRAINER_SEE
+setflag FLAG_DEBUG_NO_ENCOUNTER
+expect_var VAR_DRACONID_REPUTATION 1
+
+# a TV with nothing on, in May's house (the TV is at (6, 4))
+warp MAP_LITTLEROOT_TOWN_MAYS_HOUSE_1F 6 5
+run 60
+press UP 2 20
+press A 2 90
+run 120
+shot c12_tv
+mash A 900
+
+# the Wailmer Pail used on the TV: the key item pocket is empty before the Devon Goods
+giveitem ITEM_WAILMER_PAIL
+run 20
+bagcursor POCKET_KEY_ITEMS 0
+run 20
+press START 2 30
+press DOWN 2 10
+press DOWN 2 10
+press A 2 90
+press A 2 30
+press A 2 60
+run 30
+run 120
+shot c13_elders_words
+expect_text gText_DadsAdvice
+mash B 900
+
+# Mr. Stone's calls (he is first in the Match Call list; calls work outdoors): after the Strength HM, then after
+# NORMAN
+warp MAP_LITTLEROOT_TOWN 10 12
+run 60
+setflag FLAG_SYS_POKENAV_GET
+setflag FLAG_HAS_MATCH_CALL
+setflag FLAG_ADDED_MATCH_CALL_TO_POKENAV
+setflag FLAG_RECEIVED_HM_STRENGTH
+bagcursor POCKET_ITEMS 0
+run 20
+press START 2 40
+press DOWN 2 10
+press DOWN 2 10
+press DOWN 2 10
+press A 2 200
+press DOWN 2 20
+press DOWN 2 20
+press A 2 150
+press A 2 60
+press A 2 150
+press A 2 90
+run 120
+shot c14_mr_stone_strength
+expect_text MatchCall_Text_MrStone5
+mash B 900
+setflag FLAG_DEFEATED_PETALBURG_GYM
+bagcursor POCKET_ITEMS 0
+run 20
+press START 2 40
+press DOWN 2 10
+press DOWN 2 10
+press DOWN 2 10
+press A 2 200
+press DOWN 2 20
+press DOWN 2 20
+press A 2 150
+press A 2 60
+press A 2 150
+press A 2 90
+run 120
+shot c15_mr_stone_norman
+expect_text MatchCall_Text_MrStone6
+mash B 900
+clearflag FLAG_DEFEATED_PETALBURG_GYM
+
+# the Petalburg Gym Guide (shown from the fourth badge on, VAR_PETALBURG_GYM_STATE 6), standing at (3, 109)
+setvar VAR_PETALBURG_GYM_STATE 6
+clearflag FLAG_HIDE_PETALBURG_GYM_GREETER
+warp MAP_PETALBURG_CITY_GYM 3 110
+run 60
+press UP 2 20
+press A 2 90
+run 120
+shot c16_guide_uniform
+expect_text PetalburgCity_Gym_Text_DraconidRepGymGuideAdviceUniform
+mash A 900
+setflag FLAG_DEFEATED_PETALBURG_GYM
+press A 2 90
+run 120
+shot c17_guide_badge_uniform
+expect_text PetalburgCity_Gym_Text_DraconidRepGymGuidePostVictoryUniform
+mash A 900
+setvar VAR_DRACONID_REPUTATION 2
+press A 2 90
+run 120
+shot c18_guide_badge_revealed
+mash A 900
+
+# the HM and bike givers see the uniform (D-255): the Cutter, the Granite Cave hiker, the Rock Smash Dude, Rydel
+setvar VAR_DRACONID_REPUTATION 1
+clearflag FLAG_RECEIVED_HM_CUT
+warp MAP_RUSTBORO_CITY_CUTTERS_HOUSE 6 5
+run 60
+press RIGHT 2 20
+press A 2 250
+shot g01_cutter
+expect_text RustboroCity_CuttersHouse_Text_DraconidRepCutterUniform
+mash A 6000
+expect_flag FLAG_RECEIVED_HM_CUT 1
+clearflag FLAG_RECEIVED_HM_FLASH
+warp MAP_GRANITE_CAVE_1F 36 10
+run 60
+press UP 2 20
+press A 2 250
+shot g02_hiker
+expect_text GraniteCave_1F_Text_DraconidRepHikerUniform
+mash A 6000
+expect_flag FLAG_RECEIVED_HM_FLASH 1
+clearflag FLAG_RECEIVED_HM_ROCK_SMASH
+warp MAP_MAUVILLE_CITY_HOUSE1 3 4
+run 60
+press RIGHT 2 20
+press A 2 250
+shot g03_rock_smash
+expect_text MauvilleCity_House1_Text_DraconidRepRockSmashDudeUniform
+mash A 6000
+expect_flag FLAG_RECEIVED_HM_ROCK_SMASH 1
+clearflag FLAG_RECEIVED_BIKE
+clearflag FLAG_DECLINED_BIKE
+warp MAP_MAUVILLE_CITY_BIKE_SHOP 3 5
+run 60
+press LEFT 2 20
+press A 2 250
+press A 2 250
+press A 2 250
+shot g04_rydel
+expect_text MauvilleCity_BikeShop_Text_DraconidRepRydelUniform
+mash B 3000
+
+# PROF. BIRCH's post-game scene: Littleroot (the OnFrame) and then the lab; a screenshot per text box
+setvar VAR_DEX_UPGRADE_JOHTO_STARTER_STATE 1
+warp MAP_LITTLEROOT_TOWN 8 11
+run 200
+run 100
+shot c20_birch
+press A 2 20
+run 100
+shot c21_birch
+press A 2 20
+run 100
+shot c22_birch
+press A 2 20
+run 100
+shot c23_birch
+press A 2 20
+run 100
+shot c24_birch
+press A 2 20
+run 100
+shot c25_birch
+press A 2 20
+run 100
+shot c26_birch
+press A 2 20
+run 100
+shot c27_birch
+press A 2 20
+run 100
+shot c28_birch
+press A 2 20
+run 100
+shot c29_birch
+press A 2 20
+run 100
+shot c30_birch
+press A 2 20
+run 100
+shot c31_birch
+press A 2 20
+run 100
+shot c32_birch
+press A 2 20
+run 100
+shot c33_birch
+press A 2 20
+run 100
+shot c34_birch
+press A 2 20
+run 100
+shot c35_birch
+press A 2 20
+run 100
+shot c36_birch
+press A 2 20
+run 100
+shot c37_birch
+press A 2 20
+run 100
+shot c38_birch
+press A 2 20
+run 100
+shot c39_birch
+press A 2 20
+run 100
+shot c40_birch
+press A 2 20
+run 100
+shot c41_birch
+press A 2 20
+run 100
+shot c42_birch
+press A 2 20
+run 100
+shot c43_birch
+press A 2 20
+run 100
+shot c44_birch
+press A 2 20
+run 100
+shot c45_birch
+press A 2 20
+run 100
+shot c46_birch
+press A 2 20
+run 100
+shot c47_birch
+press A 2 20
+run 100
+shot c48_birch
+press A 2 20
+run 100
+shot c49_birch
+press A 2 20
+run 100
+shot c50_birch
+press A 2 20
+run 100
+shot c51_birch
+press A 2 20
+run 100
+shot c52_birch
+press A 2 20
+run 100
+shot c53_birch
+press A 2 20
+run 100
+shot c54_birch
+press A 2 20
+run 100
+shot c55_birch
+press A 2 20
+run 100
+shot c56_birch
+press A 2 20
+run 100
+shot c57_birch
+press A 2 20
+run 100
+shot c58_birch
+press A 2 20
+run 100
+shot c59_birch
+press A 2 20
+mash A 12000
+expect_var VAR_DEX_UPGRADE_JOHTO_STARTER_STATE 2
+expect_text LittlerootTown_ProfessorBirchsLab_Text_GrassyPatchWaiting2
+clearflag FLAG_DEBUG_NO_ENCOUNTER
+clearflag FLAG_DEBUG_NO_TRAINER_SEE

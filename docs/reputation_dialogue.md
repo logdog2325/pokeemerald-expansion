@@ -24,7 +24,8 @@ Not reachable in normal play, so no new line (vanilla is used): a Gym Leader's i
 reveal for Roxanne, Brawly, Wattson, Flannery and Tate & Liza (their badges come before the turn;
 Winona is the one who can be left for later), anything in uniform at the Sootopolis Gym (locked
 until the crisis is over) and in Ever Grande City (Waterfall comes from Juan), and Mr. Briney on the
-S.S. Tidal in uniform (post-game). Petalburg Gym (Norman, his Gym Guide) is left to the story rework.
+S.S. Tidal in uniform (post-game). Norman in the Petalburg Gym is the story's (act4.pory); his Gym Guide got
+its lines in the contradiction scrub (D-255, [hack_contradictions.md](hack_contradictions.md)), as did PROF. COZMO.
 
 ## Shared NPCs (every town)
 
@@ -64,6 +65,7 @@ S.S. Tidal in uniform (post-game). Petalburg Gym (Norman, his Gym Guide) is left
 | PetalburgCity_House1 | Old traveler at (4, 4) | `PetalburgCity_House1_EventScript_DraconidRepMan` | "Traveling is wonderful!" | Traveling is wonderful… / But in that uniform? Wherever you go, people must be afraid of you. | Traveling is wonderful! / And now, wherever you go, people will greet you with a smile! |
 | PetalburgCity_PokemonCenter_1F | Youngster in the Pokémon Center at (9, 6) – turns away | `PetalburgCity_PokemonCenter_1F_EventScript_DraconidRepYoungster` | "My POKéMON ate an ORAN BERRY." | …My ORAN BERRIES are for my POKéMON. / You're not taking them for TEAM MAGMA. | Hey! You're the one who saved HOENN! / If I had any ORAN BERRIES left, I'd give them all to you! |
 | PetalburgCity_WallysHouse | Wally's dad at (3, 4) | `PetalburgCity_WallysHouse_EventScript_DraconidRepWallysDad` | thanks for helping WALLY → "WALLY's coming home soon" → the Ever Grande joke | **Before Surf:** You're {PLAYER}, who helped WALLY catch his POKéMON… / …in a TEAM MAGMA uniform? / WALLY talks about you all the time. I don't know what to tell him now.<br>**After Surf:** WALLY's coming home soon. / When he does, I hope he can still call you a friend. I'd like to, too. | {PLAYER}! We heard what you did in SOOTOPOLIS. / WALLY always said you were good. He was right, and I was wrong to doubt you.<br>**After WALLY at VICTORY ROAD:** vanilla |
+| PetalburgCity_Gym | Gym Guide (D-255) | `PetalburgCity_Gym_EventScript_DraconidRepGymGuide` | room advice / congratulations | **Advice:** Hey, how's it… Whoa. TEAM MAGMA? / I still have to give you advice. That's the job. / The doors open when you beat the TRAINERS in each room. / Left is the SPEED ROOM. Right is the ACCURACY ROOM. / NORMAN won't go easy on that uniform. …Go on.<br>**After the badge:** Whoa! You beat NORMAN! / In that uniform… I don't even know if I should cheer. | **Advice:** vanilla (not reachable)<br>**After the badge:** {PLAYER}! You beat NORMAN, and then you stood up to MAXIE himself! / Like, whoa! What a stunning turn of events! |
 | PetalburgCity_WallysHouse | Wally's mom at (7, 5) | `PetalburgCity_WallysHouse_EventScript_DraconidRepWallysMom` | WALLY smiled again → WALLY left VERDANTURF without telling anyone | **Before Surf:** WALLY was so happy when he caught his POKéMON… / Oh, dear. Is that a TEAM MAGMA uniform? / WALLY looks up to you so much. Please don't let him down.<br>**After Surf:** Keep this a secret from my husband… / WALLY left VERDANTURF TOWN without telling anyone. / If you see him, please… don't drag him into anything dangerous. | {PLAYER}! WALLY told us everything. / We should have trusted you, the way he always did. / Thank you for looking out for him. |
 
 ## Rustboro City
@@ -130,6 +132,7 @@ S.S. Tidal in uniform (post-game). Petalburg Gym (Norman, his Gym Guide) is left
 | FallarborTown | Old man at (11, 9) – turns away | `FallarborTown_EventScript_DraconidRepExpertM` | shady characters at COZMO's home → meteors | You! I've seen your kind around PROF. COZMO's home! / What does TEAM MAGMA want with him? …Hmph! I'm watching you. | I shouted at you about PROF. COZMO… / But you were working against TEAM MAGMA all along. I'm sorry. |
 | FallarborTown | Gentleman at (11, 15) | `FallarborTown_EventScript_DraconidRepGentleman` | FLANNERY's grandfather was one of the ELITE FOUR | The ash that falls on FALLARBOR comes from MT. CHIMNEY. / And I hear TEAM MAGMA has been meddling with it. …Shameful. | FLANNERY's grandfather was one of the ELITE FOUR. / But you… You might be greater than any of them! |
 | FallarborTown_PokemonCenter_1F | Old man in the Pokémon Center at (2, 3) | `FallarborTown_PokemonCenter_1F_EventScript_DraconidRepExpertM` | hardy trees that grow in volcanic ash | We plant trees that grow even in volcanic ash. / TEAM MAGMA plants nothing. It only burns. | We plant trees that grow even in volcanic ash. / I'll plant one for you, {PLAYER}. So FALLARBOR remembers. |
+| FallarborTown_CozmosHouse | PROF. COZMO, when the player brings the METEORITE (D-255; the vanilla TM trade follows) | `FallarborTown_CozmosHouse_EventScript_DraconidRepNoticeMeteoriteUniform`, `…_DraconidRepCozmoRevealed` | "Is it the METEORITE that TEAM MAGMA took?" | PROF. COZMO: Y-you! You're the one from the falls! / …Wait. Is that my METEORITE? You're giving it back? / I… I won't tell a soul where it came from. / May I have it? I'll trade you this TM for it. | **After the gift:** PROF. COZMO: So THAT's why you gave it back! / This METEORITE is really going to help my research. Thank you, {PLAYER}! |
 
 ## Lavaridge Town
 
@@ -211,13 +214,25 @@ S.S. Tidal in uniform (post-game). Petalburg Gym (Norman, his Gym Guide) is left
 | SlateportCity_SternsShipyard_1F | MR. BRINEY at Stern's Shipyard, from the Mind Badge until the Hall of Fame | `SlateportCity_SternsShipyard_1F_EventScript_DraconidRepBriney` | he's helping DOCK build a ferry | MR. BRINEY: Ah, {PLAYER}! It's been too long! / Hm? That red getup… So you've taken up with TEAM MAGMA. / Well, PEEKO doesn't mind it, so neither will I. / I'm helping DOCK build a ferry, aye! Mind you don't sink it. | MR. BRINEY: Ah, {PLAYER}! The whole port is talking about you! / I knew there was a good heart under that red getup, aye! / DOCK and I are still building our ferry. You'll be our first passenger! |
 | SSTidalCorridor | MR. BRINEY on the S.S. TIDAL, post-game, so only REVEALED | `SSTidalCorridor_EventScript_DraconidRepBriney` | they made him honorary captain | vanilla (not reachable) | MR. BRINEY: Welcome aboard, {PLAYER}! / They made me honorary captain of the S.S. TIDAL! / And the hero of SOOTOPOLIS is sailing with me! / This old sea dog couldn't be prouder, aye! |
 
+## HM and bike givers (contradiction scrub, D-255)
+
+Their scripts are in `data/scripts/draconid/contradictions.pory`; in the uniform the HM givers say their own speech
+and rejoin the vanilla gift, Rydel adds one line. Pre-uniform and revealed: vanilla.
+
+| Map | NPC | Script | Uniform |
+|---|---|---|---|
+| RustboroCity_CuttersHouse | the Cutter (HM Cut) | `RustboroCity_CuttersHouse_EventScript_DraconidRepCutterUniform` | Hm? That red getup… TEAM MAGMA, eh? / No, don't say a word. That determined expression… / A skilled TRAINER is a skilled TRAINER. / I'm sure that you can put this HIDDEN MACHINE to good use. Go on, take it! |
+| GraniteCave_1F | the hiker (HM Flash) | `GraniteCave_1F_EventScript_DraconidRepHikerUniform` | Hey, you. Whoa… TEAM MAGMA? / Well, it gets awfully dark ahead. Even a MAGMA kid can get lost in there. / For us HIKERS, helping out those that we meet is our motto. Whoever they are. / Here you go, I'll pass this on to you. |
+| MauvilleCity_House1 | the Rock Smash Dude (HM Rock Smash) | `MauvilleCity_House1_EventScript_DraconidRepRockSmashDudeUniform` | Woohoo! / I'm the ROCK SMASH DUDE! Don't call me the ROCK SMASH GUY. / TEAM MAGMA, huh? Rocks don't care what you wear! / Your POKéMON look pretty strong. I like that! / Here, take this HIDDEN MACHINE! |
+| MauvilleCity_BikeShop | Rydel (the bikes), after his greeting | `MauvilleCity_BikeShop_EventScript_DraconidRepRydelUniform` | RYDEL: …Hm? That red uniform. TEAM MAGMA, is it? / Well! A BIKE doesn't ask who's riding it! |
+
 ## Count
 
 | Town / area | Townsfolk | Wally's family | Gym (Guide + Leader) |
 |---|---|---|---|
 | Littleroot Town | 3 |  |  |
 | Oldale Town | 4 |  |  |
-| Petalburg City | 5 | 2 |  |
+| Petalburg City | 5 | 2 | Guide only (D-255) |
 | Rustboro City | 5 |  | yes |
 | Dewford Town | 4 |  | yes |
 | Slateport City | 5 |  |  |
