@@ -20,6 +20,11 @@ A .play script is a gbarun script plus:
   expect_gfx OBJ_EVENT_GFX_X   the player's current object graphics (outfit, gender, avatar state)
   expect_opponent TRAINER_X   the last trainer battle's opponent A (kept until the next battle is set
                           up; works when a mashed battle is lost, unlike expect_trainer)
+  expect_partner PARTNER_X    the last multi battle's partner (gPartnerTrainerId = TRAINER_PARTNER(PARTNER_X))
+  boost SLOT [VALUE]      set the player's party Pokemon at SLOT to level 100 with VALUE (default 999) HP and
+                          stats, for a flow test that must win (999) or quickly lose (1) a battle (the
+                          unencrypted party fields; a level-up or a stat recalculation undoes it)
+  until_var NAME VALUE MAX [KEYS]   run until a var equals VALUE, tapping KEYS (a cycle like B,R) meanwhile
   setflag NAME / clearflag NAME   change a flag in the save block (e.g. FLAG_DEBUG_NO_ENCOUNTER)
   setvar NAME VALUE       change a var in the save block
   mapid                   print the current map group/num (gSaveBlock1Ptr->location)
@@ -67,7 +72,8 @@ def probe(names):
     """Evaluate C constants (and SaveBlock1 offsets) with the project's own headers."""
     src = '#include "global.h"\n#include "constants/flags.h"\n#include "constants/vars.h"\n#include "constants/maps.h"\n'
     src += '#include "constants/items.h"\n#include "constants/opponents.h"\n#include "battle_setup.h"\n'
-    src += '#include "constants/event_objects.h"\n'
+    src += '#include "constants/event_objects.h"\n#include "constants/battle_partner.h"\n#include "constants/battle.h"\n'
+    src += '#include "pokemon.h"\n'
     src += "const u32 gProbe[] = {\n  offsetof(struct SaveBlock1, flags),\n  offsetof(struct SaveBlock1, vars),\n"
     src += "  offsetof(struct SaveBlock1, location),\n"
     src += "  offsetof(struct ObjectEvent, currentCoords),\n"
@@ -173,6 +179,8 @@ def plan_path(map_name, x0, y0, x1, y1):
 GFX_OFFSET = "offsetof(struct ObjectEvent, graphicsId)"
 OPPONENT_A_OFFSET = "offsetof(struct _TrainerBattleParameter, opponentA)"
 BAG_OFFSET, SLOT_SIZE, BAG_SIZE = "offsetof(struct SaveBlock1, bag)", "sizeof(struct ItemSlot)", "sizeof(struct Bag)"
+MON_SIZE, MON_FIELD = "sizeof(struct Pokemon)", "offsetof(struct Pokemon, %s)"
+MON_STATS = ("level", "hp", "maxHP", "attack", "defense", "speed", "spAttack", "spDefense")
 
 LEDGE_JUMP = {"DOWN": "MB_JUMP_SOUTH", "UP": "MB_JUMP_NORTH", "LEFT": "MB_JUMP_WEST", "RIGHT": "MB_JUMP_EAST"}
 
@@ -194,9 +202,10 @@ def main():
             defines.setdefault(t[1], t[2])
     defines.update(dict(d.split("=", 1) for d in args.defines))
     lines = [re.sub(r"\$\{(\w+)\}", lambda m: defines[m.group(1)], l) for l in lines if not l.startswith("default ")]
-    names = sorted({l.split()[1] for l in lines if l.split() and l.split()[0] in ("flag", "var", "expect_flag", "expect_var", "setflag", "clearflag", "setvar", "warp", "expect_trainer", "expect_item", "expect_opponent", "expect_gfx")})
+    names = sorted({l.split()[1] for l in lines if l.split() and l.split()[0] in ("flag", "var", "expect_flag", "expect_var", "setflag", "clearflag", "setvar", "warp", "expect_trainer", "expect_item", "expect_opponent", "expect_gfx", "expect_partner", "until_var")})
     names += [OPPONENT_A_OFFSET, GFX_OFFSET]
-    names += [BAG_OFFSET, SLOT_SIZE, BAG_SIZE, "TRAINER_FLAGS_START"]
+    names += [BAG_OFFSET, SLOT_SIZE, BAG_SIZE, "TRAINER_FLAGS_START", "MAX_TRAINERS_COUNT"]
+    names += [MON_SIZE, "B_TRAINER_PLAYER", "PARTY_SIZE"] + [MON_FIELD % f for f in MON_STATS]
     flags_off, vars_off, loc_off, coords_off, consts = probe(names)
     # the player is object event 0 (spawned first on every map load); MAP_OFFSET is 7
     player_x = syms["gObjectEvents"] + coords_off
@@ -251,6 +260,18 @@ def main():
             label = "opponent_%s#%d" % (t[1], len(expects))
             expects.append((label, consts[t[1]]))
             out.append("read %X 2 %s" % (syms["gTrainerBattleParameter"] + consts[OPPONENT_A_OFFSET], label))
+        elif t[0] == "expect_partner":
+            label = "partner_%s#%d" % (t[1], len(expects))
+            expects.append((label, consts["MAX_TRAINERS_COUNT"] + consts[t[1]]))
+            out.append("read %X 2 %s" % (syms["gPartnerTrainerId"], label))
+        elif t[0] == "boost":
+            mon = syms["gParties"] + (consts["B_TRAINER_PLAYER"] * consts["PARTY_SIZE"] + int(t[1])) * consts[MON_SIZE]
+            value = int(t[2]) if len(t) > 2 else 999
+            for f in MON_STATS:
+                addr, val = mon + consts[MON_FIELD % f], 100 if f == "level" else value
+                out.append("poke %X %X" % (addr, val & 0xFF))
+                if f != "level":
+                    out.append("poke %X %X" % (addr + 1, val >> 8))
         elif t[0] == "expect_gfx":
             label = "player_gfx_%s#%d" % (t[1], len(expects))
             expects.append((label, consts[t[1]]))
@@ -275,6 +296,10 @@ def main():
                 label = "%s#%d" % (t[1], len(expects))
                 expects.append((label, int(t[2], 0)))
             out.append("read %s+%X 2 %s" % (sb1, vars_off + (v - 0x4000) * 2, label))
+        elif t[0] == "until_var":
+            v = consts[t[1]]
+            keys = " %s 24" % t[4] if len(t) > 4 else ""
+            out.append("until %s+%X 2 %X %s%s" % (sb1, vars_off + (v - 0x4000) * 2, int(t[2], 0), t[3], keys))
         elif t[0] == "walk":
             # walk DIR COORD: hold DIR until the player's x (LEFT/RIGHT) or y (UP/DOWN) equals COORD
             addr = player_x if t[1] in ("LEFT", "RIGHT") else player_y
