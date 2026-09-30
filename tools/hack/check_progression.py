@@ -67,6 +67,7 @@ import pokemap  # noqa: E402
 TABLE = os.path.join(ROOT, "tools/hack/progression.json")
 
 UNK = "?"          # an unknown flag/var value in the simulator
+LOOP = object()    # a jump the simulator stops following (the label was visited too often in this scene)
 PENALTY = 1000     # cost of crossing an obstacle in the "what blocks it" search
 STEP_BUDGET = 60000  # commands per scene before the simulator gives up (loops)
 MAX_FORK_DEPTH = 40  # unknown branches followed on both sides, nested
@@ -79,7 +80,9 @@ SIDE_BUDGET = 3000   # the same for a script run only to see whether an object o
 HEADERS = ["global.h", "constants/flags.h", "constants/vars.h", "constants/opponents.h", "constants/draconid.h",
            "constants/metatile_labels.h", "constants/maps.h", "constants/layouts.h", "constants/event_objects.h",
            "constants/battle_partner.h", "constants/trainer_types.h", "constants/map_scripts.h",
-           "constants/outfits.h", "constants/weather.h", "constants/battle.h", "constants/field_specials.h"]
+           "constants/outfits.h", "constants/weather.h", "constants/battle.h", "constants/field_specials.h",
+           "constants/script_menu.h", "constants/items.h", "constants/species.h", "constants/moves.h",
+           "constants/heal_locations.h", "constants/pokemon.h", "constants/trainers.h", "constants/battle_frontier.h"]
 FALLBACK = {"TRUE": 1, "FALSE": 0, "YES": 1, "NO": 0, "MALE": 0, "FEMALE": 1, "NULL": 0}
 
 
@@ -88,19 +91,41 @@ class Constants:
         self.raw = {}
         self.cache = dict(FALLBACK)
         src = "".join('#include "%s"\n' % h for h in HEADERS)
+        cmd = ["arm-none-eabi-gcc", "-E", "-mthumb", "-mabi=apcs-gnu", "-std=gnu17", "-DMODERN=1", "-DTESTING=0",
+               "-iquote", os.path.join(ROOT, "include")]
         try:
             with tempfile.TemporaryDirectory() as td:
                 c = os.path.join(td, "consts.c")
                 open(c, "w").write(src)
-                out = subprocess.run(["arm-none-eabi-gcc", "-E", "-dM", "-mthumb", "-mabi=apcs-gnu", "-std=gnu17",
-                                      "-DMODERN=1", "-DTESTING=0", "-iquote", os.path.join(ROOT, "include"), c],
-                                     capture_output=True, text=True, check=True).stdout
+                out = subprocess.run(cmd[:2] + ["-dM"] + cmd[2:] + [c], capture_output=True, text=True, check=True).stdout
+                code = subprocess.run(cmd + [c], capture_output=True, text=True, check=True).stdout
         except (OSError, subprocess.CalledProcessError) as e:
             sys.exit("check_progression: the C preprocessor failed (%s); run tools/hack/install_tools.sh" % e)
         for line in out.splitlines():
             m = re.match(r"#define (\w+) (.*)$", line)
             if m:
                 self.raw[m.group(1)] = m.group(2).strip()
+        self._enums(code)
+
+    def _enums(self, code):
+        """enum constants (SS_TIDAL_*, DIR_*, …): the scripts use them like #defines"""
+        code = re.sub(r"^#.*$", "", code, flags=re.M)
+        for body in re.findall(r"\benum\b[^{};]*\{([^{}]*)\}", code):
+            nxt = 0
+            for item in body.split(","):
+                item = item.strip()
+                if not item:
+                    continue
+                name, _, expr = item.partition("=")
+                name = name.strip()
+                if not re.fullmatch(r"[A-Za-z_]\w*", name):
+                    nxt = None
+                    continue
+                v = self.value(expr.strip()) if expr.strip() else nxt
+                if v is not None and name not in self.raw:
+                    self.raw[name] = str(v)
+                    self.cache.pop(name, None)
+                nxt = v + 1 if v is not None else None
 
     def value(self, token, depth=0):
         """int value of a constant expression, or None"""
@@ -358,13 +383,19 @@ class State:
     """flags (key -> True/False/UNK), vars (key -> int/UNK), bag (item -> count or UNK); missing = 0"""
     DEFAULTS = (("flags", False), ("vars", 0), ("items", 0))
 
-    def __init__(self, flags=None, vars=None, items=None):
+    def __init__(self, flags=None, vars=None, items=None, cut=False):
         self.flags = flags or Layer()
         self.vars = vars or Layer()
         self.items = items or Layer()
+        self.cut = cut  # the path was cut short (a loop the simulator stopped following): the other branch wins
 
     def copy(self):
-        return State(self.flags.copy(), self.vars.copy(), self.items.copy())
+        return State(self.flags.copy(), self.vars.copy(), self.items.copy(), self.cut)
+
+    def key(self):
+        """hashable: equal keys, equal states (within one scene run, where the layers share their bases)"""
+        return tuple((id(l.base), frozenset((k, v if v is not _GONE else "_GONE") for k, v in l.diff.items()))
+                     for l in (self.flags, self.vars, self.items))
 
     def flattened(self):
         return State(self.flags.flat(), self.vars.flat(), self.items.flat())
@@ -382,7 +413,9 @@ class State:
     @staticmethod
     def merge(pre, a, b):
         """both branches of an unknown condition: equal values stay, a value written on one side only is kept,
-        values the branches disagree on become unknown"""
+        values the branches disagree on become unknown. A branch cut short in a loop gives way to the other one."""
+        if a.cut != b.cut:
+            return b if a.cut else a
         out = []
         for attr, default in State.DEFAULTS:
             lp, la, lb = getattr(pre, attr), getattr(a, attr), getattr(b, attr)
@@ -394,7 +427,9 @@ class State:
                 res = Layer()
             for k in keys:
                 va, vb, vp = la.get(k, default), lb.get(k, default), lp.get(k, default)
-                if va == vb:
+                if k == PLAYER_XY and va != vb:
+                    res.diff[k] = UNK  # the player walked differently on the two sides: where to is unknown
+                elif va == vb:
                     res.diff[k] = va
                 elif va == vp:
                     res.diff[k] = vb
@@ -403,7 +438,7 @@ class State:
                 else:
                     res.diff[k] = UNK
             out.append(res)
-        return State(*out)
+        return State(*out, cut=a.cut and b.cut)
 
 
 class Ctx:
@@ -421,6 +456,8 @@ class Ctx:
         self.guesses = []               # (label, condition)
         self.steps = 0
         self.visits = {}
+        self.seen = set()               # (pc, call stack, state) at labels: a path that gets there again repeats
+        self.added = set()              # objects an addobject shows although their flag is set (the map's own)
         self.metatiles = {}             # (x, y) -> (metatile, impassable)
         self.layout = None
         self.objxy = {}                 # object index -> (x, y)
@@ -438,6 +475,9 @@ RESULT_UNKNOWN_OPS = {"yesnobox", "multichoice", "multichoicedefault", "multicho
                       "getpartysize", "checkmoney", "checkpartymove", "givemon", "giveegg", "checkcoins",
                       "getplayerxy", "checkpokerus", "checkobjectat", "choosecontestmon", "getpricereduction",
                       "checkfieldmove", "checkmonmodernfatefulencounter"}
+MULTI_BATTLE_OPS = {"multi_2_vs_2", "multi_2_vs_1", "multi_fixed_2_vs_2", "multi_fixed_2_vs_1", "multi_wild",
+                    "multi_fixed_wild"}
+RESULT_SPECIAL = re.compile(r"^(ScriptMenu_|Get|Check|Choose|Is|Has|Should|Count|Try|Are|Does|Can)")
 WARP_OPS = {"warp", "warpsilent", "warpdoor", "warphole", "warpteleport", "warpspinenter", "warpmossdeepgym",
             "warpwhitefade", "teleport", "warpsootopolislegend"}
 # specials that set up a warp in C (src/field_specials.c), by VAR_0x8004
@@ -445,6 +485,23 @@ SPECIAL_WARPS = {
     "CableCarWarp": lambda going_down: ("MAP_ROUTE112_CABLE_CAR_STATION", 6, 4) if going_down not in (0, UNK)
                     else ("MAP_MT_CHIMNEY_CABLE_CAR_STATION", 6, 4),
 }
+# specials / callnatives after which C code sends the player to a heal location: the Hall of Fame screens and the
+# finale's credits end in the village bedroom (CB2_ReturnHomeDraconid, src/overworld.c)
+NATIVE_HEAL_WARPS = {
+    "GameClear": "HEAL_LOCATION_DRACONID_VILLAGE_PLAYERS_HOUSE_2F",
+    "Draconid_StartCredits": "HEAL_LOCATION_DRACONID_VILLAGE_PLAYERS_HOUSE_2F",
+}
+# flags C code sets in a special (src/post_battle_event_funcs.c: GameClear)
+NATIVE_FLAGS = {
+    "GameClear": ["FLAG_SYS_GAME_CLEAR"],
+}
+PLAYER_IDS = ("LOCALID_PLAYER", "OBJ_EVENT_ID_PLAYER", "255")
+PLAYER_XY = "PLAYER_XY"  # a pseudo var: where scripted movement leaves the player, (x, y) on the scene's map
+# scripted movement commands that move the player one tile (two for jump_2_*), by direction
+MOVE_STEP = re.compile(r"^(?:walk|walk_slow|walk_slower|walk_slowest|walk_fast|walk_faster|walk_fastest|player_run|"
+                       r"slide|ride_water_current|jump|jump_2|acro_wheelie_hop|acro_end_wheelie_move|"
+                       r"acro_wheelie_move|walk_slow_stairs|walk_stairs)_(up|down|left|right)$")
+MOVE_DIR = {"up": (0, -1), "down": (0, 1), "left": (-1, 0), "right": (1, 0)}
 COND = {"lt": lambda a, b: a < b, "eq": lambda a, b: a == b, "gt": lambda a, b: a > b,
         "le": lambda a, b: a <= b, "ge": lambda a, b: a >= b, "ne": lambda a, b: a != b}
 
@@ -459,6 +516,8 @@ class Sim:
         self.var_lo = consts.value("VARS_START") or 0x4000
         self.special_lo = consts.value("SPECIAL_VARS_START") or 0x8000
         self.result_key = self.vkey(VAR_RESULT)
+        self.label_pcs = set(scripts.labels.values())
+        self.assume = {}  # specialvar function -> the value the story table assumes ("assume")
 
     # --- keys and values -------------------------------------------------
     def fkey(self, name):
@@ -500,6 +559,22 @@ class Sim:
             return md, None
         return md, next((o for o in md.objects if o["index"] == n), None)
 
+    def movement_delta(self, label):
+        """(dx, dy) a movement script moves its object by, or None if it can't be told (not a label, no step_end)"""
+        i = self.s.labels.get(label)
+        if i is None:
+            return None
+        dx = dy = 0
+        for op, _, _, _ in self.s.cmds[i:i + 200]:
+            if op == "step_end":
+                return dx, dy
+            m = MOVE_STEP.match(op)
+            if m:
+                n = 2 if op.startswith("jump_2_") else 1
+                ddx, ddy = MOVE_DIR[m.group(1)]
+                dx, dy = dx + n * ddx, dy + n * ddy
+        return None
+
     def trainer_flag(self, trainer):
         t = self.c.value(trainer)
         return self.trainer_flags + t if t is not None and self.trainer_flags is not None else "TFLAG_" + trainer
@@ -509,6 +584,7 @@ class Sim:
         if label not in self.s.labels:
             ctx.guesses.append((label, "label not found"))
             return st
+        st.vars[self.vkey("VAR_FACING")] = UNK  # the way the player faces when the script starts
         return self._exec(self.s.labels[label], st, ctx, ())
 
     def _cond(self, op, args, st, cmp_state):
@@ -541,24 +617,36 @@ class Sim:
         n = len(self.s.cmds)
         while pc < n:
             ctx.steps += 1
+            if pc in self.label_pcs:
+                # the same place with the same state again: this path only repeats (a menu asked again, a loop)
+                k = (pc, stack, st.key())
+                if k in ctx.seen:
+                    st.cut = True
+                    return st
+                ctx.seen.add(k)
             if ctx.steps > ctx.budget:
                 ctx.guesses.append((self.s.label_at[pc], "step budget exceeded (a loop?)"))
+                st.cut = True
                 return st
             op, args, _, _ = self.s.cmds[pc]
             if op == "end":
                 return st
             if op == "return":
-                if stack:
+                if stack and isinstance(stack[-1], int):
                     pc, stack = stack[-1], stack[:-1]
                     continue
-                return st
+                return st  # the end of the script, or of a call run on its own (a branch, see _branch)
             if op == "goto":
                 pc = self._jump(args[0], pc, ctx)
-                if pc is None:
+                if pc is None or pc is LOOP:
+                    st.cut = pc is LOOP
                     return st
                 continue
             if op == "call":
                 t = self._jump(args[0], pc, ctx)
+                if t is LOOP:
+                    st.cut = True
+                    return st
                 if t is None:
                     pc += 1
                     continue
@@ -569,8 +657,8 @@ class Sim:
                 cmp_state = (self.val(args[0], st), self.val(args[1], st))
                 pc += 1
                 continue
-            if op == "checkflag":
-                v = st.flag(self.fkey(args[0]))
+            if op in ("checkflag", "checktrainerflag"):  # Poryscript: flag() / defeated() -> check… + goto_if 0/1
+                v = st.flag(self.fkey(args[0]) if op == "checkflag" else self.trainer_flag(args[0]))
                 cmp_state = (UNK if v == UNK else int(v), 1)
                 pc += 1
                 continue
@@ -594,7 +682,8 @@ class Sim:
                 res = self._branch(op[:4], cond, target, pc, st, ctx, stack, "%s %s" % (op, ", ".join(args)))
             elif op.startswith("trainerbattle"):
                 res = self._trainerbattle(op, args, pc, st, ctx)
-                if res is None:
+                if res is None or res is LOOP:
+                    st.cut = res is LOOP
                     return st
             elif op in WARP_OPS:
                 ctx.warps.append(self._warp_dest(op, args))
@@ -610,6 +699,9 @@ class Sim:
                 return res
             if isinstance(res, tuple):
                 t = self._jump(res[1], pc, ctx)
+                if t is LOOP:
+                    st.cut = True
+                    return st
                 if t is None:
                     pc += 1
                     continue
@@ -626,14 +718,16 @@ class Sim:
             return None
         ctx.visits[t] = ctx.visits.get(t, 0) + 1
         if ctx.visits[t] > 12:
-            return None
+            return LOOP
         return t
 
     def _branch(self, kind, cond, target, pc, st, ctx, stack, what):
         if cond is True:
             if kind == "goto":
                 t = self._jump(target, pc, ctx)
-                return t if t is not None else st
+                if t is LOOP:
+                    st.cut = True
+                return t if t is not None and t is not LOOP else st
             return ("call", target)
         if cond is False:
             return pc + 1
@@ -656,7 +750,7 @@ class Sim:
                 b = self._exec(pc + 1, st.copy(), ctx, stack)
                 return State.merge(pre, a, b)
             # call: run the called script on its own (up to its return), merge, go on once
-            a = self._exec(t, st.copy(), ctx, ())
+            a = self._exec(t, st.copy(), ctx, (("call", pc),))
         finally:
             ctx.depth -= 1
             ctx.choice -= choice
@@ -735,7 +829,20 @@ class Sim:
         elif op == "checkplayergender":
             st.vars[self.result_key] = self.gender
         elif op == "specialvar" and args:
-            st.vars[self.vkey(args[0])] = UNK
+            v = self.assume.get(args[1]) if len(args) > 1 else None
+            st.vars[self.vkey(args[0])] = UNK if v is None else self.c.value(v)
+        elif op in ("special", "callnative") and args and RESULT_SPECIAL.match(args[0]):
+            st.vars[self.result_key] = UNK  # a menu or a check written in C answers in VAR_RESULT
+        elif op in MULTI_BATTLE_OPS:
+            # the multi battle macros (asm/macros/battle_frontier/battle_tower.inc) continue after the battle
+            for t in args:
+                if t.startswith("TRAINER_") and t != "TRAINER_NONE":
+                    st.flags[self.trainer_flag(t)] = True
+                    ctx.battles.append(t)
+        elif op == "getplayerxy" and len(args) >= 2:
+            xy = st.vars.get(PLAYER_XY, UNK)
+            st.vars[self.vkey(args[0])] = xy[0] if isinstance(xy, tuple) else UNK
+            st.vars[self.vkey(args[1])] = xy[1] if isinstance(xy, tuple) else UNK
         elif op == "msgbox" and len(args) > 1 and args[1] == "MSGBOX_YESNO":
             st.vars[self.result_key] = UNK
         elif op in RESULT_UNKNOWN_OPS:
@@ -744,6 +851,8 @@ class Sim:
             md, obj = self.object_of(args[0], st, ctx, args[1] if len(args) > 1 else None)
             if op == "removeobject" and obj is not None and obj.get("flag") not in (None, "0", 0):
                 st.flags[self.fkey(obj["flag"])] = True
+            if op == "addobject" and obj is not None and md is not None and md.id == ctx.map:
+                ctx.added.add(obj["index"])
         elif op == "setmetatile" and len(args) >= 4:
             x, y, mt = c.value(args[0]), c.value(args[1]), c.value(args[2])
             imp = c.value(args[3]) == 1
@@ -759,13 +868,24 @@ class Sim:
             ctx.divewarp = (args[0], c.value(args[1]), c.value(args[2]))
         elif op == "setholewarp" and args:
             ctx.holewarp = args[0]
-        elif op == "applymovement" and args and args[0] in ("LOCALID_PLAYER", "OBJ_EVENT_ID_PLAYER", "255"):
+        elif op == "applymovement" and args and args[0] in PLAYER_IDS:
             ctx.moves_player = True
+            xy = st.vars.get(PLAYER_XY, UNK)
+            if isinstance(xy, tuple) and len(args) > 1:
+                d = self.movement_delta(args[1])
+                st.vars[PLAYER_XY] = (xy[0] + d[0], xy[1] + d[1]) if d is not None else UNK
             return
         elif op == "special" and args and args[0] in SPECIAL_WARPS:
             dest = SPECIAL_WARPS[args[0]](st.var(self.vkey("VAR_0x8004")))
             ctx.warps.append(("special " + args[0],) + dest + (None,))
             ctx.warp_depths.append(ctx.choice)
+        elif op in ("special", "callnative") and args and (args[0] in NATIVE_FLAGS or args[0] in NATIVE_HEAL_WARPS):
+            for f in NATIVE_FLAGS.get(args[0], ()):
+                st.flags[self.fkey(f)] = True
+            h = next((h for h in self.w.heal if h["id"] == NATIVE_HEAL_WARPS.get(args[0])), None)
+            if h:
+                ctx.warps.append(("%s %s" % (op, args[0]), h["map"], h["x"], h["y"], None))
+                ctx.warp_depths.append(ctx.choice)
         else:
             return
         ctx.ops.append((op, args))
@@ -793,6 +913,16 @@ def map_scripts(scripts, md):
     return out, frame
 
 
+def warp_into_table(scripts, headers):
+    """the ON_WARP_INTO_MAP table [(var, value, label)]: the first entry due runs when the player warps in"""
+    out = []
+    t = scripts.labels.get(headers.get("MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE", ""))
+    while t is not None and t < len(scripts.cmds) and scripts.cmds[t][0] == "map_script_2":
+        out.append(tuple(scripts.cmds[t][1][:3]))
+        t += 1
+    return out
+
+
 class MapView:
     def __init__(self, chk, md, state, persist=False):
         sim, c = chk.sim, chk.c
@@ -807,6 +937,12 @@ class MapView:
         self.load_labels = [headers[t] for t in MAP_SCRIPT_TYPES if t in headers]
         for label in self.load_labels:
             st = sim.run(label, st, ctx)
+        # warping in: the first ON_WARP_INTO_MAP entry due (it may add objects whose hide flag is set)
+        for var, value, label in warp_into_table(chk.scripts, headers):
+            have, want = st.var(sim.vkey(var)), c.value(value)
+            if have == UNK or have == want:
+                st = sim.run(label, st, ctx)
+                break
         self.state = st
         self.guesses = ctx.guesses
         self.layout_id = ctx.layout or md.layout_id
@@ -835,7 +971,7 @@ class MapView:
             if flag not in (None, "0", 0, ""):
                 v = st.flag(sim.fkey(flag))
                 unknown = v == UNK
-                shown = v is not True
+                shown = v is not True or o["index"] in ctx.added
             if not shown:
                 continue
             x, y = ctx.objxy.get(o["index"], (o["x"], o["y"]))
@@ -1448,6 +1584,8 @@ class Checker:
                 continue
             if e2.startswith("ITEM_"):
                 ok = st.has(e2) is True
+            elif e2.startswith("TRAINER_"):
+                ok = st.flag(self.sim.trainer_flag(e2)) is True
             else:
                 ok = st.flag(self.sim.fkey(e2)) is True
             if ok == neg:
@@ -1485,11 +1623,13 @@ class LegResult:
         self.have = None
         self.warps = []
         self.detours = []       # the walk only works after an off-path scene the table doesn't list
+        self.skipped = False    # not checked this run (--leg)
         self.route = []         # the maps the walk crosses, for printing
 
 
 def run_story(chk, table, only=None, verbose=False, state_at=None):
     legs = table["legs"]
+    chk.sim.assume = table.get("assume", {})
     st = chk.new_game_state()
     pos = parse_pos(table["start"])
     visited = {pos[0]}
@@ -1529,8 +1669,13 @@ def run_story(chk, table, only=None, verbose=False, state_at=None):
                 for p in chk.check_trigger(e, target, view):
                     res.problems.append("%s can't start: %s" % (e["label"], p))
             ob = target[3] if target and target[0] == "adjacent" else None
+            if target and target[0] == "tile" and pos[0] != target[1]:
+                pos = (target[1],) + sorted(target[2])[0]  # a coord trigger: the player stands on it
+            # where scripted movement leaves the player (a pseudo var the simulator moves with applymovement)
+            st.vars[PLAYER_XY] = (pos[1], pos[2]) if pos[0] == scene_map else UNK
             ctx = Ctx(scene_map, last_talked=ob["index"] if isinstance(ob, dict) and "index" in ob else 0)
             st = chk.sim.run(e["label"], st, ctx).flattened()
+            moved = st.vars.pop(PLAYER_XY, UNK)
             res.guesses += [(e["label"],) + g for g in ctx.guesses]
             for p in chk.check_expect(e.get("expect", []), st):
                 res.problems.append("%s: expected %s" % (e["label"], p))
@@ -1541,6 +1686,9 @@ def run_story(chk, table, only=None, verbose=False, state_at=None):
             if e.get("then"):
                 pos = parse_pos(e["then"])
                 entered_map = pos[0]
+                if ctx.warps and all(d == 0 for d in ctx.warp_depths) and pos[0] not in {w[1] for w in ctx.warps}:
+                    res.problems.append("%s: \"then\" says %s, but the scene only warps to %s" % (
+                        e["label"], chk.world.pretty(pos[0]), ", ".join(sorted({chk.world.pretty(w[1]) for w in ctx.warps}))))
             elif ctx.warps:
                 sure = [w for w, d in zip(ctx.warps, ctx.warp_depths) if d == 0]
                 if len({w[1] for w in ctx.warps}) > 1 or not sure:
@@ -1551,8 +1699,8 @@ def run_story(chk, table, only=None, verbose=False, state_at=None):
                 if wp:
                     pos = wp
                     entered_map = pos[0]
-            elif target and target[0] == "tile" and pos[0] != target[1]:
-                pos = (target[1],) + sorted(target[2])[0]
+            elif isinstance(moved, tuple) and pos[0] == scene_map:
+                pos = (scene_map,) + moved
             visited.add(pos[0])
         badges, hms = chk.have_summary(st)
         res.have = (badges, hms)
@@ -1565,22 +1713,14 @@ def run_story(chk, table, only=None, verbose=False, state_at=None):
                     ", ".join(sorted(want["hms"])) or "none", ", ".join(sorted(hms)) or "none"))
         if state_at and (leg.get("id") == state_at):
             return st, results
-        # 2. the walk to where the next scene starts
+        # 2. the walk to where the next scene starts (through the "via" waypoints first)
         to = leg.get("to")
         nxt = next((lg for lg in legs[i + 1:] if not lg.get("side")), None) if not leg.get("side") else None
         if to is None and nxt is not None and nxt.get("scenes"):
             target = chk.scene_target(norm_entry(nxt["scenes"][0]))
-        elif isinstance(to, str) and re.match(r"MAP_\w+ -?\d+ -?\d+$", to):
-            m, x, y = parse_pos(to)
-            target = ("tile", m, {(x, y)}, None)
-        elif isinstance(to, str) and to.startswith("MAP_"):
-            target = ("map", to, None, None)
-        elif isinstance(to, dict):
-            target = chk.scene_target(dict(to, label=to.get("label", "")))
-        elif isinstance(to, str):
-            target = chk.scene_target({"label": to})
         else:
-            target = None
+            target = parse_to(chk, to)
+        waypoints = [parse_to(chk, v) for v in leg.get("via", [])]
         res.start = pos
         if target is None or target[0] == "ambiguous":
             if nxt is not None or leg.get("side"):
@@ -1603,12 +1743,28 @@ def run_story(chk, table, only=None, verbose=False, state_at=None):
             res.start = pos
         res.target = target
         if only is None or leg.get("id") == only or (only.lower() in leg.get("name", "").lower()):
-            st = walk(chk, st, pos, target, visited, res, verbose).flattened()
+            here = pos
+            for k, wp in enumerate(waypoints + [target]):
+                sub = LegResult(leg)
+                st = walk(chk, st, here, wp, visited, sub, verbose).flattened()
+                add_walk(res, sub)
+                if not sub.end:
+                    break
+                here = sub.end
+                if wp[0] == "map" and (k < len(waypoints) or isinstance(to, str)):
+                    # a waypoint or a "to" that is a map: the player walks in, so its load scripts run for real
+                    st = MapView(chk, chk.world.maps[wp[1]], st, persist=True).state.flattened()
+            res.end = sub.end
+            if sub.target is not None:
+                res.target = sub.target  # an object's spot after its map's load scripts moved it
             new = res.end if res.end else target_pos(chk, target)
         else:
             res.skipped = True
             new = target_pos(chk, target)
             visited.add(new[0])
+            for k, wp in enumerate(waypoints + [target]):
+                if wp[0] == "map" and (k < len(waypoints) or isinstance(to, str)):
+                    st = MapView(chk, chk.world.maps[wp[1]], st, persist=True).state.flattened()
         if new[0] != pos[0] or len(res.path_maps) > 1:
             entered_map = new[0]
         pos = new
@@ -1617,6 +1773,32 @@ def run_story(chk, table, only=None, verbose=False, state_at=None):
         if leg.get("side"):
             st, pos, entered_map, visited = saved
     return st, results
+
+
+def parse_to(chk, spec):
+    """a walk target from the table: "MAP_X x y" (a tile), "MAP_X" (entering the map), a label, or a scene dict"""
+    if isinstance(spec, str) and re.match(r"MAP_\w+ -?\d+ -?\d+$", spec):
+        m, x, y = parse_pos(spec)
+        return ("tile", m, {(x, y)}, None)
+    if isinstance(spec, str) and spec.startswith("MAP_"):
+        return ("map", spec, None, None)
+    if isinstance(spec, dict):
+        return chk.scene_target(dict(spec, label=spec.get("label", "")))
+    if isinstance(spec, str):
+        return chk.scene_target({"label": spec})
+    return None
+
+
+def add_walk(res, sub):
+    """one stretch of a leg's walk (a "via" waypoint, then the target) into the leg's result"""
+    res.problems += sub.problems
+    res.blockers += sub.blockers
+    res.detours += sub.detours
+    res.notes += [n for n in sub.notes if n not in res.notes]
+    res.guesses += sub.guesses
+    res.steps += sub.steps
+    res.route += sub.route[1:] if res.route and sub.route and res.route[-1] == sub.route[0] else sub.route
+    res.path_maps += sub.path_maps
 
 
 def target_pos(chk, target):
