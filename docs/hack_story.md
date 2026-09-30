@@ -163,3 +163,6 @@ Petalburg Woods recruitment/outfit change, Maxie's first meeting at Meteor Falls
 
 ### Follow-up note 11 (round 1)
 - "Also when is your identify revealed to Maxie? That should be a big scene and he should hate you for lying to him and betraying him and there should be multiple battles with him and team magma grunts after"
+
+### Follow-up note 12 (round 1)
+- "Also Courtney and Tabitha should try to attack you after too maybe have them ambush you in victory road and hint that Archie and Maxie will have they'd vengeance against the draconids"
