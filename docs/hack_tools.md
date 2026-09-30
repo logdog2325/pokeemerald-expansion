@@ -141,6 +141,10 @@ python3 tools/hack/emu/play.py test.play -o /tmp/out
 | `expect_trainer TRAINER_X 0/1` | the trainer's defeated flag (only set when the battle is won) |
 | `expect_item ITEM_X 0/1` | whether the item is anywhere in the bag |
 | `expect_gfx OBJ_EVENT_GFX_X` | the player's current sprite (outfit, gender, avatar state) |
+| `expect_pos X Y`, `expect_map MAP_X` | the player's map coordinates / the current map |
+| `giveitem ITEM_X [N]`, `givemon SPECIES_X LEVEL` | debug builds: put items in the bag / a Pokémon in the party the next time the player is free |
+| `expect_party_hms N` | debug builds: how many HM moves the party's Pokémon know |
+| `bagcursor POCKET_X N` | the bag opens on POCKET_X at entry N and the start menu on its first entry (then START, DOWN, DOWN, A opens the bag) |
 
 `matrix.py` runs the flow tests for every gender × egg × second starter (18 combinations, 6 chains in
 parallel) and prints one line per run:
@@ -177,6 +181,7 @@ python3 tools/hack/emu/play.py tools/hack/emu/tests/act4.play           -o /tmp/
 python3 tools/hack/emu/play.py tools/hack/emu/tests/maxie_calls.play    -o /tmp/emu   # Maxie's PokéNav calls
 python3 tools/hack/emu/play.py tools/hack/emu/tests/elite_four.play     -o /tmp/emu   # E4 post-game rematch swap
 python3 tools/hack/emu/play.py tools/hack/emu/tests/postgame_home.play  -o /tmp/emu   # SS Ticket / Lati TV at home
+python3 tools/hack/emu/play.py tools/hack/emu/tests/hm_free.play        -o /tmp/emu   # HM field moves without a Pokémon (D-190)
 python3 tools/hack/emu/play.py tools/hack/emu/tests/release_boot.play   -o /tmp/rel --rom pokeemerald-release.gba
 ```
 `release_boot.play` goes through the real title and new-game menus, since release builds have neither Quickstart

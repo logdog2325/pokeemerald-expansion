@@ -1,0 +1,225 @@
+# HM field moves without a Pokémon that knows them (feedback 1.27, D-190 – D-192). Needs rustboro_done.ss from
+# tests/rustboro.play (debug build: warp, giveitem, givemon). The party is the lead dragon (Deino here) plus a
+# Treecko given by hand; nobody knows an HM. The badges and HMs are set by hand, so the obstacles are story ones
+# where possible (Rusturf's rock, a Seafloor Cavern boulder, the Ever Grande waterfall, Route 124's dive spots).
+# -D MAGMA=MAGMA_M|MAGMA_F (the uniform's sprites).
+default MAGMA MAGMA_M
+loadstate rustboro_done.ss
+setflag FLAG_DEBUG_NO_ENCOUNTER
+setflag FLAG_DEBUG_NO_TRAINER_SEE
+setflag FLAG_DRACONID_NO_WHITEOUT
+heal
+# Treecko could learn Cut, the lead Deino can't: Treecko stands in for Cut, Deino for Rock Smash / Strength
+givemon SPECIES_TREECKO 10
+expect_party_hms 0
+
+# Cut (Route 104's tree, 35,22): with neither the HM nor the Stone Badge, and with the badge but no HM, only the
+# vanilla line ("This tree looks like it can be CUT down!"): the tree stays
+expect_flag FLAG_BADGE01_GET 0
+warp MAP_ROUTE104 33 22
+path Route104 33 22 34 22
+press A 2 60
+shot hm_cut01_no_hm
+mash A 2000
+hold RIGHT 20
+run 20
+expect_pos 34 22
+setflag FLAG_BADGE01_GET
+press A 2 60
+mash A 2000
+hold RIGHT 20
+run 20
+expect_pos 34 22
+expect_flag FLAG_TEMP_11 0
+# with the HM too: "Would you like to CUT it?" -> "Treecko used Cut!"
+giveitem ITEM_HM_CUT
+press A 2 38
+repeat 7 press A 2 38
+shot hm_cut02_prompt
+press A 2 38
+press A 2 38
+shot hm_cut03_used
+press A 2 38
+shot hm_cut04_anim
+mash A 2000
+expect_flag FLAG_TEMP_11 1
+path Route104 34 22 36 22
+expect_pos 36 22
+
+# Surf (Route 104's water north of 33,22): with the HM but no Balance Badge nothing happens
+path Route104 36 22 33 22
+press UP 2 10
+giveitem ITEM_HM_SURF
+press A 2 60
+mash A 600
+expect_gfx OBJ_EVENT_GFX_${MAGMA}_NORMAL
+expect_pos 33 22
+setflag FLAG_BADGE05_GET
+repeat 8 press A 2 38
+shot hm_surf01_used
+mash A 2000
+expect_gfx OBJ_EVENT_GFX_${MAGMA}_SURFING
+expect_pos 33 21
+shot hm_surf02_surfing
+
+# Fly from the bag (HM02 is the 2nd TM/HM entry): without the Feather Badge USE only boots up the HM to teach it
+giveitem ITEM_HM_FLY
+bagcursor POCKET_TM_HM 1
+press START 2 30
+press DOWN 2 10
+press DOWN 2 10
+press A 2 90
+press A 2 30
+press A 2 10
+run 120
+shot hm_fly01_no_badge
+press A 2 10
+run 200
+press A 2 10
+run 200
+shot hm_fly02_teach
+# No, close the bag, close the start menu
+mash B 1500
+expect_map MAP_ROUTE104
+# with the badge: "Fly can be used here." Yes -> the Fly map; B there goes back to the bag, not the party menu
+setflag FLAG_BADGE06_GET
+press START 2 30
+press A 2 90
+press A 2 30
+press A 2 10
+run 300
+shot hm_fly03_prompt
+press A 2 90
+shot hm_fly04_map
+press B 2 90
+shot hm_fly05_back_in_bag
+press A 2 30
+press A 2 10
+run 300
+press A 2 90
+press UP 2 30
+shot hm_fly06_rustboro
+press A 2 30
+run 300
+wait_free 2000
+shot hm_fly07_landed
+expect_map MAP_RUSTBORO_CITY
+expect_gfx OBJ_EVENT_GFX_${MAGMA}_NORMAL
+
+# Rock Smash (Rusturf Tunnel's rock, 24,4, from the west): Wanda's boyfriend then gives HM04 Strength
+giveitem ITEM_HM_ROCK_SMASH
+setflag FLAG_BADGE03_GET
+warp MAP_RUSTURF_TUNNEL 22 4
+path RusturfTunnel 22 4 23 4
+repeat 6 press A 2 38
+shot hm_smash01_prompt
+press A 2 38
+press A 2 38
+shot hm_smash02_used
+mash A 2000
+# the rock was the last one: Wanda's boyfriend comes through and hands over HM04
+run 30
+shot hm_smash03_reunion
+mash A 20000
+expect_flag FLAG_HIDE_RUSTURF_TUNNEL_ROCK_2 1
+expect_flag FLAG_RECEIVED_HM_STRENGTH 1
+expect_flag FLAG_RUSTURF_TUNNEL_OPENED 1
+expect_item ITEM_HM_STRENGTH 1
+
+# Strength (Seafloor Cavern room 1's boulder, 12,11): push it north
+setflag FLAG_BADGE04_GET
+warp MAP_SEAFLOOR_CAVERN_ROOM1 5 17
+path SeafloorCavern_Room1 5 17 12 12
+press UP 2 10
+repeat 8 press A 2 38
+shot hm_strength01_prompt
+press A 2 38
+press A 2 60
+shot hm_strength02_used
+mash A 2000
+expect_flag FLAG_SYS_USE_STRENGTH 1
+hold UP 40
+run 40
+shot hm_strength03_pushed
+expect_pos 12 11
+
+# Waterfall (Ever Grande City, up from 20,70): without the Rain Badge only the vanilla line, then with it
+giveitem ITEM_HM_WATERFALL
+warp MAP_EVER_GRANDE_CITY 20 70
+walk UP 68
+run 20
+press A 2 60
+shot hm_waterfall00_no_badge
+mash A 2000
+expect_pos 20 68
+setflag FLAG_BADGE08_GET
+repeat 4 press A 2 38
+shot hm_waterfall01_prompt
+press A 2 38
+press A 2 60
+shot hm_waterfall02_used
+mash A 2000
+shot hm_waterfall03_top
+expect_pos 20 59
+
+# Dive (Route 124's deep water at 13,33) and surfacing: needs the Mind Badge
+giveitem ITEM_HM_DIVE
+setflag FLAG_BADGE07_GET
+warp MAP_ROUTE124 13 33
+repeat 4 press A 2 38
+shot hm_dive01_prompt
+press A 2 38
+press A 2 60
+shot hm_dive02_used
+mash A 2000
+run 60
+shot hm_dive03_underwater
+expect_map MAP_UNDERWATER_ROUTE124
+expect_gfx OBJ_EVENT_GFX_${MAGMA}_UNDERWATER
+press B 2 38
+repeat 4 press A 2 38
+shot hm_dive04_surface_prompt
+mash A 2000
+run 60
+shot hm_dive05_surfaced
+expect_map MAP_ROUTE124
+expect_gfx OBJ_EVENT_GFX_${MAGMA}_SURFING
+
+# Flash from the bag in Granite Cave B1F (dark): HM05 is the 5th TM/HM entry; needs the Knuckle Badge
+giveitem ITEM_HM_FLASH
+setflag FLAG_BADGE02_GET
+warp MAP_GRANITE_CAVE_B1F 25 14
+run 60
+shot hm_flash01_dark
+expect_flag FLAG_SYS_USE_FLASH 0
+bagcursor POCKET_TM_HM 4
+press START 2 30
+press DOWN 2 10
+press DOWN 2 10
+press A 2 90
+press A 2 30
+press A 2 10
+run 300
+shot hm_flash02_prompt
+# No: the vanilla "Booted up an HM… Teach Flash?" follows (B through it, out of the bag and the start menu)
+press DOWN 2 10
+press A 2 10
+run 120
+shot hm_flash03_no_teach
+mash B 1500
+expect_flag FLAG_SYS_USE_FLASH 0
+# Yes this time (the start menu and the bag kept their cursors)
+press START 2 30
+press A 2 90
+press A 2 30
+press A 2 10
+run 300
+press A 2 90
+run 120
+shot hm_flash04_lit
+wait_free 2000
+expect_flag FLAG_SYS_USE_FLASH 1
+expect_party_hms 0
+clearflag FLAG_DEBUG_NO_ENCOUNTER
+clearflag FLAG_DEBUG_NO_TRAINER_SEE
+clearflag FLAG_DRACONID_NO_WHITEOUT

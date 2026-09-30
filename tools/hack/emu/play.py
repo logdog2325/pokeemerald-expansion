@@ -32,6 +32,14 @@ A .play script is a gbarun script plus:
   gender M|F              set the player's gender (the sprite follows on the next map load)
   warp MAP_X X Y [MAX]    debug builds: warp to (X, Y) on MAP_X the next time the player is free
   heal                    debug builds: heal the party the next time the player is free
+  giveitem ITEM_X [N]     debug builds: put N (default 1) ITEM_X in the bag the next time the player is free
+  givemon SPECIES_X LEVEL debug builds: add a Pokémon (level-up moves) to the party the next time the player is free
+  expect_party_hms N      debug builds: how many HM moves the party's Pokémon know (IsMoveHM)
+  expect_pos X Y          the player's map coordinates (without MAP_OFFSET)
+  expect_map MAP_X        the current map (gSaveBlock1Ptr->location)
+  bagcursor POCKET_X N    the bag opens on pocket POCKET_X with the cursor on its entry N (0 = first), and the
+                          start menu on its first entry (then START, DOWN, DOWN, A opens the bag once the
+                          POKéDEX and POKéMON entries are there)
   default NAME VALUE      default for ${NAME}; override with -D NAME=VALUE on the command line
 Lines are otherwise passed to gbarun unchanged (run/press/hold/repeat/shot/savestate/...).
 Exit code 1 if an expectation fails or an "until" times out.
@@ -67,7 +75,7 @@ def probe(names):
     """Evaluate C constants (and SaveBlock1 offsets) with the project's own headers."""
     src = '#include "global.h"\n#include "constants/flags.h"\n#include "constants/vars.h"\n#include "constants/maps.h"\n'
     src += '#include "constants/items.h"\n#include "constants/opponents.h"\n#include "battle_setup.h"\n'
-    src += '#include "constants/event_objects.h"\n'
+    src += '#include "constants/event_objects.h"\n#include "draconid.h"\n#include "item_menu.h"\n'
     src += "const u32 gProbe[] = {\n  offsetof(struct SaveBlock1, flags),\n  offsetof(struct SaveBlock1, vars),\n"
     src += "  offsetof(struct SaveBlock1, location),\n"
     src += "  offsetof(struct ObjectEvent, currentCoords),\n"
@@ -173,6 +181,13 @@ def plan_path(map_name, x0, y0, x1, y1):
 GFX_OFFSET = "offsetof(struct ObjectEvent, graphicsId)"
 OPPONENT_A_OFFSET = "offsetof(struct _TrainerBattleParameter, opponentA)"
 BAG_OFFSET, SLOT_SIZE, BAG_SIZE = "offsetof(struct SaveBlock1, bag)", "sizeof(struct ItemSlot)", "sizeof(struct Bag)"
+# the debug-build test hook (include/draconid.h): only probed when a test uses giveitem / givemon / expect_party_hms
+HOOK_COMMANDS = ("giveitem", "givemon", "expect_party_hms")
+TEST_ITEM_OFFSET, TEST_HMS_OFFSET = "offsetof(struct DraconidTestWarp, item)", "offsetof(struct DraconidTestWarp, partyHMMoves)"
+TEST_SPECIES_OFFSET, TEST_LEVEL_OFFSET = "offsetof(struct DraconidTestWarp, species)", "offsetof(struct DraconidTestWarp, level)"
+TEST_GIVE_ITEM, TEST_COUNT_HMS, TEST_GIVE_MON = "DRACONID_TEST_GIVE_ITEM", "DRACONID_TEST_COUNT_HMS", "DRACONID_TEST_GIVE_MON"
+BAG_POCKET, BAG_CURSOR, BAG_SCROLL = ("offsetof(struct BagPosition, pocket)", "offsetof(struct BagPosition, cursorPosition)",
+                                      "offsetof(struct BagPosition, scrollPosition)")
 
 LEDGE_JUMP = {"DOWN": "MB_JUMP_SOUTH", "UP": "MB_JUMP_NORTH", "LEFT": "MB_JUMP_WEST", "RIGHT": "MB_JUMP_EAST"}
 
@@ -194,9 +209,14 @@ def main():
             defines.setdefault(t[1], t[2])
     defines.update(dict(d.split("=", 1) for d in args.defines))
     lines = [re.sub(r"\$\{(\w+)\}", lambda m: defines[m.group(1)], l) for l in lines if not l.startswith("default ")]
-    names = sorted({l.split()[1] for l in lines if l.split() and l.split()[0] in ("flag", "var", "expect_flag", "expect_var", "setflag", "clearflag", "setvar", "warp", "expect_trainer", "expect_item", "expect_opponent", "expect_gfx")})
+    names = sorted({l.split()[1] for l in lines if l.split() and l.split()[0] in ("flag", "var", "expect_flag", "expect_var", "setflag", "clearflag", "setvar", "warp", "expect_trainer", "expect_item", "expect_opponent", "expect_gfx", "giveitem", "givemon", "expect_map", "bagcursor")})
     names += [OPPONENT_A_OFFSET, GFX_OFFSET]
     names += [BAG_OFFSET, SLOT_SIZE, BAG_SIZE, "TRAINER_FLAGS_START"]
+    if any(l.split() and l.split()[0] in HOOK_COMMANDS for l in lines):
+        names += [TEST_ITEM_OFFSET, TEST_HMS_OFFSET, TEST_SPECIES_OFFSET, TEST_LEVEL_OFFSET,
+                  TEST_GIVE_ITEM, TEST_COUNT_HMS, TEST_GIVE_MON]
+    if any(l.split() and l.split()[0] == "bagcursor" for l in lines):
+        names += [BAG_POCKET, BAG_CURSOR, BAG_SCROLL]
     flags_off, vars_off, loc_off, coords_off, consts = probe(names)
     # the player is object event 0 (spawned first on every map load); MAP_OFFSET is 7
     player_x = syms["gObjectEvents"] + coords_off
@@ -300,6 +320,51 @@ def main():
             # debug builds only: HealPlayerParty() the next time the player is free
             out.append("poke %X 2" % syms["gDraconidTestWarp"])  # DRACONID_TEST_HEAL
             out.append("run 10")
+        elif t[0] == "giveitem":
+            # debug builds only: Draconid_TryTestWarp adds the item when the player is free
+            w, item = syms["gDraconidTestWarp"], consts[t[1]]
+            for _ in range(int(t[2]) if len(t) > 2 else 1):
+                out.append("poke %X %X" % (w + consts[TEST_ITEM_OFFSET], item & 0xFF))
+                out.append("poke %X %X" % (w + consts[TEST_ITEM_OFFSET] + 1, item >> 8))
+                out.append("poke %X %X" % (w, consts[TEST_GIVE_ITEM]))
+                out.append("until %X 1 0 900" % w)  # the hook took the request
+        elif t[0] == "givemon":
+            # debug builds only: Draconid_TryTestWarp gives the Pokémon when the player is free
+            w, species = syms["gDraconidTestWarp"], consts[t[1]]
+            out.append("poke %X %X" % (w + consts[TEST_SPECIES_OFFSET], species & 0xFF))
+            out.append("poke %X %X" % (w + consts[TEST_SPECIES_OFFSET] + 1, species >> 8))
+            out.append("poke %X %X" % (w + consts[TEST_LEVEL_OFFSET], int(t[2])))
+            out.append("poke %X %X" % (w, consts[TEST_GIVE_MON]))
+            out.append("until %X 1 0 900" % w)
+        elif t[0] == "expect_party_hms":
+            # debug builds only: Draconid_TryTestWarp counts the party's HM moves when the player is free
+            w = syms["gDraconidTestWarp"]
+            label = "party_hm_moves#%d" % len(expects)
+            expects.append((label, int(t[1])))
+            out.append("poke %X FF" % (w + consts[TEST_HMS_OFFSET]))
+            out.append("poke %X %X" % (w, consts[TEST_COUNT_HMS]))
+            out.append("until %X 1 0 900" % w)
+            out.append("read %X 1 %s" % (w + consts[TEST_HMS_OFFSET], label))
+        elif t[0] == "bagcursor":
+            # the bag and the start menu remember their cursors (gBagPosition, sStartMenuCursorPos)
+            bag, pocket, entry = syms["gBagPosition"], consts[t[1]], int(t[2])
+            out.append("poke %X %X" % (bag + consts[BAG_POCKET], pocket))
+            for field, value in ((BAG_CURSOR, entry), (BAG_SCROLL, 0)):
+                addr = bag + consts[field] + 2 * pocket
+                out.append("poke %X %X" % (addr, value & 0xFF))
+                out.append("poke %X %X" % (addr + 1, value >> 8))
+            out.append("poke %X 0" % syms["sStartMenuCursorPos"])
+        elif t[0] == "expect_pos":
+            for axis, addr, coord in (("x", player_x, t[1]), ("y", player_y, t[2])):
+                label = "player_%s+7#%d" % (axis, len(expects))
+                expects.append((label, int(coord) + 7))
+                out.append("read %X 2 %s" % (addr, label))
+        elif t[0] == "expect_map":
+            # location is {s8 mapGroup, s8 mapNum}; MAP_X constants are (group << 8) | num
+            m = consts[t[1]]
+            label = "map_%s#%d" % (t[1], len(expects))
+            expects.append((label, (m >> 8) | ((m & 0xFF) << 8)))
+            out.append("read %s+%X 2 %s" % (sb1, loc_off, label))
         elif t[0] == "gender":
             g = 0 if t[1].upper().startswith("M") else 1
             out.append("poke *%X+8 %X" % (syms["gSaveBlock2Ptr"], g))
