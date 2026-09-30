@@ -21,6 +21,11 @@ setvar VAR_PLAYER_OUTFIT 0
 setvar VAR_MAGMA_STATE 12
 setvar VAR_NERINE_STATE 7
 setvar VAR_ASTER_STATE 7
+setvar VAR_BRENDAN_STATE 6
+setvar VAR_MAY_STATE 4
+# Act 5 leaves Rayquaza back on the summit (D-145): the cracked floors, the vanilla sleeping Rayquaza
+setvar VAR_SKY_PILLAR_STATE 3
+setvar VAR_SKY_PILLAR_RAYQUAZA_CRY_DONE 1
 setflag FLAG_SYS_GAME_CLEAR
 # the Champion's eight badges (Rayquaza, met at Lv70, obeys them: B_OBEDIENCE_MECHANICS)
 setflag FLAG_BADGE01_GET
