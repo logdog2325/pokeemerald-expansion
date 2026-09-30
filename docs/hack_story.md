@@ -215,3 +215,6 @@ Petalburg Woods recruitment/outfit change, Maxie's first meeting at Meteor Falls
 
 ### Follow-up note 28 (round 1)
 - "also working on a title screen with regidrago using its in game sprite  and title"
+
+### Follow-up note 29 (round 1)
+- "also make sure theres plenty of rival battles with the two draconid rivals too when approrpiate in the story and that they have appropriate teams"
