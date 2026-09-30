@@ -127,3 +127,12 @@ Petalburg Woods recruitment/outfit change, Maxie's first meeting at Meteor Falls
 ### Follow-up note (round 1)
 - "Also include a battle with Zinnia at Sky Pillar too with her ORAS team."
 - "Make sure the levels scale properly also introduce gen 6 style exp share should be possible, also too if you can have Maxie call you after key story points to help direct you to the next location I think that would be cool and also like the teams I gave you for Brendan and May should scale so like your first battle with Brendan he should just have treecko poochyena tailow, and maybe slakoth if it’s past petalburg Forrest"
+
+### Follow-up note 2 (round 1)
+- "And also make sure you can actually get to the next place without stuff from emerald blocking you so your not story locked or you get transported to the next place without stuff blocking you"
+- "And obviously once your outed Maxie shouldn't call you anymore lol"
+- "Also I think it would be cool if in the final battle with Maxie he succeeds and has primal Groudon on his team to make the battle more intense and hard but maybe that should be after sky pillar, you have to face both Archie and Maxie with primal Groudon and Kyogre and you have the help of Brendan or may who has there mega lati (also they shouldn't get there lati until close to the climax of the story)"
+- "And make sure Maxie talks like he does in game with his tone of voice and mannerisms. Same with Brendan and may I don't want them clunky or ai sounding dialogue it should be smooth"
+- "Also if possible make it so hms aren't necessary and that you can use them outside of battle once you get the hm I'm not sure how you'd do it but I've seen several rom hacks that have"
+- "Also add some wild pokemon from gens 4 5 6 7 8 9 where it makes sense and also to random trainers roster and have there be a 1% chance to encounter beldum in granite cave"
+- "And also make it so at the story conclusion once Archie and Maxie have been beat Groudon and Kyogre are catchable and encounter able find an appropriate and accessible place to put them and also have the latis roam with Brendan and may either releasing them or new ones being spotted, I also think it would be cool to add a brief storyline before sky pillar where the elder calls you and tells you to return to the village to catch regi drago so you have a legendary dragon too and put regidrago in a once inaccesible part of the cave Where you got your egg"

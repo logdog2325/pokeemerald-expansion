@@ -36,3 +36,11 @@ main brief re-sent with a fourth rival (Nerine). Items:
 | 1.20 | balance | (follow-up) Gen 6 style Exp. Share | [x] key item, party-wide, toggleable; Mr. Stone gives it with the PokéNav (D-185) |
 | 1.21 | story | (follow-up) Maxie calls after key story points to point the way | [x] 10 calls, first one on Mr. Briney's boat (replacing "Dad" Norman's) (D-186) |
 | 1.22 | balance | (follow-up) Rival teams scale: Brendan's first fight Treecko, Poochyena, Taillow (+ Slakoth past Petalburg Woods) | [x] Rustboro: all four; later fights grow like ORAS (D-187) |
+| 1.23 | bug | (follow-up 2) No story locks: every vanilla blocker opens in the v2 order, and every scene that moves the player drops them where nothing blocks the way on | [ ] audit after all acts merge |
+| 1.24 | story | (follow-up 2) Maxie stops calling once the player is outed | [x] calls only while `REPUTATION_UNIFORM` and before `MAGMA_STATE_TURNED` (D-186); `maxie_calls.play` checks none after the turn |
+| 1.25 | story | (follow-up 2) The real final battle comes after the Sky Pillar: Maxie succeeds, the player + Brendan or May (Mega Latios/Latias) vs Maxie (Primal Groudon) and Archie (Primal Kyogre); the rivals only get their Latis close to the climax | [ ] |
+| 1.26 | story | (follow-up 2) Maxie talks like he does in the games (tone, mannerisms); Brendan and May smooth, not clunky or AI-sounding | [ ] voice pass after all acts merge |
+| 1.27 | other | (follow-up 2) HMs not needed: once the HM is obtained its field move works without a Pokémon knowing it | [ ] |
+| 1.28 | balance | (follow-up 2) Wild Pokémon from Gens 4–9 where they fit, and in generic trainers' teams; a 1% Beldum in Granite Cave | [ ] |
+| 1.29 | story | (follow-up 2) After Maxie and Archie are beaten, Groudon and Kyogre can be found and caught in accessible places; the Latis roam (the rivals release theirs or new ones are spotted) | [ ] |
+| 1.30 | story | (follow-up 2) Before the Sky Pillar the Elder calls the player home to catch **Regidrago** in a once-sealed part of the cave where they got their egg | [ ] |
