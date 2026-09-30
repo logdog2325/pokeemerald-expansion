@@ -950,7 +950,7 @@ Draconid Emerald round 1, Act 5 (docs/hack_story.md steps 23–28): the Aqua Hid
 
 ## data/scripts/draconid/rivals.pory
 
-Draconid Emerald: rival battles vanilla Emerald doesn't have (Phase 5).  Brendan  Route 104 (Petalburg Woods entrance), Route 110 (+ PokéNav registration), Route 119, Lilycove (with May), Littleroot lab after the Champion May      Route 103, Rustboro, Slateport (after the Oceanic Museum), Lilycove (with Brendan), Littleroot lab after the Champion Wally    Mauville (vanilla), Petalburg Gym door (after the Heat Badge), Lilycove (Mega Gallade), Victory Road (vanilla)  State vars: VAR_BRENDAN_STATE, VAR_MAY_STATE, VAR_WALLY_STATE (include/constants/draconid.h). Vanilla hooks are listed in docs/hack_changes.md ("Scripts").
+Draconid Emerald: rival scenes that belong to no single act (Phase 5, cut down in round 1).  The story fights live in the act files now: Brendan – Rustboro (act1), Mt. Chimney (act3), Route 119 and Lilycove (act4), the Space Center (act5); May – Route 103 (vanilla), Route 110 (act2), the Weather Institute and Lilycove (act4), the Sootopolis partner choice (act5); Wally – Mauville (act2), the Petalburg Gym door and Lilycove (act4), Victory Road (vanilla). Left here: the post-game battles in the Littleroot lab and two Lilycove lines they share.  State vars: VAR_BRENDAN_STATE, VAR_MAY_STATE, VAR_WALLY_STATE (include/constants/draconid.h). Vanilla hooks are listed in docs/hack_changes.md ("Scripts").
 
 ### `LittlerootTown_ProfessorBirchsLab_EventScript_DraconidPostgameMay`
 - MAY: The new CHAMPION of HOENN, back in LITTLEROOT!
