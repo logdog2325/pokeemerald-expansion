@@ -36,6 +36,10 @@ Hoenn, not knowing your true mission").
   hesitation or one question per scene ("…What are you really doing, {PLAYER}?", "…So why are you wearing that
   uniform?") – never as warmth. Even when she covers for the player at the Weather Institute she closes the door
   again: "But don't think this changes anything. You still work for MAGMA."
+- **Wally** (D-236) is in the same boat: normally shy and gentle, in the uniform era angry and brave, because
+  MAGMA hurts people and he won't let it happen ("You helped me catch RALTS! How could you join TEAM MAGMA?",
+  "I won't let you go up there!"). Short, plain sentences; his health may show (the hot springs, "I didn't cough
+  once"), never self-pity, and no trust in the player until the turn.
 - Things they hand over (the Dowsing Machine, Go-Goggles, HM Fly) come grudgingly ("The winner gets this.
   That's the rule, even for MAGMA."); the PokéNav registrations are to keep tabs on a MAGMA grunt.
 - **After the turn** (Sootopolis and later) they warm up as the story says: May's "I KNEW it!" and Brendan's

@@ -610,14 +610,14 @@ Draconid Emerald round 1, Act 4 (docs/hack_story.md): Petalburg Gym with MAY wat
 - Whatever you're up to, {PLAYER}, I'm going to find out.
 
 ### `PetalburgCity_EventScript_DraconidWallyTrigger`
-- WALLY: {PLAYER}! I came to thank MR. NORMAN. You both helped me catch RALTS, remember?
+- WALLY: {PLAYER}. I came to thank MR. NORMAN for helping me catch RALTS.
 - He's MAY's dad. She says you're going to challenge him.
-- People in town stare at your uniform. I hear what they whisper.
-- But in MAUVILLE, your POKéMON looked so happy. I trust what I saw.
-- So before you challenge MR. NORMAN… battle me!
-- WALLY: I'm going to travel around HOENN, too. Just like you.
-- Let people say what they want, {PLAYER}. I know what I saw.
-- Good luck against MR. NORMAN!
+- WALLY: You went up MT. CHIMNEY with MAGMA, didn't you?
+- The whole mountain was smoking! LAVARIDGE was right below it!
+- WALLY: MR. NORMAN helped me when I was weak.
+- So before you challenge him… you'll have to get past me!
+- WALLY: I'm going to travel all over HOENN and get even stronger.
+- Wherever MAGMA shows up, I'll be there to stop them. You too, {PLAYER}.
 
 ### `Route119_EventScript_DraconidTabithaOrder`
 - TABITHA: Hehehe! There you are, grunt. Right on time.
@@ -674,13 +674,12 @@ Draconid Emerald round 1, Act 4 (docs/hack_story.md): Petalburg Gym with MAY wat
 - BRENDAN: Forget it, MAY. We're going home.
 
 ### `LilycoveCity_EventScript_DraconidWally`
-- WALLY: {PLAYER}! My RALTS evolved into GALLADE on the way here!
+- WALLY: {PLAYER}. My KIRLIA evolved into GALLADE on the way here.
 - And a man by the sea gave me this KEY STONE and a GALLADITE.
-- People in town whisper about the MAGMA grunt with the dragons.
-- I told them they're wrong about you.
-- Now watch us, {PLAYER}!
-- WALLY: Next time we battle, it'll be at the POKéMON LEAGUE. I promise!
-- Whatever you're really fighting for… I hope you win, {PLAYER}.
+- WALLY: He told me to use their power to protect people.
+- So that's what I'll do. GALLADE and I are going to stop you, right here!
+- WALLY: Next time we battle, it'll be at the POKéMON LEAGUE.
+- And I'll be ready for you, even if you're still wearing that uniform.
 
 ### `MtPyre_Summit_EventScript_DraconidMaxieOrders`
 - MAXIE: Ah, {PLAYER}. I have been expecting you.
@@ -924,7 +923,7 @@ Draconid Emerald round 1, Act 5 (docs/hack_story.md steps 23–28): the Aqua Hid
 
 ## data/scripts/draconid/rivals.pory
 
-Draconid Emerald: rival scenes that belong to no single act (Phase 5, cut down in round 1).  The story fights live in the act files now: Brendan – Rustboro (act1), Mt. Chimney (act3), Route 119 and Lilycove (act4), the Space Center (act5); May – Route 103 (vanilla), Route 110 (act2), the Weather Institute and Lilycove (act4), the Sootopolis partner choice (act5); Wally – Mauville (act2), the Petalburg Gym door and Lilycove (act4), Victory Road (vanilla). Left here: the post-game battles in the Littleroot lab and two Lilycove lines they share.  State vars: VAR_BRENDAN_STATE, VAR_MAY_STATE, VAR_WALLY_STATE (include/constants/draconid.h). Vanilla hooks are listed in docs/hack_changes.md ("Scripts").
+Draconid Emerald: rival scenes that belong to no single act (Phase 5, cut down in round 1).  The rival schedule (round 1 + the follow-up battles of D-234; segment = level cap band, docs/hack_trainers.md): BRENDAN – Rustboro S1 (act1), Route 104 at MR. BRINEY's cottage S2 (rivals2), Mt. Chimney S4 (act3), Route 119 S6 and the Lilycove double S7 (act4), Jagged Pass after GROUDON wakes S7 (rivals2), the Space Center tag S8 (act5), the Sootopolis partner (act5), post-game (below). MAY     – Route 103 S1 (birch_intro), Route 110 S3 (act2), Lavaridge before the GO-GOGGLES S5 (rivals2), the Weather Institute (no battle) and the Lilycove double S7 (act4), Mossdeep after the Space Center S8 (rivals2), the Sootopolis partner (act5), post-game (below). WALLY   – Mauville S3 (vanilla, lines reworked), Route 112 at the cable car S4 (rivals2), the Petalburg Gym door S5 and Lilycove S7 (act4), Route 120's south bridge S6 (rivals2), Victory Road (vanilla). While the player wears the uniform all three are openly hostile (D-211, D-236). No Latios / Latias before the finale (D-237): the Latis come back with the Acts 6–7 work. Left here: the post-game battles in the Littleroot lab and two Lilycove lines they share; the bedrooms by reputation are in rivals2.pory.  State vars: VAR_BRENDAN_STATE, VAR_MAY_STATE, VAR_WALLY_STATE (include/constants/draconid.h). Vanilla hooks are listed in docs/hack_changes.md ("Scripts").
 
 ### `LittlerootTown_ProfessorBirchsLab_EventScript_DraconidPostgameMay`
 - MAY: The new CHAMPION of HOENN, back in LITTLEROOT!
@@ -1029,6 +1028,91 @@ Draconid Emerald round 1: Maxie's PokéNav calls to the Magma recruit (D-186). A
 - Together, we can still set this right.
 - … … … … … Click!
 
+## data/scripts/draconid/rivals2.pory
+
+Draconid Emerald round 1 follow-ups (feedback 1.32, 1.34, part of 1.25; D-234 – D-239): two more battles each for BRENDAN, MAY and WALLY in Acts 1–5, and the rivals' Littleroot bedrooms by reputation. While the player wears the MAGMA uniform they don't know the mission: they fight to stop TEAM MAGMA and protect HOENN, so every line here is hostile (docs/hack_voices.md). The full rival schedule is in the header of data/scripts/draconid/rivals.pory.  Each fight is marked done by its trainer's own flag (defeated(...)), no new state values: the states in include/constants/draconid.h stay as they were. Standalone fights are must-win (a loss whites out and the trigger is still armed on the way back); fights the story doesn't bring the player back to, or that come straight after a Gym, use trainerbattle_earlyrival with RIVAL_BATTLE_HEAL_AFTER (D-235).
+
+### `Route104_EventScript_DraconidBrendan`
+- BRENDAN: There you are, {PLAYER}.
+- I figured you'd come for MR. BRINEY's boat sooner or later.
+- BRENDAN: I told my dad about you, like I said I would.
+- You know what he said? “Give {PLAYER} a chance.”
+- A chance?! You're wearing THEIR uniform!
+- BRENDAN: So where's MAGMA sending you now?
+- …Fine, don't tell me. Then battle me!
+- BRENDAN: Tch… Go on, then. Get on your boat.
+- But if MAGMA hurts anyone in DEWFORD, I'm coming after you.
+
+### `Route112_EventScript_DraconidWally`
+- WALLY: {PLAYER}! Stop right there!
+- WALLY: MAGMA grunts blocked this station for days.
+- My uncle and I were going up to the hot springs in LAVARIDGE. They're good for my lungs.
+- WALLY: Now everyone says MAGMA is up on MT. CHIMNEY.
+- Something terrible is going to happen, isn't it?
+- I won't let you go up there!
+- WALLY: …Go, then. I can't stop you.
+- But if anything happens to LAVARIDGE, I'll never forgive you, {PLAYER}!
+
+### `LavaridgeTown_EventScript_DraconidMayBattle`
+- MAY: {PLAYER}. So you're still wearing that uniform.
+- The whole town is talking about what MAGMA tried on MT. CHIMNEY.
+- MAY: People here nearly lost their homes!
+- I'm not letting a MAGMA grunt walk away from that. Battle me!
+- MAY: See? MAGMA can't win every time.
+- MAY: Tch… You're even stronger than on ROUTE 110.
+
+### `Route120_EventScript_DraconidWally`
+- WALLY: {PLAYER}. I knew you'd come this way.
+- WALLY: The people at the WEATHER INSTITUTE were tied up in their own building!
+- Everyone on ROUTE 119 says MAGMA was there, too.
+- WALLY: I'm not the boy who needed help catching RALTS anymore.
+- This time, I'm going to stop you!
+- WALLY: …I'll get stronger. Strong enough to protect everyone from MAGMA.
+- Next time, {PLAYER}, I won't lose.
+
+### `JaggedPass_EventScript_DraconidBrendan`
+- BRENDAN: {PLAYER}! What did MAGMA do in there?!
+- BRENDAN: The ground shook all the way to LITTLEROOT.
+- My dad says something huge woke up under this mountain.
+- BRENDAN: MAY keeps saying you're one of the good guys.
+- Then why did you just walk out of MAGMA's hideout?!
+- Forget it. Battle me!
+- BRENDAN: I beat you. …But whatever woke up in there is still loose.
+- BRENDAN: Tch… All that strength, and you use it for MAGMA.
+- BRENDAN: I'm going to find out what MAGMA did down there.
+- And if MAGMA gets in my way again, that means you, too!
+
+### `MossdeepCity_EventScript_DraconidMay`
+- MAY: {PLAYER}!
+- MAY: BRENDAN called me from the SPACE CENTER. MAGMA tried to steal ROCKET FUEL?!
+- And you were right there with them again!
+- MAY: He says STEVEN is sticking up for you. …Why would he?
+- Forget it! I'll find out for myself. Battle me!
+- MAY: MAGMA's going to lose, {PLAYER}. Just like you did.
+- MAY: Tch… Fine. You win this one.
+- MAY: Whatever MAGMA does next, BRENDAN and I will be there to stop it.
+- And that means stopping you, too.
+
+### `LittlerootTown_BrendansHouse_2F_EventScript_DraconidBrendan`
+- BRENDAN: {PLAYER}?! What are you doing in my room?
+- You've got some nerve, walking into LITTLEROOT in that uniform.
+- BRENDAN: My dad still thinks you're a good kid.
+- …Get out before he sees you.
+- BRENDAN: Oh… {PLAYER}. Hey.
+- I was just checking my POKéDEX.
+- BRENDAN: About SOOTOPOLIS… I said some pretty rotten things to you.
+- Don't make me say sorry twice, okay?
+
+### `LittlerootTown_MaysHouse_2F_EventScript_DraconidMay`
+- MAY: {PLAYER}? You walked all the way into LITTLEROOT in that uniform?
+- If MAGMA sent you to spy on us, you can go right back.
+- MAY: I'm not battling you in my own room.
+- But I'm not letting you out of my sight, either.
+- MAY: {PLAYER}! Come in, come in!
+- I was just checking my POKéDEX. Look how many POKéMON we've seen!
+- MAY: Hehe! My mom keeps asking about you.
+- The MAGMA grunt who saved HOENN, right here in my room!
+
 ## Reworked vanilla texts (`@ Draconid Emerald` labels in `data/maps/*/scripts.inc`)
 
 ### GraniteCave_StevensRoom
@@ -1041,7 +1125,7 @@ Draconid Emerald round 1: Maxie's PokéNav calls to the Magma recruit (D-186). A
 - `JaggedPass_Text_GoWhereverYouWant`: Okay, oh-kay! I admit it, you're strong! / But orders are orders. This rock stays shut unless the LEADER himself sends you.
 
 ### LavaridgeTown
-- `LavaridgeTown_Text_MayNiceBadgesTakeThis`: MAY: {PLAYER}. So you're still wearing that uniform. / The whole town is talking about what MAGMA tried on MT. CHIMNEY. / …Were you really up there with them? / Forget it. Here, I don't need these anymore. Just stay out of LAVARIDGE.
+- `LavaridgeTown_Text_MayNiceBadgesTakeThis`: MAY: …Were you really up there with them, on MT. CHIMNEY? / Forget it. I don't need these anymore. / Take them, and stay out of LAVARIDGE.
 - `LavaridgeTown_Text_MayExplainGoGogglesChallengeDad`: MAY: With those GO-GOGGLES, you'll have no trouble getting through the desert near ROUTE 111. / Four BADGES… So my dad's GYM in PETALBURG is next for you. / He'll stop you, {PLAYER}. And I'll be there to see it.
 
 ### MagmaHideout_2F_1R
@@ -1069,10 +1153,16 @@ Draconid Emerald round 1: Maxie's PokéNav calls to the Magma recruit (D-186). A
 - `MagmaHideout_4F_Text_MaxieImGoingAfterGroudon`: MAXIE: GROUDON woke, but it would not obey the BLUE ORB. Something is missing. The RED ORB, perhaps. / No matter. GROUDON cannot hide from us forever. / When AQUA makes its move, I will need someone I trust inside their walls. / Rest while you can, {PLAYER}. The land is waking.
 
 ### MauvilleCity
-- `MauvilleCity_Text_WallyWillYouBattleMe`: WALLY: Oh! {PLAYER}! / That uniform… You're… one of THEM now? The people from the news? / …No. I want to see for myself. I've gotten a lot stronger since we met. / {PLAYER}, please, will you have a battle with me?
-- `MauvilleCity_Text_UncleCanYouBattleWally`: UNCLE: {PLAYER}{KUN}, was it? I don't much like that uniform… / But WALLY trusts you. Can I ask you to battle him just this once? / I don't think he's going to listen to any reason the way he is now.
-- `MauvilleCity_Text_WallyDefeat`: WALLY: … … … … … … … / I lost… / But your POKéMON looked happy. Really happy.
-- `MauvilleCity_Text_WallyIllGoBackToVerdanturf`: WALLY: UNCLE… I'll go back to VERDANTURF… / {PLAYER}… I don't think you're one of them. Not really.
+- `MauvilleCity_Text_WallyWillYouBattleMe`: WALLY: {PLAYER}?! / That uniform… You're one of THEM now? The people from the news? / You helped me catch RALTS! How could you join TEAM MAGMA? / I've gotten a lot stronger since then. {PLAYER}, battle me!
+- `MauvilleCity_Text_WallyMyUncleWontKnowImStrong`: WALLY: You won't battle me? / Then I'm staying right here until you battle me!
+- `MauvilleCity_Text_UncleCanYouBattleWally`: UNCLE: I don't like that uniform, and I don't like you near WALLY. / But he won't calm down until he's battled you. / Just this once, please. He won't listen to reason the way he is now.
+- `MauvilleCity_Text_WallyPleaseBattleMe`: WALLY: {PLAYER}! Battle me! I'm not scared of TEAM MAGMA!
+- `MauvilleCity_Text_WallyHereICome`: WALLY: RALTS, let's go! / We'll show TEAM MAGMA how strong we are!
+- `MauvilleCity_Text_WallyDefeat`: WALLY: … … … … … … / I lost… But I won't give up!
+- `MauvilleCity_Text_WallyIllGoBackToVerdanturf`: WALLY: UNCLE… I'll go back to VERDANTURF… / I'll get stronger there. Strong enough to stop TEAM MAGMA.
+- `MauvilleCity_Text_ThankYouNotEnoughToBattle`: WALLY: Being a TRAINER isn't just about winning battles, {PLAYER}. / It's about protecting people and POKéMON. / You used to know that.
+- `MauvilleCity_Text_UncleVisitUsSometime`: UNCLE: {PLAYER}{KUN}… So you're the TRAINER who kept an eye on WALLY when he caught his POKéMON. / I don't know what happened to you since then. / But please, stay away from VERDANTURF.
+- `MauvilleCity_Text_WallyPokenavCall`: … … … … … … … … … … … Beep! / WALLY: {PLAYER}… It's WALLY. / My uncle bought me a POKéNAV. I'm registering you in it. / If MAGMA hurts anyone, I'll know where to find you. / … … … … … … … … … … … Click!
 
 ### MossdeepCity_SpaceCenter_1F
 - `MossdeepCity_SpaceCenter_1F_Text_MagmaHaveSightsOnSpaceCenter`: That red uniform… You're one of those MAGMA thugs! / Well, we won't let anything that minor interfere with our rocket launch!
