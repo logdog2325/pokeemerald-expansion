@@ -958,7 +958,7 @@ Draconid Emerald round 1, Act 5 (docs/hack_story.md steps 23–28): the Aqua Hid
 
 ## data/scripts/draconid/act6.pory
 
-Draconid Emerald round 1, Act 6 (docs/hack_story.md steps 29-30): the Champion's room (BRENDAN comes in with PROF. BIRCH, his father, and MAY follows them), the Hall of Fame without credits, and the meteor alert at home that sends the player to the Sky Pillar (D-150). Juan's Gym, Victory Road and the Elite Four stay vanilla; WALLY's Victory Road lines are reworked in place (data/maps/VictoryRoad_1F/scripts.inc). VAR_DRACONID_FINALE_STATE: FINALE_STATE_* (include/constants/draconid.h). Act 7 is data/scripts/draconid/act7.pory.
+Draconid Emerald round 1, Act 6 (docs/hack_story.md steps 29-30): the Champion's room (STEVEN is the CHAMPION, D-250; BRENDAN comes in with PROF. BIRCH, his father, and MAY follows them), the Hall of Fame without credits, and the meteor alert at home that sends the player to the Sky Pillar (D-150). Juan's Gym, Victory Road and the Elite Four stay vanilla; WALLY's Victory Road lines are reworked in place (data/maps/VictoryRoad_1F/scripts.inc). Post-game: STEVEN's Champion rematch (D-251), WALLACE by the CAVE OF ORIGIN and STEVEN at METEOR FALLS (D-252). VAR_DRACONID_FINALE_STATE: FINALE_STATE_* (include/constants/draconid.h). Act 7 is data/scripts/draconid/act7.pory.
 
 ### `EverGrandeCity_ChampionsRoom_EventScript_DraconidMayArrives`
 - MAY: {PLAYER}! Did I miss it?! …I missed it, didn't I?
@@ -968,6 +968,40 @@ Draconid Emerald round 1, Act 6 (docs/hack_story.md steps 29-30): the Champion's
 ### `EverGrandeCity_ChampionsRoom_EventScript_DraconidRivalsCongratulate`
 - MAY: Go on, CHAMPION! We'll be right here.
 - And then you owe me the whole story. From the very start!
+
+### `EverGrandeCity_ChampionsRoom_EventScript_DraconidStevenRematch`
+- STEVEN: Welcome back, {PLAYER}{KUN}.
+- I was hoping you'd climb all the way up here again.
+- Since our battle, my POKéMON and I have trained harder than ever.
+- A few new partners have joined us, too. I found them among the stones, of course.
+- Now, bring it! Show me how much further the real {PLAYER} has come!
+- STEVEN: That was a wonderful battle. Thank you, {PLAYER}{KUN}.
+- Your name belongs in that room more than ever.
+- Come. Let's record your partners' names once more.
+
+### `MeteorFalls_StevensCave_EventScript_DraconidSteven`
+- STEVEN: Oh, {PLAYER}{KUN}! You found my hiding place.
+- When the LEAGUE can spare me, I come here to search for rare stones.
+- A meteorite fell into these falls long ago. Who knows what else the sky left behind?
+- STEVEN: The night the sky broke apart over HOENN, I watched it from right here.
+- Somehow, I suspect you were a lot closer to it than I was.
+- STEVEN: If you'd like another battle, come to the POKéMON LEAGUE.
+- I'll be waiting in the CHAMPION's room. The ELITE FOUR have been training hard, too.
+
+### `SootopolisCity_EventScript_DraconidPostgameWallace`
+- WALLACE: {PLAYER}{KUN}! Have you come to let the water dance once more?
+- WALLACE: Ah, {PLAYER}{KUN}. Or should I say, CHAMPION?
+- STEVEN told me about your battle at the LEAGUE. He hasn't stopped smiling since.
+- I once led this city's GYM. I handed it back to my mentor, JUAN, to watch over the CAVE OF ORIGIN.
+- After what GROUDON and KYOGRE did here, someone must.
+- At the SKY PILLAR, I tested the one the prophecy chose.
+- Today, I simply wish to battle the TRAINER who stands as STEVEN's equal.
+- WALLACE: Will you grant me a battle?
+- WALLACE: A pity. The CAVE and I will be here, should you change your mind.
+- WALLACE: Then let the water lead us. Show me elegance!
+- WALLACE: STEVEN said you were the finest TRAINER he had ever faced.
+- I see now that he wasn't exaggerating.
+- Whenever you wish for another battle, you know where to find me.
 
 ### `DraconidVillage_PlayersHouse_2F_EventScript_DraconidHomecoming`
 - {PLAYER} came home to the DRACONID village as the CHAMPION of HOENN.
@@ -999,6 +1033,11 @@ Draconid Emerald round 1, Act 6 (docs/hack_story.md steps 29-30): the Champion's
 - Speak to me when you are prepared.
 - Or go by your own wings: the pillar stands on ROUTE 131, west of PACIFIDLOG TOWN.
 - ELDER: Hold on tight, and do not look down.
+
+### `Draconid_Text_StevenCallLeague`
+- STEVEN: {PLAYER}{KUN}, it's STEVEN. I heard you have all eight BADGES.
+- The POKéMON LEAGUE is beyond VICTORY ROAD, past EVER GRANDE CITY.
+- I'll be waiting at the very top. Come as you really are.
 
 ## data/scripts/draconid/act7.pory
 
@@ -1615,8 +1654,16 @@ Draconid Emerald round 1 follow-ups (feedback 1.32, 1.34, part of 1.25; D-234 �
 ## Reworked vanilla texts (`@ Draconid Emerald` labels in `data/maps/*/scripts.inc`)
 
 ### EverGrandeCity_ChampionsRoom
-- `EverGrandeCity_ChampionsRoom_Text_IntroSpeech`: WALLACE: Welcome, {PLAYER}{KUN}. / That incident in SOOTOPOLIS CITY… All of HOENN has heard how you cast off that red uniform before MAXIE. / I confess I didn't know what to make of a MAGMA grunt who raised dragons. / Now I do. But it wouldn't be fair to say that you alone ended the crisis. / You overcame that difficult situation by working as one with your POKéMON. / We TRAINERS raise POKéMON by giving them items and by teaching them new techniques for battle. / But we ourselves also learn many things from POKéMON. / And this is where your achievements are put to the test against what others like you have achieved. / Now! / Who can most elegantly dance with their POKéMON in HOENN? / Show me right here and now!
+- `EverGrandeCity_ChampionsRoom_Text_IntroSpeech`: STEVEN: Welcome, {PLAYER}{KUN}. / I had a feeling you would make it here. / When we first met, a TEAM MAGMA grunt came all the way into GRANITE CAVE… just to deliver my mail. / At the SPACE CENTER, you were the strongest MAGMA grunt I'd ever faced. / I couldn't make it fit. Your POKéMON trusted you far too much for that. / Then, in SOOTOPOLIS, you took off that uniform right in front of MAXIE. / Only then did I understand what you had been doing all along. / So, no more uniforms. And no more holding back. / Today, I want to battle the real you. / I'm STEVEN, the CHAMPION of HOENN. / Now, bring it! Show me everything you and your POKéMON have become!
+- `EverGrandeCity_ChampionsRoom_Text_Defeat`: I, the CHAMPION, fall in defeat… / Kudos to you, {PLAYER}{KUN}. / So this is who you really are. A truly noble POKéMON TRAINER!
+- `EverGrandeCity_ChampionsRoom_Text_PostBattleSpeech`: STEVEN: Every one of your POKéMON fought with everything it had. / In GRANITE CAVE, I said that kind of trust is hard to fake. / It was never an act, was it? / {PLAYER}{KUN}, I now proclaim you to be the new HOENN region…
 - `EverGrandeCity_ChampionsRoom_Text_BirchArriveRatePokedex`: PROF. BIRCH: See? What did I tell you, {RIVAL}? / Didn't I tell you that you didn't need to worry about {PLAYER}{KUN}? / … … … … … … … … {PLAYER}{KUN}, you've finally done it. / The day we met, you and your little dragon saved me on ROUTE 101. / Then came that red uniform… But I never stopped trusting you. / And now look at you. The CHAMPION! / Ah, yes! / What became of your POKéDEX? Here, let me see.
+- `EverGrandeCity_ChampionsRoom_Text_WallaceComeWithMe`: STEVEN: {PLAYER}{KUN}… / No, let me say it properly this time. / The new CHAMPION of HOENN! / Come with me.
+- `EverGrandeCity_ChampionsRoom_Text_WallaceWaitOutside`: STEVEN: I'm sorry, but… / From here on, only those TRAINERS who have become CHAMPIONS may enter. / You'll have to wait outside with PROF. BIRCH.
+
+### EverGrandeCity_HallOfFame
+- `EverGrandeCity_HallOfFame_Text_HereWeHonorLeagueChampions`: STEVEN: This room… / This is where we keep records of POKéMON that prevailed through harsh battles. / It is here that the LEAGUE CHAMPIONS are honored.
+- `EverGrandeCity_HallOfFame_Text_LetsRecordYouAndYourPartnersNames`: STEVEN: Come on, let's record your name as a TRAINER who triumphed over the POKéMON LEAGUE, and the names of the partners who battled with you.
 
 ### GraniteCave_StevensRoom
 - `GraniteCave_StevensRoom_Text_ImStevenLetterForMe`: My name is STEVEN. / I'm interested in rare stones, so I travel here and there. / Oh? A TEAM MAGMA member… with a LETTER for me? / MAGMA doesn't usually deliver mail.
@@ -1814,6 +1861,9 @@ Draconid Emerald round 1 follow-ups (feedback 1.32, 1.34, part of 1.25; D-234 �
 - `SootopolisCity_Text_HaventYouScaledSkyPillar`: WALLACE: {PLAYER}{KUN}… / The SKY PILLAR's doors are sealed, and I won't open them. / Whatever called RAYQUAZA down, it wasn't me.
 - `SootopolisCity_Text_AquaMagmaDidntMeanHarm`: WALLACE: So you are {PLAYER}{KUN}. STEVEN told me about you. / I saw it all from across the water. A TEAM MAGMA grunt who threw the uniform away, right in front of MAXIE. / And then RAYQUAZA. The SKY PILLAR has been sealed for generations, yet something called it down. / The leaders of MAGMA and AQUA are over there. It wouldn't hurt to hear what they have to say for themselves.
 - `SootopolisCity_Text_ThankYouForHelpAcceptThis`: WALLACE: {PLAYER}{KUN}… My eyes didn't deceive me. / You stood between MAXIE and the storm, and you held on until the sky answered. / SOOTOPOLIS… No, all of HOENN was saved. / On behalf of the people, I thank you. / This is a gift from me. Please accept it.
+
+### SootopolisCity_PokemonCenter_1F
+- `SootopolisCity_PokemonCenter_1F_Text_WallaceToughestInHoenn`: WALLACE is said to be one of the toughest TRAINERS in the whole HOENN region. / This town's GYM is led by the TRAINER who taught WALLACE. / But the ELITE FOUR… They're said to be even stronger than WALLACE's mentor. / And the CHAMPION, STEVEN, is stronger still. / How strong could they be?
 
 ### VictoryRoad_1F
 - `VictoryRoad_1F_Text_WallyNotGoingToLoseAnymore`: WALLY: Hi! {PLAYER}! / I bet you're surprised to see me here! / Everyone is talking about SOOTOPOLIS. How you threw off the MAGMA uniform… / In MAUVILLE, I was scared of you. I'm sorry, {PLAYER}. / I should have trusted what I saw in PETALBURG, when you helped me catch my very first POKéMON. / I made it all the way here, and it's all thanks to you! / But I'm not going to lose anymore! / GALLADE and I are going to win! Okay… Here I come!

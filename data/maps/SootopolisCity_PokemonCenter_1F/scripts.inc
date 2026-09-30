@@ -43,13 +43,16 @@ SootopolisCity_PokemonCenter_1F_EventScript_WomanNoLegendaries::
 	release
 	end
 
-SootopolisCity_PokemonCenter_1F_Text_WallaceToughestInHoenn:
-	.string "WALLACE is rumored to be the toughest\n"
-	.string "TRAINER in the whole HOENN region.\p"
+SootopolisCity_PokemonCenter_1F_Text_WallaceToughestInHoenn:  @ Draconid Emerald
+	.string "WALLACE is said to be one of the\n"
+	.string "toughest TRAINERS in the whole HOENN\l"
+	.string "region.\p"
 	.string "This town's GYM is led by the TRAINER\n"
 	.string "who taught WALLACE.\p"
 	.string "But the ELITE FOUR… They're said to be\n"
 	.string "even stronger than WALLACE's mentor.\p"
+	.string "And the CHAMPION, STEVEN, is stronger\n"
+	.string "still.\p"
 	.string "How strong could they be?$"
 
 SootopolisCity_PokemonCenter_1F_Text_EveryoneTakenRefuge:

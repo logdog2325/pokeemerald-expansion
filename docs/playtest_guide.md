@@ -58,7 +58,7 @@ Tick each checkpoint as you pass it; note anything odd with where it happened.
 | 21 | Mossdeep Space Center | Choose May (YES) or Brendan (NO) as your multi-battle partner vs Maxie and Tabitha | |
 | 22 | Sootopolis (after the Rain Badge) | Brendan and May with Megas, one after the other (healed in between) | |
 | 23 | Sky Pillar top | Aster's climax (Mega Salamence) before Rayquaza wakes | |
-| 24 | Champion's room | May congratulates you | |
+| 24 | Champion's room | Champion **Steven** (his ORAS team, Mega Metagross; he remembers Granite Cave, the Space Center and Sootopolis), then Brendan, Prof. Birch and May come in. After the Hall of Fame: Steven's rematch (ORAS post-game team, no rivals) and Steven chatting in his Meteor Falls cave; after the finale, **Wallace** by the Cave of Origin in Sootopolis (battles whenever asked, Mega Gyarados) (debug: warp to `MAP_EVER_GRANDE_CITY_CHAMPIONS_ROOM` 6 12 with `FLAG_SYS_GAME_CLEAR` set / `MAP_SOOTOPOLIS_CITY` 31 20 with `VAR_DRACONID_FINALE_STATE` 9) | Steven's lines, the Mega, the Hall of Fame walk |
 | 25 | After the credits | You wake in the Draconid bedroom; downstairs Norman brings the **SS Ticket** and the Lati TV news airs | |
 | 26 | Birch's lab (post-game) | May and Brendan singles, then their double; Johto starters as in vanilla | |
 | 27 | Draconid shrine (post-game) | Aster rematch | |

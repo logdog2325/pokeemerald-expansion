@@ -340,6 +340,7 @@ const struct TrainerClass gTrainerClasses[TRAINER_CLASS_COUNT] =
     [TRAINER_CLASS_TRIATHLETE] = { _("TRIATHLETE"), 10 },
     [TRAINER_CLASS_DRAGON_TAMER] = { _("DRAGON TAMER"), 12 },
     [TRAINER_CLASS_DRACONID] = { _("DRACONID"), 15 }, // Draconid Emerald: Aster
+    [TRAINER_CLASS_SOOTOPOLITAN] = { _("SOOTOPOLITAN"), 50, BALL_ULTRA }, // Draconid Emerald: Wallace (post-game; the Champion's prize money, D-252)
     [TRAINER_CLASS_LEGEND] = { _("{PKMN} TRAINER"), 25 }, // Draconid Emerald: Red and Blue (Battle Frontier)
     [TRAINER_CLASS_ORRE_HERO] = { _("ORRE HERO"), 25 }, // Draconid Emerald: Wes (Battle Frontier)
     [TRAINER_CLASS_LOREKEEPER] = { _("LOREKEEPER"), 25, BALL_ULTRA }, // Draconid Emerald: Zinnia (a boss, like a Leader)

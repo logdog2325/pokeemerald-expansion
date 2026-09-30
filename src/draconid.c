@@ -46,13 +46,14 @@ static const struct DraconidVariantTrainer sDraconidVariantPartners[] =
     {VARIANT_BY_EGG_AND_STARTER, {PARTNER_NERINE_DEINO_CHARMANDER, PARTNER_NERINE_DEINO_TOTODILE, PARTNER_NERINE_DEINO_TREECKO, PARTNER_NERINE_DREEPY_CHARMANDER, PARTNER_NERINE_DREEPY_TOTODILE, PARTNER_NERINE_DREEPY_TREECKO, PARTNER_NERINE_JANGMO_O_CHARMANDER, PARTNER_NERINE_JANGMO_O_TOTODILE, PARTNER_NERINE_JANGMO_O_TREECKO}},
 };
 
-// The trainer a battle loads after the Hall of Fame, instead of the first one (round 1, D-174)
+// The trainer a battle loads after the Hall of Fame, instead of the first one (round 1, D-174; the Champion: D-251)
 static const u16 sPostgameRematches[][2] =
 {
     { TRAINER_SIDNEY, TRAINER_SIDNEY_REMATCH },
     { TRAINER_PHOEBE, TRAINER_PHOEBE_REMATCH },
     { TRAINER_GLACIA, TRAINER_GLACIA_REMATCH },
     { TRAINER_DRAKE,  TRAINER_DRAKE_REMATCH },
+    { TRAINER_STEVEN, TRAINER_STEVEN_REMATCH },
 };
 
 // The variant of a fight (first id in the table) for the player's egg and second starter; id if it has none
@@ -85,7 +86,7 @@ u16 Draconid_ResolveVariantTrainer(u16 trainerId)
 
     if (resolved != trainerId)
         return resolved;
-    // Once the game is cleared, the Elite Four bring their ORAS post-game rematch teams (D-174)
+    // Once the game is cleared, the Elite Four and the Champion bring their ORAS post-game rematch teams (D-174, D-251)
     if (FlagGet(FLAG_SYS_GAME_CLEAR))
     {
         for (i = 0; i < ARRAY_COUNT(sPostgameRematches); i++)

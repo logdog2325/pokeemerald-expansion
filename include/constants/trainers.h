@@ -532,6 +532,7 @@ enum TrainerClassID
     TRAINER_CLASS_LADY_FRLG,
     TRAINER_CLASS_PAINTER_FRLG,
     TRAINER_CLASS_DRACONID, // Draconid Emerald: Aster
+    TRAINER_CLASS_SOOTOPOLITAN, // Draconid Emerald: Wallace, Sootopolis's guardian after the Hall of Fame (ORAS's class for him, D-252)
     TRAINER_CLASS_LEGEND, // Draconid Emerald: Red and Blue at the Battle Frontier ("{PKMN} TRAINER", D-225)
     TRAINER_CLASS_ORRE_HERO, // Draconid Emerald: Wes at the Battle Frontier (D-225)
     TRAINER_CLASS_LOREKEEPER, // Draconid Emerald: Zinnia (Sky Pillar, Act 7)

@@ -491,7 +491,7 @@
   "TRAINER_EDDIE": "S3",
   "TRAINER_ALLEN": "S1",
   "TRAINER_TIMMY": "S3",
-  "TRAINER_WALLACE": "S9",
+  "TRAINER_WALLACE": "POST",
   "TRAINER_ANDREW": "S3",
   "TRAINER_IVAN": "S1",
   "TRAINER_CLAUDE": "S4",
@@ -946,7 +946,7 @@
   "TRAINER_JUAN_5": "POST",
   "TRAINER_ANGELO": "S3",
   "TRAINER_DARIUS": "S6",
-  "TRAINER_STEVEN": "POST",
+  "TRAINER_STEVEN": "S9",
   "TRAINER_ANDRES_2": "S6",
   "TRAINER_ANDRES_3": "S7",
   "TRAINER_ANDRES_4": "S8",
@@ -1067,7 +1067,8 @@
   "TRAINER_MAY_LAVARIDGE": "S5",
   "TRAINER_WALLY_ROUTE_120": "S6",
   "TRAINER_BRENDAN_JAGGED_PASS": "S7",
-  "TRAINER_MAY_MOSSDEEP": "S8"
+  "TRAINER_MAY_MOSSDEEP": "S8",
+  "TRAINER_STEVEN_REMATCH": "POST"
  },
  "info": {
   "TRAINER_SAWYER_1": {
@@ -3269,9 +3270,9 @@
    "story": false
   },
   "TRAINER_WALLACE": {
-   "segment": "S9",
+   "segment": "POST",
    "role": "elite",
-   "map": "EverGrandeCity_ChampionsRoom",
+   "map": "SootopolisCity",
    "story": false
   },
   "TRAINER_ANDREW": {
@@ -6285,9 +6286,9 @@
    "story": false
   },
   "TRAINER_STEVEN": {
-   "segment": "POST",
+   "segment": "S9",
    "role": "elite",
-   "map": "MeteorFalls_StevensCave",
+   "map": "EverGrandeCity_ChampionsRoom",
    "story": false
   },
   "TRAINER_ANDRES_2": {
@@ -7087,6 +7088,12 @@
    "role": "route",
    "map": "MossdeepCity",
    "story": true
+  },
+  "TRAINER_STEVEN_REMATCH": {
+   "segment": "POST",
+   "role": "elite",
+   "map": null,
+   "story": false
   }
  }
 }

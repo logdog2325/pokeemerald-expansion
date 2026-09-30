@@ -1,8 +1,8 @@
-# Flow test for Act 6 (data/scripts/draconid/act6.pory): the Champion's room (Brendan runs in with Prof. Birch,
-# May follows), the Hall of Fame without credits (the Hall of Fame screen sends the player home), the homecoming
-# upstairs and the meteor alert downstairs; the Elder's dragon flies the player to the Sky Pillar (act7.play goes on
-# from there). Needs rustboro_done.ss from tests/rustboro.play; the Act 5 end state is set by hand. Wallace is
-# mashed with the no-whiteout flag on (the vanilla scene goes on either way).
+# Flow test for Act 6 (data/scripts/draconid/act6.pory): the Champion's room (STEVEN is the CHAMPION, D-250;
+# Brendan runs in with Prof. Birch, May follows), the Hall of Fame without credits (the Hall of Fame screen sends
+# the player home), the homecoming upstairs and the meteor alert downstairs; the Elder's dragon flies the player to
+# the Sky Pillar (act7.play goes on from there). Needs rustboro_done.ss from tests/rustboro.play; the Act 5 end
+# state is set by hand. Steven is mashed with the no-whiteout flag on (the vanilla scene goes on either way).
 loadstate rustboro_done.ss
 setvar VAR_DRACONID_REPUTATION 2
 setvar VAR_PLAYER_OUTFIT 0
@@ -18,11 +18,14 @@ setflag FLAG_DEBUG_NO_ENCOUNTER
 setflag FLAG_DEBUG_NO_TRAINER_SEE
 setflag FLAG_DRACONID_NO_WHITEOUT
 
-# --- the Champion's room (Wallace, Brendan, Prof. Birch, May), then the Hall of Fame ---
+# --- the Champion's room (Steven, Brendan, Prof. Birch, May), then the Hall of Fame ---
 warp MAP_EVER_GRANDE_CITY_CHAMPIONS_ROOM 6 12
 run 60
 shot 10_champion
+run 240
+shot 10a_steven
 mash A 120000
+expect_opponent TRAINER_STEVEN
 mapid
 run 60
 mash A 60000

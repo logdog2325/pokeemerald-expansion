@@ -492,7 +492,7 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
 - **D-158 Deoxys later (D-111 in practice)**: Deoxys (Normal Forme, Lv 80 as in ORAS) floats at the summit after the
   finale; caught = gone (`FLAG_BATTLED_DEOXYS`), beaten = gone until the next Hall of Fame, which clears
   `FLAG_DEFEATED_DEOXYS` (the Birth Island rule; Birth Island itself is unreachable without the event ticket).
-- **D-159 Staging and the Champion's room**: the finale's scenes start from each map's OnFrame through `VAR_TEMP_7`
+- **D-159 Staging and the Champion's room** *(the Champion is Steven since D-250)*: the finale's scenes start from each map's OnFrame through `VAR_TEMP_7`
   (set by the OnTransition hook), so a lost battle ends the scene instead of looping it; the climb from the base to
   3F and from 3F to the summit are fades, not walks (the tower's cracked floors need the Mach Bike and would split
   the three up). In the Champion's room Brendan runs in (Birch's son), and May follows Birch in; Wallace and Birch
@@ -571,7 +571,7 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   four trainer ids (`include/constants/opponents.h`, 924–927 are free) and a game-clear switch in the Elite Four
   rooms or a variant rule (`src/draconid.c`), files owned by the story work this round. – Alt: Megas in the first
   battle. – Megas stay a post-game treat (D-066) and the rematch is ready to wire.
-- **D-175 Wallace unchanged**: ORAS has no Champion Wallace; its only other Wallace battle on Serebii
+- **D-175 Wallace unchanged** *(superseded by D-250 – D-252: Steven is the Champion, Wallace post-game)*: ORAS has no Champion Wallace; its only other Wallace battle on Serebii
   ("Sootopolitan Wallace", Route 131 page) has exactly his Emerald Champion roster, which his current team already
   uses. – Alt: Steven's ORAS Champion roster (Steven is story-owned). – Nothing in the ORAS data improves him.
 - **D-180 Zinnia's look**: her ORAS Lorekeeper design at GBA size – a black chin-length bob with blunt bangs, a
@@ -1051,3 +1051,67 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   mustn't know yet); Brendan's Space Center call quotes Steven's "strongest grunt" instead of "you let us win".
   – Alt: Steven guesses the truth at the Space Center (the earlier version). – The playtester: "I don't think anybody
   should know that you're undercover besides the Draconids and Birch and Oak."
+- **D-250 Steven is the Champion** (the playtester: "is Steven the Champion and if not, can we make him the
+  Champion?"; supersedes D-175): **Steven** waits in the Champion's room (his sprite, `LOCALID_CHAMPIONS_ROOM_STEVEN`)
+  and walks the new Champion into the Hall of Fame. His battle reuses the vanilla post-game id `TRAINER_STEVEN`
+  (nothing in the story used it: the Space Center tag is `TRAINER_STEVEN_MOSSDEEP`, and his vanilla Meteor Falls
+  battle is gone, D-252) with his **ORAS Champion roster** (Serebii: Skarmory, Claydol, Aggron, Cradily, Armaldo,
+  Metagross @ Metagrossite) at the S9 Champion band (57–59, Mega Metagross 60 = the cap), Elite Four-style sets built
+  from his ORAS moves (items, natures, EVs), 4 Full Restores, `Smart Trainer / Prediction / Ace Pokemon`, class
+  CHAMPION (the Champion's music, battle arena and prize money). He Mega Evolves in the first battle, unlike the
+  Elite Four (D-173): ORAS's Champion does too, and he is the last wall before the Hall of Fame. His lines pay off
+  the story as the player lived it: a TEAM MAGMA grunt walked into GRANITE CAVE to deliver his mail; at the SPACE
+  CENTER the player was the strongest MAGMA grunt he had ever faced (he did **not** know – nobody but the
+  Draconids, Birch and Oak did; only "your POKéMON trusted you far too much" as a flicker of doubt); only at
+  SOOTOPOLIS, when the uniform came off in front of Maxie, did he understand; "Today, I want to battle the real
+  you." After the battle, "In GRANITE CAVE, I said that kind of trust is hard to fake. It was never an act, was
+  it?" Brendan, Prof. Birch and May come in around him exactly as before (D-159). Every text that named Wallace
+  as Champion is fixed: the Champion's room and Hall of Fame (the vanilla labels retold), the Sootopolis PC's
+  "WALLACE is rumored to be the toughest TRAINER in HOENN", Wallace's Match Call entry (D-252) and Steven's calls
+  (a new one once the player has all eight badges, "I'll be waiting at the very top. Come as you really are.", and
+  his Hall of Fame call); the credits, TV shows and the Pokédex rating never named him. – Alt: keep Champion Wallace
+  (vanilla Emerald, D-175); Steven as a battle after Wallace (two Champions in one League). – The playtester's
+  question; the story already calls Steven "the CHAMPION of HOENN himself" at the Space Center (Tabitha, Act 5) and
+  overlevels him there for that reason (D-108), and ORAS made him the Champion.
+- **D-251 The Champion's rematch**: after the Hall of Fame the League loads Steven's **ORAS post-game roster**
+  (Skarmory, Claydol, Carbink, Aerodactyl, Aggron 77, Mega Metagross 79 – Serebii's levels) as
+  `TRAINER_STEVEN_REMATCH`, through `sPostgameRematches` like the Elite Four (D-174), so the script names
+  `TRAINER_STEVEN` both times. The id is **976** and `MAX_TRAINERS_COUNT_EMERALD` goes from 944 to **992** (a
+  multiple of 16; ids 937–975 are left for the other round 1 v2 follow-ups): 48 more trainer flags move the system
+  flags up and `SaveBlock1` grows by 4 bytes (15580 → 15584, `test/save.c`), so saves from before the change don't
+  carry over (as with D-101, D-229). The rematch is Steven alone: new lines ("A few new partners have joined us,
+  too. I found them among the stones, of course."), the battle, then he walks the player straight into the Hall of
+  Fame – Brendan, May and Prof. Birch don't come in again. – Alt: the vanilla flow, which replays the rival scene
+  on every visit (May's "Did I miss it?!" and Birch's first-Champion lines would repeat after the finale, when the
+  rivals are waiting in Littleroot); a Steven rematch somewhere else (Meteor Falls, his vanilla spot). – The League
+  is where the Champion is, and the Elite Four already work this way.
+- **D-252 Wallace, Sootopolis's guardian, and Steven's Meteor Falls spot**: **Wallace** keeps his Act 5 role
+  (Waterfall), and Act 7 has him battle the player at the Sky Pillar before the finale
+  (`TRAINER_WALLACE_SKY_PILLAR`, the Act 7 branch), so his post-game battle is his **rematch**. Once the finale is
+  over (`VAR_DRACONID_FINALE_STATE` ≥ `FINALE_STATE_METEOR_DESTROYED`, like the other post-finale scenes; after the
+  Hall of Fame alone he would stand in two places) he stands at the CAVE OF ORIGIN's entrance, (31, 19) between the
+  lamp posts right before the cave's Expert – far from the Act 5 turn scene's objects on the Gym island (y 33–36) –
+  as a new object (`LOCALID_SOOTOPOLIS_POSTGAME_WALLACE`) hidden by `FLAG_TEMP_1` until then (set by
+  `SootopolisCity_OnTransition`), so no save flag is spent. He handed the Gym back to his mentor Juan to watch over
+  the cave (vanilla's "something came up" and Juan's "compelling reason"), and a line looks back at the Sky Pillar:
+  "At the SKY PILLAR, I tested the one the prophecy chose. Today, I simply wish to battle the TRAINER who stands as
+  STEVEN's equal." He battles **whenever asked** (YES/NO, like the Frontier legends, D-225). The battle reuses
+  `TRAINER_WALLACE` (the vanilla Champion id, free now) with his **Emerald Champion team** – which is ORAS's
+  "Sootopolitan Wallace" (Serebii, Route 131) – clearly above the Sky Pillar version: Lv 75, Gyarados 76, Milotic 78,
+  his rain sets (Ludicolo with Energy Ball and Focus Blast for coverage), 3 Full Restores, and **Mega Gyarados**
+  (Gyaradosite; Dragon Dance, Waterfall, Crunch, Earthquake, Adamant) – the playtester's "wallace can use mega
+  gyrados", as at the Sky Pillar, and every post-game boss carries a Mega (the Elite Four rematch, the leaders' last
+  tier, the rivals, Steven; Milotic has none). He gets his ORAS title as a new class, **SOOTOPOLITAN** (50 money,
+  Ultra Ball), and keeps the Emerald Champion battle theme (`MUS_VS_CHAMPION`, his own theme in Emerald). His Match
+  Call entry, registered by that battle as in vanilla, reads "SOOTOPOLITAN" at Sootopolis, and his call talks about
+  Steven and the cave. **Steven's Meteor Falls spot** becomes a short chat: his vanilla battle there
+  (`TRAINER_STEVEN`, now the Champion) and its texts are removed; after the Hall of Fame he searches for stones in
+  his cave, points to the League rematch and, after the finale, remembers watching the sky break apart from there;
+  before the Hall of Fame he is hidden (`FLAG_TEMP_1`, the map's new OnTransition), since he waits at the League. –
+  Alt: shown from the Hall of Fame on (before his Sky Pillar battle); class LEADER (ORAS's Gym Leader Wallace; Juan
+  leads the Gym here), CHAMPION (contradicts D-250) or {PKMN} TRAINER (Brendan and May's rival theme); Wallace
+  beside the Expert at (30, 18) / (32, 18) (walled in behind him) or at (33, 19) off the lamp posts (keeps the
+  Expert talkable, but reads as a bystander – post-game the Expert's line is lost behind Wallace instead); the
+  vanilla Wallace object (its flag is set by Juan's badge and its position follows the aftermath states); a battle
+  once per Hall of Fame; Steven's cave battle kept under another id (a second Champion rematch). – The brief's
+  post-game Wallace, with the ORAS title the data already had.

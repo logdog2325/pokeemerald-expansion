@@ -808,7 +808,10 @@
 #define TRAINER_JUAN_5                      801
 #define TRAINER_ANGELO                      802
 #define TRAINER_DARIUS                      803
+// Draconid Emerald: STEVEN is the CHAMPION (the Champion's room, D-250); after the Hall of Fame the League
+// loads his ORAS post-game team, TRAINER_STEVEN_REMATCH (D-251)
 #define TRAINER_STEVEN                      804
+#define TRAINER_STEVEN_REMATCH              976
 #define TRAINER_ANABEL                      805
 #define TRAINER_TUCKER                      806
 #define TRAINER_SPENSER                     807
@@ -953,11 +956,13 @@
 // Draconid Emerald: MAX_TRAINERS_COUNT_EMERALD raised from 864 so Nerine's variants fit (D-101); system flags move up
 //       928 -> 944 for the Battle Frontier legends and the finale (D-229): 16 more trainer flags, 2 save bytes
 //       937 of 944 used (924: Zinnia, Act 7): 7 spare ids before MAX_TRAINERS_COUNT_EMERALD must grow again
+//       944 -> 992 for the round 1 v2 follow-ups (D-251): 976 is Steven's Champion rematch; 48 more trainer flags,
+//       6 flag bytes (SaveBlock1 +4, test/save.c)
 //       More space can be made by shifting flags around in constants/flags.h or changing how trainer flags are handled
 //       MAX_TRAINERS_COUNT can be increased but will take up additional saveblock space
 
-#define TRAINERS_COUNT_EMERALD     937
-#define MAX_TRAINERS_COUNT_EMERALD 944
+#define TRAINERS_COUNT_EMERALD     977
+#define MAX_TRAINERS_COUNT_EMERALD 992
 
 #if IS_FRLG
 #define TRAINERS_COUNT                      TRAINERS_COUNT_FRLG

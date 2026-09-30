@@ -2292,19 +2292,16 @@ MatchCall_Text_Drake::
 	.string "the POKéMON LEAGUE!\p"
 	.string "Don't you agree, {PLAYER}?$"
 
-MatchCall_Text_Wallace::
-	.string "WALLACE: Hello, {PLAYER}{KUN}.\n"
-	.string "Have you met STEVEN?\p"
-	.string "He is…\n"
-	.string "Actually incredibly skilled.\p"
-	.string "However, he's an odd soul who\n"
-	.string "rarely battles.\p"
-	.string "Instead, he would rather look for\n"
-	.string "rare stones.\p"
-	.string "I'm sure he's digging in a cave or\n"
-	.string "a craggy mountain somewhere.\p"
-	.string "But what is a rare stone exactly?\n"
-	.string "All I can think of is a METEORITE…$"
+MatchCall_Text_Wallace::  @ Draconid Emerald
+	.string "WALLACE: Hello, {PLAYER}{KUN}.\p"
+	.string "Have you been back to the LEAGUE?\n"
+	.string "STEVEN says you're the only\l"
+	.string "TRAINER who makes him forget about\l"
+	.string "rocks.\p"
+	.string "From him, that is high praise indeed.\p"
+	.string "All is calm at the CAVE OF ORIGIN.\n"
+	.string "Come to SOOTOPOLIS whenever you\l"
+	.string "wish to battle again.$"
 
 MatchCall_Text_MayRayquazaCall:
 	.string "… … … … … …\n"
@@ -2823,13 +2820,14 @@ MatchCall_Text_Steven6::
 	.string "STEVEN appears not to be getting\n"
 	.string "the call…$"
 
-MatchCall_Text_Steven7::
+MatchCall_Text_Steven7::  @ Draconid Emerald
 	.string "STEVEN: {PLAYER}{KUN}… Congratulations\n"
-	.string "for entering the HALL OF FAME.\p"
-	.string "… … … … … …\n"
-	.string "… … … … … …\p"
-	.string "I hope we can meet again\n"
-	.string "somewhere!$"
+	.string "on entering the HALL OF FAME.\p"
+	.string "Losing to you was the best battle\n"
+	.string "I've had in a long time.\p"
+	.string "Whenever you want a rematch, climb\n"
+	.string "back up to the LEAGUE. I'll be\l"
+	.string "waiting.$"
 
 MatchCall_Text_BirchRegisterCall:
 	.string "PROF. BIRCH: Oh, {PLAYER}{KUN}!\n"

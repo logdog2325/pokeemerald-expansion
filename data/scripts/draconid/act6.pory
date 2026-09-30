@@ -1,14 +1,18 @@
-// Draconid Emerald round 1, Act 6 (docs/hack_story.md steps 29-30): the Champion's room (BRENDAN comes in with
-// PROF. BIRCH, his father, and MAY follows them), the Hall of Fame without credits, and the meteor alert at home
-// that sends the player to the Sky Pillar (D-150). Juan's Gym, Victory Road and the Elite Four stay vanilla; WALLY's
-// Victory Road lines are reworked in place (data/maps/VictoryRoad_1F/scripts.inc).
+// Draconid Emerald round 1, Act 6 (docs/hack_story.md steps 29-30): the Champion's room (STEVEN is the CHAMPION,
+// D-250; BRENDAN comes in with PROF. BIRCH, his father, and MAY follows them), the Hall of Fame without credits, and
+// the meteor alert at home that sends the player to the Sky Pillar (D-150). Juan's Gym, Victory Road and the Elite
+// Four stay vanilla; WALLY's Victory Road lines are reworked in place (data/maps/VictoryRoad_1F/scripts.inc).
+// Post-game: STEVEN's Champion rematch (D-251), WALLACE by the CAVE OF ORIGIN and STEVEN at METEOR FALLS (D-252).
 // VAR_DRACONID_FINALE_STATE: FINALE_STATE_* (include/constants/draconid.h). Act 7 is data/scripts/draconid/act7.pory.
 
 // ---------------------------------------------------------------------------
-// Champion's room: after WALLACE, BRENDAN runs in (the vanilla rival scene, now always him) and PROF. BIRCH rates
-// the POKéDEX. EverGrandeCity_ChampionsRoom_EventScript_BirchArrivesExitForHoF calls ...MayArrives after BIRCH's
-// congratulations and ...RivalsCongratulate when WALLACE sends them outside.
-// The player stands at (6, 6), BRENDAN at (5, 6), BIRCH at (7, 6); MAY comes in by the door at (6, 12).
+// Champion's room: STEVEN is the CHAMPION (D-250: his sprite, TRAINER_STEVEN with his ORAS Champion team; his lines
+// are the vanilla labels retold in data/maps/EverGrandeCity_ChampionsRoom/scripts.inc). After the battle BRENDAN runs
+// in (the vanilla rival scene, now always him) and PROF. BIRCH rates the POKéDEX.
+// EverGrandeCity_ChampionsRoom_EventScript_BirchArrivesExitForHoF calls ...MayArrives after BIRCH's congratulations
+// and ...RivalsCongratulate when STEVEN sends them outside.
+// The player stands at (6, 6), STEVEN at (6, 5), BRENDAN at (5, 6), BIRCH at (7, 6); MAY comes in by the door at
+// (6, 12).
 // ---------------------------------------------------------------------------
 
 script EverGrandeCity_ChampionsRoom_EventScript_DraconidMayArrives {
@@ -36,6 +40,129 @@ script EverGrandeCity_ChampionsRoom_EventScript_DraconidRivalsCongratulate {
     call(EverGrandeCity_ChampionsRoom_EventScript_BrendanCongratulations)
     msgbox(format("MAY: Go on, CHAMPION! We'll be right here.\p"
                   "And then you owe me the whole story. From the very start!"))
+}
+
+// ---------------------------------------------------------------------------
+// The CHAMPION's rematch (D-251): after the Hall of Fame, EverGrandeCity_ChampionsRoom_EventScript_Wallace comes here.
+// TRAINER_STEVEN loads his ORAS post-game team, TRAINER_STEVEN_REMATCH (sPostgameRematches, src/draconid.c), then
+// STEVEN takes the player straight on to the Hall of Fame: BRENDAN, MAY and PROF. BIRCH don't come in again.
+// ---------------------------------------------------------------------------
+
+script EverGrandeCity_ChampionsRoom_EventScript_DraconidStevenRematch {
+    msgbox(format("STEVEN: Welcome back, {PLAYER}{KUN}.\p"
+                  "I was hoping you'd climb all the way up here again.\p"
+                  "Since our battle, my POKéMON and I have trained harder than ever.\p"
+                  "A few new partners have joined us, too. I found them among the stones, of course.\p"
+                  "Now, bring it! Show me how much further the real {PLAYER} has come!"))
+    trainerbattle_no_intro(TRAINER_STEVEN, EverGrandeCity_ChampionsRoom_Text_DraconidStevenRematchDefeat)
+    playse(SE_DOOR)
+    setmetatile(6, 1, METATILE_EliteFour_OpenDoorChampion_Frame, FALSE)
+    setmetatile(6, 2, METATILE_EliteFour_OpenDoorChampion_Opening, FALSE)
+    special(DrawWholeMapView)
+    msgbox(format("STEVEN: That was a wonderful battle. Thank you, {PLAYER}{KUN}.\p"
+                  "Your name belongs in that room more than ever.\p"
+                  "Come. Let's record your partners' names once more."))
+    closemessage
+    applymovement(LOCALID_CHAMPIONS_ROOM_STEVEN, EverGrandeCity_ChampionsRoom_Movement_WallaceExitStart)
+    applymovement(LOCALID_PLAYER, EverGrandeCity_ChampionsRoom_Movement_PlayerExitStart)
+    waitmovement(0)
+    delay(20)
+    applymovement(LOCALID_CHAMPIONS_ROOM_STEVEN, EverGrandeCity_ChampionsRoom_Movement_WallaceExit)
+    applymovement(LOCALID_PLAYER, EverGrandeCity_ChampionsRoom_Movement_PlayerExit)
+    waitmovement(0)
+    warp(MAP_EVER_GRANDE_CITY_HALL_OF_FAME, 7, 16)
+    waitstate
+    releaseall
+}
+
+text EverGrandeCity_ChampionsRoom_Text_DraconidStevenRematchDefeat {
+    format("Magnificent…\p"
+           "You keep climbing higher, {PLAYER}{KUN}. I'll just have to keep climbing, too.")
+}
+
+// ---------------------------------------------------------------------------
+// STEVEN's PokéNav call once the player has all eight BADGES (sStevenMatchCallHeader, src/pokenav_match_call_data.c;
+// after the Hall of Fame MatchCall_Text_Steven7 takes over). He learned the truth at the SOOTOPOLIS turn.
+// ---------------------------------------------------------------------------
+
+text Draconid_Text_StevenCallLeague {
+    format("STEVEN: {PLAYER}{KUN}, it's STEVEN. I heard you have all eight BADGES.\p"
+           "The POKéMON LEAGUE is beyond VICTORY ROAD, past EVER GRANDE CITY.\p"
+           "I'll be waiting at the very top. Come as you really are.", 188)
+}
+
+// ---------------------------------------------------------------------------
+// Post-game: STEVEN's hideaway at METEOR FALLS (D-252). His vanilla battle there is gone (TRAINER_STEVEN is the
+// CHAMPION now); after the Hall of Fame he is there for a chat and points to the LEAGUE. Before it he is hidden
+// (FLAG_TEMP_1, set by the map's OnTransition): he is waiting at the LEAGUE.
+// ---------------------------------------------------------------------------
+
+script MeteorFalls_StevensCave_EventScript_DraconidOnTransition {
+    if (!flag(FLAG_SYS_GAME_CLEAR)) {
+        setflag(FLAG_TEMP_1)
+    }
+}
+
+script MeteorFalls_StevensCave_EventScript_DraconidSteven {
+    lock
+    faceplayer
+    msgbox(format("STEVEN: Oh, {PLAYER}{KUN}! You found my hiding place.\p"
+                  "When the LEAGUE can spare me, I come here to search for rare stones.\p"
+                  "A meteorite fell into these falls long ago. Who knows what else the sky left behind?"))
+    if (var(VAR_DRACONID_FINALE_STATE) >= FINALE_STATE_METEOR_DESTROYED) {
+        msgbox(format("STEVEN: The night the sky broke apart over HOENN, I watched it from right here.\p"
+                      "Somehow, I suspect you were a lot closer to it than I was."))
+    }
+    msgbox(format("STEVEN: If you'd like another battle, come to the POKéMON LEAGUE.\p"
+                  "I'll be waiting in the CHAMPION's room. The ELITE FOUR have been training hard, too."))
+    release
+}
+
+// ---------------------------------------------------------------------------
+// Post-game: WALLACE, SOOTOPOLIS's guardian (D-252). He handed the GYM back to JUAN to watch over the CAVE OF ORIGIN;
+// once the finale is over (he battles the player at the SKY PILLAR in Act 7, TRAINER_WALLACE_SKY_PILLAR) he stands
+// before the cave's EXPERT at (31, 19) (LOCALID_SOOTOPOLIS_POSTGAME_WALLACE, FLAG_TEMP_1 set by
+// SootopolisCity_OnTransition until then) and battles whenever asked: his rematch, the Emerald Champion team at
+// post-game strength with Mega Gyarados (TRAINER_WALLACE, class SOOTOPOLITAN as in ORAS).
+// ---------------------------------------------------------------------------
+
+script SootopolisCity_EventScript_DraconidPostgameWallaceOnTransition {
+    if (var(VAR_DRACONID_FINALE_STATE) < FINALE_STATE_METEOR_DESTROYED) {
+        setflag(FLAG_TEMP_1)
+    }
+    return
+}
+
+script SootopolisCity_EventScript_DraconidPostgameWallace {
+    lock
+    faceplayer
+    if (defeated(TRAINER_WALLACE)) {
+        msgbox(format("WALLACE: {PLAYER}{KUN}! Have you come to let the water dance once more?"), MSGBOX_YESNO)
+    } else {
+        msgbox(format("WALLACE: Ah, {PLAYER}{KUN}. Or should I say, CHAMPION?\p"
+                      "STEVEN told me about your battle at the LEAGUE. He hasn't stopped smiling since.\p"
+                      "I once led this city's GYM. I handed it back to my mentor, JUAN, to watch over the CAVE OF ORIGIN.\p"
+                      "After what GROUDON and KYOGRE did here, someone must.\p"
+                      "At the SKY PILLAR, I tested the one the prophecy chose.\p"
+                      "Today, I simply wish to battle the TRAINER who stands as STEVEN's equal."))
+        msgbox(format("WALLACE: Will you grant me a battle?"), MSGBOX_YESNO)
+    }
+    if (var(VAR_RESULT) == NO) {
+        msgbox(format("WALLACE: A pity. The CAVE and I will be here, should you change your mind."))
+        release
+        end
+    }
+    msgbox(format("WALLACE: Then let the water lead us. Show me elegance!"))
+    trainerbattle_no_intro(TRAINER_WALLACE, SootopolisCity_Text_DraconidPostgameWallaceDefeat)
+    msgbox(format("WALLACE: STEVEN said you were the finest TRAINER he had ever faced.\p"
+                  "I see now that he wasn't exaggerating.\p"
+                  "Whenever you wish for another battle, you know where to find me."))
+    release
+}
+
+text SootopolisCity_Text_DraconidPostgameWallaceDefeat {
+    format("Magnificent!\p"
+           "Your POKéMON flowed around mine like water. Truly elegant.")
 }
 
 // ---------------------------------------------------------------------------

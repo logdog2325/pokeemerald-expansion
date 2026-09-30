@@ -84,17 +84,17 @@ undercover. Everyone else may suspect (May's doubts, Steven's "strongest MAGMA g
 47. 🚧 Victory Road: **Courtney (Mega Houndoom) + Tabitha (fire Mega) double battle**; they hint that Maxie and
     Archie will make the Draconids pay.
 
-## Act 6 – Champion (Victory Road → Pokémon League)  ☑️
-48. ☑️ **Wally battle 6** – Victory Road (Mega Gallade).
-49. ☑️ **The Elite Four** (ORAS rosters). **Champion: Wallace** today – 🚧 changing to **Steven** (ORAS team, Mega
-    Metagross; he only learned the truth at Sootopolis). Brendan and May reach the Champion's room.
-50. ☑️ Hall of Fame without credits → home; the meteor on TV; the Elder's summons.
+## Act 6 – Champion (Victory Road → Pokémon League)
+48. ✅ **Wally battle 6** – Victory Road (Mega Gallade).
+49. ✅ **The Elite Four** (ORAS rosters). **Champion Steven** (his ORAS team, Mega Metagross; he took the player for
+    the strongest MAGMA grunt he'd faced and only understood at Sootopolis). Brendan and May reach the Champion's room.
+50. ✅ Hall of Fame without credits → home; the meteor on TV; the Elder's summons.
 
 ## Act 7 – The prophecy fulfilled
 51. ⬜ The Elder calls the player home: the shrine's sealed wall opens – **Regidrago**.
 52. 🚧 Sky Pillar: **Wallace**, Sootopolis's guardian of the tower (as in ORAS's Delta Episode), tests the player
     before anyone climbs to Rayquaza (Mega Gyarados).
-    ☑️ **The trial** – the player + Nerine (Nerine 8, partner) vs **Aster battle 3**; **Zinnia** on
+    ✅ **The trial** – the player + Nerine (Nerine 8, partner) vs **Aster battle 3**; **Zinnia** on
     3F; the summit – catch Rayquaza, Dragon Ascent, the **Deoxys** boss, Mega Rayquaza destroys the meteor.
 53. ⬜ The alarm: Maxie and Archie used the Orbs – Primal Groudon and Primal Kyogre – and attack the Draconid
     village. From here until the Primal battle is won, Emerald's intense sunlight and heavy rain alternate on the
@@ -106,11 +106,11 @@ undercover. Everyone else may suspect (May's doubts, Steven's "strongest MAGMA g
 56. ⬜ Aftermath: the titans go home, Maxie beaten but bitter, the Orbs, the village rebuilds; credits.
 
 ## Post-game
-57. ☑️ The Elder brings the S.S. Ticket; the Lati news.  ⬜ Both Latis roam.
-58. ☑️ **Brendan and May** in Birch's lab (singles and a double); **Aster** at the shrine; **Nerine** by the
+57. ✅ The Elder brings the S.S. Ticket; the Lati news.  ⬜ Both Latis roam.
+58. ✅ **Brendan and May** in Birch's lab (singles and a double); **Aster** at the shrine; **Nerine** by the
     village pond; **Deoxys** on the Sky Pillar summit.
-59. ✅ The Elite Four rematch (ORAS post-game teams).  🚧 Steven's Champion rematch; **Wallace's rematch** at the
-    Cave of Origin.
+59. ✅ The Elite Four and **Champion Steven** rematch (ORAS post-game teams); after the finale **Wallace's rematch**
+    (Mega Gyarados) by the Cave of Origin; Steven chats in his Meteor Falls cave.
 60. ✅ Battle Frontier: **Wes, Red, Blue** and the Legends' Tag.
 60a. 🚧 **Lance** comes to the Draconid village – Blackthorn's dragon clan is the Draconids' northern branch; he has
      heard what the player did and challenges them (Mega Dragonite); he leaves a Dragoninite and stays for rematches.
@@ -119,11 +119,11 @@ undercover. Everyone else may suspect (May's doubts, Steven's "strongest MAGMA g
 ## Rival battles at a glance
 | Rival | Battles (story order) |
 |---|---|
-| Brendan | Rustboro ✅ · Route 104 ✅ · Mt. Chimney ✅ · Route 119 ✅ · Lilycove double ✅ · Jagged Pass ✅ · Space Center tag ✅ · Sootopolis partner ✅ · village partner ⬜ · final partner (choice) ⬜ · post-game lab ☑️ |
-| May | Route 103 ✅ · Route 110 ✅ · Lavaridge ✅ · Lilycove double ✅ · Mossdeep ✅ · Sootopolis partner ✅ · village partner ⬜ · final partner (choice) ⬜ · post-game lab ☑️ |
-| Wally | Mauville ✅ · Route 112 ✅ · Petalburg Gym door ✅ · Route 120 ✅ · Lilycove ✅ · Victory Road ☑️ · village partner ⬜ |
-| Aster | Draconid Pass ✅ · Meteor Falls ✅ · Sky Pillar trial ☑️ · village partner ⬜ · post-game shrine ☑️ |
-| Nerine | Petalburg Woods ✅ · Rusturf ✅ · Museum ✅ · Mt. Chimney ✅ · Mt. Pyre ✅ · Aqua Hideout ✅ · Seafloor (Mega) ✅ · Sky Pillar partner ☑️ · post-game pond ☑️ |
+| Brendan | Rustboro ✅ · Route 104 ✅ · Mt. Chimney ✅ · Route 119 ✅ · Lilycove double ✅ · Jagged Pass ✅ · Space Center tag ✅ · Sootopolis partner ✅ · village partner ⬜ · final partner (choice) ⬜ · post-game lab ✅ |
+| May | Route 103 ✅ · Route 110 ✅ · Lavaridge ✅ · Lilycove double ✅ · Mossdeep ✅ · Sootopolis partner ✅ · village partner ⬜ · final partner (choice) ⬜ · post-game lab ✅ |
+| Wally | Mauville ✅ · Route 112 ✅ · Petalburg Gym door ✅ · Route 120 ✅ · Lilycove ✅ · Victory Road ✅ · village partner ⬜ |
+| Aster | Draconid Pass ✅ · Meteor Falls ✅ · Sky Pillar trial ✅ · village partner ⬜ · post-game shrine ✅ |
+| Nerine | Petalburg Woods ✅ · Rusturf ✅ · Museum ✅ · Mt. Chimney ✅ · Mt. Pyre ✅ · Aqua Hideout ✅ · Seafloor (Mega) ✅ · Sky Pillar partner ✅ · post-game pond ✅ |
 | Maxie | Sootopolis ✅ (bigger scene 🚧) · before Victory Road 🚧 · village finale (Primal Groudon) ⬜ |
 
 ## Gyms at a glance

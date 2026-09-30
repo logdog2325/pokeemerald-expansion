@@ -1,4 +1,7 @@
-# The Elite Four load their ORAS post-game rematch teams once the game is cleared (D-174; Sidney shown).
+# The Elite Four load their ORAS post-game rematch teams once the game is cleared (D-174; Sidney shown), and so
+# does the Champion, STEVEN (D-251: straight on to the Hall of Fame, no rivals). Then STEVEN's chat at METEOR FALLS
+# (hidden before the Hall of Fame) and the post-game WALLACE by the CAVE OF ORIGIN (hidden until the finale is over,
+# after his Act 7 SKY PILLAR battle) (D-252).
 # Needs rustboro_done.ss; battles are mashed with the no-whiteout flag on.
 loadstate rustboro_done.ss
 setflag FLAG_DEBUG_NO_TRAINER_SEE
@@ -24,5 +27,56 @@ press A 2 30
 mash A 60000
 shot e10_after_sidney_rematch
 expect_opponent TRAINER_SIDNEY_REMATCH
+
+# --- before the Hall of Fame: no WALLACE by the CAVE OF ORIGIN, no STEVEN at METEOR FALLS (FLAG_TEMP_1) ---
+heal
+clearflag FLAG_SYS_GAME_CLEAR
+setvar VAR_SOOTOPOLIS_CITY_STATE 6
+warp MAP_SOOTOPOLIS_CITY 31 20
+run 60
+shot e30_sootopolis_before
+expect_flag FLAG_TEMP_1 1
+warp MAP_METEOR_FALLS_STEVENS_CAVE 19 4
+run 60
+expect_flag FLAG_TEMP_1 1
+
+# --- the CHAMPION's rematch after the Hall of Fame (the Champion's room OnFrame walks the player up to STEVEN) ---
+setflag FLAG_SYS_GAME_CLEAR
+warp MAP_EVER_GRANDE_CITY_CHAMPIONS_ROOM 6 12
+run 300
+shot e20_steven_rematch
+mash A 120000
+expect_opponent TRAINER_STEVEN_REMATCH
+expect_flag FLAG_SYS_GAME_CLEAR 1
+mapid
+
+# --- after the Hall of Fame but before the finale is over: still no WALLACE (Act 7 has him at the SKY PILLAR) ---
+warp MAP_SOOTOPOLIS_CITY 31 20
+run 60
+expect_flag FLAG_TEMP_1 1
+
+# --- after the finale: WALLACE, SOOTOPOLIS's guardian (his rematch): talk to him from the south, YES, battle ---
+heal
+setvar VAR_DRACONID_FINALE_STATE 9
+warp MAP_SOOTOPOLIS_CITY 31 20
+run 60
+expect_flag FLAG_TEMP_1 0
+press UP 2 20
+shot e31_wallace
+press A 2 30
+shot e32_wallace_talks
+mash A 60000
+expect_opponent TRAINER_WALLACE
+shot e33_after_wallace
+
+# --- STEVEN's chat at METEOR FALLS ---
+warp MAP_METEOR_FALLS_STEVENS_CAVE 19 4
+run 60
+expect_flag FLAG_TEMP_1 0
+press UP 2 20
+press A 2 30
+shot e40_meteor_falls_steven
+mash A 30000
+expect_pos 19 4
 clearflag FLAG_DEBUG_NO_TRAINER_SEE
 clearflag FLAG_DRACONID_NO_WHITEOUT
