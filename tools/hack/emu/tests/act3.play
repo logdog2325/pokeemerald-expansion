@@ -1,0 +1,105 @@
+# Act 3 flow test (data/scripts/draconid/act3.pory): Meteor Falls (Maxie meets the player, Aqua, Aster), Mt.
+# Chimney (Maxie's order, Nerine, Brendan, the meteorite), Jagged Pass (Aster, the Mega Ring), Lavaridge (the
+# Mega Stone, May's Go-Goggles). Needs rustboro_done.ss from tests/rustboro.play (a one-Pokémon party, so a
+# mashed battle ends when it faints); states are set by hand and scenes reached with the debug warp; battles
+# are mashed with the no-whiteout flag on (scripts, not balance).
+# Matrix parameters: EGGNAME (the player's egg), SECOND/SECONDNAME (the second starter, set by hand here),
+# STONE (its Mega Stone).
+default EGGNAME DEINO
+default SECOND 1
+default SECONDNAME CHARMANDER
+default STONE ITEM_CHARIZARDITE_X
+loadstate rustboro_done.ss
+setflag FLAG_DEBUG_NO_ENCOUNTER
+setflag FLAG_DEBUG_NO_TRAINER_SEE
+setflag FLAG_DRACONID_NO_WHITEOUT
+# after Act 2 (tests/act2.play does those scenes)
+setvar VAR_SECOND_STARTER ${SECOND}
+setvar VAR_DRACONID_STATE 8
+setvar VAR_MAGMA_STATE 4
+setvar VAR_NERINE_STATE 3
+setflag FLAG_BADGE01_GET
+setflag FLAG_BADGE02_GET
+setflag FLAG_BADGE03_GET
+
+# --- Meteor Falls: Maxie, Aqua, Aster (trigger at (14, 18)) ---
+setvar VAR_METEOR_FALLS_STATE 0
+warp MAP_METEOR_FALLS_1F_1R 15 18
+walk LEFT 14
+run 60
+shot b10_meteor_falls
+mash A 90000
+shot b11_after_aster
+expect_var VAR_MAGMA_STATE 5
+expect_var VAR_ASTER_STATE 1
+expect_var VAR_METEOR_FALLS_STATE 1
+expect_flag FLAG_HIDE_ROUTE_112_TEAM_MAGMA 1
+expect_flag FLAG_HIDE_METEOR_FALLS_ASTER 1
+expect_opponent TRAINER_ASTER_METEOR_FALLS_${EGGNAME}
+# Prof. Cozmo, scared of the uniform
+path MeteorFalls_1F_1R 14 18 13 22
+press DOWN 2 10
+press A 2 30
+shot b12_cozmo
+mash A 3000
+expect_flag FLAG_MET_PROF_COZMO 1
+
+# --- Mt. Chimney: talk to Maxie from (13, 7); Nerine, Brendan, the meteorite ---
+heal
+warp MAP_MT_CHIMNEY 10 8
+path MtChimney 10 8 13 7
+press UP 2 10
+press A 2 30
+shot c10_maxie
+# tap A until Nerine's battle starts (the first of the scene's two fights), then check her variant
+until @gMain+4 4 @@BattleMainCB2 60000 A 24
+expect_opponent TRAINER_NERINE_MT_CHIMNEY_${EGGNAME}_${SECONDNAME}
+mash A 90000
+shot c11_after_chimney
+expect_var VAR_NERINE_STATE 4
+expect_var VAR_BRENDAN_STATE 2
+expect_var VAR_MAGMA_STATE 6
+expect_opponent TRAINER_BRENDAN_MT_CHIMNEY
+expect_flag FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY 1
+expect_flag FLAG_RECEIVED_METEORITE 1
+expect_item ITEM_METEORITE 1
+expect_flag FLAG_HIDE_MT_CHIMNEY_TEAM_MAGMA 1
+expect_flag FLAG_HIDE_JAGGED_PASS_ASTER 0
+
+# --- Jagged Pass: Aster and the Mega Ring (triggers at (13, 8) and (14, 8)) ---
+warp MAP_JAGGED_PASS 13 6
+walk DOWN 8
+run 30
+shot d10_jagged_pass
+mash A 20000
+shot d11_mega_ring
+expect_var VAR_ASTER_STATE 6
+expect_flag FLAG_RECEIVED_MEGA_RING 1
+expect_item ITEM_MEGA_RING 1
+expect_flag FLAG_HIDE_JAGGED_PASS_ASTER 1
+expect_flag FLAG_HIDE_LAVARIDGE_TOWN_DRACONID_TRAVELLER 0
+
+# --- Lavaridge: the Draconid traveller at (17, 8) and the second starter's Mega Stone ---
+warp MAP_LAVARIDGE_TOWN 17 10
+walk UP 9
+press A 2 30
+shot e10_traveller
+mash A 20000
+expect_item ${STONE} 1
+expect_flag FLAG_HIDE_LAVARIDGE_TOWN_DRACONID_TRAVELLER 1
+
+# --- Lavaridge: May's Go-Goggles after the Heat Badge (vanilla scene, her lines) ---
+setflag FLAG_BADGE04_GET
+setvar VAR_LAVARIDGE_TOWN_STATE 1
+warp MAP_LAVARIDGE_TOWN 5 16
+run 60
+shot e20_may
+mash A 20000
+expect_flag FLAG_RECEIVED_GO_GOGGLES 1
+expect_var VAR_LAVARIDGE_TOWN_STATE 2
+expect_item ITEM_GO_GOGGLES 1
+
+savestate act3_done.ss
+clearflag FLAG_DEBUG_NO_ENCOUNTER
+clearflag FLAG_DEBUG_NO_TRAINER_SEE
+clearflag FLAG_DRACONID_NO_WHITEOUT

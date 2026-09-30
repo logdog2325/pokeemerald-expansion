@@ -444,6 +444,152 @@ Draconid Emerald round 1, Act 2 (docs/hack_story.md): the Devon Goods (Rustboro,
 - Registered MAY in the POKéNAV.
 - MAY: I'm off to look for new POKéMON. See you, {PLAYER}!
 
+## data/scripts/draconid/act3.pory
+
+Draconid Emerald round 1, Act 3 (docs/hack_story.md): Meteor Falls, Mt. Chimney, Jagged Pass, Lavaridge. The player is a Team Magma grunt rising in the ranks: Maxie meets them, they guard his machine and secretly sabotage it; Aster brings the Mega Ring, a Draconid traveller the Mega Stone (D-120 – D-127). NPC lines follow VAR_DRACONID_REPUTATION (D-103); the Magma career is VAR_MAGMA_STATE.
+
+### `MeteorFalls_1F_1R_EventScript_DraconidMeteoriteScene`
+- Heh? Who's that… Oh! That uniform!
+- You're the new one! The recruit TABITHA keeps bragging about!
+- LEADER! The kid made it!
+- MAXIE: So you are {PLAYER}. We meet at last.
+- A voice on the POKéNAV tells me very little. TABITHA tells me more.
+- She speaks well of you. She rarely speaks well of anyone.
+- MAXIE: Look at it, {PLAYER}.
+- This stone fell from the sky long ago. It still burns with a power our world has forgotten.
+- With it, we will wake the heart of MT. CHIMNEY. Its fire will cool into new land.
+- Land for people with nowhere to live. For POKéMON driven from their homes.
+- For children like you, {PLAYER}.
+- MAXIE: A shard broke away when we cut it from the rock. Here.
+- Keep it. Every great work begins with a small stone.
+- MAXIE pressed a small shard of the METEORITE into {PLAYER}'s hand.
+- It was still warm.
+- MAXIE: ARCHIE. Late, as always.
+- ARCHIE: MAXIE! Hand over that METEORITE! You have no idea what you're playing with!
+- MAXIE: I know exactly what I am playing with. That is the difference between us.
+- MAXIE: {PLAYER}. Hold the stairs. We go to MT. CHIMNEY.
+- ARCHIE: Out of the way, kid.
+- …Hold on. I know that face. The MAGMA grunt from SLATEPORT's MUSEUM!
+- I told you to stay out of TEAM AQUA's way. Did you think I was joking?
+- {PLAYER} didn't move.
+- BOSS! MAGMA's getting away with the METEORITE!
+- ARCHIE: …Hah! Look at that stubborn face. MAXIE doesn't deserve grunts like you.
+- Fine. A brawl on these stairs costs more time than we've got.
+- We know where they're going. MT. CHIMNEY. We'll take the long way round.
+- TEAM AQUA, move out!
+
+### `MeteorFalls_1F_1R_EventScript_DraconidAster`
+- ASTER: …So it's true.
+- ASTER: I followed MAGMA's trail from FALLARBOR. I thought I'd find the ELDER's chosen one stopping them.
+- Instead I watched you guard the stairs so MAXIE could run!
+- ASTER: The ELDER's eggs came from these falls, {PLAYER}. Yours too.
+- And you stood watch while they robbed it.
+- The ELDER trusted you, and you carry THEIR flag?
+- ASTER: …Show me there's still a Draconid under all that red!
+- ASTER: Weak. And wearing their colors.
+- …The ELDER must see something in you that I can't.
+- ASTER: …Fine. You haven't forgotten everything.
+- ASTER: …What's that in your hand?
+- A piece of the METEORITE? MAXIE handed you a piece of the sky like it was a sweet?
+- Give it here. The ELDER should see what MAGMA is playing with.
+- {PLAYER} handed the shard to ASTER.
+- ASTER: Don't follow me. And don't get too comfortable in red.
+
+### `MeteorFalls_1F_1R_EventScript_DraconidCozmo`
+- PROF. COZMO: Eek! One of them!
+- You… You're the one their LEADER was talking to!
+- P-please… I have nothing left. You already took my METEORITE.
+- I only wanted to study it. Now I'll never know what it could have told us…
+
+### `MtChimney_EventScript_DraconidTabitha`
+- TABITHA: Hehehe! Took your time, didn't you?
+- Leader MAXIE is up at the crater with the METEORITE. He asked for you. By name!
+- Don't keep him waiting. Hehehe!
+
+### `MtChimney_EventScript_DraconidMaxie`
+- MAXIE: Ah, {PLAYER}. You came, as I asked.
+- MAXIE: Look. The METEORITE's energy flows into the machine, and from the machine into the mountain.
+- When MT. CHIMNEY wakes, its fire will pour out and cool into new land.
+- ARCHIE calls that destruction. Every birth looks like destruction to those who fear change.
+- The town below will have time to leave. I am not a monster, {PLAYER}.
+- MAXIE: TABITHA!
+- TABITHA: Hehehe! Yes, LEADER?
+- MAXIE: Take the grunts down the east slope. Keep ARCHIE busy.
+- TABITHA: With pleasure! Hehehe!
+- MAXIE: {PLAYER}. Guard the path below us, as I told you. AQUA will come.
+- No one reaches this machine until it is done. I am trusting you with this.
+
+### `MtChimney_EventScript_DraconidNerine`
+- NERINE: …Keep your voice down. Your LEADER is busy with his toy.
+- Your friends at the bottom of the path are taking a nap. Don't worry. They'll wake up.
+- NERINE: So. Just the two of us. A grunt in red and a grunt in blue, guarding a mountain.
+- Neither of us belongs here, do we?
+- NERINE: …Your village is Draconid. Mine is too.
+- Don't look so surprised. I knew the first time I saw your dragon in the woods.
+- Show me you're worth the ELDER's trust.
+- NERINE: Not a word of this. Not to MAGMA. Not to anyone.
+- Keep your eyes on the sky, {PLAYER}. Not on the fire.
+
+### `MtChimney_EventScript_DraconidBrendan`
+- BRENDAN: {PLAYER}!
+- Let me through! Your boss is going to make the volcano erupt!
+- LAVARIDGE is right below us! Do you know how many people live there?!
+- BRENDAN: …You're not moving.
+- After RUSTBORO I kept telling myself you had a reason. That there had to be one.
+- Then tell me what it is! Or get out of my way!
+- {PLAYER} didn't move.
+- BRENDAN: …Fine. Then I'll go through you!
+- BRENDAN: I beat you, and you still won't move.
+- …What happened to you, {PLAYER}?
+- BRENDAN: I can't get past you. Not like this.
+- BRENDAN: Forget it. I'm going down to warn LAVARIDGE. Somebody has to.
+- Don't follow me.
+
+### `MtChimney_EventScript_DraconidSabotage`
+- MAXIE: Fufufu… Do you feel it? The mountain is waking!
+- MAXIE stood with his back to the machine, staring up at the smoke.
+- {PLAYER} reached into the machine…
+- …and quietly pulled the METEORITE free!
+- MAXIE: …The rumbling. It's fading?
+- MAXIE: The METEORITE… It's gone!
+- MAXIE: {PLAYER}! Did anyone get past you?
+- {PLAYER} shook their head.
+- MAXIE: …No. Of course not. I watched you hold that path. Twice.
+- Then it was ARCHIE. His grunts were crawling over every slope of this mountain.
+- One of them slipped up the cliff in the smoke while we were busy.
+- MAXIE: ARCHIE… You would drown the whole world just to spite me.
+- MAXIE: …Enough. A key can be stolen. The door is still there.
+- TEAM MAGMA! We withdraw!
+- MAXIE: {PLAYER}. You did well today. Better than anyone had a right to expect.
+- I will remember it.
+- TEAM MAGMA left the summit.
+- Far below, TEAM AQUA was pulling back, too.
+
+### `JaggedPass_EventScript_DraconidAster`
+- ASTER: Over here, {PLAYER}.
+- ASTER: I watched from the ridge. MAXIE's machine sputtered out like a wet match.
+- And I saw who was standing next to it when it died.
+- …Not bad. For a traitor.
+- ASTER: I took your shard to the ELDER. He set it in this.
+- A KEY STONE, in a ring. When a POKéMON trusts you with its whole heart, the stone lets it MEGA EVOLVE.
+- ASTER: The ELDER says you're doing well.
+- I say we'll see.
+- ASTER: One more thing. Someone from the village is waiting in LAVARIDGE.
+- He has something for the partner PROF. BIRCH gave you.
+- Don't make me regret this.
+
+### `LavaridgeTown_EventScript_DraconidTraveller`
+- {PLAYER}! The ELDER sent me to find you.
+- Come back when PROF. BIRCH has given you a partner.
+- Ah! {PLAYER}! ASTER said you'd come down the pass.
+- Don't mind the looks you're getting here. Mountain folk have long memories.
+- The ELDER sent me with this. A MEGA STONE, for the partner PROF. BIRCH gave you.
+- Its MEGA form carries a dragon's blood.
+- Your BAG is too full for it? Make some room, then. I'll wait here.
+- With the ring ASTER gave you, your partner can MEGA EVOLVE once it is fully grown.
+- Safe travels, {PLAYER}. The whole village is rooting for you.
+- …Well. Most of it.
+
 ## data/scripts/draconid/act4.pory
 
 Draconid Emerald round 1, Act 4 (docs/hack_story.md): Petalburg Gym with MAY watching, Weather Institute, Route 119, Fortree, Lilycove, Mt. Pyre, Magma Hideout. NPC lines follow VAR_DRACONID_REPUTATION (D-103).
@@ -550,25 +696,7 @@ Draconid Emerald: rival battles vanilla Emerald doesn't have (Phase 5).  Brendan
 
 ## data/scripts/draconid/aster.pory
 
-Draconid Emerald: Aster's arc after Draconid Pass, the Team Magma disguise and the Mega Ring (Phase 4).  A2 Meteor Falls      after Team Magma takes the meteorite: riddle + battle A3 Route 112         cable car station: Aster hands over a Team Magma disguise for Mt. Chimney; it comes off after Maxie on the summit A4 Route 119         battle on the path north (Mega Altaria) Magma Hideout     the disguise goes back on inside; after Maxie, Aster sends the player home Draconid Village  the Elder gives the Mega Ring and the second partner's Mega Stone A5 Sky Pillar        the climax before Rayquaza wakes (Mega Salamence) A6 after the League  rematch at the village shrine  VAR_ASTER_STATE: ASTER_STATE_* (include/constants/draconid.h). Aster's team counter-picks the player's egg; her trainer ids are named after the PLAYER's egg (VAR_STARTER_MON). Vanilla hooks are listed in docs/hack_changes.md ("Scripts").
-
-### `MeteorFalls_1F_1R_EventScript_DraconidAster`
-- ASTER: Riddle me this, {PLAYER}. What falls from the sky but is never caught, and burns but is never lit?
-- …A meteor. And those fools in red just carried one off like a sack of coal.
-- Our clan guards the stones that fall from the sky. You swore that oath too. So show me you meant it!
-- ASTER: MAGMA is taking that meteorite to MT. CHIMNEY. I heard them.
-- Meet me at the cable car on ROUTE 112. I have an idea… you won't like it.
-
-### `Route112_CableCarStation_EventScript_DraconidAsterDisguise`
-- ASTER: There you are. Riddle: how do you walk into a volcano without getting burned?
-- …You wear the fire. Here. I took it off a MAGMA grunt who was sleeping on the job.
-- Up on the mountain they'll think you're one of them until it's too late.
-- {PLAYER} put on the TEAM MAGMA uniform!
-- ASTER: Ha! You look ridiculous. Perfect.
-- Stop MAXIE before that meteorite goes into the crater. I'll watch the path from the pass.
-
-### `MtChimney_EventScript_DraconidDisguiseOff`
-- {PLAYER} took off the TEAM MAGMA uniform and packed it away.
+Draconid Emerald: Aster's arc after Draconid Pass, the Team Magma disguise and the Mega Ring (Phase 4).  A2 Meteor Falls, Jagged Pass (Mega Ring): data/scripts/draconid/act3.pory (round 1, Act 3) A4 Route 119         battle on the path north (Mega Altaria) Magma Hideout     the disguise goes back on inside; after Maxie, Aster sends the player home A5 Sky Pillar        the climax before Rayquaza wakes (Mega Salamence) A6 after the League  rematch at the village shrine  VAR_ASTER_STATE: ASTER_STATE_* (include/constants/draconid.h). Aster's team counter-picks the player's egg; her trainer ids are named after the PLAYER's egg (VAR_STARTER_MON). Vanilla hooks are listed in docs/hack_changes.md ("Scripts").
 
 ### `MagmaHideout_1F_EventScript_DraconidDisguiseOn`
 - {PLAYER} put the TEAM MAGMA uniform back on before going in.
@@ -578,16 +706,6 @@ Draconid Emerald: Aster's arc after Draconid Pass, the Team Magma disguise and t
 - ASTER: I saw it from the tunnels. GROUDON is awake… and the sky will answer. It always does.
 - Go home, {PLAYER}. Grandfather is waiting for you at the village. He has something for you.
 - I'm going to find out where the one in the sky sleeps.
-
-### `DraconidVillage_EldersHouse_EventScript_DraconidMegaRing`
-- ELDER: {PLAYER}. You went into the mountain wearing the enemy's colours and came back yourself.
-- That takes a steadier heart than strength. Take this.
-- Our clan's KEY STONE, set in a ring. With it, a POKéMON that trusts you can MEGA EVOLVE.
-- ELDER: And this stone is for the partner PROF. BIRCH gave you. Its MEGA form carries a dragon's blood.
-- ELDER: And this stone is for the partner PROF. BIRCH gave you. Its MEGA form carries a dragon's blood.
-- ELDER: And this stone is for the partner PROF. BIRCH gave you. Its MEGA form carries a dragon's blood.
-- ELDER: The two ancient POKéMON will not stay asleep for long. When the sky itself grows angry,
-- seek the pillar that reaches the clouds, far to the east over the sea. ASTER is already looking for it.
 
 ### `SkyPillar_Top_EventScript_DraconidAsterClimax`
 - ASTER: So you found it too.
@@ -614,11 +732,22 @@ Draconid Emerald: Aster's arc after Draconid Pass, the Team Magma disguise and t
 - `GraniteCave_StevensRoom_Text_ImStevenLetterForMe`: My name is STEVEN. / I'm interested in rare stones, so I travel here and there. / Oh? A TEAM MAGMA member… with a LETTER for me? / MAGMA doesn't usually deliver mail.
 - `GraniteCave_StevensRoom_Text_CouldBecomeChampionLetsRegister`: STEVEN: Your POKéMON trust you. That's hard to fake. / I wonder who you really work for. / Let's register one another in our POKéNAVS. I'd like to keep an eye on you… in a friendly way. / … … … … … …
 
+### LavaridgeTown
+- `LavaridgeTown_Text_MayNiceBadgesTakeThis`: MAY: {PLAYER}! Long time no see! / Still in that red uniform, I see… / People here won't stop talking about MT. CHIMNEY. / Were you really up there with them? / …You don't have to answer. / You got FLANNERY's BADGE anyway, didn't you? Here. I think you'll need these.
+- `LavaridgeTown_Text_MayExplainGoGogglesChallengeDad`: MAY: With those GO-GOGGLES, you'll have no trouble getting through the desert near ROUTE 111. / Four BADGES… That means my DAD's GYM in PETALBURG is next for you. / I'll be there. I want to see how you battle when someone's watching. / See you, {PLAYER}!
+
 ### MauvilleCity
 - `MauvilleCity_Text_WallyWillYouBattleMe`: WALLY: Oh! {PLAYER}! / That uniform… You're… one of THEM now? The people from the news? / …No. I want to see for myself. I've gotten a lot stronger since we met. / {PLAYER}, please, will you have a battle with me?
 - `MauvilleCity_Text_UncleCanYouBattleWally`: UNCLE: {PLAYER}{KUN}, was it? I don't much like that uniform… / But WALLY trusts you. Can I ask you to battle him just this once? / I don't think he's going to listen to any reason the way he is now.
 - `MauvilleCity_Text_WallyDefeat`: WALLY: … … … … … … … / I lost… / But your POKéMON looked happy. Really happy.
 - `MauvilleCity_Text_WallyIllGoBackToVerdanturf`: WALLY: UNCLE… I'll go back to VERDANTURF… / {PLAYER}… I don't think you're one of them. Not really.
+
+### MtChimney
+- `MtChimney_Text_Grunt2Intro`: Hold it, rookie! The LEADER's waiting for you at the top. / But nobody walks past me without a test! / We of TEAM MAGMA work hard for everyone's sake. Show me you do, too!
+- `MtChimney_Text_Grunt1Intro`: So you're TABITHA's new favorite? Show me what the LEADER sees in you! / When there's more land, I'm getting a big house of my own. Built on hardened lava!
+- `MtChimney_Text_Grunt1PostBattle`: Hmph. Fine, you've earned it. / Go on up. The LEADER doesn't like waiting.
+- `MtChimney_Text_YouBetterNotMessWithUs`: Hey, rookie! Don't just stand there! / The LEADER's waiting for you at the top. We'll hold AQUA off down here!
+- `MtChimney_Text_ArchieGoStopTeamMagma`: ARCHIE: Grr! You again! MAXIE's little recruit from the falls! / You held those stairs well. Too well. / Now he's up there feeding that METEORITE to the volcano! / If this mountain blows, the town below goes with it! / Get out of my sight, kid. I've got my hands full!
 
 ### PetalburgCity_Gym
 - `PetalburgCity_Gym_Text_DadYoureHereWithYourPokemon`: NORMAN: Hm? A new face. / You must be the DRACONID tamer PROF. BIRCH told me about. / I'm NORMAN, the LEADER of this GYM. MAY is my daughter. / So, you're with your POKéMON. Then you're a TRAINER, {PLAYER}. / Good. I'll be looking forward to seeing how you grow.
@@ -658,6 +787,9 @@ Draconid Emerald: Aster's arc after Draconid Pass, the Team Magma disguise and t
 - `Route110_Text_MayDefeated`: MAGMA grunts don't raise dragons like that.
 - `Route110_Text_MayTakeThis`: MAY: I've watched MAGMA grunts. They treat POKéMON like tools. / Yours trust you. Completely. / What are you really doing, {PLAYER}? / …Fine. Keep your secret. Here, take this.
 - `Route110_Text_MayExplainItemfinder`: MAY: That's an ITEMFINDER. / Use it to root around for items that aren't visible. / If it senses something, it emits a sound.
+
+### Route112
+- `Route112_Text_CantLetAnyonePassUntilTheyreBack`: You got it. And until they come back, we're not to let anyone pass, right. / …Hey, you! The rookie! / What are you standing around for? The LEADER's squad went to METEOR FALLS, past FALLARBOR. / Get over there and catch up!
 
 ### RustboroCity
 - `RustboroCity_Text_OutOfTheWay`: NERINE: …Move.

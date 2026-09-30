@@ -293,6 +293,53 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   battle (the first is still a plain grunt, so she can say "Stand aside"). May's Route 110 battle is the vanilla
   rival scene with her lines, and she registers in the PokéNav there (the vanilla Rustboro registration is
   skipped, D-115); Brendan registers on Route 119 (Act 4). – Alt: a Magma messenger grunt.
+- **D-120 Meteor Falls staging (Act 3)**: Maxie stands with the two grunts over Cozmo (a new object sharing their
+  hide flag), comes up onto the stairs to meet the player in person (his PokéNav call sent them there) and gives
+  them a shard of the meteorite (D-121); Aqua comes in from the west, Maxie orders "hold the stairs", the player
+  steps aside for Magma and back into the way, and Archie **backs down without a battle** ("a brawl on these
+  stairs costs more time than we've got") and leaves west, the long way round. Then Aster walks up from deeper in
+  the Falls (the lower level, west) for her battle. – Alt: an Aqua grunt battle to cover the retreat (no Aqua grunt
+  trainer belongs to Meteor Falls or Mt. Chimney, and the unused vanilla ones are Lv 9–18); Aster waiting further
+  in (a detour off the way to Route 112, so missable). – The stairs are the only way east, so standing on them is
+  covering the retreat, and Aster's battle stays the scene's one fight.
+- **D-121 The Mega Ring's stone**: Maxie's shard – a chip of Cozmo's meteorite, "every great work begins with a
+  small stone" – goes to the Elder with Aster after Meteor Falls, and comes back set in the Mega Ring at Jagged
+  Pass. The meteorite itself still comes out of the machine at Mt. Chimney (`ITEM_METEORITE`, Cozmo's TM as in
+  vanilla). – Alt: a fragment of the meteorite pulled at Mt. Chimney (Aster meets the player minutes later: no
+  time for the Elder to make a ring). – Keeps the story's order believable, and Maxie's gift becomes the key to the
+  player's Megas, which the betrayal makes cost him more.
+- **D-122 Aster's Meteor Falls battle can be lost**: `trainerbattle_earlyrival` with `RIVAL_BATTLE_HEAL_AFTER` (as
+  May's Route 103 battle, D-048); her lines follow the result. – Alt: must-win (v1; a whiteout after Magma and Aqua
+  have left would strand the scene's state). – One unbroken scene, and Aster tests the player rather than blocks them.
+- **D-123 Mt. Chimney staging**: one scene from talking to Maxie at his machine: Tabitha comes up for her order
+  and goes down the path (she no longer battles; her object is no longer a trainer), the player walks to (10, 10),
+  the only way up to the crater, Nerine and then Brendan come up, the mountain rumbles, Maxie turns his back on the
+  machine to watch the smoke and the player pulls the meteorite; he blames Aqua, and in a fade Magma and Aqua leave.
+  The flags the vanilla Maxie battle set come from this scene (Jagged Pass, Lavaridge's trainers, Cozmo, the cookie
+  lady). Nerine's battle is a must-win, like her others: nothing is set before it, so a whiteout replays the scene
+  from Maxie (Tabitha is only hidden – removing her would set `FLAG_HIDE_MT_CHIMNEY_TEAM_MAGMA` and hide Maxie).
+  Nerine and Brendan are scene-only objects hidden by `FLAG_TEMP_11` (set on every load). The two Magma grunt
+  trainers on the path stay trainers with rank-test lines (D-103). – Alt: the player walks to the post and a trigger
+  starts the fights (a saved state to carry across a whiteout, and the player could leave before the sabotage);
+  battles with Tabitha and Maxie (the player never fights them before Sootopolis). – The add-on asks for a scripted,
+  choice-free scene.
+- **D-124 Brendan at Mt. Chimney is not a must-win**: `trainerbattle_earlyrival(TRAINER_BRENDAN_MT_CHIMNEY,
+  RIVAL_BATTLE_HEAL_AFTER, …)` – a loss heals the party and the scene goes on, Brendan gets a victory line and
+  `VAR_RESULT` picks his after-line. – Alt: `FLAG_DRACONID_NO_WHITEOUT` around `trainerbattle_no_intro` and a heal
+  (D-108, Draconid Pass; the script can't tell who won). – One command, the same mechanism as Route 103 (D-048).
+- **D-125 Jagged Pass**: Aster waits at the top of the pass (shown by the Mt. Chimney scene) and walks over when the
+  player steps off the stairs from the summit ((13, 8) / (14, 8), on `ASTER_STATE_METEOR_FALLS`: the only way down);
+  no battle; she hands over the ring, points the player to Lavaridge and leaves in a fade. – Alt: at the foot of the
+  pass by Route 112. – The first thing after the summit, and the stairs can't be skipped.
+- **D-126 The Mega Stone gift**: a Draconid villager (`OBJ_EVENT_GFX_DRACONID_MAN`) waits by Lavaridge's east
+  entrance, shown by the Jagged Pass scene; talking to him gives the second starter's stone by `VAR_SECOND_STARTER`
+  (Charizardite X / Feraligite / Sceptilite, as the v1 Elder did); with a full bag he waits; then he leaves in a fade.
+  – Alt: a trigger that walks him to the player. – Aster names him, he stands on the way into town, and he can't be
+  missed for good.
+- **D-127 Act 3 side lines**: May's vanilla Go-Goggles scene in Lavaridge stays (the desert needs them) with round 1
+  lines – the uniform, Mt. Chimney, "my DAD's GYM in PETALBURG is next" (Norman's daughter, D-100; she watches that
+  battle, D-116). Cozmo at Meteor Falls fears the uniform; the Route 112 grunts send the "rookie" to Meteor Falls;
+  Archie at Mt. Chimney knows the player from the falls. – Alt: vanilla text ("challenge your dad").
 - **D-160 Nerine's disguise detail**: the female Aqua grunt sheet and pic unchanged except her own **silver-blue
   hair** under the bandana (the real grunts' is magenta/red). – Alt: a teal scale scarf; a gold horn clip on the
   bandana. – The hair is the one detail readable at 16×32 among grunts (a clip is 2–3 px), it is the same hair

@@ -118,9 +118,14 @@ Route112_Text_OhThatsWhyCrewWentToFallarbor:
 	.string "Oh, I get it now. That's why the rest\n"
 	.string "of the crew went out to FALLARBOR.$"
 
-Route112_Text_CantLetAnyonePassUntilTheyreBack:
+Route112_Text_CantLetAnyonePassUntilTheyreBack:  @ Draconid Emerald
 	.string "You got it. And until they come back,\n"
-	.string "we're not to let anyone pass, right.$"
+	.string "we're not to let anyone pass, right.\p"
+	.string "…Hey, you! The rookie!\p"
+	.string "What are you standing around for? The\n"
+	.string "LEADER's squad went to METEOR FALLS,\l"
+	.string "past FALLARBOR.\p"
+	.string "Get over there and catch up!$"
 
 Route112_Text_NotEasyToGetBackToLavaridge:
 	.string "Eh, I'd like to get to MAUVILLE, but if\n"

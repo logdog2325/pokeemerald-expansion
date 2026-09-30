@@ -68,7 +68,7 @@
 #define FLAG_DEBUG_NO_ENCOUNTER                  0x2E // Draconid Emerald: WE_FLAG_NO_ENCOUNTER (debug menu / tests)
 #define FLAG_DEBUG_NO_TRAINER_SEE                0x2F // Draconid Emerald: OW_FLAG_NO_TRAINER_SEE (debug menu / tests)
 #define FLAG_DEBUG_NO_COLLISION                  0x30 // Draconid Emerald: OW_FLAG_NO_COLLISION (debug menu / tests)
-#define FLAG_UNUSED_0x031    0x31 // Unused Flag
+#define FLAG_HIDE_LAVARIDGE_TOWN_DRACONID_TRAVELLER 0x31 // Draconid Emerald: the Draconid traveller with the Mega Stone in Lavaridge (Act 3)
 #define FLAG_UNUSED_0x032    0x32 // Unused Flag
 #define FLAG_UNUSED_0x033    0x33 // Unused Flag
 #define FLAG_UNUSED_0x034    0x34 // Unused Flag
@@ -85,11 +85,11 @@
 #define FLAG_ENABLE_BRENDAN_MATCH_CALL           0x3F // Draconid Emerald: Brendan registered in the PokéNav
 #define FLAG_HIDE_RUSTBORO_CITY_BIRCH            0x40 // Draconid Emerald: Prof. Birch outside the Rustboro Gym (second starter)
 #define FLAG_HIDE_METEOR_FALLS_ASTER             0x41 // Draconid Emerald: Aster in Meteor Falls
-#define FLAG_HIDE_CABLE_CAR_STATION_ASTER        0x42 // Draconid Emerald: Aster at the Route 112 cable car (disguise)
+#define FLAG_HIDE_JAGGED_PASS_ASTER              0x42 // Draconid Emerald: Aster at the top of Jagged Pass with the Mega Ring (Act 3)
 #define FLAG_DEVON_GOODS_RETURNED                0x43 // Draconid Emerald: the player chose to return the Devon Goods to Devon (Rusturf, Act 2)
 #define FLAG_HIDE_MAGMA_HIDEOUT_ASTER            0x44 // Draconid Emerald: Aster after Maxie in the Magma Hideout
 #define FLAG_HIDE_SKY_PILLAR_TOP_ASTER           0x45 // Draconid Emerald: Aster at the top of the Sky Pillar
-#define FLAG_RECEIVED_MEGA_RING                  0x46 // Draconid Emerald: the Elder gave the Mega Ring
+#define FLAG_RECEIVED_MEGA_RING                  0x46 // Draconid Emerald: Aster gave the Mega Ring at Jagged Pass (Act 3)
 #define FLAG_HIDE_DRACONID_HOUSE_ELDER           0x47 // Draconid Emerald: the Elder visiting the player's house (post-game SS Ticket)
 #define FLAG_HIDE_PETALBURG_WOODS_COURTNEY       0x48 // Draconid Emerald: Courtney after Nerine is beaten (Act 1)
 #define FLAG_HIDE_OCEANIC_MUSEUM_TABITHA         0x49 // Draconid Emerald: Tabitha in the Oceanic Museum 1F (Act 2)

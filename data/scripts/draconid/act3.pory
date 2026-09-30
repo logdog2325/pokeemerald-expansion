@@ -1,0 +1,646 @@
+// Draconid Emerald round 1, Act 3 (docs/hack_story.md): Meteor Falls, Mt. Chimney, Jagged Pass, Lavaridge.
+// The player is a Team Magma grunt rising in the ranks: Maxie meets them, they guard his machine and
+// secretly sabotage it; Aster brings the Mega Ring, a Draconid traveller the Mega Stone (D-120 – D-127).
+// NPC lines follow VAR_DRACONID_REPUTATION (D-103); the Magma career is VAR_MAGMA_STATE.
+
+// ---------------------------------------------------------------------------
+// Meteor Falls: MAXIE's squad takes PROF. COZMO's METEORITE, MAXIE meets the player and gives them a shard
+// of it, AQUA arrives and the player holds the stairs while MAGMA leaves (a stand-off, D-120), then ASTER
+// comes up from deeper in the Falls and battles the player (it can be lost, D-122) and takes the shard to
+// the ELDER (D-121). MeteorFalls_1F_1R_EventScript_MagmaStealsMeteoriteScene (the trigger at (14, 18),
+// VAR_METEOR_FALLS_STATE 0) goes here.
+// ---------------------------------------------------------------------------
+
+script MeteorFalls_1F_1R_EventScript_DraconidMeteoriteScene {
+    lockall
+    playbgm(MUS_ENCOUNTER_MAGMA, FALSE)
+    applymovement(LOCALID_PLAYER, Common_Movement_FaceDown)
+    waitmovement(0)
+    delay(30)
+    applymovement(LOCALID_METEOR_FALLS_MAGMA_GRUNT_1, Common_Movement_WalkInPlaceDown)
+    waitmovement(0)
+    msgbox(MeteorFalls_1F_1R_Text_WithThisMeteorite)
+    closemessage
+    applymovement(LOCALID_METEOR_FALLS_MAGMA_GRUNT_1, Common_Movement_WalkInPlaceFasterUp)
+    applymovement(LOCALID_METEOR_FALLS_MAGMA_GRUNT_2, Common_Movement_WalkInPlaceFasterUp)
+    waitmovement(0)
+    playse(SE_PIN)
+    applymovement(LOCALID_METEOR_FALLS_MAGMA_GRUNT_1, Common_Movement_ExclamationMark)
+    waitmovement(0)
+    applymovement(LOCALID_METEOR_FALLS_MAGMA_GRUNT_1, Common_Movement_Delay48)
+    waitmovement(0)
+    msgbox(format("Heh? Who's that… Oh! That uniform!\p"
+                  "You're the new one! The recruit TABITHA keeps bragging about!\p"
+                  "LEADER! The kid made it!"))
+    closemessage
+    applymovement(LOCALID_METEOR_FALLS_MAXIE, Common_Movement_WalkInPlaceFasterUp)
+    waitmovement(0)
+    applymovement(LOCALID_METEOR_FALLS_MAXIE, MeteorFalls_1F_1R_Movement_DraconidMaxieApproach)
+    waitmovement(0)
+    msgbox(format("MAXIE: So you are {PLAYER}. We meet at last.\p"
+                  "A voice on the POKéNAV tells me very little. TABITHA tells me more.\p"
+                  "She speaks well of you. She rarely speaks well of anyone."))
+    msgbox(format("MAXIE: Look at it, {PLAYER}.\p"
+                  "This stone fell from the sky long ago. It still burns with a power our world has forgotten.\p"
+                  "With it, we will wake the heart of\nMT. CHIMNEY. Its fire will cool into new land.\p"
+                  "Land for people with nowhere to live. For POKéMON driven from their homes.\p"
+                  "For children like you, {PLAYER}."))
+    msgbox(format("MAXIE: A shard broke away when we cut it from the rock. Here.\p"
+                  "Keep it. Every great work begins with a small stone."))
+    msgbox(format("MAXIE pressed a small shard of the METEORITE into {PLAYER}'s hand.\p"
+                  "It was still warm."))
+    closemessage
+    delay(20)
+    msgbox(MeteorFalls_1F_1R_Text_HoldItRightThereMagma)
+    closemessage
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft)
+    applymovement(LOCALID_METEOR_FALLS_MAXIE, Common_Movement_WalkInPlaceFasterLeft)
+    applymovement(LOCALID_METEOR_FALLS_MAGMA_GRUNT_1, Common_Movement_WalkInPlaceFasterLeft)
+    applymovement(LOCALID_METEOR_FALLS_MAGMA_GRUNT_2, Common_Movement_WalkInPlaceFasterLeft)
+    waitmovement(0)
+    addobject(LOCALID_METEOR_FALLS_ARCHIE)
+    addobject(LOCALID_METEOR_FALLS_AQUA_GRUNT_1)
+    addobject(LOCALID_METEOR_FALLS_AQUA_GRUNT_2)
+    playbgm(MUS_ENCOUNTER_AQUA, FALSE)
+    applymovement(LOCALID_METEOR_FALLS_ARCHIE, MeteorFalls_1F_1R_Movement_DraconidArchieArrive)
+    applymovement(LOCALID_METEOR_FALLS_AQUA_GRUNT_1, MeteorFalls_1F_1R_Movement_DraconidAquaGrunt1Arrive)
+    applymovement(LOCALID_METEOR_FALLS_AQUA_GRUNT_2, MeteorFalls_1F_1R_Movement_DraconidAquaGrunt2Arrive)
+    waitmovement(0)
+    msgbox(format("MAXIE: ARCHIE. Late, as always."))
+    msgbox(format("ARCHIE: MAXIE! Hand over that METEORITE! You have no idea what you're playing with!"))
+    msgbox(format("MAXIE: I know exactly what I am playing with. That is the difference between us."))
+    closemessage
+    applymovement(LOCALID_METEOR_FALLS_MAXIE, Common_Movement_WalkInPlaceFasterUp)
+    waitmovement(0)
+    msgbox(format("MAXIE: {PLAYER}. Hold the stairs. We go to MT. CHIMNEY."))
+    closemessage
+    // the player steps aside to let MAGMA up the stairs, then steps back to block them
+    applymovement(LOCALID_PLAYER, MeteorFalls_1F_1R_Movement_PushPlayerOutOfWay)
+    waitmovement(0)
+    applymovement(LOCALID_METEOR_FALLS_MAXIE, MeteorFalls_1F_1R_Movement_DraconidMaxieExit)
+    applymovement(LOCALID_METEOR_FALLS_MAGMA_GRUNT_2, MeteorFalls_1F_1R_Movement_DraconidMagmaGrunt2Exit)
+    applymovement(LOCALID_METEOR_FALLS_MAGMA_GRUNT_1, MeteorFalls_1F_1R_Movement_DraconidMagmaGrunt1Exit)
+    waitmovement(0)
+    removeobject(LOCALID_METEOR_FALLS_MAXIE)
+    removeobject(LOCALID_METEOR_FALLS_MAGMA_GRUNT_1)
+    removeobject(LOCALID_METEOR_FALLS_MAGMA_GRUNT_2)
+    applymovement(LOCALID_PLAYER, MeteorFalls_1F_1R_Movement_DraconidPlayerBlockStairs)
+    waitmovement(0)
+    applymovement(LOCALID_METEOR_FALLS_ARCHIE, MeteorFalls_1F_1R_Movement_DraconidArchieToStairs)
+    applymovement(LOCALID_METEOR_FALLS_AQUA_GRUNT_1, MeteorFalls_1F_1R_Movement_DraconidAquaGrunt1ToStairs)
+    applymovement(LOCALID_METEOR_FALLS_AQUA_GRUNT_2, MeteorFalls_1F_1R_Movement_DraconidAquaGrunt2ToStairs)
+    waitmovement(0)
+    msgbox(format("ARCHIE: Out of the way, kid.\p"
+                  "…Hold on. I know that face. The MAGMA grunt from SLATEPORT's MUSEUM!\p"
+                  "I told you to stay out of TEAM AQUA's way. Did you think I was joking?"))
+    msgbox(format("{PLAYER} didn't move."))
+    closemessage
+    applymovement(LOCALID_METEOR_FALLS_AQUA_GRUNT_1, Common_Movement_WalkInPlaceFasterRight)
+    waitmovement(0)
+    msgbox(format("BOSS! MAGMA's getting away with the METEORITE!"))
+    closemessage
+    applymovement(LOCALID_METEOR_FALLS_AQUA_GRUNT_1, Common_Movement_WalkInPlaceFasterUp)
+    waitmovement(0)
+    msgbox(format("ARCHIE: …Hah! Look at that stubborn face. MAXIE doesn't deserve grunts like you.\p"
+                  "Fine. A brawl on these stairs costs more time than we've got.\p"
+                  "We know where they're going.\nMT. CHIMNEY. We'll take the long way round.\p"
+                  "TEAM AQUA, move out!"))
+    closemessage
+    applymovement(LOCALID_METEOR_FALLS_ARCHIE, MeteorFalls_1F_1R_Movement_DraconidArchieExit)
+    applymovement(LOCALID_METEOR_FALLS_AQUA_GRUNT_1, MeteorFalls_1F_1R_Movement_DraconidAquaGruntExit)
+    applymovement(LOCALID_METEOR_FALLS_AQUA_GRUNT_2, MeteorFalls_1F_1R_Movement_DraconidAquaGruntExit)
+    waitmovement(0)
+    removeobject(LOCALID_METEOR_FALLS_ARCHIE)
+    removeobject(LOCALID_METEOR_FALLS_AQUA_GRUNT_1)
+    removeobject(LOCALID_METEOR_FALLS_AQUA_GRUNT_2)
+    // what the vanilla scene sets: the Route 112 grunts leave the cable car, Scott moves on
+    setflag(FLAG_HIDE_ROUTE_112_TEAM_MAGMA)
+    setflag(FLAG_MET_ARCHIE_METEOR_FALLS)
+    setflag(FLAG_HIDE_FALLARBOR_TOWN_BATTLE_TENT_SCOTT)
+    setvar(VAR_MAGMA_STATE, MAGMA_STATE_METEOR_FALLS)
+    fadedefaultbgm
+    delay(60)
+    call(MeteorFalls_1F_1R_EventScript_DraconidAster)
+    setvar(VAR_METEOR_FALLS_STATE, 1)
+    releaseall
+}
+
+// ASTER walks up from deeper in the Falls (west, the lower level) to the foot of the stairs
+script MeteorFalls_1F_1R_EventScript_DraconidAster {
+    clearflag(FLAG_HIDE_METEOR_FALLS_ASTER)
+    addobject(LOCALID_METEOR_FALLS_ASTER)
+    playbgm(MUS_ENCOUNTER_INTENSE, FALSE)
+    applymovement(LOCALID_METEOR_FALLS_ASTER, MeteorFalls_1F_1R_Movement_DraconidAsterApproach)
+    waitmovement(0)
+    msgbox(format("ASTER: …So it's true."))
+    msgbox(format("ASTER: I followed MAGMA's trail from FALLARBOR. I thought I'd find the ELDER's chosen one stopping them.\p"
+                  "Instead I watched you guard the stairs so MAXIE could run!"))
+    msgbox(format("ASTER: The ELDER's eggs came from these falls, {PLAYER}. Yours too.\p"
+                  "And you stood watch while they robbed it.\p"
+                  "The ELDER trusted you, and you carry THEIR flag?"))
+    msgbox(format("ASTER: …Show me there's still a Draconid under all that red!"))
+    closemessage
+    // the first id of the fight; the player's egg picks Aster's team (Draconid_ResolveVariantTrainer, D-101).
+    // A loss heals the party and the scene goes on (D-122).
+    trainerbattle_earlyrival(TRAINER_ASTER_METEOR_FALLS_DEINO, RIVAL_BATTLE_HEAL_AFTER, MeteorFalls_1F_1R_Text_DraconidAsterDefeat, MeteorFalls_1F_1R_Text_DraconidAsterVictory)
+    if (var(VAR_RESULT) == TRUE) {
+        msgbox(format("ASTER: Weak. And wearing their colors.\p"
+                      "…The ELDER must see something in you that I can't."))
+    } else {
+        msgbox(format("ASTER: …Fine. You haven't forgotten everything."))
+    }
+    msgbox(format("ASTER: …What's that in your hand?\p"
+                  "A piece of the METEORITE? MAXIE handed you a piece of the sky like it was a sweet?\p"
+                  "Give it here. The ELDER should see what MAGMA is playing with."))
+    msgbox(format("{PLAYER} handed the shard to ASTER."))
+    msgbox(format("ASTER: Don't follow me. And don't get too comfortable in red."))
+    closemessage
+    applymovement(LOCALID_METEOR_FALLS_ASTER, MeteorFalls_1F_1R_Movement_DraconidAsterLeave)
+    waitmovement(0)
+    removeobject(LOCALID_METEOR_FALLS_ASTER)
+    setvar(VAR_ASTER_STATE, ASTER_STATE_METEOR_FALLS)
+    savebgm(MUS_DUMMY)
+    fadedefaultbgm
+}
+
+text MeteorFalls_1F_1R_Text_DraconidAsterDefeat {
+    format("…Hmph. You still battle like one of us.")
+}
+
+text MeteorFalls_1F_1R_Text_DraconidAsterVictory {
+    format("Is this who the ELDER chose over me?")
+}
+
+// Positions: player (14, 18) at the top of the stairs (14, 19); grunts (12, 20) and (14, 21); MAXIE (13, 22)
+// over COZMO (13, 23), then up onto the stairs; AQUA comes in along row 20 from (6, 20) / (6, 21), and so
+// does ASTER afterwards.
+movement MeteorFalls_1F_1R_Movement_DraconidMaxieApproach {
+    walk_up * 2
+    walk_right
+    walk_up
+}
+
+movement MeteorFalls_1F_1R_Movement_DraconidArchieArrive {
+    walk_right * 5
+}
+
+movement MeteorFalls_1F_1R_Movement_DraconidAquaGrunt1Arrive {
+    delay_16 * 2
+    walk_right * 4
+}
+
+movement MeteorFalls_1F_1R_Movement_DraconidAquaGrunt2Arrive {
+    delay_16 * 2
+    walk_right * 5
+}
+
+// up the stairs and out east, one after the other (from (14, 19), (14, 21), (12, 20))
+movement MeteorFalls_1F_1R_Movement_DraconidMaxieExit {
+    walk_up
+    walk_right * 7
+}
+
+movement MeteorFalls_1F_1R_Movement_DraconidMagmaGrunt2Exit {
+    delay_16 * 2
+    walk_up * 3
+    walk_right * 7
+}
+
+movement MeteorFalls_1F_1R_Movement_DraconidMagmaGrunt1Exit {
+    delay_16 * 4
+    walk_right * 2
+    walk_up * 2
+    walk_right * 7
+}
+
+movement MeteorFalls_1F_1R_Movement_DraconidPlayerBlockStairs {
+    walk_right
+    walk_in_place_faster_down
+}
+
+// to the foot of the stairs: ARCHIE (14, 20), grunts (13, 20) and (13, 21)
+movement MeteorFalls_1F_1R_Movement_DraconidArchieToStairs {
+    walk_right * 3
+    face_up
+}
+
+movement MeteorFalls_1F_1R_Movement_DraconidAquaGrunt1ToStairs {
+    delay_16
+    walk_right * 3
+    face_up
+}
+
+movement MeteorFalls_1F_1R_Movement_DraconidAquaGrunt2ToStairs {
+    delay_16
+    walk_right * 2
+    face_up
+}
+
+// back west, deeper into the Falls
+movement MeteorFalls_1F_1R_Movement_DraconidArchieExit {
+    walk_left * 8
+}
+
+movement MeteorFalls_1F_1R_Movement_DraconidAquaGruntExit {
+    walk_left * 7
+}
+
+movement MeteorFalls_1F_1R_Movement_DraconidAsterApproach {
+    walk_right * 8
+    walk_up
+}
+
+movement MeteorFalls_1F_1R_Movement_DraconidAsterLeave {
+    walk_down
+    walk_left * 8
+}
+
+// PROF. COZMO while the player wears the uniform (MeteorFalls_1F_1R_EventScript_ProfCozmo goes here)
+script MeteorFalls_1F_1R_EventScript_DraconidCozmo {
+    setflag(FLAG_MET_PROF_COZMO)
+    msgbox(format("PROF. COZMO: Eek! One of them!\p"
+                  "You… You're the one their LEADER was talking to!\p"
+                  "P-please… I have nothing left. You already took my METEORITE.\p"
+                  "I only wanted to study it. Now I'll never know what it could have told us…"))
+    release
+}
+
+// ---------------------------------------------------------------------------
+// Mt. Chimney: MAXIE sets the METEORITE in his machine and sends the player to guard the only path up to
+// the crater. NERINE (in her AQUA disguise) comes up alone: fight 3 and her first near-reveal. BRENDAN
+// comes to stop MAGMA and the player battles him to keep their cover (not a must-win, D-124). While MAXIE
+// stares at the smoke, the player pulls the METEORITE out of the machine; it dies and MAXIE blames AQUA.
+// No battles with TABITHA or MAXIE (D-123). MtChimney_EventScript_Maxie (talking to him) goes here.
+// ---------------------------------------------------------------------------
+
+// MtChimney_OnTransition calls this: NERINE and BRENDAN only appear in the scene (FLAG_TEMP_11)
+script MtChimney_EventScript_DraconidOnTransition {
+    setflag(FLAG_TEMP_11)
+}
+
+// TABITHA on the path at (12, 11): the player is one of hers now (MtChimney_EventScript_Tabitha goes here)
+script MtChimney_EventScript_DraconidTabitha {
+    lock
+    faceplayer
+    msgbox(format("TABITHA: Hehehe! Took your time, didn't you?\p"
+                  "Leader MAXIE is up at the crater with the METEORITE. He asked for you. By name!\p"
+                  "Don't keep him waiting. Hehehe!"))
+    release
+}
+
+script MtChimney_EventScript_DraconidMaxie {
+    lockall
+    playbgm(MUS_ENCOUNTER_MAGMA, FALSE)
+    msgbox(MtChimney_Text_MeteoriteWillActivateVolcano)
+    closemessage
+    applymovement(LOCALID_MT_CHIMNEY_MAXIE, Common_Movement_FacePlayer)
+    waitmovement(0)
+    msgbox(format("MAXIE: Ah, {PLAYER}. You came, as I asked."))
+    msgbox(format("MAXIE: Look. The METEORITE's energy flows into the machine, and from the machine into the mountain.\p"
+                  "When MT. CHIMNEY wakes, its fire will pour out and cool into new land.\p"
+                  "ARCHIE calls that destruction. Every birth looks like destruction to those who fear change.\p"
+                  "The town below will have time to leave. I am not a monster, {PLAYER}."))
+    msgbox(format("MAXIE: TABITHA!"))
+    closemessage
+    applymovement(LOCALID_MT_CHIMNEY_TABITHA, MtChimney_Movement_DraconidTabithaToMaxie)
+    waitmovement(0)
+    msgbox(format("TABITHA: Hehehe! Yes, LEADER?"))
+    msgbox(format("MAXIE: Take the grunts down the east slope. Keep ARCHIE busy."))
+    msgbox(format("TABITHA: With pleasure! Hehehe!"))
+    closemessage
+    applymovement(LOCALID_MT_CHIMNEY_TABITHA, MtChimney_Movement_DraconidTabithaLeave)
+    waitmovement(0)
+    msgbox(format("MAXIE: {PLAYER}. Guard the path below us, as I told you. AQUA will come.\p"
+                  "No one reaches this machine until it is done. I am trusting you with this."))
+    closemessage
+    applymovement(LOCALID_MT_CHIMNEY_MAXIE, Common_Movement_FaceRight)
+    waitmovement(0)
+    // down to (10, 10), the only way up to the crater
+    if (var(VAR_FACING) == DIR_EAST) {
+        applymovement(LOCALID_PLAYER, MtChimney_Movement_DraconidGuardPostFromWest)
+    } else {
+        applymovement(LOCALID_PLAYER, MtChimney_Movement_DraconidGuardPostFromSouth)
+    }
+    waitmovement(0)
+    savebgm(MUS_DUMMY)
+    fadedefaultbgm
+    delay(40)
+    call(MtChimney_EventScript_DraconidNerine)
+    call(MtChimney_EventScript_DraconidBrendan)
+    call(MtChimney_EventScript_DraconidSabotage)
+    releaseall
+}
+
+// NERINE fight 3: "two enemy grunts", alone. Her team counters the egg and the second starter (D-104).
+script MtChimney_EventScript_DraconidNerine {
+    addobject(LOCALID_MT_CHIMNEY_NERINE)
+    playbgm(MUS_ENCOUNTER_AQUA, FALSE)
+    applymovement(LOCALID_MT_CHIMNEY_NERINE, MtChimney_Movement_DraconidNerineApproach)
+    waitmovement(0)
+    msgbox(format("NERINE: …Keep your voice down. Your LEADER is busy with his toy.\p"
+                  "Your friends at the bottom of the path are taking a nap. Don't worry. They'll wake up."))
+    msgbox(format("NERINE: So. Just the two of us. A grunt in red and a grunt in blue, guarding a mountain.\p"
+                  "Neither of us belongs here, do we?"))
+    msgbox(format("NERINE: …Your village is Draconid. Mine is too.\p"
+                  "Don't look so surprised. I knew the first time I saw your dragon in the woods.\p"
+                  "Show me you're worth the ELDER's trust."))
+    closemessage
+    // the first id of the fight; egg x second starter picks the team (Draconid_ResolveVariantTrainer, D-101)
+    trainerbattle_no_intro(TRAINER_NERINE_MT_CHIMNEY_DEINO_CHARMANDER, MtChimney_Text_DraconidNerineDefeat)
+    msgbox(format("NERINE: Not a word of this. Not to MAGMA. Not to anyone.\p"
+                  "Keep your eyes on the sky, {PLAYER}. Not on the fire."))
+    closemessage
+    applymovement(LOCALID_MT_CHIMNEY_NERINE, MtChimney_Movement_DraconidNerineLeave)
+    waitmovement(0)
+    removeobject(LOCALID_MT_CHIMNEY_NERINE)
+    setvar(VAR_NERINE_STATE, NERINE_STATE_MT_CHIMNEY)
+    delay(30)
+}
+
+text MtChimney_Text_DraconidNerineDefeat {
+    format("…Good. The ELDER wasn't wrong about you.")
+}
+
+// BRENDAN: an early-rival battle, so a loss heals and the scene goes on (D-124)
+script MtChimney_EventScript_DraconidBrendan {
+    addobject(LOCALID_MT_CHIMNEY_BRENDAN)
+    playbgm(MUS_ENCOUNTER_BRENDAN, FALSE)
+    applymovement(LOCALID_MT_CHIMNEY_BRENDAN, MtChimney_Movement_DraconidBrendanApproach)
+    waitmovement(0)
+    playse(SE_PIN)
+    applymovement(LOCALID_MT_CHIMNEY_BRENDAN, Common_Movement_ExclamationMark)
+    waitmovement(0)
+    msgbox(format("BRENDAN: {PLAYER}!\p"
+                  "Let me through! Your boss is going to make the volcano erupt!\p"
+                  "LAVARIDGE is right below us! Do you know how many people live there?!"))
+    msgbox(format("BRENDAN: …You're not moving.\p"
+                  "After RUSTBORO I kept telling myself you had a reason. That there had to be one.\p"
+                  "Then tell me what it is! Or get out of my way!"))
+    msgbox(format("{PLAYER} didn't move."))
+    msgbox(format("BRENDAN: …Fine. Then I'll go through you!"))
+    closemessage
+    trainerbattle_earlyrival(TRAINER_BRENDAN_MT_CHIMNEY, RIVAL_BATTLE_HEAL_AFTER, MtChimney_Text_DraconidBrendanDefeat, MtChimney_Text_DraconidBrendanVictory)
+    if (var(VAR_RESULT) == TRUE) {
+        msgbox(format("BRENDAN: I beat you, and you still won't move.\p"
+                      "…What happened to you, {PLAYER}?"))
+    } else {
+        msgbox(format("BRENDAN: I can't get past you. Not like this."))
+    }
+    msgbox(format("BRENDAN: Forget it. I'm going down to warn LAVARIDGE. Somebody has to.\p"
+                  "Don't follow me."))
+    closemessage
+    applymovement(LOCALID_MT_CHIMNEY_BRENDAN, MtChimney_Movement_DraconidBrendanLeave)
+    waitmovement(0)
+    removeobject(LOCALID_MT_CHIMNEY_BRENDAN)
+    setvar(VAR_BRENDAN_STATE, BRENDAN_STATE_MT_CHIMNEY)
+    delay(40)
+}
+
+text MtChimney_Text_DraconidBrendanDefeat {
+    format("Why?! Why are you protecting HIM?")
+}
+
+text MtChimney_Text_DraconidBrendanVictory {
+    format("…I won. So why does it feel like I lost?")
+}
+
+// The mountain rumbles; MAXIE turns his back on the machine to watch the smoke and the player pulls the
+// METEORITE out (ITEM_METEORITE, as in vanilla). The machine dies, MAXIE blames AQUA and MAGMA withdraws.
+script MtChimney_EventScript_DraconidSabotage {
+    playbgm(MUS_ENCOUNTER_MAGMA, FALSE)
+    playse(SE_M_EARTHQUAKE)
+    setvar(VAR_0x8004, 1)  // vertical pan
+    setvar(VAR_0x8005, 1)  // horizontal pan
+    setvar(VAR_0x8006, 12) // num shakes
+    setvar(VAR_0x8007, 4)  // shake delay
+    special(ShakeCamera)
+    waitstate
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp)
+    waitmovement(0)
+    msgbox(format("MAXIE: Fufufu… Do you feel it? The mountain is waking!"))
+    closemessage
+    applymovement(LOCALID_MT_CHIMNEY_MAXIE, Common_Movement_FaceUp)
+    waitmovement(0)
+    applymovement(LOCALID_PLAYER, MtChimney_Movement_DraconidPlayerToMachine)
+    waitmovement(0)
+    msgbox(format("MAXIE stood with his back to the machine, staring up at the smoke.\p"
+                  "{PLAYER} reached into the machine…"))
+    closemessage
+    playse(SE_CLICK)
+    delay(20)
+    msgbox(format("…and quietly pulled the METEORITE free!"))
+    giveitem(ITEM_METEORITE)
+    if (var(VAR_RESULT) == TRUE) {
+        setflag(FLAG_RECEIVED_METEORITE)
+    }
+    closemessage
+    playse(SE_FAILURE)
+    waitse
+    delay(30)
+    applymovement(LOCALID_MT_CHIMNEY_MAXIE, Common_Movement_FaceRight)
+    waitmovement(0)
+    msgbox(format("MAXIE: …The rumbling. It's fading?"))
+    closemessage
+    playse(SE_PIN)
+    applymovement(LOCALID_MT_CHIMNEY_MAXIE, Common_Movement_ExclamationMark)
+    waitmovement(0)
+    msgbox(format("MAXIE: The METEORITE… It's gone!"))
+    closemessage
+    applymovement(LOCALID_MT_CHIMNEY_MAXIE, MtChimney_Movement_DraconidMaxieToPlayer)
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft)
+    waitmovement(0)
+    msgbox(format("MAXIE: {PLAYER}! Did anyone get past you?"))
+    msgbox(format("{PLAYER} shook their head."))
+    msgbox(format("MAXIE: …No. Of course not. I watched you hold that path. Twice.\p"
+                  "Then it was ARCHIE. His grunts were crawling over every slope of this mountain.\p"
+                  "One of them slipped up the cliff in the smoke while we were busy."))
+    msgbox(format("MAXIE: ARCHIE… You would drown the whole world just to spite me."))
+    msgbox(format("MAXIE: …Enough. A key can be stolen. The door is still there.\p"
+                  "TEAM MAGMA! We withdraw!"))
+    msgbox(format("MAXIE: {PLAYER}. You did well today. Better than anyone had a right to expect.\p"
+                  "I will remember it."))
+    closemessage
+    delay(30)
+    fadescreenswapbuffers(FADE_TO_BLACK)
+    removeobject(LOCALID_MT_CHIMNEY_MAXIE)
+    removeobject(LOCALID_MT_CHIMNEY_MAGMA_GRUNT_1)
+    removeobject(LOCALID_MT_CHIMNEY_TABITHA)
+    removeobject(LOCALID_MT_CHIMNEY_MAGMA_GRUNT_2)
+    removeobject(LOCALID_MT_CHIMNEY_ARCHIE)
+    setflag(FLAG_HIDE_MT_CHIMNEY_TEAM_MAGMA)
+    setflag(FLAG_HIDE_MT_CHIMNEY_TEAM_AQUA)
+    fadescreenswapbuffers(FADE_FROM_BLACK)
+    msgbox(format("TEAM MAGMA left the summit.\p"
+                  "Far below, TEAM AQUA was pulling back, too."))
+    closemessage
+    // what the vanilla Maxie battle set: Cozmo goes home, the cookie lady and the path to Jagged Pass open
+    setflag(FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY)
+    clearflag(FLAG_HIDE_FALLARBOR_HOUSE_PROF_COZMO)
+    setflag(FLAG_HIDE_METEOR_FALLS_1F_1R_COZMO)
+    clearflag(FLAG_HIDE_MT_CHIMNEY_LAVA_COOKIE_LADY)
+    // Aster waits at the top of Jagged Pass with the Mega Ring
+    clearflag(FLAG_HIDE_JAGGED_PASS_ASTER)
+    setvar(VAR_MAGMA_STATE, MAGMA_STATE_MT_CHIMNEY)
+    savebgm(MUS_DUMMY)
+    fadedefaultbgm
+}
+
+// Positions: MAXIE (13, 6) beside the machine (14, 6); the player talks to him from (13, 7) or (12, 6);
+// TABITHA (12, 11); NERINE (10, 16) and BRENDAN (10, 17) come up to (10, 11), below the guard post (10, 10)
+// (the only way up to the crater; MAXIE stays in sight at his machine).
+// to (11, 7) for her order, then down the path and out of sight (hidden, not removed: removing her would set
+// FLAG_HIDE_MT_CHIMNEY_TEAM_MAGMA and hide MAXIE too if the player whites out against NERINE)
+movement MtChimney_Movement_DraconidTabithaToMaxie {
+    walk_left * 2
+    walk_up * 4
+    walk_right
+    face_right
+}
+
+movement MtChimney_Movement_DraconidTabithaLeave {
+    walk_fast_left
+    walk_fast_down * 5
+    walk_fast_right
+    walk_fast_down * 5
+    set_invisible
+}
+
+movement MtChimney_Movement_DraconidGuardPostFromSouth {
+    walk_left * 3
+    walk_down * 3
+}
+
+movement MtChimney_Movement_DraconidGuardPostFromWest {
+    walk_down
+    walk_left * 2
+    walk_down * 3
+}
+
+movement MtChimney_Movement_DraconidNerineApproach {
+    walk_up * 5
+}
+
+movement MtChimney_Movement_DraconidNerineLeave {
+    walk_down * 5
+}
+
+movement MtChimney_Movement_DraconidBrendanApproach {
+    walk_fast_up * 6
+}
+
+movement MtChimney_Movement_DraconidBrendanLeave {
+    walk_fast_down * 6
+}
+
+// from the guard post up behind MAXIE to (14, 7), below the machine
+movement MtChimney_Movement_DraconidPlayerToMachine {
+    walk_up * 3
+    walk_right * 4
+    walk_in_place_faster_up
+}
+
+movement MtChimney_Movement_DraconidMaxieToPlayer {
+    walk_down
+    walk_in_place_faster_right
+}
+
+// ---------------------------------------------------------------------------
+// Jagged Pass: ASTER waits at the top of the pass (shown by the Mt. Chimney scene) and hands over the
+// MEGA RING the ELDER made from Maxie's shard (D-121, D-125). No battle. Triggers at (13, 8) and (14, 8),
+// the foot of the stairs from Mt. Chimney, on VAR_ASTER_STATE = ASTER_STATE_METEOR_FALLS.
+// ---------------------------------------------------------------------------
+
+script JaggedPass_EventScript_DraconidAster {
+    lockall
+    getplayerxy(VAR_TEMP_0, VAR_TEMP_1)
+    msgbox(format("ASTER: Over here, {PLAYER}."))
+    closemessage
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight)
+    waitmovement(0)
+    if (var(VAR_TEMP_0) == 13) {
+        applymovement(LOCALID_JAGGED_PASS_ASTER, JaggedPass_Movement_DraconidAsterApproachFar)
+    } else {
+        applymovement(LOCALID_JAGGED_PASS_ASTER, JaggedPass_Movement_DraconidAsterApproachNear)
+    }
+    waitmovement(0)
+    msgbox(format("ASTER: I watched from the ridge. MAXIE's machine sputtered out like a wet match.\p"
+                  "And I saw who was standing next to it when it died.\p"
+                  "…Not bad. For a traitor."))
+    msgbox(format("ASTER: I took your shard to the ELDER. He set it in this.\p"
+                  "A KEY STONE, in a ring. When a POKéMON trusts you with its whole heart, the stone lets it MEGA EVOLVE."))
+    giveitem(ITEM_MEGA_RING)
+    setflag(FLAG_RECEIVED_MEGA_RING)
+    msgbox(format("ASTER: The ELDER says you're doing well.\p"
+                  "I say we'll see."))
+    msgbox(format("ASTER: One more thing. Someone from the village is waiting in LAVARIDGE.\p"
+                  "He has something for the partner\nPROF. BIRCH gave you.\p"
+                  "Don't make me regret this."))
+    closemessage
+    applymovement(LOCALID_JAGGED_PASS_ASTER, JaggedPass_Movement_DraconidAsterLeave)
+    waitmovement(0)
+    fadescreen(FADE_TO_BLACK)
+    removeobject(LOCALID_JAGGED_PASS_ASTER)
+    fadescreen(FADE_FROM_BLACK)
+    clearflag(FLAG_HIDE_LAVARIDGE_TOWN_DRACONID_TRAVELLER)
+    setvar(VAR_ASTER_STATE, ASTER_STATE_MEGA_RING)
+    releaseall
+}
+
+// from (17, 8) to the player's right
+movement JaggedPass_Movement_DraconidAsterApproachFar {
+    walk_left * 3
+}
+
+movement JaggedPass_Movement_DraconidAsterApproachNear {
+    walk_left * 2
+}
+
+movement JaggedPass_Movement_DraconidAsterLeave {
+    face_right
+    delay_16
+    walk_right * 2
+}
+
+// ---------------------------------------------------------------------------
+// Lavaridge: a Draconid traveller by the east entrance (shown by the Jagged Pass scene) gives the Mega Stone
+// for the second starter (D-126). Lavaridge's townsfolk and Gym are in reputation/lavaridge.pory.
+// ---------------------------------------------------------------------------
+
+script LavaridgeTown_EventScript_DraconidTraveller {
+    lock
+    faceplayer
+    switch (var(VAR_SECOND_STARTER)) {
+        case SECOND_STARTER_CHARMANDER:
+            setvar(VAR_0x8004, ITEM_CHARIZARDITE_X)
+        case SECOND_STARTER_TOTODILE:
+            setvar(VAR_0x8004, ITEM_FERALIGITE)
+        case SECOND_STARTER_TREECKO:
+            setvar(VAR_0x8004, ITEM_SCEPTILITE)
+        default:
+            setvar(VAR_0x8004, ITEM_NONE)
+    }
+    if (var(VAR_0x8004) == ITEM_NONE) {
+        msgbox(format("{PLAYER}! The ELDER sent me to find you.\p"
+                      "Come back when PROF. BIRCH has given you a partner."))
+        release
+        end
+    }
+    msgbox(format("Ah! {PLAYER}! ASTER said you'd come down the pass.\p"
+                  "Don't mind the looks you're getting here. Mountain folk have long memories.\p"
+                  "The ELDER sent me with this. A MEGA STONE, for the partner PROF. BIRCH gave you.\p"
+                  "Its MEGA form carries a dragon's blood."))
+    giveitem(VAR_0x8004)
+    if (var(VAR_RESULT) == FALSE) {
+        msgbox(format("Your BAG is too full for it? Make some room, then. I'll wait here."))
+        release
+        end
+    }
+    msgbox(format("With the ring ASTER gave you, your partner can MEGA EVOLVE once it is fully grown.\p"
+                  "Safe travels, {PLAYER}. The whole village is rooting for you.\p"
+                  "…Well. Most of it."))
+    closemessage
+    fadescreen(FADE_TO_BLACK)
+    removeobject(LOCALID_LAVARIDGE_DRACONID_TRAVELLER)
+    fadescreen(FADE_FROM_BLACK)
+    release
+}

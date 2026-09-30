@@ -1,11 +1,8 @@
 // Draconid Emerald: Aster's arc after Draconid Pass, the Team Magma disguise and the Mega Ring (Phase 4).
 //
-//   A2 Meteor Falls      after Team Magma takes the meteorite: riddle + battle
-//   A3 Route 112         cable car station: Aster hands over a Team Magma disguise for Mt. Chimney;
-//                        it comes off after Maxie on the summit
+//   A2 Meteor Falls, Jagged Pass (Mega Ring): data/scripts/draconid/act3.pory (round 1, Act 3)
 //   A4 Route 119         battle on the path north (Mega Altaria)
 //      Magma Hideout     the disguise goes back on inside; after Maxie, Aster sends the player home
-//      Draconid Village  the Elder gives the Mega Ring and the second partner's Mega Stone
 //   A5 Sky Pillar        the climax before Rayquaza wakes (Mega Salamence)
 //   A6 after the League  rematch at the village shrine
 //
@@ -17,10 +14,6 @@
 // Shared: Aster's battles. Each names the first id of the fight; the player's egg picks Aster's team
 // (Draconid_ResolveVariantTrainer, D-101): she raises the leftover egg (D-105).
 // ---------------------------------------------------------------------------
-
-script Draconid_EventScript_BattleAsterMeteorFalls {
-    trainerbattle_no_intro(TRAINER_ASTER_METEOR_FALLS_DEINO, Draconid_Text_AsterDefeat)
-}
 
 script Draconid_EventScript_BattleAsterSkyPillar {
     trainerbattle_no_intro(TRAINER_ASTER_SKY_PILLAR_DEINO, Draconid_Text_AsterSkyPillarDefeat)
@@ -43,110 +36,8 @@ script Draconid_EventScript_ChangeOutfit {
     fadescreen(FADE_FROM_BLACK)
 }
 
-// ---------------------------------------------------------------------------
-// A2 Meteor Falls: after Team Magma and Team Aqua leave with the meteorite
-// (MeteorFalls_1F_1R_EventScript_MagmaStealsMeteoriteScene calls this at its end)
-// ---------------------------------------------------------------------------
-
-script MeteorFalls_1F_1R_EventScript_DraconidAster {
-    if (var(VAR_ASTER_STATE) != ASTER_STATE_START) {
-        return
-    }
-    clearflag(FLAG_HIDE_METEOR_FALLS_ASTER)
-    addobject(LOCALID_METEOR_FALLS_ASTER)
-    playbgm(MUS_ENCOUNTER_INTENSE, TRUE)
-    applymovement(LOCALID_METEOR_FALLS_ASTER, MeteorFalls_1F_1R_Movement_DraconidAsterApproach)
-    waitmovement(0)
-    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight)
-    waitmovement(0)
-    msgbox(MeteorFalls_1F_1R_Text_DraconidAsterRiddle, MSGBOX_DEFAULT)
-    call(Draconid_EventScript_BattleAsterMeteorFalls)
-    msgbox(MeteorFalls_1F_1R_Text_DraconidAsterAfter, MSGBOX_DEFAULT)
-    closemessage
-    applymovement(LOCALID_METEOR_FALLS_ASTER, MeteorFalls_1F_1R_Movement_DraconidAsterLeave)
-    waitmovement(0)
-    removeobject(LOCALID_METEOR_FALLS_ASTER)
-    setflag(FLAG_HIDE_METEOR_FALLS_ASTER)
-    clearflag(FLAG_HIDE_CABLE_CAR_STATION_ASTER)
-    setvar(VAR_ASTER_STATE, ASTER_STATE_METEOR_FALLS)
-    savebgm(MUS_DUMMY)
-    fadedefaultbgm
-}
-
-movement MeteorFalls_1F_1R_Movement_DraconidAsterApproach {
-    walk_left * 2
-}
-
-movement MeteorFalls_1F_1R_Movement_DraconidAsterLeave {
-    walk_right * 3
-}
-
-text MeteorFalls_1F_1R_Text_DraconidAsterRiddle {
-    format("ASTER: Riddle me this, {PLAYER}. What falls from the sky but is never caught, and burns but is never lit?\p"
-           "…A meteor. And those fools in red just carried one off like a sack of coal.\p"
-           "Our clan guards the stones that fall from the sky. You swore that oath too. So show me you meant it!")
-}
-
-text MeteorFalls_1F_1R_Text_DraconidAsterAfter {
-    format("ASTER: MAGMA is taking that meteorite to MT. CHIMNEY. I heard them.\p"
-           "Meet me at the cable car on ROUTE 112. I have an idea… you won't like it.")
-}
-
-// ---------------------------------------------------------------------------
-// A3 Route 112 cable car station: the Team Magma disguise
-// ---------------------------------------------------------------------------
-
-script Route112_CableCarStation_EventScript_DraconidAsterDisguise {
-    lockall
-    playbgm(MUS_ENCOUNTER_INTENSE, TRUE)
-    applymovement(LOCALID_CABLE_CAR_STATION_ASTER, Common_Movement_ExclamationMark)
-    waitmovement(0)
-    msgbox(Route112_CableCarStation_Text_DraconidAsterDisguise, MSGBOX_DEFAULT)
-    closemessage
-    setvar(VAR_0x8004, PLAYER_OUTFIT_MAGMA)
-    call(Draconid_EventScript_ChangeOutfit)
-    msgbox(Route112_CableCarStation_Text_DraconidPutOnDisguise, MSGBOX_DEFAULT)
-    msgbox(Route112_CableCarStation_Text_DraconidAsterGoAhead, MSGBOX_DEFAULT)
-    closemessage
-    applymovement(LOCALID_CABLE_CAR_STATION_ASTER, Common_Movement_WalkDown)
-    waitmovement(0)
-    fadescreen(FADE_TO_BLACK)
-    removeobject(LOCALID_CABLE_CAR_STATION_ASTER)
-    setflag(FLAG_HIDE_CABLE_CAR_STATION_ASTER)
-    fadescreen(FADE_FROM_BLACK)
-    setvar(VAR_ASTER_STATE, ASTER_STATE_DISGUISED)
-    savebgm(MUS_DUMMY)
-    fadedefaultbgm
-    releaseall
-}
-
-text Route112_CableCarStation_Text_DraconidAsterDisguise {
-    format("ASTER: There you are. Riddle: how do you walk into a volcano without getting burned?\p"
-           "…You wear the fire. Here. I took it off a MAGMA grunt who was sleeping on the job.\p"
-           "Up on the mountain they'll think you're one of them until it's too late.")
-}
-
-text Route112_CableCarStation_Text_DraconidPutOnDisguise {
-    format("{PLAYER} put on the TEAM MAGMA uniform!")
-}
-
-text Route112_CableCarStation_Text_DraconidAsterGoAhead {
-    format("ASTER: Ha! You look ridiculous. Perfect.\p"
-           "Stop MAXIE before that meteorite goes into the crater. I'll watch the path from the pass.")
-}
-
-// Mt. Chimney: after Maxie is beaten the disguise comes off (MtChimney_EventScript_Maxie calls this).
-script MtChimney_EventScript_DraconidDisguiseOff {
-    if (var(VAR_PLAYER_OUTFIT) == PLAYER_OUTFIT_MAGMA) {
-        setvar(VAR_0x8004, PLAYER_OUTFIT_DRACONID)
-        call(Draconid_EventScript_ChangeOutfit)
-        msgbox(MtChimney_Text_DraconidDisguiseOff, MSGBOX_DEFAULT)
-    }
-    if (var(VAR_ASTER_STATE) < ASTER_STATE_CHIMNEY_DONE) {
-        setvar(VAR_ASTER_STATE, ASTER_STATE_CHIMNEY_DONE)
-    }
-}
-
+// v1: the Mt. Chimney "disguise off" scene is gone (round 1, Act 3); the v1 Magma Hideout part below
+// still shows this line after Maxie (Act 4 reworks that part)
 text MtChimney_Text_DraconidDisguiseOff {
     format("{PLAYER} took off the TEAM MAGMA uniform and packed it away.")
 }
@@ -199,44 +90,6 @@ text MagmaHideout_4F_Text_DraconidAsterGoHome {
     format("ASTER: I saw it from the tunnels. GROUDON is awake… and the sky will answer. It always does.\p"
            "Go home, {PLAYER}. Grandfather is waiting for you at the village. He has something for you.\p"
            "I'm going to find out where the one in the sky sleeps.")
-}
-
-// ---------------------------------------------------------------------------
-// Draconid Village: the Elder gives the Mega Ring (DraconidVillage_EldersHouse_EventScript_Elder)
-// ---------------------------------------------------------------------------
-
-script DraconidVillage_EldersHouse_EventScript_DraconidMegaRing {
-    msgbox(DraconidVillage_EldersHouse_Text_DraconidMegaRing, MSGBOX_DEFAULT)
-    giveitem(ITEM_MEGA_RING)
-    switch (var(VAR_SECOND_STARTER)) {
-        case SECOND_STARTER_CHARMANDER:
-            msgbox(DraconidVillage_EldersHouse_Text_DraconidMegaStone, MSGBOX_DEFAULT)
-            giveitem(ITEM_CHARIZARDITE_X)
-        case SECOND_STARTER_TOTODILE:
-            msgbox(DraconidVillage_EldersHouse_Text_DraconidMegaStone, MSGBOX_DEFAULT)
-            giveitem(ITEM_FERALIGITE)
-        case SECOND_STARTER_TREECKO:
-            msgbox(DraconidVillage_EldersHouse_Text_DraconidMegaStone, MSGBOX_DEFAULT)
-            giveitem(ITEM_SCEPTILITE)
-    }
-    setflag(FLAG_RECEIVED_MEGA_RING)
-    setvar(VAR_ASTER_STATE, ASTER_STATE_MEGA_RING)
-    msgbox(DraconidVillage_EldersHouse_Text_DraconidSkyPillar, MSGBOX_DEFAULT)
-}
-
-text DraconidVillage_EldersHouse_Text_DraconidMegaRing {
-    format("ELDER: {PLAYER}. You went into the mountain wearing the enemy's colours and came back yourself.\p"
-           "That takes a steadier heart than strength. Take this.\p"
-           "Our clan's KEY STONE, set in a ring. With it, a POKéMON that trusts you can MEGA EVOLVE.")
-}
-
-text DraconidVillage_EldersHouse_Text_DraconidMegaStone {
-    format("ELDER: And this stone is for the partner PROF. BIRCH gave you. Its MEGA form carries a dragon's blood.")
-}
-
-text DraconidVillage_EldersHouse_Text_DraconidSkyPillar {
-    format("ELDER: The two ancient POKéMON will not stay asleep for long. When the sky itself grows angry,\p"
-           "seek the pillar that reaches the clouds, far to the east over the sea. ASTER is already looking for it.")
 }
 
 // ---------------------------------------------------------------------------
