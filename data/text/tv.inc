@@ -1252,15 +1252,15 @@ TrendWatcher_Text_Intro::
 	.string "what's the in thing of the moment…$"
 
 @ Identical to below, may have been different in other languages
-TrendWatcher_Text_MaleTaughtMePhrase::
+TrendWatcher_Text_MaleTaughtMePhrase::  @ Draconid Emerald
 	.string "Old man: {STR_VAR_1} {STR_VAR_2}\n"
-	.string "was what {STR_VAR_3} from LITTLEROOT\l"
-	.string "taught me as being trendy…$"
+	.string "was what {STR_VAR_3} from DRACONID\l"
+	.string "VILLAGE taught me as being trendy…$"
 
-TrendWatcher_Text_FemaleTaughtMePhrase::
+TrendWatcher_Text_FemaleTaughtMePhrase::  @ Draconid Emerald
 	.string "Old man: {STR_VAR_1} {STR_VAR_2}\n"
-	.string "was what {STR_VAR_3} from LITTLEROOT\l"
-	.string "taught me as being trendy…$"
+	.string "was what {STR_VAR_3} from DRACONID\l"
+	.string "VILLAGE taught me as being trendy…$"
 
 TrendWatcher_Text_PhraseWasHopeless::
 	.string "But it was utterly hopeless.\p"

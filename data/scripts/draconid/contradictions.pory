@@ -1,0 +1,91 @@
+// Draconid Emerald: base-Emerald leftovers that contradicted the v2 story (feedback 1.46, D-253 – D-255).
+// The full list, what was fixed and where, is docs/hack_contradictions.md. Most fixes are retexted vanilla
+// labels (tools/hack/retext.py) and reputation branches in reputation/*.pory; the scenes whose vanilla
+// scripts needed new lines, and whose town file belongs to someone else, live here.
+
+// ---------------------------------------------------------------------------
+// Whiting out at home. EventScript_AfterWhiteOutMomHeal (data/event_scripts.s) jumps here. With today's
+// rest points it doesn't run: the Gen 4 whiteout cutscene (OW_WHITEOUT_CUTSCENE) needs a healer NPC, and
+// the village's HEAL_LOCATION_DRACONID_VILLAGE* have none, so the player simply wakes up in bed, healed.
+// This keeps vanilla's "MOM: Welcome home, honey!" out if a healer is ever added (the player has no mother,
+// D-100): the old woman who gave the Running Shoes speaks from the doorway, text only.
+// ---------------------------------------------------------------------------
+
+script Draconid_EventScript_AfterWhiteOutHomeHeal {
+    lockall
+    textcolor(NPC_TEXT_COLOR_FEMALE)
+    msgbox(Draconid_Text_WhiteOutOldWomanWelcome)
+    call(Common_EventScript_OutOfCenterPartyHeal)
+    msgbox(Draconid_Text_WhiteOutOldWomanAdvice)
+    fadedefaultbgm
+    releaseall
+}
+
+text Draconid_Text_WhiteOutOldWomanWelcome {
+    format("OLD WOMAN: There you are. The whole village saw you come home limping.\p"
+           "Rest now. A tamer who falls and gets up again is still a tamer.")
+}
+
+text Draconid_Text_WhiteOutOldWomanAdvice {
+    format("OLD WOMAN: The lowlanders' POKéMON CENTERS will heal your partners, too.")
+}
+
+// ---------------------------------------------------------------------------
+// The HM and bike givers see the uniform (D-255). In REPUTATION_UNIFORM the Cutter, the Granite Cave hiker
+// and the Rock Smash Dude say their own version of the gift speech and go back to the vanilla gift
+// (…_EventScript_DraconidGive*); Rydel adds one line after his greeting. Before and after the uniform era the
+// vanilla lines stay. Every gift and flag is vanilla's.
+// ---------------------------------------------------------------------------
+
+script RustboroCity_CuttersHouse_EventScript_DraconidRepCutterUniform {
+    msgbox(RustboroCity_CuttersHouse_Text_DraconidRepCutterUniform, MSGBOX_DEFAULT)
+    goto(RustboroCity_CuttersHouse_EventScript_DraconidGiveCut)
+}
+
+text RustboroCity_CuttersHouse_Text_DraconidRepCutterUniform {
+    format("Hm? That red getup…\n"
+           "TEAM MAGMA, eh?\p"
+           "No, don't say a word.\n"
+           "That determined expression…\p"
+           "A skilled TRAINER is a skilled TRAINER.\p"
+           "I'm sure that you can put this HIDDEN\n"
+           "MACHINE to good use. Go on, take it!")
+}
+
+script GraniteCave_1F_EventScript_DraconidRepHikerUniform {
+    msgbox(GraniteCave_1F_Text_DraconidRepHikerUniform, MSGBOX_DEFAULT)
+    goto(GraniteCave_1F_EventScript_DraconidGiveFlash)
+}
+
+text GraniteCave_1F_Text_DraconidRepHikerUniform {
+    format("Hey, you. Whoa… TEAM MAGMA?\p"
+           "Well, it gets awfully dark ahead.\n"
+           "Even a MAGMA kid can get lost in there.\p"
+           "For us HIKERS, helping out those that we meet is our motto. Whoever they are.\p"
+           "Here you go, I'll pass this on to you.")
+}
+
+script MauvilleCity_House1_EventScript_DraconidRepRockSmashDudeUniform {
+    msgbox(MauvilleCity_House1_Text_DraconidRepRockSmashDudeUniform, MSGBOX_DEFAULT)
+    goto(MauvilleCity_House1_EventScript_DraconidGiveRockSmash)
+}
+
+text MauvilleCity_House1_Text_DraconidRepRockSmashDudeUniform {
+    format("Woohoo!\p"
+           "I'm the ROCK SMASH DUDE! Don't call me the ROCK SMASH GUY.\p"
+           "TEAM MAGMA, huh?\n"
+           "Rocks don't care what you wear!\p"
+           "Your POKéMON look pretty strong.\n"
+           "I like that!\p"
+           "Here, take this HIDDEN MACHINE!")
+}
+
+script MauvilleCity_BikeShop_EventScript_DraconidRepRydelUniform {
+    msgbox(MauvilleCity_BikeShop_Text_DraconidRepRydelUniform, MSGBOX_DEFAULT)
+}
+
+text MauvilleCity_BikeShop_Text_DraconidRepRydelUniform {
+    format("RYDEL: …Hm? That red uniform.\n"
+           "TEAM MAGMA, is it?\p"
+           "Well! A BIKE doesn't ask who's riding it!")
+}

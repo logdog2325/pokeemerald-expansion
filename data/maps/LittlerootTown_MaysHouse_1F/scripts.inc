@@ -397,7 +397,7 @@ RivalsHouse_1F_Text_BrendanWhoAreYou:
 	.string "some wild POKéMON.\p"
 	.string "Some other time, okay?$"
 
-RivalsHouse_1F_Text_DoYouHavePokemon:
-	.string "Hi, neighbor!\p"
+RivalsHouse_1F_Text_DoYouHavePokemon:  @ Draconid Emerald
+	.string "Hi!\p"
 	.string "Do you already have your\n"
 	.string "own POKéMON?$"

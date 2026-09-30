@@ -5,7 +5,9 @@ MauvilleCity_House1_EventScript_RockSmashDude::
 	lock
 	faceplayer
 	goto_if_set FLAG_RECEIVED_HM_ROCK_SMASH, MauvilleCity_House1_EventScript_ReceivedRockSmash
+	goto_if_eq VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM, MauvilleCity_House1_EventScript_DraconidRepRockSmashDudeUniform  @ Draconid Emerald (contradictions.pory)
 	msgbox MauvilleCity_House1_Text_ImRockSmashDudeTakeThis, MSGBOX_DEFAULT
+MauvilleCity_House1_EventScript_DraconidGiveRockSmash::  @ Draconid Emerald: the uniform speech rejoins here
 	giveitem ITEM_HM_ROCK_SMASH
 	setflag FLAG_RECEIVED_HM_ROCK_SMASH
 	setflag FLAG_HIDE_ROUTE_111_ROCK_SMASH_TIP_GUY

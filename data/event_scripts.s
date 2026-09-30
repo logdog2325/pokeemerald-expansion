@@ -1099,6 +1099,7 @@ gStdScripts_End::
 	.include "data/scripts/draconid/reputation/sootopolis.inc"
 	.include "data/scripts/draconid/reputation/verdanturf.inc"
 	.include "data/scripts/draconid/battle_items.inc"
+	.include "data/scripts/draconid/contradictions.inc"
 	.include "data/scripts/hall_of_fame.inc"
 	.include "data/scripts/hall_of_fame_frlg.inc"
 
@@ -1131,6 +1132,7 @@ EventScript_AfterWhiteOutHealMsg::
 	return
 
 EventScript_AfterWhiteOutMomHeal::
+	goto Draconid_EventScript_AfterWhiteOutHomeHeal  @ Draconid Emerald: no MOM at home (contradictions.pory)
 	lockall
 	textcolor NPC_TEXT_COLOR_FEMALE
 	applymovement LOCALID_PLAYERS_HOUSE_1F_MOM, Common_Movement_WalkInPlaceFasterDown

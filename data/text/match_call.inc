@@ -2897,17 +2897,18 @@ MatchCall_Text_MrStone4::
 	.string "live in peace than worry about our\l"
 	.string "own convenience.$"
 
-MatchCall_Text_MrStone5::
+MatchCall_Text_MrStone5::  @ Draconid Emerald
 	.string "MR. STONE: Hello, hello, {PLAYER}{KUN}!\p"
 	.string "I heard from someone in PETALBURG\n"
-	.string "that you're NORMAN's child!\p"
+	.string "that you come from the DRACONID clan,\l"
+	.string "the dragon tamers of the mountains!\p"
 	.string "No wonder you're such a capable\n"
 	.string "being!$"
 
-MatchCall_Text_MrStone6::
+MatchCall_Text_MrStone6::  @ Draconid Emerald
 	.string "MR. STONE: What's that?\p"
-	.string "You battled your own father and\n"
-	.string "defeated him?\p"
+	.string "You battled NORMAN, the GYM LEADER\n"
+	.string "of PETALBURG, and defeated him?\p"
 	.string "That's astounding!\p"
 	.string "I had no idea that I befriended\n"
 	.string "someone so special! Wahaha!$"

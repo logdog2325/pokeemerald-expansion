@@ -1113,6 +1113,7 @@ PetalburgCity_Gym_EventScript_UnlockRoomDoors::
 PetalburgCity_Gym_EventScript_GymGuide::
 	lock
 	faceplayer
+	goto_if_ne VAR_DRACONID_REPUTATION, REPUTATION_PRE_UNIFORM, PetalburgCity_Gym_EventScript_DraconidRepGymGuide  @ Draconid Emerald (reputation/petalburg.pory)
 	goto_if_set FLAG_DEFEATED_PETALBURG_GYM, PetalburgCity_Gym_EventScript_GymGuidePostVictory
 	msgbox PetalburgCity_Gym_Text_GymGuideAdvice, MSGBOX_DEFAULT
 	release
@@ -1340,9 +1341,9 @@ PetalburgCity_Gym_Text_GymGuideAdvice:
 	.string "Once you've chosen the door…\n"
 	.string "Well, hey, go for it!$"
 
-PetalburgCity_Gym_Text_GymGuidePostVictory:
+PetalburgCity_Gym_Text_GymGuidePostVictory:  @ Draconid Emerald
 	.string "{PLAYER}! Whoa! You've overcome even\n"
-	.string "your own father!\p"
+	.string "NORMAN himself!\p"
 	.string "Like, whoa!\n"
 	.string "What a stunning turn of events!$"
 
@@ -1398,9 +1399,9 @@ PetalburgCity_Gym_Text_GeorgeDefeat:
 	.string "I couldn't restore HP enough…\n"
 	.string "What ATTACK power…$"
 
-PetalburgCity_Gym_Text_GeorgePostBattle:
+PetalburgCity_Gym_Text_GeorgePostBattle:  @ Draconid Emerald
 	.string "I should have expected no less from\n"
-	.string "our LEADER's kid.\p"
+	.string "someone with four GYM BADGES.\p"
 	.string "No, wait! A TRAINER's abilities are\n"
 	.string "earned only through effort.\p"
 	.string "I lost because my own efforts\n"
@@ -1411,9 +1412,9 @@ PetalburgCity_Gym_Text_GeorgePostBadge:
 	.string "I'm going to keep training at GYMS.\n"
 	.string "One day, I'll become a LEADER.$"
 
-PetalburgCity_Gym_Text_BerkeIntro:
+PetalburgCity_Gym_Text_BerkeIntro:  @ Draconid Emerald
 	.string "I'm not going to take it easy just\n"
-	.string "because you're our LEADER's kid.\p"
+	.string "because you've got four BADGES.\p"
 	.string "I'll show you how horrid it is for\n"
 	.string "a POKéMON to take a critical hit!$"
 
@@ -1421,16 +1422,16 @@ PetalburgCity_Gym_Text_BerkeDefeat:
 	.string "Your power…\n"
 	.string "You're the real deal.$"
 
-PetalburgCity_Gym_Text_BerkePostBattle:
-	.string "Your father really is strong.\n"
+PetalburgCity_Gym_Text_BerkePostBattle:  @ Draconid Emerald
+	.string "Our LEADER, NORMAN, really is strong.\n"
 	.string "He's a TRAINER worth my respect.\p"
 	.string "And, I sense the same glow coming\n"
-	.string "from you as your father.\p"
+	.string "from you as from him.\p"
 	.string "I hope that you'll stage a terrific\n"
-	.string "battle with your father!$"
+	.string "battle with NORMAN!$"
 
-PetalburgCity_Gym_Text_BerkePostBadge:
-	.string "Since your dad became the LEADER,\n"
+PetalburgCity_Gym_Text_BerkePostBadge:  @ Draconid Emerald
+	.string "Since NORMAN became the LEADER,\n"
 	.string "the TRAINERS of PETALBURG CITY have\l"
 	.string "become a lot tougher.$"
 
@@ -1477,20 +1478,19 @@ PetalburgCity_Gym_Text_AlexiaPostBattle:
 PetalburgCity_Gym_Text_AlexiaPostBadge:
 	.string "Hi! Have you tried using SURF?$"
 
-PetalburgCity_Gym_Text_JodyIntro:
+PetalburgCity_Gym_Text_JodyIntro:  @ Draconid Emerald
 	.string "Our GYM LEADER told us to go all out\n"
 	.string "and beat you.\p"
-	.string "Even if you happen to be the\n"
-	.string "LEADER's kid!$"
+	.string "No matter who you happen to be!$"
 
 PetalburgCity_Gym_Text_JodyDefeat:
 	.string "But… I went all out!$"
 
-PetalburgCity_Gym_Text_JodyPostBattle:
+PetalburgCity_Gym_Text_JodyPostBattle:  @ Draconid Emerald
 	.string "The way you use your POKéMON…\n"
-	.string "It's like your father's style.\p"
-	.string "Go on through! The GYM LEADER, your\n"
-	.string "father, is waiting!$"
+	.string "It's a lot like our LEADER's style.\p"
+	.string "Go on through! The GYM LEADER,\n"
+	.string "NORMAN, is waiting!$"
 
 PetalburgCity_Gym_Text_JodyPostBadge:
 	.string "Sure, it's fine to make your POKéMON\n"

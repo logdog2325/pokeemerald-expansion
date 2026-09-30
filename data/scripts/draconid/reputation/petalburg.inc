@@ -146,6 +146,29 @@ PetalburgCity_WallysHouse_EventScript_DraconidRepWallysMom_6:
 	goto PetalburgCity_WallysHouse_EventScript_DraconidRepWallysMom_5
 
 
+PetalburgCity_Gym_EventScript_DraconidRepGymGuide::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq PetalburgCity_Gym_EventScript_DraconidRepGymGuide_2
+	goto_if_set FLAG_DEFEATED_PETALBURG_GYM, PetalburgCity_Gym_EventScript_DraconidRepGymGuide_3
+	msgbox PetalburgCity_Gym_Text_GymGuideAdvice, MSGBOX_DEFAULT
+PetalburgCity_Gym_EventScript_DraconidRepGymGuide_1:
+	release
+	end
+
+PetalburgCity_Gym_EventScript_DraconidRepGymGuide_2:
+	goto_if_set FLAG_DEFEATED_PETALBURG_GYM, PetalburgCity_Gym_EventScript_DraconidRepGymGuide_7
+	msgbox PetalburgCity_Gym_Text_DraconidRepGymGuideAdviceUniform, MSGBOX_DEFAULT
+	goto PetalburgCity_Gym_EventScript_DraconidRepGymGuide_1
+
+PetalburgCity_Gym_EventScript_DraconidRepGymGuide_3:
+	msgbox PetalburgCity_Gym_Text_DraconidRepGymGuidePostVictoryRevealed, MSGBOX_DEFAULT
+	goto PetalburgCity_Gym_EventScript_DraconidRepGymGuide_1
+
+PetalburgCity_Gym_EventScript_DraconidRepGymGuide_7:
+	msgbox PetalburgCity_Gym_Text_DraconidRepGymGuidePostVictoryUniform, MSGBOX_DEFAULT
+	goto PetalburgCity_Gym_EventScript_DraconidRepGymGuide_1
+
+
 PetalburgCity_Text_DraconidRepBoyUniform::
 	.string "My face is reflected in the water.\p"
 	.string "And behind me… a TEAM MAGMA grunt.\p"
@@ -238,3 +261,25 @@ PetalburgCity_WallysHouse_Text_DraconidRepWallysMomRevealed::
 	.string "We should have trusted you, the way he\n"
 	.string "always did.\p"
 	.string "Thank you for looking out for him.$"
+
+PetalburgCity_Gym_Text_DraconidRepGymGuideAdviceUniform::
+	.string "Hey, how's it… Whoa. TEAM MAGMA?\p"
+	.string "I still have to give you advice.\n"
+	.string "That's the job.\p"
+	.string "The doors open when you beat the\n"
+	.string "TRAINERS in each room.\p"
+	.string "Left is the SPEED ROOM.\n"
+	.string "Right is the ACCURACY ROOM.\p"
+	.string "NORMAN won't go easy on that\n"
+	.string "uniform. …Go on.$"
+
+PetalburgCity_Gym_Text_DraconidRepGymGuidePostVictoryUniform::
+	.string "Whoa! You beat NORMAN!\p"
+	.string "In that uniform…\n"
+	.string "I don't even know if I should cheer.$"
+
+PetalburgCity_Gym_Text_DraconidRepGymGuidePostVictoryRevealed::
+	.string "{PLAYER}! You beat NORMAN, and then\n"
+	.string "you stood up to MAXIE himself!\p"
+	.string "Like, whoa!\n"
+	.string "What a stunning turn of events!$"

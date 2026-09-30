@@ -68,6 +68,17 @@ FallarborTown_PokemonCenter_1F_EventScript_DraconidRepExpertM_3:
 	return
 
 
+FallarborTown_CozmosHouse_EventScript_DraconidRepNoticeMeteoriteUniform::
+	msgbox FallarborTown_CozmosHouse_Text_DraconidRepCozmoUniform, MSGBOX_YESNO
+	return
+
+
+FallarborTown_CozmosHouse_EventScript_DraconidRepCozmoRevealed::
+	msgbox FallarborTown_CozmosHouse_Text_DraconidRepCozmoRevealed, MSGBOX_DEFAULT
+	release
+	end
+
+
 FallarborTown_Text_DraconidRepGirlUniform::
 	.string "This is my precious AZURILL. You can't\n"
 	.string "have it!\p"
@@ -113,3 +124,19 @@ FallarborTown_PokemonCenter_1F_Text_DraconidRepExpertMRevealed::
 	.string "volcanic ash.\p"
 	.string "I'll plant one for you, {PLAYER}. So\n"
 	.string "FALLARBOR remembers.$"
+
+FallarborTown_CozmosHouse_Text_DraconidRepCozmoUniform::
+	.string "PROF. COZMO: Y-you!\n"
+	.string "You're the one from the falls!\p"
+	.string "…Wait. Is that my METEORITE?\n"
+	.string "You're giving it back?\p"
+	.string "I… I won't tell a soul\n"
+	.string "where it came from.\p"
+	.string "May I have it?\n"
+	.string "I'll trade you this TM for it.$"
+
+FallarborTown_CozmosHouse_Text_DraconidRepCozmoRevealed::
+	.string "PROF. COZMO: So THAT's why\n"
+	.string "you gave it back!\p"
+	.string "This METEORITE is really going to help\n"
+	.string "my research. Thank you, {PLAYER}!$"

@@ -1,5 +1,5 @@
 // Draconid Emerald: reputation dialogue – Petalburg City and Wally's parents (D-103; shared NPCs in
-// shared.pory). The Petalburg Gym is left to the story rework (Norman).
+// shared.pory). NORMAN in the Petalburg Gym is the story's (act4.pory); the gym's Guide is at the end (D-255).
 // Each NPC's map.json "script" points here; PRE_UNIFORM goes on to the vanilla script.
 // Lines collected in docs/reputation_dialogue.md.
 
@@ -207,4 +207,45 @@ text PetalburgCity_WallysHouse_Text_DraconidRepWallysMomRevealed {
     format("{PLAYER}! WALLY told us everything.\p"
            "We should have trusted you, the way he always did.\p"
            "Thank you for looking out for him.")
+}
+
+// ---------------------------------------------------------------------------
+// Petalburg Gym Guide (round 1 contradiction scrub, D-255): the gym opens to the player in the uniform, so the
+// guide gets the other gyms' treatment. PetalburgCity_Gym_EventScript_GymGuide jumps here outside
+// PRE_UNIFORM. The gym can't be challenged after the reveal before its badge (Surf leads to SOOTOPOLIS), so
+// REVEALED without the badge keeps the vanilla advice.
+// ---------------------------------------------------------------------------
+
+script PetalburgCity_Gym_EventScript_DraconidRepGymGuide {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        if (flag(FLAG_DEFEATED_PETALBURG_GYM)) {
+            msgbox(PetalburgCity_Gym_Text_DraconidRepGymGuidePostVictoryUniform, MSGBOX_DEFAULT)
+        } else {
+            msgbox(PetalburgCity_Gym_Text_DraconidRepGymGuideAdviceUniform, MSGBOX_DEFAULT)
+        }
+    } elif (flag(FLAG_DEFEATED_PETALBURG_GYM)) {
+        msgbox(PetalburgCity_Gym_Text_DraconidRepGymGuidePostVictoryRevealed, MSGBOX_DEFAULT)
+    } else {
+        msgbox(PetalburgCity_Gym_Text_GymGuideAdvice, MSGBOX_DEFAULT)
+    }
+    release
+    end
+}
+
+text PetalburgCity_Gym_Text_DraconidRepGymGuideAdviceUniform {
+    format("Hey, how's it… Whoa. TEAM MAGMA?\p"
+           "I still have to give you advice.\nThat's the job.\p"
+           "The doors open when you beat the\nTRAINERS in each room.\p"
+           "Left is the SPEED ROOM.\nRight is the ACCURACY ROOM.\p"
+           "NORMAN won't go easy on that\nuniform. …Go on.")
+}
+
+text PetalburgCity_Gym_Text_DraconidRepGymGuidePostVictoryUniform {
+    format("Whoa! You beat NORMAN!\p"
+           "In that uniform…\nI don't even know if I should cheer.")
+}
+
+text PetalburgCity_Gym_Text_DraconidRepGymGuidePostVictoryRevealed {
+    format("{PLAYER}! You beat NORMAN, and then\nyou stood up to MAXIE himself!\p"
+           "Like, whoa!\nWhat a stunning turn of events!")
 }
