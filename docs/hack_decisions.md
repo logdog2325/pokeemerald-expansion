@@ -68,7 +68,7 @@ when a playtest note overrides something here, the entry is updated and marked.
   and `sStarterMon` in `src/starter_choose.c` lists the three egg species. – Alt: a new var. – Every vanilla reader
   (`IsStarterInParty`, credits, Game Corner doll) keeps working and gets the right species; rival battle switches
   on `VAR_STARTER_MON` are rewritten in Phase 5 anyway.
-- **D-034 Hatching**: the egg hatches at the shrine during a rite (normal `EggHatch` animation), then a special
+- **D-034 Hatching** *(the rite superseded by D-231, round 1; the Lv 5 raise stays)*: the egg hatches at the shrine during a rite (normal `EggHatch` animation), then a special
   raises it to **Lv 5** with its level-up moves. – Alt: hatch at Lv 1 / hatch by walking. – The brief says "hatches
   early"; Lv 1 would lose to the Route 101 Zigzagoon and the first Aster fight.
 - **D-035 Aster** *(egg and role superseded by D-105, round 1)*: female, the Elder's granddaughter, same age as the player; her egg counter-picks the player's
@@ -90,7 +90,7 @@ when a playtest note overrides something here, the entry is updated and marked.
   is May here, so it is always MAY in Emerald. Scenes where the rival is Brendan name him directly.
 - **D-041 Debug toggles**: the expansion's no-encounter / no-trainer-sight / no-collision toggles get real flags
   (0x2E–0x30) so they work in the debug menu and in emulator tests. The game never sets them.
-- **D-042 Second starter**: after the Stone Badge, Prof. Birch waits outside the Rustboro Gym with Charmander,
+- **D-042 Second starter** *(Birch superseded by Prof. Oak, D-233, round 1)*: after the Stone Badge, Prof. Birch waits outside the Rustboro Gym with Charmander,
   Totodile and Treecko (Lv 10, `SECOND_STARTER_LEVEL`); the pick goes to `VAR_SECOND_STARTER`. – Alt: at the lab
   (a long walk back), Lv 5. – Birch has business in Rustboro in vanilla too; Lv 10 is below the Stone Badge cap
   (20) and catches up in a route or two. All three have a Dragon-type Mega (Charizard X, Feraligatr, Sceptile),
@@ -216,7 +216,7 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   script; `Draconid_ResolveVariantTrainer` remaps it when the battle loads to base + variant (egg: 3 variants;
   egg × second starter: 9). `MAX_TRAINERS_COUNT` is raised so the variants fit (a few save bytes: trainer flags).
   – Alt: 9-way branches in every script; party pools. – One script line per fight and one table to check.
-- **D-102 Opening (Act 1)**: night prologue (a falling star, screen flash) → the player wakes in their own house
+- **D-102 Opening (Act 1)** *(the ceremony and the hatch superseded by D-230/D-231, round 1)*: night prologue (a falling star, screen flash) → the player wakes in their own house
   (Aster at the door: the Elder calls) → wall clock → egg ceremony with the prophecy and the mission → hatching rite
   → a villager gives the Running Shoes → **Aster's tutorial battle** on Draconid Pass → Route 101. – Alt: the
   Elder wakes the player. – Keeps the tested egg/hatch flow; Aster is there from the first minute.
@@ -264,8 +264,9 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   loops until YES. – The Elder ordered it; a refusal the game can't honour would be a fake choice.
 - **D-115 Rustboro, Act 1**: Brendan uses the vanilla rival object and triggers on row 53 (the only way in from the
   woods), now on `VAR_BRENDAN_STATE`; the vanilla May registration in Rustboro / at Briney's cottage is skipped
-  (May registers on Route 110, D-106). After the Stone Badge **Tabitha gives the order first, then Birch**, who
-  saw them talking. Tabitha's overworld sprite is the Magma grunt, as in vanilla. – Alt: Brendan inside the city.
+  (May registers on Route 110, D-106). After the Stone Badge **Tabitha gives the order first, then Birch**
+  (Prof. Oak since D-233), who saw them talking. Tabitha's overworld sprite is the Magma grunt, as in vanilla.
+  – Alt: Brendan inside the city.
 - **D-116 May at the Norman battle**: she stands by the mat whenever the gym is open to the fourth-badge
   challenge (talkable), speaks her line after the badge and leaves before Wally's father comes in. – The add-on.
 - **D-117 Reputation dialogue**: who reacts to `VAR_DRACONID_REPUTATION` and how (lines in
@@ -905,6 +906,41 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   (as with D-101). The partners are `PARTNER_WES`/`_RED`/`_BLUE` (14–16, `PARTNER_COUNT` 17). – Alt: reuse the
   unused vanilla `TRAINER_RED` (851; still no room for the rest); 936 (only three spare ids). – One raise for this
   round.
+- **D-230 The egg ceremony in the shrine** (feedback 1.38; supersedes D-102's ceremony): the prophecy and the
+  mission stay in the Elder's house; then "We go up together" and a warp puts the player at the shrine's entrance,
+  where the Elder stands before the Rayquaza statue with the three eggs at his feet (the egg objects moved there
+  from his house; the dragon egg sprites stay) and Aster waits beside them. He presents them as eggs clan
+  travellers brought home from far lands – **Deino's from Unova, Dreepy's from Galar, Jangmo-o's from Alola**,
+  where each line was first found – instead of "brought up from Meteor Falls", and each egg's description names
+  its region. The choice and its confirm, Nerine's counter egg kept aside and Aster's leftover egg (D-105) and every
+  flag and var the old ceremony set are unchanged; the ceremony ends with the Elder sending the player to Prof.
+  Birch. No new `DRACONID_STATE_*` value: the shrine arms the ceremony when the state is `CLOCK_SET` and the Elder
+  is there (`FLAG_HIDE_DRACONID_SHRINE_ELDER` clear, done by the house scene), because the emulator tests of every
+  act set the state numbers literally. – Alt: the player walks up to the shrine alone (v1); a new state value
+  (renumbering 3–8). – Regidrago will wait in a sealed part of this cave (feedback 1.30), where the egg must come
+  from; the warp keeps the Elder "taking" the player up.
+- **D-231 Hatch after 5 steps** (feedback 1.38; supersedes D-034's rite): after the ceremony the egg hatches on the
+  `DRACONID_EGG_HATCH_STEPS` (5)th step **outdoors** (step hook `Draconid_ShouldHatchEgg`, counter
+  `VAR_DRACONID_EGG_STEPS`, the old `VAR_UNUSED_0x4083`): "Oh? The egg is moving!", the normal hatch animation, then
+  the hatchling is raised to Lv 5 as before. Steps in the shrine or a house don't count; before the Running Shoes
+  the village is the only outdoor map the player can reach, so the hatch always plays there, right after a step –
+  and the old woman with the Running Shoes then hurries over to the tile the player just left (always free) instead
+  of walking up to the cave mouth. – Alt: count steps on every map (the hatch could play indoors, where she can't
+  come); a fixed spot the player has to walk to. – The playtester: "have the egg hatch after like 5 steps".
+- **D-232 Aster's hatchling**: Aster walks out of the shrine ahead of the player ("Mine is already stirring") and
+  shows her hatchling at the Draconid Pass battle – its name and cry, and her "long way to climb" line from the
+  old rite; her tutorial battle is unchanged. – Alt: her egg hatches a beat after the player's (she would have to
+  be on screen wherever the player's egg hatches). – Keeps the hatch about the player and gives her the bridge.
+- **D-233 Prof. Oak gives the second starter** (feedback 1.38; supersedes Birch in D-042 and D-115): Prof. Oak,
+  visiting his old friend Birch in Hoenn, waits outside the Rustboro Gym after the Stone Badge with Charmander
+  (Kanto), Totodile (Johto) and Treecko (Hoenn) at `SECOND_STARTER_LEVEL`; same choice flow and
+  `VAR_SECOND_STARTER`. He sees the Magma uniform and is puzzled but kind: Birch vouched for the player (Birch's v1
+  line "I'll trust that version of you" is now quoted by Oak). Renamed `LOCALID_RUSTBORO_OAK`,
+  `FLAG_HIDE_RUSTBORO_CITY_OAK` (same flag 0x40), `RustboroCity_Gym_EventScript_DraconidOakWaits`. Oak's FRLG
+  overworld sprite was built for FireRed only; it and its `NPC_WHITE` palette now build for Emerald too. Birch keeps
+  the Route 101 rescue and the lab (Act 1); the Lavaridge traveller still brings the Mega Stone (D-126), "for the
+  partner PROF. OAK gave you". – Alt: Oak brings the Mega Stone instead (feedback row 1.37's first reading).
+  – The playtester: "have the professor who gives it to you be oak since he already has a in game sprite".
 - **D-234 More rival battles: the schedule** (feedback 1.32 "a few more Brendan and May battles", 1.34 "more Wally
   battles"): two more each in Acts 1–5, placed where a rival had no fight for two segments and the story gives them
   a reason to be there, on the player's only way forward (segment = level-cap band, docs/hack_trainers.md).

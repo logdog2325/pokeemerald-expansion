@@ -150,7 +150,7 @@
 #define VAR_ROUTE133_STATE                               0x4080 // Unused Var
 #define VAR_ROUTE134_STATE                               0x4081 // Unused Var
 #define VAR_LITTLEROOT_HOUSES_STATE_MAY                  0x4082
-#define VAR_UNUSED_0x4083                                0x4083 // Unused Var
+#define VAR_DRACONID_EGG_STEPS                           0x4083 // Draconid Emerald: steps outdoors since the egg ceremony (the egg hatches at DRACONID_EGG_HATCH_STEPS)
 #define VAR_BIRCH_LAB_STATE                              0x4084
 #define VAR_PETALBURG_GYM_STATE                          0x4085 // 0-1: Wally tutorial, 2-6: 0-4 badges, 7: Defeated Norman, 8: Rematch Norman
 #define VAR_CONTEST_HALL_STATE                           0x4086
@@ -268,7 +268,7 @@
 #define VAR_RIVAL_RAYQUAZA_CALL_STEP_COUNTER             0x40F6
 #define VAR_DRACONID_STATE                               0x40F7 // Draconid Village story progress (see docs/hack_changes.md)
 #define VAR_ASTER_EGG                                    0x40F8 // Aster's counter-pick egg: 0 Deino, 1 Dreepy, 2 Jangmo-o
-#define VAR_SECOND_STARTER                               0x40F9 // Birch's second starter: 0 none yet, 1 Charmander, 2 Totodile, 3 Treecko
+#define VAR_SECOND_STARTER                               0x40F9 // Prof. Oak's second starter: 0 none yet, 1 Charmander, 2 Totodile, 3 Treecko
 #define VAR_PLAYER_OUTFIT                                0x40FA // Player outfit: PLAYER_OUTFIT_* (include/constants/outfits.h)
 #define VAR_ASTER_STATE                                  0x40FB // Aster story arc progress (ASTER_STATE_*, include/constants/draconid.h)
 #define VAR_BRENDAN_STATE                                0x40FC // Draconid Emerald: Brendan's new battles (BRENDAN_STATE_*, include/constants/draconid.h)

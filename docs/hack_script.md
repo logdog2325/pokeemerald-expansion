@@ -53,7 +53,12 @@ Ground floor of the player's house in Draconid Village.
 
 Draconid Village: the player's home, at the foot of the cliffs below the Rayquaza shrine.
 
+### `DraconidVillage_EventScript_EggHatch`
+- Oh?
+- The egg is moving!
+
 ### `DraconidVillage_EventScript_RunningShoes`
+- OLD WOMAN: Oh, my! Was that a dragon's cry I heard?
 - OLD WOMAN: So the egg answered the sky. Let me see… Oh, what a bright little dragon!
 - The ELDER told us all. You're going down to the lowlands, alone, and in secret.
 - Then you'll need to move fast. Take these. Every tamer who leaves this village gets a pair.
@@ -62,11 +67,15 @@ Draconid Village: the player's home, at the foot of the cliffs below the Rayquaz
 - Cross the bridge on DRACONID PASS and head east to ROUTE 101. LITTLEROOT is just south of it.
 - Your house will be waiting when you need a rest. The whole village will.
 
+### `DraconidVillage_EventScript_ShoesGiver`
+- OLD WOMAN: Hold the B Button to run!
+- Cross the bridge on DRACONID PASS and head east to ROUTE 101.
+
 ### `DraconidVillage_EventScript_GatekeeperStop`
 - GATEKEEPER: Whoa there, {PLAYER}! Isn't today your egg ceremony?
 - The ELDER is waiting for you. You can't leave the village without a partner!
-- GATEKEEPER: That egg needs the shrine's blessing before it can hatch.
-- Go on up to the shrine in the cliff!
+- GATEKEEPER: That egg of yours is about to hatch, {PLAYER}!
+- Stay in the village until it does. The lowlands are no place for an egg.
 
 ### `DraconidVillage_EventScript_Gatekeeper`
 - GATEKEEPER: Beyond this path lies DRACONID PASS, and past the river, the lowlands.
@@ -99,7 +108,7 @@ Draconid Village: the player's home, at the foot of the cliffs below the Rayquaz
 
 ## data/maps/DraconidVillage_EldersHouse/scripts.pory
 
-The Elder's house: the prophecy, the mission and the egg ceremony (Act 1, docs/hack_story.md). VAR_STARTER_MON = the player's egg (DRACONID_EGG_*). The counter egg is set aside for Nerine, who is away (D-104: Deino -> Jangmo-o, Dreepy -> Deino, Jangmo-o -> Dreepy); Aster takes the leftover one (VAR_ASTER_EGG, D-105: Deino -> Dreepy, Dreepy -> Jangmo-o, Jangmo-o -> Deino).
+The Elder's house: the prophecy and the mission (Act 1, docs/hack_story.md). Then the Elder takes the player and Aster up to the shrine, where the egg ceremony is held (data/maps/DraconidVillage_Shrine/scripts.pory, D-230).
 
 ### `DraconidVillage_EldersHouse_EventScript_Ceremony`
 - ELDER: Ah, {PLAYER}. There you are. Come, stand before me.
@@ -116,16 +125,48 @@ The Elder's house: the prophecy, the mission and the egg ceremony (Act 1, docs/h
 - Wear their colors if you must. Undo their work from within.
 - And when the sky splits, you must stand beside RAYQUAZA.
 - ELDER: No one outside this village may know why you go. Not even the kind ones.
-- Now. A tamer needs a partner. These three eggs were brought up from METEOR FALLS.
+- ELDER: Now. A tamer needs a partner.
+- Three eggs are waiting in the shrine, before the Guardian of the Sky.
+- Come, both of you. We go up together.
+
+### `DraconidVillage_EldersHouse_EventScript_Elder`
+- ELDER: Walk with your egg under the open sky, {PLAYER}. It is ready to meet you.
+- ELDER: PROF. BIRCH of LITTLEROOT TOWN is an old friend of our clan. Show him your partner.
+- The red ones will find you soon enough. Let them.
+- ELDER: So you wear their red. It suits the task, if not the heart.
+- Remember who you are under it, {PLAYER}. The sky remembers.
+- ELDER: You set the red aside when it mattered. I am proud of you, {PLAYER}.
+- But the star still falls. Keep your eyes on the sky.
+
+### `DraconidVillage_EldersHouse_EventScript_Aster`
+- ASTER: …
+
+### `DraconidVillage_EldersHouse_EventScript_RelicDisplay`
+- A glass case holds a fragment of dark, glittering rock.
+- A label reads: “From the star that fell on the village. Do not touch.”
+
+### `DraconidVillage_EldersHouse_EventScript_Bookshelf`
+- Old scrolls about the Draconid clan and the Guardian of the Sky fill the shelves.
+
+## data/maps/DraconidVillage_Shrine/scripts.pory
+
+Rayquaza shrine carved into the cliff above Draconid Village. The egg ceremony (Act 1, round 1 D-230): the Elder brings the player and Aster up from his house after the prophecy.
+
+### `DraconidVillage_Shrine_EventScript_EggCeremony`
+- ELDER: Come forward, {PLAYER}.
+- ELDER: Guardian of the Sky, who stilled the land and the sea…
+- Two children of the clan stand before you. Watch over the eggs they choose.
+- ELDER: Clan travellers brought these eggs home from lands far across the sea.
+- DEINO's egg, from UNOVA. DREEPY's, from GALAR. And JANGMO-O's, from ALOLA.
 - Look closely, {PLAYER}. Which one calls to you?
 - Which egg will you choose?
-- ELDER: The egg of DEINO, a Dark- and Dragon-type.
+- ELDER: The egg of DEINO, from UNOVA. A Dark- and Dragon-type.
 - It cannot see, so it bites everything to learn about the world.
 - Will you take the DEINO egg?
-- ELDER: The egg of DREEPY, a Dragon- and Ghost-type.
+- ELDER: The egg of DREEPY, from GALAR. A Dragon- and Ghost-type.
 - It is said to drift through the old ruins, longing for the sky of its ancestors.
 - Will you take the DREEPY egg?
-- ELDER: The egg of JANGMO-O, a Dragon-type.
+- ELDER: The egg of JANGMO-O, from ALOLA. A Dragon-type.
 - It clashes its scales like a war drum to call out any challenger.
 - Will you take the JANGMO-O egg?
 - {PLAYER} received the dragon egg!
@@ -138,52 +179,22 @@ The Elder's house: the prophecy, the mission and the egg ceremony (Act 1, docs/h
 - I'll take the one that bites whatever the dark hides. DEINO is mine.
 - ASTER: A blind dragon that bites at shadows…
 - Then I'll take the one that drifts where no eye can follow. DREEPY is mine.
-- ELDER: Now then. Dragon eggs do not hatch on their own; they wait for the sky's call.
-- Come to the shrine in the cliff, both of you. We shall perform the rite.
-- The ELDER and ASTER left for the shrine.
-
-### `DraconidVillage_EldersHouse_EventScript_Elder`
-- ELDER: The villagers are waiting for you outside the shrine, {PLAYER}.
-- ELDER: PROF. BIRCH of LITTLEROOT TOWN is an old friend of our clan. Show him your partner.
-- The red ones will find you soon enough. Let them.
-- ELDER: So you wear their red. It suits the task, if not the heart.
-- Remember who you are under it, {PLAYER}. The sky remembers.
-- ELDER: You set the red aside when it mattered. I am proud of you, {PLAYER}.
-- But the star still falls. Keep your eyes on the sky.
-
-### `DraconidVillage_EldersHouse_EventScript_Aster`
-- ASTER: …
-
-### `DraconidVillage_EldersHouse_EventScript_Egg`
-- A dragon egg, warm to the touch. Something inside is moving.
-
-### `DraconidVillage_EldersHouse_EventScript_RelicDisplay`
-- A glass case holds a fragment of dark, glittering rock.
-- A label reads: “From the star that fell on the village. Do not touch.”
-
-### `DraconidVillage_EldersHouse_EventScript_Bookshelf`
-- Old scrolls about the Draconid clan and the Guardian of the Sky fill the shelves.
-
-## data/maps/DraconidVillage_Shrine/scripts.pory
-
-Rayquaza shrine carved into the cliff above Draconid Village. The egg-hatching rite (Phase 4) lives in data/scripts/draconid/egg_event.pory.
-
-### `DraconidVillage_Shrine_EventScript_HatchingRite`
-- ELDER: Come forward, {PLAYER}.
-- ELDER: Guardian of the Sky, who stilled the land and the sea…
-- Two children of the clan stand before you with their eggs.
-- Let the young dragons hear your call!
-- Huh?
-- The egg is moving!
-- ASTER's egg hatched too! A {STR_VAR_1} blinked up at her.
-- ASTER: …Hello, little one. We have a long way to climb, you and I.
-- {PLAYER}. They say the Guardian only answers those who reach the top of the sky.
-- I intend to be the one it answers. Don't fall behind.
-- ELDER: Hohoho… That girl. She has been reading the old scrolls again.
-- {PLAYER}, there is a man in LITTLEROOT TOWN, PROF. BIRCH, who studies Pokémon.
+- ELDER: The Guardian has seen you both. Your eggs are ready to hatch.
+- Walk with it under the open sky, {PLAYER}. A few steps, and your partner will greet the world.
+- ASTER: Mine is already stirring. I'm not waiting around for yours.
+- I'll be on DRACONID PASS, {PLAYER}. Don't keep me waiting.
+- ELDER: Hohoho… That girl. Always in a hurry to reach the sky.
+- {PLAYER}, once your partner hatches, go down to LITTLEROOT TOWN.
+- A man named PROF. BIRCH lives there. He studies POKéMON.
 - Our clan and his family have shared our knowledge for many years.
-- Go to him, and show him your partner. He will know what a young tamer needs.
-- Your mother is waiting outside. Go on, now.
+- Show him your partner. He will know what a young tamer needs.
+- Go on, now. The sky is waiting.
+
+### `DraconidVillage_Shrine_EventScript_Elder`
+- ELDER: Walk with your egg under the open sky, {PLAYER}. It is ready to meet you.
+
+### `DraconidVillage_Shrine_EventScript_Egg`
+- A dragon egg, warm to the touch. Something inside is moving.
 
 ### `DraconidVillage_Shrine_EventScript_Statue`
 - A statue of a great serpent coiled around a fallen star.
@@ -246,7 +257,11 @@ Draconid Pass: from the village over the river to Littleroot Town. Aster waits a
 
 ### `DraconidPass_EventScript_AsterBattle`
 - ASTER: So you came this way after all.
-- The lowlands are wide, {PLAYER}, and the sky is far away.
+- Look. My egg hatched on the path down, right under the open sky.
+- ASTER: This {STR_VAR_1} knew my voice before it even opened its eyes.
+- We have a long way to climb, it and I. The Guardian only answers those who reach the top of the sky.
+- I intend to be the one it answers.
+- ASTER: The lowlands are wide, {PLAYER}, and the sky is far away.
 - Before you go looking for it, let me see if your little one can keep up with mine!
 - ASTER: Hmph. The shadow that bites… the drum that sings… it doesn't matter which.
 - The Guardian of the Sky only looks down on those who climb.
@@ -391,28 +406,34 @@ Draconid Emerald: the Team Magma outpost cabin at the edge of Petalburg Woods (A
 
 ## data/scripts/draconid/second_starter.pory
 
-Draconid Emerald: Prof. Birch's second partner after the first Gym (Phase 4; round 1: Tabitha's order first).  Winning the Stone Badge sets VAR_DRACONID_STATE to DRACONID_STATE_SECOND_STARTER; walking out of the Rustboro Gym starts the scene (RustboroCity_OnFrame): Tabitha gives the player their orders (act1.pory), then Birch offers Charmander, Totodile or Treecko at SECOND_STARTER_LEVEL; the choice is stored in VAR_SECOND_STARTER (SECOND_STARTER_*). Each of them has a Dragon-type Mega (Charizard X, Feraligatr, Sceptile), handed out with the Mega Ring later in the story.
+Draconid Emerald: Prof. Oak's second partner after the first Gym (Phase 4; round 1: Tabitha's order first, Oak instead of Birch, D-233).  Winning the Stone Badge sets VAR_DRACONID_STATE to DRACONID_STATE_SECOND_STARTER; walking out of the Rustboro Gym starts the scene (RustboroCity_OnFrame): Tabitha gives the player their orders (act1.pory), then Prof. Oak, visiting Hoenn (Birch told him about the Draconid tamer), offers Charmander, Totodile or Treecko at SECOND_STARTER_LEVEL; the choice is stored in VAR_SECOND_STARTER (SECOND_STARTER_*). Each of them has a Dragon-type Mega (Charizard X, Feraligatr, Sceptile); the Mega Stone is a Draconid gift in Lavaridge (act3.pory, D-126).
 
 ### `RustboroCity_EventScript_DraconidSecondStarter`
-- PROF. BIRCH: {PLAYER}! I watched your battle through the window. Your first GYM BADGE!
-- …But that uniform. And the man you were just talking to…
-- BRENDAN told me. I didn't want to believe him.
-- Your ELDER wrote to me before you came down the mountain. Draconid tamers raise a second partner from a faraway land, to learn balance.
-- I brought three POKéMON for you. On the way here, I nearly turned back.
-- But I saw how you protected me on ROUTE 101.
-- Whatever you're doing… I'll trust that version of you. Pick the one you like.
+- PROF. OAK: Ah, {PLAYER}! So you're the young dragon tamer BIRCH told me about!
+- I'm OAK. I study POKéMON in PALLET TOWN, far away in KANTO.
+- I'm in HOENN visiting my old friend BIRCH. And I watched your GYM battle through the window. Splendid!
+- PROF. OAK: …Hm? But that red uniform. TEAM MAGMA, isn't it? And the fellow you were just talking to…
+- BIRCH warned me. His boy BRENDAN came home terribly upset about it.
+- But BIRCH told me something else, too.
+- “I saw how that child protected me on ROUTE 101. I'll trust that version of them.”
+- I've studied POKéMON for a long time, {PLAYER}. A POKéMON knows its TRAINER's heart better than any uniform.
+- And your dragon trusts you. That's good enough for me!
+- PROF. OAK: Now then! Your ELDER wrote to BIRCH before you came down the mountain.
+- Draconid tamers raise a second partner from a faraway land, to learn balance.
+- So I brought three POKéMON with me, each from a land I know well. Go on, choose!
 - Which POKéMON will you take?
-- CHARMANDER, the Fire-type from KANTO. They say the flame on its tail shows its spirit.
+- CHARMANDER, the Fire-type from my home, KANTO. The flame on its tail shows how it feels.
 - Will you take CHARMANDER?
-- TOTODILE, the Water-type from JOHTO. It bites anything that moves, even its TRAINER!
+- TOTODILE, the Water-type from JOHTO. It bites anything that moves. Even its TRAINER!
 - Will you take TOTODILE?
-- TREECKO, the Grass-type from right here in HOENN. BRENDAN's partner has a sibling!
+- TREECKO, the Grass-type from right here in HOENN. BIRCH picked it out himself.
 - Will you take TREECKO?
-- PROF. BIRCH: Raise it well, alongside your dragon.
-- And {PLAYER}… be careful. Whatever those people want, it isn't good.
+- PROF. OAK: Raise it well, side by side with your dragon. POKéMON and people grow strong together.
+- And {PLAYER}… whatever put you in that uniform, don't let it change who you are.
+- Well! BIRCH is waiting for me at DEVON. Take care, now!
 
 ### `RustboroCity_EventScript_DraconidReceivedSecondStarter`
-- {PLAYER} received the {STR_VAR_1} from PROF. BIRCH!
+- {PLAYER} received the {STR_VAR_1} from PROF. OAK!
 
 ## data/scripts/draconid/act2.pory
 
@@ -582,15 +603,15 @@ Draconid Emerald round 1, Act 3 (docs/hack_story.md): Meteor Falls, Mt. Chimney,
 - ASTER: The ELDER says you're doing well.
 - I say we'll see.
 - ASTER: One more thing. Someone from the village is waiting in LAVARIDGE.
-- He has something for the partner PROF. BIRCH gave you.
+- He has something for the partner PROF. OAK gave you.
 - Don't make me regret this.
 
 ### `LavaridgeTown_EventScript_DraconidTraveller`
 - {PLAYER}! The ELDER sent me to find you.
-- Come back when PROF. BIRCH has given you a partner.
+- Come back when PROF. OAK has given you a partner.
 - Ah! {PLAYER}! ASTER said you'd come down the pass.
 - Don't mind the looks you're getting here. Mountain folk have long memories.
-- The ELDER sent me with this. A MEGA STONE, for the partner PROF. BIRCH gave you.
+- The ELDER sent me with this. A MEGA STONE, for the partner PROF. OAK gave you.
 - Its MEGA form carries a dragon's blood.
 - Your BAG is too full for it? Make some room, then. I'll wait here.
 - With the ring ASTER gave you, your partner can MEGA EVOLVE once it is fully grown.

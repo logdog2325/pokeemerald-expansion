@@ -1,22 +1,25 @@
-# Rustboro: Tabitha's order and Prof. Birch's second partner after the Stone Badge (act1.pory,
-# second_starter.pory). Needs rustboro_done.ss from tests/rustboro.play. -D PICK=0|1|2 -D SECOND=1|2|3 picks Charmander /
-# Totodile / Treecko (SECOND is the matching SECOND_STARTER_* value); mashing A then answers YES
-# everywhere and fills the nickname screen until it jumps to OK.
+# Rustboro: Tabitha's order and Prof. Oak's second partner after the Stone Badge (act1.pory,
+# second_starter.pory, D-233). Needs rustboro_done.ss from tests/rustboro.play. -D PICK=0|1|2 -D SECOND=1|2|3 picks
+# Charmander / Totodile / Treecko (SECOND is the matching SECOND_STARTER_* value); mashing A then answers YES
+# everywhere and fills the nickname screen until it jumps to OK. -D MAGMA=MAGMA_M|MAGMA_F: the player's
+# uniform (Oak remarks on it).
 default PICK 0
 default SECOND 1
+default MAGMA MAGMA_M
 loadstate rustboro_done.ss
 setvar VAR_DRACONID_STATE 7
-clearflag FLAG_HIDE_RUSTBORO_CITY_BIRCH
+clearflag FLAG_HIDE_RUSTBORO_CITY_OAK
 clearflag FLAG_HIDE_RUSTBORO_CITY_TABITHA
 read @gPartiesCount 1 party_before
 warp MAP_RUSTBORO_CITY 27 20 3000
+expect_gfx OBJ_EVENT_GFX_${MAGMA}_NORMAL
 choose ${PICK}
 mash A 40000
 shot 01_after_second_starter
 expect_var VAR_SECOND_STARTER ${SECOND}
 expect_flag FLAG_RECEIVED_SECOND_STARTER 1
 expect_var VAR_DRACONID_STATE 8
-expect_flag FLAG_HIDE_RUSTBORO_CITY_BIRCH 1
+expect_flag FLAG_HIDE_RUSTBORO_CITY_OAK 1
 expect_flag FLAG_HIDE_RUSTBORO_CITY_TABITHA 1
 expect_var VAR_MAGMA_STATE 2
 read @gPartiesCount 1 party_after

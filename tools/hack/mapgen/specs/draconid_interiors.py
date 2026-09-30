@@ -107,13 +107,7 @@ specs.append({
             obj("OBJ_EVENT_GFX_ASTER", 2, 3, "DraconidVillage_EldersHouse_EventScript_Aster",
                 "FLAG_HIDE_DRACONID_ELDERS_HOUSE_ASTER", local_id="LOCALID_DRACONID_HOUSE_ASTER",
                 movement="MOVEMENT_TYPE_FACE_RIGHT"),
-            # the three eggs on the table (Deino, Dreepy, Jangmo-o)
-            obj("OBJ_EVENT_GFX_DRACONID_EGG_DEINO", 6, 4, "DraconidVillage_EldersHouse_EventScript_Egg",
-                "FLAG_RECEIVED_DRACONID_EGG", local_id="LOCALID_DRACONID_EGG_1"),
-            obj("OBJ_EVENT_GFX_DRACONID_EGG_DREEPY", 7, 4, "DraconidVillage_EldersHouse_EventScript_Egg",
-                "FLAG_RECEIVED_DRACONID_EGG", local_id="LOCALID_DRACONID_EGG_2"),
-            obj("OBJ_EVENT_GFX_DRACONID_EGG_JANGMO_O", 8, 4, "DraconidVillage_EldersHouse_EventScript_Egg",
-                "FLAG_RECEIVED_DRACONID_EGG", local_id="LOCALID_DRACONID_EGG_3"),
+            # the three eggs lie in the shrine (round 1, D-230)
         ],
         "warp_events": [
             warp(4, 7, "MAP_DRACONID_VILLAGE", 1),
@@ -140,10 +134,17 @@ specs.append({
             # TODO(art): custom Porytiles Rayquaza statue; the still Rayquaza sprite stands in for it
             obj("OBJ_EVENT_GFX_RAYQUAZA_STILL", 10, 6, "DraconidVillage_Shrine_EventScript_Statue",
                 local_id="LOCALID_DRACONID_SHRINE_STATUE"),
-            obj("OBJ_EVENT_GFX_DRACONID_ELDER", 10, 8, "0x0", "FLAG_HIDE_DRACONID_SHRINE_ELDER",
-                local_id="LOCALID_DRACONID_SHRINE_ELDER", movement="MOVEMENT_TYPE_FACE_UP"),
+            obj("OBJ_EVENT_GFX_DRACONID_ELDER", 10, 7, "DraconidVillage_Shrine_EventScript_Elder",
+                "FLAG_HIDE_DRACONID_SHRINE_ELDER", local_id="LOCALID_DRACONID_SHRINE_ELDER"),
             obj("OBJ_EVENT_GFX_ASTER", 12, 9, "0x0", "FLAG_HIDE_DRACONID_SHRINE_ASTER",
                 local_id="LOCALID_DRACONID_SHRINE_ASTER", movement="MOVEMENT_TYPE_FACE_UP"),
+            # the egg ceremony (round 1, D-230): the three eggs at the Elder's feet (Deino, Dreepy, Jangmo-o)
+            obj("OBJ_EVENT_GFX_DRACONID_EGG_DEINO", 9, 8, "DraconidVillage_Shrine_EventScript_Egg",
+                "FLAG_RECEIVED_DRACONID_EGG", local_id="LOCALID_DRACONID_EGG_1"),
+            obj("OBJ_EVENT_GFX_DRACONID_EGG_DREEPY", 10, 8, "DraconidVillage_Shrine_EventScript_Egg",
+                "FLAG_RECEIVED_DRACONID_EGG", local_id="LOCALID_DRACONID_EGG_2"),
+            obj("OBJ_EVENT_GFX_DRACONID_EGG_JANGMO_O", 11, 8, "DraconidVillage_Shrine_EventScript_Egg",
+                "FLAG_RECEIVED_DRACONID_EGG", local_id="LOCALID_DRACONID_EGG_3"),
         ],
         "warp_events": [warp(10, 19, "MAP_DRACONID_VILLAGE", 4, elevation=3)],
         "coord_events": [],

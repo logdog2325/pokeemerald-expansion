@@ -565,7 +565,7 @@ script JaggedPass_EventScript_DraconidAster {
     msgbox(format("ASTER: The ELDER says you're doing well.\p"
                   "I say we'll see."))
     msgbox(format("ASTER: One more thing. Someone from the village is waiting in LAVARIDGE.\p"
-                  "He has something for the partner\nPROF. BIRCH gave you.\p"
+                  "He has something for the partner\nPROF. OAK gave you.\p"
                   "Don't make me regret this."))
     closemessage
     applymovement(LOCALID_JAGGED_PASS_ASTER, JaggedPass_Movement_DraconidAsterLeave)
@@ -613,13 +613,13 @@ script LavaridgeTown_EventScript_DraconidTraveller {
     }
     if (var(VAR_0x8004) == ITEM_NONE) {
         msgbox(format("{PLAYER}! The ELDER sent me to find you.\p"
-                      "Come back when PROF. BIRCH has given you a partner."))
+                      "Come back when PROF. OAK has given you a partner."))
         release
         end
     }
     msgbox(format("Ah! {PLAYER}! ASTER said you'd come down the pass.\p"
                   "Don't mind the looks you're getting here. Mountain folk have long memories.\p"
-                  "The ELDER sent me with this. A MEGA STONE, for the partner PROF. BIRCH gave you.\p"
+                  "The ELDER sent me with this. A MEGA STONE, for the partner PROF. OAK gave you.\p"
                   "Its MEGA form carries a dragon's blood."))
     giveitem(VAR_0x8004)
     if (var(VAR_RESULT) == FALSE) {

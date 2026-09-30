@@ -3,6 +3,7 @@
 
 // Draconid Emerald script specials (src/draconid.c)
 void DraconidRaiseHatchling(void);
+bool32 Draconid_ShouldHatchEgg(void);
 u16 Draconid_ResolveVariantTrainer(u16 trainerId);
 u16 Draconid_ResolveVariantPartner(u16 partnerId);
 bool32 Draconid_ShouldDoMaxieCall(void);

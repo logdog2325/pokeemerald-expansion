@@ -1,7 +1,5 @@
-// The Elder's house: the prophecy, the mission and the egg ceremony (Act 1, docs/hack_story.md).
-// VAR_STARTER_MON = the player's egg (DRACONID_EGG_*). The counter egg is set aside for Nerine, who is away
-// (D-104: Deino -> Jangmo-o, Dreepy -> Deino, Jangmo-o -> Dreepy); Aster takes the leftover one
-// (VAR_ASTER_EGG, D-105: Deino -> Dreepy, Dreepy -> Jangmo-o, Jangmo-o -> Deino).
+// The Elder's house: the prophecy and the mission (Act 1, docs/hack_story.md). Then the Elder takes the player
+// and Aster up to the shrine, where the egg ceremony is held (data/maps/DraconidVillage_Shrine/scripts.pory, D-230).
 
 mapscripts DraconidVillage_EldersHouse_MapScripts {
     MAP_SCRIPT_ON_TRANSITION: DraconidVillage_EldersHouse_OnTransition
@@ -38,91 +36,18 @@ script DraconidVillage_EldersHouse_EventScript_Ceremony {
                   "Walk among the red ones. Learn what MAXIE, their leader, seeks.\p"
                   "Wear their colors if you must. Undo their work from within.\p"
                   "And when the sky splits, you must stand beside RAYQUAZA."))
-    msgbox(format("ELDER: No one outside this village may know why you go. Not even the kind ones.\p"
-                  "Now. A tamer needs a partner. These three eggs were brought up from METEOR FALLS.\p"
-                  "Look closely, {PLAYER}. Which one calls to you?"))
+    msgbox(format("ELDER: No one outside this village may know why you go. Not even the kind ones."))
+    msgbox(format("ELDER: Now. A tamer needs a partner.\p"
+                  "Three eggs are waiting in the shrine, before the Guardian of the Sky.\p"
+                  "Come, both of you. We go up together."))
     closemessage
-    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight)
-    waitmovement(0)
-    setvar(VAR_0x8008, 0)
-    while (var(VAR_0x8008) == 0) {
-        message(format("Which egg will you choose?"))
-        waitmessage
-        dynmultichoice(18, 1, TRUE, 3, 0, DYN_MULTICHOICE_CB_NONE, "DEINO", "DREEPY", "JANGMO-O")
-        copyvar(VAR_STARTER_MON, VAR_RESULT)
-        switch (var(VAR_STARTER_MON)) {
-            case DRACONID_EGG_DEINO:
-                msgbox(format("ELDER: The egg of DEINO, a Dark- and Dragon-type.\p"
-                              "It cannot see, so it bites everything to learn about the world.\p"
-                              "Will you take the DEINO egg?"), MSGBOX_YESNO)
-            case DRACONID_EGG_DREEPY:
-                msgbox(format("ELDER: The egg of DREEPY, a Dragon- and Ghost-type.\p"
-                              "It is said to drift through the old ruins, longing for the sky of its ancestors.\p"
-                              "Will you take the DREEPY egg?"), MSGBOX_YESNO)
-            default:
-                msgbox(format("ELDER: The egg of JANGMO-O, a Dragon-type.\p"
-                              "It clashes its scales like a war drum to call out any challenger.\p"
-                              "Will you take the JANGMO-O egg?"), MSGBOX_YESNO)
-        }
-        if (var(VAR_RESULT) == YES) {
-            setvar(VAR_0x8008, 1)
-        }
-    }
-    switch (var(VAR_STARTER_MON)) {
-        case DRACONID_EGG_DEINO:
-            giveegg(DRACONID_EGG_SPECIES_0)
-            removeobject(LOCALID_DRACONID_EGG_1)
-            setvar(VAR_ASTER_EGG, DRACONID_EGG_DREEPY) // the leftover egg (D-105); Nerine's is the counter
-        case DRACONID_EGG_DREEPY:
-            giveegg(DRACONID_EGG_SPECIES_1)
-            removeobject(LOCALID_DRACONID_EGG_2)
-            setvar(VAR_ASTER_EGG, DRACONID_EGG_JANGMO_O)
-        default:
-            giveegg(DRACONID_EGG_SPECIES_2)
-            removeobject(LOCALID_DRACONID_EGG_3)
-            setvar(VAR_ASTER_EGG, DRACONID_EGG_DEINO)
-    }
-    setflag(FLAG_SYS_POKEMON_GET)
-    playfanfare(MUS_OBTAIN_ITEM)
-    message(format("{PLAYER} received the dragon egg!"))
-    waitfanfare
-    waitmessage
-    msgbox(format("ELDER: Hold it close. It already knows your warmth."))
-    switch (var(VAR_STARTER_MON)) {
-        case DRACONID_EGG_DEINO:  bufferspeciesname(STR_VAR_1, SPECIES_JANGMO_O)
-        case DRACONID_EGG_DREEPY: bufferspeciesname(STR_VAR_1, SPECIES_DEINO)
-        default:                  bufferspeciesname(STR_VAR_1, SPECIES_DREEPY)
-    }
-    msgbox(format("ELDER: The {STR_VAR_1} egg I will keep aside.\p"
-                  "It belongs to one who already walks a far road for our clan. You will meet, in time."))
-    applymovement(LOCALID_DRACONID_HOUSE_ASTER, Common_Movement_WalkInPlaceFasterRight)
-    waitmovement(0)
-    switch (var(VAR_ASTER_EGG)) {
-        case DRACONID_EGG_JANGMO_O:
-            removeobject(LOCALID_DRACONID_EGG_3)
-            msgbox(format("ASTER: A ghost that drifts through walls…\p"
-                          "Then I'll take the one that never hides. Its scales ring like a war drum. JANGMO-O is mine."))
-        case DRACONID_EGG_DEINO:
-            removeobject(LOCALID_DRACONID_EGG_1)
-            msgbox(format("ASTER: Scales and fists, beating like a drum…\p"
-                          "I'll take the one that bites whatever the dark hides. DEINO is mine."))
-        default:
-            removeobject(LOCALID_DRACONID_EGG_2)
-            msgbox(format("ASTER: A blind dragon that bites at shadows…\p"
-                          "Then I'll take the one that drifts where no eye can follow. DREEPY is mine."))
-    }
-    msgbox(format("ELDER: Now then. Dragon eggs do not hatch on their own; they wait for the sky's call.\p"
-                  "Come to the shrine in the cliff, both of you. We shall perform the rite."))
-    closemessage
-    fadescreen(FADE_TO_BLACK)
-    removeobject(LOCALID_DRACONID_ELDER)
-    removeobject(LOCALID_DRACONID_HOUSE_ASTER)
+    // the Elder and Aster wait in the shrine, where the ceremony starts on arrival (D-230)
+    setflag(FLAG_HIDE_DRACONID_ELDERS_HOUSE_ELDER)
+    setflag(FLAG_HIDE_DRACONID_ELDERS_HOUSE_ASTER)
     clearflag(FLAG_HIDE_DRACONID_SHRINE_ELDER)
     clearflag(FLAG_HIDE_DRACONID_SHRINE_ASTER)
-    setflag(FLAG_RECEIVED_DRACONID_EGG)
-    setvar(VAR_DRACONID_STATE, DRACONID_STATE_EGG_RECEIVED)
-    fadescreen(FADE_FROM_BLACK)
-    msgbox(format("The ELDER and ASTER left for the shrine."))
+    warp(MAP_DRACONID_VILLAGE_SHRINE, 10, 18)
+    waitstate
     releaseall
 }
 
@@ -134,7 +59,7 @@ script DraconidVillage_EldersHouse_EventScript_Elder {
     lock
     faceplayer
     if (var(VAR_DRACONID_STATE) < DRACONID_STATE_READY_TO_LEAVE) {
-        msgbox(format("ELDER: The villagers are waiting for you outside the shrine, {PLAYER}."))
+        msgbox(format("ELDER: Walk with your egg under the open sky, {PLAYER}. It is ready to meet you."))
     } elif (var(VAR_DRACONID_REPUTATION) == REPUTATION_PRE_UNIFORM) {
         msgbox(format("ELDER: PROF. BIRCH of LITTLEROOT TOWN is an old friend of our clan. Show him your partner.\p"
                       "The red ones will find you soon enough. Let them."))
@@ -150,10 +75,6 @@ script DraconidVillage_EldersHouse_EventScript_Elder {
 
 script DraconidVillage_EldersHouse_EventScript_Aster {
     msgbox(format("ASTER: …"), MSGBOX_NPC)
-}
-
-script DraconidVillage_EldersHouse_EventScript_Egg {
-    msgbox(format("A dragon egg, warm to the touch. Something inside is moving."), MSGBOX_SIGN)
 }
 
 script DraconidVillage_EldersHouse_EventScript_RelicDisplay {

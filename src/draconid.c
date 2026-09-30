@@ -130,6 +130,17 @@ void DraconidRaiseHatchling(void)
     SetMonData(mon, MON_DATA_HP, &hp);
 }
 
+// Step hook (TryStartStepCountScript): the egg from the shrine ceremony hatches after DRACONID_EGG_HATCH_STEPS
+// steps outdoors (round 1, D-231), so the scene always plays in the open village.
+bool32 Draconid_ShouldHatchEgg(void)
+{
+    if (VarGet(VAR_DRACONID_STATE) != DRACONID_STATE_EGG_RECEIVED || FlagGet(FLAG_DRACONID_EGG_HATCHED))
+        return FALSE;
+    if (!IsMapTypeOutdoors(gMapHeader.mapType))
+        return FALSE;
+    return ++(*GetVarPointer(VAR_DRACONID_EGG_STEPS)) >= DRACONID_EGG_HATCH_STEPS;
+}
+
 // ---------------------------------------------------------------------------
 // Acts 6-7: the Sky Pillar finale (called from data/scripts/draconid/act7.pory with callnative)
 // ---------------------------------------------------------------------------

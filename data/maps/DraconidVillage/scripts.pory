@@ -18,14 +18,58 @@ script DraconidVillage_OnTransition {
 }
 
 // ---------------------------------------------------------------------------
-// An old villager waits outside the shrine after the hatching rite: Running Shoes (round 1, D-102)
+// The egg hatches after DRACONID_EGG_HATCH_STEPS steps outdoors once the shrine ceremony is over (round 1,
+// D-231): step hook Draconid_ShouldHatchEgg (src/draconid.c) in TryStartStepCountScript. Until the Running
+// Shoes the village is the only outdoor map the player can reach, so this always plays here, right after a step.
+// ---------------------------------------------------------------------------
+script DraconidVillage_EventScript_EggHatch {
+    lockall
+    msgbox(format("Oh?\p"
+                  "The egg is moving!"))
+    closemessage
+    setvar(VAR_0x8004, 0)
+    special(EggHatch)
+    setvar(VAR_0x8004, 0)
+    special(DraconidRaiseHatchling)
+    setflag(FLAG_DRACONID_EGG_HATCHED)
+    clearflag(FLAG_HIDE_DRACONID_VILLAGE_SHOES_GIVER)
+    setvar(VAR_DRACONID_STATE, DRACONID_STATE_EGG_HATCHED)
+    releaseall
+}
+
+// ---------------------------------------------------------------------------
+// An old villager heard the hatchling's cry: Running Shoes (round 1, D-102, D-231)
 // ---------------------------------------------------------------------------
 script DraconidVillage_EventScript_RunningShoes {
     lockall
+    // she hurries over to the tile the player just walked from (always free: the egg hatches right after a
+    // step), facing the player; VAR_0x8006 keeps the player's facing for the turn around
+    getplayerxy(VAR_0x8004, VAR_0x8005)
+    specialvar(VAR_0x8006, GetPlayerFacingDirection)
+    switch (var(VAR_0x8006)) {
+        case DIR_NORTH:
+            addvar(VAR_0x8005, 1)
+            setobjectmovementtype(LOCALID_DRACONID_VILLAGE_SHOES_GIVER, MOVEMENT_TYPE_FACE_UP)
+        case DIR_SOUTH:
+            subvar(VAR_0x8005, 1)
+            setobjectmovementtype(LOCALID_DRACONID_VILLAGE_SHOES_GIVER, MOVEMENT_TYPE_FACE_DOWN)
+        case DIR_WEST:
+            addvar(VAR_0x8004, 1)
+            setobjectmovementtype(LOCALID_DRACONID_VILLAGE_SHOES_GIVER, MOVEMENT_TYPE_FACE_LEFT)
+        default:
+            subvar(VAR_0x8004, 1)
+            setobjectmovementtype(LOCALID_DRACONID_VILLAGE_SHOES_GIVER, MOVEMENT_TYPE_FACE_RIGHT)
+    }
+    setobjectxyperm(LOCALID_DRACONID_VILLAGE_SHOES_GIVER, VAR_0x8004, VAR_0x8005)
+    msgbox(format("OLD WOMAN: Oh, my! Was that a dragon's cry I heard?"))
+    closemessage
     addobject(LOCALID_DRACONID_VILLAGE_SHOES_GIVER)
-    applymovement(LOCALID_DRACONID_VILLAGE_SHOES_GIVER, DraconidVillage_Movement_ShoesGiverApproach)
-    waitmovement(0)
-    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterDown)
+    switch (var(VAR_0x8006)) {
+        case DIR_NORTH: applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterDown)
+        case DIR_SOUTH: applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp)
+        case DIR_WEST:  applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight)
+        default:        applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft)
+    }
     waitmovement(0)
     msgbox(format("OLD WOMAN: So the egg answered the sky. Let me see… Oh, what a bright little dragon!\p"
                   "The ELDER told us all. You're going down to the lowlands, alone, and in secret.\p"
@@ -40,22 +84,16 @@ script DraconidVillage_EventScript_RunningShoes {
     closemessage
     setflag(FLAG_RECEIVED_RUNNING_SHOES)
     setflag(FLAG_SYS_B_DASH)
-    applymovement(LOCALID_DRACONID_VILLAGE_SHOES_GIVER, DraconidVillage_Movement_ShoesGiverLeave)
-    waitmovement(0)
-    removeobject(LOCALID_DRACONID_VILLAGE_SHOES_GIVER)
+    // she stays until the village is loaded again
+    setflag(FLAG_HIDE_DRACONID_VILLAGE_SHOES_GIVER)
     setvar(VAR_DRACONID_STATE, DRACONID_STATE_READY_TO_LEAVE)
     setvar(VAR_TEMP_1, 1)
     releaseall
 }
 
-// the player steps out of the shrine's cave mouth onto (19, 6); the old woman waits at (19, 8)
-movement DraconidVillage_Movement_ShoesGiverApproach {
-    walk_up
-}
-
-movement DraconidVillage_Movement_ShoesGiverLeave {
-    walk_down * 4
-    walk_left * 8
+script DraconidVillage_EventScript_ShoesGiver {
+    msgbox(format("OLD WOMAN: Hold the B Button to run!\p"
+                  "Cross the bridge on DRACONID PASS and head east to ROUTE 101."), MSGBOX_NPC)
 }
 
 // ---------------------------------------------------------------------------
@@ -69,8 +107,8 @@ script DraconidVillage_EventScript_GatekeeperStop {
         msgbox(format("GATEKEEPER: Whoa there, {PLAYER}! Isn't today your egg ceremony?\p"
                       "The ELDER is waiting for you. You can't leave the village without a partner!"))
     } else {
-        msgbox(format("GATEKEEPER: That egg needs the shrine's blessing before it can hatch.\p"
-                      "Go on up to the shrine in the cliff!"))
+        msgbox(format("GATEKEEPER: That egg of yours is about to hatch, {PLAYER}!\p"
+                      "Stay in the village until it does. The lowlands are no place for an egg."))
     }
     closemessage
     applymovement(LOCALID_PLAYER, DraconidVillage_Movement_PushBack)

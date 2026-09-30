@@ -959,13 +959,13 @@ JaggedPass_EventScript_DraconidAster_Text_4:
 	.string "ASTER: One more thing. Someone from the\n"
 	.string "village is waiting in LAVARIDGE.\p"
 	.string "He has something for the partner\n"
-	.string "PROF. BIRCH gave you.\p"
+	.string "PROF. OAK gave you.\p"
 	.string "Don't make me regret this.$"
 
 LavaridgeTown_EventScript_DraconidTraveller_Text_0:
 	.string "{PLAYER}! The ELDER sent me to find you.\p"
-	.string "Come back when PROF. BIRCH has given\n"
-	.string "you a partner.$"
+	.string "Come back when PROF. OAK has given you\n"
+	.string "a partner.$"
 
 LavaridgeTown_EventScript_DraconidTraveller_Text_1:
 	.string "Ah! {PLAYER}! ASTER said you'd come down\n"
@@ -973,7 +973,7 @@ LavaridgeTown_EventScript_DraconidTraveller_Text_1:
 	.string "Don't mind the looks you're getting\n"
 	.string "here. Mountain folk have long memories.\p"
 	.string "The ELDER sent me with this. A MEGA\n"
-	.string "STONE, for the partner PROF. BIRCH gave\l"
+	.string "STONE, for the partner PROF. OAK gave\l"
 	.string "you.\p"
 	.string "Its MEGA form carries a dragon's blood.$"
 
