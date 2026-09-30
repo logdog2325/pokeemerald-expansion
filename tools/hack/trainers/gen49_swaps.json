@@ -1,0 +1,657 @@
+{
+ "TRAINER_AISHA": [
+  "Machop -> Stufful"
+ ],
+ "TRAINER_ALBERT": [
+  "Weezing -> Corviknight"
+ ],
+ "TRAINER_ALBERTO": [
+  "Pelipper -> Kilowattrel"
+ ],
+ "TRAINER_ALIX": [
+  "Xatu -> Sigilyph"
+ ],
+ "TRAINER_ANDREW": [
+  "Tentacool -> Finneon"
+ ],
+ "TRAINER_ANGELO": [
+  "Illumise -> Joltik"
+ ],
+ "TRAINER_ASHLEY": [
+  "Swablu -> Swanna"
+ ],
+ "TRAINER_ATHENA": [
+  "Linoone -> Pyroar"
+ ],
+ "TRAINER_AXLE": [
+  "Slugma -> Sizzlipede"
+ ],
+ "TRAINER_BARNY": [
+  "Whiscash -> Drednaw"
+ ],
+ "TRAINER_BEAU": [
+  "Baltoy -> Hippopotas"
+ ],
+ "TRAINER_BEN": [
+  "Gulpin -> Tadbulb"
+ ],
+ "TRAINER_BENJAMIN_1": [
+  "Magnemite -> Klink"
+ ],
+ "TRAINER_BENJAMIN_2": [
+  "Ninjask -> Klink"
+ ],
+ "TRAINER_BENJAMIN_3": [
+  "Ninjask -> Klang"
+ ],
+ "TRAINER_BENJAMIN_4": [
+  "Ninjask -> Klang"
+ ],
+ "TRAINER_BENJAMIN_5": [
+  "Ninjask -> Klinklang"
+ ],
+ "TRAINER_BENNY": [
+  "Skarmory -> Corviknight"
+ ],
+ "TRAINER_BEVERLY": [
+  "Goldeen -> Finizen"
+ ],
+ "TRAINER_BLAKE": [
+  "Hypno -> Bronzong"
+ ],
+ "TRAINER_BRICE": [
+  "Geodude -> Nacli"
+ ],
+ "TRAINER_BROOKE_2": [
+  "Gardevoir -> Glameow"
+ ],
+ "TRAINER_BROOKE_3": [
+  "Gardevoir -> Purugly"
+ ],
+ "TRAINER_BROOKE_4": [
+  "Gardevoir -> Purugly"
+ ],
+ "TRAINER_BROOKE_5": [
+  "Gardevoir -> Purugly"
+ ],
+ "TRAINER_BRYAN": [
+  "Baltoy -> Sigilyph"
+ ],
+ "TRAINER_CALE": [
+  "Beautifly -> Galvantula"
+ ],
+ "TRAINER_CATHERINE_1": [
+  "Swablu -> Excadrill"
+ ],
+ "TRAINER_CATHERINE_2": [
+  "Swablu -> Excadrill"
+ ],
+ "TRAINER_CATHERINE_3": [
+  "Altaria -> Excadrill"
+ ],
+ "TRAINER_CATHERINE_4": [
+  "Altaria -> Excadrill"
+ ],
+ "TRAINER_CATHERINE_5": [
+  "Altaria -> Excadrill"
+ ],
+ "TRAINER_CHARLOTTE": [
+  "Skitty -> Stufful"
+ ],
+ "TRAINER_CHIP": [
+  "Lairon -> Golett"
+ ],
+ "TRAINER_CINDY_3": [
+  "Wigglytuff -> Litleo"
+ ],
+ "TRAINER_CINDY_4": [
+  "Wigglytuff -> Pyroar"
+ ],
+ "TRAINER_CINDY_5": [
+  "Wigglytuff -> Pyroar"
+ ],
+ "TRAINER_CINDY_6": [
+  "Wigglytuff -> Pyroar"
+ ],
+ "TRAINER_CLARISSA": [
+  "Wailmer -> Goomy"
+ ],
+ "TRAINER_CLAUDE": [
+  "Goldeen -> Buizel"
+ ],
+ "TRAINER_COBY": [
+  "Skarmory -> Corvisquire"
+ ],
+ "TRAINER_CONNIE": [
+  "Masquerain -> Swanna"
+ ],
+ "TRAINER_CRISTIAN": [
+  "Meditite -> Timburr"
+ ],
+ "TRAINER_DALTON_1": [
+  "Magnemite -> Chatot"
+ ],
+ "TRAINER_DALTON_2": [
+  "Magneton -> Chatot"
+ ],
+ "TRAINER_DALTON_3": [
+  "Magneton -> Chatot"
+ ],
+ "TRAINER_DALTON_4": [
+  "Magneton -> Chatot"
+ ],
+ "TRAINER_DALTON_5": [
+  "Magneton -> Chatot"
+ ],
+ "TRAINER_DANIELLE": [
+  "Machop -> Gurdurr"
+ ],
+ "TRAINER_DAPHNE": [
+  "Luvdisc -> Alomomola"
+ ],
+ "TRAINER_DARCY": [
+  "Vigoroth -> Bewear"
+ ],
+ "TRAINER_DAVIS": [
+  "Masquerain -> Lokix"
+ ],
+ "TRAINER_DAYTON": [
+  "Torkoal -> Heatmor"
+ ],
+ "TRAINER_DEANDRE": [
+  "Electrike -> Luxio"
+ ],
+ "TRAINER_DEBRA": [
+  "Sealeo -> Clawitzer"
+ ],
+ "TRAINER_DEMETRIUS": [
+  "Mightyena -> Thievul"
+ ],
+ "TRAINER_DEREK": [
+  "Dustox -> Cutiefly"
+ ],
+ "TRAINER_DEVAN": [
+  "Geodude -> Drilbur"
+ ],
+ "TRAINER_DONALD": [
+  "Dustox -> Centiskorch"
+ ],
+ "TRAINER_DREW": [
+  "Trapinch -> Gabite"
+ ],
+ "TRAINER_DUNCAN": [
+  "Sealeo -> Frillish"
+ ],
+ "TRAINER_DUSTY_1": [
+  "Nosepass -> Tyrunt"
+ ],
+ "TRAINER_DUSTY_2": [
+  "Nosepass -> Tyrunt"
+ ],
+ "TRAINER_DUSTY_3": [
+  "Nosepass -> Tyrunt"
+ ],
+ "TRAINER_DUSTY_4": [
+  "Probopass -> Tyrantrum"
+ ],
+ "TRAINER_DUSTY_5": [
+  "Probopass -> Tyrantrum"
+ ],
+ "TRAINER_ED": [
+  "Chimecho -> Mimikyu"
+ ],
+ "TRAINER_ELI": [
+  "Numel -> Carkol"
+ ],
+ "TRAINER_ERIC": [
+  "Baltoy -> Mudbray"
+ ],
+ "TRAINER_ETHAN_1": [
+  "Sandslash -> Stunky"
+ ],
+ "TRAINER_ETHAN_2": [
+  "Sandslash -> Stunky"
+ ],
+ "TRAINER_ETHAN_3": [
+  "Sandslash -> Skuntank"
+ ],
+ "TRAINER_ETHAN_4": [
+  "Sandslash -> Skuntank"
+ ],
+ "TRAINER_ETHAN_5": [
+  "Sandslash -> Skuntank"
+ ],
+ "TRAINER_EVERETT": [
+  "Wobbuffet -> Stoutland"
+ ],
+ "TRAINER_FABIAN": [
+  "Electrode -> Rotom"
+ ],
+ "TRAINER_FLINT": [
+  "Tropius -> Corvisquire"
+ ],
+ "TRAINER_FREDRICK": [
+  "Breloom -> Lucario"
+ ],
+ "TRAINER_GEORGE": [
+  "Lombre -> Greedent"
+ ],
+ "TRAINER_GREG": [
+  "Beautifly -> Lokix"
+ ],
+ "TRAINER_HALEY_1": [
+  "Taillow -> Cottonee"
+ ],
+ "TRAINER_HALEY_2": [
+  "Swellow -> Whimsicott"
+ ],
+ "TRAINER_HALEY_3": [
+  "Swellow -> Whimsicott"
+ ],
+ "TRAINER_HALEY_4": [
+  "Swellow -> Whimsicott"
+ ],
+ "TRAINER_HALEY_5": [
+  "Swellow -> Whimsicott"
+ ],
+ "TRAINER_HALLE": [
+  "Seviper -> Chandelure"
+ ],
+ "TRAINER_HARRISON": [
+  "Seadra -> Toxapex"
+ ],
+ "TRAINER_HEIDI": [
+  "Cacnea -> Sandile"
+ ],
+ "TRAINER_HUEY": [
+  "Wingull -> Wattrel"
+ ],
+ "TRAINER_ISAIAH_1": [
+  "Lanturn -> Floatzel"
+ ],
+ "TRAINER_ISAIAH_2": [
+  "Lanturn -> Floatzel"
+ ],
+ "TRAINER_ISAIAH_3": [
+  "Lanturn -> Floatzel"
+ ],
+ "TRAINER_ISAIAH_4": [
+  "Lanturn -> Floatzel"
+ ],
+ "TRAINER_ISAIAH_5": [
+  "Lanturn -> Floatzel"
+ ],
+ "TRAINER_JACE": [
+  "Numel -> Salandit"
+ ],
+ "TRAINER_JACKSON_1": [
+  "Heracross -> Unfezant"
+ ],
+ "TRAINER_JACKSON_2": [
+  "Heracross -> Unfezant"
+ ],
+ "TRAINER_JACKSON_3": [
+  "Heracross -> Unfezant"
+ ],
+ "TRAINER_JACKSON_4": [
+  "Heracross -> Unfezant"
+ ],
+ "TRAINER_JACKSON_5": [
+  "Heracross -> Unfezant"
+ ],
+ "TRAINER_JAMES_1": [
+  "Surskit -> Combee"
+ ],
+ "TRAINER_JAMES_2": [
+  "Surskit -> Vespiquen"
+ ],
+ "TRAINER_JAMES_3": [
+  "Masquerain -> Vespiquen"
+ ],
+ "TRAINER_JAMES_4": [
+  "Masquerain -> Vespiquen"
+ ],
+ "TRAINER_JAMES_5": [
+  "Masquerain -> Vespiquen"
+ ],
+ "TRAINER_JAZMYN": [
+  "Camerupt -> Salazzle"
+ ],
+ "TRAINER_JEFF": [
+  "Slugma -> Litleo"
+ ],
+ "TRAINER_JENNY_1": [
+  "Wailmer -> Alomomola"
+ ],
+ "TRAINER_JENNY_2": [
+  "Wailmer -> Alomomola"
+ ],
+ "TRAINER_JENNY_3": [
+  "Wailord -> Alomomola"
+ ],
+ "TRAINER_JENNY_4": [
+  "Wailord -> Alomomola"
+ ],
+ "TRAINER_JENNY_5": [
+  "Wailord -> Alomomola"
+ ],
+ "TRAINER_JERRY_1": [
+  "Shuppet -> Pawniard"
+ ],
+ "TRAINER_JERRY_2": [
+  "Shuppet -> Pawniard"
+ ],
+ "TRAINER_JERRY_3": [
+  "Banette -> Pawniard"
+ ],
+ "TRAINER_JERRY_4": [
+  "Banette -> Pawniard"
+ ],
+ "TRAINER_JERRY_5": [
+  "Banette -> Bisharp"
+ ],
+ "TRAINER_JESSICA_1": [
+  "Gorebyss -> Krokorok"
+ ],
+ "TRAINER_JESSICA_2": [
+  "Gorebyss -> Krokorok"
+ ],
+ "TRAINER_JESSICA_3": [
+  "Gorebyss -> Krookodile"
+ ],
+ "TRAINER_JESSICA_4": [
+  "Gorebyss -> Krookodile"
+ ],
+ "TRAINER_JESSICA_5": [
+  "Gorebyss -> Krookodile"
+ ],
+ "TRAINER_JOCELYN": [
+  "Machop -> Croagunk"
+ ],
+ "TRAINER_JOEY": [
+  "Taillow -> Starly"
+ ],
+ "TRAINER_JONAH": [
+  "Whiscash -> Wishiwashi"
+ ],
+ "TRAINER_JONAS": [
+  "Golbat -> Toxicroak"
+ ],
+ "TRAINER_JOSH": [
+  "Geodude -> Nacli"
+ ],
+ "TRAINER_JULIE": [
+  "Camerupt -> Garchomp"
+ ],
+ "TRAINER_KEIGO": [
+  "Golbat -> Skuntank"
+ ],
+ "TRAINER_KELVIN": [
+  "Sealeo -> Dhelmise"
+ ],
+ "TRAINER_KEVIN": [
+  "Sealeo -> Palafin"
+ ],
+ "TRAINER_KINDRA": [
+  "Grumpig -> Drifblim"
+ ],
+ "TRAINER_KIRK": [
+  "Voltorb -> Pawmo"
+ ],
+ "TRAINER_LAUREL": [
+  "Luvdisc -> Skrelp"
+ ],
+ "TRAINER_LEAH": [
+  "Chimecho -> Litwick"
+ ],
+ "TRAINER_LENNY": [
+  "Nosepass -> Roggenrola"
+ ],
+ "TRAINER_LEROY": [
+  "Arcanine -> Pyroar"
+ ],
+ "TRAINER_LORENZO": [
+  "Ludicolo -> Lurantis"
+ ],
+ "TRAINER_LYLE": [
+  "Silcoon -> Nymble"
+ ],
+ "TRAINER_MAKAYLA": [
+  "Roselia -> Hawlucha"
+ ],
+ "TRAINER_MARC": [
+  "Geodude -> Rolycoly"
+ ],
+ "TRAINER_MARLENE": [
+  "Meditite -> Woobat"
+ ],
+ "TRAINER_MICAH": [
+  "Manectric -> Stoutland"
+ ],
+ "TRAINER_MIKE_2": [
+  "Machop -> Roggenrola"
+ ],
+ "TRAINER_MITCHELL": [
+  "Lunatone -> Bronzong"
+ ],
+ "TRAINER_NED": [
+  "Magikarp -> Arrokuda"
+ ],
+ "TRAINER_NICOLAS_1": [
+  "Altaria -> Druddigon",
+  "Altaria -> Noivern"
+ ],
+ "TRAINER_NICOLAS_2": [
+  "Altaria -> Druddigon",
+  "Altaria -> Noivern"
+ ],
+ "TRAINER_NICOLAS_3": [
+  "Altaria -> Druddigon",
+  "Altaria -> Noivern"
+ ],
+ "TRAINER_NICOLAS_4": [
+  "Altaria -> Druddigon",
+  "Altaria -> Noivern"
+ ],
+ "TRAINER_NICOLAS_5": [
+  "Altaria -> Druddigon",
+  "Altaria -> Noivern"
+ ],
+ "TRAINER_OLIVIA": [
+  "Pelipper -> Barraskewda"
+ ],
+ "TRAINER_OWEN": [
+  "Kecleon -> Garganacl"
+ ],
+ "TRAINER_PERRY": [
+  "Swablu -> Kilowattrel"
+ ],
+ "TRAINER_PETE": [
+  "Wingull -> Wattrel"
+ ],
+ "TRAINER_PHIL": [
+  "Noctowl -> Toucannon"
+ ],
+ "TRAINER_PHILLIP": [
+  "Tentacruel -> Drednaw"
+ ],
+ "TRAINER_PRESLEY": [
+  "Tropius -> Toucannon"
+ ],
+ "TRAINER_RACHEL": [
+  "Wailmer -> Goomy"
+ ],
+ "TRAINER_RICK": [
+  "Wurmple -> Kricketot"
+ ],
+ "TRAINER_ROBERT_1": [
+  "Swellow -> Staraptor"
+ ],
+ "TRAINER_ROBERT_2": [
+  "Swellow -> Staraptor"
+ ],
+ "TRAINER_ROBERT_3": [
+  "Swellow -> Staraptor"
+ ],
+ "TRAINER_ROBERT_4": [
+  "Swellow -> Staraptor"
+ ],
+ "TRAINER_ROBERT_5": [
+  "Swellow -> Staraptor"
+ ],
+ "TRAINER_RODNEY": [
+  "Whiscash -> Bruxish"
+ ],
+ "TRAINER_SAWYER_1": [
+  "Numel -> Carkol"
+ ],
+ "TRAINER_SAWYER_2": [
+  "Camerupt -> Coalossal"
+ ],
+ "TRAINER_SAWYER_3": [
+  "Camerupt -> Coalossal"
+ ],
+ "TRAINER_SAWYER_4": [
+  "Camerupt -> Coalossal"
+ ],
+ "TRAINER_SAWYER_5": [
+  "Camerupt -> Coalossal"
+ ],
+ "TRAINER_SHANE": [
+  "Sandslash -> Skiddo"
+ ],
+ "TRAINER_SHAWN": [
+  "Electrike -> Luxio"
+ ],
+ "TRAINER_SHEILA": [
+  "Beautifly -> Ribombee"
+ ],
+ "TRAINER_SHELBY_1": [
+  "Hitmonchan -> Riolu"
+ ],
+ "TRAINER_SHELBY_2": [
+  "Hitmonchan -> Lucario"
+ ],
+ "TRAINER_SHELBY_3": [
+  "Hitmonchan -> Lucario"
+ ],
+ "TRAINER_SHELBY_4": [
+  "Hitmonchan -> Lucario"
+ ],
+ "TRAINER_SHELBY_5": [
+  "Hitmonchan -> Lucario"
+ ],
+ "TRAINER_SYLVIA": [
+  "Chimecho -> Drifblim"
+ ],
+ "TRAINER_TAMMY": [
+  "Chimecho -> Phantump"
+ ],
+ "TRAINER_TARA": [
+  "Luvdisc -> Alomomola"
+ ],
+ "TRAINER_THOMAS": [
+  "Kangaskhan -> Bouffalant"
+ ],
+ "TRAINER_TIMOTHY_1": [
+  "Hitmonlee -> Hawlucha",
+  "Hitmontop -> Gurdurr"
+ ],
+ "TRAINER_TIMOTHY_2": [
+  "Hitmonlee -> Hawlucha",
+  "Hitmontop -> Gurdurr"
+ ],
+ "TRAINER_TIMOTHY_3": [
+  "Hitmonlee -> Hawlucha",
+  "Hitmontop -> Gurdurr"
+ ],
+ "TRAINER_TIMOTHY_4": [
+  "Hitmonlee -> Hawlucha",
+  "Hitmontop -> Gurdurr"
+ ],
+ "TRAINER_TIMOTHY_5": [
+  "Hitmonlee -> Hawlucha",
+  "Hitmontop -> Conkeldurr"
+ ],
+ "TRAINER_TONY_1": [
+  "Staryu -> Frillish"
+ ],
+ "TRAINER_TONY_2": [
+  "Starmie -> Frillish"
+ ],
+ "TRAINER_TONY_3": [
+  "Starmie -> Frillish"
+ ],
+ "TRAINER_TONY_4": [
+  "Starmie -> Jellicent"
+ ],
+ "TRAINER_TONY_5": [
+  "Starmie -> Jellicent"
+ ],
+ "TRAINER_VALERIE_1": [
+  "Grumpig -> Mismagius"
+ ],
+ "TRAINER_VALERIE_2": [
+  "Grumpig -> Mismagius"
+ ],
+ "TRAINER_VALERIE_3": [
+  "Grumpig -> Mismagius"
+ ],
+ "TRAINER_VALERIE_4": [
+  "Grumpig -> Mismagius"
+ ],
+ "TRAINER_VALERIE_5": [
+  "Grumpig -> Mismagius"
+ ],
+ "TRAINER_VIOLET": [
+  "Cacturne -> Tsareena"
+ ],
+ "TRAINER_VITO": [
+  "Electrode -> Galvantula"
+ ],
+ "TRAINER_WALTER_1": [
+  "Linoone -> Stoutland"
+ ],
+ "TRAINER_WALTER_2": [
+  "Linoone -> Stoutland"
+ ],
+ "TRAINER_WALTER_3": [
+  "Linoone -> Stoutland"
+ ],
+ "TRAINER_WALTER_4": [
+  "Linoone -> Stoutland"
+ ],
+ "TRAINER_WALTER_5": [
+  "Linoone -> Stoutland"
+ ],
+ "TRAINER_WILTON_2": [
+  "Swellow -> Fletchinder"
+ ],
+ "TRAINER_WILTON_3": [
+  "Vibrava -> Fraxure",
+  "Swellow -> Talonflame"
+ ],
+ "TRAINER_WILTON_4": [
+  "Vibrava -> Fraxure",
+  "Swellow -> Talonflame"
+ ],
+ "TRAINER_WILTON_5": [
+  "Flygon -> Haxorus",
+  "Swellow -> Talonflame"
+ ],
+ "TRAINER_WINSTON_2": [
+  "Kangaskhan -> Litleo"
+ ],
+ "TRAINER_WINSTON_3": [
+  "Kangaskhan -> Pyroar"
+ ],
+ "TRAINER_WINSTON_4": [
+  "Kangaskhan -> Pyroar"
+ ],
+ "TRAINER_WINSTON_5": [
+  "Kangaskhan -> Pyroar"
+ ],
+ "TRAINER_YASU": [
+  "Koffing -> Croagunk"
+ ]
+}

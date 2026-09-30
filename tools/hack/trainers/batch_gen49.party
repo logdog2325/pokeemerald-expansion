@@ -1,0 +1,9778 @@
+=== TRAINER_RICK ===
+Name: RICK
+Class: Bug Catcher
+Pic: Bug Catcher
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Kricketot
+Level: 5
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Tackle
+
+Wurmple
+Level: 6
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Tackle
+- String Shot
+- Poison Sting
+
+=== TRAINER_LYLE ===
+Name: LYLE
+Class: Bug Catcher
+Pic: Bug Catcher
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Wurmple
+Level: 8
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Tackle
+- String Shot
+- Poison Sting
+
+Nymble
+Level: 8
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Struggle Bug
+- Tackle
+- Astonish
+
+Cascoon
+Level: 9
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Tackle
+- Poison Sting
+- String Shot
+- Harden
+
+=== TRAINER_JAMES_1 ===
+Name: JAMES
+Class: Bug Catcher
+Pic: Bug Catcher
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Combee
+Level: 9
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Bug Bite
+- Gust
+- Struggle Bug
+
+Nincada
+Level: 9
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Scratch
+- Harden
+- Sand Attack
+
+Dustox
+Level: 10
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Gust
+- Bug Bite
+- Poison Sting
+- Harden
+
+=== TRAINER_JAMES_2 ===
+Name: JAMES
+Class: Bug Catcher
+Pic: Bug Catcher
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Vespiquen
+Level: 32
+Ability: Pressure
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Adamant
+- Bug Bite
+- Aerial Ace
+- Thief
+- Toxic
+
+Ninjask
+Level: 33
+Ability: Speed Boost
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Jolly
+- Bug Bite
+- Aerial Ace
+- Dig
+- Swords Dance
+
+Dustox
+Level: 33
+Ability: Shield Dust
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Calm
+- Toxic
+- Venoshock
+- Psybeam
+- Moonlight
+
+Ninjask @ Silver Powder
+Level: 34
+Ability: Speed Boost
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Jolly
+- Bug Bite
+- Aerial Ace
+- Swords Dance
+- Protect
+
+=== TRAINER_JAMES_3 ===
+Name: JAMES
+Class: Bug Catcher
+Pic: Bug Catcher
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Vespiquen
+Level: 37
+Ability: Pressure
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Adamant
+- Bug Bite
+- Aerial Ace
+- Thief
+- Toxic
+
+Ninjask @ Focus Sash
+Level: 37
+Ability: Speed Boost
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Jolly
+- Bug Bite
+- Aerial Ace
+- Dig
+- Swords Dance
+
+Dustox @ Black Sludge
+Level: 38
+Ability: Shield Dust
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Calm
+- Bug Buzz
+- Venoshock
+- Toxic
+- Moonlight
+
+Pinsir @ Muscle Band
+Level: 38
+Ability: Mold Breaker
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Adamant
+- Swords Dance
+- X-Scissor
+- Earthquake
+- Storm Throw
+
+Ninjask @ Silver Powder
+Level: 39
+Ability: Speed Boost
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Jolly
+- Bug Bite
+- Aerial Ace
+- Swords Dance
+- Protect
+
+=== TRAINER_JAMES_4 ===
+Name: JAMES
+Class: Bug Catcher
+Pic: Bug Catcher
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Pinsir @ Muscle Band
+Level: 42
+Ability: Mold Breaker
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Swords Dance
+- X-Scissor
+- Earthquake
+- Storm Throw
+
+Vespiquen @ Leftovers
+Level: 43
+Ability: Pressure
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Attack Order
+- Aerial Ace
+- Thief
+- Toxic
+
+Dustox @ Black Sludge
+Level: 43
+Ability: Shield Dust
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Quiver Dance
+- Bug Buzz
+- Sludge Bomb
+- Moonlight
+
+Shedinja @ Bright Powder
+Level: 44
+Ability: Wonder Guard
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Shadow Claw
+- Shadow Sneak
+- Aerial Ace
+- Toxic
+
+Ninjask @ Life Orb
+Level: 45
+Ability: Speed Boost
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Nature: Adamant
+- Swords Dance
+- Bug Bite
+- Aerial Ace
+- Night Slash
+
+=== TRAINER_JAMES_5 ===
+Name: JAMES
+Class: Bug Catcher
+Pic: Bug Catcher
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Pinsir @ Life Orb
+Level: 60
+Ability: Moxie
+EVs: 4 HP / 252 Atk / 252 Spe
+Nature: Jolly
+- X-Scissor
+- Close Combat
+- Stone Edge
+- Swords Dance
+
+Vespiquen @ Leftovers
+Level: 60
+Ability: Pressure
+EVs: 4 HP / 252 Atk / 252 Spe
+Nature: Jolly
+- Attack Order
+- Aerial Ace
+- Thief
+- Toxic
+
+Dustox @ Black Sludge
+Level: 60
+Ability: Shield Dust
+EVs: 252 HP / 252 Def / 4 SpD
+Nature: Bold
+- Quiver Dance
+- Bug Buzz
+- Sludge Bomb
+- Roost
+
+Shedinja @ Focus Sash
+Level: 60
+Ability: Wonder Guard
+EVs: 4 HP / 252 Atk / 252 Spe
+Nature: Adamant
+- X-Scissor
+- Shadow Sneak
+- Shadow Claw
+- Will-O-Wisp
+
+Ninjask @ Life Orb
+Level: 61
+Ability: Speed Boost
+EVs: 4 HP / 252 Atk / 252 Spe
+Nature: Jolly
+- Swords Dance
+- X-Scissor
+- Aerial Ace
+- Dig
+
+=== TRAINER_JOEY ===
+Name: JOEY
+Class: Youngster
+Pic: Youngster
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Starly
+Level: 10
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Tackle
+- Wing Attack
+- Quick Attack
+
+Machop
+Level: 11
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Revenge
+- Low Kick
+- Focus Energy
+- Leer
+
+=== TRAINER_DEVAN ===
+Name: DEVAN
+Class: Hiker
+Pic: Hiker
+Gender: Male
+Music: Hiker
+Double Battle: No
+AI: Basic Trainer
+
+Drilbur
+Level: 11
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Mud-Slap
+- Rapid Spin
+- Hone Claws
+- Scratch
+
+Geodude
+Level: 12
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Bulldoze
+- Rollout
+- Defense Curl
+- Rock Polish
+
+=== TRAINER_JOSH ===
+Name: JOSH
+Class: Youngster
+Pic: Youngster
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Nacli
+Level: 11
+IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+- Smack Down
+- Tackle
+- Mud Shot
+- Rock Throw
+
+Aron
+Level: 12
+IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+- Rock Tomb
+- Metal Claw
+- Harden
+- Tackle
+
+=== TRAINER_MARC ===
+Name: MARC
+Class: Hiker
+Pic: Hiker
+Gender: Male
+Music: Hiker
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Rolycoly
+Level: 12
+IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+- Smack Down
+- Rapid Spin
+- Tackle
+
+Onix
+Level: 13
+IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+- Smack Down
+- Dragon Breath
+- Rock Polish
+- Harden
+
+=== TRAINER_HALEY_1 ===
+Name: HALEY
+Class: Lass
+Pic: Lass
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Cottonee
+Level: 10
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Absorb
+- Fairy Wind
+- Stun Spore
+
+Lotad
+Level: 10
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Water Gun
+- Absorb
+- Astonish
+- Mist
+
+Shroomish
+Level: 11
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Leech Seed
+- Absorb
+- Stun Spore
+- Tackle
+
+=== TRAINER_HALEY_2 ===
+Name: HALEY
+Class: Lass
+Pic: Lass
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Whimsicott
+Level: 32
+Ability: Prankster
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Timid
+- Energy Ball
+- Moonblast
+- Psychic
+- Toxic
+
+Lombre
+Level: 33
+Ability: Swift Swim
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Modest
+- Surf
+- Ice Beam
+- Fake Out
+- Rain Dance
+
+Delcatty
+Level: 33
+Ability: Cute Charm
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Jolly
+- Fake Out
+- Double-Edge
+- Play Rough
+- Sing
+
+Breloom @ Miracle Seed
+Level: 34
+Ability: Effect Spore
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Adamant
+- Spore
+- Mach Punch
+- Bullet Seed
+- Headbutt
+
+=== TRAINER_HALEY_3 ===
+Name: HALEY
+Class: Lass
+Pic: Lass
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Whimsicott @ Life Orb
+Level: 37
+Ability: Prankster
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Timid
+- Energy Ball
+- Moonblast
+- Psychic
+- Toxic
+
+Ludicolo @ Leftovers
+Level: 38
+Ability: Swift Swim
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Modest
+- Surf
+- Giga Drain
+- Ice Beam
+- Rain Dance
+
+Delcatty @ Sitrus Berry
+Level: 38
+Ability: Cute Charm
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Jolly
+- Fake Out
+- Double-Edge
+- Play Rough
+- Sing
+
+Breloom @ Toxic Orb
+Level: 39
+Ability: Poison Heal
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Adamant
+- Spore
+- Mach Punch
+- Seed Bomb
+- Rock Tomb
+
+=== TRAINER_HALEY_4 ===
+Name: HALEY
+Class: Lass
+Pic: Lass
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Delcatty @ Sitrus Berry
+Level: 42
+Ability: Cute Charm
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Fake Out
+- Double-Edge
+- Play Rough
+- Sing
+
+Whimsicott @ Life Orb
+Level: 43
+Ability: Prankster
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Energy Ball
+- Moonblast
+- Psychic
+- Toxic
+
+Ludicolo @ Leftovers
+Level: 44
+Ability: Rain Dish
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Surf
+- Giga Drain
+- Ice Beam
+- Leech Seed
+
+Breloom @ Toxic Orb
+Level: 45
+Ability: Poison Heal
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Nature: Adamant
+- Spore
+- Seed Bomb
+- Mach Punch
+- Rock Slide
+
+=== TRAINER_HALEY_5 ===
+Name: HALEY
+Class: Lass
+Pic: Lass
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Delcatty @ Sitrus Berry
+Level: 60
+Ability: Wonder Skin
+EVs: 4 HP / 252 Atk / 252 Spe
+Nature: Jolly
+- Fake Out
+- Double-Edge
+- Sucker Punch
+- Thunder Wave
+
+Whimsicott @ Life Orb
+Level: 60
+Ability: Prankster
+EVs: 4 HP / 252 SpA / 252 Spe
+Nature: Timid
+- Energy Ball
+- Moonblast
+- Psychic
+- Toxic
+
+Ludicolo @ Life Orb
+Level: 60
+Ability: Swift Swim
+EVs: 4 HP / 252 SpA / 252 Spe
+Nature: Modest
+- Rain Dance
+- Hydro Pump
+- Giga Drain
+- Ice Beam
+
+Breloom @ Toxic Orb
+Level: 61
+Ability: Poison Heal
+EVs: 252 HP / 252 Atk / 4 SpD
+Nature: Adamant
+- Spore
+- Seed Bomb
+- Mach Punch
+- Swords Dance
+
+=== TRAINER_JERRY_1 ===
+Name: JERRY
+Class: School Kid
+Pic: School Kid M
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Ralts
+Level: 10
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Confusion
+- Disarming Voice
+- Hypnosis
+- Double Team
+
+Pawniard
+Level: 11
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Metal Claw
+- Fury Cutter
+- Scratch
+
+=== TRAINER_JERRY_2 ===
+Name: JERRY
+Class: School Kid
+Pic: School Kid M
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Pawniard
+Level: 32
+Ability: Defiant
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Hardy
+- Thief
+- Metal Claw
+- Brick Break
+- Toxic
+
+Grumpig
+Level: 33
+Ability: Thick Fat
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Modest
+- Psychic
+- Shadow Ball
+- Calm Mind
+- Thunder Wave
+
+Meditite
+Level: 33
+Ability: Pure Power
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Adamant
+- High Jump Kick
+- Zen Headbutt
+- Rock Slide
+- Bulk Up
+
+Gardevoir @ Twisted Spoon
+Level: 34
+Ability: Synchronize
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Modest
+- Psychic
+- Dazzling Gleam
+- Shadow Ball
+- Calm Mind
+
+=== TRAINER_JERRY_3 ===
+Name: JERRY
+Class: School Kid
+Pic: School Kid M
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Pawniard @ Black Glasses
+Level: 38
+Ability: Defiant
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Lonely
+- Thief
+- Metal Claw
+- Brick Break
+- Toxic
+
+Grumpig @ Leftovers
+Level: 38
+Ability: Thick Fat
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Modest
+- Psychic
+- Shadow Ball
+- Calm Mind
+- Thunder Wave
+
+Medicham @ Black Belt
+Level: 38
+Ability: Pure Power
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Adamant
+- High Jump Kick
+- Zen Headbutt
+- Ice Punch
+- Thunder Punch
+
+Gardevoir @ Life Orb
+Level: 39
+Ability: Synchronize
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Modest
+- Psychic
+- Dazzling Gleam
+- Shadow Ball
+- Calm Mind
+
+=== TRAINER_JERRY_4 ===
+Name: JERRY
+Class: School Kid
+Pic: School Kid M
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Grumpig @ Leftovers
+Level: 42
+Ability: Thick Fat
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Psychic
+- Shadow Ball
+- Calm Mind
+- Thunder Wave
+
+Pawniard @ Black Glasses
+Level: 43
+Ability: Defiant
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Night Slash
+- Metal Claw
+- Brick Break
+- Toxic
+
+Medicham @ Sitrus Berry
+Level: 44
+Ability: Pure Power
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- High Jump Kick
+- Zen Headbutt
+- Ice Punch
+- Bulk Up
+
+Gardevoir @ Twisted Spoon
+Level: 45
+Ability: Trace
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Nature: Modest
+- Calm Mind
+- Psychic
+- Dazzling Gleam
+- Thunderbolt
+
+=== TRAINER_JERRY_5 ===
+Name: JERRY
+Class: School Kid
+Pic: School Kid M
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Grumpig @ Leftovers
+Level: 60
+Ability: Thick Fat
+EVs: 252 HP / 252 Def / 4 SpD
+Nature: Bold
+- Psyshock
+- Shadow Ball
+- Thunder Wave
+- Taunt
+
+Bisharp @ Life Orb
+Level: 60
+Ability: Defiant
+EVs: 4 HP / 252 Atk / 252 Spe
+Nature: Adamant
+- Night Slash
+- Iron Head
+- Brick Break
+- Swords Dance
+
+Medicham @ Focus Sash
+Level: 60
+Ability: Pure Power
+EVs: 4 HP / 252 Atk / 252 Spe
+Nature: Jolly
+- High Jump Kick
+- Zen Headbutt
+- Bullet Punch
+- Ice Punch
+
+Gardevoir @ Life Orb
+Level: 61
+Ability: Trace
+EVs: 4 HP / 252 SpA / 252 Spe
+Nature: Timid
+- Moonblast
+- Psychic
+- Shadow Ball
+- Calm Mind
+
+=== TRAINER_CINDY_3 ===
+Name: CINDY
+Class: Lady
+Pic: Lady
+Gender: Female
+Music: Female
+Items: Full Restore
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Delcatty
+Level: 32
+Ability: Cute Charm
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Jolly
+- Fake Out
+- Double-Edge
+- Play Rough
+- Sing
+
+Litleo
+Level: 33
+Ability: Rivalry
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Modest
+- Fire Blast
+- Strength
+- Iron Tail
+- Toxic
+
+Azumarill
+Level: 33
+Ability: Huge Power
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Adamant
+- Waterfall
+- Play Rough
+- Bounce
+- Aqua Ring
+
+Linoone @ Silk Scarf
+Level: 34
+Ability: Pickup
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Jolly
+- Hone Claws
+- Slash
+- Dig
+- Surf
+
+=== TRAINER_CINDY_4 ===
+Name: CINDY
+Class: Lady
+Pic: Lady
+Gender: Female
+Music: Female
+Items: Full Restore
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Delcatty
+Level: 37
+Ability: Cute Charm
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Jolly
+- Fake Out
+- Double-Edge
+- Play Rough
+- Sing
+
+Pyroar
+Level: 38
+Ability: Rivalry
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Modest
+- Fire Blast
+- Strength
+- Iron Tail
+- Toxic
+
+Azumarill @ Mystic Water
+Level: 38
+Ability: Huge Power
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Adamant
+- Aqua Tail
+- Play Rough
+- Ice Punch
+- Aqua Ring
+
+Linoone @ Sitrus Berry
+Level: 39
+Ability: Gluttony
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Jolly
+- Hone Claws
+- Double-Edge
+- Dig
+- Surf
+
+=== TRAINER_CINDY_5 ===
+Name: CINDY
+Class: Lady
+Pic: Lady
+Gender: Female
+Music: Female
+Items: Full Restore
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Pyroar @ Leftovers
+Level: 42
+Ability: Rivalry
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Fire Blast
+- Strength
+- Crunch
+- Toxic
+
+Delcatty @ Sitrus Berry
+Level: 43
+Ability: Cute Charm
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Fake Out
+- Double-Edge
+- Play Rough
+- Heal Bell
+
+Azumarill @ Mystic Water
+Level: 44
+Ability: Huge Power
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Aqua Tail
+- Play Rough
+- Ice Punch
+- Superpower
+
+Linoone @ Silk Scarf
+Level: 45
+Ability: Pickup
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Nature: Jolly
+- Extreme Speed
+- Double-Edge
+- Thunder Wave
+- Iron Tail
+
+=== TRAINER_CINDY_6 ===
+Name: CINDY
+Class: Lady
+Pic: Lady
+Gender: Female
+Music: Female
+Items: Full Restore
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Pyroar @ Leftovers
+Level: 60
+Ability: Rivalry
+EVs: 252 HP / 252 SpA / 4 SpD
+Nature: Modest
+- Fire Blast
+- Hyper Voice
+- Crunch
+- Toxic
+
+Delcatty @ Sitrus Berry
+Level: 61
+Ability: Wonder Skin
+EVs: 4 HP / 252 Atk / 252 Spe
+Nature: Jolly
+- Fake Out
+- Play Rough
+- Sucker Punch
+- Wild Charge
+
+Azumarill @ Choice Band
+Level: 61
+Ability: Huge Power
+EVs: 252 HP / 252 Atk / 4 SpD
+Nature: Adamant
+- Liquidation
+- Play Rough
+- Aqua Jet
+- Superpower
+
+Linoone @ Sitrus Berry
+Level: 62
+Ability: Gluttony
+EVs: 4 HP / 252 Atk / 252 Spe
+Nature: Adamant
+- Belly Drum
+- Extreme Speed
+- Shadow Claw
+- Seed Bomb
+
+=== TRAINER_WINSTON_2 ===
+Name: WINSTON
+Class: Rich Boy
+Pic: Rich Boy
+Gender: Male
+Music: Rich
+Items: Full Restore
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Swellow
+Level: 32
+Ability: Guts
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Jolly
+- Aerial Ace
+- Quick Attack
+- Steel Wing
+- Agility
+
+Arcanine
+Level: 33
+Ability: Intimidate
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Adamant
+- Fire Fang
+- Extreme Speed
+- Crunch
+- Roar
+
+Litleo
+Level: 33
+Ability: Rivalry
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Modest
+- Fire Blast
+- Strength
+- Iron Tail
+- Toxic
+
+Linoone @ Silk Scarf
+Level: 34
+Ability: Pickup
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Jolly
+- Slash
+- Dig
+- Iron Tail
+- Thunder Wave
+
+=== TRAINER_WINSTON_3 ===
+Name: WINSTON
+Class: Rich Boy
+Pic: Rich Boy
+Gender: Male
+Music: Rich
+Items: Full Restore
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Swellow @ Flame Orb
+Level: 37
+Ability: Guts
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Jolly
+- Facade
+- Aerial Ace
+- Quick Attack
+- Steel Wing
+
+Arcanine @ Charcoal
+Level: 38
+Ability: Intimidate
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Adamant
+- Flare Blitz
+- Extreme Speed
+- Crunch
+- Roar
+
+Pyroar @ Charcoal
+Level: 38
+Ability: Rivalry
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Modest
+- Fire Blast
+- Strength
+- Iron Tail
+- Toxic
+
+Linoone @ Sitrus Berry
+Level: 39
+Ability: Pickup
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Jolly
+- Double-Edge
+- Dig
+- Iron Tail
+- Thunder Wave
+
+=== TRAINER_WINSTON_4 ===
+Name: WINSTON
+Class: Rich Boy
+Pic: Rich Boy
+Gender: Male
+Music: Rich
+Items: Full Restore
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Swellow @ Toxic Orb
+Level: 42
+Ability: Guts
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Facade
+- Brave Bird
+- Quick Attack
+- Agility
+
+Arcanine @ Charcoal
+Level: 43
+Ability: Intimidate
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Flare Blitz
+- Extreme Speed
+- Crunch
+- Roar
+
+Pyroar @ Charcoal
+Level: 44
+Ability: Rivalry
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Fire Blast
+- Hyper Voice
+- Crunch
+- Toxic
+
+Linoone @ Sitrus Berry
+Level: 45
+Ability: Gluttony
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Nature: Adamant
+- Belly Drum
+- Extreme Speed
+- Double-Edge
+- Iron Tail
+
+=== TRAINER_WINSTON_5 ===
+Name: WINSTON
+Class: Rich Boy
+Pic: Rich Boy
+Gender: Male
+Music: Rich
+Items: Full Restore
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Swellow @ Life Orb
+Level: 60
+Ability: Scrappy
+EVs: 4 HP / 252 Atk / 252 Spe
+Nature: Jolly
+- Brave Bird
+- Double-Edge
+- U-turn
+- Quick Attack
+
+Arcanine @ Sitrus Berry
+Level: 61
+Ability: Intimidate
+EVs: 252 HP / 252 Atk / 4 SpD
+Nature: Adamant
+- Flare Blitz
+- Extreme Speed
+- Wild Charge
+- Morning Sun
+
+Pyroar @ Charcoal
+Level: 61
+Ability: Rivalry
+EVs: 252 HP / 252 SpA / 4 SpD
+Nature: Modest
+- Fire Blast
+- Hyper Voice
+- Crunch
+- Toxic
+
+Linoone @ Sitrus Berry
+Level: 62
+Ability: Gluttony
+EVs: 4 HP / 252 Atk / 252 Spe
+Nature: Adamant
+- Belly Drum
+- Extreme Speed
+- Shadow Claw
+- Seed Bomb
+
+=== TRAINER_MIKE_2 ===
+Name: MIKE
+Class: Hiker
+Pic: Hiker
+Gender: Male
+Music: Hiker
+Double Battle: No
+AI: Basic Trainer
+
+Geodude
+Level: 14
+IVs: 9 HP / 9 Atk / 9 Def / 9 SpA / 9 SpD / 9 Spe
+- Bulldoze
+- Rollout
+- Defense Curl
+- Rock Polish
+
+Roggenrola
+Level: 14
+IVs: 9 HP / 9 Atk / 9 Def / 9 SpA / 9 SpD / 9 Spe
+- Tackle
+- Mud-Slap
+- Stealth Rock
+
+Geodude
+Level: 15
+IVs: 9 HP / 9 Atk / 9 Def / 9 SpA / 9 SpD / 9 Spe
+- Bulldoze
+- Rollout
+- Defense Curl
+- Tackle
+
+=== TRAINER_JOCELYN ===
+Name: JOCELYN
+Class: Battle Girl
+Pic: Battle Girl
+Gender: Female
+Music: Intense
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Makuhita
+Level: 17
+IVs: 13 HP / 13 Atk / 13 Def / 13 SpA / 13 SpD / 13 Spe
+- Force Palm
+- Fake Out
+- Arm Thrust
+- Sand Attack
+
+Croagunk
+Level: 17
+IVs: 13 HP / 13 Atk / 13 Def / 13 SpA / 13 SpD / 13 Spe
+- Poison Sting
+- Low Kick
+- Astonish
+- Taunt
+
+Meditite
+Level: 18
+IVs: 13 HP / 13 Atk / 13 Def / 13 SpA / 13 SpD / 13 Spe
+- Force Palm
+- Confusion
+- Detect
+- Feint
+
+=== TRAINER_CRISTIAN ===
+Name: CRISTIAN
+Class: Black Belt
+Pic: Black Belt
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Timburr
+Level: 17
+IVs: 13 HP / 13 Atk / 13 Def / 13 SpA / 13 SpD / 13 Spe
+- Low Kick
+- Rock Throw
+- Pound
+- Bulk Up
+
+Makuhita
+Level: 18
+IVs: 13 HP / 13 Atk / 13 Def / 13 SpA / 13 SpD / 13 Spe
+- Force Palm
+- Fake Out
+- Arm Thrust
+- Focus Energy
+
+=== TRAINER_HUEY ===
+Name: HUEY
+Class: Sailor
+Pic: Sailor
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Wattrel
+Level: 16
+IVs: 9 HP / 9 Atk / 9 Def / 9 SpA / 9 SpD / 9 Spe
+- Thunder Shock
+- Pluck
+- Quick Attack
+- Spark
+
+Machop
+Level: 17
+IVs: 9 HP / 9 Atk / 9 Def / 9 SpA / 9 SpD / 9 Spe
+- Low Sweep
+- Knock Off
+- Revenge
+- Focus Energy
+
+=== TRAINER_NED ===
+Name: NED
+Class: Fisherman
+Pic: Fisherman
+Gender: Male
+Music: Hiker
+Double Battle: No
+AI: Basic Trainer
+
+Arrokuda
+Level: 12
+IVs: 9 HP / 9 Atk / 9 Def / 9 SpA / 9 SpD / 9 Spe
+- Aqua Jet
+- Bite
+- Peck
+- Fury Attack
+
+Tentacool
+Level: 13
+IVs: 9 HP / 9 Atk / 9 Def / 9 SpA / 9 SpD / 9 Spe
+- Acid
+- Water Gun
+- Supersonic
+- Wrap
+
+=== TRAINER_MARLENE ===
+Name: MARLENE
+Class: Psychic
+Pic: Psychic F
+Gender: Female
+Music: Intense
+Double Battle: No
+AI: Basic Trainer
+
+Woobat
+Level: 15
+IVs: 9 HP / 9 Atk / 9 Def / 9 SpA / 9 SpD / 9 Spe
+- Confusion
+- Air Cutter
+- Gust
+
+Spoink
+Level: 16
+IVs: 9 HP / 9 Atk / 9 Def / 9 SpA / 9 SpD / 9 Spe
+- Psybeam
+- Growl
+
+=== TRAINER_KIRK ===
+Name: KIRK
+Class: Guitarist
+Pic: Guitarist
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Pawmo
+Level: 21
+IVs: 16 HP / 16 Atk / 16 Def / 16 SpA / 16 SpD / 16 Spe
+- Thunder Shock
+- Arm Thrust
+- Bite
+- Scratch
+
+Magnemite
+Level: 21
+IVs: 16 HP / 16 Atk / 16 Def / 16 SpA / 16 SpD / 16 Spe
+- Thunder Shock
+- Gyro Ball
+- Thunder Wave
+- Supersonic
+
+Electrike
+Level: 22
+IVs: 16 HP / 16 Atk / 16 Def / 16 SpA / 16 SpD / 16 Spe
+- Shock Wave
+- Bite
+- Quick Attack
+- Thunder Wave
+
+=== TRAINER_SHAWN ===
+Name: SHAWN
+Class: Guitarist
+Pic: Guitarist
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Voltorb
+Level: 22
+IVs: 16 HP / 16 Atk / 16 Def / 16 SpA / 16 SpD / 16 Spe
+- Electro Ball
+- Swift
+- Rollout
+- Screech
+
+Luxio
+Level: 22
+IVs: 16 HP / 16 Atk / 16 Def / 16 SpA / 16 SpD / 16 Spe
+- Spark
+- Bite
+- Tackle
+- Thunder Shock
+
+Magnemite
+Level: 23
+IVs: 16 HP / 16 Atk / 16 Def / 16 SpA / 16 SpD / 16 Spe
+- Thunder Shock
+- Gyro Ball
+- Thunder Wave
+- Supersonic
+
+=== TRAINER_DALTON_1 ===
+Name: DALTON
+Class: Guitarist
+Pic: Guitarist
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Basic Trainer
+
+Chatot
+Level: 21
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Hyper Voice
+- Peck
+- Taunt
+- Fury Attack
+
+Loudred
+Level: 22
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Stomp
+- Bite
+- Echoed Voice
+- Howl
+
+=== TRAINER_DALTON_2 ===
+Name: DALTON
+Class: Guitarist
+Pic: Guitarist
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Chatot
+Level: 32
+Ability: Keen Eye
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Modest
+- Hyper Voice
+- Aerial Ace
+- Steel Wing
+- Toxic
+
+Electrode
+Level: 33
+Ability: Soundproof
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Timid
+- Thunderbolt
+- Swift
+- Thunder Wave
+- Self-Destruct
+
+Magneton @ Magnet
+Level: 34
+Ability: Sturdy
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Modest
+- Thunderbolt
+- Flash Cannon
+- Thunder Wave
+- Magnet Rise
+
+Loudred @ Silk Scarf
+Level: 35
+Ability: Soundproof
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Modest
+- Uproar
+- Flamethrower
+- Ice Beam
+- Shadow Ball
+
+=== TRAINER_DALTON_3 ===
+Name: DALTON
+Class: Guitarist
+Pic: Guitarist
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Chatot @ Leftovers
+Level: 37
+Ability: Keen Eye
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Modest
+- Hyper Voice
+- Aerial Ace
+- Steel Wing
+- Toxic
+
+Electrode
+Level: 38
+Ability: Soundproof
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Timid
+- Thunderbolt
+- Swift
+- Thunder Wave
+- Self-Destruct
+
+Manectric
+Level: 38
+Ability: Static
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Timid
+- Discharge
+- Flamethrower
+- Bite
+- Roar
+
+Magneton @ Magnet
+Level: 39
+Ability: Sturdy
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Modest
+- Thunderbolt
+- Flash Cannon
+- Thunder Wave
+- Tri Attack
+
+Exploud @ Wise Glasses
+Level: 40
+Ability: Soundproof
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Modest
+- Uproar
+- Flamethrower
+- Ice Beam
+- Shadow Ball
+
+=== TRAINER_DALTON_4 ===
+Name: DALTON
+Class: Guitarist
+Pic: Guitarist
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Electrode @ Light Clay
+Level: 42
+Ability: Soundproof
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Thunderbolt
+- Taunt
+- Light Screen
+- Explosion
+
+Manectric @ Sitrus Berry
+Level: 43
+Ability: Lightning Rod
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Thunderbolt
+- Flamethrower
+- Thunder Wave
+- Roar
+
+Chatot @ Leftovers
+Level: 43
+Ability: Keen Eye
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Hyper Voice
+- Aerial Ace
+- Steel Wing
+- Toxic
+
+Exploud @ Choice Specs
+Level: 44
+Ability: Soundproof
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Hyper Voice
+- Flamethrower
+- Ice Beam
+- Shadow Ball
+
+Magneton @ Eviolite
+Level: 45
+Ability: Sturdy
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Nature: Modest
+- Thunderbolt
+- Flash Cannon
+- Tri Attack
+- Thunder Wave
+
+=== TRAINER_DALTON_5 ===
+Name: DALTON
+Class: Guitarist
+Pic: Guitarist
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Electrode @ Light Clay
+Level: 60
+Ability: Soundproof
+EVs: 4 HP / 252 SpA / 252 Spe
+Nature: Timid
+- Light Screen
+- Reflect
+- Thunderbolt
+- Explosion
+
+Manectric @ Life Orb
+Level: 60
+Ability: Lightning Rod
+EVs: 4 HP / 252 SpA / 252 Spe
+Nature: Timid
+- Thunderbolt
+- Flamethrower
+- Volt Switch
+- Snarl
+
+Chatot @ Leftovers
+Level: 60
+Ability: Keen Eye
+EVs: 252 HP / 252 SpA / 4 SpD
+Nature: Modest
+- Hyper Voice
+- Aerial Ace
+- Steel Wing
+- Toxic
+
+Exploud @ Choice Specs
+Level: 60
+Ability: Scrappy
+EVs: 4 HP / 252 SpA / 252 Spe
+Nature: Modest
+- Boomburst
+- Fire Blast
+- Ice Beam
+- Focus Blast
+
+Magnezone @ Leftovers
+Level: 61
+Ability: Analytic
+EVs: 252 HP / 252 SpA / 4 SpD
+Nature: Modest
+- Thunderbolt
+- Flash Cannon
+- Tri Attack
+- Volt Switch
+
+=== TRAINER_DEREK ===
+Name: DEREK
+Class: Bug Maniac
+Pic: Bug Maniac
+Gender: Male
+Music: Suspicious
+Double Battle: No
+AI: Basic Trainer
+
+Ninjask
+Level: 20
+Ability: Speed Boost
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Fury Cutter
+- Aerial Ace
+- Screech
+- Sand Attack
+
+Cutiefly
+Level: 20
+Ability: Honey Gather
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Draining Kiss
+- Absorb
+- Stun Spore
+- Fairy Wind
+
+Beautifly
+Level: 21
+Ability: Swarm
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Air Cutter
+- Bug Bite
+- Absorb
+- Stun Spore
+
+
+=== TRAINER_BEN ===
+Name: BEN
+Class: Youngster
+Pic: Youngster
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Tadbulb
+Level: 21
+IVs: 16 HP / 16 Atk / 16 Def / 16 SpA / 16 SpD / 16 Spe
+- Thunder Shock
+- Water Gun
+- Mud-Slap
+- Tackle
+
+Electrike
+Level: 21
+IVs: 16 HP / 16 Atk / 16 Def / 16 SpA / 16 SpD / 16 Spe
+- Shock Wave
+- Bite
+- Quick Attack
+- Thunder Wave
+
+Linoone
+Level: 22
+IVs: 16 HP / 16 Atk / 16 Def / 16 SpA / 16 SpD / 16 Spe
+- Slash
+- Pin Missile
+- Hone Claws
+- Sand Attack
+
+=== TRAINER_BENJAMIN_1 ===
+Name: BENJAMIN
+Class: Triathlete
+Pic: Cycling Triathlete M
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Klink
+Level: 20
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Vise Grip
+- Charge Beam
+- Thunder Shock
+
+Magnemite
+Level: 21
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Thunder Shock
+- Gyro Ball
+- Thunder Wave
+- Supersonic
+
+=== TRAINER_BENJAMIN_2 ===
+Name: BENJAMIN
+Class: Triathlete
+Pic: Cycling Triathlete M
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Electrode
+Level: 32
+Ability: Static
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Timid
+- Thunderbolt
+- Thunder Wave
+- Light Screen
+- Self-Destruct
+
+Klink
+Level: 33
+Ability: Plus
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Jolly
+- Gear Grind
+- Facade
+- Thunderbolt
+- Toxic
+
+Manectric
+Level: 33
+Ability: Static
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Timid
+- Thunderbolt
+- Flamethrower
+- Quick Attack
+- Roar
+
+Magneton @ Magnet
+Level: 34
+Ability: Sturdy
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Modest
+- Thunderbolt
+- Flash Cannon
+- Tri Attack
+- Magnet Rise
+
+=== TRAINER_BENJAMIN_3 ===
+Name: BENJAMIN
+Class: Triathlete
+Pic: Cycling Triathlete M
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Electrode @ Light Clay
+Level: 37
+Ability: Static
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Timid
+- Thunderbolt
+- Thunder Wave
+- Light Screen
+- Self-Destruct
+
+Klang @ Leftovers
+Level: 38
+Ability: Plus
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Jolly
+- Gear Grind
+- Facade
+- Thunderbolt
+- Toxic
+
+Manectric
+Level: 38
+Ability: Static
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Timid
+- Thunderbolt
+- Flamethrower
+- Quick Attack
+- Roar
+
+Magneton @ Magnet
+Level: 39
+Ability: Sturdy
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Modest
+- Thunderbolt
+- Flash Cannon
+- Tri Attack
+- Magnet Rise
+
+=== TRAINER_BENJAMIN_4 ===
+Name: BENJAMIN
+Class: Triathlete
+Pic: Cycling Triathlete M
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Electrode @ Light Clay
+Level: 42
+Ability: Soundproof
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Thunderbolt
+- Reflect
+- Light Screen
+- Explosion
+
+Klang @ Leftovers
+Level: 43
+Ability: Plus
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Gear Grind
+- Facade
+- Thunderbolt
+- Shift Gear
+
+Manectric @ Sitrus Berry
+Level: 44
+Ability: Lightning Rod
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Thunderbolt
+- Overheat
+- Roar
+- Thunder Wave
+
+Magneton @ Eviolite
+Level: 45
+Ability: Sturdy
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Nature: Modest
+- Thunderbolt
+- Flash Cannon
+- Tri Attack
+- Metal Sound
+
+=== TRAINER_BENJAMIN_5 ===
+Name: BENJAMIN
+Class: Triathlete
+Pic: Cycling Triathlete M
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Electrode @ Focus Sash
+Level: 62
+Ability: Aftermath
+EVs: 4 HP / 252 SpA / 252 Spe
+Nature: Timid
+- Thunderbolt
+- Volt Switch
+- Foul Play
+- Taunt
+
+Klinklang @ Life Orb
+Level: 63
+Ability: Plus
+EVs: 4 HP / 252 Atk / 252 Spe
+Nature: Jolly
+- Gear Grind
+- Facade
+- Thunderbolt
+- Shift Gear
+
+Manectric @ Life Orb
+Level: 63
+Ability: Lightning Rod
+EVs: 4 HP / 252 SpA / 252 Spe
+Nature: Timid
+- Thunderbolt
+- Flamethrower
+- Volt Switch
+- Snarl
+
+Magnezone @ Choice Specs
+Level: 64
+Ability: Analytic
+EVs: 252 HP / 252 SpA / 4 SpD
+Nature: Modest
+- Thunderbolt
+- Flash Cannon
+- Volt Switch
+- Tri Attack
+
+=== TRAINER_ANDREW ===
+Name: ANDREW
+Class: Fisherman
+Pic: Fisherman
+Gender: Male
+Music: Hiker
+Double Battle: No
+AI: Basic Trainer
+
+Magikarp
+Level: 18
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Tackle
+- Splash
+
+Finneon
+Level: 19
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Water Gun
+- Pound
+- Gust
+- Rain Dance
+
+Gyarados
+Level: 20
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Bite
+- Ice Fang
+- Brine
+- Scary Face
+
+=== TRAINER_DEANDRE ===
+Name: DEANDRE
+Class: Youngster
+Pic: Youngster
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Aron
+Level: 20
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Headbutt
+- Metal Claw
+- Rock Tomb
+- Harden
+
+Luxio
+Level: 20
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Spark
+- Bite
+- Tackle
+- Thunder Shock
+
+Linoone
+Level: 21
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Slash
+- Pin Missile
+- Hone Claws
+- Sand Attack
+
+=== TRAINER_AISHA ===
+Name: AISHA
+Class: Battle Girl
+Pic: Battle Girl
+Gender: Female
+Music: Intense
+Double Battle: No
+AI: Basic Trainer
+
+Stufful
+Level: 19
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Tackle
+- Brutal Swing
+- Payback
+
+Meditite
+Level: 20
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Force Palm
+- Psybeam
+- Detect
+- Feint
+
+=== TRAINER_PETE ===
+Name: PETE
+Class: Swimmer M
+Pic: Swimmer M
+Gender: Male
+Music: Swimmer
+Double Battle: No
+AI: Basic Trainer
+
+Wattrel
+Level: 19
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Thunder Shock
+- Pluck
+- Quick Attack
+- Spark
+
+Tentacool
+Level: 20
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Water Pulse
+- Acid
+- Supersonic
+- Wrap
+
+=== TRAINER_ANGELO ===
+Name: ANGELO
+Class: Bug Maniac
+Pic: Bug Maniac
+Gender: Male
+Music: Suspicious
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Joltik
+Level: 21
+IVs: 16 HP / 16 Atk / 16 Def / 16 SpA / 16 SpD / 16 Spe
+- Bug Bite
+- Electroweb
+- Absorb
+- Thunder Wave
+
+Ninjask
+Level: 21
+IVs: 16 HP / 16 Atk / 16 Def / 16 SpA / 16 SpD / 16 Spe
+- Fury Cutter
+- Aerial Ace
+- Screech
+- Sand Attack
+
+Volbeat
+Level: 22
+IVs: 16 HP / 16 Atk / 16 Def / 16 SpA / 16 SpD / 16 Spe
+- Tail Glow
+- Struggle Bug
+- Quick Attack
+- Confuse Ray
+
+=== TRAINER_SAWYER_1 ===
+Name: SAWYER
+Class: Hiker
+Pic: Hiker
+Gender: Male
+Music: Hiker
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Machop
+Level: 25
+Ability: Guts
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+- Low Sweep
+- Knock Off
+- Rock Slide
+- Bulk Up
+
+Carkol
+Level: 25
+Ability: Steam Engine
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+- Rock Tomb
+- Fire Blast
+- Facade
+- Reflect
+
+Graveler @ Hard Stone
+Level: 26
+Ability: Sturdy
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+- Rock Slide
+- Dig
+- Rock Polish
+- Self-Destruct
+
+=== TRAINER_SAWYER_2 ===
+Name: SAWYER
+Class: Hiker
+Pic: Hiker
+Gender: Male
+Music: Hiker
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Machoke
+Level: 33
+Ability: Guts
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Adamant
+- Vital Throw
+- Rock Slide
+- Knock Off
+- Bulk Up
+
+Coalossal
+Level: 34
+Ability: Steam Engine
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Adamant
+- Rock Tomb
+- Fire Blast
+- Earthquake
+- Stealth Rock
+
+Torkoal
+Level: 34
+Ability: White Smoke
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Relaxed
+- Lava Plume
+- Rock Slide
+- Clear Smog
+- Protect
+
+Golem @ Hard Stone
+Level: 35
+Ability: Sturdy
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Adamant
+- Rock Slide
+- Earthquake
+- Heavy Slam
+- Rock Polish
+
+=== TRAINER_SAWYER_3 ===
+Name: SAWYER
+Class: Hiker
+Pic: Hiker
+Gender: Male
+Music: Hiker
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Machoke @ Eviolite
+Level: 38
+Ability: Guts
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Adamant
+- Vital Throw
+- Rock Slide
+- Knock Off
+- Bulk Up
+
+Torkoal @ Heat Rock
+Level: 38
+Ability: Drought
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Relaxed
+- Lava Plume
+- Earthquake
+- Iron Defense
+- Protect
+
+Coalossal @ Hard Stone
+Level: 39
+Ability: Steam Engine
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Adamant
+- Rock Tomb
+- Fire Blast
+- Earthquake
+- Stealth Rock
+
+Rhyhorn @ Eviolite
+Level: 39
+Ability: Rock Head
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Adamant
+- Earthquake
+- Rock Slide
+- Double-Edge
+- Swords Dance
+
+Golem @ Sitrus Berry
+Level: 40
+Ability: Sturdy
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Adamant
+- Rock Slide
+- Earthquake
+- Heavy Slam
+- Rock Polish
+
+=== TRAINER_SAWYER_4 ===
+Name: SAWYER
+Class: Hiker
+Pic: Hiker
+Gender: Male
+Music: Hiker
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Torkoal @ Heat Rock
+Level: 42
+Ability: Drought
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Flamethrower
+- Earthquake
+- Solar Beam
+- Rapid Spin
+
+Rhydon @ Eviolite
+Level: 43
+Ability: Rock Head
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Swords Dance
+- Earthquake
+- Rock Slide
+- Hammer Arm
+
+Machoke @ Eviolite
+Level: 43
+Ability: No Guard
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Dynamic Punch
+- Rock Slide
+- Knock Off
+- Bulk Up
+
+Coalossal @ Hard Stone
+Level: 44
+Ability: Steam Engine
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Rock Tomb
+- Fire Blast
+- Earthquake
+- Stealth Rock
+
+Golem @ Sitrus Berry
+Level: 45
+Ability: Sturdy
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Nature: Adamant
+- Rock Polish
+- Stone Edge
+- Earthquake
+- Hammer Arm
+
+=== TRAINER_SAWYER_5 ===
+Name: SAWYER
+Class: Hiker
+Pic: Hiker
+Gender: Male
+Music: Hiker
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Torkoal @ Heat Rock
+Level: 60
+Ability: Drought
+EVs: 252 HP / 252 Def / 4 SpD
+Nature: Bold
+- Lava Plume
+- Stealth Rock
+- Rapid Spin
+- Yawn
+
+Rhyperior @ Life Orb
+Level: 60
+Ability: Solid Rock
+EVs: 252 HP / 252 Atk / 4 SpD
+Nature: Adamant
+- Stone Edge
+- Earthquake
+- Megahorn
+- Ice Punch
+
+Machamp @ Black Belt
+Level: 60
+Ability: No Guard
+EVs: 252 HP / 252 Atk / 4 SpD
+Nature: Adamant
+- Dynamic Punch
+- Stone Edge
+- Knock Off
+- Bullet Punch
+
+Coalossal @ Sitrus Berry
+Level: 60
+Ability: Steam Engine
+EVs: 252 HP / 252 Atk / 4 SpD
+Nature: Adamant
+- Stone Edge
+- Fire Blast
+- Earthquake
+- Stealth Rock
+
+Golem @ Life Orb
+Level: 61
+Ability: Sturdy
+EVs: 252 HP / 252 Atk / 4 SpD
+Nature: Adamant
+- Stone Edge
+- Earthquake
+- Heavy Slam
+- Sucker Punch
+
+=== TRAINER_SHEILA ===
+Name: SHEILA
+Class: Beauty
+Pic: Beauty
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Ribombee
+Level: 25
+Ability: Honey Gather
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+- Pollen Puff
+- Draining Kiss
+- Psychic
+- Calm Mind
+
+Roselia
+Level: 25
+Ability: Natural Cure
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+- Magical Leaf
+- Sludge Bomb
+- Leech Seed
+- Growth
+
+Breloom @ Miracle Seed
+Level: 26
+Ability: Effect Spore
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+- Mach Punch
+- Seed Bomb
+- Rock Tomb
+- Leech Seed
+
+=== TRAINER_JEFF ===
+Name: JEFF
+Class: Kindler
+Pic: Kindler
+Gender: Male
+Music: Hiker
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Litleo
+Level: 26
+Ability: Rivalry
+IVs: 19 HP / 19 Atk / 19 Def / 19 SpA / 19 SpD / 19 Spe
+- Fire Blast
+- Strength
+- Iron Tail
+- Toxic
+
+Vulpix
+Level: 26
+Ability: Flash Fire
+IVs: 19 HP / 19 Atk / 19 Def / 19 SpA / 19 SpD / 19 Spe
+- Incinerate
+- Will-O-Wisp
+- Confuse Ray
+- Quick Attack
+
+Slugma @ Charcoal
+Level: 27
+Ability: Magma Armor
+IVs: 19 HP / 19 Atk / 19 Def / 19 SpA / 19 SpD / 19 Spe
+- Incinerate
+- Ancient Power
+- Clear Smog
+- Reflect
+
+=== TRAINER_AXLE ===
+Name: AXLE
+Class: Kindler
+Pic: Kindler
+Gender: Male
+Music: Hiker
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Ponyta
+Level: 26
+Ability: Flash Fire
+IVs: 19 HP / 19 Atk / 19 Def / 19 SpA / 19 SpD / 19 Spe
+- Flame Wheel
+- Body Slam
+- Agility
+- Iron Tail
+
+Sizzlipede
+Level: 26
+Ability: Flash Fire
+IVs: 19 HP / 19 Atk / 19 Def / 19 SpA / 19 SpD / 19 Spe
+- Flame Wheel
+- Bug Bite
+- Bite
+- Coil
+
+Numel @ Charcoal
+Level: 27
+Ability: Simple
+IVs: 19 HP / 19 Atk / 19 Def / 19 SpA / 19 SpD / 19 Spe
+- Lava Plume
+- Earth Power
+- Rock Tomb
+- Amnesia
+
+=== TRAINER_JACE ===
+Name: JACE
+Class: Kindler
+Pic: Kindler
+Gender: Male
+Music: Hiker
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Salandit
+Level: 26
+Ability: Corrosion
+IVs: 19 HP / 19 Atk / 19 Def / 19 SpA / 19 SpD / 19 Spe
+- Sludge Bomb
+- Fire Blast
+- Dragon Claw
+- Nasty Plot
+
+Houndour
+Level: 26
+Ability: Flash Fire
+IVs: 19 HP / 19 Atk / 19 Def / 19 SpA / 19 SpD / 19 Spe
+- Incinerate
+- Bite
+- Roar
+- Taunt
+
+Slugma @ Charcoal
+Level: 27
+Ability: Flame Body
+IVs: 19 HP / 19 Atk / 19 Def / 19 SpA / 19 SpD / 19 Spe
+- Incinerate
+- Ancient Power
+- Clear Smog
+- Yawn
+
+=== TRAINER_ELI ===
+Name: ELI
+Class: Hiker
+Pic: Hiker
+Gender: Male
+Music: Hiker
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Carkol
+Level: 26
+Ability: Steam Engine
+IVs: 19 HP / 19 Atk / 19 Def / 19 SpA / 19 SpD / 19 Spe
+- Rock Tomb
+- Fire Blast
+- Facade
+- Reflect
+
+Torkoal
+Level: 26
+Ability: White Smoke
+IVs: 19 HP / 19 Atk / 19 Def / 19 SpA / 19 SpD / 19 Spe
+- Flame Wheel
+- Rock Slide
+- Clear Smog
+- Withdraw
+
+Graveler @ Hard Stone
+Level: 27
+Ability: Sturdy
+IVs: 19 HP / 19 Atk / 19 Def / 19 SpA / 19 SpD / 19 Spe
+- Rock Slide
+- Bulldoze
+- Fire Punch
+- Rock Polish
+
+=== TRAINER_ETHAN_1 ===
+Name: ETHAN
+Class: Camper
+Pic: Camper
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Swellow
+Level: 26
+Ability: Guts
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+- Aerial Ace
+- Quick Attack
+- Steel Wing
+- Focus Energy
+
+Stunky
+Level: 26
+Ability: Stench
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+- Sludge Bomb
+- Thief
+- Iron Tail
+- Toxic
+
+Linoone @ Silk Scarf
+Level: 27
+Ability: Pickup
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+- Slash
+- Pin Missile
+- Dig
+- Hone Claws
+
+=== TRAINER_ETHAN_2 ===
+Name: ETHAN
+Class: Camper
+Pic: Camper
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Swellow
+Level: 33
+Ability: Guts
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Jolly
+- Aerial Ace
+- Quick Attack
+- Steel Wing
+- Agility
+
+Stunky
+Level: 33
+Ability: Stench
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Adamant
+- Sludge Bomb
+- Sucker Punch
+- Iron Tail
+- Toxic
+
+Breloom
+Level: 34
+Ability: Effect Spore
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Adamant
+- Mach Punch
+- Bullet Seed
+- Force Palm
+- Stun Spore
+
+Linoone @ Sitrus Berry
+Level: 35
+Ability: Gluttony
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Jolly
+- Belly Drum
+- Slash
+- Dig
+- Iron Tail
+
+=== TRAINER_ETHAN_3 ===
+Name: ETHAN
+Class: Camper
+Pic: Camper
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Skuntank
+Level: 38
+Ability: Stench
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Adamant
+- Sludge Bomb
+- Sucker Punch
+- Iron Tail
+- Toxic
+
+Swellow @ Flame Orb
+Level: 38
+Ability: Guts
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Jolly
+- Facade
+- Aerial Ace
+- Quick Attack
+- Steel Wing
+
+Breloom @ Toxic Orb
+Level: 39
+Ability: Poison Heal
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Adamant
+- Spore
+- Bullet Seed
+- Mach Punch
+- Rock Slide
+
+Linoone @ Sitrus Berry
+Level: 40
+Ability: Gluttony
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Jolly
+- Belly Drum
+- Double-Edge
+- Dig
+- Iron Tail
+
+=== TRAINER_ETHAN_4 ===
+Name: ETHAN
+Class: Camper
+Pic: Camper
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Breloom @ Toxic Orb
+Level: 42
+Ability: Poison Heal
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Spore
+- Bullet Seed
+- Mach Punch
+- Rock Slide
+
+Swellow @ Flame Orb
+Level: 43
+Ability: Guts
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Facade
+- Brave Bird
+- Quick Attack
+- Steel Wing
+
+Skuntank @ Poison Barb
+Level: 44
+Ability: Stench
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Sludge Bomb
+- Sucker Punch
+- Iron Tail
+- Toxic
+
+Linoone @ Sitrus Berry
+Level: 45
+Ability: Gluttony
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Nature: Adamant
+- Belly Drum
+- Extreme Speed
+- Double-Edge
+- Iron Tail
+
+=== TRAINER_ETHAN_5 ===
+Name: ETHAN
+Class: Camper
+Pic: Camper
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Breloom @ Toxic Orb
+Level: 60
+Ability: Poison Heal
+EVs: 252 HP / 252 Atk / 4 SpD
+Nature: Adamant
+- Spore
+- Seed Bomb
+- Mach Punch
+- Swords Dance
+
+Swellow @ Flame Orb
+Level: 60
+Ability: Guts
+EVs: 4 HP / 252 Atk / 252 Spe
+Nature: Jolly
+- Facade
+- Brave Bird
+- U-turn
+- Quick Attack
+
+Skuntank @ Leftovers
+Level: 60
+Ability: Stench
+EVs: 252 HP / 252 Def / 4 SpD
+Nature: Impish
+- Sludge Bomb
+- Sucker Punch
+- Iron Tail
+- Toxic
+
+Linoone @ Choice Band
+Level: 61
+Ability: Pickup
+EVs: 4 HP / 252 Atk / 252 Spe
+Nature: Adamant
+- Extreme Speed
+- Double-Edge
+- Shadow Claw
+- Gunk Shot
+
+=== TRAINER_SHELBY_1 ===
+Name: SHELBY
+Class: Expert
+Pic: Expert F
+Gender: Female
+Music: Intense
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Riolu
+Level: 25
+Ability: Steadfast
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+- Brick Break
+- Earthquake
+- Iron Tail
+- Bulk Up
+
+Meditite
+Level: 25
+Ability: Pure Power
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+- Force Palm
+- Zen Headbutt
+- Fire Punch
+- Detect
+
+Hariyama @ Black Belt
+Level: 26
+Ability: Thick Fat
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+- Force Palm
+- Knock Off
+- Fake Out
+- Bulk Up
+
+=== TRAINER_SHELBY_2 ===
+Name: SHELBY
+Class: Expert
+Pic: Expert F
+Gender: Female
+Music: Intense
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Meditite
+Level: 33
+Ability: Pure Power
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Adamant
+- High Jump Kick
+- Zen Headbutt
+- Rock Slide
+- Detect
+
+Lucario
+Level: 33
+Ability: Steadfast
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Modest
+- Aura Sphere
+- Iron Tail
+- Psychic
+- Calm Mind
+
+Breloom
+Level: 34
+Ability: Effect Spore
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Adamant
+- Spore
+- Mach Punch
+- Bullet Seed
+- Rock Slide
+
+Hariyama @ Black Belt
+Level: 35
+Ability: Thick Fat
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Adamant
+- Fake Out
+- Force Palm
+- Knock Off
+- Bulk Up
+
+=== TRAINER_SHELBY_3 ===
+Name: SHELBY
+Class: Expert
+Pic: Expert F
+Gender: Female
+Music: Intense
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Medicham @ Sitrus Berry
+Level: 38
+Ability: Pure Power
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Adamant
+- High Jump Kick
+- Zen Headbutt
+- Fire Punch
+- Bulk Up
+
+Lucario @ Black Belt
+Level: 38
+Ability: Steadfast
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Modest
+- Aura Sphere
+- Iron Tail
+- Psychic
+- Calm Mind
+
+Breloom @ Toxic Orb
+Level: 39
+Ability: Poison Heal
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Adamant
+- Spore
+- Bullet Seed
+- Mach Punch
+- Rock Slide
+
+Hariyama @ Flame Orb
+Level: 40
+Ability: Guts
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Adamant
+- Fake Out
+- Close Combat
+- Knock Off
+- Rock Slide
+
+=== TRAINER_SHELBY_4 ===
+Name: SHELBY
+Class: Expert
+Pic: Expert F
+Gender: Female
+Music: Intense
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Lucario @ Black Belt
+Level: 42
+Ability: Steadfast
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Aura Sphere
+- Iron Tail
+- Psychic
+- Calm Mind
+
+Breloom @ Toxic Orb
+Level: 43
+Ability: Poison Heal
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Spore
+- Bullet Seed
+- Mach Punch
+- Rock Slide
+
+Medicham @ Sitrus Berry
+Level: 44
+Ability: Pure Power
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- High Jump Kick
+- Zen Headbutt
+- Thunder Punch
+- Recover
+
+Hariyama @ Flame Orb
+Level: 45
+Ability: Guts
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Nature: Adamant
+- Facade
+- Close Combat
+- Knock Off
+- Bullet Punch
+
+=== TRAINER_SHELBY_5 ===
+Name: SHELBY
+Class: Expert
+Pic: Expert F
+Gender: Female
+Music: Intense
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Lucario @ Leftovers
+Level: 62
+Ability: Steadfast
+EVs: 252 HP / 252 SpA / 4 SpD
+Nature: Modest
+- Aura Sphere
+- Meteor Mash
+- Psychic
+- Calm Mind
+
+Breloom @ Toxic Orb
+Level: 63
+Ability: Poison Heal
+EVs: 252 HP / 252 Atk / 4 SpD
+Nature: Adamant
+- Spore
+- Seed Bomb
+- Mach Punch
+- Leech Seed
+
+Medicham @ Life Orb
+Level: 63
+Ability: Pure Power
+EVs: 4 HP / 252 Atk / 252 Spe
+Nature: Jolly
+- High Jump Kick
+- Zen Headbutt
+- Bullet Punch
+- Ice Punch
+
+Hariyama @ Flame Orb
+Level: 64
+Ability: Guts
+EVs: 252 HP / 252 Atk / 4 SpD
+Nature: Adamant
+- Close Combat
+- Knock Off
+- Bullet Punch
+- Fake Out
+
+=== TRAINER_DANIELLE ===
+Name: DANIELLE
+Class: Battle Girl
+Pic: Battle Girl
+Gender: Female
+Music: Intense
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Gurdurr
+Level: 26
+Ability: Guts
+IVs: 19 HP / 19 Atk / 19 Def / 19 SpA / 19 SpD / 19 Spe
+- Brick Break
+- Rock Slide
+- Thief
+- Bulk Up
+
+Hariyama
+Level: 27
+Ability: Thick Fat
+IVs: 19 HP / 19 Atk / 19 Def / 19 SpA / 19 SpD / 19 Spe
+- Force Palm
+- Fake Out
+- Rock Tomb
+- Bulk Up
+
+Meditite @ Black Belt
+Level: 28
+Ability: Pure Power
+IVs: 19 HP / 19 Atk / 19 Def / 19 SpA / 19 SpD / 19 Spe
+- Brick Break
+- Zen Headbutt
+- Fire Punch
+- Detect
+
+=== TRAINER_SHANE ===
+Name: SHANE
+Class: Camper
+Pic: Camper
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Linoone
+Level: 24
+Ability: Pickup
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+- Headbutt
+- Pin Missile
+- Dig
+- Baby-Doll Eyes
+
+Skiddo
+Level: 24
+Ability: Sap Sipper
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+- Razor Leaf
+- Iron Tail
+- Brick Break
+- Bulk Up
+
+Nuzleaf @ Miracle Seed
+Level: 25
+Ability: Chlorophyll
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+- Razor Leaf
+- Payback
+- Air Cutter
+- Growth
+
+=== TRAINER_BRICE ===
+Name: BRICE
+Class: Hiker
+Pic: Hiker
+Gender: Male
+Music: Hiker
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Nacli
+Level: 22
+Ability: Purifying Salt
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+- Smack Down
+- Earthquake
+- Headbutt
+- Iron Defense
+
+Numel
+Level: 22
+Ability: Oblivious
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+- Incinerate
+- Bulldoze
+- Growl
+- Amnesia
+
+Machop @ Black Belt
+Level: 23
+Ability: Guts
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+- Low Sweep
+- Knock Off
+- Rock Tomb
+- Bulk Up
+
+=== TRAINER_LENNY ===
+Name: LENNY
+Class: Hiker
+Pic: Hiker
+Gender: Male
+Music: Hiker
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Machop
+Level: 24
+Ability: Guts
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+- Vital Throw
+- Knock Off
+- Rock Tomb
+- Bulk Up
+
+Roggenrola
+Level: 24
+Ability: Sturdy
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+- Rock Tomb
+- Earthquake
+- Strength
+- Toxic
+
+Graveler @ Hard Stone
+Level: 25
+Ability: Sturdy
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+- Rock Slide
+- Bulldoze
+- Self-Destruct
+- Defense Curl
+
+=== TRAINER_ERIC ===
+Name: ERIC
+Class: Hiker
+Pic: Hiker
+Gender: Male
+Music: Hiker
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Mudbray
+Level: 26
+Ability: Own Tempo
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+- Earthquake
+- Strength
+- Rock Tomb
+- Toxic
+
+Numel
+Level: 26
+Ability: Oblivious
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+- Lava Plume
+- Earth Power
+- Rock Slide
+- Amnesia
+
+Graveler @ Hard Stone
+Level: 27
+Ability: Sturdy
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+- Rock Slide
+- Bulldoze
+- Self-Destruct
+- Rock Polish
+
+=== TRAINER_COBY ===
+Name: COBY
+Class: Bird Keeper
+Pic: Bird Keeper
+Gender: Male
+Music: Cool
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Swablu
+Level: 23
+Ability: Natural Cure
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+- Aerial Ace
+- Dragon Breath
+- Fury Attack
+- Mist
+
+Corvisquire
+Level: 23
+Ability: Keen Eye
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+- Pluck
+- Thief
+- Facade
+- Hone Claws
+
+Swellow @ Sharp Beak
+Level: 24
+Ability: Guts
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+- Aerial Ace
+- Quick Attack
+- Steel Wing
+- Double Team
+
+=== TRAINER_CLAUDE ===
+Name: CLAUDE
+Class: Fisherman
+Pic: Fisherman
+Gender: Male
+Music: Hiker
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Buizel
+Level: 24
+Ability: Swift Swim
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+- Waterfall
+- Iron Tail
+- Brick Break
+- Bulk Up
+
+Barboach
+Level: 24
+Ability: Oblivious
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+- Water Pulse
+- Mud-Slap
+- Rock Tomb
+- Amnesia
+
+Gyarados @ Mystic Water
+Level: 25
+Ability: Intimidate
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+- Waterfall
+- Bite
+- Ice Fang
+- Scary Face
+
+=== TRAINER_CHARLOTTE ===
+Name: CHARLOTTE
+Class: Picnicker
+Pic: Picnicker
+Gender: Female
+Music: Girl
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Gloom
+Level: 24
+Ability: Chlorophyll
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+- Mega Drain
+- Acid
+- Sleep Powder
+- Sweet Scent
+
+Stufful
+Level: 24
+Ability: Fluffy
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+- Strength
+- Brick Break
+- Earthquake
+- Bulk Up
+
+Nuzleaf @ Oran Berry
+Level: 25
+Ability: Chlorophyll
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+- Razor Leaf
+- Payback
+- Fake Out
+- Sunny Day
+
+=== TRAINER_WILTON_2 ===
+Name: WILTON
+Class: Cooltrainer
+Pic: Cooltrainer M
+Gender: Male
+Music: Cool
+Items: Hyper Potion
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Manectric @ Magnet
+Level: 33
+Ability: Static
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Timid
+- Thunderbolt
+- Flamethrower
+- Thunder Wave
+- Bite
+
+Wailmer
+Level: 33
+Ability: Water Veil
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Modest
+- Surf
+- Ice Beam
+- Heavy Slam
+- Roar
+
+Fletchinder @ Charcoal
+Level: 34
+Ability: Flame Body
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Adamant
+- Fire Blast
+- Aerial Ace
+- Steel Wing
+- Toxic
+
+Hariyama @ Black Belt
+Level: 35
+Ability: Thick Fat
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Adamant
+- Fake Out
+- Brick Break
+- Knock Off
+- Bulk Up
+
+=== TRAINER_WILTON_3 ===
+Name: WILTON
+Class: Cooltrainer
+Pic: Cooltrainer M
+Gender: Male
+Music: Cool
+Items: Hyper Potion
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Manectric @ Life Orb
+Level: 38
+Ability: Static
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Timid
+- Thunderbolt
+- Flamethrower
+- Thunder Wave
+- Charge
+
+Wailmer @ Chesto Berry
+Level: 39
+Ability: Water Veil
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Modest
+- Surf
+- Ice Beam
+- Heavy Slam
+- Rest
+
+Talonflame @ Life Orb
+Level: 38
+Ability: Flame Body
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Adamant
+- Flare Blitz
+- Aerial Ace
+- Steel Wing
+- Bulk Up
+
+Fraxure @ Eviolite
+Level: 38
+Ability: Rivalry
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Adamant
+- Dragon Claw
+- Crunch
+- Iron Tail
+- Dragon Dance
+
+Hariyama @ Flame Orb
+Level: 40
+Ability: Guts
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Adamant
+- Fake Out
+- Close Combat
+- Knock Off
+- Rock Slide
+
+=== TRAINER_WILTON_4 ===
+Name: WILTON
+Class: Cooltrainer
+Pic: Cooltrainer M
+Gender: Male
+Music: Cool
+Items: Full Restore
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Talonflame @ Life Orb
+Level: 42
+Ability: Flame Body
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Flare Blitz
+- Aerial Ace
+- Steel Wing
+- Bulk Up
+
+Manectric @ Magnet
+Level: 43
+Ability: Lightning Rod
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Thunderbolt
+- Flamethrower
+- Thunder Wave
+- Charge
+
+Wailord @ Leftovers
+Level: 43
+Ability: Water Veil
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Surf
+- Ice Beam
+- Roar
+- Rest
+
+Fraxure @ Eviolite
+Level: 44
+Ability: Rivalry
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Dragon Claw
+- Crunch
+- Iron Tail
+- Swords Dance
+
+Hariyama @ Flame Orb
+Level: 45
+Ability: Guts
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Nature: Adamant
+- Fake Out
+- Close Combat
+- Facade
+- Knock Off
+
+=== TRAINER_WILTON_5 ===
+Name: WILTON
+Class: Cooltrainer
+Pic: Cooltrainer M
+Gender: Male
+Music: Cool
+Items: Full Restore
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Talonflame @ Life Orb
+Level: 60
+Ability: Flame Body
+EVs: 4 HP / 252 Atk / 252 Spe
+Nature: Jolly
+- Flare Blitz
+- Aerial Ace
+- Steel Wing
+- Bulk Up
+
+Manectric @ Magnet
+Level: 60
+Ability: Lightning Rod
+EVs: 4 HP / 252 SpA / 252 Spe
+Nature: Timid
+- Thunderbolt
+- Flamethrower
+- Volt Switch
+- Snarl
+
+Wailord @ Choice Scarf
+Level: 61
+Ability: Water Veil
+EVs: 4 HP / 252 SpA / 252 Spe
+Nature: Modest
+- Water Spout
+- Hydro Pump
+- Ice Beam
+- Bounce
+
+Haxorus @ Life Orb
+Level: 61
+Ability: Rivalry
+EVs: 4 HP / 252 Atk / 252 Spe
+Nature: Jolly
+- Dragon Claw
+- Earthquake
+- Crunch
+- Swords Dance
+
+Hariyama @ Flame Orb
+Level: 62
+Ability: Guts
+EVs: 252 HP / 252 Atk / 4 SpD
+Nature: Adamant
+- Close Combat
+- Knock Off
+- Bullet Punch
+- Fake Out
+
+=== TRAINER_BROOKE_2 ===
+Name: BROOKE
+Class: Cooltrainer
+Pic: Cooltrainer F
+Gender: Female
+Music: Cool
+Items: Hyper Potion
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Pelipper
+Level: 33
+Ability: Keen Eye
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Modest
+- Surf
+- Air Slash
+- Ice Beam
+- Protect
+
+Camerupt
+Level: 33
+Ability: Solid Rock
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Modest
+- Lava Plume
+- Earth Power
+- Rock Slide
+- Amnesia
+
+Glameow @ Silk Scarf
+Level: 34
+Ability: Limber
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Adamant
+- Retaliate
+- Iron Tail
+- Thief
+- Toxic
+
+Roselia @ Sitrus Berry
+Level: 35
+Ability: Natural Cure
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Modest
+- Giga Drain
+- Sludge Bomb
+- Leech Seed
+- Synthesis
+
+=== TRAINER_BROOKE_3 ===
+Name: BROOKE
+Class: Cooltrainer
+Pic: Cooltrainer F
+Gender: Female
+Music: Cool
+Items: Hyper Potion
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Pelipper
+Level: 38
+Ability: Keen Eye
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Modest
+- Surf
+- Air Slash
+- Ice Beam
+- Protect
+
+Camerupt
+Level: 38
+Ability: Solid Rock
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Modest
+- Lava Plume
+- Earth Power
+- Rock Slide
+- Amnesia
+
+Purugly @ Life Orb
+Level: 39
+Ability: Thick Fat
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Adamant
+- Slash
+- Play Rough
+- Iron Tail
+- Toxic
+
+Altaria
+Level: 39
+Ability: Natural Cure
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Modest
+- Dragon Pulse
+- Flamethrower
+- Sing
+- Cotton Guard
+
+Roselia @ Leftovers
+Level: 40
+Ability: Natural Cure
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Modest
+- Giga Drain
+- Sludge Bomb
+- Leech Seed
+- Synthesis
+
+=== TRAINER_BROOKE_4 ===
+Name: BROOKE
+Class: Cooltrainer
+Pic: Cooltrainer F
+Gender: Female
+Music: Cool
+Items: Full Restore
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Altaria @ Leftovers
+Level: 42
+Ability: Natural Cure
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Dragon Pulse
+- Flamethrower
+- Ice Beam
+- Cotton Guard
+
+Pelipper @ Sitrus Berry
+Level: 43
+Ability: Keen Eye
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Surf
+- Air Slash
+- Roost
+- Tailwind
+
+Camerupt @ Charcoal
+Level: 43
+Ability: Solid Rock
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Eruption
+- Earth Power
+- Rock Slide
+- Yawn
+
+Purugly @ Silk Scarf
+Level: 44
+Ability: Thick Fat
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Slash
+- Play Rough
+- Iron Tail
+- Toxic
+
+Roserade @ Black Sludge
+Level: 45
+Ability: Natural Cure
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Nature: Modest
+- Leaf Storm
+- Sludge Bomb
+- Shadow Ball
+- Synthesis
+
+=== TRAINER_BROOKE_5 ===
+Name: BROOKE
+Class: Cooltrainer
+Pic: Cooltrainer F
+Gender: Female
+Music: Cool
+Items: Full Restore
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Altaria @ Leftovers
+Level: 60
+Ability: Natural Cure
+EVs: 4 HP / 252 Atk / 252 Spe
+Nature: Adamant
+- Dragon Dance
+- Dragon Claw
+- Earthquake
+- Roost
+
+Pelipper @ Leftovers
+Level: 60
+Ability: Keen Eye
+EVs: 252 HP / 252 Def / 4 SpD
+Nature: Bold
+- Scald
+- Hurricane
+- U-turn
+- Roost
+
+Camerupt @ Sitrus Berry
+Level: 60
+Ability: Solid Rock
+EVs: 252 HP / 252 SpA / 4 SpD
+Nature: Modest
+- Earth Power
+- Fire Blast
+- Stealth Rock
+- Yawn
+
+Purugly @ Leftovers
+Level: 60
+Ability: Thick Fat
+EVs: 4 HP / 252 Atk / 252 Spe
+Nature: Jolly
+- Body Slam
+- Play Rough
+- Iron Tail
+- Hone Claws
+
+Roserade @ Life Orb
+Level: 61
+Ability: Natural Cure
+EVs: 4 HP / 252 SpA / 252 Spe
+Nature: Timid
+- Leaf Storm
+- Sludge Bomb
+- Shadow Ball
+- Extrasensory
+
+=== TRAINER_DUSTY_1 ===
+Name: DUSTY
+Class: Ruin Maniac
+Pic: Ruin Maniac
+Gender: Male
+Music: Hiker
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Tyrunt
+Level: 28
+Ability: Strong Jaw
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Rock Slide
+- Dragon Claw
+- Earthquake
+- Toxic
+
+Baltoy
+Level: 28
+Ability: Levitate
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Extrasensory
+- Rock Tomb
+- Bulldoze
+- Cosmic Power
+
+Sandslash @ Soft Sand
+Level: 30
+Ability: Sand Veil
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Crush Claw
+- Dig
+- Rock Slide
+- Swords Dance
+
+=== TRAINER_DUSTY_2 ===
+Name: DUSTY
+Class: Ruin Maniac
+Pic: Ruin Maniac
+Gender: Male
+Music: Hiker
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Tyrunt
+Level: 33
+Ability: Strong Jaw
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Adamant
+- Rock Slide
+- Dragon Claw
+- Earthquake
+- Toxic
+
+Baltoy
+Level: 33
+Ability: Levitate
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Modest
+- Earth Power
+- Extrasensory
+- Rock Tomb
+- Cosmic Power
+
+Relicanth
+Level: 34
+Ability: Rock Head
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Adamant
+- Aqua Tail
+- Rock Slide
+- Take Down
+- Yawn
+
+Sandslash @ Soft Sand
+Level: 35
+Ability: Sand Veil
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Adamant
+- Earthquake
+- Rock Slide
+- Crush Claw
+- Brick Break
+
+=== TRAINER_DUSTY_3 ===
+Name: DUSTY
+Class: Ruin Maniac
+Pic: Ruin Maniac
+Gender: Male
+Music: Hiker
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Claydol
+Level: 38
+Ability: Levitate
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Modest
+- Earth Power
+- Psychic
+- Ice Beam
+- Cosmic Power
+
+Tyrunt @ Eviolite
+Level: 38
+Ability: Strong Jaw
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Adamant
+- Rock Slide
+- Dragon Claw
+- Earthquake
+- Toxic
+
+Relicanth @ Leftovers
+Level: 39
+Ability: Rock Head
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Adamant
+- Aqua Tail
+- Rock Slide
+- Earthquake
+- Yawn
+
+Sandslash @ Life Orb
+Level: 40
+Ability: Sand Veil
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Adamant
+- Earthquake
+- Rock Slide
+- Slash
+- Swords Dance
+
+=== TRAINER_DUSTY_4 ===
+Name: DUSTY
+Class: Ruin Maniac
+Pic: Ruin Maniac
+Gender: Male
+Music: Hiker
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Claydol @ Light Clay
+Level: 42
+Ability: Levitate
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Earth Power
+- Psychic
+- Reflect
+- Light Screen
+
+Relicanth @ Leftovers
+Level: 43
+Ability: Rock Head
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Aqua Tail
+- Rock Slide
+- Earthquake
+- Yawn
+
+Tyrantrum @ Leftovers
+Level: 44
+Ability: Strong Jaw
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Rock Slide
+- Dragon Claw
+- Earthquake
+- Toxic
+
+Sandslash @ Life Orb
+Level: 45
+Ability: Sand Veil
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Nature: Adamant
+- Swords Dance
+- Earthquake
+- Rock Slide
+- Crush Claw
+
+=== TRAINER_DUSTY_5 ===
+Name: DUSTY
+Class: Ruin Maniac
+Pic: Ruin Maniac
+Gender: Male
+Music: Hiker
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Claydol @ Light Clay
+Level: 60
+Ability: Levitate
+EVs: 252 HP / 252 Def / 4 SpD
+Nature: Bold
+- Earth Power
+- Psychic
+- Reflect
+- Light Screen
+
+Relicanth @ Leftovers
+Level: 61
+Ability: Rock Head
+EVs: 252 HP / 252 Atk / 4 SpD
+Nature: Adamant
+- Head Smash
+- Waterfall
+- Earthquake
+- Yawn
+
+Tyrantrum @ Leftovers
+Level: 61
+Ability: Strong Jaw
+EVs: 252 HP / 252 Atk / 4 SpD
+Nature: Adamant
+- Rock Slide
+- Dragon Claw
+- Earthquake
+- Toxic
+
+Sandslash @ Life Orb
+Level: 62
+Ability: Sand Veil
+EVs: 4 HP / 252 Atk / 252 Spe
+Nature: Adamant
+- Earthquake
+- Knock Off
+- Stone Edge
+- Swords Dance
+
+=== TRAINER_BEAU ===
+Name: BEAU
+Class: Camper
+Pic: Camper
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Hippopotas
+Level: 27
+Ability: Sand Stream
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Earthquake
+- Crunch
+- Iron Tail
+- Toxic
+
+Sandslash
+Level: 27
+Ability: Sand Veil
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Crush Claw
+- Dig
+- Rock Slide
+- Sand Attack
+
+Baltoy @ Soft Sand
+Level: 28
+Ability: Levitate
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Extrasensory
+- Ancient Power
+- Dig
+- Cosmic Power
+
+=== TRAINER_HEIDI ===
+Name: HEIDI
+Class: Picnicker
+Pic: Picnicker
+Gender: Female
+Music: Girl
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Sandslash
+Level: 28
+Ability: Sand Veil
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Crush Claw
+- Dig
+- Rapid Spin
+- Sand Attack
+
+Sandile
+Level: 28
+Ability: Intimidate
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Earthquake
+- Crunch
+- Dragon Claw
+- Hone Claws
+
+Baltoy @ Soft Sand
+Level: 29
+Ability: Levitate
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Extrasensory
+- Rock Tomb
+- Mud-Slap
+- Cosmic Power
+
+=== TRAINER_BRYAN ===
+Name: BRYAN
+Class: Ruin Maniac
+Pic: Ruin Maniac
+Gender: Male
+Music: Hiker
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Solrock
+Level: 28
+Ability: Levitate
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Rock Slide
+- Zen Headbutt
+- Hypnosis
+- Rock Polish
+
+Sigilyph
+Level: 28
+Ability: Wonder Skin
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Psychic
+- Air Cutter
+- Ice Beam
+- Calm Mind
+
+Sandslash @ Soft Sand
+Level: 29
+Ability: Sand Veil
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Crush Claw
+- Bulldoze
+- Aerial Ace
+- Swords Dance
+
+=== TRAINER_DREW ===
+Name: DREW
+Class: Camper
+Pic: Camper
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Gabite
+Level: 28
+Ability: Sand Veil
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Dragon Claw
+- Earthquake
+- Iron Tail
+- Toxic
+
+Cacnea
+Level: 28
+Ability: Sand Veil
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Giga Drain
+- Payback
+- Leech Seed
+- Sand Attack
+
+Sandslash @ Soft Sand
+Level: 29
+Ability: Sand Veil
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Crush Claw
+- Bulldoze
+- Rock Tomb
+- Swords Dance
+
+=== TRAINER_GEORGE ===
+Name: GEORGE
+Class: Cooltrainer
+Pic: Cooltrainer M
+Gender: Male
+Music: Cool
+Items: Hyper Potion
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Greedent
+Level: 31
+Ability: Cheek Pouch
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Body Slam
+- Earthquake
+- Iron Tail
+- Rain Dance
+
+Wailmer
+Level: 31
+Ability: Water Veil
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Brine
+- Heavy Slam
+- Icy Wind
+- Rest
+
+Tropius
+Level: 31
+Ability: Chlorophyll
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Giga Drain
+- Aerial Ace
+- Stomp
+- Growth
+
+Vigoroth @ Sitrus Berry
+Level: 32
+Ability: Vital Spirit
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Slash
+- Throat Chop
+- Slack Off
+- Bulk Up
+
+=== TRAINER_TONY_1 ===
+Name: TONY
+Class: Swimmer M
+Pic: Swimmer M
+Gender: Male
+Music: Swimmer
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Lanturn
+Level: 31
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Discharge
+- Bubble Beam
+- Confuse Ray
+- Thunder Wave
+
+Tentacruel
+Level: 31
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Bubble Beam
+- Sludge Bomb
+- Wrap
+- Supersonic
+
+Frillish
+Level: 31
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Surf
+- Shadow Ball
+- Sludge Bomb
+- Toxic
+
+Sharpedo @ Oran Berry
+Level: 32
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Night Slash
+- Aqua Jet
+- Ice Fang
+- Scary Face
+
+=== TRAINER_TONY_2 ===
+Name: TONY
+Class: Swimmer M
+Pic: Swimmer M
+Gender: Male
+Music: Swimmer
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Lanturn
+Level: 33
+Ability: Volt Absorb
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Modest
+- Thunderbolt
+- Surf
+- Confuse Ray
+- Thunder Wave
+
+Tentacruel
+Level: 34
+Ability: Clear Body
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Modest
+- Sludge Bomb
+- Bubble Beam
+- Toxic
+- Hex
+
+Frillish
+Level: 34
+Ability: Water Absorb
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Timid
+- Surf
+- Shadow Ball
+- Sludge Bomb
+- Toxic
+
+Sharpedo @ Black Glasses
+Level: 35
+Ability: Rough Skin
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Adamant
+- Crunch
+- Waterfall
+- Ice Fang
+- Aqua Jet
+
+=== TRAINER_TONY_3 ===
+Name: TONY
+Class: Swimmer M
+Pic: Swimmer M
+Gender: Male
+Music: Swimmer
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Frillish @ Leftovers
+Level: 38
+Ability: Water Absorb
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Timid
+- Surf
+- Shadow Ball
+- Sludge Bomb
+- Toxic
+
+Tentacruel @ Black Sludge
+Level: 38
+Ability: Clear Body
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Modest
+- Sludge Bomb
+- Surf
+- Toxic
+- Hex
+
+Lanturn
+Level: 38
+Ability: Volt Absorb
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Modest
+- Thunderbolt
+- Surf
+- Confuse Ray
+- Thunder Wave
+
+Gyarados @ Mystic Water
+Level: 39
+Ability: Intimidate
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Adamant
+- Dragon Dance
+- Waterfall
+- Crunch
+- Earthquake
+
+Sharpedo @ Life Orb
+Level: 40
+Ability: Rough Skin
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Adamant
+- Liquidation
+- Crunch
+- Ice Fang
+- Aqua Jet
+
+=== TRAINER_TONY_4 ===
+Name: TONY
+Class: Swimmer M
+Pic: Swimmer M
+Gender: Male
+Music: Swimmer
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Tentacruel @ Black Sludge
+Level: 42
+Ability: Clear Body
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Surf
+- Sludge Bomb
+- Ice Beam
+- Toxic
+
+Lanturn @ Sitrus Berry
+Level: 43
+Ability: Volt Absorb
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Surf
+- Thunderbolt
+- Ice Beam
+- Thunder Wave
+
+Gyarados @ Leftovers
+Level: 43
+Ability: Intimidate
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Dragon Dance
+- Waterfall
+- Crunch
+- Earthquake
+
+Jellicent @ Leftovers
+Level: 44
+Ability: Water Absorb
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Surf
+- Shadow Ball
+- Sludge Bomb
+- Toxic
+
+Sharpedo @ Life Orb
+Level: 45
+Ability: Rough Skin
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Nature: Adamant
+- Liquidation
+- Crunch
+- Earthquake
+- Aqua Jet
+
+=== TRAINER_TONY_5 ===
+Name: TONY
+Class: Swimmer M
+Pic: Swimmer M
+Gender: Male
+Music: Swimmer
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Tentacruel @ Black Sludge
+Level: 62
+Ability: Clear Body
+EVs: 4 HP / 252 SpA / 252 Spe
+Nature: Timid
+- Scald
+- Sludge Bomb
+- Knock Off
+- Rapid Spin
+
+Lanturn @ Leftovers
+Level: 62
+Ability: Volt Absorb
+EVs: 252 HP / 4 Def / 252 SpD
+Nature: Calm
+- Scald
+- Discharge
+- Ice Beam
+- Thunder Wave
+
+Gyarados @ Leftovers
+Level: 63
+Ability: Intimidate
+EVs: 252 HP / 252 Atk / 4 SpD
+Nature: Adamant
+- Waterfall
+- Earthquake
+- Thunder Wave
+- Taunt
+
+Jellicent @ Life Orb
+Level: 63
+Ability: Water Absorb
+EVs: 4 HP / 252 SpA / 252 Spe
+Nature: Timid
+- Surf
+- Shadow Ball
+- Sludge Bomb
+- Toxic
+
+Sharpedo @ Life Orb
+Level: 64
+Ability: Speed Boost
+EVs: 4 HP / 252 Atk / 252 Spe
+Nature: Adamant
+- Crunch
+- Liquidation
+- Ice Fang
+- Protect
+
+=== TRAINER_TIMOTHY_1 ===
+Name: TIMOTHY
+Class: Expert
+Pic: Expert M
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Gurdurr
+Level: 32
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Brick Break
+- Rock Slide
+- Thief
+- Bulk Up
+
+Gallade
+Level: 32
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Zen Headbutt
+- Brick Break
+- Night Slash
+- Swords Dance
+
+Hawlucha
+Level: 32
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Brick Break
+- Wing Attack
+- Steel Wing
+- Bulk Up
+
+Hariyama @ Black Belt
+Level: 33
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Force Palm
+- Knock Off
+- Fake Out
+- Bulk Up
+
+=== TRAINER_TIMOTHY_2 ===
+Name: TIMOTHY
+Class: Expert
+Pic: Expert M
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Gurdurr
+Level: 33
+Ability: Guts
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Adamant
+- Brick Break
+- Rock Slide
+- Thief
+- Bulk Up
+
+Gallade
+Level: 34
+Ability: Steadfast
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Adamant
+- Zen Headbutt
+- Brick Break
+- Night Slash
+- Swords Dance
+
+Hawlucha
+Level: 34
+Ability: Limber
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Adamant
+- Brick Break
+- Wing Attack
+- Steel Wing
+- Bulk Up
+
+Hariyama @ Sitrus Berry
+Level: 35
+Ability: Thick Fat
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Adamant
+- Fake Out
+- Belly Drum
+- Brick Break
+- Knock Off
+
+=== TRAINER_TIMOTHY_3 ===
+Name: TIMOTHY
+Class: Expert
+Pic: Expert M
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Gurdurr @ Leftovers
+Level: 38
+Ability: Guts
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Adamant
+- Brick Break
+- Rock Slide
+- Thief
+- Bulk Up
+
+Gallade @ Black Belt
+Level: 38
+Ability: Sharpness
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Adamant
+- Swords Dance
+- Sacred Sword
+- Night Slash
+- Leaf Blade
+
+Hawlucha @ Life Orb
+Level: 39
+Ability: Limber
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Adamant
+- Brick Break
+- Wing Attack
+- Steel Wing
+- Bulk Up
+
+Hariyama @ Sitrus Berry
+Level: 40
+Ability: Thick Fat
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Adamant
+- Fake Out
+- Belly Drum
+- Close Combat
+- Knock Off
+
+=== TRAINER_TIMOTHY_4 ===
+Name: TIMOTHY
+Class: Expert
+Pic: Expert M
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Gurdurr @ Leftovers
+Level: 42
+Ability: Guts
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Brick Break
+- Stone Edge
+- Thief
+- Bulk Up
+
+Gallade @ Life Orb
+Level: 43
+Ability: Sharpness
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Swords Dance
+- Psycho Cut
+- Sacred Sword
+- Leaf Blade
+
+Hawlucha @ Black Belt
+Level: 44
+Ability: Limber
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Flying Press
+- Wing Attack
+- Steel Wing
+- Swords Dance
+
+Hariyama @ Sitrus Berry
+Level: 45
+Ability: Thick Fat
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Nature: Adamant
+- Belly Drum
+- Bullet Punch
+- Close Combat
+- Knock Off
+
+=== TRAINER_TIMOTHY_5 ===
+Name: TIMOTHY
+Class: Expert
+Pic: Expert M
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Conkeldurr @ Sitrus Berry
+Level: 63
+Ability: Guts
+EVs: 252 HP / 252 Atk / 4 SpD
+Nature: Adamant
+- Superpower
+- Earthquake
+- Stone Edge
+- Bulk Up
+
+Gallade @ Life Orb
+Level: 64
+Ability: Sharpness
+EVs: 4 HP / 252 Atk / 252 Spe
+Nature: Jolly
+- Psycho Cut
+- Sacred Sword
+- Leaf Blade
+- Swords Dance
+
+Hawlucha @ Life Orb
+Level: 64
+Ability: Limber
+EVs: 4 HP / 252 Atk / 252 Spe
+Nature: Jolly
+- High Jump Kick
+- Wing Attack
+- Steel Wing
+- Swords Dance
+
+Hariyama @ Sitrus Berry
+Level: 65
+Ability: Thick Fat
+EVs: 252 HP / 252 Atk / 4 SpD
+Nature: Adamant
+- Belly Drum
+- Drain Punch
+- Knock Off
+- Bullet Punch
+
+=== TRAINER_JACKSON_1 ===
+Name: JACKSON
+Class: Pkmn Ranger
+Pic: Pokemon Ranger M
+Gender: Male
+Music: Cool
+Items: Full Restore
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Kecleon
+Level: 32
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Slash
+- Shadow Sneak
+- Ancient Power
+- Detect
+
+Tropius
+Level: 32
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Giga Drain
+- Aerial Ace
+- Earthquake
+- Whirlwind
+
+Unfezant
+Level: 32
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Facade
+- Aerial Ace
+- Steel Wing
+- Toxic
+
+Breloom @ Miracle Seed
+Level: 33
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Mach Punch
+- Giga Drain
+- Headbutt
+- Stun Spore
+
+=== TRAINER_JACKSON_2 ===
+Name: JACKSON
+Class: Pkmn Ranger
+Pic: Pokemon Ranger M
+Gender: Male
+Music: Cool
+Items: Full Restore
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Kecleon
+Level: 34
+Ability: Color Change
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Adamant
+- Shadow Claw
+- Slash
+- Brick Break
+- Shadow Sneak
+
+Tropius
+Level: 34
+Ability: Chlorophyll
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Modest
+- Giga Drain
+- Aerial Ace
+- Earthquake
+- Whirlwind
+
+Unfezant
+Level: 34
+Ability: Big Pecks
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Adamant
+- Facade
+- Aerial Ace
+- Steel Wing
+- Toxic
+
+Breloom @ Miracle Seed
+Level: 35
+Ability: Effect Spore
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Adamant
+- Spore
+- Mach Punch
+- Bullet Seed
+- Rock Tomb
+
+=== TRAINER_JACKSON_3 ===
+Name: JACKSON
+Class: Pkmn Ranger
+Pic: Pokemon Ranger M
+Gender: Male
+Music: Cool
+Items: Full Restore
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Kecleon @ Leftovers
+Level: 39
+Ability: Color Change
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Adamant
+- Shadow Claw
+- Slash
+- Brick Break
+- Shadow Sneak
+
+Tropius @ Sitrus Berry
+Level: 39
+Ability: Chlorophyll
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Modest
+- Air Slash
+- Giga Drain
+- Earthquake
+- Whirlwind
+
+Unfezant @ Life Orb
+Level: 39
+Ability: Big Pecks
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Adamant
+- Facade
+- Aerial Ace
+- Steel Wing
+- Toxic
+
+Absol @ Scope Lens
+Level: 39
+Ability: Super Luck
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Adamant
+- Night Slash
+- Swords Dance
+- Quick Attack
+- Aerial Ace
+
+Breloom @ Toxic Orb
+Level: 40
+Ability: Poison Heal
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Adamant
+- Spore
+- Mach Punch
+- Seed Bomb
+- Rock Tomb
+
+=== TRAINER_JACKSON_4 ===
+Name: JACKSON
+Class: Pkmn Ranger
+Pic: Pokemon Ranger M
+Gender: Male
+Music: Cool
+Items: Full Restore
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Kecleon @ Leftovers
+Level: 42
+Ability: Color Change
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Body Slam
+- Shadow Claw
+- Ice Punch
+- Thunder Wave
+
+Tropius @ Sitrus Berry
+Level: 43
+Ability: Chlorophyll
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Air Slash
+- Giga Drain
+- Body Slam
+- Roar
+
+Unfezant @ Life Orb
+Level: 43
+Ability: Big Pecks
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Facade
+- Aerial Ace
+- Steel Wing
+- Toxic
+
+Absol @ Scope Lens
+Level: 44
+Ability: Super Luck
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Swords Dance
+- Night Slash
+- Sucker Punch
+- Rock Slide
+
+Breloom @ Toxic Orb
+Level: 45
+Ability: Poison Heal
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Nature: Adamant
+- Spore
+- Seed Bomb
+- Drain Punch
+- Rock Slide
+
+=== TRAINER_JACKSON_5 ===
+Name: JACKSON
+Class: Pkmn Ranger
+Pic: Pokemon Ranger M
+Gender: Male
+Music: Cool
+Items: Full Restore
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Absol @ Scope Lens
+Level: 62
+Ability: Super Luck
+EVs: 4 HP / 252 Atk / 252 Spe
+Nature: Adamant
+- Night Slash
+- Psycho Cut
+- Sucker Punch
+- Swords Dance
+
+Unfezant @ Life Orb
+Level: 62
+Ability: Big Pecks
+EVs: 4 HP / 252 Atk / 252 Spe
+Nature: Jolly
+- Facade
+- Aerial Ace
+- Steel Wing
+- Toxic
+
+Tropius @ Sitrus Berry
+Level: 63
+Ability: Harvest
+EVs: 252 HP / 4 Def / 252 SpD
+Nature: Calm
+- Leech Seed
+- Protect
+- Air Slash
+- Giga Drain
+
+Kecleon @ Leftovers
+Level: 63
+Ability: Protean
+EVs: 252 HP / 252 Atk / 4 SpD
+Nature: Adamant
+- Fake Out
+- Knock Off
+- Shadow Sneak
+- Drain Punch
+
+Breloom @ Toxic Orb
+Level: 64
+Ability: Poison Heal
+EVs: 252 HP / 252 Atk / 4 SpD
+Nature: Adamant
+- Spore
+- Seed Bomb
+- Mach Punch
+- Swords Dance
+
+=== TRAINER_CATHERINE_1 ===
+Name: CATHERINE
+Class: Pkmn Ranger
+Pic: Pokemon Ranger F
+Gender: Female
+Music: Cool
+Items: Full Restore
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Milotic
+Level: 32
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Surf
+- Ice Beam
+- Recover
+- Toxic
+
+Excadrill
+Level: 32
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Earthquake
+- Metal Claw
+- Brick Break
+- Hone Claws
+
+Gloom
+Level: 32
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Giga Drain
+- Acid
+- Sleep Powder
+- Moonblast
+
+Roselia @ Miracle Seed
+Level: 33
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Giga Drain
+- Sludge Bomb
+- Leech Seed
+- Stun Spore
+
+=== TRAINER_CATHERINE_2 ===
+Name: CATHERINE
+Class: Pkmn Ranger
+Pic: Pokemon Ranger F
+Gender: Female
+Music: Cool
+Items: Full Restore
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Milotic
+Level: 34
+Ability: Marvel Scale
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Modest
+- Surf
+- Ice Beam
+- Recover
+- Dragon Tail
+
+Excadrill
+Level: 34
+Ability: Sand Rush
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Adamant
+- Earthquake
+- Metal Claw
+- Brick Break
+- Hone Claws
+
+Gloom
+Level: 34
+Ability: Chlorophyll
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Modest
+- Giga Drain
+- Sludge Bomb
+- Moonblast
+- Sleep Powder
+
+Roselia @ Sitrus Berry
+Level: 35
+Ability: Natural Cure
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Nature: Modest
+- Magical Leaf
+- Sludge Bomb
+- Shadow Ball
+- Synthesis
+
+=== TRAINER_CATHERINE_3 ===
+Name: CATHERINE
+Class: Pkmn Ranger
+Pic: Pokemon Ranger F
+Gender: Female
+Music: Cool
+Items: Full Restore
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Milotic @ Sitrus Berry
+Level: 39
+Ability: Marvel Scale
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Modest
+- Surf
+- Ice Beam
+- Recover
+- Dragon Tail
+
+Excadrill @ Leftovers
+Level: 39
+Ability: Sand Rush
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Adamant
+- Earthquake
+- Metal Claw
+- Brick Break
+- Swords Dance
+
+Bellossom @ Leftovers
+Level: 39
+Ability: Chlorophyll
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Modest
+- Quiver Dance
+- Giga Drain
+- Moonblast
+- Sleep Powder
+
+Roselia @ Eviolite
+Level: 40
+Ability: Natural Cure
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Modest
+- Giga Drain
+- Sludge Bomb
+- Shadow Ball
+- Synthesis
+
+=== TRAINER_CATHERINE_4 ===
+Name: CATHERINE
+Class: Pkmn Ranger
+Pic: Pokemon Ranger F
+Gender: Female
+Music: Cool
+Items: Full Restore
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Milotic @ Leftovers
+Level: 42
+Ability: Marvel Scale
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Surf
+- Ice Beam
+- Recover
+- Toxic
+
+Excadrill @ Sitrus Berry
+Level: 43
+Ability: Sand Rush
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Earthquake
+- Metal Claw
+- Brick Break
+- Swords Dance
+
+Bellossom @ Leftovers
+Level: 44
+Ability: Chlorophyll
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Quiver Dance
+- Giga Drain
+- Moonblast
+- Sleep Powder
+
+Roserade @ Black Sludge
+Level: 45
+Ability: Natural Cure
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Nature: Modest
+- Leaf Storm
+- Sludge Bomb
+- Extrasensory
+- Synthesis
+
+=== TRAINER_CATHERINE_5 ===
+Name: CATHERINE
+Class: Pkmn Ranger
+Pic: Pokemon Ranger F
+Gender: Female
+Music: Cool
+Items: Full Restore
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Milotic @ Leftovers
+Level: 62
+Ability: Marvel Scale
+EVs: 252 HP / 252 Def / 4 SpD
+Nature: Bold
+- Scald
+- Recover
+- Ice Beam
+- Haze
+
+Excadrill @ Leftovers
+Level: 63
+Ability: Sand Rush
+EVs: 4 HP / 252 Atk / 252 Spe
+Nature: Adamant
+- Earthquake
+- Metal Claw
+- Brick Break
+- Swords Dance
+
+Bellossom @ Leftovers
+Level: 63
+Ability: Chlorophyll
+EVs: 252 HP / 252 SpA / 4 SpD
+Nature: Modest
+- Quiver Dance
+- Giga Drain
+- Moonblast
+- Sleep Powder
+
+Roserade @ Life Orb
+Level: 64
+Ability: Natural Cure
+EVs: 4 HP / 252 SpA / 252 Spe
+Nature: Timid
+- Leaf Storm
+- Sludge Bomb
+- Shadow Ball
+- Extrasensory
+
+=== TRAINER_GREG ===
+Name: GREG
+Class: Bug Catcher
+Pic: Bug Catcher
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Lokix
+Level: 31
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Lunge
+- Thief
+- Brick Break
+- Taunt
+
+Heracross
+Level: 31
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Horn Attack
+- Brick Break
+- Aerial Ace
+- Counter
+
+Volbeat
+Level: 31
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Struggle Bug
+- Quick Attack
+- Confuse Ray
+- Moonlight
+
+Illumise @ Oran Berry
+Level: 32
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Struggle Bug
+- Encore
+- Wish
+- Shock Wave
+
+=== TRAINER_DONALD ===
+Name: DONALD
+Class: Bug Maniac
+Pic: Bug Maniac
+Gender: Male
+Music: Suspicious
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Ninjask
+Level: 31
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Bug Bite
+- Aerial Ace
+- Fury Swipes
+- Screech
+
+Masquerain
+Level: 31
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Air Cutter
+- Bubble Beam
+- Stun Spore
+- Quick Attack
+
+Centiskorch
+Level: 31
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Flame Wheel
+- Bug Bite
+- Bite
+- Coil
+
+Beautifly @ Silver Powder
+Level: 32
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Air Cutter
+- Giga Drain
+- Stun Spore
+- Morning Sun
+
+=== TRAINER_PHIL ===
+Name: PHIL
+Class: Bird Keeper
+Pic: Bird Keeper
+Gender: Male
+Music: Cool
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Skarmory
+Level: 32
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Steel Wing
+- Wing Attack
+- Sand Attack
+- Agility
+
+Dodrio
+Level: 32
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Tri Attack
+- Pluck
+- Steel Wing
+- Agility
+
+Toucannon
+Level: 32
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Facade
+- Drill Peck
+- Brick Break
+- Toxic
+
+Swellow @ Sharp Beak
+Level: 33
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Aerial Ace
+- Air Slash
+- Quick Attack
+- Steel Wing
+
+=== TRAINER_PERRY ===
+Name: PERRY
+Class: Bird Keeper
+Pic: Bird Keeper
+Gender: Male
+Music: Cool
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Kilowattrel
+Level: 30
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Thunderbolt
+- Pluck
+- Facade
+- Roost
+
+Xatu
+Level: 30
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Air Slash
+- Psychic
+- Confuse Ray
+- Night Shade
+
+Dodrio
+Level: 31
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Tri Attack
+- Pluck
+- Steel Wing
+- Agility
+
+Pelipper @ Oran Berry
+Level: 31
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Water Pulse
+- Air Slash
+- Tailwind
+- Supersonic
+
+=== TRAINER_FLINT ===
+Name: FLINT
+Class: Camper
+Pic: Camper
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Corvisquire
+Level: 35
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Drill Peck
+- Thief
+- Facade
+- Hone Claws
+
+Swellow
+Level: 35
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Aerial Ace
+- Air Slash
+- Quick Attack
+- Agility
+
+Skarmory
+Level: 35
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Steel Wing
+- Wing Attack
+- Slash
+- Sand Attack
+
+Xatu @ Twisted Spoon
+Level: 36
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Psychic
+- Air Slash
+- Confuse Ray
+- Tailwind
+
+=== TRAINER_ASHLEY ===
+Name: ASHLEY
+Class: Picnicker
+Pic: Picnicker
+Gender: Female
+Music: Girl
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Swablu
+Level: 35
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Dragon Breath
+- Round
+- Sing
+- Cotton Guard
+
+Pelipper
+Level: 35
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Water Pulse
+- Air Slash
+- Protect
+- Supersonic
+
+Swanna
+Level: 35
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Surf
+- Wing Attack
+- Steel Wing
+- Toxic
+
+Altaria @ Sitrus Berry
+Level: 36
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Dragon Pulse
+- Aerial Ace
+- Sing
+- Cotton Guard
+
+=== TRAINER_BEVERLY ===
+Name: BEVERLY
+Class: Swimmer F
+Pic: Swimmer F
+Gender: Female
+Music: Swimmer
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Finizen
+Level: 30
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Waterfall
+- Acrobatics
+- Facade
+- Rain Dance
+
+Luvdisc
+Level: 30
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Water Pulse
+- Draining Kiss
+- Charm
+- Agility
+
+Pelipper
+Level: 30
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Water Pulse
+- Wing Attack
+- Protect
+- Supersonic
+
+Wailmer @ Oran Berry
+Level: 31
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Brine
+- Heavy Slam
+- Astonish
+- Mist
+
+=== TRAINER_TARA ===
+Name: TARA
+Class: Swimmer F
+Pic: Swimmer F
+Gender: Female
+Music: Swimmer
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Alomomola
+Level: 32
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Waterfall
+- Facade
+- Psychic
+- Toxic
+
+Staryu
+Level: 32
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Brine
+- Psybeam
+- Swift
+- Light Screen
+
+Azumarill
+Level: 32
+Ability: Thick Fat
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Aqua Tail
+- Play Rough
+- Rollout
+- Defense Curl
+
+Seadra @ Oran Berry
+Level: 33
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Bubble Beam
+- Dragon Breath
+- Smokescreen
+- Agility
+
+=== TRAINER_BARNY ===
+Name: BARNY
+Class: Fisherman
+Pic: Fisherman
+Gender: Male
+Music: Hiker
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Drednaw
+Level: 30
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Waterfall
+- Rock Tomb
+- Earthquake
+- Rain Dance
+
+Gyarados
+Level: 30
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Waterfall
+- Bite
+- Ice Fang
+- Scary Face
+
+Tentacruel
+Level: 30
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Bubble Beam
+- Sludge Bomb
+- Wrap
+- Supersonic
+
+Sharpedo @ Oran Berry
+Level: 31
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Night Slash
+- Aqua Jet
+- Ice Fang
+- Screech
+
+=== TRAINER_YASU ===
+Name: YASU
+Class: Ninja Boy
+Pic: Ninja Boy
+Gender: Male
+Music: Suspicious
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Seviper
+Level: 32
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Poison Fang
+- Bite
+- Glare
+- Poison Tail
+
+Croagunk
+Level: 32
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Poison Jab
+- Brick Break
+- Earthquake
+- Bulk Up
+
+Kecleon
+Level: 32
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Slash
+- Shadow Sneak
+- Ancient Power
+- Detect
+
+Ninjask @ Silver Powder
+Level: 33
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Bug Bite
+- Aerial Ace
+- Fury Swipes
+- Agility
+
+=== TRAINER_DEMETRIUS ===
+Name: DEMETRIUS
+Class: Youngster
+Pic: Youngster
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Thievul
+Level: 32
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Snarl
+- Psychic
+- Shadow Ball
+- Nasty Plot
+
+Lairon
+Level: 32
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Iron Head
+- Rock Slide
+- Dig
+- Harden
+
+Linoone
+Level: 32
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Slash
+- Pin Missile
+- Shock Wave
+- Sand Attack
+
+Manectric @ Magnet
+Level: 33
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Discharge
+- Fire Fang
+- Bite
+- Thunder Wave
+
+=== TRAINER_DUNCAN ===
+Name: DUNCAN
+Class: Sailor
+Pic: Sailor
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Pelipper
+Level: 33
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Water Pulse
+- Wing Attack
+- Supersonic
+- Protect
+
+Tentacruel
+Level: 33
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Water Pulse
+- Hex
+- Toxic
+- Acid
+
+Frillish
+Level: 33
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Surf
+- Shadow Ball
+- Sludge Bomb
+- Toxic
+
+Machoke @ Black Belt
+Level: 34
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Brick Break
+- Knock Off
+- Rock Tomb
+- Bulk Up
+
+=== TRAINER_FABIAN ===
+Name: FABIAN
+Class: Guitarist
+Pic: Guitarist
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Rotom
+Level: 32
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Thunderbolt
+- Shadow Ball
+- Thief
+- Thunder Wave
+
+Loudred
+Level: 32
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Stomp
+- Shadow Ball
+- Rock Tomb
+- Supersonic
+
+Magneton
+Level: 32
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Spark
+- Flash Cannon
+- Tri Attack
+- Thunder Wave
+
+Manectric @ Magnet
+Level: 33
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Discharge
+- Fire Fang
+- Bite
+- Howl
+
+=== TRAINER_DAYTON ===
+Name: DAYTON
+Class: Kindler
+Pic: Kindler
+Gender: Male
+Music: Hiker
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Slugma
+Level: 32
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Incinerate
+- Rock Slide
+- Harden
+- Yawn
+
+Heatmor
+Level: 32
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Fire Blast
+- Giga Drain
+- Thief
+- Toxic
+
+Ninetales
+Level: 32
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Flamethrower
+- Extrasensory
+- Will-O-Wisp
+- Confuse Ray
+
+Camerupt @ Charcoal
+Level: 33
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Lava Plume
+- Bulldoze
+- Rock Slide
+- Amnesia
+
+=== TRAINER_RACHEL ===
+Name: RACHEL
+Class: Parasol Lady
+Pic: Parasol Lady
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Castform
+Level: 32
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Rain Dance
+- Weather Ball
+- Thunder
+- Headbutt
+
+Roselia
+Level: 32
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Giga Drain
+- Sludge Bomb
+- Stun Spore
+- Growth
+
+Goomy
+Level: 32
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Dragon Breath
+- Thunderbolt
+- Surf
+- Toxic
+
+Seaking @ Oran Berry
+Level: 33
+Ability: Swift Swim
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Waterfall
+- Horn Attack
+- Agility
+- Supersonic
+
+=== TRAINER_ALIX ===
+Name: ALIX
+Class: Psychic
+Pic: Psychic F
+Gender: Female
+Music: Intense
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Sigilyph
+Level: 31
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Psychic
+- Air Cutter
+- Ice Beam
+- Calm Mind
+
+Grumpig
+Level: 32
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Psybeam
+- Power Gem
+- Shadow Ball
+- Confuse Ray
+
+Kadabra
+Level: 32
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Psybeam
+- Shadow Ball
+- Recover
+- Disable
+
+Gardevoir @ Twisted Spoon
+Level: 33
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Psychic
+- Draining Kiss
+- Calm Mind
+- Hypnosis
+
+=== TRAINER_ED ===
+Name: ED
+Class: Collector
+Pic: Collector
+Gender: Male
+Music: Suspicious
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Mimikyu
+Level: 37
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Shadow Ball
+- Wood Hammer
+- Thief
+- Bulk Up
+
+Kecleon
+Level: 37
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Slash
+- Shadow Claw
+- Thunder Punch
+- Ice Punch
+
+Seviper
+Level: 38
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Poison Jab
+- Earthquake
+- Flamethrower
+- Glare
+
+Zangoose @ Silk Scarf
+Level: 39
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Crush Claw
+- Night Slash
+- Brick Break
+- Swords Dance
+
+=== TRAINER_LEAH ===
+Name: LEAH
+Class: Hex Maniac
+Pic: Hex Maniac
+Gender: Female
+Music: Suspicious
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Sableye
+Level: 36
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Shadow Claw
+- Knock Off
+- Fake Out
+- Taunt
+
+Litwick
+Level: 36
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Shadow Ball
+- Fire Blast
+- Psychic
+- Calm Mind
+
+Grumpig
+Level: 36
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Psychic
+- Power Gem
+- Shadow Ball
+- Confuse Ray
+
+Banette @ Spell Tag
+Level: 37
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Shadow Claw
+- Knock Off
+- Will-O-Wisp
+- Thunderbolt
+
+=== TRAINER_VIOLET ===
+Name: VIOLET
+Class: Aroma Lady
+Pic: Aroma Lady
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Tropius
+Level: 37
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Leaf Storm
+- Air Slash
+- Earthquake
+- Growth
+
+Tsareena
+Level: 37
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Power Whip
+- Facade
+- Toxic
+- Trop Kick
+
+Vileplume
+Level: 38
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Giga Drain
+- Sludge Bomb
+- Moonblast
+- Sleep Powder
+
+Roserade @ Miracle Seed
+Level: 39
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Giga Drain
+- Sludge Bomb
+- Shadow Ball
+- Stun Spore
+
+=== TRAINER_CHIP ===
+Name: CHIP
+Class: Ruin Maniac
+Pic: Ruin Maniac
+Gender: Male
+Music: Hiker
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Graveler
+Level: 35
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Rock Blast
+- Earthquake
+- Rock Polish
+- Self-Destruct
+
+Sandslash
+Level: 35
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Dig
+- Slash
+- Rock Slide
+- Swords Dance
+
+Golett
+Level: 35
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Earthquake
+- Shadow Punch
+- Brick Break
+- Curse
+
+Claydol @ Soft Sand
+Level: 36
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Earth Power
+- Extrasensory
+- Ancient Power
+- Sandstorm
+
+=== TRAINER_VALERIE_1 ===
+Name: VALERIE
+Class: Hex Maniac
+Pic: Hex Maniac
+Gender: Female
+Music: Suspicious
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Duskull @ Eviolite
+Level: 38
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Hex
+- Will-O-Wisp
+- Ice Beam
+- Confuse Ray
+
+Mismagius
+Level: 38
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Shadow Ball
+- Thunderbolt
+- Psychic
+- Calm Mind
+
+Banette
+Level: 38
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Shadow Claw
+- Knock Off
+- Sucker Punch
+- Will-O-Wisp
+
+Sableye @ Sitrus Berry
+Level: 39
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Shadow Claw
+- Knock Off
+- Power Gem
+- Recover
+
+=== TRAINER_VALERIE_2 ===
+Name: VALERIE
+Class: Hex Maniac
+Pic: Hex Maniac
+Gender: Female
+Music: Suspicious
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Dusclops @ Eviolite
+Level: 38
+Ability: Pressure
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Relaxed
+- Will-O-Wisp
+- Hex
+- Night Shade
+- Confuse Ray
+
+Sableye
+Level: 39
+Ability: Keen Eye
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Careful
+- Knock Off
+- Shadow Claw
+- Fake Out
+- Taunt
+
+Banette @ Spell Tag
+Level: 39
+Ability: Insomnia
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Lonely
+- Shadow Ball
+- Knock Off
+- Thunderbolt
+- Shadow Sneak
+
+Mismagius @ Leftovers
+Level: 40
+Ability: Levitate
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Modest
+- Shadow Ball
+- Thunderbolt
+- Psychic
+- Calm Mind
+
+=== TRAINER_VALERIE_3 ===
+Name: VALERIE
+Class: Hex Maniac
+Pic: Hex Maniac
+Gender: Female
+Music: Suspicious
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Dusclops @ Eviolite
+Level: 39
+Ability: Pressure
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Relaxed
+- Will-O-Wisp
+- Hex
+- Night Shade
+- Confuse Ray
+
+Chimecho
+Level: 40
+Ability: Levitate
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Calm
+- Extrasensory
+- Shadow Ball
+- Yawn
+- Heal Bell
+
+Sableye
+Level: 40
+Ability: Keen Eye
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Careful
+- Knock Off
+- Shadow Claw
+- Fake Out
+- Taunt
+
+Banette @ Spell Tag
+Level: 40
+Ability: Insomnia
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Lonely
+- Shadow Ball
+- Knock Off
+- Sucker Punch
+- Thunderbolt
+
+Mismagius @ Leftovers
+Level: 41
+Ability: Levitate
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Modest
+- Shadow Ball
+- Thunderbolt
+- Psychic
+- Calm Mind
+
+=== TRAINER_VALERIE_4 ===
+Name: VALERIE
+Class: Hex Maniac
+Pic: Hex Maniac
+Gender: Female
+Music: Suspicious
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Banette @ Spell Tag
+Level: 42
+Ability: Frisk
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Shadow Ball
+- Knock Off
+- Shadow Sneak
+- Will-O-Wisp
+
+Chimecho @ Sitrus Berry
+Level: 43
+Ability: Levitate
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Psychic
+- Shadow Ball
+- Yawn
+- Heal Bell
+
+Dusclops @ Eviolite
+Level: 43
+Ability: Pressure
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Night Shade
+- Will-O-Wisp
+- Shadow Ball
+- Confuse Ray
+
+Sableye @ Leftovers
+Level: 44
+Ability: Keen Eye
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Knock Off
+- Shadow Claw
+- Taunt
+- Fake Out
+
+Mismagius @ Leftovers
+Level: 45
+Ability: Levitate
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Nature: Modest
+- Shadow Ball
+- Thunderbolt
+- Psychic
+- Calm Mind
+
+=== TRAINER_VALERIE_5 ===
+Name: VALERIE
+Class: Hex Maniac
+Pic: Hex Maniac
+Gender: Female
+Music: Suspicious
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Banette @ Life Orb
+Level: 63
+Ability: Frisk
+EVs: 4 HP / 252 Atk / 252 Spe
+Nature: Adamant
+- Shadow Claw
+- Knock Off
+- Shadow Sneak
+- Will-O-Wisp
+
+Chimecho @ Leftovers
+Level: 63
+Ability: Levitate
+EVs: 252 HP / 252 Def / 4 SpD
+Nature: Bold
+- Psychic
+- Shadow Ball
+- Heal Bell
+- Yawn
+
+Dusknoir @ Leftovers
+Level: 64
+Ability: Pressure
+EVs: 252 HP / 252 Atk / 4 SpD
+Nature: Adamant
+- Shadow Punch
+- Earthquake
+- Will-O-Wisp
+- Pain Split
+
+Sableye @ Leftovers
+Level: 64
+Ability: Prankster
+EVs: 252 HP / 4 Def / 252 SpD
+Nature: Careful
+- Will-O-Wisp
+- Recover
+- Knock Off
+- Foul Play
+
+Mismagius @ Life Orb
+Level: 65
+Ability: Levitate
+EVs: 252 HP / 252 SpA / 4 SpD
+Nature: Modest
+- Shadow Ball
+- Thunderbolt
+- Psychic
+- Calm Mind
+
+=== TRAINER_KINDRA ===
+Name: KINDRA
+Class: Hex Maniac
+Pic: Hex Maniac
+Gender: Female
+Music: Suspicious
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Lunatone
+Level: 37
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Psychic
+- Moonblast
+- Ice Beam
+- Hypnosis
+
+Drifblim
+Level: 37
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Shadow Ball
+- Aerial Ace
+- Thunderbolt
+- Calm Mind
+
+Banette
+Level: 38
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Shadow Claw
+- Knock Off
+- Will-O-Wisp
+- Sucker Punch
+
+Dusclops @ Spell Tag
+Level: 39
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Hex
+- Will-O-Wisp
+- Ice Punch
+- Confuse Ray
+
+=== TRAINER_TAMMY ===
+Name: TAMMY
+Class: Hex Maniac
+Pic: Hex Maniac
+Gender: Female
+Music: Suspicious
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Phantump
+Level: 36
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Shadow Ball
+- Horn Leech
+- Thief
+- Curse
+
+Sableye
+Level: 36
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Shadow Claw
+- Knock Off
+- Fake Out
+- Taunt
+
+Banette
+Level: 37
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Shadow Claw
+- Knock Off
+- Will-O-Wisp
+- Thunderbolt
+
+Dusclops @ Sitrus Berry
+Level: 38
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Hex
+- Will-O-Wisp
+- Ice Punch
+- Confuse Ray
+
+=== TRAINER_JESSICA_1 ===
+Name: JESSICA
+Class: Beauty
+Pic: Beauty
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Krokorok @ Life Orb
+Level: 37
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Earthquake
+- Foul Play
+- Dragon Claw
+- Hone Claws
+
+Milotic @ Leftovers
+Level: 37
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Surf
+- Ice Beam
+- Recover
+- Dragon Tail
+
+Kecleon
+Level: 37
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Slash
+- Shadow Claw
+- Fire Punch
+- Thunder Wave
+
+Seviper @ Poison Barb
+Level: 38
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Poison Jab
+- Night Slash
+- Earthquake
+- Glare
+
+=== TRAINER_JESSICA_2 ===
+Name: JESSICA
+Class: Beauty
+Pic: Beauty
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Kecleon
+Level: 37
+Ability: Color Change
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Adamant
+- Shadow Claw
+- Slash
+- Thunder Punch
+- Ice Punch
+
+Krokorok
+Level: 38
+Ability: Intimidate
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Adamant
+- Earthquake
+- Foul Play
+- Dragon Claw
+- Hone Claws
+
+Milotic @ Leftovers
+Level: 38
+Ability: Marvel Scale
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Modest
+- Surf
+- Ice Beam
+- Recover
+- Dragon Tail
+
+Seviper @ Life Orb
+Level: 39
+Ability: Shed Skin
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Naughty
+- Poison Jab
+- Crunch
+- Earthquake
+- Glare
+
+=== TRAINER_JESSICA_3 ===
+Name: JESSICA
+Class: Beauty
+Pic: Beauty
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Kecleon @ Leftovers
+Level: 39
+Ability: Color Change
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Adamant
+- Shadow Claw
+- Slash
+- Thunder Punch
+- Ice Punch
+
+Krookodile @ Life Orb
+Level: 40
+Ability: Intimidate
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Adamant
+- Earthquake
+- Foul Play
+- Dragon Claw
+- Bulk Up
+
+Milotic @ Leftovers
+Level: 40
+Ability: Marvel Scale
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Modest
+- Surf
+- Ice Beam
+- Recover
+- Dragon Tail
+
+Seviper @ Life Orb
+Level: 41
+Ability: Shed Skin
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Naughty
+- Poison Jab
+- Crunch
+- Earthquake
+- Glare
+
+=== TRAINER_JESSICA_4 ===
+Name: JESSICA
+Class: Beauty
+Pic: Beauty
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Krookodile @ Life Orb
+Level: 42
+Ability: Intimidate
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Earthquake
+- Foul Play
+- Dragon Claw
+- Bulk Up
+
+Milotic @ Leftovers
+Level: 43
+Ability: Marvel Scale
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Surf
+- Ice Beam
+- Recover
+- Toxic
+
+Kecleon @ Leftovers
+Level: 44
+Ability: Color Change
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Body Slam
+- Shadow Claw
+- Thunder Punch
+- Substitute
+
+Seviper @ Life Orb
+Level: 45
+Ability: Shed Skin
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Nature: Adamant
+- Coil
+- Poison Jab
+- Crunch
+- Earthquake
+
+=== TRAINER_JESSICA_5 ===
+Name: JESSICA
+Class: Beauty
+Pic: Beauty
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Krookodile @ Life Orb
+Level: 64
+Ability: Intimidate
+EVs: 4 HP / 252 Atk / 252 Spe
+Nature: Adamant
+- Earthquake
+- Foul Play
+- Dragon Claw
+- Bulk Up
+
+Milotic @ Leftovers
+Level: 65
+Ability: Marvel Scale
+EVs: 252 HP / 252 Def / 4 SpD
+Nature: Bold
+- Scald
+- Recover
+- Ice Beam
+- Dragon Tail
+
+Kecleon @ Life Orb
+Level: 65
+Ability: Protean
+EVs: 252 HP / 252 Atk / 4 SpD
+Nature: Adamant
+- Fake Out
+- Knock Off
+- Shadow Sneak
+- Drain Punch
+
+Seviper @ Life Orb
+Level: 66
+Ability: Infiltrator
+EVs: 4 HP / 252 Atk / 252 Spe
+Nature: Adamant
+- Gunk Shot
+- Crunch
+- Earthquake
+- Glare
+
+=== TRAINER_RODNEY ===
+Name: RODNEY
+Class: Swimmer M
+Pic: Swimmer M
+Gender: Male
+Music: Swimmer
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Tentacruel
+Level: 38
+Ability: Clear Body
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Surf
+- Sludge Bomb
+- Ice Beam
+- Toxic
+
+Pelipper
+Level: 38
+Ability: Drizzle
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Surf
+- Air Slash
+- Tailwind
+- Protect
+
+Bruxish
+Level: 39
+Ability: Dazzling
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Aqua Tail
+- Psychic
+- Crunch
+- Bulk Up
+
+Gyarados @ Sitrus Berry
+Level: 40
+Ability: Intimidate
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Adamant
+- Dragon Dance
+- Waterfall
+- Crunch
+- Earthquake
+
+=== TRAINER_KEVIN ===
+Name: KEVIN
+Class: Swimmer M
+Pic: Swimmer M
+Gender: Male
+Music: Swimmer
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Palafin
+Level: 38
+Ability: Zero To Hero
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Waterfall
+- Acrobatics
+- Facade
+- Bulk Up
+
+Pelipper
+Level: 38
+Ability: Keen Eye
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Surf
+- Air Slash
+- Ice Beam
+- Protect
+
+Seadra
+Level: 39
+Ability: Sniper
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Surf
+- Dragon Breath
+- Ice Beam
+- Smokescreen
+
+Gyarados @ Mystic Water
+Level: 40
+Ability: Intimidate
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Jolly
+- Waterfall
+- Crunch
+- Ice Fang
+- Thunder Wave
+
+=== TRAINER_HARRISON ===
+Name: HARRISON
+Class: Swimmer M
+Pic: Swimmer M
+Gender: Male
+Music: Swimmer
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Sharpedo
+Level: 38
+Ability: Rough Skin
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Crunch
+- Waterfall
+- Ice Fang
+- Aqua Jet
+
+Lanturn
+Level: 38
+Ability: Volt Absorb
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Surf
+- Discharge
+- Ice Beam
+- Confuse Ray
+
+Toxapex
+Level: 39
+Ability: Merciless
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Sludge Bomb
+- Liquidation
+- Bite
+- Toxic
+
+Tentacruel @ Leftovers
+Level: 40
+Ability: Clear Body
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Calm
+- Surf
+- Sludge Bomb
+- Hex
+- Toxic
+
+=== TRAINER_JENNY_1 ===
+Name: JENNY
+Class: Swimmer F
+Pic: Swimmer F
+Gender: Female
+Music: Swimmer
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Lanturn
+Level: 36
+Ability: Volt Absorb
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Surf
+- Discharge
+- Confuse Ray
+- Thunder Wave
+
+Luvdisc
+Level: 36
+Ability: Swift Swim
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Surf
+- Draining Kiss
+- Sweet Kiss
+- Attract
+
+Alomomola
+Level: 37
+Ability: Healer
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Waterfall
+- Facade
+- Psychic
+- Toxic
+
+Starmie @ Sitrus Berry
+Level: 38
+Ability: Natural Cure
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Timid
+- Surf
+- Psychic
+- Ice Beam
+- Recover
+
+=== TRAINER_JENNY_2 ===
+Name: JENNY
+Class: Swimmer F
+Pic: Swimmer F
+Gender: Female
+Music: Swimmer
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Lanturn
+Level: 37
+Ability: Volt Absorb
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Modest
+- Thunderbolt
+- Surf
+- Confuse Ray
+- Thunder Wave
+
+Luvdisc
+Level: 38
+Ability: Swift Swim
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Timid
+- Surf
+- Ice Beam
+- Draining Kiss
+- Wish
+
+Alomomola
+Level: 38
+Ability: Healer
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Adamant
+- Waterfall
+- Facade
+- Psychic
+- Toxic
+
+Starmie @ Leftovers
+Level: 39
+Ability: Natural Cure
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Timid
+- Surf
+- Psychic
+- Ice Beam
+- Recover
+
+=== TRAINER_JENNY_3 ===
+Name: JENNY
+Class: Swimmer F
+Pic: Swimmer F
+Gender: Female
+Music: Swimmer
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Lanturn @ Sitrus Berry
+Level: 39
+Ability: Volt Absorb
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Modest
+- Thunderbolt
+- Surf
+- Confuse Ray
+- Thunder Wave
+
+Luvdisc @ Focus Sash
+Level: 39
+Ability: Swift Swim
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Timid
+- Surf
+- Draining Kiss
+- Wish
+- Sweet Kiss
+
+Alomomola @ Leftovers
+Level: 40
+Ability: Healer
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Adamant
+- Waterfall
+- Facade
+- Psychic
+- Toxic
+
+Gorebyss @ White Herb
+Level: 40
+Ability: Swift Swim
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Modest
+- Shell Smash
+- Surf
+- Psychic
+- Ice Beam
+
+Starmie @ Life Orb
+Level: 41
+Ability: Natural Cure
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Timid
+- Surf
+- Psychic
+- Thunderbolt
+- Recover
+
+=== TRAINER_JENNY_4 ===
+Name: JENNY
+Class: Swimmer F
+Pic: Swimmer F
+Gender: Female
+Music: Swimmer
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Lanturn @ Leftovers
+Level: 42
+Ability: Volt Absorb
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Surf
+- Thunderbolt
+- Ice Beam
+- Thunder Wave
+
+Luvdisc @ Sitrus Berry
+Level: 43
+Ability: Swift Swim
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Surf
+- Ice Beam
+- Draining Kiss
+- Sweet Kiss
+
+Gorebyss @ White Herb
+Level: 43
+Ability: Swift Swim
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Shell Smash
+- Surf
+- Psychic
+- Ice Beam
+
+Alomomola @ Leftovers
+Level: 44
+Ability: Healer
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Waterfall
+- Facade
+- Psychic
+- Toxic
+
+Starmie @ Leftovers
+Level: 45
+Ability: Natural Cure
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Nature: Timid
+- Surf
+- Psychic
+- Thunderbolt
+- Recover
+
+=== TRAINER_JENNY_5 ===
+Name: JENNY
+Class: Swimmer F
+Pic: Swimmer F
+Gender: Female
+Music: Swimmer
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Lanturn @ Leftovers
+Level: 65
+Ability: Volt Absorb
+EVs: 252 HP / 4 Def / 252 SpD
+Nature: Calm
+- Scald
+- Discharge
+- Ice Beam
+- Thunder Wave
+
+Luvdisc @ Focus Sash
+Level: 65
+Ability: Hydration
+EVs: 4 HP / 252 SpA / 252 Spe
+Nature: Timid
+- Scald
+- Draining Kiss
+- Charm
+- Attract
+
+Gorebyss @ White Herb
+Level: 66
+Ability: Swift Swim
+EVs: 4 HP / 252 SpA / 252 Spe
+Nature: Modest
+- Shell Smash
+- Hydro Pump
+- Psychic
+- Ice Beam
+
+Alomomola @ Leftovers
+Level: 66
+Ability: Healer
+EVs: 4 HP / 252 Atk / 252 Spe
+Nature: Adamant
+- Waterfall
+- Facade
+- Psychic
+- Toxic
+
+Starmie @ Life Orb
+Level: 67
+Ability: Analytic
+EVs: 4 HP / 252 SpA / 252 Spe
+Nature: Timid
+- Hydro Pump
+- Psyshock
+- Thunderbolt
+- Ice Beam
+
+=== TRAINER_DEBRA ===
+Name: DEBRA
+Class: Swimmer F
+Pic: Swimmer F
+Gender: Female
+Music: Swimmer
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Pelipper
+Level: 39
+Ability: Keen Eye
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Surf
+- Air Slash
+- Ice Beam
+- Tailwind
+
+Azumarill
+Level: 39
+Ability: Thick Fat
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Aqua Tail
+- Play Rough
+- Bounce
+- Aqua Ring
+
+Clawitzer
+Level: 40
+Ability: Mega Launcher
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Surf
+- Sludge Bomb
+- Ice Beam
+- Toxic
+
+Seaking @ Mystic Water
+Level: 41
+Ability: Swift Swim
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Adamant
+- Waterfall
+- Double-Edge
+- Swords Dance
+- Agility
+
+=== TRAINER_LAUREL ===
+Name: LAUREL
+Class: Swimmer F
+Pic: Swimmer F
+Gender: Female
+Music: Swimmer
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Skrelp
+Level: 39
+Ability: Poison Point
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Poison Tail
+- Waterfall
+- Iron Tail
+- Toxic
+
+Corsola
+Level: 39
+Ability: Natural Cure
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Surf
+- Ancient Power
+- Ice Beam
+- Calm Mind
+
+Luvdisc
+Level: 40
+Ability: Swift Swim
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Surf
+- Draining Kiss
+- Charm
+- Aqua Ring
+
+Lanturn @ Sitrus Berry
+Level: 41
+Ability: Volt Absorb
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Modest
+- Surf
+- Thunderbolt
+- Ice Beam
+- Thunder Wave
+
+=== TRAINER_ISAIAH_1 ===
+Name: ISAIAH
+Class: Triathlete
+Pic: Swimming Triathlete M
+Gender: Male
+Music: Swimmer
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Sharpedo
+Level: 38
+Ability: Rough Skin
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Crunch
+- Waterfall
+- Ice Fang
+- Aqua Jet
+
+Floatzel
+Level: 38
+Ability: Swift Swim
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Liquidation
+- Crunch
+- Iron Tail
+- Bulk Up
+
+Tentacruel
+Level: 39
+Ability: Clear Body
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Surf
+- Sludge Bomb
+- Ice Beam
+- Toxic
+
+Starmie @ Mystic Water
+Level: 40
+Ability: Natural Cure
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Timid
+- Surf
+- Psychic
+- Thunderbolt
+- Recover
+
+=== TRAINER_ISAIAH_2 ===
+Name: ISAIAH
+Class: Triathlete
+Pic: Swimming Triathlete M
+Gender: Male
+Music: Swimmer
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Tentacruel @ Black Sludge
+Level: 39
+Ability: Clear Body
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Modest
+- Surf
+- Sludge Bomb
+- Ice Beam
+- Toxic
+
+Sharpedo
+Level: 40
+Ability: Rough Skin
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Adamant
+- Crunch
+- Waterfall
+- Ice Fang
+- Aqua Jet
+
+Floatzel @ Leftovers
+Level: 40
+Ability: Swift Swim
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Adamant
+- Liquidation
+- Crunch
+- Iron Tail
+- Bulk Up
+
+Starmie @ Life Orb
+Level: 41
+Ability: Natural Cure
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Timid
+- Surf
+- Psychic
+- Ice Beam
+- Recover
+
+=== TRAINER_ISAIAH_3 ===
+Name: ISAIAH
+Class: Triathlete
+Pic: Swimming Triathlete M
+Gender: Male
+Music: Swimmer
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Tentacruel @ Black Sludge
+Level: 40
+Ability: Clear Body
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Modest
+- Surf
+- Sludge Bomb
+- Ice Beam
+- Toxic
+
+Sharpedo @ Life Orb
+Level: 41
+Ability: Rough Skin
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Adamant
+- Liquidation
+- Crunch
+- Ice Fang
+- Aqua Jet
+
+Floatzel @ Leftovers
+Level: 41
+Ability: Swift Swim
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Adamant
+- Liquidation
+- Crunch
+- Iron Tail
+- Bulk Up
+
+Sealeo
+Level: 41
+Ability: Thick Fat
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Modest
+- Ice Beam
+- Body Slam
+- Encore
+- Rest
+
+Starmie @ Life Orb
+Level: 42
+Ability: Natural Cure
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Timid
+- Surf
+- Psychic
+- Thunderbolt
+- Recover
+
+=== TRAINER_ISAIAH_4 ===
+Name: ISAIAH
+Class: Triathlete
+Pic: Swimming Triathlete M
+Gender: Male
+Music: Swimmer
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Tentacruel @ Black Sludge
+Level: 42
+Ability: Clear Body
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Surf
+- Sludge Bomb
+- Ice Beam
+- Toxic
+
+Sharpedo @ Life Orb
+Level: 43
+Ability: Rough Skin
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Liquidation
+- Crunch
+- Ice Fang
+- Aqua Jet
+
+Floatzel @ Sitrus Berry
+Level: 43
+Ability: Swift Swim
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Liquidation
+- Crunch
+- Iron Tail
+- Bulk Up
+
+Walrein @ Leftovers
+Level: 44
+Ability: Thick Fat
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Surf
+- Ice Beam
+- Body Slam
+- Encore
+
+Starmie @ Life Orb
+Level: 45
+Ability: Natural Cure
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Nature: Timid
+- Hydro Pump
+- Psychic
+- Thunderbolt
+- Recover
+
+=== TRAINER_ISAIAH_5 ===
+Name: ISAIAH
+Class: Triathlete
+Pic: Swimming Triathlete M
+Gender: Male
+Music: Swimmer
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Tentacruel @ Black Sludge
+Level: 66
+Ability: Clear Body
+EVs: 252 HP / 252 Def / 4 SpD
+Nature: Bold
+- Scald
+- Sludge Bomb
+- Toxic Spikes
+- Rapid Spin
+
+Sharpedo @ Life Orb
+Level: 66
+Ability: Speed Boost
+EVs: 4 HP / 252 Atk / 252 Spe
+Nature: Adamant
+- Crunch
+- Liquidation
+- Ice Fang
+- Protect
+
+Floatzel @ Leftovers
+Level: 67
+Ability: Swift Swim
+EVs: 252 HP / 4 Def / 252 SpD
+Nature: Careful
+- Wave Crash
+- Crunch
+- Iron Tail
+- Bulk Up
+
+Walrein @ Leftovers
+Level: 67
+Ability: Thick Fat
+EVs: 252 HP / 252 SpA / 4 SpD
+Nature: Modest
+- Ice Beam
+- Surf
+- Super Fang
+- Protect
+
+Starmie @ Leftovers
+Level: 68
+Ability: Natural Cure
+EVs: 4 HP / 252 SpA / 252 Spe
+Nature: Timid
+- Surf
+- Psychic
+- Thunderbolt
+- Recover
+
+=== TRAINER_ALBERTO ===
+Name: ALBERTO
+Class: Bird Keeper
+Pic: Bird Keeper
+Gender: Male
+Music: Cool
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Swellow
+Level: 37
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Brave Bird
+- Facade
+- Quick Attack
+- Agility
+
+Skarmory
+Level: 37
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Drill Peck
+- Steel Wing
+- Rock Slide
+- Swords Dance
+
+Kilowattrel
+Level: 37
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Thunderbolt
+- Pluck
+- Facade
+- Roost
+
+Xatu @ Sharp Beak
+Level: 38
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Psychic
+- Air Slash
+- Night Shade
+- Confuse Ray
+
+=== TRAINER_ROBERT_1 ===
+Name: ROBERT
+Class: Bird Keeper
+Pic: Bird Keeper
+Gender: Male
+Music: Cool
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Staraptor
+Level: 35
+Ability: Intimidate
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Facade
+- Wing Attack
+- Close Combat
+- Toxic
+
+Skarmory
+Level: 35
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Steel Wing
+- Aerial Ace
+- Payback
+- Swords Dance
+
+Xatu
+Level: 35
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Psychic
+- Air Slash
+- Night Shade
+- Confuse Ray
+
+Altaria @ Sitrus Berry
+Level: 36
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Dragon Pulse
+- Hyper Voice
+- Flamethrower
+- Roost
+
+=== TRAINER_ROBERT_2 ===
+Name: ROBERT
+Class: Bird Keeper
+Pic: Bird Keeper
+Gender: Male
+Music: Cool
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Staraptor
+Level: 37
+Ability: Intimidate
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Jolly
+- Facade
+- Brave Bird
+- Close Combat
+- Toxic
+
+Skarmory
+Level: 38
+Ability: Sturdy
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Impish
+- Drill Peck
+- Steel Wing
+- Swords Dance
+- Roar
+
+Altaria
+Level: 38
+Ability: Natural Cure
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Modest
+- Dragon Pulse
+- Ice Beam
+- Flamethrower
+- Cotton Guard
+
+Xatu @ Leftovers
+Level: 39
+Ability: Synchronize
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Modest
+- Air Slash
+- Psychic
+- Confuse Ray
+- Calm Mind
+
+=== TRAINER_ROBERT_3 ===
+Name: ROBERT
+Class: Bird Keeper
+Pic: Bird Keeper
+Gender: Male
+Music: Cool
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Staraptor @ Life Orb
+Level: 39
+Ability: Intimidate
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Jolly
+- Facade
+- Brave Bird
+- Close Combat
+- Toxic
+
+Tropius @ Sitrus Berry
+Level: 39
+Ability: Chlorophyll
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Modest
+- Air Slash
+- Giga Drain
+- Earthquake
+- Whirlwind
+
+Skarmory @ Leftovers
+Level: 40
+Ability: Sturdy
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Impish
+- Drill Peck
+- Steel Wing
+- Swords Dance
+- Roar
+
+Altaria @ Leftovers
+Level: 40
+Ability: Natural Cure
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Modest
+- Dragon Pulse
+- Moonblast
+- Flamethrower
+- Cotton Guard
+
+Xatu @ Leftovers
+Level: 41
+Ability: Synchronize
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Modest
+- Psychic
+- Air Slash
+- Calm Mind
+- Wish
+
+=== TRAINER_ROBERT_4 ===
+Name: ROBERT
+Class: Bird Keeper
+Pic: Bird Keeper
+Gender: Male
+Music: Cool
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Staraptor @ Life Orb
+Level: 42
+Ability: Intimidate
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Facade
+- Brave Bird
+- Close Combat
+- Toxic
+
+Tropius @ Sitrus Berry
+Level: 43
+Ability: Chlorophyll
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Air Slash
+- Giga Drain
+- Earthquake
+- Whirlwind
+
+Skarmory @ Leftovers
+Level: 43
+Ability: Keen Eye
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Drill Peck
+- Steel Wing
+- Toxic
+- Roar
+
+Xatu @ Leftovers
+Level: 44
+Ability: Early Bird
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Calm Mind
+- Psychic
+- Air Slash
+- Shadow Ball
+
+Altaria @ Leftovers
+Level: 45
+Ability: Natural Cure
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Nature: Modest
+- Dragon Pulse
+- Moonblast
+- Cotton Guard
+- Roost
+
+=== TRAINER_ROBERT_5 ===
+Name: ROBERT
+Class: Bird Keeper
+Pic: Bird Keeper
+Gender: Male
+Music: Cool
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Staraptor @ Life Orb
+Level: 63
+Ability: Intimidate
+EVs: 4 HP / 252 Atk / 252 Spe
+Nature: Jolly
+- Facade
+- Brave Bird
+- Close Combat
+- Toxic
+
+Tropius @ Sitrus Berry
+Level: 63
+Ability: Harvest
+EVs: 252 HP / 4 Def / 252 SpD
+Nature: Calm
+- Leech Seed
+- Protect
+- Air Slash
+- Giga Drain
+
+Skarmory @ Rocky Helmet
+Level: 64
+Ability: Sturdy
+EVs: 252 HP / 252 Def / 4 SpD
+Nature: Impish
+- Spikes
+- Brave Bird
+- Roost
+- Whirlwind
+
+Xatu @ Leftovers
+Level: 64
+Ability: Magic Bounce
+EVs: 4 HP / 252 SpA / 252 Spe
+Nature: Timid
+- Psychic
+- Air Slash
+- Heat Wave
+- Roost
+
+Altaria @ Leftovers
+Level: 65
+Ability: Natural Cure
+EVs: 4 HP / 252 Atk / 252 Spe
+Nature: Adamant
+- Dragon Dance
+- Dragon Claw
+- Earthquake
+- Roost
+
+=== TRAINER_PRESLEY ===
+Name: PRESLEY
+Class: Bird Keeper
+Pic: Bird Keeper
+Gender: Male
+Music: Cool
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Swellow
+Level: 37
+Ability: Guts
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Aerial Ace
+- Double-Edge
+- Quick Attack
+- Agility
+
+Pelipper
+Level: 37
+Ability: Keen Eye
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Surf
+- Air Slash
+- Ice Beam
+- Tailwind
+
+Toucannon
+Level: 38
+Ability: Keen Eye
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Facade
+- Drill Peck
+- Brick Break
+- Toxic
+
+Xatu @ Twisted Spoon
+Level: 39
+Ability: Synchronize
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Modest
+- Psychic
+- Air Slash
+- Shadow Ball
+- Calm Mind
+
+=== TRAINER_BLAKE ===
+Name: BLAKE
+Class: Psychic
+Pic: Psychic M
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Xatu
+Level: 39
+IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
+- Psychic
+- Air Slash
+- Night Shade
+- Confuse Ray
+
+Metang
+Level: 39
+IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
+- Zen Headbutt
+- Bullet Punch
+- Earthquake
+- Hone Claws
+
+Bronzong
+Level: 40
+IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
+- Psychic
+- Earthquake
+- Strength
+- Toxic
+
+Girafarig @ Twisted Spoon
+Level: 41
+IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
+- Psychic
+- Thunderbolt
+- Shadow Ball
+- Calm Mind
+
+=== TRAINER_SYLVIA ===
+Name: SYLVIA
+Class: Hex Maniac
+Pic: Hex Maniac
+Gender: Female
+Music: Suspicious
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Dusclops
+Level: 39
+IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
+- Hex
+- Will-O-Wisp
+- Ice Punch
+- Confuse Ray
+
+Banette
+Level: 39
+IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
+- Shadow Claw
+- Sucker Punch
+- Knock Off
+- Will-O-Wisp
+
+Drifblim
+Level: 40
+IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
+- Shadow Ball
+- Aerial Ace
+- Thunderbolt
+- Calm Mind
+
+Medicham @ Sitrus Berry
+Level: 41
+IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
+- High Jump Kick
+- Zen Headbutt
+- Thunder Punch
+- Bulk Up
+
+=== TRAINER_FREDRICK ===
+Name: FREDRICK
+Class: Expert
+Pic: Expert M
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Medicham
+Level: 37
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- High Jump Kick
+- Zen Headbutt
+- Thunder Punch
+- Bulk Up
+
+Lucario
+Level: 37
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Aura Sphere
+- Iron Tail
+- Psychic
+- Calm Mind
+
+Hariyama
+Level: 38
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Brick Break
+- Knock Off
+- Rock Slide
+- Bulk Up
+
+Machamp @ Black Belt
+Level: 39
+Ability: No Guard
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Dynamic Punch
+- Knock Off
+- Rock Slide
+- Bulk Up
+
+=== TRAINER_MAKAYLA ===
+Name: MAKAYLA
+Class: Expert
+Pic: Expert F
+Gender: Female
+Music: Intense
+Items: Hyper Potion
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Hawlucha
+Level: 39
+Ability: Limber
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Brick Break
+- Wing Attack
+- Steel Wing
+- Bulk Up
+
+Hitmonchan
+Level: 39
+Ability: Iron Fist
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Close Combat
+- Fire Punch
+- Ice Punch
+- Bullet Punch
+
+Lanturn
+Level: 40
+Ability: Volt Absorb
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Surf
+- Thunderbolt
+- Ice Beam
+- Confuse Ray
+
+Hariyama
+Level: 40
+Ability: Thick Fat
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Fake Out
+- Force Palm
+- Knock Off
+- Bulk Up
+
+Medicham @ Black Belt
+Level: 41
+Ability: Pure Power
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Jolly
+- High Jump Kick
+- Zen Headbutt
+- Bullet Punch
+- Thunder Punch
+
+=== TRAINER_ATHENA ===
+Name: ATHENA
+Class: Cooltrainer
+Pic: Cooltrainer F
+Gender: Female
+Music: Cool
+Items: Hyper Potion
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Pyroar
+Level: 37
+Ability: Rivalry
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Fire Blast
+- Strength
+- Iron Tail
+- Toxic
+
+Ninetales
+Level: 37
+Ability: Flash Fire
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Flamethrower
+- Extrasensory
+- Will-O-Wisp
+- Confuse Ray
+
+Pelipper
+Level: 38
+Ability: Keen Eye
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Surf
+- Air Slash
+- Ice Beam
+- Protect
+
+Tropius
+Level: 38
+Ability: Chlorophyll
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Sunny Day
+- Solar Beam
+- Air Slash
+- Earthquake
+
+Manectric @ Magnet
+Level: 39
+Ability: Static
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Timid
+- Thunderbolt
+- Thunder Wave
+- Quick Attack
+- Overheat
+
+=== TRAINER_DARCY ===
+Name: DARCY
+Class: Cooltrainer
+Pic: Cooltrainer F
+Gender: Female
+Music: Cool
+Items: Hyper Potion
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Bewear
+Level: 39
+Ability: Fluffy
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Strength
+- Brick Break
+- Earthquake
+- Bulk Up
+
+Tropius
+Level: 39
+Ability: Chlorophyll
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Sunny Day
+- Solar Beam
+- Air Slash
+- Earthquake
+
+Pelipper
+Level: 40
+Ability: Keen Eye
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Surf
+- Air Slash
+- Ice Beam
+- Protect
+
+Claydol
+Level: 40
+Ability: Levitate
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Earth Power
+- Psychic
+- Reflect
+- Light Screen
+
+Camerupt @ Charcoal
+Level: 41
+Ability: Solid Rock
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Modest
+- Earth Power
+- Flamethrower
+- Rock Slide
+- Yawn
+
+=== TRAINER_JAZMYN ===
+Name: JAZMYN
+Class: Cooltrainer 2
+Pic: Cooltrainer F
+Gender: Female
+Music: Cool
+Items: Hyper Potion
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Lanturn
+Level: 37
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Discharge
+- Surf
+- Ice Beam
+- Confuse Ray
+
+Breloom
+Level: 37
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Mach Punch
+- Bullet Seed
+- Rock Tomb
+- Stun Spore
+
+Salazzle
+Level: 37
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Sludge Bomb
+- Fire Blast
+- Dragon Claw
+- Nasty Plot
+
+Absol @ Scope Lens
+Level: 38
+Ability: Super Luck
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Night Slash
+- Sucker Punch
+- Rock Slide
+- Swords Dance
+
+=== TRAINER_CLARISSA ===
+Name: CLARISSA
+Class: Parasol Lady
+Pic: Parasol Lady
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Goomy
+Level: 35
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Dragon Pulse
+- Thunderbolt
+- Surf
+- Toxic
+
+Roselia
+Level: 35
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Giga Drain
+- Sludge Bomb
+- Stun Spore
+- Synthesis
+
+Seaking
+Level: 35
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Waterfall
+- Body Slam
+- Ice Beam
+- Agility
+
+Ludicolo @ Sitrus Berry
+Level: 36
+Ability: Swift Swim
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Surf
+- Energy Ball
+- Ice Beam
+- Rain Dance
+
+=== TRAINER_JONAS ===
+Name: JONAS
+Class: Ninja Boy
+Pic: Ninja Boy
+Gender: Male
+Music: Suspicious
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Ninjask
+Level: 37
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Bug Bite
+- Aerial Ace
+- Dig
+- Swords Dance
+
+Toxicroak
+Level: 37
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Poison Jab
+- Brick Break
+- Earthquake
+- Bulk Up
+
+Seviper
+Level: 37
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Poison Jab
+- Earthquake
+- Glare
+- Swords Dance
+
+Weezing @ Black Sludge
+Level: 38
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Sludge Bomb
+- Thunderbolt
+- Flamethrower
+- Toxic
+
+=== TRAINER_KEIGO ===
+Name: KEIGO
+Class: Ninja Boy
+Pic: Ninja Boy
+Gender: Male
+Music: Suspicious
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Skuntank
+Level: 35
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Sludge Bomb
+- Sucker Punch
+- Iron Tail
+- Toxic
+
+Kecleon
+Level: 35
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Shadow Claw
+- Slash
+- Ice Punch
+- Thunder Wave
+
+Weezing
+Level: 35
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Sludge Bomb
+- Flamethrower
+- Smokescreen
+- Self-Destruct
+
+Ninjask @ Silver Powder
+Level: 36
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Bug Bite
+- Aerial Ace
+- Double Team
+- Swords Dance
+
+=== TRAINER_CALE ===
+Name: CALE
+Class: Bug Maniac
+Pic: Bug Maniac
+Gender: Male
+Music: Suspicious
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Masquerain
+Level: 36
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Air Slash
+- Giga Drain
+- Stun Spore
+- Ice Beam
+
+Ninjask
+Level: 36
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Bug Bite
+- Aerial Ace
+- Swords Dance
+- Baton Pass
+
+Galvantula
+Level: 36
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Bug Bite
+- Thunderbolt
+- Giga Drain
+- Thunder Wave
+
+Dustox @ Silver Powder
+Level: 37
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Bug Buzz
+- Sludge Bomb
+- Toxic
+- Moonlight
+
+=== TRAINER_DAVIS ===
+Name: DAVIS
+Class: Bug Catcher
+Pic: Bug Catcher
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Ninjask
+Level: 37
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- X-Scissor
+- Aerial Ace
+- Dig
+- Swords Dance
+
+Heracross
+Level: 37
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Pin Missile
+- Brick Break
+- Rock Slide
+- Swords Dance
+
+Lokix
+Level: 37
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Lunge
+- Throat Chop
+- Brick Break
+- Taunt
+
+Pinsir @ Silver Powder
+Level: 38
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- X-Scissor
+- Brick Break
+- Earthquake
+- Swords Dance
+
+=== TRAINER_KELVIN ===
+Name: KELVIN
+Class: Sailor
+Pic: Sailor
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Pelipper
+Level: 40
+Ability: Keen Eye
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Surf
+- Air Slash
+- Ice Beam
+- Tailwind
+
+Dhelmise
+Level: 40
+Ability: Steelworker
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Shadow Ball
+- Giga Drain
+- Earthquake
+- Toxic
+
+Tentacruel
+Level: 40
+Ability: Clear Body
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Surf
+- Sludge Bomb
+- Hex
+- Toxic
+
+Machamp @ Sitrus Berry
+Level: 41
+Ability: Guts
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Adamant
+- Close Combat
+- Knock Off
+- Earthquake
+- Bulk Up
+
+=== TRAINER_JONAH ===
+Name: JONAH
+Class: Fisherman
+Pic: Fisherman
+Gender: Male
+Music: Hiker
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Wailmer
+Level: 37
+Ability: Water Veil
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Surf
+- Body Slam
+- Ice Beam
+- Rest
+
+Tentacruel
+Level: 37
+Ability: Clear Body
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Surf
+- Sludge Bomb
+- Hex
+- Toxic
+
+Wishiwashi
+Level: 38
+Ability: Schooling
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Surf
+- Ice Beam
+- Earthquake
+- Toxic
+
+Sharpedo @ Black Glasses
+Level: 39
+Ability: Rough Skin
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Adamant
+- Crunch
+- Waterfall
+- Ice Fang
+- Aqua Jet
+
+=== TRAINER_LORENZO ===
+Name: LORENZO
+Class: Pkmn Ranger
+Pic: Pokemon Ranger M
+Gender: Male
+Music: Cool
+Items: Full Restore
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Breloom
+Level: 35
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Mach Punch
+- Bullet Seed
+- Rock Tomb
+- Stun Spore
+
+Tropius
+Level: 35
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Magical Leaf
+- Aerial Ace
+- Earthquake
+- Swords Dance
+
+Lurantis
+Level: 35
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Petal Blizzard
+- X-Scissor
+- Brick Break
+- Toxic
+
+Shiftry @ Sitrus Berry
+Level: 36
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Leaf Blade
+- Sucker Punch
+- Rock Slide
+- Swords Dance
+
+=== TRAINER_WALTER_1 ===
+Name: WALTER
+Class: Gentleman
+Pic: Gentleman
+Gender: Male
+Music: Rich
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Stoutland
+Level: 36
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Strength
+- Play Rough
+- Crunch
+- Toxic
+
+Golduck
+Level: 36
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Surf
+- Psychic
+- Ice Beam
+- Calm Mind
+
+Arcanine
+Level: 36
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Fire Fang
+- Extreme Speed
+- Crunch
+- Howl
+
+Manectric @ Sitrus Berry
+Level: 37
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+- Discharge
+- Fire Fang
+- Quick Attack
+- Roar
+
+=== TRAINER_WALTER_2 ===
+Name: WALTER
+Class: Gentleman
+Pic: Gentleman
+Gender: Male
+Music: Rich
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Stoutland
+Level: 38
+Ability: Intimidate
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Jolly
+- Strength
+- Play Rough
+- Crunch
+- Toxic
+
+Golduck
+Level: 37
+Ability: Cloud Nine
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Modest
+- Surf
+- Psychic
+- Ice Beam
+- Calm Mind
+
+Arcanine
+Level: 38
+Ability: Intimidate
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Adamant
+- Fire Fang
+- Extreme Speed
+- Crunch
+- Howl
+
+Manectric @ Magnet
+Level: 39
+Ability: Lightning Rod
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Timid
+- Thunderbolt
+- Overheat
+- Quick Attack
+- Roar
+
+=== TRAINER_WALTER_3 ===
+Name: WALTER
+Class: Gentleman
+Pic: Gentleman
+Gender: Male
+Music: Rich
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Stoutland @ Silk Scarf
+Level: 40
+Ability: Intimidate
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Jolly
+- Strength
+- Play Rough
+- Crunch
+- Toxic
+
+Golduck
+Level: 39
+Ability: Cloud Nine
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Modest
+- Surf
+- Psychic
+- Ice Beam
+- Calm Mind
+
+Mightyena @ Black Glasses
+Level: 39
+Ability: Intimidate
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Adamant
+- Crunch
+- Ice Fang
+- Thunder Fang
+- Taunt
+
+Arcanine @ Charcoal
+Level: 40
+Ability: Intimidate
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Adamant
+- Flare Blitz
+- Extreme Speed
+- Crunch
+- Howl
+
+Manectric @ Life Orb
+Level: 41
+Ability: Lightning Rod
+IVs: 22 HP / 22 Atk / 22 Def / 22 SpA / 22 SpD / 22 Spe
+Nature: Timid
+- Thunderbolt
+- Overheat
+- Thunder Wave
+- Quick Attack
+
+=== TRAINER_WALTER_4 ===
+Name: WALTER
+Class: Gentleman
+Pic: Gentleman
+Gender: Male
+Music: Rich
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Arcanine @ Charcoal
+Level: 42
+Ability: Intimidate
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Howl
+- Flare Blitz
+- Extreme Speed
+- Crunch
+
+Mightyena @ Black Glasses
+Level: 43
+Ability: Intimidate
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Crunch
+- Sucker Punch
+- Fire Fang
+- Taunt
+
+Stoutland @ Sitrus Berry
+Level: 43
+Ability: Intimidate
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Strength
+- Play Rough
+- Crunch
+- Toxic
+
+Golduck @ Wise Glasses
+Level: 44
+Ability: Damp
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Surf
+- Ice Beam
+- Psychic
+- Disable
+
+Manectric @ Magnet
+Level: 45
+Ability: Lightning Rod
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Nature: Timid
+- Thunderbolt
+- Flamethrower
+- Thunder Wave
+- Roar
+
+=== TRAINER_WALTER_5 ===
+Name: WALTER
+Class: Gentleman
+Pic: Gentleman
+Gender: Male
+Music: Rich
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Arcanine @ Life Orb
+Level: 63
+Ability: Intimidate
+EVs: 4 HP / 252 Atk / 252 Spe
+Nature: Adamant
+- Flare Blitz
+- Extreme Speed
+- Close Combat
+- Will-O-Wisp
+
+Mightyena @ Life Orb
+Level: 63
+Ability: Moxie
+EVs: 4 HP / 252 Atk / 252 Spe
+Nature: Jolly
+- Crunch
+- Play Rough
+- Sucker Punch
+- Fire Fang
+
+Stoutland @ Sitrus Berry
+Level: 64
+Ability: Intimidate
+EVs: 4 HP / 252 Atk / 252 Spe
+Nature: Adamant
+- Strength
+- Play Rough
+- Crunch
+- Toxic
+
+Golduck @ Leftovers
+Level: 64
+Ability: Cloud Nine
+EVs: 4 HP / 252 SpA / 252 Spe
+Nature: Timid
+- Hydro Pump
+- Ice Beam
+- Psyshock
+- Calm Mind
+
+Manectric @ Life Orb
+Level: 65
+Ability: Lightning Rod
+EVs: 4 HP / 252 SpA / 252 Spe
+Nature: Timid
+- Thunderbolt
+- Flamethrower
+- Volt Switch
+- Snarl
+
+=== TRAINER_DAPHNE ===
+Name: DAPHNE
+Class: Lady
+Pic: Lady
+Gender: Female
+Music: Female
+Items: Full Restore
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Alomomola @ Sitrus Berry
+Level: 44
+Ability: Healer
+IVs: 29 HP / 29 Atk / 29 Def / 29 SpA / 29 SpD / 29 Spe
+Nature: Jolly
+- Waterfall
+- Facade
+- Psychic
+- Toxic
+
+Luvdisc
+Level: 44
+Ability: Swift Swim
+IVs: 29 HP / 29 Atk / 29 Def / 29 SpA / 29 SpD / 29 Spe
+Nature: Modest
+- Surf
+- Ice Beam
+- Charm
+- Attract
+
+Gorebyss @ White Herb
+Level: 45
+Ability: Swift Swim
+IVs: 29 HP / 29 Atk / 29 Def / 29 SpA / 29 SpD / 29 Spe
+Nature: Modest
+- Shell Smash
+- Surf
+- Psychic
+- Ice Beam
+
+Politoed
+Level: 45
+Ability: Water Absorb
+IVs: 29 HP / 29 Atk / 29 Def / 29 SpA / 29 SpD / 29 Spe
+Nature: Calm
+- Surf
+- Ice Beam
+- Hypnosis
+- Rain Dance
+
+Starmie @ Leftovers
+Level: 46
+Ability: Natural Cure
+IVs: 29 HP / 29 Atk / 29 Def / 29 SpA / 29 SpD / 29 Spe
+Nature: Timid
+- Surf
+- Psychic
+- Thunderbolt
+- Recover
+
+=== TRAINER_CONNIE ===
+Name: CONNIE
+Class: Beauty
+Pic: Beauty
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Luvdisc
+Level: 44
+Ability: Swift Swim
+IVs: 29 HP / 29 Atk / 29 Def / 29 SpA / 29 SpD / 29 Spe
+Nature: Timid
+- Surf
+- Draining Kiss
+- Charm
+- Aqua Ring
+
+Corsola
+Level: 44
+Ability: Natural Cure
+IVs: 29 HP / 29 Atk / 29 Def / 29 SpA / 29 SpD / 29 Spe
+Nature: Bold
+- Surf
+- Power Gem
+- Recover
+- Calm Mind
+
+Seadra @ Eviolite
+Level: 45
+Ability: Sniper
+IVs: 29 HP / 29 Atk / 29 Def / 29 SpA / 29 SpD / 29 Spe
+Nature: Modest
+- Surf
+- Dragon Pulse
+- Ice Beam
+- Agility
+
+Swanna
+Level: 45
+Ability: Keen Eye
+IVs: 29 HP / 29 Atk / 29 Def / 29 SpA / 29 SpD / 29 Spe
+Nature: Adamant
+- Surf
+- Brave Bird
+- Steel Wing
+- Toxic
+
+Seaking @ Sitrus Berry
+Level: 46
+Ability: Water Veil
+IVs: 29 HP / 29 Atk / 29 Def / 29 SpA / 29 SpD / 29 Spe
+Nature: Adamant
+- Waterfall
+- Megahorn
+- Poison Jab
+- Agility
+
+=== TRAINER_OLIVIA ===
+Name: OLIVIA
+Class: Beauty
+Pic: Beauty
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Barraskewda @ Leftovers
+Level: 44
+Ability: Swift Swim
+IVs: 29 HP / 29 Atk / 29 Def / 29 SpA / 29 SpD / 29 Spe
+Nature: Adamant
+- Liquidation
+- Throat Chop
+- Brick Break
+- Agility
+
+Huntail
+Level: 44
+Ability: Swift Swim
+IVs: 29 HP / 29 Atk / 29 Def / 29 SpA / 29 SpD / 29 Spe
+Nature: Adamant
+- Waterfall
+- Crunch
+- Ice Fang
+- Sucker Punch
+
+Crawdaunt
+Level: 45
+Ability: Hyper Cutter
+IVs: 29 HP / 29 Atk / 29 Def / 29 SpA / 29 SpD / 29 Spe
+Nature: Adamant
+- Crabhammer
+- Knock Off
+- Swords Dance
+- Aerial Ace
+
+Tentacruel
+Level: 45
+Ability: Clear Body
+IVs: 29 HP / 29 Atk / 29 Def / 29 SpA / 29 SpD / 29 Spe
+Nature: Timid
+- Surf
+- Sludge Bomb
+- Ice Beam
+- Toxic
+
+Ludicolo @ Life Orb
+Level: 46
+Ability: Swift Swim
+IVs: 29 HP / 29 Atk / 29 Def / 29 SpA / 29 SpD / 29 Spe
+Nature: Modest
+- Hydro Pump
+- Giga Drain
+- Ice Beam
+- Fake Out
+
+=== TRAINER_BENNY ===
+Name: BENNY
+Class: Bird Keeper
+Pic: Bird Keeper
+Gender: Male
+Music: Cool
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Pelipper
+Level: 42
+Ability: Keen Eye
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Nature: Modest
+- Surf
+- Air Slash
+- Roost
+- Protect
+
+Xatu
+Level: 42
+Ability: Synchronize
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Nature: Timid
+- Psychic
+- Air Slash
+- Night Shade
+- Confuse Ray
+
+Corviknight
+Level: 43
+Ability: Pressure
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Nature: Impish
+- Brave Bird
+- Steel Wing
+- Thief
+- Bulk Up
+
+Swellow @ Flame Orb
+Level: 44
+Ability: Guts
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Nature: Jolly
+- Facade
+- Brave Bird
+- Quick Attack
+- Endeavor
+
+=== TRAINER_NICOLAS_1 ===
+Name: NICOLAS
+Class: Dragon Tamer
+Pic: Dragon Tamer
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Noivern @ Sitrus Berry
+Level: 48
+Ability: Frisk
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Modest
+- Air Slash
+- Dragon Pulse
+- Psychic
+- Toxic
+
+Druddigon @ Leftovers
+Level: 48
+Ability: Rough Skin
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Careful
+- Dragon Claw
+- Earthquake
+- Iron Head
+- Hone Claws
+
+Flygon @ Lum Berry
+Level: 48
+Ability: Levitate
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Jolly
+- Dragon Dance
+- Earthquake
+- Dragon Claw
+- Fire Punch
+
+Shelgon @ Dragon Fang
+Level: 49
+Ability: Rock Head
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Adamant
+- Dragon Claw
+- Zen Headbutt
+- Double-Edge
+- Dragon Dance
+
+=== TRAINER_NICOLAS_2 ===
+Name: NICOLAS
+Class: Dragon Tamer
+Pic: Dragon Tamer
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Noivern @ Sitrus Berry
+Level: 50
+Ability: Frisk
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+- Air Slash
+- Dragon Pulse
+- Psychic
+- Toxic
+
+Druddigon @ Leftovers
+Level: 50
+Ability: Rough Skin
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+- Dragon Claw
+- Earthquake
+- Iron Head
+- Hone Claws
+
+Flygon @ Lum Berry
+Level: 51
+Ability: Levitate
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+- Dragon Dance
+- Earthquake
+- Dragon Claw
+- Fire Punch
+
+Salamence @ Dragon Fang
+Level: 52
+Ability: Intimidate
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Adamant
+- Dragon Dance
+- Dragon Claw
+- Earthquake
+- Fire Fang
+
+=== TRAINER_NICOLAS_3 ===
+Name: NICOLAS
+Class: Dragon Tamer
+Pic: Dragon Tamer
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Noivern @ Sitrus Berry
+Level: 52
+Ability: Frisk
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+- Hurricane
+- Dragon Pulse
+- Psychic
+- Toxic
+
+Druddigon @ Leftovers
+Level: 52
+Ability: Rough Skin
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+- Dragon Claw
+- Earthquake
+- Iron Head
+- Hone Claws
+
+Kingdra @ Mystic Water
+Level: 53
+Ability: Swift Swim
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+- Rain Dance
+- Hydro Pump
+- Dragon Pulse
+- Ice Beam
+
+Flygon @ Lum Berry
+Level: 53
+Ability: Levitate
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+- Dragon Dance
+- Earthquake
+- Dragon Claw
+- Fire Punch
+
+Salamence @ Dragon Fang
+Level: 54
+Ability: Intimidate
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Adamant
+- Dragon Dance
+- Dragon Claw
+- Earthquake
+- Fire Fang
+
+=== TRAINER_NICOLAS_4 ===
+Name: NICOLAS
+Class: Dragon Tamer
+Pic: Dragon Tamer
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Noivern @ Sitrus Berry
+Level: 54
+Ability: Frisk
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+- Hurricane
+- Dragon Pulse
+- Psychic
+- Toxic
+
+Druddigon @ Leftovers
+Level: 54
+Ability: Rough Skin
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+- Dragon Claw
+- Earthquake
+- Iron Head
+- Hone Claws
+
+Kingdra @ Scope Lens
+Level: 54
+Ability: Sniper
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+- Focus Energy
+- Hydro Pump
+- Dragon Pulse
+- Ice Beam
+
+Flygon @ Life Orb
+Level: 54
+Ability: Levitate
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+- Dragon Dance
+- Earthquake
+- Dragon Claw
+- Fire Punch
+
+Salamence @ Dragon Fang
+Level: 55
+Ability: Intimidate
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Adamant
+- Dragon Dance
+- Outrage
+- Earthquake
+- Fire Fang
+
+=== TRAINER_NICOLAS_5 ===
+Name: NICOLAS
+Class: Dragon Tamer
+Pic: Dragon Tamer
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Flygon @ Life Orb
+Level: 67
+Ability: Levitate
+EVs: 4 HP / 252 Atk / 252 Spe
+Nature: Jolly
+- Earthquake
+- Dragon Claw
+- U-turn
+- Fire Punch
+
+Noivern @ Leftovers
+Level: 67
+Ability: Frisk
+EVs: 4 HP / 252 SpA / 252 Spe
+Nature: Modest
+- Hurricane
+- Dragon Pulse
+- Boomburst
+- Toxic
+
+Kingdra @ Life Orb
+Level: 68
+Ability: Sniper
+EVs: 4 HP / 252 SpA / 252 Spe
+Nature: Modest
+- Draco Meteor
+- Hydro Pump
+- Ice Beam
+- Dragon Pulse
+
+Druddigon @ Sitrus Berry
+Level: 68
+Ability: Rough Skin
+EVs: 252 HP / 252 Atk / 4 SpD
+Nature: Adamant
+- Dragon Claw
+- Earthquake
+- Superpower
+- Hone Claws
+
+Salamence @ Dragon Fang
+Level: 69
+Ability: Moxie
+EVs: 4 HP / 252 Atk / 252 Spe
+Nature: Adamant
+- Dragon Dance
+- Dragon Claw
+- Earthquake
+- Fire Fang
+
+=== TRAINER_ALBERT ===
+Name: ALBERT
+Class: Cooltrainer
+Pic: Cooltrainer M
+Gender: Male
+Music: Cool
+Items: Full Restore
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Skarmory
+Level: 48
+Ability: Sturdy
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Impish
+- Drill Peck
+- Iron Head
+- Spikes
+- Roost
+
+Corviknight
+Level: 48
+Ability: Pressure
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Impish
+- Brave Bird
+- Steel Wing
+- Thief
+- Bulk Up
+
+Aggron
+Level: 49
+Ability: Sturdy
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Adamant
+- Iron Head
+- Stone Edge
+- Earthquake
+- Rock Polish
+
+Magnezone
+Level: 49
+Ability: Sturdy
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Modest
+- Thunderbolt
+- Flash Cannon
+- Volt Switch
+- Thunder Wave
+
+Muk @ Black Sludge
+Level: 50
+Ability: Sticky Hold
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Adamant
+- Gunk Shot
+- Fire Punch
+- Ice Punch
+- Shadow Sneak
+
+=== TRAINER_VITO ===
+Name: VITO
+Class: Cooltrainer
+Pic: Cooltrainer M
+Gender: Male
+Music: Cool
+Items: Full Restore
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Galvantula
+Level: 52
+Ability: Compound Eyes
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Timid
+- Bug Buzz
+- Thunderbolt
+- Giga Drain
+- Thunder Wave
+
+Dodrio
+Level: 52
+Ability: Early Bird
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Jolly
+- Drill Peck
+- Double-Edge
+- Jump Kick
+- Swords Dance
+
+Alakazam
+Level: 53
+Ability: Synchronize
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Timid
+- Psychic
+- Focus Blast
+- Shadow Ball
+- Recover
+
+Heracross
+Level: 53
+Ability: Guts
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Adamant
+- Megahorn
+- Brick Break
+- Rock Slide
+- Swords Dance
+
+Shiftry @ Life Orb
+Level: 54
+Ability: Chlorophyll
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Adamant
+- Leaf Blade
+- Sucker Punch
+- Fake Out
+- Swords Dance
+
+=== TRAINER_OWEN ===
+Name: OWEN
+Class: Cooltrainer
+Pic: Cooltrainer M
+Gender: Male
+Music: Cool
+Items: Full Restore
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Garganacl
+Level: 52
+Ability: Purifying Salt
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Adamant
+- Stone Edge
+- Earthquake
+- Brick Break
+- Stealth Rock
+
+Golem
+Level: 52
+Ability: Sturdy
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Adamant
+- Earthquake
+- Stone Edge
+- Heavy Slam
+- Explosion
+
+Flygon
+Level: 53
+Ability: Levitate
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Jolly
+- Earthquake
+- Dragon Claw
+- U-turn
+- Fire Punch
+
+Walrein
+Level: 53
+Ability: Thick Fat
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Modest
+- Surf
+- Ice Beam
+- Super Fang
+- Protect
+
+Wailord @ Leftovers
+Level: 54
+Ability: Water Veil
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Modest
+- Water Spout
+- Ice Beam
+- Earthquake
+- Heavy Slam
+
+=== TRAINER_HALLE ===
+Name: HALLE
+Class: Cooltrainer
+Pic: Cooltrainer F
+Gender: Female
+Music: Cool
+Items: Full Restore
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Sableye
+Level: 50
+Ability: Keen Eye
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Careful
+- Shadow Claw
+- Knock Off
+- Will-O-Wisp
+- Fake Out
+
+Banette
+Level: 50
+Ability: Insomnia
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Adamant
+- Shadow Claw
+- Sucker Punch
+- Knock Off
+- Thunder Wave
+
+Houndoom
+Level: 51
+Ability: Flash Fire
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Timid
+- Flamethrower
+- Dark Pulse
+- Sludge Bomb
+- Taunt
+
+Chandelure
+Level: 51
+Ability: Flash Fire
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Modest
+- Shadow Ball
+- Fire Blast
+- Psychic
+- Calm Mind
+
+Absol @ Scope Lens
+Level: 52
+Ability: Super Luck
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Adamant
+- Night Slash
+- Psycho Cut
+- Stone Edge
+- Swords Dance
+
+=== TRAINER_JULIE ===
+Name: JULIE
+Class: Cooltrainer
+Pic: Cooltrainer F
+Gender: Female
+Music: Cool
+Items: Full Restore
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Sandslash
+Level: 52
+Ability: Sand Veil
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Adamant
+- Earthquake
+- Stone Edge
+- Knock Off
+- Swords Dance
+
+Garchomp
+Level: 52
+Ability: Sand Veil
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Adamant
+- Dragon Claw
+- Earthquake
+- Crunch
+- Toxic
+
+Tropius
+Level: 53
+Ability: Chlorophyll
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Modest
+- Air Slash
+- Energy Ball
+- Sunny Day
+- Synthesis
+
+Flygon
+Level: 53
+Ability: Levitate
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Jolly
+- Earthquake
+- Dragon Claw
+- Rock Slide
+- Dragon Dance
+
+Ninetales @ Life Orb
+Level: 54
+Ability: Flash Fire
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Timid
+- Flamethrower
+- Extrasensory
+- Energy Ball
+- Nasty Plot
+
+=== TRAINER_MITCHELL ===
+Name: MITCHELL
+Class: Cooltrainer
+Pic: Cooltrainer M
+Gender: Male
+Music: Cool
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Grumpig
+Level: 50
+Ability: Thick Fat
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Modest
+- Psychic
+- Shadow Ball
+- Power Gem
+- Calm Mind
+
+Xatu
+Level: 50
+Ability: Synchronize
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Timid
+- Psychic
+- Air Slash
+- Heat Wave
+- Calm Mind
+
+Claydol
+Level: 51
+Ability: Levitate
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Bold
+- Earth Power
+- Psychic
+- Reflect
+- Light Screen
+
+Bronzong
+Level: 51
+Ability: Levitate
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Adamant
+- Psychic
+- Earthquake
+- Strength
+- Toxic
+
+Solrock @ Hard Stone
+Level: 52
+Ability: Levitate
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Adamant
+- Rock Slide
+- Zen Headbutt
+- Earthquake
+- Reflect
+
+=== TRAINER_EVERETT ===
+Name: EVERETT
+Class: Gentleman
+Pic: Gentleman
+Gender: Male
+Music: Rich
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Delcatty
+Level: 48
+Ability: Cute Charm
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Jolly
+- Fake Out
+- Double-Edge
+- Play Rough
+- Thunder Wave
+
+Stoutland
+Level: 49
+Ability: Intimidate
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Impish
+- Strength
+- Play Rough
+- Crunch
+- Toxic
+
+Kangaskhan
+Level: 49
+Ability: Scrappy
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Adamant
+- Fake Out
+- Double-Edge
+- Sucker Punch
+- Earthquake
+
+Arcanine @ Charcoal
+Level: 50
+Ability: Intimidate
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Adamant
+- Flare Blitz
+- Extreme Speed
+- Wild Charge
+- Crunch
+
+=== TRAINER_LEROY ===
+Name: LEROY
+Class: Cooltrainer
+Pic: Cooltrainer M
+Gender: Male
+Music: Cool
+Items: Full Restore
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Skarmory @ Rocky Helmet
+Level: 65
+Ability: Sturdy
+EVs: 252 HP / 252 Def / 4 SpD
+Nature: Impish
+- Spikes
+- Brave Bird
+- Roost
+- Whirlwind
+
+Pyroar @ Sitrus Berry
+Level: 65
+Ability: Rivalry
+EVs: 252 HP / 252 SpA / 4 SpD
+Nature: Modest
+- Fire Blast
+- Hyper Voice
+- Crunch
+- Toxic
+
+Gardevoir @ Leftovers
+Level: 66
+Ability: Trace
+EVs: 4 HP / 252 SpA / 252 Spe
+Nature: Timid
+- Moonblast
+- Psyshock
+- Focus Blast
+- Calm Mind
+
+Mawile @ Life Orb
+Level: 66
+Ability: Sheer Force
+EVs: 252 HP / 252 Atk / 4 SpD
+Nature: Adamant
+- Iron Head
+- Play Rough
+- Sucker Punch
+- Swords Dance
+
+Starmie @ Life Orb
+Level: 67
+Ability: Analytic
+EVs: 4 HP / 252 SpA / 252 Spe
+Nature: Timid
+- Hydro Pump
+- Psychic
+- Thunderbolt
+- Ice Beam
+
+=== TRAINER_THOMAS ===
+Name: THOMAS
+Class: Gentleman
+Pic: Gentleman
+Gender: Male
+Music: Rich
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Swellow @ Life Orb
+Level: 65
+Ability: Scrappy
+EVs: 4 HP / 252 Atk / 252 Spe
+Nature: Jolly
+- Brave Bird
+- Double-Edge
+- U-turn
+- Quick Attack
+
+Absol @ Scope Lens
+Level: 66
+Ability: Super Luck
+EVs: 4 HP / 252 Atk / 252 Spe
+Nature: Jolly
+- Night Slash
+- Psycho Cut
+- Sucker Punch
+- Swords Dance
+
+Bouffalant @ Silk Scarf
+Level: 66
+Ability: Reckless
+EVs: 252 HP / 252 Atk / 4 SpD
+Nature: Adamant
+- Head Charge
+- Megahorn
+- Earthquake
+- Swords Dance
+
+Zangoose @ Toxic Orb
+Level: 67
+Ability: Toxic Boost
+EVs: 4 HP / 252 Atk / 252 Spe
+Nature: Jolly
+- Facade
+- Close Combat
+- Knock Off
+- Quick Attack
+
+=== TRAINER_PHILLIP ===
+Name: PHILLIP
+Class: Sailor
+Pic: Sailor
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Sharpedo @ Life Orb
+Level: 64
+Ability: Speed Boost
+EVs: 4 HP / 252 Atk / 252 Spe
+Nature: Adamant
+- Crunch
+- Liquidation
+- Ice Fang
+- Protect
+
+Wailord @ Leftovers
+Level: 65
+Ability: Water Veil
+EVs: 252 HP / 252 SpA / 4 SpD
+Nature: Modest
+- Water Spout
+- Ice Beam
+- Toxic
+- Protect
+
+Drednaw @ Life Orb
+Level: 65
+Ability: Strong Jaw
+EVs: 4 HP / 252 Atk / 252 Spe
+Nature: Jolly
+- Liquidation
+- Rock Tomb
+- Earthquake
+- Rain Dance
+
+Machamp @ Life Orb
+Level: 66
+Ability: No Guard
+EVs: 252 HP / 252 Atk / 4 SpD
+Nature: Adamant
+- Dynamic Punch
+- Stone Edge
+- Knock Off
+- Bullet Punch
+
+=== TRAINER_MICAH ===
+Name: MICAH
+Class: Gentleman
+Pic: Gentleman
+Gender: Male
+Music: Rich
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Mightyena @ Life Orb
+Level: 64
+Ability: Intimidate
+EVs: 4 HP / 252 Atk / 252 Spe
+Nature: Adamant
+- Crunch
+- Play Rough
+- Sucker Punch
+- Fire Fang
+
+Houndoom @ Life Orb
+Level: 64
+Ability: Flash Fire
+EVs: 4 HP / 252 SpA / 252 Spe
+Nature: Timid
+- Flamethrower
+- Dark Pulse
+- Sludge Bomb
+- Nasty Plot
+
+Arcanine @ Sitrus Berry
+Level: 65
+Ability: Intimidate
+EVs: 252 HP / 252 Atk / 4 SpD
+Nature: Adamant
+- Flare Blitz
+- Extreme Speed
+- Wild Charge
+- Morning Sun
+
+Stoutland @ Silk Scarf
+Level: 65
+Ability: Intimidate
+EVs: 4 HP / 252 Atk / 252 Spe
+Nature: Jolly
+- Strength
+- Play Rough
+- Crunch
+- Toxic
+
+Manectric @ Life Orb
+Level: 66
+Ability: Static
+EVs: 4 HP / 252 SpA / 252 Spe
+Nature: Timid
+- Thunderbolt
+- Overheat
+- Signal Beam
+- Charge Beam
+
