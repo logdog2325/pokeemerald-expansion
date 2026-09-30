@@ -1,0 +1,229 @@
+# Act 4 flow test (data/scripts/draconid/act4.pory): Wally at the Petalburg Gym, Tabitha's order and the
+# Weather Institute (May covers for the player), Brendan on Route 119 (PokéNav), Steven's Devon Scope,
+# Wally and Brendan + May in Lilycove, Maxie and Nerine on Mt. Pyre, the Jagged Pass guard, Maxie's
+# promotion in the Magma Hideout. Needs rustboro_done.ss from tests/rustboro.play (a one-Pokémon party, so
+# a mashed battle ends when it faints); the states Acts 2-3 leave behind are set by hand and scenes reached
+# with the debug warp. Battles are mashed with the no-whiteout flag on (scripts, not balance).
+# Party pokes (gParties[B_TRAINER_PLAYER], struct Pokemon's unencrypted fields, 0x64 bytes per slot):
+#  - CASTFORM (slot 1, from the Institute) gets 0 HP (+0xBA) after every heal except before the Lilycove
+#    double, so a lost single battle still ends instead of stopping at the switch menu;
+#  - before Steven's wild Kecleon (a wild loss would white out) the lead gets level 100 and 999 in every
+#    stat (+0x54, +0x56..+0x63) for one battle (the stats are recalculated when it ends).
+# Matrix parameters: EGGNAME (the player's egg), SECOND/SECONDNAME (the second starter, set by hand here)
+# pick Nerine's Mt. Pyre team; MAGMA = the Magma sprite prefix for the player's gender.
+default EGGNAME DEINO
+default SECOND 1
+default SECONDNAME CHARMANDER
+default MAGMA MAGMA_M
+loadstate rustboro_done.ss
+setflag FLAG_DEBUG_NO_ENCOUNTER
+setflag FLAG_DEBUG_NO_TRAINER_SEE
+setflag FLAG_DRACONID_NO_WHITEOUT
+setvar VAR_SECOND_STARTER ${SECOND}
+# after Acts 2-3: MAGMA_STATE_MT_CHIMNEY (6), NERINE_STATE_MT_CHIMNEY (4), BRENDAN_STATE_MT_CHIMNEY (2),
+# MAY_STATE_ROUTE_110 (1); five badges (the rivals' Latis join after the Balance Badge)
+setvar VAR_MAGMA_STATE 6
+setvar VAR_NERINE_STATE 4
+setvar VAR_BRENDAN_STATE 2
+setvar VAR_MAY_STATE 1
+setflag FLAG_BADGE01_GET
+setflag FLAG_BADGE02_GET
+setflag FLAG_BADGE03_GET
+setflag FLAG_BADGE04_GET
+setflag FLAG_BADGE05_GET
+
+# --- Petalburg: Wally at the Gym door (after the Heat Badge) ---
+setvar VAR_WALLY_STATE 1
+clearflag FLAG_HIDE_PETALBURG_CITY_WALLY_GYM
+warp MAP_PETALBURG_CITY 15 12
+path PetalburgCity 15 12 15 10
+press UP 2 10
+run 120
+shot a4_10_petalburg_wally
+mash A 60000
+shot a4_11_after_wally
+expect_opponent TRAINER_WALLY_PETALBURG
+expect_var VAR_WALLY_STATE 2
+expect_flag FLAG_HIDE_PETALBURG_CITY_WALLY_GYM 1
+expect_flag FLAG_HIDE_LILYCOVE_CITY_WALLY 0
+
+# --- Route 119: Tabitha's order on the Weather Institute's doorstep (6, 33) ---
+heal
+warp MAP_ROUTE119 6 36
+walk UP 33
+run 60
+shot a4_20_tabitha_order
+mash A 20000
+shot a4_21_after_tabitha
+expect_flag FLAG_HIDE_ROUTE_119_TABITHA 1
+expect_var VAR_WEATHER_INSTITUTE_STATE 0
+
+# --- Weather Institute 2F: Shelly, the scientists, May and Tabitha, Castform ---
+heal
+warp MAP_ROUTE119_WEATHER_INSTITUTE_2F 6 6
+walk LEFT 5
+press A 2 30
+shot a4_30_shelly
+mash A 90000
+shot a4_31_after_institute
+expect_var VAR_WEATHER_INSTITUTE_STATE 1
+expect_flag FLAG_HIDE_ROUTE_119_TEAM_AQUA 1
+expect_flag FLAG_RECEIVED_CASTFORM 1
+expect_var VAR_MAY_STATE 2
+expect_var VAR_MAGMA_STATE 7
+savestate act4_institute.ss
+
+# --- Route 119: Brendan at the rival spot (trigger 1 = x 25), HM Fly, PokéNav ---
+heal
+run 30
+poke @gParties+BA 0
+poke @gParties+BB 0
+warp MAP_ROUTE119 25 33
+walk UP 31
+run 60
+shot a4_40_brendan
+mash A 90000
+shot a4_41_after_brendan
+expect_opponent TRAINER_BRENDAN_ROUTE_119
+expect_var VAR_BRENDAN_STATE 3
+expect_flag FLAG_ENABLE_BRENDAN_MATCH_CALL 1
+expect_flag FLAG_RECEIVED_HM_FLY 1
+expect_item ITEM_HM_FLY 1
+expect_var VAR_ROUTE119_STATE 1
+
+# --- Route 120: Steven and the Devon Scope (vanilla scene, new lines; the boosted lead wins) ---
+heal
+run 30
+poke @gParties+BA 0
+poke @gParties+BB 0
+poke @gParties+54 64
+poke @gParties+56 E7
+poke @gParties+57 3
+poke @gParties+58 E7
+poke @gParties+59 3
+poke @gParties+5A E7
+poke @gParties+5B 3
+poke @gParties+5C E7
+poke @gParties+5D 3
+poke @gParties+5E E7
+poke @gParties+5F 3
+poke @gParties+60 E7
+poke @gParties+61 3
+poke @gParties+62 E7
+poke @gParties+63 3
+warp MAP_ROUTE120 15 15
+walk LEFT 14
+press A 2 30
+shot a4_50_steven
+mash A 90000
+shot a4_51_after_steven
+expect_flag FLAG_RECEIVED_DEVON_SCOPE 1
+expect_item ITEM_DEVON_SCOPE 1
+
+# --- Lilycove: Wally by the Pokémon Center (Mega Gallade) ---
+heal
+run 30
+poke @gParties+BA 0
+poke @gParties+BB 0
+warp MAP_LILYCOVE_CITY 26 18
+path LilycoveCity 26 18 26 17
+press UP 2 10
+press A 2 30
+run 60
+shot a4_60_lilycove_wally
+mash A 60000
+expect_opponent TRAINER_WALLY_LILYCOVE
+expect_var VAR_WALLY_STATE 3
+expect_flag FLAG_HIDE_LILYCOVE_CITY_WALLY 1
+
+# --- Lilycove: Brendan and May, two on two (Castform is the second Pokémon) ---
+heal
+warp MAP_LILYCOVE_CITY 27 9
+path LilycoveCity 27 9 27 8
+press UP 2 10
+press A 2 30
+run 60
+shot a4_70_lilycove_rivals
+mash A 90000
+shot a4_71_after_rivals
+expect_opponent TRAINER_BRENDAN_LILYCOVE
+expect_flag FLAG_MET_RIVAL_LILYCOVE 1
+expect_flag FLAG_HIDE_LILYCOVE_CITY_RIVAL 1
+expect_var VAR_BRENDAN_STATE 4
+expect_var VAR_MAY_STATE 3
+savestate act4_lilycove.ss
+
+# --- Mt. Pyre summit: Maxie with the BLUE ORB (OnFrame on arrival from the exterior) ---
+heal
+run 30
+poke @gParties+BA 0
+poke @gParties+BB 0
+warp MAP_MT_PYRE_EXTERIOR 19 12
+walk UP 10 300
+press UP 8 20
+run 240
+shot a4_80_maxie_mt_pyre
+mash A 30000
+shot a4_81_after_maxie
+expect_var VAR_MAGMA_STATE 7
+expect_item ITEM_MAGMA_EMBLEM 1
+expect_flag FLAG_HIDE_MT_PYRE_SUMMIT_MAXIE 1
+pos
+# --- Nerine on the stairs below the altar (trigger row y 10), then Archie takes the RED ORB ---
+path MtPyre_Summit 23 30 23 11
+walk UP 10
+run 60
+shot a4_82_nerine
+mash A 90000
+shot a4_83_after_nerine
+expect_opponent TRAINER_NERINE_MT_PYRE_${EGGNAME}_${SECONDNAME}
+expect_var VAR_NERINE_STATE 5
+walk UP 7
+run 30
+mash A 30000
+shot a4_84_after_archie
+expect_var VAR_MT_PYRE_STATE 1
+expect_var VAR_MAGMA_STATE 8
+expect_flag FLAG_RECEIVED_RED_OR_BLUE_ORB 1
+expect_flag FLAG_HIDE_JAGGED_PASS_MAGMA_GUARD 0
+savestate act4_mt_pyre.ss
+
+# --- Jagged Pass: the guard opens the Magma Hideout for the EMBLEM and goes in ---
+heal
+warp MAP_JAGGED_PASS 21 22
+walk UP 20
+run 60
+shot a4_90_jagged_guard
+mash A 30000
+shot a4_91_hideout_open
+expect_var VAR_JAGGED_PASS_STATE 2
+expect_flag FLAG_HIDE_JAGGED_PASS_MAGMA_GUARD 1
+path JaggedPass 21 20 16 19
+press UP 2 10
+walk UP 18 300
+run 90
+mapid
+expect_var VAR_PLAYER_OUTFIT 1
+expect_gfx OBJ_EVENT_GFX_${MAGMA}_NORMAL
+
+# --- Magma Hideout 4F: Maxie's promotion, GROUDON, no battle, word to the Elder ---
+warp MAP_MAGMA_HIDEOUT_4F 18 21
+walk LEFT 17
+press A 2 30
+shot a4_95_maxie_promotion
+mash A 90000
+shot a4_96_after_hideout
+expect_var VAR_MAGMA_STATE 9
+expect_trainer TRAINER_MAXIE_MAGMA_HIDEOUT 0
+expect_flag FLAG_GROUDON_AWAKENED_MAGMA_HIDEOUT 1
+expect_flag FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS 1
+expect_var VAR_SLATEPORT_HARBOR_STATE 1
+expect_var VAR_SLATEPORT_CITY_STATE 1
+expect_flag FLAG_HIDE_SLATEPORT_CITY_CAPTAIN_STERN 0
+expect_var VAR_PLAYER_OUTFIT 1
+expect_gfx OBJ_EVENT_GFX_${MAGMA}_NORMAL
+
+savestate act4_done.ss
+clearflag FLAG_DEBUG_NO_ENCOUNTER
+clearflag FLAG_DEBUG_NO_TRAINER_SEE
+clearflag FLAG_DRACONID_NO_WHITEOUT

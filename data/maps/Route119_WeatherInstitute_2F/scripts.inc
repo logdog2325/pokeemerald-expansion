@@ -3,6 +3,7 @@ Route119_WeatherInstitute_2F_MapScripts::
 	.byte 0
 
 Route119_WeatherInstitute_2F_OnTransition:
+	call Route119_WeatherInstitute_2F_EventScript_DraconidHideScene  @ Draconid Emerald: May and Tabitha (act4.pory)
 	call_if_eq VAR_WEATHER_INSTITUTE_STATE, 0, Route119_WeatherInstitute_2F_EventScript_SetScientistPosAquaHere
 	call_if_eq VAR_WEATHER_INSTITUTE_STATE, 1, Route119_WeatherInstitute_2F_EventScript_SetScientistPosAquaGone
 	call_if_set FLAG_SYS_GAME_CLEAR, Route119_WeatherInstitute_2F_EventScript_SetScientistPosGameClear
@@ -73,6 +74,7 @@ Route119_WeatherInstitute_2F_EventScript_ShellyDefeated::
 	applymovement LOCALID_PLAYER, Route119_WeatherInstitute_2F_Movement_PlayerReturnToPosition
 	waitmovement 0
 	fadescreen FADE_FROM_BLACK
+	call Route119_WeatherInstitute_2F_EventScript_DraconidMayCovers  @ Draconid Emerald: May nearly gives the player away (act4.pory)
 	applymovement LOCALID_WEATHER_INSTITUTE_2F_SCIENTIST, Route119_WeatherInstitute_2F_Movement_ScientistApproachPlayer
 	waitmovement 0
 	copyobjectxytoperm LOCALID_WEATHER_INSTITUTE_2F_SCIENTIST
@@ -229,8 +231,8 @@ Route119_WeatherInstitute_2F_Text_Grunt3PostBattle:
 	.string "TEAM AQUA are working towards!\l"
 	.string "You stay out of our way!$"
 
-Route119_WeatherInstitute_2F_Text_Grunt5Intro:
-	.string "Don't tell me you're looking for that\n"
+Route119_WeatherInstitute_2F_Text_Grunt5Intro:  @ Draconid Emerald
+	.string "Don't tell me MAGMA is after that\n"
 	.string "weather POKéMON, too?\p"
 	.string "That's a no-no!\n"
 	.string "We were here to get it first!$"
@@ -244,9 +246,9 @@ Route119_WeatherInstitute_2F_Text_Grunt5PostBattle:
 	.string "What we really want isn't here…\n"
 	.string "Ihihihihi…$"
 
-Route119_WeatherInstitute_2F_Text_ShellyIntro:
+Route119_WeatherInstitute_2F_Text_ShellyIntro:  @ Draconid Emerald
 	.string "Ahahahaha!\p"
-	.string "You're going to meddle in TEAM AQUA's\n"
+	.string "A MAGMA whelp, meddling in TEAM AQUA's\n"
 	.string "affairs?\p"
 	.string "You're either absolutely fearless,\n"
 	.string "simply ignorant, or both!\p"
@@ -257,11 +259,11 @@ Route119_WeatherInstitute_2F_Text_ShellyDefeat:
 	.string "Ahahahaha!\n"
 	.string "You're disgustingly strong!$"
 
-Route119_WeatherInstitute_2F_Text_ShellyPostBattle:
-	.string "It's bad enough to have TEAM MAGMA\n"
-	.string "blunder about, but now there's you!\p"
-	.string "What makes you want to sniff around\n"
-	.string "in our business, anyway?$"
+Route119_WeatherInstitute_2F_Text_ShellyPostBattle:  @ Draconid Emerald
+	.string "MAXIE sends children to do his dirty\n"
+	.string "work now?\p"
+	.string "You don't even know what he's really\n"
+	.string "after, do you?$"
 
 Route119_WeatherInstitute_2F_Text_TeamMagmaJustPassedBy:
 	.string "We have a situation here!\p"
@@ -277,11 +279,13 @@ Route119_WeatherInstitute_2F_Text_WeHaveToHurryToMtPyre:
 	.string "Ahahahaha!\n"
 	.string "TEAM MAGMA, just you wait!$"
 
-Route119_WeatherInstitute_2F_Text_ThanksPleaseTakePokemon:
-	.string "Thanks!\n"
-	.string "Thanks to you, we're safe!\p"
-	.string "It might be an odd way of thanking you,\n"
-	.string "but take this POKéMON.$"
+Route119_WeatherInstitute_2F_Text_ThanksPleaseTakePokemon:  @ Draconid Emerald
+	.string "You untied us… and you didn't give us\n"
+	.string "away to that man in red.\p"
+	.string "I don't understand you. But thank you.\p"
+	.string "AQUA came here for this POKéMON.\p"
+	.string "Please, take it. It's safer with you\n"
+	.string "than with any of them.$"
 
 @ Unused
 Route119_WeatherInstitute_2F_Text_NoRoomForPokemon:

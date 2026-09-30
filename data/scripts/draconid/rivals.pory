@@ -12,83 +12,9 @@
 // Vanilla hooks are listed in docs/hack_changes.md ("Scripts").
 
 // ---------------------------------------------------------------------------
-// Lilycove: Brendan and May together, a two-on-two battle
-// (LilycoveCity_EventScript_Rival goes here; both objects use it)
+// Lilycove: the two-on-two scene moved to act4.pory (round 1, Act 4); these two lines stay here
+// because the post-game double in the lab uses them
 // ---------------------------------------------------------------------------
-
-script LilycoveCity_EventScript_DraconidRivals {
-    lock
-    faceplayer
-    playbgm(MUS_ENCOUNTER_MAY, TRUE)
-    if (flag(FLAG_DECLINED_RIVAL_BATTLE_LILYCOVE)) {
-        msgbox(LilycoveCity_Text_DraconidRivalsAskAgain, MSGBOX_YESNO)
-    } else {
-        msgbox(LilycoveCity_Text_DraconidRivalsAsk, MSGBOX_YESNO)
-    }
-    if (var(VAR_RESULT) == NO) {
-        setflag(FLAG_DECLINED_RIVAL_BATTLE_LILYCOVE)
-        msgbox(LilycoveCity_Text_DraconidRivalsDeclined, MSGBOX_DEFAULT)
-        savebgm(MUS_DUMMY)
-        fadedefaultbgm
-        release
-        end
-    }
-    special(HasEnoughMonsForDoubleBattle)
-    if (var(VAR_RESULT) != PLAYER_HAS_TWO_USABLE_MONS) {
-        msgbox(LilycoveCity_Text_DraconidRivalsNeedTwo, MSGBOX_DEFAULT)
-        savebgm(MUS_DUMMY)
-        fadedefaultbgm
-        release
-        end
-    }
-    msgbox(LilycoveCity_Text_DraconidRivalsGo, MSGBOX_DEFAULT)
-    trainerbattle_two_trainers_no_intro(TRAINER_BRENDAN_LILYCOVE, LilycoveCity_Text_DraconidBrendanDefeat, TRAINER_MAY_LILYCOVE, LilycoveCity_Text_DraconidMayDefeat)
-    msgbox(LilycoveCity_Text_DraconidRivalsAfter, MSGBOX_DEFAULT)
-    closemessage
-    // Both go home to Littleroot (their bedrooms show them again)
-    clearflag(FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_RIVAL_BEDROOM)
-    clearflag(FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_2F_PICHU_DOLL)
-    clearflag(FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_BEDROOM)
-    clearflag(FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F_SWABLU_DOLL)
-    call(LilycoveCity_EventScript_DraconidFlyAway)
-    setflag(FLAG_MET_RIVAL_LILYCOVE)
-    setflag(FLAG_HIDE_LILYCOVE_CITY_RIVAL)
-    savebgm(MUS_DUMMY)
-    fadedefaultbgm
-    release
-}
-
-script LilycoveCity_EventScript_DraconidFlyAway {
-    applymovement(LOCALID_LILYCOVE_BRENDAN, Common_Movement_WalkInPlaceFasterDown)
-    applymovement(LOCALID_LILYCOVE_MAY, Common_Movement_WalkInPlaceFasterDown)
-    waitmovement(0)
-    delay(50)
-    setfieldeffectargument(0, 1)
-    dofieldeffect(FLDEFF_NPCFLY_OUT)
-    delay(15)
-    removeobject(LOCALID_LILYCOVE_BRENDAN)
-    waitfieldeffect(FLDEFF_NPCFLY_OUT)
-    delay(20)
-    setfieldeffectargument(0, 1)
-    dofieldeffect(FLDEFF_NPCFLY_OUT)
-    delay(15)
-    removeobject(LOCALID_LILYCOVE_MAY)
-    waitfieldeffect(FLDEFF_NPCFLY_OUT)
-}
-
-text LilycoveCity_Text_DraconidRivalsAsk {
-    format("MAY: {PLAYER}! BRENDAN and I came to shop at the DEPARTMENT STORE…\p"
-           "BRENDAN: …but this is way better. Two on two: you against both of us!\p"
-           "MAY: What do you say?")
-}
-
-text LilycoveCity_Text_DraconidRivalsAskAgain {
-    format("BRENDAN: Ready for our tag battle now?")
-}
-
-text LilycoveCity_Text_DraconidRivalsDeclined {
-    format("BRENDAN: Aw, come on! We'll be right here.")
-}
 
 text LilycoveCity_Text_DraconidRivalsNeedTwo {
     format("MAY: Oh! You need at least two POKéMON that can battle for this.")
@@ -97,19 +23,6 @@ text LilycoveCity_Text_DraconidRivalsNeedTwo {
 text LilycoveCity_Text_DraconidRivalsGo {
     format("BRENDAN: Here we come!\p"
            "MAY: Don't hold back, {PLAYER}!")
-}
-
-text LilycoveCity_Text_DraconidBrendanDefeat {
-    format("BRENDAN: No way!")
-}
-
-text LilycoveCity_Text_DraconidMayDefeat {
-    format("MAY: Even together?!")
-}
-
-text LilycoveCity_Text_DraconidRivalsAfter {
-    format("MAY: That was amazing, {PLAYER}! We're going back to LITTLEROOT to tell Dad everything.\p"
-           "BRENDAN: Don't slow down now. You've still got GYMS to beat!")
 }
 
 // ---------------------------------------------------------------------------
@@ -391,93 +304,4 @@ text LittlerootTown_ProfessorBirchsLab_Text_DraconidDoubleAsk {
 text LittlerootTown_ProfessorBirchsLab_Text_DraconidPostgameDone {
     format("MAY: Dad says the BATTLE FRONTIER is full of strong TRAINERS.\p"
            "BRENDAN: Let's all go some time!")
-}
-
-// ---------------------------------------------------------------------------
-// Wally outside the Petalburg Gym (after the Heat Badge) and in Lilycove
-// ---------------------------------------------------------------------------
-
-// Called from the Lavaridge Gym when the Heat Badge is won.
-script LavaridgeTown_Gym_1F_EventScript_DraconidWallyWaits {
-    if (var(VAR_WALLY_STATE) == WALLY_STATE_START) {
-        setvar(VAR_WALLY_STATE, WALLY_STATE_PETALBURG)
-        clearflag(FLAG_HIDE_PETALBURG_CITY_WALLY_GYM)
-    }
-}
-
-script PetalburgCity_EventScript_DraconidWallyTalk {
-    goto(PetalburgCity_EventScript_DraconidWallyTrigger)
-}
-
-script PetalburgCity_EventScript_DraconidWallyTrigger {
-    lockall
-    playbgm(MUS_ENCOUNTER_MAY, TRUE)
-    applymovement(LOCALID_PETALBURG_WALLY_GYM, Common_Movement_ExclamationMark)
-    waitmovement(0)
-    applymovement(LOCALID_PETALBURG_WALLY_GYM, Common_Movement_WalkRight)
-    waitmovement(0)
-    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft)
-    waitmovement(0)
-    msgbox(PetalburgCity_Text_DraconidWallyIntro, MSGBOX_DEFAULT)
-    trainerbattle_no_intro(TRAINER_WALLY_PETALBURG, PetalburgCity_Text_DraconidWallyDefeat)
-    msgbox(PetalburgCity_Text_DraconidWallyAfter, MSGBOX_DEFAULT)
-    closemessage
-    applymovement(LOCALID_PETALBURG_WALLY_GYM, PetalburgCity_Movement_DraconidWallyLeave)
-    waitmovement(0)
-    removeobject(LOCALID_PETALBURG_WALLY_GYM)
-    setflag(FLAG_HIDE_PETALBURG_CITY_WALLY_GYM)
-    setvar(VAR_WALLY_STATE, WALLY_STATE_LILYCOVE)
-    clearflag(FLAG_HIDE_LILYCOVE_CITY_WALLY)
-    savebgm(MUS_DUMMY)
-    fadedefaultbgm
-    releaseall
-}
-
-movement PetalburgCity_Movement_DraconidWallyLeave {
-    walk_down * 3
-    walk_left * 3
-}
-
-text PetalburgCity_Text_DraconidWallyIntro {
-    format("WALLY: {PLAYER}! I came to thank your dad for helping me catch RALTS.\p"
-           "But I think the best way to thank him is to show how strong we've become.\p"
-           "Before you challenge him… battle me!")
-}
-
-text PetalburgCity_Text_DraconidWallyDefeat {
-    format("I lost… but I didn't cough once!")
-}
-
-text PetalburgCity_Text_DraconidWallyAfter {
-    format("WALLY: I'm going to travel around HOENN too, like you.\p"
-           "Good luck against your dad, {PLAYER}!")
-}
-
-script LilycoveCity_EventScript_DraconidWally {
-    lock
-    faceplayer
-    msgbox(LilycoveCity_Text_DraconidWallyIntro, MSGBOX_DEFAULT)
-    trainerbattle_no_intro(TRAINER_WALLY_LILYCOVE, LilycoveCity_Text_DraconidWallyDefeat)
-    msgbox(LilycoveCity_Text_DraconidWallyAfter, MSGBOX_DEFAULT)
-    closemessage
-    fadescreen(FADE_TO_BLACK)
-    removeobject(LOCALID_LILYCOVE_WALLY)
-    setflag(FLAG_HIDE_LILYCOVE_CITY_WALLY)
-    setvar(VAR_WALLY_STATE, WALLY_STATE_LILYCOVE_DONE)
-    fadescreen(FADE_FROM_BLACK)
-    release
-}
-
-text LilycoveCity_Text_DraconidWallyIntro {
-    format("WALLY: {PLAYER}! My RALTS evolved into GALLADE on the way here.\p"
-           "And a man by the sea gave me this KEY STONE and a GALLADITE.\p"
-           "Watch us, {PLAYER}!")
-}
-
-text LilycoveCity_Text_DraconidWallyDefeat {
-    format("Still not enough…")
-}
-
-text LilycoveCity_Text_DraconidWallyAfter {
-    format("WALLY: Next time we battle, it'll be at the POKéMON LEAGUE. I promise!")
 }

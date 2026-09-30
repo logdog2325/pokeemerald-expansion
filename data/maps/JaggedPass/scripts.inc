@@ -38,6 +38,7 @@ JaggedPass_EventScript_ConcealHideoutEntrance::
 
 JaggedPass_EventScript_OpenMagmaHideout::
 	lockall
+	call JaggedPass_EventScript_DraconidGuardGreets  @ Draconid Emerald: the guard lets the player in (act4.pory)
 	setvar VAR_0x8004, 1  @ vertical pan
 	setvar VAR_0x8005, 1  @ horizontal pan
 	setvar VAR_0x8006, 8  @ num shakes
@@ -59,11 +60,13 @@ JaggedPass_EventScript_OpenMagmaHideout::
 	delay 30
 	setvar VAR_JAGGED_PASS_STATE, 2
 	waitse
+	call JaggedPass_EventScript_DraconidGuardGoesIn  @ Draconid Emerald (act4.pory)
 	releaseall
 	end
 
 JaggedPass_EventScript_MagmaHideoutGuard::
 	lockall
+	goto_if_eq VAR_JAGGED_PASS_STATE, 1, JaggedPass_EventScript_OpenMagmaHideout  @ Draconid Emerald: the player has Maxie's emblem
 	goto_if_set FLAG_BEAT_MAGMA_GRUNT_JAGGED_PASS, JaggedPass_EventScript_GuardDefeated
 	waitse
 	playse SE_PIN
@@ -220,22 +223,24 @@ JaggedPass_Text_EthanPostRematch:
 	.string "I should get an ACRO BIKE from RYDEL\n"
 	.string "in MAUVILLE CITY…$"
 
-JaggedPass_Text_GruntIntro:
+JaggedPass_Text_GruntIntro:  @ Draconid Emerald
 	.string "Wah!\n"
-	.string "What are you doing here?\p"
-	.string "What am I doing in a place like this?\p"
-	.string "What business is it of yours?$"
+	.string "Another grunt? What are you doing up\l"
+	.string "here?\p"
+	.string "Me? I'm guarding a rock.\n"
+	.string "Just a rock. There's nothing behind it.\p"
+	.string "…You look new. Rank test!$"
 
-JaggedPass_Text_GruntDefeat:
+JaggedPass_Text_GruntDefeat:  @ Draconid Emerald
 	.string "Urrrgh…\p"
-	.string "I should've ducked into our HIDEOUT\n"
-	.string "right away…$"
+	.string "You're strong for a new recruit…$"
 
-JaggedPass_Text_GoWhereverYouWant:
+JaggedPass_Text_GoWhereverYouWant:  @ Draconid Emerald
 	.string "Okay, oh-kay!\n"
-	.string "I admit it--you're strong!\p"
-	.string "Don't worry about me.\n"
-	.string "Go wherever you want!$"
+	.string "I admit it, you're strong!\p"
+	.string "But orders are orders. This rock stays\n"
+	.string "shut unless the LEADER himself sends\l"
+	.string "you.$"
 
 JaggedPass_Text_BoulderShakingInResponseToEmblem:
 	.string "Oh! This boulder is shaking in response\n"

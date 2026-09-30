@@ -85,3 +85,566 @@ movement PetalburgCity_Gym_Movement_DraconidMayLeave {
     walk_in_place_faster_down
     set_invisible
 }
+
+// ---------------------------------------------------------------------------
+// WALLY: outside the Petalburg Gym after the Heat Badge (before NORMAN), then in Lilycove (Mega Gallade,
+// D-073). He met the player in uniform in Mauville and decided to trust what he saw there (D-135).
+// Moved from rivals.pory; the Lilycove fight is in the Lilycove section below.
+// ---------------------------------------------------------------------------
+
+// Called from the Lavaridge Gym when the Heat Badge is won.
+script LavaridgeTown_Gym_1F_EventScript_DraconidWallyWaits {
+    if (var(VAR_WALLY_STATE) == WALLY_STATE_START) {
+        setvar(VAR_WALLY_STATE, WALLY_STATE_PETALBURG)
+        clearflag(FLAG_HIDE_PETALBURG_CITY_WALLY_GYM)
+    }
+}
+
+script PetalburgCity_EventScript_DraconidWallyTalk {
+    goto(PetalburgCity_EventScript_DraconidWallyTrigger)
+}
+
+// the trigger (15, 9) is two steps right of WALLY (13, 9), in front of the Gym door
+script PetalburgCity_EventScript_DraconidWallyTrigger {
+    lockall
+    playbgm(MUS_ENCOUNTER_MAY, TRUE)
+    applymovement(LOCALID_PETALBURG_WALLY_GYM, Common_Movement_ExclamationMark)
+    waitmovement(0)
+    applymovement(LOCALID_PETALBURG_WALLY_GYM, Common_Movement_WalkRight)
+    waitmovement(0)
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft)
+    waitmovement(0)
+    msgbox(format("WALLY: {PLAYER}! I came to thank MR. NORMAN. You both helped me catch RALTS, remember?\p"
+                  "He's MAY's dad. She says you're going to challenge him.\p"
+                  "People in town stare at your uniform. I hear what they whisper.\p"
+                  "But in MAUVILLE, your POKéMON looked so happy. I trust what I saw.\p"
+                  "So before you challenge MR. NORMAN… battle me!"))
+    trainerbattle_no_intro(TRAINER_WALLY_PETALBURG, PetalburgCity_Text_DraconidWallyDefeat)
+    msgbox(format("WALLY: I'm going to travel around HOENN, too. Just like you.\p"
+                  "Let people say what they want, {PLAYER}. I know what I saw.\p"
+                  "Good luck against MR. NORMAN!"))
+    closemessage
+    applymovement(LOCALID_PETALBURG_WALLY_GYM, PetalburgCity_Movement_DraconidWallyLeave)
+    waitmovement(0)
+    removeobject(LOCALID_PETALBURG_WALLY_GYM)
+    setflag(FLAG_HIDE_PETALBURG_CITY_WALLY_GYM)
+    setvar(VAR_WALLY_STATE, WALLY_STATE_LILYCOVE)
+    clearflag(FLAG_HIDE_LILYCOVE_CITY_WALLY)
+    savebgm(MUS_DUMMY)
+    fadedefaultbgm
+    releaseall
+}
+
+movement PetalburgCity_Movement_DraconidWallyLeave {
+    walk_down * 3
+    walk_left * 3
+}
+
+text PetalburgCity_Text_DraconidWallyDefeat {
+    format("I lost… but I didn't cough once!")
+}
+
+// ---------------------------------------------------------------------------
+// Weather Institute (Route 119): AQUA holds the INSTITUTE. TABITHA waits by the door and sends the player
+// in to "take the research before AQUA does" (stepping onto the doorstep (6, 33) runs the order; then he
+// is gone for good: FLAG_HIDE_ROUTE_119_TABITHA). After SHELLY, the player quietly unties the scientists;
+// MAY runs upstairs and nearly gives the player away just as TABITHA comes to collect, then covers for
+// them. TABITHA takes the INSTITUTE's notes (the "research": the weather answers to two ancient ORBS, which
+// MAXIE's next call picks up); the scientists thank the player with CASTFORM, the vanilla gift (D-130).
+// ---------------------------------------------------------------------------
+
+script Route119_EventScript_DraconidTabithaOrder {
+    if (flag(FLAG_HIDE_ROUTE_119_TABITHA)) {
+        end
+    }
+    lockall
+    playbgm(MUS_ENCOUNTER_MAGMA, FALSE)
+    applymovement(LOCALID_ROUTE119_TABITHA, Common_Movement_WalkLeft)
+    waitmovement(0)
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight)
+    waitmovement(0)
+    msgbox(format("TABITHA: Hehehe! There you are, grunt. Right on time.\p"
+                  "AQUA got here first. They're inside, pushing the eggheads around.\p"
+                  "This INSTITUTE studies the weather. Rain, sun, storms…\p"
+                  "Leader MAXIE wants to know what they've found. So do I.\p"
+                  "Get in there and take the research before AQUA does.\p"
+                  "I'll round up the others. When I come back, you'd better have it. Hehehe!"))
+    closemessage
+    applymovement(LOCALID_ROUTE119_TABITHA, Route119_Movement_DraconidTabithaLeave)
+    waitmovement(0)
+    removeobject(LOCALID_ROUTE119_TABITHA)
+    setflag(FLAG_HIDE_ROUTE_119_TABITHA)
+    savebgm(MUS_DUMMY)
+    fadedefaultbgm
+    releaseall
+}
+
+// from (7, 33), next to the doorstep, down the path the player came by
+movement Route119_Movement_DraconidTabithaLeave {
+    walk_down * 6
+}
+
+script Route119_EventScript_DraconidTabitha {
+    msgbox(format("TABITHA: Well? The INSTITUTE's door is right there, grunt. Hehehe!"), MSGBOX_NPC)
+}
+
+// Route119_WeatherInstitute_2F_OnTransition calls this: MAY (FLAG_TEMP_11) and TABITHA (FLAG_TEMP_12)
+// only appear in the scene below
+script Route119_WeatherInstitute_2F_EventScript_DraconidHideScene {
+    setflag(FLAG_TEMP_11)
+    setflag(FLAG_TEMP_12)
+}
+
+// Route119_WeatherInstitute_2F_EventScript_ShellyDefeated calls this after AQUA has left, with the player at
+// (5, 6) by the door of the back room where the scientists were held, before the scientist brings CASTFORM
+script Route119_WeatherInstitute_2F_EventScript_DraconidMayCovers {
+    msgbox(format("In the confusion, {PLAYER} had slipped into the back room and quietly untied the scientists."))
+    closemessage
+    playbgm(MUS_ENCOUNTER_MAY, FALSE)
+    addobject(LOCALID_WEATHER_INSTITUTE_2F_MAY)
+    applymovement(LOCALID_WEATHER_INSTITUTE_2F_MAY, Route119_WeatherInstitute_2F_Movement_DraconidMayArrive)
+    applymovement(LOCALID_PLAYER, Route119_WeatherInstitute_2F_Movement_DraconidPlayerHearsMay)
+    waitmovement(0)
+    msgbox(format("MAY: I heard shouting from the road! Is AQUA still-\p"
+                  "…{PLAYER}?!\p"
+                  "That uniform… So MAGMA is here, too."))
+    applymovement(LOCALID_WEATHER_INSTITUTE_2F_MAY, Common_Movement_ExclamationMark)
+    waitmovement(0)
+    msgbox(format("MAY: Wait. Those people in the back… They're untied."))
+    msgbox(format("SCIENTIST: It's true! That trainer drove AQUA off and set us free!"))
+    msgbox(format("MAY: I KNEW it!\p"
+                  "{PLAYER}, you're not really one of-"))
+    closemessage
+    playbgm(MUS_ENCOUNTER_MAGMA, FALSE)
+    addobject(LOCALID_WEATHER_INSTITUTE_2F_TABITHA)
+    applymovement(LOCALID_WEATHER_INSTITUTE_2F_TABITHA, Route119_WeatherInstitute_2F_Movement_DraconidTabithaArrive)
+    waitmovement(0)
+    msgbox(format("TABITHA: Hehehe! Not really one of what, little girl?"))
+    closemessage
+    applymovement(LOCALID_WEATHER_INSTITUTE_2F_MAY, Common_Movement_WalkInPlaceFasterRight)
+    waitmovement(0)
+    delay(30)
+    msgbox(format("MAY: …Not really one of the TRAINERS I'd waste my time on! Hmph!\p"
+                  "Chasing off a few AQUA grunts? Anyone could do that.\p"
+                  "You MAGMA people are all the same!"))
+    msgbox(format("TABITHA: Hehehe! Feisty.\p"
+                  "AQUA ran like rats, grunt. Good work.\p"
+                  "And the eggheads left their notes lying around. Weather records… something about ancient ORBS.\p"
+                  "Leader MAXIE will love this. I'll take it to him myself.\p"
+                  "Keep your POKéNAV on. He'll have orders for you soon. Hehehe!"))
+    closemessage
+    applymovement(LOCALID_WEATHER_INSTITUTE_2F_TABITHA, Route119_WeatherInstitute_2F_Movement_DraconidTabithaLeave)
+    waitmovement(0)
+    removeobject(LOCALID_WEATHER_INSTITUTE_2F_TABITHA)
+    playbgm(MUS_ENCOUNTER_MAY, FALSE)
+    applymovement(LOCALID_WEATHER_INSTITUTE_2F_MAY, Common_Movement_WalkInPlaceFasterLeft)
+    waitmovement(0)
+    msgbox(format("MAY: …That was close.\p"
+                  "I'll pretend I didn't see you save them, {PLAYER}.\p"
+                  "But I did see it. And I won't forget."))
+    closemessage
+    applymovement(LOCALID_WEATHER_INSTITUTE_2F_MAY, Route119_WeatherInstitute_2F_Movement_DraconidMayLeave)
+    waitmovement(0)
+    removeobject(LOCALID_WEATHER_INSTITUTE_2F_MAY)
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft)
+    waitmovement(0)
+    setvar(VAR_MAY_STATE, MAY_STATE_WEATHER_INSTITUTE)
+    setvar(VAR_MAGMA_STATE, MAGMA_STATE_WEATHER_INSTITUTE)
+    savebgm(MUS_DUMMY)
+    fadedefaultbgm
+}
+
+// from the stairs (17, 2) to the player's right, (6, 6)
+movement Route119_WeatherInstitute_2F_Movement_DraconidMayArrive {
+    walk_fast_down * 4
+    walk_fast_left * 11
+}
+
+movement Route119_WeatherInstitute_2F_Movement_DraconidPlayerHearsMay {
+    delay_16 * 4
+    walk_in_place_faster_right
+}
+
+// from the stairs to (7, 6), behind MAY
+movement Route119_WeatherInstitute_2F_Movement_DraconidTabithaArrive {
+    walk_down * 4
+    walk_left * 10
+}
+
+movement Route119_WeatherInstitute_2F_Movement_DraconidTabithaLeave {
+    walk_right * 10
+    walk_up * 4
+    set_invisible
+}
+
+movement Route119_WeatherInstitute_2F_Movement_DraconidMayLeave {
+    walk_right * 11
+    walk_up * 4
+    set_invisible
+}
+
+// ---------------------------------------------------------------------------
+// Route 119: BRENDAN at the vanilla rival spot (his lines are in data/maps/Route119/scripts.inc). He hands
+// over the HM because MAY asked him to, registers in the PokéNav, then rides off as in vanilla (D-131).
+// Route119_EventScript_DefeatedBrendan calls this after the FLY explanation.
+// ---------------------------------------------------------------------------
+
+script Route119_EventScript_DraconidRegisterBrendan {
+    msgbox(format("BRENDAN: And… MAY says we should stay in touch.\p"
+                  "So I can keep an eye on you. That's all it is."))
+    closemessage
+    delay(30)
+    playfanfare(MUS_REGISTER_MATCH_CALL)
+    msgbox(format("Registered BRENDAN in the POKéNAV."))
+    waitfanfare
+    closemessage
+    delay(30)
+    setflag(FLAG_ENABLE_BRENDAN_MATCH_CALL)
+    setvar(VAR_BRENDAN_STATE, BRENDAN_STATE_ROUTE_119)
+    msgbox(format("BRENDAN: If you really are what MAY thinks you are… then prove it.\p"
+                  "I'll be watching, {PLAYER}."))
+}
+
+// ---------------------------------------------------------------------------
+// Lilycove: BRENDAN and MAY together, a two-on-two battle (LilycoveCity_EventScript_Rival goes here; both
+// objects use it). They still don't know the truth: BRENDAN feels betrayed, MAY is sure the player is
+// secretly good. Moved from rivals.pory (…_DraconidRivalsNeedTwo stays there: the post-game double uses it).
+// ---------------------------------------------------------------------------
+
+script LilycoveCity_EventScript_DraconidRivals {
+    lock
+    faceplayer
+    playbgm(MUS_ENCOUNTER_MAY, TRUE)
+    if (flag(FLAG_DECLINED_RIVAL_BATTLE_LILYCOVE)) {
+        msgbox(format("BRENDAN: Changed your mind? MAY won't stop talking until we settle this."), MSGBOX_YESNO)
+    } else {
+        msgbox(format("MAY: {PLAYER}! BRENDAN and I were shopping at the DEPARTMENT STORE.\p"
+                      "BRENDAN: And arguing. About you.\p"
+                      "MAY: He thinks MAGMA is using you. I think you're using MAGMA.\p"
+                      "BRENDAN: Either way, you're still wearing red.\p"
+                      "So we settle it like TRAINERS. You against both of us!\p"
+                      "MAY: Well, {PLAYER}? Two on two?"), MSGBOX_YESNO)
+    }
+    if (var(VAR_RESULT) == NO) {
+        setflag(FLAG_DECLINED_RIVAL_BATTLE_LILYCOVE)
+        msgbox(format("MAY: Running off? That's what a real MAGMA grunt would do…\p"
+                      "We'll be right here, {PLAYER}."))
+        savebgm(MUS_DUMMY)
+        fadedefaultbgm
+        release
+        end
+    }
+    special(HasEnoughMonsForDoubleBattle)
+    if (var(VAR_RESULT) != PLAYER_HAS_TWO_USABLE_MONS) {
+        msgbox(LilycoveCity_Text_DraconidRivalsNeedTwo, MSGBOX_DEFAULT)
+        savebgm(MUS_DUMMY)
+        fadedefaultbgm
+        release
+        end
+    }
+    msgbox(format("BRENDAN: Don't hold back. I won't.\p"
+                  "MAY: Show us who you really are, {PLAYER}!"))
+    trainerbattle_two_trainers_no_intro(TRAINER_BRENDAN_LILYCOVE, LilycoveCity_Text_DraconidBrendanDefeat, TRAINER_MAY_LILYCOVE, LilycoveCity_Text_DraconidMayDefeat)
+    msgbox(format("BRENDAN: I don't get you, {PLAYER}.\p"
+                  "You beat AQUA. You help people. And you still wear that.\p"
+                  "MAY: One day you'll tell us the truth. And then I get to say “I told you so.”\p"
+                  "BRENDAN: We're going home to LITTLEROOT.\p"
+                  "…Take care of yourself. Whoever you really are."))
+    closemessage
+    // Both go home to Littleroot (their bedrooms show them again)
+    clearflag(FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_RIVAL_BEDROOM)
+    clearflag(FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_2F_PICHU_DOLL)
+    clearflag(FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_BEDROOM)
+    clearflag(FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F_SWABLU_DOLL)
+    call(LilycoveCity_EventScript_DraconidFlyAway)
+    setflag(FLAG_MET_RIVAL_LILYCOVE)
+    setflag(FLAG_HIDE_LILYCOVE_CITY_RIVAL)
+    setvar(VAR_BRENDAN_STATE, BRENDAN_STATE_LILYCOVE)
+    setvar(VAR_MAY_STATE, MAY_STATE_LILYCOVE)
+    savebgm(MUS_DUMMY)
+    fadedefaultbgm
+    release
+}
+
+script LilycoveCity_EventScript_DraconidFlyAway {
+    applymovement(LOCALID_LILYCOVE_BRENDAN, Common_Movement_WalkInPlaceFasterDown)
+    applymovement(LOCALID_LILYCOVE_MAY, Common_Movement_WalkInPlaceFasterDown)
+    waitmovement(0)
+    delay(50)
+    setfieldeffectargument(0, 1)
+    dofieldeffect(FLDEFF_NPCFLY_OUT)
+    delay(15)
+    removeobject(LOCALID_LILYCOVE_BRENDAN)
+    waitfieldeffect(FLDEFF_NPCFLY_OUT)
+    delay(20)
+    setfieldeffectargument(0, 1)
+    dofieldeffect(FLDEFF_NPCFLY_OUT)
+    delay(15)
+    removeobject(LOCALID_LILYCOVE_MAY)
+    waitfieldeffect(FLDEFF_NPCFLY_OUT)
+}
+
+text LilycoveCity_Text_DraconidBrendanDefeat {
+    format("BRENDAN: …Even two on one.")
+}
+
+text LilycoveCity_Text_DraconidMayDefeat {
+    format("MAY: See? Nobody fights like that for MAGMA.")
+}
+
+// WALLY by the Pokémon Center after the Petalburg battle (Mega Gallade)
+script LilycoveCity_EventScript_DraconidWally {
+    lock
+    faceplayer
+    msgbox(format("WALLY: {PLAYER}! My RALTS evolved into GALLADE on the way here!\p"
+                  "And a man by the sea gave me this KEY STONE and a GALLADITE.\p"
+                  "People in town whisper about the MAGMA grunt with the dragons.\p"
+                  "I told them they're wrong about you.\p"
+                  "Now watch us, {PLAYER}!"))
+    trainerbattle_no_intro(TRAINER_WALLY_LILYCOVE, LilycoveCity_Text_DraconidWallyDefeat)
+    msgbox(format("WALLY: Next time we battle, it'll be at the POKéMON LEAGUE. I promise!\p"
+                  "Whatever you're really fighting for… I hope you win, {PLAYER}."))
+    closemessage
+    fadescreen(FADE_TO_BLACK)
+    removeobject(LOCALID_LILYCOVE_WALLY)
+    setflag(FLAG_HIDE_LILYCOVE_CITY_WALLY)
+    setvar(VAR_WALLY_STATE, WALLY_STATE_LILYCOVE_DONE)
+    fadescreen(FADE_FROM_BLACK)
+    release
+}
+
+text LilycoveCity_Text_DraconidWallyDefeat {
+    format("Still not enough…")
+}
+
+// ---------------------------------------------------------------------------
+// Mt. Pyre summit (vanilla: MAGMA takes the BLUE ORB, then AQUA the RED ORB). MAXIE waits at the top of
+// the stairs with the BLUE ORB, orders the player to hold off AQUA at the summit and gives them the MAGMA
+// EMBLEM (the old lady no longer does). The AQUA grunts on the path are the ones to hold off; NERINE blocks
+// the last stretch (fight 4, the trigger row y 10), then ARCHIE takes the RED ORB (vanilla) (D-132).
+// MAGMA_STATE_MT_PYRE is set when ARCHIE has left (MtPyre_Summit_EventScript_TeamAquaExits), so MAXIE's
+// phone call about the two ORBS comes after it; until then the EMBLEM in the bag says his scene is done.
+// MtPyre_Summit_OnTransition calls ..._DraconidOnTransition: VAR_TEMP_1 1 = MAXIE's scene (OnFrame),
+// VAR_TEMP_2 1 = NERINE waits (coord triggers); otherwise her object is hidden by FLAG_TEMP_11.
+// ---------------------------------------------------------------------------
+
+script MtPyre_Summit_EventScript_DraconidOnTransition {
+    if (var(VAR_MT_PYRE_STATE) == 0 && var(VAR_MAGMA_STATE) < MAGMA_STATE_MT_PYRE) {
+        checkitem(ITEM_MAGMA_EMBLEM)
+        if (var(VAR_RESULT) == FALSE) {
+            setvar(VAR_TEMP_1, 1)
+            setobjectxyperm(LOCALID_MT_PYRE_SUMMIT_MAXIE, 23, 27)
+            setobjectmovementtype(LOCALID_MT_PYRE_SUMMIT_MAXIE, MOVEMENT_TYPE_FACE_DOWN)
+            clearflag(FLAG_HIDE_MT_PYRE_SUMMIT_MAXIE)
+        }
+    }
+    if (var(VAR_MT_PYRE_STATE) == 0 && var(VAR_NERINE_STATE) < NERINE_STATE_MT_PYRE) {
+        setvar(VAR_TEMP_2, 1)
+    } else {
+        setflag(FLAG_TEMP_11)
+    }
+}
+
+script MtPyre_Summit_EventScript_DraconidMaxieOrders {
+    lockall
+    setvar(VAR_TEMP_1, 0)
+    playbgm(MUS_ENCOUNTER_MAGMA, FALSE)
+    // the player comes up the stairs at the bottom (23, 31); MAXIE comes down to meet them
+    getplayerxy(VAR_0x8004, VAR_0x8005)
+    if (var(VAR_0x8005) != 30) {
+        applymovement(LOCALID_PLAYER, Common_Movement_WalkUp)
+        waitmovement(0)
+    }
+    applymovement(LOCALID_MT_PYRE_SUMMIT_MAXIE, MtPyre_Summit_Movement_DraconidMaxieApproach)
+    waitmovement(0)
+    msgbox(format("MAXIE: {PLAYER}. You came. Good.\p"
+                  "TABITHA tells me AQUA fled the WEATHER INSTITUTE with their tails between their legs.\p"
+                  "Your doing, I hear."))
+    msgbox(format("MAXIE: Look. The BLUE ORB.\p"
+                  "Hold it to the light and you can almost hear the land breathing."))
+    msgbox(format("MAXIE: But ARCHIE's rabble followed us up the mountain. They're swarming the summit.\p"
+                  "He's after the RED ORB… and after this one.\p"
+                  "I will not lose it on a mountain of graves.\p"
+                  "Hold them off, {PLAYER}. Keep AQUA busy up there while we take the ORB down the mountain."))
+    msgbox(format("MAXIE: And take this. The MAGMA EMBLEM.\p"
+                  "Only those I trust carry one. You've earned it."))
+    giveitem(ITEM_MAGMA_EMBLEM)
+    msgbox(format("MAXIE: Keep it close. When this is over, I'll call for you.\p"
+                  "It's time you saw what we are truly working for."))
+    closemessage
+    applymovement(LOCALID_MT_PYRE_SUMMIT_MAXIE, MtPyre_Summit_Movement_DraconidMaxieLeave)
+    applymovement(LOCALID_PLAYER, MtPyre_Summit_Movement_DraconidPlayerWatchMaxie)
+    waitmovement(0)
+    removeobject(LOCALID_MT_PYRE_SUMMIT_MAXIE)
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp)
+    waitmovement(0)
+    savebgm(MUS_DUMMY)
+    fadedefaultbgm
+    releaseall
+}
+
+// from (23, 27) to (23, 29), just above the player
+movement MtPyre_Summit_Movement_DraconidMaxieApproach {
+    walk_down * 2
+}
+
+// past the player and down the stairs
+movement MtPyre_Summit_Movement_DraconidMaxieLeave {
+    walk_left
+    walk_down * 2
+    set_invisible
+}
+
+movement MtPyre_Summit_Movement_DraconidPlayerWatchMaxie {
+    walk_in_place_faster_left
+    delay_16
+    walk_in_place_faster_down
+}
+
+// the coord triggers on the stairs (22-24, 10); NERINE stands at (23, 8) and steps in front of the player
+script MtPyre_Summit_EventScript_DraconidNerine {
+    lockall
+    setvar(VAR_TEMP_2, 0)
+    playbgm(MUS_ENCOUNTER_AQUA, FALSE)
+    getplayerxy(VAR_0x8004, VAR_0x8005)
+    switch (var(VAR_0x8004)) {
+        case 22: applymovement(LOCALID_MT_PYRE_SUMMIT_NERINE, MtPyre_Summit_Movement_DraconidNerineToLeft)
+        case 23: applymovement(LOCALID_MT_PYRE_SUMMIT_NERINE, MtPyre_Summit_Movement_DraconidNerineToMiddle)
+        default: applymovement(LOCALID_MT_PYRE_SUMMIT_NERINE, MtPyre_Summit_Movement_DraconidNerineToRight)
+    }
+    waitmovement(0)
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp)
+    waitmovement(0)
+    msgbox(format("NERINE: …You again.\p"
+                  "So MAXIE left you behind to hold the mountain.\p"
+                  "He chose well. That's what worries me."))
+    msgbox(format("NERINE: Listen, {PLAYER}. Quietly.\p"
+                  "The land and the sea are sleeping. These ORBS are the only things that can calm them.\p"
+                  "Now each team has one. And each thinks it can wake a god and keep it on a leash.\p"
+                  "…ARCHIE is right up there. So we fight. Properly."))
+    trainerbattle_no_intro(TRAINER_NERINE_MT_PYRE_DEINO_CHARMANDER, MtPyre_Summit_Text_DraconidNerineDefeat)
+    msgbox(format("NERINE: Your dragons are learning to fly.\p"
+                  "Soon you'll have to choose between the red and the sky.\p"
+                  "Choose well."))
+    closemessage
+    switch (var(VAR_0x8004)) {
+        case 22: applymovement(LOCALID_MT_PYRE_SUMMIT_NERINE, MtPyre_Summit_Movement_DraconidNerineLeaveRight)
+        default: applymovement(LOCALID_MT_PYRE_SUMMIT_NERINE, MtPyre_Summit_Movement_DraconidNerineLeaveLeft)
+    }
+    waitmovement(0)
+    removeobject(LOCALID_MT_PYRE_SUMMIT_NERINE)
+    setvar(VAR_NERINE_STATE, NERINE_STATE_MT_PYRE)
+    savebgm(MUS_DUMMY)
+    fadedefaultbgm
+    releaseall
+}
+
+// from (23, 8) to the tile above the player, (x, 9)
+movement MtPyre_Summit_Movement_DraconidNerineToLeft {
+    walk_left
+    walk_down
+}
+
+movement MtPyre_Summit_Movement_DraconidNerineToMiddle {
+    walk_down
+}
+
+movement MtPyre_Summit_Movement_DraconidNerineToRight {
+    walk_right
+    walk_down
+}
+
+// past the player on the free side and down the path, out of sight
+movement MtPyre_Summit_Movement_DraconidNerineLeaveRight {
+    walk_right
+    walk_down * 7
+}
+
+movement MtPyre_Summit_Movement_DraconidNerineLeaveLeft {
+    walk_left
+    walk_down * 7
+}
+
+text MtPyre_Summit_Text_DraconidNerineDefeat {
+    format("…Hm. The mountain listens to you.")
+}
+
+// ---------------------------------------------------------------------------
+// Jagged Pass: the guard at the hidden door lets the player in once MAXIE has given them the MAGMA EMBLEM
+// (the vanilla emblem triggers run JaggedPass_EventScript_OpenMagmaHideout, which calls these two), then
+// goes inside himself: FLAG_HIDE_JAGGED_PASS_MAGMA_GUARD is set here now, not at Mt. Pyre (D-133).
+// ---------------------------------------------------------------------------
+
+script JaggedPass_EventScript_DraconidGuardGreets {
+    if (flag(FLAG_HIDE_JAGGED_PASS_MAGMA_GUARD)) {
+        return
+    }
+    playse(SE_PIN)
+    applymovement(LOCALID_MAGMA_HIDEOUT_GUARD, Common_Movement_ExclamationMark)
+    waitmovement(0)
+    applymovement(LOCALID_MAGMA_HIDEOUT_GUARD, Common_Movement_FacePlayer)
+    waitmovement(0)
+    msgbox(format("GRUNT: Hey! Over here!\p"
+                  "That EMBLEM… You're the one the LEADER sent for!\p"
+                  "Hold it up. The door answers to the EMBLEM."))
+    closemessage
+}
+
+script JaggedPass_EventScript_DraconidGuardGoesIn {
+    if (flag(FLAG_HIDE_JAGGED_PASS_MAGMA_GUARD)) {
+        return
+    }
+    msgbox(format("GRUNT: Welcome to the HIDEOUT.\p"
+                  "The LEADER is waiting at the very bottom. I'll tell them you're coming!"))
+    closemessage
+    applymovement(LOCALID_MAGMA_HIDEOUT_GUARD, JaggedPass_Movement_DraconidGuardGoIn)
+    waitmovement(0)
+    removeobject(LOCALID_MAGMA_HIDEOUT_GUARD)
+    setflag(FLAG_HIDE_JAGGED_PASS_MAGMA_GUARD)
+}
+
+// from (16, 19) into the door above him
+movement JaggedPass_Movement_DraconidGuardGoIn {
+    face_up
+    delay_8
+    walk_up
+    set_invisible
+}
+
+// ---------------------------------------------------------------------------
+// Magma Hideout 4F: MAXIE promotes the player, then wakes GROUDON (vanilla), which escapes. No battle: he
+// tells the player his whole plan instead (MagmaHideout_4F_Text_MaxieOhItWasYou / …ImGoingAfterGroudon in
+// the map's scripts.inc); every flag vanilla sets after the battle is still set there. Afterwards the
+// player sends word to the ELDER (D-134).
+// ---------------------------------------------------------------------------
+
+// MagmaHideout_4F_EventScript_Maxie calls this first; the player stands right of MAXIE (17, 21)
+script MagmaHideout_4F_EventScript_DraconidPromotion {
+    applymovement(LOCALID_MAGMA_HIDEOUT_4F_MAXIE, Common_Movement_WalkInPlaceFasterRight)
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft)
+    waitmovement(0)
+    msgbox(format("MAXIE: {PLAYER}. Come, stand here.\p"
+                  "TABITHA told me how you held MT. PYRE. Alone, against ARCHIE's whole crew."))
+    msgbox(format("MAXIE: I have watched you since METEOR FALLS.\p"
+                  "You fight for your POKéMON, not for yourself. That is rarer than you think.\p"
+                  "So I will say it plainly. From today, you are no grunt.\p"
+                  "You are one of my own."))
+    msgbox(format("MAXIE: Stand beside me, {PLAYER}, as the land is reborn."))
+    closemessage
+    applymovement(LOCALID_MAGMA_HIDEOUT_4F_MAXIE, Common_Movement_WalkInPlaceFasterUp)
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp)
+    waitmovement(0)
+    delay(30)
+}
+
+// ...and this at the end, after the fade (MAXIE, TABITHA and the grunts are gone)
+script MagmaHideout_4F_EventScript_DraconidSendWord {
+    delay(30)
+    msgbox(format("Only the magma still moved in the chamber where GROUDON had slept.\p"
+                  "{PLAYER} took out paper and wrote to the ELDER.\p"
+                  "“MAXIE has woken GROUDON. He means to raise the land and drink the sea.\p"
+                  "AQUA holds the RED ORB. I am still inside. I will stay close to him.”\p"
+                  "{PLAYER} sealed the letter with the clan's mark.\p"
+                  "The next traveler bound for the mountains would carry it home."))
+    setvar(VAR_MAGMA_STATE, MAGMA_STATE_PROMOTED)
+}

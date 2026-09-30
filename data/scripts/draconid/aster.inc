@@ -105,55 +105,6 @@ MtChimney_EventScript_DraconidDisguiseOff_4:
 	return
 
 
-MagmaHideout_1F_EventScript_DraconidCheckDisguise::
-	compare VAR_ASTER_STATE, ASTER_STATE_CHIMNEY_DONE
-	goto_if_ge MagmaHideout_1F_EventScript_DraconidCheckDisguise_3
-	return
-
-MagmaHideout_1F_EventScript_DraconidCheckDisguise_1:
-	setvar VAR_TEMP_1, 1
-	return
-
-MagmaHideout_1F_EventScript_DraconidCheckDisguise_2:
-	compare VAR_PLAYER_OUTFIT, PLAYER_OUTFIT_MAGMA
-	goto_if_ne MagmaHideout_1F_EventScript_DraconidCheckDisguise_1
-	return
-
-MagmaHideout_1F_EventScript_DraconidCheckDisguise_3:
-	compare VAR_ASTER_STATE, ASTER_STATE_HIDEOUT_DONE
-	goto_if_lt MagmaHideout_1F_EventScript_DraconidCheckDisguise_2
-	return
-
-
-MagmaHideout_1F_EventScript_DraconidDisguiseOn::
-	lockall
-	setvar VAR_TEMP_1, 0
-	msgbox MagmaHideout_1F_Text_DraconidDisguiseOn, MSGBOX_DEFAULT
-	closemessage
-	setvar VAR_0x8004, PLAYER_OUTFIT_MAGMA
-	call Draconid_EventScript_ChangeOutfit
-	releaseall
-	return
-
-
-MagmaHideout_4F_EventScript_DraconidAfterMaxie::
-	setvar VAR_0x8004, PLAYER_OUTFIT_DRACONID
-	call Draconid_EventScript_ChangeOutfit
-	msgbox MtChimney_Text_DraconidDisguiseOff, MSGBOX_DEFAULT
-	clearflag FLAG_HIDE_MAGMA_HIDEOUT_ASTER
-	addobject LOCALID_MAGMA_HIDEOUT_4F_ASTER
-	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight
-	waitmovement 0
-	msgbox MagmaHideout_4F_Text_DraconidAsterGoHome, MSGBOX_DEFAULT
-	closemessage
-	fadescreen FADE_TO_BLACK
-	removeobject LOCALID_MAGMA_HIDEOUT_4F_ASTER
-	setflag FLAG_HIDE_MAGMA_HIDEOUT_ASTER
-	fadescreen FADE_FROM_BLACK
-	setvar VAR_ASTER_STATE, ASTER_STATE_HIDEOUT_DONE
-	return
-
-
 DraconidVillage_EldersHouse_EventScript_DraconidMegaRing::
 	msgbox DraconidVillage_EldersHouse_Text_DraconidMegaRing, MSGBOX_DEFAULT
 	giveitem ITEM_MEGA_RING
@@ -306,20 +257,6 @@ Route112_CableCarStation_Text_DraconidAsterGoAhead::
 MtChimney_Text_DraconidDisguiseOff::
 	.string "{PLAYER} took off the TEAM MAGMA\n"
 	.string "uniform and packed it away.$"
-
-MagmaHideout_1F_Text_DraconidDisguiseOn::
-	.string "{PLAYER} put the TEAM MAGMA uniform\n"
-	.string "back on before going in.$"
-
-MagmaHideout_4F_Text_DraconidAsterGoHome::
-	.string "ASTER: I saw it from the tunnels.\n"
-	.string "GROUDON is awake… and the sky will\l"
-	.string "answer. It always does.\p"
-	.string "Go home, {PLAYER}. Grandfather is\n"
-	.string "waiting for you at the village. He has\l"
-	.string "something for you.\p"
-	.string "I'm going to find out where the one in\n"
-	.string "the sky sleeps.$"
 
 DraconidVillage_EldersHouse_Text_DraconidMegaRing::
 	.string "ELDER: {PLAYER}. You went into the\n"

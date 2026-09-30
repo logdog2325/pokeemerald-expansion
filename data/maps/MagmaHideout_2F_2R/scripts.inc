@@ -21,9 +21,9 @@ MagmaHideout_2F_2R_EventScript_Grunt8::
 	msgbox MagmaHideout_2F_2R_Text_Grunt8PostBattle, MSGBOX_AUTOCLOSE
 	end
 
-MagmaHideout_2F_2R_Text_Grunt15Intro:
+MagmaHideout_2F_2R_Text_Grunt15Intro:  @ Draconid Emerald
 	.string "I don't have a bone to pick with you.\n"
-	.string "I'm just following orders!$"
+	.string "Orders are to test every newcomer!$"
 
 MagmaHideout_2F_2R_Text_Grunt15Defeat:
 	.string "I may have lost, but…$"
@@ -63,11 +63,12 @@ MagmaHideout_2F_2R_Text_Grunt7PostBattle:
 	.string "TEAM MAGMA's goal is about to be\n"
 	.string "reached!$"
 
-MagmaHideout_2F_2R_Text_Grunt8Intro:
-	.string "One of our guys was freaking out that\n"
-	.string "he lost his MAGMA EMBLEM…\p"
-	.string "Wait a minute!\n"
-	.string "Was it you who found it?$"
+MagmaHideout_2F_2R_Text_Grunt8Intro:  @ Draconid Emerald
+	.string "The LEADER gave you his own MAGMA\n"
+	.string "EMBLEM?\p"
+	.string "I've dug in this volcano for years, and I\n"
+	.string "don't even have one!\p"
+	.string "Battle me! I have to see this!$"
 
 MagmaHideout_2F_2R_Text_Grunt8Defeat:
 	.string "I'm having trouble believing this…$"

@@ -1,10 +1,17 @@
 MtPyre_Summit_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, MtPyre_Summit_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, MtPyre_Summit_OnFrame  @ Draconid Emerald
 	.byte 0
 
 MtPyre_Summit_OnTransition:
+	call MtPyre_Summit_EventScript_DraconidOnTransition  @ Draconid Emerald: Maxie and Nerine (act4.pory)
 	call_if_eq VAR_MT_PYRE_STATE, 2, MtPyre_Summit_EventScript_SetArchieMaxiePositions
 	end
+
+@ Draconid Emerald: Maxie meets the player with the BLUE ORB (act4.pory)
+MtPyre_Summit_OnFrame:
+	map_script_2 VAR_TEMP_1, 1, MtPyre_Summit_EventScript_DraconidMaxieOrders
+	.2byte 0
 
 MtPyre_Summit_EventScript_SetArchieMaxiePositions::
 	setobjectxyperm LOCALID_MT_PYRE_SUMMIT_MAXIE, 23, 6
@@ -57,9 +64,9 @@ MtPyre_Summit_EventScript_TeamAquaExits::
 	call_if_eq VAR_0x8008, 1, MtPyre_Summit_EventScript_OldLadyApproachPlayer1
 	call_if_eq VAR_0x8008, 2, MtPyre_Summit_EventScript_OldLadyApproachPlayer2
 	msgbox MtPyre_Summit_Text_BothOrbsTakenMagmaLeftThis, MSGBOX_DEFAULT
-	giveitem ITEM_MAGMA_EMBLEM
+	@ Draconid Emerald: Maxie gave the MAGMA EMBLEM, and the Jagged Pass guard stays to let the player in (act4.pory)
 	setflag FLAG_RECEIVED_RED_OR_BLUE_ORB
-	setflag FLAG_HIDE_JAGGED_PASS_MAGMA_GUARD
+	setvar VAR_MAGMA_STATE, MAGMA_STATE_MT_PYRE  @ Draconid Emerald: the summit held (act4.pory)
 	releaseall
 	end
 
@@ -421,44 +428,44 @@ MtPyre_Summit_EventScript_Grunt4::
 	msgbox MtPyre_Summit_Text_Grunt4PostBattle, MSGBOX_AUTOCLOSE
 	end
 
-MtPyre_Summit_Text_Grunt1Intro:
-	.string "No! Those TEAM MAGMA goons got\n"
-	.string "here ahead of us!\p"
-	.string "We can't fall behind!$"
+MtPyre_Summit_Text_Grunt1Intro:  @ Draconid Emerald
+	.string "Another MAGMA goon!\p"
+	.string "Your lot got here ahead of us, but we\n"
+	.string "won't fall behind!$"
 
-MtPyre_Summit_Text_Grunt1Defeat:
-	.string "I thought you were one of the MAGMAS\n"
-	.string "who happened to come back…$"
+MtPyre_Summit_Text_Grunt1Defeat:  @ Draconid Emerald
+	.string "Just one MAGMA grunt…\n"
+	.string "And I still lost?$"
 
 MtPyre_Summit_Text_Grunt1PostBattle:
 	.string "Yeah, so you are strong…\n"
 	.string "But there're a lot of us!$"
 
-MtPyre_Summit_Text_Grunt2Intro:
+MtPyre_Summit_Text_Grunt2Intro:  @ Draconid Emerald
 	.string "Hah!\n"
 	.string "Too bad for you!\p"
-	.string "If you came earlier, you only would've\n"
-	.string "had to battle the wimpy TEAM MAGMA.\p"
-	.string "But since you arrived now, you have\n"
-	.string "to take on us toughies!$"
+	.string "Your LEADER ran off with his ORB and\n"
+	.string "left you behind!\p"
+	.string "Now you get to take on us toughies all\n"
+	.string "by yourself!$"
 
-MtPyre_Summit_Text_Grunt2Defeat:
-	.string "Urgh… I should've let you take on\n"
-	.string "TEAM MAGMA first…$"
+MtPyre_Summit_Text_Grunt2Defeat:  @ Draconid Emerald
+	.string "Urgh… Some leftover you are…$"
 
-MtPyre_Summit_Text_Grunt2PostBattle:
-	.string "You don't know anything!\n"
-	.string "So why are you messing with us?$"
+MtPyre_Summit_Text_Grunt2PostBattle:  @ Draconid Emerald
+	.string "MAXIE's using you as a shield, you know.\p"
+	.string "Does that sit right with you?$"
 
-MtPyre_Summit_Text_Grunt3Intro:
+MtPyre_Summit_Text_Grunt3Intro:  @ Draconid Emerald
 	.string "You…\n"
 	.string "We saw you at MT. CHIMNEY.\p"
-	.string "You don't belong to either TEAM,\n"
-	.string "so why would you be here?$"
+	.string "The MAGMA grunt with the dragons.\n"
+	.string "MAXIE left you here to slow us down,\l"
+	.string "huh?$"
 
-MtPyre_Summit_Text_Grunt3Defeat:
-	.string "If you're going to mess with anyone,\n"
-	.string "let it be TEAM MAGMA…$"
+MtPyre_Summit_Text_Grunt3Defeat:  @ Draconid Emerald
+	.string "Tch…\n"
+	.string "MAXIE picked a good watchdog.$"
 
 MtPyre_Summit_Text_Grunt3PostBattle:
 	.string "Heh, it doesn't matter!\n"
@@ -466,50 +473,50 @@ MtPyre_Summit_Text_Grunt3PostBattle:
 	.string "The BOSS should have snatched what\n"
 	.string "he was after!$"
 
-MtPyre_Summit_Text_Grunt4Intro:
+MtPyre_Summit_Text_Grunt4Intro:  @ Draconid Emerald
 	.string "Oh, I know!\n"
-	.string "You tried to join TEAM MAGMA,\l"
-	.string "but they wouldn't have you!\p"
-	.string "Well, don't think that we'll let you\n"
-	.string "join our TEAM AQUA!$"
+	.string "MAGMA sent a kid to hold the mountain!\p"
+	.string "Well, you won't hold it against TEAM\n"
+	.string "AQUA!$"
 
-MtPyre_Summit_Text_Grunt4Defeat:
-	.string "If you want to join TEAM AQUA that\n"
-	.string "badly, we can consider it…$"
+MtPyre_Summit_Text_Grunt4Defeat:  @ Draconid Emerald
+	.string "…Ever thought about switching sides?\n"
+	.string "We could use you.$"
 
 MtPyre_Summit_Text_Grunt4PostBattle:
 	.string "We have a great combination going\n"
 	.string "with us members and our leader.$"
 
-MtPyre_Summit_Text_ArchieWeGotTheOrbLetsGo:
-	.string "ARCHIE: TEAM MAGMA's MAXIE got ahead\n"
-	.string "of us, but we also got what we wanted.\p"
-	.string "The RED ORB preserved at MT. PYRE…\n"
-	.string "I, ARCHIE, now have it in my possession!\p"
-	.string "Fufufu… Now we can bring our ultimate\n"
-	.string "objective to fruition!\p"
+MtPyre_Summit_Text_ArchieWeGotTheOrbLetsGo:  @ Draconid Emerald
+	.string "ARCHIE: Fufufu… So MAXIE left a pup\n"
+	.string "behind to hold the mountain.\p"
+	.string "A brave pup. But too late.\p"
+	.string "The RED ORB preserved at MT. PYRE… I,\n"
+	.string "ARCHIE, now have it in my possession!\p"
+	.string "Tell MAXIE he can keep his BLUE ORB.\n"
+	.string "We'll see which one the world answers\l"
+	.string "to.\p"
 	.string "Okay, TEAM!\n"
 	.string "We're pulling out!$"
 
-MtPyre_Summit_Text_BothOrbsTakenMagmaLeftThis:
+MtPyre_Summit_Text_BothOrbsTakenMagmaLeftThis:  @ Draconid Emerald
 	.string "Oh, no…\n"
 	.string "This cannot happen…\p"
-	.string "Not only the BLUE ORB, but even\n"
-	.string "the RED ORB has been taken…\p"
-	.string "The BLUE ORB and RED ORB must never\n"
-	.string "be separated. They belong together.\p"
+	.string "Not only the BLUE ORB, but even the RED\n"
+	.string "ORB has been taken…\p"
+	.string "The BLUE ORB and RED ORB must never be\n"
+	.string "separated. They belong together.\p"
 	.string "What are those men trying to do with\n"
 	.string "the two ORBS?\p"
 	.string "… … … … … …\n"
 	.string "… … … … … …\p"
-	.string "Oh, yes. Was it TEAM MAGMA who came\n"
-	.string "and took the BLUE ORB first?\p"
-	.string "Well, in their haste, they left this\n"
-	.string "behind.\p"
-	.string "I couldn't imagine what exactly it\n"
-	.string "could be.\p"
-	.string "I would like you to have it.\n"
-	.string "Perhaps it will be useful in some way.$"
+	.string "You wear the same red as the men who\n"
+	.string "took the BLUE ORB.\p"
+	.string "And yet you stood against the others,\n"
+	.string "all alone.\p"
+	.string "I do not understand you, child.\p"
+	.string "But I will pray that you know what you\n"
+	.string "are doing.$"
 
 MtPyre_Summit_Text_OrbsHaveBeenTaken:
 	.string "The BLUE ORB and RED ORB taken by\n"

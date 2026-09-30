@@ -72,7 +72,7 @@
 #define FLAG_UNUSED_0x032    0x32 // Unused Flag
 #define FLAG_UNUSED_0x033    0x33 // Unused Flag
 #define FLAG_UNUSED_0x034    0x34 // Unused Flag
-#define FLAG_UNUSED_0x035    0x35 // Unused Flag
+#define FLAG_HIDE_ROUTE_119_TABITHA              0x35 // Draconid Emerald: Tabitha outside the Weather Institute (Act 4)
 #define FLAG_UNUSED_0x036    0x36 // Unused Flag
 #define FLAG_UNUSED_0x037    0x37 // Unused Flag
 #define FLAG_UNUSED_0x038    0x38 // Unused Flag
@@ -87,7 +87,7 @@
 #define FLAG_HIDE_METEOR_FALLS_ASTER             0x41 // Draconid Emerald: Aster in Meteor Falls
 #define FLAG_HIDE_CABLE_CAR_STATION_ASTER        0x42 // Draconid Emerald: Aster at the Route 112 cable car (disguise)
 #define FLAG_DEVON_GOODS_RETURNED                0x43 // Draconid Emerald: the player chose to return the Devon Goods to Devon (Rusturf, Act 2)
-#define FLAG_HIDE_MAGMA_HIDEOUT_ASTER            0x44 // Draconid Emerald: Aster after Maxie in the Magma Hideout
+#define FLAG_UNUSED_0x044    0x44 // Unused Flag
 #define FLAG_HIDE_SKY_PILLAR_TOP_ASTER           0x45 // Draconid Emerald: Aster at the top of the Sky Pillar
 #define FLAG_RECEIVED_MEGA_RING                  0x46 // Draconid Emerald: the Elder gave the Mega Ring
 #define FLAG_HIDE_DRACONID_HOUSE_ELDER           0x47 // Draconid Emerald: the Elder visiting the player's house (post-game SS Ticket)
