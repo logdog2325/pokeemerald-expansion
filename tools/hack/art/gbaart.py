@@ -31,6 +31,7 @@ PROFILES = {
     "trainer_back": (64, 64, 4, "y"),   # idle + 3 throw frames
     "icon": (32, 32, 2, "y"),          # Pokémon icon
     "map_icon": (16, 16, 1, "x"),      # region map / PokéNav player head
+    "credits_run": (64, 64, 6, "y"),   # graphics/intro/scene_2/*_credits.png run cycle
 }
 
 

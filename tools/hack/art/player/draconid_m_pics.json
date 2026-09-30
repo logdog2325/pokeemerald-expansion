@@ -94,7 +94,9 @@
     "W": 14,
     "w": 9,
     "S": 1,
-    "s": 2
+    "s": 2,
+    "R": 10,
+    "r": 11
    },
    "cap": [
     12,
@@ -129,7 +131,59 @@
      "...KHSSSHSSHSSSHK...",
      "...KsSSSSSSSSSSsK..."
     ]
-   }
+   },
+   "overlays": [
+    {
+     "at": [
+      3,
+      24
+     ],
+     "rows": [
+      ".......................K.........K...",
+      "......................KRRKKKKRKKKRKK.",
+      "...............K.....KRRRRRRRRRRRRRK.",
+      "........KKKKKKKRRrKKKKrrrRRRRRRRRrrrK",
+      "....KKKKrRrrrRrrrRrrrKKrrrrrrrrrrrrK.",
+      "KKKKrrRrRRRrRRRrRRRrRKKKKKrrrrrKKKK..",
+      "...KKKrrrRRrRRRrRRRrRKRRK.KKKKK......",
+      "......KKKrrrrrrRrrrRrKRRrK...........",
+      ".........KKKrrrrrrrrKrrrRK...........",
+      "............KKKKKKKKKRrRRK...........",
+      ".............KrRRRrRRRrRRK...........",
+      "............KrRrrrRrrrRrrK...........",
+      "............KrRRrRRRrRRRrK...........",
+      "...........KrRRRrRRRrRRRrK...........",
+      "...........KrrrrRrrrRrrrRK...........",
+      "...........KrRrRRRrRRRrRKK...........",
+      "..........KrRRrRRRrRRRrK.............",
+      "..........KrrrRrrrRrr................",
+      "..........KrrRRRrRRRKK...............",
+      "..........KrrRRRrRRK.................",
+      ".........KrrRrrrRrK..................",
+      ".........KrRRKrRRRK..................",
+      ".........KrKK.KrRK...................",
+      ".........KK...KrrK...................",
+      "........KK.....KrK...................",
+      "........K......KrK...................",
+      "................K....................",
+      "................K...................."
+     ]
+    }
+   ],
+   "remap": [
+    {
+     "rect": [
+      43,
+      30,
+      48,
+      32
+     ],
+     "map": {
+      "12": 10,
+      "13": 11
+     }
+    }
+   ]
   },
   {
    "src": "graphics/trainers/back_pics/red.png",
@@ -290,7 +344,179 @@
      "...KKHHHHHHHHHHHHHHK..............",
      "....KHHHHHHHHHHHHHHK.............."
     ]
-   }
+   },
+   "overlays": [
+    {
+     "at": [
+      19,
+      40
+     ],
+     "rows": [
+      "...............KRKKKKK.....",
+      "............KKKRRRRRRRKKKK.",
+      "............KRRRRRRRRRRRRK.",
+      "............KRRRRRRRRRRRRrK",
+      "...........KKrrrrRRRRRRRrKK",
+      "...........rKKKKKrrrrrrrK..",
+      "..........KrRRRrRKKKKKKK...",
+      "..........KrrrrRrrrRrrK....",
+      ".......rRKrRRrRRRrRRRrK....",
+      "......rRRrRRRrRRRrRRRrR....",
+      ".....rrrrRrrrRrrrRrrrRr....",
+      "....rRRrRRRrRRRrRRRrRR.....",
+      "....rRRrRRRrRRRrRRRrRR.....",
+      "....rrrRrrrRrrrRrrrRr......",
+      "...rRrRRRrRRRrRRRrRRR......",
+      "...rRrRRRrRRRrRRRrR........",
+      "...rrRrrrRrrrRrrrRK........",
+      "..rrRRRrRRRrRRRrRRK........",
+      "..rrRRRrRRRrRRRrRRK........",
+      "..rRrrrRrrrRrrrRrrK........",
+      ".rRRRrRRRrRRRrRRRrK........",
+      ".rRRRrRRRrRRRrRRRrK........",
+      ".rrrrRrrrRrrrRrrrRK........",
+      "KrRrRRRrRRRrRRRrRRK........"
+     ],
+     "frames": [
+      0
+     ]
+    },
+    {
+     "at": [
+      16,
+      43
+     ],
+     "rows": [
+      "........KKKKKK........",
+      "...KKKKKRRRRRRK.......",
+      "..KRRRRRRRRRRRRK......",
+      "KKRRRRRRRRRRRRrK......",
+      ".KRRRRRRRRRRRRK...KKKK",
+      ".KrrrrrRRrrrrrKKKKrRrK",
+      "..KKKKKrrKKKKKKRrRRRrK",
+      "........KrrrRrrrRrrrRK",
+      ".......rRRrRRRrRRRrRRK",
+      "......KrRRrRRRrRRRrRRK",
+      ".......rrrRrrrRrrrRrrK",
+      ".......KrRRRrRRRrRRRrK",
+      "........rRRRrRRRrRRRrK",
+      "........KrrrRrrrRrrrRK",
+      ".........rrRRRrRRRrRRK",
+      "..........rRRRrRRRrRRK",
+      "..........rrrrRrrrRrrr",
+      ".........rRRrRRRrRRRrR",
+      "..........rRrRRRrRRRrR",
+      "...........rRrrrRrrrRr",
+      "...........rRR......rK"
+     ],
+     "frames": [
+      1
+     ]
+    },
+    {
+     "at": [
+      14,
+      40
+     ],
+     "rows": [
+      ".............K.......",
+      "......KKKKKKKRKKKRK..",
+      ".....KRRRRRRRRRRRRK..",
+      "...KKRRRRRRRRRRRRRrK.",
+      "...KrrrRRRRRRRRRrrKKK",
+      "...KKKKrrrrrrrrrKKRRK",
+      ".......KKKKKKKKKrRRRK",
+      ".........KrrRrrrRrrrK",
+      "......KKKrrRRRrRRRrRK",
+      "....r.rRRRrRRRrRRRrRK",
+      "...rrrRrrrRrrrRrrrRrK",
+      "....rRRRrRRRrRRRrRRRK",
+      "...rrRRRrRRRrRRRrRRRK",
+      "...rRrrrRrrrRrrrRrrrK",
+      "...rRRrRRRrRRRrRRRrR.",
+      "..rRRRrRRRrRRRrRRRrR.",
+      "..rrrrRrrrRrrrRrrrR..",
+      "..rRrRRRrRRRrRRRrRR..",
+      ".rRRrRRRrRRRrRRRrR...",
+      ".rrrRrrrRrrrRrrrRr...",
+      ".rrRRRrRRRrRRRrRR....",
+      "rRrRRRrRRRrRRRrR.....",
+      "rrRrrrRrrrRrrrRr.....",
+      "rRRRrRRRrRRRrRRR....."
+     ],
+     "frames": [
+      2
+     ]
+    },
+    {
+     "at": [
+      1,
+      36
+     ],
+     "rows": [
+      ".......................RRRRRRK........",
+      "............KKKKKKKK.RRRRRRRRRKKKKKK..",
+      ".........KKKrrrRrrrKRRRRRRRRRRRRRRRRK.",
+      "........KrRRRrRRRrKKrRRRRRRRRRRRRRRrKK",
+      ".......rRrRRRrRRRK..KrrrrrrRrrrRrrrK..",
+      "......rrrRrrrRrrrRK.KKKKKKKrKKKrKKK...",
+      ".....KrrRRRrR.KrRRK........K..........",
+      ".....rRrRRR.....rRRK..................",
+      "....rrrRrr.......rrK..................",
+      "...rRrRRR........KrRK.................",
+      "...rRrRR..........rRK.................",
+      "..rrrRK...........rrK.................",
+      "..rrRK............rrK.................",
+      ".rRrRR...........KrrK.................",
+      ".rrRK...........KrrK..................",
+      "rrR............rRKK...................",
+      "rr...........rRRK.....................",
+      "r...........rRKK......................",
+      "r.........KKKK........................",
+      "r.........K...........................",
+      "rK....................................",
+      "rr....................................",
+      ".rR...................................",
+      "..rr.................................."
+     ],
+     "frames": [
+      3
+     ]
+    },
+    {
+     "at": [
+      2,
+      42
+     ],
+     "rows": [
+      "............KKKKKKKr...KKKKKKK.......",
+      "........KKKKrRrRRRrR.KKRRRRRRRKKKKKK.",
+      "........rrRrrrRrrrRKRRRRRRRRRRRRRRRK.",
+      ".......rrRRRrRRRrRKKRRRRRRRRRRRRRRrKK",
+      "......rRrRRRrRRRrK.KrrrrrrRrrrrRrrK..",
+      ".....KrrRrrrKrrrRrKKKKKKKKrKKKKrKK...",
+      ".....rKrRRKK..KrRRK.......K..........",
+      "....rK.KrK......rRrK.................",
+      "....KrKrrr.......rRK.................",
+      ".....KKrr........KrRK................",
+      "..rKK..K..........rRK................",
+      "..rrRK............rrK................",
+      ".rrRRKK...........rRK................",
+      ".rrRK............KrRK................",
+      "rrRrK...........KrRK.................",
+      "rRR............rrKK..................",
+      "rR...........rRRK....................",
+      "r...........rrKK.....................",
+      "r.........KKKK.......................",
+      "r.........K..........................",
+      "rK...................................",
+      ".r..................................."
+     ],
+     "frames": [
+      4
+     ]
+    }
+   ]
   }
  ]
 }

@@ -311,6 +311,27 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   `TRAINER_PIC_NERINE` / `TRAINER_PIC_MAGMA_ADMIN` partner. Tabitha's is the Magma disguise back pic (Red's build)
   recoloured into his crimson hooded jacket. – Alt: draw a heavier build for him (`TODO(art)` if wanted). – Partners
   are drawn from behind; reusing the player's rigs keeps the 5-frame Kanto throw animation.
+- **D-164 The tamer's scarf** (feedback 1.14): a long **red** scarf in the clan's red with a fish-scale pattern,
+  worn **with** the horned headband (the clan mark, kept – the two do not clash: the scarf sits at the neck, the
+  horns on the head). Wrapped at the neck, its two ends hang down the back as a short cape (M) or lie over the long
+  hair as two tails (F), trail behind in the side view and stream out when running, cycling and in the credits run;
+  on the pics they stream out like Zinnia's. – Alt: Zinnia's dark grey scarf (not a Draconid colour, reads as Team
+  Aqua/Magma black at 16×32); a teal scarf (lost against the teal jacket); an ivory one (fights the horns); a
+  cloak that replaces the headband (D-051's horns are what makes the silhouette). – Red on the teal jacket is the
+  strongest contrast the palette has, and the cape from behind gives the tamer a silhouette of its own.
+- **D-165 The backpack goes under the cape (M)**: Red's red backpack is covered by the scarf's ends everywhere
+  (overworld back and side views, back pic, front pic, credits); the female keeps her gold bag. – Alt: keep the
+  backpack and hang the scarf over it (two reds in the same place read as one lump at 16×32). – The cape replaces
+  the pack's area pixel for pixel, so the walk animation keeps its proportions.
+- **D-166 Scale detail by size**: the pics and the credits run cycle get a clear pattern (U-shaped scales 4 px wide,
+  offset rows); the 16×32 / 32×32 sprites only a dot hint in the dark red. No new colours: each palette's existing
+  red pair is reused (the female overworld palette's unused bright red), so palettes, reflection palettes and the
+  C data stay as they are. – Alt: a third red for scale highlights (costs a slot every sheet would have to give
+  up). – A readable pattern where it fits, and nothing that would need the outfit code regenerated.
+- **D-167 Small fixes riding along**: the Wailmer Pail on the watering frames is teal (it was a red blob in the
+  scarf's colour; the real pail is blue), and the male front pic's Poké Ball is red (it had come out teal).
+  – Alt: leave them (the pail would merge with the scarf's tail). – Both are on sheets redrawn anyway and cost a
+  line each in the specs.
 - **D-170 ORAS data source**: Serebii's Pokéarth "Gen VI" location pages and its ORAS Elite Four page, scraped once
   (2026-09-30, one request at a time, cached outside the repo) into `tools/hack/trainers/oras/oras_trainers.json`
   with the scraper next to it. – Alt: rosters from memory (v1: none could be vouched for); Bulbapedia (HTTP 403).

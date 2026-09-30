@@ -36,6 +36,8 @@ def guess_profile(path):
         return "trainer_back"
     if "/front_pics/" in path:
         return "trainer_front"
+    if base.endswith("_credits"):
+        return "credits_run"
     return None
 
 
