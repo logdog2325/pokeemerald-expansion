@@ -73,7 +73,8 @@ HEADER_ORDER = ["id", "name", "layout", "music", "region", "region_map_section",
 
 
 def caps(name):
-    return re.sub(r"(?<=[a-z0-9])(?=[A-Z])|(?<=[A-Z])(?=[A-Z][a-z])", "_", name).upper()
+    # split lowercase->Uppercase only, like vanilla (PlayersHouse_1F -> PLAYERS_HOUSE_1F, House1 -> HOUSE1)
+    return re.sub(r"(?<=[a-z])(?=[A-Z])", "_", name).upper()
 
 
 def parse_block_full(s, default_col=0, default_elev=3):
@@ -324,8 +325,10 @@ def ensure_script_file(name):
     text = open(es).read()
     line = '\t.include "data/maps/%s/scripts.inc"\n' % name
     if line not in text:
-        # keep all map script includes together: insert after the last one
-        idx = text.rfind('.include "data/maps/')
+        # keep Emerald map script includes together: after the last one before the
+        # FRLG-only block (".if IS_FRLG"), otherwise the scripts vanish from Emerald builds
+        frlg = text.find(".if IS_FRLG")
+        idx = text.rfind('.include "data/maps/', 0, frlg if frlg >= 0 else len(text))
         end = text.index("\n", idx) + 1
         text = text[:end] + line + text[end:]
         open(es, "w").write(text)

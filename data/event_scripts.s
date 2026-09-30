@@ -22,6 +22,8 @@
 #include "constants/contest.h"
 #include "constants/daycare.h"
 #include "constants/decorations.h"
+#include "constants/draconid.h"
+#include "constants/outfits.h"
 #include "constants/difficulty.h"
 #include "constants/easy_chat.h"
 #include "constants/event_objects.h"
@@ -599,6 +601,14 @@ gStdScripts_End::
 	.include "data/maps/Route119_WeatherInstitute_2F/scripts.inc"
 	.include "data/maps/Route119_House/scripts.inc"
 	.include "data/maps/Route124_DivingTreasureHuntersHouse/scripts.inc"
+	.include "data/maps/DraconidVillage/scripts.inc"
+	.include "data/maps/DraconidPass/scripts.inc"
+	.include "data/maps/DraconidVillage_PlayersHouse_1F/scripts.inc"
+	.include "data/maps/DraconidVillage_PlayersHouse_2F/scripts.inc"
+	.include "data/maps/DraconidVillage_EldersHouse/scripts.inc"
+	.include "data/maps/DraconidVillage_Shrine/scripts.inc"
+	.include "data/maps/DraconidVillage_House1/scripts.inc"
+	.include "data/maps/DraconidVillage_House2/scripts.inc"
 
 .if IS_FRLG
 
@@ -1052,6 +1062,7 @@ gStdScripts_End::
 	.include "data/scripts/std_msgbox.inc"
 	.include "data/scripts/trainer_battle.inc"
 	.include "data/scripts/new_game.inc"
+	.include "data/scripts/draconid/new_game.inc"
 	.include "data/scripts/hall_of_fame.inc"
 	.include "data/scripts/hall_of_fame_frlg.inc"
 

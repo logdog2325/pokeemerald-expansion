@@ -14,24 +14,73 @@ Grouped by area; each entry names the file(s).
 | Art tools | `tools/hack/art/` | see docs/hack_tools.md |
 | Porymap scripts | `tools/hack/porymap_scripts/` | registered by `register.py` |
 | `.gitignore` | `.gitignore` | tool binaries ignored; `tools/hack/porymap_scripts/*.js` un-ignored |
+| Emulator runner + driver | `tools/hack/emu/gbarun.c`, `tools/hack/emu/play.py` | headless smoke tests, see docs/hack_tools.md |
+| Map specs | `tools/hack/mapgen/specs/draconid_*.{py,json}` | regenerate the Draconid maps with `mapbuild.py` |
 
 ## Config options
 | Option | Old | New | File |
 |---|---|---|---|
-| (none yet) | | | |
+| `B_FLAG_NO_WHITEOUT` | `0` | `FLAG_DRACONID_NO_WHITEOUT` | `include/config/battle.h` |
 
 ## Flags
 | Flag | Meaning |
 |---|---|
+| `FLAG_HIDE_DRACONID_ELDERS_HOUSE_ASTER` (0x20) | Aster in the Elder's house (shown for the egg ceremony) |
+| `FLAG_HIDE_DRACONID_VILLAGE_ASTER` (0x21) | reserved: Aster standing in the village (later visits) |
+| `FLAG_RECEIVED_DRACONID_EGG` (0x22) | player took an egg; hides the three egg objects |
+| `FLAG_DRACONID_EGG_HATCHED` (0x23) | the hatching rite ran |
+| `FLAG_HIDE_DRACONID_SHRINE_ELDER` (0x24) | Elder at the shrine (rite only) |
+| `FLAG_HIDE_DRACONID_SHRINE_ASTER` (0x25) | Aster at the shrine (rite only) |
+| `FLAG_HIDE_DRACONID_ELDERS_HOUSE_ELDER` (0x26) | Elder at home (hidden during the rite) |
+| `FLAG_HIDE_DRACONID_PASS_ASTER` (0x27) | Aster waiting on Draconid Pass |
+| `FLAG_DEFEATED_ASTER_DRACONID_PASS` (0x28) | first Aster battle done |
+| `FLAG_RECEIVED_SECOND_STARTER` (0x29) | Birch's second starter taken (Phase 4) |
+| `FLAG_HIDE_DRACONID_VILLAGE_MOM` (0x2A) | Mom waiting outside the shrine (Running Shoes) |
+| `FLAG_HIDE_DRACONID_HOUSE_2F_MOM` (0x2B) | Mom in the bedroom (wake-up scene) |
+| `FLAG_DRACONID_NO_WHITEOUT` (0x2C) | `B_FLAG_NO_WHITEOUT`: set around scripted battles the player may lose |
+| `FLAG_VISITED_DRACONID_VILLAGE` (`SYSTEM_FLAGS+0x21`, was `FLAG_UNUSED_0x881`) | fly destination |
 
 ## Vars
 | Var | Values |
 |---|---|
+| `VAR_DRACONID_STATE` (0x40F7) | `DRACONID_STATE_*`: 0 new game, 1 set clock, 2 clock set, 3 egg received, 4 egg hatched, 5 ready to leave, 6 left village |
+| `VAR_ASTER_EGG` (0x40F8) | Aster's egg, `DRACONID_EGG_*` (counter-pick of the player's) |
+| `VAR_SECOND_STARTER` (0x40F9) | `SECOND_STARTER_*`: 0 none, 1 Charmander, 2 Totodile, 3 Treecko |
+| `VAR_PLAYER_OUTFIT` (0x40FA) | `PLAYER_OUTFIT_*`: 0 Draconid, 1 Magma |
+| `VAR_ASTER_STATE` (0x40FB) | Aster arc progress (Phase 4) |
+| `VAR_STARTER_MON` (changed meaning) | now the player's egg, `DRACONID_EGG_*`; the starter table in `src/starter_choose.c` maps it to Deino/Dreepy/Jangmo-o |
 
 ## Constants
 | Constant | Where |
 |---|---|
+| `DRACONID_STATE_*`, `DRACONID_EGG_*`, `DRACONID_EGG_SPECIES_0..2`, `DRACONID_EGG_COUNT`, `DRACONID_HATCHLING_LEVEL`, `SECOND_STARTER_*` | `include/constants/draconid.h` |
+| `PLAYER_OUTFIT_DRACONID`, `PLAYER_OUTFIT_MAGMA`, `PLAYER_OUTFIT_COUNT` | `include/constants/outfits.h` |
+| `TRAINER_ASTER_PASS_DEINO/_DREEPY/_JANGMO_O` (855–857), `TRAINERS_COUNT_EMERALD` 855→858 | `include/constants/opponents.h`, teams in `src/data/trainers.party` |
+| `MAP_DRACONID_VILLAGE`, `MAP_DRACONID_PASS` (group TownsAndRoutes); `MAP_DRACONID_VILLAGE_PLAYERS_HOUSE_1F/_2F`, `_ELDERS_HOUSE`, `_SHRINE`, `_HOUSE1`, `_HOUSE2` (new group `gMapGroup_IndoorDraconid`) | `data/maps/map_groups.json`, `data/maps/Draconid*/` |
+| `LAYOUT_DRACONID_VILLAGE`, `LAYOUT_DRACONID_PASS`, `LAYOUT_DRACONID_VILLAGE_PLAYERS_HOUSE_1F/_2F`, `_ELDERS_HOUSE`, `_SHRINE` (House1/2 reuse `LAYOUT_HOUSE2`/`LAYOUT_HOUSE1`) | `data/layouts/layouts.json` |
+| `MAPSEC_DRACONID_VILLAGE` (x2 y11), `MAPSEC_DRACONID_PASS` (x3 y11) | `src/data/region_map/region_map_sections.json`, `region_map_layout.h`, popup themes in `src/map_name_popup.c` |
+| `HEAL_LOCATION_DRACONID_VILLAGE_PLAYERS_HOUSE_2F`, `HEAL_LOCATION_DRACONID_VILLAGE` | `src/data/heal_locations.json` |
+| Littleroot ↔ Draconid Pass connection (Littleroot left, offset −17) | `data/maps/LittlerootTown/map.json` |
+
+## C changes
+| Change | File |
+|---|---|
+| New: `DraconidRaiseHatchling` special (raise party slot `VAR_0x8004` to `DRACONID_HATCHLING_LEVEL`, full HP, level-up moves) | `src/draconid.c`, `include/draconid.h`, `data/specials.inc` |
+| New game warps to the Draconid bedroom instead of the truck | `src/new_game.c` (`WarpToTruck`), `src/overworld.c` (`CB2_NewGame` uses `FieldCB_WarpExitFadeFromBlack`) |
+| Starter table = the three eggs; `GetStarterPokemon` off-by-one fixed (`>=`) | `src/starter_choose.c` |
+| Whiteout Mom-heal counts the Draconid heal locations | `src/heal_location.c` (`IsLastHealLocationPlayerHouse`) |
+| Post-credits continue → Draconid bedroom | `src/post_battle_event_funcs.c` |
+| Fly: Littleroot → May's house heal location; Draconid Village fly spot | `src/region_map.c` |
+| Bedroom PC turn-off in the Draconid house | `src/player_pc.c`, `include/event_scripts.h` |
 
 ## Scripts
 | Script / label | File |
 |---|---|
+| `DraconidEmerald_EventScript_NewGameSetup` (called from `EventScript_ResetAllMapFlags`): skips the vanilla Littleroot intro vars, hides trucks/house Moms/Vigoroths/2F balls/Route 103 rival, sets the respawn | `data/scripts/draconid/new_game.pory` |
+| Bedroom wake-up, stairs block, wall clock, bedroom PC | `data/maps/DraconidVillage_PlayersHouse_2F/scripts.pory` |
+| Mom (1F; falls back to vanilla `PlayersHouse_1F_EventScript_Mom`) | `data/maps/DraconidVillage_PlayersHouse_1F/scripts.pory` |
+| Egg ceremony (`dynmultichoice`, `giveegg`, Aster counter-pick) | `data/maps/DraconidVillage_EldersHouse/scripts.pory` |
+| Hatching rite (`special EggHatch` + `DraconidRaiseHatchling`) | `data/maps/DraconidVillage_Shrine/scripts.pory` |
+| Mom gives Running Shoes, gatekeeper, villagers, signs | `data/maps/DraconidVillage/scripts.pory` |
+| First Aster battle (no whiteout) | `data/maps/DraconidPass/scripts.pory` |
+| Villager dialogue | `data/maps/DraconidVillage_House1/`, `_House2/scripts.pory` |

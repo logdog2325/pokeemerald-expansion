@@ -1,0 +1,106 @@
+// The player's bedroom in Draconid Village: where a new game starts.
+
+mapscripts DraconidVillage_PlayersHouse_2F_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        // the player's own room: always show the player's decorations
+        call(SecretBase_EventScript_SetDecorationFlags)
+        setvar(VAR_SECRET_BASE_INITIALIZED, 0)
+    }
+    MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE [
+        VAR_SECRET_BASE_INITIALIZED, 0 {
+            call(SecretBase_EventScript_InitDecorations)
+        }
+    ]
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_DRACONID_STATE, DRACONID_STATE_NEW_GAME: DraconidVillage_PlayersHouse_2F_EventScript_WakeUp
+    ]
+}
+
+script DraconidVillage_PlayersHouse_2F_EventScript_WakeUp {
+    lockall
+    delay(30)
+    playse(SE_EXIT)
+    addobject(LOCALID_DRACONID_HOUSE_2F_MOM)
+    applymovement(LOCALID_DRACONID_HOUSE_2F_MOM, DraconidVillage_PlayersHouse_2F_Movement_MomEnters)
+    waitmovement(0)
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight)
+    waitmovement(0)
+    msgbox(format("MOM: Good morning, {PLAYER}! You're finally up!\p"
+                  "Don't tell me you forgot what today is… It's your egg ceremony!\p"
+                  "The ELDER will be waiting at his house to entrust you with a dragon egg.\p"
+                  "Oh, and before you go… The clock on your wall has stopped again.\p"
+                  "Could you set it for me? Then come on down!"))
+    closemessage
+    applymovement(LOCALID_DRACONID_HOUSE_2F_MOM, DraconidVillage_PlayersHouse_2F_Movement_MomExits)
+    waitmovement(0)
+    playse(SE_EXIT)
+    removeobject(LOCALID_DRACONID_HOUSE_2F_MOM)
+    setvar(VAR_DRACONID_STATE, DRACONID_STATE_SET_CLOCK)
+    releaseall
+}
+
+movement DraconidVillage_PlayersHouse_2F_Movement_MomEnters {
+    walk_down
+    walk_left * 3
+    walk_down * 2
+    walk_in_place_faster_left
+}
+
+movement DraconidVillage_PlayersHouse_2F_Movement_MomExits {
+    walk_up * 2
+    walk_right * 3
+    walk_up
+}
+
+// Stairs: the clock has to be set first (it is the only way to start the real-time clock).
+script DraconidVillage_PlayersHouse_2F_EventScript_StairsBlocked {
+    lockall
+    msgbox(format("MOM: {PLAYER}, did you set the clock yet? It's on the wall next to the window!"))
+    closemessage
+    applymovement(LOCALID_PLAYER, DraconidVillage_PlayersHouse_2F_Movement_StepAwayFromStairs)
+    waitmovement(0)
+    releaseall
+}
+
+movement DraconidVillage_PlayersHouse_2F_Movement_StepAwayFromStairs {
+    walk_down
+}
+
+script DraconidVillage_PlayersHouse_2F_EventScript_WallClock {
+    lockall
+    if (var(VAR_DRACONID_STATE) <= DRACONID_STATE_SET_CLOCK) {
+        msgbox(format("The clock has stopped. Better set it and get it going again!"))
+        checkplayergender
+        copyvar(VAR_0x8004, VAR_RESULT)
+        fadescreen(FADE_TO_BLACK)
+        special(StartWallClock)
+        delay(30)
+        setvar(VAR_DRACONID_STATE, DRACONID_STATE_CLOCK_SET)
+        msgbox(format("Tick… tock… The clock is running again.\p"
+                      "Time to head downstairs!"))
+        releaseall
+        end
+    }
+    incrementgamestat(GAME_STAT_CHECKED_CLOCK)
+    fadescreen(FADE_TO_BLACK)
+    special(Special_ViewWallClock)
+    releaseall
+}
+
+script DraconidVillage_PlayersHouse_2F_EventScript_PC {
+    lockall
+    setvar(VAR_0x8004, PC_LOCATION_BRENDANS_HOUSE)
+    special(DoPCTurnOnEffect)
+    playse(SE_PC_ON)
+    msgbox(gText_PlayerHouseBootPC)
+    special(BedroomPC)
+    releaseall
+}
+
+// Called from PlayerPC_TurnOff (src/player_pc.c) when the bedroom PC is shut down here.
+script DraconidVillage_PlayersHouse_2F_EventScript_TurnOffPC {
+    setvar(VAR_0x8004, PC_LOCATION_BRENDANS_HOUSE)
+    playse(SE_PC_OFF)
+    special(DoPCTurnOffEffect)
+    releaseall
+}

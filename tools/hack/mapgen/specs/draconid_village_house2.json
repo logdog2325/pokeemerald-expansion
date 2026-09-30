@@ -1,0 +1,63 @@
+{
+  "name": "DraconidVillage_House2",
+  "use_layout": "LAYOUT_HOUSE1",
+  "header": {
+    "music": "MUS_FALLARBOR",
+    "region_map_section": "MAPSEC_DRACONID_VILLAGE",
+    "weather": "WEATHER_NONE",
+    "map_type": "MAP_TYPE_INDOOR",
+    "allow_cycling": false,
+    "allow_escaping": false,
+    "allow_running": false,
+    "show_map_name": false
+  },
+  "group": "gMapGroup_IndoorDraconid",
+  "events": {
+    "object_events": [
+      {
+        "graphics_id": "OBJ_EVENT_GFX_HIKER",
+        "x": 6,
+        "y": 4,
+        "elevation": 3,
+        "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+        "movement_range_x": 0,
+        "movement_range_y": 0,
+        "trainer_type": "TRAINER_TYPE_NONE",
+        "trainer_sight_or_berry_tree_id": "0",
+        "script": "DraconidVillage_House2_EventScript_Hunter",
+        "flag": "0"
+      },
+      {
+        "graphics_id": "OBJ_EVENT_GFX_WOMAN_2",
+        "x": 5,
+        "y": 6,
+        "elevation": 3,
+        "movement_type": "MOVEMENT_TYPE_FACE_UP",
+        "movement_range_x": 0,
+        "movement_range_y": 0,
+        "trainer_type": "TRAINER_TYPE_NONE",
+        "trainer_sight_or_berry_tree_id": "0",
+        "script": "DraconidVillage_House2_EventScript_Wife",
+        "flag": "0"
+      }
+    ],
+    "warp_events": [
+      {
+        "x": 3,
+        "y": 8,
+        "elevation": 0,
+        "dest_map": "MAP_DRACONID_VILLAGE",
+        "dest_warp_id": "3"
+      },
+      {
+        "x": 4,
+        "y": 8,
+        "elevation": 0,
+        "dest_map": "MAP_DRACONID_VILLAGE",
+        "dest_warp_id": "3"
+      }
+    ],
+    "coord_events": [],
+    "bg_events": []
+  }
+}

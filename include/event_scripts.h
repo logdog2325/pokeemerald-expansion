@@ -431,6 +431,7 @@ extern const u8 EventScript_UseDefog[];
 //player pc
 extern const u8 EventScript_PalletTown_PlayersHouse_2F_ShutDownPC[];
 extern const u8 LittlerootTown_BrendansHouse_2F_EventScript_TurnOffPlayerPC[];
+extern const u8 DraconidVillage_PlayersHouse_2F_EventScript_TurnOffPC[];
 extern const u8 LittlerootTown_MaysHouse_2F_EventScript_TurnOffPlayerPC[];
 
 // Mauville Old Man (Giddy)

@@ -1,0 +1,124 @@
+// Rayquaza shrine carved into the cliff above Draconid Village.
+// The egg-hatching rite (Phase 4) lives in data/scripts/draconid/egg_event.pory.
+
+mapscripts DraconidVillage_Shrine_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION: DraconidVillage_Shrine_OnTransition
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_DRACONID_STATE, DRACONID_STATE_EGG_RECEIVED: DraconidVillage_Shrine_EventScript_HatchingRite
+    ]
+}
+
+script DraconidVillage_Shrine_OnTransition {
+}
+
+// The egg-hatching rite (Phase 4, story event 1). The player enters at (10, 19) facing north;
+// the Elder stands at (10, 8) before the statue, Aster at (12, 9).
+script DraconidVillage_Shrine_EventScript_HatchingRite {
+    lockall
+    msgbox(format("ELDER: Come forward, {PLAYER}."))
+    closemessage
+    applymovement(LOCALID_PLAYER, DraconidVillage_Shrine_Movement_PlayerApproach)
+    waitmovement(0)
+    msgbox(format("ELDER: Guardian of the Sky, who stilled the land and the sea…\p"
+                  "Two children of the clan stand before you with their eggs.\p"
+                  "Let the young dragons hear your call!"))
+    closemessage
+    playse(SE_M_DRAGON_RAGE)
+    fadescreen(FADE_TO_WHITE)
+    delay(20)
+    fadescreen(FADE_FROM_WHITE)
+    waitse
+    msgbox(format("Huh?\p"
+                  "The egg is moving!"))
+    closemessage
+    setvar(VAR_0x8004, 0)
+    special(EggHatch)
+    setvar(VAR_0x8004, 0)
+    special(DraconidRaiseHatchling)
+    setflag(FLAG_DRACONID_EGG_HATCHED)
+    applymovement(LOCALID_DRACONID_SHRINE_ASTER, Common_Movement_WalkInPlaceFasterLeft)
+    waitmovement(0)
+    switch (var(VAR_ASTER_EGG)) {
+        case DRACONID_EGG_DEINO:
+            bufferspeciesname(STR_VAR_1, DRACONID_EGG_SPECIES_0)
+        case DRACONID_EGG_DREEPY:
+            bufferspeciesname(STR_VAR_1, DRACONID_EGG_SPECIES_1)
+        default:
+            bufferspeciesname(STR_VAR_1, DRACONID_EGG_SPECIES_2)
+    }
+    msgbox(format("ASTER's egg hatched too! A {STR_VAR_1} blinked up at her."))
+    msgbox(format("ASTER: …Hello, little one. We have a long way to climb, you and I.\p"
+                  "{PLAYER}. They say the Guardian only answers those who reach the top of the sky.\p"
+                  "I intend to be the one it answers. Don't fall behind."))
+    closemessage
+    applymovement(LOCALID_DRACONID_SHRINE_ASTER, DraconidVillage_Shrine_Movement_AsterLeaves)
+    waitmovement(0)
+    removeobject(LOCALID_DRACONID_SHRINE_ASTER)
+    clearflag(FLAG_HIDE_DRACONID_PASS_ASTER)
+    applymovement(LOCALID_DRACONID_SHRINE_ELDER, Common_Movement_FacePlayer)
+    waitmovement(0)
+    msgbox(format("ELDER: Hohoho… That girl. She has been reading the old scrolls again.\p"
+                  "{PLAYER}, there is a man in LITTLEROOT TOWN, PROF. BIRCH, who studies Pokémon.\p"
+                  "Our clan and his family have shared our knowledge for many years.\p"
+                  "Go to him, and show him your partner. He will know what a young tamer needs.\p"
+                  "Your mother is waiting outside. Go on, now."))
+    closemessage
+    setflag(FLAG_HIDE_DRACONID_SHRINE_ELDER)
+    clearflag(FLAG_HIDE_DRACONID_ELDERS_HOUSE_ELDER)
+    clearflag(FLAG_HIDE_DRACONID_VILLAGE_MOM)
+    setvar(VAR_DRACONID_STATE, DRACONID_STATE_EGG_HATCHED)
+    releaseall
+}
+
+movement DraconidVillage_Shrine_Movement_PlayerApproach {
+    walk_up * 10
+}
+
+movement DraconidVillage_Shrine_Movement_AsterLeaves {
+    walk_down
+    walk_left
+    walk_down * 9
+}
+
+script DraconidVillage_Shrine_EventScript_Statue {
+    msgbox(format("A statue of a great serpent coiled around a fallen star.\p"
+                  "Its eyes seem to follow you, watching from somewhere far above the clouds."), MSGBOX_SIGN)
+}
+
+script DraconidVillage_Shrine_EventScript_BackWall {
+    msgbox(format("Words are carved deep into the rock:\p"
+                  "“HERE THE CLAN SPEAKS TO THE SKY. HERE THE SKY ANSWERS.”"), MSGBOX_SIGN)
+}
+
+script DraconidVillage_Shrine_EventScript_Lore1 {
+    msgbox(format("An old carving:\p"
+                  "“Long ago the land and the sea made war, and the world burned and drowned by turns. "
+                  "The people had no strength left, so they cried out to the sky.”"), MSGBOX_SIGN)
+}
+
+script DraconidVillage_Shrine_EventScript_Lore2 {
+    msgbox(format("An old carving:\p"
+                  "“From beyond the clouds came the Guardian of the Sky, and its roar stilled both land and sea.”"), MSGBOX_SIGN)
+}
+
+script DraconidVillage_Shrine_EventScript_Lore3 {
+    msgbox(format("An old carving:\p"
+                  "“A star fell into this valley. From its heart the clan carved stones that let two souls beat as one.”"), MSGBOX_SIGN)
+}
+
+script DraconidVillage_Shrine_EventScript_Lore4 {
+    msgbox(format("An old carving:\p"
+                  "“Whoever raises a dragon from the egg, and whose bond is true, "
+                  "may borrow the light of the fallen star.”"), MSGBOX_SIGN)
+}
+
+script DraconidVillage_Shrine_EventScript_Lore5 {
+    msgbox(format("An old carving:\p"
+                  "“The Lorekeeper keeps the words. The Tamers keep the dragons. Together they keep the sky.”"), MSGBOX_SIGN)
+}
+
+script DraconidVillage_Shrine_EventScript_Lore6 {
+    msgbox(format("An old carving:\p"
+                  "“Should anyone seek to bend land or sea to their will, the clan shall stand against them, "
+                  "as the Guardian once did.”"), MSGBOX_SIGN)
+}

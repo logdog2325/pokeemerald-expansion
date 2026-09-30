@@ -1,0 +1,23 @@
+// Ground floor of the player's house in Draconid Village.
+
+mapscripts DraconidVillage_PlayersHouse_1F_MapScripts {}
+
+script DraconidVillage_PlayersHouse_1F_EventScript_Mom {
+    lock
+    faceplayer
+    switch (var(VAR_DRACONID_STATE)) {
+        case DRACONID_STATE_NEW_GAME:
+        case DRACONID_STATE_SET_CLOCK:
+            msgbox(format("MOM: Did you set the clock upstairs? Thank you, sweetie."))
+        case DRACONID_STATE_CLOCK_SET:
+            msgbox(format("MOM: Go on, the ELDER is waiting for you!\p"
+                          "His is the house with the red roof, near the shrine at the foot of the cliff."))
+        case DRACONID_STATE_EGG_RECEIVED:
+            msgbox(format("MOM: Oh my… So that's your egg!\p"
+                          "Your father would be so proud. Hurry to the shrine, the rite is about to begin!"))
+        default:
+            release
+            goto(PlayersHouse_1F_EventScript_Mom)
+    }
+    release
+}

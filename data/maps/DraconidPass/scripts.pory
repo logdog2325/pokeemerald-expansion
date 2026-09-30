@@ -1,0 +1,58 @@
+// Draconid Pass: from the village over the river to Littleroot Town.
+// Aster waits at the south end of the bridge for the first rival battle (Aster arc #1).
+
+mapscripts DraconidPass_MapScripts {}
+
+script DraconidPass_EventScript_AsterBattle {
+    lockall
+    applymovement(LOCALID_DRACONID_PASS_ASTER, Common_Movement_WalkInPlaceFasterUp)
+    waitmovement(0)
+    playbgm(MUS_ENCOUNTER_INTENSE, FALSE)
+    msgbox(format("ASTER: So you came this way after all.\p"
+                  "The lowlands are wide, {PLAYER}, and the sky is far away.\p"
+                  "Before you go looking for it, let me see if your little one can keep up with mine!"))
+    closemessage
+    // this battle can be lost without blacking out (B_FLAG_NO_WHITEOUT)
+    setflag(FLAG_DRACONID_NO_WHITEOUT)
+    switch (var(VAR_ASTER_EGG)) {
+        case DRACONID_EGG_DEINO:
+            trainerbattle_no_intro(TRAINER_ASTER_PASS_DEINO, DraconidPass_Text_AsterDefeated)
+        case DRACONID_EGG_DREEPY:
+            trainerbattle_no_intro(TRAINER_ASTER_PASS_DREEPY, DraconidPass_Text_AsterDefeated)
+        default:
+            trainerbattle_no_intro(TRAINER_ASTER_PASS_JANGMO_O, DraconidPass_Text_AsterDefeated)
+    }
+    clearflag(FLAG_DRACONID_NO_WHITEOUT)
+    special(HealPlayerParty)
+    msgbox(format("ASTER: Hmph. The shadow that bites… the drum that sings… it doesn't matter which.\p"
+                  "The Guardian of the Sky only looks down on those who climb.\p"
+                  "We'll meet again, higher up."))
+    closemessage
+    applymovement(LOCALID_DRACONID_PASS_ASTER, DraconidPass_Movement_AsterLeaves)
+    waitmovement(0)
+    removeobject(LOCALID_DRACONID_PASS_ASTER)
+    setflag(FLAG_DEFEATED_ASTER_DRACONID_PASS)
+    setvar(VAR_DRACONID_STATE, DRACONID_STATE_LEFT_VILLAGE)
+    savebgm(MUS_DUMMY)
+    fadedefaultbgm
+    releaseall
+}
+
+text DraconidPass_Text_AsterDefeated {
+    format("…So that's how it is.")
+}
+
+movement DraconidPass_Movement_AsterLeaves {
+    walk_right * 2
+    walk_down * 7
+    walk_right * 12
+}
+
+script DraconidPass_EventScript_Aster {
+    msgbox(format("ASTER: …"), MSGBOX_NPC)
+}
+
+script DraconidPass_EventScript_Sign {
+    msgbox(format("DRACONID PASS\n"
+                  "North: DRACONID VILLAGE   East: LITTLEROOT TOWN"), MSGBOX_SIGN)
+}

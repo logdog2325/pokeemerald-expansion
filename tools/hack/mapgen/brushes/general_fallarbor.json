@@ -68,7 +68,19 @@
             "271"
           ]
         }
-      ]
+      ],
+      "variety_tiles": [
+        "279",
+        "29F",
+        "2A7",
+        "2EC",
+        "2F3",
+        "2F4",
+        "2F5",
+        "2FC",
+        "29B"
+      ],
+      "walkable": true
     },
     "cliff": {
       "char": "#",
@@ -133,7 +145,8 @@
         "2FA"
       ],
       "anchor": "2F1",
-      "parity": false
+      "parity": false,
+      "walkable": true
     },
     "water": {
       "char": "~",
@@ -165,7 +178,20 @@
         "159",
         "15A",
         "15B",
-        "15D"
+        "15D",
+        "0B0",
+        "0B1",
+        "0B2",
+        "0B8",
+        "0BA",
+        "0C0",
+        "0C2",
+        "0C8",
+        "0CA",
+        "0D1",
+        "0D8",
+        "0DA",
+        "0A1"
       ],
       "parity": false
     },
@@ -221,7 +247,13 @@
         "0D5",
         "0D6"
       ],
-      "parity": false
+      "parity": false,
+      "variety_tiles": [
+        "001",
+        "002",
+        "004"
+      ],
+      "walkable": true
     },
     "tallgrass": {
       "char": "\"",
@@ -230,7 +262,8 @@
       "members": [
         "00D"
       ],
-      "parity": false
+      "parity": false,
+      "walkable": true
     },
     "mount": {
       "char": "^",
@@ -454,6 +487,76 @@
         "29A"
       ],
       "parity": false
+    },
+    "gtree": {
+      "char": "Z",
+      "code": "Z",
+      "default": "1D4:1:0",
+      "anchor": "1D4",
+      "members": [
+        "1C6",
+        "1C7",
+        "1CE",
+        "1CF",
+        "1D4",
+        "1D5",
+        "1D6",
+        "1D7",
+        "1DC",
+        "1DD",
+        "1E4",
+        "1E5",
+        "1E6",
+        "1E7",
+        "1EC",
+        "1ED",
+        "1F2",
+        "1F3",
+        "1F4",
+        "1F5",
+        "1FC",
+        "1FD"
+      ]
+    },
+    "worn": {
+      "char": ":",
+      "code": "w",
+      "default": "1D9:0:3",
+      "parity": false,
+      "members": [
+        "1D0",
+        "1D1",
+        "1D2",
+        "1D8",
+        "1D9",
+        "1DA",
+        "1E0",
+        "1E1",
+        "1E2"
+      ],
+      "walkable": true
+    },
+    "ledge": {
+      "char": "_",
+      "code": "L",
+      "default": "087:0:3",
+      "parity": false,
+      "members": [
+        "06E",
+        "06F",
+        "087",
+        "08E",
+        "0D5",
+        "0D6"
+      ]
     }
-  }
+  },
+  "learn_from_primary": [
+    "Route101",
+    "Route102",
+    "Route103",
+    "LittlerootTown",
+    "OldaleTown",
+    "Route104"
+  ]
 }

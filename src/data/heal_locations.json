@@ -349,6 +349,26 @@
       "y": 12,
       "respawn_map": "MAP_SIX_ISLAND_POKEMON_CENTER_1F",
       "respawn_npc": "LOCALID_SIX_ISLAND_NURSE"
+    },
+    {
+      "id": "HEAL_LOCATION_DRACONID_VILLAGE_PLAYERS_HOUSE_2F",
+      "map": "MAP_DRACONID_VILLAGE_PLAYERS_HOUSE_2F",
+      "x": 3,
+      "y": 4,
+      "respawn_map": "MAP_DRACONID_VILLAGE_PLAYERS_HOUSE_1F",
+      "respawn_npc": "LOCALID_DRACONID_HOUSE_MOM",
+      "respawn_x": 2,
+      "respawn_y": 7
+    },
+    {
+      "id": "HEAL_LOCATION_DRACONID_VILLAGE",
+      "map": "MAP_DRACONID_VILLAGE",
+      "x": 8,
+      "y": 15,
+      "respawn_map": "MAP_DRACONID_VILLAGE_PLAYERS_HOUSE_1F",
+      "respawn_npc": "LOCALID_DRACONID_HOUSE_MOM",
+      "respawn_x": 2,
+      "respawn_y": 7
     }
   ]
 }

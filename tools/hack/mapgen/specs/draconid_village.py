@@ -13,6 +13,23 @@ auto-tiler can draw whole trees – see docs/hack_tools.md.
 import json
 import os
 
+def obj(gfx, x, y, script, flag="0", local_id=None, movement="MOVEMENT_TYPE_FACE_DOWN", rx=0, ry=0):
+    o = {"local_id": local_id} if local_id else {}
+    o.update({"graphics_id": gfx, "x": x, "y": y, "elevation": 3, "movement_type": movement,
+              "movement_range_x": rx, "movement_range_y": ry, "trainer_type": "TRAINER_TYPE_NONE",
+              "trainer_sight_or_berry_tree_id": "0", "script": script, "flag": flag})
+    return o
+
+
+def warp(x, y, dest_map, dest_warp):
+    return {"x": x, "y": y, "elevation": 0, "dest_map": dest_map, "dest_warp_id": str(dest_warp)}
+
+
+def sign(x, y, script):
+    return {"type": "sign", "x": x, "y": y, "elevation": 0, "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": script}
+
+
 W, H = 40, 30
 g = [["." for _ in range(W)] for _ in range(H)]
 
@@ -97,7 +114,33 @@ spec = {
         "show_map_name": True,
     },
     "group": "gMapGroup_TownsAndRoutes",
-    "events": {"object_events": [], "warp_events": [], "coord_events": [], "bg_events": []},
+    "events": {
+        # TODO(art): villagers use vanilla placeholder sprites until the Draconid sprites exist (Phase 3)
+        "object_events": [
+            obj("OBJ_EVENT_GFX_EXPERT_M", 16, 8, "DraconidVillage_EventScript_Apprentice", movement="MOVEMENT_TYPE_FACE_RIGHT"),
+            obj("OBJ_EVENT_GFX_OLD_WOMAN", 22, 6, "DraconidVillage_EventScript_OldWoman", movement="MOVEMENT_TYPE_FACE_LEFT"),
+            obj("OBJ_EVENT_GFX_WOMAN_5", 30, 10, "DraconidVillage_EventScript_PondWoman", movement="MOVEMENT_TYPE_FACE_UP"),
+            obj("OBJ_EVENT_GFX_BOY_1", 10, 18, "DraconidVillage_EventScript_Boy", movement="MOVEMENT_TYPE_WANDER_AROUND", rx=2, ry=2),
+            obj("OBJ_EVENT_GFX_HIKER", 22, 25, "DraconidVillage_EventScript_Gatekeeper",
+                movement="MOVEMENT_TYPE_FACE_LEFT", local_id="LOCALID_DRACONID_GATEKEEPER"),
+            obj("OBJ_EVENT_GFX_MOM", 19, 8, "0x0", "FLAG_HIDE_DRACONID_VILLAGE_MOM",
+                local_id="LOCALID_DRACONID_VILLAGE_MOM", movement="MOVEMENT_TYPE_FACE_UP"),
+        ],
+        "warp_events": [
+            warp(8, 14, "MAP_DRACONID_VILLAGE_PLAYERS_HOUSE_1F", 0),
+            warp(24, 11, "MAP_DRACONID_VILLAGE_ELDERS_HOUSE", 0),
+            warp(29, 17, "MAP_DRACONID_VILLAGE_HOUSE1", 0),
+            warp(12, 23, "MAP_DRACONID_VILLAGE_HOUSE2", 0),
+            warp(19, 5, "MAP_DRACONID_VILLAGE_SHRINE", 0),
+        ],
+        # VAR_TEMP_1 is 0 until the player may leave (set on transition / after the Running Shoes)
+        "coord_events": [{"type": "trigger", "x": x, "y": 27, "elevation": 3, "var": "VAR_TEMP_1", "var_value": "0",
+                          "script": "DraconidVillage_EventScript_GatekeeperStop"} for x in (18, 19, 20, 21)],
+        "bg_events": [
+            sign(18, 11, "DraconidVillage_EventScript_VillageSign"),
+            sign(6, 14, "DraconidVillage_EventScript_PlayersHouseSign"),
+        ],
+    },
 }
 
 out = os.path.join(os.path.dirname(__file__), "draconid_village.json")

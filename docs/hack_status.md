@@ -23,12 +23,13 @@ Other docs: [decisions](hack_decisions.md) · [changes](hack_changes.md) · [too
 - [x] Debug menu: expansion default `DISABLED_ON_RELEASE` = on in `make`, off in `make release` (R + Start)
 
 ## Phase 1 – Draconid village
-- [ ] Village map (General + Fallarbor tilesets) with elder's house, player's house, Rayquaza shrine, homes
-- [ ] Interiors: player house 1F/2F, elder house, shrine, 1–2 homes
-- [ ] Mountain path map → Route 101/Littleroot
-- [ ] New game starts at home in the village; truck intro removed
-- [ ] Previews rendered + critiqued, ≥2 iterations
-- [ ] Custom Porytiles tiles (shrine, Rayquaza statue, meteorites) – later
+- [p] Village map `DraconidVillage` (General + Fallarbor) with elder's house, player's house, shrine cave, 2 homes,
+      crater, waterfall + pond, gatekeeper at the south exit – 5 preview iterations (placeholder NPC sprites)
+- [p] Interiors: player house 1F/2F (Brendan-house copy), Elder's house, shrine (Sealed Chamber copy), 2 homes
+- [x] Mountain path `DraconidPass` → Littleroot's west edge (3–4 preview iterations)
+- [x] New game starts in the bedroom; truck intro removed; respawn/whiteout/fly/continue point to the village
+- [x] Previews rendered + critiqued, ≥2 iterations (`tools/hack/mapgen/specs/draconid_*.py`)
+- [ ] Custom Porytiles tiles (shrine, Rayquaza statue, meteorites) – `TODO(art)`, later
 
 ## Phase 2 – Custom player character
 - [ ] Outfit system (var + script command/special, survives save)
@@ -46,8 +47,12 @@ Other docs: [decisions](hack_decisions.md) · [changes](hack_changes.md) · [too
 - [ ] `docs/hack_art_pipeline.md`
 
 ## Phase 4 – Story events
-- [ ] Egg event (Deino / Dreepy / Jangmo-o) + Aster counter-pick var + hatch cutscene
-- [ ] Birch intro rework (Route 101 / lab; Brendan Treecko, May Torchic)
+- [x] Egg event (Deino / Dreepy / Jangmo-o) + Aster counter-pick var + hatch rite at the shrine (Lv 5) –
+      verified in the emulator: bedroom → clock → ceremony → rite → Running Shoes → Aster battle → Littleroot
+- [ ] Birch intro rework (Route 101 rescue with the hatchling; lab: Brendan Treecko, May Torchic, player Pokédex)
+      **← resume here.** Known: walking north in Littleroot with `VAR_LITTLEROOT_TOWN_STATE`=1 triggers the twin
+      and then the player is blocked at (10,2); check black tiles at the west connection on the first frame.
+- [ ] Route 103 May, Oldale rival scene, rival houses/bedrooms, SS Ticket/Lati TV scene → Draconid house
 - [ ] Second starter after gym 1 (Charmander / Totodile / Treecko)
 - [ ] Aster arc (6 appearances)
 - [ ] Magma disguise arc + Mega Ring

@@ -1,0 +1,93 @@
+{
+  "id": "MAP_DRACONID_PASS",
+  "name": "DraconidPass",
+  "layout": "LAYOUT_DRACONID_PASS",
+  "music": "MUS_ROUTE101",
+  "region": "REGION_HOENN",
+  "region_map_section": "MAPSEC_DRACONID_PASS",
+  "requires_flash": false,
+  "weather": "WEATHER_SUNNY",
+  "map_type": "MAP_TYPE_ROUTE",
+  "allow_cycling": true,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": [
+    {
+      "map": "MAP_DRACONID_VILLAGE",
+      "offset": -8,
+      "direction": "up"
+    },
+    {
+      "map": "MAP_LITTLEROOT_TOWN",
+      "offset": 17,
+      "direction": "right"
+    }
+  ],
+  "object_events": [
+    {
+      "local_id": "LOCALID_DRACONID_PASS_ASTER",
+      "graphics_id": "OBJ_EVENT_GFX_WOMAN_3",
+      "x": 13,
+      "y": 19,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "DraconidPass_EventScript_Aster",
+      "flag": "FLAG_HIDE_DRACONID_PASS_ASTER"
+    }
+  ],
+  "warp_events": [],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 10,
+      "y": 18,
+      "elevation": 3,
+      "var": "VAR_DRACONID_STATE",
+      "var_value": "DRACONID_STATE_READY_TO_LEAVE",
+      "script": "DraconidPass_EventScript_AsterBattle"
+    },
+    {
+      "type": "trigger",
+      "x": 11,
+      "y": 18,
+      "elevation": 3,
+      "var": "VAR_DRACONID_STATE",
+      "var_value": "DRACONID_STATE_READY_TO_LEAVE",
+      "script": "DraconidPass_EventScript_AsterBattle"
+    },
+    {
+      "type": "trigger",
+      "x": 12,
+      "y": 18,
+      "elevation": 3,
+      "var": "VAR_DRACONID_STATE",
+      "var_value": "DRACONID_STATE_READY_TO_LEAVE",
+      "script": "DraconidPass_EventScript_AsterBattle"
+    },
+    {
+      "type": "trigger",
+      "x": 13,
+      "y": 18,
+      "elevation": 3,
+      "var": "VAR_DRACONID_STATE",
+      "var_value": "DRACONID_STATE_READY_TO_LEAVE",
+      "script": "DraconidPass_EventScript_AsterBattle"
+    }
+  ],
+  "bg_events": [
+    {
+      "type": "sign",
+      "x": 14,
+      "y": 25,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "DraconidPass_EventScript_Sign"
+    }
+  ]
+}

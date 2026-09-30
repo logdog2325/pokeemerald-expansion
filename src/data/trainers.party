@@ -16877,3 +16877,55 @@ Double Battle: No
 Kyogre
 Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_ASTER_PASS_DEINO ===
+Name: ASTER
+Class: Dragon Tamer
+Pic: Cooltrainer F
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Deino
+Level: 5
+Nature: Naughty
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Tackle
+- Dragon Breath
+- Focus Energy
+
+=== TRAINER_ASTER_PASS_DREEPY ===
+Name: ASTER
+Class: Dragon Tamer
+Pic: Cooltrainer F
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Dreepy
+Level: 5
+Nature: Hasty
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Bite
+- Quick Attack
+- Astonish
+- Infestation
+
+=== TRAINER_ASTER_PASS_JANGMO_O ===
+Name: ASTER
+Class: Dragon Tamer
+Pic: Cooltrainer F
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Jangmo-o
+Level: 5
+Nature: Adamant
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Tackle
+- Leer
+- Protect

@@ -64,8 +64,12 @@ function keysFor(cls, ctx8, ctx4, px, py, parity) {
         `${cls}|m4=${same4}`,
         `${cls}|p=${p}`,
     ];
-    return parity ? keys : keys.filter(k => k.indexOf("|p=") < 0);
+    if (!parity) return keys.filter(k => k.indexOf("|p=") < 0);
+    // patterned classes (trees): any key that keeps the 2x2 phase beats a richer key without it
+    return [0, 2, 4, 6, 1, 3, 5, 7, 8].map(i => keys[i]);
 }
+
+const MIN_SUPPORT = 2; // full-context keys need this many vanilla examples before they win
 
 function neighbours(grid, x, y, w, h, offs) {
     const here = grid[y][x];
@@ -107,13 +111,19 @@ function resolveCell(brush, grid, x, y, w, h, rect) {
     }
     const [phx, phy] = phaseFor(brush, c, x, y, rect);
     const px = ((x - phx) % 2 + 2) % 2, py = ((y - phy) % 2 + 2) % 2;
+    let fallback = null;
     for (const k of keysFor(c, ctx8, ctx4, px, py, cdef.parity)) {
         const opts = brush.rules[k];
         if (!opts) continue;
-        const ok = opts.filter(o => !banned.has(o[0]));
-        if (ok.length) return ok[0];
+        const ok = opts.filter(o => !banned.has(o[0]) && !(cdef.walkable && o[1]));
+        if (!ok.length) continue;
+        if (k.indexOf("|c8=") >= 0 && ok.reduce((n, o) => n + o[3], 0) < MIN_SUPPORT) {
+            if (!fallback) fallback = ok[0];
+            continue;
+        }
+        return ok[0];
     }
-    return cdef.default;
+    return fallback || cdef.default;
 }
 
 function classGrid(brush) {

@@ -94,3 +94,23 @@ About 3000 frames per second, so a full intro takes seconds.
 ```sh
 tools/hack/emu/gbarun pokeemerald.gba script.txt outdir/
 ```
+More gbarun commands: `until ADDR SIZE VALUE MAX [KEYS PERIOD]` (run, optionally tapping KEYS – a
+comma-separated cycle – until memory equals VALUE), `untilhold ADDR SIZE VALUE MAX KEYS`, `read ADDR SIZE LABEL`.
+Addresses may be `HEX`, `*HEX` (pointer) or `*HEX+HEX`.
+
+`play.py` wraps gbarun with symbols from `pokeemerald.elf` and constants from the headers:
+```sh
+python3 tools/hack/emu/play.py test.play -o /tmp/out
+```
+| `.play` command | Meaning |
+|---|---|
+| `@SYM`, `@@SYM` | address of an ELF symbol (`@@` = Thumb function pointer) |
+| `newgame [MAX]` | Quickstart a new game (tap SELECT until the overworld runs) |
+| `mash KEY MAX` | tap KEY (or a cycle `A,UP`) until the player regains control |
+| `wait_free MAX` | run until the player regains control |
+| `flag NAME`, `var NAME`, `expect_flag NAME 0/1`, `expect_var NAME V` | read the save block; `expect_*` fail the run |
+| `walk DIR COORD [MAX]` | hold DIR until the player's x (LEFT/RIGHT) or y (UP/DOWN) equals COORD |
+| `pos`, `mapid` | print player coordinates / map group+num |
+Tips: the wall clock needs exact presses (`press A 2 450; press A 2 150; press A 2 40; press UP 2 20;
+press A 2 60; mash A 3000`); indoor door mats need an extra `hold DOWN 20`. Exit code 1 on any failed
+expectation or `until` timeout, so scripts double as regression tests.

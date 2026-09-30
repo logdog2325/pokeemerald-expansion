@@ -1,0 +1,12 @@
+// South-west house of Draconid Village: a hunter who travels to the lowlands.
+
+mapscripts DraconidVillage_House2_MapScripts {}
+
+script DraconidVillage_House2_EventScript_Hunter {
+    msgbox(format("I trade dragon scales in the lowland towns.\p"
+                  "Down there most folks have never seen a dragon up close. Expect some stares!"), MSGBOX_NPC)
+}
+
+script DraconidVillage_House2_EventScript_Wife {
+    msgbox(format("Lowlanders keep strange hours… They run their whole lives by those clocks of theirs!"), MSGBOX_NPC)
+}

@@ -36,10 +36,8 @@ int GameClear(void)
 
     SetContinueGameWarpStatus();
 
-    if (gSaveBlock2Ptr->playerGender == MALE)
-        SetContinueGameWarpToHealLocation(HEAL_LOCATION_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F);
-    else
-        SetContinueGameWarpToHealLocation(HEAL_LOCATION_LITTLEROOT_TOWN_MAYS_HOUSE_2F);
+    // The player's home is in Draconid Village, not Littleroot.
+    SetContinueGameWarpToHealLocation(HEAL_LOCATION_DRACONID_VILLAGE_PLAYERS_HOUSE_2F);
 
     ribbonGet = FALSE;
 

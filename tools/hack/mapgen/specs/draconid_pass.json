@@ -1,0 +1,321 @@
+{
+  "name": "DraconidPass",
+  "map_id": "MAP_DRACONID_PASS",
+  "layout_id": "LAYOUT_DRACONID_PASS",
+  "brush": "general_fallarbor",
+  "grid": [
+    "TTTTTTTTTT.==.TTTTTTTTTTTTTT",
+    "TTTTTTTTTT.==.TTTTTTTTTTTTTT",
+    "TTTT.......==.........TTTTTT",
+    "TTTT.......==.........TTTTTT",
+    "TTTTTTTT...=====........TTTT",
+    "TTTTTTTT...=====........TTTT",
+    "TTTTTTTT......==..TTTT..TTTT",
+    "TTTTTTTT......==..TTTT..TTTT",
+    "TTTT..........==..TTTT..TTTT",
+    "TTTT..........==..TTTT..TTTT",
+    "TTTTTT.....=====........TTTT",
+    "TTTTTT.....=====........TTTT",
+    "TTTTTT.....==...........TTTT",
+    "TTTTTT.....==...........TTTT",
+    "~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+    "~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+    "~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+    "~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+    "ZZZZ,,,,,,,::,,,,,,,,,,,ZZZZ",
+    "ZZZZ\"\"\"\"\"\",::,,,,,,,,,,,ZZZZ",
+    "ZZZZ\"\"\"\"\"\",::,,,ZZZZ,,,,ZZZZ",
+    "ZZZZ\"\"\"\"\"\",::,,,ZZZZ,,,,ZZZZ",
+    "ZZZZ\"\"\"\"\"\",::,,,ZZZZ,,,,ZZZZ",
+    "ZZZZ\"\"\"\"\"\",::,,,ZZZZ,,,,ZZZZ",
+    "ZZZZ,,,,,,,::,,,,,,,,,,,ZZZZ",
+    "ZZZZ,,,,,,,::,,,,,,,,,,,ZZZZ",
+    "ZZZZ,,,,,,,:::::::::::::::::",
+    "ZZZZ,,,,,,,:::::::::::::::::",
+    "ZZZZ,\"\"\"\"\",,,,,,,,,,,,,,,,,,",
+    "ZZZZ,\"\"\"\"\",,,,,\"\"\"\"\"\"\",,,,,,",
+    "ZZZZ,\"\"\"\"\",,,,,\"\"\"\"\"\"\",,ZZZZ",
+    "ZZZZ,\"\"\"\"\",,,,,\"\"\"\"\"\"\",,ZZZZ",
+    "ZZZZ,,,,,,,,,,,\"\"\"\"\"\"\",,ZZZZ",
+    "ZZZZ,,,,,,,,,,,,,,,,,,,,ZZZZ",
+    "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZ",
+    "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZ"
+  ],
+  "variety": {
+    "ground": 0.06,
+    "grass": 0.05
+  },
+  "stamps": [],
+  "blocks": [
+    {
+      "at": [
+        10,
+        14
+      ],
+      "block": "2C0:0:3"
+    },
+    {
+      "at": [
+        11,
+        14
+      ],
+      "block": "28B:0:3"
+    },
+    {
+      "at": [
+        12,
+        14
+      ],
+      "block": "28B:0:3"
+    },
+    {
+      "at": [
+        13,
+        14
+      ],
+      "block": "2C1:0:3"
+    },
+    {
+      "at": [
+        10,
+        15
+      ],
+      "block": "2C8:0:3"
+    },
+    {
+      "at": [
+        11,
+        15
+      ],
+      "block": "293:0:3"
+    },
+    {
+      "at": [
+        12,
+        15
+      ],
+      "block": "293:0:3"
+    },
+    {
+      "at": [
+        13,
+        15
+      ],
+      "block": "2C9:0:3"
+    },
+    {
+      "at": [
+        10,
+        16
+      ],
+      "block": "2C8:0:3"
+    },
+    {
+      "at": [
+        11,
+        16
+      ],
+      "block": "293:0:3"
+    },
+    {
+      "at": [
+        12,
+        16
+      ],
+      "block": "293:0:3"
+    },
+    {
+      "at": [
+        13,
+        16
+      ],
+      "block": "2C9:0:3"
+    },
+    {
+      "at": [
+        10,
+        17
+      ],
+      "block": "2C8:0:3"
+    },
+    {
+      "at": [
+        11,
+        17
+      ],
+      "block": "293:0:3"
+    },
+    {
+      "at": [
+        12,
+        17
+      ],
+      "block": "293:0:3"
+    },
+    {
+      "at": [
+        13,
+        17
+      ],
+      "block": "2C9:0:3"
+    },
+    {
+      "at": [
+        9,
+        3
+      ],
+      "block": "2AF:1:0"
+    },
+    {
+      "at": [
+        17,
+        12
+      ],
+      "block": "2BF:1:0"
+    },
+    {
+      "at": [
+        21,
+        11
+      ],
+      "block": "2AF:1:0"
+    },
+    {
+      "at": [
+        8,
+        9
+      ],
+      "block": "2BF:1:0"
+    },
+    {
+      "at": [
+        13,
+        28
+      ],
+      "block": "004:0:3"
+    },
+    {
+      "at": [
+        14,
+        29
+      ],
+      "block": "004:0:3"
+    },
+    {
+      "at": [
+        22,
+        24
+      ],
+      "block": "004:0:3"
+    },
+    {
+      "at": [
+        21,
+        25
+      ],
+      "block": "004:0:3"
+    },
+    {
+      "at": [
+        14,
+        25
+      ],
+      "block": "003:1:0"
+    }
+  ],
+  "border": {
+    "blocks": [
+      "1D4:0:0",
+      "1D5:0:0",
+      "1DC:0:0",
+      "1DD:0:0"
+    ]
+  },
+  "header": {
+    "music": "MUS_ROUTE101",
+    "region_map_section": "MAPSEC_DRACONID_PASS",
+    "weather": "WEATHER_SUNNY",
+    "map_type": "MAP_TYPE_ROUTE",
+    "show_map_name": true
+  },
+  "group": "gMapGroup_TownsAndRoutes",
+  "connections": [
+    {
+      "map": "MAP_DRACONID_VILLAGE",
+      "direction": "up",
+      "offset": -8
+    },
+    {
+      "map": "MAP_LITTLEROOT_TOWN",
+      "direction": "right",
+      "offset": 17
+    }
+  ],
+  "events": {
+    "object_events": [
+      {
+        "local_id": "LOCALID_DRACONID_PASS_ASTER",
+        "graphics_id": "OBJ_EVENT_GFX_WOMAN_3",
+        "x": 13,
+        "y": 19,
+        "elevation": 3,
+        "movement_type": "MOVEMENT_TYPE_FACE_UP",
+        "movement_range_x": 0,
+        "movement_range_y": 0,
+        "trainer_type": "TRAINER_TYPE_NONE",
+        "trainer_sight_or_berry_tree_id": "0",
+        "script": "DraconidPass_EventScript_Aster",
+        "flag": "FLAG_HIDE_DRACONID_PASS_ASTER"
+      }
+    ],
+    "warp_events": [],
+    "coord_events": [
+      {
+        "type": "trigger",
+        "x": 10,
+        "y": 18,
+        "elevation": 3,
+        "var": "VAR_DRACONID_STATE",
+        "var_value": "DRACONID_STATE_READY_TO_LEAVE",
+        "script": "DraconidPass_EventScript_AsterBattle"
+      },
+      {
+        "type": "trigger",
+        "x": 11,
+        "y": 18,
+        "elevation": 3,
+        "var": "VAR_DRACONID_STATE",
+        "var_value": "DRACONID_STATE_READY_TO_LEAVE",
+        "script": "DraconidPass_EventScript_AsterBattle"
+      },
+      {
+        "type": "trigger",
+        "x": 12,
+        "y": 18,
+        "elevation": 3,
+        "var": "VAR_DRACONID_STATE",
+        "var_value": "DRACONID_STATE_READY_TO_LEAVE",
+        "script": "DraconidPass_EventScript_AsterBattle"
+      },
+      {
+        "type": "trigger",
+        "x": 13,
+        "y": 18,
+        "elevation": 3,
+        "var": "VAR_DRACONID_STATE",
+        "var_value": "DRACONID_STATE_READY_TO_LEAVE",
+        "script": "DraconidPass_EventScript_AsterBattle"
+      }
+    ],
+    "bg_events": [
+      {
+        "type": "sign",
+        "x": 14,
+        "y": 25,
+        "elevation": 0,
+        "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+        "script": "DraconidPass_EventScript_Sign"
+      }
+    ]
+  }
+}

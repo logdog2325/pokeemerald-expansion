@@ -35,6 +35,7 @@ def main():
                 "default": list(autotile.parse_block(c["default"])),
                 "parity": c.get("parity", True),
                 "paintable": c.get("paintable", True),
+                "walkable": c.get("walkable", False),
                 "anchor": autotile.parse_block(c["anchor"])[0] if "anchor" in c else None,
                 "onlyNear": [{"classes": o["classes"], "tiles": [autotile.parse_block(t)[0] for t in o["tiles"]]}
                              for o in c.get("only_near", [])],

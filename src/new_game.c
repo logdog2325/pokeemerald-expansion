@@ -133,12 +133,14 @@ static void ClearFrontierRecord(void)
     gSaveBlock2Ptr->frontier.opponentNames[1][0] = EOS;
 }
 
+// Draconid Emerald: the game starts in the player's bedroom in Draconid Village
+// instead of the moving truck (see data/maps/DraconidVillage_PlayersHouse_2F/scripts.pory).
 static void WarpToTruck(void)
 {
     if (IS_FRLG)
         SetWarpDestination(MAP_GROUP(MAP_PALLET_TOWN_PLAYERS_HOUSE_2F), MAP_NUM(MAP_PALLET_TOWN_PLAYERS_HOUSE_2F), WARP_ID_NONE, 6, 6);
     else
-        SetWarpDestination(MAP_GROUP(MAP_INSIDE_OF_TRUCK), MAP_NUM(MAP_INSIDE_OF_TRUCK), WARP_ID_NONE, -1, -1);
+        SetWarpDestination(MAP_GROUP(MAP_DRACONID_VILLAGE_PLAYERS_HOUSE_2F), MAP_NUM(MAP_DRACONID_VILLAGE_PLAYERS_HOUSE_2F), WARP_ID_NONE, 3, 4);
     WarpIntoMap();
 }
 

@@ -1630,6 +1630,22 @@
       "y": 4,
       "width": 1,
       "height": 1
+    },
+    {
+      "id": "MAPSEC_DRACONID_VILLAGE",
+      "name": "DRACONID VILLAGE",
+      "x": 2,
+      "y": 11,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "id": "MAPSEC_DRACONID_PASS",
+      "name": "DRACONID PASS",
+      "x": 3,
+      "y": 11,
+      "width": 1,
+      "height": 1
     }
   ]
 }

@@ -57,6 +57,34 @@ static uint32_t parse_keys(const char *s)
     return keys;
 }
 
+// "0x0300xxxx", "*0x0300xxxx" (read a u32 pointer there) or "*0x0300xxxx+0x1c"
+static uint32_t eval_addr(const char *s)
+{
+    uint32_t base, off = 0;
+    const char *plus = strchr(s, '+');
+    if (plus)
+        off = strtoul(plus + 1, NULL, 16);
+    if (s[0] == '*')
+    {
+        uint32_t p = strtoul(s + 1, NULL, 16);
+        base = core->busRead32(core, p);
+    }
+    else
+    {
+        base = strtoul(s, NULL, 16);
+    }
+    return base + off;
+}
+
+static uint32_t read_n(uint32_t addr, int size)
+{
+    if (size == 1)
+        return core->busRead8(core, addr);
+    if (size == 2)
+        return core->busRead16(core, addr);
+    return core->busRead32(core, addr);
+}
+
 static void frames(uint32_t keys, int n)
 {
     core->setKeys(core, keys);
@@ -142,9 +170,71 @@ static void command(char *line)
         vf->close(vf);
         printf("%s %s %s\n", cmd, a, ok ? "ok" : "FAILED");
     }
+    else if (!strcmp(cmd, "until"))
+    {
+        // until ADDR SIZE VALUE MAXFRAMES [KEYS PERIOD]: run until *(ADDR) == VALUE,
+        // tapping KEYS for 2 frames every PERIOD frames while waiting
+        char addr_s[128], keys_s[64] = "";
+        unsigned size, maxf, period = 0;
+        unsigned long value;
+        int got = sscanf(line, "%*s %127s %u %lx %u %63s %u", addr_s, &size, &value, &maxf, keys_s, &period);
+        // KEYS may be a comma-separated cycle, e.g. "A,UP": each tap uses the next entry
+        uint32_t cycle[8];
+        int ncycle = 0, next = 0;
+        if (got >= 6)
+        {
+            for (char *tok = strtok(keys_s, ","); tok && ncycle < 8; tok = strtok(NULL, ","))
+                cycle[ncycle++] = parse_keys(tok);
+        }
+        unsigned f = 0;
+        while (f < maxf && read_n(eval_addr(addr_s), size) != (uint32_t)value)
+        {
+            if (ncycle && period && f % period == 0)
+            {
+                frames(cycle[next], 2);
+                next = (next + 1) % ncycle;
+                f += 2;
+            }
+            else
+            {
+                frames(0, 1);
+                f++;
+            }
+        }
+        printf("until %s == %lx: %s after %u frames\n", addr_s, value, f < maxf ? "ok" : "TIMEOUT", f);
+    }
+    else if (!strcmp(cmd, "untilhold"))
+    {
+        // untilhold ADDR SIZE VALUE MAXFRAMES KEYS: hold KEYS until *(ADDR) == VALUE
+        char addr_s[128], keys_s[64];
+        unsigned size, maxf, f = 0;
+        unsigned long value;
+        sscanf(line, "%*s %127s %u %lx %u %63s", addr_s, &size, &value, &maxf, keys_s);
+        uint32_t keys = parse_keys(keys_s);
+        core->setKeys(core, keys);
+        while (f < maxf && read_n(eval_addr(addr_s), size) != (uint32_t)value)
+        {
+            core->runFrame(core);
+            f++;
+        }
+        core->setKeys(core, 0);
+        // let the current step finish so the player is centred on the tile
+        for (int i = 0; i < 16; i++)
+            core->runFrame(core);
+        printf("untilhold %s == %lx: %s after %u frames\n", addr_s, value, f < maxf ? "ok" : "TIMEOUT", f);
+    }
+    else if (!strcmp(cmd, "read"))
+    {
+        // read ADDR SIZE LABEL
+        char addr_s[128];
+        unsigned size;
+        char label[128] = "";
+        sscanf(line, "%*s %127s %u %127s", addr_s, &size, label);
+        printf("read %s = 0x%X\n", label[0] ? label : addr_s, read_n(eval_addr(addr_s), size));
+    }
     else if (!strcmp(cmd, "peek"))
     {
-        uint32_t addr = strtoul(a, NULL, 16);
+        uint32_t addr = eval_addr(a);
         int len = atoi(b);
         printf("peek %08X:", addr);
         for (int i = 0; i < len; i++)

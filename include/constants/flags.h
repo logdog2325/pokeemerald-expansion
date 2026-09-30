@@ -51,19 +51,19 @@
 
 #else
 
-#define FLAG_UNUSED_0x020    0x20 // Unused Flag
-#define FLAG_UNUSED_0x021    0x21 // Unused Flag
-#define FLAG_UNUSED_0x022    0x22 // Unused Flag
-#define FLAG_UNUSED_0x023    0x23 // Unused Flag
-#define FLAG_UNUSED_0x024    0x24 // Unused Flag
-#define FLAG_UNUSED_0x025    0x25 // Unused Flag
-#define FLAG_UNUSED_0x026    0x26 // Unused Flag
-#define FLAG_UNUSED_0x027    0x27 // Unused Flag
-#define FLAG_UNUSED_0x028    0x28 // Unused Flag
-#define FLAG_UNUSED_0x029    0x29 // Unused Flag
-#define FLAG_UNUSED_0x02A    0x2A // Unused Flag
-#define FLAG_UNUSED_0x02B    0x2B // Unused Flag
-#define FLAG_UNUSED_0x02C    0x2C // Unused Flag
+#define FLAG_HIDE_DRACONID_ELDERS_HOUSE_ASTER    0x20 // Draconid Emerald
+#define FLAG_HIDE_DRACONID_VILLAGE_ASTER         0x21 // Draconid Emerald
+#define FLAG_RECEIVED_DRACONID_EGG               0x22 // Draconid Emerald
+#define FLAG_DRACONID_EGG_HATCHED                0x23 // Draconid Emerald
+#define FLAG_HIDE_DRACONID_SHRINE_ELDER          0x24 // Draconid Emerald
+#define FLAG_HIDE_DRACONID_SHRINE_ASTER          0x25 // Draconid Emerald
+#define FLAG_HIDE_DRACONID_ELDERS_HOUSE_ELDER    0x26 // Draconid Emerald
+#define FLAG_HIDE_DRACONID_PASS_ASTER            0x27 // Draconid Emerald
+#define FLAG_DEFEATED_ASTER_DRACONID_PASS        0x28 // Draconid Emerald
+#define FLAG_RECEIVED_SECOND_STARTER             0x29 // Draconid Emerald
+#define FLAG_HIDE_DRACONID_VILLAGE_MOM           0x2A // Draconid Emerald
+#define FLAG_HIDE_DRACONID_HOUSE_2F_MOM          0x2B // Draconid Emerald
+#define FLAG_DRACONID_NO_WHITEOUT                0x2C // Draconid Emerald
 #define FLAG_UNUSED_0x02D    0x2D // Unused Flag
 #define FLAG_UNUSED_0x02E    0x2E // Unused Flag
 #define FLAG_UNUSED_0x02F    0x2F // Unused Flag
@@ -1387,7 +1387,7 @@
 #define FLAG_IS_CHAMPION                            (SYSTEM_FLAGS + 0x1F) // Seems to be related to linking.
 #define FLAG_NURSE_UNION_ROOM_REMINDER              (SYSTEM_FLAGS + 0x20)
 
-#define FLAG_UNUSED_0x881                           (SYSTEM_FLAGS + 0x21) // Unused Flag
+#define FLAG_VISITED_DRACONID_VILLAGE               (SYSTEM_FLAGS + 0x21) // Draconid Emerald: fly destination
 #define FLAG_UNUSED_0x882                           (SYSTEM_FLAGS + 0x22) // Unused Flag
 #define FLAG_UNUSED_0x883                           (SYSTEM_FLAGS + 0x23) // Unused Flag
 #define FLAG_UNUSED_0x884                           (SYSTEM_FLAGS + 0x24) // Unused Flag

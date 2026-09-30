@@ -40,6 +40,7 @@ BRUSH_DIR = os.path.join(os.path.dirname(__file__), "brushes")
 N8 = [(-1, -1), (0, -1), (1, -1), (-1, 0), (1, 0), (-1, 1), (0, 1), (1, 1)]
 N4 = [(0, -1), (-1, 0), (1, 0), (0, 1)]
 OTHER = "o"
+MIN_SUPPORT = 2  # context keys need this many vanilla examples before they win
 
 
 def parse_block(s):
@@ -95,7 +96,7 @@ def norm8(mask_bits):
     return "".join(str(v) for v in b)
 
 
-def keys_for(cls, ctx8, ctx4, px, py, parity=True):
+def keys_for(cls, ctx8, ctx4, px, py, parity=True, order_parity_first=False):
     same8 = norm8([1 if c == cls else 0 for c in ctx8])
     same4 = "".join("1" if c == cls else "0" for c in ctx4)
     c8 = "".join(ctx8)
@@ -115,6 +116,9 @@ def keys_for(cls, ctx8, ctx4, px, py, parity=True):
     if not parity:
         # classes without a 2x2 pattern (cliffs, ground, water...) skip the parity keys
         keys = [k if "|p=" not in k else None for k in keys]
+    elif order_parity_first:
+        # patterned classes (trees): any key that keeps the 2x2 phase beats a richer key without it
+        keys = [keys[i] for i in (0, 2, 4, 6, 1, 3, 5, 7, 8)]
     return keys
 
 
@@ -131,12 +135,18 @@ def neighbours(grid, x, y, w, h, offsets):
 # learning
 # ---------------------------------------------------------------------------
 
-def label_layout(brush, layout):
+def label_layout(brush, layout, primary_only=False):
+    """Class code per cell. primary_only: the layout uses a different secondary tileset, so
+    only primary-tileset metatiles (< 0x200) can be classified; the rest count as OTHER."""
     grid = []
     for y in range(layout.height):
         row = []
         for x in range(layout.width):
-            cname = brush["_member_class"].get(layout.metatile_at(x, y))
+            mid = layout.metatile_at(x, y)
+            if primary_only and mid >= pokemap.NUM_METATILES_IN_PRIMARY:
+                row.append(OTHER)
+                continue
+            cname = brush["_member_class"].get(mid)
             row.append(class_code(brush, cname))
         grid.append(row)
     return grid
@@ -191,6 +201,14 @@ def learn(brush):
             print("skip %s: tilesets %s/%s" % (m, L.primary_symbol, L.secondary_symbol))
             continue
         layouts.append((m, L, label_layout(brush, L)))
+    # maps with the same primary but another secondary tileset teach primary-only classes
+    for m in brush.get("learn_from_primary", []):
+        lid = proj.map_json(m)["layout"]
+        L = proj.layout(lid)
+        if L.primary_symbol != brush["primary"]:
+            print("skip %s: primary %s" % (m, L.primary_symbol))
+            continue
+        layouts.append((m, L, label_layout(brush, L, primary_only=True)))
 
     codes = {class_code(brush, c): c for c in brush["classes"]}
     # 1) anchor tile per class = most common block among fully surrounded cells
@@ -292,17 +310,29 @@ def resolve(brush, rules, class_grid, phase=(0, 0), variety=None):
             for r in cdef.get("only_near", []):
                 if not near & set(r["classes"]):
                     banned.update(parse_block(t)[0] for t in r["tiles"])
-            for level, k in enumerate(keys_for(c, ctx8, ctx4, px, py, cdef.get("parity", True))):
+            walkable = cdef.get("walkable", False)
+            fallback = None
+            for level, k in enumerate(keys_for(c, ctx8, ctx4, px, py, cdef.get("parity", True), True)):
                 if k is None or k not in rules["rules"]:
                     continue
-                opts = [o for o in rules["rules"][k] if parse_block(o[0])[0] not in banned]
+                opts = [o for o in rules["rules"][k] if parse_block(o[0])[0] not in banned
+                        and not (walkable and parse_block(o[0])[1])]
                 if not opts:
                     continue
+                if "|c8=" in k and sum(n for _, n in opts) < MIN_SUPPORT:
+                    # a full-context key seen only once is often a one-off edge tile
+                    fallback = fallback or (level, opts)
+                    continue
                 interior = all(n == c for n in ctx8)
+                if interior and level < 2 and variety.get(c) and "variety_tiles" in cdef:
+                    allow = set(parse_block(t)[0] for t in cdef["variety_tiles"])
+                    opts = [o for o in opts if parse_block(o[0])[0] in allow] or opts
                 chosen = _pick(opts, x, y, variety.get(c) if interior and level < 2 else None)
                 if level >= 4:
                     diag.append((x, y, level + 1))
                 break
+            if chosen is None and fallback:
+                chosen = fallback[1][0][0]
             if chosen is None:
                 cname = codes.get(c)
                 chosen = brush["classes"][cname]["default"] if cname else "000:1:0"

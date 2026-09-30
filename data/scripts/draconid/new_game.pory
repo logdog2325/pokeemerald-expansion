@@ -1,0 +1,37 @@
+// Draconid Emerald: extra new-game state, called from EventScript_ResetAllMapFlags
+// (data/scripts/new_game.inc). The player now lives in Draconid Village, so Littleroot is
+// put into its "intro finished, nobody moved in" state. See docs/hack_notes_early_game.md.
+
+script DraconidEmerald_EventScript_NewGameSetup {
+    // Littleroot: no truck, no moving boxes, no player's Mom, no set-the-clock scenes
+    setvar(VAR_LITTLEROOT_INTRO_STATE, 7)
+    // 1 = the twin at the north exit points the way to Route 101 (0 would trap the player)
+    setvar(VAR_LITTLEROOT_TOWN_STATE, 1)
+    // 3 = rivals already met; stops the 2F "meet your new neighbour" scenes
+    setvar(VAR_LITTLEROOT_RIVAL_STATE, 3)
+    setflag(FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_TRUCK)
+    setflag(FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_TRUCK)
+    setflag(FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_MOM)
+    setflag(FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_MOM)
+    setflag(FLAG_HIDE_LITTLEROOT_TOWN_PLAYERS_HOUSE_VIGOROTH_1)
+    setflag(FLAG_HIDE_LITTLEROOT_TOWN_PLAYERS_HOUSE_VIGOROTH_2)
+    setflag(FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F_POKE_BALL)
+    setflag(FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_2F_POKE_BALL)
+    // the clocks in the Littleroot houses belong to the rivals' families now
+    setflag(FLAG_SET_WALL_CLOCK)
+    // May waits on Route 103 only after the lab scene (fixes the vanilla Pokédex sequence break)
+    setflag(FLAG_HIDE_ROUTE_103_RIVAL)
+    clearflag(FLAG_HIDE_LITTLEROOT_TOWN_FAT_MAN)
+
+    // Draconid Village
+    setflag(FLAG_HIDE_DRACONID_ELDERS_HOUSE_ASTER)
+    setflag(FLAG_HIDE_DRACONID_VILLAGE_ASTER)
+    setflag(FLAG_HIDE_DRACONID_SHRINE_ELDER)
+    setflag(FLAG_HIDE_DRACONID_SHRINE_ASTER)
+    setflag(FLAG_HIDE_DRACONID_PASS_ASTER)
+    setflag(FLAG_HIDE_DRACONID_VILLAGE_MOM)
+    setvar(VAR_DRACONID_STATE, DRACONID_STATE_NEW_GAME)
+    setvar(VAR_PLAYER_OUTFIT, PLAYER_OUTFIT_DRACONID)
+    // blacking out before the first Pokémon Center brings the player home to Mom
+    setrespawn(HEAL_LOCATION_DRACONID_VILLAGE_PLAYERS_HOUSE_2F)
+}

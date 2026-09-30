@@ -21,6 +21,7 @@
 #include "trainer_pokemon_sprites.h"
 #include "trig.h"
 #include "window.h"
+#include "constants/draconid.h"
 #include "constants/songs.h"
 #include "constants/rgb.h"
 
@@ -110,9 +111,11 @@ static const u8 sStarterLabelCoords[STARTER_MON_COUNT][2] =
     {8, 4},
 };
 
-#define GRASS_STARTER (IS_FRLG ? SPECIES_BULBASAUR  : SPECIES_TREECKO)
-#define FIRE_STARTER  (IS_FRLG ? SPECIES_CHARMANDER : SPECIES_TORCHIC)
-#define WATER_STARTER (IS_FRLG ? SPECIES_SQUIRTLE   : SPECIES_MUDKIP )
+// Draconid Emerald: in Emerald VAR_STARTER_MON holds the Draconid egg the player chose
+// (see include/constants/draconid.h), so GetStarterPokemon returns the hatchling's species.
+#define GRASS_STARTER (IS_FRLG ? SPECIES_BULBASAUR  : DRACONID_EGG_SPECIES_0)
+#define FIRE_STARTER  (IS_FRLG ? SPECIES_CHARMANDER : DRACONID_EGG_SPECIES_1)
+#define WATER_STARTER (IS_FRLG ? SPECIES_SQUIRTLE   : DRACONID_EGG_SPECIES_2)
 
 static const u16 sStarterMon[STARTER_MON_COUNT] =
 {
@@ -349,7 +352,7 @@ static const struct SpriteTemplate sSpriteTemplate_StarterCircle =
 // .text
 u16 GetStarterPokemon(u16 chosenStarterId)
 {
-    if (chosenStarterId > STARTER_MON_COUNT)
+    if (chosenStarterId >= STARTER_MON_COUNT)
         chosenStarterId = 0;
     return sStarterMon[chosenStarterId];
 }

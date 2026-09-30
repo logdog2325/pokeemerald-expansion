@@ -1,0 +1,150 @@
+// The Elder's house: the egg ceremony (Phase 4, story event 1).
+// VAR_STARTER_MON = the player's egg (DRACONID_EGG_*), VAR_ASTER_EGG = Aster's counter-pick:
+//   Deino -> Aster Jangmo-o (Fighting and Dragon hit Dark/Dragon)
+//   Dreepy -> Aster Deino   (Dark beats Ghost)
+//   Jangmo-o -> Aster Dreepy (Ghost is immune to Fighting)
+
+mapscripts DraconidVillage_EldersHouse_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION: DraconidVillage_EldersHouse_OnTransition
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_DRACONID_STATE, DRACONID_STATE_CLOCK_SET: DraconidVillage_EldersHouse_EventScript_Ceremony
+    ]
+}
+
+script DraconidVillage_EldersHouse_OnTransition {
+    if (var(VAR_DRACONID_STATE) == DRACONID_STATE_CLOCK_SET) {
+        clearflag(FLAG_HIDE_DRACONID_ELDERS_HOUSE_ASTER)
+    }
+}
+
+script DraconidVillage_EldersHouse_EventScript_Ceremony {
+    lockall
+    msgbox(format("ELDER: Ah, {PLAYER}. There you are. Come, stand before me."))
+    closemessage
+    applymovement(LOCALID_PLAYER, DraconidVillage_EldersHouse_Movement_PlayerApproach)
+    waitmovement(0)
+    msgbox(format("ELDER: Today you come of age as a tamer of the Draconid clan.\p"
+                  "As it has always been, a dragon egg will be entrusted to you.\p"
+                  "My granddaughter ASTER receives hers today as well."))
+    applymovement(LOCALID_DRACONID_HOUSE_ASTER, Common_Movement_WalkInPlaceFasterRight)
+    waitmovement(0)
+    msgbox(format("ASTER: …The sky has been restless lately. The clouds move against the wind.\p"
+                  "Let's see which dragon is foolish enough to follow you."))
+    msgbox(format("ELDER: Hohoho. Pay her no mind.\p"
+                  "These three eggs were brought up from the depths of METEOR FALLS.\p"
+                  "Look closely, {PLAYER}. Which one calls to you?"))
+    closemessage
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight)
+    waitmovement(0)
+    setvar(VAR_0x8008, 0)
+    while (var(VAR_0x8008) == 0) {
+        message(format("Which egg will you choose?"))
+        waitmessage
+        dynmultichoice(18, 1, TRUE, 3, 0, DYN_MULTICHOICE_CB_NONE, "DEINO", "DREEPY", "JANGMO-O")
+        copyvar(VAR_STARTER_MON, VAR_RESULT)
+        switch (var(VAR_STARTER_MON)) {
+            case DRACONID_EGG_DEINO:
+                msgbox(format("ELDER: The egg of DEINO, a Dark- and Dragon-type.\p"
+                              "It cannot see, so it bites everything to learn about the world.\p"
+                              "Will you take the DEINO egg?"), MSGBOX_YESNO)
+            case DRACONID_EGG_DREEPY:
+                msgbox(format("ELDER: The egg of DREEPY, a Dragon- and Ghost-type.\p"
+                              "It is said to drift through the old ruins, longing for the sky of its ancestors.\p"
+                              "Will you take the DREEPY egg?"), MSGBOX_YESNO)
+            default:
+                msgbox(format("ELDER: The egg of JANGMO-O, a Dragon-type.\p"
+                              "It clashes its scales like a war drum to call out any challenger.\p"
+                              "Will you take the JANGMO-O egg?"), MSGBOX_YESNO)
+        }
+        if (var(VAR_RESULT) == YES) {
+            setvar(VAR_0x8008, 1)
+        }
+    }
+    switch (var(VAR_STARTER_MON)) {
+        case DRACONID_EGG_DEINO:
+            giveegg(DRACONID_EGG_SPECIES_0)
+            removeobject(LOCALID_DRACONID_EGG_1)
+            setvar(VAR_ASTER_EGG, DRACONID_EGG_JANGMO_O)
+        case DRACONID_EGG_DREEPY:
+            giveegg(DRACONID_EGG_SPECIES_1)
+            removeobject(LOCALID_DRACONID_EGG_2)
+            setvar(VAR_ASTER_EGG, DRACONID_EGG_DEINO)
+        default:
+            giveegg(DRACONID_EGG_SPECIES_2)
+            removeobject(LOCALID_DRACONID_EGG_3)
+            setvar(VAR_ASTER_EGG, DRACONID_EGG_DREEPY)
+    }
+    setflag(FLAG_SYS_POKEMON_GET)
+    playfanfare(MUS_OBTAIN_ITEM)
+    message(format("{PLAYER} received the dragon egg!"))
+    waitfanfare
+    waitmessage
+    msgbox(format("ELDER: Hold it close. It already knows your warmth."))
+    applymovement(LOCALID_DRACONID_HOUSE_ASTER, Common_Movement_WalkInPlaceFasterRight)
+    waitmovement(0)
+    switch (var(VAR_ASTER_EGG)) {
+        case DRACONID_EGG_JANGMO_O:
+            removeobject(LOCALID_DRACONID_EGG_3)
+            msgbox(format("ASTER: A blind dragon that bites at shadows…\p"
+                          "Then I'll take the one whose scales ring like a drum. "
+                          "Yours will always hear mine coming. JANGMO-O is mine."))
+        case DRACONID_EGG_DEINO:
+            removeobject(LOCALID_DRACONID_EGG_1)
+            msgbox(format("ASTER: A ghost that drifts through walls…\p"
+                          "But not through jaws. I'll take the one that bites the dark. DEINO is mine."))
+        default:
+            removeobject(LOCALID_DRACONID_EGG_2)
+            msgbox(format("ASTER: Scales and fists, beating like a drum…\p"
+                          "What use is a drum against something that isn't really there? DREEPY is mine."))
+    }
+    msgbox(format("ELDER: Now then. Dragon eggs do not hatch on their own; they wait for the sky's call.\p"
+                  "Come to the shrine in the cliff, both of you. We shall perform the rite."))
+    closemessage
+    fadescreen(FADE_TO_BLACK)
+    removeobject(LOCALID_DRACONID_ELDER)
+    removeobject(LOCALID_DRACONID_HOUSE_ASTER)
+    clearflag(FLAG_HIDE_DRACONID_SHRINE_ELDER)
+    clearflag(FLAG_HIDE_DRACONID_SHRINE_ASTER)
+    setflag(FLAG_RECEIVED_DRACONID_EGG)
+    setvar(VAR_DRACONID_STATE, DRACONID_STATE_EGG_RECEIVED)
+    fadescreen(FADE_FROM_BLACK)
+    msgbox(format("The ELDER and ASTER left for the shrine."))
+    releaseall
+}
+
+movement DraconidVillage_EldersHouse_Movement_PlayerApproach {
+    walk_up * 3
+}
+
+script DraconidVillage_EldersHouse_EventScript_Elder {
+    lock
+    faceplayer
+    if (var(VAR_DRACONID_STATE) < DRACONID_STATE_READY_TO_LEAVE) {
+        msgbox(format("ELDER: Your mother is waiting for you outside the shrine, {PLAYER}."))
+    } elif (!flag(FLAG_BADGE01_GET)) {
+        msgbox(format("ELDER: PROF. BIRCH of LITTLEROOT TOWN studies how Pokémon live in the wild.\p"
+                      "Our clan and his family have shared what we know for many years. "
+                      "Show him your partner, {PLAYER}."))
+    } else {
+        msgbox(format("ELDER: You have grown, {PLAYER}. Your partner too.\p"
+                      "The sky has been restless of late… Keep your eyes open out there."))
+    }
+    release
+}
+
+script DraconidVillage_EldersHouse_EventScript_Aster {
+    msgbox(format("ASTER: …"), MSGBOX_NPC)
+}
+
+script DraconidVillage_EldersHouse_EventScript_Egg {
+    msgbox(format("A dragon egg, warm to the touch. Something inside is moving."), MSGBOX_SIGN)
+}
+
+script DraconidVillage_EldersHouse_EventScript_RelicDisplay {
+    msgbox(format("A glass case holds a fragment of dark, glittering rock.\p"
+                  "A label reads: “From the star that fell on the village. Do not touch.”"), MSGBOX_SIGN)
+}
+
+script DraconidVillage_EldersHouse_EventScript_Bookshelf {
+    msgbox(format("Old scrolls about the Draconid clan and the Guardian of the Sky fill the shelves."), MSGBOX_SIGN)
+}

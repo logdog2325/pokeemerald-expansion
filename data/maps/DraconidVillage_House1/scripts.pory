@@ -1,0 +1,13 @@
+// East house of Draconid Village: the scarf weaver and her daughter.
+
+mapscripts DraconidVillage_House1_MapScripts {}
+
+script DraconidVillage_House1_EventScript_Weaver {
+    msgbox(format("Every tamer of the clan wears a scarf woven from dragon down.\p"
+                  "It keeps you warm on the peaks… and it tells other tamers where you come from."), MSGBOX_NPC)
+}
+
+script DraconidVillage_House1_EventScript_Girl {
+    msgbox(format("Grandpa ELDER says the Guardian of the Sky lives above the clouds and never comes down.\p"
+                  "But then how does anyone know what it looks like?"), MSGBOX_NPC)
+}

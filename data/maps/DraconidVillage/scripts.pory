@@ -1,0 +1,134 @@
+// Draconid Village: the player's home, at the foot of the cliffs below the Rayquaza shrine.
+
+mapscripts DraconidVillage_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION: DraconidVillage_OnTransition
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_DRACONID_STATE, DRACONID_STATE_EGG_HATCHED: DraconidVillage_EventScript_MomGivesRunningShoes
+    ]
+}
+
+script DraconidVillage_OnTransition {
+    setflag(FLAG_VISITED_DRACONID_VILLAGE)
+    // VAR_TEMP_1 != 0 disarms the gatekeeper's coord triggers at the south exit
+    if (var(VAR_DRACONID_STATE) >= DRACONID_STATE_READY_TO_LEAVE) {
+        setvar(VAR_TEMP_1, 1)
+    }
+}
+
+// ---------------------------------------------------------------------------
+// Mom waits outside the shrine after the hatching rite: Running Shoes
+// ---------------------------------------------------------------------------
+script DraconidVillage_EventScript_MomGivesRunningShoes {
+    lockall
+    addobject(LOCALID_DRACONID_VILLAGE_MOM)
+    applymovement(LOCALID_DRACONID_VILLAGE_MOM, DraconidVillage_Movement_MomApproach)
+    waitmovement(0)
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterDown)
+    waitmovement(0)
+    msgbox(format("MOM: {PLAYER}! I couldn't wait at home any longer…\p"
+                  "Oh! Is that your partner? It hatched! How wonderful!\p"
+                  "The ELDER told me you're going to see PROF. BIRCH in LITTLEROOT TOWN.\p"
+                  "Then you'll need these! I've been saving them for the day you left the village."))
+    playfanfare(MUS_OBTAIN_ITEM)
+    message(format("{PLAYER} switched shoes with the RUNNING SHOES."))
+    waitfanfare
+    waitmessage
+    msgbox(format("MOM: Hold the B Button to run with them!\p"
+                  "LITTLEROOT is past the bridge on DRACONID PASS, to the south-east.\p"
+                  "Come home whenever you need a rest. Take care, sweetie!"))
+    closemessage
+    setflag(FLAG_RECEIVED_RUNNING_SHOES)
+    setflag(FLAG_SYS_B_DASH)
+    applymovement(LOCALID_DRACONID_VILLAGE_MOM, DraconidVillage_Movement_MomLeave)
+    waitmovement(0)
+    removeobject(LOCALID_DRACONID_VILLAGE_MOM)
+    setvar(VAR_DRACONID_STATE, DRACONID_STATE_READY_TO_LEAVE)
+    setvar(VAR_TEMP_1, 1)
+    releaseall
+}
+
+// the player steps out of the shrine's cave mouth onto (19, 6); Mom waits at (19, 8)
+movement DraconidVillage_Movement_MomApproach {
+    walk_up
+}
+
+movement DraconidVillage_Movement_MomLeave {
+    walk_down * 4
+    walk_left * 8
+}
+
+// ---------------------------------------------------------------------------
+// South exit: nobody leaves the village without a partner
+// ---------------------------------------------------------------------------
+script DraconidVillage_EventScript_GatekeeperStop {
+    lockall
+    applymovement(LOCALID_DRACONID_GATEKEEPER, Common_Movement_WalkInPlaceFasterLeft)
+    waitmovement(0)
+    if (var(VAR_DRACONID_STATE) < DRACONID_STATE_EGG_RECEIVED) {
+        msgbox(format("GATEKEEPER: Whoa there, {PLAYER}! Isn't today your egg ceremony?\p"
+                      "The ELDER is waiting for you. You can't leave the village without a partner!"))
+    } else {
+        msgbox(format("GATEKEEPER: That egg needs the shrine's blessing before it can hatch.\p"
+                      "Go on up to the shrine in the cliff!"))
+    }
+    closemessage
+    applymovement(LOCALID_PLAYER, DraconidVillage_Movement_PushBack)
+    waitmovement(0)
+    releaseall
+}
+
+movement DraconidVillage_Movement_PushBack {
+    walk_up
+}
+
+script DraconidVillage_EventScript_Gatekeeper {
+    lock
+    faceplayer
+    if (var(VAR_DRACONID_STATE) < DRACONID_STATE_READY_TO_LEAVE) {
+        msgbox(format("GATEKEEPER: Beyond this path lies DRACONID PASS, and past the river, the lowlands.\p"
+                      "Wild Pokémon live out there. Only tamers with a partner may pass."))
+    } else {
+        msgbox(format("GATEKEEPER: So you're off to see the lowlands! The clan's blessings go with you.\p"
+                      "Follow the path over the bridge and head east to reach LITTLEROOT TOWN."))
+    }
+    release
+}
+
+// ---------------------------------------------------------------------------
+// Villagers (TODO(art): Draconid villager sprites replace the vanilla placeholders)
+// ---------------------------------------------------------------------------
+script DraconidVillage_EventScript_Apprentice {
+    msgbox(format("That crater was made by the star that fell here long ago.\p"
+                  "The clan's KEY STONES were carved from its heart. Only the ELDER may give one away."), MSGBOX_NPC)
+}
+
+script DraconidVillage_EventScript_OldWoman {
+    lock
+    faceplayer
+    if (flag(FLAG_DRACONID_EGG_HATCHED)) {
+        msgbox(format("A dragon raised from the egg never forgets the face it saw first.\p"
+                      "Be good to your little one."))
+    } else {
+        msgbox(format("Every child of the clan receives a dragon egg when they come of age.\p"
+                      "I was your age when I received mine. Seems like only yesterday…"))
+    }
+    release
+}
+
+script DraconidVillage_EventScript_PondWoman {
+    msgbox(format("The water here comes from the peaks, where the sky dragon is said to rest.\p"
+                  "Drinking it is supposed to make dragons grow strong!"), MSGBOX_NPC)
+}
+
+script DraconidVillage_EventScript_Boy {
+    msgbox(format("When I get my egg, I want a dragon that can fly all the way up to the sky!"), MSGBOX_NPC)
+}
+
+script DraconidVillage_EventScript_VillageSign {
+    msgbox(format("DRACONID VILLAGE\n"
+                  "“Where the clan keeps the sky.”"), MSGBOX_SIGN)
+}
+
+script DraconidVillage_EventScript_PlayersHouseSign {
+    msgbox(format("{PLAYER}'s house"), MSGBOX_SIGN)
+}

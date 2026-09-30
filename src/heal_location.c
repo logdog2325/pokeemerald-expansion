@@ -67,7 +67,9 @@ static bool32 IsLastHealLocation(u32 healLocation)
 
 bool32 IsLastHealLocationPlayerHouse()
 {
-    if (IsLastHealLocation(HEAL_LOCATION_LITTLEROOT_TOWN_MAYS_HOUSE)
+    if (IsLastHealLocation(HEAL_LOCATION_DRACONID_VILLAGE_PLAYERS_HOUSE_2F)
+        || IsLastHealLocation(HEAL_LOCATION_DRACONID_VILLAGE)
+        || IsLastHealLocation(HEAL_LOCATION_LITTLEROOT_TOWN_MAYS_HOUSE)
         || IsLastHealLocation(HEAL_LOCATION_LITTLEROOT_TOWN_MAYS_HOUSE_2F)
         || IsLastHealLocation(HEAL_LOCATION_LITTLEROOT_TOWN_BRENDANS_HOUSE)
         || IsLastHealLocation(HEAL_LOCATION_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F)
