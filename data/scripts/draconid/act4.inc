@@ -7,17 +7,23 @@ PetalburgCity_Gym_EventScript_DraconidNormanUniform::
 	switch VAR_PETALBURG_GYM_STATE
 	case 2, PetalburgCity_Gym_EventScript_DraconidNormanUniform_3
 	case 3, PetalburgCity_Gym_EventScript_DraconidNormanUniform_4
-	msgbox PetalburgCity_Gym_EventScript_DraconidNormanUniform_Text_2
+	msgbox PetalburgCity_Gym_EventScript_DraconidNormanUniform_Text_3
 PetalburgCity_Gym_EventScript_DraconidNormanUniform_1:
 	release
 	return
 
 PetalburgCity_Gym_EventScript_DraconidNormanUniform_3:
-	msgbox PetalburgCity_Gym_EventScript_DraconidNormanUniform_Text_0
+	compare VAR_BRENDAN_STATE, BRENDAN_STATE_RUSTBORO
+	goto_if_lt PetalburgCity_Gym_EventScript_DraconidNormanUniform_6
+	msgbox PetalburgCity_Gym_EventScript_DraconidNormanUniform_Text_1
 	goto PetalburgCity_Gym_EventScript_DraconidNormanUniform_1
 
 PetalburgCity_Gym_EventScript_DraconidNormanUniform_4:
-	msgbox PetalburgCity_Gym_EventScript_DraconidNormanUniform_Text_1
+	msgbox PetalburgCity_Gym_EventScript_DraconidNormanUniform_Text_2
+	goto PetalburgCity_Gym_EventScript_DraconidNormanUniform_1
+
+PetalburgCity_Gym_EventScript_DraconidNormanUniform_6:
+	msgbox PetalburgCity_Gym_EventScript_DraconidNormanUniform_Text_0
 	goto PetalburgCity_Gym_EventScript_DraconidNormanUniform_1
 
 
@@ -356,8 +362,12 @@ LilycoveCity_EventScript_DraconidRivals_1:
 	call LilycoveCity_EventScript_DraconidFlyAway
 	setflag FLAG_MET_RIVAL_LILYCOVE
 	setflag FLAG_HIDE_LILYCOVE_CITY_RIVAL
-	setvar VAR_BRENDAN_STATE, BRENDAN_STATE_LILYCOVE
-	setvar VAR_MAY_STATE, MAY_STATE_LILYCOVE
+	compare VAR_BRENDAN_STATE, BRENDAN_STATE_LILYCOVE
+	goto_if_lt LilycoveCity_EventScript_DraconidRivals_12
+LilycoveCity_EventScript_DraconidRivals_11:
+	compare VAR_MAY_STATE, MAY_STATE_LILYCOVE
+	goto_if_lt LilycoveCity_EventScript_DraconidRivals_15
+LilycoveCity_EventScript_DraconidRivals_14:
 	savebgm MUS_DUMMY
 	fadedefaultbgm
 	release
@@ -381,6 +391,14 @@ LilycoveCity_EventScript_DraconidRivals_9:
 	fadedefaultbgm
 	release
 	end
+
+LilycoveCity_EventScript_DraconidRivals_12:
+	setvar VAR_BRENDAN_STATE, BRENDAN_STATE_LILYCOVE
+	goto LilycoveCity_EventScript_DraconidRivals_11
+
+LilycoveCity_EventScript_DraconidRivals_15:
+	setvar VAR_MAY_STATE, MAY_STATE_LILYCOVE
+	goto LilycoveCity_EventScript_DraconidRivals_14
 
 
 LilycoveCity_EventScript_DraconidFlyAway::
@@ -413,10 +431,16 @@ LilycoveCity_EventScript_DraconidWally::
 	fadescreen FADE_TO_BLACK
 	removeobject LOCALID_LILYCOVE_WALLY
 	setflag FLAG_HIDE_LILYCOVE_CITY_WALLY
-	setvar VAR_WALLY_STATE, WALLY_STATE_LILYCOVE_DONE
+	compare VAR_WALLY_STATE, WALLY_STATE_LILYCOVE_DONE
+	goto_if_lt LilycoveCity_EventScript_DraconidWally_2
+LilycoveCity_EventScript_DraconidWally_1:
 	fadescreen FADE_FROM_BLACK
 	release
 	return
+
+LilycoveCity_EventScript_DraconidWally_2:
+	setvar VAR_WALLY_STATE, WALLY_STATE_LILYCOVE_DONE
+	goto LilycoveCity_EventScript_DraconidWally_1
 
 
 MtPyre_Summit_EventScript_DraconidOnTransition::
@@ -647,6 +671,12 @@ MagmaHideout_4F_EventScript_DraconidSendWord::
 
 
 PetalburgCity_Gym_EventScript_DraconidNormanUniform_Text_0:
+	.string "NORMAN: {PLAYER}?\n"
+	.string "…That's a TEAM MAGMA uniform.\p"
+	.string "I won't ask why. But I will remember it.\p"
+	.string "Come back when you have four BADGES.$"
+
+PetalburgCity_Gym_EventScript_DraconidNormanUniform_Text_1:
 	.string "NORMAN: That's a MAGMA uniform,\n"
 	.string "{PLAYER}. MAY told me. I didn't want to\l"
 	.string "believe her.\p"
@@ -654,13 +684,13 @@ PetalburgCity_Gym_EventScript_DraconidNormanUniform_Text_0:
 	.string "challengers. Come back with four\l"
 	.string "BADGES.$"
 
-PetalburgCity_Gym_EventScript_DraconidNormanUniform_Text_1:
+PetalburgCity_Gym_EventScript_DraconidNormanUniform_Text_2:
 	.string "NORMAN: ROXANNE's BADGE… and that red\n"
 	.string "uniform. An odd pair.\p"
 	.string "Go on to DEWFORD. I'll battle you when\n"
 	.string "you have four BADGES.$"
 
-PetalburgCity_Gym_EventScript_DraconidNormanUniform_Text_2:
+PetalburgCity_Gym_EventScript_DraconidNormanUniform_Text_3:
 	.string "NORMAN: Hm… You've gotten stronger. I\n"
 	.string "can tell by your BADGES.\p"
 	.string "I only wish I knew what you're getting\n"

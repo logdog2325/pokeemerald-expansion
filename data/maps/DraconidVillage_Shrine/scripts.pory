@@ -84,8 +84,8 @@ script DraconidVillage_Shrine_EventScript_EggCeremony {
         case DRACONID_EGG_DREEPY: bufferspeciesname(STR_VAR_1, SPECIES_DEINO)
         default:                  bufferspeciesname(STR_VAR_1, SPECIES_DREEPY)
     }
-    msgbox(format("ELDER: The {STR_VAR_1} egg I will keep aside.\p"
-                  "It belongs to one who already walks a far road for our clan. You will meet, in time."))
+    msgbox(format("ELDER: The {STR_VAR_1} egg flies tonight, on my old dragon's back.\p"
+                  "It goes to one who already walks a far road for our clan. You will meet, in time."))
     applymovement(LOCALID_DRACONID_SHRINE_ASTER, Common_Movement_WalkInPlaceFasterLeft)
     waitmovement(0)
     switch (var(VAR_ASTER_EGG)) {

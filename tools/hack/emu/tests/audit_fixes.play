@@ -1,0 +1,205 @@
+# Story audit fixes (docs/hack_story_audit.md, D-270 – D-275; data/scripts/draconid/audit_fixes.pory and the lines
+# changed in place). Needs rustboro_done.ss from tests/rustboro.play (a one-Pokémon party). States are set by hand
+# and each scene is reached with the debug warp; battles are mashed with the no-whiteout flag on (scripts, not
+# balance). expect_text compares the first bytes of a text with gStringVar4 while its box is up (Poryscript's
+# inline texts are <Script>_Text_<N>, numbered in the order they appear in the script).
+loadstate rustboro_done.ss
+setflag FLAG_DEBUG_NO_ENCOUNTER
+setflag FLAG_DEBUG_NO_TRAINER_SEE
+setflag FLAG_DRACONID_NO_WHITEOUT
+setvar VAR_DRACONID_REPUTATION 1
+
+# --- #4: Mrs. Birch, May's mom and Norman before Brendan has seen the uniform (first sight), then after ---
+setvar VAR_BRENDAN_STATE 0
+warp MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_1F 3 8
+path LittlerootTown_BrendansHouse_1F 3 8 2 8
+press UP 2 10
+press A 2 60
+expect_text LittlerootTown_BrendansHouse_1F_EventScript_DraconidBirchsWife_Text_1
+shot af_01_mrs_birch_first_sight
+mash A 3000
+warp MAP_LITTLEROOT_TOWN_MAYS_HOUSE_1F 7 8
+path LittlerootTown_MaysHouse_1F 7 8 8 8
+press UP 2 10
+press A 2 60
+expect_text LittlerootTown_MaysHouse_1F_EventScript_DraconidMaysMom_Text_1
+shot af_02_mays_mom_first_sight
+mash A 3000
+setvar VAR_PETALBURG_GYM_STATE 2
+warp MAP_PETALBURG_CITY_GYM 4 110
+path PetalburgCity_Gym 4 110 4 108
+press A 2 60
+expect_text PetalburgCity_Gym_EventScript_DraconidNormanUniform_Text_0
+shot af_03_norman_first_sight
+mash A 3000
+setvar VAR_BRENDAN_STATE 1
+press A 2 60
+expect_text PetalburgCity_Gym_EventScript_DraconidNormanUniform_Text_1
+shot af_04_norman_may_told_me
+mash A 3000
+warp MAP_LITTLEROOT_TOWN_MAYS_HOUSE_1F 7 8
+path LittlerootTown_MaysHouse_1F 7 8 8 8
+press UP 2 10
+press A 2 60
+expect_text LittlerootTown_MaysHouse_1F_EventScript_DraconidMaysMom_Text_2
+mash A 3000
+
+# --- #17: Wattson hands the MAGMA grunt the Basement Key, then the TM (uniform branch, D-275) ---
+clearflag FLAG_HIDE_MAUVILLE_CITY_WATTSON
+setvar VAR_NEW_MAUVILLE_STATE 0
+warp MAP_MAUVILLE_CITY 29 12
+path MauvilleCity 29 12 29 10
+press A 2 60
+expect_text MauvilleCity_Text_DraconidWattsonUniformKey
+shot af_10_wattson_key
+mash A 5000
+expect_item ITEM_BASEMENT_KEY 1
+expect_flag FLAG_GOT_BASEMENT_KEY_FROM_WATTSON 1
+press A 2 60
+expect_text MauvilleCity_Text_DraconidWattsonUniformGo
+mash A 3000
+setvar VAR_NEW_MAUVILLE_STATE 2
+press A 2 60
+expect_text MauvilleCity_Text_DraconidWattsonUniformThanks
+shot af_11_wattson_thanks
+mash A 5000
+expect_item ITEM_TM_THUNDERBOLT 1
+expect_flag FLAG_GOT_TM_THUNDERBOLT_FROM_WATTSON 1
+press A 2 60
+expect_text MauvilleCity_Text_DraconidWattsonUniformDone
+mash A 3000
+# after the reveal his vanilla line plays
+setvar VAR_DRACONID_REPUTATION 2
+press A 2 60
+expect_text MauvilleCity_Text_WattsonYoungTakeCharge
+mash A 3000
+setvar VAR_DRACONID_REPUTATION 1
+
+# --- #18: Wally and his uncle leave Wanda's house while the Route 112 fight is due (D-274) ---
+setvar VAR_MAGMA_STATE 5
+setflag FLAG_DEFEATED_WALLY_MAUVILLE
+settrainer TRAINER_WALLY_ROUTE_112 0
+warp MAP_VERDANTURF_TOWN_WANDAS_HOUSE 7 6
+run 30
+expect_flag FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WALLY 1
+expect_flag FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WALLYS_UNCLE 1
+shot af_20_wandas_house_away
+settrainer TRAINER_WALLY_ROUTE_112 1
+warp MAP_VERDANTURF_TOWN_WANDAS_HOUSE 7 6
+run 30
+expect_flag FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WALLY 0
+expect_flag FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WALLYS_UNCLE 0
+shot af_21_wandas_house_home
+# the Heat Badge sends Wally to Petalburg; his uncle stays
+setflag FLAG_DEFEATED_LAVARIDGE_GYM
+setflag FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WALLY
+warp MAP_VERDANTURF_TOWN_WANDAS_HOUSE 7 6
+run 30
+expect_flag FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WALLY 1
+expect_flag FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WALLYS_UNCLE 0
+
+# --- #14: the Lilycove fights wait until the Mind Badge; the double never lowers a state (D-273) ---
+setvar VAR_MAGMA_STATE 9
+setvar VAR_WALLY_STATE 2
+clearflag FLAG_HIDE_LILYCOVE_CITY_RIVAL
+clearflag FLAG_HIDE_LILYCOVE_CITY_WALLY
+warp MAP_LILYCOVE_CITY 27 9
+run 30
+expect_flag FLAG_HIDE_LILYCOVE_CITY_RIVAL 0
+expect_flag FLAG_HIDE_LILYCOVE_CITY_WALLY 0
+# states set past Lilycove by hand: the double must not move them back (a second Pokémon for the double)
+setvar VAR_BRENDAN_STATE 5
+setvar VAR_MAY_STATE 4
+givemon SPECIES_ZIGZAGOON 30
+heal
+path LilycoveCity 27 9 27 8
+press UP 2 10
+press A 2 30
+run 60
+shot af_30_lilycove_rivals
+mash A 90000
+expect_opponent TRAINER_BRENDAN_LILYCOVE
+expect_var VAR_BRENDAN_STATE 5
+expect_var VAR_MAY_STATE 4
+expect_flag FLAG_HIDE_LILYCOVE_CITY_RIVAL 1
+# the Mind Badge closes both fights
+heal
+clearflag FLAG_HIDE_LILYCOVE_CITY_RIVAL
+setflag FLAG_BADGE07_GET
+warp MAP_LILYCOVE_CITY 27 9
+run 30
+expect_flag FLAG_HIDE_LILYCOVE_CITY_RIVAL 1
+expect_flag FLAG_HIDE_LILYCOVE_CITY_WALLY 1
+shot af_31_lilycove_after_mind_badge
+
+# --- #18: the bedrooms are empty from the Mind Badge to the Sootopolis aftermath (D-274) ---
+clearflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_BEDROOM
+clearflag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_RIVAL_BEDROOM
+clearflag FLAG_MET_RIVAL_LILYCOVE
+setvar VAR_BRENDAN_STATE 5
+setvar VAR_MAY_STATE 3
+warp MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F 7 3
+run 30
+expect_flag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_BEDROOM 1
+shot af_40_brendan_room_away
+warp MAP_LITTLEROOT_TOWN_MAYS_HOUSE_2F 1 3
+run 30
+expect_flag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_RIVAL_BEDROOM 1
+shot af_41_may_room_away
+# home after the Sootopolis aftermath, at their desks although the Lilycove double was skipped
+setvar VAR_DRACONID_REPUTATION 2
+setvar VAR_BRENDAN_STATE 6
+setvar VAR_MAY_STATE 4
+warp MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F 7 3
+run 30
+expect_flag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_BEDROOM 0
+expect_flag FLAG_MET_RIVAL_LILYCOVE 1
+shot af_42_brendan_room_home
+warp MAP_LITTLEROOT_TOWN_MAYS_HOUSE_2F 1 3
+run 30
+expect_flag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_RIVAL_BEDROOM 0
+shot af_43_may_room_home
+# the Hall of Fame hides them again (hall_of_fame.inc sets both flags) and they stay hidden
+setflag FLAG_SYS_GAME_CLEAR
+setflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_BEDROOM
+setflag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_RIVAL_BEDROOM
+warp MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F 7 3
+run 30
+expect_flag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_BEDROOM 1
+
+# --- #33: Steven's post-game letter (the League and Meteor Falls) ---
+clearflag FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_INVISIBLE_NINJA_BOY
+warp MAP_MOSSDEEP_CITY_STEVENS_HOUSE 6 6
+path MossdeepCity_StevensHouse 6 6 6 5
+press A 2 60
+expect_text MossdeepCity_StevensHouse_Text_LetterFromSteven
+press A 2 60
+press A 2 60
+press A 2 60
+shot af_50_steven_letter
+mash A 3000
+
+# --- #14: the post-game double says "Like in LILYCOVE" only if that double was won ---
+setvar VAR_DRACONID_FINALE_STATE 9
+setvar VAR_DEX_UPGRADE_JOHTO_STARTER_STATE 3
+settrainer TRAINER_MAY_POSTGAME 1
+settrainer TRAINER_BRENDAN_POSTGAME 1
+settrainer TRAINER_BRENDAN_POSTGAME_DOUBLE 0
+settrainer TRAINER_BRENDAN_LILYCOVE 0
+warp MAP_LITTLEROOT_TOWN_PROFESSOR_BIRCHS_LAB 8 12
+path LittlerootTown_ProfessorBirchsLab 8 12 8 11
+press UP 2 10
+press A 2 60
+expect_text LittlerootTown_ProfessorBirchsLab_EventScript_DraconidPostgameDouble_Text_2
+shot af_60_lab_double_no_lilycove
+mash B 3000
+settrainer TRAINER_BRENDAN_LILYCOVE 1
+press A 2 60
+expect_text LittlerootTown_ProfessorBirchsLab_EventScript_DraconidPostgameDouble_Text_1
+shot af_61_lab_double_like_lilycove
+mash B 3000
+savestate audit_fixes_done.ss
+
+clearflag FLAG_DEBUG_NO_ENCOUNTER
+clearflag FLAG_DEBUG_NO_TRAINER_SEE
+clearflag FLAG_DRACONID_NO_WHITEOUT

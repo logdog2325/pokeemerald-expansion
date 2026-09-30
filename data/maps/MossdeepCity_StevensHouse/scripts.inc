@@ -191,21 +191,21 @@ MossdeepCity_StevensHouse_Text_LeftPokeBallWhereItWas:
 	.string "{PLAYER} left the POKé BALL where\n"
 	.string "it was.$"
 
-MossdeepCity_StevensHouse_Text_LetterFromSteven:
+MossdeepCity_StevensHouse_Text_LetterFromSteven:  @ Draconid Emerald
 	.string "It's a letter.\p"
 	.string "… … … … … …\p"
 	.string "To {PLAYER}{KUN}…\p"
-	.string "I've decided to do a little soul-\n"
-	.string "searching and train on the road.\p"
-	.string "I don't plan to return home for some\n"
-	.string "time.\p"
+	.string "The LEAGUE keeps me busy these days,\n"
+	.string "so I won't be home much for a while.\p"
+	.string "When it can spare me, look for me\n"
+	.string "among the stones of METEOR FALLS.\p"
 	.string "I have a favor to ask of you.\p"
 	.string "I want you to take the POKé BALL on\n"
 	.string "the desk.\p"
 	.string "Inside it is a BELDUM, my favorite\n"
 	.string "POKéMON.\p"
 	.string "I'm counting on you.\p"
-	.string "May our paths cross someday.\p"
+	.string "May our paths cross again soon.\p"
 	.string "STEVEN STONE$"
 
 MossdeepCity_StevensHouse_Text_CollectionOfRareRocks:

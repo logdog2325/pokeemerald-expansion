@@ -333,8 +333,11 @@ script MossdeepCity_EventScript_DraconidMay {
     msgbox(format("MAY: {PLAYER}!"))
     msgbox(format("MAY: BRENDAN called me from the SPACE CENTER. MAGMA tried to steal ROCKET FUEL?!\p"
                   "And you were right there with them again!"))
-    msgbox(format("MAY: He says STEVEN is sticking up for you. …Why would he?\p"
-                  "Forget it! I'll find out for myself. Battle me!"))
+    msgbox(format("MAY: He says STEVEN called you the strongest MAGMA grunt he's ever faced.\p"
+                  "…Then why do you battle like you've got something to protect?"))
+    msgbox(format("MAY: Forget it! I'll find out for myself.\p"
+                  "My dad gave me his KEY STONE. He says BLAZIKEN and I are ready.\p"
+                  "Battle me!"))
     closemessage
     trainerbattle_earlyrival(TRAINER_MAY_MOSSDEEP, RIVAL_BATTLE_HEAL_AFTER, MossdeepCity_Text_DraconidMayDefeat, MossdeepCity_Text_DraconidMayVictory)
     if (var(VAR_RESULT) == TRUE) {
@@ -372,7 +375,8 @@ movement MossdeepCity_Movement_DraconidMayApproach {
 }
 
 // ---------------------------------------------------------------------------
-// Littleroot bedrooms: BRENDAN and MAY are home from LILYCOVE (act4.pory) until the Hall of Fame. Their
+// Littleroot bedrooms: BRENDAN and MAY are home from LILYCOVE (act4.pory) until the Hall of Fame, away from the
+// MIND BADGE to the SOOTOPOLIS aftermath (audit_fixes.pory, D-274). Their
 // objects' script (map.json) is one of these: hostile while the player wears the uniform, warm after the
 // SOOTOPOLIS turn; the vanilla RivalsHouse_2F_EventScript_Rival otherwise (never reached: they only come
 // home after LILYCOVE).

@@ -396,16 +396,17 @@ Route120_Text_StevenGiveDevonScope:  @ Draconid Emerald
 	.string "Your battle style is intriguing.\p"
 	.string "Your POKéMON have obviously grown\n"
 	.string "since I first met you in DEWFORD.\p"
-	.string "Whoever you're really working for, they\n"
-	.string "trust you. That much is plain.\p"
-	.string "I'd like you to have this DEVON SCOPE.\p"
+	.string "I still can't work out what a TRAINER\n"
+	.string "like you is doing in MAGMA's colors.\p"
+	.string "But I'd like you to have this\n"
+	.string "DEVON SCOPE all the same.\p"
 	.string "Who knows, there may be other\n"
 	.string "concealed POKéMON.$"
 
 Route120_Text_StevenGoodbye:  @ Draconid Emerald
 	.string "STEVEN: {PLAYER}{KUN}.\p"
-	.string "Keep your head down.\p"
-	.string "I'm watching MAXIE, too.\p"
+	.string "Be careful who you follow.\n"
+	.string "MAXIE uses people up.\p"
 	.string "…Well, let's meet again somewhere.$"
 
 Kecleon_Text_SomethingUnseeable:

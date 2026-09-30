@@ -14,8 +14,15 @@ script PetalburgCity_Gym_EventScript_DraconidHideMay {
 script PetalburgCity_Gym_EventScript_DraconidNormanUniform {
     switch (var(VAR_PETALBURG_GYM_STATE)) {
         case 2:
-            msgbox(format("NORMAN: That's a MAGMA uniform, {PLAYER}. MAY told me. I didn't want to believe her.\p"
-                          "Still, a GYM LEADER doesn't choose his challengers. Come back with four BADGES."))
+            if (var(VAR_BRENDAN_STATE) < BRENDAN_STATE_RUSTBORO) {
+                // first sight: MAY only hears about the uniform from BRENDAN, after RUSTBORO (D-272)
+                msgbox(format("NORMAN: {PLAYER}?\n…That's a TEAM MAGMA uniform.\p"
+                              "I won't ask why. But I will remember it.\p"
+                              "Come back when you have four BADGES."))
+            } else {
+                msgbox(format("NORMAN: That's a MAGMA uniform, {PLAYER}. MAY told me. I didn't want to believe her.\p"
+                              "Still, a GYM LEADER doesn't choose his challengers. Come back with four BADGES."))
+            }
         case 3:
             msgbox(format("NORMAN: ROXANNE's BADGE… and that red uniform. An odd pair.\p"
                           "Go on to DEWFORD. I'll battle you when you have four BADGES."))
@@ -310,6 +317,8 @@ script Route119_EventScript_DraconidRegisterBrendan {
 // Lilycove: BRENDAN and MAY together, a two-on-two battle (LilycoveCity_EventScript_Rival goes here; both
 // objects use it). They still don't know the truth: BRENDAN feels betrayed, MAY is sure the player is
 // secretly good. Moved from rivals.pory (…_DraconidRivalsNeedTwo stays there: the post-game double uses it).
+// This double and WALLY's fight below can be skipped; they close with the MIND BADGE (LilycoveCity_OnTransition,
+// audit_fixes.pory, D-273).
 // ---------------------------------------------------------------------------
 
 script LilycoveCity_EventScript_DraconidRivals {
@@ -357,8 +366,13 @@ script LilycoveCity_EventScript_DraconidRivals {
     call(LilycoveCity_EventScript_DraconidFlyAway)
     setflag(FLAG_MET_RIVAL_LILYCOVE)
     setflag(FLAG_HIDE_LILYCOVE_CITY_RIVAL)
-    setvar(VAR_BRENDAN_STATE, BRENDAN_STATE_LILYCOVE)
-    setvar(VAR_MAY_STATE, MAY_STATE_LILYCOVE)
+    // a state never goes back (D-273)
+    if (var(VAR_BRENDAN_STATE) < BRENDAN_STATE_LILYCOVE) {
+        setvar(VAR_BRENDAN_STATE, BRENDAN_STATE_LILYCOVE)
+    }
+    if (var(VAR_MAY_STATE) < MAY_STATE_LILYCOVE) {
+        setvar(VAR_MAY_STATE, MAY_STATE_LILYCOVE)
+    }
     savebgm(MUS_DUMMY)
     fadedefaultbgm
     release
@@ -405,7 +419,9 @@ script LilycoveCity_EventScript_DraconidWally {
     fadescreen(FADE_TO_BLACK)
     removeobject(LOCALID_LILYCOVE_WALLY)
     setflag(FLAG_HIDE_LILYCOVE_CITY_WALLY)
-    setvar(VAR_WALLY_STATE, WALLY_STATE_LILYCOVE_DONE)
+    if (var(VAR_WALLY_STATE) < WALLY_STATE_LILYCOVE_DONE) {
+        setvar(VAR_WALLY_STATE, WALLY_STATE_LILYCOVE_DONE)
+    }
     fadescreen(FADE_FROM_BLACK)
     release
 }

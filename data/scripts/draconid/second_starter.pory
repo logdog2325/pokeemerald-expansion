@@ -113,8 +113,8 @@ text RustboroCity_Text_DraconidOakHello {
 
 text RustboroCity_Text_DraconidOakUniform {
     format("PROF. OAK: …And that red uniform. Ahem. Yes.\p"
-           "Your ELDER's letter told BIRCH why you wear it, and BIRCH told me. Nobody else, mind you.\p"
-           "Your secret is safe with two old men, {PLAYER}.\p"
+           "Your ELDER's letter told BIRCH why you wear it. BIRCH needed my help with your second partner, so he told me.\p"
+           "Nobody else knows, mind you.\nYour secret is safe with two old men!\p"
            "BRENDAN came home terribly upset about it. He doesn't know, and for now he mustn't.\p"
            "It won't be easy, letting your friends think the worst of you. But your dragon knows your heart.\p"
            "That's good enough for me!")
@@ -151,6 +151,8 @@ text RustboroCity_Text_DraconidReceivedMon {
 
 text RustboroCity_Text_DraconidOakBye {
     format("PROF. OAK: Raise it well, side by side with your dragon. POKéMON and people grow strong together.\p"
-           "And {PLAYER}… whatever put you in that uniform, don't let it change who you are.\p"
+           "The other two? I'm leaving them\nat DEVON's front desk.\p"
+           "Your ELDER wrote that a friend of your\nclan would call for one. I didn't ask!\p"
+           "And {PLAYER}… don't let that uniform change who you are.\p"
            "Well! BIRCH is waiting for me at DEVON. Take care, now!")
 }

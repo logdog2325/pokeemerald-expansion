@@ -288,14 +288,13 @@ SlateportCity_OceanicMuseum_1F_Text_WantSeaPokemon:
 	.string "I think it would feel cool and nice\n"
 	.string "to hug.$"
 
-SlateportCity_OceanicMuseum_1F_Text_RememberMeTakeThis:
+SlateportCity_OceanicMuseum_1F_Text_RememberMeTakeThis:  @ Draconid Emerald
 	.string "Aiyeeeh!\n"
-	.string "What are you doing here?\p"
-	.string "Me? I'm the TEAM AQUA member\n"
-	.string "you thumped before, remember?\l"
-	.string "Back in RUSTURF TUNNEL?\p"
+	.string "The MAGMA kid from RUSTURF TUNNEL!\p"
+	.string "I was NERINE's lookout down there.\n"
+	.string "I saw what you did to her team…\p"
 	.string "Here, take this!\n"
-	.string "You have to forgive me!$"
+	.string "Just don't tell your boss I was here!$"
 
 SlateportCity_OceanicMuseum_1F_Text_HopeINeverSeeYouAgain:
 	.string "That TM, it suits you more than it\n"

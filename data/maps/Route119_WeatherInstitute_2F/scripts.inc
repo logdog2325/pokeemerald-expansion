@@ -265,17 +265,16 @@ Route119_WeatherInstitute_2F_Text_ShellyPostBattle:  @ Draconid Emerald
 	.string "You don't even know what he's really\n"
 	.string "after, do you?$"
 
-Route119_WeatherInstitute_2F_Text_TeamMagmaJustPassedBy:
+Route119_WeatherInstitute_2F_Text_TeamMagmaJustPassedBy:  @ Draconid Emerald
 	.string "We have a situation here!\p"
-	.string "A TEAM MAGMA mob just passed\n"
-	.string "the WEATHER INSTITUTE.\p"
-	.string "They appear to be headed for\n"
-	.string "MT. PYRE!$"
+	.string "A TEAM MAGMA squad is coming up\n"
+	.string "ROUTE 119! A big one!$"
 
-Route119_WeatherInstitute_2F_Text_WeHaveToHurryToMtPyre:
+Route119_WeatherInstitute_2F_Text_WeHaveToHurryToMtPyre:  @ Draconid Emerald
 	.string "What?!\p"
-	.string "We can't waste any more time here!\n"
-	.string "We have to hurry to MT. PYRE, too!\p"
+	.string "Tch. I'm not brawling with MAGMA\n"
+	.string "in a building full of eggheads.\p"
+	.string "TEAM AQUA, pull out!\p"
 	.string "Ahahahaha!\n"
 	.string "TEAM MAGMA, just you wait!$"
 

@@ -4,8 +4,11 @@ LittlerootTown_BrendansHouse_1F_EventScript_DraconidBirchsWife::
 	compare VAR_DRACONID_REPUTATION, REPUTATION_PRE_UNIFORM
 	goto_if_eq LittlerootTown_BrendansHouse_1F_EventScript_DraconidBirchsWife_2
 	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
-	goto_if_eq LittlerootTown_BrendansHouse_1F_EventScript_DraconidBirchsWife_3
-	msgbox LittlerootTown_BrendansHouse_1F_EventScript_DraconidBirchsWife_Text_2
+	goto_if_eq LittlerootTown_BrendansHouse_1F_EventScript_DraconidBirchsWife_7
+LittlerootTown_BrendansHouse_1F_EventScript_DraconidBirchsWife_6:
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq LittlerootTown_BrendansHouse_1F_EventScript_DraconidBirchsWife_4
+	msgbox LittlerootTown_BrendansHouse_1F_EventScript_DraconidBirchsWife_Text_3
 LittlerootTown_BrendansHouse_1F_EventScript_DraconidBirchsWife_1:
 	release
 	return
@@ -18,6 +21,15 @@ LittlerootTown_BrendansHouse_1F_EventScript_DraconidBirchsWife_3:
 	msgbox LittlerootTown_BrendansHouse_1F_EventScript_DraconidBirchsWife_Text_1
 	goto LittlerootTown_BrendansHouse_1F_EventScript_DraconidBirchsWife_1
 
+LittlerootTown_BrendansHouse_1F_EventScript_DraconidBirchsWife_4:
+	msgbox LittlerootTown_BrendansHouse_1F_EventScript_DraconidBirchsWife_Text_2
+	goto LittlerootTown_BrendansHouse_1F_EventScript_DraconidBirchsWife_1
+
+LittlerootTown_BrendansHouse_1F_EventScript_DraconidBirchsWife_7:
+	compare VAR_BRENDAN_STATE, BRENDAN_STATE_RUSTBORO
+	goto_if_lt LittlerootTown_BrendansHouse_1F_EventScript_DraconidBirchsWife_3
+	goto LittlerootTown_BrendansHouse_1F_EventScript_DraconidBirchsWife_6
+
 
 LittlerootTown_MaysHouse_1F_EventScript_DraconidMaysMom::
 	lock
@@ -25,8 +37,11 @@ LittlerootTown_MaysHouse_1F_EventScript_DraconidMaysMom::
 	compare VAR_DRACONID_REPUTATION, REPUTATION_PRE_UNIFORM
 	goto_if_eq LittlerootTown_MaysHouse_1F_EventScript_DraconidMaysMom_2
 	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
-	goto_if_eq LittlerootTown_MaysHouse_1F_EventScript_DraconidMaysMom_3
-	msgbox LittlerootTown_MaysHouse_1F_EventScript_DraconidMaysMom_Text_2
+	goto_if_eq LittlerootTown_MaysHouse_1F_EventScript_DraconidMaysMom_7
+LittlerootTown_MaysHouse_1F_EventScript_DraconidMaysMom_6:
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq LittlerootTown_MaysHouse_1F_EventScript_DraconidMaysMom_4
+	msgbox LittlerootTown_MaysHouse_1F_EventScript_DraconidMaysMom_Text_3
 LittlerootTown_MaysHouse_1F_EventScript_DraconidMaysMom_1:
 	release
 	return
@@ -38,6 +53,15 @@ LittlerootTown_MaysHouse_1F_EventScript_DraconidMaysMom_2:
 LittlerootTown_MaysHouse_1F_EventScript_DraconidMaysMom_3:
 	msgbox LittlerootTown_MaysHouse_1F_EventScript_DraconidMaysMom_Text_1
 	goto LittlerootTown_MaysHouse_1F_EventScript_DraconidMaysMom_1
+
+LittlerootTown_MaysHouse_1F_EventScript_DraconidMaysMom_4:
+	msgbox LittlerootTown_MaysHouse_1F_EventScript_DraconidMaysMom_Text_2
+	goto LittlerootTown_MaysHouse_1F_EventScript_DraconidMaysMom_1
+
+LittlerootTown_MaysHouse_1F_EventScript_DraconidMaysMom_7:
+	compare VAR_BRENDAN_STATE, BRENDAN_STATE_RUSTBORO
+	goto_if_lt LittlerootTown_MaysHouse_1F_EventScript_DraconidMaysMom_3
+	goto LittlerootTown_MaysHouse_1F_EventScript_DraconidMaysMom_6
 
 
 PetalburgWoods_EventScript_DraconidRecruitment::
@@ -161,6 +185,13 @@ LittlerootTown_BrendansHouse_1F_EventScript_DraconidBirchsWife_Text_0:
 	.string "stay home.$"
 
 LittlerootTown_BrendansHouse_1F_EventScript_DraconidBirchsWife_Text_1:
+	.string "MRS. BIRCH: Oh! {PLAYER}? What on earth\n"
+	.string "are you wearing, dear?\p"
+	.string "Isn't that what those TEAM MAGMA\n"
+	.string "people wear? The ones from the news?\p"
+	.string "…Oh, my. BRENDAN won't like this at all.$"
+
+LittlerootTown_BrendansHouse_1F_EventScript_DraconidBirchsWife_Text_2:
 	.string "MRS. BIRCH: {PLAYER}? That red uniform…\n"
 	.string "So it's true.\p"
 	.string "BRENDAN came home so angry. He wouldn't\n"
@@ -168,7 +199,7 @@ LittlerootTown_BrendansHouse_1F_EventScript_DraconidBirchsWife_Text_1:
 	.string "Whatever you're doing, dear… please be\n"
 	.string "careful.$"
 
-LittlerootTown_BrendansHouse_1F_EventScript_DraconidBirchsWife_Text_2:
+LittlerootTown_BrendansHouse_1F_EventScript_DraconidBirchsWife_Text_3:
 	.string "MRS. BIRCH: I heard what you did in\n"
 	.string "SOOTOPOLIS. BRENDAN told me\l"
 	.string "everything.\p"
@@ -184,12 +215,20 @@ LittlerootTown_MaysHouse_1F_EventScript_DraconidMaysMom_Text_0:
 	.string "now.$"
 
 LittlerootTown_MaysHouse_1F_EventScript_DraconidMaysMom_Text_1:
+	.string "MAY'S MOM: Oh! {PLAYER}?\n"
+	.string "My, what a red outfit.\p"
+	.string "Isn't that the uniform those TEAM\n"
+	.string "MAGMA people wear?\p"
+	.string "MAY is going to have questions for you.\n"
+	.string "Lots of them.$"
+
+LittlerootTown_MaysHouse_1F_EventScript_DraconidMaysMom_Text_2:
 	.string "MAY'S MOM: Oh… {PLAYER}. MAY told me you\n"
 	.string "joined those people.\p"
 	.string "She doesn't believe it, though. And do\n"
 	.string "you know what? Neither do I. Not quite.$"
 
-LittlerootTown_MaysHouse_1F_EventScript_DraconidMaysMom_Text_2:
+LittlerootTown_MaysHouse_1F_EventScript_DraconidMaysMom_Text_3:
 	.string "MAY'S MOM: MAY was right about you all\n"
 	.string "along! She's been unbearable about it.\p"
 	.string "Come by for dinner sometime. NORMAN\n"

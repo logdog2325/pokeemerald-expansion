@@ -55,7 +55,8 @@ undercover. Everyone else may suspect (May's doubts, Steven's "strongest MAGMA g
 30. ✅ **Brendan battle 4** – Route 119; HM Fly; the PokéNav registration.
 31. ✅ Route 120: Steven and the Devon Scope; **Wally battle 4** on the bridge.
 32. ✅ **Gym 6 – Winona** (Feather Badge).
-33. ✅ Lilycove: **Wally battle 5** (Mega Gallade); **Brendan + May double battle** (Brendan 5, May 4).
+33. ✅ Lilycove: **Wally battle 5** (Mega Gallade); **Brendan + May double battle** (Brendan 5, May 4) – both
+    optional; they leave with the Mind Badge (D-273).
 34. ✅ Mt. Pyre: Maxie's order and the Magma Emblem; **Nerine battle 5**; Archie takes the Red Orb.
 35. ✅ Magma Hideout: Maxie's promotion ("my right hand"), no battle; on the way out, **Brendan battle 6** at
     Jagged Pass.

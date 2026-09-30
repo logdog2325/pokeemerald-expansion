@@ -770,9 +770,16 @@ script LittlerootTown_ProfessorBirchsLab_EventScript_DraconidPostgameDouble {
         release
         end
     }
-    msgbox(format("BRENDAN: You beat us both, one at a time…\p"
-                  "MAY: So how about both of us at once? Like in LILYCOVE…\p"
-                  "…except this time, we know who we're battling!"), MSGBOX_YESNO)
+    // "Like in LILYCOVE" only if that double was won: it can be skipped (D-273)
+    if (defeated(TRAINER_BRENDAN_LILYCOVE)) {
+        msgbox(format("BRENDAN: You beat us both, one at a time…\p"
+                      "MAY: So how about both of us at once? Like in LILYCOVE…\p"
+                      "…except this time, we know who we're battling!"), MSGBOX_YESNO)
+    } else {
+        msgbox(format("BRENDAN: One at a time wasn't\nenough, huh?\p"
+                      "MAY: Then how about both of us\nat once?\p"
+                      "Two on one, and this time we know who we're battling!"), MSGBOX_YESNO)
+    }
     if (var(VAR_RESULT) == NO) {
         msgbox(LittlerootTown_ProfessorBirchsLab_Text_DraconidRivalAnytime)
         release

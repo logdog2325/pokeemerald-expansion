@@ -384,7 +384,7 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   are hidden by `FLAG_TEMP_11/12`, which the map's OnTransition sets (as May in the Petalburg Gym, D-116); Maxie
   on the summit borrows his vanilla object and flag. Only Tabitha on Route 119 needs a saved flag (0x35).
   – Alt: a saved flag per NPC. – The shared flag budget is small, and these NPCs never stay after their scene.
-- **D-137 Steven on Route 120**: vanilla scene and Devon Scope; he notices the uniform ("Still wearing red, I
+- **D-137 Steven on Route 120** *(his two lines superseded by D-275: he doesn't know, follow-up 20)*: vanilla scene and Devon Scope; he notices the uniform ("Still wearing red, I
   see"), "Whoever you're really working for, they trust you", and leaves with "Keep your head down. I'm watching
   MAXIE, too." (story step 19).
 - **D-140 Tabitha's raid, no Maxie at Mossdeep**: Maxie is off chasing Groudon (his PokéNav call sends the player to
@@ -1124,3 +1124,92 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   type). – Alt: set the Tera type to `TYPE_MYSTERY` on every created Pokémon (touches every creation path; one missed
   path brings it back); remove the Tera Orb only (opponents don't need one). – The playtester: "no teras or
   dynamaxing/gigantamaxing". The test suite keeps testing both (`TESTING`), so `make check` is unaffected.
+- **D-270 The clan's secret and Nerine's partners** (story audit #1, #3; feedback 1.53, the audit is
+  [hack_story_audit.md](hack_story_audit.md)): the Elder's secrecy order names its one exception – "No one outside this
+  village may know why you go. / Only PROF. BIRCH, an old friend of our clan, will know. I have written to him."
+  ("have written", not the audit's "tonight": Birch already says "The ELDER wrote that you'd be coming" on Route 101
+  that day). Prof. Oak says why Birch passed it on: "BIRCH needed my help with your second partner, so he told me. /
+  Nobody else knows, mind you." (D-244a). Nerine's partners get a source: the counter egg "flies tonight, on my old
+  dragon's back" (the dragon that carries the player to the Sky Pillar, D-150), so she has it hatched in Petalburg
+  Woods the next morning; Oak leaves the two starters the player didn't take at DEVON's front desk – "Your ELDER wrote
+  that a friend of your clan would call for one. I didn't ask!" Nerine is at DEVON minutes later as the Rustboro
+  thief (D-119), and the counter of the player's pick (D-104; the same table gives her Sky Pillar partner team,
+  D-151) is always one of those two. Her Rusturf defeat line is the second-playthrough hint: "Hm. A second partner. /
+  …The old man from KANTO packs well, doesn't he?" Oak's farewell no longer says "whatever put you in that uniform"
+  (he knows why): "don't let that uniform change who you are". – Alt: the Elder lets Birch "tell whom he trusts" (a
+  rule with no edge); Oak brings a fourth Pokémon for Nerine (he would know about her); the audit's "I will write to
+  him tonight". – Two lines and a hint; nobody new learns the mission.
+- **D-271 Clan lore: Meteor Falls and the Mega Ring** (story audit #11, #13): Aster at Meteor Falls no longer says
+  the Elder's eggs came from the falls (D-230: Unova, Galar, Alola) or sounds surprised by the red (she heard the
+  Elder order it): "So you really did it." – what she didn't expect is the player guarding MAXIE's retreat. The falls
+  matter because "The DRACONIDS of these falls are our kin … They keep the old songs here" (Zinnia's sister clan,
+  D-155), and "The ELDER said wear their red. Holding their door was your own idea!" comes before the story's
+  "The ELDER trusted you, and you carry THEIR flag?". At Jagged Pass the Elder set Maxie's shard "in this ring, beside
+  a chip of our own star. / Two falling stars make one KEY STONE." – the clan's own star still makes every Key Stone
+  (the apprentice: "Only the ELDER may give one away"; shrine carving 3), and Maxie's gift is still in the player's
+  Megas (D-121). – Alt: the eggs "passed through" the falls (a detail nobody else tells); a ring of the shard alone
+  (contradicts the clan's carved stones). – The audit's fixes, with its antithesis ("He never said hold their door")
+  turned into an accusation.
+- **D-272 Nobody knows too early, and the lines match what happened** (story audit #4, #7, #8, #16, #24, #28):
+  **Norman, Mrs. Birch and May's mom** get a first-sight line in uniform while `VAR_BRENDAN_STATE` <
+  `BRENDAN_STATE_RUSTBORO` (the outpost opens onto Route 104 and the woods lead back south before Brendan sees the
+  uniform, D-113, D-115; May only hears of it from him) – "I won't ask why. But I will remember it.", "What on earth
+  are you wearing, dear?", "MAY is going to have questions for you." – and keep "MAY told me" / "BRENDAN came home
+  so angry" after (Norman's lines for one badge and more come after Rustboro anyway). The **museum's familiar
+  grunt** was NERINE's lookout in Rusturf Tunnel (she was the "grunt" there, D-119) and gives TM Thief as before.
+  **Trick House** Mechadoll 2: quiz 2's answer is POOCHYENA (`DRACONID_RESCUE_SPECIES` chased Birch), quiz 3's
+  CARVANHA (Nerine's Petalburg Woods team) – two `case` numbers in the vanilla script, the menus unchanged. The
+  **Weather Institute** runner reports "A TEAM MAGMA squad is coming up ROUTE 119! A big one!" (Tabitha's "I'll round
+  up the others") and Shelly pulls out ("I'm not brawling with MAGMA in a building full of eggheads"): MT. PYRE is no
+  longer named before Tabitha takes the notes and Maxie's call names the Orbs (D-130). **Maxie's Seafloor call**
+  brings news the player didn't see – "I have found GROUDON. / It has risen in SOOTOPOLIS to meet KYOGRE." – since
+  the player watched KYOGRE wake and spoke with him on Route 128 just before; it still sends them to Sootopolis ("I
+  need you at my side"). **Wally at Victory Road** apologises for what he said, not for being scared (he was angry and
+  brave, D-236): "In MAUVILLE, I said you'd forgotten what a TRAINER is for. / I kept saying it, all over HOENN." –
+  Alt: a flag per NPC for "has heard"; keep the runner's MT. PYRE and let Tabitha's notes confirm it (Aqua would know
+  about the Orbs before Magma). – Each line says only what its speaker could know; every item and flag is unchanged.
+- **D-273 The Lilycove fights close with the Mind Badge** (story audit #14): Brendan and May's double and Wally's
+  battle stay talk-to and optional, but `LilycoveCity_OnTransition` hides them (`FLAG_HIDE_LILYCOVE_CITY_RIVAL`,
+  `FLAG_HIDE_LILYCOVE_CITY_WALLY`) once `FLAG_BADGE07_GET` is set: Brendan waits at the Space Center from that badge
+  on, and the raid, the Seafloor Cavern and the Sootopolis turn all come after it, so after the reveal nobody in
+  Lilycove still calls the player a MAGMA grunt. The scenes never lower a state: each `setvar` of
+  `VAR_BRENDAN_STATE`, `VAR_MAY_STATE` and `VAR_WALLY_STATE` there only raises it. A skipped double leaves the
+  Lilycove values unused (Brendan goes 3 → 5 at the Space Center, May 2 → 4 at Sootopolis, Wally stays 2); nothing
+  needs them (the Match Call tables take the last entry reached, Route 120's Wally is beaten on the only way to
+  Lilycove), and the bedrooms follow D-274. The post-game lab double says "Like in LILYCOVE…" only when
+  `TRAINER_BRENDAN_LILYCOVE` was defeated, otherwise "One at a time wasn't enough, huh? … Two on one, and this time we know who we're battling!". – Alt:
+  the brief's `VAR_MAGMA_STATE >= MAGMA_STATE_SPACE_CENTER` (Brendan would stand in Lilycove and on the Space Center
+  2F between the badge and the raid; the raid needs the badge, so the badge covers it); a forced trigger at the Route
+  121 entrance (vanilla's Lilycove rival fight was optional too); a new saved flag for "double won" (the brief's
+  `FLAG_UNUSED_*`: the trainer's own defeat flag says the same with no flag spent, as D-234 does, and can't collide
+  with the flags parallel work takes).
+- **D-274 One place at a time: the rivals' bedrooms and Wanda's house** (story audit #18): the Littleroot bedrooms
+  (D-239) are empty from the Mind Badge (Brendan at the Space Center, May comes to Mossdeep after the raid) until
+  the Sootopolis aftermath, where both fly home (`BRENDAN_STATE_SOOTOPOLIS`, `MAY_STATE_SOOTOPOLIS`, D-146); from
+  then on they show even if the Lilycove double was skipped (it used to be the only thing that showed them), and
+  `FLAG_MET_RIVAL_LILYCOVE`, which only the bedrooms read, is set so they stand at their desks, not on the stairs. The
+  Hall of Fame hides them as before (`FLAG_SYS_GAME_CLEAR`; after the finale they wait in the lab). Each bedroom's
+  OnTransition sets or clears its flag from these states, so no scene of another act has to. Wally and his uncle
+  leave Wanda's house while Wally's Route 112 fight is due (the condition of `Route112_EventScript_DraconidOnTransition`:
+  after Meteor Falls, before Mt. Chimney – "My uncle and I were going up to the hot springs"); otherwise the vanilla
+  flags stand (both from the Mauville battle on, Wally until the Heat Badge); the house gets an OnTransition for it.
+  Checked: nothing else shows them meanwhile (Brendan's Space Center and Sootopolis objects, May's Mossdeep and
+  Sootopolis scenes, Wally's Petalburg, Route 120 and Lilycove objects are never due at the same time as these).
+  – Alt: hide and show them from the scenes (the Mossdeep Gym badge and act5's aftermath: other branches' lines, and
+  a skipped scene would leave them wrong). – State-driven, one hook line each.
+- **D-275 Outsiders suspect, and say why they help** (story audit #15, #17, #22, #23 May's half, #33; follow-up 20):
+  **Steven on Route 120** no longer talks like a fellow spy (supersedes D-137's two lines and story step 19's quote,
+  as follow-up 20 does): "I still can't work out what a TRAINER like you is doing in MAGMA's colors. / But I'd like
+  you to have this DEVON SCOPE all the same.", and "Be careful who you follow. MAXIE uses people up." **Wattson** gets
+  a uniform branch (`MauvilleCity_EventScript_DraconidWattsonUniform`; he stands outside his Gym from Norman's badge,
+  always before the reveal): his GENERATOR is running haywire and "nobody else will go down there", so he gambles on
+  the MAGMA grunt who beat his Gym fair and square – "if anything else down there breaks, I'll know where to find
+  you!" – with the same Basement Key, TM Thunderbolt and flags (New Mauville's Manectite, D-221, is untouched); after
+  the reveal his vanilla lines play. **May at Mossdeep** quotes what Steven says in the revenge branch's D-248 (the
+  strongest MAGMA grunt he has faced) and keeps her one crack: "…Then why do you battle like you've got something to
+  protect?"; her Mega gets a source: "My dad gave me his KEY STONE. He says BLAZIKEN and I are ready." (Brendan's
+  Space Center Key Stone is the revenge branch's.) **Steven's post-game letter** fits the Champion who waits at the
+  League (D-250 – D-252): "The LEAGUE keeps me busy these days … When it can spare me, look for me among the stones
+  of METEOR FALLS.", the Beldum as before. – Alt: Wattson keeps the key until the reveal (New Mauville and its Mega
+  Stone would wait for Act 6); May's Key Stone from Steven (she never meets him before Mossdeep). – Nobody outside the
+  clan, Birch and Oak knows before Sootopolis (D-244a), and every gift keeps its place.

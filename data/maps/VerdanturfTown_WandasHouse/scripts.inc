@@ -1,4 +1,5 @@
 VerdanturfTown_WandasHouse_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, VerdanturfTown_WandasHouse_EventScript_DraconidOnTransition  @ Draconid Emerald: WALLY at the ROUTE 112 cable car (audit_fixes.pory, D-274)
 	.byte 0
 
 VerdanturfTown_WandasHouse_EventScript_Wally::

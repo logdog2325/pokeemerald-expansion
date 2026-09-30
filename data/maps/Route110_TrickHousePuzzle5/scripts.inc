@@ -339,7 +339,7 @@ Route110_TrickHousePuzzle5_EventScript_Mechadoll2Quiz2::
 	msgbox Route110_TrickHousePuzzle5_Text_Mechadoll2Quiz2, MSGBOX_DEFAULT
 	multichoice 0, 0, MULTI_MECHADOLL2_Q2, TRUE
 	switch VAR_RESULT
-	case 2, Route110_TrickHousePuzzle5_EventScript_CorrectAnswer
+	case 0, Route110_TrickHousePuzzle5_EventScript_CorrectAnswer  @ Draconid Emerald: POOCHYENA chased BIRCH (DRACONID_RESCUE_SPECIES)
 	goto Route110_TrickHousePuzzle5_EventScript_IncorrectAnswer
 	end
 
@@ -347,7 +347,7 @@ Route110_TrickHousePuzzle5_EventScript_Mechadoll2Quiz3::
 	msgbox Route110_TrickHousePuzzle5_Text_Mechadoll2Quiz3, MSGBOX_DEFAULT
 	multichoice 0, 0, MULTI_MECHADOLL2_Q3, TRUE
 	switch VAR_RESULT
-	case 0, Route110_TrickHousePuzzle5_EventScript_CorrectAnswer
+	case 2, Route110_TrickHousePuzzle5_EventScript_CorrectAnswer  @ Draconid Emerald: NERINE's CARVANHA in PETALBURG WOODS
 	goto Route110_TrickHousePuzzle5_EventScript_IncorrectAnswer
 	end
 

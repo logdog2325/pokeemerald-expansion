@@ -124,7 +124,8 @@ The Elder's house: the prophecy and the mission (Act 1, docs/hack_story.md). The
 - Walk among the red ones. Learn what MAXIE, their leader, seeks.
 - Wear their colors if you must. Undo their work from within.
 - And when the sky splits, you must stand beside RAYQUAZA.
-- ELDER: No one outside this village may know why you go. Not even the kind ones.
+- ELDER: No one outside this village may know why you go.
+- Only PROF. BIRCH, an old friend of our clan, will know. I have written to him.
 - ELDER: Now. A tamer needs a partner.
 - Three eggs are waiting in the shrine, before the Guardian of the Sky.
 - Come, both of you. We go up together.
@@ -171,8 +172,8 @@ Rayquaza shrine carved into the cliff above Draconid Village. The egg ceremony (
 - Will you take the JANGMO-O egg?
 - {PLAYER} received the dragon egg!
 - ELDER: Hold it close. It already knows your warmth.
-- ELDER: The {STR_VAR_1} egg I will keep aside.
-- It belongs to one who already walks a far road for our clan. You will meet, in time.
+- ELDER: The {STR_VAR_1} egg flies tonight, on my old dragon's back.
+- It goes to one who already walks a far road for our clan. You will meet, in time.
 - ASTER: A ghost that drifts through walls…
 - Then I'll take the one that never hides. Its scales ring like a war drum. JANGMO-O is mine.
 - ASTER: Scales and fists, beating like a drum…
@@ -333,6 +334,9 @@ Draconid Emerald round 1, Act 1 (docs/hack_story.md): Littleroot families, Petal
 ### `LittlerootTown_BrendansHouse_1F_EventScript_DraconidBirchsWife`
 - MRS. BIRCH: Oh! You must be the young dragon tamer. My husband talked about you all night!
 - BRENDAN left for RUSTBORO already. Like father, like son. Neither of them can stay home.
+- MRS. BIRCH: Oh! {PLAYER}? What on earth are you wearing, dear?
+- Isn't that what those TEAM MAGMA people wear? The ones from the news?
+- …Oh, my. BRENDAN won't like this at all.
 - MRS. BIRCH: {PLAYER}? That red uniform… So it's true.
 - BRENDAN came home so angry. He wouldn't even eat.
 - Whatever you're doing, dear… please be careful.
@@ -342,6 +346,9 @@ Draconid Emerald round 1, Act 1 (docs/hack_story.md): Littleroot families, Petal
 ### `LittlerootTown_MaysHouse_1F_EventScript_DraconidMaysMom`
 - MAY'S MOM: Hello! You must be {PLAYER}. MAY talks about nothing but your dragon!
 - We only just moved here from JOHTO. My husband NORMAN runs the PETALBURG GYM now.
+- MAY'S MOM: Oh! {PLAYER}? My, what a red outfit.
+- Isn't that the uniform those TEAM MAGMA people wear?
+- MAY is going to have questions for you. Lots of them.
 - MAY'S MOM: Oh… {PLAYER}. MAY told me you joined those people.
 - She doesn't believe it, though. And do you know what? Neither do I. Not quite.
 - MAY'S MOM: MAY was right about you all along! She's been unbearable about it.
@@ -413,8 +420,8 @@ Draconid Emerald: Prof. Oak's second partner after the first Gym (Phase 4; round
 - I'm OAK. I study POKéMON in PALLET TOWN, far away in KANTO.
 - I'm in HOENN visiting my old friend BIRCH. And I watched your GYM battle through the window. Splendid!
 - PROF. OAK: …And that red uniform. Ahem. Yes.
-- Your ELDER's letter told BIRCH why you wear it, and BIRCH told me. Nobody else, mind you.
-- Your secret is safe with two old men, {PLAYER}.
+- Your ELDER's letter told BIRCH why you wear it. BIRCH needed my help with your second partner, so he told me.
+- Nobody else knows, mind you. Your secret is safe with two old men!
 - BRENDAN came home terribly upset about it. He doesn't know, and for now he mustn't.
 - It won't be easy, letting your friends think the worst of you. But your dragon knows your heart.
 - That's good enough for me!
@@ -429,7 +436,9 @@ Draconid Emerald: Prof. Oak's second partner after the first Gym (Phase 4; round
 - TREECKO, the Grass-type from right here in HOENN. BIRCH picked it out himself.
 - Will you take TREECKO?
 - PROF. OAK: Raise it well, side by side with your dragon. POKéMON and people grow strong together.
-- And {PLAYER}… whatever put you in that uniform, don't let it change who you are.
+- The other two? I'm leaving them at DEVON's front desk.
+- Your ELDER wrote that a friend of your clan would call for one. I didn't ask!
+- And {PLAYER}… don't let that uniform change who you are.
 - Well! BIRCH is waiting for me at DEVON. Take care, now!
 
 ### `RustboroCity_EventScript_DraconidReceivedSecondStarter`
@@ -512,11 +521,12 @@ Draconid Emerald round 1, Act 3 (docs/hack_story.md): Meteor Falls, Mt. Chimney,
 - TEAM AQUA, move out!
 
 ### `MeteorFalls_1F_1R_EventScript_DraconidAster`
-- ASTER: …So it's true.
+- ASTER: So you really did it.
 - ASTER: I followed MAGMA's trail from FALLARBOR. I thought I'd find the ELDER's chosen one stopping them.
 - Instead I watched you guard the stairs so MAXIE could run!
-- ASTER: The ELDER's eggs came from these falls, {PLAYER}. Yours too.
-- And you stood watch while they robbed it.
+- ASTER: The DRACONIDS of these falls are our kin, {PLAYER}. They keep the old songs here.
+- And you stood watch while MAGMA robbed them!
+- ASTER: The ELDER said wear their red. Holding their door was your own idea!
 - The ELDER trusted you, and you carry THEIR flag?
 - ASTER: …Show me there's still a Draconid under all that red!
 - ASTER: Weak. And wearing their colors.
@@ -598,8 +608,9 @@ Draconid Emerald round 1, Act 3 (docs/hack_story.md): Meteor Falls, Mt. Chimney,
 - ASTER: I watched from the ridge. MAXIE's machine sputtered out like a wet match.
 - And I saw who was standing next to it when it died.
 - …Not bad. For a traitor.
-- ASTER: I took your shard to the ELDER. He set it in this.
-- A KEY STONE, in a ring. When a POKéMON trusts you with its whole heart, the stone lets it MEGA EVOLVE.
+- ASTER: I took your shard to the ELDER. He set it in this ring, beside a chip of our own star.
+- Two falling stars make one KEY STONE.
+- When a POKéMON gives you its whole heart, the stone lets it MEGA EVOLVE.
 - ASTER: The ELDER says you're doing well.
 - I say we'll see.
 - ASTER: One more thing. Someone from the village is waiting in LAVARIDGE.
@@ -623,6 +634,9 @@ Draconid Emerald round 1, Act 3 (docs/hack_story.md): Meteor Falls, Mt. Chimney,
 Draconid Emerald round 1, Act 4 (docs/hack_story.md): Petalburg Gym with MAY watching, Weather Institute, Route 119, Fortree, Lilycove, Mt. Pyre, Magma Hideout. NPC lines follow VAR_DRACONID_REPUTATION (D-103).
 
 ### `PetalburgCity_Gym_EventScript_DraconidNormanUniform`
+- NORMAN: {PLAYER}? …That's a TEAM MAGMA uniform.
+- I won't ask why. But I will remember it.
+- Come back when you have four BADGES.
 - NORMAN: That's a MAGMA uniform, {PLAYER}. MAY told me. I didn't want to believe her.
 - Still, a GYM LEADER doesn't choose his challengers. Come back with four BADGES.
 - NORMAN: ROXANNE's BADGE… and that red uniform. An odd pair.
@@ -1206,6 +1220,9 @@ Draconid Emerald round 1, Act 7 (docs/hack_story.md steps 31-34): "The prophecy 
 - BRENDAN: You beat us both, one at a time…
 - MAY: So how about both of us at once? Like in LILYCOVE…
 - …except this time, we know who we're battling!
+- BRENDAN: One at a time wasn't enough, huh?
+- MAY: Then how about both of us at once?
+- Two on one, and this time we know who we're battling!
 - Any time you're ready!
 - MAY: Oh! You need at least two POKéMON that can battle for this one.
 - BRENDAN: MAY, let's go!
@@ -1242,6 +1259,26 @@ Draconid Emerald: rival scenes that belong to no single act (Phase 5, cut down i
 ### `LilycoveCity_Text_DraconidRivalsGo`
 - BRENDAN: Here we come!
 - MAY: Don't hold back, {PLAYER}!
+
+## data/scripts/draconid/audit_fixes.pory
+
+Draconid Emerald round 1 v2: fixes from the story audit (feedback 1.53, docs/hack_story_audit.md, D-270 – D-275). Most fixes are text changes in place; the scripts here are the ones that needed new logic, each called by one tagged line in a vanilla script.
+
+### `MauvilleCity_EventScript_DraconidWattsonUniform`
+- WATTSON: MAGMA or not, you kept MAUVILLE's lights on.
+- Don't make me regret it! Wahahahaha!
+- WATTSON: You did it! The GENERATOR is quiet, and my city is still standing!
+- I had my doubts about that uniform. This TM holds THUNDERBOLT. Take it!
+- WATTSON: MAGMA or not, you kept MAUVILLE's lights on.
+- Don't make me regret it! Wahahahaha!
+- WATTSON: Switch that GENERATOR off. It's a short SURF from ROUTE 110.
+- And if anything else down there breaks, I'll know where to find you! Wahahahaha!
+- WATTSON: Wahahahaha! The MAGMA grunt who beat my GYM fair and square!
+- MAUVILLE has an underground sector. We call it NEW MAUVILLE.
+- Its GENERATOR is running haywire, and nobody else will go down there.
+- So I'll take a gamble on you! Here, this is the KEY to get into NEW MAUVILLE.
+- WATTSON: Switch that GENERATOR off. It's a short SURF from ROUTE 110.
+- And if anything else down there breaks, I'll know where to find you! Wahahahaha!
 
 ## data/scripts/draconid/battle_items.pory
 
@@ -1426,9 +1463,9 @@ Draconid Emerald round 1: Maxie's PokéNav calls to the Magma recruit (D-186). A
 - DIVE down after them. Whatever ARCHIE means to awaken, we must find it first.
 - … … … … … Click!
 - … … … … … … … … … … … Beep!
-- MAXIE: KYOGRE has awakened. The sky over SOOTOPOLIS is black.
-- {PLAYER}, come to SOOTOPOLIS at once. I need you.
-- Together, we can still set this right.
+- MAXIE: {PLAYER}. I have found GROUDON.
+- It has risen in SOOTOPOLIS to meet KYOGRE. The two of them will tear the city apart.
+- Come to SOOTOPOLIS at once. I need you at my side.
 - … … … … … Click!
 
 ### `Draconid_Text_MaxieCallDewford`
@@ -1624,8 +1661,11 @@ Draconid Emerald round 1 follow-ups (feedback 1.32, 1.34, part of 1.25; D-234 �
 - MAY: {PLAYER}!
 - MAY: BRENDAN called me from the SPACE CENTER. MAGMA tried to steal ROCKET FUEL?!
 - And you were right there with them again!
-- MAY: He says STEVEN is sticking up for you. …Why would he?
-- Forget it! I'll find out for myself. Battle me!
+- MAY: He says STEVEN called you the strongest MAGMA grunt he's ever faced.
+- …Then why do you battle like you've got something to protect?
+- MAY: Forget it! I'll find out for myself.
+- My dad gave me his KEY STONE. He says BLAZIKEN and I are ready.
+- Battle me!
 - MAY: MAGMA's going to lose, {PLAYER}. Just like you did.
 - MAY: Tch… Fine. You win this one.
 - MAY: Whatever MAGMA does next, BRENDAN and I will be there to stop it.
@@ -1736,6 +1776,7 @@ Draconid Emerald round 1 follow-ups (feedback 1.32, 1.34, part of 1.25; D-234 �
 
 ### MossdeepCity_StevensHouse
 - `MossdeepCity_StevensHouse_Text_YouveEarnedHMDive`: STEVEN: {PLAYER}{KUN}… / As you can see, there's not much here, but this is my home. / I won't ask who you really work for. Not yet. / But wherever ARCHIE's submarine went, you'll need this to follow. / It's the HIDDEN MACHINE DIVE.
+- `MossdeepCity_StevensHouse_Text_LetterFromSteven`: It's a letter. / … … … … … … / To {PLAYER}{KUN}… / The LEAGUE keeps me busy these days, so I won't be home much for a while. / When it can spare me, look for me among the stones of METEOR FALLS. / I have a favor to ask of you. / I want you to take the POKé BALL on the desk. / Inside it is a BELDUM, my favorite POKéMON. / I'm counting on you. / May our paths cross again soon. / STEVEN STONE
 
 ### MtChimney
 - `MtChimney_Text_Grunt2Intro`: Hold it, rookie! The LEADER's waiting for you at the top. / But nobody walks past me without a test! / We of TEAM MAGMA work hard for everyone's sake. Show me you do, too!
@@ -1815,12 +1856,14 @@ Draconid Emerald round 1 follow-ups (feedback 1.32, 1.34, part of 1.25; D-234 �
 - `Route119_WeatherInstitute_2F_Text_Grunt5Intro`: Don't tell me MAGMA is after that weather POKéMON, too? / That's a no-no! We were here to get it first!
 - `Route119_WeatherInstitute_2F_Text_ShellyIntro`: Ahahahaha! / A MAGMA whelp, meddling in TEAM AQUA's affairs? / You're either absolutely fearless, simply ignorant, or both! / You're so cute, you're disgusting! I'll put you down, kiddy!
 - `Route119_WeatherInstitute_2F_Text_ShellyPostBattle`: MAXIE sends children to do his dirty work now? / You don't even know what he's really after, do you?
+- `Route119_WeatherInstitute_2F_Text_TeamMagmaJustPassedBy`: We have a situation here! / A TEAM MAGMA squad is coming up ROUTE 119! A big one!
+- `Route119_WeatherInstitute_2F_Text_WeHaveToHurryToMtPyre`: What?! / Tch. I'm not brawling with MAGMA in a building full of eggheads. / TEAM AQUA, pull out! / Ahahahaha! TEAM MAGMA, just you wait!
 - `Route119_WeatherInstitute_2F_Text_ThanksPleaseTakePokemon`: You untied us… and you didn't give us away to that man in red. / I don't understand you. But thank you. / AQUA came here for this POKéMON. / Please, take it. It's safer with you than with any of them.
 
 ### Route120
 - `Route120_Text_StevenGreeting`: STEVEN: Hm? {PLAYER}{KUN}, hi. Still wearing red, I see. / There's something here that you can't see, right? / Now, if I were to use this device on the invisible obstacle… / No, no. Rather than describing it, I should just show you. That would be more fun. / {PLAYER}{KUN}, are your POKéMON ready for battle?
-- `Route120_Text_StevenGiveDevonScope`: STEVEN: I see… Your battle style is intriguing. / Your POKéMON have obviously grown since I first met you in DEWFORD. / Whoever you're really working for, they trust you. That much is plain. / I'd like you to have this DEVON SCOPE. / Who knows, there may be other concealed POKéMON.
-- `Route120_Text_StevenGoodbye`: STEVEN: {PLAYER}{KUN}. / Keep your head down. / I'm watching MAXIE, too. / …Well, let's meet again somewhere.
+- `Route120_Text_StevenGiveDevonScope`: STEVEN: I see… Your battle style is intriguing. / Your POKéMON have obviously grown since I first met you in DEWFORD. / I still can't work out what a TRAINER like you is doing in MAGMA's colors. / But I'd like you to have this DEVON SCOPE all the same. / Who knows, there may be other concealed POKéMON.
+- `Route120_Text_StevenGoodbye`: STEVEN: {PLAYER}{KUN}. / Be careful who you follow. MAXIE uses people up. / …Well, let's meet again somewhere.
 
 ### Route128
 - `Route128_Text_MaxieResposibilityFallsToArchieAndMe`: MAXIE: {PLAYER}, don't say anything. / This rain is KYOGRE's doing. If it goes on, it will drown everything we have worked for. / Only GROUDON can stand against it. I will find it and make it obey.
@@ -1838,12 +1881,15 @@ Draconid Emerald round 1 follow-ups (feedback 1.32, 1.34, part of 1.25; D-234 �
 ### RusturfTunnel
 - `RusturfTunnel_Text_ComeAndGetSome`: NERINE: Following me? …Fine. Come, then.
 - `RusturfTunnel_Text_GruntIntro`: NERINE: You again. The lowlander in red. / So MAGMA sends its children after DEVON's parts now. / …This WINGULL? It got in my way. It isn't hurt. / The parts, though… Those you'll have to win.
-- `RusturfTunnel_Text_GruntDefeat`: Hm. A second partner. Interesting choice.
+- `RusturfTunnel_Text_GruntDefeat`: Hm. A second partner. / …The old man from KANTO packs well, doesn't he?
 - `RusturfTunnel_Text_GruntTakePackage`: NERINE: Water doesn't need these parts. / Neither do I. Remember that. / Take them. And take the bird home.
 - `RusturfTunnel_Text_ThankYouLetsGoHomePeeko`: PEEKO owes her life to you! / Red uniform or not, you saved her. They call me MR. BRINEY. And, you are? / … … … … … … … … … … … … … … … … / Ah, so you are {PLAYER}{KUN}! I sincerely thank you! / Now, if there's anything that troubles you, don't hesitate to tell me! / You can usually find me in my cottage by the sea near PETALBURG WOODS. / Come, PEEKO, we should make our way home. / PEEKO: Pihyoh!
 
 ### SeafloorCavern_Room9
 - `SeafloorCavern_Room9_Text_ArchieSoItWasYou`: ARCHIE: Fufufu… MAXIE's little red shadow. / So it was you, after all.
+
+### SlateportCity_OceanicMuseum_1F
+- `SlateportCity_OceanicMuseum_1F_Text_RememberMeTakeThis`: Aiyeeeh! The MAGMA kid from RUSTURF TUNNEL! / I was NERINE's lookout down there. I saw what you did to her team… / Here, take this! Just don't tell your boss I was here!
 
 ### SlateportCity_OceanicMuseum_2F
 - `SlateportCity_OceanicMuseum_2F_Text_WellTakeThoseParts`: Hehehe, hold it! We'll take those parts!
@@ -1866,5 +1912,5 @@ Draconid Emerald round 1 follow-ups (feedback 1.32, 1.34, part of 1.25; D-234 �
 - `SootopolisCity_PokemonCenter_1F_Text_WallaceToughestInHoenn`: WALLACE is said to be one of the toughest TRAINERS in the whole HOENN region. / This town's GYM is led by the TRAINER who taught WALLACE. / But the ELITE FOUR… They're said to be even stronger than WALLACE's mentor. / And the CHAMPION, STEVEN, is stronger still. / How strong could they be?
 
 ### VictoryRoad_1F
-- `VictoryRoad_1F_Text_WallyNotGoingToLoseAnymore`: WALLY: Hi! {PLAYER}! / I bet you're surprised to see me here! / Everyone is talking about SOOTOPOLIS. How you threw off the MAGMA uniform… / In MAUVILLE, I was scared of you. I'm sorry, {PLAYER}. / I should have trusted what I saw in PETALBURG, when you helped me catch my very first POKéMON. / I made it all the way here, and it's all thanks to you! / But I'm not going to lose anymore! / GALLADE and I are going to win! Okay… Here I come!
+- `VictoryRoad_1F_Text_WallyNotGoingToLoseAnymore`: WALLY: Hi! {PLAYER}! / I bet you're surprised to see me here! / Everyone is talking about SOOTOPOLIS. How you threw off the MAGMA uniform… / In MAUVILLE, I said you'd forgotten what a TRAINER is for. / I kept saying it, all over HOENN. I'm sorry, {PLAYER}. / I should have trusted what I saw in PETALBURG, when you helped me catch my very first POKéMON. / I made it all the way here, and it's all thanks to you! / But I'm not going to lose anymore! / GALLADE and I are going to win! Okay… Here I come!
 - `VictoryRoad_1F_Text_WallyPostEntranceBattle`: WALLY: I couldn't beat you today, {PLAYER}, but one of these days, I'll catch up to you! / And when I do, I want to be a TRAINER who stands up for what's right. Just like you did.

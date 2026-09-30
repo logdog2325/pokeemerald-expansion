@@ -137,7 +137,9 @@ DraconidVillage_EldersHouse_EventScript_Ceremony_Text_6:
 
 DraconidVillage_EldersHouse_EventScript_Ceremony_Text_7:
 	.string "ELDER: No one outside this village may\n"
-	.string "know why you go. Not even the kind ones.$"
+	.string "know why you go.\p"
+	.string "Only PROF. BIRCH, an old friend of our\n"
+	.string "clan, will know. I have written to him.$"
 
 DraconidVillage_EldersHouse_EventScript_Ceremony_Text_8:
 	.string "ELDER: Now. A tamer needs a partner.\p"
