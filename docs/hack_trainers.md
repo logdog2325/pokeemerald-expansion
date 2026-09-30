@@ -384,6 +384,7 @@ variant rule) to pick them after the Champion; then `splice_party.py --append to
 | NERINE_RUSTURF_JANGMO_O_CHARMANDER |  | route | 4 | 14–17 | Dreepy 17 | story |
 | NERINE_RUSTURF_JANGMO_O_TOTODILE |  | route | 4 | 14–17 | Dreepy 17 | story |
 | NERINE_RUSTURF_JANGMO_O_TREECKO |  | route | 4 | 14–17 | Dreepy 17 | story |
+| BRENDAN_ROUTE_104 |  | route | 4 | 17–19 | Grovyle 19 | story |
 
 ### S3 (cap 25) – Slateport, Route 110, Mauville, Wattson
 
@@ -492,15 +493,13 @@ variant rule) to pick them after the Champion; then `splice_party.py --append to
 | DIANA_1 | JaggedPass | route | 3 | 26–27 | Breloom 27 | emerald-rematch |
 | IRENE | Route111 | route | 3 | 21–22 | Azumarill 22 | enhanced |
 | ELI | LavaridgeTown_Gym_1F | gym | 3 | 26–27 | Graveler 27 | enhanced |
-| BRENDAN_MT_CHIMNEY |  | route | 5 | 27–29 | Grovyle 29 | story |
-| ASTER_METEOR_FALLS_DEINO | Draconid | route | 5 | 26–28 | Drakloak 28 | story |
+| BRENDAN_MT_CHIMNEY | MtChimney | route | 5 | 27–29 | Grovyle 29 | story |
+| ASTER_METEOR_FALLS_DEINO | MeteorFalls_1F_1R | route | 5 | 26–28 | Drakloak 28 | story |
 | ASTER_METEOR_FALLS_DREEPY |  | route | 5 | 26–28 | Hakamo-o 28 | story |
 | ASTER_METEOR_FALLS_JANGMO_O |  | route | 5 | 26–28 | Zweilous 28 | story |
 | JULIO | JaggedPass | route | 3 | 26–27 | Manectric 27 | enhanced |
 | GRUNT_JAGGED_PASS | JaggedPass | grunt | 3 | 26–27 | Mightyena 27 | enhanced |
 | GRUNT_MT_CHIMNEY_2 | MtChimney | grunt | 3 | 25–26 | Golbat 26 | enhanced |
-| TABITHA_MT_CHIMNEY | MtChimney | admin | 5 | 26–28 | Numel 28 | enhanced |
-| MAXIE_MT_CHIMNEY | MtChimney | boss | 5 | 28–30 | Camerupt 30 | enhanced |
 | VIVI | Route111 | route | 3 | 22–23 | Azumarill 23 | enhanced |
 | BRICE | Route112 | route | 3 | 22–23 | Machop 23 | enhanced |
 | TRENT_1 | Route112 | route | 3 | 22–23 | Geodude 23 | emerald-rematch |
@@ -524,7 +523,7 @@ variant rule) to pick them after the Champion; then `splice_party.py --append to
 | CHARLOTTE | Route114 | route | 3 | 24–25 | Nuzleaf 25 | enhanced |
 | BRYANT | Route112 | route | 3 | 22–23 | Slugma 23 | enhanced |
 | SHAYLA | Route112 | route | 3 | 22–23 | Roselia 23 | enhanced |
-| NERINE_MT_CHIMNEY_DEINO_CHARMANDER |  | route | 5 | 27–29 | Hakamo-o 29 | story |
+| NERINE_MT_CHIMNEY_DEINO_CHARMANDER | MtChimney | route | 5 | 27–29 | Hakamo-o 29 | story |
 | NERINE_MT_CHIMNEY_DEINO_TOTODILE |  | route | 5 | 27–29 | Hakamo-o 29 | story |
 | NERINE_MT_CHIMNEY_DEINO_TREECKO |  | route | 5 | 27–29 | Hakamo-o 29 | story |
 | NERINE_MT_CHIMNEY_DREEPY_CHARMANDER |  | route | 5 | 27–29 | Zweilous 29 | story |
@@ -533,6 +532,7 @@ variant rule) to pick them after the Champion; then `splice_party.py --append to
 | NERINE_MT_CHIMNEY_JANGMO_O_CHARMANDER |  | route | 5 | 27–29 | Drakloak 29 | story |
 | NERINE_MT_CHIMNEY_JANGMO_O_TOTODILE |  | route | 5 | 27–29 | Drakloak 29 | story |
 | NERINE_MT_CHIMNEY_JANGMO_O_TREECKO |  | route | 5 | 27–29 | Drakloak 29 | story |
+| WALLY_ROUTE_112 |  | route | 3 | 25–27 | Kirlia 27 | story |
 
 ### S5 (cap 34) – Desert, Norman
 
@@ -559,6 +559,7 @@ variant rule) to pick them after the Champion; then `splice_party.py --append to
 | BRYAN | Route111 | route | 3 | 28–29 | Sandslash 29 | enhanced |
 | BRANDEN | Route111 | route | 3 | 28–29 | Nuzleaf 29 | enhanced |
 | WALLY_PETALBURG | PetalburgCity | route | 4 | 30–33 | Kirlia 33 | story |
+| MAY_LAVARIDGE |  | route | 5 | 31–33 | Combusken 33 | story |
 
 ### S6 (cap 38) – Surf routes, Abandoned Ship, Route 119, Weather Institute, Winona
 
@@ -647,7 +648,7 @@ variant rule) to pick them after the Champion; then `splice_party.py --append to
 | AMY_AND_LIV_2 | Route103 | route t2 | 4 | 32–34 | Minun 34 | emerald-rematch |
 | DUNCAN | AbandonedShip_Corridors_B1F | route | 4 | 33–34 | Machoke 34 | enhanced |
 | EDWIN_2 | Route110 | route t2 | 4 | 33–34 | Shiftry 34 | emerald-rematch |
-| BRENDAN_ROUTE_119 | Route119 | route | 6 | 35–37 | Sceptile 37 | story |
+| BRENDAN_ROUTE_119 | Route119 | route | 5 | 35–37 | Sceptile 37 | story |
 | ISAAC_2 | Route117 | route t2 | 4 | 33–34 | Hariyama 34 | emerald-rematch |
 | GARRISON | AbandonedShip_Rooms2_1F | route | 4 | 32–34 | Sandslash 34 | enhanced |
 | LYDIA_2 | Route117 | route t2 | 4 | 33–34 | Azumarill 34 | emerald-rematch |
@@ -688,6 +689,7 @@ variant rule) to pick them after the Champion; then `splice_party.py --append to
 | CORY_2 | Route108 | route t2 | 4 | 33–35 | Tentacruel 35 | emerald-rematch |
 | SAWYER_2 | MtChimney | route t2 | 4 | 33–35 | Golem 35 | emerald-rematch |
 | THALIA_2 | AbandonedShip_Rooms_1F | route t2 | 4 | 34–35 | Seadra 35 | emerald-rematch |
+| WALLY_ROUTE_120 |  | route | 5 | 36–38 | Kirlia 38 | story |
 
 ### S7 (cap 44) – Routes 120-134, Mt. Pyre, Lilycove, both hideouts, Tate & Liza
 
@@ -882,7 +884,6 @@ variant rule) to pick them after the Champion; then `splice_party.py --append to
 | PAXTON | Route132 | route | 5 | 39–41 | Breloom 41 | enhanced |
 | ISABELLA | Route124 | route | 4 | 36–38 | Starmie 38 | enhanced |
 | JONATHAN | Route132 | route | 5 | 39–41 | Exploud 41 | enhanced |
-| MAXIE_MAGMA_HIDEOUT | MagmaHideout_4F | boss | 6 | 42–44 | Camerupt 44 | enhanced |
 | HALEY_3 | Route104 | route t3 | 4 | 37–39 | Breloom 39 | emerald-rematch |
 | JAMES_3 | PetalburgWoods | route t3 | 5 | 37–39 | Ninjask 39 | emerald-rematch |
 | TRENT_3 | Route112 | route t3 | 5 | 38–40 | Golem 40 | emerald-rematch |
@@ -890,9 +891,9 @@ variant rule) to pick them after the Champion; then `splice_party.py --append to
 | KIRA_AND_DAN_3 | AbandonedShip_Rooms2_1F | route t3 | 4 | 39–40 | Illumise 40 | emerald-rematch |
 | KEIGO | Route120 | route | 4 | 35–36 | Ninjask 36 | enhanced |
 | RILEY | Route120 | route | 4 | 35–36 | Ninjask 36 | enhanced |
-| BRENDAN_LILYCOVE | LilycoveCity | route | 6 | 40–43 | Sceptile 43 | story |
+| BRENDAN_LILYCOVE | LilycoveCity | route | 5 | 40–43 | Sceptile 43 | story |
 | WALLY_LILYCOVE | LilycoveCity | route | 5 | 40–43 | Gallade 43 | story |
-| MAY_LILYCOVE | LilycoveCity | route | 6 | 40–43 | Blaziken 43 | story |
+| MAY_LILYCOVE | LilycoveCity | route | 5 | 40–43 | Blaziken 43 | story |
 | JONAH | Route127 | route | 4 | 37–39 | Sharpedo 39 | enhanced |
 | HENRY | Route127 | route | 4 | 37–39 | Tentacruel 39 | enhanced |
 | ROGER | Route127 | route | 4 | 37–39 | Sharpedo 39 | oras-first |
@@ -947,7 +948,7 @@ variant rule) to pick them after the Champion; then `splice_party.py --append to
 | GABRIELLE_2 | MtPyre_3F | route t2 | 4 | 38–39 | Mightyena 39 | emerald-rematch |
 | GABRIELLE_3 | MtPyre_3F | route t3 | 5 | 40–41 | Swellow 41 | emerald-rematch |
 | THALIA_3 | AbandonedShip_Rooms_1F | route t3 | 5 | 38–40 | Kingdra 40 | emerald-rematch |
-| NERINE_MT_PYRE_DEINO_CHARMANDER |  | route | 5 | 40–43 | Feraligatr 43 | story |
+| NERINE_MT_PYRE_DEINO_CHARMANDER | MtPyre_Summit | route | 5 | 40–43 | Feraligatr 43 | story |
 | NERINE_MT_PYRE_DEINO_TOTODILE |  | route | 5 | 40–43 | Sceptile 43 | story |
 | NERINE_MT_PYRE_DEINO_TREECKO |  | route | 5 | 40–43 | Charizard 43 | story |
 | NERINE_MT_PYRE_DREEPY_CHARMANDER |  | route | 5 | 40–43 | Feraligatr 43 | story |
@@ -956,7 +957,7 @@ variant rule) to pick them after the Champion; then `splice_party.py --append to
 | NERINE_MT_PYRE_JANGMO_O_CHARMANDER |  | route | 5 | 40–43 | Feraligatr 43 | story |
 | NERINE_MT_PYRE_JANGMO_O_TOTODILE |  | route | 5 | 40–43 | Sceptile 43 | story |
 | NERINE_MT_PYRE_JANGMO_O_TREECKO |  | route | 5 | 40–43 | Charizard 43 | story |
-| NERINE_AQUA_HIDEOUT_DEINO_CHARMANDER |  | route | 6 | 41–44 | Feraligatr 44 | story |
+| NERINE_AQUA_HIDEOUT_DEINO_CHARMANDER | AquaHideout_B2F | route | 6 | 41–44 | Feraligatr 44 | story |
 | NERINE_AQUA_HIDEOUT_DEINO_TOTODILE |  | route | 6 | 41–44 | Sceptile 44 | story |
 | NERINE_AQUA_HIDEOUT_DEINO_TREECKO |  | route | 6 | 41–44 | Charizard 44 | story |
 | NERINE_AQUA_HIDEOUT_DREEPY_CHARMANDER |  | route | 6 | 41–44 | Feraligatr 44 | story |
@@ -965,6 +966,7 @@ variant rule) to pick them after the Champion; then `splice_party.py --append to
 | NERINE_AQUA_HIDEOUT_JANGMO_O_CHARMANDER |  | route | 6 | 41–44 | Feraligatr 44 | story |
 | NERINE_AQUA_HIDEOUT_JANGMO_O_TOTODILE |  | route | 6 | 41–44 | Sceptile 44 | story |
 | NERINE_AQUA_HIDEOUT_JANGMO_O_TREECKO |  | route | 6 | 41–44 | Charizard 44 | story |
+| BRENDAN_JAGGED_PASS |  | route | 5 | 42–44 | Sceptile 44 | story |
 
 ### S8 (cap 48) – Space Center, Seafloor Cavern, Sky Pillar, Juan
 
@@ -1032,12 +1034,11 @@ variant rule) to pick them after the Champion; then `splice_party.py --append to
 | AMY_AND_LIV_5 | Route103 | route t4 | 4 | 43–45 | Minun 45 | emerald-rematch |
 | ERNEST_4 | Route125 | route t4 | 5 | 42–45 | Machamp 45 | emerald-rematch |
 | ANNIKA | SootopolisCity_Gym_B1F | gym | 5 | 44–46 | Milotic 46 | enhanced |
-| TABITHA_MOSSDEEP | MossdeepCity_SpaceCenter_2F | admin | 3 | 44–46 | Camerupt 46 | enhanced |
 | EDWIN_4 | Route110 | route t4 | 5 | 42–45 | Shiftry 45 | emerald-rematch |
-| BRENDAN_MOSSDEEP | SootopolisCity | route | 3 | 46–47 | Sceptile 47 | story |
-| MAXIE_SOOTOPOLIS |  | boss | 6 | 46–48 | Camerupt 48 | story |
-| MAXIE_SOOTOPOLIS_MULTI |  | boss | 3 | 46–48 | Camerupt 48 | story |
-| ARCHIE_SOOTOPOLIS_MULTI |  | boss | 3 | 46–48 | Sharpedo 48 | story |
+| BRENDAN_MOSSDEEP | MossdeepCity_SpaceCenter_2F | route | 3 | 46–47 | Sceptile 47 | story |
+| MAXIE_SOOTOPOLIS | SootopolisCity | boss | 6 | 46–48 | Camerupt 48 | story |
+| MAXIE_SOOTOPOLIS_MULTI | SootopolisCity | boss | 3 | 46–48 | Camerupt 48 | story |
+| ARCHIE_SOOTOPOLIS_MULTI | SootopolisCity | boss | 3 | 46–48 | Sharpedo 48 | story |
 | ISAAC_4 | Route117 | route t4 | 6 | 42–45 | Hariyama 45 | emerald-rematch |
 | LYDIA_4 | Route117 | route t4 | 6 | 42–45 | Azumarill 45 | emerald-rematch |
 | SEBASTIAN | Route110_TrickHousePuzzle6 | route | 4 | 42–44 | Aggron 44 | oras-first |
@@ -1057,7 +1058,6 @@ variant rule) to pick them after the Champion; then `splice_party.py --append to
 | TRENT_4 | Route112 | route t4 | 5 | 42–45 | Golem 45 | emerald-rematch |
 | KIRA_AND_DAN_4 | AbandonedShip_Rooms2_1F | route t4 | 4 | 43–45 | Gorebyss 45 | emerald-rematch |
 | LILA_AND_ROY_4 | Route124 | route t4 | 4 | 43–45 | Sharpedo 45 | emerald-rematch |
-| MAXIE_MOSSDEEP | MossdeepCity_SpaceCenter_2F | boss | 3 | 46–48 | Camerupt 48 | enhanced |
 | ANDRES_4 | Route105 | route t4 | 5 | 42–45 | Sandslash 45 | emerald-rematch |
 | CORY_4 | Route108 | route t4 | 4 | 42–45 | Machamp 45 | emerald-rematch |
 | PABLO_4 | Route126 | route t4 | 5 | 42–45 | Starmie 45 | emerald-rematch |
@@ -1067,7 +1067,7 @@ variant rule) to pick them after the Champion; then `splice_party.py --append to
 | SAWYER_4 | MtChimney | route t4 | 5 | 42–45 | Golem 45 | emerald-rematch |
 | GABRIELLE_4 | MtPyre_3F | route t4 | 6 | 42–45 | Swellow 45 | emerald-rematch |
 | THALIA_4 | AbandonedShip_Rooms_1F | route t4 | 5 | 42–45 | Kingdra 45 | emerald-rematch |
-| NERINE_SEAFLOOR_DEINO_CHARMANDER |  | route | 6 | 45–48 | Feraligatr 48 | story |
+| NERINE_SEAFLOOR_DEINO_CHARMANDER | SeafloorCavern_Room9 | route | 6 | 45–48 | Feraligatr 48 | story |
 | NERINE_SEAFLOOR_DEINO_TOTODILE |  | route | 6 | 45–48 | Sceptile 48 | story |
 | NERINE_SEAFLOOR_DEINO_TREECKO |  | route | 6 | 45–48 | Charizard 48 | story |
 | NERINE_SEAFLOOR_DREEPY_CHARMANDER |  | route | 6 | 45–48 | Feraligatr 48 | story |
@@ -1076,6 +1076,7 @@ variant rule) to pick them after the Champion; then `splice_party.py --append to
 | NERINE_SEAFLOOR_JANGMO_O_CHARMANDER |  | route | 6 | 45–48 | Feraligatr 48 | story |
 | NERINE_SEAFLOOR_JANGMO_O_TOTODILE |  | route | 6 | 45–48 | Sceptile 48 | story |
 | NERINE_SEAFLOOR_JANGMO_O_TREECKO |  | route | 6 | 45–48 | Charizard 48 | story |
+| MAY_MOSSDEEP |  | route | 5 | 45–47 | Blaziken 47 | story |
 
 ### S9 (cap 60) – Victory Road, Elite Four, Champion
 
@@ -1177,7 +1178,7 @@ variant rule) to pick them after the Champion; then `splice_party.py --append to
 | LEONARD | SSTidalCorridor | route | 4 | 64–66 | Machamp 66 | enhanced |
 | ERNEST_5 | Route125 | route t5 | 5 | 65–67 | Machamp 67 | emerald-rematch |
 | EDWIN_5 | Route110 | route t5 | 5 | 60–62 | Shiftry 62 | emerald-rematch |
-| STEVEN_MOSSDEEP | SootopolisCity | route | 3 | 54–56 | Metagross 56 | story |
+| STEVEN_MOSSDEEP | MossdeepCity_SpaceCenter_2F | route | 3 | 54–56 | Metagross 56 | story |
 | BRENDAN_POSTGAME | LittlerootTown_ProfessorBirchsLab | route | 6 | 75–78 | Sceptile 78 | story |
 | MAY_POSTGAME | LittlerootTown_ProfessorBirchsLab | route | 6 | 75–78 | Blaziken 78 | story |
 | BRENDAN_POSTGAME_DOUBLE | LittlerootTown_ProfessorBirchsLab | route | 3 | 78–80 | Sceptile 80 | story |

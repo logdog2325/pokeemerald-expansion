@@ -1054,7 +1054,13 @@
   "TRAINER_NERINE_POSTGAME_DREEPY_TREECKO": "POST",
   "TRAINER_NERINE_POSTGAME_JANGMO_O_CHARMANDER": "POST",
   "TRAINER_NERINE_POSTGAME_JANGMO_O_TOTODILE": "POST",
-  "TRAINER_NERINE_POSTGAME_JANGMO_O_TREECKO": "POST"
+  "TRAINER_NERINE_POSTGAME_JANGMO_O_TREECKO": "POST",
+  "TRAINER_BRENDAN_ROUTE_104": "S2",
+  "TRAINER_WALLY_ROUTE_112": "S4",
+  "TRAINER_MAY_LAVARIDGE": "S5",
+  "TRAINER_WALLY_ROUTE_120": "S6",
+  "TRAINER_BRENDAN_JAGGED_PASS": "S7",
+  "TRAINER_MAY_MOSSDEEP": "S8"
  },
  "info": {
   "TRAINER_SAWYER_1": {
@@ -6993,6 +6999,42 @@
   },
   "TRAINER_NERINE_POSTGAME_JANGMO_O_TREECKO": {
    "segment": "POST",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_BRENDAN_ROUTE_104": {
+   "segment": "S2",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_WALLY_ROUTE_112": {
+   "segment": "S4",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_MAY_LAVARIDGE": {
+   "segment": "S5",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_WALLY_ROUTE_120": {
+   "segment": "S6",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_BRENDAN_JAGGED_PASS": {
+   "segment": "S7",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_MAY_MOSSDEEP": {
+   "segment": "S8",
    "role": "route",
    "map": null,
    "story": true

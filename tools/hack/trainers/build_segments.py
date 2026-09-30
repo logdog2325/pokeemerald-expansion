@@ -106,6 +106,9 @@ OVERRIDES = {
     "MAY_ROUTE_103": "S1", "BRENDAN_RUSTBORO": "S1", "MAY_ROUTE_110": "S3", "BRENDAN_MT_CHIMNEY": "S4",
     "BRENDAN_ROUTE_119": "S6", "BRENDAN_LILYCOVE": "S7", "MAY_LILYCOVE": "S7", "BRENDAN_MOSSDEEP": "S8",
     "MAY_RUSTBORO": "S2", "WALLY_PETALBURG": "S5",
+    # more rival battles in Acts 1-5 (data/scripts/draconid/rivals2.pory, D-234)
+    "BRENDAN_ROUTE_104": "S2", "WALLY_ROUTE_112": "S4", "MAY_LAVARIDGE": "S5", "WALLY_ROUTE_120": "S6",
+    "BRENDAN_JAGGED_PASS": "S7", "MAY_MOSSDEEP": "S8",
     "WALLY_VR_2": "POST",  # Wally's rematches start after the Champion
     # Steven at the Space Center is overlevelled on purpose: he's the Champion (D-108), so no cap applies
     "STEVEN_MOSSDEEP": "POST",
@@ -129,7 +132,7 @@ OVERRIDES = {
     "GABBY_AND_TY_4": "S6", "GABBY_AND_TY_5": "S7", "GABBY_AND_TY_6": "S8",
 }
 # every id the game uses (TRAINERS_COUNT_EMERALD)
-MAX_ID = 925
+MAX_ID = 930
 
 TIER_MIN = {2: "S6", 3: "S7", 4: "S8", 5: "POST", 6: "POST"}
 

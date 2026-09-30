@@ -60,14 +60,14 @@ Nature: Modest
 - Hyper Voice
 - Protect
 
-Latias @ Soul Dew
+Tropius @ Sitrus Berry
 Level: 46
-Ability: Levitate
-Nature: Timid
+Ability: Harvest
+Nature: Modest
+- Air Slash
+- Energy Ball
 - Dragon Pulse
-- Mist Ball
-- Helping Hand
-- Protect
+- Wide Guard
 
 Blaziken @ Blazikenite
 Level: 47
@@ -96,13 +96,13 @@ Nature: Adamant
 - Fire Fang
 - Protect
 
-Latios @ Soul Dew
+Swellow @ Flame Orb
 Level: 46
-Ability: Levitate
-Nature: Timid
-- Dragon Pulse
-- Luster Purge
-- Tailwind
+Ability: Guts
+Nature: Jolly
+- Facade
+- Brave Bird
+- Quick Attack
 - Protect
 
 Sceptile @ Sceptilite

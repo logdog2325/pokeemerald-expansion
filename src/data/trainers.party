@@ -23963,15 +23963,6 @@ Nature: Adamant
 - Throat Chop
 - Slack Off
 
-Latios @ Soul Dew
-Level: 36
-Ability: Levitate
-Nature: Timid
-- Luster Purge
-- Dragon Breath
-- Thunderbolt
-- Recover
-
 Sceptile @ Sitrus Berry
 Level: 37
 Ability: Overgrow
@@ -24039,13 +24030,13 @@ Double Battle: No
 AI: Smart Trainer / Ace Pokemon
 Multi Party: Half
 
-Latios @ Soul Dew
+Mightyena @ Sitrus Berry
 Level: 46
-Ability: Levitate
-Nature: Timid
-- Dragon Pulse
-- Luster Purge
-- Ice Beam
+Ability: Intimidate
+Nature: Adamant
+- Crunch
+- Play Rough
+- Fire Fang
 - Protect
 
 Swellow @ Flame Orb
@@ -30320,15 +30311,6 @@ Nature: Adamant
 - Throat Chop
 - Slack Off
 
-Latios @ Soul Dew
-Level: 42
-Ability: Levitate
-Nature: Timid
-- Luster Purge
-- Dragon Breath
-- Tailwind
-- Protect
-
 Sceptile @ Miracle Seed
 Level: 43
 Ability: Overgrow
@@ -30551,15 +30533,6 @@ Nature: Modest
 - Brine
 - Ice Beam
 - Hyper Voice
-- Protect
-
-Latias @ Soul Dew
-Level: 42
-Ability: Levitate
-Nature: Timid
-- Mist Ball
-- Dragon Breath
-- Helping Hand
 - Protect
 
 Blaziken @ Charcoal
@@ -34725,6 +34698,311 @@ Nature: Modest
 - Draining Kiss
 - Calm Mind
 - Magical Leaf
+
+=== TRAINER_BRENDAN_ROUTE_104 ===
+Name: BRENDAN
+Class: Rival
+Pic: Brendan
+Gender: Male
+Music: Male
+Items: Potion / Potion
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Poochyena
+Level: 17
+Ability: Quick Feet
+Nature: Adamant
+- Bite
+- Howl
+- Sand Attack
+- Roar
+
+Taillow
+Level: 17
+Ability: Guts
+Nature: Jolly
+- Wing Attack
+- Quick Attack
+- Focus Energy
+- Double Team
+
+Slakoth
+Level: 17
+Ability: Truant
+Nature: Adamant
+- Headbutt
+- Yawn
+- Encore
+- Slack Off
+
+Grovyle @ Oran Berry
+Level: 19
+Ability: Overgrow
+Nature: Jolly
+- Leafage
+- Mega Drain
+- Quick Attack
+- Detect
+
+=== TRAINER_WALLY_ROUTE_112 ===
+Name: WALLY
+Class: Rival
+Pic: Wally
+Gender: Male
+Music: Male
+Items: Super Potion / Super Potion
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Roselia
+Level: 25
+Ability: Natural Cure
+Nature: Modest
+- Magical Leaf
+- Mega Drain
+- Stun Spore
+- Leech Seed
+
+Swablu
+Level: 25
+Ability: Natural Cure
+Nature: Modest
+- Dragon Breath
+- Disarming Voice
+- Round
+- Safeguard
+
+Kirlia @ Sitrus Berry
+Level: 27
+Ability: Trace
+Nature: Modest
+- Psybeam
+- Draining Kiss
+- Magical Leaf
+- Hypnosis
+
+=== TRAINER_MAY_LAVARIDGE ===
+Name: MAY
+Class: Rival
+Pic: May
+Gender: Female
+Music: Female
+Items: Hyper Potion / Hyper Potion
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Wailmer
+Level: 31
+Ability: Water Veil
+Nature: Quiet
+- Brine
+- Heavy Slam
+- Icy Wind
+- Astonish
+
+Beautifly
+Level: 31
+Ability: Swarm
+Nature: Modest
+- Air Cutter
+- Mega Drain
+- Stun Spore
+- Morning Sun
+
+Skitty
+Level: 31
+Ability: Wonder Skin
+Nature: Naive
+- Fake Out
+- Sing
+- Facade
+- Payback
+
+Tropius
+Level: 31
+Ability: Harvest
+Nature: Modest
+- Magical Leaf
+- Air Cutter
+- Stomp
+- Growth
+
+Combusken @ Sitrus Berry
+Level: 33
+Ability: Blaze
+Nature: Adamant
+- Flame Charge
+- Double Kick
+- Aerial Ace
+- Bulk Up
+
+=== TRAINER_WALLY_ROUTE_120 ===
+Name: WALLY
+Class: Rival
+Pic: Wally
+Gender: Male
+Music: Male
+Items: Hyper Potion / Hyper Potion
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Roselia
+Level: 36
+Ability: Natural Cure
+Nature: Modest
+- Giga Drain
+- Sludge Bomb
+- Stun Spore
+- Leech Seed
+
+Altaria
+Level: 36
+Ability: Natural Cure
+Nature: Adamant
+- Dragon Breath
+- Take Down
+- Sing
+- Dragon Dance
+
+Magneton
+Level: 36
+Ability: Sturdy
+Nature: Modest
+- Electro Ball
+- Flash Cannon
+- Thunder Wave
+- Metal Sound
+
+Delcatty
+Level: 36
+Ability: Wonder Skin
+Nature: Jolly
+- Fake Out
+- Sing
+- Facade
+- Shadow Ball
+
+Kirlia @ Sitrus Berry
+Level: 38
+Ability: Trace
+Nature: Modest
+- Psychic
+- Dazzling Gleam
+- Calm Mind
+- Magical Leaf
+
+=== TRAINER_BRENDAN_JAGGED_PASS ===
+Name: BRENDAN
+Class: Rival
+Pic: Brendan
+Gender: Male
+Music: Male
+Items: Hyper Potion / Hyper Potion
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Mightyena @ Black Glasses
+Level: 42
+Ability: Intimidate
+Nature: Adamant
+- Crunch
+- Play Rough
+- Fire Fang
+- Sucker Punch
+
+Swellow @ Flame Orb
+Level: 42
+Ability: Guts
+Nature: Jolly
+- Facade
+- Brave Bird
+- Quick Attack
+- Steel Wing
+
+Magcargo @ Charcoal
+Level: 42
+Ability: Flame Body
+Nature: Modest
+- Lava Plume
+- Earth Power
+- Power Gem
+- Amnesia
+
+Slaking @ Silk Scarf
+Level: 43
+Ability: Truant
+Nature: Adamant
+- Double-Edge
+- Earthquake
+- Throat Chop
+- Slack Off
+
+Sceptile @ Sitrus Berry
+Level: 44
+Ability: Overgrow
+EVs: 128 Atk / 124 Spe
+Nature: Jolly
+- Leaf Blade
+- Dragon Claw
+- Earthquake
+- X-Scissor
+
+=== TRAINER_MAY_MOSSDEEP ===
+Name: MAY
+Class: Rival
+Pic: May
+Gender: Female
+Music: Female
+Items: Full Restore / Full Restore
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Delcatty @ Sitrus Berry
+Level: 45
+Ability: Wonder Skin
+Nature: Jolly
+- Fake Out
+- Double-Edge
+- Sucker Punch
+- Wild Charge
+
+Beautifly @ Silver Powder
+Level: 45
+Ability: Swarm
+Nature: Modest
+- Quiver Dance
+- Bug Buzz
+- Air Slash
+- Giga Drain
+
+Tropius @ Sitrus Berry
+Level: 46
+Ability: Harvest
+Nature: Modest
+- Air Slash
+- Energy Ball
+- Dragon Pulse
+- Leech Seed
+
+Wailord @ Leftovers
+Level: 46
+Ability: Water Veil
+Nature: Modest
+- Hydro Pump
+- Ice Beam
+- Hyper Voice
+- Amnesia
+
+Blaziken @ Blazikenite
+Level: 47
+Ability: Speed Boost
+EVs: 252 Atk
+Nature: Adamant
+- Blaze Kick
+- Close Combat
+- Rock Slide
+- Protect
 
 
 === TRAINER_ROXANNE_2 ===
