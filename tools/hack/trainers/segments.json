@@ -752,7 +752,6 @@
   "TRAINER_JONATHAN": "S7",
   "TRAINER_ASTER_POSTGAME_DREEPY": "POST",
   "TRAINER_ASTER_POSTGAME_JANGMO_O": "POST",
-  "TRAINER_MAXIE_MAGMA_HIDEOUT": "S7",
   "TRAINER_MAXIE_MT_CHIMNEY": "S4",
   "TRAINER_TIANA": "S1",
   "TRAINER_HALEY_1": "S1",
@@ -4994,12 +4993,6 @@
    "map": null,
    "story": true
   },
-  "TRAINER_MAXIE_MAGMA_HIDEOUT": {
-   "segment": "S7",
-   "role": "boss",
-   "map": "MagmaHideout_4F",
-   "story": false
-  },
   "TRAINER_MAXIE_MT_CHIMNEY": {
    "segment": "S4",
    "role": "boss",
@@ -6819,7 +6812,7 @@
   "TRAINER_NERINE_MT_PYRE_DEINO_CHARMANDER": {
    "segment": "S7",
    "role": "route",
-   "map": null,
+   "map": "MtPyre_Summit",
    "story": true
   },
   "TRAINER_NERINE_MT_PYRE_DEINO_TOTODILE": {

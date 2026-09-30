@@ -152,56 +152,6 @@ text MtChimney_Text_DraconidDisguiseOff {
 }
 
 // ---------------------------------------------------------------------------
-// Magma Hideout: the disguise goes back on inside; after Maxie, Aster sends the player home
-// ---------------------------------------------------------------------------
-
-// MagmaHideout_1F_OnTransition calls this; the OnFrame scene runs when VAR_TEMP_1 is 1.
-script MagmaHideout_1F_EventScript_DraconidCheckDisguise {
-    if (var(VAR_ASTER_STATE) >= ASTER_STATE_CHIMNEY_DONE && var(VAR_ASTER_STATE) < ASTER_STATE_HIDEOUT_DONE
-        && var(VAR_PLAYER_OUTFIT) != PLAYER_OUTFIT_MAGMA) {
-        setvar(VAR_TEMP_1, 1)
-    }
-}
-
-script MagmaHideout_1F_EventScript_DraconidDisguiseOn {
-    lockall
-    setvar(VAR_TEMP_1, 0)
-    msgbox(MagmaHideout_1F_Text_DraconidDisguiseOn, MSGBOX_DEFAULT)
-    closemessage
-    setvar(VAR_0x8004, PLAYER_OUTFIT_MAGMA)
-    call(Draconid_EventScript_ChangeOutfit)
-    releaseall
-}
-
-text MagmaHideout_1F_Text_DraconidDisguiseOn {
-    format("{PLAYER} put the TEAM MAGMA uniform back on before going in.")
-}
-
-// MagmaHideout_4F_EventScript_Maxie calls this after Maxie leaves.
-script MagmaHideout_4F_EventScript_DraconidAfterMaxie {
-    setvar(VAR_0x8004, PLAYER_OUTFIT_DRACONID)
-    call(Draconid_EventScript_ChangeOutfit)
-    msgbox(MtChimney_Text_DraconidDisguiseOff, MSGBOX_DEFAULT)
-    clearflag(FLAG_HIDE_MAGMA_HIDEOUT_ASTER)
-    addobject(LOCALID_MAGMA_HIDEOUT_4F_ASTER)
-    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight)
-    waitmovement(0)
-    msgbox(MagmaHideout_4F_Text_DraconidAsterGoHome, MSGBOX_DEFAULT)
-    closemessage
-    fadescreen(FADE_TO_BLACK)
-    removeobject(LOCALID_MAGMA_HIDEOUT_4F_ASTER)
-    setflag(FLAG_HIDE_MAGMA_HIDEOUT_ASTER)
-    fadescreen(FADE_FROM_BLACK)
-    setvar(VAR_ASTER_STATE, ASTER_STATE_HIDEOUT_DONE)
-}
-
-text MagmaHideout_4F_Text_DraconidAsterGoHome {
-    format("ASTER: I saw it from the tunnels. GROUDON is awake… and the sky will answer. It always does.\p"
-           "Go home, {PLAYER}. Grandfather is waiting for you at the village. He has something for you.\p"
-           "I'm going to find out where the one in the sky sleeps.")
-}
-
-// ---------------------------------------------------------------------------
 // Draconid Village: the Elder gives the Mega Ring (DraconidVillage_EldersHouse_EventScript_Elder)
 // ---------------------------------------------------------------------------
 

@@ -146,7 +146,9 @@ SKIP = {"TRAINER_BRENDAN_PLACEHOLDER", "TRAINER_MAY_PLACEHOLDER", "TRAINER_RED",
         "TRAINER_ANABEL", "TRAINER_TUCKER", "TRAINER_SPENSER", "TRAINER_GRETA", "TRAINER_NOLAND",
         "TRAINER_LUCY", "TRAINER_BRANDON",
         # round 1: a vanilla Aqua grunt whose battle is Nerine's now
-        "TRAINER_GRUNT_RUSTURF_TUNNEL"}
+        "TRAINER_GRUNT_RUSTURF_TUNNEL",
+        # round 1 Act 4: Maxie promotes the player in the Magma Hideout instead of battling (D-134)
+        "TRAINER_MAXIE_MAGMA_HIDEOUT"}
 
 
 def read_caps():

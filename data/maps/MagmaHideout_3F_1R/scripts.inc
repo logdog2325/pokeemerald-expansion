@@ -23,17 +23,15 @@ MagmaHideout_3F_1R_Text_Grunt9PostBattle:
 	.string "Do you think it's odd that we're wearing\n"
 	.string "hoods in this magma-filled volcano?$"
 
-MagmaHideout_3F_1R_Text_Grunt16Intro:
+MagmaHideout_3F_1R_Text_Grunt16Intro:  @ Draconid Emerald
 	.string "We joined so we can help our leader\n"
 	.string "achieve his fantastic vision.\p"
-	.string "I don't care if you're with TEAM AQUA\n"
-	.string "or if you're just some kid passing by.\p"
-	.string "No one interferes with us and gets\n"
-	.string "away with it!$"
+	.string "They say the LEADER trusts you.\p"
+	.string "Show me you deserve it!$"
 
-MagmaHideout_3F_1R_Text_Grunt16Defeat:
+MagmaHideout_3F_1R_Text_Grunt16Defeat:  @ Draconid Emerald
 	.string "Oh, no!\n"
-	.string "You're not to be trusted at all!$"
+	.string "…Fine. Maybe you do deserve it.$"
 
 MagmaHideout_3F_1R_Text_Grunt16PostBattle:
 	.string "Listen to me.\n"

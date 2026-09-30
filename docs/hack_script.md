@@ -473,21 +473,139 @@ Draconid Emerald round 1, Act 4 (docs/hack_story.md): Petalburg Gym with MAY wat
 - That's not what MAGMA does.
 - I don't know what you really are, {PLAYER}. But I'm going to find out.
 
+### `PetalburgCity_EventScript_DraconidWallyTrigger`
+- WALLY: {PLAYER}! I came to thank MR. NORMAN. You both helped me catch RALTS, remember?
+- He's MAY's dad. She says you're going to challenge him.
+- People in town stare at your uniform. I hear what they whisper.
+- But in MAUVILLE, your POKéMON looked so happy. I trust what I saw.
+- So before you challenge MR. NORMAN… battle me!
+- WALLY: I'm going to travel around HOENN, too. Just like you.
+- Let people say what they want, {PLAYER}. I know what I saw.
+- Good luck against MR. NORMAN!
+
+### `Route119_EventScript_DraconidTabithaOrder`
+- TABITHA: Hehehe! There you are, grunt. Right on time.
+- AQUA got here first. They're inside, pushing the eggheads around.
+- This INSTITUTE studies the weather. Rain, sun, storms…
+- Leader MAXIE wants to know what they've found. So do I.
+- Get in there and take the research before AQUA does.
+- I'll round up the others. When I come back, you'd better have it. Hehehe!
+
+### `Route119_EventScript_DraconidTabitha`
+- TABITHA: Well? The INSTITUTE's door is right there, grunt. Hehehe!
+
+### `Route119_WeatherInstitute_2F_EventScript_DraconidMayCovers`
+- In the confusion, {PLAYER} had slipped into the back room and quietly untied the scientists.
+- MAY: I heard shouting from the road! Is AQUA still-
+- …{PLAYER}?!
+- That uniform… So MAGMA is here, too.
+- MAY: Wait. Those people in the back… They're untied.
+- SCIENTIST: It's true! That trainer drove AQUA off and set us free!
+- MAY: I KNEW it!
+- {PLAYER}, you're not really one of-
+- TABITHA: Hehehe! Not really one of what, little girl?
+- MAY: …Not really one of the TRAINERS I'd waste my time on! Hmph!
+- Chasing off a few AQUA grunts? Anyone could do that.
+- You MAGMA people are all the same!
+- TABITHA: Hehehe! Feisty.
+- AQUA ran like rats, grunt. Good work.
+- And the eggheads left their notes lying around. Weather records… something about ancient ORBS.
+- Leader MAXIE will love this. I'll take it to him myself.
+- Keep your POKéNAV on. He'll have orders for you soon. Hehehe!
+- MAY: …That was close.
+- I'll pretend I didn't see you save them, {PLAYER}.
+- But I did see it. And I won't forget.
+
+### `Route119_EventScript_DraconidRegisterBrendan`
+- BRENDAN: And… MAY says we should stay in touch.
+- So I can keep an eye on you. That's all it is.
+- Registered BRENDAN in the POKéNAV.
+- BRENDAN: If you really are what MAY thinks you are… then prove it.
+- I'll be watching, {PLAYER}.
+
+### `LilycoveCity_EventScript_DraconidRivals`
+- BRENDAN: Changed your mind? MAY won't stop talking until we settle this.
+- MAY: {PLAYER}! BRENDAN and I were shopping at the DEPARTMENT STORE.
+- BRENDAN: And arguing. About you.
+- MAY: He thinks MAGMA is using you. I think you're using MAGMA.
+- BRENDAN: Either way, you're still wearing red.
+- So we settle it like TRAINERS. You against both of us!
+- MAY: Well, {PLAYER}? Two on two?
+- MAY: Running off? That's what a real MAGMA grunt would do…
+- We'll be right here, {PLAYER}.
+- BRENDAN: Don't hold back. I won't.
+- MAY: Show us who you really are, {PLAYER}!
+- BRENDAN: I don't get you, {PLAYER}.
+- You beat AQUA. You help people. And you still wear that.
+- MAY: One day you'll tell us the truth. And then I get to say “I told you so.”
+- BRENDAN: We're going home to LITTLEROOT.
+- …Take care of yourself. Whoever you really are.
+
+### `LilycoveCity_EventScript_DraconidWally`
+- WALLY: {PLAYER}! My RALTS evolved into GALLADE on the way here!
+- And a man by the sea gave me this KEY STONE and a GALLADITE.
+- People in town whisper about the MAGMA grunt with the dragons.
+- I told them they're wrong about you.
+- Now watch us, {PLAYER}!
+- WALLY: Next time we battle, it'll be at the POKéMON LEAGUE. I promise!
+- Whatever you're really fighting for… I hope you win, {PLAYER}.
+
+### `MtPyre_Summit_EventScript_DraconidMaxieOrders`
+- MAXIE: {PLAYER}. You came. Good.
+- TABITHA tells me AQUA fled the WEATHER INSTITUTE with their tails between their legs.
+- Your doing, I hear.
+- MAXIE: Look. The BLUE ORB.
+- Hold it to the light and you can almost hear the land breathing.
+- MAXIE: But ARCHIE's rabble followed us up the mountain. They're swarming the summit.
+- He's after the RED ORB… and after this one.
+- I will not lose it on a mountain of graves.
+- Hold them off, {PLAYER}. Keep AQUA busy up there while we take the ORB down the mountain.
+- MAXIE: And take this. The MAGMA EMBLEM.
+- Only those I trust carry one. You've earned it.
+- MAXIE: Keep it close. When this is over, I'll call for you.
+- It's time you saw what we are truly working for.
+
+### `MtPyre_Summit_EventScript_DraconidNerine`
+- NERINE: …You again.
+- So MAXIE left you behind to hold the mountain.
+- He chose well. That's what worries me.
+- NERINE: Listen, {PLAYER}. Quietly.
+- The land and the sea are sleeping. These ORBS are the only things that can calm them.
+- Now each team has one. And each thinks it can wake a god and keep it on a leash.
+- …ARCHIE is right up there. So we fight. Properly.
+- NERINE: Your dragons are learning to fly.
+- Soon you'll have to choose between the red and the sky.
+- Choose well.
+
+### `JaggedPass_EventScript_DraconidGuardGreets`
+- GRUNT: Hey! Over here!
+- That EMBLEM… You're the one the LEADER sent for!
+- Hold it up. The door answers to the EMBLEM.
+
+### `JaggedPass_EventScript_DraconidGuardGoesIn`
+- GRUNT: Welcome to the HIDEOUT.
+- The LEADER is waiting at the very bottom. I'll tell them you're coming!
+
+### `MagmaHideout_4F_EventScript_DraconidPromotion`
+- MAXIE: {PLAYER}. Come, stand here.
+- TABITHA told me how you held MT. PYRE. Alone, against ARCHIE's whole crew.
+- MAXIE: I have watched you since METEOR FALLS.
+- You fight for your POKéMON, not for yourself. That is rarer than you think.
+- So I will say it plainly. From today, you are no grunt.
+- You are one of my own.
+- MAXIE: Stand beside me, {PLAYER}, as the land is reborn.
+
+### `MagmaHideout_4F_EventScript_DraconidSendWord`
+- Only the magma still moved in the chamber where GROUDON had slept.
+- {PLAYER} took out paper and wrote to the ELDER.
+- “MAXIE has woken GROUDON. He means to raise the land and drink the sea.
+- AQUA holds the RED ORB. I am still inside. I will stay close to him.”
+- {PLAYER} sealed the letter with the clan's mark.
+- The next traveler bound for the mountains would carry it home.
+
 ## data/scripts/draconid/rivals.pory
 
 Draconid Emerald: rival battles vanilla Emerald doesn't have (Phase 5).  Brendan  Route 104 (Petalburg Woods entrance), Route 110 (+ PokéNav registration), Route 119, Lilycove (with May), Sootopolis (Mega), Littleroot lab after the Champion May      Route 103, Rustboro, Slateport (after the Oceanic Museum), Lilycove (with Brendan), Sootopolis (Mega), Littleroot lab after the Champion Wally    Mauville (vanilla), Petalburg Gym door (after the Heat Badge), Lilycove (Mega Gallade), Victory Road (vanilla) Space Center: the player picks May or Brendan as the tag partner against Maxie and Tabitha.  State vars: VAR_BRENDAN_STATE, VAR_MAY_STATE, VAR_WALLY_STATE (include/constants/draconid.h). Vanilla hooks are listed in docs/hack_changes.md ("Scripts").
-
-### `LilycoveCity_EventScript_DraconidRivals`
-- BRENDAN: Ready for our tag battle now?
-- MAY: {PLAYER}! BRENDAN and I came to shop at the DEPARTMENT STORE…
-- BRENDAN: …but this is way better. Two on two: you against both of us!
-- MAY: What do you say?
-- BRENDAN: Aw, come on! We'll be right here.
-- MAY: Oh! You need at least two POKéMON that can battle for this.
-- BRENDAN: Here we come!
-- MAY: Don't hold back, {PLAYER}!
-- MAY: That was amazing, {PLAYER}! We're going back to LITTLEROOT to tell Dad everything.
-- BRENDAN: Don't slow down now. You've still got GYMS to beat!
 
 ### `MossdeepCity_SpaceCenter_2F_EventScript_DraconidRival`
 - MAY: We came as soon as we heard TEAM MAGMA was here!
@@ -538,19 +656,6 @@ Draconid Emerald: rival battles vanilla Emerald doesn't have (Phase 5).  Brendan
 - MAY: Dad says the BATTLE FRONTIER is full of strong TRAINERS.
 - BRENDAN: Let's all go some time!
 
-### `PetalburgCity_EventScript_DraconidWallyTrigger`
-- WALLY: {PLAYER}! I came to thank your dad for helping me catch RALTS.
-- But I think the best way to thank him is to show how strong we've become.
-- Before you challenge him… battle me!
-- WALLY: I'm going to travel around HOENN too, like you.
-- Good luck against your dad, {PLAYER}!
-
-### `LilycoveCity_EventScript_DraconidWally`
-- WALLY: {PLAYER}! My RALTS evolved into GALLADE on the way here.
-- And a man by the sea gave me this KEY STONE and a GALLADITE.
-- Watch us, {PLAYER}!
-- WALLY: Next time we battle, it'll be at the POKéMON LEAGUE. I promise!
-
 ## data/scripts/draconid/aster.pory
 
 Draconid Emerald: Aster's arc after Draconid Pass, the Team Magma disguise and the Mega Ring (Phase 4).  A2 Meteor Falls      after Team Magma takes the meteorite: riddle + battle A3 Route 112         cable car station: Aster hands over a Team Magma disguise for Mt. Chimney; it comes off after Maxie on the summit A4 Route 119         battle on the path north (Mega Altaria) Magma Hideout     the disguise goes back on inside; after Maxie, Aster sends the player home Draconid Village  the Elder gives the Mega Ring and the second partner's Mega Stone A5 Sky Pillar        the climax before Rayquaza wakes (Mega Salamence) A6 after the League  rematch at the village shrine  VAR_ASTER_STATE: ASTER_STATE_* (include/constants/draconid.h). Aster's team counter-picks the player's egg; her trainer ids are named after the PLAYER's egg (VAR_STARTER_MON). Vanilla hooks are listed in docs/hack_changes.md ("Scripts").
@@ -572,15 +677,6 @@ Draconid Emerald: Aster's arc after Draconid Pass, the Team Magma disguise and t
 
 ### `MtChimney_EventScript_DraconidDisguiseOff`
 - {PLAYER} took off the TEAM MAGMA uniform and packed it away.
-
-### `MagmaHideout_1F_EventScript_DraconidDisguiseOn`
-- {PLAYER} put the TEAM MAGMA uniform back on before going in.
-
-### `MagmaHideout_4F_EventScript_DraconidAfterMaxie`
-- {PLAYER} took off the TEAM MAGMA uniform and packed it away.
-- ASTER: I saw it from the tunnels. GROUDON is awake… and the sky will answer. It always does.
-- Go home, {PLAYER}. Grandfather is waiting for you at the village. He has something for you.
-- I'm going to find out where the one in the sky sleeps.
 
 ### `DraconidVillage_EldersHouse_EventScript_DraconidMegaRing`
 - ELDER: {PLAYER}. You went into the mountain wearing the enemy's colours and came back yourself.
@@ -617,11 +713,53 @@ Draconid Emerald: Aster's arc after Draconid Pass, the Team Magma disguise and t
 - `GraniteCave_StevensRoom_Text_ImStevenLetterForMe`: My name is STEVEN. / I'm interested in rare stones, so I travel here and there. / Oh? A TEAM MAGMA member… with a LETTER for me? / MAGMA doesn't usually deliver mail.
 - `GraniteCave_StevensRoom_Text_CouldBecomeChampionLetsRegister`: STEVEN: Your POKéMON trust you. That's hard to fake. / I wonder who you really work for. / Let's register one another in our POKéNAVS. I'd like to keep an eye on you… in a friendly way. / … … … … … …
 
+### JaggedPass
+- `JaggedPass_Text_GruntIntro`: Wah! Another grunt? What are you doing up here? / Me? I'm guarding a rock. Just a rock. There's nothing behind it. / …You look new. Rank test!
+- `JaggedPass_Text_GruntDefeat`: Urrrgh… / You're strong for a new recruit…
+- `JaggedPass_Text_GoWhereverYouWant`: Okay, oh-kay! I admit it, you're strong! / But orders are orders. This rock stays shut unless the LEADER himself sends you.
+
+### MagmaHideout_2F_1R
+- `MagmaHideout_2F_1R_Text_Grunt14Intro`: What, what, what? / A face I don't know, in a TEAM MAGMA uniform? / They say the LEADER gave some new grunt his own EMBLEM… / You rouse my suspicion! Rank test! Battle with me!
+- `MagmaHideout_2F_1R_Text_Grunt14PostBattle`: If you suffer from chills, you've come to the right TEAM. / Welcome to the HIDEOUT, I guess.
+- `MagmaHideout_2F_1R_Text_Grunt3Intro`: Hold it right there! / New face, shiny EMBLEM… You don't really expect me to let you waltz by without a rank test?
+- `MagmaHideout_2F_1R_Text_Grunt4Intro`: Ahah! A grunt I've never seen! Rank test!
+- `MagmaHideout_2F_1R_Text_Grunt5Intro`: Oh, oh! You're the new one everybody's talking about!
+
+### MagmaHideout_2F_2R
+- `MagmaHideout_2F_2R_Text_Grunt15Intro`: I don't have a bone to pick with you. Orders are to test every newcomer!
+- `MagmaHideout_2F_2R_Text_Grunt8Intro`: The LEADER gave you his own MAGMA EMBLEM? / I've dug in this volcano for years, and I don't even have one! / Battle me! I have to see this!
+
+### MagmaHideout_3F_1R
+- `MagmaHideout_3F_1R_Text_Grunt16Intro`: We joined so we can help our leader achieve his fantastic vision. / They say the LEADER trusts you. / Show me you deserve it!
+- `MagmaHideout_3F_1R_Text_Grunt16Defeat`: Oh, no! …Fine. Maybe you do deserve it.
+
+### MagmaHideout_4F
+- `MagmaHideout_4F_Text_Grunt12PostBattle`: MAXIE, sir! The new one is on the way down!
+- `MagmaHideout_4F_Text_Grunt13Intro`: The LEADER's guest? Then you won't mind one more test! / You're not getting by me easily!
+- `MagmaHideout_4F_Text_TabithaIntro`: TABITHA: Hehehe! Look who made it all the way down! / Leader MAXIE is up ahead, with GROUDON. He wants to see you. / But first… let's see if you're still sharp. / One last rank test. Hehehe!
+- `MagmaHideout_4F_Text_TabithaDefeat`: Taken down again… Hehe… You'll do.
+- `MagmaHideout_4F_Text_TabithaPostBattle`: TABITHA: Go on. Don't keep the LEADER waiting. / Whatever he tells you in there… you should feel honored. Hehe!
+- `MagmaHideout_4F_Text_MaxieOhItWasYou`: MAXIE: …Did you see its eyes, {PLAYER}? The land itself, looking back at us. / You deserve to know what we are truly working for. / The sea covers most of this world. People and POKéMON crowd onto what little land is left. / GROUDON raised the continents once. It can do it again. / More land. Room for every living thing to grow. / Yes, the seas will shrink. Rivers will run dry. Some will call it a disaster. / But every great change looks like a disaster to those who stand in its way.
+- `MagmaHideout_4F_Text_MaxieImGoingAfterGroudon`: MAXIE: The BLUE ORB woke GROUDON, but it did not obey. / Something is missing. The RED ORB, perhaps… and ARCHIE has it. / No matter. GROUDON has gone deep into HOENN. We will find it. / And AQUA will make its move soon. When it does, I will need someone I trust inside their walls. / Rest while you can, {PLAYER}. The land is waking.
+
 ### MauvilleCity
 - `MauvilleCity_Text_WallyWillYouBattleMe`: WALLY: Oh! {PLAYER}! / That uniform… You're… one of THEM now? The people from the news? / …No. I want to see for myself. I've gotten a lot stronger since we met. / {PLAYER}, please, will you have a battle with me?
 - `MauvilleCity_Text_UncleCanYouBattleWally`: UNCLE: {PLAYER}{KUN}, was it? I don't much like that uniform… / But WALLY trusts you. Can I ask you to battle him just this once? / I don't think he's going to listen to any reason the way he is now.
 - `MauvilleCity_Text_WallyDefeat`: WALLY: … … … … … … … / I lost… / But your POKéMON looked happy. Really happy.
 - `MauvilleCity_Text_WallyIllGoBackToVerdanturf`: WALLY: UNCLE… I'll go back to VERDANTURF… / {PLAYER}… I don't think you're one of them. Not really.
+
+### MtPyre_Summit
+- `MtPyre_Summit_Text_Grunt1Intro`: Another MAGMA goon! / Your lot got here ahead of us, but we won't fall behind!
+- `MtPyre_Summit_Text_Grunt1Defeat`: Just one MAGMA grunt… And I still lost?
+- `MtPyre_Summit_Text_Grunt2Intro`: Hah! Too bad for you! / Your LEADER ran off with his ORB and left you behind! / Now you get to take on us toughies all by yourself!
+- `MtPyre_Summit_Text_Grunt2Defeat`: Urgh… Some leftover you are…
+- `MtPyre_Summit_Text_Grunt2PostBattle`: MAXIE's using you as a shield, you know. / Does that sit right with you?
+- `MtPyre_Summit_Text_Grunt3Intro`: You… We saw you at MT. CHIMNEY. / The MAGMA grunt with the dragons. MAXIE left you here to slow us down, huh?
+- `MtPyre_Summit_Text_Grunt3Defeat`: Tch… MAXIE picked a good watchdog.
+- `MtPyre_Summit_Text_Grunt4Intro`: Oh, I know! MAGMA sent a kid to hold the mountain! / Well, you won't hold it against TEAM AQUA!
+- `MtPyre_Summit_Text_Grunt4Defeat`: …Ever thought about switching sides? We could use you.
+- `MtPyre_Summit_Text_ArchieWeGotTheOrbLetsGo`: ARCHIE: Fufufu… So MAXIE left a pup behind to hold the mountain. / A brave pup. But too late. / The RED ORB preserved at MT. PYRE… I, ARCHIE, now have it in my possession! / Tell MAXIE he can keep his BLUE ORB. We'll see which one the world answers to. / Okay, TEAM! We're pulling out!
+- `MtPyre_Summit_Text_BothOrbsTakenMagmaLeftThis`: Oh, no… This cannot happen… / Not only the BLUE ORB, but even the RED ORB has been taken… / The BLUE ORB and RED ORB must never be separated. They belong together. / What are those men trying to do with the two ORBS? / … … … … … … … … … … … … / You wear the same red as the men who took the BLUE ORB. / And yet you stood against the others, all alone. / I do not understand you, child. / But I will pray that you know what you are doing.
 
 ### PetalburgCity_Gym
 - `PetalburgCity_Gym_Text_DadYoureHereWithYourPokemon`: NORMAN: Hm? A new face. / You must be the DRACONID tamer PROF. BIRCH told me about. / I'm NORMAN, the LEADER of this GYM. MAY is my daughter. / So, you're with your POKéMON. Then you're a TRAINER, {PLAYER}. / Good. I'll be looking forward to seeing how you grow.
@@ -661,6 +799,29 @@ Draconid Emerald: Aster's arc after Draconid Pass, the Team Magma disguise and t
 - `Route110_Text_MayDefeated`: MAGMA grunts don't raise dragons like that.
 - `Route110_Text_MayTakeThis`: MAY: I've watched MAGMA grunts. They treat POKéMON like tools. / Yours trust you. Completely. / What are you really doing, {PLAYER}? / …Fine. Keep your secret. Here, take this.
 - `Route110_Text_MayExplainItemfinder`: MAY: That's an ITEMFINDER. / Use it to root around for items that aren't visible. / If it senses something, it emits a sound.
+
+### Route119
+- `Route119_Text_BrendanIntro`: BRENDAN: {PLAYER}. / …MAY told me about the WEATHER INSTITUTE. / She says you saved those scientists. She says you're a good guy in disguise. / I don't know what to think anymore. / So I'll do what I know. Battle me!
+- `Route119_Text_BrendanDefeat`: …You fight like someone with nothing to hide.
+- `Route119_Text_BrendanIllGiveYouThis`: BRENDAN: MAY made me promise to give you this. / …Don't make me regret it.
+- `Route119_Text_BrendanExplainFly`: BRENDAN: Use FLY, and your POKéMON carries you to any town you've already visited. / But you need the FORTREE GYM BADGE to do that.
+
+### Route119_WeatherInstitute_1F
+- `Route119_WeatherInstitute_1F_Text_Grunt1Intro`: A MAGMA grunt? Here? / The BOSS got interested in the research they have going here, so he sent us out. / You quit meddling!
+- `Route119_WeatherInstitute_1F_Text_Grunt4Intro`: Huh? What's a MAGMA brat doing here?
+- `Route119_WeatherInstitute_1F_Text_Grunt4PostBattle`: Oh, no… I'll catch an earful for losing to MAGMA… / I should just take a nap in the bed…
+- `Route119_WeatherInstitute_1F_Text_WhatWereAquasUpTo`: Oh… You're the one in red who untied us. / Don't worry. We haven't told anyone. / But what on earth were AQUA and MAGMA after here?
+
+### Route119_WeatherInstitute_2F
+- `Route119_WeatherInstitute_2F_Text_Grunt5Intro`: Don't tell me MAGMA is after that weather POKéMON, too? / That's a no-no! We were here to get it first!
+- `Route119_WeatherInstitute_2F_Text_ShellyIntro`: Ahahahaha! / A MAGMA whelp, meddling in TEAM AQUA's affairs? / You're either absolutely fearless, simply ignorant, or both! / You're so cute, you're disgusting! I'll put you down, kiddy!
+- `Route119_WeatherInstitute_2F_Text_ShellyPostBattle`: MAXIE sends children to do his dirty work now? / You don't even know what he's really after, do you?
+- `Route119_WeatherInstitute_2F_Text_ThanksPleaseTakePokemon`: You untied us… and you didn't give us away to that man in red. / I don't understand you. But thank you. / AQUA came here for this POKéMON. / Please, take it. It's safer with you than with any of them.
+
+### Route120
+- `Route120_Text_StevenGreeting`: STEVEN: Hm? {PLAYER}{KUN}, hi. Still wearing red, I see. / There's something here that you can't see, right? / Now, if I were to use this device on the invisible obstacle… / No, no. Rather than describing it, I should just show you. That would be more fun. / {PLAYER}{KUN}, are your POKéMON ready for battle?
+- `Route120_Text_StevenGiveDevonScope`: STEVEN: I see… Your battle style is intriguing. / Your POKéMON have obviously grown since I first met you in DEWFORD. / Whoever you're really working for, they trust you. That much is plain. / I'd like you to have this DEVON SCOPE. / Who knows, there may be other concealed POKéMON.
+- `Route120_Text_StevenGoodbye`: STEVEN: {PLAYER}{KUN}. / Keep your head down. / I'm watching MAXIE, too. / …Well, let's meet again somewhere.
 
 ### RustboroCity
 - `RustboroCity_Text_OutOfTheWay`: NERINE: …Move.

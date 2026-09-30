@@ -293,6 +293,52 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   battle (the first is still a plain grunt, so she can say "Stand aside"). May's Route 110 battle is the vanilla
   rival scene with her lines, and she registers in the PokéNav there (the vanilla Rustboro registration is
   skipped, D-115); Brendan registers on Route 119 (Act 4). – Alt: a Magma messenger grunt.
+- **D-130 Weather Institute (Act 4)**: Tabitha waits by the Institute door on Route 119 (the order runs on the
+  doorstep, the only way in) and sends the player in; the vanilla Aqua fights stay, with Shelly and the grunts
+  reacting to the uniform. After Aqua flees, the player unties the scientists off-screen; May runs up the stairs
+  and starts to say what she saw just as Tabitha comes up to collect, turns it into an insult to cover for the
+  player, then whispers "I'll pretend I didn't see you save them". Tabitha takes the Institute's notes (the
+  "research": the weather answers to two ancient orbs, which Maxie's next phone call picks up); the scientist
+  still gives Castform, now as thanks for the rescue. – Alt: a Magma messenger grunt instead of Tabitha;
+  Castform as the research. – May can only "nearly expose" the player in front of a Magma witness, and Tabitha
+  has given the orders in person since Rustboro (D-115, D-119).
+- **D-131 Brendan on Route 119**: the vanilla scene and HM Fly stay (Brendan hands it over because May made him
+  promise), then he registers in the PokéNav (as May on Route 110) and rides off; Scott's line is unchanged.
+  – Alt: Fly from someone else. – The progression item stays where vanilla has it.
+- **D-132 Mt. Pyre**: the vanilla orbs (Magma takes the Blue Orb first, Aqua the Red). On the first visit Maxie
+  meets the player at the top of the summit stairs (OnFrame; his vanilla summit object), shows the Blue Orb,
+  orders them to hold off Aqua and gives them the Magma Emblem himself (the old lady's "they left this behind"
+  goes; she now wonders about the child in red who fought the others). The four summit grunts are the ones to
+  hold off (lines retold for a Magma opponent); Nerine blocks the stairs below the altar (a trigger row across
+  the only way up) and walks off down the mountain after the fight; then Archie takes the Red Orb (vanilla, his
+  lines address the player). `MAGMA_STATE_MT_PYRE` is set when Archie has left, so Maxie's call about the orbs
+  comes after it; until then the emblem in the bag marks Maxie's scene as done. – Alt: Maxie on the exterior;
+  Nerine as a sight trainer (can be walked past). – One arrival scene carries the order, the orb and the emblem.
+- **D-133 Magma Hideout entrance**: the Jagged Pass guard stays after Mt. Pyre (vanilla hid him there). When the
+  player comes with the emblem (the vanilla emblem triggers, or talking to him) he recognizes it, the rock opens
+  as in vanilla and he goes in ahead (`FLAG_HIDE_JAGGED_PASS_MAGMA_GUARD` is set then). Before that his vanilla
+  battle is a rank test and he won't talk about the door. Inside, the grunts and Tabitha keep their battles as
+  rank tests (D-103); lines that called the player an intruder were rewritten. – Alt: the door opens with no
+  NPC. – "The guard lets them in" (story); a trusted member doesn't sneak in.
+- **D-134 Maxie's promotion, no battle**: talking to Maxie by the magma pool first plays the promotion (Tabitha's
+  report on Mt. Pyre, "I have watched you since Meteor Falls", "Stand beside me as the land is reborn"), then
+  vanilla's awakening and Groudon's escape. The battle is cut; Maxie tells his plan instead (land for everyone,
+  the seas will shrink, the Red Orb is missing, he'll need someone inside Aqua's walls) in the two texts that
+  framed the vanilla battle, and every flag and var vanilla sets after it is still set. The player then writes
+  to the Elder (a narrated letter a traveller carries to the mountains). Maxie's Magma Hideout team (and its Mega
+  Camerupt, D-066) is not fought here any more. – Alt: keep the battle as a "test"; a call to the Elder (he has
+  no PokéNav). – The story cuts the battle; a letter needs no new object or item.
+- **D-135 Lilycove and Wally (round 1)**: the v1 fights and staging stay, with new lines. Before the double,
+  Brendan and May argue about the player (Brendan hurt but unsure since Route 119, May sure the player is secretly
+  good); afterwards both go home to Littleroot as in v1. Wally trusts what he saw in Mauville, at the Petalburg
+  Gym door ("MR. NORMAN", May's dad) and in Lilycove. – The add-on.
+- **D-136 Scene-only NPCs use temp flags**: May and Tabitha on the Weather Institute 2F and Nerine on the summit
+  are hidden by `FLAG_TEMP_11/12`, which the map's OnTransition sets (as May in the Petalburg Gym, D-116); Maxie
+  on the summit borrows his vanilla object and flag. Only Tabitha on Route 119 needs a saved flag (0x35).
+  – Alt: a saved flag per NPC. – The shared flag budget is small, and these NPCs never stay after their scene.
+- **D-137 Steven on Route 120**: vanilla scene and Devon Scope; he notices the uniform ("Still wearing red, I
+  see"), "Whoever you're really working for, they trust you", and leaves with "Keep your head down. I'm watching
+  MAXIE, too." (story step 19).
 - **D-160 Nerine's disguise detail**: the female Aqua grunt sheet and pic unchanged except her own **silver-blue
   hair** under the bandana (the real grunts' is magenta/red). – Alt: a teal scale scarf; a gold horn clip on the
   bandana. – The hair is the one detail readable at 16×32 among grunts (a clip is 2–3 px), it is the same hair

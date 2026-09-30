@@ -96,6 +96,553 @@ PetalburgCity_Gym_Movement_DraconidMayLeave:
 	set_invisible
 	step_end
 
+LavaridgeTown_Gym_1F_EventScript_DraconidWallyWaits::
+	compare VAR_WALLY_STATE, WALLY_STATE_START
+	goto_if_eq LavaridgeTown_Gym_1F_EventScript_DraconidWallyWaits_1
+	return
+
+LavaridgeTown_Gym_1F_EventScript_DraconidWallyWaits_1:
+	setvar VAR_WALLY_STATE, WALLY_STATE_PETALBURG
+	clearflag FLAG_HIDE_PETALBURG_CITY_WALLY_GYM
+	return
+
+
+PetalburgCity_EventScript_DraconidWallyTalk::
+	goto PetalburgCity_EventScript_DraconidWallyTrigger
+	return
+
+
+PetalburgCity_EventScript_DraconidWallyTrigger::
+	lockall
+	playbgm MUS_ENCOUNTER_MAY, TRUE
+	applymovement LOCALID_PETALBURG_WALLY_GYM, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_PETALBURG_WALLY_GYM, Common_Movement_WalkRight
+	waitmovement 0
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement 0
+	msgbox PetalburgCity_EventScript_DraconidWallyTrigger_Text_0
+	trainerbattle_no_intro TRAINER_WALLY_PETALBURG, PetalburgCity_Text_DraconidWallyDefeat
+	msgbox PetalburgCity_EventScript_DraconidWallyTrigger_Text_1
+	closemessage
+	applymovement LOCALID_PETALBURG_WALLY_GYM, PetalburgCity_Movement_DraconidWallyLeave
+	waitmovement 0
+	removeobject LOCALID_PETALBURG_WALLY_GYM
+	setflag FLAG_HIDE_PETALBURG_CITY_WALLY_GYM
+	setvar VAR_WALLY_STATE, WALLY_STATE_LILYCOVE
+	clearflag FLAG_HIDE_LILYCOVE_CITY_WALLY
+	savebgm MUS_DUMMY
+	fadedefaultbgm
+	releaseall
+	return
+
+
+PetalburgCity_Movement_DraconidWallyLeave:
+	walk_down
+	walk_down
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	step_end
+
+Route119_EventScript_DraconidTabithaOrder::
+	goto_if_set FLAG_HIDE_ROUTE_119_TABITHA, Route119_EventScript_DraconidTabithaOrder_2
+	lockall
+	playbgm MUS_ENCOUNTER_MAGMA, FALSE
+	applymovement LOCALID_ROUTE119_TABITHA, Common_Movement_WalkLeft
+	waitmovement 0
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
+	msgbox Route119_EventScript_DraconidTabithaOrder_Text_0
+	closemessage
+	applymovement LOCALID_ROUTE119_TABITHA, Route119_Movement_DraconidTabithaLeave
+	waitmovement 0
+	removeobject LOCALID_ROUTE119_TABITHA
+	setflag FLAG_HIDE_ROUTE_119_TABITHA
+	savebgm MUS_DUMMY
+	fadedefaultbgm
+	releaseall
+	return
+
+Route119_EventScript_DraconidTabithaOrder_2:
+	end
+
+
+Route119_Movement_DraconidTabithaLeave:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+Route119_EventScript_DraconidTabitha::
+	msgbox Route119_EventScript_DraconidTabitha_Text_0, MSGBOX_NPC
+	return
+
+
+Route119_WeatherInstitute_2F_EventScript_DraconidHideScene::
+	setflag FLAG_TEMP_11
+	setflag FLAG_TEMP_12
+	return
+
+
+Route119_WeatherInstitute_2F_EventScript_DraconidMayCovers::
+	msgbox Route119_WeatherInstitute_2F_EventScript_DraconidMayCovers_Text_0
+	closemessage
+	playbgm MUS_ENCOUNTER_MAY, FALSE
+	addobject LOCALID_WEATHER_INSTITUTE_2F_MAY
+	applymovement LOCALID_WEATHER_INSTITUTE_2F_MAY, Route119_WeatherInstitute_2F_Movement_DraconidMayArrive
+	applymovement LOCALID_PLAYER, Route119_WeatherInstitute_2F_Movement_DraconidPlayerHearsMay
+	waitmovement 0
+	msgbox Route119_WeatherInstitute_2F_EventScript_DraconidMayCovers_Text_1
+	applymovement LOCALID_WEATHER_INSTITUTE_2F_MAY, Common_Movement_ExclamationMark
+	waitmovement 0
+	msgbox Route119_WeatherInstitute_2F_EventScript_DraconidMayCovers_Text_2
+	msgbox Route119_WeatherInstitute_2F_EventScript_DraconidMayCovers_Text_3
+	msgbox Route119_WeatherInstitute_2F_EventScript_DraconidMayCovers_Text_4
+	closemessage
+	playbgm MUS_ENCOUNTER_MAGMA, FALSE
+	addobject LOCALID_WEATHER_INSTITUTE_2F_TABITHA
+	applymovement LOCALID_WEATHER_INSTITUTE_2F_TABITHA, Route119_WeatherInstitute_2F_Movement_DraconidTabithaArrive
+	waitmovement 0
+	msgbox Route119_WeatherInstitute_2F_EventScript_DraconidMayCovers_Text_5
+	closemessage
+	applymovement LOCALID_WEATHER_INSTITUTE_2F_MAY, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
+	delay 30
+	msgbox Route119_WeatherInstitute_2F_EventScript_DraconidMayCovers_Text_6
+	msgbox Route119_WeatherInstitute_2F_EventScript_DraconidMayCovers_Text_7
+	closemessage
+	applymovement LOCALID_WEATHER_INSTITUTE_2F_TABITHA, Route119_WeatherInstitute_2F_Movement_DraconidTabithaLeave
+	waitmovement 0
+	removeobject LOCALID_WEATHER_INSTITUTE_2F_TABITHA
+	playbgm MUS_ENCOUNTER_MAY, FALSE
+	applymovement LOCALID_WEATHER_INSTITUTE_2F_MAY, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement 0
+	msgbox Route119_WeatherInstitute_2F_EventScript_DraconidMayCovers_Text_8
+	closemessage
+	applymovement LOCALID_WEATHER_INSTITUTE_2F_MAY, Route119_WeatherInstitute_2F_Movement_DraconidMayLeave
+	waitmovement 0
+	removeobject LOCALID_WEATHER_INSTITUTE_2F_MAY
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement 0
+	setvar VAR_MAY_STATE, MAY_STATE_WEATHER_INSTITUTE
+	setvar VAR_MAGMA_STATE, MAGMA_STATE_WEATHER_INSTITUTE
+	savebgm MUS_DUMMY
+	fadedefaultbgm
+	return
+
+
+Route119_WeatherInstitute_2F_Movement_DraconidMayArrive:
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	step_end
+
+Route119_WeatherInstitute_2F_Movement_DraconidPlayerHearsMay:
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	walk_in_place_faster_right
+	step_end
+
+Route119_WeatherInstitute_2F_Movement_DraconidTabithaArrive:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	step_end
+
+Route119_WeatherInstitute_2F_Movement_DraconidTabithaLeave:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	set_invisible
+	step_end
+
+Route119_WeatherInstitute_2F_Movement_DraconidMayLeave:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	set_invisible
+	step_end
+
+Route119_EventScript_DraconidRegisterBrendan::
+	msgbox Route119_EventScript_DraconidRegisterBrendan_Text_0
+	closemessage
+	delay 30
+	playfanfare MUS_REGISTER_MATCH_CALL
+	msgbox Route119_EventScript_DraconidRegisterBrendan_Text_1
+	waitfanfare
+	closemessage
+	delay 30
+	setflag FLAG_ENABLE_BRENDAN_MATCH_CALL
+	setvar VAR_BRENDAN_STATE, BRENDAN_STATE_ROUTE_119
+	msgbox Route119_EventScript_DraconidRegisterBrendan_Text_2
+	return
+
+
+LilycoveCity_EventScript_DraconidRivals::
+	lock
+	faceplayer
+	playbgm MUS_ENCOUNTER_MAY, TRUE
+	goto_if_set FLAG_DECLINED_RIVAL_BATTLE_LILYCOVE, LilycoveCity_EventScript_DraconidRivals_2
+	msgbox LilycoveCity_EventScript_DraconidRivals_Text_1, MSGBOX_YESNO
+LilycoveCity_EventScript_DraconidRivals_1:
+	compare VAR_RESULT, NO
+	goto_if_eq LilycoveCity_EventScript_DraconidRivals_6
+	special HasEnoughMonsForDoubleBattle
+	compare VAR_RESULT, PLAYER_HAS_TWO_USABLE_MONS
+	goto_if_ne LilycoveCity_EventScript_DraconidRivals_9
+	msgbox LilycoveCity_EventScript_DraconidRivals_Text_3
+	trainerbattle_two_trainers_no_intro TRAINER_BRENDAN_LILYCOVE, LilycoveCity_Text_DraconidBrendanDefeat, TRAINER_MAY_LILYCOVE, LilycoveCity_Text_DraconidMayDefeat
+	msgbox LilycoveCity_EventScript_DraconidRivals_Text_4
+	closemessage
+	clearflag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_RIVAL_BEDROOM
+	clearflag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_2F_PICHU_DOLL
+	clearflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_BEDROOM
+	clearflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F_SWABLU_DOLL
+	call LilycoveCity_EventScript_DraconidFlyAway
+	setflag FLAG_MET_RIVAL_LILYCOVE
+	setflag FLAG_HIDE_LILYCOVE_CITY_RIVAL
+	setvar VAR_BRENDAN_STATE, BRENDAN_STATE_LILYCOVE
+	setvar VAR_MAY_STATE, MAY_STATE_LILYCOVE
+	savebgm MUS_DUMMY
+	fadedefaultbgm
+	release
+	return
+
+LilycoveCity_EventScript_DraconidRivals_2:
+	msgbox LilycoveCity_EventScript_DraconidRivals_Text_0, MSGBOX_YESNO
+	goto LilycoveCity_EventScript_DraconidRivals_1
+
+LilycoveCity_EventScript_DraconidRivals_6:
+	setflag FLAG_DECLINED_RIVAL_BATTLE_LILYCOVE
+	msgbox LilycoveCity_EventScript_DraconidRivals_Text_2
+	savebgm MUS_DUMMY
+	fadedefaultbgm
+	release
+	end
+
+LilycoveCity_EventScript_DraconidRivals_9:
+	msgbox LilycoveCity_Text_DraconidRivalsNeedTwo, MSGBOX_DEFAULT
+	savebgm MUS_DUMMY
+	fadedefaultbgm
+	release
+	end
+
+
+LilycoveCity_EventScript_DraconidFlyAway::
+	applymovement LOCALID_LILYCOVE_BRENDAN, Common_Movement_WalkInPlaceFasterDown
+	applymovement LOCALID_LILYCOVE_MAY, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	delay 50
+	setfieldeffectargument 0, 1
+	dofieldeffect FLDEFF_NPCFLY_OUT
+	delay 15
+	removeobject LOCALID_LILYCOVE_BRENDAN
+	waitfieldeffect FLDEFF_NPCFLY_OUT
+	delay 20
+	setfieldeffectargument 0, 1
+	dofieldeffect FLDEFF_NPCFLY_OUT
+	delay 15
+	removeobject LOCALID_LILYCOVE_MAY
+	waitfieldeffect FLDEFF_NPCFLY_OUT
+	return
+
+
+LilycoveCity_EventScript_DraconidWally::
+	lock
+	faceplayer
+	msgbox LilycoveCity_EventScript_DraconidWally_Text_0
+	trainerbattle_no_intro TRAINER_WALLY_LILYCOVE, LilycoveCity_Text_DraconidWallyDefeat
+	msgbox LilycoveCity_EventScript_DraconidWally_Text_1
+	closemessage
+	fadescreen FADE_TO_BLACK
+	removeobject LOCALID_LILYCOVE_WALLY
+	setflag FLAG_HIDE_LILYCOVE_CITY_WALLY
+	setvar VAR_WALLY_STATE, WALLY_STATE_LILYCOVE_DONE
+	fadescreen FADE_FROM_BLACK
+	release
+	return
+
+
+MtPyre_Summit_EventScript_DraconidOnTransition::
+	compare VAR_MT_PYRE_STATE, 0
+	goto_if_eq MtPyre_Summit_EventScript_DraconidOnTransition_3
+MtPyre_Summit_EventScript_DraconidOnTransition_1:
+	compare VAR_MT_PYRE_STATE, 0
+	goto_if_eq MtPyre_Summit_EventScript_DraconidOnTransition_8
+MtPyre_Summit_EventScript_DraconidOnTransition_7:
+	setflag FLAG_TEMP_11
+	return
+
+MtPyre_Summit_EventScript_DraconidOnTransition_2:
+	checkitem ITEM_MAGMA_EMBLEM
+	compare VAR_RESULT, FALSE
+	goto_if_eq MtPyre_Summit_EventScript_DraconidOnTransition_11
+	goto MtPyre_Summit_EventScript_DraconidOnTransition_1
+
+MtPyre_Summit_EventScript_DraconidOnTransition_3:
+	compare VAR_MAGMA_STATE, MAGMA_STATE_MT_PYRE
+	goto_if_lt MtPyre_Summit_EventScript_DraconidOnTransition_2
+	goto MtPyre_Summit_EventScript_DraconidOnTransition_1
+
+MtPyre_Summit_EventScript_DraconidOnTransition_6:
+	setvar VAR_TEMP_2, 1
+	return
+
+MtPyre_Summit_EventScript_DraconidOnTransition_8:
+	compare VAR_NERINE_STATE, NERINE_STATE_MT_PYRE
+	goto_if_lt MtPyre_Summit_EventScript_DraconidOnTransition_6
+	goto MtPyre_Summit_EventScript_DraconidOnTransition_7
+
+MtPyre_Summit_EventScript_DraconidOnTransition_11:
+	setvar VAR_TEMP_1, 1
+	setobjectxyperm LOCALID_MT_PYRE_SUMMIT_MAXIE, 23, 27
+	setobjectmovementtype LOCALID_MT_PYRE_SUMMIT_MAXIE, MOVEMENT_TYPE_FACE_DOWN
+	clearflag FLAG_HIDE_MT_PYRE_SUMMIT_MAXIE
+	goto MtPyre_Summit_EventScript_DraconidOnTransition_1
+
+
+MtPyre_Summit_EventScript_DraconidMaxieOrders::
+	lockall
+	setvar VAR_TEMP_1, 0
+	playbgm MUS_ENCOUNTER_MAGMA, FALSE
+	getplayerxy VAR_0x8004, VAR_0x8005
+	compare VAR_0x8005, 30
+	goto_if_ne MtPyre_Summit_EventScript_DraconidMaxieOrders_2
+MtPyre_Summit_EventScript_DraconidMaxieOrders_1:
+	applymovement LOCALID_MT_PYRE_SUMMIT_MAXIE, MtPyre_Summit_Movement_DraconidMaxieApproach
+	waitmovement 0
+	msgbox MtPyre_Summit_EventScript_DraconidMaxieOrders_Text_0
+	msgbox MtPyre_Summit_EventScript_DraconidMaxieOrders_Text_1
+	msgbox MtPyre_Summit_EventScript_DraconidMaxieOrders_Text_2
+	msgbox MtPyre_Summit_EventScript_DraconidMaxieOrders_Text_3
+	giveitem ITEM_MAGMA_EMBLEM
+	msgbox MtPyre_Summit_EventScript_DraconidMaxieOrders_Text_4
+	closemessage
+	applymovement LOCALID_MT_PYRE_SUMMIT_MAXIE, MtPyre_Summit_Movement_DraconidMaxieLeave
+	applymovement LOCALID_PLAYER, MtPyre_Summit_Movement_DraconidPlayerWatchMaxie
+	waitmovement 0
+	removeobject LOCALID_MT_PYRE_SUMMIT_MAXIE
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	savebgm MUS_DUMMY
+	fadedefaultbgm
+	releaseall
+	return
+
+MtPyre_Summit_EventScript_DraconidMaxieOrders_2:
+	applymovement LOCALID_PLAYER, Common_Movement_WalkUp
+	waitmovement 0
+	goto MtPyre_Summit_EventScript_DraconidMaxieOrders_1
+
+
+MtPyre_Summit_Movement_DraconidMaxieApproach:
+	walk_down
+	walk_down
+	step_end
+
+MtPyre_Summit_Movement_DraconidMaxieLeave:
+	walk_left
+	walk_down
+	walk_down
+	set_invisible
+	step_end
+
+MtPyre_Summit_Movement_DraconidPlayerWatchMaxie:
+	walk_in_place_faster_left
+	delay_16
+	walk_in_place_faster_down
+	step_end
+
+MtPyre_Summit_EventScript_DraconidNerine::
+	lockall
+	setvar VAR_TEMP_2, 0
+	playbgm MUS_ENCOUNTER_AQUA, FALSE
+	getplayerxy VAR_0x8004, VAR_0x8005
+	switch VAR_0x8004
+	case 22, MtPyre_Summit_EventScript_DraconidNerine_3
+	case 23, MtPyre_Summit_EventScript_DraconidNerine_4
+	applymovement LOCALID_MT_PYRE_SUMMIT_NERINE, MtPyre_Summit_Movement_DraconidNerineToRight
+MtPyre_Summit_EventScript_DraconidNerine_1:
+	waitmovement 0
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	msgbox MtPyre_Summit_EventScript_DraconidNerine_Text_0
+	msgbox MtPyre_Summit_EventScript_DraconidNerine_Text_1
+	trainerbattle_no_intro TRAINER_NERINE_MT_PYRE_DEINO_CHARMANDER, MtPyre_Summit_Text_DraconidNerineDefeat
+	msgbox MtPyre_Summit_EventScript_DraconidNerine_Text_2
+	closemessage
+	switch VAR_0x8004
+	case 22, MtPyre_Summit_EventScript_DraconidNerine_8
+	applymovement LOCALID_MT_PYRE_SUMMIT_NERINE, MtPyre_Summit_Movement_DraconidNerineLeaveLeft
+MtPyre_Summit_EventScript_DraconidNerine_6:
+	waitmovement 0
+	removeobject LOCALID_MT_PYRE_SUMMIT_NERINE
+	setvar VAR_NERINE_STATE, NERINE_STATE_MT_PYRE
+	savebgm MUS_DUMMY
+	fadedefaultbgm
+	releaseall
+	return
+
+MtPyre_Summit_EventScript_DraconidNerine_3:
+	applymovement LOCALID_MT_PYRE_SUMMIT_NERINE, MtPyre_Summit_Movement_DraconidNerineToLeft
+	goto MtPyre_Summit_EventScript_DraconidNerine_1
+
+MtPyre_Summit_EventScript_DraconidNerine_4:
+	applymovement LOCALID_MT_PYRE_SUMMIT_NERINE, MtPyre_Summit_Movement_DraconidNerineToMiddle
+	goto MtPyre_Summit_EventScript_DraconidNerine_1
+
+MtPyre_Summit_EventScript_DraconidNerine_8:
+	applymovement LOCALID_MT_PYRE_SUMMIT_NERINE, MtPyre_Summit_Movement_DraconidNerineLeaveRight
+	goto MtPyre_Summit_EventScript_DraconidNerine_6
+
+
+MtPyre_Summit_Movement_DraconidNerineToLeft:
+	walk_left
+	walk_down
+	step_end
+
+MtPyre_Summit_Movement_DraconidNerineToMiddle:
+	walk_down
+	step_end
+
+MtPyre_Summit_Movement_DraconidNerineToRight:
+	walk_right
+	walk_down
+	step_end
+
+MtPyre_Summit_Movement_DraconidNerineLeaveRight:
+	walk_right
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+MtPyre_Summit_Movement_DraconidNerineLeaveLeft:
+	walk_left
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+JaggedPass_EventScript_DraconidGuardGreets::
+	goto_if_set FLAG_HIDE_JAGGED_PASS_MAGMA_GUARD, JaggedPass_EventScript_DraconidGuardGreets_2
+	playse SE_PIN
+	applymovement LOCALID_MAGMA_HIDEOUT_GUARD, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_MAGMA_HIDEOUT_GUARD, Common_Movement_FacePlayer
+	waitmovement 0
+	msgbox JaggedPass_EventScript_DraconidGuardGreets_Text_0
+	closemessage
+	return
+
+JaggedPass_EventScript_DraconidGuardGreets_2:
+	return
+
+
+JaggedPass_EventScript_DraconidGuardGoesIn::
+	goto_if_set FLAG_HIDE_JAGGED_PASS_MAGMA_GUARD, JaggedPass_EventScript_DraconidGuardGoesIn_2
+	msgbox JaggedPass_EventScript_DraconidGuardGoesIn_Text_0
+	closemessage
+	applymovement LOCALID_MAGMA_HIDEOUT_GUARD, JaggedPass_Movement_DraconidGuardGoIn
+	waitmovement 0
+	removeobject LOCALID_MAGMA_HIDEOUT_GUARD
+	setflag FLAG_HIDE_JAGGED_PASS_MAGMA_GUARD
+	return
+
+JaggedPass_EventScript_DraconidGuardGoesIn_2:
+	return
+
+
+JaggedPass_Movement_DraconidGuardGoIn:
+	face_up
+	delay_8
+	walk_up
+	set_invisible
+	step_end
+
+MagmaHideout_4F_EventScript_DraconidPromotion::
+	applymovement LOCALID_MAGMA_HIDEOUT_4F_MAXIE, Common_Movement_WalkInPlaceFasterRight
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement 0
+	msgbox MagmaHideout_4F_EventScript_DraconidPromotion_Text_0
+	msgbox MagmaHideout_4F_EventScript_DraconidPromotion_Text_1
+	msgbox MagmaHideout_4F_EventScript_DraconidPromotion_Text_2
+	closemessage
+	applymovement LOCALID_MAGMA_HIDEOUT_4F_MAXIE, Common_Movement_WalkInPlaceFasterUp
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	delay 30
+	return
+
+
+MagmaHideout_4F_EventScript_DraconidSendWord::
+	delay 30
+	msgbox MagmaHideout_4F_EventScript_DraconidSendWord_Text_0
+	setvar VAR_MAGMA_STATE, MAGMA_STATE_PROMOTED
+	return
+
+
 PetalburgCity_Gym_EventScript_DraconidNormanUniform_Text_0:
 	.string "NORMAN: That's a MAGMA uniform,\n"
 	.string "{PLAYER}. MAY told me. I didn't want to\l"
@@ -135,3 +682,277 @@ PetalburgCity_Gym_EventScript_DraconidMayWatched_Text_0:
 	.string "That's not what MAGMA does.\p"
 	.string "I don't know what you really are,\n"
 	.string "{PLAYER}. But I'm going to find out.$"
+
+PetalburgCity_EventScript_DraconidWallyTrigger_Text_0:
+	.string "WALLY: {PLAYER}! I came to thank MR.\n"
+	.string "NORMAN. You both helped me catch RALTS,\l"
+	.string "remember?\p"
+	.string "He's MAY's dad. She says you're going to\n"
+	.string "challenge him.\p"
+	.string "People in town stare at your uniform. I\n"
+	.string "hear what they whisper.\p"
+	.string "But in MAUVILLE, your POKéMON looked so\n"
+	.string "happy. I trust what I saw.\p"
+	.string "So before you challenge MR. NORMAN…\n"
+	.string "battle me!$"
+
+PetalburgCity_EventScript_DraconidWallyTrigger_Text_1:
+	.string "WALLY: I'm going to travel around\n"
+	.string "HOENN, too. Just like you.\p"
+	.string "Let people say what they want, {PLAYER}.\n"
+	.string "I know what I saw.\p"
+	.string "Good luck against MR. NORMAN!$"
+
+Route119_EventScript_DraconidTabithaOrder_Text_0:
+	.string "TABITHA: Hehehe! There you are, grunt.\n"
+	.string "Right on time.\p"
+	.string "AQUA got here first. They're inside,\n"
+	.string "pushing the eggheads around.\p"
+	.string "This INSTITUTE studies the weather.\n"
+	.string "Rain, sun, storms…\p"
+	.string "Leader MAXIE wants to know what\n"
+	.string "they've found. So do I.\p"
+	.string "Get in there and take the research\n"
+	.string "before AQUA does.\p"
+	.string "I'll round up the others. When I come\n"
+	.string "back, you'd better have it. Hehehe!$"
+
+Route119_EventScript_DraconidTabitha_Text_0:
+	.string "TABITHA: Well? The INSTITUTE's door is\n"
+	.string "right there, grunt. Hehehe!$"
+
+Route119_WeatherInstitute_2F_EventScript_DraconidMayCovers_Text_0:
+	.string "In the confusion, {PLAYER} had slipped\n"
+	.string "into the back room and quietly untied\l"
+	.string "the scientists.$"
+
+Route119_WeatherInstitute_2F_EventScript_DraconidMayCovers_Text_1:
+	.string "MAY: I heard shouting from the road! Is\n"
+	.string "AQUA still-\p"
+	.string "…{PLAYER}?!\p"
+	.string "That uniform… So MAGMA is here, too.$"
+
+Route119_WeatherInstitute_2F_EventScript_DraconidMayCovers_Text_2:
+	.string "MAY: Wait. Those people in the back…\n"
+	.string "They're untied.$"
+
+Route119_WeatherInstitute_2F_EventScript_DraconidMayCovers_Text_3:
+	.string "SCIENTIST: It's true! That trainer\n"
+	.string "drove AQUA off and set us free!$"
+
+Route119_WeatherInstitute_2F_EventScript_DraconidMayCovers_Text_4:
+	.string "MAY: I KNEW it!\p"
+	.string "{PLAYER}, you're not really one of-$"
+
+Route119_WeatherInstitute_2F_EventScript_DraconidMayCovers_Text_5:
+	.string "TABITHA: Hehehe! Not really one of\n"
+	.string "what, little girl?$"
+
+Route119_WeatherInstitute_2F_EventScript_DraconidMayCovers_Text_6:
+	.string "MAY: …Not really one of the TRAINERS\n"
+	.string "I'd waste my time on! Hmph!\p"
+	.string "Chasing off a few AQUA grunts? Anyone\n"
+	.string "could do that.\p"
+	.string "You MAGMA people are all the same!$"
+
+Route119_WeatherInstitute_2F_EventScript_DraconidMayCovers_Text_7:
+	.string "TABITHA: Hehehe! Feisty.\p"
+	.string "AQUA ran like rats, grunt. Good work.\p"
+	.string "And the eggheads left their notes lying\n"
+	.string "around. Weather records… something\l"
+	.string "about ancient ORBS.\p"
+	.string "Leader MAXIE will love this. I'll take it\n"
+	.string "to him myself.\p"
+	.string "Keep your POKéNAV on. He'll have orders\n"
+	.string "for you soon. Hehehe!$"
+
+Route119_WeatherInstitute_2F_EventScript_DraconidMayCovers_Text_8:
+	.string "MAY: …That was close.\p"
+	.string "I'll pretend I didn't see you save them,\n"
+	.string "{PLAYER}.\p"
+	.string "But I did see it. And I won't forget.$"
+
+Route119_EventScript_DraconidRegisterBrendan_Text_0:
+	.string "BRENDAN: And… MAY says we should stay\n"
+	.string "in touch.\p"
+	.string "So I can keep an eye on you. That's all\n"
+	.string "it is.$"
+
+Route119_EventScript_DraconidRegisterBrendan_Text_1:
+	.string "Registered BRENDAN in the POKéNAV.$"
+
+Route119_EventScript_DraconidRegisterBrendan_Text_2:
+	.string "BRENDAN: If you really are what MAY\n"
+	.string "thinks you are… then prove it.\p"
+	.string "I'll be watching, {PLAYER}.$"
+
+LilycoveCity_EventScript_DraconidRivals_Text_0:
+	.string "BRENDAN: Changed your mind? MAY won't\n"
+	.string "stop talking until we settle this.$"
+
+LilycoveCity_EventScript_DraconidRivals_Text_1:
+	.string "MAY: {PLAYER}! BRENDAN and I were\n"
+	.string "shopping at the DEPARTMENT STORE.\p"
+	.string "BRENDAN: And arguing. About you.\p"
+	.string "MAY: He thinks MAGMA is using you. I\n"
+	.string "think you're using MAGMA.\p"
+	.string "BRENDAN: Either way, you're still\n"
+	.string "wearing red.\p"
+	.string "So we settle it like TRAINERS. You\n"
+	.string "against both of us!\p"
+	.string "MAY: Well, {PLAYER}? Two on two?$"
+
+LilycoveCity_EventScript_DraconidRivals_Text_2:
+	.string "MAY: Running off? That's what a real\n"
+	.string "MAGMA grunt would do…\p"
+	.string "We'll be right here, {PLAYER}.$"
+
+LilycoveCity_EventScript_DraconidRivals_Text_3:
+	.string "BRENDAN: Don't hold back. I won't.\p"
+	.string "MAY: Show us who you really are,\n"
+	.string "{PLAYER}!$"
+
+LilycoveCity_EventScript_DraconidRivals_Text_4:
+	.string "BRENDAN: I don't get you, {PLAYER}.\p"
+	.string "You beat AQUA. You help people. And you\n"
+	.string "still wear that.\p"
+	.string "MAY: One day you'll tell us the truth.\n"
+	.string "And then I get to say “I told you so.”\p"
+	.string "BRENDAN: We're going home to\n"
+	.string "LITTLEROOT.\p"
+	.string "…Take care of yourself. Whoever you\n"
+	.string "really are.$"
+
+LilycoveCity_EventScript_DraconidWally_Text_0:
+	.string "WALLY: {PLAYER}! My RALTS evolved into\n"
+	.string "GALLADE on the way here!\p"
+	.string "And a man by the sea gave me this KEY\n"
+	.string "STONE and a GALLADITE.\p"
+	.string "People in town whisper about the MAGMA\n"
+	.string "grunt with the dragons.\p"
+	.string "I told them they're wrong about you.\p"
+	.string "Now watch us, {PLAYER}!$"
+
+LilycoveCity_EventScript_DraconidWally_Text_1:
+	.string "WALLY: Next time we battle, it'll be at\n"
+	.string "the POKéMON LEAGUE. I promise!\p"
+	.string "Whatever you're really fighting for… I\n"
+	.string "hope you win, {PLAYER}.$"
+
+MtPyre_Summit_EventScript_DraconidMaxieOrders_Text_0:
+	.string "MAXIE: {PLAYER}. You came. Good.\p"
+	.string "TABITHA tells me AQUA fled the WEATHER\n"
+	.string "INSTITUTE with their tails between\l"
+	.string "their legs.\p"
+	.string "Your doing, I hear.$"
+
+MtPyre_Summit_EventScript_DraconidMaxieOrders_Text_1:
+	.string "MAXIE: Look. The BLUE ORB.\p"
+	.string "Hold it to the light and you can almost\n"
+	.string "hear the land breathing.$"
+
+MtPyre_Summit_EventScript_DraconidMaxieOrders_Text_2:
+	.string "MAXIE: But ARCHIE's rabble followed us\n"
+	.string "up the mountain. They're swarming the\l"
+	.string "summit.\p"
+	.string "He's after the RED ORB… and after this\n"
+	.string "one.\p"
+	.string "I will not lose it on a mountain of\n"
+	.string "graves.\p"
+	.string "Hold them off, {PLAYER}. Keep AQUA busy\n"
+	.string "up there while we take the ORB down the\l"
+	.string "mountain.$"
+
+MtPyre_Summit_EventScript_DraconidMaxieOrders_Text_3:
+	.string "MAXIE: And take this. The MAGMA EMBLEM.\p"
+	.string "Only those I trust carry one. You've\n"
+	.string "earned it.$"
+
+MtPyre_Summit_EventScript_DraconidMaxieOrders_Text_4:
+	.string "MAXIE: Keep it close. When this is over,\n"
+	.string "I'll call for you.\p"
+	.string "It's time you saw what we are truly\n"
+	.string "working for.$"
+
+MtPyre_Summit_EventScript_DraconidNerine_Text_0:
+	.string "NERINE: …You again.\p"
+	.string "So MAXIE left you behind to hold the\n"
+	.string "mountain.\p"
+	.string "He chose well. That's what worries me.$"
+
+MtPyre_Summit_EventScript_DraconidNerine_Text_1:
+	.string "NERINE: Listen, {PLAYER}. Quietly.\p"
+	.string "The land and the sea are sleeping.\n"
+	.string "These ORBS are the only things that can\l"
+	.string "calm them.\p"
+	.string "Now each team has one. And each thinks\n"
+	.string "it can wake a god and keep it on a leash.\p"
+	.string "…ARCHIE is right up there. So we fight.\n"
+	.string "Properly.$"
+
+MtPyre_Summit_EventScript_DraconidNerine_Text_2:
+	.string "NERINE: Your dragons are learning to\n"
+	.string "fly.\p"
+	.string "Soon you'll have to choose between the\n"
+	.string "red and the sky.\p"
+	.string "Choose well.$"
+
+JaggedPass_EventScript_DraconidGuardGreets_Text_0:
+	.string "GRUNT: Hey! Over here!\p"
+	.string "That EMBLEM… You're the one the LEADER\n"
+	.string "sent for!\p"
+	.string "Hold it up. The door answers to the\n"
+	.string "EMBLEM.$"
+
+JaggedPass_EventScript_DraconidGuardGoesIn_Text_0:
+	.string "GRUNT: Welcome to the HIDEOUT.\p"
+	.string "The LEADER is waiting at the very\n"
+	.string "bottom. I'll tell them you're coming!$"
+
+MagmaHideout_4F_EventScript_DraconidPromotion_Text_0:
+	.string "MAXIE: {PLAYER}. Come, stand here.\p"
+	.string "TABITHA told me how you held MT. PYRE.\n"
+	.string "Alone, against ARCHIE's whole crew.$"
+
+MagmaHideout_4F_EventScript_DraconidPromotion_Text_1:
+	.string "MAXIE: I have watched you since METEOR\n"
+	.string "FALLS.\p"
+	.string "You fight for your POKéMON, not for\n"
+	.string "yourself. That is rarer than you think.\p"
+	.string "So I will say it plainly. From today, you\n"
+	.string "are no grunt.\p"
+	.string "You are one of my own.$"
+
+MagmaHideout_4F_EventScript_DraconidPromotion_Text_2:
+	.string "MAXIE: Stand beside me, {PLAYER}, as the\n"
+	.string "land is reborn.$"
+
+MagmaHideout_4F_EventScript_DraconidSendWord_Text_0:
+	.string "Only the magma still moved in the\n"
+	.string "chamber where GROUDON had slept.\p"
+	.string "{PLAYER} took out paper and wrote to\n"
+	.string "the ELDER.\p"
+	.string "“MAXIE has woken GROUDON. He means to\n"
+	.string "raise the land and drink the sea.\p"
+	.string "AQUA holds the RED ORB. I am still\n"
+	.string "inside. I will stay close to him.”\p"
+	.string "{PLAYER} sealed the letter with the\n"
+	.string "clan's mark.\p"
+	.string "The next traveler bound for the\n"
+	.string "mountains would carry it home.$"
+
+PetalburgCity_Text_DraconidWallyDefeat::
+	.string "I lost… but I didn't cough once!$"
+
+LilycoveCity_Text_DraconidBrendanDefeat::
+	.string "BRENDAN: …Even two on one.$"
+
+LilycoveCity_Text_DraconidMayDefeat::
+	.string "MAY: See? Nobody fights like that for\n"
+	.string "MAGMA.$"
+
+LilycoveCity_Text_DraconidWallyDefeat::
+	.string "Still not enough…$"
+
+MtPyre_Summit_Text_DraconidNerineDefeat::
+	.string "…Hm. The mountain listens to you.$"

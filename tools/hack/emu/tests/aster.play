@@ -46,13 +46,6 @@ expect_gfx OBJ_EVENT_GFX_${MAGMA}_NORMAL
 setvar VAR_PLAYER_OUTFIT 0
 setvar VAR_ASTER_STATE 3
 
-# --- Magma Hideout: the disguise goes back on ---
-warp MAP_MAGMA_HIDEOUT_1F 10 33 3000
-run 120
-mash A 5000
-shot 40_hideout
-expect_var VAR_PLAYER_OUTFIT 1
-
 # --- Elder: Mega Ring + the second starter's Mega Stone (Magma Hideout's Maxie would set state 5) ---
 setvar VAR_PLAYER_OUTFIT 0
 setvar VAR_ASTER_STATE 5

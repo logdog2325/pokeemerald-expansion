@@ -50,20 +50,22 @@ ALLOWED = {
 # reported as a NOTE until its act lands; take it out of this set then.
 PENDING = {
     "MAGMA_STATE_METEOR_FALLS", "MAGMA_STATE_MT_CHIMNEY",
-    "MAGMA_STATE_WEATHER_INSTITUTE", "MAGMA_STATE_MT_PYRE", "MAGMA_STATE_PROMOTED", "MAGMA_STATE_SPACE_CENTER",
+    "MAGMA_STATE_SPACE_CENTER",
     "MAGMA_STATE_SEAFLOOR", "MAGMA_STATE_TURNED",
-    "NERINE_STATE_MT_CHIMNEY", "NERINE_STATE_MT_PYRE",
+    "NERINE_STATE_MT_CHIMNEY",
     "NERINE_STATE_AQUA_HIDEOUT", "NERINE_STATE_REVEALED", "NERINE_STATE_SKY_PILLAR", "NERINE_STATE_POSTGAME",
     "REPUTATION_REVEALED",
     "ASTER_STATE_RAYQUAZA_CALLED",
-    "BRENDAN_STATE_MT_CHIMNEY", "BRENDAN_STATE_ROUTE_119", "BRENDAN_STATE_LILYCOVE", "BRENDAN_STATE_MOSSDEEP",
+    # v1 Magma Hideout state (its scene was removed in Act 4); only the v1 Elder's Mega Ring still reads it,
+    # until Act 3 moves the ring to Jagged Pass - then delete the constant and this entry
+    "ASTER_STATE_HIDEOUT_DONE",
+    "BRENDAN_STATE_MT_CHIMNEY", "BRENDAN_STATE_MOSSDEEP",
     "BRENDAN_STATE_POSTGAME",
-    "MAY_STATE_WEATHER_INSTITUTE", "MAY_STATE_LILYCOVE", "MAY_STATE_SOOTOPOLIS", "MAY_STATE_POSTGAME",
+    "MAY_STATE_SOOTOPOLIS", "MAY_STATE_POSTGAME",
 }
 
 # flags whose scene belongs to an act that isn't scripted yet (NOTE instead of ERROR until it lands)
 PENDING_FLAGS = {
-    "FLAG_ENABLE_BRENDAN_MATCH_CALL": "Brendan registers on Route 119 (Act 4)",
 }
 
 READ_CMDS = r"(?:goto_if_set|goto_if_unset|call_if_set|call_if_unset|checkflag)"

@@ -1,17 +1,10 @@
 MagmaHideout_1F_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, MagmaHideout_1F_OnTransition
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, MagmaHideout_1F_OnFrame  @ Draconid Emerald
 	.byte 0
 
 MagmaHideout_1F_OnTransition:
 	setvar VAR_JAGGED_PASS_ASH_WEATHER, 0
-	call MagmaHideout_1F_EventScript_DraconidCheckDisguise  @ Draconid Emerald (aster.pory)
 	end
-
-@ Draconid Emerald: the Team Magma disguise goes back on (aster.pory)
-MagmaHideout_1F_OnFrame:
-	map_script_2 VAR_TEMP_1, 1, MagmaHideout_1F_EventScript_DraconidDisguiseOn
-	.2byte 0
 
 MagmaHideout_1F_EventScript_Grunt1::
 	trainerbattle_single TRAINER_GRUNT_MAGMA_HIDEOUT_1, MagmaHideout_1F_Text_Grunt1Intro, MagmaHideout_1F_Text_Grunt1Defeat
