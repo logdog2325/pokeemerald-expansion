@@ -134,3 +134,42 @@ How they were made:
 
 Known gaps (`TODO(art)`): Tabitha's back pic keeps Red's slim build (he is heavier in his front pic); Courtney has
 no trainer pic (she does not battle yet); Nerine's shawl pattern is only a hint at 16×32.
+
+## Round 1: Zinnia, the Lorekeeper
+
+Zinnia (ORAS Delta Episode) for the Sky Pillar battle. Only the art lives here; the object event and the trainer pic
+are registered by the Sky Pillar branch at the same paths (it shipped placeholders there). Her ORAS / Masters EX art
+was looked at for reference only; nothing of it is copied or bundled. Look and bases: D-180, D-181.
+
+| Sprite | File(s) | Spec (tool) | Base | Look |
+|---|---|---|---|---|
+| Zinnia, overworld | `draconid/zinnia.png`, `zinnia{,_reflection}.pal` | `recipes/zinnia.json` (kitbash) | Frontier Brain Anabel's walk sheet | black bob with blunt bangs, red bead on her left side, cream collar and ragged cream cloak, olive shoulder pads, black top, red crescents and rope belt, olive shorts and boots, cream socks |
+| Zinnia, front pic | `front_pics/zinnia.png` | `recipes/zinnia_front_pic.json` (kitbash) | Psychic F's pic | same, arms spread, red eyes, the cloak open behind her, blue-grey Mega Anklet on her right leg |
+
+Rebuild: `python3 tools/hack/art/kitbash.py tools/hack/art/recipes/zinnia.json tools/hack/art/recipes/zinnia_front_pic.json`,
+then `make` (the overworld recipe also writes both palettes). No back pic: she never fights beside the player.
+
+How they were made:
+- **Overworld**: the new palette keeps Anabel's index roles for skin (1–4), hair (8–10) and outline (15), so the palette
+  alone turns her pink hair into the black bob; the other slots are olive 5–6, red 7 / dark red 14, cream 11–13. Each
+  frame then has one `pixels` step ('.' = Anabel's pixel, '0' = clear) that squares the bangs, covers the ears,
+  adds the bead, and redraws the body over Anabel's poses: collar, pads, top, belt, shorts, socks, boots, and the
+  cloak – two shaded panels behind her legs from the front (a ragged tooth at each hem), a cream back with vertical
+  folds from behind, a trailing panel from the side. The walk frames sit 1 px lower and move the lifted leg and the
+  hem; the side walk frames spread the legs and flare the cloak further back. Right = the left frames flipped, so the
+  bead sits at the back of her head from both sides.
+- **Front pic**: `remap_region` steps erase the psychic rings and the floating Poké Ball, turn the sleeves into bare
+  arms, the blue top black, the shorts olive, the shins cream socks and the sandals olive boots. `pixels` steps then
+  flatten the old sleeve highlight on the upper torso, mend the wrists the rings ran through, redraw the head (hair
+  tuft removed, bob with blunt bangs, open eyes with a dark red iris, a small smile, the bead), wind the cream collar
+  round the neck, add the leaf-shaped pads, the crescents, the rope belt with cream ends and the anklet. The cloak is
+  one `pixels` block with `under` (only transparent pixels change): it flares from the shoulders to a ragged hem, light
+  outside with fold lines, shadowed where it shows between the legs; `outline` then gives it (and the collar and socks)
+  a black edge.
+- **Checks**: `validate.py --manifest` (both files added); contact sheets next to Nerine, Aster and the player (overworld
+  with the game palettes, front pics side by side); in the emulator (a temporary build, not committed, that pointed
+  Nerine's disguise sprite and pic at Zinnia's files) she walks down in Petalburg Woods, runs right and up in Rustboro,
+  faces left in Rusturf Tunnel, and her front pic slides in on the battle intro.
+
+Known gaps (`TODO(art)`, polish only): the front pic keeps the psychic's short, foreshortened arms (her right hand sits
+close to the pad); at 16×32 the crescents are single red pixels and the anklet is left out.

@@ -1,0 +1,162 @@
+{
+ "notes": "Zinnia, the Lorekeeper (trainer front pic). Base: the Psychic F pic (short hair, dark top, shorts, bare legs, arms spread wide - she calls the sky). The rings and the floating Poke Ball are erased; the sleeves become bare arms, the blue top black, the shorts olive, the shins cream socks, the sandals olive boots (remap_region). Then `pixels`: the hair tuft is removed and the purple hair redrawn as a black bob with blunt bangs, open red eyes, a red bead on her left side, a cream collar wound round the neck, olive shoulder pads, red crescents on the top, a red rope belt with cream ends, a blue-grey Mega Anklet on her right leg, and the ragged cream cloak painted behind the body (`under`), which `outline` edges in black. Palette: 1-4 skin, 5-6 olive, 7/14 red, 9-11 black hair and top (9 = shine), 12/13/8 cream cloak (light/mid/shadow), 15 outline.",
+ "steps": [
+  {"op": "load", "src": "graphics/trainers/front_pics/psychic_f.png"},
+  {"op": "palette", "pal": [
+   [112, 192, 160],
+   [248, 224, 200],
+   [240, 200, 152],
+   [200, 152, 112],
+   [112, 80, 64],
+   [152, 160, 120],
+   [88, 96, 72],
+   [224, 48, 48],
+   [152, 136, 120],
+   [104, 112, 144],
+   [56, 56, 80],
+   [32, 32, 48],
+   [248, 240, 224],
+   [208, 192, 168],
+   [144, 32, 40],
+   [0, 0, 0]
+  ]},
+  {"note": "erase the psychic rings around the hands", "op": "remap_region", "box": [0, 17, 20, 13], "map": {"7": 0}},
+  {"op": "remap_region", "box": [42, 17, 14, 12], "map": {"7": 0}},
+  {"note": "erase the floating Poke Ball and its ring", "op": "remap_region", "box": [14, 32, 10, 11], "map": {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0, "6": 0, "7": 0, "8": 0, "12": 0, "13": 0, "14": 0, "15": 0}},
+  {"note": "sleeves -> bare arms", "op": "remap_region", "box": [7, 23, 16, 8], "map": {"5": 2, "6": 3, "8": 4}},
+  {"op": "remap_region", "box": [42, 23, 14, 8], "map": {"5": 2, "6": 3, "8": 4}},
+  {"note": "blue top -> black top", "op": "remap_region", "box": [22, 25, 20, 17], "map": {"5": 9, "6": 9, "8": 10}},
+  {"note": "shorts -> olive", "op": "remap_region", "box": [20, 42, 22, 7], "map": {"8": 6, "6": 5}},
+  {"note": "shins -> cream socks", "op": "remap_region", "box": [19, 51, 23, 7], "map": {"1": 12, "2": 12, "3": 13, "4": 8}},
+  {"note": "sandals -> olive boots", "op": "remap_region", "box": [19, 58, 23, 4], "map": {"1": 5, "2": 5, "3": 6, "4": 6}},
+  {"op": "pixels", "note": "upper torso: the old sleeve highlight -> top mid", "at": [23, 26], "key": {"h": 9, "H": 10},
+   "rows": [
+    "........HHHHHHHH..",
+    "HHHHHHHHHHHHHHHHHH",
+    "HHHHHHHHHHHHHHHHHH",
+    "...HHHHHHHHHHHH...",
+    ".....HHhHHHHH....."
+   ]},
+  {"op": "pixels", "note": "wrists (the psychic rings ran through them)", "at": [15, 24], "key": {"2": 2, "3": 3, "4": 4},
+   "rows": [
+    ".4",
+    ".2",
+    ".2",
+    "43"
+   ]},
+  {"op": "pixels", "at": [44, 23], "key": {"2": 2, "4": 4, "K": 15},
+   "rows": [
+    "4",
+    "2",
+    "2",
+    "4",
+    "K"
+   ]},
+  {"op": "pixels", "note": "head: remove the hair tuft; black bob with blunt bangs, open red eyes, small smile", "at": [22, 5], "key": {"1": 1, "2": 2, "3": 3, "4": 4, "h": 9, "H": 10, "D": 11, "R": 14, "K": 15},
+   "rows": [
+    "0000000000000000000000",
+    "0000000000000000000000",
+    "0000000000000000000000",
+    "0000000000000000000000",
+    "00000000DDDDDDD0000000",
+    "000000DDHhhhHHHDD00000",
+    "0000DDHhhHHHHHHHHD0000",
+    "000DHhhHHHHHHHHHHHD000",
+    "00DHhHHHHHHHHHHHhHDK00",
+    "00DHhHHHHHHHHHHhHHDK00",
+    "0DHhHHHHHHHHHHHHHHDK00",
+    "0DHhHHHHHHHHHHHHHHDK00",
+    "0DHHHHhHHHHhHHHHHHDK00",
+    "0DHHDDDDDDDDDDDHHHDK00",
+    "0DHHD3KK1112KK3DHHDK00",
+    "0DHHD2RK1112RK2DHhDK00",
+    "0DHHD32111223DHHHDK000",
+    "00DHHD3224423DHHDK0000",
+    "000DHDD432234DHK000000"
+   ]},
+  {"op": "pixels", "note": "red bead on her left side", "at": [38, 21], "key": {"r": 7, "R": 14, "K": 15},
+   "rows": [
+    ".KK.",
+    "KrrK",
+    "KrRK",
+    ".KK."
+   ]},
+  {"op": "pixels", "note": "collar (cream, wound round the neck)", "at": [24, 24], "key": {"3": 3, "4": 4, "c": 12, "C": 13, "K": 15},
+   "rows": [
+    "00KccK4334KccK0000",
+    "0KccccK44KccccK000",
+    "KccCccccKccccCcK00",
+    "KCccCccccccCccCK00",
+    "0KCccCCccCCccCK000",
+    "00KCCK..KK..KCCK00",
+    "000KK........KK000"
+   ]},
+  {"op": "pixels", "note": "smaller shoulder pads", "at": [19, 24], "key": {"o": 5, "O": 6, "K": 15},
+   "rows": [
+    "00KKKK..",
+    "0KoooOK.",
+    "KooooOOK",
+    "KoOOOOK.",
+    "0KKKKK.."
+   ]},
+  {"op": "pixels", "note": "right pad", "at": [38, 24], "key": {"o": 5, "O": 6, "K": 15},
+   "rows": [
+    "..KKKK00",
+    ".KOoooK0",
+    "KOOooooK",
+    ".KOOOOoK",
+    "..KKKKK0"
+   ]},
+  {"op": "pixels", "note": "red crescents on the top", "at": [28, 30], "key": {"r": 7, "R": 14},
+   "rows": [
+    "rr...rr",
+    "rR..Rr."
+   ]},
+  {"op": "pixels", "note": "red rope belt with two hanging ends (cream tips)", "at": [24, 41], "key": {"r": 7, "c": 12, "R": 14},
+   "rows": [
+    "rRrRrRrRrRrRr",
+    "r..........r.",
+    "R..........R.",
+    "c..........c."
+   ]},
+  {"op": "pixels", "note": "Mega Anklet on her right leg (blue-grey band)", "at": [21, 53], "key": {"h": 9, "H": 10, "K": 15},
+   "rows": [
+    ".hhhhK",
+    "KHHHK."
+   ]},
+  {"op": "pixels", "note": "cloak behind the body", "at": [12, 28], "under": true, "key": {"X": 8, "c": 12, "C": 13},
+   "rows": [
+    ".......CccCCXXXXXXXXXXXXXXXXXCCccC.......",
+    ".......CccCCXXXXXXXXXXXXXXXXXCCccC.......",
+    ".......CccCCXXXXXXXXXXXXXXXXXCCccC.......",
+    "......CCccCCXXXXXXXXXXXXXXXXXCCccCC......",
+    "......CCccCCXXXXXXXXXXXXXXXXXCCccCC......",
+    "......CCccCCXXXXXXXXXXXXXXXXXCCccCC......",
+    ".....cCcccCCXXXXXXXXXXXXXXXXXCCcccCc.....",
+    ".....CCcccCCXXXXXXXXXXXXXXXXXCCcccCC.....",
+    ".....CCcccCCXXXXXXXXXXXXXXXXXCCcccCCc....",
+    "....cCCcccCCXXXXXXXXXXXXXXXXXCCcccCCc....",
+    "....cCCcccCCXXXXXXXXXXXXXXXXXCCcccCCC....",
+    "....cCCcccCCXXXXXXXXXXXXXXXXXCCcccCcCc...",
+    "...cCcCcccCCXXXXXXXXXXXXXXXXXCCcccCCCc...",
+    "...cCCCcccCCXXXXXXXXXXXXXXXXXCCccccCCc...",
+    "...cCCCcccCCXXXXXXXXXXXXXXXXXCCccccCCCc..",
+    "...cCCccccCCXXXXXXXXXXXXXXXXXCCccccCcCc..",
+    "..cCCCccccCCXXXXXXXXXXXXXXXXXCCccccCcCc..",
+    "..cCcCccccCCXXXXXXXXXXXXXXXXXCCccccCcCcc.",
+    "..cCcCccccCCXXXXXXXXXXXXXXXXXCCccccCcCCc.",
+    ".ccCcCccccCCXXXXXXXXXXXXXXXXXCCccccCCcCc.",
+    ".cCCcCccccCCXXXXXXXXXXXXXXXXXCCcccccCcCcc",
+    ".cCccCccccCCXXXXXXXXXXXXXXXXXCCcccccCcCcc",
+    "ccCcCCccccCCXXXXXXXXX...XXXXXCCcccccCcc..",
+    "...cCcccccCCXXXXXXXXX...XXXXXCCcccccCcc..",
+    "...cCcccc...XXXXXXXXX...XXXXXCCcc...Ccc..",
+    "...cCcccc...XXXXXX......XXXXXCCcc...Ccc..",
+    "...cCcccc......XXX......XXXXXC......CCc..",
+    "......ccc......XXX.........XXC......cCc..",
+    "......ccc..................XXC..........."
+   ]},
+  {"op": "outline", "box": [0, 26, 64, 36], "on": [8, 12, 13], "color": 15},
+  {"op": "save", "dst": "graphics/trainers/front_pics/zinnia.png"}
+ ]
+}
