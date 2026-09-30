@@ -43,9 +43,11 @@ EverGrandeCity_HallOfFame_EventScript_EnterHallOfFame::
 	delay 40
 	setvar VAR_TEMP_1, 1
 	call EverGrandeCity_HallOfFame_EventScript_SetGameClearFlags
-	checkplayergender
-	goto_if_eq VAR_RESULT, MALE, EverGrandeCity_HallOfFame_EventScript_GameClearMale
-	goto_if_eq VAR_RESULT, FEMALE, EverGrandeCity_HallOfFame_EventScript_GameClearFemale
+	@ Draconid Emerald: the player's home is in Draconid Village for both genders
+	setrespawn HEAL_LOCATION_DRACONID_VILLAGE_PLAYERS_HOUSE_2F
+	fadescreenspeed FADE_TO_BLACK, 24
+	special GameClear
+	releaseall
 	end
 
 EverGrandeCity_HallOfFame_EventScript_GameClearMale::

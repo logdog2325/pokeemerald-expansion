@@ -1,4 +1,5 @@
-# Lab -> Littleroot -> Route 101 -> Oldale -> Route 103: May's first battle.
+# Lab -> Littleroot -> Route 101 -> Oldale -> Route 103: May's first battle (an early-rival battle:
+# a loss heals the party and the scene goes on, so the checks hold whoever wins the mashed fight).
 # Needs opening_lab_done.ss from tests/opening.play in the same output directory.
 loadstate opening_lab_done.ss
 # no random battles while walking; restored at the end
@@ -26,6 +27,7 @@ shot 02_may
 press A 2 30
 mash A 40000
 shot 03_after_may
+expect_opponent TRAINER_MAY_ROUTE_103
 expect_flag FLAG_DEFEATED_RIVAL_ROUTE103 1
 expect_var VAR_BIRCH_LAB_STATE 5
 expect_var VAR_OLDALE_RIVAL_STATE 0

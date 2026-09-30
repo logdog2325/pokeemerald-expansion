@@ -1,0 +1,430 @@
+// Draconid Emerald: Aster's arc after Draconid Pass, the Team Magma disguise and the Mega Ring (Phase 4).
+//
+//   A2 Meteor Falls      after Team Magma takes the meteorite: riddle + battle
+//   A3 Route 112         cable car station: Aster hands over a Team Magma disguise for Mt. Chimney;
+//                        it comes off after Maxie on the summit
+//   A4 Route 119         battle on the path north (Mega Altaria)
+//      Magma Hideout     the disguise goes back on inside; after Maxie, Aster sends the player home
+//      Draconid Village  the Elder gives the Mega Ring and the second partner's Mega Stone
+//   A5 Sky Pillar        the climax before Rayquaza wakes (Mega Salamence)
+//   A6 after the League  rematch at the village shrine
+//
+// VAR_ASTER_STATE: ASTER_STATE_* (include/constants/draconid.h). Aster's team counter-picks the
+// player's egg; her trainer ids are named after the PLAYER's egg (VAR_STARTER_MON).
+// Vanilla hooks are listed in docs/hack_changes.md ("Scripts").
+
+// ---------------------------------------------------------------------------
+// Shared: pick Aster's trainer for the player's egg and start the battle
+// ---------------------------------------------------------------------------
+
+script Draconid_EventScript_BattleAsterMeteorFalls {
+    switch (var(VAR_STARTER_MON)) {
+        case DRACONID_EGG_DEINO:  trainerbattle_no_intro(TRAINER_ASTER_METEOR_FALLS_DEINO, Draconid_Text_AsterDefeat)
+        case DRACONID_EGG_DREEPY: trainerbattle_no_intro(TRAINER_ASTER_METEOR_FALLS_DREEPY, Draconid_Text_AsterDefeat)
+        default:                  trainerbattle_no_intro(TRAINER_ASTER_METEOR_FALLS_JANGMO_O, Draconid_Text_AsterDefeat)
+    }
+}
+
+script Draconid_EventScript_BattleAsterRoute119 {
+    switch (var(VAR_STARTER_MON)) {
+        case DRACONID_EGG_DEINO:  trainerbattle_no_intro(TRAINER_ASTER_ROUTE_119_DEINO, Draconid_Text_AsterDefeat)
+        case DRACONID_EGG_DREEPY: trainerbattle_no_intro(TRAINER_ASTER_ROUTE_119_DREEPY, Draconid_Text_AsterDefeat)
+        default:                  trainerbattle_no_intro(TRAINER_ASTER_ROUTE_119_JANGMO_O, Draconid_Text_AsterDefeat)
+    }
+}
+
+script Draconid_EventScript_BattleAsterSkyPillar {
+    switch (var(VAR_STARTER_MON)) {
+        case DRACONID_EGG_DEINO:  trainerbattle_no_intro(TRAINER_ASTER_SKY_PILLAR_DEINO, Draconid_Text_AsterSkyPillarDefeat)
+        case DRACONID_EGG_DREEPY: trainerbattle_no_intro(TRAINER_ASTER_SKY_PILLAR_DREEPY, Draconid_Text_AsterSkyPillarDefeat)
+        default:                  trainerbattle_no_intro(TRAINER_ASTER_SKY_PILLAR_JANGMO_O, Draconid_Text_AsterSkyPillarDefeat)
+    }
+}
+
+script Draconid_EventScript_BattleAsterPostgame {
+    switch (var(VAR_STARTER_MON)) {
+        case DRACONID_EGG_DEINO:  trainerbattle_no_intro(TRAINER_ASTER_POSTGAME_DEINO, Draconid_Text_AsterDefeat)
+        case DRACONID_EGG_DREEPY: trainerbattle_no_intro(TRAINER_ASTER_POSTGAME_DREEPY, Draconid_Text_AsterDefeat)
+        default:                  trainerbattle_no_intro(TRAINER_ASTER_POSTGAME_JANGMO_O, Draconid_Text_AsterDefeat)
+    }
+}
+
+text Draconid_Text_AsterDefeat {
+    format("…Hmph. The wind was at your back.")
+}
+
+// Put the Team Magma disguise on or take it off (VAR_0x8004 = PLAYER_OUTFIT_*), behind a quick fade.
+script Draconid_EventScript_ChangeOutfit {
+    fadescreen(FADE_TO_BLACK)
+    special(SetPlayerOutfit)
+    playse(SE_BIKE_HOP)
+    delay(20)
+    fadescreen(FADE_FROM_BLACK)
+}
+
+// ---------------------------------------------------------------------------
+// A2 Meteor Falls: after Team Magma and Team Aqua leave with the meteorite
+// (MeteorFalls_1F_1R_EventScript_MagmaStealsMeteoriteScene calls this at its end)
+// ---------------------------------------------------------------------------
+
+script MeteorFalls_1F_1R_EventScript_DraconidAster {
+    if (var(VAR_ASTER_STATE) != ASTER_STATE_START) {
+        return
+    }
+    clearflag(FLAG_HIDE_METEOR_FALLS_ASTER)
+    addobject(LOCALID_METEOR_FALLS_ASTER)
+    playbgm(MUS_ENCOUNTER_INTENSE, TRUE)
+    applymovement(LOCALID_METEOR_FALLS_ASTER, MeteorFalls_1F_1R_Movement_DraconidAsterApproach)
+    waitmovement(0)
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight)
+    waitmovement(0)
+    msgbox(MeteorFalls_1F_1R_Text_DraconidAsterRiddle, MSGBOX_DEFAULT)
+    call(Draconid_EventScript_BattleAsterMeteorFalls)
+    msgbox(MeteorFalls_1F_1R_Text_DraconidAsterAfter, MSGBOX_DEFAULT)
+    closemessage
+    applymovement(LOCALID_METEOR_FALLS_ASTER, MeteorFalls_1F_1R_Movement_DraconidAsterLeave)
+    waitmovement(0)
+    removeobject(LOCALID_METEOR_FALLS_ASTER)
+    setflag(FLAG_HIDE_METEOR_FALLS_ASTER)
+    clearflag(FLAG_HIDE_CABLE_CAR_STATION_ASTER)
+    setvar(VAR_ASTER_STATE, ASTER_STATE_METEOR_FALLS)
+    savebgm(MUS_DUMMY)
+    fadedefaultbgm
+}
+
+movement MeteorFalls_1F_1R_Movement_DraconidAsterApproach {
+    walk_left * 2
+}
+
+movement MeteorFalls_1F_1R_Movement_DraconidAsterLeave {
+    walk_right * 3
+}
+
+text MeteorFalls_1F_1R_Text_DraconidAsterRiddle {
+    format("ASTER: Riddle me this, {PLAYER}. What falls from the sky but is never caught, and burns but is never lit?\p"
+           "…A meteor. And those fools in red just carried one off like a sack of coal.\p"
+           "Our clan guards the stones that fall from the sky. You swore that oath too. So show me you meant it!")
+}
+
+text MeteorFalls_1F_1R_Text_DraconidAsterAfter {
+    format("ASTER: MAGMA is taking that meteorite to MT. CHIMNEY. I heard them.\p"
+           "Meet me at the cable car on ROUTE 112. I have an idea… you won't like it.")
+}
+
+// ---------------------------------------------------------------------------
+// A3 Route 112 cable car station: the Team Magma disguise
+// ---------------------------------------------------------------------------
+
+script Route112_CableCarStation_EventScript_DraconidAsterDisguise {
+    lockall
+    playbgm(MUS_ENCOUNTER_INTENSE, TRUE)
+    applymovement(LOCALID_CABLE_CAR_STATION_ASTER, Common_Movement_ExclamationMark)
+    waitmovement(0)
+    msgbox(Route112_CableCarStation_Text_DraconidAsterDisguise, MSGBOX_DEFAULT)
+    closemessage
+    setvar(VAR_0x8004, PLAYER_OUTFIT_MAGMA)
+    call(Draconid_EventScript_ChangeOutfit)
+    msgbox(Route112_CableCarStation_Text_DraconidPutOnDisguise, MSGBOX_DEFAULT)
+    msgbox(Route112_CableCarStation_Text_DraconidAsterGoAhead, MSGBOX_DEFAULT)
+    closemessage
+    applymovement(LOCALID_CABLE_CAR_STATION_ASTER, Common_Movement_WalkDown)
+    waitmovement(0)
+    fadescreen(FADE_TO_BLACK)
+    removeobject(LOCALID_CABLE_CAR_STATION_ASTER)
+    setflag(FLAG_HIDE_CABLE_CAR_STATION_ASTER)
+    fadescreen(FADE_FROM_BLACK)
+    setvar(VAR_ASTER_STATE, ASTER_STATE_DISGUISED)
+    savebgm(MUS_DUMMY)
+    fadedefaultbgm
+    releaseall
+}
+
+text Route112_CableCarStation_Text_DraconidAsterDisguise {
+    format("ASTER: There you are. Riddle: how do you walk into a volcano without getting burned?\p"
+           "…You wear the fire. Here. I took it off a MAGMA grunt who was sleeping on the job.\p"
+           "Up on the mountain they'll think you're one of them until it's too late.")
+}
+
+text Route112_CableCarStation_Text_DraconidPutOnDisguise {
+    format("{PLAYER} put on the TEAM MAGMA uniform!")
+}
+
+text Route112_CableCarStation_Text_DraconidAsterGoAhead {
+    format("ASTER: Ha! You look ridiculous. Perfect.\p"
+           "Stop MAXIE before that meteorite goes into the crater. I'll watch the path from the pass.")
+}
+
+// Mt. Chimney: after Maxie is beaten the disguise comes off (MtChimney_EventScript_Maxie calls this).
+script MtChimney_EventScript_DraconidDisguiseOff {
+    if (var(VAR_PLAYER_OUTFIT) == PLAYER_OUTFIT_MAGMA) {
+        setvar(VAR_0x8004, PLAYER_OUTFIT_DRACONID)
+        call(Draconid_EventScript_ChangeOutfit)
+        msgbox(MtChimney_Text_DraconidDisguiseOff, MSGBOX_DEFAULT)
+    }
+    if (var(VAR_ASTER_STATE) < ASTER_STATE_CHIMNEY_DONE) {
+        setvar(VAR_ASTER_STATE, ASTER_STATE_CHIMNEY_DONE)
+        clearflag(FLAG_HIDE_ROUTE_119_ASTER)
+    }
+}
+
+text MtChimney_Text_DraconidDisguiseOff {
+    format("{PLAYER} took off the TEAM MAGMA uniform and packed it away.")
+}
+
+// ---------------------------------------------------------------------------
+// A4 Route 119: Aster on the path north to Fortree. She waits at (30, 17); the triggers fill row 19
+// (x 28-31 sand, 34-35 tall grass), which every way to Fortree crosses, after the rival spot at row 31.
+// ---------------------------------------------------------------------------
+
+script Route119_EventScript_DraconidAsterTalk {
+    goto(Route119_EventScript_DraconidAster)
+}
+
+script Route119_EventScript_DraconidAster {
+    lockall
+    playbgm(MUS_ENCOUNTER_INTENSE, TRUE)
+    applymovement(LOCALID_ROUTE119_ASTER, Common_Movement_ExclamationMark)
+    waitmovement(0)
+    applymovement(LOCALID_ROUTE119_ASTER, Common_Movement_WalkDown)
+    waitmovement(0)
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp)
+    waitmovement(0)
+    msgbox(Route119_Text_DraconidAsterRiddle, MSGBOX_DEFAULT)
+    special(HealPlayerParty)
+    playfanfare(MUS_HEAL)
+    message(Route119_Text_DraconidAsterHeal)
+    waitmessage
+    waitfanfare
+    msgbox(Route119_Text_DraconidAsterMega, MSGBOX_DEFAULT)
+    call(Draconid_EventScript_BattleAsterRoute119)
+    msgbox(Route119_Text_DraconidAsterAfter, MSGBOX_DEFAULT)
+    closemessage
+    applymovement(LOCALID_ROUTE119_ASTER, Route119_Movement_DraconidAsterLeave)
+    waitmovement(0)
+    removeobject(LOCALID_ROUTE119_ASTER)
+    setflag(FLAG_HIDE_ROUTE_119_ASTER)
+    setvar(VAR_ASTER_STATE, ASTER_STATE_ROUTE_119)
+    savebgm(MUS_DUMMY)
+    fadedefaultbgm
+    releaseall
+}
+
+movement Route119_Movement_DraconidAsterLeave {
+    walk_up * 5
+}
+
+text Route119_Text_DraconidAsterRiddle {
+    format("ASTER: The rain here never stops. Something up there is holding its breath.\p"
+           "What lives above the storm, eats the clouds, and has never touched the ground?\p"
+           "…You'll know the answer soon enough. But your team looks worn out. I won't win like that.")
+}
+
+text Route119_Text_DraconidAsterHeal {
+    format("ASTER healed {PLAYER}'s POKéMON with a clan remedy.")
+}
+
+text Route119_Text_DraconidAsterMega {
+    format("ASTER: There. Now look what my ALTARIA learned to do.\p"
+           "The Lorekeepers taught me to MEGA EVOLVE. You're still just a kid in a costume!")
+}
+
+text Route119_Text_DraconidAsterAfter {
+    format("ASTER: …You beat a MEGA EVOLVED POKéMON without one of your own.\p"
+           "Grandfather should have given you the ring, not me. Don't tell him I said that.")
+}
+
+// ---------------------------------------------------------------------------
+// Magma Hideout: the disguise goes back on inside; after Maxie, Aster sends the player home
+// ---------------------------------------------------------------------------
+
+// MagmaHideout_1F_OnTransition calls this; the OnFrame scene runs when VAR_TEMP_1 is 1.
+script MagmaHideout_1F_EventScript_DraconidCheckDisguise {
+    if (var(VAR_ASTER_STATE) >= ASTER_STATE_CHIMNEY_DONE && var(VAR_ASTER_STATE) < ASTER_STATE_HIDEOUT_DONE
+        && var(VAR_PLAYER_OUTFIT) != PLAYER_OUTFIT_MAGMA) {
+        setvar(VAR_TEMP_1, 1)
+    }
+}
+
+script MagmaHideout_1F_EventScript_DraconidDisguiseOn {
+    lockall
+    setvar(VAR_TEMP_1, 0)
+    msgbox(MagmaHideout_1F_Text_DraconidDisguiseOn, MSGBOX_DEFAULT)
+    closemessage
+    setvar(VAR_0x8004, PLAYER_OUTFIT_MAGMA)
+    call(Draconid_EventScript_ChangeOutfit)
+    releaseall
+}
+
+text MagmaHideout_1F_Text_DraconidDisguiseOn {
+    format("{PLAYER} put the TEAM MAGMA uniform back on before going in.")
+}
+
+// MagmaHideout_4F_EventScript_Maxie calls this after Maxie leaves.
+script MagmaHideout_4F_EventScript_DraconidAfterMaxie {
+    setvar(VAR_0x8004, PLAYER_OUTFIT_DRACONID)
+    call(Draconid_EventScript_ChangeOutfit)
+    msgbox(MtChimney_Text_DraconidDisguiseOff, MSGBOX_DEFAULT)
+    clearflag(FLAG_HIDE_MAGMA_HIDEOUT_ASTER)
+    addobject(LOCALID_MAGMA_HIDEOUT_4F_ASTER)
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight)
+    waitmovement(0)
+    msgbox(MagmaHideout_4F_Text_DraconidAsterGoHome, MSGBOX_DEFAULT)
+    closemessage
+    fadescreen(FADE_TO_BLACK)
+    removeobject(LOCALID_MAGMA_HIDEOUT_4F_ASTER)
+    setflag(FLAG_HIDE_MAGMA_HIDEOUT_ASTER)
+    fadescreen(FADE_FROM_BLACK)
+    setvar(VAR_ASTER_STATE, ASTER_STATE_HIDEOUT_DONE)
+}
+
+text MagmaHideout_4F_Text_DraconidAsterGoHome {
+    format("ASTER: I saw it from the tunnels. GROUDON is awake… and the sky will answer. It always does.\p"
+           "Go home, {PLAYER}. Grandfather is waiting for you at the village. He has something for you.\p"
+           "I'm going to find out where the one in the sky sleeps.")
+}
+
+// ---------------------------------------------------------------------------
+// Draconid Village: the Elder gives the Mega Ring (DraconidVillage_EldersHouse_EventScript_Elder)
+// ---------------------------------------------------------------------------
+
+script DraconidVillage_EldersHouse_EventScript_DraconidMegaRing {
+    msgbox(DraconidVillage_EldersHouse_Text_DraconidMegaRing, MSGBOX_DEFAULT)
+    giveitem(ITEM_MEGA_RING)
+    switch (var(VAR_SECOND_STARTER)) {
+        case SECOND_STARTER_CHARMANDER:
+            msgbox(DraconidVillage_EldersHouse_Text_DraconidMegaStone, MSGBOX_DEFAULT)
+            giveitem(ITEM_CHARIZARDITE_X)
+        case SECOND_STARTER_TOTODILE:
+            msgbox(DraconidVillage_EldersHouse_Text_DraconidMegaStone, MSGBOX_DEFAULT)
+            giveitem(ITEM_FERALIGITE)
+        case SECOND_STARTER_TREECKO:
+            msgbox(DraconidVillage_EldersHouse_Text_DraconidMegaStone, MSGBOX_DEFAULT)
+            giveitem(ITEM_SCEPTILITE)
+    }
+    setflag(FLAG_RECEIVED_MEGA_RING)
+    setvar(VAR_ASTER_STATE, ASTER_STATE_MEGA_RING)
+    msgbox(DraconidVillage_EldersHouse_Text_DraconidSkyPillar, MSGBOX_DEFAULT)
+}
+
+text DraconidVillage_EldersHouse_Text_DraconidMegaRing {
+    format("ELDER: {PLAYER}. You went into the mountain wearing the enemy's colours and came back yourself.\p"
+           "That takes a steadier heart than strength. Take this.\p"
+           "Our clan's KEY STONE, set in a ring. With it, a POKéMON that trusts you can MEGA EVOLVE.")
+}
+
+text DraconidVillage_EldersHouse_Text_DraconidMegaStone {
+    format("ELDER: And this stone is for the partner PROF. BIRCH gave you. Its MEGA form carries a dragon's blood.")
+}
+
+text DraconidVillage_EldersHouse_Text_DraconidSkyPillar {
+    format("ELDER: The two ancient POKéMON will not stay asleep for long. When the sky itself grows angry,\p"
+           "seek the pillar that reaches the clouds, far to the east over the sea. ASTER is already looking for it.")
+}
+
+// ---------------------------------------------------------------------------
+// A5 Sky Pillar top: the climax, before Rayquaza wakes
+// (SkyPillar_Top_EventScript_AwakenRayquaza calls ..._DraconidAsterClimax first and
+//  ..._DraconidAsterAfterRayquaza at the end)
+// ---------------------------------------------------------------------------
+
+script SkyPillar_Top_EventScript_DraconidAsterClimax {
+    if (var(VAR_ASTER_STATE) >= ASTER_STATE_SKY_PILLAR) {
+        return
+    }
+    clearflag(FLAG_HIDE_SKY_PILLAR_TOP_ASTER)
+    addobject(LOCALID_SKY_PILLAR_TOP_ASTER)
+    // Not saved: after the battle the map music plays again, and the Rayquaza scene fades that one
+    // (a saved song plus fadedefaultbgm here left the music fading forever and froze the next warp)
+    playbgm(MUS_ENCOUNTER_INTENSE, FALSE)
+    applymovement(LOCALID_SKY_PILLAR_TOP_ASTER, Common_Movement_WalkUp2)
+    waitmovement(0)
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterDown)
+    waitmovement(0)
+    msgbox(SkyPillar_Top_Text_DraconidAsterClimax, MSGBOX_DEFAULT)
+    call(Draconid_EventScript_BattleAsterSkyPillar)
+    msgbox(SkyPillar_Top_Text_DraconidAsterYield, MSGBOX_DEFAULT)
+    closemessage
+    setvar(VAR_ASTER_STATE, ASTER_STATE_SKY_PILLAR)
+    setvar(VAR_TEMP_2, 1) // Aster watches Rayquaza wake; she leaves afterwards
+}
+
+script SkyPillar_Top_EventScript_DraconidAsterAfterRayquaza {
+    if (var(VAR_TEMP_2) != 1) {
+        return
+    }
+    setvar(VAR_TEMP_2, 0)
+    msgbox(SkyPillar_Top_Text_DraconidAsterAfterRayquaza, MSGBOX_DEFAULT)
+    closemessage
+    fadescreen(FADE_TO_BLACK)
+    removeobject(LOCALID_SKY_PILLAR_TOP_ASTER)
+    setflag(FLAG_HIDE_SKY_PILLAR_TOP_ASTER)
+    fadescreen(FADE_FROM_BLACK)
+}
+
+text SkyPillar_Top_Text_DraconidAsterClimax {
+    format("ASTER: So you found it too.\p"
+           "Every night since I was small I dreamed of this tower. Of the one who sleeps on top of it.\p"
+           "The Lorekeepers say RAYQUAZA answers the call of one who is worthy. Only one.\p"
+           "Last riddle, {PLAYER}: two dragons climb the same tower, but only one can reach the sky. Which one?\p"
+           "…The one still standing. SALAMENCE, show them what a dragon of the sky looks like!")
+}
+
+text Draconid_Text_AsterSkyPillarDefeat {
+    format("…So that's the answer.")
+}
+
+text SkyPillar_Top_Text_DraconidAsterYield {
+    format("ASTER: …Go on. Wake it. It was never going to listen to me if I couldn't even beat you.")
+}
+
+text SkyPillar_Top_Text_DraconidAsterAfterRayquaza {
+    format("ASTER: It looked at you before it flew. Did you see?\p"
+           "Hmph. Don't let it go to your head, {PLAYER}. The sky is big. I'll find my own way up.")
+}
+
+// ---------------------------------------------------------------------------
+// A6 after the League: rematch at the village shrine
+// ---------------------------------------------------------------------------
+
+// DraconidVillage_Shrine_OnTransition calls this.
+script DraconidVillage_Shrine_EventScript_DraconidAsterPostgame {
+    if (flag(FLAG_SYS_GAME_CLEAR) && var(VAR_ASTER_STATE) >= ASTER_STATE_SKY_PILLAR && var(VAR_ASTER_STATE) < ASTER_STATE_POSTGAME) {
+        clearflag(FLAG_HIDE_DRACONID_SHRINE_ASTER)
+        setobjectxyperm(LOCALID_DRACONID_SHRINE_ASTER, 10, 9)
+        setobjectmovementtype(LOCALID_DRACONID_SHRINE_ASTER, MOVEMENT_TYPE_FACE_UP)
+    }
+}
+
+script DraconidVillage_Shrine_EventScript_Aster {
+    lock
+    faceplayer
+    msgbox(DraconidVillage_Shrine_Text_DraconidAsterPostgame, MSGBOX_YESNO)
+    if (var(VAR_RESULT) == NO) {
+        msgbox(DraconidVillage_Shrine_Text_DraconidAsterLater, MSGBOX_DEFAULT)
+        release
+        end
+    }
+    call(Draconid_EventScript_BattleAsterPostgame)
+    msgbox(DraconidVillage_Shrine_Text_DraconidAsterPostgameAfter, MSGBOX_DEFAULT)
+    closemessage
+    fadescreen(FADE_TO_BLACK)
+    removeobject(LOCALID_DRACONID_SHRINE_ASTER)
+    setflag(FLAG_HIDE_DRACONID_SHRINE_ASTER)
+    setvar(VAR_ASTER_STATE, ASTER_STATE_POSTGAME)
+    fadescreen(FADE_FROM_BLACK)
+    release
+}
+
+text DraconidVillage_Shrine_Text_DraconidAsterPostgame {
+    format("ASTER: CHAMPION of HOENN, back where it all started.\p"
+           "No riddles today. Just you, me, and everything we've got. Ready?")
+}
+
+text DraconidVillage_Shrine_Text_DraconidAsterLater {
+    format("ASTER: I'll wait. The statue doesn't mind.")
+}
+
+text DraconidVillage_Shrine_Text_DraconidAsterPostgameAfter {
+    format("ASTER: …You know what the answer to all my riddles was? The sky. It was always the sky.\p"
+           "See you up there someday, {PLAYER}.")
+}

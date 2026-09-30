@@ -641,3 +641,4 @@ gSpecials::
 	def_special DraconidRaiseHatchling
 	def_special StartBirchRescueBattle, waitstate=1
 	def_special SetPlayerOutfit
+	def_special GetPlayerOutfitNormalGfx

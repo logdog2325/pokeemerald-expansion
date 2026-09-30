@@ -1,0 +1,114 @@
+# Flow test for Aster's arc, the Team Magma disguise and the Mega Ring (aster.pory).
+# Needs route104_done.ss from tests/route104.play: a one-Pokemon party, so a mashed battle ends
+# when it faints instead of stopping at the switch menu. VAR_SECOND_STARTER is set by hand.
+# States are set by hand and scenes reached with the debug warp; battles are mashed with the
+# no-whiteout flag on, so this checks the scripts, not the balance. Mt. Chimney's and the Magma
+# Hideout's Maxie scenes are vanilla; their Draconid calls are one line each.
+# Matrix parameters (tools/hack/emu/matrix.py): EGGNAME = the player's egg in the savestate (Aster's
+# trainer ids are named after it), SECOND/STONE = the second starter and its Mega Stone, GFX/MAGMA = the
+# player's sprite prefix for the Draconid and Magma outfits.
+default START route104_done.ss
+default EGGNAME DEINO
+default SECOND 1
+default STONE ITEM_CHARIZARDITE_X
+default GFX DRACONID_M
+default MAGMA MAGMA_M
+loadstate ${START}
+setvar VAR_SECOND_STARTER ${SECOND}
+setflag FLAG_DEBUG_NO_ENCOUNTER
+setflag FLAG_DEBUG_NO_TRAINER_SEE
+setflag FLAG_DRACONID_NO_WHITEOUT
+
+# --- A2 Meteor Falls: Magma and Aqua take the meteorite, then Aster ---
+setvar VAR_METEOR_FALLS_STATE 0
+clearflag FLAG_HIDE_METEOR_FALLS_TEAM_MAGMA
+clearflag FLAG_HIDE_METEOR_FALLS_TEAM_AQUA
+warp MAP_METEOR_FALLS_1F_1R 15 18
+run 60
+walk LEFT 14
+mash A 90000
+shot 10_meteor_falls
+expect_var VAR_ASTER_STATE 1
+expect_opponent TRAINER_ASTER_METEOR_FALLS_${EGGNAME}
+expect_flag FLAG_HIDE_CABLE_CAR_STATION_ASTER 0
+
+# --- A3 Route 112 cable car station: the disguise ---
+heal
+warp MAP_ROUTE112_CABLE_CAR_STATION 6 10 3000
+run 120
+mash A 20000
+shot 20_disguise
+expect_var VAR_ASTER_STATE 2
+expect_var VAR_PLAYER_OUTFIT 1
+expect_gfx OBJ_EVENT_GFX_${MAGMA}_NORMAL
+
+# --- A4 Route 119 (Mt. Chimney's Maxie would take the disguise off and set state 3) ---
+setvar VAR_PLAYER_OUTFIT 0
+setvar VAR_ASTER_STATE 3
+clearflag FLAG_HIDE_ROUTE_119_ASTER
+heal
+warp MAP_ROUTE119 30 22
+run 60
+walk UP 19
+run 60
+shot 30_route119
+mash A 90000
+expect_var VAR_ASTER_STATE 4
+expect_flag FLAG_HIDE_ROUTE_119_ASTER 1
+expect_opponent TRAINER_ASTER_ROUTE_119_${EGGNAME}
+expect_gfx OBJ_EVENT_GFX_${GFX}_NORMAL
+
+# --- Magma Hideout: the disguise goes back on ---
+warp MAP_MAGMA_HIDEOUT_1F 10 33 3000
+run 120
+mash A 5000
+shot 40_hideout
+expect_var VAR_PLAYER_OUTFIT 1
+
+# --- Elder: Mega Ring + the second starter's Mega Stone (Magma Hideout's Maxie would set state 5) ---
+setvar VAR_PLAYER_OUTFIT 0
+setvar VAR_ASTER_STATE 5
+warp MAP_DRACONID_VILLAGE_ELDERS_HOUSE 4 5
+run 60
+walk UP 4
+press A 2 30
+mash A 20000
+shot 50_mega_ring
+expect_flag FLAG_RECEIVED_MEGA_RING 1
+expect_var VAR_ASTER_STATE 6
+expect_item ITEM_MEGA_RING 1
+expect_item ${STONE} 1
+
+# --- A5 Sky Pillar: the climax before Rayquaza wakes ---
+setvar VAR_SKY_PILLAR_STATE 0
+setvar VAR_SKY_PILLAR_RAYQUAZA_CRY_DONE 0
+clearflag FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA
+heal
+warp MAP_SKY_PILLAR_TOP 14 10
+run 60
+walk UP 9
+run 60
+shot 60_sky_pillar
+mash A 90000
+shot 61_after_rayquaza
+expect_var VAR_ASTER_STATE 7
+expect_var VAR_SKY_PILLAR_STATE 1
+expect_flag FLAG_HIDE_SKY_PILLAR_TOP_ASTER 1
+expect_opponent TRAINER_ASTER_SKY_PILLAR_${EGGNAME}
+
+# --- A6 after the League: the shrine ---
+setflag FLAG_SYS_GAME_CLEAR
+heal
+warp MAP_DRACONID_VILLAGE_SHRINE 10 11
+run 60
+walk UP 10
+press A 2 30
+mash A 90000
+shot 70_shrine
+expect_var VAR_ASTER_STATE 8
+expect_opponent TRAINER_ASTER_POSTGAME_${EGGNAME}
+savestate aster_done.ss
+
+clearflag FLAG_DEBUG_NO_ENCOUNTER
+clearflag FLAG_DEBUG_NO_TRAINER_SEE
+clearflag FLAG_DRACONID_NO_WHITEOUT

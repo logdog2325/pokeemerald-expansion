@@ -172,12 +172,13 @@ static void command(char *line)
     }
     else if (!strcmp(cmd, "until"))
     {
-        // until ADDR SIZE VALUE MAXFRAMES [KEYS PERIOD]: run until *(ADDR) == VALUE,
-        // tapping KEYS for 2 frames every PERIOD frames while waiting
-        char addr_s[128], keys_s[64] = "";
+        // until ADDR SIZE VALUE MAXFRAMES [KEYS PERIOD]: run until *(ADDR) == VALUE (or != VALUE when
+        // VALUE is written !VALUE), tapping KEYS for 2 frames every PERIOD frames while waiting
+        char addr_s[128], value_s[32], keys_s[64] = "";
         unsigned size, maxf, period = 0;
-        unsigned long value;
-        int got = sscanf(line, "%*s %127s %u %lx %u %63s %u", addr_s, &size, &value, &maxf, keys_s, &period);
+        int got = sscanf(line, "%*s %127s %u %31s %u %63s %u", addr_s, &size, value_s, &maxf, keys_s, &period);
+        int negate = value_s[0] == '!';
+        unsigned long value = strtoul(value_s + negate, NULL, 16);
         // KEYS may be a comma-separated cycle, e.g. "A,UP": each tap uses the next entry
         uint32_t cycle[8];
         int ncycle = 0, next = 0;
@@ -187,7 +188,7 @@ static void command(char *line)
                 cycle[ncycle++] = parse_keys(tok);
         }
         unsigned f = 0;
-        while (f < maxf && read_n(eval_addr(addr_s), size) != (uint32_t)value)
+        while (f < maxf && (read_n(eval_addr(addr_s), size) == (uint32_t)value) == negate)
         {
             if (ncycle && period && f % period == 0)
             {
@@ -201,7 +202,7 @@ static void command(char *line)
                 f++;
             }
         }
-        printf("until %s == %lx: %s after %u frames\n", addr_s, value, f < maxf ? "ok" : "TIMEOUT", f);
+        printf("until %s %s %lx: %s after %u frames\n", addr_s, negate ? "!=" : "==", value, f < maxf ? "ok" : "TIMEOUT", f);
     }
     else if (!strcmp(cmd, "untilhold"))
     {

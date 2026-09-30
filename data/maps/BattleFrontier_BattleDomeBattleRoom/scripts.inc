@@ -30,11 +30,11 @@ BattleFrontier_BattleDomeBattleRoom_EventScript_SetPlayerGfx::
 	return
 
 BattleFrontier_BattleDomeBattleRoom_EventScript_SetPlayerGfxMale::
-	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL
+	specialvar VAR_OBJ_GFX_ID_1, GetPlayerOutfitNormalGfx  @ Draconid Emerald: the player's own sprite
 	return
 
 BattleFrontier_BattleDomeBattleRoom_EventScript_SetPlayerGfxFemale::
-	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_MAY_NORMAL
+	specialvar VAR_OBJ_GFX_ID_1, GetPlayerOutfitNormalGfx  @ Draconid Emerald: the player's own sprite
 	return
 
 BattleFrontier_BattleDomeBattleRoom_OnFrame:

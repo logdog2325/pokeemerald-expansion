@@ -16,9 +16,7 @@ LittlerootTown_MaysHouse_2F_EventScript_CheckShouldUpdateMayPos::
 	goto_if_ge VAR_BIRCH_LAB_STATE, 2, LittlerootTown_MaysHouse_2F_EventScript_Ret
 	goto LittlerootTown_MaysHouse_2F_EventScript_TryUpdateMayPos
 
-LittlerootTown_MaysHouse_2F_EventScript_TryUpdateMayPos::
-	checkplayergender
-	goto_if_eq VAR_RESULT, FEMALE, LittlerootTown_MaysHouse_2F_EventScript_Ret
+LittlerootTown_MaysHouse_2F_EventScript_TryUpdateMayPos::  @ Draconid Emerald: both Littleroot houses belong to the rivals
 	goto_if_ge VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 2, LittlerootTown_MaysHouse_2F_EventScript_Ret
 	setobjectxyperm LOCALID_RIVALS_HOUSE_2F_RIVAL, 8, 2
 	setobjectmovementtype LOCALID_RIVALS_HOUSE_2F_RIVAL, MOVEMENT_TYPE_FACE_UP
@@ -28,9 +26,7 @@ LittlerootTown_MaysHouse_2F_EventScript_Ret::
 	return
 
 LittlerootTown_MaysHouse_2F_EventScript_CheckSetReadyToMeetMay::
-	checkplayergender
-	goto_if_eq VAR_RESULT, MALE, LittlerootTown_MaysHouse_2F_EventScript_SetReadyToMeetMay
-	return
+	return  @ Draconid Emerald: the rivals are met in the lab
 
 LittlerootTown_MaysHouse_2F_EventScript_SetReadyToMeetMay::
 	setvar VAR_LITTLEROOT_RIVAL_STATE, 2
@@ -41,9 +37,7 @@ LittlerootTown_MaysHouse_2F_OnWarp:
 	.2byte 0
 
 LittlerootTown_MaysHouse_2F_EventScript_CheckInitDecor::
-	checkplayergender
-	goto_if_eq VAR_RESULT, FEMALE, SecretBase_EventScript_InitDecorations
-	end
+	end  @ Draconid Emerald: both Littleroot houses belong to the rivals
 
 LittlerootTown_MaysHouse_2F_EventScript_RivalsPokeBall::
 	lockall
@@ -236,9 +230,7 @@ LittlerootTown_MaysHouse_2F_Movement_PlayerWatchMayEast:
 RivalsHouse_2F_EventScript_Rival::
 	lockall
 	goto_if_set FLAG_MET_RIVAL_LILYCOVE, RivalsHouse_2F_EventScript_RivalPostLilycove
-	checkplayergender
-	goto_if_eq VAR_RESULT, MALE, RivalsHouse_2F_EventScript_May
-	goto_if_eq VAR_RESULT, FEMALE, RivalsHouse_2F_EventScript_Brendan
+	goto RivalsHouse_2F_EventScript_May  @ Draconid Emerald: the rival here is May (Birch's daughter)
 	end
 
 RivalsHouse_2F_EventScript_May::
@@ -254,9 +246,7 @@ RivalsHouse_2F_EventScript_Brendan::
 RivalsHouse_2F_EventScript_RivalPostLilycove::
 	applymovement VAR_LAST_TALKED, Common_Movement_FacePlayer
 	waitmovement 0
-	checkplayergender
-	call_if_eq VAR_RESULT, MALE, RivalsHouse_2F_EventScript_MayPostLilycove
-	call_if_eq VAR_RESULT, FEMALE, RivalsHouse_2F_EventScript_BrendanPostLilycove
+	call RivalsHouse_2F_EventScript_MayPostLilycove  @ Draconid Emerald: the rival here is May (Birch's daughter)
 	setflag FLAG_MET_RIVAL_IN_HOUSE_AFTER_LILYCOVE
 	releaseall
 	end
@@ -281,9 +271,7 @@ RivalsHouse_2F_EventScript_BrendanWhereShouldIGoNext::
 
 LittlerootTown_MaysHouse_2F_EventScript_PC::
 	lockall
-	checkplayergender
-	goto_if_eq VAR_RESULT, MALE, LittlerootTown_MaysHouse_2F_EventScript_CheckRivalsPC
-	goto_if_eq VAR_RESULT, FEMALE, LittlerootTown_MaysHouse_2F_EventScript_CheckPlayersPC
+	goto LittlerootTown_MaysHouse_2F_EventScript_CheckRivalsPC  @ Draconid Emerald: both Littleroot houses belong to the rivals
 	end
 
 LittlerootTown_MaysHouse_2F_EventScript_CheckRivalsPC::

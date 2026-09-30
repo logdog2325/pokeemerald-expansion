@@ -40,7 +40,7 @@ Other docs: [decisions](hack_decisions.md) · [changes](hack_changes.md) · [too
 - [x] Trainer front pics (Draconid M/F; Magma = grunt pics), back pics with throw frames (4 sets)
 - [x] Gender choice, trainer card, Hall of Fame, battle transitions, Pokédex size screen, region map/PokéNav icon,
       decorating, easy-chat interview follow the outfit; contests/Union Room use the player's object
-- [ ] Opening movie + credits bike scenes still show Brendan/May – `TODO(art)`
+- [x] Credits: the player runs in their own sprite (D-049); the opening movie keeps Brendan/May (no player yet)
 - [x] Validation (`tools/hack/art/manifests/draconid.json`, 50 files OK) + in-game checks (walk/run, both genders,
       battle back pic, trainer card, Magma outfit); Brendan/May files unchanged
 
@@ -56,21 +56,25 @@ Other docs: [decisions](hack_decisions.md) · [changes](hack_changes.md) · [too
       verified in the emulator: bedroom → clock → ceremony → rite → Running Shoes → Aster battle → Littleroot
 - [x] Birch intro rework: Route 101 rescue with the hatchling; lab: Brendan Treecko, May Torchic, player Pokédex;
       Route 103 May – verified in the emulator (`tools/hack/emu/tests/opening.play`, `route103.play`)
-- [ ] Rival houses in Littleroot (gender logic, bedrooms), SS Ticket/Lati TV scene → Draconid house,
-      lab post-game rival lines (gender-branched, sprite is always May) **← next in Phase 4/5**
-- [ ] Second starter after gym 1 (Charmander / Totodile / Treecko)
-- [ ] Aster arc (6 appearances)
-- [ ] Magma disguise arc + Mega Ring
-- [ ] Vanilla flow verification
+- [x] Rival houses in Littleroot belong to Brendan's and May's families; remaining gender branches (Oldale,
+      Lavaridge, Champion's room, lab post-game) always use May; Hall of Fame respawns in the Draconid bedroom;
+      SS Ticket / Lati TV scene plays in the Draconid house (`postgame_home.play`); scenes that drew the player as
+      Brendan/May use the outfit sprite (Southern Island checked in the emulator)
+- [x] Second starter after gym 1: Birch outside the Rustboro Gym, Charmander / Totodile / Treecko Lv 10
+      (`second_starter.play`)
+- [x] Aster arc: Meteor Falls, cable car, Route 119, Magma Hideout, Sky Pillar, post-game shrine (`aster.play`)
+- [x] Magma disguise arc (cable car → Mt. Chimney, Magma Hideout) + Mega Ring and the second starter's Mega Stone
+      from the Elder (`aster.play`)
+- [ ] Vanilla flow verification end to end (Phase 7); grunt lines that should notice the disguise
+      `TODO(dialogue)`
 
 ## Phase 5 – Rival battles
 - [x] Decouple Brendan & May from player gender (scenes, sprites, PokéNav)
 - [x] 10-battle schedule (D-070) – new scenes in `data/scripts/draconid/rivals.pory`, teams in trainers.party;
       flow-tested in the emulator (`route104.play`, `rivals.play`; Space Center partner checked by hand)
-- [p] Aster fights by egg: teams for Meteor Falls / Route 119 / Sky Pillar / post-game exist; the scenes come with
-      the Aster arc (Phase 4)
+- [x] Aster fights by egg: Meteor Falls / Route 119 / Sky Pillar / post-game (scenes in the Aster arc, Phase 4)
 - [x] Wally extra fights (Petalburg Gym door, Lilycove; Mega Gallade)
-- [ ] Dialogue polish: vanilla rival lines still say "you just moved here" etc. – `TODO(dialogue)`
+- [x] Dialogue polish: reachable vanilla lines that assumed the player moved to Littleroot (Rustboro, Rydel)
 
 ## Phase 6 – Trainers / difficulty
 - [x] Level caps (hard, per badge) + rematch tiers gated by badges – `make check` green
@@ -78,6 +82,8 @@ Other docs: [decisions](hack_decisions.md) · [changes](hack_changes.md) · [too
 - [~] Trainer batches 1–9 (798 trainers) being written; then splice + check + build **← in progress**
 
 ## Phase 7 – Polish
-- [ ] Script/flag reachability checks, both genders × 9 starter combos
-- [ ] `docs/playtest_guide.md`
+- [x] Script/flag reachability checks: `tools/hack/check_story.py` (0 errors; 3 record-only flags); Route 119
+      Aster moved onto a real chokepoint after an elevation-aware path search showed the old spot could be skipped
+- [~] Both genders × 3 eggs × 3 second starters: `tools/hack/emu/matrix.py` (18 flows, emulator)
+- [x] `docs/playtest_guide.md`, `docs/hack_feedback.md`
 - [ ] Final summary

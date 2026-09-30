@@ -254,9 +254,7 @@ OldaleTown_EventScript_RivalTrigger3::
 	end
 
 OldaleTown_EventScript_ShowRivalMessage::
-	checkplayergender
-	goto_if_eq VAR_RESULT, MALE, OldaleTown_EventScript_ShowMayMessage
-	goto_if_eq VAR_RESULT, FEMALE, OldaleTown_EventScript_ShowBrendanMessage
+	goto OldaleTown_EventScript_ShowMayMessage  @ Draconid Emerald: the rival here is May (Birch's daughter)
 	end
 
 OldaleTown_EventScript_ShowMayMessage::

@@ -226,9 +226,7 @@ LittlerootTown_OnWarp:
 LittlerootTown_EventScript_SetRivalBirchPosForDexUpgrade::
 	addobject LOCALID_LITTLEROOT_BIRCH
 	addobject LOCALID_LITTLEROOT_RIVAL
-	checkplayergender
-	goto_if_eq VAR_RESULT, MALE, LittlerootTown_EventScript_SetRivalBirchPosForDexUpgradeMale
-	goto LittlerootTown_EventScript_SetRivalBirchPosForDexUpgradeFemale
+	goto LittlerootTown_EventScript_SetRivalBirchPosForDexUpgradeFemale  @ Draconid Emerald: outside May's (Birch's) house
 	end
 
 LittlerootTown_EventScript_SetRivalBirchPosForDexUpgradeMale::
@@ -397,9 +395,7 @@ LittlerootTown_EventScript_BirchsLabSign::
 
 LittlerootTown_EventScript_BrendansHouseSign::
 	lockall
-	checkplayergender
-	call_if_eq VAR_RESULT, MALE, LittlerootTown_EventScript_PlayersHouseSignMale
-	call_if_eq VAR_RESULT, FEMALE, LittlerootTown_EventScript_BirchsHouseSignFemale
+	msgbox LittlerootTown_Text_DraconidBrendansHouse, MSGBOX_DEFAULT  @ Draconid Emerald
 	releaseall
 	end
 
@@ -413,9 +409,7 @@ LittlerootTown_EventScript_BirchsHouseSignFemale::
 
 LittlerootTown_EventScript_MaysHouseSign::
 	lockall
-	checkplayergender
-	call_if_eq VAR_RESULT, MALE, LittlerootTown_EventScript_BirchsHouseSignMale
-	call_if_eq VAR_RESULT, FEMALE, LittlerootTown_EventScript_PlayersHouseSignFemale
+	call LittlerootTown_EventScript_BirchsHouseSignMale  @ Draconid Emerald: May is Birch's daughter
 	releaseall
 	end
 
@@ -1014,3 +1008,6 @@ LittlerootTown_Text_BirchSomethingToShowYouAtLab:
 	.string "I have something to show you.\n"
 	.string "Let's go to my LAB.$"
 
+@ Draconid Emerald: Brendan (Birch's nephew) and his family live here
+LittlerootTown_Text_DraconidBrendansHouse:
+	.string "BRENDAN's HOUSE$"

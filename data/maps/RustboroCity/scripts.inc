@@ -26,6 +26,7 @@ RustboroCity_EventScript_HideMapNamePopup::
 
 RustboroCity_OnFrame:
 	map_script_2 VAR_RUSTBORO_CITY_STATE, 6, RustboroCity_EventScript_ScientistAddMatchCall
+	map_script_2 VAR_DRACONID_STATE, DRACONID_STATE_SECOND_STARTER, RustboroCity_EventScript_DraconidSecondStarter  @ Draconid Emerald
 	.2byte 0
 
 RustboroCity_EventScript_ScientistAddMatchCall::
@@ -1086,9 +1087,11 @@ RustboroCity_Text_MayDefeat:
 RustboroCity_Text_MayMrBrineyHint:
 	.string "MAY: Oh, by the way, MR. BRINEY, who\n"
 	.string "I just passed…\p"
-	.string "{PLAYER}{KUN}, you just moved here so you\n"
-	.string "might not know this, but MR. BRINEY\l"
-	.string "was once a revered seafarer.$"
+	@ Draconid Emerald: the player grew up in Draconid Village
+	.string "{PLAYER}{KUN}, you grew up in the\n"
+	.string "mountains, so you might not know\l"
+	.string "this, but MR. BRINEY was once a\l"
+	.string "revered seafarer.$"
 
 RustboroCity_Text_BrendanHiLetsRegister:
 	.string "BRENDAN: Oh, hey, {PLAYER}!\p"
@@ -1133,7 +1136,7 @@ RustboroCity_Text_BrendanMrBrineyHint:
 	.string "BRENDAN: By the way, you know\n"
 	.string "MR. BRINEY? The guy I just passed?\p"
 	.string "I bet you didn't know this, since you\n"
-	.string "just moved here, {PLAYER}, but\l"
+	.string "grew up in the hills, {PLAYER}, but\l"  @ Draconid Emerald
 	.string "MR. BRINEY was once a great sailor.$"
 
 RustboroCity_Text_TunnelNearingCompletion:

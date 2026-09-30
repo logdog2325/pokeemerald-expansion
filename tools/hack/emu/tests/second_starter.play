@@ -1,0 +1,20 @@
+# Rustboro: Prof. Birch's second partner after the Stone Badge (second_starter.pory).
+# Needs route104_done.ss from tests/route104.play. -D PICK=0|1|2 -D SECOND=1|2|3 picks Charmander /
+# Totodile / Treecko (SECOND is the matching SECOND_STARTER_* value); mashing A then answers YES
+# everywhere and fills the nickname screen until it jumps to OK.
+default PICK 0
+default SECOND 1
+loadstate route104_done.ss
+setvar VAR_DRACONID_STATE 7
+clearflag FLAG_HIDE_RUSTBORO_CITY_BIRCH
+read @gPartiesCount 1 party_before
+warp MAP_RUSTBORO_CITY 27 20 3000
+choose ${PICK}
+mash A 40000
+shot 01_after_second_starter
+expect_var VAR_SECOND_STARTER ${SECOND}
+expect_flag FLAG_RECEIVED_SECOND_STARTER 1
+expect_var VAR_DRACONID_STATE 8
+expect_flag FLAG_HIDE_RUSTBORO_CITY_BIRCH 1
+read @gPartiesCount 1 party_after
+savestate second_starter_done.ss

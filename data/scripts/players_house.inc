@@ -418,6 +418,8 @@ PlayersHouse_1F_EventScript_GetSSTicketAndSeeLatiTV::
 	checkplayergender
 	call_if_eq VAR_RESULT, MALE, PlayersHouse_1F_EventScript_SetUpObjectEventVarsMale
 	call_if_eq VAR_RESULT, FEMALE, PlayersHouse_1F_EventScript_SetUpObjectEventVarsFemale
+@ Draconid Emerald: the Draconid house (a copy of Brendan's) jumps in here with VAR_0x8008-0x800A set.
+PlayersHouse_1F_EventScript_SSTicketAndLatiTV::
 	call_if_eq VAR_0x8008, MALE, PlayersHouse_1F_EventScript_PlayerEnterRoomMale
 	call_if_eq VAR_0x8008, FEMALE, PlayersHouse_1F_EventScript_PlayerEnterRoomFemale
 	applymovement VAR_0x8009, Common_Movement_FacePlayer

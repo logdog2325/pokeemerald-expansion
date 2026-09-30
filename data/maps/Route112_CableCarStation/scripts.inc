@@ -15,6 +15,7 @@ Route112_CableCarStation_EventScript_MoveAttendantAside::
 
 Route112_CableCarStation_OnFrame:
 	map_script_2 VAR_CABLE_CAR_STATION_STATE, 2, Route112_CableCarStation_EventScript_ExitCableCar
+	map_script_2 VAR_ASTER_STATE, ASTER_STATE_METEOR_FALLS, Route112_CableCarStation_EventScript_DraconidAsterDisguise  @ Draconid Emerald
 	.2byte 0
 
 Route112_CableCarStation_EventScript_ExitCableCar::

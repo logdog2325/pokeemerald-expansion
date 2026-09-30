@@ -262,10 +262,17 @@ Route103_EventScript_DraconidMay::
 	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_Delay48
 	waitmovement 0
 	msgbox Route103_EventScript_DraconidMay_Text_0
-	trainerbattle_no_intro TRAINER_MAY_ROUTE_103, Route103_Text_DraconidMayDefeated
-	msgbox Route103_EventScript_DraconidMay_Text_1
+	trainerbattle_earlyrival TRAINER_MAY_ROUTE_103, RIVAL_BATTLE_HEAL_AFTER, Route103_Text_DraconidMayDefeated, Route103_Text_DraconidMayVictory
+	compare VAR_RESULT, TRUE
+	goto_if_eq Route103_EventScript_DraconidMay_2
+	msgbox Route103_EventScript_DraconidMay_Text_2
+Route103_EventScript_DraconidMay_1:
 	goto Route103_EventScript_RivalExit
 	return
+
+Route103_EventScript_DraconidMay_2:
+	msgbox Route103_EventScript_DraconidMay_Text_1
+	goto Route103_EventScript_DraconidMay_1
 
 
 Route101_EventScript_DraconidRescue_Text_0:
@@ -372,6 +379,13 @@ Route103_EventScript_DraconidMay_Text_0:
 	.string "Let's see what a real dragon can do!$"
 
 Route103_EventScript_DraconidMay_Text_1:
+	.string "MAY: Don't look so down! TORCHIC and I\n"
+	.string "have just had more practice.\p"
+	.string "Let your dragon rest and try again. Dad\n"
+	.string "says every TRAINER loses at the start.\p"
+	.string "See you around, {PLAYER}!$"
+
+Route103_EventScript_DraconidMay_Text_2:
 	.string "MAY: Your dragon really listens to you.\n"
 	.string "No wonder Dad was so excited.\p"
 	.string "I'm going to catch lots more POKéMON so\n"
@@ -381,3 +395,6 @@ Route103_EventScript_DraconidMay_Text_1:
 Route103_Text_DraconidMayDefeated::
 	.string "Wow! That's great! {PLAYER}, your dragon\n"
 	.string "is strong!$"
+
+Route103_Text_DraconidMayVictory::
+	.string "Yay! TORCHIC, we did it!$"

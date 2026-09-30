@@ -10,10 +10,16 @@ A .play script is a gbarun script plus:
   mash KEY MAX            tap KEY until the player regains control (script ends);
                           KEY may be a cycle like A,UP (answers YES to a NO-default prompt)
   wait_free MAX           run until the player regains control, pressing nothing
+  choose N [MAX]          tap A until a dynmultichoice menu opens, then pick entry N (0 = first)
   flag NAME               print a flag (FLAG_*) from the save block
   var NAME                print a var (VAR_*) from the save block
   expect_flag NAME 0|1    like flag, but fails the run on mismatch
   expect_var NAME VALUE   like var, but fails the run on mismatch
+  expect_trainer TRAINER_X 0|1   the trainer's "defeated" flag (TRAINER_FLAGS_START + id)
+  expect_item ITEM_X 0|1  whether ITEM_X is anywhere in the bag (all pockets are scanned)
+  expect_gfx OBJ_EVENT_GFX_X   the player's current object graphics (outfit, gender, avatar state)
+  expect_opponent TRAINER_X   the last trainer battle's opponent A (kept until the next battle is set
+                          up; works when a mashed battle is lost, unlike expect_trainer)
   setflag NAME / clearflag NAME   change a flag in the save block (e.g. FLAG_DEBUG_NO_ENCOUNTER)
   setvar NAME VALUE       change a var in the save block
   mapid                   print the current map group/num (gSaveBlock1Ptr->location)
@@ -55,6 +61,8 @@ def symbols(elf):
 def probe(names):
     """Evaluate C constants (and SaveBlock1 offsets) with the project's own headers."""
     src = '#include "global.h"\n#include "constants/flags.h"\n#include "constants/vars.h"\n#include "constants/maps.h"\n'
+    src += '#include "constants/items.h"\n#include "constants/opponents.h"\n#include "battle_setup.h"\n'
+    src += '#include "constants/event_objects.h"\n'
     src += "const u32 gProbe[] = {\n  offsetof(struct SaveBlock1, flags),\n  offsetof(struct SaveBlock1, vars),\n"
     src += "  offsetof(struct SaveBlock1, location),\n"
     src += "  offsetof(struct ObjectEvent, currentCoords),\n"
@@ -157,6 +165,10 @@ def plan_path(map_name, x0, y0, x1, y1):
     return segs
 
 
+GFX_OFFSET = "offsetof(struct ObjectEvent, graphicsId)"
+OPPONENT_A_OFFSET = "offsetof(struct _TrainerBattleParameter, opponentA)"
+BAG_OFFSET, SLOT_SIZE, BAG_SIZE = "offsetof(struct SaveBlock1, bag)", "sizeof(struct ItemSlot)", "sizeof(struct Bag)"
+
 LEDGE_JUMP = {"DOWN": "MB_JUMP_SOUTH", "UP": "MB_JUMP_NORTH", "LEFT": "MB_JUMP_WEST", "RIGHT": "MB_JUMP_EAST"}
 
 
@@ -177,13 +189,16 @@ def main():
             defines.setdefault(t[1], t[2])
     defines.update(dict(d.split("=", 1) for d in args.defines))
     lines = [re.sub(r"\$\{(\w+)\}", lambda m: defines[m.group(1)], l) for l in lines if not l.startswith("default ")]
-    names = sorted({l.split()[1] for l in lines if l.split() and l.split()[0] in ("flag", "var", "expect_flag", "expect_var", "setflag", "clearflag", "setvar", "warp")})
+    names = sorted({l.split()[1] for l in lines if l.split() and l.split()[0] in ("flag", "var", "expect_flag", "expect_var", "setflag", "clearflag", "setvar", "warp", "expect_trainer", "expect_item", "expect_opponent", "expect_gfx")})
+    names += [OPPONENT_A_OFFSET, GFX_OFFSET]
+    names += [BAG_OFFSET, SLOT_SIZE, BAG_SIZE, "TRAINER_FLAGS_START"]
     flags_off, vars_off, loc_off, coords_off, consts = probe(names)
     # the player is object event 0 (spawned first on every map load); MAP_OFFSET is 7
     player_x = syms["gObjectEvents"] + coords_off
     player_y = player_x + 2
     sb1 = "*%X" % syms["gSaveBlock1Ptr"]
     expects = []
+    item_checks = {}  # label -> [item name, item id, wanted, found]
 
     def sym(m):
         name = m.group(2)
@@ -205,6 +220,13 @@ def main():
             out.append("press %s 4 20" % t[1].split(",")[0])
             out.append("until %X 1 0 %s %s 24" % (syms["sLockFieldControls"], t[2], t[1]))
             out.append("run 8")
+        elif t[0] == "choose":
+            # sDynamicMenuEventScratchPad (src/script_menu.c) is allocated while a dynmultichoice is open
+            out.append("until %X 4 !0 %s A 24" % (syms["sDynamicMenuEventScratchPad"], t[2] if len(t) > 2 else "20000"))
+            out.append("run 20")
+            for _ in range(int(t[1])):
+                out.append("press DOWN 2 12")
+            out.append("press A 2 20")
         elif t[0] == "wait_free":
             out.append("run 8")
             out.append("until %X 1 0 %s" % (syms["sLockFieldControls"], t[1]))
@@ -215,6 +237,24 @@ def main():
                 label = "%s#%d" % (t[1], len(expects))
                 expects.append((label, int(t[2])))
             out.append("read %s+%X 1 %s>>%d" % (sb1, flags_off + f // 8, label, f % 8))
+        elif t[0] == "expect_trainer":
+            f = consts["TRAINER_FLAGS_START"] + consts[t[1]]
+            label = "%s#%d" % (t[1], len(expects))
+            expects.append((label, int(t[2])))
+            out.append("read %s+%X 1 %s>>%d" % (sb1, flags_off + f // 8, label, f % 8))
+        elif t[0] == "expect_opponent":
+            label = "opponent_%s#%d" % (t[1], len(expects))
+            expects.append((label, consts[t[1]]))
+            out.append("read %X 2 %s" % (syms["gTrainerBattleParameter"] + consts[OPPONENT_A_OFFSET], label))
+        elif t[0] == "expect_gfx":
+            label = "player_gfx_%s#%d" % (t[1], len(expects))
+            expects.append((label, consts[t[1]]))
+            out.append("read %X 2 %s" % (syms["gObjectEvents"] + consts[GFX_OFFSET], label))
+        elif t[0] == "expect_item":
+            label = "item%d" % len(item_checks)
+            item_checks[label] = [t[1], consts[t[1]], int(t[2]), False]
+            for off in range(0, consts[BAG_SIZE], consts[SLOT_SIZE]):
+                out.append("read %s+%X 2 %s" % (sb1, consts[BAG_OFFSET] + off, label))
         elif t[0] in ("setflag", "clearflag"):
             f = consts[t[1]]
             out.append("pokebit %s+%X %d %d" % (sb1, flags_off + f // 8, f % 8, 1 if t[0] == "setflag" else 0))
@@ -275,6 +315,10 @@ def main():
     ok = True
     for line in res.stdout.splitlines():
         m = re.match(r"read (\S+?)(?:>>(\d))? = 0x([0-9A-F]+)", line)
+        if m and m.group(1) in item_checks:
+            check = item_checks[m.group(1)]
+            check[3] |= int(m.group(3), 16) == check[1]
+            continue  # reported after the run
         if m:
             name, bit, val = m.group(1), m.group(2), int(m.group(3), 16)
             if bit is not None:
@@ -285,6 +329,12 @@ def main():
                     line += "   <-- EXPECTED %d" % want
                     ok = False
         if "TIMEOUT" in line:
+            ok = False
+        print(line)
+    for check in item_checks.values():
+        line = "%s in bag = %d" % (check[0], check[3])
+        if int(check[3]) != check[2]:
+            line += "   <-- EXPECTED %d" % check[2]
             ok = False
         print(line)
     if res.stderr.strip():

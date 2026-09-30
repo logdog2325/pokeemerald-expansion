@@ -22,6 +22,7 @@
 #define TAG_MAY     1003
 #define TAG_FLYGON_LATIOS  1004
 #define TAG_FLYGON_LATIAS  1005
+#define TAG_DRACONID       1006 // Draconid Emerald: the player in the credits
 
 // Used for the Clouds/Trees/Houses sprites that pass by in the background
 #define TAG_MOVING_SCENERY 2000
@@ -66,6 +67,11 @@ static const u16 sMayCredits_Pal[]        = INCGFX_U16("graphics/intro/scene_2/m
 static const u16 sUnused[0xF0]            = {0};
 static const u32 sMayCredits_Gfx[]        = INCGFX_U32("graphics/intro/scene_2/may_credits.png", ".4bpp.smol");
 static const u32 sBicycle_Gfx[]           = INCGFX_U32("graphics/intro/scene_2/bicycle.png", ".4bpp.smol");
+// Draconid Emerald: the player's credits run cycles (tools/hack/art/player/draconid_credits.json)
+static const u16 sDraconidMCredits_Pal[]  = INCGFX_U16("graphics/intro/scene_2/draconid_m_credits.png", ".gbapal");
+static const u32 sDraconidMCredits_Gfx[]  = INCGFX_U32("graphics/intro/scene_2/draconid_m_credits.png", ".4bpp.smol");
+static const u16 sDraconidFCredits_Pal[]  = INCGFX_U16("graphics/intro/scene_2/draconid_f_credits.png", ".gbapal");
+static const u32 sDraconidFCredits_Gfx[]  = INCGFX_U32("graphics/intro/scene_2/draconid_f_credits.png", ".4bpp.smol");
 static const u16 sLatios_Pal[]            = INCGFX_U16("graphics/intro/scene_2/latios.png", ".gbapal");
 static const u32 sLatios_Gfx[]            = INCGFX_U32("graphics/intro/scene_2/latios.png", ".4bpp.smol");
 static const u16 sLatias_Pal[]            = INCGFX_U16("graphics/intro/scene_2/latias.png", ".gbapal");
@@ -472,6 +478,15 @@ static const struct SpriteTemplate sSpriteTemplate_May =
 {
     .tileTag = TAG_MAY,
     .paletteTag = TAG_MAY,
+    .oam = &sOamData_Player,
+    .anims = sAnims_Player,
+    .callback = SpriteCB_Player
+};
+
+static const struct SpriteTemplate sSpriteTemplate_Draconid =
+{
+    .tileTag = TAG_DRACONID,
+    .paletteTag = TAG_DRACONID,
     .oam = &sOamData_Player,
     .anims = sAnims_Player,
     .callback = SpriteCB_Player
@@ -1117,6 +1132,25 @@ u8 CreateIntroMaySprite(s16 x, s16 y)
 }
 
 #undef sPlayerSpriteId
+
+// Draconid Emerald: the player on foot (6 run frames of 64x64, no bicycle), in their gender's sprite.
+u8 CreateCreditsDraconidSprite(s16 x, s16 y)
+{
+    bool32 female = gSaveBlock2Ptr->playerGender != MALE;
+    struct CompressedSpriteSheet sheet = {
+        .data = female ? sDraconidFCredits_Gfx : sDraconidMCredits_Gfx,
+        .size = 0x3000,
+        .tag = TAG_DRACONID,
+    };
+    struct SpritePalette palette = {
+        .data = female ? sDraconidFCredits_Pal : sDraconidMCredits_Pal,
+        .tag = TAG_DRACONID,
+    };
+
+    LoadCompressedSpriteSheet(&sheet);
+    LoadSpritePalette(&palette);
+    return CreateSprite(&sSpriteTemplate_Draconid, x, y, 2);
+}
 
 static void SpriteCB_FlygonLeftHalf(struct Sprite *sprite)
 {

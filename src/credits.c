@@ -241,6 +241,40 @@ static const union AnimCmd *const sAnims_Player[] =
     sAnim_Player_LookForward,
 };
 
+// Draconid Emerald: the player runs beside May's bike (CreateCreditsDraconidSprite, 6 frames of 64 tiles).
+// The run cycle stands in for all four of sAnims_Player's slots (there is no looking back on foot).
+#define DRACONID_CREDITS_RUN_Y 53 // below the riders' y (46): the taller on-foot sprite runs in a lane nearer the camera
+
+static const union AnimCmd sAnim_DraconidRun_Slow[] =
+{
+    ANIMCMD_FRAME(0, 6),
+    ANIMCMD_FRAME(64, 6),
+    ANIMCMD_FRAME(128, 6),
+    ANIMCMD_FRAME(192, 6),
+    ANIMCMD_FRAME(256, 6),
+    ANIMCMD_FRAME(320, 6),
+    ANIMCMD_JUMP(0),
+};
+
+static const union AnimCmd sAnim_DraconidRun_Fast[] =
+{
+    ANIMCMD_FRAME(0, 4),
+    ANIMCMD_FRAME(64, 4),
+    ANIMCMD_FRAME(128, 4),
+    ANIMCMD_FRAME(192, 4),
+    ANIMCMD_FRAME(256, 4),
+    ANIMCMD_FRAME(320, 4),
+    ANIMCMD_JUMP(0),
+};
+
+static const union AnimCmd *const sAnims_DraconidRun[] =
+{
+    sAnim_DraconidRun_Slow,
+    sAnim_DraconidRun_Fast,
+    sAnim_DraconidRun_Fast,
+    sAnim_DraconidRun_Slow,
+};
+
 static const union AnimCmd sAnim_Rival_Slow[] =
 {
     ANIMCMD_FRAME(0, 8),
@@ -1199,40 +1233,21 @@ static bool8 LoadBikeScene(u8 scene, u8 taskId)
         gMain.state++;
         break;
     case 2:
-        if (gSaveBlock2Ptr->playerGender == MALE)
-        {
-            LoadCompressedSpriteSheet(gSpriteSheet_CreditsBrendan);
-            LoadCompressedSpriteSheet(gSpriteSheet_CreditsRivalMay);
-            LoadCompressedSpriteSheet(gSpriteSheet_CreditsBicycle);
-            LoadSpritePalettes(gSpritePalettes_Credits);
+        // Draconid Emerald: Brendan and May are the rivals, never the player (D-049). The player runs in
+        // their own sprite and May, Birch's daughter, rides up on her bike.
+        LoadCompressedSpriteSheet(gSpriteSheet_CreditsRivalMay);
+        LoadCompressedSpriteSheet(gSpriteSheet_CreditsBicycle);
+        LoadSpritePalettes(gSpritePalettes_Credits);
 
-            spriteId = CreateIntroBrendanSprite(120, 46);
-            gTasks[taskId].tPlayerSpriteId = spriteId;
-            gSprites[spriteId].callback = SpriteCB_Player;
-            gSprites[spriteId].anims = sAnims_Player;
+        spriteId = CreateCreditsDraconidSprite(120, DRACONID_CREDITS_RUN_Y);
+        gTasks[taskId].tPlayerSpriteId = spriteId;
+        gSprites[spriteId].callback = SpriteCB_Player;
+        gSprites[spriteId].anims = sAnims_DraconidRun;
 
-            spriteId = CreateIntroMaySprite(DISPLAY_WIDTH + 32, 46);
-            gTasks[taskId].tRivalSpriteId = spriteId;
-            gSprites[spriteId].callback = SpriteCB_Rival;
-            gSprites[spriteId].anims = sAnims_Rival;
-        }
-        else
-        {
-            LoadCompressedSpriteSheet(gSpriteSheet_CreditsMay);
-            LoadCompressedSpriteSheet(gSpriteSheet_CreditsRivalBrendan);
-            LoadCompressedSpriteSheet(gSpriteSheet_CreditsBicycle);
-            LoadSpritePalettes(gSpritePalettes_Credits);
-
-            spriteId = CreateIntroMaySprite(120, 46);
-            gTasks[taskId].tPlayerSpriteId = spriteId;
-            gSprites[spriteId].callback = SpriteCB_Player;
-            gSprites[spriteId].anims = sAnims_Player;
-
-            spriteId = CreateIntroBrendanSprite(DISPLAY_WIDTH + 32, 46);
-            gTasks[taskId].tRivalSpriteId = spriteId;
-            gSprites[spriteId].callback = SpriteCB_Rival;
-            gSprites[spriteId].anims = sAnims_Rival;
-        };
+        spriteId = CreateIntroMaySprite(DISPLAY_WIDTH + 32, 46);
+        gTasks[taskId].tRivalSpriteId = spriteId;
+        gSprites[spriteId].callback = SpriteCB_Rival;
+        gSprites[spriteId].anims = sAnims_Rival;
         gMain.state++;
         break;
     case 3:

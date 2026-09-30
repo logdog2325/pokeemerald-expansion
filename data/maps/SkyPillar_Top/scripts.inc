@@ -86,6 +86,7 @@ SkyPillar_Top_EventScript_RanFromRayquaza2::
 
 SkyPillar_Top_EventScript_AwakenRayquaza::
 	lockall
+	call SkyPillar_Top_EventScript_DraconidAsterClimax  @ Draconid Emerald (aster.pory)
 	fadeoutbgm 1
 	applymovement LOCALID_PLAYER, Common_Movement_FaceUp
 	waitmovement 0
@@ -126,6 +127,7 @@ SkyPillar_Top_EventScript_AwakenRayquaza::
 	setvar VAR_SOOTOPOLIS_CITY_STATE, 5
 	setvar VAR_SKY_PILLAR_STATE, 1
 	setvar VAR_SKY_PILLAR_RAYQUAZA_CRY_DONE, 1
+	call SkyPillar_Top_EventScript_DraconidAsterAfterRayquaza  @ Draconid Emerald (aster.pory)
 	releaseall
 	end
 

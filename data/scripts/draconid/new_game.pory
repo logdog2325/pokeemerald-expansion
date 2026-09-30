@@ -19,6 +19,12 @@ script DraconidEmerald_EventScript_NewGameSetup {
     setflag(FLAG_HIDE_PETALBURG_CITY_WALLY_GYM)
     setflag(FLAG_HIDE_LILYCOVE_CITY_WALLY)
     setflag(FLAG_HIDE_MOSSDEEP_SPACE_CENTER_RIVALS)
+    setflag(FLAG_HIDE_RUSTBORO_CITY_BIRCH)
+    setflag(FLAG_HIDE_METEOR_FALLS_ASTER)
+    setflag(FLAG_HIDE_CABLE_CAR_STATION_ASTER)
+    setflag(FLAG_HIDE_ROUTE_119_ASTER)
+    setflag(FLAG_HIDE_MAGMA_HIDEOUT_ASTER)
+    setflag(FLAG_HIDE_SKY_PILLAR_TOP_ASTER)
     // 3 = rivals already met; stops the 2F "meet your new neighbour" scenes
     setvar(VAR_LITTLEROOT_RIVAL_STATE, 3)
     setflag(FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_TRUCK)

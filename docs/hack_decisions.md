@@ -90,6 +90,43 @@ when a playtest note overrides something here, the entry is updated and marked.
   is May here, so it is always MAY in Emerald. Scenes where the rival is Brendan name him directly.
 - **D-041 Debug toggles**: the expansion's no-encounter / no-trainer-sight / no-collision toggles get real flags
   (0x2E–0x30) so they work in the debug menu and in emulator tests. The game never sets them.
+- **D-042 Second starter**: after the Stone Badge, Prof. Birch waits outside the Rustboro Gym with Charmander,
+  Totodile and Treecko (Lv 10, `SECOND_STARTER_LEVEL`); the pick goes to `VAR_SECOND_STARTER`. – Alt: at the lab
+  (a long walk back), Lv 5. – Birch has business in Rustboro in vanilla too; Lv 10 is below the Stone Badge cap
+  (20) and catches up in a route or two. All three have a Dragon-type Mega (Charizard X, Feraligatr, Sceptile),
+  which fits the clan and gives the player a Mega since the dragon line has none (brief).
+- **D-043 Aster's arc**: Draconid Pass (battle) → Meteor Falls after Magma takes the meteorite (riddle + battle)
+  → Route 112 cable car (hands over the Magma disguise) → Route 119 on the path to Fortree, past the rival spot
+  (a row of triggers every route crosses, checked with an elevation-aware path search; she heals the party
+  first since Brendan's fight is a few steps back; battle, Mega Altaria) → Magma Hideout after Maxie (sends the player home) → Sky Pillar top before Rayquaza wakes (climax,
+  Mega Salamence) → village shrine after the League (rematch). One var, `VAR_ASTER_STATE`, drives all of it.
+  – Alt: Aster at Mt. Pyre / Sootopolis. – Follows the meteorite and Rayquaza threads, where Zinnia is in ORAS.
+- **D-044 Magma disguise is a costume, not a stealth mode**: worn from the cable car to Maxie on Mt. Chimney and
+  again inside the Magma Hideout (it goes back on at the entrance) until Maxie there; grunts still battle.
+  – Alt: grunts ignore a disguised player. – Keeps the trainer fights and their EXP before Flannery and the
+  Hideout; the outfit system shows it everywhere (sprites, trainer pics). Grunt lines that should notice the
+  costume are `TODO(dialogue)`.
+- **D-045 Mega Ring**: the Elder gives it in Draconid Village right after the Magma Hideout, with the Mega Stone
+  for the second starter. – Alt: stones hidden in the world. – The brief's timing; one stone the player can use
+  at once (the dragon has no Mega), more stones for the rest later.
+- **D-046 Post-game home**: the SS Ticket / Lati TV scene plays in the Draconid house – Norman visits there, and
+  the scene uses the vanilla Brendan-house movements for both genders (the house is a copy of that layout). The
+  TV news code, the Hall of Fame respawn and the Littleroot fly spot follow the Draconid house; the Littleroot
+  houses belong to Brendan's and May's families. – Alt: keep the scene in Littleroot. – The player never lived
+  there.
+- **D-047 Player stand-ins**: scenes that draw the player as an NPC (Frontier battle rooms, battle tents, contest
+  hall, the Route 111 Mirage Tower fall, Southern Island) use the current outfit's sprite through the special
+  `GetPlayerOutfitNormalGfx` instead of Brendan/May. – Alt: a fixed Draconid sprite. – Brendan/May are the
+  rivals (brief), and the Magma outfit shows too while worn.
+- **D-048 First May battle can't white out**: Route 103 uses the expansion's early-rival battle (as FRLG's first
+  rival fight): a loss heals the party and the scene goes on with a different line. – Alt: vanilla (a loss
+  whites out). – The respawn point is the Draconid bedroom, a long walk back; the emulator matrix lost this
+  fight once with a mashed Lv 5 Jangmo-o, so it can happen to a new player too.
+- **D-049 Credits**: the player runs in their own sprite (Draconid M/F run cycles derived from FRLG's credits
+  Red/Leaf, like the rest of the player art) and May rides in on her bike, instead of Brendan or May standing in
+  for the player. – Alt: draw a Draconid bike rider (no non-rival base with that pose); keep Brendan/May (the brief
+  forbids their art for the player). – The on-foot sprite is taller than the riders, so it runs in a lane nearer
+  the camera. The opening movie keeps Brendan and May: no player exists yet when it plays.
 - **D-050 Player art base**: the four player sets are **derived from the FRLG Red/Leaf sprites** already in the
   repo (recoloured through their palette index roles, new head drawn from templates), and the Emerald-only states
   (Acro Bike, underwater, watering, decorating) are composed from those frames. – Alt: draw everything from scratch

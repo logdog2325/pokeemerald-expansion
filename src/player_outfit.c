@@ -78,6 +78,13 @@ bool32 IsFemaleOutfitAvatarGfx(u16 gfxId)
     return FALSE;
 }
 
+// special GetPlayerOutfitNormalGfx: the player's standing sprite in the current outfit, for scripted
+// stand-ins of the player (battle tents and Frontier rooms, the contest hall, Southern Island, Route 111).
+u16 GetPlayerOutfitNormalGfx(void)
+{
+    return GetPlayerOutfitAvatarGfx(PLAYER_AVATAR_STATE_NORMAL, gSaveBlock2Ptr->playerGender);
+}
+
 // special SetPlayerOutfit: VAR_0x8004 = PLAYER_OUTFIT_*. Changes the player's sprite at once.
 void SetPlayerOutfit(void)
 {

@@ -9,6 +9,7 @@ DraconidVillage_Shrine_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 
 
 DraconidVillage_Shrine_OnTransition::
+	call DraconidVillage_Shrine_EventScript_DraconidAsterPostgame
 	return
 
 

@@ -1478,7 +1478,9 @@ void BattleSetup_StartTrainerBattle(void)
         }
     }
 
-    if (TRAINER_BATTLE_PARAM.earlyRival && GetRivalBattleFlags() & RIVAL_BATTLE_TUTORIAL)
+    // Draconid Emerald: RIVAL_BATTLE_TUTORIAL (3) includes RIVAL_BATTLE_HEAL_AFTER (1), so a heal-after battle
+    // used to become a first (tutorial) battle, which in Emerald fights a wild Lv 2 Zigzagoon instead.
+    if (TRAINER_BATTLE_PARAM.earlyRival && (GetRivalBattleFlags() & RIVAL_BATTLE_TUTORIAL) == RIVAL_BATTLE_TUTORIAL)
         gBattleTypeFlags |= BATTLE_TYPE_FIRST_BATTLE;
 
     if (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE)

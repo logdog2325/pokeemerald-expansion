@@ -75,5 +75,14 @@ move the bases' indices onto those roles. Aster and the eggs have their own pale
 - Acro Bike wheelies and hops are shifted/sheared Mach Bike frames.
 - The watering can is a small red blob.
 - The male front pic's Poké Ball came out teal (shares the jacket colour).
-- The opening movie and the credits still show Brendan/May on bikes (`graphics/intro/`).
+- The opening movie still shows Brendan/May on bikes (`graphics/intro/`). It plays before a save exists, so it
+  is read as the two rivals; the credits already use the player (below).
+
+### Credits run cycles
+`graphics/intro/scene_2/draconid_{m,f}_credits.png` (6 frames of 64×64) come from the FRLG credits run cycles
+(`graphics/credits_frlg/player_{male,female}.png`, Red and Leaf) through `build_pics.py` and
+`tools/hack/art/player/draconid_credits.json`: the palette keeps the index roles (jacket/top → teal, pack → red for
+M, hair → dark navy), and a side-view head (spiky hair or a smooth top over the long hair, teal band, one horn
+leaning back) is drawn over the cap. The head rows were laid out from shapes (hair dome, spikes, horn line, band)
+with a 1 px outline, then checked at 1× and in the emulator.
 - Magma F back pic: the hood still has Leaf's hat silhouette.

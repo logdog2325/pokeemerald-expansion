@@ -15,9 +15,7 @@ LittlerootTown_BrendansHouse_1F_EventScript_SetMovingBoxes::
 	return
 
 LittlerootTown_BrendansHouse_1F_EventScript_CheckShowShoesManual::
-	checkplayergender
-	goto_if_eq VAR_RESULT, MALE, LittlerootTown_BrendansHouse_1F_EventScript_ShowRunningShoesManual
-	return
+	return  @ Draconid Emerald: both Littleroot houses belong to the rivals
 
 LittlerootTown_BrendansHouse_1F_EventScript_ShowRunningShoesManual::
 	setmetatile 3, 7, METATILE_BrendansMaysHouse_BookOnTable, TRUE
@@ -51,7 +49,7 @@ LittlerootTown_BrendansHouse_1F_OnFrame:
 	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 5, LittlerootTown_BrendansHouse_1F_EventScript_GoUpstairsToSetClock
 	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 6, LittlerootTown_BrendansHouse_1F_EventScript_PetalburgGymReport
 	map_script_2 VAR_LITTLEROOT_HOUSES_STATE_MAY, 1, LittlerootTown_BrendansHouse_1F_EventScript_YoureNewNeighbor
-	map_script_2 VAR_LITTLEROOT_HOUSES_STATE_MAY, 3, PlayersHouse_1F_EventScript_GetSSTicketAndSeeLatiTV
+	@ Draconid Emerald: the SS Ticket / Lati TV scene plays in the Draconid house (DraconidVillage_PlayersHouse_1F)
 	.2byte 0
 
 LittlerootTown_BrendansHouse_1F_EventScript_GoUpstairsToSetClock::

@@ -9,6 +9,7 @@ mapscripts DraconidVillage_Shrine_MapScripts {
 }
 
 script DraconidVillage_Shrine_OnTransition {
+    call(DraconidVillage_Shrine_EventScript_DraconidAsterPostgame) // data/scripts/draconid/aster.pory
 }
 
 // The egg-hatching rite (Phase 4, story event 1). The player enters at (10, 19) facing north;

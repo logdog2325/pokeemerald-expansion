@@ -1065,6 +1065,8 @@ gStdScripts_End::
 	.include "data/scripts/draconid/new_game.inc"
 	.include "data/scripts/draconid/birch_intro.inc"
 	.include "data/scripts/draconid/rivals.inc"
+	.include "data/scripts/draconid/second_starter.inc"
+	.include "data/scripts/draconid/aster.inc"
 	.include "data/scripts/hall_of_fame.inc"
 	.include "data/scripts/hall_of_fame_frlg.inc"
 

@@ -83,13 +83,13 @@
 #define FLAG_HIDE_LILYCOVE_CITY_WALLY            0x3D // Draconid Emerald: Wally in Lilycove
 #define FLAG_HIDE_MOSSDEEP_SPACE_CENTER_RIVALS   0x3E // Draconid Emerald: Brendan and May at the Space Center
 #define FLAG_ENABLE_BRENDAN_MATCH_CALL           0x3F // Draconid Emerald: Brendan registered in the PokéNav
-#define FLAG_UNUSED_0x040    0x40 // Unused Flag
-#define FLAG_UNUSED_0x041    0x41 // Unused Flag
-#define FLAG_UNUSED_0x042    0x42 // Unused Flag
-#define FLAG_UNUSED_0x043    0x43 // Unused Flag
-#define FLAG_UNUSED_0x044    0x44 // Unused Flag
-#define FLAG_UNUSED_0x045    0x45 // Unused Flag
-#define FLAG_UNUSED_0x046    0x46 // Unused Flag
+#define FLAG_HIDE_RUSTBORO_CITY_BIRCH            0x40 // Draconid Emerald: Prof. Birch outside the Rustboro Gym (second starter)
+#define FLAG_HIDE_METEOR_FALLS_ASTER             0x41 // Draconid Emerald: Aster in Meteor Falls
+#define FLAG_HIDE_CABLE_CAR_STATION_ASTER        0x42 // Draconid Emerald: Aster at the Route 112 cable car (disguise)
+#define FLAG_HIDE_ROUTE_119_ASTER                0x43 // Draconid Emerald: Aster on Route 119
+#define FLAG_HIDE_MAGMA_HIDEOUT_ASTER            0x44 // Draconid Emerald: Aster after Maxie in the Magma Hideout
+#define FLAG_HIDE_SKY_PILLAR_TOP_ASTER           0x45 // Draconid Emerald: Aster at the top of the Sky Pillar
+#define FLAG_RECEIVED_MEGA_RING                  0x46 // Draconid Emerald: the Elder gave the Mega Ring
 #define FLAG_UNUSED_0x047    0x47 // Unused Flag
 #define FLAG_UNUSED_0x048    0x48 // Unused Flag
 #define FLAG_UNUSED_0x049    0x49 // Unused Flag

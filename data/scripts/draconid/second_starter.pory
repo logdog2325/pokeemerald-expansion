@@ -1,0 +1,134 @@
+// Draconid Emerald: Prof. Birch's second partner after the first Gym (Phase 4).
+//
+// Winning the Stone Badge sets VAR_DRACONID_STATE to DRACONID_STATE_SECOND_STARTER; walking out of
+// the Rustboro Gym starts the scene (RustboroCity_OnFrame). Birch offers Charmander, Totodile or
+// Treecko at SECOND_STARTER_LEVEL; the choice is stored in VAR_SECOND_STARTER (SECOND_STARTER_*).
+// Each of them has a Dragon-type Mega (Charizard X, Feraligatr, Sceptile), handed out with the
+// Mega Ring later in the story.
+
+// Called from the Rustboro Gym when the Stone Badge is won.
+script RustboroCity_Gym_EventScript_DraconidBirchWaits {
+    if (var(VAR_DRACONID_STATE) == DRACONID_STATE_LEFT_VILLAGE) {
+        setvar(VAR_DRACONID_STATE, DRACONID_STATE_SECOND_STARTER)
+        clearflag(FLAG_HIDE_RUSTBORO_CITY_BIRCH)
+    }
+}
+
+script RustboroCity_EventScript_DraconidSecondStarter {
+    lockall
+    applymovement(LOCALID_RUSTBORO_BIRCH, RustboroCity_Movement_DraconidBirchApproach)
+    waitmovement(0)
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterDown)
+    waitmovement(0)
+    msgbox(RustboroCity_Text_DraconidBirchCongrats, MSGBOX_DEFAULT)
+    setvar(VAR_0x8008, 0)
+    while (var(VAR_0x8008) == 0) {
+        message(RustboroCity_Text_DraconidBirchWhichOne)
+        waitmessage
+        dynmultichoice(18, 1, TRUE, 3, 0, DYN_MULTICHOICE_CB_NONE, "CHARMANDER", "TOTODILE", "TREECKO")
+        switch (var(VAR_RESULT)) {
+            case 0:
+                setvar(VAR_0x8009, SECOND_STARTER_CHARMANDER)
+                msgbox(RustboroCity_Text_DraconidBirchCharmander, MSGBOX_YESNO)
+            case 1:
+                setvar(VAR_0x8009, SECOND_STARTER_TOTODILE)
+                msgbox(RustboroCity_Text_DraconidBirchTotodile, MSGBOX_YESNO)
+            default:
+                setvar(VAR_0x8009, SECOND_STARTER_TREECKO)
+                msgbox(RustboroCity_Text_DraconidBirchTreecko, MSGBOX_YESNO)
+        }
+        if (var(VAR_RESULT) == YES) {
+            setvar(VAR_0x8008, 1)
+        }
+    }
+    copyvar(VAR_SECOND_STARTER, VAR_0x8009)
+    switch (var(VAR_SECOND_STARTER)) {
+        case SECOND_STARTER_CHARMANDER:
+            bufferspeciesname(STR_VAR_1, SPECIES_CHARMANDER)
+            givemon(SPECIES_CHARMANDER, SECOND_STARTER_LEVEL)
+        case SECOND_STARTER_TOTODILE:
+            bufferspeciesname(STR_VAR_1, SPECIES_TOTODILE)
+            givemon(SPECIES_TOTODILE, SECOND_STARTER_LEVEL)
+        default:
+            bufferspeciesname(STR_VAR_1, SPECIES_TREECKO)
+            givemon(SPECIES_TREECKO, SECOND_STARTER_LEVEL)
+    }
+    if (var(VAR_RESULT) == MON_GIVEN_TO_PARTY) {
+        call(RustboroCity_EventScript_DraconidReceivedSecondStarter)
+        msgbox(gText_NicknameThisPokemon, MSGBOX_YESNO)
+        if (var(VAR_RESULT) == YES) {
+            call(Common_EventScript_GetGiftMonPartySlot)
+            call(Common_EventScript_NameReceivedPartyMon)
+        }
+    } elif (var(VAR_RESULT) == MON_GIVEN_TO_PC) {
+        call(RustboroCity_EventScript_DraconidReceivedSecondStarter)
+        msgbox(gText_NicknameThisPokemon, MSGBOX_YESNO)
+        if (var(VAR_RESULT) == YES) {
+            call(Common_EventScript_NameReceivedBoxMon)
+        }
+        call(Common_EventScript_TransferredToPC)
+    }
+    setflag(FLAG_RECEIVED_SECOND_STARTER)
+    setvar(VAR_DRACONID_STATE, DRACONID_STATE_GOT_SECOND_STARTER)
+    msgbox(RustboroCity_Text_DraconidBirchBye, MSGBOX_DEFAULT)
+    closemessage
+    applymovement(LOCALID_RUSTBORO_BIRCH, RustboroCity_Movement_DraconidBirchLeave)
+    waitmovement(0)
+    removeobject(LOCALID_RUSTBORO_BIRCH)
+    setflag(FLAG_HIDE_RUSTBORO_CITY_BIRCH)
+    releaseall
+}
+
+script RustboroCity_EventScript_DraconidReceivedSecondStarter {
+    playfanfare(MUS_OBTAIN_ITEM)
+    message(RustboroCity_Text_DraconidReceivedMon)
+    waitmessage
+    waitfanfare
+}
+
+// From (28, 23) to just below the Gym door, where the player comes out (27, 20).
+movement RustboroCity_Movement_DraconidBirchApproach {
+    walk_up
+    walk_left
+    walk_up
+    face_up
+}
+
+movement RustboroCity_Movement_DraconidBirchLeave {
+    walk_down * 2
+    walk_right * 3
+}
+
+text RustboroCity_Text_DraconidBirchCongrats {
+    format("PROF. BIRCH: {PLAYER}! I saw the whole battle through the window. Your first GYM BADGE!\p"
+           "I came to RUSTBORO on business, but I also carried a letter from your village's ELDER.\p"
+           "Draconid tamers traditionally raise a second partner from a faraway land, to learn balance.\p"
+           "So I brought three POKéMON that came to my lab from other regions. Pick the one you like!")
+}
+
+text RustboroCity_Text_DraconidBirchWhichOne {
+    format("Which POKéMON will you take?")
+}
+
+text RustboroCity_Text_DraconidBirchCharmander {
+    format("CHARMANDER, the Fire-type from KANTO. They say the flame on its tail shows its spirit.\p"
+           "Will you take CHARMANDER?")
+}
+
+text RustboroCity_Text_DraconidBirchTotodile {
+    format("TOTODILE, the Water-type from JOHTO. It bites anything that moves, even its TRAINER!\p"
+           "Will you take TOTODILE?")
+}
+
+text RustboroCity_Text_DraconidBirchTreecko {
+    format("TREECKO, the Grass-type from right here in HOENN. BRENDAN's partner has a sibling!\p"
+           "Will you take TREECKO?")
+}
+
+text RustboroCity_Text_DraconidReceivedMon {
+    format("{PLAYER} received the {STR_VAR_1} from PROF. BIRCH!")
+}
+
+text RustboroCity_Text_DraconidBirchBye {
+    format("PROF. BIRCH: Raise it well, alongside your dragon. I'll be waiting to hear how you do!")
+}

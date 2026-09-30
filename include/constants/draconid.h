@@ -11,6 +11,8 @@
 #define DRACONID_STATE_EGG_HATCHED     4 // hatched; Mom waits outside the shrine
 #define DRACONID_STATE_READY_TO_LEAVE  5 // got the Running Shoes, may leave the village
 #define DRACONID_STATE_LEFT_VILLAGE    6 // met Aster on Draconid Pass
+#define DRACONID_STATE_SECOND_STARTER  7 // Stone Badge: Prof. Birch waits outside the Rustboro Gym
+#define DRACONID_STATE_GOT_SECOND_STARTER 8 // second partner received
 
 // VAR_STARTER_MON / VAR_ASTER_EGG: the three Draconid eggs (order of the Elder's choice)
 #define DRACONID_EGG_DEINO             0
@@ -30,6 +32,18 @@
 #define SECOND_STARTER_CHARMANDER      1
 #define SECOND_STARTER_TOTODILE        2
 #define SECOND_STARTER_TREECKO         3
+#define SECOND_STARTER_LEVEL           10
+
+// VAR_ASTER_STATE: Aster's arc after Draconid Pass (data/scripts/draconid/aster.pory)
+#define ASTER_STATE_START              0 // Draconid Pass battle (FLAG_DEFEATED_ASTER_DRACONID_PASS)
+#define ASTER_STATE_METEOR_FALLS       1 // battled in Meteor Falls; waits at the Route 112 cable car
+#define ASTER_STATE_DISGUISED          2 // gave the Team Magma disguise (worn up Mt. Chimney)
+#define ASTER_STATE_CHIMNEY_DONE       3 // disguise off after Maxie on Mt. Chimney; waits on Route 119
+#define ASTER_STATE_ROUTE_119          4 // battled on Route 119 (Mega Altaria)
+#define ASTER_STATE_HIDEOUT_DONE       5 // Magma Hideout done; the Elder waits with the Mega Ring
+#define ASTER_STATE_MEGA_RING          6 // got the Mega Ring
+#define ASTER_STATE_SKY_PILLAR         7 // climax at the Sky Pillar done
+#define ASTER_STATE_POSTGAME           8 // post-game battle at the shrine done
 
 // VAR_BRENDAN_STATE: Brendan's battles that vanilla doesn't have (data/scripts/draconid/rivals.pory)
 #define BRENDAN_STATE_START            0 // waits at the Petalburg Woods entrance on Route 104

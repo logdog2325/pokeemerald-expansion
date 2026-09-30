@@ -70,6 +70,7 @@ MtChimney_EventScript_Maxie::
 	clearflag FLAG_HIDE_FALLARBOR_HOUSE_PROF_COZMO
 	setflag FLAG_HIDE_METEOR_FALLS_1F_1R_COZMO
 	clearflag FLAG_HIDE_MT_CHIMNEY_LAVA_COOKIE_LADY
+	call MtChimney_EventScript_DraconidDisguiseOff  @ Draconid Emerald (aster.pory)
 	releaseall
 	end
 

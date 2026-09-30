@@ -19,13 +19,13 @@ VerdanturfTown_BattleTentBattleRoom_EventScript_SetPlayerGfx::
 	return
 
 VerdanturfTown_BattleTentBattleRoom_EventScript_SetPlayerGfxMale::
-	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL
-	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL
+	specialvar VAR_OBJ_GFX_ID_1, GetPlayerOutfitNormalGfx  @ Draconid Emerald: the player's own sprite
+	specialvar VAR_OBJ_GFX_ID_0, GetPlayerOutfitNormalGfx  @ Draconid Emerald: the player's own sprite
 	return
 
 VerdanturfTown_BattleTentBattleRoom_EventScript_SetPlayerGfxFemale::
-	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_MAY_NORMAL
-	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_MAY_NORMAL
+	specialvar VAR_OBJ_GFX_ID_1, GetPlayerOutfitNormalGfx  @ Draconid Emerald: the player's own sprite
+	specialvar VAR_OBJ_GFX_ID_0, GetPlayerOutfitNormalGfx  @ Draconid Emerald: the player's own sprite
 	return
 
 VerdanturfTown_BattleTentBattleRoom_OnFrame:

@@ -17,11 +17,12 @@ Grouped by area; each entry names the file(s).
 | Emulator runner + driver | `tools/hack/emu/gbarun.c`, `tools/hack/emu/play.py` | headless smoke tests, see docs/hack_tools.md |
 | Map specs | `tools/hack/mapgen/specs/draconid_*.{py,json}` | regenerate the Draconid maps with `mapbuild.py` |
 | Seam checker | `tools/hack/mapgen/check_seams.py` | flags secondary metatiles drawable across a connection with other tilesets; run by `mapbuild.py --write` |
-| Emulator regression tests | `tools/hack/emu/tests/*.play` | `opening.play` (new game → lab, `-D GENDER=F`), `route103.play` (→ May), `route104.play` (Brendan), `rivals.play` (the other new rival scenes); `play.py` gained `warp`, `heal` (debug builds) and ledge-aware `path` |
+| Emulator regression tests | `tools/hack/emu/tests/*.play` | `opening.play` (new game → lab, `-D GENDER=F`), `route103.play` (→ May), `route104.play` (Brendan), `rivals.play` (the other new rival scenes), `second_starter.play` (Rustboro), `aster.play` (Aster arc, disguise, Mega Ring), `postgame_home.play` (SS Ticket / Lati TV in the Draconid house); `play.py` gained `warp`, `heal` (debug builds), ledge-aware `path`, `choose`, `expect_opponent/_trainer/_item/_gfx`; `gbarun` `until` takes `!VALUE`; `matrix.py` runs every gender × egg × second starter |
+| Story checker | `tools/hack/check_story.py` | every new flag / story state written and read, hide flags toggle |
 | Player outfit art builders | `tools/hack/art/player/build_player.py`, `build_pics.py`, specs `draconid_m/f.json`, `magma_m/f.json`, `*_pics.json` | see docs/hack_art_pipeline.md |
 | Outfit C code generator | `tools/hack/art/player/gen_outfit_code.py` | writes between `DRACONID PLAYER OUTFITS` markers |
 | Art manifest | `tools/hack/art/manifests/draconid.json` | `validate.py --manifest` for all player art; new `map_icon` profile in `gbaart.py` |
-| Trainer tools | `tools/hack/trainers/`: `party.py` (reader/writer), `scan_maps.py` (map → trainers), `build_segments.py` → `segments.json` (segment, role, cap per trainer), `check_party.py` (legality, caps, headers, trainerproc), `splice_party.py` (merge batches), `learnset.py` | see docs/hack_trainers.md |
+| Trainer tools | `tools/hack/trainers/`: `party.py` (reader/writer), `scan_maps.py` (map → trainers), `build_segments.py` → `segments.json` (segment, role, cap per trainer), `check_party.py` (legality, caps, headers, trainerproc), `splice_party.py` (merge batches, `--target`), `learnset.py`, `check_tiers.py` (rematch tiers grow), `report.py` (trainer table in hack_trainers.md), `sources.json` (where each team comes from) | see docs/hack_trainers.md |
 
 ## Config options
 | Option | Old | New | File |
@@ -62,19 +63,28 @@ Grouped by area; each entry names the file(s).
 | `FLAG_HIDE_PETALBURG_CITY_WALLY_GYM` (0x3C) | Wally beside the Petalburg Gym door (cleared by the Heat Badge) |
 | `FLAG_HIDE_LILYCOVE_CITY_WALLY` (0x3D) | Wally by the Lilycove Pokémon Center (cleared after the Petalburg battle) |
 | `FLAG_HIDE_MOSSDEEP_SPACE_CENTER_RIVALS` (0x3E) | Brendan and May at the Space Center (cleared by the Mind Badge) |
+| `FLAG_HIDE_RUSTBORO_CITY_BIRCH` (0x40) | Prof. Birch outside the Rustboro Gym (cleared by the Stone Badge; second starter) |
+| `FLAG_HIDE_METEOR_FALLS_ASTER` (0x41) | Aster in Meteor Falls (after Magma takes the meteorite) |
+| `FLAG_HIDE_CABLE_CAR_STATION_ASTER` (0x42) | Aster at the Route 112 cable car station (the disguise) |
+| `FLAG_HIDE_ROUTE_119_ASTER` (0x43) | Aster on Route 119's north path (cleared after Mt. Chimney) |
+| `FLAG_HIDE_MAGMA_HIDEOUT_ASTER` (0x44) | Aster in the Magma Hideout 4F (shown after Maxie) |
+| `FLAG_HIDE_SKY_PILLAR_TOP_ASTER` (0x45) | Aster at the top of the Sky Pillar |
+| `FLAG_RECEIVED_MEGA_RING` (0x46) | the Elder gave the Mega Ring (and the second starter's Mega Stone) |
+| `FLAG_HIDE_PLAYERS_HOUSE_DAD` (vanilla) | now also hides Norman in the Draconid house 1F (shown by the Hall of Fame) |
 | `FLAG_ENABLE_BRENDAN_MATCH_CALL` (0x3F) | Brendan in the PokéNav (registered after the Route 110 battle); May keeps `FLAG_ENABLE_RIVAL_MATCH_CALL` |
 
 ## Vars
 | Var | Values |
 |---|---|
-| `VAR_DRACONID_STATE` (0x40F7) | `DRACONID_STATE_*`: 0 new game, 1 set clock, 2 clock set, 3 egg received, 4 egg hatched, 5 ready to leave, 6 left village |
+| `VAR_DRACONID_STATE` (0x40F7) | `DRACONID_STATE_*`: 0 new game, 1 set clock, 2 clock set, 3 egg received, 4 egg hatched, 5 ready to leave, 6 left village, 7 Stone Badge (Birch waits in Rustboro), 8 second starter received |
 | `VAR_ASTER_EGG` (0x40F8) | Aster's egg, `DRACONID_EGG_*` (counter-pick of the player's) |
 | `VAR_SECOND_STARTER` (0x40F9) | `SECOND_STARTER_*`: 0 none, 1 Charmander, 2 Totodile, 3 Treecko |
 | `VAR_PLAYER_OUTFIT` (0x40FA) | `PLAYER_OUTFIT_*`: 0 Draconid, 1 Magma – picks the player's sprites and trainer pics (`src/player_outfit.c`) |
-| `VAR_ASTER_STATE` (0x40FB) | Aster arc progress (Phase 4) |
+| `VAR_ASTER_STATE` (0x40FB) | `ASTER_STATE_*`: 0 start, 1 Meteor Falls done, 2 disguised, 3 Mt. Chimney done, 4 Route 119 done, 5 Magma Hideout done, 6 Mega Ring, 7 Sky Pillar done, 8 post-game done |
 | `VAR_BRENDAN_STATE` (0x40FC) | `BRENDAN_STATE_*`: 0 waits on Route 104, 1 beaten there, 2 waits in Sootopolis, 3 Megas done |
 | `VAR_MAY_STATE` (0x40FD) | `MAY_STATE_*`: 0, 1 waits at Slateport's north exit, 2 beaten there |
 | `VAR_WALLY_STATE` (0x40FE) | `WALLY_STATE_*`: 0, 1 waits at the Petalburg Gym, 2 waits in Lilycove, 3 beaten there |
+| `VAR_LITTLEROOT_HOUSES_STATE_MAY` (vanilla) | state 3 (after the Hall of Fame) now starts the SS Ticket / Lati TV scene in the Draconid house 1F, not in Littleroot |
 | `VAR_STARTER_MON` (changed meaning) | now the player's egg, `DRACONID_EGG_*`; the starter table in `src/starter_choose.c` maps it to Deino/Dreepy/Jangmo-o |
 
 ## Constants
@@ -98,6 +108,8 @@ Grouped by area; each entry names the file(s).
 | Route 101 ↔ Draconid Pass connection (Route 101 left, offset −22; pass rows 26–27 = Route 101 rows 4–5) | `data/maps/Route101/map.json` |
 | `LOCALID_BIRCHS_LAB_BRENDAN` object (5, 4); lab rival object is always `OBJ_EVENT_GFX_RIVAL_MAY_NORMAL` | `data/maps/LittlerootTown_ProfessorBirchsLab/map.json` |
 | `BRENDAN_STATE_*`, `MAY_STATE_*`, `WALLY_STATE_*` | `include/constants/draconid.h` |
+| `DRACONID_STATE_SECOND_STARTER` (7), `DRACONID_STATE_GOT_SECOND_STARTER` (8), `SECOND_STARTER_LEVEL` (10), `ASTER_STATE_*` (0–8) | `include/constants/draconid.h` |
+| New objects: `LOCALID_RUSTBORO_BIRCH` (28, 23); Aster: `LOCALID_METEOR_FALLS_ASTER` (17, 18), `LOCALID_CABLE_CAR_STATION_ASTER` (6, 8), `LOCALID_ROUTE119_ASTER` (30, 17) + coord triggers across row 19 (x 28–31, 34–35) on `VAR_ASTER_STATE` 3, `LOCALID_MAGMA_HIDEOUT_4F_ASTER` (18, 21), `LOCALID_SKY_PILLAR_TOP_ASTER` (14, 12); shrine Aster gets a post-game script; `LOCALID_DRACONID_HOUSE_DAD` (Norman, 5, 6) in the Draconid house 1F | `data/maps/*/map.json` |
 | Rival trainer ids renamed (same numbers, 520–537, 592/593/599/600, 661–666, 768/769): `TRAINER_BRENDAN_{ROUTE_104,ROUTE_110,ROUTE_119,LILYCOVE,SOOTOPOLIS,POSTGAME,POSTGAME_DOUBLE}`, `TRAINER_MAY_{ROUTE_103,RUSTBORO,SLATEPORT,LILYCOVE,SOOTOPOLIS,POSTGAME,POSTGAME_DOUBLE}`, `TRAINER_ASTER_{METEOR_FALLS,ROUTE_119,SKY_PILLAR,POSTGAME}_{DEINO,DREEPY,JANGMO_O}` (named after the player's egg), `TRAINER_WALLY_{PETALBURG,LILYCOVE}`, spares `TRAINER_DRACONID_SPARE_1/2` | `include/constants/opponents.h`, teams in `src/data/trainers.party` |
 | `PARTNER_MAY` (2), `PARTNER_BRENDAN` (3), `PARTNER_COUNT` 4 | `include/constants/battle_partner.h`, `src/data/battle_partners.party` |
 | New objects: `LOCALID_ROUTE104_BRENDAN` (10, 39), `LOCALID_SLATEPORT_MAY` (18, 2), `LOCALID_LILYCOVE_MAY` (existing rival object) + `LOCALID_LILYCOVE_BRENDAN` (28, 7), `LOCALID_LILYCOVE_WALLY` (26, 16), `LOCALID_SOOTOPOLIS_MAY/_BRENDAN` (30/32, 35), `LOCALID_PETALBURG_WALLY_GYM` (13, 9), `LOCALID_SPACE_CENTER_2F_MAY/_BRENDAN` (4/5, 5); coord triggers on Route 104 (10–11, 41), Slateport (16–20, 5), Petalburg (15, 9) | `data/maps/*/map.json` |
@@ -127,6 +139,10 @@ Grouped by area; each entry names the file(s).
 | Rematch tiers gated by badges (`IsRematchTierUnlocked`, `GetBadgeCount`) | `src/battle_setup.c` (`GetRematchTrainerIdFromTable`) |
 | Match call: Brendan and May are both rivals for either gender; Brendan's entry uses `FLAG_ENABLE_BRENDAN_MATCH_CALL` | `src/pokenav_match_call_data.c` |
 | Quickstart (debug) names the player KAI / ZARA instead of the rivals' names | `src/quickstart.c` |
+| New special `GetPlayerOutfitNormalGfx` (the player's walking sprite for the current outfit, for scenes that draw the player as an NPC) | `src/player_outfit.c`, `include/player_outfit.h`, `data/specials.inc` |
+| Player's-house TV (Lati news flash, movie, "Mom might like this") checks the Draconid house 1F instead of the gender's Littleroot house (`IsInPlayersHouse1F`) | `src/tv.c` |
+| Fix: an early-rival battle with `RIVAL_BATTLE_HEAL_AFTER` no longer turns into the first (tutorial) battle, which in Emerald replaced the rival's team with a wild Lv 2 Zigzagoon (the flag test needs all bits of `RIVAL_BATTLE_TUTORIAL`) | `src/battle_setup.c` |
+| Credits: the player is a Draconid run cycle (`CreateCreditsDraconidSprite`, `TAG_DRACONID`, `sAnims_DraconidRun`, `DRACONID_CREDITS_RUN_Y`) and May always rides in as the rival (D-049) | `src/credits.c`, `src/intro_credits_graphics.c`, `include/intro_credits_graphics.h`, `graphics/intro/scene_2/draconid_{m,f}_credits.png`, `tools/hack/art/player/draconid_credits.json` |
 | Emulator test hook (debug builds only): `gDraconidTestWarp` + `Draconid_TryTestWarp` (warp / heal on request), called from `ProcessPlayerFieldInput` | `src/draconid.c`, `include/draconid.h`, `src/field_control_avatar.c` |
 
 ## Scripts
@@ -146,3 +162,13 @@ Grouped by area; each entry names the file(s).
 | Rival battles vanilla doesn't have: Brendan on Route 104, May in Slateport, Brendan's PokéNav registration, Lilycove two-on-two, Space Center partner choice, Sootopolis Megas, post-game lab singles + double, Wally at the Petalburg Gym and in Lilycove | `data/scripts/draconid/rivals.pory` |
 | Rival scenes no longer depend on the player's gender: `Common_EventScript_SetupRivalGfxId`/`OnBikeGfxId` always May; Rustboro/Route 104 always May (`TRAINER_MAY_RUSTBORO`); Route 110 and Route 119 always Brendan (gfx set in their OnTransition); per-starter battle branches replaced by one battle each; Route 103's vanilla branches removed | `data/scripts/rival_graphics.inc`, `data/maps/{RustboroCity,Route104,Route110,Route119,Route103}/scripts.inc` |
 | Hooks: Lilycove rival → `LilycoveCity_EventScript_DraconidRivals`; Space Center "ready?" → `…_DraconidChoosePartner`, rivals leave after Maxie gives up; Mossdeep Gym shows the Space Center rivals; Sootopolis Gym → `…_DraconidRivalsWait`, Sootopolis OnFrame → Mega scene; Lavaridge Gym → `…_DraconidWallyWaits`; Oceanic Museum 2F → `…_DraconidMayWaits`; Route 110 → `…_DraconidRegisterBrendan`; lab OnTransition/rival/Brendan → post-game scripts; debug menu's Steven multi battle → partner choice | `data/maps/*/scripts.inc`, `data/scripts/debug.inc` |
+| Second starter: Prof. Birch outside the Rustboro Gym after the Stone Badge (Charmander / Totodile / Treecko at Lv 10) | `data/scripts/draconid/second_starter.pory`; hooks: `RustboroCity_Gym` badge → `…_DraconidBirchWaits`, `RustboroCity` OnFrame (`VAR_DRACONID_STATE` 7) |
+| Aster's arc (Meteor Falls, cable car disguise, Route 119, Magma Hideout, Mega Ring from the Elder, Sky Pillar, post-game shrine) and the Team Magma disguise (`Draconid_EventScript_ChangeOutfit`) | `data/scripts/draconid/aster.pory`; hooks: end of `MeteorFalls_1F_1R_EventScript_MagmaStealsMeteoriteScene`, `Route112_CableCarStation` OnFrame (`VAR_ASTER_STATE` 1), end of `MtChimney_EventScript_Maxie`, `MagmaHideout_1F` OnTransition + new OnFrame (`VAR_TEMP_1` 1), end of `MagmaHideout_4F_EventScript_Maxie`, start and end of `SkyPillar_Top_EventScript_AwakenRayquaza`, Elder (`VAR_ASTER_STATE` 5), shrine OnTransition |
+| New game hides Birch in Rustboro and the five Aster objects | `data/scripts/draconid/new_game.pory` |
+| Scenes that drew the player as Brendan/May use `GetPlayerOutfitNormalGfx`: Frontier Arena/Dome/Factory/Palace battle rooms, Battle Tower multi room + corridor, Fallarbor/Slateport/Verdanturf battle tents, contest hall, Route 111 Mirage Tower fall, Southern Island | `data/maps/*/scripts.inc` |
+| Rival is always May in the remaining gender branches: Oldale, Lavaridge (Go-Goggles), Champion's room, lab post-game lines | `data/maps/{OldaleTown,LavaridgeTown,EverGrandeCity_ChampionsRoom,LittlerootTown_ProfessorBirchsLab}/scripts.inc` |
+| Littleroot houses belong to the rivals: no player scenes (moving-in, shoes manual, clock, PC, decorations), May's room always May, Brendan's house sign names him, post-game Birch waits outside May's house | `data/maps/LittlerootTown*/scripts.inc` |
+| Hall of Fame: respawn in the Draconid bedroom for both genders | `data/maps/EverGrandeCity_HallOfFame/scripts.inc` |
+| SS Ticket / Lati TV scene moved to the Draconid house: new entry label `PlayersHouse_1F_EventScript_SSTicketAndLatiTV` (after the gender setup), `DraconidVillage_PlayersHouse_1F` OnFrame jumps there with the Brendan-house movements; the Littleroot houses' OnFrame entries removed | `data/scripts/players_house.inc`, `data/maps/DraconidVillage_PlayersHouse_1F/scripts.pory`, `data/maps/LittlerootTown_{Brendans,Mays}House_1F/scripts.inc` |
+| Dialogue: Rustboro's Mr. Briney hint (May, and Brendan's unused twin) and Rydel's bike speech no longer assume the player just moved to Littleroot | `data/maps/RustboroCity/scripts.inc`, `data/maps/MauvilleCity_BikeShop/scripts.inc` |
+| Route 103 May is an early-rival battle (`trainerbattle_earlyrival … RIVAL_BATTLE_HEAL_AFTER`): a loss heals and the scene continues with its own line (D-048) | `data/scripts/draconid/birch_intro.pory` |

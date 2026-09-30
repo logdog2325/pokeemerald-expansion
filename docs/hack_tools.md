@@ -101,7 +101,8 @@ About 3000 frames per second, so a full intro takes seconds.
 tools/hack/emu/gbarun pokeemerald.gba script.txt outdir/
 ```
 More gbarun commands: `until ADDR SIZE VALUE MAX [KEYS PERIOD]` (run, optionally tapping KEYS – a
-comma-separated cycle – until memory equals VALUE), `untilhold ADDR SIZE VALUE MAX KEYS`, `read ADDR SIZE LABEL`.
+comma-separated cycle – until memory equals VALUE, or differs from it when written `!VALUE`),
+`untilhold ADDR SIZE VALUE MAX KEYS`, `read ADDR SIZE LABEL`.
 Addresses may be `HEX`, `*HEX` (pointer) or `*HEX+HEX`.
 
 `play.py` wraps gbarun with symbols from `pokeemerald.elf` and constants from the headers:
@@ -122,6 +123,28 @@ python3 tools/hack/emu/play.py test.play -o /tmp/out
 | `heal` | debug builds: heal the party the next time the player is free |
 | `setvar NAME V`, `gender M/F`, `default NAME V` (+ `-D NAME=V`) | change a var, the player's gender, script defaults |
 | `setflag NAME`, `clearflag NAME` | change a save-block flag, e.g. `setflag FLAG_DEBUG_NO_ENCOUNTER` to walk without wild battles |
+| `choose N [MAX]` | tap A until a `dynmultichoice` menu opens, then pick entry N (0 = first) |
+| `expect_opponent TRAINER_X` | the last trainer battle's opponent (kept until the next battle; works for lost battles) |
+| `expect_trainer TRAINER_X 0/1` | the trainer's defeated flag (only set when the battle is won) |
+| `expect_item ITEM_X 0/1` | whether the item is anywhere in the bag |
+| `expect_gfx OBJ_EVENT_GFX_X` | the player's current sprite (outfit, gender, avatar state) |
+
+`matrix.py` runs the flow tests for every gender × egg × second starter (18 combinations, 6 chains in
+parallel) and prints one line per run:
+```sh
+python3 tools/hack/emu/matrix.py -o /tmp/matrix [-j 3] [--only F_DREEPY]
+```
+`opening.play` takes `-D EGG=0|1|2`, `second_starter.play` `-D PICK=… -D SECOND=…`, `aster.play`
+`-D EGGNAME=… -D SECOND=… -D STONE=… -D GFX=… -D MAGMA=…` (see the comments at the top of each).
+
+## Story checks – `tools/hack/check_story.py`
+```sh
+python3 tools/hack/check_story.py
+```
+Static checks over the compiled scripts, map.json files and C: every Draconid flag is written and read,
+every `FLAG_HIDE_*` flag hides an object and toggles (new game sets it and a script clears it, or the
+other way round), every story state (`DRACONID_STATE_*`, `ASTER_STATE_*`, …) other than 0 is written.
+Record-only flags are warnings; states nothing compares against are notes.
 | `savestate F`, `loadstate F` | relative paths are inside the `-o` output directory |
 
 Regression tests live in `tools/hack/emu/tests/` and chain through savestates in one output dir:
@@ -130,6 +153,9 @@ python3 tools/hack/emu/play.py tools/hack/emu/tests/opening.play  -o /tmp/emu   
 python3 tools/hack/emu/play.py tools/hack/emu/tests/route103.play -o /tmp/emu   # lab -> May on Route 103
 python3 tools/hack/emu/play.py tools/hack/emu/tests/route104.play -o /tmp/emu   # warp -> Brendan on Route 104
 python3 tools/hack/emu/play.py tools/hack/emu/tests/rivals.play   -o /tmp/emu   # the other new rival scenes
+python3 tools/hack/emu/play.py tools/hack/emu/tests/second_starter.play -o /tmp/emu   # Birch in Rustboro
+python3 tools/hack/emu/play.py tools/hack/emu/tests/aster.play          -o /tmp/emu   # Aster arc, disguise, Mega Ring
+python3 tools/hack/emu/play.py tools/hack/emu/tests/postgame_home.play  -o /tmp/emu   # SS Ticket / Lati TV at home
 ```
 Flow tests set `FLAG_DRACONID_NO_WHITEOUT` so a battle lost by mashing A doesn't end the scene.
 Savestates only work with the ROM build that made them; rerun the chain after every rebuild.

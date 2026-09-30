@@ -119,7 +119,9 @@ movement DraconidVillage_EldersHouse_Movement_PlayerApproach {
 script DraconidVillage_EldersHouse_EventScript_Elder {
     lock
     faceplayer
-    if (var(VAR_DRACONID_STATE) < DRACONID_STATE_READY_TO_LEAVE) {
+    if (var(VAR_ASTER_STATE) == ASTER_STATE_HIDEOUT_DONE) {
+        call(DraconidVillage_EldersHouse_EventScript_DraconidMegaRing) // data/scripts/draconid/aster.pory
+    } elif (var(VAR_DRACONID_STATE) < DRACONID_STATE_READY_TO_LEAVE) {
         msgbox(format("ELDER: Your mother is waiting for you outside the shrine, {PLAYER}."))
     } elif (!flag(FLAG_BADGE01_GET)) {
         msgbox(format("ELDER: PROF. BIRCH of LITTLEROOT TOWN studies how Pokémon live in the wild.\p"

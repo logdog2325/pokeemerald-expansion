@@ -251,14 +251,24 @@ script Route103_EventScript_DraconidMay {
     waitmovement(0)
     msgbox(format("MAY: There you are, {PLAYER}! TORCHIC and I have been practicing.\p"
                   "Let's see what a real dragon can do!"))
-    // TODO(Phase 5): MAY_ROUTE_103 team from the rival schedule (docs/hack_trainers.md)
-    trainerbattle_no_intro(TRAINER_MAY_ROUTE_103, Route103_Text_DraconidMayDefeated)
-    msgbox(format("MAY: Your dragon really listens to you. No wonder Dad was so excited.\p"
-                  "I'm going to catch lots more POKéMON so I can beat you next time!\p"
-                  "See you around, {PLAYER}!"))
+    // The first rival battle can't be lost to a whiteout (D-048): a loss heals the party and goes on.
+    trainerbattle_earlyrival(TRAINER_MAY_ROUTE_103, RIVAL_BATTLE_HEAL_AFTER, Route103_Text_DraconidMayDefeated, Route103_Text_DraconidMayVictory)
+    if (var(VAR_RESULT) == TRUE) {
+        msgbox(format("MAY: Don't look so down! TORCHIC and I have just had more practice.\p"
+                      "Let your dragon rest and try again. Dad says every TRAINER loses at the start.\p"
+                      "See you around, {PLAYER}!"))
+    } else {
+        msgbox(format("MAY: Your dragon really listens to you. No wonder Dad was so excited.\p"
+                      "I'm going to catch lots more POKéMON so I can beat you next time!\p"
+                      "See you around, {PLAYER}!"))
+    }
     goto(Route103_EventScript_RivalExit)
 }
 
 text Route103_Text_DraconidMayDefeated {
     format("Wow! That's great! {PLAYER}, your dragon is strong!")
+}
+
+text Route103_Text_DraconidMayVictory {
+    format("Yay! TORCHIC, we did it!")
 }

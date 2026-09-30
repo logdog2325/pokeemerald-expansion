@@ -6,6 +6,7 @@
 
 u32 GetPlayerOutfit(void);
 u16 GetPlayerOutfitAvatarGfx(u8 state, enum Gender gender);
+u16 GetPlayerOutfitNormalGfx(void);
 u16 GetPlayerOutfitDecoratingGfx(enum Gender gender);
 bool32 IsFemaleOutfitAvatarGfx(u16 gfxId);
 void SetPlayerOutfit(void);
