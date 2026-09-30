@@ -1,12 +1,11 @@
 // Draconid Emerald: rival battles vanilla Emerald doesn't have (Phase 5).
 //
 //   Brendan  Route 104 (Petalburg Woods entrance), Route 110 (+ PokéNav registration),
-//            Route 119, Lilycove (with May), Sootopolis (Mega), Littleroot lab after the Champion
+//            Route 119, Lilycove (with May), Littleroot lab after the Champion
 //   May      Route 103, Rustboro, Slateport (after the Oceanic Museum), Lilycove (with Brendan),
-//            Sootopolis (Mega), Littleroot lab after the Champion
+//            Littleroot lab after the Champion
 //   Wally    Mauville (vanilla), Petalburg Gym door (after the Heat Badge), Lilycove (Mega Gallade),
 //            Victory Road (vanilla)
-//   Space Center: the player picks May or Brendan as the tag partner against Maxie and Tabitha.
 //
 // State vars: VAR_BRENDAN_STATE, VAR_MAY_STATE, VAR_WALLY_STATE (include/constants/draconid.h).
 // Vanilla hooks are listed in docs/hack_changes.md ("Scripts").
@@ -110,161 +109,6 @@ text LilycoveCity_Text_DraconidMayDefeat {
 text LilycoveCity_Text_DraconidRivalsAfter {
     format("MAY: That was amazing, {PLAYER}! We're going back to LITTLEROOT to tell Dad everything.\p"
            "BRENDAN: Don't slow down now. You've still got GYMS to beat!")
-}
-
-// ---------------------------------------------------------------------------
-// Space Center 2F: May or Brendan is the tag partner against Maxie and Tabitha
-// (the "ready to battle?" prompt of Steven goes to MossdeepCity_SpaceCenter_2F_EventScript_DraconidChoosePartner)
-// ---------------------------------------------------------------------------
-
-script MossdeepCity_SpaceCenter_2F_EventScript_DraconidRival {
-    lock
-    faceplayer
-    msgbox(MossdeepCity_SpaceCenter_2F_Text_DraconidRivalsHelp, MSGBOX_DEFAULT)
-    release
-}
-
-script MossdeepCity_SpaceCenter_2F_EventScript_DraconidChoosePartner {
-    applymovement(VAR_LAST_TALKED, Common_Movement_WalkInPlaceFasterDown)
-    waitmovement(0)
-    msgbox(MossdeepCity_SpaceCenter_2F_Text_DraconidPickPartner, MSGBOX_YESNO)
-    if (var(VAR_RESULT) == YES) {
-        setvar(VAR_0x8009, PARTNER_MAY)
-        msgbox(MossdeepCity_SpaceCenter_2F_Text_DraconidMayJoins, MSGBOX_DEFAULT)
-    } else {
-        setvar(VAR_0x8009, PARTNER_BRENDAN)
-        msgbox(MossdeepCity_SpaceCenter_2F_Text_DraconidBrendanJoins, MSGBOX_DEFAULT)
-    }
-    closemessage
-    special(SavePlayerParty)
-    fadescreen(FADE_TO_BLACK)
-    special(ChooseHalfPartyForBattle)
-    if (var(VAR_RESULT) == 0) {
-        special(LoadPlayerParty)
-        goto(MossdeepCity_SpaceCenter_2F_EventScript_ReadyForBattlePrompt)
-    }
-    if (var(VAR_0x8009) == PARTNER_MAY) {
-        multi_2_vs_2(TRAINER_MAXIE_MOSSDEEP, MossdeepCity_SpaceCenter_2F_Text_JustWantToExpandLand, TRAINER_TABITHA_MOSSDEEP, MossdeepCity_SpaceCenter_Text_TabithaDefeat, PARTNER_MAY)
-    } else {
-        multi_2_vs_2(TRAINER_MAXIE_MOSSDEEP, MossdeepCity_SpaceCenter_2F_Text_JustWantToExpandLand, TRAINER_TABITHA_MOSSDEEP, MossdeepCity_SpaceCenter_Text_TabithaDefeat, PARTNER_BRENDAN)
-    }
-    if (var(VAR_RESULT) == 1) {
-        goto(MossdeepCity_SpaceCenter_2F_EventScript_DefeatedMaxieTabitha)
-    }
-    fadescreen(FADE_TO_BLACK)
-    special(SetCB2WhiteOut)
-}
-
-// Called after Maxie gives up: the rivals leave with the Magma members.
-script MossdeepCity_SpaceCenter_2F_EventScript_DraconidRivalsLeave {
-    setflag(FLAG_HIDE_MOSSDEEP_SPACE_CENTER_RIVALS)
-    removeobject(LOCALID_SPACE_CENTER_2F_MAY)
-    removeobject(LOCALID_SPACE_CENTER_2F_BRENDAN)
-}
-
-text MossdeepCity_SpaceCenter_2F_Text_DraconidRivalsHelp {
-    format("MAY: We came as soon as we heard TEAM MAGMA was here!\p"
-           "Talk to STEVEN when you're ready. One of us will fight with you!")
-}
-
-text MossdeepCity_SpaceCenter_2F_Text_DraconidPickPartner {
-    format("STEVEN: MAY and BRENDAN came to help. One of them fights beside you; the other holds the stairs with me.\p"
-           "Will you team up with MAY?")
-}
-
-text MossdeepCity_SpaceCenter_2F_Text_DraconidMayJoins {
-    format("MAY: Leave it to me, {PLAYER}!")
-}
-
-text MossdeepCity_SpaceCenter_2F_Text_DraconidBrendanJoins {
-    format("BRENDAN: Then it's you and me, {PLAYER}!")
-}
-
-// ---------------------------------------------------------------------------
-// Sootopolis: after the Rain Badge, Brendan and May show off their Megas
-// (the Gym calls SootopolisCity_Gym_1F_EventScript_DraconidRivalsWait; OnFrame runs the scene)
-// ---------------------------------------------------------------------------
-
-script SootopolisCity_Gym_1F_EventScript_DraconidRivalsWait {
-    if (var(VAR_BRENDAN_STATE) < BRENDAN_STATE_SOOTOPOLIS) {
-        setvar(VAR_BRENDAN_STATE, BRENDAN_STATE_SOOTOPOLIS)
-        clearflag(FLAG_HIDE_SOOTOPOLIS_CITY_RIVALS)
-    }
-}
-
-script SootopolisCity_EventScript_DraconidMegaRivals {
-    lockall
-    playbgm(MUS_ENCOUNTER_MAY, TRUE)
-    applymovement(LOCALID_SOOTOPOLIS_MAY, Common_Movement_ExclamationMark)
-    applymovement(LOCALID_SOOTOPOLIS_BRENDAN, Common_Movement_ExclamationMark)
-    waitmovement(0)
-    applymovement(LOCALID_SOOTOPOLIS_MAY, Common_Movement_WalkUp)
-    applymovement(LOCALID_SOOTOPOLIS_BRENDAN, Common_Movement_WalkUp)
-    waitmovement(0)
-    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterDown)
-    waitmovement(0)
-    msgbox(SootopolisCity_Text_DraconidMegaRivalsIntro, MSGBOX_DEFAULT)
-    applymovement(LOCALID_SOOTOPOLIS_BRENDAN, Common_Movement_WalkInPlaceFasterUp)
-    waitmovement(0)
-    msgbox(SootopolisCity_Text_DraconidBrendanMegaIntro, MSGBOX_DEFAULT)
-    trainerbattle_no_intro(TRAINER_BRENDAN_MOSSDEEP, SootopolisCity_Text_DraconidBrendanMegaDefeat)
-    special(HealPlayerParty)
-    msgbox(SootopolisCity_Text_DraconidMayHeals, MSGBOX_DEFAULT)
-    applymovement(LOCALID_SOOTOPOLIS_MAY, Common_Movement_WalkInPlaceFasterUp)
-    waitmovement(0)
-    msgbox(SootopolisCity_Text_DraconidMayMegaIntro, MSGBOX_DEFAULT)
-    trainerbattle_no_intro(TRAINER_STEVEN_MOSSDEEP, SootopolisCity_Text_DraconidMayMegaDefeat)
-    special(HealPlayerParty)
-    msgbox(SootopolisCity_Text_DraconidMegaRivalsAfter, MSGBOX_DEFAULT)
-    closemessage
-    applymovement(LOCALID_SOOTOPOLIS_MAY, SootopolisCity_Movement_DraconidRivalLeave)
-    applymovement(LOCALID_SOOTOPOLIS_BRENDAN, SootopolisCity_Movement_DraconidRivalLeave)
-    waitmovement(0)
-    removeobject(LOCALID_SOOTOPOLIS_MAY)
-    removeobject(LOCALID_SOOTOPOLIS_BRENDAN)
-    setflag(FLAG_HIDE_SOOTOPOLIS_CITY_RIVALS)
-    setvar(VAR_BRENDAN_STATE, BRENDAN_STATE_MEGAS_DONE)
-    savebgm(MUS_DUMMY)
-    fadedefaultbgm
-    releaseall
-}
-
-movement SootopolisCity_Movement_DraconidRivalLeave {
-    walk_down * 2
-    walk_right * 4
-}
-
-text SootopolisCity_Text_DraconidMegaRivalsIntro {
-    format("MAY: {PLAYER}! You beat JUAN! That's all eight BADGES!\p"
-           "BRENDAN: We saw everything. RAYQUAZA, the storm… you were right there in the middle of it.\p"
-           "MAY: Dad sent us these before we came. KEY STONES!\p"
-           "BRENDAN: Our partners can MEGA EVOLVE now, just like your friends can. Want to see?")
-}
-
-text SootopolisCity_Text_DraconidBrendanMegaIntro {
-    format("BRENDAN: Me first! SCEPTILE's been waiting for this!")
-}
-
-text SootopolisCity_Text_DraconidBrendanMegaDefeat {
-    format("BRENDAN: Even with MEGA EVOLUTION…")
-}
-
-text SootopolisCity_Text_DraconidMayHeals {
-    format("MAY: My turn! Here, let me heal your team first. It's only fair.\p"
-           "{PLAYER}'s POKéMON were fully healed!")
-}
-
-text SootopolisCity_Text_DraconidMayMegaIntro {
-    format("MAY: BLAZIKEN and I trained on every route in HOENN for this!")
-}
-
-text SootopolisCity_Text_DraconidMayMegaDefeat {
-    format("MAY: Wow… you really are the strongest.")
-}
-
-text SootopolisCity_Text_DraconidMegaRivalsAfter {
-    format("MAY: VICTORY ROAD is past EVER GRANDE CITY, east of here.\p"
-           "BRENDAN: Beat the POKéMON LEAGUE, {PLAYER}. Then come back to LITTLEROOT and battle us again!")
 }
 
 // ---------------------------------------------------------------------------

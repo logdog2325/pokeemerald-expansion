@@ -470,9 +470,208 @@ Draconid Emerald round 1, Act 4 (docs/hack_story.md): Petalburg Gym with MAY wat
 - That's not what MAGMA does.
 - I don't know what you really are, {PLAYER}. But I'm going to find out.
 
+## data/scripts/draconid/act5.pory
+
+Draconid Emerald round 1, Act 5 (docs/hack_story.md steps 23–28): the Aqua Hideout, the Mossdeep Space Center, Nerine's reveal in the Seafloor Cavern, and the Sootopolis turn with the Rayquaza calling. The player wears the Magma uniform until the turn (REPUTATION_UNIFORM), then the tamer outfit (REPUTATION_REVEALED). Decisions D-140 … D-149; hooks into vanilla scripts are tagged "@ Draconid Emerald".
+
+### `AquaHideout_B2F_EventScript_DraconidNerineStepsIn`
+- NERINE: Leave MATT alone. He's only stalling you.
+
+### `AquaHideout_B2F_EventScript_DraconidNerineBattle`
+- NERINE: MAXIE sent you after ARCHIE. Of course he did.
+- His favorite grunt, sneaking through the enemy's base…
+- You look tired of that red, {PLAYER}. I know the feeling.
+- NERINE: One more battle. Then we both go where we're needed.
+- NERINE: ARCHIE is taking the submarine down. Deep, where the sea is darkest.
+- I'll be aboard. Someone has to be close when he does something foolish.
+- Soon, neither of us will need a borrowed uniform.
+- Follow the sea, {PLAYER}. And don't keep the sky waiting.
+- NERINE dove into the water and swam for the submarine.
+
+### `MossdeepCity_EventScript_DraconidTabithaRaidOrder`
+- TABITHA: Hehehe! There you are, {PLAYER}!
+- Leader MAXIE is busy chasing after GROUDON. So today, this squad is mine.
+- The SPACE CENTER keeps rocket fuel. Lots of it. We're taking every last drop.
+- Follow us in. And try to look like you're enjoying it. Hehehe!
+
+### `MossdeepCity_SpaceCenter_2F_EventScript_DraconidRaid`
+- TABITHA: Hehehe! Over here, grunt! Quick!
+- TABITHA: Look who's guarding the fuel. The CHAMPION of HOENN himself… and some kid.
+- BRENDAN: …{PLAYER}. Of course. Wherever MAGMA goes, you go.
+- I came to help STEVEN. I never thought I'd be fighting you over rocket fuel.
+- STEVEN: TABITHA. What does MAGMA want with rocket fuel?
+- TABITHA: Hehehe! Since you asked so nicely…
+- We're going to dump every drop into MT. CHIMNEY.
+- The mountain wakes up, the lava flows, and the land grows. Leader MAXIE's dream!
+- STEVEN: Then the fuel stays here.
+- …{PLAYER}{KUN}. We meet again.
+- TABITHA: Two against two, then. Here, grunt. Don't embarrass me.
+- TABITHA healed {PLAYER}'s POKéMON.
+- STEVEN: BRENDAN, with me.
+- BRENDAN: Right behind you.
+
+### `MossdeepCity_SpaceCenter_2F_EventScript_DraconidTagBattle`
+- TABITHA: Well? Pick your POKéMON, grunt!
+
+### `MossdeepCity_SpaceCenter_2F_EventScript_DraconidFuelSealed`
+- TABITHA: Hehehe! The CHAMPION, beaten!
+- Out of the way, STEVEN. The fuel is ours!
+- TABITHA: Tch! Useless grunt!
+- …Fine. I'll take the fuel myself!
+- SCIENTIST: STEVEN! We did it! The fuel tanks are sealed!
+- We locked them down while they were battling. Nobody can open them now. Not even us!
+- TABITHA: Sealed?! While we were… battling?!
+- STEVEN: The fuel stays where it is, TABITHA.
+- And so do the people who work here. They're behind me.
+- TABITHA: …You kept them busy a long time, grunt.
+- Long enough for this. …Hmph.
+
+### `MossdeepCity_SpaceCenter_2F_EventScript_DraconidStevenAndBrendan`
+- STEVEN: Your POKéMON fought hard. Let them rest.
+- STEVEN: …{PLAYER}{KUN}. A word, quietly.
+- Those tanks take time to seal. Someone kept TABITHA busy long enough.
+- I know you let us win the important part.
+- BRENDAN: LET us?! STEVEN, you saw it! {PLAYER} battled for MAGMA!
+- BRENDAN: I don't care what you “let” happen, {PLAYER}.
+- You stood next to them. Every single time.
+- …I'm done trying to understand you.
+- STEVEN: He'll understand one day. I hope you'll let him.
+
+### `SeafloorCavern_Room9_EventScript_DraconidNerineReveal`
+- NERINE: You found the way down. I knew you would.
+- NERINE: ARCHIE is below us, with the RED ORB. KYOGRE sleeps under his feet.
+- Before you go down there… no more games. Not between us.
+- NERINE pulled the bandana from her hair and let the AQUA uniform fall away…
+- NERINE: My name really is NERINE. That part was never a lie.
+- I'm DRACONID, like you. The ELDER sent me down the mountain years ago.
+- Into AQUA, to watch ARCHIE… and, when your time came, to watch you.
+- NERINE: The ELDER sent me to test you. You passed…
+- …almost.
+- NERINE: One more battle, {PLAYER}. No disguises this time.
+- Show me everything the ELDER saw in you!
+- NERINE: …The ELDER chose well. I'll tell him so myself.
+- ARCHIE will wake KYOGRE. I can't stop that, and neither can you.
+- When it happens, MAXIE will call for you. He trusts you more than anyone.
+- And then you'll have to choose, {PLAYER}. The red… or the sky.
+- NERINE: I have somewhere to be. Somewhere high.
+- ASTER is waiting for me there. She'll pretend she isn't worried about you.
+
+### `SootopolisCity_EventScript_DraconidMaxie`
+- MAXIE: {PLAYER}. You came. Good.
+- Stand with me. I want you to see this.
+- MAXIE: You again.
+- Have you come to beg for your place back? Or to finish this?
+- MAXIE: …Beaten. By a child who wore my colors.
+
+### `SootopolisCity_EventScript_DraconidTheTurn`
+- MAXIE: Look at them. ARCHIE's KYOGRE is drowning the world, one storm at a time.
+- And GROUDON fights back. It always has. It only needs a guiding hand.
+- The BLUE ORB failed me in the HIDEOUT. It will not fail me twice.
+- Help me take control of GROUDON, {PLAYER}. You and I, together.
+- When the rain ends, the land will be ours to shape.
+- {PLAYER} looked out at GROUDON and KYOGRE, tearing at each other in the storm…
+- …and remembered the ELDER's words.
+- “When the sky splits, you must stand beside RAYQUAZA.”
+- MAXIE: {PLAYER}? What are you waiting for?
+- {PLAYER} pulled off the red hood…
+- …and let the TEAM MAGMA uniform fall to the ground.
+- MAXIE: Those colors…
+- The mountain clan. The DRACONID.
+- …You were never mine. Not for a single day.
+- MAXIE: After everything I gave you?!
+- I trusted you with my plans. I made you my right hand!
+- And all that time, you were waiting for this moment.
+- MAXIE: Very well. I will take GROUDON without you.
+- But first, I will deal with the traitor in my ranks!
+
+### `SootopolisCity_EventScript_DraconidMultiBattle`
+- ARCHIE: Fufufu! MAXIE's own grunt, turning on him! Now that's a show.
+- But don't get cocky, kid. KYOGRE is still mine to take.
+- MAXIE: ARCHIE… For once, we agree on something.
+- This child stands in both our ways.
+- ???: {PLAYER}!
+- MAY: We saw it all from the sky! You threw the uniform away!
+- Right in front of MAXIE!
+- BRENDAN: {PLAYER}… What ARE you?
+- MAY: Later, BRENDAN! Two against one isn't fair.
+- {PLAYER}, one of us fights with you!
+- BRENDAN: Their ADMINS are crossing the water, too.
+- Whoever doesn't fight here holds them back.
+- MAY: {PLAYER}! You're back! We kept them busy for you.
+- Let's try that again. Pick a partner!
+- MAY: But first… your POKéMON are worn out. Hold still!
+- {PLAYER}'s POKéMON were fully healed!
+- Who will fight beside {PLAYER}?
+- BRENDAN: …Me? After everything I said to you?
+- …Fine. Let's go, {PLAYER}.
+- MAY: Then the ADMINS are mine!
+- MAY: BLAZIKEN, keep them off the island!
+- MAY: I was hoping you'd say that!
+- BRENDAN: Then I'll take the ADMINS. Don't you dare lose, {PLAYER}!
+- BRENDAN: SCEPTILE, nobody lands on this island!
+- ARCHIE: Two kids against the leaders of MAGMA and AQUA? Fufufu… Bring it on!
+- Choose the POKéMON that will battle beside your partner!
+- MAXIE: The land… slipping through my fingers…
+- ARCHIE: KYOGRE won't even look at the RED ORB anymore…
+- MAY: Their ADMINS turned tail! And you two beat MAXIE and ARCHIE both!
+- BRENDAN: Their ADMINS turned tail! …And you two actually did it.
+
+### `SootopolisCity_EventScript_DraconidRivalTalk`
+- MAY: We're right here, {PLAYER}. Talk to MAXIE when you're ready!
+
+### `SootopolisCity_EventScript_DraconidRayquaza`
+- Thunder split the sky over SOOTOPOLIS…
+- Far away, at the SKY PILLAR…
+- ASTER: The storm reaches all the way out here. Look at that sky.
+- NERINE: Then there's no more time to wait. The ELDER's words, ASTER. Every one of them.
+- ASTER: I know the words. I've known them since I was six.
+- …{PLAYER} held the line down there. Hmph. Not bad, for a red coat.
+- NERINE: Not red anymore, I think.
+- ASTER and NERINE raised their voices to the sky, together…
+- Something vast answered from above the clouds.
+
+### `SootopolisCity_EventScript_DraconidElderCall`
+- … … … … … … … … … … … Beep!
+- ELDER: {PLAYER}. It is the ELDER.
+- I felt it from the mountain. The sky has answered.
+- ASTER and NERINE called from the SKY PILLAR, and RAYQUAZA came down to quiet the old ones.
+- ASTER: We did. And tell {PLAYER} I never liked that red uniform anyway.
+- NERINE: Tell {PLAYER} well done. No “almost” this time.
+- ELDER: Hush, both of you.
+- {PLAYER}, hear me. RAYQUAZA has gone back to its tower.
+- It isn't time yet. The sky will tell us when.
+- Until then, walk your own road. You need no borrowed colors now.
+- … … … … … … … … … … … Click!
+
+### `SootopolisCity_EventScript_DraconidRivalsAftermath`
+- MAY: It's over… That was RAYQUAZA! A real, live RAYQUAZA!
+- And you! DRACONID! Undercover in TEAM MAGMA the whole time!
+- I KNEW it! I knew it, I knew it, I KNEW it!
+- Nobody who raises dragons like yours could ever be one of THEM.
+- BRENDAN: …Hey. {PLAYER}.
+- About RUSTBORO. And MOSSDEEP. And… everything I said.
+- I, uh… I was wrong. Okay? I was wrong about you.
+- …Don't make me say it twice.
+- MAY: Hehe! He practiced that the whole way here.
+- BRENDAN: I did NOT!
+- MAY: We're going home to tell our dads everything.
+- Come visit LITTLEROOT when you can, {PLAYER}!
+
+### `SootopolisCity_EventScript_DraconidSteven`
+- STEVEN: So that's RAYQUAZA…
+- It's incredible how the two rampaging POKéMON fled from it.
+- And you, {PLAYER}{KUN}. I've wondered about you ever since GRANITE CAVE.
+- I'm glad I was right.
+- STEVEN: I saw you throw off that uniform, {PLAYER}{KUN}. From all the way over here.
+- Go on. MAXIE is still waiting on the island.
+- STEVEN: {PLAYER}{KUN}… MAXIE is on the island in front of the GYM.
+- He was asking whether anyone had seen you.
+- I don't know what he wants from you. I think you do.
+- Whatever you really are, {PLAYER}{KUN}… this is the moment to show it.
+
 ## data/scripts/draconid/rivals.pory
 
-Draconid Emerald: rival battles vanilla Emerald doesn't have (Phase 5).  Brendan  Route 104 (Petalburg Woods entrance), Route 110 (+ PokéNav registration), Route 119, Lilycove (with May), Sootopolis (Mega), Littleroot lab after the Champion May      Route 103, Rustboro, Slateport (after the Oceanic Museum), Lilycove (with Brendan), Sootopolis (Mega), Littleroot lab after the Champion Wally    Mauville (vanilla), Petalburg Gym door (after the Heat Badge), Lilycove (Mega Gallade), Victory Road (vanilla) Space Center: the player picks May or Brendan as the tag partner against Maxie and Tabitha.  State vars: VAR_BRENDAN_STATE, VAR_MAY_STATE, VAR_WALLY_STATE (include/constants/draconid.h). Vanilla hooks are listed in docs/hack_changes.md ("Scripts").
+Draconid Emerald: rival battles vanilla Emerald doesn't have (Phase 5).  Brendan  Route 104 (Petalburg Woods entrance), Route 110 (+ PokéNav registration), Route 119, Lilycove (with May), Littleroot lab after the Champion May      Route 103, Rustboro, Slateport (after the Oceanic Museum), Lilycove (with Brendan), Littleroot lab after the Champion Wally    Mauville (vanilla), Petalburg Gym door (after the Heat Badge), Lilycove (Mega Gallade), Victory Road (vanilla)  State vars: VAR_BRENDAN_STATE, VAR_MAY_STATE, VAR_WALLY_STATE (include/constants/draconid.h). Vanilla hooks are listed in docs/hack_changes.md ("Scripts").
 
 ### `LilycoveCity_EventScript_DraconidRivals`
 - BRENDAN: Ready for our tag battle now?
@@ -485,28 +684,6 @@ Draconid Emerald: rival battles vanilla Emerald doesn't have (Phase 5).  Brendan
 - MAY: Don't hold back, {PLAYER}!
 - MAY: That was amazing, {PLAYER}! We're going back to LITTLEROOT to tell Dad everything.
 - BRENDAN: Don't slow down now. You've still got GYMS to beat!
-
-### `MossdeepCity_SpaceCenter_2F_EventScript_DraconidRival`
-- MAY: We came as soon as we heard TEAM MAGMA was here!
-- Talk to STEVEN when you're ready. One of us will fight with you!
-
-### `MossdeepCity_SpaceCenter_2F_EventScript_DraconidChoosePartner`
-- STEVEN: MAY and BRENDAN came to help. One of them fights beside you; the other holds the stairs with me.
-- Will you team up with MAY?
-- MAY: Leave it to me, {PLAYER}!
-- BRENDAN: Then it's you and me, {PLAYER}!
-
-### `SootopolisCity_EventScript_DraconidMegaRivals`
-- MAY: {PLAYER}! You beat JUAN! That's all eight BADGES!
-- BRENDAN: We saw everything. RAYQUAZA, the storm… you were right there in the middle of it.
-- MAY: Dad sent us these before we came. KEY STONES!
-- BRENDAN: Our partners can MEGA EVOLVE now, just like your friends can. Want to see?
-- BRENDAN: Me first! SCEPTILE's been waiting for this!
-- MAY: My turn! Here, let me heal your team first. It's only fair.
-- {PLAYER}'s POKéMON were fully healed!
-- MAY: BLAZIKEN and I trained on every route in HOENN for this!
-- MAY: VICTORY ROAD is past EVER GRANDE CITY, east of here.
-- BRENDAN: Beat the POKéMON LEAGUE, {PLAYER}. Then come back to LITTLEROOT and battle us again!
 
 ### `LittlerootTown_ProfessorBirchsLab_EventScript_DraconidPostgameMay`
 - MAY: The new CHAMPION of HOENN, back in LITTLEROOT!
@@ -620,6 +797,29 @@ Draconid Emerald: Aster's arc after Draconid Pass, the Team Magma disguise and t
 - `MauvilleCity_Text_WallyDefeat`: WALLY: … … … … … … … / I lost… / But your POKéMON looked happy. Really happy.
 - `MauvilleCity_Text_WallyIllGoBackToVerdanturf`: WALLY: UNCLE… I'll go back to VERDANTURF… / {PLAYER}… I don't think you're one of them. Not really.
 
+### MossdeepCity_SpaceCenter_1F
+- `MossdeepCity_SpaceCenter_1F_Text_MagmaHaveSightsOnSpaceCenter`: That red uniform… You're one of those MAGMA thugs! / Well, we won't let anything that minor interfere with our rocket launch!
+- `MossdeepCity_SpaceCenter_1F_Text_MagmaCantStealFuelTakeThis`: You're with TEAM MAGMA, aren't you? / P-please don't take the fuel! / Here, take this stone I found on the beach instead! It's all I have!
+- `MossdeepCity_SpaceCenter_1F_Text_CantStrollOnBeachWithMagma`: With TEAM MAGMA around, strolls on the beach aren't safe anymore…
+- `MossdeepCity_SpaceCenter_1F_Text_StevenMagmaCantBeAllowedToTakeFuel`: STEVEN: {PLAYER}{KUN}. Have you read that notice on the wall? / TEAM MAGMA is coming for the rocket fuel on this island. / …But you knew that already, didn't you? / I'll keep an eye on things here for a while longer. / In the meantime, why don't you go check out the town?
+- `MossdeepCity_SpaceCenter_1F_Text_Grunt3Intro`: Hey, rookie! TABITHA says you're good. / Let's see it!
+- `MossdeepCity_SpaceCenter_1F_Text_Grunt1Intro`: You're late, rookie! / …Or is it “sir” now? Let's see if that promotion was earned!
+- `MossdeepCity_SpaceCenter_1F_Text_Grunt1Defeat`: Grrr… Fine. You earned it.
+- `MossdeepCity_SpaceCenter_1F_Text_Grunt1PostBattle`: Next time, I'm the one getting promoted. Just you wait.
+- `MossdeepCity_SpaceCenter_1F_Text_Grunt4Intro`: The rocket fuel in storage--that's what we're after! Every last drop! / And no promoted rookie is taking the credit for it!
+- `MossdeepCity_SpaceCenter_1F_Text_Grunt4PostBattle`: What are we going to do with the rocket fuel? / How would I know? Ask TABITHA upstairs!
+- `MossdeepCity_SpaceCenter_1F_Text_Grunt2Intro`: TABITHA said nobody goes up. Not even you, rookie. / …Unless you can beat me!
+- `MossdeepCity_SpaceCenter_1F_Text_Grunt2PostBattle`: Tell TABITHA I never abandoned my post. That I stayed to the bitter end…
+
+### MossdeepCity_SpaceCenter_2F
+- `MossdeepCity_SpaceCenter_2F_Text_YoureOutnumberedTakeUsOn`: Hold it, rookie! / So you're the one Leader MAXIE promoted? / Hah! The three of us say you got lucky. One after another, right here. / Well? Can you take all three of us?
+- `MossdeepCity_SpaceCenter_2F_Text_GoodAnswer`: Hah! Chicken! Come back when you've got the nerve.
+- `MossdeepCity_SpaceCenter_2F_Text_MaxieWeWillGiveUp`: TABITHA: …Leader MAXIE won't like this. Not one bit. / MAGMA! Fall back!
+- `MossdeepCity_SpaceCenter_2F_Text_StevenThankYouComeSeeMeAtHome`: STEVEN: {PLAYER}{KUN}, please come see me at home after this. / I have something you'll need, wherever ARCHIE has gone. / Oh, yes, I don't live in RUSTBORO CITY. I live right here on this island.
+
+### MossdeepCity_StevensHouse
+- `MossdeepCity_StevensHouse_Text_YouveEarnedHMDive`: STEVEN: {PLAYER}{KUN}… / As you can see, there's not much here, but this is my home. / I won't ask who you really work for. Not yet. / But wherever ARCHIE's submarine went, you'll need this to follow. / It's the HIDDEN MACHINE DIVE.
+
 ### PetalburgCity_Gym
 - `PetalburgCity_Gym_Text_DadYoureHereWithYourPokemon`: NORMAN: Hm? A new face. / You must be the DRACONID tamer PROF. BIRCH told me about. / I'm NORMAN, the LEADER of this GYM. MAY is my daughter. / So, you're with your POKéMON. Then you're a TRAINER, {PLAYER}. / Good. I'll be looking forward to seeing how you grow.
 - `PetalburgCity_Gym_Text_DadOhYoureWallyRight`: NORMAN: Hm? You're… Uh… Oh, right. You're WALLY, right?
@@ -659,6 +859,10 @@ Draconid Emerald: Aster's arc after Draconid Pass, the Team Magma disguise and t
 - `Route110_Text_MayTakeThis`: MAY: I've watched MAGMA grunts. They treat POKéMON like tools. / Yours trust you. Completely. / What are you really doing, {PLAYER}? / …Fine. Keep your secret. Here, take this.
 - `Route110_Text_MayExplainItemfinder`: MAY: That's an ITEMFINDER. / Use it to root around for items that aren't visible. / If it senses something, it emits a sound.
 
+### Route128
+- `Route128_Text_MaxieResposibilityFallsToArchieAndMe`: MAXIE: {PLAYER}, don't say anything. / That rain is KYOGRE's. It will drown everything we worked for. / There is only one power in this world that can answer it. / GROUDON. The BLUE ORB failed me once, but GROUDON is out there, and it is angry. / I will find it. And this time, I will make it listen.
+- `Route128_Text_MaxieThisDefiesBelief`: MAXIE: This defies belief… / KYOGRE's power is beyond anything I imagined. / …But GROUDON is its equal. It must be.
+
 ### RustboroCity
 - `RustboroCity_Text_OutOfTheWay`: NERINE: …Move.
 - `RustboroCity_Text_HelpMeIWasRobbed`: Oh, it's you! / You're that TRAINER who helped me in PETALBURG WOODS! / …Is that a TEAM MAGMA uniform? / I don't care! Help me! TEAM AQUA took the DEVON GOODS! / If I don't get them back… I'm going to be in serious trouble.
@@ -674,6 +878,9 @@ Draconid Emerald: Aster's arc after Draconid Pass, the Team Magma disguise and t
 - `RusturfTunnel_Text_GruntTakePackage`: NERINE: Water doesn't need these parts. / Neither do I. Remember that. / Take them. And take the bird home.
 - `RusturfTunnel_Text_ThankYouLetsGoHomePeeko`: PEEKO owes her life to you! / Red uniform or not, you saved her. They call me MR. BRINEY. And, you are? / … … … … … … … … … … … … … … … … / Ah, so you are {PLAYER}{KUN}! I sincerely thank you! / Now, if there's anything that troubles you, don't hesitate to tell me! / You can usually find me in my cottage by the sea near PETALBURG WOODS. / Come, PEEKO, we should make our way home. / PEEKO: Pihyoh!
 
+### SeafloorCavern_Room9
+- `SeafloorCavern_Room9_Text_ArchieSoItWasYou`: ARCHIE: Fufufu… MAXIE's little red shadow. / So it was you, after all.
+
 ### SlateportCity_OceanicMuseum_2F
 - `SlateportCity_OceanicMuseum_2F_Text_WellTakeThoseParts`: Hehehe, hold it! We'll take those parts!
 - `SlateportCity_OceanicMuseum_2F_Text_WereTeamAqua`: GRUNT: We're TEAM AQUA! / Our BOSS wants those parts! …Huh? A MAGMA grunt?! Here?! / Doesn't matter! Fork them over!
@@ -682,3 +889,11 @@ Draconid Emerald: Aster's arc after Draconid Pass, the Team Magma disguise and t
 - `SlateportCity_OceanicMuseum_2F_Text_MeddlingKid`: GRUNT: Now what? If we don't get the parts, we're in for it! / NERINE: AQUA trains Water types. Funny, isn't it?
 - `SlateportCity_OceanicMuseum_2F_Text_ArchieWarning`: We are TEAM AQUA, and we love the sea! / And I am TEAM AQUA's leader, ARCHIE! / …That red uniform. So MAXIE sends children to do his work now. / … … … … … … … … … … … … / POKéMON, people… All life depends on the sea. / So, TEAM AQUA is dedicated to the expansion of the sea. / MAXIE will tell you the land matters more. He's wrong. / Tell your master this: stay out of TEAM AQUA's way. / The consequences will cost you dearly! / And don't you forget it!
 - `SlateportCity_OceanicMuseum_2F_Text_SternThankYouForSavingUs`: CAPT. STERN: You're… Ah, okay, you're {PLAYER}{KUN}… / A TEAM MAGMA member, fighting off TEAM AQUA… for my sake? / Well, that was a tense situation! Thank you for saving us! / Oh, yes, I almost forgot that you even brought the parts from DEVON!
+
+### SootopolisCity
+- `SootopolisCity_Text_YouBroughtFlyingMon`: Oh? You're the one who stood up to that MAGMA man! / Everyone saw you throw off that red uniform. / Well, aren't you amazing!
+- `SootopolisCity_Text_AfterAllOurScheming`: MAXIE: So the super-ancient POKéMON weren't only GROUDON and KYOGRE… / After all our scheming, that one POKéMON's simple action puts everything right again… / Fu… Fuhahaha… / …{PLAYER}. A DRACONID, in my own ranks, all this time. / I should be furious. I find I'm only tired. / Perhaps it's for the best that someone was watching me.
+- `SootopolisCity_Text_TryingMeaninglessToPokemon`: ARCHIE: KYOGRE and GROUDON both flew off to who knows where. / The weather in HOENN has returned to its normal state… / And MAXIE's star grunt was a mountain dragon tamer all along. Hah! / Maybe what we were trying to do was something small, even meaningless, to POKéMON…
+- `SootopolisCity_Text_HaventYouScaledSkyPillar`: WALLACE: {PLAYER}{KUN}… / The SKY PILLAR's doors are sealed, and I won't open them. / Whatever called RAYQUAZA down, it wasn't me.
+- `SootopolisCity_Text_AquaMagmaDidntMeanHarm`: WALLACE: So you are {PLAYER}{KUN}. STEVEN told me about you. / I saw it all from across the water. A TEAM MAGMA grunt who threw the uniform away, right in front of MAXIE. / And then RAYQUAZA. The SKY PILLAR has been sealed for generations, yet something called it down. / The leaders of MAGMA and AQUA are over there. It wouldn't hurt to hear what they have to say for themselves.
+- `SootopolisCity_Text_ThankYouForHelpAcceptThis`: WALLACE: {PLAYER}{KUN}… My eyes didn't deceive me. / You stood between MAXIE and the storm, and you held on until the sky answered. / SOOTOPOLIS… No, all of HOENN was saved. / On behalf of the people, I thank you. / This is a gift from me. Please accept it.

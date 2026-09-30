@@ -117,8 +117,8 @@ def pory_section(path):
         if kind != "script":
             continue
         said = []
-        # msgbox/message with an inline format() or a text label, in order
-        for m in re.finditer(r'(?:msgbox|message)\(\s*(format\(\s*(?:%s\s*)+\)|\w+)' % STRING, body):
+        # msgbox/message/pokenavcall with an inline format() or a text label, in order
+        for m in re.finditer(r'(?:msgbox|message|pokenavcall)\(\s*(format\(\s*(?:%s\s*)+\)|\w+)' % STRING, body):
             arg = m.group(1)
             if arg.startswith("format"):
                 said.append(join_strings(arg))

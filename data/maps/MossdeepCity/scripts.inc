@@ -75,20 +75,21 @@ MossdeepCity_EventScript_VisitedMossdeep::
 
 MossdeepCity_EventScript_TeamMagmaEnterSpaceCenter::
 	lockall
-	applymovement LOCALID_MOSSDEEP_MAXIE, MossdeepCity_Movement_MaxieGestureToSpaceCenter
+	call MossdeepCity_EventScript_DraconidTabithaRaidOrder  @ Draconid Emerald: Tabitha leads the raid (act5.pory)
+	applymovement LOCALID_MOSSDEEP_TABITHA, MossdeepCity_Movement_MaxieGestureToSpaceCenter  @ Draconid Emerald
 	waitmovement 0
 	applymovement LOCALID_MOSSDEEP_GRUNT_1, MossdeepCity_Movement_GruntFaceSpaceCenter
 	applymovement LOCALID_MOSSDEEP_GRUNT_2, MossdeepCity_Movement_GruntFaceSpaceCenter
 	applymovement LOCALID_MOSSDEEP_GRUNT_3, MossdeepCity_Movement_GruntFaceSpaceCenter
 	applymovement LOCALID_MOSSDEEP_GRUNT_4, MossdeepCity_Movement_GruntFaceSpaceCenter
 	waitmovement 0
-	applymovement LOCALID_MOSSDEEP_MAXIE, MossdeepCity_Movement_MaxieEnterSpaceCenter
+	applymovement LOCALID_MOSSDEEP_TABITHA, MossdeepCity_Movement_MaxieEnterSpaceCenter  @ Draconid Emerald
 	applymovement LOCALID_MOSSDEEP_GRUNT_1, MossdeepCity_Movement_Grunt1EnterSpaceCenter
 	applymovement LOCALID_MOSSDEEP_GRUNT_2, MossdeepCity_Movement_Grunt2EnterSpaceCenter
 	applymovement LOCALID_MOSSDEEP_GRUNT_3, MossdeepCity_Movement_Grunt3EnterSpaceCenter
 	applymovement LOCALID_MOSSDEEP_GRUNT_4, MossdeepCity_Movement_Grunt4EnterSpaceCenter
 	waitmovement 0
-	removeobject LOCALID_MOSSDEEP_MAXIE
+	removeobject LOCALID_MOSSDEEP_TABITHA  @ Draconid Emerald
 	removeobject LOCALID_MOSSDEEP_GRUNT_1
 	removeobject LOCALID_MOSSDEEP_GRUNT_2
 	removeobject LOCALID_MOSSDEEP_GRUNT_3
@@ -96,6 +97,7 @@ MossdeepCity_EventScript_TeamMagmaEnterSpaceCenter::
 	delay 30
 	setvar VAR_MOSSDEEP_CITY_STATE, 2
 	setflag FLAG_HIDE_MOSSDEEP_CITY_TEAM_MAGMA
+	call MossdeepCity_EventScript_DraconidTabithaRaidEnd  @ Draconid Emerald (act5.pory)
 	releaseall
 	end
 

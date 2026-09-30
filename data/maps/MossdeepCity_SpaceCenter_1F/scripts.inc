@@ -301,11 +301,11 @@ MossdeepCity_SpaceCenter_1F_Text_RocketLaunchDemandsPerfection:
 	.string "Despite that, we never stop trying.\n"
 	.string "Why? It's a dream that never ends.$"
 
-MossdeepCity_SpaceCenter_1F_Text_MagmaHaveSightsOnSpaceCenter:
-	.string "Those MAGMA thugs have their sights\n"
-	.string "set on our SPACE CENTER.\p"
-	.string "But we can't allow anything that minor\n"
-	.string "to interfere with our rocket launch!$"
+MossdeepCity_SpaceCenter_1F_Text_MagmaHaveSightsOnSpaceCenter:  @ Draconid Emerald
+	.string "That red uniform… You're one of those\n"
+	.string "MAGMA thugs!\p"
+	.string "Well, we won't let anything that minor\n"
+	.string "interfere with our rocket launch!$"
 
 MossdeepCity_SpaceCenter_1F_Text_FoundThisYouCanHaveIt:
 	.string "I was taking a stroll down the beach\n"
@@ -317,15 +317,15 @@ MossdeepCity_SpaceCenter_1F_Text_HoennFamousForMeteorShowers:
 	.string "The HOENN region has been famous for \n"
 	.string "its meteor showers for a long time.$"
 
-MossdeepCity_SpaceCenter_1F_Text_MagmaCantStealFuelTakeThis:
-	.string "TEAM MAGMA can't be allowed to steal\n"
-	.string "the rocket fuel.\p"
-	.string "Oh, by the way, you can have this stone\n"
-	.string "I found on the beach.$"
+MossdeepCity_SpaceCenter_1F_Text_MagmaCantStealFuelTakeThis:  @ Draconid Emerald
+	.string "You're with TEAM MAGMA, aren't you?\p"
+	.string "P-please don't take the fuel!\p"
+	.string "Here, take this stone I found on the\n"
+	.string "beach instead! It's all I have!$"
 
-MossdeepCity_SpaceCenter_1F_Text_CantStrollOnBeachWithMagma:
-	.string "With TEAM MAGMA around, I guess\n"
-	.string "strolls on the beach aren't safe.$"
+MossdeepCity_SpaceCenter_1F_Text_CantStrollOnBeachWithMagma:  @ Draconid Emerald
+	.string "With TEAM MAGMA around, strolls on the\n"
+	.string "beach aren't safe anymore…$"
 
 MossdeepCity_SpaceCenter_1F_Text_DidPokemonComeFromSpace:
 	.string "Some people claim that POKéMON came\n"
@@ -349,21 +349,20 @@ MossdeepCity_SpaceCenter_1F_Text_MagmaWantsToSpoilMyDream:
 	.string "that dream of mine!\p"
 	.string "I'm not having any of that!$"
 
-MossdeepCity_SpaceCenter_1F_Text_StevenMagmaCantBeAllowedToTakeFuel:
-	.string "STEVEN: {PLAYER}{KUN}, have you read that\n"
-	.string "proclamation already?\p"
-	.string "TEAM MAGMA is coming after the rocket\n"
+MossdeepCity_SpaceCenter_1F_Text_StevenMagmaCantBeAllowedToTakeFuel:  @ Draconid Emerald
+	.string "STEVEN: {PLAYER}{KUN}. Have you read that\n"
+	.string "notice on the wall?\p"
+	.string "TEAM MAGMA is coming for the rocket\n"
 	.string "fuel on this island.\p"
-	.string "I don't know what they'd need it for,\n"
-	.string "but they can't be allowed to take it.\p"
-	.string "I'll keep an eye on things for\n"
-	.string "a while longer.\p"
-	.string "In the meantime, why don't you go\n"
-	.string "check out the town?$"
+	.string "…But you knew that already, didn't you?\p"
+	.string "I'll keep an eye on things here for a\n"
+	.string "while longer.\p"
+	.string "In the meantime, why don't you go check\n"
+	.string "out the town?$"
 
-MossdeepCity_SpaceCenter_1F_Text_Grunt3Intro:
-	.string "As promised, we've come for\n"
-	.string "the rocket fuel!$"
+MossdeepCity_SpaceCenter_1F_Text_Grunt3Intro:  @ Draconid Emerald
+	.string "Hey, rookie! TABITHA says you're good.\p"
+	.string "Let's see it!$"
 
 MossdeepCity_SpaceCenter_1F_Text_Grunt3Defeat:
 	.string "Ran out of fuel…$"
@@ -372,43 +371,45 @@ MossdeepCity_SpaceCenter_1F_Text_Grunt3PostBattle:
 	.string "Don't think you're on a roll just\n"
 	.string "because you've beaten me!$"
 
-MossdeepCity_SpaceCenter_1F_Text_Grunt1Intro:
-	.string "We gave you fair warning!\n"
-	.string "There's nothing sneaky about us!$"
+MossdeepCity_SpaceCenter_1F_Text_Grunt1Intro:  @ Draconid Emerald
+	.string "You're late, rookie!\p"
+	.string "…Or is it “sir” now? Let's see if that\n"
+	.string "promotion was earned!$"
 
-MossdeepCity_SpaceCenter_1F_Text_Grunt1Defeat:
+MossdeepCity_SpaceCenter_1F_Text_Grunt1Defeat:  @ Draconid Emerald
 	.string "Grrr…\n"
-	.string "We should've used sneaky treachery…$"
+	.string "Fine. You earned it.$"
 
-MossdeepCity_SpaceCenter_1F_Text_Grunt1PostBattle:
-	.string "Okay, I get it already! The next time,\n"
-	.string "we'll come unannounced.$"
+MossdeepCity_SpaceCenter_1F_Text_Grunt1PostBattle:  @ Draconid Emerald
+	.string "Next time, I'm the one getting promoted.\n"
+	.string "Just you wait.$"
 
-MossdeepCity_SpaceCenter_1F_Text_Grunt4Intro:
-	.string "The rocket fuel the SPACE CENTER has\n"
-	.string "in storage--that's what we're after.\p"
-	.string "We mean to take every last bit of it!$"
+MossdeepCity_SpaceCenter_1F_Text_Grunt4Intro:  @ Draconid Emerald
+	.string "The rocket fuel in storage--that's\n"
+	.string "what we're after! Every last drop!\p"
+	.string "And no promoted rookie is taking the\n"
+	.string "credit for it!$"
 
 MossdeepCity_SpaceCenter_1F_Text_Grunt4Defeat:
 	.string "Please, can you spare some fuel?\n"
 	.string "Even a chintzy cup will do!$"
 
-MossdeepCity_SpaceCenter_1F_Text_Grunt4PostBattle:
-	.string "What are we going to do with\n"
-	.string "the rocket fuel?\p"
+MossdeepCity_SpaceCenter_1F_Text_Grunt4PostBattle:  @ Draconid Emerald
+	.string "What are we going to do with the rocket\n"
+	.string "fuel?\p"
 	.string "How would I know?\n"
-	.string "Ask our leader upstairs!$"
+	.string "Ask TABITHA upstairs!$"
 
-MossdeepCity_SpaceCenter_1F_Text_Grunt2Intro:
-	.string "Our leader said no one, but no one,\n"
-	.string "gets past me!$"
+MossdeepCity_SpaceCenter_1F_Text_Grunt2Intro:  @ Draconid Emerald
+	.string "TABITHA said nobody goes up. Not even\n"
+	.string "you, rookie.\p"
+	.string "…Unless you can beat me!$"
 
 MossdeepCity_SpaceCenter_1F_Text_Grunt2Defeat:
 	.string "Ack! Ack! Aaack!$"
 
-MossdeepCity_SpaceCenter_1F_Text_Grunt2PostBattle:
-	.string "Please, tell our leader that\n"
-	.string "I never abandoned my post.\l"
+MossdeepCity_SpaceCenter_1F_Text_Grunt2PostBattle:  @ Draconid Emerald
+	.string "Tell TABITHA I never abandoned my post.\n"
 	.string "That I stayed to the bitter end…$"
 
 MossdeepCity_SpaceCenter_1F_Text_MagmaIntentToStealNotice:

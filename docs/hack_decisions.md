@@ -293,6 +293,57 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   battle (the first is still a plain grunt, so she can say "Stand aside"). May's Route 110 battle is the vanilla
   rival scene with her lines, and she registers in the PokéNav there (the vanilla Rustboro registration is
   skipped, D-115); Brendan registers on Route 119 (Act 4). – Alt: a Magma messenger grunt.
+- **D-140 Tabitha's raid, no Maxie at Mossdeep**: Maxie is off chasing Groudon (his PokéNav call sends the player to
+  Tabitha), so the vanilla city scene's Maxie object is Tabitha (drawn as a grunt, D-115) and the Space Center 2F
+  has no Maxie; his vanilla "is our goal misguided?" doubts are not said here (at Sootopolis he still wants
+  Groudon). The Magma grunt trainers on 1F and the three on 2F stay battles as **rank tests** of the promoted
+  rookie (D-103). – Alt: Maxie at the Space Center without battling (he would have to doubt himself before
+  Sootopolis, where the add-on has him order the player to help him control Groudon).
+- **D-141 Space Center staging**: Steven and Brendan hold the 2F corner by the fuel, Tabitha faces them; coord
+  triggers across the only way in (x 7, after the grunts) walk the player to Tabitha's side, so the scene can't be
+  skipped or talked into from odd angles. Tabitha heals the player's team first (there is no break between the
+  rank test and the battle), the player picks three (the vanilla half-party menu), and the battle can't white out.
+  **Whoever wins, the scientists have sealed the tanks during the battle** (a voice from the control room); Steven
+  says the player kept Tabitha busy long enough ("I know you let us win the important part"), heals the team after a
+  loss, and Brendan storms off down the stairs. The vanilla ending runs after that (every flag, Steven's house and
+  HM Dive). Brendan's object reuses 0x3E (`FLAG_HIDE_MOSSDEEP_SPACE_CENTER_RIVALS`, name kept). – Alt: a must-win
+  battle (the add-on says not); Magma retreating only after a loss (then a win would give them the fuel).
+- **D-142 Nerine, Aqua Hideout and Seafloor Cavern**: in the hideout she stands beside Matt at the submarine dock and
+  **talking to Matt brings her in first**, so fight 5 can't be skipped; afterwards she dives after Archie's
+  submarine. In the Seafloor Cavern she waits at the entrance of the last room (Room 9, before Archie's chamber) and
+  the reveal plays on arrival: her object draws from `VAR_OBJ_GFX_ID_0` and changes from the Aqua disguise to her
+  own outfit behind a fade. Both are ordinary must-win battles (a loss whites out; the scene plays again).
+  `MAGMA_STATE_SEAFLOOR` is set when Kyogre wakes (end of the vanilla Archie scene), not at the reveal, because
+  Maxie's next PokéNav call says Kyogre is awake. – Alt: a second object for her true look (one more flag); the
+  reveal in Room 8 (the boulder room: no free tile beside the exit).
+- **D-143 The Sootopolis turn**: after the vanilla Groudon/Kyogre scene the player surfs to the Gym island and talks
+  to Maxie; he orders the player to help him control Groudon, the player remembers the Elder's words and takes the
+  uniform off (outfit → tamer, `REPUTATION_REVEALED`, `MAGMA_STATE_TURNED`), then **Maxie alone**, then Archie
+  joins him and Brendan and May fly in; May heals the team (the Maxie battle came right before), the player picks
+  the partner (`PARTNER_BRENDAN` / `PARTNER_MAY`), the other walks to the shore and "holds off the admins"
+  off-screen (a cry and a line; the admins aren't drawn). Both battles
+  are must-win with the vanilla whiteout, and the scene is **re-entrant**: talking to Maxie again resumes at the
+  battle that was lost (the uniform stays off; Brendan and May wait on the island). – Alt: retry loops without
+  whiteout (D-110 style: a flow test can't mash through them); admins as objects (four more flags).
+- **D-144 No Cave of Origin trip**: Steven no longer leads the player to Wallace in the Cave of Origin – he points
+  at Maxie on the island (and, after the crisis, says he was right about the player since Granite Cave). The
+  expert keeps blocking the cave (`FLAG_STEVEN_GUIDES_TO_CAVE_OF_ORIGIN` is never set), so Wallace's Cave of Origin
+  and Sky Pillar scenes can't run; Wallace appears by the Gym after Rayquaza, and his lines say he saw the uniform
+  come off and that the Sky Pillar is sealed. – Alt: keep the Cave of Origin visit (Wallace would have to send the
+  player somewhere, D-109 says not the Sky Pillar).
+- **D-145 The Rayquaza calling and the Sky Pillar state**: after the multi battle, thunder, then over black "Far
+  away, at the SKY PILLAR…" (Aster and Nerine; `ASTER_STATE_RAYQUAZA_CALLED`); then the vanilla Rayquaza scene,
+  seen from the island (own camera pans, the rest as `SootopolisCity_EventScript_RayquazaSceneFromPokeCenter`).
+  Everything the vanilla Sky Pillar trip leaves set is set: `VAR_SOOTOPOLIS_CITY_STATE` 5 (the vanilla aftermath:
+  Maxie, Archie, Wallace, Steven by the Gym; Juan's badge makes it 6), `VAR_SKY_PILLAR_STATE` 3 (Rayquaza is back at
+  the top: floors cracked, its object shown), `VAR_SKY_PILLAR_RAYQUAZA_CRY_DONE` 1, Wallace shown in the city – but
+  **not `FLAG_WALLACE_GOES_TO_SKY_PILLAR`**, so the tower door stays shut until Acts 6–7 open it.
+- **D-146 The Elder's word and the rivals' reactions**: right after Rayquaza leaves, a PokéNav call (the vanilla
+  `pokenavcall`, no Match Call entry needed): the Elder, with Aster and Nerine beside him for a line each – "It isn't
+  time yet. The sky will tell us when." Then, still on the island, May's "I KNEW it!" and Brendan's awkward
+  apology; both fly home (`BRENDAN_STATE_SOOTOPOLIS`, `MAY_STATE_SOOTOPOLIS`) before the city reloads. Maxie and
+  Archie admit their failure in the vanilla aftermath, with a line each about the player. – Alt: a letter (needs a
+  messenger); the rivals' lines after the reload (another state var for the OnFrame).
 - **D-160 Nerine's disguise detail**: the female Aqua grunt sheet and pic unchanged except her own **silver-blue
   hair** under the bandana (the real grunts' is magenta/red). – Alt: a teal scale scarf; a gold horn clip on the
   bandana. – The hair is the one detail readable at 16×32 among grunts (a clip is 2–3 px), it is the same hair

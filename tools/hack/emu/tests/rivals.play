@@ -45,16 +45,6 @@ mash A 20000
 shot 41_lilycove_need_two
 expect_flag FLAG_MET_RIVAL_LILYCOVE 0
 
-# --- Sootopolis: the Mega battles after the Rain Badge (OnFrame scene) ---
-setvar VAR_BRENDAN_STATE 6
-clearflag FLAG_HIDE_SOOTOPOLIS_CITY_RIVALS
-warp MAP_SOOTOPOLIS_CITY 31 33 2000
-shot 50_sootopolis
-mash A 90000
-shot 51_after_sootopolis
-expect_var VAR_BRENDAN_STATE 7
-expect_flag FLAG_HIDE_SOOTOPOLIS_CITY_RIVALS 1
-
 # --- Littleroot lab after the Champion: Brendan's rematch ---
 setflag FLAG_SYS_GAME_CLEAR
 setvar VAR_DEX_UPGRADE_JOHTO_STARTER_STATE 3

@@ -163,7 +163,6 @@ SootopolisCity_OnResume:
 	end
 
 SootopolisCity_OnFrame:
-	map_script_2 VAR_BRENDAN_STATE, BRENDAN_STATE_SOOTOPOLIS, SootopolisCity_EventScript_DraconidMegaRivals  @ Draconid Emerald
 	map_script_2 VAR_SOOTOPOLIS_CITY_STATE, 1, SootopolisCity_EventScript_StartLegendariesScene
 	map_script_2 VAR_SKY_PILLAR_STATE, 1, SootopolisCity_EventScript_StartRayquazaScene
 	.2byte 0
@@ -872,6 +871,7 @@ SootopolisCity_EventScript_Steven::
 	lockall
 	applymovement LOCALID_SOOTOPOLIS_STEVEN, Common_Movement_FacePlayer
 	waitmovement 0
+	goto SootopolisCity_EventScript_DraconidSteven  @ Draconid Emerald: no Cave of Origin trip (act5.pory)
 	call_if_unset FLAG_STEVEN_GUIDES_TO_CAVE_OF_ORIGIN, SootopolisCity_EventScript_StevenLeadPlayerCaveOfOrigin
 	goto_if_eq VAR_SOOTOPOLIS_CITY_STATE, 2, SootopolisCity_EventScript_StevenHelpWallace
 	goto_if_eq VAR_SOOTOPOLIS_CITY_STATE, 3, SootopolisCity_EventScript_StevenHelpedWallace
@@ -1329,6 +1329,7 @@ SootopolisCity_Movement_WallaceMoveFromGymWest:
 
 SootopolisCity_EventScript_Maxie::
 	lockall
+	goto_if_lt VAR_SOOTOPOLIS_CITY_STATE, 5, SootopolisCity_EventScript_DraconidMaxie  @ Draconid Emerald: the turn (act5.pory)
 	goto_if_eq VAR_SOOTOPOLIS_CITY_STATE, 5, SootopolisCity_EventScript_MaxieRayquaza
 	msgbox SootopolisCity_Text_GroudonPleaseStop, MSGBOX_DEFAULT
 	closemessage
@@ -1564,10 +1565,11 @@ SootopolisCity_Text_WeatherWentWild:
 	.string "Is all of this because of those\n"
 	.string "POKéMON?$"
 
-SootopolisCity_Text_YouBroughtFlyingMon:
-	.string "Oh?\p"
-	.string "It was you who brought that flying\n"
-	.string "POKéMON here?\p"
+SootopolisCity_Text_YouBroughtFlyingMon:  @ Draconid Emerald
+	.string "Oh? You're the one who stood up to that\n"
+	.string "MAGMA man!\p"
+	.string "Everyone saw you throw off that red\n"
+	.string "uniform.\p"
 	.string "Well, aren't you amazing!$"
 
 SootopolisCity_Text_GroudonPleaseStop:
@@ -1577,15 +1579,20 @@ SootopolisCity_Text_GroudonPleaseStop:
 	.string "If you keep going, all HOENN, not just\n"
 	.string "SOOTOPOLIS, will be utterly ruined!$"
 
-SootopolisCity_Text_AfterAllOurScheming:
+SootopolisCity_Text_AfterAllOurScheming:  @ Draconid Emerald
 	.string "MAXIE: So the super-ancient POKéMON\n"
 	.string "weren't only GROUDON and KYOGRE…\p"
-	.string "After all our fruitless scheming and\n"
-	.string "frantic efforts, that one POKéMON's\l"
-	.string "simple action puts everything right\l"
-	.string "again as if nothing had happened…\p"
+	.string "After all our scheming, that one\n"
+	.string "POKéMON's simple action puts\l"
+	.string "everything right again…\p"
 	.string "Fu…\n"
-	.string "Fuhahaha…$"
+	.string "Fuhahaha…\p"
+	.string "…{PLAYER}. A DRACONID, in my own ranks,\n"
+	.string "all this time.\p"
+	.string "I should be furious. I find I'm only\n"
+	.string "tired.\p"
+	.string "Perhaps it's for the best that someone\n"
+	.string "was watching me.$"
 
 SootopolisCity_Text_KyogreCalmDown:
 	.string "ARCHIE: KYOGRE! What's wrong?!\n"
@@ -1596,16 +1603,16 @@ SootopolisCity_Text_KyogreCalmDown:
 	.string "It's no good!\n"
 	.string "It's not responding at all!$"
 
-SootopolisCity_Text_TryingMeaninglessToPokemon:
-	.string "ARCHIE: KYOGRE and GROUDON both\n"
-	.string "flew off to who knows where.\p"
-	.string "The weather in HOENN has returned\n"
-	.string "to its normal state…\p"
-	.string "Haha…\n"
-	.string "Hahaha…\p"
+SootopolisCity_Text_TryingMeaninglessToPokemon:  @ Draconid Emerald
+	.string "ARCHIE: KYOGRE and GROUDON both flew\n"
+	.string "off to who knows where.\p"
+	.string "The weather in HOENN has returned to\n"
+	.string "its normal state…\p"
+	.string "And MAXIE's star grunt was a mountain\n"
+	.string "dragon tamer all along. Hah!\p"
 	.string "Maybe what we were trying to do was\n"
-	.string "something small, even meaningless,\l"
-	.string "to POKéMON…$"
+	.string "something small, even meaningless, to\l"
+	.string "POKéMON…$"
 
 SootopolisCity_Text_InvolvedWithCrisisComeWithMe:
 	.string "STEVEN: Those POKéMON fighting…\n"
@@ -1658,26 +1665,32 @@ SootopolisCity_Text_MaxieArchieLeft:
 	.string "Perhaps they've gone to MT. PYRE to\n"
 	.string "return those ORBS…$"
 
-SootopolisCity_Text_HaventYouScaledSkyPillar:
-	.string "WALLACE: Oh?\n"
-	.string "{PLAYER}{KUN}?\p"
-	.string "Haven't you scaled the SKY PILLAR\n"
-	.string "yet?\p"
-	.string "I'm sure that you can make it to\n"
-	.string "the top of the SKY PILLAR…$"
-
-SootopolisCity_Text_AquaMagmaDidntMeanHarm:
+SootopolisCity_Text_HaventYouScaledSkyPillar:  @ Draconid Emerald
 	.string "WALLACE: {PLAYER}{KUN}…\p"
-	.string "The leaders of TEAM MAGMA and AQUA,\n"
-	.string "I don't think they meant harm.\p"
-	.string "It wouldn't hurt to hear what they\n"
-	.string "have to say for themselves.$"
+	.string "The SKY PILLAR's doors are sealed, and\n"
+	.string "I won't open them.\p"
+	.string "Whatever called RAYQUAZA down, it\n"
+	.string "wasn't me.$"
 
-SootopolisCity_Text_ThankYouForHelpAcceptThis:
+SootopolisCity_Text_AquaMagmaDidntMeanHarm:  @ Draconid Emerald
+	.string "WALLACE: So you are {PLAYER}{KUN}. STEVEN\n"
+	.string "told me about you.\p"
+	.string "I saw it all from across the water. A\n"
+	.string "TEAM MAGMA grunt who threw the uniform\l"
+	.string "away, right in front of MAXIE.\p"
+	.string "And then RAYQUAZA. The SKY PILLAR has\n"
+	.string "been sealed for generations, yet\l"
+	.string "something called it down.\p"
+	.string "The leaders of MAGMA and AQUA are over\n"
+	.string "there. It wouldn't hurt to hear what\l"
+	.string "they have to say for themselves.$"
+
+SootopolisCity_Text_ThankYouForHelpAcceptThis:  @ Draconid Emerald
 	.string "WALLACE: {PLAYER}{KUN}…\n"
 	.string "My eyes didn't deceive me.\p"
-	.string "Thanks to your help, SOOTOPOLIS…\n"
-	.string "No, all of HOENN was saved.\p"
+	.string "You stood between MAXIE and the storm,\n"
+	.string "and you held on until the sky answered.\p"
+	.string "SOOTOPOLIS… No, all of HOENN was saved.\p"
 	.string "On behalf of the people, I thank you.\p"
 	.string "This is a gift from me.\n"
 	.string "Please accept it.$"
