@@ -1067,7 +1067,8 @@
   "TRAINER_MAY_LAVARIDGE": "S5",
   "TRAINER_WALLY_ROUTE_120": "S6",
   "TRAINER_BRENDAN_JAGGED_PASS": "S7",
-  "TRAINER_MAY_MOSSDEEP": "S8"
+  "TRAINER_MAY_MOSSDEEP": "S8",
+  "TRAINER_LANCE_DRACONID": "POST"
  },
  "info": {
   "TRAINER_SAWYER_1": {
@@ -7087,6 +7088,12 @@
    "role": "route",
    "map": "MossdeepCity",
    "story": true
+  },
+  "TRAINER_LANCE_DRACONID": {
+   "segment": "POST",
+   "role": "route",
+   "map": "DraconidVillage",
+   "story": false
   }
  }
 }

@@ -43826,3 +43826,74 @@ Nature: Adamant
 - Crunch
 - Fire Fang
 - Thunder Fang
+
+=== TRAINER_LANCE_DRACONID ===
+Name: LANCE
+Class: Champion
+Pic: Elite Four Lance Frlg
+Gender: Male
+Music: Elite Four
+Items: Full Restore / Full Restore / Full Restore
+Double Battle: No
+AI: Smart Trainer / Prediction / Ace Pokemon
+Mugshot: Blue
+
+Salamence @ Expert Belt
+Level: 84
+Ability: Intimidate
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Dragon Claw
+- Crunch
+- Earthquake
+- Stone Edge
+
+Kingdra @ Scope Lens
+Level: 82
+Ability: Sniper
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Modest
+- Surf
+- Ice Beam
+- Dragon Pulse
+- Flash Cannon
+
+Hydreigon @ White Herb
+Level: 83
+Ability: Levitate
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Timid
+- Draco Meteor
+- Fire Blast
+- Earth Power
+- Dark Pulse
+
+Haxorus @ Choice Scarf
+Level: 83
+Ability: Mold Breaker
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Adamant
+- Outrage
+- Superpower
+- Earthquake
+- Rock Slide
+
+Flygon @ Power Herb
+Level: 82
+Ability: Levitate
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Modest
+- Solar Beam
+- Draco Meteor
+- Earth Power
+- U-turn
+
+Dragonite @ Dragoninite
+Level: 86
+Ability: Multiscale
+EVs: 252 Atk / 252 SpA / 4 HP
+Nature: Mild
+- Extreme Speed
+- Draco Meteor
+- Fire Punch
+- Ice Punch

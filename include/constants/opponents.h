@@ -948,16 +948,20 @@
 #define TRAINER_WALLY_ROUTE_120             934
 #define TRAINER_BRENDAN_JAGGED_PASS         935
 #define TRAINER_MAY_MOSSDEEP                936
+// Draconid Emerald: 937 - 977 are left to the other round 1 follow-up branches (Steven as Champion: 976, the Act 7
+// village attack: 977, ...); an id nobody defines stays empty in gTrainers, as 924 once did
+// Draconid Emerald: LANCE of BLACKTHORN, the post-game boss in the Draconid village (lance.pory, D-262)
+#define TRAINER_LANCE_DRACONID              978
 
 // NOTE: Because each Trainer uses a flag to determine when they are defeated, there is only space for 9 additional trainers before trainer flag space overflows
 // Draconid Emerald: MAX_TRAINERS_COUNT_EMERALD raised from 864 so Nerine's variants fit (D-101); system flags move up
 //       928 -> 944 for the Battle Frontier legends and the finale (D-229): 16 more trainer flags, 2 save bytes
-//       937 of 944 used (924: Zinnia, Act 7): 7 spare ids before MAX_TRAINERS_COUNT_EMERALD must grow again
+//       944 -> 992 for the round 1 follow-ups (Lance: 978, D-262): 48 more trainer flags, 6 save bytes
 //       More space can be made by shifting flags around in constants/flags.h or changing how trainer flags are handled
 //       MAX_TRAINERS_COUNT can be increased but will take up additional saveblock space
 
-#define TRAINERS_COUNT_EMERALD     937
-#define MAX_TRAINERS_COUNT_EMERALD 944
+#define TRAINERS_COUNT_EMERALD     979
+#define MAX_TRAINERS_COUNT_EMERALD 992
 
 #if IS_FRLG
 #define TRAINERS_COUNT                      TRAINERS_COUNT_FRLG
