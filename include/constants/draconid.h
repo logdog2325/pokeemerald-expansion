@@ -65,4 +65,21 @@
 #define WALLY_STATE_LILYCOVE           2 // beaten in Petalburg: Wally waits in Lilycove
 #define WALLY_STATE_LILYCOVE_DONE      3
 
+// VAR_DRACONID_REPUTATION: how Hoenn sees the player (round 1, D-103); VAR_PLAYER_OUTFIT follows it
+#define REPUTATION_PRE_UNIFORM         0 // Act 1: a young tamer from the mountains
+#define REPUTATION_UNIFORM             1 // Petalburg Woods to the Sootopolis turn: a Team Magma grunt
+#define REPUTATION_REVEALED            2 // after the Sootopolis turn: the one who stood up to Maxie
+
+// VAR_NERINE_STATE: Nerine's arc (round 1, D-104); each value = that fight is done
+#define NERINE_STATE_START             0
+#define NERINE_STATE_PETALBURG_WOODS   1
+#define NERINE_STATE_RUSTURF           2
+#define NERINE_STATE_SLATEPORT         3
+#define NERINE_STATE_MT_CHIMNEY        4
+#define NERINE_STATE_MT_PYRE           5
+#define NERINE_STATE_AQUA_HIDEOUT      6
+#define NERINE_STATE_REVEALED          7 // Seafloor Cavern: the Aqua disguise comes off
+#define NERINE_STATE_SKY_PILLAR        8
+#define NERINE_STATE_POSTGAME          9
+
 #endif // GUARD_CONSTANTS_DRACONID_H

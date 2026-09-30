@@ -45,7 +45,7 @@ def chain(gender, egg, egg_id, root):
     log = os.path.join(out, "log.txt")
     open(log, "w").close()
     results = []
-    steps = [("opening", {"GENDER": gender, "EGG": egg_id}), ("route103", {}), ("route104", {})]
+    steps = [("opening", {"GENDER": gender, "EGG": egg_id, "EGGNAME": egg}), ("route103", {}), ("route104", {})]
     if egg_id == 0:
         steps += [("rivals", {}), ("postgame_home", {})]
     for second, value, stone in SECONDS:

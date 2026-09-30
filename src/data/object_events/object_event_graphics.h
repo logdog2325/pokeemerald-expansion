@@ -522,12 +522,18 @@ const u32 gObjectEventPic_DraconidWoman[] = INCGFX_U32("graphics/object_events/p
 const u32 gObjectEventPic_DraconidBoy[] = INCGFX_U32("graphics/object_events/pics/people/draconid/boy.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u32 gObjectEventPic_DraconidGuard[] = INCGFX_U32("graphics/object_events/pics/people/draconid/guard.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u32 gObjectEventPic_Aster[] = INCGFX_U32("graphics/object_events/pics/people/draconid/aster.png", ".4bpp", "-mwidth 2 -mheight 4");
+const u32 gObjectEventPic_NerineAqua[] = INCGFX_U32("graphics/object_events/pics/people/draconid/nerine_aqua.png", ".4bpp", "-mwidth 2 -mheight 4");
+const u32 gObjectEventPic_Nerine[] = INCGFX_U32("graphics/object_events/pics/people/draconid/nerine.png", ".4bpp", "-mwidth 2 -mheight 4");
+const u32 gObjectEventPic_Courtney[] = INCGFX_U32("graphics/object_events/pics/people/draconid/courtney.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u32 gObjectEventPic_DraconidEggDeino[] = INCGFX_U32("graphics/object_events/pics/misc/draconid_egg_deino.png", ".4bpp");
 const u32 gObjectEventPic_DraconidEggDreepy[] = INCGFX_U32("graphics/object_events/pics/misc/draconid_egg_dreepy.png", ".4bpp");
 const u32 gObjectEventPic_DraconidEggJangmoO[] = INCGFX_U32("graphics/object_events/pics/misc/draconid_egg_jangmo_o.png", ".4bpp");
 const u16 gObjectEventPal_DraconidNpc[] = INCGFX_U16("graphics/object_events/palettes/draconid_npc.pal", ".gbapal");
 const u16 gObjectEventPal_Aster[] = INCGFX_U16("graphics/object_events/palettes/aster.pal", ".gbapal");
 const u16 gObjectEventPal_DraconidEggs[] = INCGFX_U16("graphics/object_events/palettes/draconid_eggs.pal", ".gbapal");
+const u16 gObjectEventPal_NerineAqua[] = INCGFX_U16("graphics/object_events/palettes/nerine_aqua.pal", ".gbapal");
+const u16 gObjectEventPal_Nerine[] = INCGFX_U16("graphics/object_events/palettes/nerine.pal", ".gbapal");
+const u16 gObjectEventPal_Courtney[] = INCGFX_U16("graphics/object_events/palettes/courtney.pal", ".gbapal");
 // END DRACONID PLAYER OUTFITS
 
 #if IS_FRLG

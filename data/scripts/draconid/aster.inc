@@ -1,16 +1,5 @@
 Draconid_EventScript_BattleAsterMeteorFalls::
-	switch VAR_STARTER_MON
-	case DRACONID_EGG_DEINO, Draconid_EventScript_BattleAsterMeteorFalls_2
-	case DRACONID_EGG_DREEPY, Draconid_EventScript_BattleAsterMeteorFalls_3
-	trainerbattle_no_intro TRAINER_ASTER_METEOR_FALLS_JANGMO_O, Draconid_Text_AsterDefeat
-	return
-
-Draconid_EventScript_BattleAsterMeteorFalls_2:
 	trainerbattle_no_intro TRAINER_ASTER_METEOR_FALLS_DEINO, Draconid_Text_AsterDefeat
-	return
-
-Draconid_EventScript_BattleAsterMeteorFalls_3:
-	trainerbattle_no_intro TRAINER_ASTER_METEOR_FALLS_DREEPY, Draconid_Text_AsterDefeat
 	return
 
 
@@ -31,34 +20,12 @@ Draconid_EventScript_BattleAsterRoute119_3:
 
 
 Draconid_EventScript_BattleAsterSkyPillar::
-	switch VAR_STARTER_MON
-	case DRACONID_EGG_DEINO, Draconid_EventScript_BattleAsterSkyPillar_2
-	case DRACONID_EGG_DREEPY, Draconid_EventScript_BattleAsterSkyPillar_3
-	trainerbattle_no_intro TRAINER_ASTER_SKY_PILLAR_JANGMO_O, Draconid_Text_AsterSkyPillarDefeat
-	return
-
-Draconid_EventScript_BattleAsterSkyPillar_2:
 	trainerbattle_no_intro TRAINER_ASTER_SKY_PILLAR_DEINO, Draconid_Text_AsterSkyPillarDefeat
-	return
-
-Draconid_EventScript_BattleAsterSkyPillar_3:
-	trainerbattle_no_intro TRAINER_ASTER_SKY_PILLAR_DREEPY, Draconid_Text_AsterSkyPillarDefeat
 	return
 
 
 Draconid_EventScript_BattleAsterPostgame::
-	switch VAR_STARTER_MON
-	case DRACONID_EGG_DEINO, Draconid_EventScript_BattleAsterPostgame_2
-	case DRACONID_EGG_DREEPY, Draconid_EventScript_BattleAsterPostgame_3
-	trainerbattle_no_intro TRAINER_ASTER_POSTGAME_JANGMO_O, Draconid_Text_AsterDefeat
-	return
-
-Draconid_EventScript_BattleAsterPostgame_2:
 	trainerbattle_no_intro TRAINER_ASTER_POSTGAME_DEINO, Draconid_Text_AsterDefeat
-	return
-
-Draconid_EventScript_BattleAsterPostgame_3:
-	trainerbattle_no_intro TRAINER_ASTER_POSTGAME_DREEPY, Draconid_Text_AsterDefeat
 	return
 
 

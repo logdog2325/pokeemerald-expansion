@@ -64,15 +64,15 @@ script DraconidVillage_EldersHouse_EventScript_Ceremony {
         case DRACONID_EGG_DEINO:
             giveegg(DRACONID_EGG_SPECIES_0)
             removeobject(LOCALID_DRACONID_EGG_1)
-            setvar(VAR_ASTER_EGG, DRACONID_EGG_JANGMO_O)
+            setvar(VAR_ASTER_EGG, DRACONID_EGG_DREEPY) // the leftover egg (D-105); Nerine's is the counter
         case DRACONID_EGG_DREEPY:
             giveegg(DRACONID_EGG_SPECIES_1)
             removeobject(LOCALID_DRACONID_EGG_2)
-            setvar(VAR_ASTER_EGG, DRACONID_EGG_DEINO)
+            setvar(VAR_ASTER_EGG, DRACONID_EGG_JANGMO_O)
         default:
             giveegg(DRACONID_EGG_SPECIES_2)
             removeobject(LOCALID_DRACONID_EGG_3)
-            setvar(VAR_ASTER_EGG, DRACONID_EGG_DREEPY)
+            setvar(VAR_ASTER_EGG, DRACONID_EGG_DEINO)
     }
     setflag(FLAG_SYS_POKEMON_GET)
     playfanfare(MUS_OBTAIN_ITEM)
@@ -85,17 +85,16 @@ script DraconidVillage_EldersHouse_EventScript_Ceremony {
     switch (var(VAR_ASTER_EGG)) {
         case DRACONID_EGG_JANGMO_O:
             removeobject(LOCALID_DRACONID_EGG_3)
-            msgbox(format("ASTER: A blind dragon that bites at shadows…\p"
-                          "Then I'll take the one whose scales ring like a drum. "
-                          "Yours will always hear mine coming. JANGMO-O is mine."))
+            msgbox(format("ASTER: A ghost that drifts through walls…\p"
+                          "Then I'll take the one that never hides. Its scales ring like a war drum. JANGMO-O is mine."))
         case DRACONID_EGG_DEINO:
             removeobject(LOCALID_DRACONID_EGG_1)
-            msgbox(format("ASTER: A ghost that drifts through walls…\p"
-                          "But not through jaws. I'll take the one that bites the dark. DEINO is mine."))
+            msgbox(format("ASTER: Scales and fists, beating like a drum…\p"
+                          "I'll take the one that bites whatever the dark hides. DEINO is mine."))
         default:
             removeobject(LOCALID_DRACONID_EGG_2)
-            msgbox(format("ASTER: Scales and fists, beating like a drum…\p"
-                          "What use is a drum against something that isn't really there? DREEPY is mine."))
+            msgbox(format("ASTER: A blind dragon that bites at shadows…\p"
+                          "Then I'll take the one that drifts where no eye can follow. DREEPY is mine."))
     }
     msgbox(format("ELDER: Now then. Dragon eggs do not hatch on their own; they wait for the sky's call.\p"
                   "Come to the shrine in the cliff, both of you. We shall perform the rite."))

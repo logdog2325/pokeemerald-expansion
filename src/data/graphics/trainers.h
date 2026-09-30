@@ -279,6 +279,11 @@ const u32 gTrainerFrontPic_DraconidF[] = INCGFX_U32("graphics/trainers/front_pic
 const u16 gTrainerPalette_DraconidF[] = INCGFX_U16("graphics/trainers/front_pics/draconid_f.png", ".gbapal");
 const u32 gTrainerFrontPic_Aster[] = INCGFX_U32("graphics/trainers/front_pics/aster.png", ".4bpp.smol");
 const u16 gTrainerPalette_Aster[] = INCGFX_U16("graphics/trainers/front_pics/aster.png", ".gbapal");
+// Draconid Emerald: Nerine (placeholders until her art lands: TODO(art))
+const u32 gTrainerFrontPic_NerineAqua[] = INCGFX_U32("graphics/trainers/front_pics/nerine_aqua.png", ".4bpp.smol");
+const u16 gTrainerPalette_NerineAqua[] = INCGFX_U16("graphics/trainers/front_pics/nerine_aqua.png", ".gbapal");
+const u32 gTrainerFrontPic_Nerine[] = INCGFX_U32("graphics/trainers/front_pics/nerine.png", ".4bpp.smol");
+const u16 gTrainerPalette_Nerine[] = INCGFX_U16("graphics/trainers/front_pics/nerine.png", ".gbapal");
 const u16 gTrainerPalette_Red[] = INCGFX_U16("graphics/trainers/front_pics/red.png", ".gbapal");
 
 const u32 gTrainerFrontPic_Leaf[] = INCGFX_U32("graphics/trainers/front_pics/leaf.png", ".4bpp.smol");
@@ -648,6 +653,14 @@ const struct TrainerPicInfo gTrainerPicInfo[TRAINER_PIC_COUNT] =
     [TRAINER_PIC_ASTER] =
     {
         .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Aster, gTrainerPalette_Aster),
+    },
+    [TRAINER_PIC_NERINE_AQUA] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_NerineAqua, gTrainerPalette_NerineAqua),
+    },
+    [TRAINER_PIC_NERINE] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Nerine, gTrainerPalette_Nerine),
     },
     [TRAINER_PIC_RS_BRENDAN] =
     {

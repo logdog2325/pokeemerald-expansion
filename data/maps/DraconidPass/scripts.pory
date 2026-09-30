@@ -14,14 +14,8 @@ script DraconidPass_EventScript_AsterBattle {
     closemessage
     // this battle can be lost without blacking out (B_FLAG_NO_WHITEOUT)
     setflag(FLAG_DRACONID_NO_WHITEOUT)
-    switch (var(VAR_ASTER_EGG)) {
-        case DRACONID_EGG_DEINO:
-            trainerbattle_no_intro(TRAINER_ASTER_PASS_DEINO, DraconidPass_Text_AsterDefeated)
-        case DRACONID_EGG_DREEPY:
-            trainerbattle_no_intro(TRAINER_ASTER_PASS_DREEPY, DraconidPass_Text_AsterDefeated)
-        default:
-            trainerbattle_no_intro(TRAINER_ASTER_PASS_JANGMO_O, DraconidPass_Text_AsterDefeated)
-    }
+    // the first id of the fight; the player's egg picks Aster's team (Draconid_ResolveVariantTrainer, D-101)
+    trainerbattle_no_intro(TRAINER_ASTER_PASS_DEINO, DraconidPass_Text_AsterDefeated)
     clearflag(FLAG_DRACONID_NO_WHITEOUT)
     special(HealPlayerParty)
     msgbox(format("ASTER: Hmph. The shadow that bites… the drum that sings… it doesn't matter which.\p"

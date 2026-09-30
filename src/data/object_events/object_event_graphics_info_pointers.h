@@ -445,6 +445,9 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DraconidWom
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DraconidBoy;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DraconidGuard;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Aster;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_NerineAqua;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Nerine;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Courtney;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DraconidEggDeino;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DraconidEggDreepy;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DraconidEggJangmoO;
@@ -738,6 +741,9 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_DRACONID_BOY] = &gObjectEventGraphicsInfo_DraconidBoy,
     [OBJ_EVENT_GFX_DRACONID_GUARD] = &gObjectEventGraphicsInfo_DraconidGuard,
     [OBJ_EVENT_GFX_ASTER] = &gObjectEventGraphicsInfo_Aster,
+    [OBJ_EVENT_GFX_NERINE_AQUA] = &gObjectEventGraphicsInfo_NerineAqua,
+    [OBJ_EVENT_GFX_NERINE] = &gObjectEventGraphicsInfo_Nerine,
+    [OBJ_EVENT_GFX_COURTNEY] = &gObjectEventGraphicsInfo_Courtney,
     [OBJ_EVENT_GFX_DRACONID_EGG_DEINO] = &gObjectEventGraphicsInfo_DraconidEggDeino,
     [OBJ_EVENT_GFX_DRACONID_EGG_DREEPY] = &gObjectEventGraphicsInfo_DraconidEggDreepy,
     [OBJ_EVENT_GFX_DRACONID_EGG_JANGMO_O] = &gObjectEventGraphicsInfo_DraconidEggJangmoO,

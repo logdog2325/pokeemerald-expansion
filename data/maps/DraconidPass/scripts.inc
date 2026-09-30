@@ -10,11 +10,7 @@ DraconidPass_EventScript_AsterBattle::
 	msgbox DraconidPass_EventScript_AsterBattle_Text_0
 	closemessage
 	setflag FLAG_DRACONID_NO_WHITEOUT
-	switch VAR_ASTER_EGG
-	case DRACONID_EGG_DEINO, DraconidPass_EventScript_AsterBattle_3
-	case DRACONID_EGG_DREEPY, DraconidPass_EventScript_AsterBattle_4
-	trainerbattle_no_intro TRAINER_ASTER_PASS_JANGMO_O, DraconidPass_Text_AsterDefeated
-DraconidPass_EventScript_AsterBattle_1:
+	trainerbattle_no_intro TRAINER_ASTER_PASS_DEINO, DraconidPass_Text_AsterDefeated
 	clearflag FLAG_DRACONID_NO_WHITEOUT
 	special HealPlayerParty
 	msgbox DraconidPass_EventScript_AsterBattle_Text_1
@@ -28,14 +24,6 @@ DraconidPass_EventScript_AsterBattle_1:
 	fadedefaultbgm
 	releaseall
 	return
-
-DraconidPass_EventScript_AsterBattle_3:
-	trainerbattle_no_intro TRAINER_ASTER_PASS_DEINO, DraconidPass_Text_AsterDefeated
-	goto DraconidPass_EventScript_AsterBattle_1
-
-DraconidPass_EventScript_AsterBattle_4:
-	trainerbattle_no_intro TRAINER_ASTER_PASS_DREEPY, DraconidPass_Text_AsterDefeated
-	goto DraconidPass_EventScript_AsterBattle_1
 
 
 DraconidPass_Movement_AsterLeaves:

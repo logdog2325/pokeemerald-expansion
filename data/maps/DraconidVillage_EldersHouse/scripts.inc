@@ -41,7 +41,7 @@ DraconidVillage_EldersHouse_EventScript_Ceremony_2:
 	case DRACONID_EGG_DREEPY, DraconidVillage_EldersHouse_EventScript_Ceremony_8
 	giveegg DRACONID_EGG_SPECIES_2
 	removeobject LOCALID_DRACONID_EGG_3
-	setvar VAR_ASTER_EGG, DRACONID_EGG_DREEPY
+	setvar VAR_ASTER_EGG, DRACONID_EGG_DEINO
 DraconidVillage_EldersHouse_EventScript_Ceremony_5:
 	setflag FLAG_SYS_POKEMON_GET
 	playfanfare MUS_OBTAIN_ITEM
@@ -88,13 +88,13 @@ DraconidVillage_EldersHouse_EventScript_Ceremony_10:
 DraconidVillage_EldersHouse_EventScript_Ceremony_7:
 	giveegg DRACONID_EGG_SPECIES_0
 	removeobject LOCALID_DRACONID_EGG_1
-	setvar VAR_ASTER_EGG, DRACONID_EGG_JANGMO_O
+	setvar VAR_ASTER_EGG, DRACONID_EGG_DREEPY
 	goto DraconidVillage_EldersHouse_EventScript_Ceremony_5
 
 DraconidVillage_EldersHouse_EventScript_Ceremony_8:
 	giveegg DRACONID_EGG_SPECIES_1
 	removeobject LOCALID_DRACONID_EGG_2
-	setvar VAR_ASTER_EGG, DRACONID_EGG_DEINO
+	setvar VAR_ASTER_EGG, DRACONID_EGG_JANGMO_O
 	goto DraconidVillage_EldersHouse_EventScript_Ceremony_5
 
 DraconidVillage_EldersHouse_EventScript_Ceremony_12:
@@ -240,23 +240,23 @@ DraconidVillage_EldersHouse_EventScript_Ceremony_Text_12:
 	.string "your warmth.$"
 
 DraconidVillage_EldersHouse_EventScript_Ceremony_Text_13:
-	.string "ASTER: A blind dragon that bites at\n"
-	.string "shadows…\p"
-	.string "Then I'll take the one whose scales ring\n"
-	.string "like a drum. Yours will always hear mine\l"
-	.string "coming. JANGMO-O is mine.$"
-
-DraconidVillage_EldersHouse_EventScript_Ceremony_Text_14:
 	.string "ASTER: A ghost that drifts through\n"
 	.string "walls…\p"
-	.string "But not through jaws. I'll take the one\n"
-	.string "that bites the dark. DEINO is mine.$"
+	.string "Then I'll take the one that never hides.\n"
+	.string "Its scales ring like a war drum.\l"
+	.string "JANGMO-O is mine.$"
 
-DraconidVillage_EldersHouse_EventScript_Ceremony_Text_15:
+DraconidVillage_EldersHouse_EventScript_Ceremony_Text_14:
 	.string "ASTER: Scales and fists, beating like a\n"
 	.string "drum…\p"
-	.string "What use is a drum against something\n"
-	.string "that isn't really there? DREEPY is mine.$"
+	.string "I'll take the one that bites whatever\n"
+	.string "the dark hides. DEINO is mine.$"
+
+DraconidVillage_EldersHouse_EventScript_Ceremony_Text_15:
+	.string "ASTER: A blind dragon that bites at\n"
+	.string "shadows…\p"
+	.string "Then I'll take the one that drifts where\n"
+	.string "no eye can follow. DREEPY is mine.$"
 
 DraconidVillage_EldersHouse_EventScript_Ceremony_Text_16:
 	.string "ELDER: Now then. Dragon eggs do not\n"

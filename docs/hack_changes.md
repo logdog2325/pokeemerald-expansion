@@ -85,6 +85,9 @@ Grouped by area; each entry names the file(s).
 | `VAR_MAY_STATE` (0x40FD) | `MAY_STATE_*`: 0, 1 waits at Slateport's north exit, 2 beaten there |
 | `VAR_WALLY_STATE` (0x40FE) | `WALLY_STATE_*`: 0, 1 waits at the Petalburg Gym, 2 waits in Lilycove, 3 beaten there |
 | `VAR_LITTLEROOT_HOUSES_STATE_MAY` (vanilla) | state 3 (after the Hall of Fame) now starts the SS Ticket / Lati TV scene in the Draconid house 1F, not in Littleroot |
+| `VAR_DRACONID_REPUTATION` (0x40FF, was unused) | `REPUTATION_*`: 0 pre-uniform, 1 uniform (Magma grunt), 2 revealed – NPC lines and the outfit follow it (D-103) |
+| `VAR_NERINE_STATE` (0x40E5, was unused) | `NERINE_STATE_*`: Nerine's fights done, 0 start … 7 revealed … 9 post-game |
+| `VAR_ASTER_EGG` (changed meaning, round 1) | Aster's egg is the **leftover** one (D-105), not the counter-pick |
 | `VAR_STARTER_MON` (changed meaning) | now the player's egg, `DRACONID_EGG_*`; the starter table in `src/starter_choose.c` maps it to Deino/Dreepy/Jangmo-o |
 
 ## Constants
@@ -108,6 +111,10 @@ Grouped by area; each entry names the file(s).
 | Route 101 ↔ Draconid Pass connection (Route 101 left, offset −22; pass rows 26–27 = Route 101 rows 4–5) | `data/maps/Route101/map.json` |
 | `LOCALID_BIRCHS_LAB_BRENDAN` object (5, 4); lab rival object is always `OBJ_EVENT_GFX_RIVAL_MAY_NORMAL` | `data/maps/LittlerootTown_ProfessorBirchsLab/map.json` |
 | `BRENDAN_STATE_*`, `MAY_STATE_*`, `WALLY_STATE_*` | `include/constants/draconid.h` |
+| `REPUTATION_*`, `NERINE_STATE_*`, `DRACONID_EVO_LEVEL_MIDDLE/_FINAL` | `include/constants/draconid.h` |
+| Nerine's trainer ids 858–923 (`TRAINER_NERINE_PETALBURG_WOODS_{egg}`, `TRAINER_NERINE_{RUSTURF,SLATEPORT,MT_CHIMNEY,MT_PYRE,AQUA_HIDEOUT,SEAFLOOR,POSTGAME}_{egg}_{starter}`, named after the player's choices); `TRAINERS_COUNT_EMERALD` 924, `MAX_TRAINERS_COUNT_EMERALD` 864 → 928 (system flags move up 64; SaveBlock1 +8 bytes, `test/save.c` updated as it asks) | `include/constants/opponents.h`, `test/save.c`, placeholder teams at the end of `src/data/trainers.party` |
+| `OBJ_EVENT_GFX_NERINE_AQUA`, `OBJ_EVENT_GFX_NERINE`, `OBJ_EVENT_GFX_COURTNEY` + palette tags 0x114B–0x114D (placeholder sheets: Aqua grunt F, Aster, Magma grunt F – `TODO(art)`) | `tools/hack/art/player/gen_outfit_code.py` (generated regions), `graphics/object_events/pics/people/draconid/`, `graphics/object_events/palettes/` |
+| `TRAINER_PIC_NERINE_AQUA`, `TRAINER_PIC_NERINE` (placeholders: Aqua grunt F, Aster – `TODO(art)`) | `include/constants/trainers.h`, `src/data/graphics/trainers.h`, `graphics/trainers/front_pics/nerine*.png` |
 | `DRACONID_STATE_SECOND_STARTER` (7), `DRACONID_STATE_GOT_SECOND_STARTER` (8), `SECOND_STARTER_LEVEL` (10), `ASTER_STATE_*` (0–8) | `include/constants/draconid.h` |
 | New objects: `LOCALID_RUSTBORO_BIRCH` (28, 23); Aster: `LOCALID_METEOR_FALLS_ASTER` (17, 18), `LOCALID_CABLE_CAR_STATION_ASTER` (6, 8), `LOCALID_ROUTE119_ASTER` (30, 17) + coord triggers across row 19 (x 28–31, 34–35) on `VAR_ASTER_STATE` 3, `LOCALID_MAGMA_HIDEOUT_4F_ASTER` (18, 21), `LOCALID_SKY_PILLAR_TOP_ASTER` (14, 12); shrine Aster gets a post-game script; `LOCALID_DRACONID_HOUSE_DAD` (Norman, 5, 6) in the Draconid house 1F | `data/maps/*/map.json` |
 | Rival trainer ids renamed (same numbers, 520–537, 592/593/599/600, 661–666, 768/769): `TRAINER_BRENDAN_{ROUTE_104,ROUTE_110,ROUTE_119,LILYCOVE,SOOTOPOLIS,POSTGAME,POSTGAME_DOUBLE}`, `TRAINER_MAY_{ROUTE_103,RUSTBORO,SLATEPORT,LILYCOVE,SOOTOPOLIS,POSTGAME,POSTGAME_DOUBLE}`, `TRAINER_ASTER_{METEOR_FALLS,ROUTE_119,SKY_PILLAR,POSTGAME}_{DEINO,DREEPY,JANGMO_O}` (named after the player's egg), `TRAINER_WALLY_{PETALBURG,LILYCOVE}`, spares `TRAINER_DRACONID_SPARE_1/2` | `include/constants/opponents.h`, teams in `src/data/trainers.party` |
@@ -145,6 +152,7 @@ Grouped by area; each entry names the file(s).
 | Credits: the player is a Draconid run cycle (`CreateCreditsDraconidSprite`, `TAG_DRACONID`, `sAnims_DraconidRun`, `DRACONID_CREDITS_RUN_Y`) and May always rides in as the rival (D-049) | `src/credits.c`, `src/intro_credits_graphics.c`, `include/intro_credits_graphics.h`, `graphics/intro/scene_2/draconid_{m,f}_credits.png`, `tools/hack/art/player/draconid_credits.json` |
 | Deino, Dreepy and Jangmo-o lines evolve at `DRACONID_EVO_LEVEL_MIDDLE` (25) and `DRACONID_EVO_LEVEL_FINAL` (50) (D-107) | `src/data/pokemon/species_info/gen_{5,7,8}_families.h`, `include/constants/draconid.h`, `src/data/pokemon/species_info.h` |
 | The name-entry screen shows the player's outfit sprite (vanilla drew the rival Brendan/May); linked Emerald players appear as Draconid tamers (`GetOutfitAvatarGfx`) | `src/naming_screen.c`, `src/overworld.c`, `src/player_outfit.c`, `include/player_outfit.h` |
+| Variant trainers: `Draconid_ResolveVariantTrainer` swaps a fight's first id for the variant of the player's egg (and second starter) when the battle loads (`TrainerBattleLoadArgs`); table in `src/data/draconid_variant_trainers.h` (Aster's 4 fights, Nerine's 8) (D-101) | `src/draconid.c`, `include/draconid.h`, `src/battle_setup.c`, `src/data/draconid_variant_trainers.h` |
 | Emulator test hook (debug builds only): `gDraconidTestWarp` + `Draconid_TryTestWarp` (warp / heal on request), called from `ProcessPlayerFieldInput` | `src/draconid.c`, `include/draconid.h`, `src/field_control_avatar.c` |
 
 ## Scripts

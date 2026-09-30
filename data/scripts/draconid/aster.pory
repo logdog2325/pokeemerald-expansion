@@ -14,15 +14,12 @@
 // Vanilla hooks are listed in docs/hack_changes.md ("Scripts").
 
 // ---------------------------------------------------------------------------
-// Shared: pick Aster's trainer for the player's egg and start the battle
+// Shared: Aster's battles. Each names the first id of the fight; the player's egg picks Aster's team
+// (Draconid_ResolveVariantTrainer, D-101): she raises the leftover egg (D-105).
 // ---------------------------------------------------------------------------
 
 script Draconid_EventScript_BattleAsterMeteorFalls {
-    switch (var(VAR_STARTER_MON)) {
-        case DRACONID_EGG_DEINO:  trainerbattle_no_intro(TRAINER_ASTER_METEOR_FALLS_DEINO, Draconid_Text_AsterDefeat)
-        case DRACONID_EGG_DREEPY: trainerbattle_no_intro(TRAINER_ASTER_METEOR_FALLS_DREEPY, Draconid_Text_AsterDefeat)
-        default:                  trainerbattle_no_intro(TRAINER_ASTER_METEOR_FALLS_JANGMO_O, Draconid_Text_AsterDefeat)
-    }
+    trainerbattle_no_intro(TRAINER_ASTER_METEOR_FALLS_DEINO, Draconid_Text_AsterDefeat)
 }
 
 script Draconid_EventScript_BattleAsterRoute119 {
@@ -34,19 +31,11 @@ script Draconid_EventScript_BattleAsterRoute119 {
 }
 
 script Draconid_EventScript_BattleAsterSkyPillar {
-    switch (var(VAR_STARTER_MON)) {
-        case DRACONID_EGG_DEINO:  trainerbattle_no_intro(TRAINER_ASTER_SKY_PILLAR_DEINO, Draconid_Text_AsterSkyPillarDefeat)
-        case DRACONID_EGG_DREEPY: trainerbattle_no_intro(TRAINER_ASTER_SKY_PILLAR_DREEPY, Draconid_Text_AsterSkyPillarDefeat)
-        default:                  trainerbattle_no_intro(TRAINER_ASTER_SKY_PILLAR_JANGMO_O, Draconid_Text_AsterSkyPillarDefeat)
-    }
+    trainerbattle_no_intro(TRAINER_ASTER_SKY_PILLAR_DEINO, Draconid_Text_AsterSkyPillarDefeat)
 }
 
 script Draconid_EventScript_BattleAsterPostgame {
-    switch (var(VAR_STARTER_MON)) {
-        case DRACONID_EGG_DEINO:  trainerbattle_no_intro(TRAINER_ASTER_POSTGAME_DEINO, Draconid_Text_AsterDefeat)
-        case DRACONID_EGG_DREEPY: trainerbattle_no_intro(TRAINER_ASTER_POSTGAME_DREEPY, Draconid_Text_AsterDefeat)
-        default:                  trainerbattle_no_intro(TRAINER_ASTER_POSTGAME_JANGMO_O, Draconid_Text_AsterDefeat)
-    }
+    trainerbattle_no_intro(TRAINER_ASTER_POSTGAME_DEINO, Draconid_Text_AsterDefeat)
 }
 
 text Draconid_Text_AsterDefeat {

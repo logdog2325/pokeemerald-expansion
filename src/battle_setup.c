@@ -6,6 +6,7 @@
 #include "battle_pike.h"
 #include "battle_pyramid.h"
 #include "battle_setup.h"
+#include "draconid.h"
 #include "battle_special.h"
 #include "battle_partner.h"
 #include "battle_tower.h"
@@ -1110,6 +1111,9 @@ void TrainerBattleLoadArgs(const u8 *data)
 {
     InitTrainerBattleParameter();
     memcpy(gTrainerBattleParameter.data, data, sizeof(TrainerBattleParameter));
+    // Draconid Emerald: a fight that depends on the player's egg / second starter names its first variant (D-101)
+    TRAINER_BATTLE_PARAM.opponentA = Draconid_ResolveVariantTrainer(TRAINER_BATTLE_PARAM.opponentA);
+    TRAINER_BATTLE_PARAM.opponentB = Draconid_ResolveVariantTrainer(TRAINER_BATTLE_PARAM.opponentB);
     sTrainerBattleEndScript = (u8*)data + sizeof(TrainerBattleParameter);
 }
 

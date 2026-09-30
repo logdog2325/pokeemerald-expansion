@@ -42,7 +42,7 @@ EVO_SLACK = 3
 STORY_TRAINERS = re.compile(r"^TRAINER_(BRENDAN|MAY|WALLY|ASTER)_")
 HEADER_FIELDS = ("Name", "Class", "Pic", "Gender", "Music", "Double Battle", "Battle Type")
 # Trainers allowed to hold a Mega Stone (docs/hack_trainers.md, "Megas").
-MEGA_TRAINERS = re.compile(r"^TRAINER_(BRENDAN|MAY|WALLY|ASTER|MAXIE_MAGMA_HIDEOUT|ARCHIE|STEVEN|"
+MEGA_TRAINERS = re.compile(r"^TRAINER_(BRENDAN|MAY|WALLY|ASTER|NERINE|MAXIE_MAGMA_HIDEOUT|ARCHIE|STEVEN|"
                            r"(ROXANNE|BRAWLY|WATTSON|FLANNERY|NORMAN|WINONA|TATE_AND_LIZA|JUAN)_5)")
 
 
@@ -104,6 +104,9 @@ def species_pool():
     text = open(os.path.join(ROOT, "include/constants/pokedex.h")).read()
     m = re.search(r"#define FOREACH_SPECIES_IN_HOENN_DEX_ORDER\(F\)(.*?)\n\n", text, re.S)
     pool = set(re.findall(r"F\((\w+)\)", m.group(1)))
+    # Draconid Emerald: the dragon egg lines and Birch's second starters (the player's, Aster's and Nerine's)
+    pool |= {"DEINO", "ZWEILOUS", "HYDREIGON", "DREEPY", "DRAKLOAK", "DRAGAPULT", "JANGMO_O", "HAKAMO_O", "KOMMO_O",
+             "CHARMANDER", "CHARMELEON", "CHARIZARD", "TOTODILE", "CROCONAW", "FERALIGATR"}
     vanilla = subprocess.run(["git", "-C", ROOT, "show", "master:src/data/trainers.party"],
                              capture_output=True, text=True).stdout
     for _, raw in party.split(vanilla)[1]:

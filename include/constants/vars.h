@@ -248,7 +248,7 @@
 #define VAR_GIFT_UNUSED_5                                0x40E2 // Var is written to, but never read
 #define VAR_GIFT_UNUSED_6                                0x40E3 // Var is written to, but never read
 #define VAR_GIFT_UNUSED_7                                0x40E4 // var is written to, but never read
-#define VAR_UNUSED_0x40E5                                0x40E5 // Unused Var
+#define VAR_NERINE_STATE                                 0x40E5 // Draconid Emerald: Nerine's arc (NERINE_STATE_*, include/constants/draconid.h)
 #define VAR_DAILY_SLOTS                                  0x40E6
 #define VAR_DAILY_WILDS                                  0x40E7
 #define VAR_DAILY_BLENDER                                0x40E8
@@ -274,7 +274,7 @@
 #define VAR_BRENDAN_STATE                                0x40FC // Draconid Emerald: Brendan's new battles (BRENDAN_STATE_*, include/constants/draconid.h)
 #define VAR_MAY_STATE                                    0x40FD // Draconid Emerald: May's new battles (MAY_STATE_*)
 #define VAR_WALLY_STATE                                  0x40FE // Draconid Emerald: Wally's new battles (WALLY_STATE_*)
-#define VAR_UNUSED_0x40FF                                0x40FF // Unused Var
+#define VAR_DRACONID_REPUTATION                          0x40FF // Draconid Emerald: how Hoenn sees the player (REPUTATION_*, include/constants/draconid.h)
 
 #define VARS_END                                         0x40FF
 #define VARS_COUNT                                       (VARS_END - VARS_START + 1)

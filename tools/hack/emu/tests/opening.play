@@ -2,9 +2,10 @@
 #   python3 tools/hack/emu/play.py tools/hack/emu/tests/opening.play -o /tmp/opening
 # Saves opening_*.ss states in the output directory for follow-up scripts.
 # The quickstart gender is random: -D GENDER=F tests the female player.
-# -D EGG=0|1|2 picks Deino / Dreepy / Jangmo-o (DRACONID_EGG_*).
+# -D EGG=0|1|2 -D EGGNAME=DEINO|DREEPY|JANGMO_O picks Deino / Dreepy / Jangmo-o (DRACONID_EGG_*).
 default GENDER M
 default EGG 0
+default EGGNAME DEINO
 newgame
 gender ${GENDER}
 mash A 3000
@@ -74,6 +75,7 @@ run 40
 mash A 40000
 expect_var VAR_DRACONID_STATE 6
 expect_flag FLAG_DEFEATED_ASTER_DRACONID_PASS 1
+expect_opponent TRAINER_ASTER_PASS_${EGGNAME}
 expect_flag FLAG_DRACONID_NO_WHITEOUT 0
 shot 02_after_aster
 savestate opening_after_aster.ss

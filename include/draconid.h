@@ -3,6 +3,7 @@
 
 // Draconid Emerald script specials (src/draconid.c)
 void DraconidRaiseHatchling(void);
+u16 Draconid_ResolveVariantTrainer(u16 trainerId);
 
 #if DEBUG_OVERWORLD_MENU
 // Emulator test hook (tools/hack/emu/play.py "warp"), debug builds only

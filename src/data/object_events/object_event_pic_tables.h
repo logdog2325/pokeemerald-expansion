@@ -1704,6 +1704,18 @@ static const struct SpriteFrameImage sPicTable_Aster[] = {
     overworld_ascending_frames(gObjectEventPic_Aster, 2, 4),
 };
 
+static const struct SpriteFrameImage sPicTable_NerineAqua[] = {
+    overworld_ascending_frames(gObjectEventPic_NerineAqua, 2, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_Nerine[] = {
+    overworld_ascending_frames(gObjectEventPic_Nerine, 2, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_Courtney[] = {
+    overworld_ascending_frames(gObjectEventPic_Courtney, 2, 4),
+};
+
 static const struct SpriteFrameImage sPicTable_DraconidEggDeino[] = {
     obj_frame_tiles(gObjectEventPic_DraconidEggDeino),
 };

@@ -6,6 +6,46 @@
 #include "pokemon.h"
 #include "script_pokemon_util.h"
 #include "constants/draconid.h"
+#include "constants/opponents.h"
+
+// Trainers whose team depends on the player's choices (round 1, D-101)
+enum
+{
+    VARIANT_BY_EGG,             // 3 ids: the player's egg (VAR_STARTER_MON)
+    VARIANT_BY_EGG_AND_STARTER, // 9 ids: egg * SECOND_STARTER_CHOICES + second starter
+};
+
+#define SECOND_STARTER_CHOICES 3
+
+struct DraconidVariantTrainer
+{
+    u16 kind;
+    u16 ids[DRACONID_EGG_COUNT * SECOND_STARTER_CHOICES];
+};
+
+#include "data/draconid_variant_trainers.h"
+
+// A script names the first variant of a fight; this returns the variant for the player's egg and second starter.
+u16 Draconid_ResolveVariantTrainer(u16 trainerId)
+{
+    u32 i, egg, starter;
+
+    for (i = 0; i < ARRAY_COUNT(sDraconidVariantTrainers); i++)
+    {
+        const struct DraconidVariantTrainer *variant = &sDraconidVariantTrainers[i];
+        if (variant->ids[0] != trainerId)
+            continue;
+        egg = VarGet(VAR_STARTER_MON);
+        if (egg >= DRACONID_EGG_COUNT)
+            egg = DRACONID_EGG_DEINO;
+        if (variant->kind == VARIANT_BY_EGG)
+            return variant->ids[egg];
+        starter = VarGet(VAR_SECOND_STARTER);
+        starter = (starter >= SECOND_STARTER_CHARMANDER && starter <= SECOND_STARTER_TREECKO) ? starter - SECOND_STARTER_CHARMANDER : 0;
+        return variant->ids[egg * SECOND_STARTER_CHOICES + starter];
+    }
+    return trainerId;
+}
 
 // Draconid Emerald: script specials for the Draconid clan storyline.
 

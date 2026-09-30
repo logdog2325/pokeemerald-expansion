@@ -24159,6 +24159,50 @@ Ability: Infiltrator
 - Wing Attack
 - Supersonic
 
+Dreepy @ Sitrus Berry
+Level: 27
+Ability: Infiltrator
+Nature: Jolly
+- Astonish
+- Bite
+- Quick Attack
+- Infestation
+
+
+=== TRAINER_ASTER_METEOR_FALLS_DREEPY ===
+Name: ASTER
+Class: Draconid
+Pic: Aster
+Gender: Female
+Music: Intense
+Items: Super Potion / Super Potion
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Swablu
+Level: 24
+Ability: Natural Cure
+- Dragon Breath
+- Round
+- Sing
+- Fury Attack
+
+Trapinch
+Level: 24
+Ability: Hyper Cutter
+- Bite
+- Sand Tomb
+- Bulldoze
+- Mud-Slap
+
+Noibat
+Level: 25
+Ability: Infiltrator
+- Air Cutter
+- Bite
+- Wing Attack
+- Supersonic
+
 Jangmo-o @ Sitrus Berry
 Level: 27
 Ability: Bulletproof
@@ -24169,7 +24213,7 @@ Nature: Adamant
 - Work Up
 
 
-=== TRAINER_ASTER_METEOR_FALLS_DREEPY ===
+=== TRAINER_ASTER_METEOR_FALLS_JANGMO_O ===
 Name: ASTER
 Class: Draconid
 Pic: Aster
@@ -24211,50 +24255,6 @@ Nature: Adamant
 - Headbutt
 - Bite
 - Work Up
-
-
-=== TRAINER_ASTER_METEOR_FALLS_JANGMO_O ===
-Name: ASTER
-Class: Draconid
-Pic: Aster
-Gender: Female
-Music: Intense
-Items: Super Potion / Super Potion
-Double Battle: No
-AI: Smart Trainer / Ace Pokemon
-
-Swablu
-Level: 24
-Ability: Natural Cure
-- Dragon Breath
-- Round
-- Sing
-- Fury Attack
-
-Trapinch
-Level: 24
-Ability: Hyper Cutter
-- Bite
-- Sand Tomb
-- Bulldoze
-- Mud-Slap
-
-Noibat
-Level: 25
-Ability: Infiltrator
-- Air Cutter
-- Bite
-- Wing Attack
-- Supersonic
-
-Dreepy @ Sitrus Berry
-Level: 27
-Ability: Infiltrator
-Nature: Jolly
-- Astonish
-- Bite
-- Quick Attack
-- Infestation
 
 
 === TRAINER_MAY_ROUTE_103 ===
@@ -24474,14 +24474,14 @@ Nature: Timid
 - Super Fang
 - Roost
 
-Kommo-o @ Sitrus Berry
+Drakloak @ Sitrus Berry
 Level: 47
-Ability: Bulletproof
-Nature: Adamant
-- Clanging Scales
-- Sky Uppercut
-- Dragon Claw
-- Iron Defense
+Ability: Infiltrator
+Nature: Jolly
+- Dragon Pulse
+- Phantom Force
+- U-turn
+- Dragon Dance
 
 Salamence @ Salamencite
 Level: 48
@@ -24529,14 +24529,14 @@ Nature: Timid
 - Super Fang
 - Roost
 
-Zweilous @ Sitrus Berry
+Kommo-o @ Sitrus Berry
 Level: 47
-Ability: Hustle
+Ability: Bulletproof
 Nature: Adamant
-- Dragon Rush
-- Crunch
-- Double Hit
-- Work Up
+- Clanging Scales
+- Sky Uppercut
+- Dragon Claw
+- Iron Defense
 
 Salamence @ Salamencite
 Level: 48
@@ -27053,14 +27053,14 @@ Nature: Timid
 - Super Fang
 - Roost
 
-Drakloak @ Sitrus Berry
+Zweilous @ Sitrus Berry
 Level: 47
-Ability: Infiltrator
-Nature: Jolly
-- Dragon Pulse
-- Phantom Force
-- U-turn
-- Dragon Dance
+Ability: Hustle
+Nature: Adamant
+- Dragon Rush
+- Crunch
+- Double Hit
+- Work Up
 
 Salamence @ Salamencite
 Level: 48
@@ -27121,14 +27121,14 @@ Nature: Modest
 - Fire Blast
 - Thunderbolt
 
-Kommo-o @ Throat Spray
+Dragapult @ Choice Band
 Level: 76
-Ability: Soundproof
+Ability: Infiltrator
 EVs: 252 Atk / 252 Spe / 4 HP
 Nature: Jolly
-- Clanging Scales
-- Close Combat
-- Poison Jab
+- Dragon Darts
+- Phantom Force
+- U-turn
 - Dragon Dance
 
 Salamence @ Salamencite
@@ -27140,7 +27140,6 @@ Nature: Adamant
 - Dragon Claw
 - Earthquake
 - Dragon Dance
-
 
 === TRAINER_PAXTON ===
 Name: PAXTON
@@ -27444,15 +27443,15 @@ Nature: Modest
 - Fire Blast
 - Thunderbolt
 
-Hydreigon @ Life Orb
+Kommo-o @ Throat Spray
 Level: 76
-Ability: Levitate
-EVs: 252 SpA / 252 Spe / 4 HP
-Nature: Modest
-- Draco Meteor
-- Dark Pulse
-- Flamethrower
-- Earth Power
+Ability: Soundproof
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Clanging Scales
+- Close Combat
+- Poison Jab
+- Dragon Dance
 
 Salamence @ Salamencite
 Level: 78
@@ -27514,15 +27513,15 @@ Nature: Modest
 - Fire Blast
 - Thunderbolt
 
-Dragapult @ Choice Band
+Hydreigon @ Life Orb
 Level: 76
-Ability: Infiltrator
-EVs: 252 Atk / 252 Spe / 4 HP
-Nature: Jolly
-- Dragon Darts
-- Phantom Force
-- U-turn
-- Dragon Dance
+Ability: Levitate
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Modest
+- Draco Meteor
+- Dark Pulse
+- Flamethrower
+- Earth Power
 
 Salamence @ Salamencite
 Level: 78
@@ -27533,6 +27532,7 @@ Nature: Adamant
 - Dragon Claw
 - Earthquake
 - Dragon Dance
+
 
 === TRAINER_MAXIE_MAGMA_HIDEOUT ===
 Name: MAXIE
@@ -39028,23 +39028,6 @@ Music: Intense
 Double Battle: No
 AI: Basic Trainer
 
-Deino
-Level: 5
-Nature: Naughty
-IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
-- Tackle
-- Dragon Breath
-- Focus Energy
-
-=== TRAINER_ASTER_PASS_DREEPY ===
-Name: ASTER
-Class: Draconid
-Pic: Aster
-Gender: Female
-Music: Intense
-Double Battle: No
-AI: Basic Trainer
-
 Dreepy
 Level: 5
 Nature: Hasty
@@ -39054,7 +39037,7 @@ IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
 - Astonish
 - Infestation
 
-=== TRAINER_ASTER_PASS_JANGMO_O ===
+=== TRAINER_ASTER_PASS_DREEPY ===
 Name: ASTER
 Class: Draconid
 Pic: Aster
@@ -39070,3 +39053,1462 @@ IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
 - Tackle
 - Leer
 - Protect
+/* Draconid Emerald round 1: Nerine placeholder teams (counter egg + counter Mega starter, level-up moves);
+   the full teams come with the round 1 trainer batch. TODO: replace. */
+
+=== TRAINER_ASTER_PASS_JANGMO_O ===
+Name: ASTER
+Class: Draconid
+Pic: Aster
+Gender: Female
+Music: Intense
+Double Battle: No
+AI: Basic Trainer
+
+Deino
+Level: 5
+Nature: Naughty
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Tackle
+- Dragon Breath
+- Focus Energy
+
+=== TRAINER_NERINE_PETALBURG_WOODS_DEINO ===
+Name: NERINE
+Class: Team Aqua
+Pic: Nerine Aqua
+Gender: Female
+Music: Aqua
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Carvanha
+Level: 8
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Jangmo-o
+Level: 9
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_PETALBURG_WOODS_DREEPY ===
+Name: NERINE
+Class: Team Aqua
+Pic: Nerine Aqua
+Gender: Female
+Music: Aqua
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Carvanha
+Level: 8
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Deino
+Level: 9
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_PETALBURG_WOODS_JANGMO_O ===
+Name: NERINE
+Class: Team Aqua
+Pic: Nerine Aqua
+Gender: Female
+Music: Aqua
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Carvanha
+Level: 8
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Dreepy
+Level: 9
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_RUSTURF_DEINO_CHARMANDER ===
+Name: NERINE
+Class: Team Aqua
+Pic: Nerine Aqua
+Gender: Female
+Music: Aqua
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Carvanha
+Level: 14
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Totodile
+Level: 15
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Jangmo-o
+Level: 16
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_RUSTURF_DEINO_TOTODILE ===
+Name: NERINE
+Class: Team Aqua
+Pic: Nerine Aqua
+Gender: Female
+Music: Aqua
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Carvanha
+Level: 14
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Treecko
+Level: 15
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Jangmo-o
+Level: 16
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_RUSTURF_DEINO_TREECKO ===
+Name: NERINE
+Class: Team Aqua
+Pic: Nerine Aqua
+Gender: Female
+Music: Aqua
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Carvanha
+Level: 14
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Charmander
+Level: 15
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Jangmo-o
+Level: 16
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_RUSTURF_DREEPY_CHARMANDER ===
+Name: NERINE
+Class: Team Aqua
+Pic: Nerine Aqua
+Gender: Female
+Music: Aqua
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Carvanha
+Level: 14
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Totodile
+Level: 15
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Deino
+Level: 16
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_RUSTURF_DREEPY_TOTODILE ===
+Name: NERINE
+Class: Team Aqua
+Pic: Nerine Aqua
+Gender: Female
+Music: Aqua
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Carvanha
+Level: 14
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Treecko
+Level: 15
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Deino
+Level: 16
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_RUSTURF_DREEPY_TREECKO ===
+Name: NERINE
+Class: Team Aqua
+Pic: Nerine Aqua
+Gender: Female
+Music: Aqua
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Carvanha
+Level: 14
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Charmander
+Level: 15
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Deino
+Level: 16
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_RUSTURF_JANGMO_O_CHARMANDER ===
+Name: NERINE
+Class: Team Aqua
+Pic: Nerine Aqua
+Gender: Female
+Music: Aqua
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Carvanha
+Level: 14
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Totodile
+Level: 15
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Dreepy
+Level: 16
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_RUSTURF_JANGMO_O_TOTODILE ===
+Name: NERINE
+Class: Team Aqua
+Pic: Nerine Aqua
+Gender: Female
+Music: Aqua
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Carvanha
+Level: 14
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Treecko
+Level: 15
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Dreepy
+Level: 16
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_RUSTURF_JANGMO_O_TREECKO ===
+Name: NERINE
+Class: Team Aqua
+Pic: Nerine Aqua
+Gender: Female
+Music: Aqua
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Carvanha
+Level: 14
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Charmander
+Level: 15
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Dreepy
+Level: 16
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_SLATEPORT_DEINO_CHARMANDER ===
+Name: NERINE
+Class: Team Aqua
+Pic: Nerine Aqua
+Gender: Female
+Music: Aqua
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Carvanha
+Level: 21
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Croconaw
+Level: 22
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Jangmo-o
+Level: 23
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_SLATEPORT_DEINO_TOTODILE ===
+Name: NERINE
+Class: Team Aqua
+Pic: Nerine Aqua
+Gender: Female
+Music: Aqua
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Carvanha
+Level: 21
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Grovyle
+Level: 22
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Jangmo-o
+Level: 23
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_SLATEPORT_DEINO_TREECKO ===
+Name: NERINE
+Class: Team Aqua
+Pic: Nerine Aqua
+Gender: Female
+Music: Aqua
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Carvanha
+Level: 21
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Charmeleon
+Level: 22
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Jangmo-o
+Level: 23
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_SLATEPORT_DREEPY_CHARMANDER ===
+Name: NERINE
+Class: Team Aqua
+Pic: Nerine Aqua
+Gender: Female
+Music: Aqua
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Carvanha
+Level: 21
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Croconaw
+Level: 22
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Deino
+Level: 23
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_SLATEPORT_DREEPY_TOTODILE ===
+Name: NERINE
+Class: Team Aqua
+Pic: Nerine Aqua
+Gender: Female
+Music: Aqua
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Carvanha
+Level: 21
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Grovyle
+Level: 22
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Deino
+Level: 23
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_SLATEPORT_DREEPY_TREECKO ===
+Name: NERINE
+Class: Team Aqua
+Pic: Nerine Aqua
+Gender: Female
+Music: Aqua
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Carvanha
+Level: 21
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Charmeleon
+Level: 22
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Deino
+Level: 23
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_SLATEPORT_JANGMO_O_CHARMANDER ===
+Name: NERINE
+Class: Team Aqua
+Pic: Nerine Aqua
+Gender: Female
+Music: Aqua
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Carvanha
+Level: 21
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Croconaw
+Level: 22
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Dreepy
+Level: 23
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_SLATEPORT_JANGMO_O_TOTODILE ===
+Name: NERINE
+Class: Team Aqua
+Pic: Nerine Aqua
+Gender: Female
+Music: Aqua
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Carvanha
+Level: 21
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Grovyle
+Level: 22
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Dreepy
+Level: 23
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_SLATEPORT_JANGMO_O_TREECKO ===
+Name: NERINE
+Class: Team Aqua
+Pic: Nerine Aqua
+Gender: Female
+Music: Aqua
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Carvanha
+Level: 21
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Charmeleon
+Level: 22
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Dreepy
+Level: 23
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_MT_CHIMNEY_DEINO_CHARMANDER ===
+Name: NERINE
+Class: Team Aqua
+Pic: Nerine Aqua
+Gender: Female
+Music: Aqua
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Carvanha
+Level: 27
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Croconaw
+Level: 28
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Hakamo-o
+Level: 29
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_MT_CHIMNEY_DEINO_TOTODILE ===
+Name: NERINE
+Class: Team Aqua
+Pic: Nerine Aqua
+Gender: Female
+Music: Aqua
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Carvanha
+Level: 27
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Grovyle
+Level: 28
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Hakamo-o
+Level: 29
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_MT_CHIMNEY_DEINO_TREECKO ===
+Name: NERINE
+Class: Team Aqua
+Pic: Nerine Aqua
+Gender: Female
+Music: Aqua
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Carvanha
+Level: 27
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Charmeleon
+Level: 28
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Hakamo-o
+Level: 29
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_MT_CHIMNEY_DREEPY_CHARMANDER ===
+Name: NERINE
+Class: Team Aqua
+Pic: Nerine Aqua
+Gender: Female
+Music: Aqua
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Carvanha
+Level: 27
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Croconaw
+Level: 28
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Zweilous
+Level: 29
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_MT_CHIMNEY_DREEPY_TOTODILE ===
+Name: NERINE
+Class: Team Aqua
+Pic: Nerine Aqua
+Gender: Female
+Music: Aqua
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Carvanha
+Level: 27
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Grovyle
+Level: 28
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Zweilous
+Level: 29
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_MT_CHIMNEY_DREEPY_TREECKO ===
+Name: NERINE
+Class: Team Aqua
+Pic: Nerine Aqua
+Gender: Female
+Music: Aqua
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Carvanha
+Level: 27
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Charmeleon
+Level: 28
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Zweilous
+Level: 29
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_MT_CHIMNEY_JANGMO_O_CHARMANDER ===
+Name: NERINE
+Class: Team Aqua
+Pic: Nerine Aqua
+Gender: Female
+Music: Aqua
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Carvanha
+Level: 27
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Croconaw
+Level: 28
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Drakloak
+Level: 29
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_MT_CHIMNEY_JANGMO_O_TOTODILE ===
+Name: NERINE
+Class: Team Aqua
+Pic: Nerine Aqua
+Gender: Female
+Music: Aqua
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Carvanha
+Level: 27
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Grovyle
+Level: 28
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Drakloak
+Level: 29
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_MT_CHIMNEY_JANGMO_O_TREECKO ===
+Name: NERINE
+Class: Team Aqua
+Pic: Nerine Aqua
+Gender: Female
+Music: Aqua
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Carvanha
+Level: 27
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Charmeleon
+Level: 28
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Drakloak
+Level: 29
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_MT_PYRE_DEINO_CHARMANDER ===
+Name: NERINE
+Class: Team Aqua
+Pic: Nerine Aqua
+Gender: Female
+Music: Aqua
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Sharpedo
+Level: 40
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Feraligatr
+Level: 41
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Hakamo-o
+Level: 42
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_MT_PYRE_DEINO_TOTODILE ===
+Name: NERINE
+Class: Team Aqua
+Pic: Nerine Aqua
+Gender: Female
+Music: Aqua
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Sharpedo
+Level: 40
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Sceptile
+Level: 41
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Hakamo-o
+Level: 42
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_MT_PYRE_DEINO_TREECKO ===
+Name: NERINE
+Class: Team Aqua
+Pic: Nerine Aqua
+Gender: Female
+Music: Aqua
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Sharpedo
+Level: 40
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Charizard
+Level: 41
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Hakamo-o
+Level: 42
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_MT_PYRE_DREEPY_CHARMANDER ===
+Name: NERINE
+Class: Team Aqua
+Pic: Nerine Aqua
+Gender: Female
+Music: Aqua
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Sharpedo
+Level: 40
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Feraligatr
+Level: 41
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Zweilous
+Level: 42
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_MT_PYRE_DREEPY_TOTODILE ===
+Name: NERINE
+Class: Team Aqua
+Pic: Nerine Aqua
+Gender: Female
+Music: Aqua
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Sharpedo
+Level: 40
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Sceptile
+Level: 41
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Zweilous
+Level: 42
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_MT_PYRE_DREEPY_TREECKO ===
+Name: NERINE
+Class: Team Aqua
+Pic: Nerine Aqua
+Gender: Female
+Music: Aqua
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Sharpedo
+Level: 40
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Charizard
+Level: 41
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Zweilous
+Level: 42
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_MT_PYRE_JANGMO_O_CHARMANDER ===
+Name: NERINE
+Class: Team Aqua
+Pic: Nerine Aqua
+Gender: Female
+Music: Aqua
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Sharpedo
+Level: 40
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Feraligatr
+Level: 41
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Drakloak
+Level: 42
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_MT_PYRE_JANGMO_O_TOTODILE ===
+Name: NERINE
+Class: Team Aqua
+Pic: Nerine Aqua
+Gender: Female
+Music: Aqua
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Sharpedo
+Level: 40
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Sceptile
+Level: 41
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Drakloak
+Level: 42
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_MT_PYRE_JANGMO_O_TREECKO ===
+Name: NERINE
+Class: Team Aqua
+Pic: Nerine Aqua
+Gender: Female
+Music: Aqua
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Sharpedo
+Level: 40
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Charizard
+Level: 41
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Drakloak
+Level: 42
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_AQUA_HIDEOUT_DEINO_CHARMANDER ===
+Name: NERINE
+Class: Team Aqua
+Pic: Nerine Aqua
+Gender: Female
+Music: Aqua
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Sharpedo
+Level: 42
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Feraligatr
+Level: 43
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Hakamo-o
+Level: 44
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_AQUA_HIDEOUT_DEINO_TOTODILE ===
+Name: NERINE
+Class: Team Aqua
+Pic: Nerine Aqua
+Gender: Female
+Music: Aqua
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Sharpedo
+Level: 42
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Sceptile
+Level: 43
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Hakamo-o
+Level: 44
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_AQUA_HIDEOUT_DEINO_TREECKO ===
+Name: NERINE
+Class: Team Aqua
+Pic: Nerine Aqua
+Gender: Female
+Music: Aqua
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Sharpedo
+Level: 42
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Charizard
+Level: 43
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Hakamo-o
+Level: 44
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_AQUA_HIDEOUT_DREEPY_CHARMANDER ===
+Name: NERINE
+Class: Team Aqua
+Pic: Nerine Aqua
+Gender: Female
+Music: Aqua
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Sharpedo
+Level: 42
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Feraligatr
+Level: 43
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Zweilous
+Level: 44
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_AQUA_HIDEOUT_DREEPY_TOTODILE ===
+Name: NERINE
+Class: Team Aqua
+Pic: Nerine Aqua
+Gender: Female
+Music: Aqua
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Sharpedo
+Level: 42
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Sceptile
+Level: 43
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Zweilous
+Level: 44
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_AQUA_HIDEOUT_DREEPY_TREECKO ===
+Name: NERINE
+Class: Team Aqua
+Pic: Nerine Aqua
+Gender: Female
+Music: Aqua
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Sharpedo
+Level: 42
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Charizard
+Level: 43
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Zweilous
+Level: 44
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_AQUA_HIDEOUT_JANGMO_O_CHARMANDER ===
+Name: NERINE
+Class: Team Aqua
+Pic: Nerine Aqua
+Gender: Female
+Music: Aqua
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Sharpedo
+Level: 42
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Feraligatr
+Level: 43
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Drakloak
+Level: 44
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_AQUA_HIDEOUT_JANGMO_O_TOTODILE ===
+Name: NERINE
+Class: Team Aqua
+Pic: Nerine Aqua
+Gender: Female
+Music: Aqua
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Sharpedo
+Level: 42
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Sceptile
+Level: 43
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Drakloak
+Level: 44
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_AQUA_HIDEOUT_JANGMO_O_TREECKO ===
+Name: NERINE
+Class: Team Aqua
+Pic: Nerine Aqua
+Gender: Female
+Music: Aqua
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Sharpedo
+Level: 42
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Charizard
+Level: 43
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Drakloak
+Level: 44
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_SEAFLOOR_DEINO_CHARMANDER ===
+Name: NERINE
+Class: Draconid
+Pic: Nerine
+Gender: Female
+Music: Intense
+Double Battle: No
+AI: Smart Trainer / Prediction / Ace Pokemon
+
+Sharpedo
+Level: 46
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Feraligatr @ Feraligite
+Level: 47
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Hakamo-o
+Level: 48
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_SEAFLOOR_DEINO_TOTODILE ===
+Name: NERINE
+Class: Draconid
+Pic: Nerine
+Gender: Female
+Music: Intense
+Double Battle: No
+AI: Smart Trainer / Prediction / Ace Pokemon
+
+Sharpedo
+Level: 46
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Sceptile @ Sceptilite
+Level: 47
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Hakamo-o
+Level: 48
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_SEAFLOOR_DEINO_TREECKO ===
+Name: NERINE
+Class: Draconid
+Pic: Nerine
+Gender: Female
+Music: Intense
+Double Battle: No
+AI: Smart Trainer / Prediction / Ace Pokemon
+
+Sharpedo
+Level: 46
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Charizard @ Charizardite X
+Level: 47
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Hakamo-o
+Level: 48
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_SEAFLOOR_DREEPY_CHARMANDER ===
+Name: NERINE
+Class: Draconid
+Pic: Nerine
+Gender: Female
+Music: Intense
+Double Battle: No
+AI: Smart Trainer / Prediction / Ace Pokemon
+
+Sharpedo
+Level: 46
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Feraligatr @ Feraligite
+Level: 47
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Zweilous
+Level: 48
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_SEAFLOOR_DREEPY_TOTODILE ===
+Name: NERINE
+Class: Draconid
+Pic: Nerine
+Gender: Female
+Music: Intense
+Double Battle: No
+AI: Smart Trainer / Prediction / Ace Pokemon
+
+Sharpedo
+Level: 46
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Sceptile @ Sceptilite
+Level: 47
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Zweilous
+Level: 48
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_SEAFLOOR_DREEPY_TREECKO ===
+Name: NERINE
+Class: Draconid
+Pic: Nerine
+Gender: Female
+Music: Intense
+Double Battle: No
+AI: Smart Trainer / Prediction / Ace Pokemon
+
+Sharpedo
+Level: 46
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Charizard @ Charizardite X
+Level: 47
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Zweilous
+Level: 48
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_SEAFLOOR_JANGMO_O_CHARMANDER ===
+Name: NERINE
+Class: Draconid
+Pic: Nerine
+Gender: Female
+Music: Intense
+Double Battle: No
+AI: Smart Trainer / Prediction / Ace Pokemon
+
+Sharpedo
+Level: 46
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Feraligatr @ Feraligite
+Level: 47
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Drakloak
+Level: 48
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_SEAFLOOR_JANGMO_O_TOTODILE ===
+Name: NERINE
+Class: Draconid
+Pic: Nerine
+Gender: Female
+Music: Intense
+Double Battle: No
+AI: Smart Trainer / Prediction / Ace Pokemon
+
+Sharpedo
+Level: 46
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Sceptile @ Sceptilite
+Level: 47
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Drakloak
+Level: 48
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_SEAFLOOR_JANGMO_O_TREECKO ===
+Name: NERINE
+Class: Draconid
+Pic: Nerine
+Gender: Female
+Music: Intense
+Double Battle: No
+AI: Smart Trainer / Prediction / Ace Pokemon
+
+Sharpedo
+Level: 46
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Charizard @ Charizardite X
+Level: 47
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Drakloak
+Level: 48
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_POSTGAME_DEINO_CHARMANDER ===
+Name: NERINE
+Class: Draconid
+Pic: Nerine
+Gender: Female
+Music: Intense
+Double Battle: No
+AI: Smart Trainer / Prediction / Ace Pokemon
+
+Sharpedo
+Level: 77
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Feraligatr @ Feraligite
+Level: 78
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Kommo-o
+Level: 79
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_POSTGAME_DEINO_TOTODILE ===
+Name: NERINE
+Class: Draconid
+Pic: Nerine
+Gender: Female
+Music: Intense
+Double Battle: No
+AI: Smart Trainer / Prediction / Ace Pokemon
+
+Sharpedo
+Level: 77
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Sceptile @ Sceptilite
+Level: 78
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Kommo-o
+Level: 79
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_POSTGAME_DEINO_TREECKO ===
+Name: NERINE
+Class: Draconid
+Pic: Nerine
+Gender: Female
+Music: Intense
+Double Battle: No
+AI: Smart Trainer / Prediction / Ace Pokemon
+
+Sharpedo
+Level: 77
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Charizard @ Charizardite X
+Level: 78
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Kommo-o
+Level: 79
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_POSTGAME_DREEPY_CHARMANDER ===
+Name: NERINE
+Class: Draconid
+Pic: Nerine
+Gender: Female
+Music: Intense
+Double Battle: No
+AI: Smart Trainer / Prediction / Ace Pokemon
+
+Sharpedo
+Level: 77
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Feraligatr @ Feraligite
+Level: 78
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Hydreigon
+Level: 79
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_POSTGAME_DREEPY_TOTODILE ===
+Name: NERINE
+Class: Draconid
+Pic: Nerine
+Gender: Female
+Music: Intense
+Double Battle: No
+AI: Smart Trainer / Prediction / Ace Pokemon
+
+Sharpedo
+Level: 77
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Sceptile @ Sceptilite
+Level: 78
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Hydreigon
+Level: 79
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_POSTGAME_DREEPY_TREECKO ===
+Name: NERINE
+Class: Draconid
+Pic: Nerine
+Gender: Female
+Music: Intense
+Double Battle: No
+AI: Smart Trainer / Prediction / Ace Pokemon
+
+Sharpedo
+Level: 77
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Charizard @ Charizardite X
+Level: 78
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Hydreigon
+Level: 79
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_POSTGAME_JANGMO_O_CHARMANDER ===
+Name: NERINE
+Class: Draconid
+Pic: Nerine
+Gender: Female
+Music: Intense
+Double Battle: No
+AI: Smart Trainer / Prediction / Ace Pokemon
+
+Sharpedo
+Level: 77
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Feraligatr @ Feraligite
+Level: 78
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Dragapult
+Level: 79
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_POSTGAME_JANGMO_O_TOTODILE ===
+Name: NERINE
+Class: Draconid
+Pic: Nerine
+Gender: Female
+Music: Intense
+Double Battle: No
+AI: Smart Trainer / Prediction / Ace Pokemon
+
+Sharpedo
+Level: 77
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Sceptile @ Sceptilite
+Level: 78
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Dragapult
+Level: 79
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+
+=== TRAINER_NERINE_POSTGAME_JANGMO_O_TREECKO ===
+Name: NERINE
+Class: Draconid
+Pic: Nerine
+Gender: Female
+Music: Intense
+Double Battle: No
+AI: Smart Trainer / Prediction / Ace Pokemon
+
+Sharpedo
+Level: 77
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Charizard @ Charizardite X
+Level: 78
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
+Dragapult
+Level: 79
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+
