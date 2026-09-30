@@ -462,6 +462,7 @@ enum
     OBJ_EVENT_GFX_COURTNEY,
     OBJ_EVENT_GFX_WES,
     OBJ_EVENT_GFX_FRONTIER_BLUE,
+    OBJ_EVENT_GFX_ZINNIA,
     OBJ_EVENT_GFX_DRACONID_EGG_DEINO,
     OBJ_EVENT_GFX_DRACONID_EGG_DREEPY,
     OBJ_EVENT_GFX_DRACONID_EGG_JANGMO_O,
@@ -636,6 +637,7 @@ enum
 #define OBJ_EVENT_PAL_TAG_NERINE_AQUA                      0x114B
 #define OBJ_EVENT_PAL_TAG_NERINE                           0x114C
 #define OBJ_EVENT_PAL_TAG_COURTNEY                         0x114D
+#define OBJ_EVENT_PAL_TAG_ZINNIA                           0x114E
 #define OBJ_EVENT_PAL_TAG_WES                              0x1150
 #define OBJ_EVENT_PAL_TAG_FRONTIER_BLUE                    0x1151
 // END DRACONID PLAYER OUTFITS

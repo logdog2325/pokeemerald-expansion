@@ -22,6 +22,7 @@
 #include "graphics.h"
 #include "pokedex.h"
 #include "event_data.h"
+#include "overworld.h"
 #include "random.h"
 
 #if !IS_FRLG
@@ -720,8 +721,13 @@ static void Task_CreditsTheEnd6(u8 taskId)
 
 static void Task_CreditsSoftReset(u8 taskId)
 {
+    // Draconid Emerald: the credits roll after the Sky Pillar finale; the player then wakes at home (D-152)
     if (!gPaletteFade.active)
-        SoftReset(RESET_ALL);
+    {
+        InitHeap(gHeap, HEAP_SIZE); // the credits leave their buffers allocated (vanilla soft-reset here)
+        SetMainCallback2(CB2_ReturnHomeDraconid);
+        DestroyTask(taskId);
+    }
 }
 
 static void ResetGpuAndVram(void)

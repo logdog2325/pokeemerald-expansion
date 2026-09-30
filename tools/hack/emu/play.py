@@ -24,6 +24,10 @@ A .play script is a gbarun script plus:
   expect_partner PARTNER_X      the last multi battle's in-game partner (gPartnerTrainerId)
   wait_species N SPECIES_X [MAX] [KEY]   tap KEY (default A) until battler N (gBattleMons[N]; 1 = the
                           opponent in a single battle) is SPECIES_X, e.g. a Mega Evolution
+  boost SLOT [VALUE]      set the player's party Pokemon at SLOT to level 100 with VALUE (default 999) HP and
+                          stats, for a flow test that must win (999) or quickly lose (1) a battle (the
+                          unencrypted party fields; a level-up or a stat recalculation undoes it)
+  until_var NAME VALUE MAX [KEYS]   run until a var equals VALUE, tapping KEYS (a cycle like B,R) meanwhile
   setflag NAME / clearflag NAME   change a flag in the save block (e.g. FLAG_DEBUG_NO_ENCOUNTER)
   settrainer TRAINER_X 0|1        set or clear a trainer's "defeated" flag
   setvar NAME VALUE       change a var in the save block
@@ -204,6 +208,9 @@ BAG_POCKET, BAG_CURSOR, BAG_SCROLL = ("offsetof(struct BagPosition, pocket)", "o
 MON_SIZE, SECURE_OFFSET, SUBSTRUCT_SIZE = "sizeof(struct Pokemon)", "offsetof(struct BoxPokemon, secure)", "NUM_SUBSTRUCT_BYTES"
 TEXT_BYTES = 24  # expect_text compares up to 24 bytes
 SUBSTRUCT0_POS = [0, 0, 0, 0, 0, 0, 1, 1, 2, 3, 2, 3, 1, 1, 2, 3, 2, 3, 1, 1, 2, 3, 2, 3]  # pokemon.c sSubstructOffsets[0]
+# boost: the unencrypted party fields
+MON_FIELD = "offsetof(struct Pokemon, %s)"
+MON_STATS = ("level", "hp", "maxHP", "attack", "defense", "speed", "spAttack", "spDefense")
 
 LEDGE_JUMP = {"DOWN": "MB_JUMP_SOUTH", "UP": "MB_JUMP_NORTH", "LEFT": "MB_JUMP_WEST", "RIGHT": "MB_JUMP_EAST"}
 
@@ -225,7 +232,7 @@ def main():
             defines.setdefault(t[1], t[2])
     defines.update(dict(d.split("=", 1) for d in args.defines))
     lines = [re.sub(r"\$\{(\w+)\}", lambda m: defines[m.group(1)], l) for l in lines if not l.startswith("default ")]
-    names = sorted({l.split()[1] for l in lines if l.split() and l.split()[0] in ("flag", "var", "expect_flag", "expect_var", "setflag", "clearflag", "setvar", "warp", "expect_trainer", "expect_item", "expect_opponent", "expect_opponent_b", "expect_gfx", "giveitem", "givemon", "expect_map", "bagcursor", "settrainer")})
+    names = sorted({l.split()[1] for l in lines if l.split() and l.split()[0] in ("flag", "var", "expect_flag", "expect_var", "setflag", "clearflag", "setvar", "warp", "expect_trainer", "expect_item", "expect_opponent", "expect_opponent_b", "expect_gfx", "giveitem", "givemon", "expect_map", "bagcursor", "settrainer", "until_var")})
     names += sorted({l.split()[2] for l in lines if l.split() and l.split()[0] == "expect_party"})
     names += sorted({l.split()[3] for l in lines if l.split() and l.split()[0] == "givemon" and len(l.split()) > 3})
     names += ["TRAINER_PARTNER(%s)" % l.split()[1] for l in lines if l.split()[:1] == ["expect_partner"]]
@@ -237,6 +244,8 @@ def main():
                   TEST_GIVE_ITEM, TEST_COUNT_HMS, TEST_GIVE_MON]
     if any(l.split() and l.split()[0] == "bagcursor" for l in lines):
         names += [BAG_POCKET, BAG_CURSOR, BAG_SCROLL]
+    if any(l.split() and l.split()[0] == "boost" for l in lines):
+        names += ["B_TRAINER_PLAYER", "PARTY_SIZE"] + [MON_FIELD % f for f in MON_STATS]
     flags_off, vars_off, loc_off, coords_off, consts = probe(names)
     # the player is object event 0 (spawned first on every map load); MAP_OFFSET is 7
     player_x = syms["gObjectEvents"] + coords_off
@@ -309,6 +318,14 @@ def main():
             addr = syms["gBattleMons"] + int(t[1]) * consts[BATTLE_MON_SIZE] + consts[BATTLE_MON_SPECIES]
             out.append("until %X 2 %X %s %s 24" % (addr, consts[t[2]], t[3] if len(t) > 3 else "60000",
                                                   t[4] if len(t) > 4 else "A"))
+        elif t[0] == "boost":
+            mon = syms["gParties"] + (consts["B_TRAINER_PLAYER"] * consts["PARTY_SIZE"] + int(t[1])) * consts[MON_SIZE]
+            value = int(t[2]) if len(t) > 2 else 999
+            for f in MON_STATS:
+                addr, val = mon + consts[MON_FIELD % f], 100 if f == "level" else value
+                out.append("poke %X %X" % (addr, val & 0xFF))
+                if f != "level":
+                    out.append("poke %X %X" % (addr + 1, val >> 8))
         elif t[0] == "expect_gfx":
             label = "player_gfx_%s#%d" % (t[1], len(expects))
             expects.append((label, consts[t[1]]))
@@ -336,6 +353,10 @@ def main():
                 label = "%s#%d" % (t[1], len(expects))
                 expects.append((label, int(t[2], 0)))
             out.append("read %s+%X 2 %s" % (sb1, vars_off + (v - 0x4000) * 2, label))
+        elif t[0] == "until_var":
+            v = consts[t[1]]
+            keys = " %s 24" % t[4] if len(t) > 4 else ""
+            out.append("until %s+%X 2 %X %s%s" % (sb1, vars_off + (v - 0x4000) * 2, int(t[2], 0), t[3], keys))
         elif t[0] == "walk":
             # walk DIR COORD: hold DIR until the player's x (LEFT/RIGHT) or y (UP/DOWN) equals COORD
             addr = player_x if t[1] in ("LEFT", "RIGHT") else player_y

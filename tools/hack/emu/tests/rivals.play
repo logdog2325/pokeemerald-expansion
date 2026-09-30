@@ -7,8 +7,9 @@ setflag FLAG_DEBUG_NO_ENCOUNTER
 setflag FLAG_DEBUG_NO_TRAINER_SEE
 setflag FLAG_DRACONID_NO_WHITEOUT
 
-# --- Littleroot lab after the Champion: Brendan's rematch ---
+# --- Littleroot lab after the finale: Brendan's rematch (act7.pory) ---
 setflag FLAG_SYS_GAME_CLEAR
+setvar VAR_DRACONID_FINALE_STATE 9
 setvar VAR_DEX_UPGRADE_JOHTO_STARTER_STATE 3
 warp MAP_LITTLEROOT_TOWN_PROFESSOR_BIRCHS_LAB 8 12
 path LittlerootTown_ProfessorBirchsLab 8 12 8 11
@@ -18,6 +19,7 @@ run 60
 shot 60_lab_brendan
 mash A,A,UP 60000
 shot 61_after_lab_brendan
+expect_var VAR_BRENDAN_STATE 8
 savestate rivals_done.ss
 
 clearflag FLAG_DEBUG_NO_ENCOUNTER

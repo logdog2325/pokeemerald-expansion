@@ -1055,6 +1055,7 @@
   "TRAINER_NERINE_POSTGAME_JANGMO_O_CHARMANDER": "POST",
   "TRAINER_NERINE_POSTGAME_JANGMO_O_TOTODILE": "POST",
   "TRAINER_NERINE_POSTGAME_JANGMO_O_TREECKO": "POST",
+  "TRAINER_ZINNIA_SKY_PILLAR": "POST",
   "TRAINER_WES_FRONTIER": "POST",
   "TRAINER_RED_FRONTIER": "POST",
   "TRAINER_BLUE_FRONTIER": "POST",
@@ -4588,7 +4589,7 @@
   "TRAINER_ASTER_SKY_PILLAR_DEINO": {
    "segment": "POST",
    "role": "route",
-   "map": "Draconid",
+   "map": "SkyPillar_Outside",
    "story": true
   },
   "TRAINER_ASTER_SKY_PILLAR_DREEPY": {
@@ -4950,7 +4951,7 @@
   "TRAINER_ASTER_POSTGAME_DEINO": {
    "segment": "POST",
    "role": "route",
-   "map": "Draconid",
+   "map": "DraconidVillage_Shrine",
    "story": true
   },
   "TRAINER_PAXTON": {
@@ -6958,7 +6959,7 @@
   "TRAINER_NERINE_POSTGAME_DEINO_CHARMANDER": {
    "segment": "POST",
    "role": "route",
-   "map": null,
+   "map": "DraconidVillage",
    "story": true
   },
   "TRAINER_NERINE_POSTGAME_DEINO_TOTODILE": {
@@ -7007,6 +7008,12 @@
    "segment": "POST",
    "role": "route",
    "map": null,
+   "story": true
+  },
+  "TRAINER_ZINNIA_SKY_PILLAR": {
+   "segment": "POST",
+   "role": "route",
+   "map": "SkyPillar_3F",
    "story": true
   },
   "TRAINER_WES_FRONTIER": {

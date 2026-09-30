@@ -1300,14 +1300,14 @@ give a species. `check_party.py` now resolves species aliases before it takes a 
 | BRENDAN_POSTGAME | LittlerootTown_ProfessorBirchsLab | route | 6 | 75–78 | Sceptile 78 | story |
 | MAY_POSTGAME | LittlerootTown_ProfessorBirchsLab | route | 6 | 75–78 | Blaziken 78 | story |
 | BRENDAN_POSTGAME_DOUBLE | LittlerootTown_ProfessorBirchsLab | route | 3 | 78–80 | Sceptile 80 | story |
-| ASTER_SKY_PILLAR_DEINO | Draconid | route | 6 | 63–65 | Salamence 65 | story |
+| ASTER_SKY_PILLAR_DEINO | SkyPillar_Outside | route | 6 | 63–65 | Salamence 65 | story |
 | ASTER_SKY_PILLAR_DREEPY |  | route | 6 | 63–65 | Salamence 65 | story |
 | ISAAC_5 | Route117 | route t5 | 6 | 60–61 | Hariyama 61 | emerald-rematch |
 | LYDIA_5 | Route117 | route t5 | 6 | 60–61 | Azumarill 61 | emerald-rematch |
 | JACKSON_5 | Route119 | route t5 | 5 | 62–64 | Breloom 64 | emerald-rematch + Unfezant, Toucannon |
 | CATHERINE_5 | Route119 | route t5 | 4 | 62–64 | Roserade 64 | emerald-rematch + Excadrill, Tsareena |
 | ASTER_SKY_PILLAR_JANGMO_O |  | route | 6 | 63–65 | Salamence 65 | story |
-| ASTER_POSTGAME_DEINO | Draconid | route | 6 | 75–78 | Salamence 78 | story |
+| ASTER_POSTGAME_DEINO | DraconidVillage_Shrine | route | 6 | 75–78 | Salamence 78 | story |
 | ASTER_POSTGAME_DREEPY |  | route | 6 | 75–78 | Salamence 78 | story |
 | ASTER_POSTGAME_JANGMO_O |  | route | 6 | 75–78 | Salamence 78 | story |
 | HALEY_5 | Route104 | route t5 | 4 | 60–61 | Breloom 61 | emerald-rematch + Whimsicott, Ribombee |
@@ -1364,7 +1364,7 @@ give a species. `check_party.py` now resolves species aliases before it takes a 
 | SAWYER_5 | MtChimney | route t5 | 5 | 60–61 | Golem 61 | emerald-rematch + Coalossal, Mudsdale |
 | GABRIELLE_5 | MtPyre_3F | route t5 | 6 | 60–63 | Swellow 63 | emerald-rematch |
 | THALIA_5 | AbandonedShip_Rooms_1F | route t5 | 5 | 62–64 | Kingdra 64 | emerald-rematch |
-| NERINE_POSTGAME_DEINO_CHARMANDER |  | route | 6 | 76–78 | Feraligatr 78 | story |
+| NERINE_POSTGAME_DEINO_CHARMANDER | DraconidVillage | route | 6 | 76–78 | Feraligatr 78 | story |
 | NERINE_POSTGAME_DEINO_TOTODILE |  | route | 6 | 76–78 | Sceptile 78 | story |
 | NERINE_POSTGAME_DEINO_TREECKO |  | route | 6 | 76–78 | Charizard 78 | story |
 | NERINE_POSTGAME_DREEPY_CHARMANDER |  | route | 6 | 76–78 | Feraligatr 78 | story |
@@ -1373,6 +1373,7 @@ give a species. `check_party.py` now resolves species aliases before it takes a 
 | NERINE_POSTGAME_JANGMO_O_CHARMANDER |  | route | 6 | 76–78 | Feraligatr 78 | story |
 | NERINE_POSTGAME_JANGMO_O_TOTODILE |  | route | 6 | 76–78 | Sceptile 78 | story |
 | NERINE_POSTGAME_JANGMO_O_TREECKO |  | route | 6 | 76–78 | Charizard 78 | story |
+| ZINNIA_SKY_PILLAR | SkyPillar_3F | route | 5 | 60–62 | Salamence 62 | story |
 | WES_FRONTIER | BattleFrontier_OutsideEast | route | 6 | 82–85 | Ho-Oh 85 | colosseum |
 | RED_FRONTIER | BattleFrontier_OutsideEast | route | 6 | 82–85 | Charizard 85 | pwt |
 | BLUE_FRONTIER | BattleFrontier_OutsideEast | route | 6 | 82–85 | Alakazam 85 | pwt |

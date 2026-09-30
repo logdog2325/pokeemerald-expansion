@@ -931,6 +931,8 @@
 #define TRAINER_NERINE_POSTGAME_JANGMO_O_CHARMANDER 921
 #define TRAINER_NERINE_POSTGAME_JANGMO_O_TOTODILE 922
 #define TRAINER_NERINE_POSTGAME_JANGMO_O_TREECKO 923
+// Draconid Emerald: Zinnia, the Lorekeeper on the Sky Pillar 3F (Act 7, D-155)
+#define TRAINER_ZINNIA_SKY_PILLAR           924
 // Draconid Emerald: the Battle Frontier legends (post-game, D-225 - D-229): singles and their three-Pokemon
 // tag teams for the legends' tag multi battle (the same teams as PARTNER_WES/_RED/_BLUE)
 #define TRAINER_WES_FRONTIER                925
@@ -950,6 +952,7 @@
 // NOTE: Because each Trainer uses a flag to determine when they are defeated, there is only space for 9 additional trainers before trainer flag space overflows
 // Draconid Emerald: MAX_TRAINERS_COUNT_EMERALD raised from 864 so Nerine's variants fit (D-101); system flags move up
 //       928 -> 944 for the Battle Frontier legends and the finale (D-229): 16 more trainer flags, 2 save bytes
+//       937 of 944 used (924: Zinnia, Act 7): 7 spare ids before MAX_TRAINERS_COUNT_EMERALD must grow again
 //       More space can be made by shifting flags around in constants/flags.h or changing how trainer flags are handled
 //       MAX_TRAINERS_COUNT can be increased but will take up additional saveblock space
 

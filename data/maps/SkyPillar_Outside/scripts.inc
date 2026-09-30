@@ -7,6 +7,7 @@ SkyPillar_Outside_MapScripts::
 SkyPillar_Outside_OnTransition:
 	call_if_eq VAR_SOOTOPOLIS_CITY_STATE, 3, SkyPillar_Outside_EventScript_HideMapNamePopup
 	call_if_ge VAR_SOOTOPOLIS_CITY_STATE, 4, SkyPillar_Outside_EventScript_CheckSetAbnormalWeather
+	call SkyPillar_Outside_EventScript_DraconidOnTransition  @ Draconid Emerald: Aster and Nerine wait for the finale (act7.pory)
 	end
 
 SkyPillar_Outside_EventScript_HideMapNamePopup::
@@ -19,6 +20,7 @@ SkyPillar_Outside_EventScript_CheckSetAbnormalWeather::
 
 SkyPillar_Outside_OnLoad:
 	call_if_set FLAG_WALLACE_GOES_TO_SKY_PILLAR, SkyPillar_Outside_EventScript_OpenDoor
+	call_if_ge VAR_DRACONID_FINALE_STATE, FINALE_STATE_CLIMB, SkyPillar_Outside_EventScript_OpenDoor  @ Draconid Emerald: open after the Trial of Three (D-109)
 	end
 
 SkyPillar_Outside_EventScript_OpenDoor::
@@ -28,6 +30,7 @@ SkyPillar_Outside_EventScript_OpenDoor::
 
 SkyPillar_Outside_OnFrame:
 	map_script_2 VAR_SOOTOPOLIS_CITY_STATE, 3, SkyPillar_Outside_EventScript_WallaceScene
+	map_script_2 VAR_TEMP_7, 1, SkyPillar_Outside_EventScript_DraconidTrialOfThree  @ Draconid Emerald (act7.pory)
 	.2byte 0
 
 SkyPillar_Outside_EventScript_WallaceScene::

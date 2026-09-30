@@ -2,6 +2,7 @@ SkyPillar_Top_MapScripts::
 	map_script MAP_SCRIPT_ON_RESUME, SkyPillar_Top_OnResume
 	map_script MAP_SCRIPT_ON_TRANSITION, SkyPillar_Top_OnTransition
 	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, SkyPillar_Top_OnWarp
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, SkyPillar_Top_OnFrame  @ Draconid Emerald
 	.byte 0
 
 SkyPillar_Top_OnResume:
@@ -17,7 +18,13 @@ SkyPillar_Top_EventScript_TryRemoveRayquaza::
 SkyPillar_Top_OnTransition:
 	call_if_lt VAR_SKY_PILLAR_STATE, 2, SkyPillar_Top_EventScript_SetCleanLayout
 	call_if_ge VAR_SKY_PILLAR_STATE, 2, SkyPillar_Top_EventScript_TryShowRayquaza
+	call SkyPillar_Top_EventScript_DraconidOnTransition  @ Draconid Emerald: the finale and Deoxys (act7.pory)
 	end
+
+@ Draconid Emerald: the summit of the Sky Pillar finale (act7.pory)
+SkyPillar_Top_OnFrame:
+	map_script_2 VAR_TEMP_7, 1, SkyPillar_Top_EventScript_DraconidSummit
+	.2byte 0
 
 SkyPillar_Top_EventScript_SetCleanLayout::
 	setmaplayoutindex LAYOUT_SKY_PILLAR_TOP_CLEAN
@@ -86,7 +93,6 @@ SkyPillar_Top_EventScript_RanFromRayquaza2::
 
 SkyPillar_Top_EventScript_AwakenRayquaza::
 	lockall
-	call SkyPillar_Top_EventScript_DraconidAsterClimax  @ Draconid Emerald (aster.pory)
 	fadeoutbgm 1
 	applymovement LOCALID_PLAYER, Common_Movement_FaceUp
 	waitmovement 0
@@ -127,7 +133,6 @@ SkyPillar_Top_EventScript_AwakenRayquaza::
 	setvar VAR_SOOTOPOLIS_CITY_STATE, 5
 	setvar VAR_SKY_PILLAR_STATE, 1
 	setvar VAR_SKY_PILLAR_RAYQUAZA_CRY_DONE, 1
-	call SkyPillar_Top_EventScript_DraconidAsterAfterRayquaza  @ Draconid Emerald (aster.pory)
 	releaseall
 	end
 

@@ -1,0 +1,168 @@
+// Draconid Emerald round 1, Act 6 (docs/hack_story.md steps 29-30): the Champion's room (BRENDAN comes in with
+// PROF. BIRCH, his father, and MAY follows them), the Hall of Fame without credits, and the meteor alert at home
+// that sends the player to the Sky Pillar (D-150). Juan's Gym, Victory Road and the Elite Four stay vanilla; WALLY's
+// Victory Road lines are reworked in place (data/maps/VictoryRoad_1F/scripts.inc).
+// VAR_DRACONID_FINALE_STATE: FINALE_STATE_* (include/constants/draconid.h). Act 7 is data/scripts/draconid/act7.pory.
+
+// ---------------------------------------------------------------------------
+// Champion's room: after WALLACE, BRENDAN runs in (the vanilla rival scene, now always him) and PROF. BIRCH rates
+// the POKéDEX. EverGrandeCity_ChampionsRoom_EventScript_BirchArrivesExitForHoF calls ...MayArrives after BIRCH's
+// congratulations and ...RivalsCongratulate when WALLACE sends them outside.
+// The player stands at (6, 6), BRENDAN at (5, 6), BIRCH at (7, 6); MAY comes in by the door at (6, 12).
+// ---------------------------------------------------------------------------
+
+script EverGrandeCity_ChampionsRoom_EventScript_DraconidMayArrives {
+    closemessage
+    addobject(LOCALID_CHAMPIONS_ROOM_MAY)
+    applymovement(LOCALID_CHAMPIONS_ROOM_MAY, EverGrandeCity_ChampionsRoom_Movement_DraconidMayArrives)
+    waitmovement(0)
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterDown)
+    waitmovement(0)
+    msgbox(format("MAY: {PLAYER}! Did I miss it?! …I missed it, didn't I?"))
+    msgbox(format("MAY: Hee hee! I knew it. I knew it way back on ROUTE 110.\p"
+                  "The MAGMA grunt with the dragons is the CHAMPION of HOENN!"))
+    closemessage
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight)
+    waitmovement(0)
+}
+
+// from the door (6, 12) to just behind the player, (6, 7)
+movement EverGrandeCity_ChampionsRoom_Movement_DraconidMayArrives {
+    walk_up * 5
+    walk_in_place_faster_up
+}
+
+script EverGrandeCity_ChampionsRoom_EventScript_DraconidRivalsCongratulate {
+    call(EverGrandeCity_ChampionsRoom_EventScript_BrendanCongratulations)
+    msgbox(format("MAY: Go on, CHAMPION! We'll be right here.\p"
+                  "And then you owe me the whole story. From the very start!"))
+}
+
+// ---------------------------------------------------------------------------
+// Hall of Fame: no credits (they roll after the Sky Pillar finale, Act 7). The HoF screen sends the new CHAMPION
+// home to the village bedroom (src/hall_of_fame.c, CB2_ReturnHomeDraconid), where the meteor alert begins.
+// EverGrandeCity_HallOfFame_EventScript_EnterHallOfFame calls this just before special GameClear.
+// ---------------------------------------------------------------------------
+
+script EverGrandeCity_HallOfFame_EventScript_DraconidFinaleStart {
+    if (var(VAR_DRACONID_FINALE_STATE) == FINALE_STATE_NONE) {
+        setvar(VAR_DRACONID_FINALE_STATE, FINALE_STATE_HALL_OF_FAME)
+        // the ELDER waits in the player's house for the meteor alert, not in his own
+        clearflag(FLAG_HIDE_DRACONID_HOUSE_ELDER)
+        setflag(FLAG_HIDE_DRACONID_ELDERS_HOUSE_ELDER)
+    }
+}
+
+// ---------------------------------------------------------------------------
+// Home, after the first Hall of Fame: a night of celebration, then the sky catches fire
+// (DraconidVillage_PlayersHouse_2F OnFrame, FINALE_STATE_HALL_OF_FAME; the player wakes at (3, 4))
+// ---------------------------------------------------------------------------
+
+script DraconidVillage_PlayersHouse_2F_EventScript_DraconidHomecoming {
+    lockall
+    delay(30)
+    msgbox(format("{PLAYER} came home to the DRACONID village as the CHAMPION of HOENN.\p"
+                  "The whole village turned out to cheer. The drums went on until late into the night…"))
+    closemessage
+    fadescreen(FADE_TO_BLACK)
+    delay(40)
+    msgbox(format("…And then the sky caught fire."))
+    closemessage
+    playse(SE_M_EXPLOSION)
+    // a hardware flash, as in the new game's prologue (a palette fade to white here leaves the map black)
+    fadescreenswapbuffers(FADE_TO_WHITE)
+    fadescreenswapbuffers(FADE_FROM_WHITE)
+    delay(20)
+    fadescreen(FADE_FROM_BLACK)
+    call(Draconid_EventScript_FinaleQuake)
+    msgbox(format("A red glare poured in through the window. The whole house was shaking!\p"
+                  "Downstairs, the TV had switched itself on…"))
+    closemessage
+    setvar(VAR_DRACONID_FINALE_STATE, FINALE_STATE_METEOR_ALERT)
+    releaseall
+}
+
+// A long rumble (the meteor alert, the summit)
+script Draconid_EventScript_FinaleQuake {
+    playse(SE_M_EARTHQUAKE)
+    setvar(VAR_0x8004, 1)  // vertical pan
+    setvar(VAR_0x8005, 2)  // horizontal pan
+    setvar(VAR_0x8006, 16) // num shakes
+    setvar(VAR_0x8007, 4)  // shake delay
+    special(ShakeCamera)
+    waitstate
+}
+
+// ---------------------------------------------------------------------------
+// The meteor alert: the TV news, then the ELDER summons the player to the Sky Pillar (story step 30).
+// DraconidVillage_PlayersHouse_1F OnFrame, FINALE_STATE_METEOR_ALERT: the player comes down the stairs (and steps off
+// them to (8, 3)); the ELDER waits at the table, (2, 6).
+// ---------------------------------------------------------------------------
+
+script DraconidVillage_PlayersHouse_1F_EventScript_DraconidMeteorAlert {
+    lockall
+    special(TurnOnTVScreen)
+    playse(SE_PIN)
+    delay(30)
+    applymovement(LOCALID_PLAYER, DraconidVillage_PlayersHouse_1F_Movement_DraconidToTV)
+    waitmovement(0)
+    msgbox(format("…We interrupt this program with an emergency bulletin!\p"
+                  "The MOSSDEEP SPACE CENTER reports a giant METEOR falling toward HOENN!\p"
+                  "It lit up the night sky across the region only minutes ago.\p"
+                  "Scientists say it could strike within hours. They cannot explain why it…\p"
+                  "…BZZT… …shzzk…"))
+    closemessage
+    special(TurnOffTVScreen)
+    playse(SE_M_EARTHQUAKE)
+    delay(40)
+    applymovement(LOCALID_DRACONID_HOUSE_ELDER, DraconidVillage_PlayersHouse_1F_Movement_DraconidElderToPlayer)
+    waitmovement(0)
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterDown)
+    waitmovement(0)
+    msgbox(format("ELDER: {PLAYER}. You have seen it.\p"
+                  "The falling star of that first night was only a herald.\p"
+                  "This is the stone my vision showed me. And something rides it.\p"
+                  "“When the sky splits, you must stand beside RAYQUAZA.”\p"
+                  "The sky has split, {PLAYER}. The debt comes due tonight."))
+    msgbox(format("ELDER: Go to the SKY PILLAR, where the one in the sky rests.\p"
+                  "Its door will open for the clan tonight.\p"
+                  "ASTER and NERINE have already flown ahead. They wait for you at its base.\p"
+                  "I will be waiting at the summit."))
+    setvar(VAR_DRACONID_FINALE_STATE, FINALE_STATE_SUMMONED)
+    goto(DraconidVillage_PlayersHouse_1F_EventScript_DraconidOfferLift)
+}
+
+// from the foot of the stairs (8, 3) to beside the TV (4, 4), (5, 4)
+movement DraconidVillage_PlayersHouse_1F_Movement_DraconidToTV {
+    walk_left * 3
+    walk_down
+    walk_in_place_faster_left
+}
+
+// from the table (2, 6) to below the player, (5, 5)
+movement DraconidVillage_PlayersHouse_1F_Movement_DraconidElderToPlayer {
+    walk_up
+    walk_right * 3
+    walk_in_place_faster_up
+}
+
+// The ELDER's dragon carries the player to the Sky Pillar (D-150); talking to him again asks again.
+script DraconidVillage_PlayersHouse_1F_EventScript_DraconidOfferLift {
+    msgbox(format("ELDER: My old dragon can bear you there on its back, over the sea.\p"
+                  "Are you ready to go now?"), MSGBOX_YESNO)
+    if (var(VAR_RESULT) == NO) {
+        msgbox(format("ELDER: Then make ready. Heal your partners, and choose them well.\p"
+                      "Speak to me when you are prepared.\p"
+                      "Or go by your own wings: the pillar stands on ROUTE 131, west of PACIFIDLOG TOWN."))
+        releaseall
+        end
+    }
+    msgbox(format("ELDER: Hold on tight, and do not look down."))
+    closemessage
+    playse(SE_M_FLY)
+    fadescreen(FADE_TO_BLACK)
+    // he flies on to the summit (Act 7); the house is empty until the finale is over
+    setflag(FLAG_HIDE_DRACONID_HOUSE_ELDER)
+    warp(MAP_SKY_PILLAR_OUTSIDE, 17, 14)
+    waitstate
+}

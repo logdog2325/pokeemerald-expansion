@@ -168,6 +168,7 @@ void SetMainCallback1(void (*cb)(void));
 void CB2_NewGame(void);
 void CB2_WhiteOut(void);
 void CB2_LoadMap(void);
+void CB2_ReturnHomeDraconid(void); // Draconid Emerald: after the Hall of Fame and the finale credits
 void CB2_ReturnToFieldContestHall(void);
 void CB2_ReturnToFieldCableClub(void);
 void CB2_ReturnToField(void);

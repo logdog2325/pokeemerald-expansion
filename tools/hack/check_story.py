@@ -34,6 +34,7 @@ STATE_VARS = {
     "VAR_NERINE_STATE": "NERINE_STATE_",
     "VAR_MAGMA_STATE": "MAGMA_STATE_",
     "VAR_DRACONID_REPUTATION": "REPUTATION_",
+    "VAR_DRACONID_FINALE_STATE": "FINALE_STATE_",
 }
 PLAIN_VARS = ["VAR_ASTER_EGG", "VAR_SECOND_STARTER", "VAR_PLAYER_OUTFIT"]
 
@@ -44,15 +45,14 @@ ALLOWED = {
     "FLAG_DEBUG_NO_COLLISION": "config flag (OW_FLAG_NO_COLLISION), toggled by the debug menu and tests",
     "FLAG_HIDE_DRACONID_VILLAGE_ASTER": "reserved for later village visits (docs/hack_changes.md)",
     "FLAG_DRACONID_NO_WHITEOUT": "config flag (B_FLAG_NO_WHITEOUT), read by the battle engine",
+    "FLAG_DRACONID_NO_RUNNING": "config flag (WE_FLAG_NO_RUNNING), read by the battle engine",
+    "FLAG_DRACONID_NO_CATCHING": "config flag (WE_FLAG_NO_CATCHING), read by the battle engine",
     "FLAG_EXP_SHARE_ON": "config flag (I_EXP_SHARE_FLAG), toggled by the Exp. Share, read by the battle engine",
 }
 
 # Round 1 (v2 story) is being built act by act: states of acts that aren't scripted yet. Each is
 # reported as a NOTE until its act lands; take it out of this set then.
 PENDING = {
-    "NERINE_STATE_SKY_PILLAR", "NERINE_STATE_POSTGAME",
-    "BRENDAN_STATE_POSTGAME",
-    "MAY_STATE_POSTGAME",
 }
 
 # flags whose scene belongs to an act that isn't scripted yet (NOTE instead of ERROR until it lands)

@@ -3,22 +3,23 @@
 // The rival schedule (round 1 + the follow-up battles of D-234; segment = level cap band, docs/hack_trainers.md):
 //   BRENDAN – Rustboro S1 (act1), Route 104 at MR. BRINEY's cottage S2 (rivals2), Mt. Chimney S4 (act3),
 //             Route 119 S6 and the Lilycove double S7 (act4), Jagged Pass after GROUDON wakes S7 (rivals2),
-//             the Space Center tag S8 (act5), the Sootopolis partner (act5), post-game (below).
+//             the Space Center tag S8 (act5), the Sootopolis partner (act5), post-game (act7).
 //   MAY     – Route 103 S1 (birch_intro), Route 110 S3 (act2), Lavaridge before the GO-GOGGLES S5 (rivals2),
 //             the Weather Institute (no battle) and the Lilycove double S7 (act4), Mossdeep after the Space
-//             Center S8 (rivals2), the Sootopolis partner (act5), post-game (below).
+//             Center S8 (rivals2), the Sootopolis partner (act5), post-game (act7).
 //   WALLY   – Mauville S3 (vanilla, lines reworked), Route 112 at the cable car S4 (rivals2), the Petalburg Gym
 //             door S5 and Lilycove S7 (act4), Route 120's south bridge S6 (rivals2), Victory Road (vanilla).
 // While the player wears the uniform all three are openly hostile (D-211, D-236). No Latios / Latias before
-// the finale (D-237): the Latis come back with the Acts 6–7 work. Left here: the post-game battles in the
-// Littleroot lab and two Lilycove lines they share; the bedrooms by reputation are in rivals2.pory.
+// the finale (D-237): the Latis come back with the Acts 6–7 work. Left here: two Lilycove lines (act4.pory
+// uses them); the post-game battles in the Littleroot lab are in act7.pory; the bedrooms by reputation are
+// in rivals2.pory.
 //
 // State vars: VAR_BRENDAN_STATE, VAR_MAY_STATE, VAR_WALLY_STATE (include/constants/draconid.h).
 // Vanilla hooks are listed in docs/hack_changes.md ("Scripts").
 
 // ---------------------------------------------------------------------------
 // Lilycove: the two-on-two scene moved to act4.pory (round 1, Act 4); these two lines stay here
-// because the post-game double in the lab uses them
+// (act4.pory uses them)
 // ---------------------------------------------------------------------------
 
 text LilycoveCity_Text_DraconidRivalsNeedTwo {
@@ -31,127 +32,6 @@ text LilycoveCity_Text_DraconidRivalsGo {
 }
 
 // ---------------------------------------------------------------------------
-// Littleroot lab after the Champion: singles with each rival, then a double
-// (the lab's rival and Brendan scripts come here when FLAG_SYS_GAME_CLEAR is set)
+// Littleroot lab after the finale (singles with each rival, then a double): moved to act7.pory
+// (round 1, Act 7)
 // ---------------------------------------------------------------------------
-
-script LittlerootTown_ProfessorBirchsLab_EventScript_DraconidPostgameLayout {
-    if (flag(FLAG_SYS_GAME_CLEAR)) {
-        clearflag(FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BRENDAN)
-        setobjectxyperm(LOCALID_BIRCHS_LAB_BRENDAN, 8, 10)
-        setobjectmovementtype(LOCALID_BIRCHS_LAB_BRENDAN, MOVEMENT_TYPE_FACE_DOWN)
-    }
-}
-
-script LittlerootTown_ProfessorBirchsLab_EventScript_DraconidPostgameMay {
-    if (!defeated(TRAINER_MAY_POSTGAME)) {
-        msgbox(LittlerootTown_ProfessorBirchsLab_Text_DraconidMayPostgameAsk, MSGBOX_YESNO)
-        if (var(VAR_RESULT) == YES) {
-            msgbox(LittlerootTown_ProfessorBirchsLab_Text_DraconidMayPostgameGo, MSGBOX_DEFAULT)
-            trainerbattle_no_intro(TRAINER_MAY_POSTGAME, LittlerootTown_ProfessorBirchsLab_Text_DraconidMayPostgameDefeat)
-            msgbox(LittlerootTown_ProfessorBirchsLab_Text_DraconidMayPostgameAfter, MSGBOX_DEFAULT)
-        } else {
-            msgbox(LittlerootTown_ProfessorBirchsLab_Text_DraconidRivalAnytime, MSGBOX_DEFAULT)
-        }
-        release
-        end
-    }
-    goto(LittlerootTown_ProfessorBirchsLab_EventScript_DraconidPostgameDouble)
-}
-
-script LittlerootTown_ProfessorBirchsLab_EventScript_DraconidPostgameBrendan {
-    if (!defeated(TRAINER_BRENDAN_POSTGAME)) {
-        msgbox(LittlerootTown_ProfessorBirchsLab_Text_DraconidBrendanPostgameAsk, MSGBOX_YESNO)
-        if (var(VAR_RESULT) == YES) {
-            msgbox(LittlerootTown_ProfessorBirchsLab_Text_DraconidBrendanPostgameGo, MSGBOX_DEFAULT)
-            trainerbattle_no_intro(TRAINER_BRENDAN_POSTGAME, LittlerootTown_ProfessorBirchsLab_Text_DraconidBrendanPostgameDefeat)
-            msgbox(LittlerootTown_ProfessorBirchsLab_Text_DraconidBrendanPostgameAfter, MSGBOX_DEFAULT)
-        } else {
-            msgbox(LittlerootTown_ProfessorBirchsLab_Text_DraconidRivalAnytime, MSGBOX_DEFAULT)
-        }
-        release
-        end
-    }
-    goto(LittlerootTown_ProfessorBirchsLab_EventScript_DraconidPostgameDouble)
-}
-
-script LittlerootTown_ProfessorBirchsLab_EventScript_DraconidPostgameDouble {
-    if (!defeated(TRAINER_MAY_POSTGAME) || !defeated(TRAINER_BRENDAN_POSTGAME)) {
-        msgbox(LittlerootTown_ProfessorBirchsLab_Text_DraconidBattleTheOtherOne, MSGBOX_DEFAULT)
-        release
-        end
-    }
-    if (defeated(TRAINER_BRENDAN_POSTGAME_DOUBLE)) {
-        msgbox(LittlerootTown_ProfessorBirchsLab_Text_DraconidPostgameDone, MSGBOX_DEFAULT)
-        release
-        end
-    }
-    msgbox(LittlerootTown_ProfessorBirchsLab_Text_DraconidDoubleAsk, MSGBOX_YESNO)
-    if (var(VAR_RESULT) == NO) {
-        msgbox(LittlerootTown_ProfessorBirchsLab_Text_DraconidRivalAnytime, MSGBOX_DEFAULT)
-        release
-        end
-    }
-    special(HasEnoughMonsForDoubleBattle)
-    if (var(VAR_RESULT) != PLAYER_HAS_TWO_USABLE_MONS) {
-        msgbox(LilycoveCity_Text_DraconidRivalsNeedTwo, MSGBOX_DEFAULT)
-        release
-        end
-    }
-    msgbox(LilycoveCity_Text_DraconidRivalsGo, MSGBOX_DEFAULT)
-    trainerbattle_two_trainers_no_intro(TRAINER_BRENDAN_POSTGAME_DOUBLE, LittlerootTown_ProfessorBirchsLab_Text_DraconidBrendanPostgameDefeat, TRAINER_MAY_POSTGAME_DOUBLE, LittlerootTown_ProfessorBirchsLab_Text_DraconidMayPostgameDefeat)
-    msgbox(LittlerootTown_ProfessorBirchsLab_Text_DraconidPostgameDone, MSGBOX_DEFAULT)
-    release
-}
-
-text LittlerootTown_ProfessorBirchsLab_Text_DraconidMayPostgameAsk {
-    format("MAY: The new CHAMPION of HOENN, back in LITTLEROOT!\p"
-           "You promised, remember? One more battle, everything we've got!")
-}
-
-text LittlerootTown_ProfessorBirchsLab_Text_DraconidMayPostgameGo {
-    format("MAY: BLAZIKEN, let's go all out!")
-}
-
-text LittlerootTown_ProfessorBirchsLab_Text_DraconidMayPostgameDefeat {
-    format("MAY: That's our CHAMPION!")
-}
-
-text LittlerootTown_ProfessorBirchsLab_Text_DraconidMayPostgameAfter {
-    format("MAY: I'm not giving up. I'll catch up to you someday!")
-}
-
-text LittlerootTown_ProfessorBirchsLab_Text_DraconidBrendanPostgameAsk {
-    format("BRENDAN: {PLAYER}! I've been training nonstop since SOOTOPOLIS.\p"
-           "Battle me, CHAMPION?")
-}
-
-text LittlerootTown_ProfessorBirchsLab_Text_DraconidBrendanPostgameGo {
-    format("BRENDAN: SCEPTILE, MEGA EVOLVE!")
-}
-
-text LittlerootTown_ProfessorBirchsLab_Text_DraconidBrendanPostgameDefeat {
-    format("BRENDAN: Unbelievable…")
-}
-
-text LittlerootTown_ProfessorBirchsLab_Text_DraconidBrendanPostgameAfter {
-    format("BRENDAN: Next time, I'm winning. Count on it!")
-}
-
-text LittlerootTown_ProfessorBirchsLab_Text_DraconidRivalAnytime {
-    format("Any time you're ready!")
-}
-
-text LittlerootTown_ProfessorBirchsLab_Text_DraconidBattleTheOtherOne {
-    format("Did you battle both of us yet? Then we can team up for a real two-on-two!")
-}
-
-text LittlerootTown_ProfessorBirchsLab_Text_DraconidDoubleAsk {
-    format("BRENDAN: You beat us both one at a time…\p"
-           "MAY: So how about both of us at once? Like in LILYCOVE, but for real this time!")
-}
-
-text LittlerootTown_ProfessorBirchsLab_Text_DraconidPostgameDone {
-    format("MAY: Dad says the BATTLE FRONTIER is full of strong TRAINERS.\p"
-           "BRENDAN: Let's all go some time!")
-}

@@ -141,4 +141,22 @@
 #define MAXIE_CALL_SEAFLOOR           10  // MAGMA_STATE_SEAFLOOR: Sootopolis, now
 #define MAXIE_CALL_STEPS              10  // steps outdoors before a due call rings
 
+// VAR_DRACONID_FINALE_STATE: Acts 6-7, from the first Hall of Fame to the post-game (docs/hack_story.md
+// steps 30-34, D-150); each value = that step is done
+#define FINALE_STATE_NONE              0
+#define FINALE_STATE_HALL_OF_FAME      1 // first Hall of Fame: the new Champion is home (no credits yet)
+#define FINALE_STATE_METEOR_ALERT      2 // the sky darkened over the village; the TV and the Elder wait downstairs
+#define FINALE_STATE_SUMMONED          3 // the Elder sent the player to the Sky Pillar (open; Aster and Nerine wait)
+#define FINALE_STATE_CLIMB             4 // the player + Nerine beat Aster; Zinnia waits on the Sky Pillar 3F
+#define FINALE_STATE_SUMMIT            5 // Zinnia beaten; the Elder and Rayquaza at the summit
+#define FINALE_STATE_RAYQUAZA          6 // Rayquaza caught, Dragon Ascent learned; Deoxys attacks
+#define FINALE_STATE_METEOR_DESTROYED  7 // Deoxys beaten, Mega Rayquaza broke the meteor: credits, then home
+#define FINALE_STATE_HOME              8 // woke up at home after the credits; the Elder waits downstairs
+#define FINALE_STATE_POSTGAME          9 // the Elder brought the SS Ticket, the Lati TV news aired
+
+// The finale's wild battles (D-110, D-111)
+#define DRACONID_RAYQUAZA_LEVEL        70 // the must-catch Rayquaza at the summit
+#define DRACONID_DEOXYS_BOSS_LEVEL     72 // Deoxys attacks right after (no catching, no running)
+#define DRACONID_DEOXYS_LEVEL          80 // post-game: Deoxys where it fell, at the summit (as in ORAS)
+
 #endif // GUARD_CONSTANTS_DRACONID_H

@@ -13,6 +13,8 @@ script DraconidVillage_OnTransition {
     if (var(VAR_DRACONID_STATE) >= DRACONID_STATE_READY_TO_LEAVE) {
         setvar(VAR_TEMP_1, 1)
     }
+    // Acts 6-7: the sky stays dark from the meteor alert to the end of the finale (act7.pory)
+    call(Draconid_EventScript_FinaleWeather)
 }
 
 // ---------------------------------------------------------------------------

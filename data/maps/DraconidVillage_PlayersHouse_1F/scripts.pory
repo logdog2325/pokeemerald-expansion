@@ -2,23 +2,100 @@
 
 mapscripts DraconidVillage_PlayersHouse_1F_MapScripts {
     MAP_SCRIPT_ON_FRAME_TABLE [
-        VAR_LITTLEROOT_HOUSES_STATE_MAY, 3: DraconidVillage_PlayersHouse_1F_EventScript_SSTicketAndLatiTV
+        // Act 6: the meteor alert and the ELDER's summons (data/scripts/draconid/act6.pory)
+        VAR_DRACONID_FINALE_STATE, FINALE_STATE_METEOR_ALERT: DraconidVillage_PlayersHouse_1F_EventScript_DraconidMeteorAlert
+        // Act 7, after the credits: the SS TICKET and the Lati TV news
+        VAR_DRACONID_FINALE_STATE, FINALE_STATE_HOME: DraconidVillage_PlayersHouse_1F_EventScript_SSTicketAndLatiTV
     ]
 }
 
-// After the Hall of Fame (hall_of_fame.inc sets the state to 3 and shows Dad): Dad brings the SS Ticket
-// and the Lati TV news flash airs. The house is a copy of Brendan's, so the vanilla scene runs with the
-// male (Brendan's house) movements for both genders.
+// After the finale's credits (D-112): the ELDER brings the SS TICKET, sent by CAPTAIN STERN, and the Lati TV
+// news flash airs. The player comes down the stairs (and steps off them to (8, 3)); the ELDER waits at the table,
+// (2, 6).
 script DraconidVillage_PlayersHouse_1F_EventScript_SSTicketAndLatiTV {
     lockall
-    setvar(VAR_0x8008, MALE)
-    setvar(VAR_0x8009, LOCALID_DRACONID_HOUSE_DAD)
-    setvar(VAR_0x800A, LOCALID_DRACONID_HOUSE_ELDER)
-    goto(PlayersHouse_1F_EventScript_SSTicketAndLatiTV)
+    applymovement(LOCALID_DRACONID_HOUSE_ELDER, DraconidVillage_PlayersHouse_1F_Movement_ElderToStairs)
+    waitmovement(0)
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft)
+    waitmovement(0)
+    msgbox(format("ELDER: You slept through a whole day and a night, {PLAYER}. You earned every hour of it.\p"
+                  "The children counted falling stars until dawn. They are still arguing about the total."))
+    msgbox(format("ELDER: A letter came for you, from CAPTAIN STERN of SLATEPORT.\p"
+                  "He writes that HOENN owes you a voyage, and he sent this with it."))
+    giveitem(ITEM_SS_TICKET)
+    msgbox(format("ELDER: A ticket for the S.S. TIDAL. The ship sails from SLATEPORT and from LILYCOVE.\p"
+                  "The world beyond the mountains is wide. Go and see it.\p"
+                  "The sky will call again when it has need of you."))
+    closemessage
+    setflag(FLAG_RECEIVED_SS_TICKET)
+    delay(20)
+    setflag(FLAG_SYS_TV_LATIAS_LATIOS)
+    special(TurnOnTVScreen)
+    delay(60)
+    applymovement(LOCALID_DRACONID_HOUSE_ELDER, Common_Movement_WalkInPlaceFasterLeft)
+    waitmovement(0)
+    msgbox(format("ELDER: Hm? The picture box is speaking by itself again."))
+    closemessage
+    applymovement(LOCALID_PLAYER, DraconidVillage_PlayersHouse_1F_Movement_PlayerToTV)
+    waitmovement(0)
+    msgbox(PlayersHouse_1F_Text_LatiEmergencyNewsFlash)
+    closemessage
+    clearflag(FLAG_SYS_TV_LATIAS_LATIOS)
+    setflag(FLAG_LATIOS_OR_LATIAS_ROAMING)
+    special(TurnOffTVScreen)
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight)
+    waitmovement(0)
+    msgbox(format("ELDER: A dragon in flight, over HOENN… Did you catch its colour, {PLAYER}?"))
+    multichoice(22, 8, MULTI_TV_LATI, TRUE)
+    copyvar(VAR_0x8004, VAR_RESULT)
+    special(InitRoamer)
+    copyvar(VAR_ROAMER_POKEMON, VAR_RESULT)
+    msgbox(format("ELDER: A dragon of the sky, roaming free. Our songs speak of the EON twins.\p"
+                  "Perhaps one will cross your path. Keep your eyes on the sky, {PLAYER}."))
+    closemessage
+    applymovement(LOCALID_DRACONID_HOUSE_ELDER, DraconidVillage_PlayersHouse_1F_Movement_ElderLeaves)
+    waitmovement(0)
+    playse(SE_EXIT)
+    removeobject(LOCALID_DRACONID_HOUSE_ELDER)
+    // he goes back to his own house; the vanilla Littleroot houses' SS Ticket state is done too
+    clearflag(FLAG_HIDE_DRACONID_ELDERS_HOUSE_ELDER)
+    setvar(VAR_LITTLEROOT_HOUSES_STATE_MAY, 4)
+    setvar(VAR_LITTLEROOT_HOUSES_STATE_BRENDAN, 4)
+    setvar(VAR_DRACONID_FINALE_STATE, FINALE_STATE_POSTGAME)
+    releaseall
 }
 
-// The player lives alone (round 1: no Mom, D-100). The Elder only comes here after the finale (D-112).
+// from the table (2, 6) to the player's left at the foot of the stairs, (7, 3)
+movement DraconidVillage_PlayersHouse_1F_Movement_ElderToStairs {
+    walk_up
+    walk_right * 5
+    walk_up * 2
+    walk_in_place_faster_right
+}
+
+// from the foot of the stairs (8, 3) to beside the TV (4, 4), (5, 4), past the ELDER
+movement DraconidVillage_PlayersHouse_1F_Movement_PlayerToTV {
+    walk_down
+    walk_left * 3
+    walk_in_place_faster_left
+}
+
+// from (7, 3) out of the door at (8, 8)
+movement DraconidVillage_PlayersHouse_1F_Movement_ElderLeaves {
+    walk_down * 5
+    walk_right
+    set_invisible
+}
+
+// The player lives alone (round 1: no Mom, D-100). The ELDER comes here for the meteor alert (Act 6) and after the
+// finale (D-112).
 script DraconidVillage_PlayersHouse_1F_EventScript_Elder {
+    lock
+    faceplayer
+    if (var(VAR_DRACONID_FINALE_STATE) == FINALE_STATE_SUMMONED) {
+        goto(DraconidVillage_PlayersHouse_1F_EventScript_DraconidOfferLift)
+    }
     msgbox(format("ELDER: The sky's debt is paid, {PLAYER}. For now.\p"
-                  "Rest while you can. The world beyond the mountains still has need of you."), MSGBOX_NPC)
+                  "Rest while you can. The world beyond the mountains still has need of you."))
+    release
 }

@@ -5,8 +5,16 @@
 void DraconidRaiseHatchling(void);
 bool32 Draconid_ShouldHatchEgg(void);
 u16 Draconid_ResolveVariantTrainer(u16 trainerId);
+u16 Draconid_ResolveVariantPartner(u16 partnerId);
 bool32 Draconid_ShouldDoMaxieCall(void);
 u16 Draconid_GetDueMaxieCall(void);
+
+// Acts 6-7: the Sky Pillar finale (callnative from data/scripts/draconid/act7.pory)
+struct ScriptContext;
+void Draconid_PrepareRayquaza(struct ScriptContext *ctx);
+void Draconid_DoRayquazaFlightScene(struct ScriptContext *ctx);
+void Draconid_SaveBeforeCredits(struct ScriptContext *ctx);
+void Draconid_StartCredits(struct ScriptContext *ctx);
 
 #if DEBUG_OVERWORLD_MENU
 // Emulator test hook (tools/hack/emu/play.py "warp"), debug builds only

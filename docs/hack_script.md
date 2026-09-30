@@ -32,6 +32,19 @@ The player's bedroom in Draconid Village: where a new game starts.
 
 Ground floor of the player's house in Draconid Village.
 
+### `DraconidVillage_PlayersHouse_1F_EventScript_SSTicketAndLatiTV`
+- ELDER: You slept through a whole day and a night, {PLAYER}. You earned every hour of it.
+- The children counted falling stars until dawn. They are still arguing about the total.
+- ELDER: A letter came for you, from CAPTAIN STERN of SLATEPORT.
+- He writes that HOENN owes you a voyage, and he sent this with it.
+- ELDER: A ticket for the S.S. TIDAL. The ship sails from SLATEPORT and from LILYCOVE.
+- The world beyond the mountains is wide. Go and see it.
+- The sky will call again when it has need of you.
+- ELDER: Hm? The picture box is speaking by itself again.
+- ELDER: A dragon in flight, over HOENN… Did you catch its colour, {PLAYER}?
+- ELDER: A dragon of the sky, roaming free. Our songs speak of the EON twins.
+- Perhaps one will cross your path. Keep your eyes on the sky, {PLAYER}.
+
 ### `DraconidVillage_PlayersHouse_1F_EventScript_Elder`
 - ELDER: The sky's debt is paid, {PLAYER}. For now.
 - Rest while you can. The world beyond the mountains still has need of you.
@@ -943,59 +956,253 @@ Draconid Emerald round 1, Act 5 (docs/hack_story.md steps 23–28): the Aqua Hid
 - I don't know what he wants from you. I think you do.
 - Whatever you really are, {PLAYER}{KUN}… this is the moment to show it.
 
-## data/scripts/draconid/rivals.pory
+## data/scripts/draconid/act6.pory
 
-Draconid Emerald: rival scenes that belong to no single act (Phase 5, cut down in round 1).  The rival schedule (round 1 + the follow-up battles of D-234; segment = level cap band, docs/hack_trainers.md): BRENDAN – Rustboro S1 (act1), Route 104 at MR. BRINEY's cottage S2 (rivals2), Mt. Chimney S4 (act3), Route 119 S6 and the Lilycove double S7 (act4), Jagged Pass after GROUDON wakes S7 (rivals2), the Space Center tag S8 (act5), the Sootopolis partner (act5), post-game (below). MAY     – Route 103 S1 (birch_intro), Route 110 S3 (act2), Lavaridge before the GO-GOGGLES S5 (rivals2), the Weather Institute (no battle) and the Lilycove double S7 (act4), Mossdeep after the Space Center S8 (rivals2), the Sootopolis partner (act5), post-game (below). WALLY   – Mauville S3 (vanilla, lines reworked), Route 112 at the cable car S4 (rivals2), the Petalburg Gym door S5 and Lilycove S7 (act4), Route 120's south bridge S6 (rivals2), Victory Road (vanilla). While the player wears the uniform all three are openly hostile (D-211, D-236). No Latios / Latias before the finale (D-237): the Latis come back with the Acts 6–7 work. Left here: the post-game battles in the Littleroot lab and two Lilycove lines they share; the bedrooms by reputation are in rivals2.pory.  State vars: VAR_BRENDAN_STATE, VAR_MAY_STATE, VAR_WALLY_STATE (include/constants/draconid.h). Vanilla hooks are listed in docs/hack_changes.md ("Scripts").
+Draconid Emerald round 1, Act 6 (docs/hack_story.md steps 29-30): the Champion's room (BRENDAN comes in with PROF. BIRCH, his father, and MAY follows them), the Hall of Fame without credits, and the meteor alert at home that sends the player to the Sky Pillar (D-150). Juan's Gym, Victory Road and the Elite Four stay vanilla; WALLY's Victory Road lines are reworked in place (data/maps/VictoryRoad_1F/scripts.inc). VAR_DRACONID_FINALE_STATE: FINALE_STATE_* (include/constants/draconid.h). Act 7 is data/scripts/draconid/act7.pory.
+
+### `EverGrandeCity_ChampionsRoom_EventScript_DraconidMayArrives`
+- MAY: {PLAYER}! Did I miss it?! …I missed it, didn't I?
+- MAY: Hee hee! I knew it. I knew it way back on ROUTE 110.
+- The MAGMA grunt with the dragons is the CHAMPION of HOENN!
+
+### `EverGrandeCity_ChampionsRoom_EventScript_DraconidRivalsCongratulate`
+- MAY: Go on, CHAMPION! We'll be right here.
+- And then you owe me the whole story. From the very start!
+
+### `DraconidVillage_PlayersHouse_2F_EventScript_DraconidHomecoming`
+- {PLAYER} came home to the DRACONID village as the CHAMPION of HOENN.
+- The whole village turned out to cheer. The drums went on until late into the night…
+- …And then the sky caught fire.
+- A red glare poured in through the window. The whole house was shaking!
+- Downstairs, the TV had switched itself on…
+
+### `DraconidVillage_PlayersHouse_1F_EventScript_DraconidMeteorAlert`
+- …We interrupt this program with an emergency bulletin!
+- The MOSSDEEP SPACE CENTER reports a giant METEOR falling toward HOENN!
+- It lit up the night sky across the region only minutes ago.
+- Scientists say it could strike within hours. They cannot explain why it…
+- …BZZT… …shzzk…
+- ELDER: {PLAYER}. You have seen it.
+- The falling star of that first night was only a herald.
+- This is the stone my vision showed me. And something rides it.
+- “When the sky splits, you must stand beside RAYQUAZA.”
+- The sky has split, {PLAYER}. The debt comes due tonight.
+- ELDER: Go to the SKY PILLAR, where the one in the sky rests.
+- Its door will open for the clan tonight.
+- ASTER and NERINE have already flown ahead. They wait for you at its base.
+- I will be waiting at the summit.
+
+### `DraconidVillage_PlayersHouse_1F_EventScript_DraconidOfferLift`
+- ELDER: My old dragon can bear you there on its back, over the sea.
+- Are you ready to go now?
+- ELDER: Then make ready. Heal your partners, and choose them well.
+- Speak to me when you are prepared.
+- Or go by your own wings: the pillar stands on ROUTE 131, west of PACIFIDLOG TOWN.
+- ELDER: Hold on tight, and do not look down.
+
+## data/scripts/draconid/act7.pory
+
+Draconid Emerald round 1, Act 7 (docs/hack_story.md steps 31-34): "The prophecy fulfilled".  Sky Pillar, outside   ASTER and NERINE wait at the base: the TRIAL OF THREE, a double battle (the player + NERINE vs ASTER); the door opens and the three climb together Sky Pillar 3F         ZINNIA, the LOREKEEPER of the METEOR FALLS DRACONIDS, tests the ELDER's chosen Sky Pillar summit     the ELDER calls RAYQUAZA down: the must-catch battle, DRAGON ASCENT; DEOXYS attacks at once (boss battle); MEGA RAYQUAZA breaks the meteor; "The sky's debt is paid… for now."; the game saves and the credits roll, then the player wakes at home Post-game             the ELDER brings the SS TICKET (DraconidVillage_PlayersHouse_1F/scripts.pory), BRENDAN and MAY in the Littleroot lab (singles, then a double), ASTER at the village shrine, NERINE by the village pond, DEOXYS at the summit (once, D-111)  VAR_DRACONID_FINALE_STATE: FINALE_STATE_* (include/constants/draconid.h). Every finale battle is fought again after a loss instead of whiting out (D-110, D-151, D-155). Scenes start from OnFrame on VAR_TEMP_7, which each map's OnTransition hook sets from the finale state (a lost battle ends the scene without looping it). Vanilla hooks are listed in docs/hack_changes.md ("Scripts").
+
+### `SkyPillar_Outside_EventScript_DraconidTrialOfThree`
+- ASTER: There you are, CHAMPION. You took your time.
+- NERINE: Don't listen to her. She's been pacing since dusk.
+- The sky went dark hours ago. Even the sea went quiet.
+- ASTER: Riddle: what falls for a thousand years and lands in a single night?
+- …Don't answer. We'll all find out soon enough.
+- ASTER: The door won't open for us yet. Not before the last rite: the TRIAL OF THREE.
+- Two stand together, one stands alone. The sky watches how we fight.
+- I'll stand alone. I always have.
+- NERINE: Then I'll stand with {PLAYER}.
+- I've stood alone long enough, dressed in blue.
+- ASTER: Hmph. Pick your three, {PLAYER}. Don't hold back. I won't.
+
+### `SkyPillar_Outside_EventScript_DraconidDoubleBattle`
+- ASTER: Not ready? Hmph. We'll be right here.
+- ASTER: …Hmph. The sky doesn't wait for tamers who fall. NERINE, patch them up.
+- NERINE tended to {PLAYER}'s POKéMON. They're ready to battle again!
+- ASTER: Talk to me when you want to try again.
+- ASTER: …Two dragons climbed the same tower. Remember that riddle?
+- I said only one could reach the sky. The one still standing.
+- I was wrong. This time we all reach the top.
+- NERINE: Listen. The pillar heard us.
+- The great door of the SKY PILLAR rumbled open!
+- NERINE: Wait. Let me see to your partners first. It's a long way up.
+- NERINE tended to {PLAYER}'s POKéMON. They're ready to battle again!
+- ASTER: Then let's climb. Together.
+- {PLAYER}, ASTER and NERINE climbed the SKY PILLAR together…
+
+### `SkyPillar_Outside_EventScript_DraconidAster`
+- ASTER: Ready for the TRIAL OF THREE?
+- ASTER: Take your time. Just not too much of it. Look at the sky.
+
+### `SkyPillar_Outside_EventScript_DraconidNerine`
+- NERINE: I'm with you, {PLAYER}. Shall we try again?
+- NERINE: When you're ready. The sky is patient. Barely.
+
+### `SkyPillar_3F_EventScript_DraconidZinniaScene`
+- ???: Heh. So the ELDER's chosen one finally shows up.
+- ZINNIA: The name's ZINNIA.
+- I'm the LOREKEEPER of the DRACONIDS of METEOR FALLS.
+- ASTER: The sister clan… The LOREKEEPER? I thought she was a story the ELDER told us to keep us quiet!
+- NERINE: The ones who keep the old songs. When the sky went red, you came.
+- The ELDER said you would.
+- ZINNIA: Your ELDER and I read the same stars. When they went dark tonight, I came running.
+- RAYQUAZA doesn't answer to just anyone, you know.
+- The one who stands beside it has to be ready for anything. Even the end of the world.
+- ZINNIA: So before you go up there, {PLAYER}, show me.
+- Show me you're worth the whole sky!
+
+### `SkyPillar_3F_EventScript_DraconidBattleZinnia`
+- ZINNIA: Not yet, huh? Rest up. I'm not going anywhere.
+- NERINE tended to {PLAYER}'s POKéMON. They're ready to battle again!
+- ZINNIA: Hah! That's the stuff! Now I see why the old man picked you.
+- Go on up. The summit's waiting, and so is your ELDER.
+- I'll be right behind you. I wouldn't miss this for anything.
+- …At last, they reached the top of the SKY PILLAR.
+
+### `SkyPillar_3F_EventScript_DraconidZinnia`
+- ZINNIA: Ready for round two, chosen one?
+- ZINNIA: Take a breath. The stars can wait a little longer.
+
+### `SkyPillar_3F_EventScript_DraconidAster`
+- ASTER: A LOREKEEPER, testing us. The ELDER never tells us anything.
+- Beat her, {PLAYER}. I'm not climbing all the way back down.
+
+### `SkyPillar_3F_EventScript_DraconidNerine`
+- NERINE: Her dragons are old and wise, like her songs.
+- Listen to them, and you'll win.
+
+### `SkyPillar_Top_EventScript_DraconidSummit`
+- ELDER: {PLAYER}. ASTER. NERINE. You came together. Good.
+- ELDER: And the LOREKEEPER of the FALLS. It has been many years, ZINNIA.
+- ZINNIA: Too many, old man! Your kids are all right, you know.
+- This one especially.
+- ELDER: Rest a moment, {PLAYER}. Let the clan tend to your partners.
+- {PLAYER}'s POKéMON were restored to full health!
+- ELDER: Now. Look up, all of you.
+- Above the clouds, a second sun was burning.
+- The meteor. So close now, it filled half the sky.
+- ELDER: Call it, as our clan has always called it.
+- Guardian of the Sky, who stilled the land and the sea…
+- The sky's debt has come due. Come down to us!
+- RAYQUAZA came down from the sky!
+- ELDER: It has come to see who stands beside it.
+- Show it, {PLAYER}. Show it who you are!
+
+### `SkyPillar_Top_EventScript_DraconidCatchRayquaza`
+- RAYQUAZA fell… but it rose again, higher than before!
+- ELDER: It is not defeat it wants from you, {PLAYER}. It is trust.
+- Again!
+- ELDER: Rise, {PLAYER}. The sky is not lost while you still stand.
+- Again!
+
+### `SkyPillar_Top_EventScript_DraconidGiveBalls`
+- ELDER: Take these. A POKé BALL is a promise, not a cage.
+
+### `SkyPillar_Top_EventScript_DraconidDragonAscent`
+- ELDER: RAYQUAZA has chosen you, {PLAYER}. As the stars said it would.
+- ELDER: Now let it remember the oldest song of our clan.
+- The song of the dragon that rises to meet the falling star.
+- {STR_VAR_1} forgot {STR_VAR_2}…
+- {STR_VAR_1} learned DRAGON ASCENT!
+- ELDER: With DRAGON ASCENT and your MEGA RING, RAYQUAZA can take its true form.
+
+### `SkyPillar_Top_EventScript_DraconidDeoxysAttacks`
+- ASTER: Wait… something's coming down! Fast!
+- ELDER: DEOXYS… It rode the stone down from the dark between the stars.
+- NERINE: It wants RAYQUAZA! It came for the guardian of the sky!
+- ZINNIA: Then don't let it have it! {PLAYER}, RAYQUAZA leads! Go!
+- ELDER: Rise, {PLAYER}! The stone still falls. We cannot fall with it!
+- {PLAYER}'s POKéMON were restored to full health!
+
+### `SkyPillar_Top_EventScript_DraconidMeteor`
+- DEOXYS came apart into shards of light… and was gone.
+- ELDER: The stone still falls! {PLAYER}, now! Call on RAYQUAZA!
+- {PLAYER}'s MEGA RING began to shine, and {STR_VAR_1} answered!
+- {STR_VAR_1} MEGA EVOLVED into MEGA RAYQUAZA!
+- ELDER: Go, guardian of the sky. DRAGON ASCENT!
+- Beyond the clouds, beyond the sky itself, MEGA RAYQUAZA met the falling star.
+- A light brighter than the sun… and the meteor broke apart!
+- Its pieces burned across the sky: a rain of falling stars from one end of HOENN to the other.
+- {STR_VAR_1} came back down from the edge of the sky.
+- It looked at {PLAYER} for a long moment… and returned to its POKé BALL.
+- ELDER: It is done.
+- ELDER: The sky's debt is paid… for now.
+- ASTER: Riddle: what's red, falls from the sky, and ends up in a thousand pieces?
+- …Ha. Don't answer that one either.
+- NERINE: The sky is blue again.
+- I never did like red, you know. Even on you.
+- ZINNIA: Heh. The stars got it right for once. See you around, CHAMPION.
+- ELDER: Come, {PLAYER}. Let us go home.
+
+### `DraconidVillage_PlayersHouse_2F_EventScript_DraconidWakeUpAfterFinale`
+- {PLAYER} slept through a whole day and a night.
+- Downstairs, someone was humming an old DRACONID song…
 
 ### `LittlerootTown_ProfessorBirchsLab_EventScript_DraconidPostgameMay`
-- MAY: The new CHAMPION of HOENN, back in LITTLEROOT!
-- You promised, remember? One more battle, everything we've got!
-- MAY: BLAZIKEN, let's go all out!
-- MAY: I'm not giving up. I'll catch up to you someday!
+- MAY: Have you seen the sky? Something's burning up there!
+- If it has anything to do with dragons, {PLAYER}, it has to do with you. Go!
+- MAY: {PLAYER}! The CHAMPION who saved the sky, right here in the lab!
+- I told BRENDAN you were one of the good guys. Way back on ROUTE 110!
+- Now, you promised me one more battle. Everything we've got, okay?
+- MAY: BLAZIKEN, let's show {PLAYER} what we learned!
+- MAY: I'm writing all of this down, you know.
+- Someday people will want to hear the true story.
 - Any time you're ready!
 
 ### `LittlerootTown_ProfessorBirchsLab_EventScript_DraconidPostgameBrendan`
-- BRENDAN: {PLAYER}! I've been training nonstop since SOOTOPOLIS.
-- Battle me, CHAMPION?
-- BRENDAN: SCEPTILE, MEGA EVOLVE!
-- BRENDAN: Next time, I'm winning. Count on it!
+- BRENDAN: {PLAYER}. …I called you a traitor at RUSTBORO. I said a lot of things.
+- You were fighting for all of us the whole time. I just couldn't see it.
+- So let me make it up to you the only way I know. Battle me, CHAMPION?
+- BRENDAN: SCEPTILE, MEGA EVOLVE! No holding back this time!
+- BRENDAN: Next time, I'm winning. Count on it.
+- …Friends again?
 - Any time you're ready!
 
 ### `LittlerootTown_ProfessorBirchsLab_EventScript_DraconidPostgameDouble`
 - Did you battle both of us yet? Then we can team up for a real two-on-two!
 - MAY: Dad says the BATTLE FRONTIER is full of strong TRAINERS.
-- BRENDAN: Let's all go some time!
-- BRENDAN: You beat us both one at a time…
-- MAY: So how about both of us at once? Like in LILYCOVE, but for real this time!
+- BRENDAN: Let's all go some time! All three of us!
+- BRENDAN: You beat us both, one at a time…
+- MAY: So how about both of us at once? Like in LILYCOVE…
+- …except this time, we know who we're battling!
 - Any time you're ready!
-- MAY: Oh! You need at least two POKéMON that can battle for this.
-- BRENDAN: Here we come!
-- MAY: Don't hold back, {PLAYER}!
+- MAY: Oh! You need at least two POKéMON that can battle for this one.
+- BRENDAN: MAY, let's go!
+- MAY: Right behind you!
 - MAY: Dad says the BATTLE FRONTIER is full of strong TRAINERS.
-- BRENDAN: Let's all go some time!
-
-## data/scripts/draconid/aster.pory
-
-Draconid Emerald: Aster's arc after Draconid Pass (Phase 4, reworked in round 1).  Meteor Falls, Jagged Pass (Mega Ring): data/scripts/draconid/act3.pory (round 1, Act 3) A5 Sky Pillar        the climax before Rayquaza wakes (Mega Salamence) A6 after the League  rematch at the village shrine  VAR_ASTER_STATE: ASTER_STATE_* (include/constants/draconid.h). Aster's team counter-picks the player's egg; her trainer ids are named after the PLAYER's egg (VAR_STARTER_MON). Vanilla hooks are listed in docs/hack_changes.md ("Scripts").
-
-### `SkyPillar_Top_EventScript_DraconidAsterClimax`
-- ASTER: So you found it too.
-- Every night since I was small I dreamed of this tower. Of the one who sleeps on top of it.
-- The Lorekeepers say RAYQUAZA answers the call of one who is worthy. Only one.
-- Last riddle, {PLAYER}: two dragons climb the same tower, but only one can reach the sky. Which one?
-- …The one still standing. SALAMENCE, show them what a dragon of the sky looks like!
-- ASTER: …Go on. Wake it. It was never going to listen to me if I couldn't even beat you.
-
-### `SkyPillar_Top_EventScript_DraconidAsterAfterRayquaza`
-- ASTER: It looked at you before it flew. Did you see?
-- Hmph. Don't let it go to your head, {PLAYER}. The sky is big. I'll find my own way up.
+- BRENDAN: Let's all go some time! All three of us!
 
 ### `DraconidVillage_Shrine_EventScript_Aster`
-- ASTER: CHAMPION of HOENN, back where it all started.
+- ASTER: The CHAMPION of HOENN, back where it all started.
+- The sky is quiet again. Too quiet, if you ask me.
 - No riddles today. Just you, me, and everything we've got. Ready?
 - ASTER: I'll wait. The statue doesn't mind.
 - ASTER: …You know what the answer to all my riddles was? The sky. It was always the sky.
-- See you up there someday, {PLAYER}.
+- The ELDER chose right, {PLAYER}. Don't you dare tell him I said so.
+
+### `DraconidVillage_EventScript_DraconidNerine`
+- NERINE: It's good to be home. I'd forgotten how still the water is here.
+- When the sky calls again, we'll answer it together.
+- NERINE: After years of salt water, this little pond feels like a dream.
+- I spent all that time in blue, pretending. And I watched you in red, pretending.
+- No more pretending, {PLAYER}. One battle, as ourselves. Will you?
+- NERINE: I'll be here. The water isn't going anywhere, and neither am I.
+- NERINE: Then let the sky watch.
+- NERINE: …Yes. That's the tamer the ELDER saw, all those years ago.
+- I think I'll stay a while. It's good to be home.
+
+## data/scripts/draconid/rivals.pory
+
+Draconid Emerald: rival scenes that belong to no single act (Phase 5, cut down in round 1).  The rival schedule (round 1 + the follow-up battles of D-234; segment = level cap band, docs/hack_trainers.md): BRENDAN – Rustboro S1 (act1), Route 104 at MR. BRINEY's cottage S2 (rivals2), Mt. Chimney S4 (act3), Route 119 S6 and the Lilycove double S7 (act4), Jagged Pass after GROUDON wakes S7 (rivals2), the Space Center tag S8 (act5), the Sootopolis partner (act5), post-game (act7). MAY     – Route 103 S1 (birch_intro), Route 110 S3 (act2), Lavaridge before the GO-GOGGLES S5 (rivals2), the Weather Institute (no battle) and the Lilycove double S7 (act4), Mossdeep after the Space Center S8 (rivals2), the Sootopolis partner (act5), post-game (act7). WALLY   – Mauville S3 (vanilla, lines reworked), Route 112 at the cable car S4 (rivals2), the Petalburg Gym door S5 and Lilycove S7 (act4), Route 120's south bridge S6 (rivals2), Victory Road (vanilla). While the player wears the uniform all three are openly hostile (D-211, D-236). No Latios / Latias before the finale (D-237): the Latis come back with the Acts 6–7 work. Left here: two Lilycove lines (act4.pory uses them); the post-game battles in the Littleroot lab are in act7.pory; the bedrooms by reputation are in rivals2.pory.  State vars: VAR_BRENDAN_STATE, VAR_MAY_STATE, VAR_WALLY_STATE (include/constants/draconid.h). Vanilla hooks are listed in docs/hack_changes.md ("Scripts").
+
+### `LilycoveCity_Text_DraconidRivalsNeedTwo`
+- MAY: Oh! You need at least two POKéMON that can battle for this.
+
+### `LilycoveCity_Text_DraconidRivalsGo`
+- BRENDAN: Here we come!
+- MAY: Don't hold back, {PLAYER}!
 
 ## data/scripts/draconid/battle_items.pory
 
@@ -1407,6 +1614,10 @@ Draconid Emerald round 1 follow-ups (feedback 1.32, 1.34, part of 1.25; D-234 �
 
 ## Reworked vanilla texts (`@ Draconid Emerald` labels in `data/maps/*/scripts.inc`)
 
+### EverGrandeCity_ChampionsRoom
+- `EverGrandeCity_ChampionsRoom_Text_IntroSpeech`: WALLACE: Welcome, {PLAYER}{KUN}. / That incident in SOOTOPOLIS CITY… All of HOENN has heard how you cast off that red uniform before MAXIE. / I confess I didn't know what to make of a MAGMA grunt who raised dragons. / Now I do. But it wouldn't be fair to say that you alone ended the crisis. / You overcame that difficult situation by working as one with your POKéMON. / We TRAINERS raise POKéMON by giving them items and by teaching them new techniques for battle. / But we ourselves also learn many things from POKéMON. / And this is where your achievements are put to the test against what others like you have achieved. / Now! / Who can most elegantly dance with their POKéMON in HOENN? / Show me right here and now!
+- `EverGrandeCity_ChampionsRoom_Text_BirchArriveRatePokedex`: PROF. BIRCH: See? What did I tell you, {RIVAL}? / Didn't I tell you that you didn't need to worry about {PLAYER}{KUN}? / … … … … … … … … {PLAYER}{KUN}, you've finally done it. / The day we met, you and your little dragon saved me on ROUTE 101. / Then came that red uniform… But I never stopped trusting you. / And now look at you. The CHAMPION! / Ah, yes! / What became of your POKéDEX? Here, let me see.
+
 ### GraniteCave_StevensRoom
 - `GraniteCave_StevensRoom_Text_ImStevenLetterForMe`: My name is STEVEN. / I'm interested in rare stones, so I travel here and there. / Oh? A TEAM MAGMA member… with a LETTER for me? / MAGMA doesn't usually deliver mail.
 - `GraniteCave_StevensRoom_Text_CouldBecomeChampionLetsRegister`: STEVEN: Your POKéMON trust you. That's hard to fake. / I wonder who you really work for. / Let's register one another in our POKéNAVS. I'd like to keep an eye on you… in a friendly way. / … … … … … …
@@ -1603,3 +1814,7 @@ Draconid Emerald round 1 follow-ups (feedback 1.32, 1.34, part of 1.25; D-234 �
 - `SootopolisCity_Text_HaventYouScaledSkyPillar`: WALLACE: {PLAYER}{KUN}… / The SKY PILLAR's doors are sealed, and I won't open them. / Whatever called RAYQUAZA down, it wasn't me.
 - `SootopolisCity_Text_AquaMagmaDidntMeanHarm`: WALLACE: So you are {PLAYER}{KUN}. STEVEN told me about you. / I saw it all from across the water. A TEAM MAGMA grunt who threw the uniform away, right in front of MAXIE. / And then RAYQUAZA. The SKY PILLAR has been sealed for generations, yet something called it down. / The leaders of MAGMA and AQUA are over there. It wouldn't hurt to hear what they have to say for themselves.
 - `SootopolisCity_Text_ThankYouForHelpAcceptThis`: WALLACE: {PLAYER}{KUN}… My eyes didn't deceive me. / You stood between MAXIE and the storm, and you held on until the sky answered. / SOOTOPOLIS… No, all of HOENN was saved. / On behalf of the people, I thank you. / This is a gift from me. Please accept it.
+
+### VictoryRoad_1F
+- `VictoryRoad_1F_Text_WallyNotGoingToLoseAnymore`: WALLY: Hi! {PLAYER}! / I bet you're surprised to see me here! / Everyone is talking about SOOTOPOLIS. How you threw off the MAGMA uniform… / In MAUVILLE, I was scared of you. I'm sorry, {PLAYER}. / I should have trusted what I saw in PETALBURG, when you helped me catch my very first POKéMON. / I made it all the way here, and it's all thanks to you! / But I'm not going to lose anymore! / GALLADE and I are going to win! Okay… Here I come!
+- `VictoryRoad_1F_Text_WallyPostEntranceBattle`: WALLY: I couldn't beat you today, {PLAYER}, but one of these days, I'll catch up to you! / And when I do, I want to be a TRAINER who stands up for what's right. Just like you did.

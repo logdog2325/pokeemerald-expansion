@@ -287,6 +287,9 @@ const u16 gTrainerPalette_Nerine[] = INCGFX_U16("graphics/trainers/front_pics/ne
 // Draconid Emerald: Wes, a Battle Frontier legend (docs/hack_art_pipeline.md, D-228)
 const u32 gTrainerFrontPic_Wes[] = INCGFX_U32("graphics/trainers/front_pics/wes.png", ".4bpp.smol");
 const u16 gTrainerPalette_Wes[] = INCGFX_U16("graphics/trainers/front_pics/wes.png", ".gbapal");
+// Draconid Emerald: Zinnia, the Lorekeeper (Act 7; art: docs/hack_art_pipeline.md, D-180/D-181)
+const u32 gTrainerFrontPic_Zinnia[] = INCGFX_U32("graphics/trainers/front_pics/zinnia.png", ".4bpp.smol");
+const u16 gTrainerPalette_Zinnia[] = INCGFX_U16("graphics/trainers/front_pics/zinnia.png", ".gbapal");
 const u16 gTrainerPalette_Red[] = INCGFX_U16("graphics/trainers/front_pics/red.png", ".gbapal");
 
 const u32 gTrainerFrontPic_Leaf[] = INCGFX_U32("graphics/trainers/front_pics/leaf.png", ".4bpp.smol");
@@ -680,6 +683,10 @@ const struct TrainerPicInfo gTrainerPicInfo[TRAINER_PIC_COUNT] =
     {
         .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Wes, gTrainerPalette_Wes),
         .backPic = TRAINER_BACK_PIC(4, gTrainerBackPic_Wes, gTrainerBackPicPalette_Wes, sBackAnims_Hoenn),
+    },
+    [TRAINER_PIC_ZINNIA] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Zinnia, gTrainerPalette_Zinnia),
     },
     [TRAINER_PIC_RS_BRENDAN] =
     {

@@ -118,26 +118,33 @@ VictoryRoad_1F_EventScript_Katelynn::
 	msgbox VictoryRoad_1F_Text_KatelynnPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-VictoryRoad_1F_Text_WallyNotGoingToLoseAnymore:
+VictoryRoad_1F_Text_WallyNotGoingToLoseAnymore:  @ Draconid Emerald
 	.string "WALLY: Hi! {PLAYER}!\p"
 	.string "I bet you're surprised to see me here!\p"
+	.string "Everyone is talking about SOOTOPOLIS.\n"
+	.string "How you threw off the MAGMA uniform…\p"
+	.string "In MAUVILLE, I was scared of you.\n"
+	.string "I'm sorry, {PLAYER}.\p"
+	.string "I should have trusted what I saw in\n"
+	.string "PETALBURG, when you helped me catch\l"
+	.string "my very first POKéMON.\p"
 	.string "I made it all the way here, and it's\n"
 	.string "all thanks to you!\p"
-	.string "{PLAYER}, losing to you that time\n"
-	.string "made me stronger!\p"
 	.string "But I'm not going to lose anymore!\p"
-	.string "I'm going to win! For the POKéMON who\n"
-	.string "gave me courage and strength!\p"
+	.string "GALLADE and I are going to win!\n"
 	.string "Okay… Here I come!$"
 
 VictoryRoad_1F_Text_WallyEntranceDefeat:
 	.string "Wow!\n"
 	.string "{PLAYER}, you are strong, after all!$"
 
-VictoryRoad_1F_Text_WallyPostEntranceBattle:
+VictoryRoad_1F_Text_WallyPostEntranceBattle:  @ Draconid Emerald
 	.string "WALLY: I couldn't beat you today,\n"
 	.string "{PLAYER}, but one of these days, I'll\l"
-	.string "catch up to you!$"
+	.string "catch up to you!\p"
+	.string "And when I do, I want to be a TRAINER\n"
+	.string "who stands up for what's right.\l"
+	.string "Just like you did.$"
 
 VictoryRoad_1F_Text_WallyIntro:
 	.string "WALLY: Hi! {PLAYER}!\p"

@@ -34,34 +34,7 @@ expect_opponent TRAINER_ASTER_METEOR_FALLS_${EGGNAME}
 setvar VAR_PLAYER_OUTFIT 0
 setvar VAR_ASTER_STATE 6
 
-# --- A5 Sky Pillar: the climax before Rayquaza wakes ---
-setvar VAR_SKY_PILLAR_STATE 0
-setvar VAR_SKY_PILLAR_RAYQUAZA_CRY_DONE 0
-clearflag FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA
-heal
-warp MAP_SKY_PILLAR_TOP 14 10
-run 60
-walk UP 9
-run 60
-shot 60_sky_pillar
-mash A 90000
-shot 61_after_rayquaza
-expect_var VAR_ASTER_STATE 8
-expect_var VAR_SKY_PILLAR_STATE 1
-expect_flag FLAG_HIDE_SKY_PILLAR_TOP_ASTER 1
-expect_opponent TRAINER_ASTER_SKY_PILLAR_${EGGNAME}
-
-# --- A6 after the League: the shrine ---
-setflag FLAG_SYS_GAME_CLEAR
-heal
-warp MAP_DRACONID_VILLAGE_SHRINE 10 11
-run 60
-walk UP 10
-press A 2 30
-mash A 90000
-shot 70_shrine
-expect_var VAR_ASTER_STATE 9
-expect_opponent TRAINER_ASTER_POSTGAME_${EGGNAME}
+# (the Sky Pillar finale and the post-game shrine battle are in tests/act7.play, round 1 Act 7)
 savestate aster_done.ss
 
 clearflag FLAG_DEBUG_NO_ENCOUNTER

@@ -450,6 +450,7 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Nerine;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Courtney;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Wes;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_FrontierBlue;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Zinnia;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DraconidEggDeino;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DraconidEggDreepy;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DraconidEggJangmoO;
@@ -748,6 +749,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_COURTNEY] = &gObjectEventGraphicsInfo_Courtney,
     [OBJ_EVENT_GFX_WES] = &gObjectEventGraphicsInfo_Wes,
     [OBJ_EVENT_GFX_FRONTIER_BLUE] = &gObjectEventGraphicsInfo_FrontierBlue,
+    [OBJ_EVENT_GFX_ZINNIA] = &gObjectEventGraphicsInfo_Zinnia,
     [OBJ_EVENT_GFX_DRACONID_EGG_DEINO] = &gObjectEventGraphicsInfo_DraconidEggDeino,
     [OBJ_EVENT_GFX_DRACONID_EGG_DREEPY] = &gObjectEventGraphicsInfo_DraconidEggDreepy,
     [OBJ_EVENT_GFX_DRACONID_EGG_JANGMO_O] = &gObjectEventGraphicsInfo_DraconidEggJangmoO,

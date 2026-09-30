@@ -13,7 +13,7 @@ script DraconidVillage_Shrine_OnTransition {
     if (var(VAR_DRACONID_STATE) == DRACONID_STATE_CLOCK_SET && !flag(FLAG_HIDE_DRACONID_SHRINE_ELDER)) {
         setvar(VAR_TEMP_1, 1)
     }
-    call(DraconidVillage_Shrine_EventScript_DraconidAsterPostgame) // data/scripts/draconid/aster.pory
+    call(DraconidVillage_Shrine_EventScript_DraconidAsterPostgame) // data/scripts/draconid/act7.pory
 }
 
 // The egg ceremony. The player arrives at (10, 18); the Elder stands at (10, 7) before the statue, the three

@@ -78,6 +78,7 @@
 #include "constants/abilities.h"
 #include "constants/event_object_movement.h"
 #include "constants/event_objects.h"
+#include "constants/heal_locations.h"
 #include "constants/layouts.h"
 #include "constants/region_map_sections.h"
 #include "constants/rgb.h"
@@ -1977,6 +1978,23 @@ void CB2_WhiteOut(void)
         SetMainCallback1(CB1_Overworld);
         SetMainCallback2(CB2_Overworld);
     }
+}
+
+// Draconid Emerald: the Hall of Fame and the credits after the Sky Pillar finale end at home, in the Draconid
+// bedroom (Acts 6-7, D-150, D-152); vanilla rolled the credits and soft-reset into the Hall of Fame save.
+// The continue-game warp the Hall of Fame / the finale save set is cleared, so a later save continues where it
+// was made.
+void CB2_ReturnHomeDraconid(void)
+{
+    StopMapMusic();
+    ResetSafariZoneFlag_();
+    ClearContinueGameWarpStatus();
+    SetWarpDestinationToHealLocation(HEAL_LOCATION_DRACONID_VILLAGE_PLAYERS_HOUSE_2F);
+    WarpIntoMap();
+    ResetInitialPlayerAvatarState();
+    gFieldCallback = FieldCB_WarpExitFadeFromBlack;
+    gFieldCallback2 = NULL;
+    SetMainCallback2(CB2_LoadMap);
 }
 
 void CB2_LoadMap(void)

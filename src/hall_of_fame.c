@@ -57,7 +57,7 @@ static void ClearVramOamPltt_LoadHofPal(void);
 static void LoadHofGfx(void);
 static void InitHofBgs(void);
 static bool8 CreateHofConfettiSprite(void);
-static void StartCredits(void);
+static void ReturnHome(void);
 static bool8 LoadHofBgs(void);
 static void Task_Hof_InitMonData(u8 taskId);
 static void Task_Hof_InitTeamSaveData(u8 taskId);
@@ -769,13 +769,15 @@ static void Task_Hof_HandleExit(u8 taskId)
         ResetBgsAndClearDma3BusyFlags(0);
         DestroyTask(taskId);
         FreeAllHoFMem();
-        StartCredits();
+        ReturnHome();
     }
 }
 
-static void StartCredits(void)
+// Draconid Emerald: no credits after the Hall of Fame: they roll after the Sky Pillar finale (Act 7). The new
+// Champion goes home to the village, where the meteor alert starts the finale (D-150).
+static void ReturnHome(void)
 {
-    SetMainCallback2(CB2_StartCreditsSequence);
+    SetMainCallback2(CB2_ReturnHomeDraconid);
 }
 
 #undef tDontSaveData

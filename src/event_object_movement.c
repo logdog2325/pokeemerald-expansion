@@ -546,6 +546,7 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_NerineAqua, OBJ_EVENT_PAL_TAG_NERINE_AQUA},
     {gObjectEventPal_Nerine, OBJ_EVENT_PAL_TAG_NERINE},
     {gObjectEventPal_Courtney, OBJ_EVENT_PAL_TAG_COURTNEY},
+    {gObjectEventPal_Zinnia, OBJ_EVENT_PAL_TAG_ZINNIA},
     {gObjectEventPal_Wes, OBJ_EVENT_PAL_TAG_WES},
     {gObjectEventPal_FrontierBlue, OBJ_EVENT_PAL_TAG_FRONTIER_BLUE},
     // END DRACONID PLAYER OUTFITS

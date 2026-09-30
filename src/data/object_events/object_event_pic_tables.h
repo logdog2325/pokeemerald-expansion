@@ -1724,6 +1724,10 @@ static const struct SpriteFrameImage sPicTable_FrontierBlue[] = {
     overworld_ascending_frames(gObjectEventPic_FrontierBlue, 2, 4),
 };
 
+static const struct SpriteFrameImage sPicTable_Zinnia[] = {
+    overworld_ascending_frames(gObjectEventPic_Zinnia, 2, 4),
+};
+
 static const struct SpriteFrameImage sPicTable_DraconidEggDeino[] = {
     obj_frame_tiles(gObjectEventPic_DraconidEggDeino),
 };

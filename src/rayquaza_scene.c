@@ -1235,6 +1235,12 @@ void DoRayquazaScene(u8 animId, bool8 endEarly, MainCallback exitCallback)
     SetMainCallback2(CB2_InitRayquazaScene);
 }
 
+// Draconid Emerald: only the "Rayquaza takes flight" shot, for Mega Rayquaza leaving for the meteor (Act 7)
+void DoRayquazaTakesFlightScene(MainCallback exitCallback)
+{
+    DoRayquazaScene(RAY_ANIM_TAKES_FLIGHT, TRUE, exitCallback);
+}
+
 static void CB2_InitRayquazaScene(void)
 {
     u32 i;

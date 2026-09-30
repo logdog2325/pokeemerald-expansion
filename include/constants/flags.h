@@ -97,8 +97,8 @@
 #define FLAG_HIDE_SEAFLOOR_CAVERN_NERINE         0x4B // Draconid Emerald: Nerine at the Seafloor Cavern Room 9 entrance (her reveal, Act 5)
 #define FLAG_UNUSED_0x04C    0x4C // Unused Flag
 #define FLAG_UNUSED_0x04D    0x4D // Unused Flag
-#define FLAG_UNUSED_0x04E    0x4E // Unused Flag
-#define FLAG_UNUSED_0x04F    0x4F // Unused Flag
+#define FLAG_DRACONID_NO_RUNNING                 0x4E // Draconid Emerald: WE_FLAG_NO_RUNNING, set around the Sky Pillar Rayquaza and Deoxys battles (Act 7)
+#define FLAG_DRACONID_NO_CATCHING                0x4F // Draconid Emerald: WE_FLAG_NO_CATCHING, set around the Deoxys boss battle (Act 7)
 
 // Scripts
 #define FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA_STILL  0x50
@@ -106,7 +106,7 @@
 #define FLAG_RESCUED_BIRCH                       0x52
 #define FLAG_LEGENDARIES_IN_SOOTOPOLIS           0x53
 
-#define FLAG_UNUSED_0x054                    0x54  // Unused Flag
+#define FLAG_HIDE_DRACONID_VILLAGE_NERINE    0x54  // Draconid Emerald: Nerine by the village pond after the finale (post-game battle, Act 7)
 #define FLAG_UNUSED_0x055                    0x55  // Unused Flag
 
 #define FLAG_HIDE_CONTEST_POKE_BALL          0x56  // Always set after new game, object it hides is added directly

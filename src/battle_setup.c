@@ -723,7 +723,9 @@ static void CB2_EndScriptedWildBattle(void)
 
     if (IsPlayerDefeated(gBattleOutcome) == TRUE)
     {
-        if (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE)
+        // Draconid Emerald: B_FLAG_NO_WHITEOUT covers the scripted wild battles too (the Sky Pillar Rayquaza
+        // and Deoxys battles are fought again after a loss, D-110)
+        if (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE || FlagGet(B_FLAG_NO_WHITEOUT))
             SetMainCallback2(CB2_ReturnToFieldContinueScriptPlayMapMusic);
         else
             SetMainCallback2(CB2_WhiteOut);
@@ -2269,11 +2271,12 @@ void SetMultiTrainerBattle(struct ScriptContext *ctx)
 {
     InitTrainerBattleParameter();
 
-    TRAINER_BATTLE_PARAM.opponentA = ScriptReadHalfword(ctx);
+    // Draconid Emerald: variant trainers and partners (the Sky Pillar finale: Aster vs the player + Nerine, D-101, D-151)
+    TRAINER_BATTLE_PARAM.opponentA = Draconid_ResolveVariantTrainer(ScriptReadHalfword(ctx));
     TRAINER_BATTLE_PARAM.defeatTextA = (u8*)ScriptReadWord(ctx);
-    TRAINER_BATTLE_PARAM.opponentB = ScriptReadHalfword(ctx);
+    TRAINER_BATTLE_PARAM.opponentB = Draconid_ResolveVariantTrainer(ScriptReadHalfword(ctx));
     TRAINER_BATTLE_PARAM.defeatTextB = (u8*)ScriptReadWord(ctx);
-    gPartnerTrainerId = TRAINER_PARTNER(ScriptReadHalfword(ctx));
+    gPartnerTrainerId = TRAINER_PARTNER(Draconid_ResolveVariantPartner(ScriptReadHalfword(ctx)));
 };
 
 void CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer *trainer)
