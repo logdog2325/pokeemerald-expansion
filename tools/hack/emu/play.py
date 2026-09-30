@@ -28,6 +28,8 @@ A .play script is a gbarun script plus:
                           stats, for a flow test that must win (999) or quickly lose (1) a battle (the
                           unencrypted party fields; a level-up or a stat recalculation undoes it)
   until_var NAME VALUE MAX [KEYS]   run until a var equals VALUE, tapping KEYS (a cycle like B,R) meanwhile
+  wait_opponent TRAINER_X [MAX] [KEY]   tap KEY (default A) until the trainer battle being set up is against
+                          TRAINER_X (opponent A), e.g. the next battle of a gauntlet; stops before it starts
   setflag NAME / clearflag NAME   change a flag in the save block (e.g. FLAG_DEBUG_NO_ENCOUNTER)
   settrainer TRAINER_X 0|1        set or clear a trainer's "defeated" flag
   setvar NAME VALUE       change a var in the save block
@@ -258,7 +260,7 @@ def main():
             defines.setdefault(t[1], t[2])
     defines.update(dict(d.split("=", 1) for d in args.defines))
     lines = [re.sub(r"\$\{(\w+)\}", lambda m: defines[m.group(1)], l) for l in lines if not l.startswith("default ")]
-    names = sorted({l.split()[1] for l in lines if l.split() and l.split()[0] in ("flag", "var", "expect_flag", "expect_var", "setflag", "clearflag", "setvar", "warp", "expect_trainer", "expect_item", "expect_opponent", "expect_opponent_b", "expect_gfx", "giveitem", "givemon", "expect_map", "bagcursor", "settrainer", "until_var")})
+    names = sorted({l.split()[1] for l in lines if l.split() and l.split()[0] in ("flag", "var", "expect_flag", "expect_var", "setflag", "clearflag", "setvar", "warp", "expect_trainer", "expect_item", "expect_opponent", "expect_opponent_b", "expect_gfx", "giveitem", "givemon", "expect_map", "bagcursor", "settrainer", "until_var", "wait_opponent")})
     names += sorted({l.split()[2] for l in lines if l.split() and l.split()[0] == "expect_party"})
     names += sorted({l.split()[3] for l in lines if l.split() and l.split()[0] == "givemon" and len(l.split()) > 3})
     names += ["TRAINER_PARTNER(%s)" % l.split()[1] for l in lines if l.split()[:1] == ["expect_partner"]]
@@ -353,6 +355,11 @@ def main():
                 out.append("poke %X %X" % (addr, val & 0xFF))
                 if f != "level":
                     out.append("poke %X %X" % (addr + 1, val >> 8))
+        elif t[0] == "wait_opponent":
+            # a scene with several battles in a row: stop when the next one is set up (before it starts)
+            addr = syms["gTrainerBattleParameter"] + consts[OPPONENT_A_OFFSET]
+            out.append("until %X 2 %X %s %s 24" % (addr, consts[t[1]], t[2] if len(t) > 2 else "60000",
+                                                  t[3] if len(t) > 3 else "A"))
         elif t[0] == "expect_gfx":
             label = "player_gfx_%s#%d" % (t[1], len(expects))
             expects.append((label, consts[t[1]]))

@@ -121,13 +121,16 @@ script MossdeepCity_SpaceCenter_2F_EventScript_DraconidRaid {
     msgbox(format("STEVEN: Then the fuel stays here.\p"
                   "…{PLAYER}{KUN}. We meet again."))
     msgbox(format("TABITHA: Two against two, then. Here, grunt. Don't embarrass me."))
+    msgbox(format("COURTNEY: …I will be watching.\nBoth of you."))
     closemessage
     playfanfare(MUS_HEAL)
     special(HealPlayerParty)
     waitfanfare
     msgbox(format("TABITHA healed {PLAYER}'s POKéMON."))
     msgbox(format("STEVEN: BRENDAN, with me."))
-    msgbox(format("BRENDAN: Right behind you!"))
+    msgbox(format("BRENDAN: Right behind you!\p"
+                  "STEVEN lent me a KEY STONE for today.\n"
+                  "Let's see how MAGMA likes this!"))
     closemessage
     call(MossdeepCity_SpaceCenter_2F_EventScript_DraconidTagBattle)
     goto(MossdeepCity_SpaceCenter_2F_EventScript_DefeatedMaxieTabitha)
@@ -159,15 +162,23 @@ text MossdeepCity_SpaceCenter_2F_Text_DraconidBrendanDefeat {
     format("BRENDAN: Why waste strength like that on THEM?!")
 }
 
-// First line of the vanilla DefeatedMaxieTabitha: whoever won, the tanks are already sealed
+// First line of the vanilla DefeatedMaxieTabitha: whoever won, the tanks are already sealed (D-248). Nobody
+// outside the DRACONID (and PROF. BIRCH and PROF. OAK) knows the player's mission before Sootopolis
+// (docs/hack_voices.md): TABITHA and COURTNEY only grumble, STEVEN only wonders.
+// Won: TABITHA gloats, the tanks are sealed, he grumbles that the grunt took their time; COURTNEY notes it.
+// Lost: STEVEN and BRENDAN get the last word of the battle (multi_2_vs_2 has no victory text), TABITHA blames the
+// grunt, the tanks are sealed, and COURTNEY walks over and heals the team, coldly.
 script MossdeepCity_SpaceCenter_2F_EventScript_DraconidFuelSealed {
     specialvar(VAR_RESULT, GetBattleOutcome)
     if (var(VAR_RESULT) == B_OUTCOME_WON) {
-        msgbox(format("TABITHA: Hehehe! The CHAMPION, beaten!\p"
-                      "Out of the way, STEVEN. The fuel is ours!"))
+        msgbox(format("TABITHA: Hehehe! The CHAMPION of HOENN, beaten!\p"
+                      "Out of the way, STEVEN.\nThe fuel is ours!"))
     } else {
+        msgbox(format("STEVEN: That will do, TABITHA.\nYour raid ends here."))
+        msgbox(format("BRENDAN: Ha! How do you like that,\nMAGMA?"))
         msgbox(format("TABITHA: Tch! Useless grunt!\p"
-                      "…Fine. I'll take the fuel myself!"))
+                      "If you'd pulled your weight, that fuel would be ours by now!\p"
+                      "…Fine. I'll take it myself!"))
     }
     closemessage
     playse(SE_PIN)
@@ -180,47 +191,95 @@ script MossdeepCity_SpaceCenter_2F_EventScript_DraconidFuelSealed {
     msgbox(format("STEVEN: The fuel stays where it is, TABITHA.\p"
                   "And so do the people who work here. They're behind me."))
     closemessage
-    applymovement(LOCALID_SPACE_CENTER_TABITHA, Common_Movement_WalkInPlaceFasterUp)
-    waitmovement(0)
-    msgbox(format("TABITHA: …You kept them busy a long time, grunt.\p"
-                  "Long enough for this. …Hmph."))
-}
-
-// After MAGMA has left (the vanilla fade): STEVEN knows, BRENDAN storms off.
-// STEVEN faces the player through the vanilla StevenFacePlayer (VAR_FACING is west from the trigger).
-script MossdeepCity_SpaceCenter_2F_EventScript_DraconidStevenAndBrendan {
     specialvar(VAR_RESULT, GetBattleOutcome)
-    if (var(VAR_RESULT) != B_OUTCOME_WON) {
-        msgbox(format("STEVEN: Your POKéMON fought hard. Let them rest."))
+    if (var(VAR_RESULT) == B_OUTCOME_WON) {
+        applymovement(LOCALID_SPACE_CENTER_TABITHA, Common_Movement_WalkInPlaceFasterUp)
+        waitmovement(0)
+        msgbox(format("TABITHA: …You took your sweet time finishing them off, grunt.\p"
+                      "Long enough for them to lock it all up. …Hmph."))
+        closemessage
+        applymovement(LOCALID_SPACE_CENTER_COURTNEY, Common_Movement_WalkInPlaceFasterLeft)
+        waitmovement(0)
+        msgbox(format("COURTNEY: …Battle: won. Fuel: none.\p"
+                      "Time taken: long. …I will remember that."))
+    } else {
+        applymovement(LOCALID_SPACE_CENTER_COURTNEY, MossdeepCity_SpaceCenter_2F_Movement_DraconidCourtneyToPlayer)
+        waitmovement(0)
+        applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight)
+        waitmovement(0)
+        msgbox(format("COURTNEY: …Pathetic.\nTwo against two, and you lost."))
+        msgbox(format("COURTNEY: …Hold still."))
         closemessage
         playfanfare(MUS_HEAL)
         special(HealPlayerParty)
         waitfanfare
+        msgbox(format("COURTNEY healed {PLAYER}'s POKéMON."))
+        msgbox(format("COURTNEY: Leader MAXIE has no use for grunts who lose.\nRemember that."))
+        closemessage
+        applymovement(LOCALID_SPACE_CENTER_TABITHA, Common_Movement_WalkInPlaceFasterUp)
+        waitmovement(0)
+        msgbox(format("TABITHA: The Leader is going to hear about this, grunt. Every word!"))
     }
-    msgbox(format("STEVEN: …{PLAYER}{KUN}. A word, quietly.\p"
-                  "Those tanks take time to seal. Someone kept TABITHA busy long enough.\p"
-                  "I know you let us win the important part."))
+}
+
+// After MAGMA has left (the vanilla fade): STEVEN has never faced a grunt like the player and wonders why;
+// BRENDAN, furious after a loss or gloating after a win, storms off.
+// STEVEN faces the player through the vanilla StevenFacePlayer (VAR_FACING is west from the trigger).
+script MossdeepCity_SpaceCenter_2F_EventScript_DraconidStevenAndBrendan {
+    specialvar(VAR_RESULT, GetBattleOutcome)
+    if (var(VAR_RESULT) == B_OUTCOME_WON) {
+        msgbox(format("STEVEN: …{PLAYER}{KUN}.\nYou're the strongest TEAM MAGMA grunt I have ever faced."))
+    } else {
+        msgbox(format("STEVEN: …{PLAYER}{KUN}. You lost today.\p"
+                      "Even so, you're the strongest TEAM MAGMA grunt I have ever faced."))
+    }
+    msgbox(format("STEVEN: …Strange. You battle like someone with something to protect."))
     closemessage
     applymovement(LOCALID_SPACE_CENTER_2F_BRENDAN, Common_Movement_ExclamationMark)
     waitmovement(0)
     applymovement(LOCALID_SPACE_CENTER_2F_BRENDAN, Common_Movement_WalkInPlaceFasterUp)
     waitmovement(0)
-    msgbox(format("BRENDAN: LET us?! STEVEN, you saw it yourself! {PLAYER} battled for MAGMA!"))
-    closemessage
-    applymovement(LOCALID_SPACE_CENTER_2F_BRENDAN, Common_Movement_WalkInPlaceFasterRight)
-    waitmovement(0)
-    msgbox(format("BRENDAN: I don't care what you “let”\nhappen, {PLAYER}.\p"
-                  "You were right there with MAGMA again!\p"
-                  "That's it. I give up trying to\nfigure you out."))
+    specialvar(VAR_RESULT, GetBattleOutcome)
+    if (var(VAR_RESULT) == B_OUTCOME_WON) {
+        msgbox(format("BRENDAN: Something to protect?!\nSTEVEN, we LOST! To MAGMA!"))
+        closemessage
+        applymovement(LOCALID_SPACE_CENTER_2F_BRENDAN, Common_Movement_WalkInPlaceFasterRight)
+        waitmovement(0)
+        msgbox(format("BRENDAN: Don't get used to winning,\n{PLAYER}.\p"
+                      "Next time, MAGMA doesn't get past me. Not you, not anybody!"))
+    } else {
+        msgbox(format("BRENDAN: STEVEN, don't go easy on them!\nThey're MAGMA!"))
+        closemessage
+        applymovement(LOCALID_SPACE_CENTER_2F_BRENDAN, Common_Movement_WalkInPlaceFasterRight)
+        waitmovement(0)
+        msgbox(format("BRENDAN: We beat you, {PLAYER}.\nRemember that.\p"
+                      "And tell MAXIE he's next."))
+    }
     closemessage
     applymovement(LOCALID_SPACE_CENTER_2F_BRENDAN, MossdeepCity_SpaceCenter_2F_Movement_DraconidBrendanStormsOff)
     waitmovement(0)
     playse(SE_EXIT)
     removeobject(LOCALID_SPACE_CENTER_2F_BRENDAN)
     delay(30)
-    msgbox(format("STEVEN: He'll understand one day. I hope you'll let him."))
+    msgbox(format("STEVEN: He cares about this region.\nSo do I.\p"
+                  "…I wonder what you care about,\n{PLAYER}{KUN}."))
     setvar(VAR_BRENDAN_STATE, BRENDAN_STATE_MOSSDEEP)
     setvar(VAR_MAGMA_STATE, MAGMA_STATE_SPACE_CENTER)
+}
+
+// COURTNEY watched the raid (a scene-only object sharing the MAGMA hide flag); talked to before the battle
+script MossdeepCity_SpaceCenter_2F_EventScript_DraconidCourtney {
+    lock
+    faceplayer
+    msgbox(format("COURTNEY: …TABITHA's squad. TABITHA's orders.\p"
+                  "I observe. You battle.\nGo."))
+    release
+}
+
+// from (6, 8), between the stools, to (4, 8), beside the player at (3, 8)
+movement MossdeepCity_SpaceCenter_2F_Movement_DraconidCourtneyToPlayer {
+    walk_left * 2
+    face_left
 }
 
 // from the trigger column (7, y) along row 9 to (3, 8), beside TABITHA (3, 9); the stools on row 8 are avoided
@@ -284,6 +343,8 @@ script SeafloorCavern_Room9_EventScript_DraconidNerineReveal {
     msgbox(format("NERINE: You found the way down. I knew you would."))
     msgbox(format("NERINE: ARCHIE is below us, with the RED ORB. KYOGRE sleeps under his feet.\p"
                   "Before you go down there… no more games. Not between us."))
+    msgbox(format("NERINE: You've known what I am since MT. CHIMNEY.\p"
+                  "Now you'll see who I am."))
     msgbox(format("NERINE pulled the bandana from her hair and let the AQUA uniform fall away…"))
     closemessage
     fadeoutbgm(1)
@@ -297,7 +358,7 @@ script SeafloorCavern_Room9_EventScript_DraconidNerineReveal {
     fadescreen(FADE_FROM_BLACK)
     playbgm(MUS_ENCOUNTER_INTENSE, FALSE)
     msgbox(format("NERINE: My name really is NERINE. That part was never a lie.\p"
-                  "I'm DRACONID, like you. The ELDER sent me down the mountain years ago.\p"
+                  "The ELDER sent me down the mountain years ago.\p"
                   "Into AQUA, to watch ARCHIE… and, when your time came, to watch you."))
     msgbox(format("NERINE: The ELDER sent me to test you. You passed…\p"
                   "…almost."))
@@ -327,15 +388,19 @@ text SeafloorCavern_Room9_Text_DraconidNerineDefeat {
 }
 
 // ---------------------------------------------------------------------------
-// Sootopolis: the crisis (D-143 … D-146). After the vanilla GROUDON/KYOGRE scene (VAR_SOOTOPOLIS_CITY_STATE 2)
-// MAXIE (29, 33) and ARCHIE (31, 33) stand on the Gym island. SootopolisCity_EventScript_Maxie comes here until
-// the crisis is over: MAXIE's order, the uniform comes off (MAGMA_STATE_TURNED, REPUTATION_REVEALED), MAXIE
-// alone, then BRENDAN and MAY land and the player + one of them battle MAXIE + ARCHIE (the other holds off the
-// admins). Both battles are must-win: a loss whites out as usual, and talking to MAXIE again picks up at the
-// battle that was lost. Then ASTER and NERINE call RAYQUAZA from the SKY PILLAR (a cutscene over black; the
-// player never goes there, D-109), RAYQUAZA calms GROUDON and KYOGRE (the vanilla scene, seen from the island),
-// the ELDER calls, BRENDAN and MAY react and fly off, and the city reloads in the vanilla aftermath
-// (VAR_SOOTOPOLIS_CITY_STATE 5: MAXIE, ARCHIE, WALLACE and STEVEN by the Gym).
+// Sootopolis: the crisis (D-143 … D-146, the reveal D-244). After the vanilla GROUDON/KYOGRE scene
+// (VAR_SOOTOPOLIS_CITY_STATE 2) MAXIE (29, 33) and ARCHIE (31, 33) stand on the Gym island, with TABITHA (27, 34)
+// and two MAGMA grunts (27, 36), (34, 36) (scene-only objects, FLAG_TEMP_11: shown only in state 2).
+// SootopolisCity_EventScript_Maxie comes here until the crisis is over: MAXIE's order, the storm, the player's
+// hesitation and the ELDER's words, the uniform falls (MAGMA_STATE_TURNED, REPUTATION_REVEALED), the grunts react,
+// MAXIE puts it together (the METEORITE at MT. CHIMNEY, the sealed fuel tanks in TABITHA's report, the DRACONID
+// colors), TABITHA takes it personally, MAXIE's cold fury; then MAXIE alone, then BRENDAN and MAY land and the
+// player + one of them battle MAXIE + ARCHIE while the other holds off TABITHA and the grunts. Both battles are
+// must-win: a loss whites out as usual, and talking to MAXIE again picks up at the battle that was lost. Then ASTER
+// and NERINE call RAYQUAZA from the SKY PILLAR (a cutscene over black; the player never goes there, D-109),
+// RAYQUAZA calms GROUDON and KYOGRE (the vanilla scene, seen from the island), the ELDER calls, BRENDAN and MAY react
+// and fly off, and the city reloads in the vanilla aftermath (VAR_SOOTOPOLIS_CITY_STATE 5: MAXIE, ARCHIE, WALLACE
+// and STEVEN by the Gym).
 // ---------------------------------------------------------------------------
 
 script SootopolisCity_EventScript_DraconidMaxie {
@@ -346,7 +411,8 @@ script SootopolisCity_EventScript_DraconidMaxie {
         msgbox(format("MAXIE: {PLAYER}.\nYou came, as I knew you would.\p"
                       "Stand here with me.\nI want you to see this."))
     } else {
-        msgbox(format("MAXIE: You again. Have you come to beg for your place back, or to finish this?"))
+        msgbox(format("MAXIE: So the liar comes back.\p"
+                      "Good. We are not finished,\n{PLAYER}."))
     }
     closemessage
     call(SootopolisCity_EventScript_DraconidStandBeforeMaxie)
@@ -355,7 +421,8 @@ script SootopolisCity_EventScript_DraconidMaxie {
     }
     if (!defeated(TRAINER_MAXIE_SOOTOPOLIS)) {
         trainerbattle_no_intro(TRAINER_MAXIE_SOOTOPOLIS, SootopolisCity_Text_DraconidMaxieDefeat)
-        msgbox(format("MAXIE: Humph… Beaten by a child who wore my own colors."))
+        msgbox(format("MAXIE: …This changes nothing.\p"
+                      "You are still a liar, {PLAYER}. And I have not finished with you."))
         closemessage
     }
     call(SootopolisCity_EventScript_DraconidMultiBattle)
@@ -375,62 +442,147 @@ script SootopolisCity_EventScript_DraconidStandBeforeMaxie {
     waitmovement(0)
 }
 
+// thunder over the city: a crack and a short shake
+script SootopolisCity_EventScript_DraconidThunder {
+    playse(SE_THUNDER)
+    setvar(VAR_0x8004, 1)  // vertical pan
+    setvar(VAR_0x8005, 1)  // horizontal pan
+    setvar(VAR_0x8006, 6)  // num shakes
+    setvar(VAR_0x8007, 4)  // shake delay
+    special(ShakeCamera)
+    waitstate
+}
+
+// The reveal (D-244): the player at (29, 34) facing MAXIE (29, 33); TABITHA (27, 34), the grunts (27, 36) and
+// (34, 36) watch the fight in the water below. Sets MAGMA_STATE_TURNED and REPUTATION_REVEALED when the uniform
+// falls, so a lost battle afterwards comes back to MAXIE's "liar" line.
 script SootopolisCity_EventScript_DraconidTheTurn {
-    msgbox(format("MAXIE: Look at them, {PLAYER}. KYOGRE would drown the world, and only GROUDON stands against it.\p"
-                  "The BLUE ORB failed me once. This time, with your help, I will bring GROUDON under control.\p"
-                  "When the rain ends, we will shape the land together. Our ideal world, {PLAYER}!"))
+    // MAXIE's order
+    msgbox(format("MAXIE: Look at them, {PLAYER}.\p"
+                  "KYOGRE would drown the world, and only GROUDON stands against it."))
+    msgbox(format("MAXIE: The BLUE ORB failed me once.\nIt will not fail me twice."))
+    msgbox(format("MAXIE: Go to the water's edge with TABITHA. When GROUDON turns toward us, we take hold of it together.\p"
+                  "Our ideal world begins today,\n{PLAYER}."))
     closemessage
+    // the storm
+    call(SootopolisCity_EventScript_DraconidThunder)
+    setweather(WEATHER_DOWNPOUR)
+    doweather
+    // the player's hesitation, the ELDER's words
     applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterDown)
     waitmovement(0)
-    delay(30)
-    msgbox(format("{PLAYER} looked out at GROUDON and KYOGRE, tearing at each other in the storm…\p"
-                  "…and remembered the ELDER's words.\p"
+    delay(40)
+    msgbox(format("{PLAYER} looked out at GROUDON and KYOGRE, tearing at each other in the storm…"))
+    msgbox(format("…and remembered the ELDER's words.\p"
                   "“When the sky splits, you must stand beside RAYQUAZA.”"))
+    closemessage
+    delay(30)
+    applymovement(LOCALID_SOOTOPOLIS_TABITHA, Common_Movement_WalkInPlaceFasterRight)
+    waitmovement(0)
+    msgbox(format("TABITHA: Hey! Grunt! You heard the Leader. Move it!"))
+    msgbox(format("MAXIE: {PLAYER}?\nWhat are you waiting for?"))
     closemessage
     applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp)
     waitmovement(0)
-    msgbox(format("MAXIE: {PLAYER}?\nWhat are you waiting for?"))
-    msgbox(format("{PLAYER} pulled off the red hood…\p"
-                  "…and let the TEAM MAGMA uniform fall to the ground."))
+    delay(30)
+    msgbox(format("{PLAYER} pulled off the red hood…"))
     closemessage
+    // the uniform falls, under a thunderclap. Same-screen fades in this scene are hardware fades
+    // (fadescreenswapbuffers): a palette fade copies the downpour-darkened palettes back as the originals, and the
+    // scene comes back twice as dark (a white one comes back washed out)
+    call(SootopolisCity_EventScript_DraconidThunder)
+    fadescreenswapbuffers(FADE_TO_BLACK)
     setvar(VAR_0x8004, PLAYER_OUTFIT_DRACONID)
-    call(Draconid_EventScript_ChangeOutfit)
+    special(SetPlayerOutfit)
     setvar(VAR_DRACONID_REPUTATION, REPUTATION_REVEALED)
     setvar(VAR_MAGMA_STATE, MAGMA_STATE_TURNED)
+    playse(SE_BIKE_HOP)
+    delay(30)
+    fadescreenswapbuffers(FADE_FROM_BLACK)
+    msgbox(format("…and let the TEAM MAGMA uniform fall to the ground."))
+    closemessage
+    // the island reacts
+    applymovement(LOCALID_SOOTOPOLIS_MAGMA_GRUNT_1, Common_Movement_WalkInPlaceFasterUp)
+    applymovement(LOCALID_SOOTOPOLIS_MAGMA_GRUNT_2, Common_Movement_WalkInPlaceFasterUp)
+    waitmovement(0)
+    applymovement(LOCALID_SOOTOPOLIS_MAGMA_GRUNT_1, Common_Movement_ExclamationMark)
+    applymovement(LOCALID_SOOTOPOLIS_MAGMA_GRUNT_2, Common_Movement_ExclamationMark)
+    applymovement(LOCALID_SOOTOPOLIS_TABITHA, Common_Movement_ExclamationMark)
+    waitmovement(0)
+    msgbox(format("GRUNT: Wh-what's with that getup?!"))
+    msgbox(format("GRUNT: Those aren't our colors!"))
+    closemessage
+    // MAXIE puts it together
     applymovement(LOCALID_SOOTOPOLIS_MAXIE, Common_Movement_ExclamationMark)
     waitmovement(0)
-    msgbox(format("MAXIE: Those colors… I know them.\nYou are one of the DRACONID.\p"
-                  "So you were never truly one of us."))
-    msgbox(format("MAXIE: After everything I gave you?!\p"
-                  "I trusted you with my plans. I made you my right hand!"))
-    msgbox(format("MAXIE: Very well. I will take GROUDON without you.\p"
-                  "But first, I will deal with the traitor in my ranks!"))
+    delay(30)
+    msgbox(format("MAXIE: …"))
+    msgbox(format("MAXIE: Teal and red, and a band of horns.\nI know those colors.\p"
+                  "The DRACONID. The clan in the mountains that watches the sky."))
+    closemessage
+    applymovement(LOCALID_SOOTOPOLIS_MAXIE, Common_Movement_WalkInPlaceFasterUp)
+    waitmovement(0)
+    delay(20)
+    msgbox(format("MAXIE: The METEORITE on MT. CHIMNEY.\nIt did not slip from my machine, did it?\p"
+                  "I blamed AQUA for that."))
+    msgbox(format("MAXIE: And the fuel at the SPACE CENTER.\p"
+                  "TABITHA reported that the tanks were sealed while you battled."))
+    msgbox(format("MAXIE: I called it bad luck.\nIt was you, every time."))
+    closemessage
+    // TABITHA vouched for the player
+    applymovement(LOCALID_SOOTOPOLIS_TABITHA, SootopolisCity_Movement_DraconidTabithaStepsUp)
+    waitmovement(0)
+    msgbox(format("TABITHA: No… No, no, no!\p"
+                  "I vouched for you! I told the Leader you were the best grunt I ever had!"))
+    msgbox(format("TABITHA: Hehe… You were laughing at me the whole time, weren't you?"))
+    msgbox(format("TABITHA: Leader! Let me crush this traitor myself! Right now!"))
+    closemessage
+    call(SootopolisCity_EventScript_DraconidThunder)
+    applymovement(LOCALID_SOOTOPOLIS_MAXIE, Common_Movement_WalkInPlaceFasterDown)
+    waitmovement(0)
+    msgbox(format("MAXIE: Enough."))
+    closemessage
+    applymovement(LOCALID_SOOTOPOLIS_TABITHA, SootopolisCity_Movement_DraconidTabithaStepsBack)
+    waitmovement(0)
+    // MAXIE's cold fury
+    delay(30)
+    msgbox(format("MAXIE: You wore my colors, {PLAYER}.\nYou ate at my table."))
+    msgbox(format("MAXIE: You stood at my side when I called you my right hand…"))
+    msgbox(format("MAXIE: …and every word was a lie."))
+    closemessage
+    applymovement(LOCALID_SOOTOPOLIS_MAXIE, Common_Movement_WalkInPlaceFasterDown)
+    waitmovement(0)
+    msgbox(format("MAXIE: After everything I gave you?!"))
+    msgbox(format("MAXIE: I will remember this, {PLAYER}.\nYou will pay for every lie you told me."))
+    msgbox(format("MAXIE: GROUDON can wait.\nFirst, the traitor."))
 }
 
 text SootopolisCity_Text_DraconidMaxieDefeat {
-    format("Impossible! I, MAXIE, beaten\nby my own recruit?!")
+    format("What?! I, MAXIE, beaten by a traitor?!")
 }
 
 // ARCHIE joins MAXIE, BRENDAN and MAY land on the island, the player picks a partner and the other one holds
-// off the admins; must-win multi battle (a loss whites out unless FLAG_DRACONID_NO_WHITEOUT is set, as in tests)
+// off TABITHA and the grunts; must-win multi battle (a loss whites out unless FLAG_DRACONID_NO_WHITEOUT is set,
+// as in tests)
 script SootopolisCity_EventScript_DraconidMultiBattle {
     applymovement(LOCALID_SOOTOPOLIS_ARCHIE, SootopolisCity_Movement_DraconidArchieJoins)
     waitmovement(0)
-    msgbox(format("ARCHIE: Fufufu! MAXIE's own grunt, turning on him! Now that's a show.\p"
+    msgbox(format("ARCHIE: Fufufu! MAXIE's own grunt, a spy for some mountain clan! Now that's a show.\p"
                   "But don't get cocky, kid. KYOGRE is still mine to take."))
-    msgbox(format("MAXIE: For once, ARCHIE,\nwe agree on something.\p"
-                  "This child stands in both our ways."))
+    msgbox(format("MAXIE: ARCHIE. This one lied to both of us.\p"
+                  "Help me finish it, and we settle our own quarrel after."))
+    msgbox(format("ARCHIE: Heh. For once, MAXIE,\nwe agree on something."))
     closemessage
     playbgm(MUS_ENCOUNTER_MAY, FALSE)
     if (flag(FLAG_HIDE_SOOTOPOLIS_CITY_RIVALS)) {
         // they fly in on their POKéMON and land on the island's south shore
         playse(SE_M_FLY)
-        fadescreen(FADE_TO_BLACK)
+        fadescreenswapbuffers(FADE_TO_BLACK)
         clearflag(FLAG_HIDE_SOOTOPOLIS_CITY_RIVALS)
         addobject(LOCALID_SOOTOPOLIS_BRENDAN)
         addobject(LOCALID_SOOTOPOLIS_MAY)
         delay(20)
-        fadescreen(FADE_FROM_BLACK)
+        fadescreenswapbuffers(FADE_FROM_BLACK)
         msgbox(format("???: {PLAYER}!"))
         closemessage
         call(SootopolisCity_EventScript_DraconidRivalsStepUp)
@@ -438,7 +590,7 @@ script SootopolisCity_EventScript_DraconidMultiBattle {
         msgbox(format("BRENDAN: {PLAYER}… Just who ARE you?"))
         msgbox(format("MAY: Save it for later, BRENDAN! Two against one isn't fair.\p"
                       "{PLAYER}, one of us will fight with you!"))
-        msgbox(format("BRENDAN: Their ADMINS are crossing the water, too.\p"
+        msgbox(format("BRENDAN: That ADMIN and his grunts won't just stand there and watch.\p"
                       "Whoever doesn't fight here has to hold them back."))
     } else {
         call(SootopolisCity_EventScript_DraconidRivalsStepUp)
@@ -460,12 +612,12 @@ script SootopolisCity_EventScript_DraconidMultiBattle {
         setvar(VAR_TEMP_2, PARTNER_BRENDAN)
         msgbox(format("BRENDAN: Me? After all the things I said to you?\p"
                       "…All right. Let's go, {PLAYER}!"))
-        msgbox(format("MAY: Then the ADMINS are mine!"))
+        msgbox(format("MAY: Then TABITHA is mine!"))
         closemessage
         applymovement(LOCALID_SOOTOPOLIS_MAY, SootopolisCity_Movement_DraconidMayToAdmins)
         waitmovement(0)
         playmoncry(SPECIES_BLAZIKEN, CRY_MODE_ENCOUNTER)
-        msgbox(format("MAY: BLAZIKEN!\nKeep them off the island!"))
+        msgbox(format("MAY: BLAZIKEN!\nDon't let them near MAXIE!"))
         waitmoncry
         closemessage
         applymovement(LOCALID_SOOTOPOLIS_BRENDAN, SootopolisCity_Movement_DraconidBrendanToPartner)
@@ -473,20 +625,23 @@ script SootopolisCity_EventScript_DraconidMultiBattle {
     } else {
         setvar(VAR_TEMP_2, PARTNER_MAY)
         msgbox(format("MAY: I was hoping you'd say that!"))
-        msgbox(format("BRENDAN: Then I'll take the ADMINS. Don't you dare lose, {PLAYER}!"))
+        msgbox(format("BRENDAN: Then I'll take TABITHA. Don't you dare lose, {PLAYER}!"))
         closemessage
         applymovement(LOCALID_SOOTOPOLIS_BRENDAN, SootopolisCity_Movement_DraconidBrendanToAdmins)
         waitmovement(0)
         playmoncry(SPECIES_SCEPTILE, CRY_MODE_ENCOUNTER)
-        msgbox(format("BRENDAN: SCEPTILE, nobody lands on this island!"))
+        msgbox(format("BRENDAN: SCEPTILE, nobody gets past us!"))
         waitmoncry
         closemessage
         applymovement(LOCALID_SOOTOPOLIS_MAY, SootopolisCity_Movement_DraconidMayToPartner)
         waitmovement(0)
     }
+    msgbox(format("TABITHA: Tch! Brats!"))
+    closemessage
     applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp)
     waitmovement(0)
     msgbox(format("ARCHIE: Two kids against the leaders of MAGMA and AQUA? Fufufu… Bring it on!"))
+    msgbox(format("MAXIE: No more lies, {PLAYER}.\nShow me what you really are."))
     closemessage
     special(SavePlayerParty)
     fadescreen(FADE_TO_BLACK)
@@ -512,20 +667,26 @@ script SootopolisCity_EventScript_DraconidMultiBattle {
     msgbox(format("MAXIE: The land is slipping\nthrough my fingers…"))
     msgbox(format("ARCHIE: KYOGRE won't even look at the RED ORB anymore…"))
     closemessage
+    // TABITHA and the grunts are gone; the rival who held them off comes back to (29, 35)
+    fadescreenswapbuffers(FADE_TO_BLACK)
+    removeobject(LOCALID_SOOTOPOLIS_TABITHA)
+    removeobject(LOCALID_SOOTOPOLIS_MAGMA_GRUNT_1)
+    removeobject(LOCALID_SOOTOPOLIS_MAGMA_GRUNT_2)
+    fadescreenswapbuffers(FADE_FROM_BLACK)
     if (var(VAR_TEMP_2) == PARTNER_BRENDAN) {
-        applymovement(LOCALID_SOOTOPOLIS_MAY, SootopolisCity_Movement_DraconidMayBack)
+        applymovement(LOCALID_SOOTOPOLIS_MAY, SootopolisCity_Movement_DraconidRivalBack)
         waitmovement(0)
-        msgbox(format("MAY: Their ADMINS ran off! And you two beat MAXIE and ARCHIE!"))
+        msgbox(format("MAY: TABITHA and his grunts ran off! And you two beat MAXIE and ARCHIE!"))
     } else {
-        applymovement(LOCALID_SOOTOPOLIS_BRENDAN, SootopolisCity_Movement_DraconidBrendanBack)
+        applymovement(LOCALID_SOOTOPOLIS_BRENDAN, SootopolisCity_Movement_DraconidRivalBack)
         waitmovement(0)
-        msgbox(format("BRENDAN: The ADMINS turned tail! And you two actually beat them!"))
+        msgbox(format("BRENDAN: TABITHA turned tail! And you two actually beat them!"))
     }
     closemessage
 }
 
 text SootopolisCity_Text_DraconidMaxieMultiDefeat {
-    format("This cannot be happening…")
+    format("Beaten again… by that liar?!")
 }
 
 text SootopolisCity_Text_DraconidArchieMultiDefeat {
@@ -547,6 +708,51 @@ script SootopolisCity_EventScript_DraconidRivalTalk {
     faceplayer
     msgbox(format("MAY: We're right here, {PLAYER}. Talk to MAXIE when you're ready!"))
     release
+}
+
+// TABITHA and the two grunts on the island (scene-only; FLAG_TEMP_11 hides them outside state 2)
+script SootopolisCity_EventScript_DraconidTabitha {
+    lock
+    faceplayer
+    if (var(VAR_MAGMA_STATE) < MAGMA_STATE_TURNED) {
+        msgbox(format("TABITHA: Hehehe! There's my best grunt.\p"
+                      "The Leader's been asking for you. Go on, don't keep him waiting!"))
+    } else {
+        msgbox(format("TABITHA: …Don't you dare talk to me, traitor."))
+    }
+    release
+}
+
+script SootopolisCity_EventScript_DraconidMagmaGrunt1 {
+    lock
+    faceplayer
+    if (var(VAR_MAGMA_STATE) < MAGMA_STATE_TURNED) {
+        msgbox(format("GRUNT: The Leader says GROUDON will listen to the ORB this time.\p"
+                      "It has to… right?"))
+    } else {
+        msgbox(format("GRUNT: A DRACONID spy, right in our ranks…\nAnd I shared my rations with you!"))
+    }
+    release
+}
+
+script SootopolisCity_EventScript_DraconidMagmaGrunt2 {
+    lock
+    faceplayer
+    if (var(VAR_MAGMA_STATE) < MAGMA_STATE_TURNED) {
+        msgbox(format("GRUNT: That thing out there is KYOGRE…\nI'm glad we're up here on the island."))
+    } else {
+        msgbox(format("GRUNT: Traitor!\nDon't you come near me!"))
+    }
+    release
+}
+
+// Sootopolis OnTransition (hook in data/maps/SootopolisCity/scripts.inc): TABITHA and the grunts stand on the
+// island only during the crisis (state 2); Team Magma's first ambush waits outside Juan's Gym (magma_revenge.pory)
+script SootopolisCity_EventScript_DraconidOnTransition {
+    if (var(VAR_SOOTOPOLIS_CITY_STATE) != 2) {
+        setflag(FLAG_TEMP_11)
+    }
+    call(SootopolisCity_EventScript_DraconidRevengeOnTransition)
 }
 
 // ASTER and NERINE call RAYQUAZA (over black), then the vanilla RAYQUAZA scene
@@ -577,16 +783,15 @@ script SootopolisCity_EventScript_DraconidRayquaza {
     msgbox(format("Something vast answered from above the clouds."))
     closemessage
     setvar(VAR_ASTER_STATE, ASTER_STATE_RAYQUAZA_CALLED)
-    delay(30)
-    fadescreen(FADE_FROM_BLACK)
     // RAYQUAZA arrives (after the vanilla scene). The camera pans from the island to the fight; as in the
     // vanilla scene it is left there (the view comes back from the RAYQUAZA scene on the fight), and pans back
-    // to the island once RAYQUAZA has flown off.
+    // to the island once RAYQUAZA has flown off. The pan stays under the black: fading the island back in after
+    // a palette fade in the downpour shows it twice as dark (the fade copies the weather-darkened palettes back),
+    // and the RAYQUAZA scene opens on the fight anyway.
     special(SpawnCameraObject)
     applymovement(LOCALID_CAMERA, SootopolisCity_Movement_DraconidPanToLegendaries)
     waitmovement(0)
-    delay(60)
-    fadescreenspeed(FADE_TO_BLACK, 8)
+    delay(30)
     special(RemoveCameraObject)
     call(SootopolisCity_EventScript_SetRoughWater)
     removeobject(LOCALID_SOOTOPOLIS_GROUDON)
@@ -647,7 +852,8 @@ script SootopolisCity_EventScript_DraconidRayquaza {
     end
 }
 
-// the ELDER's line by PokéNav (D-146); the Match Call window is narrower than a text box
+// the ELDER's line by PokéNav (D-146), on NERINE's: he has none of his own (D-134), so he came down to the SKY
+// PILLAR and borrowed hers (D-244); the Match Call window is narrower than a text box
 script SootopolisCity_EventScript_DraconidElderCall {
     pokenavcall(SootopolisCity_Text_DraconidElderCall)
     waitmessage
@@ -658,8 +864,8 @@ text SootopolisCity_Text_DraconidElderCall {
     format("… … … … … …\n"
            "… … … … … Beep!\p"
            "ELDER: {PLAYER}. It is the ELDER.\p"
-           "I felt it from the mountain. The sky has answered.\p"
-           "ASTER and NERINE called from the SKY PILLAR, and RAYQUAZA came down to quiet the old ones.\p"
+           "I came down to the SKY PILLAR when the sky turned black. NERINE lent me her little talking box.\p"
+           "The sky has answered. ASTER and NERINE called, and RAYQUAZA came down to quiet the old ones.\p"
            "ASTER: We did. And tell {PLAYER} I never liked that red uniform anyway.\p"
            "NERINE: Tell {PLAYER} well done. No “almost” this time.\p"
            "ELDER: Hush, both of you.\p"
@@ -762,10 +968,13 @@ movement SootopolisCity_Movement_DraconidArchieJoins {
     face_down
 }
 
-// the partner steps up to (30, 34), under ARCHIE; the other one goes to the island's east shore
+// the partner steps up to (30, 34), under ARCHIE; the other one stands at (28, 35), between TABITHA (27, 34) /
+// the grunt (27, 36) and the battle
 movement SootopolisCity_Movement_DraconidMayToAdmins {
-    walk_right * 4
-    face_right
+    walk_down
+    walk_left * 2
+    walk_up
+    face_left
 }
 
 movement SootopolisCity_Movement_DraconidBrendanToPartner {
@@ -775,9 +984,8 @@ movement SootopolisCity_Movement_DraconidBrendanToPartner {
 }
 
 movement SootopolisCity_Movement_DraconidBrendanToAdmins {
-    walk_down
-    walk_right * 5
-    face_right
+    walk_left
+    face_left
 }
 
 movement SootopolisCity_Movement_DraconidMayToPartner {
@@ -785,16 +993,22 @@ movement SootopolisCity_Movement_DraconidMayToPartner {
     face_up
 }
 
-// back from the east shore to (29, 35), under the player
-movement SootopolisCity_Movement_DraconidMayBack {
-    walk_left * 5
+// back from (28, 35) to (29, 35), under the player
+movement SootopolisCity_Movement_DraconidRivalBack {
+    walk_right
     face_up
 }
 
-movement SootopolisCity_Movement_DraconidBrendanBack {
-    walk_left * 5
-    walk_up
-    face_up
+// TABITHA (27, 34) steps up to the player (29, 34) and back
+movement SootopolisCity_Movement_DraconidTabithaStepsUp {
+    walk_fast_right
+    face_right
+}
+
+movement SootopolisCity_Movement_DraconidTabithaStepsBack {
+    lock_facing_direction
+    walk_left
+    unlock_facing_direction
 }
 
 // the camera from the island (29, 34) to the fight (31, 41), and back

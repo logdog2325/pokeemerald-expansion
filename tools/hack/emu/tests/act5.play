@@ -202,6 +202,98 @@ expect_flag FLAG_RECEIVED_HM_WATERFALL 1
 expect_item ITEM_HM_WATERFALL 1
 savestate act5_done.ss
 
+# --- MT. PYRE: MAXIE and ARCHIE kept the ORBS (D-244): no return at the summit (vanilla set VAR_MT_PYRE_STATE 2
+# and showed them there), and the old lady says they never came back (the Act 4 summit end state is set by hand) ---
+expect_var VAR_MT_PYRE_STATE 0
+expect_flag FLAG_HIDE_MT_PYRE_SUMMIT_MAXIE 1
+setvar VAR_MT_PYRE_STATE 1
+setflag FLAG_HIDE_MT_PYRE_SUMMIT_ARCHIE
+setflag FLAG_HIDE_MT_PYRE_SUMMIT_TEAM_AQUA
+warp MAP_MT_PYRE_SUMMIT 23 8
+run 60
+walk UP 6
+press A 2 30
+run 60
+shot f20_old_lady
+press A 2 38
+run 30
+shot f21_old_lady
+press A 2 38
+run 30
+shot f22_old_lady
+mash A 3000
+expect_var VAR_MT_PYRE_STATE 1
+
+# --- Space Center, the other outcome (D-248): the player + Tabitha win with a boosted lead (gParties slot 0:
+# level 100, 999 in every stat, for one battle); the lost run above is the one-Pokémon party mashed ---
+loadstate act5_hideout.ss
+heal
+setflag FLAG_BADGE07_GET
+setflag FLAG_DEFEATED_MOSSDEEP_GYM
+setvar VAR_MOSSDEEP_CITY_STATE 2
+setvar VAR_MOSSDEEP_SPACE_CENTER_STATE 1
+clearflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_TEAM_MAGMA
+clearflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_TEAM_MAGMA
+clearflag FLAG_HIDE_MOSSDEEP_SPACE_CENTER_RIVALS
+clearflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_STEVEN
+setflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_STEVEN
+warp MAP_MOSSDEEP_CITY_SPACE_CENTER_2F 13 2
+run 60
+mash A 60000
+expect_var VAR_MOSSDEEP_SPACE_CENTER_STATE 2
+heal
+setflag FLAG_DRACONID_NO_WHITEOUT
+walk RIGHT 14
+walk DOWN 9
+walk LEFT 7
+run 30
+until @gMain+4 4 @@CB2_UpdatePartyMenu 20000 A 30
+run 60
+press A 2 30
+press A 2 30
+press DOWN 2 20
+press A 2 60
+poke @gParties+54 64
+poke @gParties+56 E7
+poke @gParties+57 3
+poke @gParties+58 E7
+poke @gParties+59 3
+poke @gParties+5A E7
+poke @gParties+5B 3
+poke @gParties+5C E7
+poke @gParties+5D 3
+poke @gParties+5E E7
+poke @gParties+5F 3
+poke @gParties+60 E7
+poke @gParties+61 3
+poke @gParties+62 E7
+poke @gParties+63 3
+mash A 90000
+shot c30_won_after_raid
+expect_opponent TRAINER_STEVEN_MOSSDEEP
+expect_var VAR_MOSSDEEP_SPACE_CENTER_STATE 3
+expect_var VAR_MAGMA_STATE 10
+expect_var VAR_BRENDAN_STATE 5
+expect_flag FLAG_DEFEATED_MAGMA_SPACE_CENTER 1
+expect_flag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_TEAM_MAGMA 1
+expect_var VAR_STEVENS_HOUSE_STATE 1
+# STEVEN's house: HM DIVE for a MAGMA grunt, and he says why (MAGMA wants ARCHIE stopped too)
+warp MAP_MOSSDEEP_CITY_STEVENS_HOUSE 3 6
+run 90
+shot c31_steven_home
+press A 2 38
+run 30
+shot c32_steven_home
+press A 2 38
+run 30
+shot c33_steven_home
+press A 2 38
+run 30
+shot c34_steven_home
+mash A 20000
+expect_flag FLAG_RECEIVED_HM_DIVE 1
+expect_var VAR_STEVENS_HOUSE_STATE 2
+
 clearflag FLAG_DEBUG_NO_ENCOUNTER
 clearflag FLAG_DEBUG_NO_TRAINER_SEE
 clearflag FLAG_DRACONID_NO_WHITEOUT

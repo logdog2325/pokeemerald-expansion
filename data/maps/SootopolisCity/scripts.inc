@@ -34,6 +34,7 @@ SootopolisCity_EventScript_LockGymDoor::
 SootopolisCity_OnTransition:
 	setflag FLAG_VISITED_SOOTOPOLIS_CITY
 	call SootopolisCity_EventScript_DraconidPostgameWallaceOnTransition  @ Draconid Emerald: WALLACE by the CAVE OF ORIGIN after the Hall of Fame (act6.pory, D-252)
+	call SootopolisCity_EventScript_DraconidOnTransition  @ Draconid Emerald: Tabitha and grunts at the turn (act5.pory), Magma's ambush (magma_revenge.pory)
 	call_if_eq VAR_SOOTOPOLIS_CITY_STATE, 1, SootopolisCity_EventScript_HideMapNamePopup
 	call_if_eq VAR_SKY_PILLAR_STATE, 1, SootopolisCity_EventScript_HideMapNamePopup
 	call SootopolisCity_EventScript_SetWeather
@@ -1363,9 +1364,8 @@ SootopolisCity_EventScript_MaxieArchieLeave::
 	setflag FLAG_HIDE_SOOTOPOLIS_CITY_MAXIE
 	setflag FLAG_HIDE_SOOTOPOLIS_CITY_ARCHIE
 	setflag FLAG_SOOTOPOLIS_ARCHIE_MAXIE_LEAVE
-	clearflag FLAG_HIDE_MT_PYRE_SUMMIT_MAXIE
-	clearflag FLAG_HIDE_MT_PYRE_SUMMIT_ARCHIE
-	setvar VAR_MT_PYRE_STATE, 2
+	@ Draconid Emerald: MAXIE and ARCHIE keep the ORBS – no return at MT. PYRE (D-244; the summit's hide flags
+	@ stay set and VAR_MT_PYRE_STATE stays 1)
 	warpsilent MAP_SOOTOPOLIS_CITY, 31, 34
 	waitstate
 	releaseall
@@ -1588,10 +1588,12 @@ SootopolisCity_Text_AfterAllOurScheming:  @ Draconid Emerald
 	.string "everything right again.\p"
 	.string "Fu…\n"
 	.string "Fuhahaha…\p"
-	.string "{PLAYER}. So the DRACONID had one of\n"
-	.string "their own in my ranks all along.\p"
-	.string "I should have seen it. Perhaps it is for\n"
-	.string "the best that someone was watching me.$"
+	.string "…{PLAYER}.\n"
+	.string "Do not think this is over.\p"
+	.string "You took everything I built and threw\n"
+	.string "it into the sea.\p"
+	.string "I will not forget it. And I will not\n"
+	.string "forgive it.$"
 
 SootopolisCity_Text_KyogreCalmDown:
 	.string "ARCHIE: KYOGRE! What's wrong?!\n"
@@ -1607,11 +1609,13 @@ SootopolisCity_Text_TryingMeaninglessToPokemon:  @ Draconid Emerald
 	.string "off to who knows where.\p"
 	.string "The weather in HOENN has returned to\n"
 	.string "its normal state…\p"
-	.string "And MAXIE's star grunt was a mountain\n"
-	.string "dragon tamer all along. Hah!\p"
 	.string "Maybe what we were trying to do was\n"
 	.string "something small, even meaningless, to\l"
-	.string "POKéMON…$"
+	.string "POKéMON…\p"
+	.string "But you, kid. You made fools of MAXIE\n"
+	.string "and me both.\p"
+	.string "MAXIE and I don't agree on much.\n"
+	.string "On you, we might.$"
 
 SootopolisCity_Text_InvolvedWithCrisisComeWithMe:
 	.string "STEVEN: Those POKéMON fighting…\n"
@@ -1658,11 +1662,11 @@ SootopolisCity_Text_SoThatsRayquaza:
 	.string "It's incredible how the two rampaging\n"
 	.string "POKéMON would flee from it in fear…$"
 
-SootopolisCity_Text_MaxieArchieLeft:
-	.string "STEVEN: It looks like both MAXIE and\n"
-	.string "ARCHIE have gone away somewhere.\p"
-	.string "Perhaps they've gone to MT. PYRE to\n"
-	.string "return those ORBS…$"
+SootopolisCity_Text_MaxieArchieLeft:  @ Draconid Emerald: they keep the ORBS (D-244)
+	.string "STEVEN: MAXIE and ARCHIE left\n"
+	.string "together, and the ORBS went with them.\p"
+	.string "That worries me more than either of\n"
+	.string "them alone.$"
 
 SootopolisCity_Text_HaventYouScaledSkyPillar:  @ Draconid Emerald
 	.string "WALLACE: {PLAYER}{KUN}…\p"

@@ -42,6 +42,7 @@ ORDER = [
     "data/scripts/draconid/act3.pory",
     "data/scripts/draconid/act4.pory",
     "data/scripts/draconid/act5.pory",
+    "data/scripts/draconid/magma_revenge.pory",
     "data/scripts/draconid/act6.pory",
     "data/scripts/draconid/act7.pory",
     "data/scripts/draconid/rivals.pory",

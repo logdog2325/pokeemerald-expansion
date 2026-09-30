@@ -151,10 +151,12 @@ MossdeepCity_StevensHouse_Text_YouveEarnedHMDive:  @ Draconid Emerald
 	.string "STEVEN: {PLAYER}{KUN}…\p"
 	.string "As you can see, there's not much here,\n"
 	.string "but this is my home.\p"
-	.string "I won't ask who you really work for. Not\n"
-	.string "yet.\p"
-	.string "But wherever ARCHIE's submarine went,\n"
-	.string "you'll need this to follow.\p"
+	.string "Your MAGMA wants ARCHIE stopped.\n"
+	.string "So do I.\p"
+	.string "For today, that will have to be enough.\p"
+	.string "Whatever sleeps under the sea, I'd\n"
+	.string "rather you reached it before ARCHIE.\p"
+	.string "Don't make me regret it.\p"
 	.string "It's the HIDDEN MACHINE DIVE.$"
 
 MossdeepCity_StevensHouse_Text_ExplainDive:

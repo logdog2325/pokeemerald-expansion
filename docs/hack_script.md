@@ -800,44 +800,65 @@ Draconid Emerald round 1, Act 5 (docs/hack_story.md steps 23–28): the Aqua Hid
 - STEVEN: Then the fuel stays here.
 - …{PLAYER}{KUN}. We meet again.
 - TABITHA: Two against two, then. Here, grunt. Don't embarrass me.
+- COURTNEY: …I will be watching. Both of you.
 - TABITHA healed {PLAYER}'s POKéMON.
 - STEVEN: BRENDAN, with me.
 - BRENDAN: Right behind you!
+- STEVEN lent me a KEY STONE for today. Let's see how MAGMA likes this!
 
 ### `MossdeepCity_SpaceCenter_2F_EventScript_DraconidTagBattle`
 - TABITHA: Well? Pick your POKéMON, grunt!
 
 ### `MossdeepCity_SpaceCenter_2F_EventScript_DraconidFuelSealed`
-- TABITHA: Hehehe! The CHAMPION, beaten!
+- TABITHA: Hehehe! The CHAMPION of HOENN, beaten!
 - Out of the way, STEVEN. The fuel is ours!
+- STEVEN: That will do, TABITHA. Your raid ends here.
+- BRENDAN: Ha! How do you like that, MAGMA?
 - TABITHA: Tch! Useless grunt!
-- …Fine. I'll take the fuel myself!
+- If you'd pulled your weight, that fuel would be ours by now!
+- …Fine. I'll take it myself!
 - SCIENTIST: STEVEN! We did it! The fuel tanks are sealed!
 - We locked them down while they were battling. Nobody can open them now. Not even us!
 - TABITHA: Sealed?! While we were… battling?!
 - STEVEN: The fuel stays where it is, TABITHA.
 - And so do the people who work here. They're behind me.
-- TABITHA: …You kept them busy a long time, grunt.
-- Long enough for this. …Hmph.
+- TABITHA: …You took your sweet time finishing them off, grunt.
+- Long enough for them to lock it all up. …Hmph.
+- COURTNEY: …Battle: won. Fuel: none.
+- Time taken: long. …I will remember that.
+- COURTNEY: …Pathetic. Two against two, and you lost.
+- COURTNEY: …Hold still.
+- COURTNEY healed {PLAYER}'s POKéMON.
+- COURTNEY: Leader MAXIE has no use for grunts who lose. Remember that.
+- TABITHA: The Leader is going to hear about this, grunt. Every word!
 
 ### `MossdeepCity_SpaceCenter_2F_EventScript_DraconidStevenAndBrendan`
-- STEVEN: Your POKéMON fought hard. Let them rest.
-- STEVEN: …{PLAYER}{KUN}. A word, quietly.
-- Those tanks take time to seal. Someone kept TABITHA busy long enough.
-- I know you let us win the important part.
-- BRENDAN: LET us?! STEVEN, you saw it yourself! {PLAYER} battled for MAGMA!
-- BRENDAN: I don't care what you “let” happen, {PLAYER}.
-- You were right there with MAGMA again!
-- That's it. I give up trying to figure you out.
-- STEVEN: He'll understand one day. I hope you'll let him.
+- STEVEN: …{PLAYER}{KUN}. You're the strongest TEAM MAGMA grunt I have ever faced.
+- STEVEN: …{PLAYER}{KUN}. You lost today.
+- Even so, you're the strongest TEAM MAGMA grunt I have ever faced.
+- STEVEN: …Strange. You battle like someone with something to protect.
+- BRENDAN: Something to protect?! STEVEN, we LOST! To MAGMA!
+- BRENDAN: Don't get used to winning, {PLAYER}.
+- Next time, MAGMA doesn't get past me. Not you, not anybody!
+- BRENDAN: STEVEN, don't go easy on them! They're MAGMA!
+- BRENDAN: We beat you, {PLAYER}. Remember that.
+- And tell MAXIE he's next.
+- STEVEN: He cares about this region. So do I.
+- …I wonder what you care about, {PLAYER}{KUN}.
+
+### `MossdeepCity_SpaceCenter_2F_EventScript_DraconidCourtney`
+- COURTNEY: …TABITHA's squad. TABITHA's orders.
+- I observe. You battle. Go.
 
 ### `SeafloorCavern_Room9_EventScript_DraconidNerineReveal`
 - NERINE: You found the way down. I knew you would.
 - NERINE: ARCHIE is below us, with the RED ORB. KYOGRE sleeps under his feet.
 - Before you go down there… no more games. Not between us.
+- NERINE: You've known what I am since MT. CHIMNEY.
+- Now you'll see who I am.
 - NERINE pulled the bandana from her hair and let the AQUA uniform fall away…
 - NERINE: My name really is NERINE. That part was never a lie.
-- I'm DRACONID, like you. The ELDER sent me down the mountain years ago.
+- The ELDER sent me down the mountain years ago.
 - Into AQUA, to watch ARCHIE… and, when your time came, to watch you.
 - NERINE: The ELDER sent me to test you. You passed…
 - …almost.
@@ -853,37 +874,58 @@ Draconid Emerald round 1, Act 5 (docs/hack_story.md steps 23–28): the Aqua Hid
 ### `SootopolisCity_EventScript_DraconidMaxie`
 - MAXIE: {PLAYER}. You came, as I knew you would.
 - Stand here with me. I want you to see this.
-- MAXIE: You again. Have you come to beg for your place back, or to finish this?
-- MAXIE: Humph… Beaten by a child who wore my own colors.
+- MAXIE: So the liar comes back.
+- Good. We are not finished, {PLAYER}.
+- MAXIE: …This changes nothing.
+- You are still a liar, {PLAYER}. And I have not finished with you.
 
 ### `SootopolisCity_EventScript_DraconidTheTurn`
-- MAXIE: Look at them, {PLAYER}. KYOGRE would drown the world, and only GROUDON stands against it.
-- The BLUE ORB failed me once. This time, with your help, I will bring GROUDON under control.
-- When the rain ends, we will shape the land together. Our ideal world, {PLAYER}!
+- MAXIE: Look at them, {PLAYER}.
+- KYOGRE would drown the world, and only GROUDON stands against it.
+- MAXIE: The BLUE ORB failed me once. It will not fail me twice.
+- MAXIE: Go to the water's edge with TABITHA. When GROUDON turns toward us, we take hold of it together.
+- Our ideal world begins today, {PLAYER}.
 - {PLAYER} looked out at GROUDON and KYOGRE, tearing at each other in the storm…
 - …and remembered the ELDER's words.
 - “When the sky splits, you must stand beside RAYQUAZA.”
+- TABITHA: Hey! Grunt! You heard the Leader. Move it!
 - MAXIE: {PLAYER}? What are you waiting for?
 - {PLAYER} pulled off the red hood…
 - …and let the TEAM MAGMA uniform fall to the ground.
-- MAXIE: Those colors… I know them. You are one of the DRACONID.
-- So you were never truly one of us.
+- GRUNT: Wh-what's with that getup?!
+- GRUNT: Those aren't our colors!
+- MAXIE: …
+- MAXIE: Teal and red, and a band of horns. I know those colors.
+- The DRACONID. The clan in the mountains that watches the sky.
+- MAXIE: The METEORITE on MT. CHIMNEY. It did not slip from my machine, did it?
+- I blamed AQUA for that.
+- MAXIE: And the fuel at the SPACE CENTER.
+- TABITHA reported that the tanks were sealed while you battled.
+- MAXIE: I called it bad luck. It was you, every time.
+- TABITHA: No… No, no, no!
+- I vouched for you! I told the Leader you were the best grunt I ever had!
+- TABITHA: Hehe… You were laughing at me the whole time, weren't you?
+- TABITHA: Leader! Let me crush this traitor myself! Right now!
+- MAXIE: Enough.
+- MAXIE: You wore my colors, {PLAYER}. You ate at my table.
+- MAXIE: You stood at my side when I called you my right hand…
+- MAXIE: …and every word was a lie.
 - MAXIE: After everything I gave you?!
-- I trusted you with my plans. I made you my right hand!
-- MAXIE: Very well. I will take GROUDON without you.
-- But first, I will deal with the traitor in my ranks!
+- MAXIE: I will remember this, {PLAYER}. You will pay for every lie you told me.
+- MAXIE: GROUDON can wait. First, the traitor.
 
 ### `SootopolisCity_EventScript_DraconidMultiBattle`
-- ARCHIE: Fufufu! MAXIE's own grunt, turning on him! Now that's a show.
+- ARCHIE: Fufufu! MAXIE's own grunt, a spy for some mountain clan! Now that's a show.
 - But don't get cocky, kid. KYOGRE is still mine to take.
-- MAXIE: For once, ARCHIE, we agree on something.
-- This child stands in both our ways.
+- MAXIE: ARCHIE. This one lied to both of us.
+- Help me finish it, and we settle our own quarrel after.
+- ARCHIE: Heh. For once, MAXIE, we agree on something.
 - ???: {PLAYER}!
 - MAY: We saw everything from the sky! You threw that uniform away right in front of MAXIE!
 - BRENDAN: {PLAYER}… Just who ARE you?
 - MAY: Save it for later, BRENDAN! Two against one isn't fair.
 - {PLAYER}, one of us will fight with you!
-- BRENDAN: Their ADMINS are crossing the water, too.
+- BRENDAN: That ADMIN and his grunts won't just stand there and watch.
 - Whoever doesn't fight here has to hold them back.
 - MAY: {PLAYER}, you're back! We kept them busy for you.
 - Let's try that again! Who's your partner?
@@ -892,20 +934,36 @@ Draconid Emerald round 1, Act 5 (docs/hack_story.md steps 23–28): the Aqua Hid
 - Who will fight beside {PLAYER}?
 - BRENDAN: Me? After all the things I said to you?
 - …All right. Let's go, {PLAYER}!
-- MAY: Then the ADMINS are mine!
-- MAY: BLAZIKEN! Keep them off the island!
+- MAY: Then TABITHA is mine!
+- MAY: BLAZIKEN! Don't let them near MAXIE!
 - MAY: I was hoping you'd say that!
-- BRENDAN: Then I'll take the ADMINS. Don't you dare lose, {PLAYER}!
-- BRENDAN: SCEPTILE, nobody lands on this island!
+- BRENDAN: Then I'll take TABITHA. Don't you dare lose, {PLAYER}!
+- BRENDAN: SCEPTILE, nobody gets past us!
+- TABITHA: Tch! Brats!
 - ARCHIE: Two kids against the leaders of MAGMA and AQUA? Fufufu… Bring it on!
+- MAXIE: No more lies, {PLAYER}. Show me what you really are.
 - Choose the POKéMON that will battle beside your partner!
 - MAXIE: The land is slipping through my fingers…
 - ARCHIE: KYOGRE won't even look at the RED ORB anymore…
-- MAY: Their ADMINS ran off! And you two beat MAXIE and ARCHIE!
-- BRENDAN: The ADMINS turned tail! And you two actually beat them!
+- MAY: TABITHA and his grunts ran off! And you two beat MAXIE and ARCHIE!
+- BRENDAN: TABITHA turned tail! And you two actually beat them!
 
 ### `SootopolisCity_EventScript_DraconidRivalTalk`
 - MAY: We're right here, {PLAYER}. Talk to MAXIE when you're ready!
+
+### `SootopolisCity_EventScript_DraconidTabitha`
+- TABITHA: Hehehe! There's my best grunt.
+- The Leader's been asking for you. Go on, don't keep him waiting!
+- TABITHA: …Don't you dare talk to me, traitor.
+
+### `SootopolisCity_EventScript_DraconidMagmaGrunt1`
+- GRUNT: The Leader says GROUDON will listen to the ORB this time.
+- It has to… right?
+- GRUNT: A DRACONID spy, right in our ranks… And I shared my rations with you!
+
+### `SootopolisCity_EventScript_DraconidMagmaGrunt2`
+- GRUNT: That thing out there is KYOGRE… I'm glad we're up here on the island.
+- GRUNT: Traitor! Don't you come near me!
 
 ### `SootopolisCity_EventScript_DraconidRayquaza`
 - Thunder split the sky over SOOTOPOLIS…
@@ -921,8 +979,8 @@ Draconid Emerald round 1, Act 5 (docs/hack_story.md steps 23–28): the Aqua Hid
 ### `SootopolisCity_EventScript_DraconidElderCall`
 - … … … … … … … … … … … Beep!
 - ELDER: {PLAYER}. It is the ELDER.
-- I felt it from the mountain. The sky has answered.
-- ASTER and NERINE called from the SKY PILLAR, and RAYQUAZA came down to quiet the old ones.
+- I came down to the SKY PILLAR when the sky turned black. NERINE lent me her little talking box.
+- The sky has answered. ASTER and NERINE called, and RAYQUAZA came down to quiet the old ones.
 - ASTER: We did. And tell {PLAYER} I never liked that red uniform anyway.
 - NERINE: Tell {PLAYER} well done. No “almost” this time.
 - ELDER: Hush, both of you.
@@ -955,6 +1013,93 @@ Draconid Emerald round 1, Act 5 (docs/hack_story.md steps 23–28): the Aqua Hid
 - He was asking whether anyone had seen you.
 - I don't know what he wants from you. I think you do.
 - Whatever you really are, {PLAYER}{KUN}… this is the moment to show it.
+
+## data/scripts/draconid/magma_revenge.pory
+
+Draconid Emerald round 1 follow-up (feedback 1.43, 1.47 notes 11–13): Team Magma's revenge, from the Sootopolis reveal (act5.pory) to the POKéMON LEAGUE door. Decisions D-244 … D-249; hooks into vanilla scripts are tagged "@ Draconid Emerald". Every scene runs once the uniform is off (VAR_MAGMA_STATE >= MAGMA_STATE_TURNED) and until the player is CHAMPION; each is marked done by its (last) trainer's defeat flag, so no saved flag or state value is needed. Scene objects use temp flags (D-136), set by the map's OnTransition, and the coord triggers are armed there through a temp var; a lost battle whites out as usual and the scene plays again from its start.  The order the player meets them in (D-247): 1. Sootopolis, stepping out of JUAN's Gym with the RAIN BADGE: two MAGMA grunts (double battle) 2. Ever Grande City, the pool at the top of the waterfall: two grunts on the shore (double battle) 3. Ever Grande City, the POKéMON CENTER door: a grunt who won't let the player heal (sight trainer) 4. Ever Grande City, the steps up to VICTORY ROAD: the AQUA gauntlet, five grunts and SHELLY back to back 5. Ever Grande City, VICTORY ROAD's mouth: MAXIE (battle #2, Mega CAMERUPT) 6. Victory Road B1F, the last ladder up: TABITHA + COURTNEY (double battle, both Mega Evolve) 7. Ever Grande City, out of VICTORY ROAD: a grunt on the stairs (single battle) 8. Ever Grande City, the LEAGUE's forecourt: the last two grunts (double battle) MAXIE's battle #3 (Primal GROUDON, with ARCHIE, at the DRACONID village after the SKY PILLAR) is the finale. Also here: the MT. PYRE old lady's line after the turn (MAXIE and ARCHIE keep the ORBS, D-244). Two trainers together are a two-trainer double battle; with only one POKéMON able to battle, the player gets one single battle after the other instead. The first trainer's flag is cleared when a scene starts, so a loss in the second single battle replays both.
+
+### `SootopolisCity_EventScript_DraconidRevengeAmbush`
+- ???: Hold it right there, TRAITOR!
+- GRUNT: We watched your whole GYM battle from the stands, traitor.
+- GRUNT: The boss gave us one order. You don't reach the LEAGUE!
+- GRUNT: Tch… This isn't over!
+- There's more of us between here and EVER GRANDE. Count on it!
+
+### `EverGrandeCity_EventScript_DraconidShoreAmbush`
+- GRUNT: There! Coming up the waterfall! It's the TRAITOR!
+- GRUNT: You're not setting one foot on EVER GRANDE!
+- GRUNT: Fall back! Fall back!
+
+### `EverGrandeCity_EventScript_DraconidCenterGruntLeaves`
+- GRUNT: Fine! Go heal up.
+- It won't help you. Not with what's waiting up those steps.
+
+### `EverGrandeCity_EventScript_DraconidAquaGauntlet`
+- ???: Now! Surround the kid!
+- GRUNT: So you're the brat who beat MAXIE and ARCHIE in SOOTOPOLIS.
+- GRUNT: Nobody gets up VICTORY ROAD today.
+- We'll take turns. One after another, until you drop!
+- GRUNT: Me first!
+- GRUNT: No time to catch your breath! Next!
+- GRUNT: Looking for a way out? There isn't one!
+- GRUNT: Your POKéMON are getting tired. I can see it!
+- GRUNT: Last one! Then it's the ADMIN's turn!
+- SHELLY: Ahahaha! Still standing after all five? Not bad, kid.
+- SHELLY: Remember me? SHELLY, TEAM AQUA's ADMIN.
+- Last time we met, at the WEATHER INSTITUTE, you were wearing red.
+- SHELLY: ARCHIE sends his regards.
+- SHELLY: He and MAXIE had a long talk after SOOTOPOLIS.
+- For once, the two of them agree on something. And that something is you.
+- SHELLY: Let's see what you have left!
+- SHELLY: Ahaha… Six battles, and you're still on your feet.
+- ARCHIE won't like hearing that.
+- SHELLY: But this isn't the end of it, kid. MAXIE and ARCHIE have long memories.
+
+### `EverGrandeCity_EventScript_DraconidMaxie`
+- MAXIE: {PLAYER}.
+- MAXIE: The road to the LEAGUE runs through this cave. So I waited for you here.
+- MAXIE: My grunts could not stop you. Nor could ARCHIE's. No matter.
+- MAXIE: You will not stand as CHAMPION while my work lies in ruins.
+- MAXIE: Come, liar. Show me the strength you hid from me.
+- MAXIE: …So be it. Go on to your LEAGUE.
+- MAXIE: But this is not over, {PLAYER}. It is far from over.
+- MAXIE: You have a home, do you not? Somewhere in the mountains, under the sky you serve.
+- MAXIE: I wonder how your people would bear it, to lose everything as I have.
+
+### `EverGrandeCity_EventScript_DraconidExitGrunt`
+- GRUNT: You made it through VICTORY ROAD? Past the ADMINS?!
+- GRUNT: Doesn't matter. The boss's orders still stand. You don't reach the LEAGUE!
+- GRUNT: There are two more of us at the door. They won't go easy on you!
+
+### `EverGrandeCity_EventScript_DraconidLeagueGrunts`
+- GRUNT: That's far enough, traitor!
+- GRUNT: The boss said the traitor never reaches that door. Never!
+- GRUNT: We're the last ones. So we're giving it everything!
+- GRUNT: …That's it. That was all of us.
+- GRUNT: Go on, then. Go be CHAMPION.
+- But the boss won't forget you. None of us will.
+
+### `VictoryRoad_B1F_EventScript_DraconidAdmins`
+- ???: Hehehe… Going somewhere?
+- TABITHA: Did you really think the Leader was the last of us?
+- TABITHA: I vouched for you, you know, in front of the Leader and everyone.
+- Now I'm the ADMIN who brought a spy home. Hehe… Everybody knows it.
+- COURTNEY: …And I recruited you. In PETALBURG WOODS.
+- COURTNEY: Error: mine. I do not make the same error twice.
+- COURTNEY: Two of us. Two of your POKéMON. …Begin.
+- TABITHA: Tch… Hehe… Go on, then. Go win your shiny LEAGUE.
+- COURTNEY: …Win. Lose. It does not matter anymore.
+- COURTNEY: MAXIE knows where you come from now.
+- TABITHA: A village up in the mountains, right? Where the dragons nest.
+- COURTNEY: ARCHIE knows, too. …They talk. Every night, they talk.
+- TABITHA: When the Leader comes for your precious DRACONIDS, you'll wish you'd stayed in red.
+- COURTNEY: …The DRACONIDS will pay. All of them.
+
+### `MtPyre_Summit_EventScript_DraconidOldLadyOrbsKept`
+- The ORBS have not come back…
+- Those two men still hold them, the one in red and the one in blue.
+- …You no longer wear their red, I see.
+- I fear the land and the sea have not had their last word.
 
 ## data/scripts/draconid/act6.pory
 
@@ -1779,10 +1924,10 @@ Draconid Emerald round 1 follow-ups (feedback 1.32, 1.34, part of 1.25; D-234 �
 - `MossdeepCity_SpaceCenter_2F_Text_YoureOutnumberedTakeUsOn`: Hold it, rookie! / So you're the one Leader MAXIE promoted? / Hah! The three of us say you got lucky. One after another, right here. / Well? Can you take all three of us?
 - `MossdeepCity_SpaceCenter_2F_Text_GoodAnswer`: Hah! Chicken! Come back when you've got the nerve.
 - `MossdeepCity_SpaceCenter_2F_Text_MaxieWeWillGiveUp`: TABITHA: …Leader MAXIE won't like this. Not one bit. / MAGMA! Fall back!
-- `MossdeepCity_SpaceCenter_2F_Text_StevenThankYouComeSeeMeAtHome`: STEVEN: {PLAYER}{KUN}, please come see me at home after this. / I have something you'll need, wherever ARCHIE has gone. / Oh, yes, I don't live in RUSTBORO CITY. I live right here on this island.
+- `MossdeepCity_SpaceCenter_2F_Text_StevenThankYouComeSeeMeAtHome`: STEVEN: {PLAYER}{KUN}, come see me at home after this. / ARCHIE's submarine is out there somewhere. I can't chase MAXIE and ARCHIE both. / I have something you'll need to follow him. / Oh, yes, I don't live in RUSTBORO CITY. I live right here on this island.
 
 ### MossdeepCity_StevensHouse
-- `MossdeepCity_StevensHouse_Text_YouveEarnedHMDive`: STEVEN: {PLAYER}{KUN}… / As you can see, there's not much here, but this is my home. / I won't ask who you really work for. Not yet. / But wherever ARCHIE's submarine went, you'll need this to follow. / It's the HIDDEN MACHINE DIVE.
+- `MossdeepCity_StevensHouse_Text_YouveEarnedHMDive`: STEVEN: {PLAYER}{KUN}… / As you can see, there's not much here, but this is my home. / Your MAGMA wants ARCHIE stopped. So do I. / For today, that will have to be enough. / Whatever sleeps under the sea, I'd rather you reached it before ARCHIE. / Don't make me regret it. / It's the HIDDEN MACHINE DIVE.
 
 ### MtChimney
 - `MtChimney_Text_Grunt2Intro`: Hold it, rookie! The LEADER's waiting for you at the top. / But nobody walks past me without a test! / We of TEAM MAGMA work hard for everyone's sake. Show me you do, too!
@@ -1922,8 +2067,9 @@ Draconid Emerald round 1 follow-ups (feedback 1.32, 1.34, part of 1.25; D-234 �
 
 ### SootopolisCity
 - `SootopolisCity_Text_YouBroughtFlyingMon`: Oh? You're the one who stood up to that MAGMA man! / Everyone saw you throw off that red uniform. / Well, aren't you amazing!
-- `SootopolisCity_Text_AfterAllOurScheming`: MAXIE: So the super-ancient POKéMON weren't only GROUDON and KYOGRE… / After all our scheming, that one POKéMON's simple action puts everything right again. / Fu… Fuhahaha… / {PLAYER}. So the DRACONID had one of their own in my ranks all along. / I should have seen it. Perhaps it is for the best that someone was watching me.
-- `SootopolisCity_Text_TryingMeaninglessToPokemon`: ARCHIE: KYOGRE and GROUDON both flew off to who knows where. / The weather in HOENN has returned to its normal state… / And MAXIE's star grunt was a mountain dragon tamer all along. Hah! / Maybe what we were trying to do was something small, even meaningless, to POKéMON…
+- `SootopolisCity_Text_AfterAllOurScheming`: MAXIE: So the super-ancient POKéMON weren't only GROUDON and KYOGRE… / After all our scheming, that one POKéMON's simple action puts everything right again. / Fu… Fuhahaha… / …{PLAYER}. Do not think this is over. / You took everything I built and threw it into the sea. / I will not forget it. And I will not forgive it.
+- `SootopolisCity_Text_TryingMeaninglessToPokemon`: ARCHIE: KYOGRE and GROUDON both flew off to who knows where. / The weather in HOENN has returned to its normal state… / Maybe what we were trying to do was something small, even meaningless, to POKéMON… / But you, kid. You made fools of MAXIE and me both. / MAXIE and I don't agree on much. On you, we might.
+- `SootopolisCity_Text_MaxieArchieLeft`: STEVEN: MAXIE and ARCHIE left together, and the ORBS went with them. / That worries me more than either of them alone.
 - `SootopolisCity_Text_HaventYouScaledSkyPillar`: WALLACE: {PLAYER}{KUN}… / The SKY PILLAR's doors are sealed, and I won't open them. / Whatever called RAYQUAZA down, it wasn't me.
 - `SootopolisCity_Text_AquaMagmaDidntMeanHarm`: WALLACE: So you are {PLAYER}{KUN}. STEVEN told me about you. / I saw it all from across the water. A TEAM MAGMA grunt who threw the uniform away, right in front of MAXIE. / And then RAYQUAZA. The SKY PILLAR has been sealed for generations, yet something called it down. / The leaders of MAGMA and AQUA are over there. It wouldn't hurt to hear what they have to say for themselves.
 - `SootopolisCity_Text_ThankYouForHelpAcceptThis`: WALLACE: {PLAYER}{KUN}… My eyes didn't deceive me. / You stood between MAXIE and the storm, and you held on until the sky answered. / SOOTOPOLIS… No, all of HOENN was saved. / On behalf of the people, I thank you. / This is a gift from me. Please accept it.

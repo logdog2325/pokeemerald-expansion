@@ -7,7 +7,8 @@ matrix.py - run the flow tests for every player gender x egg x second starter (2
 Per gender and egg (6 chains, run in parallel): opening -> route103 -> woods (Nerine's team for the egg,
 the Magma sprite for the gender) -> rustboro, then rivals, rivals2, postgame_home, maxie_calls, elite_four, hm_free
 (HM field moves without a Pokémon that knows them), frontier_legends (post-game) and the checks of wild,
-progression, trade_evos, battle_items, rival_calls and fades – none depends on the egg, so only with Deino – then for each
+progression, trade_evos, battle_items, rival_calls, gen49_trainers, magma_revenge (Team Magma's revenge after the
+Sootopolis reveal) and fades – none depends on the egg, so only with Deino – then for each
 second starter second_starter (Tabitha + Prof. Oak's pick), aster
 (Aster's trainer ids for the egg, the Draconid / Magma sprites for the gender), act2 (Nerine's teams for egg x
 second starter; the Totodile runs keep the Devon Goods for Magma), act3 (Aster's and Nerine's teams, the
@@ -75,6 +76,8 @@ def chain(gender, egg, egg_id, root):
         steps.append(("rival_calls", {}))  # the rivals' PokéNav calls by story and reputation (D-243)
         steps.append(("gen49_trainers", {}))  # Gen 4-9 Pokémon on generic trainers and grunts (D-240 - D-242)
         steps.append(("act6", {}))  # the Champion's room, the Hall of Fame, the meteor alert (Act 6)
+        # Team Magma's revenge after the Sootopolis reveal, to the League door (D-244 - D-249)
+        steps.append(("magma_revenge", {"GFX": "DRACONID_" + gender}))
         steps.append(("fades", {}))  # same-screen fades under weather and the day/night tint (D-278)
     for second, value, stone in SECONDS:
         steps.append(("second_starter", {"PICK": value - 1, "SECOND": value, "MAGMA": "MAGMA_" + gender}))

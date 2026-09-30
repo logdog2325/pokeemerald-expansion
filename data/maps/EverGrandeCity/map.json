@@ -20,7 +20,190 @@
       "direction": "left"
     }
   ],
-  "object_events": [],
+  "object_events": [
+    {
+      "local_id": "LOCALID_EVER_GRANDE_SHORE_GRUNT_1",
+      "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_M",
+      "x": 19,
+      "y": 55,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "0x0",
+      "flag": "FLAG_TEMP_11"
+    },
+    {
+      "local_id": "LOCALID_EVER_GRANDE_SHORE_GRUNT_2",
+      "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_F",
+      "x": 21,
+      "y": 55,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "0x0",
+      "flag": "FLAG_TEMP_11"
+    },
+    {
+      "local_id": "LOCALID_EVER_GRANDE_CENTER_GRUNT",
+      "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_M",
+      "x": 26,
+      "y": 49,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "3",
+      "script": "EverGrandeCity_EventScript_DraconidCenterGrunt",
+      "flag": "FLAG_TEMP_12"
+    },
+    {
+      "local_id": "LOCALID_EVER_GRANDE_AQUA_GRUNT_1",
+      "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
+      "x": 17,
+      "y": 50,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "0x0",
+      "flag": "FLAG_TEMP_13"
+    },
+    {
+      "local_id": "LOCALID_EVER_GRANDE_AQUA_GRUNT_2",
+      "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_F",
+      "x": 22,
+      "y": 50,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "0x0",
+      "flag": "FLAG_TEMP_13"
+    },
+    {
+      "local_id": "LOCALID_EVER_GRANDE_AQUA_GRUNT_3",
+      "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
+      "x": 19,
+      "y": 52,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "0x0",
+      "flag": "FLAG_TEMP_13"
+    },
+    {
+      "local_id": "LOCALID_EVER_GRANDE_AQUA_GRUNT_4",
+      "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_F",
+      "x": 17,
+      "y": 48,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "0x0",
+      "flag": "FLAG_TEMP_13"
+    },
+    {
+      "local_id": "LOCALID_EVER_GRANDE_AQUA_GRUNT_5",
+      "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
+      "x": 21,
+      "y": 48,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "0x0",
+      "flag": "FLAG_TEMP_13"
+    },
+    {
+      "local_id": "LOCALID_EVER_GRANDE_SHELLY",
+      "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_F",
+      "x": 18,
+      "y": 44,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "0x0",
+      "flag": "FLAG_TEMP_14"
+    },
+    {
+      "local_id": "LOCALID_EVER_GRANDE_MAXIE",
+      "graphics_id": "OBJ_EVENT_GFX_MAXIE",
+      "x": 18,
+      "y": 41,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "0x0",
+      "flag": "FLAG_TEMP_15"
+    },
+    {
+      "local_id": "LOCALID_EVER_GRANDE_EXIT_GRUNT",
+      "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_F",
+      "x": 26,
+      "y": 24,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "0x0",
+      "flag": "FLAG_TEMP_16"
+    },
+    {
+      "local_id": "LOCALID_EVER_GRANDE_LEAGUE_GRUNT_1",
+      "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_M",
+      "x": 17,
+      "y": 12,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "0x0",
+      "flag": "FLAG_TEMP_17"
+    },
+    {
+      "local_id": "LOCALID_EVER_GRANDE_LEAGUE_GRUNT_2",
+      "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_F",
+      "x": 19,
+      "y": 12,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "0x0",
+      "flag": "FLAG_TEMP_17"
+    }
+  ],
   "warp_events": [
     {
       "x": 18,
@@ -150,6 +333,204 @@
       "var": "VAR_TEMP_1",
       "var_value": "0",
       "script": "EverGrandeCity_EventScript_SetVisitedEverGrande"
+    },
+    {
+      "type": "trigger",
+      "x": 16,
+      "y": 57,
+      "elevation": 0,
+      "var": "VAR_TEMP_2",
+      "var_value": "1",
+      "script": "EverGrandeCity_EventScript_DraconidShoreAmbush"
+    },
+    {
+      "type": "trigger",
+      "x": 17,
+      "y": 57,
+      "elevation": 0,
+      "var": "VAR_TEMP_2",
+      "var_value": "1",
+      "script": "EverGrandeCity_EventScript_DraconidShoreAmbush"
+    },
+    {
+      "type": "trigger",
+      "x": 18,
+      "y": 57,
+      "elevation": 0,
+      "var": "VAR_TEMP_2",
+      "var_value": "1",
+      "script": "EverGrandeCity_EventScript_DraconidShoreAmbush"
+    },
+    {
+      "type": "trigger",
+      "x": 19,
+      "y": 57,
+      "elevation": 0,
+      "var": "VAR_TEMP_2",
+      "var_value": "1",
+      "script": "EverGrandeCity_EventScript_DraconidShoreAmbush"
+    },
+    {
+      "type": "trigger",
+      "x": 20,
+      "y": 57,
+      "elevation": 0,
+      "var": "VAR_TEMP_2",
+      "var_value": "1",
+      "script": "EverGrandeCity_EventScript_DraconidShoreAmbush"
+    },
+    {
+      "type": "trigger",
+      "x": 21,
+      "y": 57,
+      "elevation": 0,
+      "var": "VAR_TEMP_2",
+      "var_value": "1",
+      "script": "EverGrandeCity_EventScript_DraconidShoreAmbush"
+    },
+    {
+      "type": "trigger",
+      "x": 22,
+      "y": 57,
+      "elevation": 0,
+      "var": "VAR_TEMP_2",
+      "var_value": "1",
+      "script": "EverGrandeCity_EventScript_DraconidShoreAmbush"
+    },
+    {
+      "type": "trigger",
+      "x": 23,
+      "y": 57,
+      "elevation": 0,
+      "var": "VAR_TEMP_2",
+      "var_value": "1",
+      "script": "EverGrandeCity_EventScript_DraconidShoreAmbush"
+    },
+    {
+      "type": "trigger",
+      "x": 24,
+      "y": 57,
+      "elevation": 0,
+      "var": "VAR_TEMP_2",
+      "var_value": "1",
+      "script": "EverGrandeCity_EventScript_DraconidShoreAmbush"
+    },
+    {
+      "type": "trigger",
+      "x": 25,
+      "y": 57,
+      "elevation": 0,
+      "var": "VAR_TEMP_2",
+      "var_value": "1",
+      "script": "EverGrandeCity_EventScript_DraconidShoreAmbush"
+    },
+    {
+      "type": "trigger",
+      "x": 26,
+      "y": 57,
+      "elevation": 0,
+      "var": "VAR_TEMP_2",
+      "var_value": "1",
+      "script": "EverGrandeCity_EventScript_DraconidShoreAmbush"
+    },
+    {
+      "type": "trigger",
+      "x": 19,
+      "y": 50,
+      "elevation": 0,
+      "var": "VAR_TEMP_3",
+      "var_value": "1",
+      "script": "EverGrandeCity_EventScript_DraconidAquaGauntlet"
+    },
+    {
+      "type": "trigger",
+      "x": 20,
+      "y": 50,
+      "elevation": 0,
+      "var": "VAR_TEMP_3",
+      "var_value": "1",
+      "script": "EverGrandeCity_EventScript_DraconidAquaGauntlet"
+    },
+    {
+      "type": "trigger",
+      "x": 18,
+      "y": 43,
+      "elevation": 0,
+      "var": "VAR_TEMP_4",
+      "var_value": "1",
+      "script": "EverGrandeCity_EventScript_DraconidMaxie"
+    },
+    {
+      "type": "trigger",
+      "x": 25,
+      "y": 26,
+      "elevation": 0,
+      "var": "VAR_TEMP_5",
+      "var_value": "1",
+      "script": "EverGrandeCity_EventScript_DraconidExitGrunt"
+    },
+    {
+      "type": "trigger",
+      "x": 26,
+      "y": 26,
+      "elevation": 0,
+      "var": "VAR_TEMP_5",
+      "var_value": "1",
+      "script": "EverGrandeCity_EventScript_DraconidExitGrunt"
+    },
+    {
+      "type": "trigger",
+      "x": 27,
+      "y": 26,
+      "elevation": 0,
+      "var": "VAR_TEMP_5",
+      "var_value": "1",
+      "script": "EverGrandeCity_EventScript_DraconidExitGrunt"
+    },
+    {
+      "type": "trigger",
+      "x": 16,
+      "y": 14,
+      "elevation": 0,
+      "var": "VAR_TEMP_6",
+      "var_value": "1",
+      "script": "EverGrandeCity_EventScript_DraconidLeagueGrunts"
+    },
+    {
+      "type": "trigger",
+      "x": 17,
+      "y": 14,
+      "elevation": 0,
+      "var": "VAR_TEMP_6",
+      "var_value": "1",
+      "script": "EverGrandeCity_EventScript_DraconidLeagueGrunts"
+    },
+    {
+      "type": "trigger",
+      "x": 18,
+      "y": 14,
+      "elevation": 0,
+      "var": "VAR_TEMP_6",
+      "var_value": "1",
+      "script": "EverGrandeCity_EventScript_DraconidLeagueGrunts"
+    },
+    {
+      "type": "trigger",
+      "x": 19,
+      "y": 14,
+      "elevation": 0,
+      "var": "VAR_TEMP_6",
+      "var_value": "1",
+      "script": "EverGrandeCity_EventScript_DraconidLeagueGrunts"
+    },
+    {
+      "type": "trigger",
+      "x": 20,
+      "y": 14,
+      "elevation": 0,
+      "var": "VAR_TEMP_6",
+      "var_value": "1",
+      "script": "EverGrandeCity_EventScript_DraconidLeagueGrunts"
     }
   ],
   "bg_events": [

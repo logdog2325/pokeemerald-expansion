@@ -1243,6 +1243,23 @@ give a species. `check_party.py` now resolves species aliases before it takes a 
 | MARIELA | Route110_TrickHousePuzzle7 | route | 4 | 48–50 | Starmie 50 | enhanced |
 | ALVARO | Route110_TrickHousePuzzle7 | route | 4 | 48–50 | Alakazam 50 | enhanced |
 | EVERETT | Route110_TrickHousePuzzle7 | route | 4 | 48–50 | Arcanine 50 | enhanced + Stoutland, Purugly |
+| GRUNT_SOOTOPOLIS_REVENGE_1 | SootopolisCity | grunt | 2 | 48–49 | Mightyena 49 | story |
+| GRUNT_SOOTOPOLIS_REVENGE_2 | SootopolisCity | grunt | 2 | 48–49 | Camerupt 49 | story |
+| GRUNT_EVER_GRANDE_SHORE_1 | EverGrandeCity | grunt | 2 | 49–50 | Crobat 50 | story |
+| GRUNT_EVER_GRANDE_SHORE_2 | EverGrandeCity | grunt | 2 | 49–50 | Magcargo 50 | story |
+| GRUNT_EVER_GRANDE_CENTER | EverGrandeCity | grunt | 3 | 50–51 | Houndoom 51 | story |
+| GRUNT_AQUA_GAUNTLET_1 | EverGrandeCity | grunt | 2 | 48–48 | Mightyena 48 | story |
+| GRUNT_AQUA_GAUNTLET_2 | EverGrandeCity | grunt | 2 | 48–49 | Sharpedo 49 | story |
+| GRUNT_AQUA_GAUNTLET_3 | EverGrandeCity | grunt | 3 | 49–49 | Crawdaunt 49 | story |
+| GRUNT_AQUA_GAUNTLET_4 | EverGrandeCity | grunt | 2 | 49–50 | Lanturn 50 | story |
+| GRUNT_AQUA_GAUNTLET_5 | EverGrandeCity | grunt | 3 | 50–50 | Sharpedo 50 | story |
+| SHELLY_EVER_GRANDE | EverGrandeCity | admin | 4 | 51–53 | Gyarados 53 | story |
+| MAXIE_VICTORY_ROAD | EverGrandeCity | boss | 6 | 55–58 | Camerupt 58 | story |
+| TABITHA_VICTORY_ROAD | VictoryRoad_B1F | admin | 4 | 54–56 | Charizard 56 | story |
+| COURTNEY_VICTORY_ROAD | VictoryRoad_B1F | admin | 4 | 54–56 | Houndoom 56 | story |
+| GRUNT_VICTORY_ROAD_EXIT | EverGrandeCity | grunt | 3 | 53–54 | Mightyena 54 | story |
+| GRUNT_POKEMON_LEAGUE_1 | EverGrandeCity | grunt | 2 | 54–55 | Camerupt 55 | story |
+| GRUNT_POKEMON_LEAGUE_2 | EverGrandeCity | grunt | 2 | 54–55 | Crobat 55 | story |
 
 ### POST (cap none) – After the Champion (no cap)
 

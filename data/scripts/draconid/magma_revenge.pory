@@ -1,0 +1,658 @@
+// Draconid Emerald round 1 follow-up (feedback 1.43, 1.47 notes 11–13): Team Magma's revenge, from the
+// Sootopolis reveal (act5.pory) to the POKéMON LEAGUE door. Decisions D-244 … D-249; hooks into vanilla scripts
+// are tagged "@ Draconid Emerald". Every scene runs once the uniform is off (VAR_MAGMA_STATE >=
+// MAGMA_STATE_TURNED) and until the player is CHAMPION; each is marked done by its (last) trainer's defeat
+// flag, so no saved flag or state value is needed. Scene objects use temp flags (D-136), set by the map's
+// OnTransition, and the coord triggers are armed there through a temp var; a lost battle whites out as usual and
+// the scene plays again from its start.
+//
+// The order the player meets them in (D-247):
+//   1. Sootopolis, stepping out of JUAN's Gym with the RAIN BADGE: two MAGMA grunts (double battle)
+//   2. Ever Grande City, the pool at the top of the waterfall: two grunts on the shore (double battle)
+//   3. Ever Grande City, the POKéMON CENTER door: a grunt who won't let the player heal (sight trainer)
+//   4. Ever Grande City, the steps up to VICTORY ROAD: the AQUA gauntlet, five grunts and SHELLY back to back
+//   5. Ever Grande City, VICTORY ROAD's mouth: MAXIE (battle #2, Mega CAMERUPT)
+//   6. Victory Road B1F, the last ladder up: TABITHA + COURTNEY (double battle, both Mega Evolve)
+//   7. Ever Grande City, out of VICTORY ROAD: a grunt on the stairs (single battle)
+//   8. Ever Grande City, the LEAGUE's forecourt: the last two grunts (double battle)
+// MAXIE's battle #3 (Primal GROUDON, with ARCHIE, at the DRACONID village after the SKY PILLAR) is the finale.
+// Also here: the MT. PYRE old lady's line after the turn (MAXIE and ARCHIE keep the ORBS, D-244).
+// Two trainers together are a two-trainer double battle; with only one POKéMON able to battle, the player gets
+// one single battle after the other instead. The first trainer's flag is cleared when a scene starts, so a loss in
+// the second single battle replays both.
+
+// ---------------------------------------------------------------------------
+// 1. Sootopolis: out of JUAN's Gym (31, 32) with the RAIN BADGE. The first step off (31, 33) – to (30, 33),
+// (32, 33) or (31, 34) – triggers it (VAR_TEMP_3 1, armed by SootopolisCity_EventScript_DraconidOnTransition in
+// act5.pory). The grunts watched the Gym battle and come out of the door behind the player.
+// ---------------------------------------------------------------------------
+
+script SootopolisCity_EventScript_DraconidRevengeOnTransition {
+    setflag(FLAG_TEMP_12)
+    if (flag(FLAG_BADGE08_GET) && var(VAR_MAGMA_STATE) >= MAGMA_STATE_TURNED && !flag(FLAG_IS_CHAMPION)
+        && !defeated(TRAINER_GRUNT_SOOTOPOLIS_REVENGE_2)) {
+        setvar(VAR_TEMP_3, 1)
+    }
+}
+
+script SootopolisCity_EventScript_DraconidRevengeAmbush {
+    lockall
+    getplayerxy(VAR_TEMP_0, VAR_TEMP_1)
+    applymovement(LOCALID_PLAYER, Common_Movement_ExclamationMark)
+    waitmovement(0)
+    msgbox(format("???: Hold it right there, TRAITOR!"))
+    closemessage
+    if (var(VAR_TEMP_0) == 30) {
+        applymovement(LOCALID_PLAYER, SootopolisCity_Movement_DraconidRevengeFromWest)
+    } elif (var(VAR_TEMP_0) == 32) {
+        applymovement(LOCALID_PLAYER, SootopolisCity_Movement_DraconidRevengeFromEast)
+    } else {
+        applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp)
+    }
+    waitmovement(0)
+    playbgm(MUS_ENCOUNTER_MAGMA, FALSE)
+    opendoor(31, 32)
+    waitdooranim
+    clearflag(FLAG_TEMP_12)
+    addobject(LOCALID_SOOTOPOLIS_REVENGE_GRUNT_1)
+    applymovement(LOCALID_SOOTOPOLIS_REVENGE_GRUNT_1, SootopolisCity_Movement_DraconidRevengeGrunt1Out)
+    waitmovement(0)
+    addobject(LOCALID_SOOTOPOLIS_REVENGE_GRUNT_2)
+    applymovement(LOCALID_SOOTOPOLIS_REVENGE_GRUNT_2, SootopolisCity_Movement_DraconidRevengeGrunt2Out)
+    waitmovement(0)
+    closedoor(31, 32)
+    waitdooranim
+    msgbox(format("GRUNT: We watched your whole GYM battle from the stands, traitor."))
+    msgbox(format("GRUNT: The boss gave us one order. You don't reach the LEAGUE!"))
+    closemessage
+    cleartrainerflag(TRAINER_GRUNT_SOOTOPOLIS_REVENGE_1)
+    special(HasEnoughMonsForDoubleBattle)
+    if (var(VAR_RESULT) == PLAYER_HAS_TWO_USABLE_MONS) {
+        trainerbattle_two_trainers_no_intro(TRAINER_GRUNT_SOOTOPOLIS_REVENGE_1, SootopolisCity_Text_DraconidRevengeGrunt1Defeat, TRAINER_GRUNT_SOOTOPOLIS_REVENGE_2, SootopolisCity_Text_DraconidRevengeGrunt2Defeat)
+    } else {
+        trainerbattle_no_intro(TRAINER_GRUNT_SOOTOPOLIS_REVENGE_1, SootopolisCity_Text_DraconidRevengeGrunt1Defeat)
+        trainerbattle_no_intro(TRAINER_GRUNT_SOOTOPOLIS_REVENGE_2, SootopolisCity_Text_DraconidRevengeGrunt2Defeat)
+    }
+    msgbox(format("GRUNT: Tch… This isn't over!\p"
+                  "There's more of us between here and EVER GRANDE. Count on it!"))
+    closemessage
+    fadescreenswapbuffers(FADE_TO_BLACK)
+    removeobject(LOCALID_SOOTOPOLIS_REVENGE_GRUNT_1)
+    removeobject(LOCALID_SOOTOPOLIS_REVENGE_GRUNT_2)
+    setvar(VAR_TEMP_3, 0)
+    fadescreenswapbuffers(FADE_FROM_BLACK)
+    savebgm(MUS_DUMMY)
+    fadedefaultbgm
+    releaseall
+}
+
+text SootopolisCity_Text_DraconidRevengeGrunt1Defeat {
+    format("GRUNT: The spy's still this strong?!")
+}
+
+text SootopolisCity_Text_DraconidRevengeGrunt2Defeat {
+    format("GRUNT: We trusted you!")
+}
+
+// from (30, 33) / (32, 33) to (31, 34), facing the Gym door
+movement SootopolisCity_Movement_DraconidRevengeFromWest {
+    walk_down
+    walk_right
+    face_up
+}
+
+movement SootopolisCity_Movement_DraconidRevengeFromEast {
+    walk_down
+    walk_left
+    face_up
+}
+
+// out of the Gym door (31, 32) to (30, 33) and (32, 33), beside the player at (31, 34)
+movement SootopolisCity_Movement_DraconidRevengeGrunt1Out {
+    walk_down
+    walk_left
+    face_down
+}
+
+movement SootopolisCity_Movement_DraconidRevengeGrunt2Out {
+    walk_down
+    walk_right
+    face_down
+}
+
+// ---------------------------------------------------------------------------
+// Ever Grande City (hook in data/maps/EverGrandeCity/scripts.inc). Temp flags hide the scene objects, temp
+// vars arm the coord triggers (VAR_TEMP_1 is vanilla's "visited" trigger):
+//   FLAG_TEMP_11 / VAR_TEMP_2  the two shore grunts (19, 55), (21, 55); triggers on the pool row 57
+//   FLAG_TEMP_12               the grunt beside the POKéMON CENTER door (26, 49), a sight trainer
+//   FLAG_TEMP_13, _14 / VAR_TEMP_3  the AQUA gauntlet (five grunts, SHELLY); triggers at the top of the steps (19, 50), (20, 50)
+//   FLAG_TEMP_15 / VAR_TEMP_4  MAXIE at VICTORY ROAD's mouth (18, 41); trigger (18, 43)
+//   FLAG_TEMP_16 / VAR_TEMP_5  the grunt out of VICTORY ROAD (26, 24); triggers on the stairs (25..27, 26)
+//   FLAG_TEMP_17 / VAR_TEMP_6  the last two grunts (17, 12), (19, 12); triggers across the forecourt (16..20, 14)
+// ---------------------------------------------------------------------------
+
+script EverGrandeCity_EventScript_DraconidRevengeOnTransition {
+    setflag(FLAG_TEMP_13)
+    setflag(FLAG_TEMP_14)
+    setflag(FLAG_TEMP_15)
+    if (var(VAR_MAGMA_STATE) < MAGMA_STATE_TURNED || flag(FLAG_IS_CHAMPION)) {
+        setflag(FLAG_TEMP_11)
+        setflag(FLAG_TEMP_12)
+        setflag(FLAG_TEMP_16)
+        setflag(FLAG_TEMP_17)
+        return
+    }
+    if (defeated(TRAINER_GRUNT_EVER_GRANDE_SHORE_2)) {
+        setflag(FLAG_TEMP_11)
+    } else {
+        setvar(VAR_TEMP_2, 1)
+    }
+    if (defeated(TRAINER_GRUNT_EVER_GRANDE_CENTER)) {
+        setflag(FLAG_TEMP_12)
+    }
+    if (!defeated(TRAINER_SHELLY_EVER_GRANDE)) {
+        setvar(VAR_TEMP_3, 1)
+    }
+    if (!defeated(TRAINER_MAXIE_VICTORY_ROAD)) {
+        setvar(VAR_TEMP_4, 1)
+    }
+    if (defeated(TRAINER_GRUNT_VICTORY_ROAD_EXIT)) {
+        setflag(FLAG_TEMP_16)
+    } else {
+        setvar(VAR_TEMP_5, 1)
+    }
+    if (defeated(TRAINER_GRUNT_POKEMON_LEAGUE_2)) {
+        setflag(FLAG_TEMP_17)
+    } else {
+        setvar(VAR_TEMP_6, 1)
+    }
+}
+
+// ---------------------------------------------------------------------------
+// 2. The shore: the player surfs up the waterfall; on the pool (row 57, x 16..26) the two grunts waiting on the
+// landing (19, 55), (21, 55) call out. The battle is across the water; then they run up the steps.
+// ---------------------------------------------------------------------------
+
+script EverGrandeCity_EventScript_DraconidShoreAmbush {
+    lockall
+    playbgm(MUS_ENCOUNTER_MAGMA, FALSE)
+    applymovement(LOCALID_EVER_GRANDE_SHORE_GRUNT_1, Common_Movement_ExclamationMark)
+    applymovement(LOCALID_EVER_GRANDE_SHORE_GRUNT_2, Common_Movement_ExclamationMark)
+    waitmovement(0)
+    msgbox(format("GRUNT: There! Coming up the waterfall!\nIt's the TRAITOR!"))
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp)
+    waitmovement(0)
+    msgbox(format("GRUNT: You're not setting one foot on EVER GRANDE!"))
+    closemessage
+    cleartrainerflag(TRAINER_GRUNT_EVER_GRANDE_SHORE_1)
+    special(HasEnoughMonsForDoubleBattle)
+    if (var(VAR_RESULT) == PLAYER_HAS_TWO_USABLE_MONS) {
+        trainerbattle_two_trainers_no_intro(TRAINER_GRUNT_EVER_GRANDE_SHORE_1, EverGrandeCity_Text_DraconidShoreGrunt1Defeat, TRAINER_GRUNT_EVER_GRANDE_SHORE_2, EverGrandeCity_Text_DraconidShoreGrunt2Defeat)
+    } else {
+        trainerbattle_no_intro(TRAINER_GRUNT_EVER_GRANDE_SHORE_1, EverGrandeCity_Text_DraconidShoreGrunt1Defeat)
+        trainerbattle_no_intro(TRAINER_GRUNT_EVER_GRANDE_SHORE_2, EverGrandeCity_Text_DraconidShoreGrunt2Defeat)
+    }
+    msgbox(format("GRUNT: Fall back! Fall back!"))
+    closemessage
+    applymovement(LOCALID_EVER_GRANDE_SHORE_GRUNT_1, EverGrandeCity_Movement_DraconidShoreGrunt1Flees)
+    applymovement(LOCALID_EVER_GRANDE_SHORE_GRUNT_2, EverGrandeCity_Movement_DraconidShoreGrunt2Flees)
+    waitmovement(0)
+    removeobject(LOCALID_EVER_GRANDE_SHORE_GRUNT_1)
+    removeobject(LOCALID_EVER_GRANDE_SHORE_GRUNT_2)
+    setvar(VAR_TEMP_2, 0)
+    savebgm(MUS_DUMMY)
+    fadedefaultbgm
+    releaseall
+}
+
+text EverGrandeCity_Text_DraconidShoreGrunt1Defeat {
+    format("GRUNT: Knocked right back into the sea…")
+}
+
+text EverGrandeCity_Text_DraconidShoreGrunt2Defeat {
+    format("GRUNT: Why do we keep losing to you?!")
+}
+
+// up the steps (19, 54) / (20, 54) and out of sight above the second flight
+movement EverGrandeCity_Movement_DraconidShoreGrunt1Flees {
+    walk_fast_up * 5
+}
+
+movement EverGrandeCity_Movement_DraconidShoreGrunt2Flees {
+    walk_fast_left
+    walk_fast_up * 5
+}
+
+// ---------------------------------------------------------------------------
+// 3. The POKéMON CENTER door (27, 48): a grunt stands beside it (26, 49), a sight trainer facing the only tile in
+// front of the door (27, 49), so whoever goes in (or lands there by FLY) is seen; beaten, he leaves and the player
+// can heal before the steps up to VICTORY ROAD. He doesn't stand on (27, 49) itself: FLY and a whiteout at this
+// POKéMON CENTER put the player there.
+// ---------------------------------------------------------------------------
+
+script EverGrandeCity_EventScript_DraconidCenterGrunt {
+    trainerbattle_single(TRAINER_GRUNT_EVER_GRANDE_CENTER, EverGrandeCity_Text_DraconidCenterGruntIntro, EverGrandeCity_Text_DraconidCenterGruntDefeat, EverGrandeCity_EventScript_DraconidCenterGruntLeaves)
+    releaseall
+}
+
+script EverGrandeCity_EventScript_DraconidCenterGruntLeaves {
+    msgbox(format("GRUNT: Fine! Go heal up.\p"
+                  "It won't help you. Not with what's waiting up those steps."))
+    closemessage
+    fadescreenswapbuffers(FADE_TO_BLACK)
+    removeobject(LOCALID_EVER_GRANDE_CENTER_GRUNT)
+    fadescreenswapbuffers(FADE_FROM_BLACK)
+    releaseall
+}
+
+text EverGrandeCity_Text_DraconidCenterGruntIntro {
+    format("GRUNT: Going to heal up, traitor?\nNot while I'm standing here!")
+}
+
+text EverGrandeCity_Text_DraconidCenterGruntDefeat {
+    format("GRUNT: Ugh… I was supposed to wear you down!")
+}
+
+// ---------------------------------------------------------------------------
+// 4. The AQUA gauntlet (D-245): at the top of the steps (19, 50) / (20, 50) five AQUA grunts spring out of the
+// flowers and surround the player, then SHELLY walks down from VICTORY ROAD's mouth. Six battles back to back
+// with no healing and no way out; the player is sent by ARCHIE and MAXIE's pact. A loss whites out and the whole
+// gauntlet starts again from the first grunt (their flags are cleared here); SHELLY's flag marks it done.
+// ---------------------------------------------------------------------------
+
+script EverGrandeCity_EventScript_DraconidAquaGauntlet {
+    lockall
+    getplayerxy(VAR_TEMP_0, VAR_TEMP_1)
+    if (var(VAR_TEMP_0) == 20) {
+        applymovement(LOCALID_PLAYER, Common_Movement_WalkLeft)
+        waitmovement(0)
+    }
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp)
+    waitmovement(0)
+    cleartrainerflag(TRAINER_GRUNT_AQUA_GAUNTLET_1)
+    cleartrainerflag(TRAINER_GRUNT_AQUA_GAUNTLET_2)
+    cleartrainerflag(TRAINER_GRUNT_AQUA_GAUNTLET_3)
+    cleartrainerflag(TRAINER_GRUNT_AQUA_GAUNTLET_4)
+    cleartrainerflag(TRAINER_GRUNT_AQUA_GAUNTLET_5)
+    playbgm(MUS_ENCOUNTER_AQUA, FALSE)
+    msgbox(format("???: Now! Surround the kid!"))
+    closemessage
+    clearflag(FLAG_TEMP_13)
+    addobject(LOCALID_EVER_GRANDE_AQUA_GRUNT_1)
+    addobject(LOCALID_EVER_GRANDE_AQUA_GRUNT_2)
+    addobject(LOCALID_EVER_GRANDE_AQUA_GRUNT_3)
+    addobject(LOCALID_EVER_GRANDE_AQUA_GRUNT_4)
+    addobject(LOCALID_EVER_GRANDE_AQUA_GRUNT_5)
+    playse(SE_PIN)
+    applymovement(LOCALID_PLAYER, Common_Movement_ExclamationMark)
+    applymovement(LOCALID_EVER_GRANDE_AQUA_GRUNT_1, EverGrandeCity_Movement_DraconidAquaStepRight)
+    applymovement(LOCALID_EVER_GRANDE_AQUA_GRUNT_2, EverGrandeCity_Movement_DraconidAquaStepLeft)
+    applymovement(LOCALID_EVER_GRANDE_AQUA_GRUNT_3, Common_Movement_WalkInPlaceFasterUp)
+    applymovement(LOCALID_EVER_GRANDE_AQUA_GRUNT_4, EverGrandeCity_Movement_DraconidAquaStepDown)
+    applymovement(LOCALID_EVER_GRANDE_AQUA_GRUNT_5, EverGrandeCity_Movement_DraconidAquaStepDown)
+    waitmovement(0)
+    msgbox(format("GRUNT: So you're the brat who beat MAXIE and ARCHIE in SOOTOPOLIS."))
+    msgbox(format("GRUNT: Nobody gets up VICTORY ROAD today.\p"
+                  "We'll take turns. One after another, until you drop!"))
+    closemessage
+    // grunt 1, left
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft)
+    waitmovement(0)
+    msgbox(format("GRUNT: Me first!"))
+    closemessage
+    trainerbattle_no_intro(TRAINER_GRUNT_AQUA_GAUNTLET_1, EverGrandeCity_Text_DraconidAquaGrunt1Defeat)
+    // grunt 2, right
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight)
+    waitmovement(0)
+    msgbox(format("GRUNT: No time to catch your breath! Next!"))
+    closemessage
+    trainerbattle_no_intro(TRAINER_GRUNT_AQUA_GAUNTLET_2, EverGrandeCity_Text_DraconidAquaGrunt2Defeat)
+    // grunt 3, behind, on the steps
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterDown)
+    waitmovement(0)
+    msgbox(format("GRUNT: Looking for a way out? There isn't one!"))
+    closemessage
+    trainerbattle_no_intro(TRAINER_GRUNT_AQUA_GAUNTLET_3, EverGrandeCity_Text_DraconidAquaGrunt3Defeat)
+    // grunt 4, up and left
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp)
+    waitmovement(0)
+    msgbox(format("GRUNT: Your POKéMON are getting tired.\nI can see it!"))
+    closemessage
+    trainerbattle_no_intro(TRAINER_GRUNT_AQUA_GAUNTLET_4, EverGrandeCity_Text_DraconidAquaGrunt4Defeat)
+    // grunt 5, up and right
+    msgbox(format("GRUNT: Last one! Then it's the ADMIN's turn!"))
+    closemessage
+    trainerbattle_no_intro(TRAINER_GRUNT_AQUA_GAUNTLET_5, EverGrandeCity_Text_DraconidAquaGrunt5Defeat)
+    // SHELLY
+    clearflag(FLAG_TEMP_14)
+    addobject(LOCALID_EVER_GRANDE_SHELLY)
+    applymovement(LOCALID_EVER_GRANDE_SHELLY, EverGrandeCity_Movement_DraconidShellyWalksDown)
+    waitmovement(0)
+    msgbox(format("SHELLY: Ahahaha! Still standing after all five? Not bad, kid."))
+    msgbox(format("SHELLY: Remember me? SHELLY, TEAM AQUA's ADMIN.\p"
+                  "Last time we met, at the WEATHER INSTITUTE, you were wearing red."))
+    msgbox(format("SHELLY: ARCHIE sends his regards."))
+    msgbox(format("SHELLY: He and MAXIE had a long talk after SOOTOPOLIS.\p"
+                  "For once, the two of them agree on something. And that something is you."))
+    msgbox(format("SHELLY: Let's see what you have left!"))
+    closemessage
+    trainerbattle_no_intro(TRAINER_SHELLY_EVER_GRANDE, EverGrandeCity_Text_DraconidShellyDefeat)
+    msgbox(format("SHELLY: Ahaha… Six battles, and you're still on your feet.\p"
+                  "ARCHIE won't like hearing that."))
+    msgbox(format("SHELLY: But this isn't the end of it, kid.\nMAXIE and ARCHIE have long memories."))
+    closemessage
+    fadescreenswapbuffers(FADE_TO_BLACK)
+    removeobject(LOCALID_EVER_GRANDE_AQUA_GRUNT_1)
+    removeobject(LOCALID_EVER_GRANDE_AQUA_GRUNT_2)
+    removeobject(LOCALID_EVER_GRANDE_AQUA_GRUNT_3)
+    removeobject(LOCALID_EVER_GRANDE_AQUA_GRUNT_4)
+    removeobject(LOCALID_EVER_GRANDE_AQUA_GRUNT_5)
+    removeobject(LOCALID_EVER_GRANDE_SHELLY)
+    setvar(VAR_TEMP_3, 0)
+    fadescreenswapbuffers(FADE_FROM_BLACK)
+    savebgm(MUS_DUMMY)
+    fadedefaultbgm
+    releaseall
+}
+
+text EverGrandeCity_Text_DraconidAquaGrunt1Defeat {
+    format("GRUNT: Hey! I was supposed to\nwear you down!")
+}
+
+text EverGrandeCity_Text_DraconidAquaGrunt2Defeat {
+    format("GRUNT: Grr… Somebody else take over!")
+}
+
+text EverGrandeCity_Text_DraconidAquaGrunt3Defeat {
+    format("GRUNT: How are you still going?!")
+}
+
+text EverGrandeCity_Text_DraconidAquaGrunt4Defeat {
+    format("GRUNT: Guess they're not THAT tired…")
+}
+
+text EverGrandeCity_Text_DraconidAquaGrunt5Defeat {
+    format("GRUNT: SHELLY! Help!")
+}
+
+text EverGrandeCity_Text_DraconidShellyDefeat {
+    format("SHELLY: Ahaha! Well, aren't you something!")
+}
+
+// the grunts close in: (17, 50) and (22, 50) on the player's row, (17, 48) and (21, 48) above
+movement EverGrandeCity_Movement_DraconidAquaStepRight {
+    walk_right
+    face_right
+}
+
+movement EverGrandeCity_Movement_DraconidAquaStepLeft {
+    walk_left * 2
+    face_left
+}
+
+movement EverGrandeCity_Movement_DraconidAquaStepDown {
+    walk_down
+    face_down
+}
+
+// SHELLY from VICTORY ROAD's mouth (18, 44) down the path to (19, 47), in front of the player (19, 50)
+movement EverGrandeCity_Movement_DraconidShellyWalksDown {
+    walk_down
+    walk_right
+    walk_down * 2
+    face_down
+}
+
+// ---------------------------------------------------------------------------
+// 5. MAXIE, battle #2 (D-247): at VICTORY ROAD's mouth (18, 41). The only way in is (18, 42) from (18, 43), where
+// the trigger is; he walks out of the cave, fights (Mega CAMERUPT) and goes back into the dark, with a word
+// about the player's home. A loss whites out; he waits again.
+// ---------------------------------------------------------------------------
+
+script EverGrandeCity_EventScript_DraconidMaxie {
+    lockall
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp)
+    waitmovement(0)
+    playbgm(MUS_ENCOUNTER_MAGMA, FALSE)
+    clearflag(FLAG_TEMP_15)
+    addobject(LOCALID_EVER_GRANDE_MAXIE)
+    applymovement(LOCALID_EVER_GRANDE_MAXIE, Common_Movement_WalkDown)
+    waitmovement(0)
+    msgbox(format("MAXIE: {PLAYER}."))
+    msgbox(format("MAXIE: The road to the LEAGUE runs through this cave. So I waited for you here."))
+    msgbox(format("MAXIE: My grunts could not stop you.\nNor could ARCHIE's. No matter."))
+    msgbox(format("MAXIE: You will not stand as CHAMPION while my work lies in ruins."))
+    msgbox(format("MAXIE: Come, liar.\nShow me the strength you hid from me."))
+    closemessage
+    trainerbattle_no_intro(TRAINER_MAXIE_VICTORY_ROAD, EverGrandeCity_Text_DraconidMaxieDefeat)
+    msgbox(format("MAXIE: …So be it.\nGo on to your LEAGUE."))
+    msgbox(format("MAXIE: But this is not over, {PLAYER}.\nIt is far from over."))
+    msgbox(format("MAXIE: You have a home, do you not?\nSomewhere in the mountains, under the sky you serve."))
+    msgbox(format("MAXIE: I wonder how your people would bear it, to lose everything as I have."))
+    closemessage
+    applymovement(LOCALID_EVER_GRANDE_MAXIE, Common_Movement_WalkUp)
+    waitmovement(0)
+    removeobject(LOCALID_EVER_GRANDE_MAXIE)
+    setvar(VAR_TEMP_4, 0)
+    savebgm(MUS_DUMMY)
+    fadedefaultbgm
+    releaseall
+}
+
+text EverGrandeCity_Text_DraconidMaxieDefeat {
+    format("Again… Beaten by you again.")
+}
+
+// ---------------------------------------------------------------------------
+// 7. Out of VICTORY ROAD: a grunt waits at the top of the stairs (26, 24); triggers on the stairs (25..27, 26),
+// the only way north. 8. The LEAGUE's forecourt: the last two grunts (17, 12), (19, 12); triggers across
+// (16..20, 14), the only way to the door. MAXIE's standing order still holds for them.
+// ---------------------------------------------------------------------------
+
+script EverGrandeCity_EventScript_DraconidExitGrunt {
+    lockall
+    getplayerxy(VAR_TEMP_0, VAR_TEMP_1)
+    playbgm(MUS_ENCOUNTER_MAGMA, FALSE)
+    applymovement(LOCALID_EVER_GRANDE_EXIT_GRUNT, Common_Movement_ExclamationMark)
+    waitmovement(0)
+    if (var(VAR_TEMP_0) == 25) {
+        applymovement(LOCALID_PLAYER, Common_Movement_WalkRight)
+    } elif (var(VAR_TEMP_0) == 27) {
+        applymovement(LOCALID_PLAYER, Common_Movement_WalkLeft)
+    }
+    waitmovement(0)
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp)
+    applymovement(LOCALID_EVER_GRANDE_EXIT_GRUNT, Common_Movement_WalkDown)
+    waitmovement(0)
+    msgbox(format("GRUNT: You made it through VICTORY ROAD? Past the ADMINS?!"))
+    msgbox(format("GRUNT: Doesn't matter. The boss's orders still stand. You don't reach the LEAGUE!"))
+    closemessage
+    trainerbattle_no_intro(TRAINER_GRUNT_VICTORY_ROAD_EXIT, EverGrandeCity_Text_DraconidExitGruntDefeat)
+    msgbox(format("GRUNT: There are two more of us at the door.\nThey won't go easy on you!"))
+    closemessage
+    fadescreenswapbuffers(FADE_TO_BLACK)
+    removeobject(LOCALID_EVER_GRANDE_EXIT_GRUNT)
+    setvar(VAR_TEMP_5, 0)
+    fadescreenswapbuffers(FADE_FROM_BLACK)
+    savebgm(MUS_DUMMY)
+    fadedefaultbgm
+    releaseall
+}
+
+text EverGrandeCity_Text_DraconidExitGruntDefeat {
+    format("GRUNT: How is anyone this strong?")
+}
+
+script EverGrandeCity_EventScript_DraconidLeagueGrunts {
+    lockall
+    getplayerxy(VAR_TEMP_0, VAR_TEMP_1)
+    playbgm(MUS_ENCOUNTER_MAGMA, FALSE)
+    applymovement(LOCALID_EVER_GRANDE_LEAGUE_GRUNT_1, Common_Movement_ExclamationMark)
+    applymovement(LOCALID_EVER_GRANDE_LEAGUE_GRUNT_2, Common_Movement_ExclamationMark)
+    waitmovement(0)
+    msgbox(format("GRUNT: That's far enough, traitor!"))
+    closemessage
+    switch (var(VAR_TEMP_0)) {
+        case 16: applymovement(LOCALID_PLAYER, EverGrandeCity_Movement_DraconidLeagueFrom16)
+        case 17: applymovement(LOCALID_PLAYER, Common_Movement_WalkRight)
+        case 19: applymovement(LOCALID_PLAYER, Common_Movement_WalkLeft)
+        case 20: applymovement(LOCALID_PLAYER, EverGrandeCity_Movement_DraconidLeagueFrom20)
+    }
+    waitmovement(0)
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp)
+    applymovement(LOCALID_EVER_GRANDE_LEAGUE_GRUNT_1, Common_Movement_WalkDown)
+    applymovement(LOCALID_EVER_GRANDE_LEAGUE_GRUNT_2, Common_Movement_WalkDown)
+    waitmovement(0)
+    msgbox(format("GRUNT: The boss said the traitor never reaches that door. Never!"))
+    msgbox(format("GRUNT: We're the last ones.\nSo we're giving it everything!"))
+    closemessage
+    cleartrainerflag(TRAINER_GRUNT_POKEMON_LEAGUE_1)
+    special(HasEnoughMonsForDoubleBattle)
+    if (var(VAR_RESULT) == PLAYER_HAS_TWO_USABLE_MONS) {
+        trainerbattle_two_trainers_no_intro(TRAINER_GRUNT_POKEMON_LEAGUE_1, EverGrandeCity_Text_DraconidLeagueGrunt1Defeat, TRAINER_GRUNT_POKEMON_LEAGUE_2, EverGrandeCity_Text_DraconidLeagueGrunt2Defeat)
+    } else {
+        trainerbattle_no_intro(TRAINER_GRUNT_POKEMON_LEAGUE_1, EverGrandeCity_Text_DraconidLeagueGrunt1Defeat)
+        trainerbattle_no_intro(TRAINER_GRUNT_POKEMON_LEAGUE_2, EverGrandeCity_Text_DraconidLeagueGrunt2Defeat)
+    }
+    msgbox(format("GRUNT: …That's it. That was all of us."))
+    msgbox(format("GRUNT: Go on, then. Go be CHAMPION.\p"
+                  "But the boss won't forget you.\nNone of us will."))
+    closemessage
+    fadescreenswapbuffers(FADE_TO_BLACK)
+    removeobject(LOCALID_EVER_GRANDE_LEAGUE_GRUNT_1)
+    removeobject(LOCALID_EVER_GRANDE_LEAGUE_GRUNT_2)
+    setvar(VAR_TEMP_6, 0)
+    fadescreenswapbuffers(FADE_FROM_BLACK)
+    savebgm(MUS_DUMMY)
+    fadedefaultbgm
+    releaseall
+}
+
+text EverGrandeCity_Text_DraconidLeagueGrunt1Defeat {
+    format("GRUNT: The boss is gonna kill us…")
+}
+
+text EverGrandeCity_Text_DraconidLeagueGrunt2Defeat {
+    format("GRUNT: Not even at the very end…")
+}
+
+// from (16, 14) / (20, 14) to (18, 14), between the grunts at (17, 13) and (19, 13)
+movement EverGrandeCity_Movement_DraconidLeagueFrom16 {
+    walk_right * 2
+}
+
+movement EverGrandeCity_Movement_DraconidLeagueFrom20 {
+    walk_left * 2
+}
+
+// ---------------------------------------------------------------------------
+// 6. Victory Road B1F: TABITHA and COURTNEY (D-246). The last ladder up to 1F (20, 21) is only reached through the
+// one-tile column x 22 (rows 20–26); the trigger (22, 23) sits in it. They come down the ladder, block it and
+// battle together (a two-trainer double; both Mega Evolve), then point at the DRACONID village and climb back
+// up. FLAG_TEMP_18 hides them (FLAG_TEMP_11 … _1F but 18 belong to the map's boulders and rocks); VAR_TEMP_2 arms
+// the trigger. A loss whites out and the scene plays again.
+// ---------------------------------------------------------------------------
+
+script VictoryRoad_B1F_EventScript_DraconidOnTransition {
+    setflag(FLAG_TEMP_18)
+    if (var(VAR_MAGMA_STATE) >= MAGMA_STATE_TURNED && !flag(FLAG_IS_CHAMPION)
+        && !defeated(TRAINER_COURTNEY_VICTORY_ROAD)) {
+        setvar(VAR_TEMP_2, 1)
+    }
+    end
+}
+
+script VictoryRoad_B1F_EventScript_DraconidAdmins {
+    lockall
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp)
+    waitmovement(0)
+    playbgm(MUS_ENCOUNTER_MAGMA, FALSE)
+    msgbox(format("???: Hehehe… Going somewhere?"))
+    closemessage
+    clearflag(FLAG_TEMP_18)
+    playse(SE_EXIT)
+    addobject(LOCALID_VICTORY_ROAD_B1F_TABITHA)
+    applymovement(LOCALID_VICTORY_ROAD_B1F_TABITHA, VictoryRoad_B1F_Movement_DraconidTabithaDown)
+    waitmovement(0)
+    playse(SE_EXIT)
+    addobject(LOCALID_VICTORY_ROAD_B1F_COURTNEY)
+    applymovement(LOCALID_VICTORY_ROAD_B1F_COURTNEY, VictoryRoad_B1F_Movement_DraconidCourtneyDown)
+    waitmovement(0)
+    msgbox(format("TABITHA: Did you really think the Leader was the last of us?"))
+    msgbox(format("TABITHA: I vouched for you, you know, in front of the Leader and everyone.\p"
+                  "Now I'm the ADMIN who brought a spy home. Hehe… Everybody knows it."))
+    msgbox(format("COURTNEY: …And I recruited you.\nIn PETALBURG WOODS."))
+    msgbox(format("COURTNEY: Error: mine.\nI do not make the same error twice."))
+    msgbox(format("COURTNEY: Two of us. Two of your POKéMON.\n…Begin."))
+    closemessage
+    cleartrainerflag(TRAINER_TABITHA_VICTORY_ROAD)
+    special(HasEnoughMonsForDoubleBattle)
+    if (var(VAR_RESULT) == PLAYER_HAS_TWO_USABLE_MONS) {
+        trainerbattle_two_trainers_no_intro(TRAINER_TABITHA_VICTORY_ROAD, VictoryRoad_B1F_Text_DraconidTabithaDefeat, TRAINER_COURTNEY_VICTORY_ROAD, VictoryRoad_B1F_Text_DraconidCourtneyDefeat)
+    } else {
+        trainerbattle_no_intro(TRAINER_TABITHA_VICTORY_ROAD, VictoryRoad_B1F_Text_DraconidTabithaDefeat)
+        trainerbattle_no_intro(TRAINER_COURTNEY_VICTORY_ROAD, VictoryRoad_B1F_Text_DraconidCourtneyDefeat)
+    }
+    msgbox(format("TABITHA: Tch… Hehe… Go on, then.\nGo win your shiny LEAGUE."))
+    msgbox(format("COURTNEY: …Win. Lose.\nIt does not matter anymore."))
+    msgbox(format("COURTNEY: MAXIE knows where you come from now."))
+    msgbox(format("TABITHA: A village up in the mountains, right? Where the dragons nest."))
+    msgbox(format("COURTNEY: ARCHIE knows, too.\n…They talk. Every night, they talk."))
+    msgbox(format("TABITHA: When the Leader comes for your precious DRACONIDS, you'll wish you'd stayed in red."))
+    msgbox(format("COURTNEY: …The DRACONIDS will pay.\nAll of them."))
+    closemessage
+    applymovement(LOCALID_VICTORY_ROAD_B1F_COURTNEY, VictoryRoad_B1F_Movement_DraconidCourtneyUp)
+    waitmovement(0)
+    playse(SE_EXIT)
+    removeobject(LOCALID_VICTORY_ROAD_B1F_COURTNEY)
+    applymovement(LOCALID_VICTORY_ROAD_B1F_TABITHA, VictoryRoad_B1F_Movement_DraconidTabithaUp)
+    waitmovement(0)
+    playse(SE_EXIT)
+    removeobject(LOCALID_VICTORY_ROAD_B1F_TABITHA)
+    setvar(VAR_TEMP_2, 0)
+    savebgm(MUS_DUMMY)
+    fadedefaultbgm
+    releaseall
+}
+
+text VictoryRoad_B1F_Text_DraconidTabithaDefeat {
+    format("TABITHA: Hehe… Beaten by my own grunt. Again.")
+}
+
+text VictoryRoad_B1F_Text_DraconidCourtneyDefeat {
+    format("COURTNEY: …Unacceptable.")
+}
+
+// down the ladder (20, 21): TABITHA to (22, 21), above the player (22, 23); COURTNEY to (21, 21)
+movement VictoryRoad_B1F_Movement_DraconidTabithaDown {
+    walk_right * 2
+    face_down
+}
+
+movement VictoryRoad_B1F_Movement_DraconidCourtneyDown {
+    walk_right
+    face_down
+}
+
+movement VictoryRoad_B1F_Movement_DraconidCourtneyUp {
+    walk_left
+}
+
+movement VictoryRoad_B1F_Movement_DraconidTabithaUp {
+    walk_left * 2
+}
+
+// ---------------------------------------------------------------------------
+// MT. PYRE after the turn: MAXIE and ARCHIE keep the ORBS (D-244). The vanilla return at the summit is cut
+// (SootopolisCity_EventScript_MaxieArchieLeave leaves the summit's hide flags and VAR_MT_PYRE_STATE alone), so the
+// old lady tells the player they never came back. Where the ORBS end up is the finale's (Act 7).
+// ---------------------------------------------------------------------------
+
+script MtPyre_Summit_EventScript_DraconidOldLadyOrbsKept {
+    msgbox(format("The ORBS have not come back…\p"
+                  "Those two men still hold them, the one in red and the one in blue.\p"
+                  "…You no longer wear their red, I see.\p"
+                  "I fear the land and the sea have not had their last word."))
+    release
+    end
+}

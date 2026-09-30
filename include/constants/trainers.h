@@ -187,6 +187,7 @@ enum __attribute__((packed)) TrainerPicID
     TRAINER_PIC_NERINE, // Draconid Emerald: Nerine after the reveal (front + back pic: Sky Pillar partner)
     TRAINER_PIC_WES, // Draconid Emerald: Battle Frontier legend (front + back pic: legends' tag partner)
     TRAINER_PIC_ZINNIA, // Draconid Emerald: Zinnia, the Lorekeeper at the Sky Pillar (front pic only; D-180/D-181)
+    TRAINER_PIC_COURTNEY, // Draconid Emerald: Magma admin Courtney (front pic only; Victory Road, D-246)
     TRAINER_PIC_COUNT,
 };
 

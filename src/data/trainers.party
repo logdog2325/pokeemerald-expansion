@@ -34990,6 +34990,614 @@ Nature: Adamant
 - Protect
 
 
+=== TRAINER_GRUNT_SOOTOPOLIS_REVENGE_1 ===
+Name: GRUNT
+Class: Team Magma
+Pic: Magma Grunt M
+Gender: Male
+Music: Magma
+Double Battle: Yes
+AI: Basic Trainer / Smart Mon Choices
+
+Heatmor
+Level: 48
+Ability: Flash Fire
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Adamant
+- Fire Lash
+- Sucker Punch
+- Bug Bite
+- Hone Claws
+
+Mightyena @ Black Glasses
+Level: 49
+Ability: Intimidate
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Adamant
+- Crunch
+- Fire Fang
+- Sucker Punch
+- Protect
+
+=== TRAINER_GRUNT_SOOTOPOLIS_REVENGE_2 ===
+Name: GRUNT
+Class: Team Magma
+Pic: Magma Grunt F
+Gender: Female
+Music: Magma
+Double Battle: Yes
+AI: Basic Trainer / Smart Mon Choices
+
+Salazzle
+Level: 48
+Ability: Corrosion
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Timid
+- Flamethrower
+- Sludge Bomb
+- Fake Out
+- Protect
+
+Camerupt @ Sitrus Berry
+Level: 49
+Ability: Solid Rock
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Quiet
+- Heat Wave
+- Earth Power
+- Rock Slide
+- Protect
+
+=== TRAINER_GRUNT_EVER_GRANDE_SHORE_1 ===
+Name: GRUNT
+Class: Team Magma
+Pic: Magma Grunt M
+Gender: Male
+Music: Magma
+Double Battle: Yes
+AI: Basic Trainer / Smart Mon Choices
+
+Coalossal
+Level: 49
+Ability: Steam Engine
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Quiet
+- Heat Wave
+- Rock Slide
+- Will-O-Wisp
+- Protect
+
+Crobat @ Sharp Beak
+Level: 50
+Ability: Inner Focus
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Jolly
+- Cross Poison
+- Air Slash
+- Bite
+- Tailwind
+
+=== TRAINER_GRUNT_EVER_GRANDE_SHORE_2 ===
+Name: GRUNT
+Class: Team Magma
+Pic: Magma Grunt F
+Gender: Female
+Music: Magma
+Double Battle: Yes
+AI: Basic Trainer / Smart Mon Choices
+
+Mudsdale
+Level: 49
+Ability: Stamina
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Adamant
+- High Horsepower
+- Heavy Slam
+- Rock Slide
+- Protect
+
+Magcargo @ Charcoal
+Level: 50
+Ability: Flame Body
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Modest
+- Lava Plume
+- Earth Power
+- Ancient Power
+- Protect
+
+=== TRAINER_GRUNT_EVER_GRANDE_CENTER ===
+Name: GRUNT
+Class: Team Magma
+Pic: Magma Grunt M
+Gender: Male
+Music: Magma
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Hippowdon
+Level: 50
+Ability: Sand Stream
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Impish
+- Earthquake
+- Crunch
+- Stealth Rock
+- Yawn
+
+Weezing
+Level: 50
+Ability: Levitate
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Bold
+- Sludge Bomb
+- Flamethrower
+- Will-O-Wisp
+- Toxic Spikes
+
+Houndoom @ Charcoal
+Level: 51
+Ability: Flash Fire
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Timid
+- Flamethrower
+- Dark Pulse
+- Sludge Bomb
+- Nasty Plot
+
+=== TRAINER_GRUNT_AQUA_GAUNTLET_1 ===
+Name: GRUNT
+Class: Team Aqua
+Pic: Aqua Grunt M
+Gender: Male
+Music: Aqua
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Floatzel
+Level: 48
+Ability: Swift Swim
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+- Aqua Jet
+- Crunch
+- Ice Fang
+- Swift
+
+Mightyena
+Level: 48
+Ability: Intimidate
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+- Crunch
+- Take Down
+- Ice Fang
+- Swagger
+
+=== TRAINER_GRUNT_AQUA_GAUNTLET_2 ===
+Name: GRUNT
+Class: Team Aqua
+Pic: Aqua Grunt F
+Gender: Female
+Music: Aqua
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Barraskewda
+Level: 48
+Ability: Swift Swim
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+- Liquidation
+- Crunch
+- Poison Jab
+- Agility
+
+Sharpedo
+Level: 49
+Ability: Rough Skin
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+- Aqua Jet
+- Crunch
+- Ice Fang
+- Scary Face
+
+=== TRAINER_GRUNT_AQUA_GAUNTLET_3 ===
+Name: GRUNT
+Class: Team Aqua
+Pic: Aqua Grunt M
+Gender: Male
+Music: Aqua
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Skuntank
+Level: 49
+Ability: Stench
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+- Night Slash
+- Poison Jab
+- Flamethrower
+- Toxic
+
+Wailord
+Level: 49
+Ability: Water Veil
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+- Water Pulse
+- Heavy Slam
+- Rest
+- Amnesia
+
+Crawdaunt
+Level: 49
+Ability: Hyper Cutter
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+- Crabhammer
+- Night Slash
+- Protect
+- Taunt
+
+=== TRAINER_GRUNT_AQUA_GAUNTLET_4 ===
+Name: GRUNT
+Class: Team Aqua
+Pic: Aqua Grunt F
+Gender: Female
+Music: Aqua
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Thievul
+Level: 49
+Ability: Run Away
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+- Foul Play
+- Snarl
+- Tail Slap
+- Nasty Plot
+
+Lanturn
+Level: 50
+Ability: Volt Absorb
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+- Water Pulse
+- Spark
+- Confuse Ray
+- Thunder Wave
+
+=== TRAINER_GRUNT_AQUA_GAUNTLET_5 ===
+Name: GRUNT
+Class: Team Aqua
+Pic: Aqua Grunt M
+Gender: Male
+Music: Aqua
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Drednaw
+Level: 50
+Ability: Shell Armor
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+- Jaw Lock
+- Rock Tomb
+- Headbutt
+- Protect
+
+Tentacruel
+Level: 50
+Ability: Clear Body
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+- Water Pulse
+- Sludge Bomb
+- Barrier
+- Toxic Spikes
+
+Sharpedo
+Level: 50
+Ability: Rough Skin
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+- Aqua Jet
+- Crunch
+- Poison Fang
+- Agility
+
+=== TRAINER_SHELLY_EVER_GRANDE ===
+Name: SHELLY
+Class: Aqua Admin
+Pic: Aqua Admin F
+Gender: Female
+Music: Aqua
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Pelipper @ Damp Rock
+Level: 51
+Ability: Drizzle
+Nature: Modest
+- Hurricane
+- Scald
+- Roost
+- Tailwind
+
+Crawdaunt @ Black Glasses
+Level: 52
+Ability: Adaptability
+Nature: Adamant
+- Crabhammer
+- Knock Off
+- Aqua Jet
+- Swords Dance
+
+Clawitzer @ Wide Lens
+Level: 52
+Ability: Mega Launcher
+Nature: Modest
+- Water Pulse
+- Dark Pulse
+- Aura Sphere
+- Dragon Pulse
+
+Gyarados @ Gyaradosite
+Level: 53
+Ability: Intimidate
+Nature: Adamant
+- Waterfall
+- Crunch
+- Ice Fang
+- Dragon Dance
+
+=== TRAINER_MAXIE_VICTORY_ROAD ===
+Name: MAXIE
+Class: Magma Leader
+Pic: Magma Leader Maxie
+Gender: Male
+Music: Magma
+Items: Full Restore / Full Restore
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Mightyena @ Black Glasses
+Level: 55
+Ability: Intimidate
+Nature: Adamant
+- Crunch
+- Play Rough
+- Sucker Punch
+- Ice Fang
+
+Crobat @ Sharp Beak
+Level: 55
+Ability: Inner Focus
+Nature: Jolly
+- Cross Poison
+- Brave Bird
+- U-turn
+- Taunt
+
+Weezing @ Black Sludge
+Level: 55
+Ability: Levitate
+Nature: Bold
+- Sludge Bomb
+- Flamethrower
+- Will-O-Wisp
+- Pain Split
+
+Hippowdon @ Leftovers
+Level: 56
+Ability: Sand Stream
+Nature: Impish
+- Earthquake
+- Stone Edge
+- Slack Off
+- Stealth Rock
+
+Torkoal @ Heat Rock
+Level: 56
+Ability: Drought
+Nature: Modest
+- Flamethrower
+- Solar Beam
+- Earth Power
+- Yawn
+
+Camerupt @ Cameruptite
+Level: 58
+Ability: Solid Rock
+EVs: 252 SpA
+Nature: Modest
+- Fire Blast
+- Earth Power
+- Ancient Power
+- Will-O-Wisp
+
+=== TRAINER_TABITHA_VICTORY_ROAD ===
+Name: TABITHA
+Class: Magma Admin
+Pic: Magma Admin
+Gender: Male
+Music: Magma
+Items: Full Restore
+Double Battle: Yes
+AI: Smart Trainer / Ace Pokemon
+
+Crobat @ Sharp Beak
+Level: 54
+Ability: Infiltrator
+Nature: Jolly
+- Cross Poison
+- Brave Bird
+- Super Fang
+- Tailwind
+
+Weezing @ Black Sludge
+Level: 54
+Ability: Levitate
+Nature: Bold
+- Sludge Bomb
+- Fire Blast
+- Will-O-Wisp
+- Protect
+
+Camerupt @ Sitrus Berry
+Level: 55
+Ability: Solid Rock
+Nature: Quiet
+- Heat Wave
+- Earth Power
+- Rock Slide
+- Protect
+
+Charizard @ Charizardite Y
+Level: 56
+Ability: Blaze
+Nature: Timid
+- Heat Wave
+- Air Slash
+- Solar Beam
+- Protect
+
+=== TRAINER_COURTNEY_VICTORY_ROAD ===
+Name: COURTNEY
+Class: Magma Admin
+Pic: Courtney
+Gender: Female
+Music: Magma
+Items: Full Restore
+Double Battle: Yes
+AI: Smart Trainer / Ace Pokemon
+
+Mightyena @ Sitrus Berry
+Level: 54
+Ability: Intimidate
+Nature: Adamant
+- Crunch
+- Play Rough
+- Sucker Punch
+- Protect
+
+Xatu @ Light Clay
+Level: 54
+Ability: Early Bird
+Nature: Calm
+- Psychic
+- Air Slash
+- Reflect
+- Light Screen
+
+Salazzle @ Life Orb
+Level: 55
+Ability: Corrosion
+Nature: Timid
+- Fire Blast
+- Sludge Bomb
+- Fake Out
+- Protect
+
+Houndoom @ Houndoominite
+Level: 56
+Ability: Flash Fire
+Nature: Timid
+- Heat Wave
+- Dark Pulse
+- Solar Beam
+- Nasty Plot
+
+=== TRAINER_GRUNT_VICTORY_ROAD_EXIT ===
+Name: GRUNT
+Class: Team Magma
+Pic: Magma Grunt F
+Gender: Female
+Music: Magma
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+
+Excadrill @ Soft Sand
+Level: 53
+Ability: Sand Rush
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Adamant
+- Earthquake
+- Iron Head
+- Rock Slide
+- Swords Dance
+
+Torkoal
+Level: 53
+Ability: White Smoke
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Quiet
+- Lava Plume
+- Earth Power
+- Stealth Rock
+- Yawn
+
+Mightyena @ Black Glasses
+Level: 54
+Ability: Intimidate
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Adamant
+- Crunch
+- Fire Fang
+- Sucker Punch
+- Play Rough
+
+=== TRAINER_GRUNT_POKEMON_LEAGUE_1 ===
+Name: GRUNT
+Class: Team Magma
+Pic: Magma Grunt M
+Gender: Male
+Music: Magma
+Double Battle: Yes
+AI: Basic Trainer / Smart Mon Choices
+
+Rhyperior
+Level: 54
+Ability: Solid Rock
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Adamant
+- Rock Slide
+- High Horsepower
+- Hammer Arm
+- Protect
+
+Camerupt @ Charcoal
+Level: 55
+Ability: Solid Rock
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Modest
+- Heat Wave
+- Earth Power
+- Ancient Power
+- Protect
+
+=== TRAINER_GRUNT_POKEMON_LEAGUE_2 ===
+Name: GRUNT
+Class: Team Magma
+Pic: Magma Grunt F
+Gender: Female
+Music: Magma
+Double Battle: Yes
+AI: Basic Trainer / Smart Mon Choices
+
+Salazzle
+Level: 54
+Ability: Corrosion
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Timid
+- Heat Wave
+- Sludge Bomb
+- Fake Out
+- Protect
+
+Crobat @ Sharp Beak
+Level: 55
+Ability: Inner Focus
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Jolly
+- Cross Poison
+- Brave Bird
+- Tailwind
+- Protect
+
+
 === TRAINER_ROXANNE_2 ===
 Name: ROXANNE
 Class: Leader

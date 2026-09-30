@@ -259,6 +259,7 @@ MossdeepCity_SpaceCenter_2F_EventScript_DefeatedMaxieTabitha::
 	removeobject LOCALID_SPACE_CENTER_GRUNT_7
 	removeobject LOCALID_SPACE_CENTER_GRUNT_5
 	removeobject LOCALID_SPACE_CENTER_TABITHA
+	removeobject LOCALID_SPACE_CENTER_COURTNEY  @ Draconid Emerald: Courtney leaves with the raid (act5.pory, D-248)
 	setobjectxy LOCALID_SPACE_CENTER_2F_SCIENTIST, 5, 6
 	turnobject LOCALID_SPACE_CENTER_2F_SCIENTIST, DIR_SOUTH
 	setobjectxy LOCALID_SPACE_CENTER_2F_GENTLEMAN, 11, 8
@@ -267,7 +268,7 @@ MossdeepCity_SpaceCenter_2F_EventScript_DefeatedMaxieTabitha::
 	turnobject LOCALID_SPACE_CENTER_2F_RICH_BOY, DIR_NORTH
 	call MossdeepCity_SpaceCenter_2F_EventScript_StevenFacePlayer
 	fadescreen FADE_FROM_BLACK
-	call MossdeepCity_SpaceCenter_2F_EventScript_DraconidStevenAndBrendan  @ Draconid Emerald: Steven knows; Brendan storms off (act5.pory)
+	call MossdeepCity_SpaceCenter_2F_EventScript_DraconidStevenAndBrendan  @ Draconid Emerald: Steven wonders about the player; Brendan storms off (act5.pory, D-248)
 	msgbox MossdeepCity_SpaceCenter_2F_Text_StevenThankYouComeSeeMeAtHome, MSGBOX_DEFAULT
 	closemessage
 	fadescreen FADE_TO_BLACK
@@ -465,9 +466,12 @@ MossdeepCity_SpaceCenter_2F_Text_MaxieWeWillGiveUp:  @ Draconid Emerald
 	.string "MAGMA! Fall back!$"
 
 MossdeepCity_SpaceCenter_2F_Text_StevenThankYouComeSeeMeAtHome:  @ Draconid Emerald
-	.string "STEVEN: {PLAYER}{KUN}, please come see me at\n"
-	.string "home after this.\p"
-	.string "I have something you'll need, wherever\n"
-	.string "ARCHIE has gone.\p"
+	.string "STEVEN: {PLAYER}{KUN}, come see me at home\n"
+	.string "after this.\p"
+	.string "ARCHIE's submarine is out there\n"
+	.string "somewhere. I can't chase MAXIE and\l"
+	.string "ARCHIE both.\p"
+	.string "I have something you'll need to\n"
+	.string "follow him.\p"
 	.string "Oh, yes, I don't live in RUSTBORO CITY. I\n"
 	.string "live right here on this island.$"

@@ -1,4 +1,5 @@
 VictoryRoad_B1F_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, VictoryRoad_B1F_EventScript_DraconidOnTransition  @ Draconid Emerald: Tabitha and Courtney (magma_revenge.pory)
 	.byte 0
 
 VictoryRoad_B1F_EventScript_Samuel::
