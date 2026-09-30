@@ -498,3 +498,30 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   Lilycove. `build_segments.py` places every story fight (and every Nerine/Aster variant) on the round 1
   schedule – Steven's Space Center team is exempt from the cap on purpose (D-108), the Sky Pillar finale and
   Zinnia are post-League (D-109) – and `check_party.py --caps` passes with 0 errors.
+- **D-190 HM field moves without a Pokémon that knows them** (feedback 1.27): once the player **owns the HM** (HMs
+  are never used up, so it is in the bag) **and has the badge** vanilla requires for its field move
+  (`IsFieldMoveUnlocked`: Cut Stone, Flash Knuckle, Rock Smash Dynamo, Strength Heat, Surf Balance, Fly Feather,
+  Dive Mind, Waterfall Rain), the field move works from the overworld as if a party Pokémon knew it: Cut trees,
+  Rock Smash rocks, Strength boulders, Surf, Waterfall, Dive down and surfacing all go through the vanilla prompts
+  (`checkfieldmove`, `PartyHasMonWithSurf`), so every story obstacle (Rusturf's rock, the Seafloor Cavern and
+  Victory Road boulders, the Dive spots, the Ever Grande waterfall) opens the same way. A Pokémon still appears in
+  the field-move animation and the vanilla "{STR_VAR_1} used CUT!" lines stay: one that knows the move (vanilla),
+  else the first party Pokémon that **could learn** it (level-up or teachable list), else the first one that isn't
+  an Egg (vanilla lets fainted Pokémon use field moves, so they may stand in too). Without the badge nothing
+  changes (the vanilla "can't" lines); TM field moves (Secret Power, Dig) still need a Pokémon that knows them.
+  Switch: `OW_FIELD_MOVES_WITH_HM`. – Alt: a key item per move (ORAS Poké Ride style, needs new items and art);
+  field moves for any Pokémon that could learn them (still forces the right species into the party); dropping the
+  badge gates (would open the story out of order). – The playtester's note, and the HM + badge pair keeps the
+  vanilla order of city access.
+- **D-191 HMs used from the bag**: with its badge, using an HM from the bag first asks "Cut can be used here.
+  Would you like to use it?" when its field move has something to act on right here (the party-menu setup
+  `SetUpFieldMove` decides: a tree or grass for Cut, water to Surf on, a dark cave for Flash, a Fly-able map, …);
+  **Yes** does the move with the D-190 stand-in, **No** goes on to the vanilla "Booted up an HM… Teach it?"
+  question. Anywhere else, and without the badge, using an HM teaches it as in vanilla. Fly opens the region map
+  (cancelling it returns to the bag, not to the party menu); Flash lights a dark cave; the Braille puzzles that
+  need Rock Smash (Regirock) and Flash (Registeel) work the same way. – Alt: a USE / TEACH / CANCEL list in the bag
+  (new menu code in the bag); separate key items; bag use only for Fly and Flash (Cut on tall grass and the Braille
+  puzzles would then still need a Pokémon). – Reuses the bag's own yes/no and the party menu's field-move setup, so
+  every HM behaves the same and the vanilla teaching path is one "No" away.
+- **D-192 HMs can be forgotten**: `P_CAN_FORGET_HIDDEN_MOVE` is TRUE (a new move can replace an HM move, the Move
+  Deleter takes the last Surf). – Alt: keep HM moves locked. – With D-190 no Pokémon has to keep an HM move.

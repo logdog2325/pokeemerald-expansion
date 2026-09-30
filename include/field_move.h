@@ -32,6 +32,12 @@ struct FieldMoveInfo
 extern const struct FieldMoveInfo gFieldMoveInfo[];
 extern const struct FieldMoveUnlock gFieldMoveUnlocks[];
 
+// Draconid Emerald (D-190, D-191): HM field moves without a Pokémon that knows them
+enum Item FieldMove_GetHMItem(enum FieldMove fieldMove);
+enum FieldMove GetFieldMoveFromHMItem(enum Item item);
+bool32 CanUseFieldMoveWithHM(enum FieldMove fieldMove);
+u32 GetFieldMoveUserSlot(enum FieldMove fieldMove);
+
 static inline bool32 SetUpFieldMove(enum FieldMove fieldMove)
 {
     return gFieldMoveInfo[fieldMove].fieldMoveFunc();
