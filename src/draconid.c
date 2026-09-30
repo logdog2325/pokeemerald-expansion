@@ -27,6 +27,15 @@ struct DraconidVariantTrainer
 
 #include "data/draconid_variant_trainers.h"
 
+// The trainer a battle loads after the Hall of Fame, instead of the first one (round 1, D-174)
+static const u16 sPostgameRematches[][2] =
+{
+    { TRAINER_SIDNEY, TRAINER_SIDNEY_REMATCH },
+    { TRAINER_PHOEBE, TRAINER_PHOEBE_REMATCH },
+    { TRAINER_GLACIA, TRAINER_GLACIA_REMATCH },
+    { TRAINER_DRAKE,  TRAINER_DRAKE_REMATCH },
+};
+
 // A script names the first variant of a fight; this returns the variant for the player's egg and second starter.
 u16 Draconid_ResolveVariantTrainer(u16 trainerId)
 {
@@ -45,6 +54,15 @@ u16 Draconid_ResolveVariantTrainer(u16 trainerId)
         starter = VarGet(VAR_SECOND_STARTER);
         starter = (starter >= SECOND_STARTER_CHARMANDER && starter <= SECOND_STARTER_TREECKO) ? starter - SECOND_STARTER_CHARMANDER : 0;
         return variant->ids[egg * SECOND_STARTER_CHOICES + starter];
+    }
+    // Once the game is cleared, the Elite Four bring their ORAS post-game rematch teams (D-174)
+    if (FlagGet(FLAG_SYS_GAME_CLEAR))
+    {
+        for (i = 0; i < ARRAY_COUNT(sPostgameRematches); i++)
+        {
+            if (sPostgameRematches[i][0] == trainerId)
+                return sPostgameRematches[i][1];
+        }
     }
     return trainerId;
 }

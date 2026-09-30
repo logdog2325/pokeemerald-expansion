@@ -49,7 +49,7 @@ def chain(gender, egg, egg_id, root):
     steps = [("opening", {"GENDER": gender, "EGG": egg_id, "EGGNAME": egg}), ("route103", {}),
              ("woods", {"EGGNAME": egg, "MAGMA": "MAGMA_" + gender}), ("rustboro", {})]
     if egg_id == 0:
-        steps += [("rivals", {}), ("postgame_home", {}), ("maxie_calls", {})]
+        steps += [("rivals", {}), ("postgame_home", {}), ("maxie_calls", {}), ("elite_four", {})]
     for second, value, stone in SECONDS:
         steps.append(("second_starter", {"PICK": value - 1, "SECOND": value}))
         steps.append(("aster", {"EGGNAME": egg, "SECOND": value, "STONE": stone,

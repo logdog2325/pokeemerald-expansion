@@ -14,7 +14,7 @@
 #define TRAINER_GRUNT_SEAFLOOR_CAVERN_2       7
 #define TRAINER_GRUNT_SEAFLOOR_CAVERN_3       8
 #define TRAINER_GABRIELLE_1                   9
-#define TRAINER_GRUNT_PETALBURG_WOODS        10
+#define TRAINER_GLACIA_REMATCH              10 // Draconid Emerald: post-game Elite Four (was TRAINER_GRUNT_PETALBURG_WOODS, D-174)
 #define TRAINER_MARCEL                       11
 #define TRAINER_ALBERTO                      12
 #define TRAINER_ED                           13
@@ -25,7 +25,7 @@
 #define TRAINER_GRUNT_WEATHER_INST_2         18
 #define TRAINER_GRUNT_WEATHER_INST_3         19
 #define TRAINER_GRUNT_MUSEUM_1               20
-#define TRAINER_GRUNT_MUSEUM_2               21
+#define TRAINER_DRAKE_REMATCH               21 // Draconid Emerald: post-game Elite Four (was TRAINER_GRUNT_MUSEUM_2, D-174)
 #define TRAINER_GRUNT_SPACE_CENTER_1         22
 #define TRAINER_GRUNT_MT_PYRE_1              23
 #define TRAINER_GRUNT_MT_PYRE_2              24
@@ -668,9 +668,9 @@
 #define TRAINER_BRENDAN_LILYCOVE            661
 #define TRAINER_WALLY_LILYCOVE              662
 #define TRAINER_MAY_POSTGAME_DOUBLE         663
-#define TRAINER_DRACONID_SPARE_1            664
+#define TRAINER_SIDNEY_REMATCH              664 // Draconid Emerald: post-game Elite Four (was TRAINER_DRACONID_SPARE_1, D-174)
 #define TRAINER_MAY_LILYCOVE                665
-#define TRAINER_DRACONID_SPARE_2            666
+#define TRAINER_PHOEBE_REMATCH              666 // Draconid Emerald: post-game Elite Four (was TRAINER_DRACONID_SPARE_2, D-174)
 #define TRAINER_JONAH                       667
 #define TRAINER_HENRY                       668
 #define TRAINER_ROGER                       669
