@@ -339,7 +339,7 @@ Route110_TrickHousePuzzle5_EventScript_Mechadoll2Quiz2::
 	msgbox Route110_TrickHousePuzzle5_Text_Mechadoll2Quiz2, MSGBOX_DEFAULT
 	multichoice 0, 0, MULTI_MECHADOLL2_Q2, TRUE
 	switch VAR_RESULT
-	case 2, Route110_TrickHousePuzzle5_EventScript_CorrectAnswer
+	case 0, Route110_TrickHousePuzzle5_EventScript_CorrectAnswer  @ Draconid Emerald: POOCHYENA chased PROF. BIRCH (birch_intro.pory)
 	goto Route110_TrickHousePuzzle5_EventScript_IncorrectAnswer
 	end
 
@@ -347,7 +347,7 @@ Route110_TrickHousePuzzle5_EventScript_Mechadoll2Quiz3::
 	msgbox Route110_TrickHousePuzzle5_Text_Mechadoll2Quiz3, MSGBOX_DEFAULT
 	multichoice 0, 0, MULTI_MECHADOLL2_Q3, TRUE
 	switch VAR_RESULT
-	case 0, Route110_TrickHousePuzzle5_EventScript_CorrectAnswer
+	case 2, Route110_TrickHousePuzzle5_EventScript_CorrectAnswer  @ Draconid Emerald: NERINE's cover team in the woods led with CARVANHA
 	goto Route110_TrickHousePuzzle5_EventScript_IncorrectAnswer
 	end
 
@@ -945,10 +945,10 @@ Route110_TrickHousePuzzle5_Text_Mechadoll2Intro:
 	.string "MECHADOLL 1'S QUIZ DIFFICULTY LEVEL\n"
 	.string "IS SET TOO LOW.$"
 
-Route110_TrickHousePuzzle5_Text_Mechadoll2Quiz1:
+Route110_TrickHousePuzzle5_Text_Mechadoll2Quiz1:  @ Draconid Emerald
 	.string "MECHADOLL 2 QUIZ.\p"
 	.string "Which of these POKéMON did WALLY\n"
-	.string "borrow from your father?$"
+	.string "borrow from NORMAN?$"
 
 Route110_TrickHousePuzzle5_Text_Mechadoll2Quiz2:
 	.string "MECHADOLL 2 QUIZ.\p"

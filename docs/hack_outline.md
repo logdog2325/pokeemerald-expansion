@@ -146,5 +146,7 @@ order, each at its story point (`check_progression.py` walks all eight).
   Regidrago chapter on – rare: the player's three crystals, Aster and Nerine.
 - ✅ The battle-item counter in every Mart, Gym Leaders' boosters, Mega Stones through the story.
 - ✅ Story-lock checker for Acts 1–5.  ⬜ Acts 6–7 and the post-game.
-- ⬜ Final phase: hard-lock sweep, base-Emerald contradiction scrub, per-act debug jumps + playtest guide, the
+- ✅ Base-Emerald contradiction scrub (the player's family, Norman, the uniform in leftover lines, quizzes).
+- ✅ Same-screen fades keep their colours under weather and the day/night tint.
+- 🚧 Final phase: story-lock + hard-lock checker through the post-game; per-act debug jumps + playtest guide; the
   v2 test ROM.

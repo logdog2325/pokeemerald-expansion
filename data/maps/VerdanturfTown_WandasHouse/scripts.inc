@@ -82,23 +82,20 @@ VerdanturfTown_WandasHouse_EventScript_WallysAuntEverGrande::
 	release
 	end
 
-VerdanturfTown_WandasHouse_Text_StrongerSpeech:
-	.string "WALLY: I lost to you, {PLAYER}, but I'm\n"
-	.string "not feeling down anymore.\p"
-	.string "Because I have a new purpose in life.\n"
-	.string "Together with my RALTS, I'm going\l"
-	.string "to challenge POKéMON GYMS and become\l"
-	.string "a great TRAINER.\p"
-	.string "Please watch me, {PLAYER}.\n"
-	.string "I'm going to be stronger than you.\p"
-	.string "When I do, I'm going to challenge you\n"
-	.string "to another battle.$"
+VerdanturfTown_WandasHouse_Text_StrongerSpeech:  @ Draconid Emerald
+	.string "WALLY: …{PLAYER}.\p"
+	.string "I lost to you in MAUVILLE.\n"
+	.string "But I'm not giving up.\p"
+	.string "RALTS and I are going to challenge\n"
+	.string "the POKéMON GYMS.\p"
+	.string "We'll get strong enough to stop you\n"
+	.string "and the rest of TEAM MAGMA!\p"
+	.string "Next time we battle, I'll win.$"
 
-VerdanturfTown_WandasHouse_Text_StrongerSpeechShort:
-	.string "WALLY: Please watch me, {PLAYER}.\n"
-	.string "I'm going to get stronger than you.\p"
-	.string "When I do, I'm going to challenge you\n"
-	.string "to another battle.$"
+VerdanturfTown_WandasHouse_Text_StrongerSpeechShort:  @ Draconid Emerald
+	.string "WALLY: I'm training every day.\p"
+	.string "Next time we battle, I'll stop you.\n"
+	.string "You'll see.$"
 
 VerdanturfTown_WandasHouse_Text_WallysNextDoor:
 	.string "UNCLE: Oh! {PLAYER}{KUN}!\n"

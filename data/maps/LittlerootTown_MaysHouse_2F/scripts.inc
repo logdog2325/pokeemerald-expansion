@@ -230,7 +230,7 @@ LittlerootTown_MaysHouse_2F_Movement_PlayerWatchMayEast:
 RivalsHouse_2F_EventScript_Rival::
 	lockall
 	goto_if_set FLAG_MET_RIVAL_LILYCOVE, RivalsHouse_2F_EventScript_RivalPostLilycove
-	goto RivalsHouse_2F_EventScript_May  @ Draconid Emerald: the rival here is May (Birch's daughter)
+	goto RivalsHouse_2F_EventScript_May  @ Draconid Emerald: the rival here is May (Norman's daughter, D-100)
 	end
 
 RivalsHouse_2F_EventScript_May::
@@ -246,7 +246,7 @@ RivalsHouse_2F_EventScript_Brendan::
 RivalsHouse_2F_EventScript_RivalPostLilycove::
 	applymovement VAR_LAST_TALKED, Common_Movement_FacePlayer
 	waitmovement 0
-	call RivalsHouse_2F_EventScript_MayPostLilycove  @ Draconid Emerald: the rival here is May (Birch's daughter)
+	call RivalsHouse_2F_EventScript_MayPostLilycove  @ Draconid Emerald: the rival here is May (Norman's daughter, D-100)
 	setflag FLAG_MET_RIVAL_IN_HOUSE_AFTER_LILYCOVE
 	releaseall
 	end

@@ -84,20 +84,19 @@ PetalburgCity_WallysHouse_Text_ThanksForPlayingWithWally:
 PetalburgCity_WallysHouse_Text_WonderHowWallyIsDoing:
 	.string "I wonder how our WALLY is doing?$"
 
-PetalburgCity_WallysHouse_Text_PleaseExcuseUs:
+PetalburgCity_WallysHouse_Text_PleaseExcuseUs:  @ Draconid Emerald
 	.string "{PLAYER}{KUN}! Please excuse us for\n"
 	.string "dragging you here this way.\p"
-	.string "But our WALLY's become very healthy\n"
+	.string "Our WALLY's become very healthy\n"
 	.string "since he went to VERDANTURF TOWN.\p"
-	.string "We owe it all to you!\p"
 	.string "When WALLY left town, you helped\n"
-	.string "him catch a POKéMON, right?\p"
-	.string "I think that made WALLY really\n"
-	.string "happy.\p"
-	.string "Actually, not just WALLY.\n"
-	.string "It made me, his father, happy too.\p"
-	.string "Happy that he's gained such a great\n"
-	.string "friend as you.\p"
+	.string "him catch a POKéMON. That's where\l"
+	.string "it all started.\p"
+	.string "…I see you're wearing that uniform.\n"
+	.string "I won't pretend I understand it.\p"
+	.string "WALLY is very angry with you.\n"
+	.string "But I can't forget what you did\l"
+	.string "for him that day.\p"
 	.string "This isn't a bribe or anything, but\n"
 	.string "I'd really like you to have this.$"
 

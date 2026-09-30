@@ -95,3 +95,30 @@ text FallarborTown_PokemonCenter_1F_Text_DraconidRepExpertMRevealed {
     format("We plant trees that grow even in volcanic ash.\p"
            "I'll plant one for you, {PLAYER}. So FALLARBOR remembers.")
 }
+
+// PROF. COZMO (round 1 contradiction scrub, D-255): the grunt he saw beside MAXIE at METEOR FALLS walks in with
+// the METEORITE that MAGMA took from him. FallarborTown_CozmosHouse_EventScript_NoticeMeteorite (a called
+// script) jumps here in the uniform; the YES/NO answer goes back to its caller in VAR_RESULT, and the vanilla
+// trade follows (the TM, FLAG_RECEIVED_TM_RETURN). After the reveal he says why he thinks it came back.
+script FallarborTown_CozmosHouse_EventScript_DraconidRepNoticeMeteoriteUniform {
+    msgbox(FallarborTown_CozmosHouse_Text_DraconidRepCozmoUniform, MSGBOX_YESNO)
+}
+
+text FallarborTown_CozmosHouse_Text_DraconidRepCozmoUniform {
+    format("PROF. COZMO: Y-you!\nYou're the one from the falls!\p"
+           "…Wait. Is that my METEORITE?\n"
+           "You're giving it back?\p"
+           "I… I won't tell a soul\nwhere it came from.\p"
+           "May I have it?\nI'll trade you this TM for it.")
+}
+
+script FallarborTown_CozmosHouse_EventScript_DraconidRepCozmoRevealed {
+    msgbox(FallarborTown_CozmosHouse_Text_DraconidRepCozmoRevealed, MSGBOX_DEFAULT)
+    release
+    end
+}
+
+text FallarborTown_CozmosHouse_Text_DraconidRepCozmoRevealed {
+    format("PROF. COZMO: So THAT's why\nyou gave it back!\p"
+           "This METEORITE is really going to help my research. Thank you, {PLAYER}!")
+}

@@ -503,6 +503,11 @@ bool32 ShouldDoRoxanneCall(void)
 
 bool32 ShouldDoRivalRayquazaCall(void)
 {
+    // Draconid Emerald: no vanilla rival call about a "giant green POKéMON" 250 steps after the Space Center
+    // (D-253): the caller was picked by the player's gender, called the uniformed player as a friend, and
+    // RAYQUAZA only rises at the Sootopolis turn (D-145).
+    return FALSE;
+
     if (FlagGet(FLAG_DEFEATED_MAGMA_SPACE_CENTER))
     {
         switch (gMapHeader.mapType)

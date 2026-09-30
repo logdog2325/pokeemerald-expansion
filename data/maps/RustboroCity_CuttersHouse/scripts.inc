@@ -5,7 +5,9 @@ RustboroCity_CuttersHouse_EventScript_Cutter::
 	lock
 	faceplayer
 	goto_if_set FLAG_RECEIVED_HM_CUT, RustboroCity_CuttersHouse_EventScript_ExplainCut
+	goto_if_eq VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM, RustboroCity_CuttersHouse_EventScript_DraconidRepCutterUniform  @ Draconid Emerald (contradictions.pory)
 	msgbox RustboroCity_CuttersHouse_Text_YouCanPutThisHMToGoodUse, MSGBOX_DEFAULT
+RustboroCity_CuttersHouse_EventScript_DraconidGiveCut::  @ Draconid Emerald: the uniform speech rejoins here
 	giveitem ITEM_HM_CUT
 	setflag FLAG_RECEIVED_HM_CUT
 	msgbox RustboroCity_CuttersHouse_Text_ExplainCut, MSGBOX_DEFAULT

@@ -26,6 +26,7 @@ FallarborTown_CozmosHouse_EventScript_PlayerHasMeteorite::
 	end
 
 FallarborTown_CozmosHouse_EventScript_NoticeMeteorite::
+	goto_if_eq VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM, FallarborTown_CozmosHouse_EventScript_DraconidRepNoticeMeteoriteUniform  @ Draconid Emerald (reputation/fallarbor.pory)
 	msgbox FallarborTown_CozmosHouse_Text_MeteoriteWillNeverBeMineNow, MSGBOX_DEFAULT
 	msgbox FallarborTown_CozmosHouse_Text_IsThatMeteoriteMayIHaveIt, MSGBOX_YESNO
 	return
@@ -41,6 +42,7 @@ FallarborTown_CozmosHouse_EventScript_DeclineGiveMeteorite::
 	end
 
 FallarborTown_CozmosHouse_EventScript_GaveMeteorite::
+	goto_if_eq VAR_DRACONID_REPUTATION, REPUTATION_REVEALED, FallarborTown_CozmosHouse_EventScript_DraconidRepCozmoRevealed  @ Draconid Emerald (reputation/fallarbor.pory)
 	msgbox FallarborTown_CozmosHouse_Text_ReallyGoingToHelpMyResearch, MSGBOX_DEFAULT
 	release
 	end
@@ -103,10 +105,14 @@ FallarborTown_CozmosHouse_Text_MayIHaveMeteorite:
 	.string "I'm not asking for it for free.\n"
 	.string "How about in exchange for this TM?$"
 
-FallarborTown_CozmosHouse_Text_CozmoWentToMeteorFalls:
+FallarborTown_CozmosHouse_Text_CozmoWentToMeteorFalls:  @ Draconid Emerald
 	.string "PROF. COZMO went off to METEOR FALLS\n"
 	.string "on ROUTE 114 with some people from\l"
-	.string "TEAM MAGMA.$"
+	.string "TEAM MAGMA.\p"
+	.string "…That red uniform.\n"
+	.string "You're one of them, aren't you?\p"
+	.string "Please… Just bring my husband\n"
+	.string "home safe.$"
 
 FallarborTown_CozmosHouse_Text_FeelSorryForCozmo:
 	.string "Poor PROF. COZMO…\n"

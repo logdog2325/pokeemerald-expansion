@@ -1240,7 +1240,7 @@ static bool8 LoadBikeScene(u8 scene, u8 taskId)
         break;
     case 2:
         // Draconid Emerald: Brendan and May are the rivals, never the player (D-049). The player runs in
-        // their own sprite and May, Birch's daughter, rides up on her bike.
+        // their own sprite and May, Norman's daughter, rides up on her bike.
         LoadCompressedSpriteSheet(gSpriteSheet_CreditsRivalMay);
         LoadCompressedSpriteSheet(gSpriteSheet_CreditsBicycle);
         LoadSpritePalettes(gSpritePalettes_Credits);

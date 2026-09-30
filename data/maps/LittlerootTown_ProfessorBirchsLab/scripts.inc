@@ -178,7 +178,7 @@ LittlerootTown_ProfessorBirchsLab_EventScript_UpgradeToNationalDex::
 	applymovement LOCALID_BIRCHS_LAB_RIVAL, Common_Movement_WalkInPlaceFasterRight
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
-	call LittlerootTown_ProfessorBirchsLab_EventScript_MayUpgradeComment  @ Draconid Emerald: the rival here is May (Birch's daughter)
+	call LittlerootTown_ProfessorBirchsLab_EventScript_MayUpgradeComment  @ Draconid Emerald: the rival here is May (Norman's daughter, D-100)
 	playse SE_PC_ON
 	waitse
 	delay 20
@@ -511,7 +511,7 @@ LittlerootTown_ProfessorBirchsLab_EventScript_GivePokedex::
 	waitmovement 0
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
-	call LittlerootTown_ProfessorBirchsLab_EventScript_MayGivePokeBalls  @ Draconid Emerald: the rival here is May (Birch's daughter)
+	call LittlerootTown_ProfessorBirchsLab_EventScript_MayGivePokeBalls  @ Draconid Emerald: the rival here is May (Norman's daughter, D-100)
 	setvar VAR_BIRCH_LAB_STATE, 5
 	setflag FLAG_ADVENTURE_STARTED
 	setvar VAR_OLDALE_TOWN_STATE, 1
@@ -576,7 +576,7 @@ LittlerootTown_ProfessorBirchsLab_EventScript_Rival::
 	goto_if_eq VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 5, LittlerootTown_ProfessorBirchsLab_EventScript_RivalFuturePlans
 	goto_if_ge VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 6, LittlerootTown_ProfessorBirchsLab_EventScript_RivalHaveYouGoneToBattleFrontier
 	goto_if_ge VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 2, LittlerootTown_ProfessorBirchsLab_EventScript_RivalTakeBreakFromFieldwork
-	call LittlerootTown_ProfessorBirchsLab_EventScript_MayWhereShouldIGoNext  @ Draconid Emerald: the rival here is May (Birch's daughter)
+	call LittlerootTown_ProfessorBirchsLab_EventScript_MayWhereShouldIGoNext  @ Draconid Emerald: the rival here is May (Norman's daughter, D-100)
 	release
 	end
 
@@ -589,7 +589,7 @@ LittlerootTown_ProfessorBirchsLab_EventScript_BrendanWhereShouldIGoNext::
 	return
 
 LittlerootTown_ProfessorBirchsLab_EventScript_RivalFuturePlans::
-	call LittlerootTown_ProfessorBirchsLab_EventScript_MayWhatNextImStayingHere  @ Draconid Emerald: the rival here is May (Birch's daughter)
+	call LittlerootTown_ProfessorBirchsLab_EventScript_MayWhatNextImStayingHere  @ Draconid Emerald: the rival here is May (Norman's daughter, D-100)
 	release
 	end
 
@@ -602,7 +602,7 @@ LittlerootTown_ProfessorBirchsLab_EventScript_BrendanPreferCollectingSlowly:
 	return
 
 LittlerootTown_ProfessorBirchsLab_EventScript_RivalHaveYouGoneToBattleFrontier::
-	call LittlerootTown_ProfessorBirchsLab_EventScript_MayHaveYouGoneToBattleFrontier  @ Draconid Emerald: the rival here is May (Birch's daughter)
+	call LittlerootTown_ProfessorBirchsLab_EventScript_MayHaveYouGoneToBattleFrontier  @ Draconid Emerald: the rival here is May (Norman's daughter, D-100)
 	release
 	end
 
@@ -615,7 +615,7 @@ LittlerootTown_ProfessorBirchsLab_EventScript_BrendanHaveYouGoneToBattleFrontier
 	return
 
 LittlerootTown_ProfessorBirchsLab_EventScript_RivalTakeBreakFromFieldwork::
-	call LittlerootTown_ProfessorBirchsLab_EventScript_MayTakeBreakFromFieldwork  @ Draconid Emerald: the rival here is May (Birch's daughter)
+	call LittlerootTown_ProfessorBirchsLab_EventScript_MayTakeBreakFromFieldwork  @ Draconid Emerald: the rival here is May (Norman's daughter, D-100)
 	release
 	end
 
@@ -806,22 +806,21 @@ LittlerootTown_ProfessorBirchsLab_Text_CrammedWithBooksOnPokemon:
 LittlerootTown_ProfessorBirchsLab_Text_BookTooHardToRead:
 	.string "It's a book that's too hard to read.$"
 
-LittlerootTown_ProfessorBirchsLab_Text_OtherRegionsUpgradeToNational:
+LittlerootTown_ProfessorBirchsLab_Text_OtherRegionsUpgradeToNational:  @ Draconid Emerald
 	.string "PROF. BIRCH: Now…\p"
-	.string "{PLAYER}{KUN} and {RIVAL}, I've had the two\n"
+	.string "{PLAYER}{KUN} and MAY, I've had the two\n"
 	.string "of you help me study POKéMON.\p"
 	.string "Thanks to your help, new facts\n"
 	.string "are coming to light.\p"
-	.string "It appears that in the HOENN region,\n"
-	.string "there are also POKéMON from other\l"
-	.string "regions.\p"
+	.string "The POKéMON from faraway regions are\n"
+	.string "settling in all over HOENN.\p"
 	.string "It goes to show how rich and varied\n"
 	.string "the natural environments of HOENN\l"
 	.string "happen to be.\p"
-	.string "That's why I think it's necessary for\n"
-	.string "me to upgrade your POKéDEX to\l"
-	.string "the NATIONAL Mode.\p"
-	.string "Here, let me see your POKéDEX units.$"
+	.string "I've gathered everything we've\n"
+	.string "learned about them.\p"
+	.string "Here, let me see your POKéDEX units.\n"
+	.string "I'll add the new data.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_MayUpgradeSoCool:
 	.string "MAY: Eheheh!\p"
@@ -840,9 +839,9 @@ LittlerootTown_ProfessorBirchsLab_Text_BrendanYouCanThankMe:
 LittlerootTown_ProfessorBirchsLab_Text_OkayAllDone:
 	.string "PROF. BIRCH: Okay, all done!$"
 
-LittlerootTown_ProfessorBirchsLab_Text_PokedexUpgradedToNational:
-	.string "{PLAYER}'s POKéDEX was upgraded\n"
-	.string "to the NATIONAL Mode!$"
+LittlerootTown_ProfessorBirchsLab_Text_PokedexUpgradedToNational:  @ Draconid Emerald
+	.string "{PLAYER}'s POKéDEX was updated\n"
+	.string "with PROF. BIRCH's new data!$"
 
 LittlerootTown_ProfessorBirchsLab_Text_GrassyPatchWaiting2:
 	.string "PROF. BIRCH: But listen.\n"

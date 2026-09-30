@@ -3161,43 +3161,48 @@ u8 CheckForPlayersHouseNews(void)
     return PLAYERS_HOUSE_TV_LATI;
 }
 
+// Draconid Emerald: the player has no MOM or DAD (the clan raised them, D-100), so "… might like this
+// program" names the ELDER or ASTER instead (D-254).
+static const u8 sText_DraconidElder[] = _("The ELDER");
+static const u8 sText_DraconidAster[] = _("ASTER");
+
 void GetMomOrDadStringForTVMessage(void)
 {
-    // If the player is checking the TV in their house it will only refer to their Mom.
+    // If the player is checking the TV in their house it will only refer to the Elder.
     if (IsInPlayersHouse1F())
     {
-        StringCopy(gStringVar1, gText_Mom);
+        StringCopy(gStringVar1, sText_DraconidElder);
         VarSet(VAR_TEMP_3, 1);
     }
     if (VarGet(VAR_TEMP_3) == 1)
     {
-        StringCopy(gStringVar1, gText_Mom);
+        StringCopy(gStringVar1, sText_DraconidElder);
     }
     else if (VarGet(VAR_TEMP_3) == 2)
     {
-        StringCopy(gStringVar1, gText_Dad);
+        StringCopy(gStringVar1, sText_DraconidAster);
     }
     else if (VarGet(VAR_TEMP_3) > 2)
     {
         // Should only happen if VAR_TEMP_3 is already in use by something else.
         if (VarGet(VAR_TEMP_3) % 2 == 0)
-            StringCopy(gStringVar1, gText_Mom);
+            StringCopy(gStringVar1, sText_DraconidElder);
         else
-            StringCopy(gStringVar1, gText_Dad);
+            StringCopy(gStringVar1, sText_DraconidAster);
     }
     else
     {
-        // Randomly choose whether to refer to Mom or Dad.
+        // Randomly choose whether to refer to the Elder or Aster.
         // NOTE: Because of this, any map that has a TV in it shouldn't rely on VAR_TEMP_3.
         //       If its value is 0, checking the TV will set it to 1 or 2.
         if (Random() % 2 != 0)
         {
-            StringCopy(gStringVar1, gText_Mom);
+            StringCopy(gStringVar1, sText_DraconidElder);
             VarSet(VAR_TEMP_3, 1);
         }
         else
         {
-            StringCopy(gStringVar1, gText_Dad);
+            StringCopy(gStringVar1, sText_DraconidAster);
             VarSet(VAR_TEMP_3, 2);
         }
     }

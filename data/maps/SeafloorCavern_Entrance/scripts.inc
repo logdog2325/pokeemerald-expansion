@@ -56,31 +56,25 @@ SeafloorCavern_Entrance_EventScript_GruntFacePlayerNorth::
 	waitmovement 0
 	return
 
-SeafloorCavern_Entrance_Text_HearMagmaNearMossdeep:
+SeafloorCavern_Entrance_Text_HearMagmaNearMossdeep:  @ Draconid Emerald
 	.string "Hey!\n"
 	.string "I remember your face!\p"
-	.string "If you're here, it must mean that\n"
-	.string "you're about to mess with us again!\p"
+	.string "You're the MAGMA brat from the\n"
+	.string "SPACE CENTER!\p"
+	.string "Your whole team couldn't steal one\n"
+	.string "tank of fuel, and now you follow us\l"
+	.string "down here?\p"
 	.string "A punk like you, do you really think\n"
 	.string "you can take on TEAM AQUA?\p"
 	.string "I'd say you're too early by about\n"
-	.string "a trillion years!\p"
-	.string "You're a perfect fit for the likes of\n"
-	.string "TEAM MAGMA!\p"
-	.string "Speaking of TEAM MAGMA, I hear they\n"
-	.string "were spotted near MOSSDEEP.\p"
-	.string "That bunch of goons, they sure don't\n"
-	.string "look good near the sea!$"
+	.string "a trillion years!$"
 
-SeafloorCavern_Entrance_Text_HearMagmaNearMossdeepShort:
-	.string "A punk like you, do you really think\n"
-	.string "you can take on TEAM AQUA?\p"
+SeafloorCavern_Entrance_Text_HearMagmaNearMossdeepShort:  @ Draconid Emerald
+	.string "A MAGMA punk like you, do you really\n"
+	.string "think you can take on TEAM AQUA?\p"
 	.string "I'd say you're too early by about\n"
 	.string "a trillion years!\p"
-	.string "You're a perfect fit for the likes of\n"
-	.string "TEAM MAGMA!\p"
-	.string "Speaking of TEAM MAGMA, I hear they\n"
-	.string "were spotted near MOSSDEEP.\p"
-	.string "That bunch of goons, they sure don't\n"
-	.string "look good near the sea!$"
+	.string "Go back to your volcano!\n"
+	.string "Your bunch sure doesn't look good\l"
+	.string "near the sea!$"
 

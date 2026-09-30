@@ -182,8 +182,8 @@ script LittlerootTown_ProfessorBirchsLab_EventScript_DraconidWelcome {
     call(LittlerootTown_ProfessorBirchsLab_EventScript_ReceivePokedex)
     // round 1 (feedback 1.28, D-196): Pokémon from other regions live in Hoenn now, so the Pokédex
     // starts in National mode (the dragon hatchling is not in the Hoenn dex either).
-    // TODO(dialogue): the post-game upgrade scene (LittlerootTown_ProfessorBirchsLab_Text_OtherRegionsUpgradeToNational)
-    // still calls it an upgrade; reword it with the post-game rework.
+    // The post-game "upgrade" scene in the lab now adds Birch's new data instead (D-253,
+    // LittlerootTown_ProfessorBirchsLab_Text_OtherRegionsUpgradeToNational).
     setflag(FLAG_SYS_NATIONAL_DEX)
     special(EnableNationalPokedex)
     msgbox(format("PROF. BIRCH: The POKéDEX is a high-tech tool that automatically makes a record of any POKéMON "

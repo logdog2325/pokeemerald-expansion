@@ -5,7 +5,9 @@ GraniteCave_1F_EventScript_Hiker::
 	lock
 	faceplayer
 	goto_if_set FLAG_RECEIVED_HM_FLASH, GraniteCave_1F_EventScript_ReceivedFlash
+	goto_if_eq VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM, GraniteCave_1F_EventScript_DraconidRepHikerUniform  @ Draconid Emerald (contradictions.pory)
 	msgbox GraniteCave_1F_Text_GetsDarkAheadHereYouGo, MSGBOX_DEFAULT
+GraniteCave_1F_EventScript_DraconidGiveFlash::  @ Draconid Emerald: the uniform speech rejoins here
 	giveitem ITEM_HM_FLASH
 	setflag FLAG_RECEIVED_HM_FLASH
 	msgbox GraniteCave_1F_Text_ExplainFlash, MSGBOX_DEFAULT

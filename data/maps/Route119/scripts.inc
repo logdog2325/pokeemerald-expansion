@@ -506,15 +506,16 @@ Route119_Text_ScottYouWonAtFortreeGym:
 	.string "… … … … … …\n"
 	.string "… … … … … Click!$"
 
-Route119_Text_StayAwayFromWeatherInstitute:
+Route119_Text_StayAwayFromWeatherInstitute:  @ Draconid Emerald
 	.string "We're standing lookout here.\p"
-	.string "Hey, you! Stay away from the WEATHER\n"
-	.string "INSTITUTE. It's not safe.$"
+	.string "…A MAGMA grunt?! Beat it!\n"
+	.string "This INSTITUTE is AQUA business!$"
 
-Route119_Text_DontGoNearWeatherInstitute:
+Route119_Text_DontGoNearWeatherInstitute:  @ Draconid Emerald
 	.string "Lookout duty is surprisingly boring.\p"
-	.string "Hey, you! Please don't go near the\n"
-	.string "WEATHER INSTITUTE.$"
+	.string "…Huh? TEAM MAGMA?\n"
+	.string "Don't you dare go near that\l"
+	.string "INSTITUTE!$"
 
 Route119_Text_ThoughtFlyByCatchingBirdMons:
 	.string "I thought you FLY by catching a whole\n"

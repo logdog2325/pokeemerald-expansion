@@ -254,7 +254,7 @@ OldaleTown_EventScript_RivalTrigger3::
 	end
 
 OldaleTown_EventScript_ShowRivalMessage::
-	goto OldaleTown_EventScript_ShowMayMessage  @ Draconid Emerald: the rival here is May (Birch's daughter)
+	goto OldaleTown_EventScript_ShowMayMessage  @ Draconid Emerald: the rival here is May (Norman's daughter, D-100)
 	end
 
 OldaleTown_EventScript_ShowMayMessage::
