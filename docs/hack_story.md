@@ -123,3 +123,6 @@ Petalburg Woods recruitment/outfit change, Maxie's first meeting at Meteor Falls
   walk off. Dialogue with the evil teams changes to match the disguise.
 - The Mossdeep battle against Brendan / Steven is not a must-win, and Steven is overlevelled (he is the Champion).
 - Before the Magma outfit, the player's overworld sprite is the dragon tamer (never Brendan or May).
+
+### Follow-up note (round 1)
+- "Also include a battle with Zinnia at Sky Pillar too with her ORAS team."

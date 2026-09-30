@@ -31,3 +31,4 @@ main brief re-sent with a fourth rival (Nerine). Items:
 | 1.15 | balance | Teams from real ORAS rematch data (Serebii is reachable now; v1 had none), Elite Four from their ORAS post-game rematches | [ ] |
 | 1.16 | bug | Check that every Mega used exists (Mega Feraligatr included) and record the data source | [x] all 14 exist with sprites; source in D-010 |
 | 1.17 | other | `docs/hack_script.md` (all dialogue by scene), playtest guide per act with debug warps | [ ] |
+| 1.18 | story | (follow-up note) A battle with **Zinnia** at the Sky Pillar, with her ORAS team (Delta Episode: Goodra, Noivern, Altaria, Tyrantrum Lv 60, Mega Salamence Lv 62) | [~] team from Serebii; scene in the Acts 6–7 finale (Lorekeeper of the Meteor Falls Draconids, mid-climb); sprites being drawn |
