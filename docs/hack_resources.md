@@ -27,3 +27,15 @@ Record every imported asset, its author and its terms in `CREDITS.md` and in
 Use `tools/hack/art/quantize.py` (≤16 colours, transparent index 0, GBA colour grid) and
 `tools/hack/art/validate.py` before wiring anything into the build. Tiles go through Porytiles
 (`docs/hack_tools.md`). Render a contact sheet or map preview and review it before committing.
+
+## Data sources (game data, not art)
+
+| Data | Source | Fetched | Where it's used |
+|---|---|---|---|
+| ORAS trainer teams (first battle, rematches; species, levels, held items) | [Serebii Pokéarth – Hoenn, Gen VI pages](https://www.serebii.net/pokearth/hoenn/) (`/pokearth/hoenn/<location>.shtml`, 57 locations with trainers) | 2026-09-30 | `tools/hack/trainers/oras/oras_trainers.json` |
+| ORAS Elite Four / Champion, first battle and post-game rematch, with moves | [Serebii – ORAS Elite Four](https://www.serebii.net/omegarubyalphasapphire/elitefour.shtml) | 2026-09-30 | same file (`oras_elitefour`) |
+
+Fetched by `tools/hack/trainers/oras/scrape_serebii.py` (one request at a time, 2 s apart, pages cached outside
+the repo; rerun with `--offline` on the cache to rebuild the JSON). Only the extracted team data is committed, not
+the pages. Bulbapedia refuses automated requests (HTTP 403), so it is not used. How the data is matched and used:
+docs/hack_trainers.md, "ORAS data".
