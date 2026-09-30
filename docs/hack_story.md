@@ -212,3 +212,6 @@ Petalburg Woods recruitment/outfit change, Maxie's first meeting at Meteor Falls
 
 ### Follow-up note 27 (round 1)
 - "do find a cool way to implement z moves and z crystals but make it make sense for the story think about how that would work"
+
+### Follow-up note 28 (round 1)
+- "also working on a title screen with regidrago using its in game sprite  and title"
