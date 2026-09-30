@@ -172,3 +172,6 @@ Petalburg Woods recruitment/outfit change, Maxie's first meeting at Meteor Falls
 
 ### Follow-up note 14 (round 1)
 - "Once you are finished with these remaining tax, do one last check to make sure there's no story locks or hard locks and also make sure to scrub any contradictions that are in the game from like base emerald with the updated story and everything and then give me the test and I'll let you know if there's any other other things I bought or more things we could add"
+
+### Follow-up note 15 (round 1)
+- "Also, I think it might be cool for the final sequence against Archie and Maxi if they do actually attack the draconid village and you your rival Brendan Maye Wally go and they help you fight the team Aqua and Maxima grunts and some double battles and then there's that final double battle against Archie and Maxi with primal ground on a coyote. See if you could code something like that. I think it would be cool. And raise the  emotional steaks."
