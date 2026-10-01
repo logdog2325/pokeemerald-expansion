@@ -217,6 +217,9 @@ class Build:
                             break
                         r -= p
 
+        self.walkable_defaults(classes, fixed, blocks)
+        self.lattice_trees(classes, fixed, blocks)
+
         for b in self.spec.get("blocks", []):
             x, y = b["at"]
             blocks[y * w + x] = parse_block_full(b["block"])
@@ -234,6 +237,64 @@ class Build:
         self.blocks = blocks
         self.diag = diag
         return blocks
+
+    def class_defs_by_code(self):
+        return {autotile.class_code(self.brush, n): c for n, c in self.brush["classes"].items()}
+
+    def walkable_defaults(self, classes, fixed, blocks):
+        """Walkable classes keep their default collision and elevation. The learned rules carry whatever a
+        vanilla mapper used (some vanilla grass has elevation 5), and one odd elevation in a field is an
+        invisible wall (playtest 2.1: Draconid Pass)."""
+        defs = self.class_defs_by_code()
+        for y in range(self.h):
+            for x in range(self.w):
+                cdef = defs.get(classes[y][x])
+                if (x, y) in fixed or not cdef or not cdef.get("walkable"):
+                    continue
+                _, col, elev = autotile.parse_block(cdef["default"])
+                m = pokemap.unpack_block(blocks[y * self.w + x])[0]
+                blocks[y * self.w + x] = pokemap.pack_block(m, col or 0, 3 if elev is None else elev)
+
+    def lattice_trees(self, classes, fixed, blocks):
+        """2x2 trees on a fixed lattice, for brush classes with a "lattice" entry: each corner of a tree picks
+        its tile from the neighbours (rules checked against every vanilla General-tileset map), and the cell
+        above a tree with nothing above it gets the crown's cap. The learned rules count the cap row as part
+        of the tree, so they turned the top row of every painted tree into caps and left half trees
+        (playtest 2.1)."""
+        w, h = self.w, self.h
+        defs = self.class_defs_by_code()
+        for cname, cdef in self.brush["classes"].items():
+            lat = cdef.get("lattice")
+            if not lat:
+                continue
+            c = autotile.class_code(self.brush, cname)
+            px, py = self.spec.get("phase", {}).get(cname, lat.get("phase", [0, 0]))
+            col, elev = (int(v) for v in lat.get("solid", "1:0").split(":"))
+            caps = {autotile.class_code(self.brush, k): v for k, v in lat.get("caps", {}).items()}
+
+            def tree(x, y):
+                return not (0 <= x < w and 0 <= y < h) or classes[y][x] == c
+
+            def put(x, y, s, dcol, delev):
+                m, cc, ee = autotile.parse_block(s)
+                blocks[y * w + x] = pokemap.pack_block(m, dcol if cc is None else cc, delev if ee is None else ee)
+
+            for y in range(h):
+                for x in range(w):
+                    if classes[y][x] != c or (x, y) in fixed:
+                        continue
+                    right, bottom = (x - px) % 2, (y - py) % 2
+                    side = x + 1 if right else x - 1
+                    if not bottom:
+                        closed, open_side = lat["tr" if right else "tl"]
+                        put(x, y, closed if tree(x, y - 1) or tree(side, y) else open_side, col, elev)
+                        up = classes[y - 1][x] if y > 0 else None
+                        if up in caps and (x, y - 1) not in fixed:
+                            _, ucol, uelev = autotile.parse_block(defs[up]["default"])
+                            put(x, y - 1, caps[up][right], ucol or 0, 3 if uelev is None else uelev)
+                    else:
+                        below, end, end_open = lat["br" if right else "bl"]
+                        put(x, y, below if tree(x, y + 1) else end if tree(side, y) else end_open, col, elev)
 
     def border(self):
         if self.src_layout is not None:

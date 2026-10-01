@@ -71,8 +71,14 @@ script Route101_EventScript_DraconidRescue {
     msgbox(format("PROF. BIRCH: Whew… I was in the tall grass studying wild POKéMON when it jumped me.\p"
                   "You saved me. Thanks a lot!\p"
                   "Hm? That's a {STR_VAR_1}! A Dragon-type, and so young…\p"
-                  "Then you must be {PLAYER}, from DRACONID VILLAGE! The ELDER wrote that you'd be coming.\p"
-                  "This is no place to chat. Come to my POKéMON LAB in LITTLEROOT TOWN, just south of here!"))
+                  "Then you must be {PLAYER}, from DRACONID VILLAGE! The ELDER wrote that you'd be coming."))
+    // playtest 2.9: Birch knows the mission (the Elder's letter, act1) and says so before the lab (D-341)
+    msgbox(format("PROF. BIRCH: …He wrote me why, too.\p"
+                  "TEAM MAGMA. And you, walking in among them. Alone.\p"
+                  "That's a heavy burden to put on someone so young. Heavier than any POKéDEX.\p"
+                  "Whatever you have to wear out there, whatever people say about you…\p"
+                  "I'll know who you really are. Remember that.\p"
+                  "…Well! This is no place to chat. Come to my POKéMON LAB in LITTLEROOT TOWN, just south of here!"))
     closemessage
     setflag(FLAG_SYS_POKEMON_GET)
     setflag(FLAG_RESCUED_BIRCH)

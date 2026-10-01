@@ -52,6 +52,7 @@ Route101_EventScript_DraconidRescue_1:
 	special HealPlayerParty
 	bufferleadmonspeciesname STR_VAR_1
 	msgbox Route101_EventScript_DraconidRescue_Text_1
+	msgbox Route101_EventScript_DraconidRescue_Text_2
 	closemessage
 	setflag FLAG_SYS_POKEMON_GET
 	setflag FLAG_RESCUED_BIRCH
@@ -291,10 +292,22 @@ Route101_EventScript_DraconidRescue_Text_1:
 	.string "Dragon-type, and so young…\p"
 	.string "Then you must be {PLAYER}, from\n"
 	.string "DRACONID VILLAGE! The ELDER wrote\l"
-	.string "that you'd be coming.\p"
-	.string "This is no place to chat. Come to my\n"
-	.string "POKéMON LAB in LITTLEROOT TOWN, just\l"
-	.string "south of here!$"
+	.string "that you'd be coming.$"
+
+Route101_EventScript_DraconidRescue_Text_2:
+	.string "PROF. BIRCH: …He wrote me why, too.\p"
+	.string "TEAM MAGMA. And you, walking in among\n"
+	.string "them. Alone.\p"
+	.string "That's a heavy burden to put on\n"
+	.string "someone so young. Heavier than any\l"
+	.string "POKéDEX.\p"
+	.string "Whatever you have to wear out there,\n"
+	.string "whatever people say about you…\p"
+	.string "I'll know who you really are. Remember\n"
+	.string "that.\p"
+	.string "…Well! This is no place to chat. Come to\n"
+	.string "my POKéMON LAB in LITTLEROOT TOWN,\l"
+	.string "just south of here!$"
 
 LittlerootTown_ProfessorBirchsLab_EventScript_DraconidWelcome_Text_0:
 	.string "PROF. BIRCH: Welcome to my LAB,\n"

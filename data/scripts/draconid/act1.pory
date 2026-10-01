@@ -71,17 +71,22 @@ script PetalburgWoods_EventScript_DraconidRecruitment {
     waitmovement(0)
     applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp)
     waitmovement(0)
-    msgbox(format("???: …Observed. The whole battle.\p"
-                  "Result: an AQUA member, crushed. By a child. With a dragon."))
-    msgbox(format("COURTNEY: I am COURTNEY. TEAM MAGMA.\p"
-                  "Anyone who crushes AQUA that easily… belongs with us.\p"
-                  "More land. For people. For POKéMON. That is our goal.\p"
-                  "You. Join us."))
-    msgbox(format("{PLAYER} remembered the ELDER's words.\p"
-                  "“Walk among the red ones. Learn what MAXIE seeks.”\p"
-                  "{PLAYER} nodded."))
-    msgbox(format("COURTNEY: …Answer: correct.\p"
-                  "Follow. There is an outpost at the edge of the woods."))
+    msgbox(format("???: Ahaha… I watched the whole battle, you know.\p"
+                  "That AQUA nuisance, crushed. By a child. With a dragon."))
+    msgbox(format("COURTNEY: I'm COURTNEY. TEAM MAGMA. Ahaha…\p"
+                  "Anyone who crushes AQUA that easily belongs with us.\p"
+                  "More land. For people. For POKéMON. Leader MAXIE's dream.\p"
+                  "So… will you join us?"), MSGBOX_YESNO)
+    // playtest 2.6: the player answers; NO only earns a laugh (the Elder sent them to join, D-341)
+    if (var(VAR_RESULT) == YES) {
+        msgbox(format("COURTNEY: …Ahaha. Good answer.\p"
+                      "Follow me. There's an outpost at the edge of the woods."))
+    } else {
+        msgbox(format("COURTNEY: …Ahahahaha!\p"
+                      "You're joking. Right?\p"
+                      "Nobody beats AQUA like that and walks away from TEAM MAGMA.\p"
+                      "…Follow me. There's an outpost at the edge of the woods."))
+    }
     closemessage
     fadescreen(FADE_TO_BLACK)
     removeobject(LOCALID_PETALBURG_WOODS_COURTNEY)

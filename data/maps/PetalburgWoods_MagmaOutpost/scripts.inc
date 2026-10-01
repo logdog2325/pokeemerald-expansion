@@ -55,35 +55,45 @@ PetalburgWoods_MagmaOutpost_EventScript_GruntF::
 
 
 PetalburgWoods_MagmaOutpost_EventScript_Uniform_Text_0:
-	.string "GRUNT: COURTNEY! Who's the kid?$"
+	.string "ASHER: Whoa! COURTNEY! Who's the kid?$"
 
 PetalburgWoods_MagmaOutpost_EventScript_Uniform_Text_1:
-	.string "COURTNEY: New member. Beat an AQUA\n"
-	.string "woman in the woods. Alone.$"
+	.string "COURTNEY: Ahaha… Breathe, ASHER.\p"
+	.string "That troublesome AQUA grunt. The one\n"
+	.string "sneaking around the woods, picking\l"
+	.string "DEVON's pockets?\p"
+	.string "This one flattened her. With a dragon. A\n"
+	.string "real one.\p"
+	.string "I watched the whole thing. …I enjoyed\n"
+	.string "it. Ahahahaha!$"
 
 PetalburgWoods_MagmaOutpost_EventScript_Uniform_Text_2:
-	.string "GRUNT: Alone? At that age?\n"
-	.string "…Well, we could use the muscle.$"
+	.string "ASHER: A dragon? At that age?\p"
+	.string "…Ha! Fine by me. We could use the muscle.$"
 
 PetalburgWoods_MagmaOutpost_EventScript_Uniform_Text_3:
-	.string "COURTNEY: Uniform. Put it on.$"
+	.string "COURTNEY: So I picked it up. Mine now.\n"
+	.string "…Ours, I mean.\p"
+	.string "Uniform. Put it on. …Go on. I want to see.$"
 
 PetalburgWoods_MagmaOutpost_EventScript_Uniform_Text_4:
 	.string "{PLAYER} put on the TEAM MAGMA uniform.$"
 
 PetalburgWoods_MagmaOutpost_EventScript_Uniform_Text_5:
-	.string "COURTNEY: …Red. It suits you.\p"
+	.string "COURTNEY: …Red. Ahaha. It suits you.\p"
 	.string "TABITHA leads the grunts in the field.\n"
-	.string "He will find you.\p"
-	.string "Until then: RUSTBORO. Get strong.\p"
-	.string "Leader MAXIE… likes strong.$"
+	.string "He'll come looking for you.\p"
+	.string "Until then… RUSTBORO. Get strong.\p"
+	.string "Leader MAXIE likes strong. And I like\n"
+	.string "whatever Leader MAXIE likes.$"
 
 PetalburgWoods_MagmaOutpost_EventScript_Courtney_Text_0:
-	.string "COURTNEY: RUSTBORO. Get strong.\n"
-	.string "TABITHA will find you.$"
+	.string "COURTNEY: Still here? Ahaha…\p"
+	.string "RUSTBORO. Get strong. TABITHA will find\n"
+	.string "you.$"
 
 PetalburgWoods_MagmaOutpost_EventScript_GruntM_Text_0:
-	.string "GRUNT: Welcome to the team, kid.\p"
+	.string "ASHER: Welcome to the team, kid.\p"
 	.string "Folks in town will stare at the uniform.\n"
 	.string "Let 'em.$"
 

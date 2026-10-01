@@ -79,9 +79,11 @@ PetalburgWoods_EventScript_DraconidRecruitment_1:
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
 	msgbox PetalburgWoods_EventScript_DraconidRecruitment_Text_0
-	msgbox PetalburgWoods_EventScript_DraconidRecruitment_Text_1
-	msgbox PetalburgWoods_EventScript_DraconidRecruitment_Text_2
+	msgbox PetalburgWoods_EventScript_DraconidRecruitment_Text_1, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	goto_if_eq PetalburgWoods_EventScript_DraconidRecruitment_6
 	msgbox PetalburgWoods_EventScript_DraconidRecruitment_Text_3
+PetalburgWoods_EventScript_DraconidRecruitment_5:
 	closemessage
 	fadescreen FADE_TO_BLACK
 	removeobject LOCALID_PETALBURG_WOODS_COURTNEY
@@ -94,6 +96,10 @@ PetalburgWoods_EventScript_DraconidRecruitment_1:
 PetalburgWoods_EventScript_DraconidRecruitment_2:
 	applymovement LOCALID_PETALBURG_WOODS_COURTNEY, PetalburgWoods_Movement_DraconidCourtneyApproachLeft
 	goto PetalburgWoods_EventScript_DraconidRecruitment_1
+
+PetalburgWoods_EventScript_DraconidRecruitment_6:
+	msgbox PetalburgWoods_EventScript_DraconidRecruitment_Text_2
+	goto PetalburgWoods_EventScript_DraconidRecruitment_5
 
 
 PetalburgWoods_Movement_DraconidCourtneyApproachLeft:
@@ -235,28 +241,32 @@ LittlerootTown_MaysHouse_1F_EventScript_DraconidMaysMom_Text_3:
 	.string "would like to thank you properly.$"
 
 PetalburgWoods_EventScript_DraconidRecruitment_Text_0:
-	.string "???: …Observed. The whole battle.\p"
-	.string "Result: an AQUA member, crushed. By a\n"
-	.string "child. With a dragon.$"
+	.string "???: Ahaha… I watched the whole battle,\n"
+	.string "you know.\p"
+	.string "That AQUA nuisance, crushed. By a child.\n"
+	.string "With a dragon.$"
 
 PetalburgWoods_EventScript_DraconidRecruitment_Text_1:
-	.string "COURTNEY: I am COURTNEY. TEAM MAGMA.\p"
-	.string "Anyone who crushes AQUA that easily…\n"
+	.string "COURTNEY: I'm COURTNEY. TEAM MAGMA.\n"
+	.string "Ahaha…\p"
+	.string "Anyone who crushes AQUA that easily\n"
 	.string "belongs with us.\p"
-	.string "More land. For people. For POKéMON. That\n"
-	.string "is our goal.\p"
-	.string "You. Join us.$"
+	.string "More land. For people. For POKéMON.\n"
+	.string "Leader MAXIE's dream.\p"
+	.string "So… will you join us?$"
 
 PetalburgWoods_EventScript_DraconidRecruitment_Text_2:
-	.string "{PLAYER} remembered the ELDER's words.\p"
-	.string "“Walk among the red ones. Learn what\n"
-	.string "MAXIE seeks.”\p"
-	.string "{PLAYER} nodded.$"
+	.string "COURTNEY: …Ahaha. Good answer.\p"
+	.string "Follow me. There's an outpost at the\n"
+	.string "edge of the woods.$"
 
 PetalburgWoods_EventScript_DraconidRecruitment_Text_3:
-	.string "COURTNEY: …Answer: correct.\p"
-	.string "Follow. There is an outpost at the edge\n"
-	.string "of the woods.$"
+	.string "COURTNEY: …Ahahahaha!\p"
+	.string "You're joking. Right?\p"
+	.string "Nobody beats AQUA like that and walks\n"
+	.string "away from TEAM MAGMA.\p"
+	.string "…Follow me. There's an outpost at the\n"
+	.string "edge of the woods.$"
 
 RustboroCity_EventScript_DraconidBrendan_Text_0:
 	.string "BRENDAN: Huh? {PLAYER}?\p"
