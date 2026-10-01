@@ -24,7 +24,10 @@ The checklist is in [hack_feedback.md](hack_feedback.md) (2.1 – 2.17, all done
 - [~] Batch m10: Mega Stones everywhere + the post-game counter, uniform lines for every NPC, the Magma grunt sprites,
       Birch and the meteor on Route 101, the ELDER's new-game speech (his SALAMENCE, D-421), Drake's story, the falling
       star; the matrix now runs round 2's tests in the Deino chains
-- [ ] "Jump to act" debug menu + playtest guide v2 (D-480 –), then the v2 ROM
+- [x] "Jump to act…" in the debug menu (R + START, first entry; ten stops, the state generated from the story
+      simulation by `tools/hack/gen_debug_jumps.py`, `--check` keeps it current; `act_jumps.play`, in the matrix) and
+      the playtest guide v2 (D-480 – D-489)
+- [ ] the v2 ROM
 
 ## Round 1 – v2 story (in progress)
 - [x] Docs: story saved, feedback checklist, superseded decisions marked, v2 decisions (D-100–D-119; acts D-120–D-159)
@@ -68,7 +71,7 @@ The checklist is in [hack_feedback.md](hack_feedback.md) (2.1 – 2.17, all done
       Mega Alakazam) on `BattleFrontier_OutsideEast`, rematchable; the LEGENDS' TAG multi battle with a beaten legend as
       partner; Wes's sprites and Blue's back pic kitbashed from Steven's – emulator-tested (`frontier_legends.play`)
 - [~] Verification: the matrix (18 flows incl. Nerine/Aster variants) and the story / progression / hard-lock checks
-      run on every batch; the v2 preview went out from batch m8; open: the per-act debug jumps (round 2 section)
+      run on every batch; the v2 preview went out from batch m8; the per-act debug jumps are "Jump to act…" (D-480)
 
 ## Phase 0 – Tools and extensions
 - [x] Toolchain (apt `gcc-arm-none-eabi` 13.2) – baseline `make` OK (2m30s, 79.7% ROM)

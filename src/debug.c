@@ -403,6 +403,7 @@ extern const u8 Debug_EventScript_EWRAMCounters[];
 extern const u8 Debug_Follower_NPC_Event_Script[];
 extern const u8 Debug_Follower_NPC_Not_Enabled[];
 extern const u8 Debug_EventScript_Steven_Multi[];
+extern const u8 Debug_EventScript_DraconidJumpToAct[]; // Draconid Emerald: data/scripts/draconid/debug_jumps.pory
 extern const u8 Debug_EventScript_WallyTutorial[];
 extern const u8 Debug_EventScript_PrintTimeOfDay[];
 extern const u8 Debug_EventScript_TellTheTime[];
@@ -769,6 +770,8 @@ static const u8 *const sDebugMenu_Actions_BagUse_Options[] =
 
 static const struct DebugMenuOption sDebugMenu_Actions_Main[] =
 {
+    // Draconid Emerald: first, one press from R + START on a handheld (D-480)
+    { COMPOUND_STRING("Jump to act…"),  DebugAction_ExecuteScript, Debug_EventScript_DraconidJumpToAct, },
     { COMPOUND_STRING("Utilities…"),    DebugAction_OpenSubMenu, sDebugMenu_Actions_Utilities, },
     { COMPOUND_STRING("PC/Bag…"),       DebugAction_OpenSubMenu, sDebugMenu_Actions_PCBag, },
     { COMPOUND_STRING("Party…"),        DebugAction_OpenSubMenu, sDebugMenu_Actions_Party, },

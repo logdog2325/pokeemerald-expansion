@@ -78,6 +78,10 @@ import pokemap  # noqa: E402
 
 TABLE = os.path.join(ROOT, "tools/hack/progression.json")
 
+# the debug menu's "Jump to act…" (debug builds only, D-480): it writes every story flag at once, so it is no
+# scene of the story and no script that "writes" a flag the story needs
+DEBUG_ONLY = re.compile(r"data/scripts/draconid/debug_jumps\w*\.inc$")
+
 UNK = "?"          # an unknown flag/var value in the simulator
 LOOP = object()    # a jump the simulator stops following (the label was visited too often in this scene)
 PENALTY = 1000     # cost of crossing an obstacle in the "what blocks it" search
@@ -186,7 +190,8 @@ class Scripts:
         files += sorted(glob.glob(os.path.join(ROOT, "data/scripts/**/*.inc"), recursive=True))
         files += [os.path.join(ROOT, "data/event_scripts.s")]
         for path in files:
-            self._parse(path)
+            if not DEBUG_ONLY.search(path):
+                self._parse(path)
 
     # the preprocessor conditions the event scripts use (Emerald build: not FRLG, no BUGFIX/UBFIX)
     PP_TRUE = {"IS_FRLG": False, "BUGFIX": False, "UBFIX": False}
@@ -531,8 +536,27 @@ class Sim:
         self.result_key = self.vkey(VAR_RESULT)
         self.label_pcs = set(scripts.labels.values())
         self.assume = {}  # specialvar function -> the value the story table assumes ("assume")
+        self._item_names = None
 
     # --- keys and values -------------------------------------------------
+    def item_arg(self, token, st):
+        """an item argument: a var holding an item (Common_EventScript_PlayerHandedOverTheItem's removeitem
+        VAR_0x8004, a gift picked in a switch) is the item it holds when the simulation knows it, else the token"""
+        if not self.is_var(token):
+            return token
+        v = st.var(self.vkey(token))
+        if not isinstance(v, int):
+            return token
+        if self._item_names is None:
+            self._item_names = {}
+            numbered = re.compile(r"ITEM_[TH]M\d+$")  # ITEM_HM06 = ITEM_HM_ROCK_SMASH: the scripts use the move name
+            for name, raw in self.c.raw.items():
+                if name.startswith("ITEM_") and re.fullmatch(r"\d+", str(raw).strip()):
+                    old = self._item_names.get(int(raw))
+                    if old is None or (numbered.match(old) and not numbered.match(name)):
+                        self._item_names[int(raw)] = name
+        return self._item_names.get(v, token)
+
     def fkey(self, name):
         v = self.c.value(name)
         return v if v is not None else name
@@ -841,16 +865,18 @@ class Sim:
             d = self.val(args[1], st)
             st.vars[self.vkey(args[0])] = UNK if UNK in (cur, d) else (cur + d if op == "addvar" else cur - d) & 0xFFFF
         elif op in ("giveitem", "additem", "finditem") and args:
-            cur = st.items.get(args[0], 0)
+            item = self.item_arg(args[0], st)
+            cur = st.items.get(item, 0)
             n = c.value(args[1]) if len(args) > 1 else 1
-            st.items[args[0]] = UNK if cur == UNK else cur + (n or 1)
+            st.items[item] = UNK if cur == UNK else cur + (n or 1)
             st.vars[self.result_key] = 1
         elif op == "removeitem" and args:
-            cur = st.items.get(args[0], 0)
+            item = self.item_arg(args[0], st)
+            cur = st.items.get(item, 0)
             n = c.value(args[1]) if len(args) > 1 else 1
-            st.items[args[0]] = UNK if cur == UNK else max(0, cur - (n or 1))
+            st.items[item] = UNK if cur == UNK else max(0, cur - (n or 1))
         elif op == "checkitem" and args:
-            has = st.has(args[0])
+            has = st.has(self.item_arg(args[0], st))
             st.vars[self.result_key] = UNK if has == UNK else int(has)
         elif op == "checkplayergender":
             st.vars[self.result_key] = self.gender
@@ -1521,8 +1547,10 @@ class Checker:
                     if v is None:
                         continue
                     key2 = (n.split("_")[0], v)
-                    # a real name beats a numbered alias (VAR_0x40A0, FLAG_UNUSED_…)
-                    if key2 not in self._names or re.search(r"_0x[0-9A-Fa-f]+$|UNUSED", self._names[key2]):
+                    # a real name beats a numbered alias (VAR_0x40A0, FLAG_UNUSED_…) and an FRLG one (VAR_MAGMA_STATE
+                    # shares its number with VAR_NATIONAL_DEX_FRLG)
+                    weak = r"_0x[0-9A-Fa-f]+$|UNUSED|_FRLG$"
+                    if key2 not in self._names or (re.search(weak, self._names[key2]) and not re.search(weak, n)):
                         self._names[key2] = n
         if isinstance(key, str):
             return key

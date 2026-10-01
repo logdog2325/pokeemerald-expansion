@@ -1,0 +1,260 @@
+# "Jump to act…" in the debug menu (data/scripts/draconid/debug_jumps.pory, debug_jumps_state.inc from
+# tools/hack/gen_debug_jumps.py; D-480 - D-489). Needs rustboro_done.ss from tests/rustboro.play (a save in Act 1:
+# the egg Pokemon only, no second starter yet) and a debug build (R + START, the callscript hook).
+#  1. the menu path once: R + START, "Jump to act…", ACT 3 (Meteor Falls): Prof. Oak's partner defaults to
+#     Charmander, the ready team joins at the cap (Zweilous, Charmeleon at 30), Maxie's due call counts as rung
+#  2. a rewind: from Act 3 back to Act 1 (Petalburg Woods): the question, NO keeps everything, YES rewinds
+#  3. every other stop in story order, each from the one before (callscript): the key states, the arrival shot, and
+#     the act's first scene starting (until_text on its first line; the Elder's call and the village attack start
+#     on arrival)
+# Each arrival is saved (aj_<stop>.ss) before the walk into the scene. Shots: aj_<stop>.png.
+# -D GFX=DRACONID_M|DRACONID_F, MAGMA=MAGMA_M|MAGMA_F (the sprites of the save's gender).
+default GFX DRACONID_M
+default MAGMA MAGMA_M
+loadstate rustboro_done.ss
+setflag FLAG_DEBUG_NO_ENCOUNTER
+setflag FLAG_DEBUG_NO_TRAINER_SEE
+expect_var VAR_SECOND_STARTER 0
+expect_party 0 SPECIES_DEINO
+
+# --- 1. the menu: R + START, the first entry ("Jump to act…"), the list's third entry (ACT 3: METEOR FALLS) ---
+press R+START 4 40
+shot aj_00_debug_menu
+press A 4 20
+choose 2
+wait_free 3000
+run 150
+wait_free 600
+expect_map MAP_METEOR_FALLS_1F_1R
+expect_pos 17 18
+expect_var VAR_SECOND_STARTER 1
+expect_var VAR_MAGMA_STATE 4
+expect_var VAR_MAXIE_CALL 2
+expect_var VAR_DRACONID_REPUTATION 1
+expect_flag FLAG_BADGE03_GET 1
+expect_flag FLAG_BADGE04_GET 0
+expect_flag FLAG_RECEIVED_OAK_Z_CRYSTAL 1
+expect_flag FLAG_VISITED_FALLARBOR_TOWN 1
+expect_item ITEM_FIRIUM_Z 1
+expect_item ITEM_HM_ROCK_SMASH 1
+expect_item ITEM_MEGA_RING 0
+expect_trainer TRAINER_WATTSON_1 1
+expect_gfx OBJ_EVENT_GFX_${MAGMA}_NORMAL
+expect_party 0 SPECIES_DEINO
+expect_party 1 SPECIES_ZWEILOUS
+expect_party 2 SPECIES_CHARMELEON
+expect_flag FLAG_DEVON_GOODS_RETURNED 1
+expect_item ITEM_AMULET_COIN 1
+shot aj_act3
+savestate aj_act3.ss
+# a save that kept the Devon Goods keeps that choice: the same stop again (not started: no question) gives
+# Tabitha's Fire Stone instead of Mr. Stone's Amulet Coin
+clearflag FLAG_DEVON_GOODS_RETURNED
+callscript Debug_EventScript_DraconidJumpAct3
+wait_free 3000
+run 150
+wait_free 600
+expect_map MAP_METEOR_FALLS_1F_1R
+expect_flag FLAG_DEVON_GOODS_RETURNED 0
+expect_flag FLAG_RECEIVED_AMULET_COIN 0
+expect_item ITEM_AMULET_COIN 0
+expect_item ITEM_FIRE_STONE 1
+walk LEFT 14
+until_text MeteorFalls_1F_1R_Text_WithThisMeteorite 3000
+shot aj_act3_scene
+
+# --- 2. the rewind: Act 3 back to Act 1; NO first (nothing changes), then YES ---
+loadstate aj_act3.ss
+callscript Debug_EventScript_DraconidJumpWoods
+until_text Debug_EventScript_DraconidJumpBegin_Text_0 600
+run 240
+shot aj_rewind_question
+mash B 900
+expect_map MAP_METEOR_FALLS_1F_1R
+expect_flag FLAG_BADGE03_GET 1
+callscript Debug_EventScript_DraconidJumpWoods
+until_text Debug_EventScript_DraconidJumpBegin_Text_0 600
+run 240
+press A 4 30
+wait_free 3000
+run 150
+wait_free 600
+expect_map MAP_PETALBURG_WOODS
+expect_pos 26 25
+expect_flag FLAG_BADGE01_GET 0
+expect_flag FLAG_BADGE03_GET 0
+expect_flag FLAG_RECEIVED_OAK_Z_CRYSTAL 0
+expect_item ITEM_FIRIUM_Z 0
+expect_item ITEM_HM_ROCK_SMASH 0
+expect_var VAR_SECOND_STARTER 0
+expect_var VAR_NERINE_STATE 0
+expect_var VAR_MAGMA_STATE 0
+expect_var VAR_DRACONID_REPUTATION 0
+expect_trainer TRAINER_WATTSON_1 0
+expect_gfx OBJ_EVENT_GFX_${GFX}_NORMAL
+shot aj_woods
+savestate aj_woods.ss
+walk UP 23
+until_text PetalburgWoods_Text_NotAOneToBeFound 3000
+shot aj_woods_scene
+
+# --- 3. the stops in story order ---
+# Act 2: Rustboro, the Stone Badge; Prof. Oak's partner defaults to Charmander (the Woods state had none)
+loadstate aj_woods.ss
+callscript Debug_EventScript_DraconidJumpAct2
+wait_free 3000
+run 150
+wait_free 600
+expect_map MAP_RUSTBORO_CITY
+expect_pos 26 20
+expect_flag FLAG_BADGE01_GET 1
+expect_flag FLAG_RECEIVED_SECOND_STARTER 1
+expect_var VAR_SECOND_STARTER 1
+expect_var VAR_RUSTBORO_CITY_STATE 1
+expect_var VAR_MAGMA_STATE 2
+expect_var VAR_DRACONID_REPUTATION 1
+expect_gfx OBJ_EVENT_GFX_${MAGMA}_NORMAL
+shot aj_act2
+savestate aj_act2.ss
+walk LEFT 23
+until_text RustboroCity_Text_OutOfTheWay 3000
+shot aj_act2_scene
+
+# Act 4: Petalburg with the Heat Badge; the Mega Ring and Charmander's Mega Stone; Maxie's Mt. Chimney call rung
+loadstate aj_act2.ss
+callscript Debug_EventScript_DraconidJumpAct4
+wait_free 3000
+run 150
+wait_free 600
+expect_map MAP_PETALBURG_CITY
+expect_pos 15 11
+expect_flag FLAG_BADGE04_GET 1
+expect_flag FLAG_BADGE05_GET 0
+expect_var VAR_WALLY_STATE 1
+expect_var VAR_MAGMA_STATE 6
+expect_var VAR_MAXIE_CALL 4
+expect_item ITEM_MEGA_RING 1
+expect_item ITEM_CHARIZARDITE_X 1
+expect_item ITEM_HM_STRENGTH 1
+expect_item ITEM_GO_GOGGLES 1
+shot aj_act4
+savestate aj_act4.ss
+walk UP 9
+until_text PetalburgCity_EventScript_DraconidWallyTrigger_Text_1 3000 A
+shot aj_act4_scene
+
+# Act 5: the Aqua Hideout's dock after the promotion; the ready team again (cap 44: Zweilous, Charizard)
+loadstate aj_act4.ss
+callscript Debug_EventScript_DraconidJumpAct5
+wait_free 3000
+run 150
+wait_free 600
+expect_map MAP_AQUA_HIDEOUT_B2F
+expect_pos 26 19
+expect_flag FLAG_BADGE06_GET 1
+expect_flag FLAG_BADGE07_GET 0
+expect_var VAR_MAGMA_STATE 9
+expect_var VAR_MAXIE_CALL 7
+expect_var VAR_NERINE_STATE 5
+expect_item ITEM_HM_FLY 1
+expect_party 3 SPECIES_ZWEILOUS
+expect_party 4 SPECIES_CHARIZARD
+shot aj_act5
+savestate aj_act5.ss
+walk LEFT 24
+press LEFT 2 10
+press A 4 20
+until_text AquaHideout_B2F_EventScript_DraconidNerineStepsIn_Text_0 3000
+shot aj_act5_scene
+
+# The Sootopolis aftermath: Juan's Gym door, the uniform off; the ready team at the League's cap (60)
+loadstate aj_act5.ss
+callscript Debug_EventScript_DraconidJumpRevenge
+wait_free 3000
+run 150
+wait_free 600
+expect_map MAP_SOOTOPOLIS_CITY
+expect_pos 31 33
+expect_flag FLAG_BADGE08_GET 1
+expect_flag FLAG_ENABLE_RIVAL_MATCH_CALL 1
+expect_var VAR_MAGMA_STATE 12
+expect_var VAR_DRACONID_REPUTATION 2
+expect_gfx OBJ_EVENT_GFX_${GFX}_NORMAL
+expect_party 5 SPECIES_HYDREIGON
+shot aj_revenge
+savestate aj_revenge.ss
+walk DOWN 34
+until_text SootopolisCity_EventScript_DraconidRevengeAmbush_Text_0 3000
+shot aj_revenge_scene
+
+# Act 6: the League's lobby, the revenge arc behind
+loadstate aj_revenge.ss
+callscript Debug_EventScript_DraconidJumpLeague
+wait_free 3000
+run 150
+wait_free 600
+expect_map MAP_EVER_GRANDE_CITY_POKEMON_LEAGUE_1F
+expect_pos 9 9
+expect_trainer TRAINER_GRUNT_SOOTOPOLIS_REVENGE_1 1
+expect_flag FLAG_ENTERED_ELITE_FOUR 0
+expect_flag FLAG_IS_CHAMPION 0
+shot aj_league
+savestate aj_league.ss
+walk UP 3
+press A 4 20
+until_text EverGrandeCity_PokemonLeague_1F_Text_MustHaveAllGymBadges 3000
+shot aj_league_scene
+
+# Act 7: the Elder's call at the foot of the Sky Pillar starts on arrival; it ends with his dragon flying the
+# player home
+loadstate aj_league.ss
+callscript Debug_EventScript_DraconidJumpElder
+until_text SkyPillar_Outside_EventScript_DraconidElderCall_Text_1 4000 A
+shot aj_elder
+expect_map MAP_SKY_PILLAR_OUTSIDE
+expect_flag FLAG_SYS_GAME_CLEAR 1
+expect_flag FLAG_IS_CHAMPION 1
+expect_var VAR_DRACONID_FINALE_STATE 3
+mash A 30000
+run 150
+wait_free 600
+expect_map MAP_DRACONID_VILLAGE
+expect_var VAR_DRACONID_VILLAGE_STATE 1
+
+# Act 7: the attack on the village starts on arrival; Rayquaza (caught at the summit in every playthrough) leads
+callscript Debug_EventScript_DraconidJumpVillage
+until_text DraconidVillage_EventScript_DraconidArrival_Text_1 4000 A
+shot aj_village
+expect_map MAP_DRACONID_VILLAGE
+expect_var VAR_DRACONID_FINALE_STATE 6
+expect_party 0 SPECIES_RAYQUAZA
+mash A 30000
+expect_var VAR_DRACONID_VILLAGE_STATE 5
+
+# The post-game: home after the SS Ticket; both Latis roam; out of the door arms Lance, Nerine waits by the pond
+callscript Debug_EventScript_DraconidJumpPostgame
+wait_free 3000
+run 150
+wait_free 600
+expect_map MAP_DRACONID_VILLAGE_PLAYERS_HOUSE_1F
+expect_pos 8 6
+expect_var VAR_DRACONID_FINALE_STATE 9
+expect_var VAR_DRACONID_VILLAGE_STATE 10
+expect_item ITEM_SS_TICKET 1
+expect_roamer 0 SPECIES_LATIAS
+expect_roamer 1 SPECIES_LATIOS
+expect_party 0 SPECIES_RAYQUAZA
+shot aj_postgame
+walk DOWN 8
+press DOWN 8 10
+run 150
+wait_free 600
+expect_map MAP_DRACONID_VILLAGE
+expect_flag FLAG_DRACONID_LANCE_ARMED 1
+warp MAP_DRACONID_VILLAGE 27 7
+run 150
+wait_free 600
+press RIGHT 2 10
+press A 4 20
+until_text DraconidVillage_EventScript_DraconidNerine_Text_2 3000
+shot aj_postgame_scene

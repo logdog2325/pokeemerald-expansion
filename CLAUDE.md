@@ -70,6 +70,8 @@ python3 tools/hack/emu/play.py tools/hack/emu/tests/rival_calls.play -o /tmp/emu
 python3 tools/hack/emu/play.py tools/hack/emu/tests/gen49_trainers.play -o /tmp/emu  # four trainers' Gen 4-9 send-outs
 python3 tools/hack/emu/play.py tools/hack/emu/tests/frontier_legends.play -o /tmp/emu   # Wes, Red, Blue + the tag
 python3 tools/hack/emu/play.py tools/hack/emu/tests/title.play -o /tmp/emu      # title screen from power-on (Regidrago, banner)
+python3 tools/hack/emu/play.py tools/hack/emu/tests/act_jumps.play -o /tmp/emu  # debug menu "Jump to act…": every stop (after rustboro.play)
+python3 tools/hack/gen_debug_jumps.py [--check|--show ACT3]  # the jump stops' story state from the simulation (rerun after story changes)
 python3 tools/hack/emu/matrix.py -o /tmp/matrix       # all 18 gender x egg x second-starter flows
 python3 tools/hack/check_story.py                     # every new flag / story state set and read
 python3 tools/hack/check_pory.py [--fix]               # every committed .inc matches its .pory (run after merges)

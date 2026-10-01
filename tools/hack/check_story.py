@@ -61,6 +61,10 @@ PENDING = {
 PENDING_FLAGS = {
 }
 
+# the debug menu's "Jump to act…" sets and clears every story flag at once (debug builds only, D-480): it is not
+# where the story writes or reads them
+DEBUG_ONLY = re.compile(r"data/scripts/draconid/debug_jumps\w*\.inc$")
+
 READ_CMDS = r"(?:goto_if_set|goto_if_unset|call_if_set|call_if_unset|checkflag)"
 VAR_READ_CMDS = r"(?:goto_if_\w+|call_if_\w+|compare|map_script_2|switch)"
 
@@ -69,6 +73,8 @@ def corpus():
     scripts = ""
     for pat in ("data/**/*.inc", "data/**/*.s"):
         for p in glob.glob(os.path.join(ROOT, pat), recursive=True):
+            if DEBUG_ONLY.search(p):
+                continue
             scripts += open(p, errors="replace").read() + "\n"
     c = ""
     for p in glob.glob(os.path.join(ROOT, "src/**/*.c"), recursive=True):

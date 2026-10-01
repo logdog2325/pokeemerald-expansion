@@ -2401,6 +2401,118 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   behind for the test (a variable kept only for testing; the main callback already proves it ran). – Checked both
   ways: a wrong text label or position fails the run. On the release ROM (no Quickstart) the same checks passed
   after `release_boot.play`'s real new-game menus (a scratch copy, not committed).
+- **D-480 "Jump to act…" is the debug menu's first entry** (the playtester plays the debug ROM on a handheld and
+  wants to start any act with the save as a real playthrough has it): R + START, then A opens a `dynmultichoice` of
+  ten stops in one Poryscript script (`Debug_EventScript_DraconidJumpToAct`, `data/scripts/draconid/debug_jumps.pory`;
+  six rows, then it scrolls; B closes it). The scripts are included in `data/event_scripts.s` under
+  `#if DEBUG_OVERWORLD_MENU == TRUE` and their natives (`src/draconid_debug_jumps.c`) compile only there, so `make
+  release` has none of it (the debug menu is compiled out of it anyway). – Alt: under Utilities (two presses deeper
+  on a small screen); the eight "Script N" slots (eight entries named "Script 1" … and the list needs ten); a C list
+  menu of its own (a script menu scrolls the same and keeps the jumps beside the rest of the hack's scripts). – One
+  press from the menu, nothing in the release ROM.
+- **D-481 The ten stops: where an act's first scene starts** (from `docs/hack_story.md` and the story table): Act 1 in
+  Petalburg Woods, two steps south of the researcher's trigger (leg 1.13: Nerine's robbery, Courtney); Act 2 outside
+  the Rustboro Gym, three steps east of Nerine's theft (2.01); Act 3 in Meteor Falls east of the bridge, three steps
+  from Maxie's scene (3.01); Act 4 in Petalburg two steps south of Wally at the Gym door (4.01); Act 5 at the Aqua
+  Hideout's dock two steps from Matt, who brings Nerine in (5.01); Team Magma's revenge in front of Juan's Gym door,
+  between the ambush's three triggers (6.R1); Act 6 in the League lobby, the door guards ahead (6.02); Act 7 where the
+  Elder's dragon sets the player down at the Sky Pillar (7.01, his call starts on arrival); the village attack where
+  the alarm's dragon lands them (7.09, on arrival); the post-game downstairs at home after the SS Ticket (P.01: out of
+  the door is the post-game village). Never on a trigger: a step starts the scene, so the playtester sees where they
+  are first. The respawn is the Pokémon Center a real run has last used there (the bedroom from the Hall of Fame on).
+  – Alt: Act 5 at the Aqua Hideout's door (its warp-tile maze in front of every test); Act 6 at Victory Road (the
+  revenge stop already lands before it, and Wally's entrance battle follows the ambushes); one stop per act only (the
+  playtester's list has Sootopolis' aftermath and two Act 7 stops). – The playtester's list, with the cut where the
+  table's leg starts.
+- **D-482 The state comes from the story simulation, generated** (`tools/hack/gen_debug_jumps.py` →
+  `data/scripts/draconid/debug_jumps_state.inc`): `check_progression.py`'s simulation (its `run_story` hooks) gives
+  each stop the state at the end of the walk to its first scene. Every flag, var, trainer flag and story item the
+  simulation writes anywhere in the story is set or cleared at every stop – the full state, so a jump back resets
+  what came later –, written as a chain (`…JumpStep_<STOP>`: the first stop sets everything, each later one what
+  changed; a stop calls the chain up to itself). A value the simulation can't tell (a branch it can't decide) is left
+  as the save has it. Where a YES/NO's two sides both wrote something the simulation keeps both: `FLAG_DECLINED_*`
+  (the NO side) is cleared, as the jump takes the YES (the battle fought); both bikes stay in the bag (a real run has
+  one, and Rydel swaps them – for a debug jump the second one is a convenience). The bag part sets each story item's
+  count (`Draconid_DebugJumpSetItem`; Poké Balls are left to the supplies). `--check` fails while the file is stale; `--show STOP` prints a stop. What the simulation doesn't
+  model, from its own data: `FLAG_VISITED_*` of every town the walk entered (Fly), the trainer flags of D-486. Two
+  simulator fixes it needed: an item handed over through a var (`Common_EventScript_PlayerHandedOverTheItem`'s
+  `removeitem VAR_0x8004`: Steven's letter, the Devon Parts) is now that item (`Sim.item_arg`), and `--state` names
+  a var by its Emerald constant, not an FRLG alias of its number (`VAR_MAGMA_STATE`, not `VAR_NATIONAL_DEX_FRLG`).
+  By hand in `Debug_EventScript_DraconidJumpCommon`, commented, what neither gives: the National Dex (the lab's
+  special); Prof. Oak's three Z-Crystals in Slateport (off the table's path; from Act 3); the second partner's Mega
+  Stone from the Lavaridge traveller (from Act 4) and Nerine's Kommonium Z for a Jangmo-o tamer (from Act 5) – the
+  simulation takes every branch of their switch, so it would hand out all three stones –; the Devon Goods' reward by
+  the save's choice (the simulation took "returned": a save that kept them gets Tabitha's Fire Stone instead of Mr.
+  Stone's Amulet Coin, D-258); Maxie's call due at the
+  stop counts as rung (`VAR_MAXIE_CALL`, through `Draconid_GetDueMaxieCall`: his calls ring from a C step hook); the
+  Lati roamers (the SS Ticket's news, `InitRoamer`; stopped before it); the outfit by `VAR_DRACONID_REPUTATION`
+  through `Draconid_EventScript_ChangeOutfit`; the respawn. PokéNav registrations are flags the scenes set, so they
+  are in the state. The debug jump scripts are no part of the story for the checkers: `check_progression.py` (and
+  through it `check_hardlock.py`), `check_story.py` and `check_megas.py` skip them. – Alt: the state written by hand
+  per stop (the old act tests' `setvar` blocks: hundreds of lines that drift from the story); only the flags set by
+  the time of a stop (a jump back would keep later ones); a generated block between markers in the `.pory` (2,200
+  lines of state in the hand-written file). – A story change that moves a stop's state makes `--check` fail, so a
+  jump can't silently go stale.
+- **D-483 The party: the player's own, a ready team if it is behind** (`Draconid_DebugJumpTeam`): nothing is taken
+  away, on a jump back either. If no party Pokémon is within `DRACONID_JUMP_LEVEL_SLACK` (5) levels of the stop's level,
+  the egg dragon (`VAR_STARTER_MON`) and Prof. Oak's partner (`VAR_SECOND_STARTER`, once given) join at that level,
+  evolved as far as their level-up evolutions go there (Zweilous at 25, Charmeleon at 16 …; past six they go to the
+  PC). The level is the stop's level cap (`GetCurrentLevelCap`, with the badges just set); after the Champion there
+  is none, so `DRACONID_JUMP_LEVEL_ELDER` (60, the cap the League was won at), `_VILLAGE` (the Regidrago level, 65) and
+  `_POSTGAME` (the finale's Primal legends, 72). After the summit every playthrough has caught Rayquaza: if neither
+  party nor PC has one it joins at `DRACONID_RAYQUAZA_LEVEL` and the summit's `Draconid_PrepareRayquaza` teaches it
+  Dragon Ascent and puts it in the lead. Then money (the level × 1,000), ten potions of the level's kind, five
+  Revives, ten Poké Balls of the level's kind – topped up, never taken – and a heal. Field moves need only the HMs
+  and badges of the state (D-190, D-191), so no HM user is given. – Alt: replacing the party with a fixed team (the
+  playtester's own Pokémon would be gone); levelling the player's own Pokémon (it changes their team, and its moves
+  would be the old ones); a team for every stop (a strong save would get six more each time). – Ready to play at the
+  stop's level, nothing of the player's lost.
+- **D-484 Going back asks first**: the generator picks for each stop a marker – a flag or var its first scene moves
+  on that no later leg moves back and no earlier one has (`VAR_NERINE_STATE` ≥ Petalburg Woods for Act 1,
+  `VAR_DRACONID_VILLAGE_STATE` ≥ `VILLAGE_STATE_ATTACK` for the village …) – and
+  `Debug_EventScript_DraconidJumpProgress` counts the stops a save has started. A jump to a stop whose first scene the
+  save has already played asks "This rewinds the story. Continue?" (YES / NO; NO leaves everything as it was, B is
+  NO). A jump straight back to the stop just landed on, before playing it, doesn't ask. – Alt: asking on every jump
+  (a forward jump loses nothing); comparing badges (several stops share a badge count). – The question exactly when
+  something is lost.
+- **D-485 The player's choices are kept**: the egg (and Aster's egg), Prof. Oak's partner, the Devon Goods and
+  Regidrago (`CHOICES` in the generator): before the state is written, `Debug_EventScript_DraconidJumpKeepChoices`
+  reads whether the save has made each choice (the marker of the leg where it is made) and what it chose (temp vars,
+  reset by the warp); a stop after the choice gets the save's own, else the default: Deino (Aster then has Dreepy, as
+  the ceremony gives her), Charmander (as the assignment asks), the goods returned (the simulation's way), Regidrago
+  not caught (it waits in the depths: no Regidrago is given). A stop before the choice gets the "not made" value, so
+  the scene asks again. – Alt: always the defaults (a Totodile run would turn into a Charmander run); asking at the
+  jump (four more menus in a quick debug tool). – The save stays the playtester's run.
+- **D-486 Trainer flags: the map trainers the walk passed**: a trainer on a map (a `trainerbattle` in its
+  `scripts.inc`) is beaten at a stop once the story's walk has passed its map in the trainer's own level-cap segment
+  or a later one (`tools/hack/trainers/segments.json`): Route 111's south trainers are beaten at Act 3, its desert
+  trainers (the next segment) are not. Story fights (rivals, admins, the Draconids' side battles) and every trainer a
+  table scene fights (Matt, the gym leaders) come only from the simulation, because such a flag set before its scene
+  would skip the scene's battle. A map counts whole: trainers in a corner the walk didn't reach count as beaten too.
+  The Draconids' side battles off the table (Granite Cave, Route 121, the village before the League) are left as
+  the save has them; they wait where they are. – Alt: no trainer flags (every trainer of the acts before stands
+  waiting); every trainer of earlier segments (the desert at Act 3 would be skipped, Victory Road at the League
+  door too). – The trainers a real run has walked past.
+- **D-487 One test walks every stop** (`tools/hack/emu/tests/act_jumps.play`, from `rustboro_done.ss`): the menu
+  path once (R + START, A, `choose 2`: Act 3), the same stop again for a save that kept the Devon Goods (the choice
+  and the Fire Stone stay), a rewind (Act 3 → Act 1: NO, then YES), then every stop from the one
+  before (`callscript`): its key states, the ready team's species, the arrival shot (`aj_<stop>`) and the act's first
+  scene starting (`until_text` on its first line; the Elder's call and the village attack start on arrival and are
+  played through to free control). In the matrix's Deino chains with the gender's sprites. – Alt: one run per stop
+  from the same save (ten loads, and the chain also shows a team growing stop by stop); checking the whole state (the
+  generator's `--check` already ties it to the simulation; the test checks that the game takes it). – Every stop
+  reaches its scene, on the real ROM.
+- **D-488 The levels and supplies are constants** (`include/constants/draconid.h`): `DRACONID_JUMP_STOP_*` (the
+  stops; the generator checks the numbers), `DRACONID_JUMP_LEVEL_*` (above), `DRACONID_JUMP_LEVEL_SLACK`,
+  `DRACONID_JUMP_MONEY_PER_LEVEL` (1,000), `DRACONID_JUMP_MEDICINE` (10), `DRACONID_JUMP_REVIVES` (5),
+  `DRACONID_JUMP_BALLS` (10), `DRACONID_JUMP_HYPER_LEVEL` (30: Hyper Potions and Great Balls), `DRACONID_JUMP_MAX_LEVEL`
+  (48: Max Potions and Ultra Balls). – Alt: numbers in the scripts. – The project's rule.
+- **D-489 Playtest guide v2** (`docs/playtest_guide.md`): rewritten for the v2 story, round 1 and round 2, for a
+  playtester on a handheld – short lines, no commands: what's different, a checkpoint table per act in story order
+  (the scene, the battles with what a loss does, what to look for), the post-game, and "Jump to an act" (how to open
+  it, what each stop sets up, the rewind question, the ready team, the kept choices). The v1 route table is gone (it is
+  in git history). – Alt: keeping v1 with a v2 appendix (two orders of events side by side); the generated leg table
+  of `hack_progression.md` (a checker's table, not a player's). – One guide for the ROM the playtester has.
 
 
 
