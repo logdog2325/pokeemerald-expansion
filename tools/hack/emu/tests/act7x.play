@@ -255,6 +255,20 @@ press DOWN 2 30
 press A 2 40
 until @gMain+4 4 @@BattleMainCB2 3000
 run 60
+# (as in the finale below: the leads and the reserves at 1 HP, PP kept – Salazzle's Corrosion, Toxapex's Recover and
+# poison wear the boosted lead down in a long mashed double: lost once in the m11 matrix, M_JANGMO_O)
+poke @gParties+312 1
+poke @gParties+313 0
+poke @gParties+376 1
+poke @gParties+377 0
+poke @gParties+43E 1
+poke @gParties+43F 0
+poke @gParties+4A2 1
+poke @gParties+4A3 0
+run 300
+battlehp 1
+battlehp 3
+battlepp 0
 poke @gMoveSelectionCursor ${MOVE}
 run 240
 shot 40_may_double
@@ -279,6 +293,20 @@ press DOWN 2 30
 press A 2 40
 until @gMain+4 4 @@BattleMainCB2 3000
 run 60
+# (as in the finale below: the leads and the reserves at 1 HP, PP kept – Salazzle's Corrosion, Toxapex's Recover and
+# poison wear the boosted lead down in a long mashed double: lost once in the m11 matrix, M_JANGMO_O)
+poke @gParties+312 1
+poke @gParties+313 0
+poke @gParties+376 1
+poke @gParties+377 0
+poke @gParties+43E 1
+poke @gParties+43F 0
+poke @gParties+4A2 1
+poke @gParties+4A3 0
+run 300
+battlehp 1
+battlehp 3
+battlepp 0
 poke @gMoveSelectionCursor ${MOVE}
 until @gMain+4 4 @@CB2_Overworld 200000 A 24
 expect_opponent TRAINER_GRUNT_VILLAGE_1
@@ -301,6 +329,20 @@ press DOWN 2 30
 press A 2 40
 until @gMain+4 4 @@BattleMainCB2 3000
 run 60
+# (as in the finale below: the leads and the reserves at 1 HP, PP kept – Salazzle's Corrosion, Toxapex's Recover and
+# poison wear the boosted lead down in a long mashed double: lost once in the m11 matrix, M_JANGMO_O)
+poke @gParties+312 1
+poke @gParties+313 0
+poke @gParties+376 1
+poke @gParties+377 0
+poke @gParties+43E 1
+poke @gParties+43F 0
+poke @gParties+4A2 1
+poke @gParties+4A3 0
+run 300
+battlehp 1
+battlehp 3
+battlepp 0
 poke @gMoveSelectionCursor ${MOVE}
 run 240
 shot 41_brendan_double
@@ -326,6 +368,20 @@ press DOWN 2 30
 press A 2 40
 until @gMain+4 4 @@BattleMainCB2 3000
 run 60
+# (as in the finale below: the leads and the reserves at 1 HP, PP kept – Salazzle's Corrosion, Toxapex's Recover and
+# poison wear the boosted lead down in a long mashed double: lost once in the m11 matrix, M_JANGMO_O)
+poke @gParties+312 1
+poke @gParties+313 0
+poke @gParties+376 1
+poke @gParties+377 0
+poke @gParties+43E 1
+poke @gParties+43F 0
+poke @gParties+4A2 1
+poke @gParties+4A3 0
+run 300
+battlehp 1
+battlehp 3
+battlepp 0
 poke @gMoveSelectionCursor ${MOVE}
 run 240
 shot 43_admins_double
