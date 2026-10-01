@@ -53,6 +53,7 @@ A .play script is a gbarun script plus:
   heal                    debug builds: heal the party the next time the player is free
   giveitem ITEM_X [N]     debug builds: put N (default 1) ITEM_X in the bag the next time the player is free
   callscript LABEL        debug builds: run the event script LABEL (a ROM symbol) the next time the player is free
+  maxmoney                debug builds: the wallet at MAX_MONEY (999,999) the next time the player is free
   givemon SPECIES_X LEVEL [ITEM_X]   debug builds: add a Pokémon (level-up moves, holding ITEM_X) to the party
                           the next time the player is free
   expect_party_hms N      debug builds: how many HM moves the party's Pokémon know (IsMoveHM)
@@ -250,11 +251,12 @@ BAG_OFFSET, SLOT_SIZE, BAG_SIZE = "offsetof(struct SaveBlock1, bag)", "sizeof(st
 ROAMER_OFFSET, ROAMER_SIZE = "offsetof(struct SaveBlock1, roamer)", "sizeof(struct Roamer)"
 ROAMER_SPECIES, ROAMER_ACTIVE = "offsetof(struct Roamer, species)", "offsetof(struct Roamer, active)"
 # the debug-build test hook (include/draconid.h): only probed when a test uses giveitem / givemon / expect_party_hms
-HOOK_COMMANDS = ("giveitem", "givemon", "expect_party_hms", "callscript")
+HOOK_COMMANDS = ("giveitem", "givemon", "expect_party_hms", "callscript", "maxmoney")
 TEST_ITEM_OFFSET, TEST_HMS_OFFSET = "offsetof(struct DraconidTestWarp, item)", "offsetof(struct DraconidTestWarp, partyHMMoves)"
 TEST_SPECIES_OFFSET, TEST_LEVEL_OFFSET = "offsetof(struct DraconidTestWarp, species)", "offsetof(struct DraconidTestWarp, level)"
 TEST_GIVE_ITEM, TEST_COUNT_HMS, TEST_GIVE_MON = "DRACONID_TEST_GIVE_ITEM", "DRACONID_TEST_COUNT_HMS", "DRACONID_TEST_GIVE_MON"
 TEST_SCRIPT, TEST_SCRIPT_OFFSET = "DRACONID_TEST_SCRIPT", "offsetof(struct DraconidTestWarp, script)"
+TEST_MAX_MONEY = "DRACONID_TEST_MAX_MONEY"
 BAG_POCKET, BAG_CURSOR, BAG_SCROLL = ("offsetof(struct BagPosition, pocket)", "offsetof(struct BagPosition, cursorPosition)",
                                       "offsetof(struct BagPosition, scrollPosition)")
 # party decoding (expect_party)
@@ -304,7 +306,7 @@ def main():
     names += [BAG_OFFSET, SLOT_SIZE, BAG_SIZE, "TRAINER_FLAGS_START", MON_SIZE, SECURE_OFFSET, SUBSTRUCT_SIZE]
     if any(l.split() and l.split()[0] in HOOK_COMMANDS for l in lines):
         names += [TEST_ITEM_OFFSET, TEST_HMS_OFFSET, TEST_SPECIES_OFFSET, TEST_LEVEL_OFFSET,
-                  TEST_GIVE_ITEM, TEST_COUNT_HMS, TEST_GIVE_MON, TEST_SCRIPT, TEST_SCRIPT_OFFSET]
+                  TEST_GIVE_ITEM, TEST_COUNT_HMS, TEST_GIVE_MON, TEST_SCRIPT, TEST_SCRIPT_OFFSET, TEST_MAX_MONEY]
     if any(l.split() and l.split()[0] == "bagcursor" for l in lines):
         names += [BAG_POCKET, BAG_CURSOR, BAG_SCROLL]
     if any(l.split() and l.split()[0] == "boost" for l in lines):
@@ -505,6 +507,11 @@ def main():
                 out.append("poke %X %X" % (w + consts[TEST_SCRIPT_OFFSET] + i, (addr >> (8 * i)) & 0xFF))
             out.append("poke %X %X" % (w, consts[TEST_SCRIPT]))
             out.append("until %X 1 0 900" % w)  # the hook has started it
+        elif t[0] == "maxmoney":
+            # debug builds only: Draconid_TryTestWarp sets the money when the player is free
+            w = syms["gDraconidTestWarp"]
+            out.append("poke %X %X" % (w, consts[TEST_MAX_MONEY]))
+            out.append("until %X 1 0 900" % w)  # the hook took the request
         elif t[0] == "expect_party_hms":
             # debug builds only: Draconid_TryTestWarp counts the party's HM moves when the player is free
             w = syms["gDraconidTestWarp"]

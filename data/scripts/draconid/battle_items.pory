@@ -1,10 +1,12 @@
-// Draconid Emerald round 1, feedback 1.33 (D-218 – D-222): battle items and Mega Stones through the story.
+// Draconid Emerald round 1, feedback 1.33 (D-218 – D-222) and 2.5 (D-320 – D-325): battle items, Mega Stones
+// and Z-Crystals.
 //
 // A second clerk behind the counter of every Poké Mart (and a third on the Lilycove Department Store 3F)
 // runs the BATTLE ITEM counter. Its stock grows with the number of Gym Badges, so it follows the level caps
 // (src/caps.c): type boosters from the start, Choice items and the first Mega Stones at six badges, the rest
-// of the competitive items at eight, the remaining Mega Stones after the Champion. Tier table and prices:
-// docs/hack_items.md. The Gym Leaders also hand over their type's booster with their TM (D-220).
+// of the competitive items and more Mega Stones at eight. After the Champion the clerk asks which counter:
+// the battle items (everything of the tiers), every Mega Stone or every Z-Crystal of the build. Tier table and
+// prices: docs/hack_items.md. The Gym Leaders also hand over their type's booster with their TM (D-220).
 
 // ---------------------------------------------------------------------------
 // The counter clerk (map.json objects in the Marts point here)
@@ -22,7 +24,7 @@ script Draconid_EventScript_BattleItemClerk {
     waitmessage
     call(Draconid_EventScript_CountBadges)
     if (flag(FLAG_IS_CHAMPION)) {
-        pokemart(Draconid_BattleItems_PostGame)
+        call(Draconid_EventScript_BattleItemPostGame)
     } elif (var(VAR_RESULT) >= BATTLE_ITEMS_TIER_5_BADGES) {
         pokemart(Draconid_BattleItems_Tier5)
     } elif (var(VAR_RESULT) >= BATTLE_ITEMS_TIER_4_BADGES) {
@@ -37,6 +39,34 @@ script Draconid_EventScript_BattleItemClerk {
     call(Draconid_EventScript_MartGoodbye)
     release
     end
+}
+
+// After the Champion (D-320): three lists instead of one of 216 entries – the battle items (every tier),
+// every Mega Stone and every Z-Crystal (check_megas.py --write keeps the last two complete). The menu comes
+// back after each list until the player cancels.
+script Draconid_EventScript_BattleItemPostGame {
+    waitbuttonpress  // the greeting's last box stays until the player has read it
+    message(Draconid_Text_BattleItemPostGame)
+    waitmessage
+    setvar(VAR_0x8004, FALSE)
+    while (var(VAR_0x8004) == FALSE) {
+        dynmultichoice(17, 4, FALSE, 4, 0, DYN_MULTICHOICE_CB_NONE, "BATTLE ITEMS", "MEGA STONES", "Z-CRYSTALS", "CANCEL")
+        switch (var(VAR_RESULT)) {
+            case 0:
+                pokemart(Draconid_BattleItems_Tier5)
+            case 1:
+                pokemart(Draconid_MegaStones_PostGame)
+            case 2:
+                pokemart(Draconid_ZCrystals_PostGame)
+            default:
+                setvar(VAR_0x8004, TRUE)
+        }
+        if (var(VAR_0x8004) == FALSE) {
+            message(Draconid_Text_BattleItemAnotherList)
+            waitmessage
+        }
+    }
+    return
 }
 
 // VAR_RESULT = the number of Gym Badges (any order)
@@ -63,6 +93,15 @@ text Draconid_Text_BattleItemGreetingUniform {
            "Rules are rules. Your BADGES decide what I sell you. Not your uniform.")
 }
 
+text Draconid_Text_BattleItemPostGame {
+    format("For the CHAMPION, the whole stock: every MEGA STONE and every Z-CRYSTAL there is, too.\p"
+           "What are you looking for?")
+}
+
+text Draconid_Text_BattleItemAnotherList {
+    format("Would you like to see another list?")
+}
+
 text Draconid_Text_BattleItemGreetingRevealed {
     format("{PLAYER}! Everyone's talking about what you did in SOOTOPOLIS!\p"
            "Here, have a look. Everything your BADGES allow!")
@@ -72,25 +111,18 @@ text Draconid_Text_BattleItemGreetingRevealed {
 // The stock: ONE list, newest tier first. Each tier's label starts its own new items and runs on through
 // every lower tier to the single ITEM_NONE, so a tier sells everything below it and its new items come
 // first in the shop. Tier badge counts: BATTLE_ITEMS_TIER_*_BADGES (include/constants/draconid.h).
-// Mega Stones only for Pokémon the player can get (docs/hack_items.md; recheck against the wild tables).
+// The tiers' Mega Stones are for Pokémon lines the player can get before the post-game: tools/hack/check_megas.py
+// checks that every such stone has a source before it (an item ball, a gift or a tier; D-323).
 // ---------------------------------------------------------------------------
 raw `
 	.align 2
-Draconid_BattleItems_PostGame::
-	.2byte ITEM_SALAMENCITE
-	.2byte ITEM_LATIASITE
-	.2byte ITEM_LATIOSITE
-	.2byte ITEM_GALLADITE
-	.2byte ITEM_BLAZIKENITE
-	.2byte ITEM_SCEPTILITE
-	.2byte ITEM_CHARIZARDITE_X
-	.2byte ITEM_FERALIGITE
-	.2byte ITEM_GARCHOMPITE_Z
 Draconid_BattleItems_Tier5::
 	.2byte ITEM_CHARIZARDITE_Y
+	.2byte ITEM_SALAMENCITE
 	.2byte ITEM_SKARMORITE
 	.2byte ITEM_STARMINITE
 	.2byte ITEM_CHIMECHITE
+	.2byte ITEM_FROSLASSITE
 	.2byte ITEM_PYROARITE
 	.2byte ITEM_GOLISOPITE
 	.2byte ITEM_BARBARACITE
@@ -100,6 +132,7 @@ Draconid_BattleItems_Tier5::
 	.2byte ITEM_RAICHUNITE_X
 	.2byte ITEM_RAICHUNITE_Y
 	.2byte ITEM_ABSOLITE_Z
+	.2byte ITEM_GARCHOMPITE_Z
 	.2byte ITEM_LOADED_DICE
 	.2byte ITEM_CLEAR_AMULET
 	.2byte ITEM_MIRROR_HERB
@@ -144,13 +177,22 @@ Draconid_BattleItems_Tier4::
 	.2byte ITEM_MAWILITE
 	.2byte ITEM_SABLENITE
 	.2byte ITEM_GARDEVOIRITE
+	.2byte ITEM_GALLADITE
 	.2byte ITEM_ALTARIANITE
 	.2byte ITEM_PINSIRITE
 	.2byte ITEM_HERACRONITE
+	.2byte ITEM_ABSOLITE
+	.2byte ITEM_PIDGEOTITE
+	.2byte ITEM_STEELIXITE
+	.2byte ITEM_SCIZORITE
+	.2byte ITEM_HOUNDOOMINITE
+	.2byte ITEM_GENGARITE
+	.2byte ITEM_KANGASKHANITE
 	.2byte ITEM_EXCADRITE
 	.2byte ITEM_STARAPTITE
 	.2byte ITEM_HAWLUCHANITE
 	.2byte ITEM_CHANDELURITE
+	.2byte ITEM_CLEFABLITE
 	.2byte ITEM_CHOICE_BAND
 	.2byte ITEM_CHOICE_SPECS
 	.2byte ITEM_CHOICE_SCARF
@@ -207,6 +249,147 @@ Draconid_BattleItems_Tier1::
 	.2byte ITEM_FAIRY_FEATHER
 	.2byte ITEM_NONE
 `
+
+// After the Champion: every Mega Stone and every Z-Crystal (D-320). Written by tools/hack/check_megas.py
+// --write from src/data/items.h, so a stone or crystal the build adds later is listed too; don't edit by hand.
+// BEGIN check_megas.py --write: every Mega Stone (National Dex order) and Z-Crystal (types, then species) of the build
+raw `
+	.align 2
+Draconid_MegaStones_PostGame::
+	.2byte ITEM_VENUSAURITE
+	.2byte ITEM_CHARIZARDITE_X
+	.2byte ITEM_CHARIZARDITE_Y
+	.2byte ITEM_BLASTOISINITE
+	.2byte ITEM_BEEDRILLITE
+	.2byte ITEM_PIDGEOTITE
+	.2byte ITEM_RAICHUNITE_X
+	.2byte ITEM_RAICHUNITE_Y
+	.2byte ITEM_CLEFABLITE
+	.2byte ITEM_ALAKAZITE
+	.2byte ITEM_VICTREEBELITE
+	.2byte ITEM_SLOWBRONITE
+	.2byte ITEM_GENGARITE
+	.2byte ITEM_KANGASKHANITE
+	.2byte ITEM_STARMINITE
+	.2byte ITEM_PINSIRITE
+	.2byte ITEM_GYARADOSITE
+	.2byte ITEM_AERODACTYLITE
+	.2byte ITEM_DRAGONINITE
+	.2byte ITEM_MEWTWONITE_X
+	.2byte ITEM_MEWTWONITE_Y
+	.2byte ITEM_MEGANIUMITE
+	.2byte ITEM_FERALIGITE
+	.2byte ITEM_AMPHAROSITE
+	.2byte ITEM_STEELIXITE
+	.2byte ITEM_SCIZORITE
+	.2byte ITEM_HERACRONITE
+	.2byte ITEM_SKARMORITE
+	.2byte ITEM_HOUNDOOMINITE
+	.2byte ITEM_TYRANITARITE
+	.2byte ITEM_SCEPTILITE
+	.2byte ITEM_BLAZIKENITE
+	.2byte ITEM_SWAMPERTITE
+	.2byte ITEM_GARDEVOIRITE
+	.2byte ITEM_SABLENITE
+	.2byte ITEM_MAWILITE
+	.2byte ITEM_AGGRONITE
+	.2byte ITEM_MEDICHAMITE
+	.2byte ITEM_MANECTITE
+	.2byte ITEM_SHARPEDONITE
+	.2byte ITEM_CAMERUPTITE
+	.2byte ITEM_ALTARIANITE
+	.2byte ITEM_BANETTITE
+	.2byte ITEM_CHIMECHITE
+	.2byte ITEM_ABSOLITE
+	.2byte ITEM_ABSOLITE_Z
+	.2byte ITEM_GLALITITE
+	.2byte ITEM_SALAMENCITE
+	.2byte ITEM_METAGROSSITE
+	.2byte ITEM_LATIASITE
+	.2byte ITEM_LATIOSITE
+	.2byte ITEM_STARAPTITE
+	.2byte ITEM_LOPUNNITE
+	.2byte ITEM_GARCHOMPITE
+	.2byte ITEM_GARCHOMPITE_Z
+	.2byte ITEM_LUCARIONITE
+	.2byte ITEM_LUCARIONITE_Z
+	.2byte ITEM_ABOMASITE
+	.2byte ITEM_GALLADITE
+	.2byte ITEM_FROSLASSITE
+	.2byte ITEM_HEATRANITE
+	.2byte ITEM_DARKRANITE
+	.2byte ITEM_EMBOARITE
+	.2byte ITEM_EXCADRITE
+	.2byte ITEM_AUDINITE
+	.2byte ITEM_SCOLIPITE
+	.2byte ITEM_SCRAFTINITE
+	.2byte ITEM_EELEKTROSSITE
+	.2byte ITEM_CHANDELURITE
+	.2byte ITEM_GOLURKITE
+	.2byte ITEM_CHESNAUGHTITE
+	.2byte ITEM_DELPHOXITE
+	.2byte ITEM_GRENINJITE
+	.2byte ITEM_PYROARITE
+	.2byte ITEM_FLOETTITE
+	.2byte ITEM_MEOWSTICITE
+	.2byte ITEM_MALAMARITE
+	.2byte ITEM_BARBARACITE
+	.2byte ITEM_DRAGALGITE
+	.2byte ITEM_HAWLUCHANITE
+	.2byte ITEM_ZYGARDITE
+	.2byte ITEM_DIANCITE
+	.2byte ITEM_CRABOMINITE
+	.2byte ITEM_GOLISOPITE
+	.2byte ITEM_DRAMPANITE
+	.2byte ITEM_MAGEARNITE
+	.2byte ITEM_ZERAORITE
+	.2byte ITEM_FALINKSITE
+	.2byte ITEM_SCOVILLAINITE
+	.2byte ITEM_GLIMMORANITE
+	.2byte ITEM_TATSUGIRINITE
+	.2byte ITEM_BAXCALIBRITE
+	.2byte ITEM_NONE
+
+	.align 2
+Draconid_ZCrystals_PostGame::
+	.2byte ITEM_NORMALIUM_Z
+	.2byte ITEM_FIRIUM_Z
+	.2byte ITEM_WATERIUM_Z
+	.2byte ITEM_ELECTRIUM_Z
+	.2byte ITEM_GRASSIUM_Z
+	.2byte ITEM_ICIUM_Z
+	.2byte ITEM_FIGHTINIUM_Z
+	.2byte ITEM_POISONIUM_Z
+	.2byte ITEM_GROUNDIUM_Z
+	.2byte ITEM_FLYINIUM_Z
+	.2byte ITEM_PSYCHIUM_Z
+	.2byte ITEM_BUGINIUM_Z
+	.2byte ITEM_ROCKIUM_Z
+	.2byte ITEM_GHOSTIUM_Z
+	.2byte ITEM_DRAGONIUM_Z
+	.2byte ITEM_DARKINIUM_Z
+	.2byte ITEM_STEELIUM_Z
+	.2byte ITEM_FAIRIUM_Z
+	.2byte ITEM_PIKANIUM_Z
+	.2byte ITEM_EEVIUM_Z
+	.2byte ITEM_SNORLIUM_Z
+	.2byte ITEM_MEWNIUM_Z
+	.2byte ITEM_DECIDIUM_Z
+	.2byte ITEM_INCINIUM_Z
+	.2byte ITEM_PRIMARIUM_Z
+	.2byte ITEM_LYCANIUM_Z
+	.2byte ITEM_MIMIKIUM_Z
+	.2byte ITEM_KOMMONIUM_Z
+	.2byte ITEM_TAPUNIUM_Z
+	.2byte ITEM_SOLGANIUM_Z
+	.2byte ITEM_LUNALIUM_Z
+	.2byte ITEM_MARSHADIUM_Z
+	.2byte ITEM_ALORAICHIUM_Z
+	.2byte ITEM_PIKASHUNIUM_Z
+	.2byte ITEM_ULTRANECROZIUM_Z
+	.2byte ITEM_NONE
+`
+// END check_megas.py --write
 
 // ---------------------------------------------------------------------------
 // Gym Leaders: their type's booster after the TM (D-220). Called from each gym's TM script right after the

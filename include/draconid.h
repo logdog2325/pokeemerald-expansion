@@ -29,6 +29,7 @@ bool32 Draconid_IsPrimalMusic(struct WarpData *warp);
 #define DRACONID_TEST_COUNT_HMS (1 << 3)  // play.py "expect_party_hms"
 #define DRACONID_TEST_GIVE_MON  (1 << 4)  // play.py "givemon": species at level, holding item
 #define DRACONID_TEST_SCRIPT    (1 << 5)  // play.py "callscript": run the script at `script`
+#define DRACONID_TEST_MAX_MONEY (1 << 6)  // play.py "maxmoney": the wallet at MAX_MONEY
 
 struct DraconidTestWarp
 {

@@ -1,7 +1,8 @@
-# Draconid Emerald – evolutions, battle items and Mega Stones
+# Draconid Emerald – evolutions, battle items, Mega Stones and Z-Crystals
 
 Round 1, follow-up 3 (feedback 1.31, 1.33 and the Mega Stone addition; decisions D-216 – D-222 in
-[hack_decisions.md](hack_decisions.md)). Every change is listed in [hack_changes.md](hack_changes.md).
+[hack_decisions.md](hack_decisions.md)) and feedback 2.5 (every Mega Stone reachable in the story, every stone and
+Z-Crystal for sale after the Champion; D-320 – D-325). Every change is listed in [hack_changes.md](hack_changes.md).
 
 ## No trade evolutions (D-216, D-217)
 
@@ -79,7 +80,7 @@ one tile right). The Lilycove Department Store has a third clerk between the two
 (9, 2). The Pokémon League 1F has none (one talkable counter tile, and it belongs to the Acts 6–7 work).
 
 The stock grows with the **number of Gym Badges** (in any order), so it follows the level caps; the post-game tier
-opens with the Champion. The script is `Draconid_EventScript_BattleItemClerk` in
+opens with the Champion (`FLAG_IS_CHAMPION`, set at the Hall of Fame). The script is `Draconid_EventScript_BattleItemClerk` in
 `data/scripts/draconid/battle_items.pory`; the tier badge counts are `BATTLE_ITEMS_TIER_*_BADGES` in
 `include/constants/draconid.h`. The stock is **one list, newest tier first**: each tier's label starts its own new
 items and runs on through every lower tier to a single `ITEM_NONE`, so a tier sells everything below it, nothing is
@@ -87,15 +88,30 @@ listed twice, and what just unlocked is at the top of the shop. The clerk greets
 to the uniform, warm after Sootopolis) and says goodbye like the Mart clerks. Booster Energy is not sold (no Paradox
 Pokémon to hold it).
 
+**After the Champion** (D-320) the clerk asks which list – **BATTLE ITEMS / MEGA STONES / Z-CRYSTALS / CANCEL** – and
+comes back to the question after each one ("Would you like to see another list?") until CANCEL or B:
+
+- **BATTLE ITEMS**: the tier 5 list, i.e. everything of tiers 1–5 (126 entries; tier 5's stones on top as before);
+- **MEGA STONES**: every Mega Stone of the build, **92**, in National Dex order of the Pokémon (X before Y, a second
+  Mega form's stone – Absolite Z, Garchompite Z, Lucarionite Z – right after the first);
+- **Z-CRYSTALS**: every Z-Crystal, **35**: the 18 type crystals in type order (Normalium Z … Fairium Z), then the 17
+  species crystals (Pikanium Z … Ultranecrozium Z).
+
+The two last lists (`Draconid_MegaStones_PostGame`, `Draconid_ZCrystals_PostGame`) are written by
+`python3 tools/hack/check_megas.py --write` from `src/data/items.h` (every `HOLD_EFFECT_MEGA_STONE` /
+`HOLD_EFFECT_Z_CRYSTAL` item), and `check_megas.py` fails while a stone or crystal is missing or out of order, so one
+the build adds later can't be left out. Each list is an ordinary mart (BUY / SELL / QUIT); in every mart LEFT and
+RIGHT now turn a page of the list (D-321), so the 92 stones are 12 pages.
+
 <!-- tier table: prices from src/data/items.h -->
 | Tier | Opens | New items (price) | New Mega Stones (₽50,000 each) |
 |---|---|---|---|
 | 1 | always (0 badges) | Silk Scarf 1,000, Charcoal 1,000, Mystic Water 1,000, Miracle Seed 1,000, Magnet 1,000, Never-Melt Ice 1,000, Black Belt 1,000, Poison Barb 1,000, Soft Sand 1,000, Sharp Beak 1,000, Twisted Spoon 1,000, Silver Powder 1,000, Hard Stone 1,000, Spell Tag 1,000, Dragon Fang 1,000, Black Glasses 1,000, Metal Coat 1,000, Fairy Feather 1,000 | – |
 | 2 | 2 badges | Muscle Band 4,000, Wise Glasses 4,000, Quick Claw 4,000, Scope Lens 5,000, Wide Lens 5,000, Shell Bell 6,000, Big Root 4,000, Light Clay 6,000, King's Rock 5,000, Deep Sea Tooth 2,000, Deep Sea Scale 2,000, Everstone 3,000 | – |
 | 3 | 4 badges | Leftovers 15,000, Black Sludge 10,000, Rocky Helmet 12,000, Expert Belt 12,000, Focus Sash 10,000, Eviolite 12,000, Air Balloon 5,000, Eject Button 8,000, Red Card 3,000, White Herb 5,000, Mental Herb 5,000, Power Herb 8,000 | – |
-| 4 | 6 badges | Choice Band 40,000, Choice Specs 40,000, Choice Scarf 40,000, Life Orb 30,000, Assault Vest 30,000, Weakness Policy 20,000, Heavy-Duty Boots 20,000, Safety Goggles 20,000, Covert Cloak 20,000 | Alakazite, Aggronite, Mawilite, Sablenite, Gardevoirite, Altarianite, Pinsirite, Heracronite, Excadrite, Staraptite, Hawluchanite, Chandelurite |
-| 5 | 8 badges | Loaded Dice 20,000, Clear Amulet 30,000, Mirror Herb 30,000, Punching Glove 15,000, Throat Spray 20,000, Blunder Policy 30,000, Room Service 20,000, Eject Pack 30,000, Protective Pads 15,000, Utility Umbrella 15,000, Ability Shield 20,000, Terrain Extender 15,000, Electric Seed 20,000, Grassy Seed 20,000, Misty Seed 20,000, Psychic Seed 20,000, Damp Rock 8,000, Heat Rock 8,000, Smooth Rock 8,000, Icy Rock 8,000, Flame Orb 15,000, Toxic Orb 15,000, Zoom Lens 10,000, Razor Claw 15,000, Bright Powder 30,000, Focus Band 10,000, Shed Shell 20,000, Grip Claw 10,000, Binding Band 20,000, Iron Ball 20,000, Lagging Tail 20,000, Sticky Barb 10,000, Metronome 15,000, Absorb Bulb 5,000, Cell Battery 5,000, Luminous Moss 5,000, Snowball 5,000, Adrenaline Orb 5,000 | Charizardite Y, Skarmorite, Starminite, Chimechite, Pyroarite, Golisopite, Barbaracite, Dragalgite, Glimmoranite, Golurkite, Raichunite X, Raichunite Y, Absolite Z |
-| post-game | after the Champion (`FLAG_IS_CHAMPION`) | – | Salamencite, Latiasite, Latiosite, Galladite, Blazikenite, Sceptilite, Charizardite X, Feraligite, Garchompite Z |
+| 4 | 6 badges | Choice Band 40,000, Choice Specs 40,000, Choice Scarf 40,000, Life Orb 30,000, Assault Vest 30,000, Weakness Policy 20,000, Heavy-Duty Boots 20,000, Safety Goggles 20,000, Covert Cloak 20,000 | Alakazite, Aggronite, Mawilite, Sablenite, Gardevoirite, Galladite, Altarianite, Pinsirite, Heracronite, Absolite, Pidgeotite, Steelixite, Scizorite, Houndoominite, Gengarite, Kangaskhanite, Excadrite, Staraptite, Hawluchanite, Chandelurite, Clefablite |
+| 5 | 8 badges | Loaded Dice 20,000, Clear Amulet 30,000, Mirror Herb 30,000, Punching Glove 15,000, Throat Spray 20,000, Blunder Policy 30,000, Room Service 20,000, Eject Pack 30,000, Protective Pads 15,000, Utility Umbrella 15,000, Ability Shield 20,000, Terrain Extender 15,000, Electric Seed 20,000, Grassy Seed 20,000, Misty Seed 20,000, Psychic Seed 20,000, Damp Rock 8,000, Heat Rock 8,000, Smooth Rock 8,000, Icy Rock 8,000, Flame Orb 15,000, Toxic Orb 15,000, Zoom Lens 10,000, Razor Claw 15,000, Bright Powder 30,000, Focus Band 10,000, Shed Shell 20,000, Grip Claw 10,000, Binding Band 20,000, Iron Ball 20,000, Lagging Tail 20,000, Sticky Barb 10,000, Metronome 15,000, Absorb Bulb 5,000, Cell Battery 5,000, Luminous Moss 5,000, Snowball 5,000, Adrenaline Orb 5,000 | Charizardite Y, Salamencite, Skarmorite, Starminite, Chimechite, Froslassite, Pyroarite, Golisopite, Barbaracite, Dragalgite, Glimmoranite, Golurkite, Raichunite X, Raichunite Y, Absolite Z, Garchompite Z |
+| post-game | after the Champion (`FLAG_IS_CHAMPION`) | – (BATTLE ITEMS = the tier 5 list) | **every** Mega Stone (92, MEGA STONES) and **every** Z-Crystal (35 at 30,000, Z-CRYSTALS) |
 
 Vanilla item balls and hidden items that hold battle items (the Shoal Cave Never-Melt Ice, the Granite Cave
 Everstones, the Mt. Pyre incenses, …) stay where they are.
@@ -120,9 +136,19 @@ not – at `4 × last Pokémon's level × class money`):
 
 Type boosters cost 1,000 (`TYPE_BOOSTING_PRICE`, the Gen 7 price, down from Gen 9's 3,000); tier 2 items
 4,000–6,000; tier 3 5,000–15,000; tier 4 20,000–40,000 (the three Choice items at 40,000 are the most expensive
-held items); tier 5 keeps the Gen 9 prices (5,000–30,000); every Mega Stone the counter sells costs 50,000
-(`MEGA_STONE_PRICE`). Only the Gen 9 branch of each `#if I_PRICE` block changed. Stones that are only found or
-given stay at price 0 (they can't be sold).
+held items); tier 5 keeps the Gen 9 prices (5,000–30,000); every Mega Stone costs 50,000 (`MEGA_STONE_PRICE`) and
+every Z-Crystal 30,000 (`Z_CRYSTAL_PRICE`, D-320). Only the Gen 9 branch of each `#if I_PRICE` block changed.
+
+After the Champion the money comes from rematches: a League run (the Elite Four's post-game teams and Steven's
+rematch) pays 45,200 (Sidney 7,200, Phoebe 7,300, Glacia 7,400, Drake 7,500, Steven 15,800; twice that with the
+Amulet Coin), Lance about 17,200 a win. A stone is about one League run, a crystal two thirds of one: a Z-Move is
+once per battle where a Mega lasts the whole battle, but a type crystal fits every Pokémon with a move of its type.
+
+Every stone and crystal has its price **because the post-game lists sell them all**: a 0-price item in a mart is
+free (`Task_BuyHowManyDialogueInit` then allows up to 999 for nothing). Stones and crystals that are found or given
+in the story stay found or given there. **Shops never buy a stone or crystal back** (D-322,
+`I_SELL_MEGA_STONES_Z_CRYSTALS` FALSE: `GetItemSellPrice` is 0 for them, and the bag's SELL checks the sell price):
+so the price doesn't turn the story's found stones into ₽12,500 each, as D-222 had it with price 0.
 
 ## Gym Leader gifts (D-220)
 
@@ -146,9 +172,17 @@ sells it too.
 Nothing before the **Mega Ring** (Aster, Jagged Pass, Act 3). The second starter's own stone (Charizardite X /
 Feraligite / Sceptilite) stays the Lavaridge traveller's gift right after it (D-126). After that:
 
-- **Nine stones lie on maps the story opens later**, at the ORAS spot where Emerald has it, each in place of a
-  low-value vanilla item (the pickup flag keeps its number and is renamed after the stone);
-- **the counter sells more** from six badges, eight badges and after the Champion (₽50,000 each).
+- **Eleven stones lie on maps the story opens later**, at the ORAS spot where Emerald has it, each in place of a
+  low-value vanilla item (the pickup flag keeps its number and is renamed after the stone) – ten before the
+  Champion; the Safari Zone's north-east area (Absolite) opens only with the Hall of Fame (D-323);
+- **the counter sells more** from six and eight badges (₽50,000 each), and **every** stone after the Champion.
+
+**Every stone whose Pokémon line the player can get before the post-game has a source before it** (D-323; 50 of the
+92 with the round 2 wild tables). `python3 tools/hack/check_megas.py` checks it: each stone's line (every species linked to its Mega's species by
+evolutions), where and when the player gets the line (the wild tables, gifts, eggs, trades, static encounters), the
+stone's sources (item balls, gifts, counter tiers), and it fails when an obtainable line's stone has nothing before
+the post-game, or a stone or crystal is missing from the post-game lists. Rerun it whenever the wild tables or the
+gifts change.
 
 Source for the ORAS spots: Serebii, "Omega Ruby & Alpha Sapphire – Mega Evolutions"
 (https://www.serebii.net/omegarubyalphasapphire/megaevolutions.shtml), read 2026-09-30.
@@ -158,29 +192,42 @@ Source for the ORAS spots: Serebii, "Omega Ruby & Alpha Sapphire – Mega Evolut
 | Manectite | Electrike (Route 110) | item ball, New Mauville (2, 11), was a Paralyze Heal – after Surf | Route 110 Cycling Road (passed before the Ring) |
 | Banettite | Shuppet (Mt. Pyre) | item ball, Mt. Pyre 3F (0, 7), was a Super Repel | Mt. Pyre |
 | Cameruptite | Numel (Route 112, Fiery Path) | item ball, Magma Hideout 3F room 3 (9, 19), was an Escape Rope | Magma Hideout (Delta, OR) |
-| Absolite | Absol (Route 120) | item ball, Safari Zone NE (8, 17), was a Nugget | Safari Zone |
+| Absolite | Absol (Route 120) | counter, 6 badges (D-323); the item ball in the Safari Zone NE (8, 17), was a Nugget, is post-game (the construction workers stand in the way until the Hall of Fame) | Safari Zone |
 | Gyaradosite | Magikarp | item ball, Route 123 (27, 18), was an Ultra Ball | Route 123 |
 | Sharpedonite | Carvanha | item ball, Aqua Hideout B2F (3, 13), was a Nest Ball | Aqua Hideout (Delta, AS) |
 | Metagrossite | Beldum (Granite Cave 1%; Steven's post-game gift) | item ball, Mossdeep City (62, 35), was a Net Ball – Steven's town | Steven (League rematch, after the Delta Episode) |
 | Glalitite | Snorunt (Shoal Cave) | item ball, Shoal Cave stairs room (13, 12), was an Ice Heal | Shoal Cave basement |
 | Garchompite | Gible (Route 111 1%), Gabite (Victory Road) | item ball, Victory Road B2F (13, 8), was a Full Heal | Aarune (Secret Base Platinum Rank) |
+| Ampharosite | Mareep (Draconid Pass; round 2 wild tables) | item ball, New Mauville (32, 25), was an Ultra Ball (D-323) | New Mauville |
+| Slowbronite | Slowpoke (surfing, Route 103 and the seas; round 2) | item ball, Shoal Cave entrance room (30, 3), was a Big Pearl (D-323) – the Shell Bell man's room | Shoal Cave (the Shoal Salt / Shell man) |
 | Alakazite, Aggronite, Mawilite, Sablenite, Gardevoirite, Altarianite, Pinsirite, Heracronite | Abra, Aron, Mawile, Sableye, Ralts, Swablu, Pinsir, Heracross | counter, 6 badges | Slateport Market, Rusturf Tunnel, Verdanturf, Sootopolis, Verdanturf (Wanda), Lilycove, Route 124, Route 127 |
-| Excadrite, Staraptite, Hawluchanite, Chandelurite | Drilbur, Starly, Hawlucha, Litwick (new wild species) | counter, 6 badges | – (Legends Z-A) |
+| Galladite | Ralts (Gallade: a Kirlia ♂ with a Dawn Stone – the Abandoned Ship's, from the Dawn / Dusk Stone work) | counter, 6 badges (D-323; was post-game) | Prof. Cozmo, Fallarbor (Delta) |
+| Pidgeotite, Steelixite, Scizorite, Houndoominite | Pidgey (Draconid Pass), Onix (Granite Cave), Scyther (Safari Zone 1%), Houndour (Route 113) – round 2 wild tables | counter, 6 badges (D-323) | Rustboro (Mr. Stone), Granite Cave, Petalburg Woods, Lavaridge – all passed before the Ring |
+| Gengarite, Kangaskhanite | Gastly (Mt. Pyre), Kangaskhan (Safari Zone 1%) – round 2 | counter, 6 badges (D-323) | Battle Resort; Pacifidlog (no item to replace there) |
+| Excadrite, Staraptite, Hawluchanite, Chandelurite, Clefablite | Drilbur, Starly, Hawlucha, Litwick (Chandelure: a Dusk Stone, the Mt. Pyre exterior – the Dawn / Dusk Stone work), Clefairy (Meteor Falls, round 2) | counter, 6 badges (Clefablite D-323) | – (Legends Z-A) |
+| Charizardite X, Feraligite, Sceptilite | the second starter (Charmander, Totodile, Treecko; Prof. Oak, Act 1) | the Lavaridge traveller's gift for the one chosen (D-126); counter, post-game (all three) | Fiery Path (Charizardite X); Route 120 / Route 114 (Sceptilite) |
 | Charizardite Y | Charmander (second starter) | counter, 8 badges | Scorched Slab |
+| Salamencite | Bagon (Meteor Falls B1F 2R: Waterfall and the Rain Badge) | counter, 8 badges (D-323; was post-game) | Meteor Falls (Zinnia's grandmother, after the Delta Episode) |
+| Froslassite, Garchompite Z | Snorunt (Shoal Cave; Froslass: a Snorunt ♀ with a Dawn Stone), Gible | counter, 8 badges (D-323; Garchompite Z was post-game) | – (Legends Z-A) |
 | Skarmorite, Starminite, Chimechite, Raichunite X / Y, Absolite Z | Skarmory, Staryu, Chingling / Chimecho, Pikachu, Absol | counter, 8 badges | – (Legends Z-A) |
 | Pyroarite, Golisopite, Barbaracite, Dragalgite, Glimmoranite, Golurkite | Litleo, Wimpod, Binacle, Skrelp, Glimmet, Golett (new wild species) | counter, 8 badges | – (Legends Z-A) |
-| Salamencite | Bagon (Meteor Falls) | counter, post-game | Meteor Falls (after the Delta Episode) |
 | Latiasite, Latiosite | the roaming Latis (post-game) | counter, post-game | Littleroot / on the Lati (Delta) |
-| Galladite | Wally's signature (Gallade needs a Dawn Stone, not in the game yet) | counter, post-game | Cozmo (Delta) |
-| Blazikenite, Sceptilite, Charizardite X, Feraligite | the rivals' and Nerine's / Aster's signature Megas (Sceptilite and the Charizardite / Feraligite also for the second starter) | counter, post-game | Route 120 / Route 114 (Blazikenite, Sceptilite); Fiery Path (Charizardite X) |
-| Garchompite Z | Gible (second Mega form) | counter, post-game | – (Legends Z-A) |
-| Dragoninite | Dratini (Lance's gift with it) | Lance's gift after his first defeat, Draconid village, post-game (D-262) | – (Legends Z-A) |
+| Meganiumite | Chikorita (Birch's Johto starters, post-game) | counter, post-game | – (Legends Z-A) |
+| Dragoninite | Dratini (Lance's gift with it) | Lance's gift after his first defeat, Draconid village, post-game (D-262); counter, post-game | – (Legends Z-A) |
+| every other stone | no Pokémon line the player can get (see below) | counter, post-game | |
 
-**Not in the game** – no species the player can get (recheck against the wild tables at merge time,
-[hack_wild.md](hack_wild.md), and add a stone to a counter tier if its species became obtainable): Venusaurite,
-Blastoisinite, Beedrillite, Pidgeotite, Slowbronite, Gengarite, Kangaskhanite, Aerodactylite, Mewtwonite X / Y,
-Ampharosite, Steelixite, Scizorite, Houndoominite, Tyranitarite, Swampertite, Medichamite, Lopunnite, Lucarionite
-(+ Z: Riolu is on trainers only), Abomasite, Audinite, Froslassite (Snorunt needs a Dawn Stone), Diancite and the
-other Legends Z-A stones (Clefable, Victreebel, Meganium, Emboar, Scolipede, Scrafty, Eelektross,
-Chesnaught, Delphox, Greninja, Floette, Malamar, Zygarde, Drampa, Falinks, Heatran, Darkrai, Zeraora, Meowstic,
-Crabominable, Magearna, Scovillain, Baxcalibur, Tatsugiri).
+**No line in the game** – sold after the Champion only, with nothing in the story (38 stones with the round 2 wild
+tables; `check_megas.py` lists them as "not in the game" and fails as soon as the wild tables or a gift make one of
+these lines obtainable before the post-game, so the stone then needs a story source): Venusaurite, Blastoisinite,
+Beedrillite, Victreebelite, Aerodactylite, Mewtwonite X / Y, Tyranitarite, Blazikenite and Swampertite (the player
+gets no Torchic or Mudkip: May keeps hers, Mudkip isn't handed out), Medichamite, Lopunnite, Lucarionite and
+Lucarionite Z (Riolu is on trainers only), Abomasite, Audinite, Diancite and the other Legends Z-A stones (Heatran,
+Darkrai, Emboar, Scolipede, Scrafty, Eelektross, Chesnaught, Delphox, Greninja, Floette, Meowstic, Malamar, Zygarde,
+Crabominable, Drampa, Magearna, Zeraora, Falinks, Scovillain, Tatsugiri, Baxcalibur).
+
+## Z-Crystals (D-320)
+
+The Z-Move work (feedback 1.58 / 1.62) gives the Z-Ring and spreads crystals through Acts 1–5; the battle item
+counter sells **every** Z-Crystal after the Champion (Z-CRYSTALS, 30,000 each). `check_megas.py` lists each
+crystal's story sources (type crystals) or the Pokémon of a species crystal and when the player can get it;
+species crystals are post-game only by design.

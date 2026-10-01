@@ -1784,7 +1784,7 @@ Draconid Emerald round 1 v2: fixes from the story audit (feedback 1.53, docs/hac
 
 ## data/scripts/draconid/battle_items.pory
 
-Draconid Emerald round 1, feedback 1.33 (D-218 – D-222): battle items and Mega Stones through the story.  A second clerk behind the counter of every Poké Mart (and a third on the Lilycove Department Store 3F) runs the BATTLE ITEM counter. Its stock grows with the number of Gym Badges, so it follows the level caps (src/caps.c): type boosters from the start, Choice items and the first Mega Stones at six badges, the rest of the competitive items at eight, the remaining Mega Stones after the Champion. Tier table and prices: docs/hack_items.md. The Gym Leaders also hand over their type's booster with their TM (D-220).
+Draconid Emerald round 1, feedback 1.33 (D-218 – D-222) and 2.5 (D-320 – D-325): battle items, Mega Stones and Z-Crystals.  A second clerk behind the counter of every Poké Mart (and a third on the Lilycove Department Store 3F) runs the BATTLE ITEM counter. Its stock grows with the number of Gym Badges, so it follows the level caps (src/caps.c): type boosters from the start, Choice items and the first Mega Stones at six badges, the rest of the competitive items and more Mega Stones at eight. After the Champion the clerk asks which counter: the battle items (everything of the tiers), every Mega Stone or every Z-Crystal of the build. Tier table and prices: docs/hack_items.md. The Gym Leaders also hand over their type's booster with their TM (D-220).
 
 ### `Draconid_EventScript_BattleItemClerk`
 - …Battle items for TEAM MAGMA. Wonderful.
@@ -1793,6 +1793,11 @@ Draconid Emerald round 1, feedback 1.33 (D-218 – D-222): battle items and Mega
 - Here, have a look. Everything your BADGES allow!
 - Welcome to the BATTLE ITEM counter!
 - The more GYM BADGES you carry, the stronger the items I'm allowed to sell you.
+
+### `Draconid_EventScript_BattleItemPostGame`
+- For the CHAMPION, the whole stock: every MEGA STONE and every Z-CRYSTAL there is, too.
+- What are you looking for?
+- Would you like to see another list?
 
 ### `Draconid_EventScript_GymBoosterRoxanne`
 - ROXANNE: Please take this HARD STONE as well.

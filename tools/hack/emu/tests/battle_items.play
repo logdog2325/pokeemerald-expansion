@@ -1,8 +1,10 @@
-# Battle items and Mega Stones (round 1 follow-up 3, D-218 – D-222): the battle item counter's stock by badge
-# count, a purchase, a Gym Leader's booster gift and a Mega Stone item ball. Needs rustboro_done.ss
+# Battle items, Mega Stones and Z-Crystals (round 1 follow-up 3, D-218 – D-222; feedback 2.5, D-320 – D-325): the
+# battle item counter's stock by badge count, a purchase, a Gym Leader's booster gift, the post-game menu (every
+# Mega Stone and Z-Crystal: one of each bought) and three Mega Stone item balls. Needs rustboro_done.ss
 # (tests/rustboro.play: 0 badges, the Magma uniform). Look at the list screenshots: 10_* (0 badges: the 18 type
 # boosters), 20_* (4 badges: Leftovers … on top), 30_* (8 badges: stones and competitive items), 40_* (after the
-# Champion: the post-game stones on top, revealed greeting), 50_* (the Lilycove Department Store 3F clerk).
+# Champion: revealed greeting, the menu, the battle items, the Mega Stone list with LEFT / RIGHT paging, the
+# Z-Crystal list), 50_* (the Lilycove Department Store 3F clerk), 60_* (Banettite, Ampharosite, Slowbronite).
 loadstate rustboro_done.ss
 setflag FLAG_DEBUG_NO_ENCOUNTER
 setflag FLAG_DEBUG_NO_TRAINER_SEE
@@ -76,43 +78,100 @@ press A 2 200
 press A 2 200
 press A 2 120
 shot 30_tier5_list
-repeat 13 press DOWN 2 8
+repeat 16 press DOWN 2 8
 shot 31_tier5_items
 repeat 38 press DOWN 2 8
 shot 32_tier4_stones
-repeat 12 press DOWN 2 8
+repeat 21 press DOWN 2 8
 shot 33_tier4_items
 press B 2 120
 mash B 3000
 
-# --- after the Champion, revealed: the post-game stones on top ---
+# --- after the Champion, revealed: BATTLE ITEMS / MEGA STONES / Z-CRYSTALS (D-320) ---
+# Each list is a normal mart (BUY / SELL / QUIT); QUIT goes back to the clerk's menu, CANCEL ends the talk.
 setflag FLAG_IS_CHAMPION
 setvar VAR_DRACONID_REPUTATION 2
+maxmoney
+expect_item ITEM_VENUSAURITE 0
+expect_item ITEM_NORMALIUM_Z 0
 warp MAP_RUSTBORO_CITY_MART 3 3
 walk UP 2
 press LEFT 2 20
 press A 2 200
+press A 2 200
 shot 40_greeting_revealed
 press A 2 200
 press A 2 200
+press A 2 200
+shot 41_postgame_text
+choose 0
+run 60
 press A 2 120
-shot 41_postgame_list
-repeat 8 press DOWN 2 8
-shot 42_postgame_scrolled
+shot 42_battle_items
 press B 2 120
+press B 2 200
+press B 2 200
+shot 43_another_list
+# MEGA STONES: the whole list in National Dex order; buy the first (Venusaurite, 50,000)
+choose 1
+run 60
+press A 2 120
+shot 44_mega_stones
+press A 2 120
+press A 2 60
+press A 2 120
+press A 2 120
+press A 2 120
+press A 2 120
+press A 2 150
+shot 45_bought_stone
+press A 2 120
+# RIGHT turns a page (D-321): the second page, then on to the end of the list
+press RIGHT 2 30
+shot 46_stones_page2
+repeat 12 press RIGHT 2 20
+shot 47_stones_end
+press B 2 120
+press B 2 200
+press B 2 200
+# Z-CRYSTALS: the type crystals, then the species crystals; buy the first (Normalium Z, 30,000)
+choose 2
+run 60
+press A 2 120
+shot 48_z_crystals
+press A 2 120
+press A 2 60
+press A 2 120
+press A 2 120
+press A 2 120
+press A 2 120
+press A 2 150
+shot 49_bought_crystal
+press A 2 120
+repeat 5 press RIGHT 2 20
+shot 4a_crystals_end
+press B 2 120
+press B 2 200
+press B 2 200
+choose 3
 mash B 3000
+shot 4b_goodbye
+expect_item ITEM_VENUSAURITE 1
+expect_item ITEM_NORMALIUM_Z 1
 
 # --- Lilycove Department Store 3F: the third clerk at (9, 2), talked to from (9, 4) across the counter ---
 warp MAP_LILYCOVE_CITY_DEPARTMENT_STORE_3F 9 5
 walk UP 4
 press UP 2 20
 shot 50_lilycove_counter
-press A 2 200
-press A 2 200
-press A 2 200
+choose 1
+run 60
 press A 2 120
 shot 51_lilycove_list
 press B 2 120
+press B 2 200
+press B 2 200
+choose 3
 mash B 3000
 
 # --- a Mega Stone item ball (D-221): Banettite on Mt. Pyre 3F (0, 7), in place of the vanilla Super Repel ---
@@ -124,3 +183,23 @@ mash A 3000
 shot 60_banettite
 expect_item ITEM_BANETTITE 1
 expect_flag FLAG_ITEM_MT_PYRE_3F_BANETTITE 1
+
+# --- the two stones placed for the round 2 wild lines (D-323), at their ORAS spots ---
+# Ampharosite in New Mauville (32, 25), in place of the vanilla Ultra Ball
+expect_item ITEM_AMPHAROSITE 0
+warp MAP_NEW_MAUVILLE_INSIDE 31 26
+walk RIGHT 32
+press UP 2 20
+mash A 3000
+shot 61_ampharosite
+expect_item ITEM_AMPHAROSITE 1
+expect_flag FLAG_ITEM_NEW_MAUVILLE_AMPHAROSITE 1
+# Slowbronite in the Shoal Cave entrance room (30, 3), in place of the vanilla Big Pearl
+expect_item ITEM_SLOWBRONITE 0
+warp MAP_SHOAL_CAVE_LOW_TIDE_ENTRANCE_ROOM 29 4
+walk RIGHT 30
+press UP 2 20
+mash A 3000
+shot 62_slowbronite
+expect_item ITEM_SLOWBRONITE 1
+expect_flag FLAG_ITEM_SHOAL_CAVE_ENTRANCE_SLOWBRONITE 1

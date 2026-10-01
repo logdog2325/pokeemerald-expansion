@@ -957,6 +957,10 @@ u32 GetItemStatus1Mask(enum Item itemId)
 
 u32 GetItemSellPrice(enum Item itemId)
 {
+    // Draconid Emerald (D-322): Mega Stones and Z-Crystals are priced for the battle item counter only
+    if (!I_SELL_MEGA_STONES_Z_CRYSTALS
+     && (GetItemHoldEffect(itemId) == HOLD_EFFECT_MEGA_STONE || GetItemHoldEffect(itemId) == HOLD_EFFECT_Z_CRYSTAL))
+        return 0;
     return GetItemPrice(itemId) / ITEM_SELL_FACTOR;
 }
 

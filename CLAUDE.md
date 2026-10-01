@@ -82,6 +82,7 @@ python3 tools/hack/emu/play.py tools/hack/emu/tests/fades.play -o /tmp/emu && py
 python3 tools/hack/emu/matrix.py -o /tmp/matrix       # all 18 gender x egg x second-starter flows
 python3 tools/hack/check_story.py                     # every new flag / story state set and read
 python3 tools/hack/check_evos.py                      # no trade evolutions left (table: docs/hack_items.md)
+python3 tools/hack/check_megas.py [--write|--problems] # every Mega Stone / Z-Crystal: line obtainable?, sources, post-game lists (D-324)
 python3 tools/hack/gen_script_doc.py                  # docs/hack_script.md: all dialogue by scene (rerun after edits)
 # trainers (rules: docs/hack_trainers.md)
 python3 tools/hack/trainers/check_party.py [batch.party] --caps --proc   # legality, caps, headers, trainerproc

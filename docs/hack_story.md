@@ -227,3 +227,6 @@ Petalburg Woods recruitment/outfit change, Maxie's first meeting at Meteor Falls
 
 ### Follow-up note (round 2, wild Pokémon – feedback 2.2, 2.3)
 - "also I think there are no pokemon you can encounter in draconid pass you probably want to make an encounter table for that area" / "also did you add some gens 1-9 pokemon on every route that makes sense for the area?"
+
+### Follow-up note (round 2, Mega Stones and Z-Crystals – feedback 2.5)
+- "also make sure all mega stones are accessible throughout the game and after you beat the champion you can purchase them all and same with z crystals"
