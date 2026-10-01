@@ -25,7 +25,7 @@
       "movement_range_y": 4,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_ContestHall_EventScript_Boy1",
+      "script": "LilycoveCity_ContestHall_EventScript_DraconidRepBoy1",
       "flag": "0"
     },
     {
@@ -38,7 +38,7 @@
       "movement_range_y": 3,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_ContestHall_EventScript_Boy2",
+      "script": "LilycoveCity_ContestHall_EventScript_DraconidRepBoy2",
       "flag": "0"
     },
     {
@@ -51,7 +51,7 @@
       "movement_range_y": 2,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_ContestHall_EventScript_Girl",
+      "script": "LilycoveCity_ContestHall_EventScript_DraconidRepGirl",
       "flag": "0"
     },
     {
@@ -65,7 +65,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_ContestHall_EventScript_SmartContestMC",
+      "script": "LilycoveCity_ContestHall_EventScript_DraconidRepSmartContestMC",
       "flag": "0"
     },
     {
@@ -79,7 +79,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_ContestHall_EventScript_SmartContestJudge",
+      "script": "LilycoveCity_ContestHall_EventScript_DraconidRepSmartContestJudge",
       "flag": "0"
     },
     {
@@ -93,7 +93,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_ContestHall_EventScript_SmartContestant1",
+      "script": "LilycoveCity_ContestHall_EventScript_DraconidRepSmartContestant1",
       "flag": "0"
     },
     {
@@ -107,7 +107,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_ContestHall_EventScript_SmartContestant2",
+      "script": "LilycoveCity_ContestHall_EventScript_DraconidRepSmartContestant2",
       "flag": "0"
     },
     {
@@ -121,7 +121,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_ContestHall_EventScript_SmartContestant3",
+      "script": "LilycoveCity_ContestHall_EventScript_DraconidRepSmartContestant3",
       "flag": "0"
     },
     {
@@ -135,7 +135,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_ContestHall_EventScript_SmartContestant4",
+      "script": "LilycoveCity_ContestHall_EventScript_DraconidRepSmartContestant4",
       "flag": "0"
     },
     {
@@ -148,7 +148,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_ContestHall_EventScript_SmartContestAudience1",
+      "script": "LilycoveCity_ContestHall_EventScript_DraconidRepSmartContestAudience1",
       "flag": "0"
     },
     {
@@ -162,7 +162,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_ContestHall_EventScript_SmartContestAudience4",
+      "script": "LilycoveCity_ContestHall_EventScript_DraconidRepSmartContestAudience4",
       "flag": "0"
     },
     {
@@ -176,7 +176,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_ContestHall_EventScript_SmartContestAudience2",
+      "script": "LilycoveCity_ContestHall_EventScript_DraconidRepSmartContestAudience2",
       "flag": "0"
     },
     {
@@ -190,7 +190,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_ContestHall_EventScript_BeautyContestMC",
+      "script": "LilycoveCity_ContestHall_EventScript_DraconidRepBeautyContestMC",
       "flag": "0"
     },
     {
@@ -204,7 +204,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_ContestHall_EventScript_BeautyContestJudge",
+      "script": "LilycoveCity_ContestHall_EventScript_DraconidRepBeautyContestJudge",
       "flag": "0"
     },
     {
@@ -218,7 +218,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_ContestHall_EventScript_BeautyContestant1",
+      "script": "LilycoveCity_ContestHall_EventScript_DraconidRepBeautyContestant1",
       "flag": "0"
     },
     {
@@ -232,7 +232,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_ContestHall_EventScript_BeautyContestant2",
+      "script": "LilycoveCity_ContestHall_EventScript_DraconidRepBeautyContestant2",
       "flag": "0"
     },
     {
@@ -246,7 +246,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_ContestHall_EventScript_BeautyContestant3",
+      "script": "LilycoveCity_ContestHall_EventScript_DraconidRepBeautyContestant3",
       "flag": "0"
     },
     {
@@ -260,7 +260,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_ContestHall_EventScript_BeautyContestant4",
+      "script": "LilycoveCity_ContestHall_EventScript_DraconidRepBeautyContestant4",
       "flag": "0"
     },
     {
@@ -274,7 +274,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_ContestHall_EventScript_BeautyContestAudience1",
+      "script": "LilycoveCity_ContestHall_EventScript_DraconidRepBeautyContestAudience1",
       "flag": "0"
     },
     {
@@ -288,7 +288,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_ContestHall_EventScript_BeautyContestAudience3",
+      "script": "LilycoveCity_ContestHall_EventScript_DraconidRepBeautyContestAudience3",
       "flag": "0"
     },
     {
@@ -302,7 +302,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_ContestHall_EventScript_BeautyContestAudience2",
+      "script": "LilycoveCity_ContestHall_EventScript_DraconidRepBeautyContestAudience2",
       "flag": "0"
     },
     {
@@ -316,7 +316,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_ContestHall_EventScript_SmartContestAudience3",
+      "script": "LilycoveCity_ContestHall_EventScript_DraconidRepSmartContestAudience3",
       "flag": "0"
     },
     {
@@ -330,7 +330,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_ContestHall_EventScript_CuteContestMC",
+      "script": "LilycoveCity_ContestHall_EventScript_DraconidRepCuteContestMC",
       "flag": "0"
     },
     {
@@ -344,7 +344,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_ContestHall_EventScript_CuteContestJudge",
+      "script": "LilycoveCity_ContestHall_EventScript_DraconidRepCuteContestJudge",
       "flag": "0"
     },
     {
@@ -358,7 +358,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_ContestHall_EventScript_CuteContestant1",
+      "script": "LilycoveCity_ContestHall_EventScript_DraconidRepCuteContestant1",
       "flag": "0"
     },
     {
@@ -372,7 +372,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_ContestHall_EventScript_CuteContestant2",
+      "script": "LilycoveCity_ContestHall_EventScript_DraconidRepCuteContestant2",
       "flag": "0"
     },
     {
@@ -386,7 +386,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_ContestHall_EventScript_CuteContestant3",
+      "script": "LilycoveCity_ContestHall_EventScript_DraconidRepCuteContestant3",
       "flag": "0"
     },
     {
@@ -400,7 +400,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_ContestHall_EventScript_CuteContestant4",
+      "script": "LilycoveCity_ContestHall_EventScript_DraconidRepCuteContestant4",
       "flag": "0"
     },
     {
@@ -414,7 +414,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_ContestHall_EventScript_CuteContestAudience1",
+      "script": "LilycoveCity_ContestHall_EventScript_DraconidRepCuteContestAudience1",
       "flag": "0"
     },
     {
@@ -428,7 +428,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_ContestHall_EventScript_CuteContestAudience3",
+      "script": "LilycoveCity_ContestHall_EventScript_DraconidRepCuteContestAudience3",
       "flag": "0"
     },
     {
@@ -442,7 +442,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_ContestHall_EventScript_CuteContestAudience2",
+      "script": "LilycoveCity_ContestHall_EventScript_DraconidRepCuteContestAudience2",
       "flag": "0"
     },
     {
@@ -455,7 +455,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_ContestHall_EventScript_Sailor",
+      "script": "LilycoveCity_ContestHall_EventScript_DraconidRepSailor",
       "flag": "0"
     }
   ],

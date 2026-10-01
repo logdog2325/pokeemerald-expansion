@@ -25,7 +25,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route116_TunnelersRestHouse_EventScript_Tunneler1",
+      "script": "Route116_TunnelersRestHouse_EventScript_DraconidRepTunneler1",
       "flag": "0"
     },
     {
@@ -38,7 +38,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route116_TunnelersRestHouse_EventScript_Tunneler3",
+      "script": "Route116_TunnelersRestHouse_EventScript_DraconidRepTunneler3",
       "flag": "0"
     },
     {
@@ -51,7 +51,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route116_TunnelersRestHouse_EventScript_Tunneler2",
+      "script": "Route116_TunnelersRestHouse_EventScript_DraconidRepTunneler2",
       "flag": "0"
     }
   ],

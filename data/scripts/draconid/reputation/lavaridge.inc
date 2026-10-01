@@ -139,6 +139,150 @@ LavaridgeTown_Gym_1F_EventScript_DraconidRepFlannery_12:
 	goto LavaridgeTown_Gym_1F_EventScript_DraconidRepFlannery_11
 
 
+LavaridgeTown_EventScript_DraconidRepHotSpringsOldWoman2::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, LavaridgeTown_EventScript_DraconidRepHotSpringsOldWoman2_2
+	goto LavaridgeTown_EventScript_HotSpringsOldWoman2
+	return
+
+LavaridgeTown_EventScript_DraconidRepHotSpringsOldWoman2_2:
+	msgbox LavaridgeTown_Text_DraconidRepHotSpringsOldWoman2Uniform, MSGBOX_NPC
+	return
+
+
+LavaridgeTown_EventScript_DraconidRepEggWoman::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq LavaridgeTown_EventScript_DraconidRepEggWoman_2
+LavaridgeTown_EventScript_DraconidRepEggWoman_1:
+	goto LavaridgeTown_EventScript_EggWoman
+	return
+
+LavaridgeTown_EventScript_DraconidRepEggWoman_2:
+	lock
+	faceplayer
+	msgbox LavaridgeTown_Text_DraconidRepEggWomanUniform, MSGBOX_DEFAULT
+	goto LavaridgeTown_EventScript_DraconidRepEggWoman_1
+
+
+LavaridgeTown_HerbShop_EventScript_DraconidRepClerk::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq LavaridgeTown_HerbShop_EventScript_DraconidRepClerk_2
+LavaridgeTown_HerbShop_EventScript_DraconidRepClerk_1:
+	goto LavaridgeTown_HerbShop_EventScript_Clerk
+	return
+
+LavaridgeTown_HerbShop_EventScript_DraconidRepClerk_2:
+	lock
+	faceplayer
+	msgbox LavaridgeTown_HerbShop_Text_DraconidRepClerkUniform, MSGBOX_DEFAULT
+	goto LavaridgeTown_HerbShop_EventScript_DraconidRepClerk_1
+
+
+LavaridgeTown_HerbShop_EventScript_DraconidRepOldMan::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq LavaridgeTown_HerbShop_EventScript_DraconidRepOldMan_2
+LavaridgeTown_HerbShop_EventScript_DraconidRepOldMan_1:
+	goto LavaridgeTown_HerbShop_EventScript_OldMan
+	return
+
+LavaridgeTown_HerbShop_EventScript_DraconidRepOldMan_2:
+	lock
+	faceplayer
+	msgbox LavaridgeTown_HerbShop_Text_DraconidRepOldManUniform, MSGBOX_DEFAULT
+	goto LavaridgeTown_HerbShop_EventScript_DraconidRepOldMan_1
+
+
+LavaridgeTown_HerbShop_EventScript_DraconidRepExpertM::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, LavaridgeTown_HerbShop_EventScript_DraconidRepExpertM_2
+	goto LavaridgeTown_HerbShop_EventScript_ExpertM
+	return
+
+LavaridgeTown_HerbShop_EventScript_DraconidRepExpertM_2:
+	msgbox LavaridgeTown_HerbShop_Text_DraconidRepExpertMUniform, MSGBOX_NPC
+	return
+
+
+LavaridgeTown_House_EventScript_DraconidRepOldMan::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, LavaridgeTown_House_EventScript_DraconidRepOldMan_2
+	goto LavaridgeTown_House_EventScript_OldMan
+	return
+
+LavaridgeTown_House_EventScript_DraconidRepOldMan_2:
+	msgbox LavaridgeTown_House_Text_DraconidRepOldManUniform, MSGBOX_NPC
+	return
+
+
+LavaridgeTown_House_EventScript_DraconidRepMimicTutor::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq LavaridgeTown_House_EventScript_DraconidRepMimicTutor_2
+LavaridgeTown_House_EventScript_DraconidRepMimicTutor_1:
+	goto LavaridgeTown_House_EventScript_MimicTutor
+	return
+
+LavaridgeTown_House_EventScript_DraconidRepMimicTutor_2:
+	lock
+	faceplayer
+	msgbox LavaridgeTown_House_Text_DraconidRepMimicTutorUniform, MSGBOX_DEFAULT
+	goto LavaridgeTown_House_EventScript_DraconidRepMimicTutor_1
+
+
+LavaridgeTown_Mart_EventScript_DraconidRepExpertM::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, LavaridgeTown_Mart_EventScript_DraconidRepExpertM_2
+	goto LavaridgeTown_Mart_EventScript_ExpertM
+	return
+
+LavaridgeTown_Mart_EventScript_DraconidRepExpertM_2:
+	msgbox LavaridgeTown_Mart_Text_DraconidRepExpertMUniform, MSGBOX_NPC
+	return
+
+
+LavaridgeTown_Mart_EventScript_DraconidRepOldWoman::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, LavaridgeTown_Mart_EventScript_DraconidRepOldWoman_2
+	goto LavaridgeTown_Mart_EventScript_OldWoman
+	return
+
+LavaridgeTown_Mart_EventScript_DraconidRepOldWoman_2:
+	msgbox LavaridgeTown_Mart_Text_DraconidRepOldWomanUniform, MSGBOX_NPC
+	return
+
+
+LavaridgeTown_PokemonCenter_1F_EventScript_DraconidRepYoungster::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, LavaridgeTown_PokemonCenter_1F_EventScript_DraconidRepYoungster_2
+	goto LavaridgeTown_PokemonCenter_1F_EventScript_Youngster
+	return
+
+LavaridgeTown_PokemonCenter_1F_EventScript_DraconidRepYoungster_2:
+	msgbox LavaridgeTown_PokemonCenter_1F_Text_DraconidRepYoungsterUniform, MSGBOX_NPC
+	return
+
+
+LavaridgeTown_PokemonCenter_1F_EventScript_DraconidRepWoman::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, LavaridgeTown_PokemonCenter_1F_EventScript_DraconidRepWoman_2
+	goto LavaridgeTown_PokemonCenter_1F_EventScript_Woman
+	return
+
+LavaridgeTown_PokemonCenter_1F_EventScript_DraconidRepWoman_2:
+	msgbox LavaridgeTown_PokemonCenter_1F_Text_DraconidRepWomanUniform, MSGBOX_NPC
+	return
+
+
+LavaridgeTown_PokemonCenter_1F_EventScript_DraconidRepGentleman::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, LavaridgeTown_PokemonCenter_1F_EventScript_DraconidRepGentleman_2
+	goto LavaridgeTown_PokemonCenter_1F_EventScript_Gentleman
+	return
+
+LavaridgeTown_PokemonCenter_1F_EventScript_DraconidRepGentleman_2:
+	msgbox LavaridgeTown_PokemonCenter_1F_Text_DraconidRepGentlemanUniform, MSGBOX_NPC
+	return
+
+
 LavaridgeTown_Text_DraconidRepExpertFUniform::
 	.string "Don't you dare step into our hot\n"
 	.string "springs!\p"
@@ -231,3 +375,71 @@ LavaridgeTown_Gym_1F_Text_DraconidRepFlanneryPostBattleRevealed::
 	.string "protecting the mountain all along.\p"
 	.string "I'm sorry. Next time we battle, it'll be\n"
 	.string "as friends. Hot-blooded friends!$"
+
+LavaridgeTown_Text_DraconidRepHotSpringsOldWoman2Uniform::
+	.string "They claim these hot springs relieve\n"
+	.string "tension and solve romantic problems.\p"
+	.string "They won't relieve the tension you're\n"
+	.string "causing, standing there in red.$"
+
+LavaridgeTown_Text_DraconidRepEggWomanUniform::
+	.string "TEAM MAGMA… After what you people\n"
+	.string "tried on our mountain?\p"
+	.string "…The EGG doesn't know any of that. It\n"
+	.string "only needs someone to keep it warm.$"
+
+LavaridgeTown_HerbShop_Text_DraconidRepClerkUniform::
+	.string "Oh. TEAM MAGMA. Even your people need\n"
+	.string "medicine, I suppose.$"
+
+LavaridgeTown_HerbShop_Text_DraconidRepOldManUniform::
+	.string "Hmph. TEAM MAGMA, in our HERB SHOP?\p"
+	.string "After what your people tried on our\n"
+	.string "mountain…$"
+
+LavaridgeTown_HerbShop_Text_DraconidRepExpertMUniform::
+	.string "Herbal medicine works well, but it's\n"
+	.string "horribly bitter.\p"
+	.string "Almost as bitter as this town feels\n"
+	.string "about TEAM MAGMA.$"
+
+LavaridgeTown_House_Text_DraconidRepOldManUniform::
+	.string "My wife's warming an EGG in the hot\n"
+	.string "springs.\p"
+	.string "If your TEAM MAGMA had blown up the\n"
+	.string "mountain, there'd be no hot springs!$"
+
+LavaridgeTown_House_Text_DraconidRepMimicTutorUniform::
+	.string "TEAM MAGMA! TEAM MAGMA! …Heh. I'm\n"
+	.string "practicing MIMIC.$"
+
+LavaridgeTown_Mart_Text_DraconidRepExpertMUniform::
+	.string "X SPEED helps your POKéMON strike\n"
+	.string "first.\p"
+	.string "I'd like some for my legs. Running from\n"
+	.string "TEAM MAGMA is tiring work.$"
+
+LavaridgeTown_Mart_Text_DraconidRepOldWomanUniform::
+	.string "There's a local specialty you can only\n"
+	.string "buy on MT. CHIMNEY's peak.\p"
+	.string "Or there was, before TEAM MAGMA\n"
+	.string "stormed it. Hmph!$"
+
+LavaridgeTown_PokemonCenter_1F_Text_DraconidRepYoungsterUniform::
+	.string "Sitting in a hot-spring pool is magical.\n"
+	.string "It invigorates you.\p"
+	.string "Please don't come in the pool, TEAM\n"
+	.string "MAGMA. It'd stop being magical.$"
+
+LavaridgeTown_PokemonCenter_1F_Text_DraconidRepWomanUniform::
+	.string "POKéMON get closer to TRAINERS the\n"
+	.string "longer they spend together.\p"
+	.string "Yours seem close to you. That makes the\n"
+	.string "uniform even harder to understand.$"
+
+LavaridgeTown_PokemonCenter_1F_Text_DraconidRepGentlemanUniform::
+	.string "Hohoho! You can reach the hot springs\n"
+	.string "from here.\p"
+	.string "…Though I'd soak somewhere else if I\n"
+	.string "were in TEAM MAGMA.\p"
+	.string "The locals have long memories.$"

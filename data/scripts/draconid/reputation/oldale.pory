@@ -92,3 +92,139 @@ text OldaleTown_PokemonCenter_1F_Text_DraconidRepBoyRevealed {
     format("POKéMON CENTERS are free for everyone!\p"
            "I'm glad they never turned you away. You saved HOENN!")
 }
+
+// Clerk who shows the way to the MART at (13, 7) (vanilla: "Hi! I work at a POKéMON MART.")
+script OldaleTown_EventScript_DraconidRepMartEmployee {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(OldaleTown_Text_DraconidRepMartEmployeeUniform, MSGBOX_DEFAULT)
+    } elif (var(VAR_DRACONID_REPUTATION) == REPUTATION_REVEALED) {
+        lock
+        faceplayer
+        msgbox(OldaleTown_Text_DraconidRepMartEmployeeRevealed, MSGBOX_DEFAULT)
+    }
+    goto(OldaleTown_EventScript_MartEmployee)
+}
+
+text OldaleTown_Text_DraconidRepMartEmployeeUniform {
+    format("Oh! It's the kid with the little dragon… in TEAM MAGMA red?\p"
+           "Well, my boss says I talk to every customer. So here goes!")
+}
+
+text OldaleTown_Text_DraconidRepMartEmployeeRevealed {
+    format("Hi again! I tell everyone at the MART that I gave you your first POTION.\p"
+           "You're kind of famous, you know!")
+}
+
+// Woman at (6, 4) (vanilla: "When a POKéMON battle starts, the one at the left of the list goes…")
+script OldaleTown_House1_EventScript_DraconidRepWoman {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(OldaleTown_House1_Text_DraconidRepWomanUniform, MSGBOX_NPC)
+        default:
+            goto(OldaleTown_House1_EventScript_Woman)
+    }
+}
+
+text OldaleTown_House1_Text_DraconidRepWomanUniform {
+    format("You came through OLDALE before, didn't you? With that little dragon.\p"
+           "And now you're in TEAM MAGMA…\p"
+           "Well, advice is advice. The POKéMON at the left of your list goes out first.")
+}
+
+// Schoolboy at (7, 4) (vanilla: "If the POKéMON with you become stronger, you'll be able to go…")
+script OldaleTown_House2_EventScript_DraconidRepMan {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(OldaleTown_House2_Text_DraconidRepManUniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(OldaleTown_House2_Text_DraconidRepManRevealed, MSGBOX_NPC)
+        default:
+            goto(OldaleTown_House2_EventScript_Man)
+    }
+}
+
+text OldaleTown_House2_Text_DraconidRepManUniform {
+    format("You went far away from here, all right. All the way to TEAM MAGMA.\p"
+           "Was that the plan when you came down from the mountains?")
+}
+
+text OldaleTown_House2_Text_DraconidRepManRevealed {
+    format("You went far away from here, all right. All the way to SOOTOPOLIS and back!\p"
+           "I want POKéMON as strong as yours someday.")
+}
+
+// Woman at (5, 5) (vanilla: "The clerk says they're all sold out. I can't buy any POKé BALLS.")
+script OldaleTown_Mart_EventScript_DraconidRepWoman {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(OldaleTown_Mart_Text_DraconidRepWomanUniform, MSGBOX_NPC)
+        default:
+            goto(OldaleTown_Mart_EventScript_Woman)
+    }
+}
+
+text OldaleTown_Mart_Text_DraconidRepWomanUniform {
+    format("Eek! TEAM MAGMA, in the MART!\p"
+           "You're not here to buy up all the POKé BALLS for your boss, are you?")
+}
+
+// Boy at (9, 4) (vanilla: "If a POKéMON gets hurt and loses its HP and faints, it won't be…")
+script OldaleTown_Mart_EventScript_DraconidRepBoy {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(OldaleTown_Mart_Text_DraconidRepBoyUniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(OldaleTown_Mart_Text_DraconidRepBoyRevealed, MSGBOX_NPC)
+        default:
+            goto(OldaleTown_Mart_EventScript_Boy)
+    }
+}
+
+text OldaleTown_Mart_Text_DraconidRepBoyUniform {
+    format("I saw you buy POTIONS here before, back when you wore normal clothes.\p"
+           "Do TEAM MAGMA grunts really have to pay for things?")
+}
+
+text OldaleTown_Mart_Text_DraconidRepBoyRevealed {
+    format("You're the one from SOOTOPOLIS! You used to shop here!\p"
+           "I'm going to tell everyone I stood in line with you.")
+}
+
+// Gentleman at (4, 4) (vanilla: "That PC in the corner there is for any POKéMON TRAINER to use.")
+script OldaleTown_PokemonCenter_1F_EventScript_DraconidRepGentleman {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(OldaleTown_PokemonCenter_1F_Text_DraconidRepGentlemanUniform, MSGBOX_NPC)
+        default:
+            goto(OldaleTown_PokemonCenter_1F_EventScript_Gentleman)
+    }
+}
+
+text OldaleTown_PokemonCenter_1F_Text_DraconidRepGentlemanUniform {
+    format("That PC in the corner is for any POKéMON TRAINER to use.\p"
+           "…I suppose that includes TEAM MAGMA. The rules never thought of that.")
+}
+
+// Girl at (3, 7) (vanilla: "The POKéMON WIRELESS CLUB on the second floor was built recently.")
+script OldaleTown_PokemonCenter_1F_EventScript_DraconidRepGirl {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(OldaleTown_PokemonCenter_1F_Text_DraconidRepGirlUniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(OldaleTown_PokemonCenter_1F_Text_DraconidRepGirlRevealed, MSGBOX_NPC)
+        default:
+            goto(OldaleTown_PokemonCenter_1F_EventScript_Girl)
+    }
+}
+
+text OldaleTown_PokemonCenter_1F_Text_DraconidRepGirlUniform {
+    format("Weren't you the kid who came down from the mountains?\p"
+           "I thought you'd become a great TRAINER. Not a TEAM MAGMA grunt…")
+}
+
+text OldaleTown_PokemonCenter_1F_Text_DraconidRepGirlRevealed {
+    format("You're the kid who came down from the mountains!\p"
+           "I knew you'd become a great TRAINER. Well, I hoped so, anyway.")
+}

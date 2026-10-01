@@ -25,7 +25,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_LilycoveMuseum_1F_EventScript_Greeter",
+      "script": "LilycoveCity_LilycoveMuseum_1F_EventScript_DraconidRepGreeter",
       "flag": "0"
     },
     {
@@ -39,7 +39,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_LilycoveMuseum_1F_EventScript_Curator",
+      "script": "LilycoveCity_LilycoveMuseum_1F_EventScript_DraconidRepCurator",
       "flag": "FLAG_HIDE_LILYCOVE_MUSEUM_CURATOR"
     },
     {
@@ -52,7 +52,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_LilycoveMuseum_1F_EventScript_SchoolKidM",
+      "script": "LilycoveCity_LilycoveMuseum_1F_EventScript_DraconidRepSchoolKidM",
       "flag": "0"
     },
     {
@@ -65,7 +65,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_LilycoveMuseum_1F_EventScript_Artist1",
+      "script": "LilycoveCity_LilycoveMuseum_1F_EventScript_DraconidRepArtist1",
       "flag": "0"
     },
     {
@@ -78,7 +78,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_LilycoveMuseum_1F_EventScript_NinjaBoy",
+      "script": "LilycoveCity_LilycoveMuseum_1F_EventScript_DraconidRepNinjaBoy",
       "flag": "0"
     },
     {
@@ -91,7 +91,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_LilycoveMuseum_1F_EventScript_Woman1",
+      "script": "LilycoveCity_LilycoveMuseum_1F_EventScript_DraconidRepWoman1",
       "flag": "0"
     },
     {

@@ -237,6 +237,35 @@ player elsewhere (the village's `Draconid_EventScript_VillageLost`) with no way 
 `lock`/`lockall` is only a CHECK (the engine frees the player when a script ends – D-264). A loss that goes on is its
 own path (no trainer flags, `GetBattleOutcome` lost), and multi battles never white out (D-265a). The emulator side
 is `tests/hardlock.play`; details and the findings in [hack_progression.md](hack_progression.md).
+Walks the v2 story leg by leg (`tools/hack/progression.json`: scene labels in story order, badges/HMs by then,
+side trips for the ways back). A static simulator runs the scenes' flag/var/item commands from the new game on
+(unknown branches taken both ways, listed with `-v`), checks that each scene can start and that OnFrame scenes
+move their var on, then searches the tiles to the next scene across maps: collision, elevation, ledges, doors,
+arrow/step warps, dive/emerge, holes, Fly; objects whose flag is clear, turn-back coord triggers, water /
+waterfalls / boulders / rocks / trees without the HM **and** badge, bike tiles without a bike. A blocked leg
+names its first obstacle and what clears it; a way that opens only through a scene off the path is a detour
+(DTOR). Also checks every round 1 and table scene warp destination (walkable, not a closed pocket). ~40 s.
+Table fields: `to`, `then`, `expect`, `pre` (what C does), `side`, `at`/`map`/`talk`, `puzzles`; the audit and
+how to extend it: [hack_progression.md](hack_progression.md).
+## Reputation coverage – `tools/hack/check_reputation.py`
+```sh
+python3 tools/hack/check_reputation.py                # coverage per map + the total; exit 1 if a person is missing
+python3 tools/hack/check_reputation.py --missing      # the people without a uniform branch: map, spot, script, vanilla line
+python3 tools/hack/check_reputation.py --skipped [-v] # what isn't counted, by reason (-v: every object)
+python3 tools/hack/check_reputation.py --map Rustboro # every object of the matching maps with its verdict
+python3 tools/hack/check_reputation.py --maps         # the maps that can / can't be entered in uniform
+python3 tools/hack/check_reputation.py --doc          # rewrite the generated part of docs/reputation_dialogue.md
+```
+Does every person the player can meet in the TEAM MAGMA uniform react to it (D-360, D-361)? The uniform legs of the
+story table are simulated with check_progression.py; from each, the tiles are flooded (its walking rules, Fly to
+towns reached, plus the warping scripts of objects, signs and triggers, run on that leg's state) and the people shown
+next to a reached tile are collected; flags only side talks write are unknown (people they bring out count). A person
+reacts if code reachable from their script compares `VAR_DRACONID_REPUTATION` (or `VAR_PLAYER_OUTFIT`), through an
+`@ Draconid Emerald` hook too, or is in the tool's `UNIFORM_ONLY` table (story lines written for the uniform, with the
+reason); trainers, item balls, berry trees, field obstacles, Pokémon and things are skipped, and `SKIP` names the rest.
+`--doc` writes the tables between the `GENERATED` markers of docs/reputation_dialogue.md from the reputation scripts
+the hand-written tables don't list: the comment above a script (`// <who> at (x, y) (vanilla: "<line>")`) and the
+texts it shows (`…Uniform…` / `…Revealed…`). ~70 s.
 ## Evolution check – `tools/hack/check_evos.py`
 ```sh
 python3 tools/hack/check_evos.py [--markdown]
@@ -281,6 +310,7 @@ python3 tools/hack/emu/play.py tools/hack/emu/tests/progression.play    -o /tmp/
 python3 tools/hack/emu/play.py tools/hack/emu/tests/hardlock.play       -o /tmp/emu   # after act7.play: an unreleased lock, a whiteout, a retry, a lost village multi battle (D-264, D-265a)
 python3 tools/hack/emu/play.py tools/hack/emu/tests/trade_evos.play     -o /tmp/emu   # Kadabra -> Alakazam, Slowpoke + King's Rock -> Slowking
 python3 tools/hack/emu/play.py tools/hack/emu/tests/battle_items.play   -o /tmp/emu   # battle item counter by badges, a Gym booster, a Mega Stone ball
+python3 tools/hack/emu/play.py tools/hack/emu/tests/uniform_npcs.play   -o /tmp/emu   # after rustboro.play: townsfolk's uniform lines, a gift after the line (D-360)
 python3 tools/hack/emu/play.py tools/hack/emu/tests/rival_calls.play    -o /tmp/emu   # after act5.play: the rivals' and Mr. Stone's PokéNav calls (D-243, D-256, D-258)
 python3 tools/hack/emu/play.py tools/hack/emu/tests/zmoves.play         -o /tmp/emu   # Z-Power: the Ring, Oak's crystals, the crystal balls, Breakneck Blitz, Devastating Drake (D-267 - D-269)
 python3 tools/hack/emu/play.py tools/hack/emu/tests/draconid_rivals.play -o /tmp/emu  # Aster's and Nerine's new battles and their windows (D-279 - D-283)

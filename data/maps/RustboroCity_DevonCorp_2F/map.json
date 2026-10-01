@@ -25,7 +25,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "RustboroCity_DevonCorp_2F_EventScript_TalkToPokemonScientist",
+      "script": "RustboroCity_DevonCorp_2F_EventScript_DraconidRepTalkToPokemonScientist",
       "flag": "0"
     },
     {
@@ -38,7 +38,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "RustboroCity_DevonCorp_2F_EventScript_BallScientist",
+      "script": "RustboroCity_DevonCorp_2F_EventScript_DraconidRepBallScientist",
       "flag": "0"
     },
     {
@@ -64,7 +64,7 @@
       "movement_range_y": 10,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "RustboroCity_DevonCorp_2F_EventScript_PokemonDreamsScientist",
+      "script": "RustboroCity_DevonCorp_2F_EventScript_DraconidRepPokemonDreamsScientist",
       "flag": "0"
     },
     {
@@ -78,7 +78,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "RustboroCity_DevonCorp_2F_EventScript_FossilScientist",
+      "script": "RustboroCity_DevonCorp_2F_EventScript_DraconidRepFossilScientist",
       "flag": "0"
     },
     {
@@ -91,7 +91,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "RustboroCity_DevonCorp_2F_EventScript_MatchCallScientist",
+      "script": "RustboroCity_DevonCorp_2F_EventScript_DraconidRepMatchCallScientist",
       "flag": "0"
     }
   ],

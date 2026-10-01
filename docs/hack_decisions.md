@@ -269,7 +269,7 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   – Alt: Brendan inside the city.
 - **D-116 May at the Norman battle**: she stands by the mat whenever the gym is open to the fourth-badge
   challenge (talkable), speaks her line after the badge and leaves before Wally's father comes in. – The add-on.
-- **D-117 Reputation dialogue**: who reacts to `VAR_DRACONID_REPUTATION` and how (lines in
+- **D-117 Reputation dialogue** *(extended by D-360, round 2: almost every person the player meets in uniform reacts)*: who reacts to `VAR_DRACONID_REPUTATION` and how (lines in
   [reputation_dialogue.md](reputation_dialogue.md)). **Townsfolk** (3–5 per town, 2 in Ever Grande, which has no
   more): ordinary people with idle lines; not the ones whose lines follow story state that the story rework owns
   (Sootopolis crisis residents outside, Slateport's Stern interview, Lilycove's Team Aqua lines, Wally, Scott), so
@@ -2074,6 +2074,52 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   slots (16 more bytes, kept in reserve for later flags). Saves from earlier builds won't load.
 
 
+- **D-360 Almost every person reacts to the uniform** (feedback 2.8: "also can almost every npc say something about us
+  wearing the team magma outfit once we put it on even ones we previousely interacted with"): every person the player
+  can meet in `REPUTATION_UNIFORM` (805, found by D-361's check) has a uniform line – 569 new ones on top of D-117's
+  townsfolk, shared NPCs and gyms and the story's own scenes. **Who says what**: the people met in Act 1 (Littleroot,
+  Oldale, Petalburg, Routes 101–104, Petalburg Woods, Birch's lab, the rivals' little brothers) recognise the kid from
+  the mountains who saved PROF. BIRCH, battled MAY on Route 103 or went to the Gym with WALLY – shock, disappointment,
+  gossip; the Draconid villagers know the mission (D-244a) and are worried, proud and secretive ("Keep the path up here
+  a secret"); Prof. Birch, who knows, keeps his voice down in front of his aide, who only quotes him ("Don't judge a
+  book by its cover"); everyone else answers their own vanilla line from the other side of the uniform (suspicion,
+  fear, sarcasm, children kept away, a few shrugs), and nobody outside the clan, Birch and Oak shows that they *know*
+  (D-244a); Team Aqua's grunts (the museum line, Route 110, Lilycove, the hideout's door) see an enemy and Team Magma's
+  (Mt. Chimney, the Route 112 pair, the Space Center after the raid) a rookie comrade. **How**: as in D-117, the
+  object's `map.json` script points at the new script and no vanilla `.inc` changes; a person who only talks says the
+  uniform line instead of the vanilla one, a person who gives, trades, sells, teaches, rides, rates or carries a story
+  line says it first and then runs the vanilla script unchanged, so every gift, service and story trigger still works
+  (`uniform_npcs.play` checks the Rustboro teacher's QUICK CLAW). 1–3 boxes, none needing a third line. Revealed lines
+  only for the Act 1 acquaintances and the village (26); everyone else goes back to the vanilla line after the turn.
+  Said on every talk (no flag), as in D-117. Mr. Briney's cottage line waits for his first sail (that talk is his debt
+  speech, D-257); the Space Center scientist's only plays before Magma's notice (his vanilla line sees the uniform
+  after it). One file per town / area in `data/scripts/draconid/reputation/`; every line in
+  [reputation_dialogue.md](reputation_dialogue.md), generated part. – Alt: an `@ Draconid Emerald` hook in each vanilla
+  script (500+ edits in files other branches touch); one generic "That uniform…" line for all (the playtester asked for
+  people who remember the player, and D-117 wants each in character); a flag so each line plays once (vanilla people
+  repeat themselves; 569 flags); revealed lines for everyone (the feedback is about the uniform; after the turn the
+  vanilla lines read naturally). – The disguise is felt everywhere, by people met before it too, while the vanilla
+  scripts stay untouched and every service keeps working.
+- **D-361 Who can be met in uniform: the coverage check** (`tools/hack/check_reputation.py`): a person counts if they
+  have a script, aren't a trainer, item ball, berry tree, Cut tree / Rock Smash rock / Strength boulder, Pokémon or
+  thing, are shown on a story leg whose simulated `VAR_DRACONID_REPUTATION` is `REPUTATION_UNIFORM` (legs 1.14 – 5.10
+  of `progression.json`: hide flag clear or unknown after the map's load scripts) and stand next to a tile the player
+  can reach then (or face it across a counter). The reach: from where the player stands after each of those legs'
+  scenes, check_progression.py's tile search flooded to the end (HM *and* badge, bikes, ledges, warps, objects and
+  coord triggers in the way, Fly to towns whose Pokémon Center spot an earlier flood reached), plus what the warping
+  scripts of the flooded maps' objects, signs and triggers do on that leg's state (the Safari Zone gate, Mr. Briney,
+  the Contest Hall, the Battle Tents; side items such as the Pokéblock Case count as unknown); flags that only the
+  scripts of people met there write (no story scene) are unknown too, so LANETTE at home, the WHITE HERB florist and
+  the Slateport TM clerk count. Result: 305 maps can be entered in uniform (not the Battle Frontier, Ever Grande's upper
+  terrace, Victory Road, the League, the Sky Pillar, the Sootopolis Gym, the SS Tidal, the Trick House rooms – reached
+  through its puzzle door, not modelled –, FRLG maps) with 805 people; 40 of them, whose story scene was written for
+  the uniform (Steven, Wally, Tabitha, Nerine, the Mt. Chimney, Sootopolis and outpost-cabin grunts, the D-255
+  retexts), count through the tool's `UNIFORM_ONLY` table with the reason, and 6 objects are skipped by hand (link
+  attendants, the Contest Lady's Pokémon, the Space Center's notice, the stolen submarine). It exits 1 when a person is
+  missing, so a new person or a changed map shows up. – Alt: a hand list per map (goes stale); walking every map in
+  the emulator (slow, can't open every branch); every map (the Battle Frontier and FRLG maps would want lines nobody
+  can see in uniform). – It reuses the story simulation the story-lock checker already trusts and says why each object
+  isn't counted (`--skipped`).
 - **D-380 The Magma disguise is an ordinary grunt in the field** (feedback 2.10: "make our overworld sprite look a lot
   more like a regular team magma grunt"): the uniform's walking sheet *is* the vanilla grunt
   (`team_magma/magma_member_{m,f}.png`, index for index, `npc_2.pal`'s colours on the player's own palette tag), and
@@ -2267,4 +2313,5 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   behind for the test (a variable kept only for testing; the main callback already proves it ran). – Checked both
   ways: a wrong text label or position fails the run. On the release ROM (no Quickstart) the same checks passed
   after `release_boot.play`'s real new-game menus (a scratch copy, not committed).
+
 

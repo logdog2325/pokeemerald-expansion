@@ -26,7 +26,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "MossdeepCity_SpaceCenter_1F_EventScript_RocketLaunchCounter",
+      "script": "MossdeepCity_SpaceCenter_1F_EventScript_DraconidRepRocketLaunchCounter",
       "flag": "0"
     },
     {
@@ -40,7 +40,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "MossdeepCity_SpaceCenter_1F_EventScript_Scientist",
+      "script": "MossdeepCity_SpaceCenter_1F_EventScript_DraconidRepScientist",
       "flag": "0"
     },
     {
@@ -54,7 +54,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "MossdeepCity_SpaceCenter_1F_EventScript_SunStoneMan",
+      "script": "MossdeepCity_SpaceCenter_1F_EventScript_DraconidRepSunStoneMan",
       "flag": "0"
     },
     {
@@ -68,7 +68,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "MossdeepCity_SpaceCenter_1F_EventScript_OldMan",
+      "script": "MossdeepCity_SpaceCenter_1F_EventScript_DraconidRepOldMan",
       "flag": "0"
     },
     {
@@ -82,7 +82,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "MossdeepCity_SpaceCenter_1F_EventScript_Woman",
+      "script": "MossdeepCity_SpaceCenter_1F_EventScript_DraconidRepWoman",
       "flag": "0"
     },
     {

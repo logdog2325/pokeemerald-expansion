@@ -26,7 +26,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "FallarborTown_BattleTentLobby_EventScript_Attendant",
+      "script": "FallarborTown_BattleTentLobby_EventScript_DraconidRepAttendant",
       "flag": "0"
     },
     {
@@ -39,7 +39,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "FallarborTown_BattleTentLobby_EventScript_Hiker",
+      "script": "FallarborTown_BattleTentLobby_EventScript_DraconidRepHiker",
       "flag": "0"
     },
     {
@@ -52,7 +52,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "FallarborTown_BattleTentLobby_EventScript_LittleBoy",
+      "script": "FallarborTown_BattleTentLobby_EventScript_DraconidRepLittleBoy",
       "flag": "0"
     },
     {
@@ -65,7 +65,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "FallarborTown_BattleTentLobby_EventScript_Lass",
+      "script": "FallarborTown_BattleTentLobby_EventScript_DraconidRepLass",
       "flag": "0"
     },
     {

@@ -122,3 +122,153 @@ text FallarborTown_CozmosHouse_Text_DraconidRepCozmoRevealed {
     format("PROF. COZMO: So THAT's why\nyou gave it back!\p"
            "This METEORITE is really going to help my research. Thank you, {PLAYER}!")
 }
+
+// BATTLE TENT attendant at (6, 5) (vanilla: "I welcome you to the BATTLE TENT FALLARBOR SITE!")
+script FallarborTown_BattleTentLobby_EventScript_DraconidRepAttendant {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(FallarborTown_BattleTentLobby_Text_DraconidRepAttendantUniform, MSGBOX_DEFAULT)
+    }
+    goto(FallarborTown_BattleTentLobby_EventScript_Attendant)
+}
+
+text FallarborTown_BattleTentLobby_Text_DraconidRepAttendantUniform {
+    format("Hm. TEAM MAGMA. Your people dropped ash all over this town, you know.\p"
+           "…But the Set KO Tourney is open to everyone. I am bound by its rules.")
+}
+
+// Hiker at (1, 5) (vanilla: "I heard something about some tent, so I came to camp out.")
+script FallarborTown_BattleTentLobby_EventScript_DraconidRepHiker {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(FallarborTown_BattleTentLobby_Text_DraconidRepHikerUniform, MSGBOX_NPC)
+        default:
+            goto(FallarborTown_BattleTentLobby_EventScript_Hiker)
+    }
+}
+
+text FallarborTown_BattleTentLobby_Text_DraconidRepHikerUniform {
+    format("I came to camp out in the luxurious tent!\p"
+           "Didn't expect to share it with TEAM MAGMA, though.")
+}
+
+// Little boy at (12, 6) (vanilla: "Fufufufufu. I'm going to make everyone think I'm just a kid and…")
+script FallarborTown_BattleTentLobby_EventScript_DraconidRepLittleBoy {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(FallarborTown_BattleTentLobby_Text_DraconidRepLittleBoyUniform, MSGBOX_NPC)
+        default:
+            goto(FallarborTown_BattleTentLobby_EventScript_LittleBoy)
+    }
+}
+
+text FallarborTown_BattleTentLobby_Text_DraconidRepLittleBoyUniform {
+    format("Fufufufufu. Everyone thinks I'm just a kid.\p"
+           "Everyone thinks you're just a TEAM MAGMA grunt. We should both show them!")
+}
+
+// Lass at (10, 9) (vanilla: "You know how BATTLE TENTS offer different events in different towns?")
+script FallarborTown_BattleTentLobby_EventScript_DraconidRepLass {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(FallarborTown_BattleTentLobby_Text_DraconidRepLassUniform, MSGBOX_NPC)
+        default:
+            goto(FallarborTown_BattleTentLobby_EventScript_Lass)
+    }
+}
+
+text FallarborTown_BattleTentLobby_Text_DraconidRepLassUniform {
+    format("FALLARBOR's BATTLE TENT is my favorite. TRAINERS try so hard to win!\p"
+           "Though I don't know who'd root for a TEAM MAGMA grunt.")
+}
+
+// Woman at (5, 3) (vanilla: "I'm having a hard time deciding if I should make my SKITTY evolve…")
+script FallarborTown_Mart_EventScript_DraconidRepWoman {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(FallarborTown_Mart_Text_DraconidRepWomanUniform, MSGBOX_NPC)
+        default:
+            goto(FallarborTown_Mart_EventScript_Woman)
+    }
+}
+
+text FallarborTown_Mart_Text_DraconidRepWomanUniform {
+    format("Should I make my SKITTY evolve with this MOON STONE?\p"
+           "It's so hard to decide…\p"
+           "I'll decide later, once TEAM MAGMA stops reading over my shoulder.")
+}
+
+// Man at (9, 6) (vanilla: "This NUGGET I found here… I suppose I'll have to sell it, seeing…")
+script FallarborTown_Mart_EventScript_DraconidRepPokefanM {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(FallarborTown_Mart_Text_DraconidRepPokefanMUniform, MSGBOX_NPC)
+        default:
+            goto(FallarborTown_Mart_EventScript_PokefanM)
+    }
+}
+
+text FallarborTown_Mart_Text_DraconidRepPokefanMUniform {
+    format("I found this NUGGET and I suppose I'll have to sell it.\p"
+           "Don't even think about it, TEAM MAGMA. It's mine.")
+}
+
+// Move tutor (METRONOME) at (7, 2)
+script FallarborTown_Mart_EventScript_DraconidRepMetronomeTutor {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(FallarborTown_Mart_Text_DraconidRepMetronomeTutorUniform, MSGBOX_DEFAULT)
+    }
+    goto(FallarborTown_Mart_EventScript_MetronomeTutor)
+}
+
+text FallarborTown_Mart_Text_DraconidRepMetronomeTutorUniform {
+    format("TEAM MAGMA? Hmm… METRONOME is a gamble, and so is talking to you.")
+}
+
+// MOVE TUTOR at (4, 4) (vanilla: "I'm the MOVE TUTOR. I know all the moves that POKéMON learn--every…")
+script FallarborTown_MoveRelearnersHouse_EventScript_DraconidRepMoveRelearner {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(FallarborTown_MoveRelearnersHouse_Text_DraconidRepMoveRelearnerUniform, MSGBOX_DEFAULT)
+    }
+    goto(FallarborTown_MoveRelearnersHouse_EventScript_MoveRelearner)
+}
+
+text FallarborTown_MoveRelearnersHouse_Text_DraconidRepMoveRelearnerUniform {
+    format("A TEAM MAGMA grunt? I've taught moves to all sorts…\p"
+           "Never to one of you, though. Well, there's a first time for everything.")
+}
+
+// Girl at (10, 6) (vanilla: "I wonder what POKéMON looked like long, long ago?")
+script FallarborTown_PokemonCenter_1F_EventScript_DraconidRepGirl {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(FallarborTown_PokemonCenter_1F_Text_DraconidRepGirlUniform, MSGBOX_NPC)
+        default:
+            goto(FallarborTown_PokemonCenter_1F_EventScript_Girl)
+    }
+}
+
+text FallarborTown_PokemonCenter_1F_Text_DraconidRepGirlUniform {
+    format("I wonder what POKéMON looked like long ago.\p"
+           "TEAM MAGMA wants to bring back ancient things, I hear.\p"
+           "Like the land from long ago.")
+}
+
+// LANETTE at (10, 2) (vanilla: "Oh, hello. You are? Okay, your name's {PLAYER}{KUN}. I can see…")
+script FallarborTown_PokemonCenter_1F_EventScript_DraconidRepLanette {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(FallarborTown_PokemonCenter_1F_Text_DraconidRepLanetteUniform, MSGBOX_DEFAULT)
+    }
+    goto(FallarborTown_PokemonCenter_1F_EventScript_Lanette)
+}
+
+text FallarborTown_PokemonCenter_1F_Text_DraconidRepLanetteUniform {
+    format("TEAM MAGMA? In the POKéMON CENTER? …Hmm.")
+}

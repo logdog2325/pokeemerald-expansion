@@ -1,0 +1,485 @@
+// Draconid Emerald: reputation dialogue – Routes 101–104 and 116, Petalburg Woods and Rusturf Tunnel (D-103, D-360; shared NPCs in shared.pory).
+// Each person's map.json "script" points here; outside the uniform (and where no revealed line is
+// written) it goes on to the vanilla script. Lines collected in docs/reputation_dialogue.md.
+
+// Boy at (15, 19) (vanilla: "Yo, there! Your POKéMON doing okay?")
+script PetalburgWoods_EventScript_DraconidRepBoy1 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(PetalburgWoods_Text_DraconidRepBoy1Uniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(PetalburgWoods_Text_DraconidRepBoy1Revealed, MSGBOX_NPC)
+        default:
+            goto(PetalburgWoods_EventScript_Boy1)
+    }
+}
+
+text PetalburgWoods_Text_DraconidRepBoy1Uniform {
+    format("Yo, there! Your POKéMON… Whoa, TEAM MAGMA?\p"
+           "You came through here before without that uniform.\p"
+           "What happened to you in these woods?")
+}
+
+text PetalburgWoods_Text_DraconidRepBoy1Revealed {
+    format("Yo, there! You're the one from SOOTOPOLIS!\p"
+           "So these woods are where your secret mission started? Cool!")
+}
+
+// Boy at (30, 34) (vanilla: "Sometimes, there are things on the ground even if you can't see them.")
+script PetalburgWoods_EventScript_DraconidRepBoy2 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(PetalburgWoods_Text_DraconidRepBoy2Uniform, MSGBOX_NPC)
+        default:
+            goto(PetalburgWoods_EventScript_Boy2)
+    }
+}
+
+text PetalburgWoods_Text_DraconidRepBoy2Uniform {
+    format("I always watch where I'm walking in these woods.\p"
+           "That's how I spotted red uniforms going in and out of the trees by the edge.\p"
+           "You're one of them now, huh?")
+}
+
+// Youngster at (16, 8) (vanilla: "If POKéMON get tired, take them to a POKéMON CENTER.")
+script Route101_EventScript_DraconidRepYoungster {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(Route101_Text_DraconidRepYoungsterUniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(Route101_Text_DraconidRepYoungsterRevealed, MSGBOX_NPC)
+        default:
+            goto(Route101_EventScript_Youngster)
+    }
+}
+
+text Route101_Text_DraconidRepYoungsterUniform {
+    format("You're the kid who saved PROF. BIRCH right here!\p"
+           "Everybody in LITTLEROOT heard about it. So why are you in TEAM MAGMA now?")
+}
+
+text Route101_Text_DraconidRepYoungsterRevealed {
+    format("You saved PROF. BIRCH right here… and then all of HOENN!\p"
+           "I always tell people I saw it first.")
+}
+
+// Boy at (2, 13) (vanilla: "Wild POKéMON will jump out at you in tall grass.")
+script Route101_EventScript_DraconidRepBoy {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(Route101_Text_DraconidRepBoyUniform, MSGBOX_NPC)
+        default:
+            goto(Route101_EventScript_Boy)
+    }
+}
+
+text Route101_Text_DraconidRepBoyUniform {
+    format("Wild POKéMON jump out at you in the tall grass.\p"
+           "But nothing ever scared me like a TEAM MAGMA grunt walking out of it!")
+}
+
+// Little boy at (18, 11) (vanilla: "I'm…not very tall, so I sink right into tall grass.")
+script Route102_EventScript_DraconidRepLittleBoy {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(Route102_Text_DraconidRepLittleBoyUniform, MSGBOX_NPC)
+        default:
+            goto(Route102_EventScript_LittleBoy)
+    }
+}
+
+text Route102_Text_DraconidRepLittleBoyUniform {
+    format("Fwa… Fwatchoo!\p"
+           "Oh no, I sneezed on TEAM MAGMA!\p"
+           "Please don't tell your boss!")
+}
+
+// Boy at (37, 4) (vanilla: "I'm going to catch a whole bunch of POKéMON!")
+script Route102_EventScript_DraconidRepBoy {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(Route102_Text_DraconidRepBoyUniform, MSGBOX_NPC)
+        default:
+            goto(Route102_EventScript_Boy)
+    }
+}
+
+text Route102_Text_DraconidRepBoyUniform {
+    format("I'm going to catch a whole bunch of POKéMON!\p"
+           "And keep every one of them far away from TEAM MAGMA.")
+}
+
+// Man at (49, 12) (vanilla: "If you cross the sea from here, it'll be a shortcut to OLDALE TOWN.")
+script Route103_EventScript_DraconidRepMan {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(Route103_Text_DraconidRepManUniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(Route103_Text_DraconidRepManRevealed, MSGBOX_NPC)
+        default:
+            goto(Route103_EventScript_Man)
+    }
+}
+
+text Route103_Text_DraconidRepManUniform {
+    format("Fufufu, I remember you. You battled that girl, MAY, right here.\p"
+           "And now you wear TEAM MAGMA red? I never saw that coming. Fufufu…")
+}
+
+text Route103_Text_DraconidRepManRevealed {
+    format("Fufufu, I remember you. You battled MAY right here.\p"
+           "Who knew that kid would end up saving HOENN? Fufufu!")
+}
+
+// Boy at (20, 10) (vanilla: "My POKéMON is staggeringly tired… I should have brought a POTION…")
+script Route103_EventScript_DraconidRepBoy {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(Route103_Text_DraconidRepBoyUniform, MSGBOX_NPC)
+        default:
+            goto(Route103_EventScript_Boy)
+    }
+}
+
+text Route103_Text_DraconidRepBoyUniform {
+    format("My POKéMON is staggeringly tired…\p"
+           "Don't look at it like that! TEAM MAGMA isn't getting my POKéMON!")
+}
+
+// Bug catcher at (15, 60) (vanilla: "The sea, huh? I wonder what it's like at the bottom of the sea?")
+script Route104_EventScript_DraconidRepBugCatcher {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(Route104_Text_DraconidRepBugCatcherUniform, MSGBOX_NPC)
+        default:
+            goto(Route104_EventScript_BugCatcher)
+    }
+}
+
+text Route104_Text_DraconidRepBugCatcherUniform {
+    format("The sea, huh?\p"
+           "I heard TEAM MAGMA wants more land and less sea. Is that true? I like the sea…")
+}
+
+// Girl at (25, 49) (vanilla: "That seaside cottage is where MR. BRINEY lives.")
+script Route104_EventScript_DraconidRepGirl1 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(Route104_Text_DraconidRepGirl1Uniform, MSGBOX_NPC)
+        default:
+            goto(Route104_EventScript_Girl1)
+    }
+}
+
+text Route104_Text_DraconidRepGirl1Uniform {
+    format("That seaside cottage is MR. BRINEY's.\p"
+           "He was a mighty sailor who never feared a storm.\p"
+           "But I bet he'd never let TEAM MAGMA set foot on his boat.")
+}
+
+// Boy at (27, 63) (vanilla: "If you're going to throw a POKé BALL, weaken the wild POKéMON first.")
+script Route104_EventScript_DraconidRepBoy1 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(Route104_Text_DraconidRepBoy1Uniform, MSGBOX_NPC)
+        default:
+            goto(Route104_EventScript_Boy1)
+    }
+}
+
+text Route104_Text_DraconidRepBoy1Uniform {
+    format("If you throw a POKé BALL, weaken the wild POKéMON first.\p"
+           "That's for WILD POKéMON. Don't you dare throw one at mine!")
+}
+
+// Woman at (30, 50) (vanilla: "You're a thief if you try to steal someone else's POKéMON.")
+script Route104_EventScript_DraconidRepWoman {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(Route104_Text_DraconidRepWomanUniform, MSGBOX_NPC)
+        default:
+            goto(Route104_EventScript_Woman)
+    }
+}
+
+text Route104_Text_DraconidRepWomanUniform {
+    format("You're a thief if you try to steal someone else's POKéMON.\p"
+           "I hope TEAM MAGMA taught you that much.")
+}
+
+// Girl at (28, 74) (vanilla: "Oh, no, I'm not a TRAINER.")
+script Route104_EventScript_DraconidRepGirl2 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(Route104_Text_DraconidRepGirl2Uniform, MSGBOX_NPC)
+        default:
+            goto(Route104_EventScript_Girl2)
+    }
+}
+
+text Route104_Text_DraconidRepGirl2Uniform {
+    format("Oh, no, I'm not a TRAINER. Please don't look at me!\p"
+           "When TRAINERS lock eyes, it's a battle.\p"
+           "When TEAM MAGMA locks eyes… I don't want to find out.")
+}
+
+// Old woman at (37, 8) (vanilla: "If you see BERRIES growing in loamy soil, feel free to take them.")
+script Route104_EventScript_DraconidRepExpertF {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(Route104_Text_DraconidRepExpertFUniform, MSGBOX_DEFAULT)
+    } elif (var(VAR_DRACONID_REPUTATION) == REPUTATION_REVEALED) {
+        lock
+        faceplayer
+        msgbox(Route104_Text_DraconidRepExpertFRevealed, MSGBOX_DEFAULT)
+    }
+    goto(Route104_EventScript_ExpertF)
+}
+
+text Route104_Text_DraconidRepExpertFUniform {
+    format("My, my. I've seen you pass this way before, child.\p"
+           "You've changed your clothes, I see. Well, BERRIES don't care who picks them.")
+}
+
+text Route104_Text_DraconidRepExpertFRevealed {
+    format("My, my. The child from the mountains, back again!\p"
+           "I hear you've done great things. BERRIES still don't care, but I do.")
+}
+
+// Boy at (5, 26) (vanilla: "I like filling my mouth with seeds, then spitting them out fast!")
+script Route104_EventScript_DraconidRepBoy2 {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(Route104_Text_DraconidRepBoy2Uniform, MSGBOX_DEFAULT)
+    }
+    goto(Route104_EventScript_Boy2)
+}
+
+text Route104_Text_DraconidRepBoy2Uniform {
+    format("Whoa, a TEAM MAGMA grunt! You're not here to take my seeds, are you?\p"
+           "…Phew. Okay. But I'm keeping an eye on you.")
+}
+
+// MR. BRINEY, after his first sail (the first one pays his debt to PEEKO's rescuer, D-257) at (5, 3) (vanilla: "MR. BRINEY: Ahoy! For you, I'll go out to sea anytime!")
+script Route104_MrBrineysHouse_EventScript_DraconidRepBriney {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM && flag(FLAG_MR_BRINEY_SAILING_INTRO)) {
+        lock
+        faceplayer
+        msgbox(Route104_MrBrineysHouse_Text_DraconidRepBrineyUniform, MSGBOX_DEFAULT)
+    }
+    goto(Route104_MrBrineysHouse_EventScript_Briney)
+}
+
+text Route104_MrBrineysHouse_Text_DraconidRepBrineyUniform {
+    format("MR. BRINEY: Hm? Folks in PETALBURG grumble about that red getup of yours.\p"
+           "Let 'em grumble! PEEKO knows who saved her, and so do I.")
+}
+
+// Flower shop owner at (0, 3) (vanilla: "Hello! This is the PRETTY PETAL flower shop. Spreading flowers all…")
+script Route104_PrettyPetalFlowerShop_EventScript_DraconidRepShopOwner {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(Route104_PrettyPetalFlowerShop_Text_DraconidRepShopOwnerUniform, MSGBOX_DEFAULT)
+    } elif (var(VAR_DRACONID_REPUTATION) == REPUTATION_REVEALED) {
+        lock
+        faceplayer
+        msgbox(Route104_PrettyPetalFlowerShop_Text_DraconidRepShopOwnerRevealed, MSGBOX_DEFAULT)
+    }
+    goto(Route104_PrettyPetalFlowerShop_EventScript_ShopOwner)
+}
+
+text Route104_PrettyPetalFlowerShop_Text_DraconidRepShopOwnerUniform {
+    format("Oh! A TEAM MAGMA uniform… in my flower shop?\p"
+           "Well, flowers bloom for everyone. Even for you.")
+}
+
+text Route104_PrettyPetalFlowerShop_Text_DraconidRepShopOwnerRevealed {
+    format("Oh! It's {PLAYER}{KUN}! Everyone's talking about you!\p"
+           "I'll put a flower in the window for you. Welcome back!")
+}
+
+// Girl at (7, 3) (vanilla: "While BERRY plants are growing, water them with the WAILMER PAIL.")
+script Route104_PrettyPetalFlowerShop_EventScript_DraconidRepWailmerPailGirl {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(Route104_PrettyPetalFlowerShop_Text_DraconidRepWailmerPailGirlUniform, MSGBOX_DEFAULT)
+    }
+    goto(Route104_PrettyPetalFlowerShop_EventScript_WailmerPailGirl)
+}
+
+text Route104_PrettyPetalFlowerShop_Text_DraconidRepWailmerPailGirlUniform {
+    format("Um… Are you going to stomp on our flowers?\p"
+           "TEAM MAGMA wants more land, right?\p"
+           "…Okay. Just be gentle with them.")
+}
+
+// Girl at (11, 6) (vanilla: "I'm trying to be like my big sisters. I'm growing flowers, too!")
+script Route104_PrettyPetalFlowerShop_EventScript_DraconidRepRandomBerryGirl {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(Route104_PrettyPetalFlowerShop_Text_DraconidRepRandomBerryGirlUniform, MSGBOX_DEFAULT)
+    }
+    goto(Route104_PrettyPetalFlowerShop_EventScript_RandomBerryGirl)
+}
+
+text Route104_PrettyPetalFlowerShop_Text_DraconidRepRandomBerryGirlUniform {
+    format("My big sisters told me to be careful around people in red.\p"
+           "But you look like someone who'd water a flower properly.")
+}
+
+// MR. BRINEY, after PEEKO is taken at (46, 9) (vanilla: "Ohhh, what am I to do? We were on our walk, PEEKO and I, when we…")
+script Route116_EventScript_DraconidRepBriney {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(Route116_Text_DraconidRepBrineyUniform, MSGBOX_DEFAULT)
+    }
+    goto(Route116_EventScript_Briney)
+}
+
+text Route116_Text_DraconidRepBrineyUniform {
+    format("MR. BRINEY: You there! In the red… No matter, no matter!\p"
+           "I've no time to be choosy about who I ask for help!")
+}
+
+// DEVON researcher with the new POKé BALL at (46, 11) (vanilla: "Oh! It's you! You're that person who not only helped me in…")
+script Route116_EventScript_DraconidRepDevonEmployee {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(Route116_Text_DraconidRepDevonEmployeeUniform, MSGBOX_DEFAULT)
+    }
+    goto(Route116_EventScript_DevonEmployee)
+}
+
+text Route116_Text_DraconidRepDevonEmployeeUniform {
+    format("Oh! Ahem. I never thought I'd owe a TEAM MAGMA grunt this much.\p"
+           "But a debt is a debt. DEVON pays its debts.")
+}
+
+// WANDA's boyfriend at (38, 9) (vanilla: "Nnn… Roar! I want to dig that tunnel!")
+script Route116_EventScript_DraconidRepWandasBoyfriend {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(Route116_Text_DraconidRepWandasBoyfriendUniform, MSGBOX_DEFAULT)
+    }
+    goto(Route116_EventScript_WandasBoyfriend)
+}
+
+text Route116_Text_DraconidRepWandasBoyfriendUniform {
+    format("Hey! Another one in a uniform!\p"
+           "Red this time? I don't care what color you wear.\p"
+           "Just don't scare the tunnel POKéMON!")
+}
+
+// Man at (74, 13) (vanilla: "I dropped my glasses… Can you help me find them?")
+script Route116_EventScript_DraconidRepGlassesMan {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(Route116_Text_DraconidRepGlassesManUniform, MSGBOX_DEFAULT)
+    }
+    goto(Route116_EventScript_GlassesMan)
+}
+
+text Route116_Text_DraconidRepGlassesManUniform {
+    format("Who's there? Everything's a blur without my glasses.\p"
+           "Is that a red uniform? Please tell me you're not TEAM MAGMA…")
+}
+
+// Man at (6, 5) (vanilla: "That RUSTURF TUNNEL there…")
+script Route116_TunnelersRestHouse_EventScript_DraconidRepTunneler1 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(Route116_TunnelersRestHouse_Text_DraconidRepTunneler1Uniform, MSGBOX_NPC)
+        default:
+            goto(Route116_TunnelersRestHouse_EventScript_Tunneler1)
+    }
+}
+
+text Route116_TunnelersRestHouse_Text_DraconidRepTunneler1Uniform {
+    format("We stopped digging RUSTURF TUNNEL so we wouldn't hurt the wild POKéMON.\p"
+           "TEAM MAGMA would've just blasted through, huh? Not on my watch.")
+}
+
+// Man at (3, 6) (vanilla: "To get to VERDANTURF without using this TUNNEL, you'd have to…")
+script Route116_TunnelersRestHouse_EventScript_DraconidRepTunneler3 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(Route116_TunnelersRestHouse_Text_DraconidRepTunneler3Uniform, MSGBOX_NPC)
+        default:
+            goto(Route116_TunnelersRestHouse_EventScript_Tunneler3)
+    }
+}
+
+text Route116_TunnelersRestHouse_Text_DraconidRepTunneler3Uniform {
+    format("Without the tunnel, you'd have to sail to DEWFORD and SLATEPORT.\p"
+           "Then you'd still have to go through MAUVILLE.\p"
+           "Long way around. Maybe long enough to think about that uniform of yours.")
+}
+
+// Man at (7, 2) (vanilla: "There's a man digging his way to VERDANTURF all by his lonesome.…")
+script Route116_TunnelersRestHouse_EventScript_DraconidRepTunneler2 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(Route116_TunnelersRestHouse_Text_DraconidRepTunneler2Uniform, MSGBOX_NPC)
+        default:
+            goto(Route116_TunnelersRestHouse_EventScript_Tunneler2)
+    }
+}
+
+text Route116_TunnelersRestHouse_Text_DraconidRepTunneler2Uniform {
+    format("There's a man digging to VERDANTURF by hand, so he won't harm the POKéMON.\p"
+           "Your TEAM MAGMA should take a lesson from him.")
+}
+
+// WANDA's boyfriend at (23, 5) (vanilla: "… … Why can't they keep digging? Is the bedrock too hard?")
+script RusturfTunnel_EventScript_DraconidRepWandasBoyfriend {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(RusturfTunnel_Text_DraconidRepWandasBoyfriendUniform, MSGBOX_DEFAULT)
+    }
+    goto(RusturfTunnel_EventScript_WandasBoyfriend)
+}
+
+text RusturfTunnel_Text_DraconidRepWandasBoyfriendUniform {
+    format("TEAM MAGMA, in my tunnel?\p"
+           "If you've come to blast through, forget it!\p"
+           "The POKéMON in here can't stand loud noises.")
+}
+
+// WANDA at (25, 4) (vanilla: "On the other side of this rock… My boyfriend is there.")
+script RusturfTunnel_EventScript_DraconidRepWanda {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(RusturfTunnel_Text_DraconidRepWandaUniform, MSGBOX_DEFAULT)
+    }
+    goto(RusturfTunnel_EventScript_Wanda)
+}
+
+text RusturfTunnel_Text_DraconidRepWandaUniform {
+    format("Oh! A TEAM MAGMA grunt… You're not here to stop him digging, are you?")
+}
+
+// Florist with the WHITE HERB at (8, 19)
+script Route104_EventScript_DraconidRepWhiteHerbFlorist {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(Route104_Text_DraconidRepWhiteHerbFloristUniform, MSGBOX_DEFAULT)
+    }
+    goto(Route104_EventScript_WhiteHerbFlorist)
+}
+
+text Route104_Text_DraconidRepWhiteHerbFloristUniform {
+    format("Oh! A TEAM MAGMA grunt, by the flower shop…\p"
+           "Well, flowers make everyone gentler. Maybe even you.")
+}

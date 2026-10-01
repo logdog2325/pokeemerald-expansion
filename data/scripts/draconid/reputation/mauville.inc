@@ -133,6 +133,289 @@ MauvilleCity_Gym_EventScript_DraconidRepWattson_15:
 	goto MauvilleCity_Gym_EventScript_DraconidRepWattson_14
 
 
+MauvilleCity_EventScript_DraconidRepSchoolKidM::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq MauvilleCity_EventScript_DraconidRepSchoolKidM_2
+MauvilleCity_EventScript_DraconidRepSchoolKidM_1:
+	goto MauvilleCity_EventScript_SchoolKidM
+	return
+
+MauvilleCity_EventScript_DraconidRepSchoolKidM_2:
+	lock
+	faceplayer
+	msgbox MauvilleCity_Text_DraconidRepSchoolKidMUniform, MSGBOX_DEFAULT
+	goto MauvilleCity_EventScript_DraconidRepSchoolKidM_1
+
+
+MauvilleCity_EventScript_DraconidRepRolloutTutor::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq MauvilleCity_EventScript_DraconidRepRolloutTutor_2
+MauvilleCity_EventScript_DraconidRepRolloutTutor_1:
+	goto MauvilleCity_EventScript_RolloutTutor
+	return
+
+MauvilleCity_EventScript_DraconidRepRolloutTutor_2:
+	lock
+	faceplayer
+	msgbox MauvilleCity_Text_DraconidRepRolloutTutorUniform, MSGBOX_DEFAULT
+	goto MauvilleCity_EventScript_DraconidRepRolloutTutor_1
+
+
+MauvilleCity_BikeShop_EventScript_DraconidRepAssistant::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, MauvilleCity_BikeShop_EventScript_DraconidRepAssistant_2
+	goto MauvilleCity_BikeShop_EventScript_Assistant
+	return
+
+MauvilleCity_BikeShop_EventScript_DraconidRepAssistant_2:
+	msgbox MauvilleCity_BikeShop_Text_DraconidRepAssistantUniform, MSGBOX_NPC
+	return
+
+
+MauvilleCity_GameCorner_EventScript_DraconidRepWoman2::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, MauvilleCity_GameCorner_EventScript_DraconidRepWoman2_2
+	goto MauvilleCity_GameCorner_EventScript_Woman2
+	return
+
+MauvilleCity_GameCorner_EventScript_DraconidRepWoman2_2:
+	msgbox MauvilleCity_GameCorner_Text_DraconidRepWoman2Uniform, MSGBOX_NPC
+	return
+
+
+MauvilleCity_GameCorner_EventScript_DraconidRepGentleman::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, MauvilleCity_GameCorner_EventScript_DraconidRepGentleman_2
+	goto MauvilleCity_GameCorner_EventScript_Gentleman
+	return
+
+MauvilleCity_GameCorner_EventScript_DraconidRepGentleman_2:
+	msgbox MauvilleCity_GameCorner_Text_DraconidRepGentlemanUniform, MSGBOX_NPC
+	return
+
+
+MauvilleCity_GameCorner_EventScript_DraconidRepCoinsClerk::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq MauvilleCity_GameCorner_EventScript_DraconidRepCoinsClerk_2
+MauvilleCity_GameCorner_EventScript_DraconidRepCoinsClerk_1:
+	goto MauvilleCity_GameCorner_EventScript_CoinsClerk
+	return
+
+MauvilleCity_GameCorner_EventScript_DraconidRepCoinsClerk_2:
+	lock
+	faceplayer
+	msgbox MauvilleCity_GameCorner_Text_DraconidRepCoinsClerkUniform, MSGBOX_DEFAULT
+	goto MauvilleCity_GameCorner_EventScript_DraconidRepCoinsClerk_1
+
+
+MauvilleCity_GameCorner_EventScript_DraconidRepPrizeCornerDolls::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq MauvilleCity_GameCorner_EventScript_DraconidRepPrizeCornerDolls_2
+MauvilleCity_GameCorner_EventScript_DraconidRepPrizeCornerDolls_1:
+	goto MauvilleCity_GameCorner_EventScript_PrizeCornerDolls
+	return
+
+MauvilleCity_GameCorner_EventScript_DraconidRepPrizeCornerDolls_2:
+	lock
+	faceplayer
+	msgbox MauvilleCity_GameCorner_Text_DraconidRepPrizeCornerDollsUniform, MSGBOX_DEFAULT
+	goto MauvilleCity_GameCorner_EventScript_DraconidRepPrizeCornerDolls_1
+
+
+MauvilleCity_GameCorner_EventScript_DraconidRepGirl::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq MauvilleCity_GameCorner_EventScript_DraconidRepGirl_2
+MauvilleCity_GameCorner_EventScript_DraconidRepGirl_1:
+	goto MauvilleCity_GameCorner_EventScript_Girl
+	return
+
+MauvilleCity_GameCorner_EventScript_DraconidRepGirl_2:
+	lock
+	faceplayer
+	msgbox MauvilleCity_GameCorner_Text_DraconidRepGirlUniform, MSGBOX_DEFAULT
+	goto MauvilleCity_GameCorner_EventScript_DraconidRepGirl_1
+
+
+MauvilleCity_GameCorner_EventScript_DraconidRepPokefanM::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq MauvilleCity_GameCorner_EventScript_DraconidRepPokefanM_2
+MauvilleCity_GameCorner_EventScript_DraconidRepPokefanM_1:
+	goto MauvilleCity_GameCorner_EventScript_PokefanM
+	return
+
+MauvilleCity_GameCorner_EventScript_DraconidRepPokefanM_2:
+	lock
+	faceplayer
+	msgbox MauvilleCity_GameCorner_Text_DraconidRepPokefanMUniform, MSGBOX_DEFAULT
+	goto MauvilleCity_GameCorner_EventScript_DraconidRepPokefanM_1
+
+
+MauvilleCity_GameCorner_EventScript_DraconidRepOldMan::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, MauvilleCity_GameCorner_EventScript_DraconidRepOldMan_2
+	goto MauvilleCity_GameCorner_EventScript_OldMan
+	return
+
+MauvilleCity_GameCorner_EventScript_DraconidRepOldMan_2:
+	msgbox MauvilleCity_GameCorner_Text_DraconidRepOldManUniform, MSGBOX_NPC
+	return
+
+
+MauvilleCity_GameCorner_EventScript_DraconidRepCook::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, MauvilleCity_GameCorner_EventScript_DraconidRepCook_2
+	goto MauvilleCity_GameCorner_EventScript_Cook
+	return
+
+MauvilleCity_GameCorner_EventScript_DraconidRepCook_2:
+	msgbox MauvilleCity_GameCorner_Text_DraconidRepCookUniform, MSGBOX_NPC
+	return
+
+
+MauvilleCity_GameCorner_EventScript_DraconidRepPrizeCornerTMs::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq MauvilleCity_GameCorner_EventScript_DraconidRepPrizeCornerTMs_2
+MauvilleCity_GameCorner_EventScript_DraconidRepPrizeCornerTMs_1:
+	goto MauvilleCity_GameCorner_EventScript_PrizeCornerTMs
+	return
+
+MauvilleCity_GameCorner_EventScript_DraconidRepPrizeCornerTMs_2:
+	lock
+	faceplayer
+	msgbox MauvilleCity_GameCorner_Text_DraconidRepPrizeCornerTMsUniform, MSGBOX_DEFAULT
+	goto MauvilleCity_GameCorner_EventScript_DraconidRepPrizeCornerTMs_1
+
+
+MauvilleCity_GameCorner_EventScript_DraconidRepMan::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, MauvilleCity_GameCorner_EventScript_DraconidRepMan_2
+	goto MauvilleCity_GameCorner_EventScript_Man
+	return
+
+MauvilleCity_GameCorner_EventScript_DraconidRepMan_2:
+	msgbox MauvilleCity_GameCorner_Text_DraconidRepManUniform, MSGBOX_NPC
+	return
+
+
+MauvilleCity_GameCorner_EventScript_DraconidRepManiac::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, MauvilleCity_GameCorner_EventScript_DraconidRepManiac_2
+	goto MauvilleCity_GameCorner_EventScript_Maniac
+	return
+
+MauvilleCity_GameCorner_EventScript_DraconidRepManiac_2:
+	msgbox MauvilleCity_GameCorner_Text_DraconidRepManiacUniform, MSGBOX_NPC
+	return
+
+
+MauvilleCity_GameCorner_EventScript_DraconidRepWoman::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq MauvilleCity_GameCorner_EventScript_DraconidRepWoman_2
+MauvilleCity_GameCorner_EventScript_DraconidRepWoman_1:
+	goto MauvilleCity_GameCorner_EventScript_Woman
+	return
+
+MauvilleCity_GameCorner_EventScript_DraconidRepWoman_2:
+	lock
+	faceplayer
+	msgbox MauvilleCity_GameCorner_Text_DraconidRepWomanUniform, MSGBOX_DEFAULT
+	goto MauvilleCity_GameCorner_EventScript_DraconidRepWoman_1
+
+
+MauvilleCity_House2_EventScript_DraconidRepWoman::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq MauvilleCity_House2_EventScript_DraconidRepWoman_2
+MauvilleCity_House2_EventScript_DraconidRepWoman_1:
+	goto MauvilleCity_House2_EventScript_Woman
+	return
+
+MauvilleCity_House2_EventScript_DraconidRepWoman_2:
+	lock
+	faceplayer
+	msgbox MauvilleCity_House2_Text_DraconidRepWomanUniform, MSGBOX_DEFAULT
+	goto MauvilleCity_House2_EventScript_DraconidRepWoman_1
+
+
+MauvilleCity_Mart_EventScript_DraconidRepExpertM::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, MauvilleCity_Mart_EventScript_DraconidRepExpertM_2
+	goto MauvilleCity_Mart_EventScript_ExpertM
+	return
+
+MauvilleCity_Mart_EventScript_DraconidRepExpertM_2:
+	msgbox MauvilleCity_Mart_Text_DraconidRepExpertMUniform, MSGBOX_NPC
+	return
+
+
+MauvilleCity_Mart_EventScript_DraconidRepMan::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, MauvilleCity_Mart_EventScript_DraconidRepMan_2
+	goto MauvilleCity_Mart_EventScript_Man
+	return
+
+MauvilleCity_Mart_EventScript_DraconidRepMan_2:
+	msgbox MauvilleCity_Mart_Text_DraconidRepManUniform, MSGBOX_NPC
+	return
+
+
+MauvilleCity_PokemonCenter_1F_EventScript_DraconidRepMauvilleOldMan::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq MauvilleCity_PokemonCenter_1F_EventScript_DraconidRepMauvilleOldMan_2
+MauvilleCity_PokemonCenter_1F_EventScript_DraconidRepMauvilleOldMan_1:
+	goto MauvilleCity_PokemonCenter_1F_EventScript_MauvilleOldMan
+	return
+
+MauvilleCity_PokemonCenter_1F_EventScript_DraconidRepMauvilleOldMan_2:
+	lock
+	faceplayer
+	msgbox MauvilleCity_PokemonCenter_1F_Text_DraconidRepMauvilleOldManUniform, MSGBOX_DEFAULT
+	goto MauvilleCity_PokemonCenter_1F_EventScript_DraconidRepMauvilleOldMan_1
+
+
+MauvilleCity_PokemonCenter_1F_EventScript_DraconidRepWoman1::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, MauvilleCity_PokemonCenter_1F_EventScript_DraconidRepWoman1_2
+	goto MauvilleCity_PokemonCenter_1F_EventScript_Woman1
+	return
+
+MauvilleCity_PokemonCenter_1F_EventScript_DraconidRepWoman1_2:
+	msgbox MauvilleCity_PokemonCenter_1F_Text_DraconidRepWoman1Uniform, MSGBOX_NPC
+	return
+
+
+MauvilleCity_PokemonCenter_1F_EventScript_DraconidRepWoman2::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, MauvilleCity_PokemonCenter_1F_EventScript_DraconidRepWoman2_2
+	goto MauvilleCity_PokemonCenter_1F_EventScript_Woman2
+	return
+
+MauvilleCity_PokemonCenter_1F_EventScript_DraconidRepWoman2_2:
+	msgbox MauvilleCity_PokemonCenter_1F_Text_DraconidRepWoman2Uniform, MSGBOX_NPC
+	return
+
+
+MauvilleCity_PokemonCenter_1F_EventScript_DraconidRepYoungster::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, MauvilleCity_PokemonCenter_1F_EventScript_DraconidRepYoungster_2
+	goto MauvilleCity_PokemonCenter_1F_EventScript_Youngster
+	return
+
+MauvilleCity_PokemonCenter_1F_EventScript_DraconidRepYoungster_2:
+	msgbox MauvilleCity_PokemonCenter_1F_Text_DraconidRepYoungsterUniform, MSGBOX_NPC
+	return
+
+
+MauvilleCity_PokemonCenter_2F_EventScript_DraconidRepYoungster::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, MauvilleCity_PokemonCenter_2F_EventScript_DraconidRepYoungster_2
+	goto MauvilleCity_PokemonCenter_2F_EventScript_Youngster
+	return
+
+MauvilleCity_PokemonCenter_2F_EventScript_DraconidRepYoungster_2:
+	msgbox MauvilleCity_PokemonCenter_2F_Text_DraconidRepYoungsterUniform, MSGBOX_NPC
+	return
+
+
 MauvilleCity_Text_DraconidRepBoyUniform::
 	.string "If your POKéMON gets hurt, you have to\n"
 	.string "nurse it back to health.\p"
@@ -214,3 +497,121 @@ MauvilleCity_Gym_Text_DraconidRepWattsonPostBattleRevealed::
 	.string "them!\p"
 	.string "You fooled this old man completely!\n"
 	.string "What a shock, what a shock!$"
+
+MauvilleCity_Text_DraconidRepSchoolKidMUniform::
+	.string "Hi! Did you know you can end up on TV\n"
+	.string "out of the blue?\p"
+	.string "If a camera catches that TEAM MAGMA\n"
+	.string "uniform, all of HOENN will see it!$"
+
+MauvilleCity_Text_DraconidRepRolloutTutorUniform::
+	.string "Hmm? TEAM MAGMA? I don't care. I teach\n"
+	.string "anybody who asks.$"
+
+MauvilleCity_BikeShop_Text_DraconidRepAssistantUniform::
+	.string "I'm learning about BIKES while I work\n"
+	.string "here.\p"
+	.string "The boss sold you a BIKE? Huh. He'd sell\n"
+	.string "one to anybody.$"
+
+MauvilleCity_GameCorner_Text_DraconidRepWoman2Uniform::
+	.string "COINS are needed to play here.\p"
+	.string "And luck. Lots of luck. Which you'll\n"
+	.string "need, wearing that around here.$"
+
+MauvilleCity_GameCorner_Text_DraconidRepGentlemanUniform::
+	.string "Win or lose, ROULETTE is only luck.\p"
+	.string "Rather like running into TEAM MAGMA on\n"
+	.string "the street, I'd say.$"
+
+MauvilleCity_GameCorner_Text_DraconidRepCoinsClerkUniform::
+	.string "Oh. TEAM MAGMA. …The GAME CORNER takes\n"
+	.string "everyone's money.$"
+
+MauvilleCity_GameCorner_Text_DraconidRepPrizeCornerDollsUniform::
+	.string "Our prizes are for COINS only. No\n"
+	.string "“borrowing” them for your team.$"
+
+MauvilleCity_GameCorner_Text_DraconidRepGirlUniform::
+	.string "Oh! A TEAM MAGMA grunt…\p"
+	.string "Um, I'm being nice to everybody today.\n"
+	.string "Even you.$"
+
+MauvilleCity_GameCorner_Text_DraconidRepPokefanMUniform::
+	.string "Hey, kid… You're TEAM MAGMA? Heh. Takes\n"
+	.string "all kinds in MAUVILLE.$"
+
+MauvilleCity_GameCorner_Text_DraconidRepOldManUniform::
+	.string "The ROULETTE tables have different\n"
+	.string "rates.\p"
+	.string "Gambling with TEAM MAGMA would have the\n"
+	.string "worst rate of all.$"
+
+MauvilleCity_GameCorner_Text_DraconidRepCookUniform::
+	.string "It's easy to lose track of time in here.\p"
+	.string "Wait, there's a TEAM MAGMA grunt next\n"
+	.string "to me? I really should get back to work.$"
+
+MauvilleCity_GameCorner_Text_DraconidRepPrizeCornerTMsUniform::
+	.string "Welcome… TEAM MAGMA? Our TMs are\n"
+	.string "prizes, not loot. Understood?$"
+
+MauvilleCity_GameCorner_Text_DraconidRepManUniform::
+	.string "Up to three COINS can be used to play\n"
+	.string "the SLOTS.\p"
+	.string "Please don't stand behind me. You're bad\n"
+	.string "luck in that uniform.$"
+
+MauvilleCity_GameCorner_Text_DraconidRepManiacUniform::
+	.string "It's tough to make the reel stop right\n"
+	.string "on “7.”\p"
+	.string "Seeing TEAM MAGMA in here put me right\n"
+	.string "off my timing!$"
+
+MauvilleCity_GameCorner_Text_DraconidRepWomanUniform::
+	.string "You want tips on the SLOTS, TEAM MAGMA?\p"
+	.string "…Fine. Information is free. Even for\n"
+	.string "you.$"
+
+MauvilleCity_House2_Text_DraconidRepWomanUniform::
+	.string "You're TEAM MAGMA? Well, I suppose you\n"
+	.string "can still trade fair and square.$"
+
+MauvilleCity_Mart_Text_DraconidRepExpertMUniform::
+	.string "Some items raise a POKéMON's stats for\n"
+	.string "one battle. X ATTACK, X DEFEND…\p"
+	.string "I'm sure TEAM MAGMA buys them by the\n"
+	.string "crate.$"
+
+MauvilleCity_Mart_Text_DraconidRepManUniform::
+	.string "A TRAINER's choices decide how battles\n"
+	.string "turn out, I think.\p"
+	.string "And how lives turn out. Joining TEAM\n"
+	.string "MAGMA was a choice, too.$"
+
+MauvilleCity_PokemonCenter_1F_Text_DraconidRepMauvilleOldManUniform::
+	.string "Oh-ho! A TEAM MAGMA grunt! Now there's\n"
+	.string "a story waiting to be told!$"
+
+MauvilleCity_PokemonCenter_1F_Text_DraconidRepWoman1Uniform::
+	.string "That man over there says weird things!\p"
+	.string "But a TEAM MAGMA grunt in the POKéMON\n"
+	.string "CENTER? That's even weirder.$"
+
+MauvilleCity_PokemonCenter_1F_Text_DraconidRepWoman2Uniform::
+	.string "The RECORD CORNER updated what's hot\n"
+	.string "in DEWFORD.\p"
+	.string "I hope TEAM MAGMA never becomes what's\n"
+	.string "hot.$"
+
+MauvilleCity_PokemonCenter_1F_Text_DraconidRepYoungsterUniform::
+	.string "A RECORD CORNER opened upstairs! I'll\n"
+	.string "go check it out!\p"
+	.string "…Right after you leave. No offense,\n"
+	.string "TEAM MAGMA.$"
+
+MauvilleCity_PokemonCenter_2F_Text_DraconidRepYoungsterUniform::
+	.string "They put your link battle record on the\n"
+	.string "wall up here.\p"
+	.string "I bet a TEAM MAGMA record would scare\n"
+	.string "everyone off.$"

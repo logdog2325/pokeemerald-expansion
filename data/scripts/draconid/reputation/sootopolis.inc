@@ -120,6 +120,364 @@ SootopolisCity_Gym_1F_EventScript_DraconidRepJuan_8:
 	goto SootopolisCity_Gym_1F_EventScript_DraconidRepJuan_7
 
 
+SootopolisCity_EventScript_DraconidRepCaveOfOriginExpert::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq SootopolisCity_EventScript_DraconidRepCaveOfOriginExpert_2
+SootopolisCity_EventScript_DraconidRepCaveOfOriginExpert_1:
+	goto SootopolisCity_EventScript_CaveOfOriginExpert
+	return
+
+SootopolisCity_EventScript_DraconidRepCaveOfOriginExpert_2:
+	lock
+	faceplayer
+	msgbox SootopolisCity_Text_DraconidRepCaveOfOriginExpertUniform, MSGBOX_DEFAULT
+	goto SootopolisCity_EventScript_DraconidRepCaveOfOriginExpert_1
+
+
+SootopolisCity_EventScript_DraconidRepArchie::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq SootopolisCity_EventScript_DraconidRepArchie_2
+SootopolisCity_EventScript_DraconidRepArchie_1:
+	goto SootopolisCity_EventScript_Archie
+	return
+
+SootopolisCity_EventScript_DraconidRepArchie_2:
+	lock
+	faceplayer
+	msgbox SootopolisCity_Text_DraconidRepArchieUniform, MSGBOX_DEFAULT
+	goto SootopolisCity_EventScript_DraconidRepArchie_1
+
+
+SootopolisCity_EventScript_DraconidRepWoman2::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq SootopolisCity_EventScript_DraconidRepWoman2_2
+SootopolisCity_EventScript_DraconidRepWoman2_1:
+	goto SootopolisCity_EventScript_Woman2
+	return
+
+SootopolisCity_EventScript_DraconidRepWoman2_2:
+	lock
+	faceplayer
+	msgbox SootopolisCity_Text_DraconidRepWoman2Uniform, MSGBOX_DEFAULT
+	goto SootopolisCity_EventScript_DraconidRepWoman2_1
+
+
+SootopolisCity_EventScript_DraconidRepKiri::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq SootopolisCity_EventScript_DraconidRepKiri_2
+SootopolisCity_EventScript_DraconidRepKiri_1:
+	goto SootopolisCity_EventScript_Kiri
+	return
+
+SootopolisCity_EventScript_DraconidRepKiri_2:
+	lock
+	faceplayer
+	msgbox SootopolisCity_Text_DraconidRepKiriUniform, MSGBOX_DEFAULT
+	goto SootopolisCity_EventScript_DraconidRepKiri_1
+
+
+SootopolisCity_EventScript_DraconidRepNinjaBoy::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq SootopolisCity_EventScript_DraconidRepNinjaBoy_2
+SootopolisCity_EventScript_DraconidRepNinjaBoy_1:
+	goto SootopolisCity_EventScript_NinjaBoy
+	return
+
+SootopolisCity_EventScript_DraconidRepNinjaBoy_2:
+	lock
+	faceplayer
+	msgbox SootopolisCity_Text_DraconidRepNinjaBoyUniform, MSGBOX_DEFAULT
+	goto SootopolisCity_EventScript_DraconidRepNinjaBoy_1
+
+
+SootopolisCity_EventScript_DraconidRepBoy1::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq SootopolisCity_EventScript_DraconidRepBoy1_2
+SootopolisCity_EventScript_DraconidRepBoy1_1:
+	goto SootopolisCity_EventScript_Boy1
+	return
+
+SootopolisCity_EventScript_DraconidRepBoy1_2:
+	lock
+	faceplayer
+	msgbox SootopolisCity_Text_DraconidRepBoy1Uniform, MSGBOX_DEFAULT
+	goto SootopolisCity_EventScript_DraconidRepBoy1_1
+
+
+SootopolisCity_EventScript_DraconidRepMan::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq SootopolisCity_EventScript_DraconidRepMan_2
+SootopolisCity_EventScript_DraconidRepMan_1:
+	goto SootopolisCity_EventScript_Man
+	return
+
+SootopolisCity_EventScript_DraconidRepMan_2:
+	lock
+	faceplayer
+	msgbox SootopolisCity_Text_DraconidRepManUniform, MSGBOX_DEFAULT
+	goto SootopolisCity_EventScript_DraconidRepMan_1
+
+
+SootopolisCity_EventScript_DraconidRepWoman1::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq SootopolisCity_EventScript_DraconidRepWoman1_2
+SootopolisCity_EventScript_DraconidRepWoman1_1:
+	goto SootopolisCity_EventScript_Woman1
+	return
+
+SootopolisCity_EventScript_DraconidRepWoman1_2:
+	lock
+	faceplayer
+	msgbox SootopolisCity_Text_DraconidRepWoman1Uniform, MSGBOX_DEFAULT
+	goto SootopolisCity_EventScript_DraconidRepWoman1_1
+
+
+SootopolisCity_EventScript_DraconidRepManiac::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq SootopolisCity_EventScript_DraconidRepManiac_2
+SootopolisCity_EventScript_DraconidRepManiac_1:
+	goto SootopolisCity_EventScript_Maniac
+	return
+
+SootopolisCity_EventScript_DraconidRepManiac_2:
+	lock
+	faceplayer
+	msgbox SootopolisCity_Text_DraconidRepManiacUniform, MSGBOX_DEFAULT
+	goto SootopolisCity_EventScript_DraconidRepManiac_1
+
+
+SootopolisCity_EventScript_DraconidRepGirl::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq SootopolisCity_EventScript_DraconidRepGirl_2
+SootopolisCity_EventScript_DraconidRepGirl_1:
+	goto SootopolisCity_EventScript_Girl
+	return
+
+SootopolisCity_EventScript_DraconidRepGirl_2:
+	lock
+	faceplayer
+	msgbox SootopolisCity_Text_DraconidRepGirlUniform, MSGBOX_DEFAULT
+	goto SootopolisCity_EventScript_DraconidRepGirl_1
+
+
+SootopolisCity_EventScript_DraconidRepBlackBelt::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq SootopolisCity_EventScript_DraconidRepBlackBelt_2
+SootopolisCity_EventScript_DraconidRepBlackBelt_1:
+	goto SootopolisCity_EventScript_BlackBelt
+	return
+
+SootopolisCity_EventScript_DraconidRepBlackBelt_2:
+	lock
+	faceplayer
+	msgbox SootopolisCity_Text_DraconidRepBlackBeltUniform, MSGBOX_DEFAULT
+	goto SootopolisCity_EventScript_DraconidRepBlackBelt_1
+
+
+SootopolisCity_EventScript_DraconidRepBoy2::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq SootopolisCity_EventScript_DraconidRepBoy2_2
+SootopolisCity_EventScript_DraconidRepBoy2_1:
+	goto SootopolisCity_EventScript_Boy2
+	return
+
+SootopolisCity_EventScript_DraconidRepBoy2_2:
+	lock
+	faceplayer
+	msgbox SootopolisCity_Text_DraconidRepBoy2Uniform, MSGBOX_DEFAULT
+	goto SootopolisCity_EventScript_DraconidRepBoy2_1
+
+
+SootopolisCity_House1_EventScript_DraconidRepBrickBreakBlackBelt::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq SootopolisCity_House1_EventScript_DraconidRepBrickBreakBlackBelt_2
+SootopolisCity_House1_EventScript_DraconidRepBrickBreakBlackBelt_1:
+	goto SootopolisCity_House1_EventScript_BrickBreakBlackBelt
+	return
+
+SootopolisCity_House1_EventScript_DraconidRepBrickBreakBlackBelt_2:
+	lock
+	faceplayer
+	msgbox SootopolisCity_House1_Text_DraconidRepBrickBreakBlackBeltUniform, MSGBOX_DEFAULT
+	goto SootopolisCity_House1_EventScript_DraconidRepBrickBreakBlackBelt_1
+
+
+SootopolisCity_House2_EventScript_DraconidRepExpertF::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq SootopolisCity_House2_EventScript_DraconidRepExpertF_2
+SootopolisCity_House2_EventScript_DraconidRepExpertF_1:
+	goto SootopolisCity_House2_EventScript_ExpertF
+	return
+
+SootopolisCity_House2_EventScript_DraconidRepExpertF_2:
+	lock
+	faceplayer
+	msgbox SootopolisCity_House2_Text_DraconidRepExpertFUniform, MSGBOX_DEFAULT
+	goto SootopolisCity_House2_EventScript_DraconidRepExpertF_1
+
+
+SootopolisCity_House3_EventScript_DraconidRepWoman::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq SootopolisCity_House3_EventScript_DraconidRepWoman_2
+SootopolisCity_House3_EventScript_DraconidRepWoman_1:
+	goto SootopolisCity_House3_EventScript_Woman
+	return
+
+SootopolisCity_House3_EventScript_DraconidRepWoman_2:
+	lock
+	faceplayer
+	msgbox SootopolisCity_House3_Text_DraconidRepWomanUniform, MSGBOX_DEFAULT
+	goto SootopolisCity_House3_EventScript_DraconidRepWoman_1
+
+
+SootopolisCity_House3_EventScript_DraconidRepGirl::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, SootopolisCity_House3_EventScript_DraconidRepGirl_2
+	goto SootopolisCity_House3_EventScript_Girl
+	return
+
+SootopolisCity_House3_EventScript_DraconidRepGirl_2:
+	msgbox SootopolisCity_House3_Text_DraconidRepGirlUniform, MSGBOX_NPC
+	return
+
+
+SootopolisCity_House5_EventScript_DraconidRepManiac::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, SootopolisCity_House5_EventScript_DraconidRepManiac_2
+	goto SootopolisCity_House5_EventScript_Maniac
+	return
+
+SootopolisCity_House5_EventScript_DraconidRepManiac_2:
+	msgbox SootopolisCity_House5_Text_DraconidRepManiacUniform, MSGBOX_NPC
+	return
+
+
+SootopolisCity_House6_EventScript_DraconidRepWoman::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq SootopolisCity_House6_EventScript_DraconidRepWoman_2
+SootopolisCity_House6_EventScript_DraconidRepWoman_1:
+	goto SootopolisCity_House6_EventScript_Woman
+	return
+
+SootopolisCity_House6_EventScript_DraconidRepWoman_2:
+	lock
+	faceplayer
+	msgbox SootopolisCity_House6_Text_DraconidRepWomanUniform, MSGBOX_DEFAULT
+	goto SootopolisCity_House6_EventScript_DraconidRepWoman_1
+
+
+SootopolisCity_LotadAndSeedotHouse_EventScript_DraconidRepLotadBrother::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq SootopolisCity_LotadAndSeedotHouse_EventScript_DraconidRepLotadBrother_2
+SootopolisCity_LotadAndSeedotHouse_EventScript_DraconidRepLotadBrother_1:
+	goto SootopolisCity_LotadAndSeedotHouse_EventScript_LotadBrother
+	return
+
+SootopolisCity_LotadAndSeedotHouse_EventScript_DraconidRepLotadBrother_2:
+	lock
+	faceplayer
+	msgbox SootopolisCity_LotadAndSeedotHouse_Text_DraconidRepLotadBrotherUniform, MSGBOX_DEFAULT
+	goto SootopolisCity_LotadAndSeedotHouse_EventScript_DraconidRepLotadBrother_1
+
+
+SootopolisCity_LotadAndSeedotHouse_EventScript_DraconidRepSeedotBrother::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq SootopolisCity_LotadAndSeedotHouse_EventScript_DraconidRepSeedotBrother_2
+SootopolisCity_LotadAndSeedotHouse_EventScript_DraconidRepSeedotBrother_1:
+	goto SootopolisCity_LotadAndSeedotHouse_EventScript_SeedotBrother
+	return
+
+SootopolisCity_LotadAndSeedotHouse_EventScript_DraconidRepSeedotBrother_2:
+	lock
+	faceplayer
+	msgbox SootopolisCity_LotadAndSeedotHouse_Text_DraconidRepSeedotBrotherUniform, MSGBOX_DEFAULT
+	goto SootopolisCity_LotadAndSeedotHouse_EventScript_DraconidRepSeedotBrother_1
+
+
+SootopolisCity_Mart_EventScript_DraconidRepFatMan::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq SootopolisCity_Mart_EventScript_DraconidRepFatMan_2
+SootopolisCity_Mart_EventScript_DraconidRepFatMan_1:
+	goto SootopolisCity_Mart_EventScript_FatMan
+	return
+
+SootopolisCity_Mart_EventScript_DraconidRepFatMan_2:
+	lock
+	faceplayer
+	msgbox SootopolisCity_Mart_Text_DraconidRepFatManUniform, MSGBOX_DEFAULT
+	goto SootopolisCity_Mart_EventScript_DraconidRepFatMan_1
+
+
+SootopolisCity_Mart_EventScript_DraconidRepGentleman::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq SootopolisCity_Mart_EventScript_DraconidRepGentleman_2
+SootopolisCity_Mart_EventScript_DraconidRepGentleman_1:
+	goto SootopolisCity_Mart_EventScript_Gentleman
+	return
+
+SootopolisCity_Mart_EventScript_DraconidRepGentleman_2:
+	lock
+	faceplayer
+	msgbox SootopolisCity_Mart_Text_DraconidRepGentlemanUniform, MSGBOX_DEFAULT
+	goto SootopolisCity_Mart_EventScript_DraconidRepGentleman_1
+
+
+SootopolisCity_MysteryEventsHouse_1F_EventScript_DraconidRepOldMan::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq SootopolisCity_MysteryEventsHouse_1F_EventScript_DraconidRepOldMan_2
+SootopolisCity_MysteryEventsHouse_1F_EventScript_DraconidRepOldMan_1:
+	goto SootopolisCity_MysteryEventsHouse_1F_EventScript_OldMan
+	return
+
+SootopolisCity_MysteryEventsHouse_1F_EventScript_DraconidRepOldMan_2:
+	lock
+	faceplayer
+	msgbox SootopolisCity_MysteryEventsHouse_1F_Text_DraconidRepOldManUniform, MSGBOX_DEFAULT
+	goto SootopolisCity_MysteryEventsHouse_1F_EventScript_DraconidRepOldMan_1
+
+
+SootopolisCity_PokemonCenter_1F_EventScript_DraconidRepGentleman::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq SootopolisCity_PokemonCenter_1F_EventScript_DraconidRepGentleman_2
+SootopolisCity_PokemonCenter_1F_EventScript_DraconidRepGentleman_1:
+	goto SootopolisCity_PokemonCenter_1F_EventScript_Gentleman
+	return
+
+SootopolisCity_PokemonCenter_1F_EventScript_DraconidRepGentleman_2:
+	lock
+	faceplayer
+	msgbox SootopolisCity_PokemonCenter_1F_Text_DraconidRepGentlemanUniform, MSGBOX_DEFAULT
+	goto SootopolisCity_PokemonCenter_1F_EventScript_DraconidRepGentleman_1
+
+
+SootopolisCity_PokemonCenter_1F_EventScript_DraconidRepWoman::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq SootopolisCity_PokemonCenter_1F_EventScript_DraconidRepWoman_2
+SootopolisCity_PokemonCenter_1F_EventScript_DraconidRepWoman_1:
+	goto SootopolisCity_PokemonCenter_1F_EventScript_Woman
+	return
+
+SootopolisCity_PokemonCenter_1F_EventScript_DraconidRepWoman_2:
+	lock
+	faceplayer
+	msgbox SootopolisCity_PokemonCenter_1F_Text_DraconidRepWomanUniform, MSGBOX_DEFAULT
+	goto SootopolisCity_PokemonCenter_1F_EventScript_DraconidRepWoman_1
+
+
+SootopolisCity_PokemonCenter_1F_EventScript_DraconidRepDoubleEdgeTutor::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq SootopolisCity_PokemonCenter_1F_EventScript_DraconidRepDoubleEdgeTutor_2
+SootopolisCity_PokemonCenter_1F_EventScript_DraconidRepDoubleEdgeTutor_1:
+	goto SootopolisCity_PokemonCenter_1F_EventScript_DoubleEdgeTutor
+	return
+
+SootopolisCity_PokemonCenter_1F_EventScript_DraconidRepDoubleEdgeTutor_2:
+	lock
+	faceplayer
+	msgbox SootopolisCity_PokemonCenter_1F_Text_DraconidRepDoubleEdgeTutorUniform, MSGBOX_DEFAULT
+	goto SootopolisCity_PokemonCenter_1F_EventScript_DraconidRepDoubleEdgeTutor_1
+
+
 SootopolisCity_House4_Text_DraconidRepManUniform::
 	.string "Treasures in the sea… Is that what\n"
 	.string "TEAM MAGMA is after?\p"
@@ -210,3 +568,112 @@ SootopolisCity_Gym_1F_Text_DraconidRepJuanPostBattleRevealed::
 	.string "should travel to EVER GRANDE.\p"
 	.string "There, at the easternmost reaches of\n"
 	.string "HOENN, stands the POKéMON LEAGUE.$"
+
+SootopolisCity_Text_DraconidRepCaveOfOriginExpertUniform::
+	.string "That red… TEAM MAGMA. You will not set\n"
+	.string "foot in the CAVE OF ORIGIN.$"
+
+SootopolisCity_Text_DraconidRepArchieUniform::
+	.string "ARCHIE: You! MAXIE's little recruit! Out\n"
+	.string "of my way!$"
+
+SootopolisCity_Text_DraconidRepWoman2Uniform::
+	.string "A TEAM MAGMA grunt in SOOTOPOLIS?\n"
+	.string "We've never had your kind here.$"
+
+SootopolisCity_Text_DraconidRepKiriUniform::
+	.string "Um… are you a bad guy? Your clothes are\n"
+	.string "all red.$"
+
+SootopolisCity_Text_DraconidRepNinjaBoyUniform::
+	.string "Whoa! A TEAM MAGMA grunt! In our city!$"
+
+SootopolisCity_Text_DraconidRepBoy1Uniform::
+	.string "You're TEAM MAGMA? What are you doing\n"
+	.string "all the way out here?$"
+
+SootopolisCity_Text_DraconidRepManUniform::
+	.string "Hm! TEAM MAGMA, in SOOTOPOLIS? Now I've\n"
+	.string "seen everything.$"
+
+SootopolisCity_Text_DraconidRepWoman1Uniform::
+	.string "You're TEAM MAGMA, aren't you? Our city\n"
+	.string "sits inside a volcano.\p"
+	.string "I'd rather you didn't get any ideas.$"
+
+SootopolisCity_Text_DraconidRepManiacUniform::
+	.string "Whoa! A TEAM MAGMA grunt, here?!$"
+
+SootopolisCity_Text_DraconidRepGirlUniform::
+	.string "Oh, no! TEAM MAGMA is here!$"
+
+SootopolisCity_Text_DraconidRepBlackBeltUniform::
+	.string "Hey, red! You're TEAM MAGMA, right?$"
+
+SootopolisCity_Text_DraconidRepBoy2Uniform::
+	.string "A TEAM MAGMA grunt… You came all the\n"
+	.string "way out here?$"
+
+SootopolisCity_House1_Text_DraconidRepBrickBreakBlackBeltUniform::
+	.string "A TEAM MAGMA grunt walks into my home.\n"
+	.string "Hmph.\p"
+	.string "A TM goes to whoever comes. Those are\n"
+	.string "my rules.$"
+
+SootopolisCity_House2_Text_DraconidRepExpertFUniform::
+	.string "You wear red, child. Like the men who\n"
+	.string "went up MT. PYRE.$"
+
+SootopolisCity_House3_Text_DraconidRepWomanUniform::
+	.string "A TEAM MAGMA grunt? Here in\n"
+	.string "SOOTOPOLIS?\p"
+	.string "Well, JUAN's fans come from everywhere.\n"
+	.string "I suppose even you.$"
+
+SootopolisCity_House3_Text_DraconidRepGirlUniform::
+	.string "Dedicated fans come from all over HOENN\n"
+	.string "to see JUAN.\p"
+	.string "But no TEAM MAGMA fans. Please don't\n"
+	.string "start a fan club.$"
+
+SootopolisCity_House5_Text_DraconidRepManiacUniform::
+	.string "There seems to be a connection between\n"
+	.string "SOOTOPOLIS and MT. PYRE.\p"
+	.string "…I'd better not say more. Not to a TEAM\n"
+	.string "MAGMA grunt.$"
+
+SootopolisCity_House6_Text_DraconidRepWomanUniform::
+	.string "Oh! A guest! In… in a TEAM MAGMA\n"
+	.string "uniform.\p"
+	.string "Well, it's been a while since anyone\n"
+	.string "visited. You'll do.$"
+
+SootopolisCity_LotadAndSeedotHouse_Text_DraconidRepLotadBrotherUniform::
+	.string "TEAM MAGMA? Do you like LOTAD?\n"
+	.string "Everyone should like LOTAD! Even you!$"
+
+SootopolisCity_LotadAndSeedotHouse_Text_DraconidRepSeedotBrotherUniform::
+	.string "TEAM MAGMA? Hmph. I bet you like\n"
+	.string "SEEDOT. It lives on land, after all.$"
+
+SootopolisCity_Mart_Text_DraconidRepFatManUniform::
+	.string "A TEAM MAGMA grunt in the MART?!$"
+
+SootopolisCity_Mart_Text_DraconidRepGentlemanUniform::
+	.string "Hmm. A TEAM MAGMA member in SOOTOPOLIS.\n"
+	.string "How very odd.$"
+
+SootopolisCity_MysteryEventsHouse_1F_Text_DraconidRepOldManUniform::
+	.string "In my day, TRAINERS didn't wear gang\n"
+	.string "colors. Hmph.$"
+
+SootopolisCity_PokemonCenter_1F_Text_DraconidRepGentlemanUniform::
+	.string "Hm? You're with TEAM MAGMA?$"
+
+SootopolisCity_PokemonCenter_1F_Text_DraconidRepWomanUniform::
+	.string "TEAM MAGMA… What do you want with\n"
+	.string "SOOTOPOLIS?$"
+
+SootopolisCity_PokemonCenter_1F_Text_DraconidRepDoubleEdgeTutorUniform::
+	.string "TEAM MAGMA? DOUBLE-EDGE hurts the\n"
+	.string "user, too, you know. Keep that in mind.$"

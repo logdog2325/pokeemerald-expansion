@@ -80,7 +80,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "MossdeepCity_EventScript_NinjaBoy",
+      "script": "MossdeepCity_EventScript_DraconidRepNinjaBoy",
       "flag": "0"
     },
     {
@@ -119,7 +119,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "MossdeepCity_EventScript_Man",
+      "script": "MossdeepCity_EventScript_DraconidRepMan",
       "flag": "0"
     },
     {
@@ -145,7 +145,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "MossdeepCity_EventScript_KingsRockBoy",
+      "script": "MossdeepCity_EventScript_DraconidRepKingsRockBoy",
       "flag": "0"
     },
     {
@@ -228,7 +228,7 @@
       "movement_range_y": 3,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "MossdeepCity_EventScript_DynamicPunchTutor",
+      "script": "MossdeepCity_EventScript_DraconidRepDynamicPunchTutor",
       "flag": "0"
     },
     {
@@ -242,7 +242,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "MossdeepCity_EventScript_Scott",
+      "script": "MossdeepCity_EventScript_DraconidRepScott",
       "flag": "FLAG_HIDE_MOSSDEEP_CITY_SCOTT"
     },
     {
@@ -255,7 +255,7 @@
       "movement_range_y": 3,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "MossdeepCity_EventScript_BlackBelt",
+      "script": "MossdeepCity_EventScript_DraconidRepBlackBelt",
       "flag": "0"
     },
     {

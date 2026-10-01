@@ -195,3 +195,182 @@ text LavaridgeTown_Gym_1F_Text_DraconidRepFlanneryPostBattleRevealed {
     format("{PLAYER}… I yelled at you, and you were protecting the mountain all along.\p"
            "I'm sorry. Next time we battle, it'll be as friends. Hot-blooded friends!")
 }
+
+// Old woman at (5, 4) (vanilla: "They're claiming that these hot springs are good for calming…")
+script LavaridgeTown_EventScript_DraconidRepHotSpringsOldWoman2 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LavaridgeTown_Text_DraconidRepHotSpringsOldWoman2Uniform, MSGBOX_NPC)
+        default:
+            goto(LavaridgeTown_EventScript_HotSpringsOldWoman2)
+    }
+}
+
+text LavaridgeTown_Text_DraconidRepHotSpringsOldWoman2Uniform {
+    format("They claim these hot springs relieve tension and solve romantic problems.\p"
+           "They won't relieve the tension you're causing, standing there in red.")
+}
+
+// Old woman with the EGG at (4, 7) (vanilla: "I have here an EGG. I'd hoped to hatch it by covering it in hot…")
+script LavaridgeTown_EventScript_DraconidRepEggWoman {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(LavaridgeTown_Text_DraconidRepEggWomanUniform, MSGBOX_DEFAULT)
+    }
+    goto(LavaridgeTown_EventScript_EggWoman)
+}
+
+text LavaridgeTown_Text_DraconidRepEggWomanUniform {
+    format("TEAM MAGMA… After what you people tried on our mountain?\p"
+           "…The EGG doesn't know any of that. It only needs someone to keep it warm.")
+}
+
+// HERB SHOP clerk at (3, 2) (vanilla: "Welcome to the HERB SHOP, home of effective and inexpensive medicine!")
+script LavaridgeTown_HerbShop_EventScript_DraconidRepClerk {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(LavaridgeTown_HerbShop_Text_DraconidRepClerkUniform, MSGBOX_DEFAULT)
+    }
+    goto(LavaridgeTown_HerbShop_EventScript_Clerk)
+}
+
+text LavaridgeTown_HerbShop_Text_DraconidRepClerkUniform {
+    format("Oh. TEAM MAGMA. Even your people need medicine, I suppose.")
+}
+
+// Old man at (7, 5) (vanilla: "You've come to look at herbal medicine in LAVARIDGE?")
+script LavaridgeTown_HerbShop_EventScript_DraconidRepOldMan {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(LavaridgeTown_HerbShop_Text_DraconidRepOldManUniform, MSGBOX_DEFAULT)
+    }
+    goto(LavaridgeTown_HerbShop_EventScript_OldMan)
+}
+
+text LavaridgeTown_HerbShop_Text_DraconidRepOldManUniform {
+    format("Hmph. TEAM MAGMA, in our HERB SHOP?\p"
+           "After what your people tried on our mountain…")
+}
+
+// Old man at (9, 3) (vanilla: "Herbal medicine works impressively well. But your POKéMON will…")
+script LavaridgeTown_HerbShop_EventScript_DraconidRepExpertM {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LavaridgeTown_HerbShop_Text_DraconidRepExpertMUniform, MSGBOX_NPC)
+        default:
+            goto(LavaridgeTown_HerbShop_EventScript_ExpertM)
+    }
+}
+
+text LavaridgeTown_HerbShop_Text_DraconidRepExpertMUniform {
+    format("Herbal medicine works well, but it's horribly bitter.\p"
+           "Almost as bitter as this town feels about TEAM MAGMA.")
+}
+
+// Old man at (2, 3) (vanilla: "My wife's warming an EGG in the hot springs. This is what she told me.")
+script LavaridgeTown_House_EventScript_DraconidRepOldMan {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LavaridgeTown_House_Text_DraconidRepOldManUniform, MSGBOX_NPC)
+        default:
+            goto(LavaridgeTown_House_EventScript_OldMan)
+    }
+}
+
+text LavaridgeTown_House_Text_DraconidRepOldManUniform {
+    format("My wife's warming an EGG in the hot springs.\p"
+           "If your TEAM MAGMA had blown up the mountain, there'd be no hot springs!")
+}
+
+// Move tutor (MIMIC) at (8, 4)
+script LavaridgeTown_House_EventScript_DraconidRepMimicTutor {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(LavaridgeTown_House_Text_DraconidRepMimicTutorUniform, MSGBOX_DEFAULT)
+    }
+    goto(LavaridgeTown_House_EventScript_MimicTutor)
+}
+
+text LavaridgeTown_House_Text_DraconidRepMimicTutorUniform {
+    format("TEAM MAGMA! TEAM MAGMA! …Heh. I'm practicing MIMIC.")
+}
+
+// Old man at (4, 2) (vanilla: "Use X SPEED to add to a POKéMON's SPEED in battle.")
+script LavaridgeTown_Mart_EventScript_DraconidRepExpertM {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LavaridgeTown_Mart_Text_DraconidRepExpertMUniform, MSGBOX_NPC)
+        default:
+            goto(LavaridgeTown_Mart_EventScript_ExpertM)
+    }
+}
+
+text LavaridgeTown_Mart_Text_DraconidRepExpertMUniform {
+    format("X SPEED helps your POKéMON strike first.\p"
+           "I'd like some for my legs. Running from TEAM MAGMA is tiring work.")
+}
+
+// Old woman at (9, 5) (vanilla: "On MT. CHIMNEY's peak, there's a local specialty that you can buy…")
+script LavaridgeTown_Mart_EventScript_DraconidRepOldWoman {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LavaridgeTown_Mart_Text_DraconidRepOldWomanUniform, MSGBOX_NPC)
+        default:
+            goto(LavaridgeTown_Mart_EventScript_OldWoman)
+    }
+}
+
+text LavaridgeTown_Mart_Text_DraconidRepOldWomanUniform {
+    format("There's a local specialty you can only buy on MT. CHIMNEY's peak.\p"
+           "Or there was, before TEAM MAGMA stormed it. Hmph!")
+}
+
+// Youngster at (11, 8) (vanilla: "It's sort of magical how just sitting in a hot-spring pool can…")
+script LavaridgeTown_PokemonCenter_1F_EventScript_DraconidRepYoungster {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LavaridgeTown_PokemonCenter_1F_Text_DraconidRepYoungsterUniform, MSGBOX_NPC)
+        default:
+            goto(LavaridgeTown_PokemonCenter_1F_EventScript_Youngster)
+    }
+}
+
+text LavaridgeTown_PokemonCenter_1F_Text_DraconidRepYoungsterUniform {
+    format("Sitting in a hot-spring pool is magical. It invigorates you.\p"
+           "Please don't come in the pool, TEAM MAGMA. It'd stop being magical.")
+}
+
+// Woman at (10, 6) (vanilla: "I think POKéMON get closer to their TRAINERS if they spend time…")
+script LavaridgeTown_PokemonCenter_1F_EventScript_DraconidRepWoman {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LavaridgeTown_PokemonCenter_1F_Text_DraconidRepWomanUniform, MSGBOX_NPC)
+        default:
+            goto(LavaridgeTown_PokemonCenter_1F_EventScript_Woman)
+    }
+}
+
+text LavaridgeTown_PokemonCenter_1F_Text_DraconidRepWomanUniform {
+    format("POKéMON get closer to TRAINERS the longer they spend together.\p"
+           "Yours seem close to you. That makes the uniform even harder to understand.")
+}
+
+// Gentleman at (1, 3) (vanilla: "Hohoho! Hey, kid, you can reach the hot springs from here.")
+script LavaridgeTown_PokemonCenter_1F_EventScript_DraconidRepGentleman {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LavaridgeTown_PokemonCenter_1F_Text_DraconidRepGentlemanUniform, MSGBOX_NPC)
+        default:
+            goto(LavaridgeTown_PokemonCenter_1F_EventScript_Gentleman)
+    }
+}
+
+text LavaridgeTown_PokemonCenter_1F_Text_DraconidRepGentlemanUniform {
+    format("Hohoho! You can reach the hot springs from here.\p"
+           "…Though I'd soak somewhere else if I were in TEAM MAGMA.\p"
+           "The locals have long memories.")
+}

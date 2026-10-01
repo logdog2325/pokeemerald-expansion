@@ -177,3 +177,373 @@ text SootopolisCity_Gym_1F_Text_DraconidRepJuanPostBattleRevealed {
            "TRAINERS with all the BADGES of HOENN should travel to EVER GRANDE.\p"
            "There, at the easternmost reaches of HOENN, stands the POKéMON LEAGUE.")
 }
+
+// Guard at the CAVE OF ORIGIN at (31, 18) (vanilla: "Who might you be? This is the CAVE OF ORIGIN.")
+script SootopolisCity_EventScript_DraconidRepCaveOfOriginExpert {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(SootopolisCity_Text_DraconidRepCaveOfOriginExpertUniform, MSGBOX_DEFAULT)
+    }
+    goto(SootopolisCity_EventScript_CaveOfOriginExpert)
+}
+
+text SootopolisCity_Text_DraconidRepCaveOfOriginExpertUniform {
+    format("That red… TEAM MAGMA. You will not set foot in the CAVE OF ORIGIN.")
+}
+
+// ARCHIE in the crisis at (31, 33) (vanilla: "ARCHIE: KYOGRE! What's wrong?! Look over here! It's the RED ORB!…")
+script SootopolisCity_EventScript_DraconidRepArchie {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(SootopolisCity_Text_DraconidRepArchieUniform, MSGBOX_DEFAULT)
+    }
+    goto(SootopolisCity_EventScript_Archie)
+}
+
+text SootopolisCity_Text_DraconidRepArchieUniform {
+    format("ARCHIE: You! MAXIE's little recruit! Out of my way!")
+}
+
+// Woman at (47, 33) (vanilla: "The weather was clear this morning, but…")
+script SootopolisCity_EventScript_DraconidRepWoman2 {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(SootopolisCity_Text_DraconidRepWoman2Uniform, MSGBOX_DEFAULT)
+    }
+    goto(SootopolisCity_EventScript_Woman2)
+}
+
+text SootopolisCity_Text_DraconidRepWoman2Uniform {
+    format("A TEAM MAGMA grunt in SOOTOPOLIS? We've never had your kind here.")
+}
+
+// KIRI at (9, 43) (vanilla: "A big POKéMON is fighting with another big POKéMON!")
+script SootopolisCity_EventScript_DraconidRepKiri {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(SootopolisCity_Text_DraconidRepKiriUniform, MSGBOX_DEFAULT)
+    }
+    goto(SootopolisCity_EventScript_Kiri)
+}
+
+text SootopolisCity_Text_DraconidRepKiriUniform {
+    format("Um… are you a bad guy? Your clothes are all red.")
+}
+
+// Boy at (51, 14) (vanilla: "Wow! This is wicked!")
+script SootopolisCity_EventScript_DraconidRepNinjaBoy {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(SootopolisCity_Text_DraconidRepNinjaBoyUniform, MSGBOX_DEFAULT)
+    }
+    goto(SootopolisCity_EventScript_NinjaBoy)
+}
+
+text SootopolisCity_Text_DraconidRepNinjaBoyUniform {
+    format("Whoa! A TEAM MAGMA grunt! In our city!")
+}
+
+// Boy at (43, 26) (vanilla: "These giant POKéMON suddenly appeared in the middle of the city!")
+script SootopolisCity_EventScript_DraconidRepBoy1 {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(SootopolisCity_Text_DraconidRepBoy1Uniform, MSGBOX_DEFAULT)
+    }
+    goto(SootopolisCity_EventScript_Boy1)
+}
+
+text SootopolisCity_Text_DraconidRepBoy1Uniform {
+    format("You're TEAM MAGMA? What are you doing all the way out here?")
+}
+
+// Man at (26, 4) (vanilla: "Hm! You've come all the way to SOOTOPOLIS? You're no ordinary tourist.")
+script SootopolisCity_EventScript_DraconidRepMan {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(SootopolisCity_Text_DraconidRepManUniform, MSGBOX_DEFAULT)
+    }
+    goto(SootopolisCity_EventScript_Man)
+}
+
+text SootopolisCity_Text_DraconidRepManUniform {
+    format("Hm! TEAM MAGMA, in SOOTOPOLIS? Now I've seen everything.")
+}
+
+// Woman at (49, 34) (vanilla: "SOOTOPOLIS sprang up as a town in the crater of a volcano.")
+script SootopolisCity_EventScript_DraconidRepWoman1 {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(SootopolisCity_Text_DraconidRepWoman1Uniform, MSGBOX_DEFAULT)
+    }
+    goto(SootopolisCity_EventScript_Woman1)
+}
+
+text SootopolisCity_Text_DraconidRepWoman1Uniform {
+    format("You're TEAM MAGMA, aren't you? Our city sits inside a volcano.\p"
+           "I'd rather you didn't get any ideas.")
+}
+
+// Man at (17, 44) (vanilla: "There's an ancient legend that claims the land and sea were shaped…")
+script SootopolisCity_EventScript_DraconidRepManiac {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(SootopolisCity_Text_DraconidRepManiacUniform, MSGBOX_DEFAULT)
+    }
+    goto(SootopolisCity_EventScript_Maniac)
+}
+
+text SootopolisCity_Text_DraconidRepManiacUniform {
+    format("Whoa! A TEAM MAGMA grunt, here?!")
+}
+
+// Girl at (14, 42) (vanilla: "Oh, no! SOOTOPOLIS CITY will get wrecked!")
+script SootopolisCity_EventScript_DraconidRepGirl {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(SootopolisCity_Text_DraconidRepGirlUniform, MSGBOX_DEFAULT)
+    }
+    goto(SootopolisCity_EventScript_Girl)
+}
+
+text SootopolisCity_Text_DraconidRepGirlUniform {
+    format("Oh, no! TEAM MAGMA is here!")
+}
+
+// Black belt at (17, 40) (vanilla: "Go for it, red POKéMON! Don't back off, blue POKéMON!")
+script SootopolisCity_EventScript_DraconidRepBlackBelt {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(SootopolisCity_Text_DraconidRepBlackBeltUniform, MSGBOX_DEFAULT)
+    }
+    goto(SootopolisCity_EventScript_BlackBelt)
+}
+
+text SootopolisCity_Text_DraconidRepBlackBeltUniform {
+    format("Hey, red! You're TEAM MAGMA, right?")
+}
+
+// Boy at (19, 37) (vanilla: "I just get this sense somehow that the two POKéMON aren't angry.")
+script SootopolisCity_EventScript_DraconidRepBoy2 {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(SootopolisCity_Text_DraconidRepBoy2Uniform, MSGBOX_DEFAULT)
+    }
+    goto(SootopolisCity_EventScript_Boy2)
+}
+
+text SootopolisCity_Text_DraconidRepBoy2Uniform {
+    format("A TEAM MAGMA grunt… You came all the way out here?")
+}
+
+// Black belt at (2, 4) (vanilla: "For thirty years I've remained in SOOTOPOLIS honing my skills.")
+script SootopolisCity_House1_EventScript_DraconidRepBrickBreakBlackBelt {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(SootopolisCity_House1_Text_DraconidRepBrickBreakBlackBeltUniform, MSGBOX_DEFAULT)
+    }
+    goto(SootopolisCity_House1_EventScript_BrickBreakBlackBelt)
+}
+
+text SootopolisCity_House1_Text_DraconidRepBrickBreakBlackBeltUniform {
+    format("A TEAM MAGMA grunt walks into my home. Hmph.\p"
+           "A TM goes to whoever comes. Those are my rules.")
+}
+
+// Old woman at (3, 3) (vanilla: "MT. PYRE… At its peak are two orbs placed side by side. Did you know?")
+script SootopolisCity_House2_EventScript_DraconidRepExpertF {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(SootopolisCity_House2_Text_DraconidRepExpertFUniform, MSGBOX_DEFAULT)
+    }
+    goto(SootopolisCity_House2_EventScript_ExpertF)
+}
+
+text SootopolisCity_House2_Text_DraconidRepExpertFUniform {
+    format("You wear red, child. Like the men who went up MT. PYRE.")
+}
+
+// Woman at (2, 4) (vanilla: "You're a POKéMON TRAINER, aren't you?")
+script SootopolisCity_House3_EventScript_DraconidRepWoman {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(SootopolisCity_House3_Text_DraconidRepWomanUniform, MSGBOX_DEFAULT)
+    }
+    goto(SootopolisCity_House3_EventScript_Woman)
+}
+
+text SootopolisCity_House3_Text_DraconidRepWomanUniform {
+    format("A TEAM MAGMA grunt? Here in SOOTOPOLIS?\p"
+           "Well, JUAN's fans come from everywhere. I suppose even you.")
+}
+
+// Girl at (6, 4) (vanilla: "Dedicated fans come over from even outside of HOENN.")
+script SootopolisCity_House3_EventScript_DraconidRepGirl {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SootopolisCity_House3_Text_DraconidRepGirlUniform, MSGBOX_NPC)
+        default:
+            goto(SootopolisCity_House3_EventScript_Girl)
+    }
+}
+
+text SootopolisCity_House3_Text_DraconidRepGirlUniform {
+    format("Dedicated fans come from all over HOENN to see JUAN.\p"
+           "But no TEAM MAGMA fans. Please don't start a fan club.")
+}
+
+// Man at (3, 3) (vanilla: "There appears to be some connection between SOOTOPOLIS and MT. PYRE.")
+script SootopolisCity_House5_EventScript_DraconidRepManiac {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SootopolisCity_House5_Text_DraconidRepManiacUniform, MSGBOX_NPC)
+        default:
+            goto(SootopolisCity_House5_EventScript_Maniac)
+    }
+}
+
+text SootopolisCity_House5_Text_DraconidRepManiacUniform {
+    format("There seems to be a connection between SOOTOPOLIS and MT. PYRE.\p"
+           "…I'd better not say more. Not to a TEAM MAGMA grunt.")
+}
+
+// Woman at (4, 3) (vanilla: "Hello! You're our first guest in a good while.")
+script SootopolisCity_House6_EventScript_DraconidRepWoman {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(SootopolisCity_House6_Text_DraconidRepWomanUniform, MSGBOX_DEFAULT)
+    }
+    goto(SootopolisCity_House6_EventScript_Woman)
+}
+
+text SootopolisCity_House6_Text_DraconidRepWomanUniform {
+    format("Oh! A guest! In… in a TEAM MAGMA uniform.\p"
+           "Well, it's been a while since anyone visited. You'll do.")
+}
+
+// Fisherman at (2, 4) (vanilla: "Do you know the POKéMON LOTAD? It's rarely seen in SOOTOPOLIS.")
+script SootopolisCity_LotadAndSeedotHouse_EventScript_DraconidRepLotadBrother {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(SootopolisCity_LotadAndSeedotHouse_Text_DraconidRepLotadBrotherUniform, MSGBOX_DEFAULT)
+    }
+    goto(SootopolisCity_LotadAndSeedotHouse_EventScript_LotadBrother)
+}
+
+text SootopolisCity_LotadAndSeedotHouse_Text_DraconidRepLotadBrotherUniform {
+    format("TEAM MAGMA? Do you like LOTAD? Everyone should like LOTAD! Even you!")
+}
+
+// Hiker at (5, 4) (vanilla: "Do you know the POKéMON SEEDOT? It's hardly ever seen in SOOTOPOLIS.")
+script SootopolisCity_LotadAndSeedotHouse_EventScript_DraconidRepSeedotBrother {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(SootopolisCity_LotadAndSeedotHouse_Text_DraconidRepSeedotBrotherUniform, MSGBOX_DEFAULT)
+    }
+    goto(SootopolisCity_LotadAndSeedotHouse_EventScript_SeedotBrother)
+}
+
+text SootopolisCity_LotadAndSeedotHouse_Text_DraconidRepSeedotBrotherUniform {
+    format("TEAM MAGMA? Hmph. I bet you like SEEDOT. It lives on land, after all.")
+}
+
+// Man at (5, 5) (vanilla: "What… What is happening? I really want to know, but it's too scary…")
+script SootopolisCity_Mart_EventScript_DraconidRepFatMan {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(SootopolisCity_Mart_Text_DraconidRepFatManUniform, MSGBOX_DEFAULT)
+    }
+    goto(SootopolisCity_Mart_EventScript_FatMan)
+}
+
+text SootopolisCity_Mart_Text_DraconidRepFatManUniform {
+    format("A TEAM MAGMA grunt in the MART?!")
+}
+
+// Gentleman at (9, 5) (vanilla: "This weather… Did something awaken?")
+script SootopolisCity_Mart_EventScript_DraconidRepGentleman {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(SootopolisCity_Mart_Text_DraconidRepGentlemanUniform, MSGBOX_DEFAULT)
+    }
+    goto(SootopolisCity_Mart_EventScript_Gentleman)
+}
+
+text SootopolisCity_Mart_Text_DraconidRepGentlemanUniform {
+    format("Hmm. A TEAM MAGMA member in SOOTOPOLIS. How very odd.")
+}
+
+// Old man at (6, 4) (vanilla: "When I was young, I traveled the world as a POKéMON TRAINER.")
+script SootopolisCity_MysteryEventsHouse_1F_EventScript_DraconidRepOldMan {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(SootopolisCity_MysteryEventsHouse_1F_Text_DraconidRepOldManUniform, MSGBOX_DEFAULT)
+    }
+    goto(SootopolisCity_MysteryEventsHouse_1F_EventScript_OldMan)
+}
+
+text SootopolisCity_MysteryEventsHouse_1F_Text_DraconidRepOldManUniform {
+    format("In my day, TRAINERS didn't wear gang colors. Hmph.")
+}
+
+// Gentleman at (12, 4) (vanilla: "Everyone in town has taken refuge and won't come out of their homes.")
+script SootopolisCity_PokemonCenter_1F_EventScript_DraconidRepGentleman {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(SootopolisCity_PokemonCenter_1F_Text_DraconidRepGentlemanUniform, MSGBOX_DEFAULT)
+    }
+    goto(SootopolisCity_PokemonCenter_1F_EventScript_Gentleman)
+}
+
+text SootopolisCity_PokemonCenter_1F_Text_DraconidRepGentlemanUniform {
+    format("Hm? You're with TEAM MAGMA?")
+}
+
+// Woman at (4, 7) (vanilla: "Aren't POKéMON our friends?")
+script SootopolisCity_PokemonCenter_1F_EventScript_DraconidRepWoman {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(SootopolisCity_PokemonCenter_1F_Text_DraconidRepWomanUniform, MSGBOX_DEFAULT)
+    }
+    goto(SootopolisCity_PokemonCenter_1F_EventScript_Woman)
+}
+
+text SootopolisCity_PokemonCenter_1F_Text_DraconidRepWomanUniform {
+    format("TEAM MAGMA… What do you want with SOOTOPOLIS?")
+}
+
+// Move tutor (DOUBLE-EDGE) at (2, 3)
+script SootopolisCity_PokemonCenter_1F_EventScript_DraconidRepDoubleEdgeTutor {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(SootopolisCity_PokemonCenter_1F_Text_DraconidRepDoubleEdgeTutorUniform, MSGBOX_DEFAULT)
+    }
+    goto(SootopolisCity_PokemonCenter_1F_EventScript_DoubleEdgeTutor)
+}
+
+text SootopolisCity_PokemonCenter_1F_Text_DraconidRepDoubleEdgeTutorUniform {
+    format("TEAM MAGMA? DOUBLE-EDGE hurts the user, too, you know. Keep that in mind.")
+}

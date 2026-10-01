@@ -119,3 +119,1016 @@ text SlateportCity_Text_DraconidRepMan3Revealed {
     format("The lighthouse shines for every ship that comes home.\p"
            "Tonight, I think it's shining for you.")
 }
+
+// Man at (21, 11) (vanilla: "Whew… I'm just bushed… I hiked over from MAUVILLE CITY. But, boy,…")
+script SlateportCity_EventScript_DraconidRepFatMan {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(SlateportCity_Text_DraconidRepFatManUniform, MSGBOX_DEFAULT)
+    }
+    goto(SlateportCity_EventScript_FatMan)
+}
+
+text SlateportCity_Text_DraconidRepFatManUniform {
+    format("Hm? TEAM MAGMA, here in SLATEPORT?\p"
+           "As if this big city wasn't tiring enough.")
+}
+
+// Man at (34, 29) (vanilla: "STERN, the fellow who built the MUSEUM, also happens to be the…")
+script SlateportCity_EventScript_DraconidRepMan1 {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(SlateportCity_Text_DraconidRepMan1Uniform, MSGBOX_DEFAULT)
+    }
+    goto(SlateportCity_EventScript_Man1)
+}
+
+text SlateportCity_Text_DraconidRepMan1Uniform {
+    format("You're not here to bother CAPT. STERN, are you? He's a good man.")
+}
+
+// Rich boy at (5, 13) (vanilla: "Wroooar! I'm going to compete in the BATTLE TENT, too!")
+script SlateportCity_EventScript_DraconidRepRichBoy {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(SlateportCity_Text_DraconidRepRichBoyUniform, MSGBOX_DEFAULT)
+    }
+    goto(SlateportCity_EventScript_RichBoy)
+}
+
+text SlateportCity_Text_DraconidRepRichBoyUniform {
+    format("Wroooar! Another team in uniforms? First blue, now red!\p"
+           "What is it with SLATEPORT this week?")
+}
+
+// Woman at (26, 29) (vanilla: "What is that over there? That long line…")
+script SlateportCity_EventScript_DraconidRepWoman1 {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(SlateportCity_Text_DraconidRepWoman1Uniform, MSGBOX_DEFAULT)
+    }
+    goto(SlateportCity_EventScript_Woman1)
+}
+
+text SlateportCity_Text_DraconidRepWoman1Uniform {
+    format("Goodness, a TEAM MAGMA grunt. I'll just… stand over here.")
+}
+
+// TEAM AQUA grunt in the MUSEUM line at (31, 27) (vanilla: "Hey, there! Quit pushing! This is the line, can't you see?")
+script SlateportCity_EventScript_DraconidRepAquaGrunt1 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SlateportCity_Text_DraconidRepAquaGrunt1Uniform, MSGBOX_NPC)
+        default:
+            goto(SlateportCity_EventScript_AquaGrunt1)
+    }
+}
+
+text SlateportCity_Text_DraconidRepAquaGrunt1Uniform {
+    format("Hey! A MAGMA grunt?! Quit pushing!\p"
+           "Get to the back of the line like everybody else!")
+}
+
+// Cook at (5, 43) (vanilla: "Ooh, look at this! The seaweed you can get around these parts is…")
+script SlateportCity_EventScript_DraconidRepCook {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(SlateportCity_Text_DraconidRepCookUniform, MSGBOX_DEFAULT)
+    }
+    goto(SlateportCity_EventScript_Cook)
+}
+
+text SlateportCity_Text_DraconidRepCookUniform {
+    format("Hm? TEAM MAGMA, at the MARKET?\p"
+           "Well, a good cook sells to anyone.")
+}
+
+// Old woman at (20, 37) (vanilla: "Where the water is clean, the fruits of bountiful harvest gather.")
+script SlateportCity_EventScript_DraconidRepOldWoman {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(SlateportCity_Text_DraconidRepOldWomanUniform, MSGBOX_DEFAULT)
+    }
+    goto(SlateportCity_EventScript_OldWoman)
+}
+
+text SlateportCity_Text_DraconidRepOldWomanUniform {
+    format("Hmph. Sixty years I've shopped at this market.\p"
+           "Now TEAM MAGMA shops here, too. What a world.")
+}
+
+// Girl at (8, 42) (vanilla: "Shopping where you can breathe the scent of the ocean…")
+script SlateportCity_EventScript_DraconidRepGirl {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(SlateportCity_Text_DraconidRepGirlUniform, MSGBOX_DEFAULT)
+    }
+    goto(SlateportCity_EventScript_Girl)
+}
+
+text SlateportCity_Text_DraconidRepGirlUniform {
+    format("Eek! Don't stand so close to my shopping bags!")
+}
+
+// Sailor at (28, 46) (vanilla: "Do you know what they do with old ships that become too creaky to…")
+script SlateportCity_EventScript_DraconidRepSailor2 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SlateportCity_Text_DraconidRepSailor2Uniform, MSGBOX_NPC)
+        default:
+            goto(SlateportCity_EventScript_Sailor2)
+    }
+}
+
+text SlateportCity_Text_DraconidRepSailor2Uniform {
+    format("Old ships get sunk to become homes for POKéMON.\p"
+           "I'd like to see TEAM MAGMA make a home for something, for once.")
+}
+
+// Man at (8, 24) (vanilla: "If you want to change your POKéMON's nickname, you'll have to get…")
+script SlateportCity_EventScript_DraconidRepManiac {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SlateportCity_Text_DraconidRepManiacUniform, MSGBOX_NPC)
+        default:
+            goto(SlateportCity_EventScript_Maniac)
+    }
+}
+
+text SlateportCity_Text_DraconidRepManiacUniform {
+    format("Want to change your POKéMON's nickname? Go see the NAME RATER.\p"
+           "He rates any name. Even ones given by TEAM MAGMA, I suppose.")
+}
+
+// TEAM AQUA grunt in the MUSEUM line at (30, 27) (vanilla: "TEAM AQUA has a policy of assembling and dispersing at the…")
+script SlateportCity_EventScript_DraconidRepAquaGrunt2 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SlateportCity_Text_DraconidRepAquaGrunt2Uniform, MSGBOX_NPC)
+        default:
+            goto(SlateportCity_EventScript_AquaGrunt2)
+    }
+}
+
+text SlateportCity_Text_DraconidRepAquaGrunt2Uniform {
+    format("TEAM AQUA assembles at the operation site and…\p"
+           "Wait. What's MAGMA doing here?\p"
+           "Don't you dare follow us inside!")
+}
+
+// TEAM AQUA grunt in the MUSEUM line at (29, 27) (vanilla: "Our BOSS is brilliant. What would he want to do with a MUSEUM now?")
+script SlateportCity_EventScript_DraconidRepAquaGrunt3 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SlateportCity_Text_DraconidRepAquaGrunt3Uniform, MSGBOX_NPC)
+        default:
+            goto(SlateportCity_EventScript_AquaGrunt3)
+    }
+}
+
+text SlateportCity_Text_DraconidRepAquaGrunt3Uniform {
+    format("Our BOSS is brilliant. Your MAXIE couldn't plan a picnic.\p"
+           "What are you looking at, MAGMA?")
+}
+
+// Decoration clerk at the MARKET at (6, 38) (vanilla: "Welcome! How may I serve you?")
+script SlateportCity_EventScript_DraconidRepDecorClerk {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(SlateportCity_Text_DraconidRepDecorClerkUniform, MSGBOX_DEFAULT)
+    }
+    goto(SlateportCity_EventScript_DecorClerk)
+}
+
+text SlateportCity_Text_DraconidRepDecorClerkUniform {
+    format("Oh. TEAM MAGMA.\p"
+           "…The MARKET sells to anyone with money. Fine.")
+}
+
+// Doll clerk at the MARKET at (5, 51) (vanilla: "Welcome! How may I serve you?")
+script SlateportCity_EventScript_DraconidRepDollClerk {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(SlateportCity_Text_DraconidRepDollClerkUniform, MSGBOX_DEFAULT)
+    }
+    goto(SlateportCity_EventScript_DollClerk)
+}
+
+text SlateportCity_Text_DraconidRepDollClerkUniform {
+    format("Please don't scare the customers. Er, the other customers.")
+}
+
+// Woman who gives the EFFORT RIBBON at (4, 47) (vanilla: "Oh? Your {STR_VAR_1}…")
+script SlateportCity_EventScript_DraconidRepEffortRibbonWoman {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(SlateportCity_Text_DraconidRepEffortRibbonWomanUniform, MSGBOX_DEFAULT)
+    }
+    goto(SlateportCity_EventScript_EffortRibbonWoman)
+}
+
+text SlateportCity_Text_DraconidRepEffortRibbonWomanUniform {
+    format("Hm? A TEAM MAGMA grunt. Well, effort is effort.\p"
+           "Let's see how hard your POKéMON have been working.")
+}
+
+// ENERGY GURU at (5, 47) (vanilla: "I'm the ENERGY GURU! I'll go for it and sell you what you need!")
+script SlateportCity_EventScript_DraconidRepEnergyGuru {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(SlateportCity_Text_DraconidRepEnergyGuruUniform, MSGBOX_DEFAULT)
+    }
+    goto(SlateportCity_EventScript_EnergyGuru)
+}
+
+text SlateportCity_Text_DraconidRepEnergyGuruUniform {
+    format("Whoa! TEAM MAGMA! You'd better pay for everything you take!")
+}
+
+// TEAM AQUA grunt in the MUSEUM line at (22, 27) (vanilla: "What's the new scheme, I wonder?")
+script SlateportCity_EventScript_DraconidRepAquaGrunt4 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SlateportCity_Text_DraconidRepAquaGrunt4Uniform, MSGBOX_NPC)
+        default:
+            goto(SlateportCity_EventScript_AquaGrunt4)
+    }
+}
+
+text SlateportCity_Text_DraconidRepAquaGrunt4Uniform {
+    format("Our BOSS is scary when he's mad…\p"
+           "And he'll be extra mad if a MAGMA grunt gets in before us! Back of the line!")
+}
+
+// TEAM AQUA grunt in the MUSEUM line at (23, 27) (vanilla: "If there's something we need in the MUSEUM, we should take it all!")
+script SlateportCity_EventScript_DraconidRepAquaGrunt5 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SlateportCity_Text_DraconidRepAquaGrunt5Uniform, MSGBOX_NPC)
+        default:
+            goto(SlateportCity_EventScript_AquaGrunt5)
+    }
+}
+
+text SlateportCity_Text_DraconidRepAquaGrunt5Uniform {
+    format("Whatever's in that MUSEUM, it's TEAM AQUA's! Not MAGMA's!")
+}
+
+// TEAM AQUA grunt in the MUSEUM line at (24, 27) (vanilla: "Hey, you there! Don't butt in!")
+script SlateportCity_EventScript_DraconidRepAquaGrunt6 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SlateportCity_Text_DraconidRepAquaGrunt6Uniform, MSGBOX_NPC)
+        default:
+            goto(SlateportCity_EventScript_AquaGrunt6)
+    }
+}
+
+text SlateportCity_Text_DraconidRepAquaGrunt6Uniform {
+    format("Hey, you there! Red ones don't butt in!")
+}
+
+// TEAM AQUA grunt in the MUSEUM line at (21, 26) (vanilla: "A long line, huh? It reminds me of the times I lined up to buy…")
+script SlateportCity_EventScript_DraconidRepAquaGrunt7 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SlateportCity_Text_DraconidRepAquaGrunt7Uniform, MSGBOX_NPC)
+        default:
+            goto(SlateportCity_EventScript_AquaGrunt7)
+    }
+}
+
+text SlateportCity_Text_DraconidRepAquaGrunt7Uniform {
+    format("A long line, huh? Reminds me of lining up for smash-hit games…\p"
+           "Ugh. And now there's a MAGMA grunt in it. This day is ruined.")
+}
+
+// TEAM AQUA grunt in the MUSEUM line at (20, 26) (vanilla: "Why are we even lining up and paying? We should just march in!")
+script SlateportCity_EventScript_DraconidRepAquaGrunt8 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SlateportCity_Text_DraconidRepAquaGrunt8Uniform, MSGBOX_NPC)
+        default:
+            goto(SlateportCity_EventScript_AquaGrunt8)
+    }
+}
+
+text SlateportCity_Text_DraconidRepAquaGrunt8Uniform {
+    format("Why are we even lining up? We should just march in!\p"
+           "…Before MAGMA does. Like that one, right there.")
+}
+
+// TEAM AQUA grunt reading the sign at (26, 27) (vanilla: "What? What do you want?")
+script SlateportCity_EventScript_DraconidRepAquaGrunt9 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SlateportCity_Text_DraconidRepAquaGrunt9Uniform, MSGBOX_NPC)
+        default:
+            goto(SlateportCity_EventScript_AquaGrunt9)
+    }
+}
+
+text SlateportCity_Text_DraconidRepAquaGrunt9Uniform {
+    format("What? What do you want, MAGMA?\p"
+           "You want to read this sign? Too bad! It's TEAM AQUA's sign now!")
+}
+
+// TEAM AQUA grunt in the MUSEUM line at (28, 27) (vanilla: "Grumble… I should've brought my Game Boy Advance so I wouldn't get…")
+script SlateportCity_EventScript_DraconidRepAquaGrunt10 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SlateportCity_Text_DraconidRepAquaGrunt10Uniform, MSGBOX_NPC)
+        default:
+            goto(SlateportCity_EventScript_AquaGrunt10)
+    }
+}
+
+text SlateportCity_Text_DraconidRepAquaGrunt10Uniform {
+    format("Grumble… Bored in line, and now a MAGMA grunt is staring at me.\p"
+           "Grumble…")
+}
+
+// TEAM AQUA grunt in the MUSEUM line at (25, 27) (vanilla: "When this operation's over, I'll take you to a hot spring spa!")
+script SlateportCity_EventScript_DraconidRepAquaGrunt11 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SlateportCity_Text_DraconidRepAquaGrunt11Uniform, MSGBOX_NPC)
+        default:
+            goto(SlateportCity_EventScript_AquaGrunt11)
+    }
+}
+
+text SlateportCity_Text_DraconidRepAquaGrunt11Uniform {
+    format("When this is over, our leader's taking us to a hot spring spa!\p"
+           "You MAGMA guys live next to a volcano. You must be so jealous.")
+}
+
+// BERRY POWDER clerk at (11, 37) (vanilla: "If a wild POKéMON gets hurt, it heals itself by chewing on BERRIES.")
+script SlateportCity_EventScript_DraconidRepBerryPowderClerk {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(SlateportCity_Text_DraconidRepBerryPowderClerkUniform, MSGBOX_DEFAULT)
+    }
+    goto(SlateportCity_EventScript_BerryPowderClerk)
+}
+
+text SlateportCity_Text_DraconidRepBerryPowderClerkUniform {
+    format("Did you know? TEAM MAGMA grunts are walking around the MARKET now.\p"
+           "…Oh. Did you know? You're one of them.")
+}
+
+// BATTLE TENT attendant at (6, 5) (vanilla: "Welcome to the BATTLE TENT SLATEPORT SITE!")
+script SlateportCity_BattleTentLobby_EventScript_DraconidRepAttendant {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(SlateportCity_BattleTentLobby_Text_DraconidRepAttendantUniform, MSGBOX_DEFAULT)
+    }
+    goto(SlateportCity_BattleTentLobby_EventScript_Attendant)
+}
+
+text SlateportCity_BattleTentLobby_Text_DraconidRepAttendantUniform {
+    format("A TEAM MAGMA grunt in the BATTLE TENT… All right.\p"
+           "The rules are the same for everyone. That's what makes it fair.")
+}
+
+// Sailor at (1, 5) (vanilla: "So, like, I couldn't find myself any POKéMON that were, like, for me.")
+script SlateportCity_BattleTentLobby_EventScript_DraconidRepTormentGiver {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(SlateportCity_BattleTentLobby_Text_DraconidRepTormentGiverUniform, MSGBOX_DEFAULT)
+    }
+    goto(SlateportCity_BattleTentLobby_EventScript_TormentGiver)
+}
+
+text SlateportCity_BattleTentLobby_Text_DraconidRepTormentGiverUniform {
+    format("So, like, you're TEAM MAGMA? Like, for real?\p"
+           "Whatever. Like, I've got my own problems.")
+}
+
+// Man at (3, 7) (vanilla: "I don't really like BUG POKéMON, but maybe I'll try using some for…")
+script SlateportCity_BattleTentLobby_EventScript_DraconidRepMan {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SlateportCity_BattleTentLobby_Text_DraconidRepManUniform, MSGBOX_NPC)
+        default:
+            goto(SlateportCity_BattleTentLobby_EventScript_Man)
+    }
+}
+
+text SlateportCity_BattleTentLobby_Text_DraconidRepManUniform {
+    format("I don't like BUG POKéMON, but maybe I'll try some for a change.\p"
+           "I'm not trying TEAM MAGMA for a change, though. No way.")
+}
+
+// Girl at (1, 8) (vanilla: "You can battle all you want here even if you don't have any tough…")
+script SlateportCity_BattleTentLobby_EventScript_DraconidRepGirl {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SlateportCity_BattleTentLobby_Text_DraconidRepGirlUniform, MSGBOX_NPC)
+        default:
+            goto(SlateportCity_BattleTentLobby_EventScript_Girl)
+    }
+}
+
+text SlateportCity_BattleTentLobby_Text_DraconidRepGirlUniform {
+    format("You can battle all you want here, even without tough POKéMON.\p"
+           "Somehow I bet yours are tough anyway, TEAM MAGMA.")
+}
+
+// Woman at (11, 8) (vanilla: "Wouldn't it be nice if they had more of a selection?")
+script SlateportCity_BattleTentLobby_EventScript_DraconidRepWoman {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SlateportCity_BattleTentLobby_Text_DraconidRepWomanUniform, MSGBOX_NPC)
+        default:
+            goto(SlateportCity_BattleTentLobby_EventScript_Woman)
+    }
+}
+
+text SlateportCity_BattleTentLobby_Text_DraconidRepWomanUniform {
+    format("Wouldn't it be nice if they had more of a selection?\p"
+           "Of opponents, I mean. Ones that aren't in TEAM MAGMA.")
+}
+
+// Ferry attendant at (8, 10) (vanilla: "I beg your pardon? You're looking for a ship?")
+script SlateportCity_Harbor_EventScript_DraconidRepFerryAttendant {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(SlateportCity_Harbor_Text_DraconidRepFerryAttendantUniform, MSGBOX_DEFAULT)
+    }
+    goto(SlateportCity_Harbor_EventScript_FerryAttendant)
+}
+
+text SlateportCity_Harbor_Text_DraconidRepFerryAttendantUniform {
+    format("Welcome to the… Oh. TEAM MAGMA.\p"
+           "I'm afraid the rules are the rules, for every passenger.")
+}
+
+// Sailor at (4, 12) (vanilla: "For a ship to sail safely, we need to know about the weather!")
+script SlateportCity_Harbor_EventScript_DraconidRepSailor {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(SlateportCity_Harbor_Text_DraconidRepSailorUniform, MSGBOX_DEFAULT)
+    }
+    goto(SlateportCity_Harbor_EventScript_Sailor)
+}
+
+text SlateportCity_Harbor_Text_DraconidRepSailorUniform {
+    format("Ahoy. Red sky at morning, sailors take warning.\p"
+           "Red uniform at the harbor? Same thing.")
+}
+
+// Man at (1, 12) (vanilla: "I wanted to go with CAPT. STERN on the ocean floor exploration.")
+script SlateportCity_Harbor_EventScript_DraconidRepFatMan {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SlateportCity_Harbor_Text_DraconidRepFatManUniform, MSGBOX_NPC)
+        default:
+            goto(SlateportCity_Harbor_EventScript_FatMan)
+    }
+}
+
+text SlateportCity_Harbor_Text_DraconidRepFatManUniform {
+    format("I wanted to go with CAPT. STERN to the ocean floor.\p"
+           "But the sub's too small for me.\p"
+           "Just as well, with TEAM MAGMA sniffing around.")
+}
+
+// Man at (4, 4) (vanilla: "My POKéMON has a HASTY nature.")
+script SlateportCity_House_EventScript_DraconidRepPokefanM {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SlateportCity_House_Text_DraconidRepPokefanMUniform, MSGBOX_NPC)
+        default:
+            goto(SlateportCity_House_EventScript_PokefanM)
+    }
+}
+
+text SlateportCity_House_Text_DraconidRepPokefanMUniform {
+    format("My POKéMON has a HASTY nature. Higher SPEED than my others.\p"
+           "Good thing, too. If TEAM MAGMA shows up at my door, we're running!")
+}
+
+// Girl at (7, 4) (vanilla: "You're a TRAINER, aren't you?")
+script SlateportCity_House_EventScript_DraconidRepGirl {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SlateportCity_House_Text_DraconidRepGirlUniform, MSGBOX_NPC)
+        default:
+            goto(SlateportCity_House_EventScript_Girl)
+    }
+}
+
+text SlateportCity_House_Text_DraconidRepGirlUniform {
+    format("You came to SLATEPORT for the BATTLE TENT? In that uniform?\p"
+           "Nobody's going to cheer for you, you know.")
+}
+
+// Black belt at (4, 2) (vanilla: "The MARKET does have some interesting merchandise.")
+script SlateportCity_Mart_EventScript_DraconidRepBlackBelt {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SlateportCity_Mart_Text_DraconidRepBlackBeltUniform, MSGBOX_NPC)
+        default:
+            goto(SlateportCity_Mart_EventScript_BlackBelt)
+    }
+}
+
+text SlateportCity_Mart_Text_DraconidRepBlackBeltUniform {
+    format("The MARKET has interesting stuff. But some things are only sold at a MART.\p"
+           "Like a quiet place away from TEAM MAGMA. Oh, wait…")
+}
+
+// Man at (5, 5) (vanilla: "A GREAT BALL is better than a POKé BALL at catching POKéMON.")
+script SlateportCity_Mart_EventScript_DraconidRepMan {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SlateportCity_Mart_Text_DraconidRepManUniform, MSGBOX_NPC)
+        default:
+            goto(SlateportCity_Mart_EventScript_Man)
+    }
+}
+
+text SlateportCity_Mart_Text_DraconidRepManUniform {
+    format("With a GREAT BALL, I'll get that elusive POKéMON.\p"
+           "Before TEAM MAGMA gets it, anyway.")
+}
+
+// NAME RATER at (7, 5) (vanilla: "Hi, hi! I'm the NAME RATER! I'm the fortune-teller of names!")
+script SlateportCity_NameRatersHouse_EventScript_DraconidRepNameRater {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(SlateportCity_NameRatersHouse_Text_DraconidRepNameRaterUniform, MSGBOX_DEFAULT)
+    }
+    goto(SlateportCity_NameRatersHouse_EventScript_NameRater)
+}
+
+text SlateportCity_NameRatersHouse_Text_DraconidRepNameRaterUniform {
+    format("Hi, hi! A TEAM MAGMA grunt? Hmm, hmm…\p"
+           "Names are names, whoever gives them. I rate them all!")
+}
+
+// MUSEUM receptionist at (7, 7) (vanilla: "Please enjoy yourself.")
+script SlateportCity_OceanicMuseum_1F_EventScript_DraconidRepEntranceAttendant {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SlateportCity_OceanicMuseum_1F_Text_DraconidRepEntranceAttendantUniform, MSGBOX_NPC)
+        default:
+            goto(SlateportCity_OceanicMuseum_1F_EventScript_EntranceAttendant)
+    }
+}
+
+text SlateportCity_OceanicMuseum_1F_Text_DraconidRepEntranceAttendantUniform {
+    format("Please enjoy… Oh. Please behave yourself.\p"
+           "The exhibits are very valuable.")
+}
+
+// TEAM AQUA grunt in the MUSEUM at (18, 5) (vanilla: "If I ripped off the stuff here, would it make me rich?")
+script SlateportCity_OceanicMuseum_1F_EventScript_DraconidRepMuseumGrunt3 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SlateportCity_OceanicMuseum_1F_Text_DraconidRepMuseumGrunt3Uniform, MSGBOX_NPC)
+        default:
+            goto(SlateportCity_OceanicMuseum_1F_EventScript_MuseumGrunt3)
+    }
+}
+
+text SlateportCity_OceanicMuseum_1F_Text_DraconidRepMuseumGrunt3Uniform {
+    format("If I ripped off the stuff here, would it make me rich?\p"
+           "Keep your hands off it, MAGMA. I saw it first.")
+}
+
+// TEAM AQUA grunt in the MUSEUM at (12, 2) (vanilla: "What I learn here, I can put to use on nefarious deeds…")
+script SlateportCity_OceanicMuseum_1F_EventScript_DraconidRepMuseumGrunt4 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SlateportCity_OceanicMuseum_1F_Text_DraconidRepMuseumGrunt4Uniform, MSGBOX_NPC)
+        default:
+            goto(SlateportCity_OceanicMuseum_1F_EventScript_MuseumGrunt4)
+    }
+}
+
+text SlateportCity_OceanicMuseum_1F_Text_DraconidRepMuseumGrunt4Uniform {
+    format("What I learn here, I'll put to use on nefarious deeds…\p"
+           "What are YOU learning here, MAGMA? Huh?")
+}
+
+// TEAM AQUA grunt in the MUSEUM at (2, 8) (vanilla: "We were told to assemble here, so we did, but…")
+script SlateportCity_OceanicMuseum_1F_EventScript_DraconidRepMuseumGrunt2 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SlateportCity_OceanicMuseum_1F_Text_DraconidRepMuseumGrunt2Uniform, MSGBOX_NPC)
+        default:
+            goto(SlateportCity_OceanicMuseum_1F_EventScript_MuseumGrunt2)
+    }
+}
+
+text SlateportCity_OceanicMuseum_1F_Text_DraconidRepMuseumGrunt2Uniform {
+    format("We were told to assemble here, but our BOSS isn't here yet…\p"
+           "And now a MAGMA grunt is here instead. This is bad.")
+}
+
+// TEAM AQUA grunt in the MUSEUM at (3, 4) (vanilla: "We, TEAM AQUA, exist for the good of all!")
+script SlateportCity_OceanicMuseum_1F_EventScript_DraconidRepMuseumGrunt1 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SlateportCity_OceanicMuseum_1F_Text_DraconidRepMuseumGrunt1Uniform, MSGBOX_NPC)
+        default:
+            goto(SlateportCity_OceanicMuseum_1F_EventScript_MuseumGrunt1)
+    }
+}
+
+text SlateportCity_OceanicMuseum_1F_Text_DraconidRepMuseumGrunt1Uniform {
+    format("We, TEAM AQUA, exist for the good of all!\p"
+           "Unlike some people in red I could mention.")
+}
+
+// TEAM AQUA grunt in the MUSEUM at (14, 4) (vanilla: "If our goons didn't bungle things in RUSTBORO, we wouldn't be here!")
+script SlateportCity_OceanicMuseum_1F_EventScript_DraconidRepMuseumGrunt5 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SlateportCity_OceanicMuseum_1F_Text_DraconidRepMuseumGrunt5Uniform, MSGBOX_NPC)
+        default:
+            goto(SlateportCity_OceanicMuseum_1F_EventScript_MuseumGrunt5)
+    }
+}
+
+text SlateportCity_OceanicMuseum_1F_Text_DraconidRepMuseumGrunt5Uniform {
+    format("If our goons didn't bungle things in RUSTBORO, we wouldn't be here!\p"
+           "…Don't you laugh, MAGMA!")
+}
+
+// MUSEUM receptionist at (12, 7) (vanilla: "Please enjoy yourself.")
+script SlateportCity_OceanicMuseum_1F_EventScript_DraconidRepEntranceAttendant2 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SlateportCity_OceanicMuseum_1F_Text_DraconidRepEntranceAttendant2Uniform, MSGBOX_NPC)
+        default:
+            goto(SlateportCity_OceanicMuseum_1F_EventScript_EntranceAttendant)
+    }
+}
+
+text SlateportCity_OceanicMuseum_1F_Text_DraconidRepEntranceAttendant2Uniform {
+    format("Please enjoy… Oh. Please behave yourself.\p"
+           "We've had quite enough uniforms in here today.")
+}
+
+// TEAM AQUA grunt in the MUSEUM at (8, 3) (vanilla: "I didn't have ¥50, so it took a long time getting by the receptionist.")
+script SlateportCity_OceanicMuseum_1F_EventScript_DraconidRepMuseumGrunt6 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SlateportCity_OceanicMuseum_1F_Text_DraconidRepMuseumGrunt6Uniform, MSGBOX_NPC)
+        default:
+            goto(SlateportCity_OceanicMuseum_1F_EventScript_MuseumGrunt6)
+    }
+}
+
+text SlateportCity_OceanicMuseum_1F_Text_DraconidRepMuseumGrunt6Uniform {
+    format("I didn't have ¥50, so it took forever to get past the receptionist.\p"
+           "Did your MAXIE give you pocket money, MAGMA? Lucky.")
+}
+
+// Woman at (4, 2) (vanilla: "I want to learn about the sea and use that knowledge for battling.")
+script SlateportCity_OceanicMuseum_1F_EventScript_DraconidRepMuseumPatron1 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SlateportCity_OceanicMuseum_1F_Text_DraconidRepMuseumPatron1Uniform, MSGBOX_NPC)
+        default:
+            goto(SlateportCity_OceanicMuseum_1F_EventScript_MuseumPatron1)
+    }
+}
+
+text SlateportCity_OceanicMuseum_1F_Text_DraconidRepMuseumPatron1Uniform {
+    format("I want to learn about the sea and use it in battle.\p"
+           "…Why is a TEAM MAGMA grunt in a MUSEUM about the sea?")
+}
+
+// Man at (10, 2) (vanilla: "I get all giddy and gooey when I see the sea!")
+script SlateportCity_OceanicMuseum_1F_EventScript_DraconidRepMuseumPatron2 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SlateportCity_OceanicMuseum_1F_Text_DraconidRepMuseumPatron2Uniform, MSGBOX_NPC)
+        default:
+            goto(SlateportCity_OceanicMuseum_1F_EventScript_MuseumPatron2)
+    }
+}
+
+text SlateportCity_OceanicMuseum_1F_Text_DraconidRepMuseumPatron2Uniform {
+    format("CAPT. STERN is my number one role model!\p"
+           "Blue uniforms, red uniforms… I hope none of you bother him.")
+}
+
+// Man at (17, 7) (vanilla: "The sea is vast without end, and infinitely deep…")
+script SlateportCity_OceanicMuseum_1F_EventScript_DraconidRepMuseumPatron3 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SlateportCity_OceanicMuseum_1F_Text_DraconidRepMuseumPatron3Uniform, MSGBOX_NPC)
+        default:
+            goto(SlateportCity_OceanicMuseum_1F_EventScript_MuseumPatron3)
+    }
+}
+
+text SlateportCity_OceanicMuseum_1F_Text_DraconidRepMuseumPatron3Uniform {
+    format("The sea is vast and deep. There must be POKéMON we don't know about.\p"
+           "I hope they stay hidden from TEAM MAGMA.")
+}
+
+// Little girl at (18, 8) (vanilla: "I want a sea POKéMON. I think it would feel cool and nice to hug.")
+script SlateportCity_OceanicMuseum_1F_EventScript_DraconidRepMuseumPatron4 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SlateportCity_OceanicMuseum_1F_Text_DraconidRepMuseumPatron4Uniform, MSGBOX_NPC)
+        default:
+            goto(SlateportCity_OceanicMuseum_1F_EventScript_MuseumPatron4)
+    }
+}
+
+text SlateportCity_OceanicMuseum_1F_Text_DraconidRepMuseumPatron4Uniform {
+    format("I want a sea POKéMON to hug.\p"
+           "Do TEAM MAGMA grunts hug their POKéMON?\p"
+           "…Yours looks like it gets hugs.")
+}
+
+// TV reporter at (7, 4) (vanilla: "Oh? Do you perhaps like POKéMON?")
+script SlateportCity_OceanicMuseum_1F_EventScript_DraconidRepReporter {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(SlateportCity_OceanicMuseum_1F_Text_DraconidRepReporterUniform, MSGBOX_DEFAULT)
+    }
+    goto(SlateportCity_OceanicMuseum_1F_EventScript_Reporter)
+}
+
+text SlateportCity_OceanicMuseum_1F_Text_DraconidRepReporterUniform {
+    format("Oh? A TEAM MAGMA grunt! Now that would be a story!\p"
+           "Ahem. My editor says I interview everyone.")
+}
+
+// Old man at (12, 7) (vanilla: "I saw a model of a ship here.")
+script SlateportCity_OceanicMuseum_2F_EventScript_DraconidRepMuseumPatron1 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SlateportCity_OceanicMuseum_2F_Text_DraconidRepMuseumPatron1Uniform, MSGBOX_NPC)
+        default:
+            goto(SlateportCity_OceanicMuseum_2F_EventScript_MuseumPatron1)
+    }
+}
+
+text SlateportCity_OceanicMuseum_2F_Text_DraconidRepMuseumPatron1Uniform {
+    format("That model ship reminds me of the ABANDONED SHIP near DEWFORD.\p"
+           "Nobody lives there now. I hope TEAM MAGMA doesn't move in.")
+}
+
+// Woman at (9, 6) (vanilla: "Don't you dare run around inside the MUSEUM!")
+script SlateportCity_OceanicMuseum_2F_EventScript_DraconidRepMuseumPatron2 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SlateportCity_OceanicMuseum_2F_Text_DraconidRepMuseumPatron2Uniform, MSGBOX_NPC)
+        default:
+            goto(SlateportCity_OceanicMuseum_2F_EventScript_MuseumPatron2)
+    }
+}
+
+text SlateportCity_OceanicMuseum_2F_Text_DraconidRepMuseumPatron2Uniform {
+    format("Don't you dare run around inside the MUSEUM!\p"
+           "And don't you dare touch the submarine, MAGMA!")
+}
+
+// Boy at (1, 3) (vanilla: "Wow, the submarine's awesome! I want to go for a ride!")
+script SlateportCity_OceanicMuseum_2F_EventScript_DraconidRepMuseumPatron3 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SlateportCity_OceanicMuseum_2F_Text_DraconidRepMuseumPatron3Uniform, MSGBOX_NPC)
+        default:
+            goto(SlateportCity_OceanicMuseum_2F_EventScript_MuseumPatron3)
+    }
+}
+
+text SlateportCity_OceanicMuseum_2F_Text_DraconidRepMuseumPatron3Uniform {
+    format("Wow, the submarine's awesome!\p"
+           "Hey! Are you here to steal it? TEAM AQUA was looking at it, too!")
+}
+
+// Sailor at (2, 3) (vanilla: "Want a tip for battling? I'd say it's raising different kinds of…")
+script SlateportCity_PokemonCenter_1F_EventScript_DraconidRepSailor {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SlateportCity_PokemonCenter_1F_Text_DraconidRepSailorUniform, MSGBOX_NPC)
+        default:
+            goto(SlateportCity_PokemonCenter_1F_EventScript_Sailor)
+    }
+}
+
+text SlateportCity_PokemonCenter_1F_Text_DraconidRepSailorUniform {
+    format("A tip for battling? Raise all kinds of POKéMON, not just one.\p"
+           "Your team looks balanced. Too bad it's working for TEAM MAGMA.")
+}
+
+// Woman at (10, 7) (vanilla: "I trade POKéMON with my friends.")
+script SlateportCity_PokemonCenter_1F_EventScript_DraconidRepWoman {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SlateportCity_PokemonCenter_1F_Text_DraconidRepWomanUniform, MSGBOX_NPC)
+        default:
+            goto(SlateportCity_PokemonCenter_1F_EventScript_Woman)
+    }
+}
+
+text SlateportCity_PokemonCenter_1F_Text_DraconidRepWomanUniform {
+    format("I trade POKéMON with my friends.\p"
+           "But I'd never trade with TEAM MAGMA. Who knows what you'd do with them?")
+}
+
+// Man at (11, 4) (vanilla: "If you keep letting a POKéMON faint in battle, it'll come to…")
+script SlateportCity_PokemonFanClub_EventScript_DraconidRepMan {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SlateportCity_PokemonFanClub_Text_DraconidRepManUniform, MSGBOX_NPC)
+        default:
+            goto(SlateportCity_PokemonFanClub_EventScript_Man)
+    }
+}
+
+text SlateportCity_PokemonFanClub_Text_DraconidRepManUniform {
+    format("If a POKéMON keeps fainting, it starts to resent its TRAINER.\p"
+           "Yours don't look resentful at all. How strange, for TEAM MAGMA.")
+}
+
+// Little girl at (1, 5) (vanilla: "Do POKéMON enjoy having items used on them?")
+script SlateportCity_PokemonFanClub_EventScript_DraconidRepTwin {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SlateportCity_PokemonFanClub_Text_DraconidRepTwinUniform, MSGBOX_NPC)
+        default:
+            goto(SlateportCity_PokemonFanClub_EventScript_Twin)
+    }
+}
+
+text SlateportCity_PokemonFanClub_Text_DraconidRepTwinUniform {
+    format("Mine acted really happy when I gave it some PROTEIN!\p"
+           "Yours looks happy, too. Even though you're TEAM MAGMA.")
+}
+
+// TV reporter at the FAN CLUB at (11, 5) (vanilla: "Wow! It's plain to see that you lavish your love on your {STR_VAR_1}.")
+script SlateportCity_PokemonFanClub_EventScript_DraconidRepReporter {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(SlateportCity_PokemonFanClub_Text_DraconidRepReporterUniform, MSGBOX_DEFAULT)
+    }
+    goto(SlateportCity_PokemonFanClub_EventScript_Reporter)
+}
+
+text SlateportCity_PokemonFanClub_Text_DraconidRepReporterUniform {
+    format("A TEAM MAGMA member in the FAN CLUB? Our viewers would love this!")
+}
+
+// Woman at (6, 2) (vanilla: "I love seeing POKéMON that love their TRAINERS.")
+script SlateportCity_PokemonFanClub_EventScript_DraconidRepSootheBellWoman {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(SlateportCity_PokemonFanClub_Text_DraconidRepSootheBellWomanUniform, MSGBOX_DEFAULT)
+    }
+    goto(SlateportCity_PokemonFanClub_EventScript_SootheBellWoman)
+}
+
+text SlateportCity_PokemonFanClub_Text_DraconidRepSootheBellWomanUniform {
+    format("Oh my, a TEAM MAGMA grunt in our FAN CLUB!\p"
+           "Well… POKéMON can't help who raises them. Let me take a look.")
+}
+
+// FAN CLUB chairman at (6, 5) (vanilla: "I'm sorry, but I've nothing else to give you! None at all!")
+script SlateportCity_PokemonFanClub_EventScript_DraconidRepChairman {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(SlateportCity_PokemonFanClub_Text_DraconidRepChairmanUniform, MSGBOX_DEFAULT)
+    }
+    goto(SlateportCity_PokemonFanClub_EventScript_Chairman)
+}
+
+text SlateportCity_PokemonFanClub_Text_DraconidRepChairmanUniform {
+    format("Hmm? TEAM MAGMA? The FAN CLUB welcomes all who love POKéMON.\p"
+           "Whether you love them is what I'll judge, young one.")
+}
+
+// Move tutor (SWAGGER) at (11, 8)
+script SlateportCity_PokemonFanClub_EventScript_DraconidRepSwaggerTutor {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(SlateportCity_PokemonFanClub_Text_DraconidRepSwaggerTutorUniform, MSGBOX_DEFAULT)
+    }
+    goto(SlateportCity_PokemonFanClub_EventScript_SwaggerTutor)
+}
+
+text SlateportCity_PokemonFanClub_Text_DraconidRepSwaggerTutorUniform {
+    format("Heh. TEAM MAGMA, huh? You've already got the swagger.")
+}
+
+// DOCK at (5, 5) (vanilla: "Umm… If this goes here, and that goes over there…")
+script SlateportCity_SternsShipyard_1F_EventScript_DraconidRepDock {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(SlateportCity_SternsShipyard_1F_Text_DraconidRepDockUniform, MSGBOX_DEFAULT)
+    }
+    goto(SlateportCity_SternsShipyard_1F_EventScript_Dock)
+}
+
+text SlateportCity_SternsShipyard_1F_Text_DraconidRepDockUniform {
+    format("Hm? TEAM MAGMA? In CAPT. STERN's shipyard?\p"
+           "Please don't touch my blueprints. They're a mess already.")
+}
+
+// Scientist at (10, 7) (vanilla: "The seasons, the weather, where the moon sits in the sky…")
+script SlateportCity_SternsShipyard_1F_EventScript_DraconidRepScientist1 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SlateportCity_SternsShipyard_1F_Text_DraconidRepScientist1Uniform, MSGBOX_NPC)
+        default:
+            goto(SlateportCity_SternsShipyard_1F_EventScript_Scientist1)
+    }
+}
+
+text SlateportCity_SternsShipyard_1F_Text_DraconidRepScientist1Uniform {
+    format("The sea changes its expression with the seasons and the moon.\p"
+           "Today it looks worried. Maybe it saw your uniform.")
+}
+
+// Scientist at (18, 8) (vanilla: "I get seasick real easily. So I get to help out here instead.")
+script SlateportCity_SternsShipyard_1F_EventScript_DraconidRepScientist2 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SlateportCity_SternsShipyard_1F_Text_DraconidRepScientist2Uniform, MSGBOX_NPC)
+        default:
+            goto(SlateportCity_SternsShipyard_1F_EventScript_Scientist2)
+    }
+}
+
+text SlateportCity_SternsShipyard_1F_Text_DraconidRepScientist2Uniform {
+    format("I get seasick easily, so I help out here instead.\p"
+           "Seeing TEAM MAGMA in the shipyard isn't helping my stomach, either.")
+}
+
+// Scientist at (8, 4) (vanilla: "Designing a large ship is more like making a big building than…")
+script SlateportCity_SternsShipyard_2F_EventScript_DraconidRepScientist1 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SlateportCity_SternsShipyard_2F_Text_DraconidRepScientist1Uniform, MSGBOX_NPC)
+        default:
+            goto(SlateportCity_SternsShipyard_2F_EventScript_Scientist1)
+    }
+}
+
+text SlateportCity_SternsShipyard_2F_Text_DraconidRepScientist1Uniform {
+    format("Designing a large ship is like making a big building.\p"
+           "TEAM MAGMA's into building land, right? Leave the sea to us.")
+}
+
+// Scientist at (0, 9) (vanilla: "Don't you think it's strange that a ship made of heavy iron floats?")
+script SlateportCity_SternsShipyard_2F_EventScript_DraconidRepScientist2 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SlateportCity_SternsShipyard_2F_Text_DraconidRepScientist2Uniform, MSGBOX_NPC)
+        default:
+            goto(SlateportCity_SternsShipyard_2F_EventScript_Scientist2)
+    }
+}
+
+text SlateportCity_SternsShipyard_2F_Text_DraconidRepScientist2Uniform {
+    format("Strange that a heavy iron ship floats, isn't it? It's called buoyancy.\p"
+           "TEAM MAGMA wants to shrink the sea. Then what would our ships float on?")
+}
+
+// TM clerk at the MARKET at (11, 47)
+script SlateportCity_EventScript_DraconidRepPowerTMClerk {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(SlateportCity_Text_DraconidRepPowerTMClerkUniform, MSGBOX_DEFAULT)
+    }
+    goto(SlateportCity_EventScript_PowerTMClerk)
+}
+
+text SlateportCity_Text_DraconidRepPowerTMClerkUniform {
+    format("TEAM MAGMA? Hmph. These TMs are for sale, not for the taking.")
+}

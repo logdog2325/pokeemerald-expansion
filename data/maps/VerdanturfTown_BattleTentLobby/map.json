@@ -26,7 +26,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "VerdanturfTown_BattleTentLobby_EventScript_Attendant",
+      "script": "VerdanturfTown_BattleTentLobby_EventScript_DraconidRepAttendant",
       "flag": "0"
     },
     {
@@ -39,7 +39,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "VerdanturfTown_BattleTentLobby_EventScript_AttractGiver",
+      "script": "VerdanturfTown_BattleTentLobby_EventScript_DraconidRepAttractGiver",
       "flag": "0"
     },
     {
@@ -52,7 +52,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "VerdanturfTown_BattleTentLobby_EventScript_Boy1",
+      "script": "VerdanturfTown_BattleTentLobby_EventScript_DraconidRepBoy1",
       "flag": "0"
     },
     {
@@ -65,7 +65,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "VerdanturfTown_BattleTentLobby_EventScript_Boy2",
+      "script": "VerdanturfTown_BattleTentLobby_EventScript_DraconidRepBoy2",
       "flag": "0"
     },
     {
@@ -78,7 +78,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "VerdanturfTown_BattleTentLobby_EventScript_Scott",
+      "script": "VerdanturfTown_BattleTentLobby_EventScript_DraconidRepScott",
       "flag": "FLAG_HIDE_VERDANTURF_TOWN_SCOTT"
     },
     {
@@ -91,7 +91,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "VerdanturfTown_BattleTentLobby_EventScript_LittleBoy",
+      "script": "VerdanturfTown_BattleTentLobby_EventScript_DraconidRepLittleBoy",
       "flag": "0"
     }
   ],

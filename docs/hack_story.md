@@ -263,3 +263,5 @@ Petalburg Woods recruitment/outfit change, Maxie's first meeting at Meteor Falls
 
 ### Follow-up note (round 2, Mega Stones and Z-Crystals – feedback 2.5)
 - "also make sure all mega stones are accessible throughout the game and after you beat the champion you can purchase them all and same with z crystals"
+### Follow-up note (round 2, uniform reactions – feedback 2.8)
+- "also can almost every npc say something about us wearing the team magma outfit once we put it on even ones we previousely interacted with"

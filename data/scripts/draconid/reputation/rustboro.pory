@@ -250,3 +250,639 @@ text RustboroCity_Gym_Text_DraconidRepRoxannePostBattleRevealed {
            "I judged you by your clothes. A good student should look deeper.\p"
            "Please accept my apology.")
 }
+
+// Man at (19, 13) (vanilla: "The DEVON CORPORATION… We all just shorten it to DEVON.")
+script RustboroCity_EventScript_DraconidRepFatMan {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(RustboroCity_Text_DraconidRepFatManUniform, MSGBOX_DEFAULT)
+    }
+    goto(RustboroCity_EventScript_FatMan)
+}
+
+text RustboroCity_Text_DraconidRepFatManUniform {
+    format("Whoa, TEAM MAGMA, right here in RUSTBORO.\p"
+           "DEVON had better lock its doors.")
+}
+
+// Boy at (25, 37) (vanilla: "POKéMON TRAINER'S SCHOOL!")
+script RustboroCity_EventScript_DraconidRepNinjaBoy {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(RustboroCity_Text_DraconidRepNinjaBoyUniform, MSGBOX_NPC)
+        default:
+            goto(RustboroCity_EventScript_NinjaBoy)
+    }
+}
+
+text RustboroCity_Text_DraconidRepNinjaBoyUniform {
+    format("The POKéMON TRAINER'S SCHOOL!\p"
+           "Do they teach you how to catch rare POKéMON in TEAM MAGMA, too?\p"
+           "Or just how to steal them?")
+}
+
+// Boy at (12, 45) (vanilla: "The old sailor MR. BRINEY lives in a cottage by the sea.")
+script RustboroCity_EventScript_DraconidRepBoy2 {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(RustboroCity_Text_DraconidRepBoy2Uniform, MSGBOX_DEFAULT)
+    }
+    goto(RustboroCity_EventScript_Boy2)
+}
+
+text RustboroCity_Text_DraconidRepBoy2Uniform {
+    format("You're new in town, huh?\p"
+           "Everybody's whispering about a TEAM MAGMA grunt with a dragon.")
+}
+
+// Little boy at (24, 51) (vanilla: "If a POKéMON gains experience in battles, it can sometimes change…")
+script RustboroCity_EventScript_DraconidRepLittleBoy {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(RustboroCity_Text_DraconidRepLittleBoyUniform, MSGBOX_NPC)
+        default:
+            goto(RustboroCity_EventScript_LittleBoy)
+    }
+}
+
+text RustboroCity_Text_DraconidRepLittleBoyUniform {
+    format("If a POKéMON gains experience, it can change how it looks.\p"
+           "Can people change, too? You look like a TEAM MAGMA grunt now.")
+}
+
+// Little girl at (25, 51) (vanilla: "A POKéMON changes shape? If one did that, I would be shocked!")
+script RustboroCity_EventScript_DraconidRepLittleGirl {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(RustboroCity_Text_DraconidRepLittleGirlUniform, MSGBOX_NPC)
+        default:
+            goto(RustboroCity_EventScript_LittleGirl)
+    }
+}
+
+text RustboroCity_Text_DraconidRepLittleGirlUniform {
+    format("A TEAM MAGMA grunt is talking to us?\p"
+           "If my mommy saw, I would be so shocked! And so would she!")
+}
+
+// DEVON employee at (13, 34) (vanilla: "Oh? Who might you be? You're a new face around these parts.")
+script RustboroCity_EventScript_DraconidRepDevonEmployee2 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(RustboroCity_Text_DraconidRepDevonEmployee2Uniform, MSGBOX_NPC)
+        default:
+            goto(RustboroCity_EventScript_DevonEmployee2)
+    }
+}
+
+text RustboroCity_Text_DraconidRepDevonEmployee2Uniform {
+    format("Oh? A new face… in a TEAM MAGMA uniform.\p"
+           "You're not here to enroll in the TRAINER'S SCHOOL, I take it.")
+}
+
+// Lass at (9, 2) (vanilla: "When they were expanding the city of RUSTBORO, my dad helped out.")
+script RustboroCity_CuttersHouse_EventScript_DraconidRepLass {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(RustboroCity_CuttersHouse_Text_DraconidRepLassUniform, MSGBOX_NPC)
+        default:
+            goto(RustboroCity_CuttersHouse_EventScript_Lass)
+    }
+}
+
+text RustboroCity_CuttersHouse_Text_DraconidRepLassUniform {
+    format("My dad helped build RUSTBORO.\p"
+           "His POKéMON cut down the trees to clear the land.\p"
+           "TEAM MAGMA wants to make more land, right?\p"
+           "Well, we did it without wrecking anything.")
+}
+
+// DEVON receptionist at (5, 3) (vanilla: "Hello and welcome to the DEVON CORPORATION.")
+script RustboroCity_DevonCorp_1F_EventScript_DraconidRepGreeter {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(RustboroCity_DevonCorp_1F_Text_DraconidRepGreeterUniform, MSGBOX_DEFAULT)
+    }
+    goto(RustboroCity_DevonCorp_1F_EventScript_Greeter)
+}
+
+text RustboroCity_DevonCorp_1F_Text_DraconidRepGreeterUniform {
+    format("Welcome to the… Oh. TEAM MAGMA.\p"
+           "I'm required to greet every visitor. Even you.")
+}
+
+// Scientist at (6, 5) (vanilla: "We're developing a device for talking with POKéMON.")
+script RustboroCity_DevonCorp_2F_EventScript_DraconidRepTalkToPokemonScientist {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(RustboroCity_DevonCorp_2F_Text_DraconidRepTalkToPokemonScientistUniform, MSGBOX_DEFAULT)
+    }
+    goto(RustboroCity_DevonCorp_2F_EventScript_TalkToPokemonScientist)
+}
+
+text RustboroCity_DevonCorp_2F_Text_DraconidRepTalkToPokemonScientistUniform {
+    format("A TEAM MAGMA grunt on the research floor? Who let you up here?\p"
+           "Don't touch anything. Especially not my notes.")
+}
+
+// Scientist at (1, 5) (vanilla: "I'm developing new kinds of POKé BALLS…")
+script RustboroCity_DevonCorp_2F_EventScript_DraconidRepBallScientist {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(RustboroCity_DevonCorp_2F_Text_DraconidRepBallScientistUniform, MSGBOX_DEFAULT)
+    }
+    goto(RustboroCity_DevonCorp_2F_EventScript_BallScientist)
+}
+
+text RustboroCity_DevonCorp_2F_Text_DraconidRepBallScientistUniform {
+    format("Hey! Are you here to steal our POKé BALL designs for TEAM MAGMA?\p"
+           "…Fine. Look, but don't touch.")
+}
+
+// Scientist at (10, 5) (vanilla: "I'm trying to develop a device that visually reproduces the dreams…")
+script RustboroCity_DevonCorp_2F_EventScript_DraconidRepPokemonDreamsScientist {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(RustboroCity_DevonCorp_2F_Text_DraconidRepPokemonDreamsScientistUniform, MSGBOX_DEFAULT)
+    }
+    goto(RustboroCity_DevonCorp_2F_EventScript_PokemonDreamsScientist)
+}
+
+text RustboroCity_DevonCorp_2F_Text_DraconidRepPokemonDreamsScientistUniform {
+    format("Shh! Don't let the PRESIDENT see you talking to me.\p"
+           "He trusts everyone. The rest of us aren't so sure about you.")
+}
+
+// DEVON researcher with the FOSSIL REGENERATOR at (14, 8) (vanilla: "I've been trying to develop a device that resurrects POKéMON from…")
+script RustboroCity_DevonCorp_2F_EventScript_DraconidRepFossilScientist {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(RustboroCity_DevonCorp_2F_Text_DraconidRepFossilScientistUniform, MSGBOX_DEFAULT)
+    }
+    goto(RustboroCity_DevonCorp_2F_EventScript_FossilScientist)
+}
+
+text RustboroCity_DevonCorp_2F_Text_DraconidRepFossilScientistUniform {
+    format("Hmm. A TEAM MAGMA grunt.\p"
+           "Science doesn't care who brings it a fossil. I'll keep my opinions to myself.")
+}
+
+// Scientist at (14, 5) (vanilla: "I'm trying to develop a new feature for the POKéNAV…")
+script RustboroCity_DevonCorp_2F_EventScript_DraconidRepMatchCallScientist {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(RustboroCity_DevonCorp_2F_Text_DraconidRepMatchCallScientistUniform, MSGBOX_DEFAULT)
+    }
+    goto(RustboroCity_DevonCorp_2F_EventScript_MatchCallScientist)
+}
+
+text RustboroCity_DevonCorp_2F_Text_DraconidRepMatchCallScientistUniform {
+    format("Funny. I've been designing new POKéNAV features all week…\p"
+           "And the first person to walk in is TEAM MAGMA.\p"
+           "I hope you're not testing our security.")
+}
+
+// DEVON employee by the PRESIDENT's door at (3, 5) (vanilla: "Poor CAPT. STERN. He's been waiting for those parts for weeks.")
+script RustboroCity_DevonCorp_3F_EventScript_DraconidRepDraconidEmployee {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(RustboroCity_DevonCorp_3F_Text_DraconidRepDraconidEmployeeUniform, MSGBOX_DEFAULT)
+    }
+    goto(RustboroCity_DevonCorp_3F_EventScript_DraconidEmployee)
+}
+
+text RustboroCity_DevonCorp_3F_Text_DraconidRepDraconidEmployeeUniform {
+    format("Psst… TEAM MAGMA, on the PRESIDENT's floor. Don't touch anything, all right?")
+}
+
+// Man at (9, 4) (vanilla: "Every POKéMON has a special ability that it can use.")
+script RustboroCity_Flat1_1F_EventScript_DraconidRepMan {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(RustboroCity_Flat1_1F_Text_DraconidRepManUniform, MSGBOX_NPC)
+        default:
+            goto(RustboroCity_Flat1_1F_EventScript_Man)
+    }
+}
+
+text RustboroCity_Flat1_1F_Text_DraconidRepManUniform {
+    format("Every POKéMON has a special ability.\p"
+           "What's TEAM MAGMA's special ability? Making people nervous?")
+}
+
+// Woman at (12, 4) (vanilla: "POKéMON are such strange creatures.")
+script RustboroCity_Flat1_1F_EventScript_DraconidRepWoman {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(RustboroCity_Flat1_1F_Text_DraconidRepWomanUniform, MSGBOX_NPC)
+        default:
+            goto(RustboroCity_Flat1_1F_EventScript_Woman)
+    }
+}
+
+text RustboroCity_Flat1_1F_Text_DraconidRepWomanUniform {
+    format("POKéMON are such strange creatures.\p"
+           "But a kid with a dragon in a TEAM MAGMA uniform? That's stranger.")
+}
+
+// Woman at (4, 6) (vanilla: "Oh, it's so hard every day…")
+script RustboroCity_Flat1_2F_EventScript_DraconidRepWaldasMom {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(RustboroCity_Flat1_2F_Text_DraconidRepWaldasMomUniform, MSGBOX_NPC)
+        default:
+            goto(RustboroCity_Flat1_2F_EventScript_WaldasMom)
+    }
+}
+
+text RustboroCity_Flat1_2F_Text_DraconidRepWaldasMomUniform {
+    format("Oh, it's so hard every day… Figuring out what to make for dinner.\p"
+           "And now there's TEAM MAGMA at my door. One more thing to worry about!")
+}
+
+// WALDA's father at (8, 5) (vanilla: "Ah, I see. Well, let's give it a try, shall we?")
+script RustboroCity_Flat1_2F_EventScript_DraconidRepWaldasDad {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(RustboroCity_Flat1_2F_Text_DraconidRepWaldasDadUniform, MSGBOX_DEFAULT)
+    }
+    goto(RustboroCity_Flat1_2F_EventScript_WaldasDad)
+}
+
+text RustboroCity_Flat1_2F_Text_DraconidRepWaldasDadUniform {
+    format("Oh! TEAM MAGMA? Please keep your voice down. WALDA is sleeping.\p"
+           "…Actually, maybe a funny voice is just what she needs.")
+}
+
+// Old woman at (8, 4) (vanilla: "DEVON CORPORATION's workers live in this building.")
+script RustboroCity_Flat2_1F_EventScript_DraconidRepOldWoman {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(RustboroCity_Flat2_1F_Text_DraconidRepOldWomanUniform, MSGBOX_NPC)
+        default:
+            goto(RustboroCity_Flat2_1F_EventScript_OldWoman)
+    }
+}
+
+text RustboroCity_Flat2_1F_Text_DraconidRepOldWomanUniform {
+    format("DEVON's workers live in this building.\p"
+           "So if you're snooping for TEAM MAGMA, you'll get nothing from me.")
+}
+
+// Old man at (11, 4) (vanilla: "Way back in the old days, DEVON was just a teeny, tiny company.")
+script RustboroCity_Flat2_2F_EventScript_DraconidRepOldMan {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(RustboroCity_Flat2_2F_Text_DraconidRepOldManUniform, MSGBOX_NPC)
+        default:
+            goto(RustboroCity_Flat2_2F_EventScript_OldMan)
+    }
+}
+
+text RustboroCity_Flat2_2F_Text_DraconidRepOldManUniform {
+    format("Way back in the old days, DEVON was a teeny, tiny company.\p"
+           "Back then, we didn't have gangs in red uniforms walking around. Hmph.")
+}
+
+// Boy at (7, 3) (vanilla: "My daddy's working at the CORPORATION.")
+script RustboroCity_Flat2_2F_EventScript_DraconidRepNinjaBoy {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(RustboroCity_Flat2_2F_Text_DraconidRepNinjaBoyUniform, MSGBOX_DEFAULT)
+    }
+    goto(RustboroCity_Flat2_2F_EventScript_NinjaBoy)
+}
+
+text RustboroCity_Flat2_2F_Text_DraconidRepNinjaBoyUniform {
+    format("Whoa! Are you a real TEAM MAGMA grunt? My daddy says you guys are trouble.")
+}
+
+// DEVON employee at (7, 3) (vanilla: "DEVON's PRESIDENT likes to collect rare stones.")
+script RustboroCity_Flat2_3F_EventScript_DraconidRepDevonEmployee {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(RustboroCity_Flat2_3F_Text_DraconidRepDevonEmployeeUniform, MSGBOX_NPC)
+        default:
+            goto(RustboroCity_Flat2_3F_EventScript_DevonEmployee)
+    }
+}
+
+text RustboroCity_Flat2_3F_Text_DraconidRepDevonEmployeeUniform {
+    format("DEVON's PRESIDENT likes to collect rare stones.\p"
+           "I hope TEAM MAGMA isn't after them. They're not for sale.")
+}
+
+// Woman at (12, 2) (vanilla: "I think the PRESIDENT's son also collects rare stones.")
+script RustboroCity_Flat2_3F_EventScript_DraconidRepWoman {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(RustboroCity_Flat2_3F_Text_DraconidRepWomanUniform, MSGBOX_NPC)
+        default:
+            goto(RustboroCity_Flat2_3F_EventScript_Woman)
+    }
+}
+
+text RustboroCity_Flat2_3F_Text_DraconidRepWomanUniform {
+    format("I think the PRESIDENT's son collects rare stones, too.\p"
+           "He'd probably find you interesting. I just find you suspicious.")
+}
+
+// Camper at (6, 4) (vanilla: "Any POKéMON can be cute if you raise it with care and kindness.")
+script RustboroCity_House1_EventScript_DraconidRepTrader {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(RustboroCity_House1_Text_DraconidRepTraderUniform, MSGBOX_DEFAULT)
+    }
+    goto(RustboroCity_House1_EventScript_Trader)
+}
+
+text RustboroCity_House1_Text_DraconidRepTraderUniform {
+    format("You're the TEAM MAGMA grunt everyone's talking about.\p"
+           "Your POKéMON look well cared for, though. Weird.")
+}
+
+// Hiker at (9, 2) (vanilla: "In all sorts of places, there are all sorts of POKéMON and people.")
+script RustboroCity_House1_EventScript_DraconidRepHiker {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(RustboroCity_House1_Text_DraconidRepHikerUniform, MSGBOX_NPC)
+        default:
+            goto(RustboroCity_House1_EventScript_Hiker)
+    }
+}
+
+text RustboroCity_House1_Text_DraconidRepHikerUniform {
+    format("I go to all sorts of places to meet all sorts of people.\p"
+           "I met TEAM MAGMA on MT. CHIMNEY once.\p"
+           "They weren't fascinating. They were rude.")
+}
+
+// Woman at (4, 4) (vanilla: "The TRAINER'S SCHOOL is excellent.")
+script RustboroCity_House2_EventScript_DraconidRepPokefanF {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(RustboroCity_House2_Text_DraconidRepPokefanFUniform, MSGBOX_NPC)
+        default:
+            goto(RustboroCity_House2_EventScript_PokefanF)
+    }
+}
+
+text RustboroCity_House2_Text_DraconidRepPokefanFUniform {
+    format("If you study at the TRAINER'S SCHOOL, you could become a GYM LEADER.\p"
+           "Nobody ever became a GYM LEADER by joining TEAM MAGMA.")
+}
+
+// Little girl at (4, 5) (vanilla: "ROXANNE, the GYM LEADER, really knows a lot about POKéMON.")
+script RustboroCity_House2_EventScript_DraconidRepLittleGirl {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(RustboroCity_House2_Text_DraconidRepLittleGirlUniform, MSGBOX_NPC)
+        default:
+            goto(RustboroCity_House2_EventScript_LittleGirl)
+    }
+}
+
+text RustboroCity_House2_Text_DraconidRepLittleGirlUniform {
+    format("ROXANNE knows a lot about POKéMON. She's really strong, too!\p"
+           "She'll teach you a lesson, TEAM MAGMA!")
+}
+
+// Old man at (4, 5) (vanilla: "For my own POKéMON, I give them perfectly suited nicknames!")
+script RustboroCity_House3_EventScript_DraconidRepOldMan {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(RustboroCity_House3_Text_DraconidRepOldManUniform, MSGBOX_NPC)
+        default:
+            goto(RustboroCity_House3_EventScript_OldMan)
+    }
+}
+
+text RustboroCity_House3_Text_DraconidRepOldManUniform {
+    format("I give my POKéMON perfectly suited nicknames!\p"
+           "For you, I'd pick… “RED.” It's easy to understand.")
+}
+
+// Old woman at (7, 5) (vanilla: "But giving the name PEKACHU to a PIKACHU? It seems pointless.")
+script RustboroCity_House3_EventScript_DraconidRepOldWoman {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(RustboroCity_House3_Text_DraconidRepOldWomanUniform, MSGBOX_NPC)
+        default:
+            goto(RustboroCity_House3_EventScript_OldWoman)
+    }
+}
+
+text RustboroCity_House3_Text_DraconidRepOldWomanUniform {
+    format("Don't listen to him. He'd call a PIKACHU “PEKACHU.”\p"
+           "Though I suppose “RED” is about right for you.")
+}
+
+// Boy at (2, 5) (vanilla: "My POKéMON evolved. It has a lot of HP now.")
+script RustboroCity_Mart_EventScript_DraconidRepBoy {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(RustboroCity_Mart_Text_DraconidRepBoyUniform, MSGBOX_NPC)
+        default:
+            goto(RustboroCity_Mart_EventScript_Boy)
+    }
+}
+
+text RustboroCity_Mart_Text_DraconidRepBoyUniform {
+    format("My POKéMON evolved, so I'm buying SUPER POTIONS.\p"
+           "Don't stand so close! I'm not sharing them with TEAM MAGMA.")
+}
+
+// Woman at (8, 4) (vanilla: "I'm buying some PARLYZ HEALS and ANTIDOTES.")
+script RustboroCity_Mart_EventScript_DraconidRepPokefanF {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(RustboroCity_Mart_Text_DraconidRepPokefanFUniform, MSGBOX_NPC)
+        default:
+            goto(RustboroCity_Mart_EventScript_PokefanF)
+    }
+}
+
+text RustboroCity_Mart_Text_DraconidRepPokefanFUniform {
+    format("I'm buying PARLYZ HEALS and ANTIDOTES for PETALBURG WOODS.\p"
+           "Is it true TEAM MAGMA has a hideout in those woods? It gives me the creeps.")
+}
+
+// Bug catcher at (8, 2) (vanilla: "I'm getting an ESCAPE ROPE just in case I get lost in a cave.")
+script RustboroCity_Mart_EventScript_DraconidRepBugCatcher {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(RustboroCity_Mart_Text_DraconidRepBugCatcherUniform, MSGBOX_NPC)
+        default:
+            goto(RustboroCity_Mart_EventScript_BugCatcher)
+    }
+}
+
+text RustboroCity_Mart_Text_DraconidRepBugCatcherUniform {
+    format("I'm getting an ESCAPE ROPE in case I get lost in a cave.\p"
+           "I wonder if they sell anything for escaping TEAM MAGMA grunts…")
+}
+
+// Man at (11, 2) (vanilla: "My POKéMON has a NAIVE nature, and my friend's has a JOLLY nature.")
+script RustboroCity_PokemonCenter_1F_EventScript_DraconidRepMan {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(RustboroCity_PokemonCenter_1F_Text_DraconidRepManUniform, MSGBOX_NPC)
+        default:
+            goto(RustboroCity_PokemonCenter_1F_EventScript_Man)
+    }
+}
+
+text RustboroCity_PokemonCenter_1F_Text_DraconidRepManUniform {
+    format("My POKéMON has a NAIVE nature, and my friend's has a JOLLY nature.\p"
+           "What nature is yours? It looks so calm. Not like a TEAM MAGMA POKéMON at all.")
+}
+
+// Boy at (3, 4) (vanilla: "Just like people, there are male and female POKéMON.")
+script RustboroCity_PokemonCenter_1F_EventScript_DraconidRepBoy {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(RustboroCity_PokemonCenter_1F_Text_DraconidRepBoyUniform, MSGBOX_NPC)
+        default:
+            goto(RustboroCity_PokemonCenter_1F_EventScript_Boy)
+    }
+}
+
+text RustboroCity_PokemonCenter_1F_Text_DraconidRepBoyUniform {
+    format("There are male and female POKéMON, but no one knows how they're different.\p"
+           "Nobody can tell what's going on with you, either.\p"
+           "A TEAM MAGMA grunt with a dragon?")
+}
+
+// Girl at (10, 6) (vanilla: "The man next door gave me an HM!")
+script RustboroCity_PokemonCenter_1F_EventScript_DraconidRepGirl {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(RustboroCity_PokemonCenter_1F_Text_DraconidRepGirlUniform, MSGBOX_NPC)
+        default:
+            goto(RustboroCity_PokemonCenter_1F_EventScript_Girl)
+    }
+}
+
+text RustboroCity_PokemonCenter_1F_Text_DraconidRepGirlUniform {
+    format("The man next door gave me an HM so my POKéMON could CUT down skinny trees.\p"
+           "He'd give one to anybody. Even TEAM MAGMA, probably.")
+}
+
+// Boy with a GAME BOY at (8, 6) (vanilla: "I'm trading POKéMON with my friend right now.")
+script RustboroCity_PokemonSchool_EventScript_DraconidRepGameboyKid1 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(RustboroCity_PokemonSchool_Text_DraconidRepGameboyKid1Uniform, MSGBOX_NPC)
+        default:
+            goto(RustboroCity_PokemonSchool_EventScript_GameboyKid1)
+    }
+}
+
+text RustboroCity_PokemonSchool_Text_DraconidRepGameboyKid1Uniform {
+    format("I'm trading POKéMON with my friend right now.\p"
+           "You're not allowed to watch. Teacher says no TEAM MAGMA in class.")
+}
+
+// Boy with a GAME BOY at (9, 6) (vanilla: "I always wanted a SEEDOT, and I'm finally getting one!")
+script RustboroCity_PokemonSchool_EventScript_DraconidRepGameboyKid2 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(RustboroCity_PokemonSchool_Text_DraconidRepGameboyKid2Uniform, MSGBOX_NPC)
+        default:
+            goto(RustboroCity_PokemonSchool_EventScript_GameboyKid2)
+    }
+}
+
+text RustboroCity_PokemonSchool_Text_DraconidRepGameboyKid2Uniform {
+    format("I'm finally getting a SEEDOT!\p"
+           "Don't look at it like that! It's mine, TEAM MAGMA!")
+}
+
+// Rich boy at (3, 8) (vanilla: "POKéMON can hold items, but they don't know what to do with…")
+script RustboroCity_PokemonSchool_EventScript_DraconidRepRichBoy {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(RustboroCity_PokemonSchool_Text_DraconidRepRichBoyUniform, MSGBOX_NPC)
+        default:
+            goto(RustboroCity_PokemonSchool_EventScript_RichBoy)
+    }
+}
+
+text RustboroCity_PokemonSchool_Text_DraconidRepRichBoyUniform {
+    format("POKéMON can hold items, but they don't know what to do with a POTION.\p"
+           "And they don't know what to make of you, either. My POKéMON is hiding.")
+}
+
+// Lass at (10, 8) (vanilla: "You know how some POKéMON moves can confuse a POKéMON?")
+script RustboroCity_PokemonSchool_EventScript_DraconidRepLass {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(RustboroCity_PokemonSchool_Text_DraconidRepLassUniform, MSGBOX_NPC)
+        default:
+            goto(RustboroCity_PokemonSchool_EventScript_Lass)
+    }
+}
+
+text RustboroCity_PokemonSchool_Text_DraconidRepLassUniform {
+    format("A confused POKéMON sometimes attacks itself.\p"
+           "I'm confused, too. Why would a TRAINER with a dragon join TEAM MAGMA?")
+}
+
+// Schoolboy at (3, 6) (vanilla: "A POKéMON holding a BERRY will heal itself…")
+script RustboroCity_PokemonSchool_EventScript_DraconidRepSchoolKidM {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(RustboroCity_PokemonSchool_Text_DraconidRepSchoolKidMUniform, MSGBOX_NPC)
+        default:
+            goto(RustboroCity_PokemonSchool_EventScript_SchoolKidM)
+    }
+}
+
+text RustboroCity_PokemonSchool_Text_DraconidRepSchoolKidMUniform {
+    format("A POKéMON holding a BERRY will heal itself…\p"
+           "Teacher, there's a TEAM MAGMA grunt in our classroom!\p"
+           "Do I write that down, too?")
+}
+
+// Teacher at (5, 3) (vanilla: "Students who don't study get a little taste of my QUICK CLAW.")
+script RustboroCity_PokemonSchool_EventScript_DraconidRepTeacher {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(RustboroCity_PokemonSchool_Text_DraconidRepTeacherUniform, MSGBOX_DEFAULT)
+    }
+    goto(RustboroCity_PokemonSchool_EventScript_Teacher)
+}
+
+text RustboroCity_PokemonSchool_Text_DraconidRepTeacherUniform {
+    format("A TEAM MAGMA grunt in my classroom.\p"
+           "Everyone is welcome to learn here.\p"
+           "Perhaps you'll learn something worth knowing.")
+}
+
+// SCOTT at (0, 10) (vanilla: "Hello? Didn't we meet before? I think back in PETALBURG CITY.")
+script RustboroCity_PokemonSchool_EventScript_DraconidRepScott {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(RustboroCity_PokemonSchool_Text_DraconidRepScottUniform, MSGBOX_DEFAULT)
+    }
+    goto(RustboroCity_PokemonSchool_EventScript_Scott)
+}
+
+text RustboroCity_PokemonSchool_Text_DraconidRepScottUniform {
+    format("Oh! Now that's a uniform I didn't expect to see in a SCHOOL.\p"
+           "Well, I look for talent wherever it turns up. Even in TEAM MAGMA.")
+}
