@@ -9,6 +9,16 @@ default EGG 0
 default EGGNAME DEINO
 newgame
 gender ${GENDER}
+# bedroom, the first night: the falling star's own scene (D-460) runs, then hands back to the dark bedroom,
+# where the narration goes on (the scene times out = it never ran)
+until @gMain+4 4 @@CB2_FallingStarScene 3000 A 30
+run 92
+shot 00_falling_star
+until @gMain+4 4 @@CB2_Overworld 600
+run 30
+expect_map MAP_DRACONID_VILLAGE_PLAYERS_HOUSE_2F
+expect_pos 3 4
+expect_text DraconidVillage_PlayersHouse_2F_EventScript_WakeUp_Text_1
 mash A 3000
 expect_var VAR_DRACONID_STATE 1
 # bedroom: set the wall clock (the dialog defaults to NO; UP selects YES)

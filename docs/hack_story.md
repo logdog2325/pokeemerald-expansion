@@ -254,3 +254,5 @@ Petalburg Woods recruitment/outfit change, Maxie's first meeting at Meteor Falls
 - "also we need to change up the birch intro its way to similar to emeralds"
 - "I think we should replace birch in the intro with the elder a old woman sprite or something maybe even drake from the elite four"
   (the Elder gives the speech, D-420: he is a man throughout the story, and Drake is the League's – he gets his own story role separately)
+### Follow-up note (round 2, the opening's falling star – feedback 2.17)
+- (with a screenshot of the black screen and the box "A falling star tore across the heavens and vanished beyond the mountains.") "can we create a short falling star animation for this intro segment I know you can do it"

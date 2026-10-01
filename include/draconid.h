@@ -18,6 +18,9 @@ void Draconid_DoRayquazaFlightScene(struct ScriptContext *ctx);
 void Draconid_SaveBeforeCredits(struct ScriptContext *ctx);
 void Draconid_StartCredits(struct ScriptContext *ctx);
 
+// The opening's falling star (round 2, D-460): callnative + waitstate from the bedroom's wake-up script
+void Draconid_DoFallingStarScene(struct ScriptContext *ctx); // src/draconid_falling_star.c
+
 // Act 7 extension: the attack on the village (data/scripts/draconid/act7x.pory)
 struct WarpData;
 bool32 Draconid_IsPrimalWeather(void);
