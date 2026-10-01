@@ -518,7 +518,7 @@
         "1FD"
       ],
       "lattice": {
-        "_doc": "2x2 trees on the even lattice (mapbuild.py lattice_trees, D-340). tl/tr: [tree or tree-side, open side and nothing above]; bl/br: [tree below, open below, open below and open side]; caps: the crown's top over the cell above a tree with nothing above it, by that cell's class",
+        "_doc": "2x2 trees on the even lattice (mapbuild.py lattice_trees, D-340). tl/tr: [tree or tree-side, open side and nothing above]; bl/br: [tree below, open below, open below and open side]; caps: the crown's top over the cell above a tree with nothing above it, by that cell's class (none over water: 1E8/1E9 draw a grass bank, not a crown – checked in game)",
         "phase": [
           0,
           0
@@ -550,10 +550,6 @@
           "tallgrass": [
             "1C6",
             "1C7"
-          ],
-          "water": [
-            "1E8:1:1",
-            "1E9:1:1"
           ]
         }
       }
