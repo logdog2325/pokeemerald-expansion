@@ -101,6 +101,8 @@ undercover. Everyone else may suspect (May's doubts, Steven's "strongest MAGMA g
 48. ✅ **Wally battle 6** – Victory Road (Mega Gallade).
 49. ✅ **The Elite Four** (ORAS rosters). **Champion Steven** (his ORAS team, Mega Metagross; he took the player for
     the strongest MAGMA grunt he'd faced and only understood at Sootopolis). Brendan and May reach the Champion's room.
+    🚧 **Drake** knows the player's horned band; after the win he says who he is: born a Draconid, the Elder's younger
+    brother, who flew off to sea forty years ago and never came back – "Say nothing of me to him" (D-440, D-442).
 50. ✅ Hall of Fame without credits → home; the meteor on TV; the Elder's summons.
 
 ## Act 7 – The prophecy fulfilled
@@ -119,6 +121,8 @@ undercover. Everyone else may suspect (May's doubts, Steven's "strongest MAGMA g
     and Aster** as partners; Brendan and May get their Latis.
 55. ⬜ The final battle at the shrine: **the player + Brendan or May (Mega Lati) vs Maxie (Primal Groudon) and
     Archie (Primal Kyogre)** – Maxie battle 3; Aster and Nerine shield the Elder.
+    🚧 Maxie turns Primal Groudon on the shrine door: **Drake**'s Salamence takes the blow and Drake holds the door
+    through the battle; after the win the brothers face each other, forty years on (D-443).
 56. ⬜ Aftermath: the titans go home, Maxie beaten but bitter, the Orbs, the village rebuilds; credits.
 
 ## Post-game
@@ -132,6 +136,7 @@ undercover. Everyone else may suspect (May's doubts, Steven's "strongest MAGMA g
 62. ⬜ Prof. Oak visits the lab with the Z-Crystal of the second partner's type (from his cousin Samson Oak in Alola).
 63. ☑️ **Lance** lands in the Draconid village on a visit after the S.S. Ticket: his clan in Blackthorn is the
     Draconids' Northern Wing; his PWT team with **Mega Dragonite**, then a Dratini and the Dragoninite; rematches.
+64. 🚧 **Drake** and his Salamence by the Elder's door: the brothers make peace; Drake teaches **Draco Meteor** (D-444).
 
 ## Rival battles at a glance
 | Rival | Battles (story order) |

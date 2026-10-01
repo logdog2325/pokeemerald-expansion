@@ -977,6 +977,7 @@ script DraconidVillage_EventScript_DraconidFinalIntro {
     msgbox(format("MAXIE: The RED ORB answers me now.\p"
                   "Behold GROUDON as it was at the dawn of the world."))
     closemessage
+    call(DraconidVillage_EventScript_DrakeComesHome) // DRAKE's SALAMENCE takes GROUDON's blow at the shrine door (drake.pory, D-443)
     applymovement(LOCALID_DRACONID_VILLAGE_BRENDAN, Common_Movement_WalkInPlaceFasterUp)
     waitmovement(0)
     msgbox(format("BRENDAN: {PLAYER}! COURTNEY and MATT are coming up the pass!\p"
@@ -1145,6 +1146,7 @@ script DraconidVillage_EventScript_DraconidPrimalWon {
     waitmovement(0)
     removeobject(LOCALID_DRACONID_VILLAGE_MAXIE)
     removeobject(LOCALID_DRACONID_VILLAGE_ARCHIE)
+    call(DraconidVillage_EventScript_DrakeAndTheElder) // the brothers, face to face (drake.pory, D-443)
     setvar(VAR_DRACONID_VILLAGE_STATE, VILLAGE_STATE_PRIMAL_WON)
     fadescreen(FADE_TO_BLACK)
     msgbox(format("MAXIE and ARCHIE led what was left of their teams back down the pass.\p"

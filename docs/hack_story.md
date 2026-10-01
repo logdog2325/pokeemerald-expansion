@@ -224,3 +224,28 @@ Petalburg Woods recruitment/outfit change, Maxie's first meeting at Meteor Falls
 
 ### Follow-up note 31 (round 1)
 - "also I think we should get access to z moves earlier and they should be spread throughout the story not a post game think"
+
+---
+
+## Round 2 notes that belong to the story
+
+### Follow-up note 2.14 (round 2)
+- "also can we give drake something cool to do in the story it would be cool to see him do something or have some of his backstory revealed lol"
+
+**Drake's arc, as built** (D-440 – D-444; the lines are in [hack_script.md](hack_script.md)):
+- **Who he is**: Hoenn's Elite Four dragon master is the **Elder's younger brother**, born in the village below the
+  shrine. The two hatched their Bagon the same spring (the Elder's "old dragon" is the other Salamence). Forty years
+  ago Drake flew his down off the mountain to see the sea. The clan keeps to its mountain – its people go down to trade
+  and come home – and his brother told him that if he left he need not come back. He never did: he sailed the world,
+  became the League's dragon master, and never once flew over the mountains. Like Lance's Northern Wing, he is in the
+  clan's old verse: "One wing flew north, and did not come back."
+- **The League** (Act 6): before the battle he knows the player's horned band ("I have not seen one of those in forty
+  years"); after the first win he says who he is and asks the player to say nothing to his brother. Later runs are
+  short; after the finale he "keeps the LEAGUE's door by day, and flies home to the village by night".
+- **The attack on the village** (Act 7, the final): Maxie turns Primal Groudon on the shrine door where the hurt Elder
+  lies; Drake's Salamence drops out of the storm and takes the blow, and Drake leaps down in front of his brother –
+  "Forty years, brother. And still you guard the door yourself." He holds the door through the Primal multi battle.
+  After the win the brothers face each other ("You came home." … "Forty years, DRAKE."), and he flies off to keep
+  watch on the pass that night.
+- **Post-game**: Drake and his Salamence stand by the Elder's door. The first talk, the Elder comes out and the two
+  make peace ("Welcome home, DRAKE."); from then on Drake teaches **Draco Meteor**, the clan's oldest move.

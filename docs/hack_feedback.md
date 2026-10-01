@@ -7,6 +7,12 @@ One numbered checklist per round, newest round at the top. Categories: **bug / b
 
 Status: `[ ]` open · `[~]` in progress · `[x]` done (commit) · `[-]` won't do (why)
 
+## Round 2 (after the v2 test ROM)
+
+| # | Category | Item | Status |
+|---|---|---|---|
+| 2.14 | story | "also can we give drake something cool to do in the story it would be cool to see him do something or have some of his backstory revealed lol" | [x] Drake is the Elder's younger brother, who flew off to sea forty years ago and never came back (D-440): at the League he knows the player's horned band and, after the win, says who he is (D-442); in the attack on the village his Salamence takes Primal Groudon's blow at the shrine door and he holds it through the Primal battle, then faces his brother (D-443); post-game the brothers make peace by the Elder's door and Drake teaches Draco Meteor (D-444); `drake.play` |
+
 ## Round 1 (after v1, commit 94f937d3)
 
 The round came with the full story add-on (saved as [hack_story.md](hack_story.md), source of truth) and the

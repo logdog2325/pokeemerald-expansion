@@ -1,0 +1,272 @@
+# Drake's story (data/scripts/draconid/drake.pory, D-440 - D-444): the Elite Four's dragon master is the Elder's
+# younger brother. (1) The LEAGUE, first run: he knows the player's horned band; after the win he tells them who he
+# is (FLAG_DRACONID_DRAKE_TOLD); a second run is short; after the finale his rematch team and a homecoming line.
+# (2) The village attack: in Maxie and Archie's scene his Salamence takes Primal Groudon's blow at the shrine door
+# and he holds the door through the Primal multi battle (the retry layout after a loss too); after the win the
+# brothers face each other and he flies off to watch the pass (not in the evening's goodbyes). (3) Post-game: Drake
+# and his Salamence by the Elder's door; the first talk, the Elder comes out and they make peace
+# (FLAG_DRACONID_DRAKE_RECONCILED); Draco Meteor taught to the egg Pokemon (a tutor move, D-444); declined later; the
+# line for Lance's visit.
+# Needs rustboro_done.ss from tests/rustboro.play (a one-Pokemon party: the egg Pokemon, Deino). The states are set by
+# hand (as act7x.play); the lead is boosted where a battle must be won (play.py "boost", memory only) with the move
+# cursor on MOVE (Deino's Dragon Breath), and the Primal battle's opponents are put at 1 HP in memory, as act7x.play
+# does. until_text syncs on Drake's own text boxes (Poryscript's inline texts are <Script>_Text_<N>, in script order),
+# so the frames don't depend on how many boxes the scenes around them have. Review frames: dk_*.
+default START rustboro_done.ss
+default MOVE 2
+loadstate ${START}
+setvar VAR_DRACONID_REPUTATION 2
+setvar VAR_PLAYER_OUTFIT 0
+setvar VAR_MAGMA_STATE 12
+setflag FLAG_BADGE01_GET
+setflag FLAG_BADGE02_GET
+setflag FLAG_BADGE03_GET
+setflag FLAG_BADGE04_GET
+setflag FLAG_BADGE05_GET
+setflag FLAG_BADGE06_GET
+setflag FLAG_BADGE07_GET
+setflag FLAG_BADGE08_GET
+setflag FLAG_DEBUG_NO_ENCOUNTER
+setflag FLAG_DEBUG_NO_TRAINER_SEE
+setflag FLAG_DRACONID_NO_WHITEOUT
+# battle style SET (gSaveBlock2Ptr->optionsBattleStyle, bit 1 of byte 0x15): no "Will you switch?" prompt to mash
+pokebit *@gSaveBlock2Ptr+15 1 1
+# text speed FAST (optionsTextSpeed, bits 0-2 of byte 0x14 = 2), so the frames show whole text boxes
+pokebit *@gSaveBlock2Ptr+14 0 0
+pokebit *@gSaveBlock2Ptr+14 1 1
+pokebit *@gSaveBlock2Ptr+14 2 0
+
+# --- (1) the LEAGUE, the first run: the band, the battle (TRAINER_DRAKE), who he is ---
+clearflag FLAG_SYS_GAME_CLEAR
+clearflag FLAG_DEFEATED_ELITE_4_DRAKE
+setvar VAR_ELITE_4_STATE 4
+warp MAP_EVER_GRANDE_CITY_DRAKES_ROOM 6 7
+run 150
+path EverGrandeCity_DrakesRoom 6 7 6 6
+press A 2 60
+expect_text EverGrandeCity_DrakesRoom_EventScript_DraconidIntro_Text_4
+until_text EverGrandeCity_DrakesRoom_EventScript_DraconidIntro_Text_5 3000 A
+run 150
+shot dk_10_band
+boost 0
+until @gMain+4 4 @@BattleMainCB2 30000 A 24
+run 60
+poke @gMoveSelectionCursor ${MOVE}
+until @gMain+4 4 @@CB2_Overworld 200000 A 24
+expect_opponent TRAINER_DRAKE
+expect_flag FLAG_DRACONID_DRAKE_TOLD 0
+run 60
+expect_text EverGrandeCity_DrakesRoom_EventScript_DraconidPostBattle_Text_2
+until_text EverGrandeCity_DrakesRoom_EventScript_DraconidPostBattle_Text_4 3000 A
+run 150
+shot dk_11_born_below_it
+until_text EverGrandeCity_DrakesRoom_EventScript_DraconidPostBattle_Text_5 3000 A
+run 150
+shot dk_12_older_brother
+mash A 30000
+expect_flag FLAG_DEFEATED_ELITE_4_DRAKE 1
+expect_flag FLAG_DRACONID_DRAKE_TOLD 1
+# talked to again: the short line
+press A 2 60
+expect_text EverGrandeCity_DrakesRoom_EventScript_DraconidPostBattle_Text_1
+mash A 3000
+
+# a second run (before the finale): the short intro
+heal
+clearflag FLAG_DEFEATED_ELITE_4_DRAKE
+setvar VAR_ELITE_4_STATE 4
+warp MAP_EVER_GRANDE_CITY_DRAKES_ROOM 6 7
+run 150
+path EverGrandeCity_DrakesRoom 6 7 6 6
+press A 2 60
+expect_text EverGrandeCity_DrakesRoom_EventScript_DraconidIntro_Text_2
+until @gMain+4 4 @@BattleMainCB2 30000 A 24
+until @gMain+4 4 @@CB2_Overworld 200000 A 24
+expect_opponent TRAINER_DRAKE
+mash A 30000
+
+# after the finale (the village saved): home by night, his rematch team (D-174)
+heal
+setflag FLAG_SYS_GAME_CLEAR
+setvar VAR_DRACONID_VILLAGE_STATE 10
+setvar VAR_DRACONID_FINALE_STATE 9
+clearflag FLAG_DEFEATED_ELITE_4_DRAKE
+setvar VAR_ELITE_4_STATE 4
+warp MAP_EVER_GRANDE_CITY_DRAKES_ROOM 6 7
+run 150
+path EverGrandeCity_DrakesRoom 6 7 6 6
+press A 2 60
+expect_text EverGrandeCity_DrakesRoom_EventScript_DraconidIntro_Text_0
+until @gMain+4 4 @@BattleMainCB2 30000 A 24
+until @gMain+4 4 @@CB2_Overworld 200000 A 24
+expect_opponent TRAINER_DRAKE_REMATCH
+run 60
+expect_text EverGrandeCity_DrakesRoom_EventScript_DraconidPostBattle_Text_0
+mash A 30000
+heal
+savestate drake_league.ss
+
+# --- (2) the village attack: Maxie and Archie at the shrine (set by hand, as act7x.play) ---
+setvar VAR_NERINE_STATE 8
+setvar VAR_ASTER_STATE 8
+setvar VAR_BRENDAN_STATE 6
+setvar VAR_MAY_STATE 4
+setvar VAR_SKY_PILLAR_STATE 3
+setvar VAR_SKY_PILLAR_RAYQUAZA_CRY_DONE 1
+setflag FLAG_DEFEATED_RAYQUAZA
+setflag FLAG_HIDE_SKY_PILLAR_TOP_ASTER
+setflag FLAG_HIDE_DRACONID_HOUSE_ELDER
+setflag FLAG_HIDE_DRACONID_ELDERS_HOUSE_ELDER
+setvar VAR_DRACONID_FINALE_STATE 6
+setvar VAR_DRACONID_VILLAGE_STATE 7
+settrainer TRAINER_GRUNT_VILLAGE_1 1
+settrainer TRAINER_GRUNT_VILLAGE_3 1
+settrainer TRAINER_GRUNT_VILLAGE_5 1
+settrainer TRAINER_TABITHA_VILLAGE 1
+settrainer TRAINER_SHELLY_VILLAGE 1
+warp MAP_DRACONID_VILLAGE 19 11
+run 120
+expect_flag FLAG_TEMP_1F 1
+# Maxie turns Groudon on the shrine door; the Salamence dives in and takes the blow; Drake before the door
+until_text DraconidVillage_EventScript_DrakeComesHome_Text_0 30000 A
+run 120
+shot dk_20_maxie_order
+until_text DraconidVillage_EventScript_DrakeComesHome_Text_1 30000 A
+run 120
+shot dk_21_salamence_lands
+expect_flag FLAG_TEMP_1F 0
+until_text DraconidVillage_EventScript_DrakeComesHome_Text_6 30000 A
+run 60
+shot dk_22_brothers
+until_text DraconidVillage_EventScript_DrakeComesHome_Text_8 30000 A
+run 60
+shot dk_23_aster
+# on to the partner choice (the scene goes on as before)
+until @sDynamicMenuEventScratchPad 4 !0 120000 A 24
+expect_var VAR_DRACONID_VILLAGE_STATE 8
+savestate drake_choice.ss
+
+# the retry layout (after a lost battle the map loads at VILLAGE_STATE_FINAL): Drake at the door, the Salamence in
+# the crater, Maxie and Archie a step aside
+loadstate drake_league.ss
+setvar VAR_NERINE_STATE 8
+setvar VAR_ASTER_STATE 8
+setvar VAR_BRENDAN_STATE 6
+setvar VAR_MAY_STATE 4
+setvar VAR_SKY_PILLAR_STATE 3
+setvar VAR_SKY_PILLAR_RAYQUAZA_CRY_DONE 1
+setflag FLAG_DEFEATED_RAYQUAZA
+setflag FLAG_HIDE_SKY_PILLAR_TOP_ASTER
+setflag FLAG_HIDE_DRACONID_HOUSE_ELDER
+setflag FLAG_HIDE_DRACONID_ELDERS_HOUSE_ELDER
+setvar VAR_DRACONID_FINALE_STATE 6
+setvar VAR_DRACONID_VILLAGE_STATE 8
+warp MAP_DRACONID_VILLAGE 19 11
+run 120
+expect_flag FLAG_TEMP_1F 0
+run 400
+shot dk_24_retry_layout
+
+# BRENDAN beside the player, the Primal battle won (the opponents at 1 HP in memory, as act7x.play)
+loadstate drake_choice.ss
+press A 2 20
+boost 0
+until @gMain+4 4 @@CB2_UpdatePartyMenu 60000 A 24
+run 60
+press A 2 40
+press A 2 40
+press DOWN 2 30
+press A 2 40
+until @gMain+4 4 @@BattleMainCB2 3000
+run 60
+poke @gParties+312 1
+poke @gParties+313 0
+poke @gParties+376 1
+poke @gParties+377 0
+poke @gParties+43E 1
+poke @gParties+43F 0
+poke @gParties+4A2 1
+poke @gParties+4A3 0
+run 300
+battlehp 1
+battlehp 3
+battlepp 0
+poke @gMoveSelectionCursor ${MOVE}
+until @gMain+4 4 @@CB2_Overworld 300000 A 24
+expect_opponent TRAINER_MAXIE_FINALE
+expect_partner PARTNER_BRENDAN_FINALE
+# after Rayquaza and the Orbs: the brothers, face to face; Drake flies off to watch the pass
+until_text DraconidVillage_EventScript_DrakeAndTheElder_Text_0 300000 A
+run 60
+shot dk_25_you_came_home
+until_text DraconidVillage_EventScript_DrakeAndTheElder_Text_4 30000 A
+run 60
+shot dk_26_forty_years
+until_var VAR_DRACONID_VILLAGE_STATE 9 30000 A
+expect_item ITEM_RED_ORB 1
+# that evening the map reloads for the goodbyes: Drake isn't there
+until_text DraconidVillage_EventScript_DraconidGoodbyes_Text_1 30000 A
+run 200
+expect_flag FLAG_TEMP_1F 1
+shot dk_27_evening
+
+# --- (3) post-game: Drake by the Elder's door; the brothers make peace; Draco Meteor ---
+loadstate drake_league.ss
+setvar VAR_NERINE_STATE 9
+setvar VAR_ASTER_STATE 9
+setflag FLAG_RECEIVED_SS_TICKET
+warp MAP_DRACONID_VILLAGE 26 13
+run 120
+expect_flag FLAG_TEMP_1F 0
+expect_flag FLAG_DRACONID_DRAKE_RECONCILED 0
+shot dk_30_postgame
+press UP 2 30
+press A 2 60
+expect_text DraconidVillage_EventScript_DrakeMakesPeace_Text_0
+until_text DraconidVillage_EventScript_DrakeMakesPeace_Text_2 30000 A 12
+run 60
+shot dk_31_tea
+until_text DraconidVillage_EventScript_DrakeMakesPeace_Text_7 30000 A
+run 60
+shot dk_32_welcome_home
+expect_flag FLAG_DRACONID_DRAKE_RECONCILED 0
+# the tutor: YES, the egg Pokemon learns DRACO METEOR (the declined text would mean it can't)
+until_text DraconidVillage_Text_DrakeTutorTeach 30000 A
+expect_flag FLAG_DRACONID_DRAKE_RECONCILED 1
+run 150
+# the second page, YES, "Which one?", then the box screen (OW_CHOOSE_FROM_PC_AND_PARTY): up to PARTY POKEMON,
+# the egg Pokemon in slot 0, SELECT
+press A 2 150
+press A 2 100
+press A 2 200
+press A 2 200
+press UP 2 90
+press UP 2 90
+press A 2 90
+press A 2 90
+press A 2 90
+until_text DraconidVillage_EventScript_DrakeTutorTaught_Text_0 30000 A
+run 150
+shot dk_33_taught
+mash A 3000
+# talked to again: the chat, then NO
+press A 2 60
+expect_text DraconidVillage_EventScript_Drake_Text_2
+until_text DraconidVillage_Text_DrakeTutorTeach 30000 A
+run 150
+press A 2 150
+press A 2 150
+press B 2 60
+expect_text DraconidVillage_EventScript_DrakeTutorDeclined_Text_0
+mash A 3000
+# once Lance has landed: the Northern Wing line
+setflag FLAG_DRACONID_LANCE_ARMED
+clearflag FLAG_HIDE_DRACONID_VILLAGE_LANCE
+warp MAP_DRACONID_VILLAGE 26 13
+run 120
+press UP 2 30
+press A 2 60
+expect_text DraconidVillage_EventScript_Drake_Text_1
+mash B 3000
+clearflag FLAG_DEBUG_NO_TRAINER_SEE
+clearflag FLAG_DRACONID_NO_WHITEOUT

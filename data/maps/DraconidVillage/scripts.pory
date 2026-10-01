@@ -25,6 +25,8 @@ script DraconidVillage_OnTransition {
     call(DraconidVillage_EventScript_DraconidAttackOnTransition)
     // Post-game: LANCE and his DRAGONITE (lance.pory)
     call(DraconidVillage_EventScript_LanceOnTransition)
+    // DRAKE and his SALAMENCE: at the shrine door in the Primal battle, by the ELDER's door after the finale (drake.pory)
+    call(DraconidVillage_EventScript_DrakeOnTransition)
 }
 
 // ---------------------------------------------------------------------------

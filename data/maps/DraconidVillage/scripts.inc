@@ -20,6 +20,7 @@ DraconidVillage_OnTransition_1:
 	call Draconid_EventScript_FinaleWeather
 	call DraconidVillage_EventScript_DraconidAttackOnTransition
 	call DraconidVillage_EventScript_LanceOnTransition
+	call DraconidVillage_EventScript_DrakeOnTransition
 	return
 
 DraconidVillage_OnTransition_2:
