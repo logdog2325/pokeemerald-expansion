@@ -4,7 +4,7 @@
 
 // If you would like to ensure save compatibility, update the values below with those for your hack. You can find these through the debug menu.
 // Please note that this simple check is not 100% foolproof, but should be able to catch most unintended shifts.
-#define T_SAVEBLOCK1_SIZE 15732 // Draconid Emerald: +8 bytes of trainer flags for Nerine's variant teams (D-101), +4 for the Frontier legends and the finale (D-229), +4 for MAX_TRAINERS_COUNT 992 and +28 for the second roamer (D-205, D-209), +120 for 30 more Items pocket slots (D-344)
+#define T_SAVEBLOCK1_SIZE 15736 // Draconid Emerald: +8 bytes of trainer flags for Nerine's variant teams (D-101), +4 for the Frontier legends and the finale (D-229), +4 for MAX_TRAINERS_COUNT 992 and +28 for the second roamer (D-205, D-209), +4 for MAX_TRAINERS_COUNT 1024 (D-283), +120 for 30 more Items pocket slots (D-344)
 #define T_SAVEBLOCK2_SIZE 3884
 #define T_SAVEBLOCK3_SIZE 4
 #define T_POKEMONSTORAGE_SIZE 34144

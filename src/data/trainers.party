@@ -24436,6 +24436,564 @@ Nature: Adamant
 - Double Hit
 - Work Up
 
+=== TRAINER_ASTER_GRANITE_CAVE_DEINO ===
+Name: ASTER
+Class: Draconid
+Pic: Aster
+Gender: Female
+Music: Intense
+Items: Potion / Potion
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Swablu @ Oran Berry
+Level: 18
+Ability: Natural Cure
+Nature: Modest
+- Disarming Voice
+- Fury Attack
+- Round
+- Mist
+
+Noibat @ Oran Berry
+Level: 18
+Ability: Infiltrator
+Nature: Hasty
+- Wing Attack
+- Supersonic
+- Absorb
+- Double Team
+
+Bagon @ Oran Berry
+Level: 19
+Ability: Rock Head
+Nature: Adamant
+- Headbutt
+- Dragon Breath
+- Bite
+- Ember
+
+Dreepy @ Oran Berry
+Level: 20
+Ability: Infiltrator
+Nature: Hasty
+- Astonish
+- Bite
+- Quick Attack
+- Infestation
+
+=== TRAINER_ASTER_GRANITE_CAVE_DREEPY ===
+Name: ASTER
+Class: Draconid
+Pic: Aster
+Gender: Female
+Music: Intense
+Items: Potion / Potion
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Swablu @ Oran Berry
+Level: 18
+Ability: Natural Cure
+Nature: Modest
+- Disarming Voice
+- Fury Attack
+- Round
+- Mist
+
+Noibat @ Oran Berry
+Level: 18
+Ability: Infiltrator
+Nature: Hasty
+- Wing Attack
+- Supersonic
+- Absorb
+- Double Team
+
+Bagon @ Oran Berry
+Level: 19
+Ability: Rock Head
+Nature: Adamant
+- Headbutt
+- Dragon Breath
+- Bite
+- Ember
+
+Jangmo-o @ Oran Berry
+Level: 20
+Ability: Bulletproof
+Nature: Adamant
+- Dragon Tail
+- Headbutt
+- Work Up
+- Protect
+
+=== TRAINER_ASTER_GRANITE_CAVE_JANGMO_O ===
+Name: ASTER
+Class: Draconid
+Pic: Aster
+Gender: Female
+Music: Intense
+Items: Potion / Potion
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Swablu @ Oran Berry
+Level: 18
+Ability: Natural Cure
+Nature: Modest
+- Disarming Voice
+- Fury Attack
+- Round
+- Mist
+
+Noibat @ Oran Berry
+Level: 18
+Ability: Infiltrator
+Nature: Hasty
+- Wing Attack
+- Supersonic
+- Absorb
+- Double Team
+
+Bagon @ Oran Berry
+Level: 19
+Ability: Rock Head
+Nature: Adamant
+- Headbutt
+- Dragon Breath
+- Bite
+- Ember
+
+Deino @ Oran Berry
+Level: 20
+Ability: Hustle
+Nature: Naughty
+- Headbutt
+- Bite
+- Dragon Breath
+- Assurance
+
+=== TRAINER_ASTER_ROUTE_121_DEINO ===
+Name: ASTER
+Class: Draconid
+Pic: Aster
+Gender: Female
+Music: Intense
+Items: Hyper Potion / Hyper Potion
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Altaria @ Leftovers
+Level: 42
+Ability: Natural Cure
+EVs: 252 HP / 252 SpA / 4 SpD
+Nature: Modest
+- Dragon Pulse
+- Disarming Voice
+- Roost
+- Cotton Guard
+
+Pupitar @ Eviolite
+Level: 42
+Ability: Shed Skin
+EVs: 252 HP / 252 Atk / 4 SpD
+Nature: Adamant
+- Rock Slide
+- Crunch
+- Earthquake
+- Screech
+
+Vibrava @ Soft Sand
+Level: 42
+Ability: Levitate
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Modest
+- Earth Power
+- Dragon Breath
+- Bug Buzz
+- Screech
+
+Noibat @ Sitrus Berry
+Level: 41
+Ability: Infiltrator
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Timid
+- Air Slash
+- Super Fang
+- Bite
+- Whirlwind
+
+Shelgon @ Eviolite
+Level: 43
+Ability: Rock Head
+EVs: 252 HP / 252 Atk / 4 SpD
+Nature: Adamant
+- Dragon Claw
+- Zen Headbutt
+- Crunch
+- Protect
+
+Drakloak @ Eviolite
+Level: 44
+Ability: Infiltrator
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Dragon Pulse
+- Hex
+- U-turn
+- Double Hit
+
+=== TRAINER_ASTER_ROUTE_121_DREEPY ===
+Name: ASTER
+Class: Draconid
+Pic: Aster
+Gender: Female
+Music: Intense
+Items: Hyper Potion / Hyper Potion
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Altaria @ Leftovers
+Level: 42
+Ability: Natural Cure
+EVs: 252 HP / 252 SpA / 4 SpD
+Nature: Modest
+- Dragon Pulse
+- Disarming Voice
+- Roost
+- Cotton Guard
+
+Pupitar @ Eviolite
+Level: 42
+Ability: Shed Skin
+EVs: 252 HP / 252 Atk / 4 SpD
+Nature: Adamant
+- Rock Slide
+- Crunch
+- Earthquake
+- Screech
+
+Vibrava @ Soft Sand
+Level: 42
+Ability: Levitate
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Modest
+- Earth Power
+- Dragon Breath
+- Bug Buzz
+- Screech
+
+Noibat @ Sitrus Berry
+Level: 41
+Ability: Infiltrator
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Timid
+- Air Slash
+- Super Fang
+- Bite
+- Whirlwind
+
+Shelgon @ Eviolite
+Level: 43
+Ability: Rock Head
+EVs: 252 HP / 252 Atk / 4 SpD
+Nature: Adamant
+- Dragon Claw
+- Zen Headbutt
+- Crunch
+- Protect
+
+Hakamo-o @ Eviolite
+Level: 44
+Ability: Bulletproof
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Adamant
+- Dragon Claw
+- Brick Break
+- Rock Slide
+- Dragon Dance
+
+=== TRAINER_ASTER_ROUTE_121_JANGMO_O ===
+Name: ASTER
+Class: Draconid
+Pic: Aster
+Gender: Female
+Music: Intense
+Items: Hyper Potion / Hyper Potion
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Altaria @ Leftovers
+Level: 42
+Ability: Natural Cure
+EVs: 252 HP / 252 SpA / 4 SpD
+Nature: Modest
+- Dragon Pulse
+- Disarming Voice
+- Roost
+- Cotton Guard
+
+Pupitar @ Eviolite
+Level: 42
+Ability: Shed Skin
+EVs: 252 HP / 252 Atk / 4 SpD
+Nature: Adamant
+- Rock Slide
+- Crunch
+- Earthquake
+- Screech
+
+Vibrava @ Soft Sand
+Level: 42
+Ability: Levitate
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Modest
+- Earth Power
+- Dragon Breath
+- Bug Buzz
+- Screech
+
+Noibat @ Sitrus Berry
+Level: 41
+Ability: Infiltrator
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Timid
+- Air Slash
+- Super Fang
+- Bite
+- Whirlwind
+
+Shelgon @ Eviolite
+Level: 43
+Ability: Rock Head
+EVs: 252 HP / 252 Atk / 4 SpD
+Nature: Adamant
+- Dragon Claw
+- Zen Headbutt
+- Crunch
+- Protect
+
+Zweilous @ Eviolite
+Level: 44
+Ability: Hustle
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Adamant
+- Crunch
+- Dragon Tail
+- Body Slam
+- Double Hit
+
+=== TRAINER_ASTER_VILLAGE_DEINO ===
+Name: ASTER
+Class: Draconid
+Pic: Aster
+Gender: Female
+Music: Intense
+Items: Full Restore / Full Restore
+Double Battle: No
+AI: Smart Trainer / Prediction / Ace Pokemon
+
+Altaria @ Leftovers
+Level: 56
+Ability: Natural Cure
+EVs: 252 HP / 252 SpA / 4 SpD
+Nature: Modest
+- Moonblast
+- Dragon Pulse
+- Roost
+- Cotton Guard
+
+Tyranitar @ Lum Berry
+Level: 56
+Ability: Unnerve
+EVs: 252 HP / 252 Atk / 4 SpD
+Nature: Adamant
+- Stone Edge
+- Crunch
+- Earthquake
+- Dragon Dance
+
+Flygon @ Soft Sand
+Level: 56
+Ability: Levitate
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Earthquake
+- Dragon Claw
+- U-turn
+- Stone Edge
+
+Noivern @ Choice Specs
+Level: 56
+Ability: Infiltrator
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Timid
+- Hurricane
+- Dragon Pulse
+- Flamethrower
+- Super Fang
+
+Dragapult @ Ghostium Z
+Level: 57
+Ability: Clear Body
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Dragon Darts
+- Phantom Force
+- U-turn
+- Sucker Punch
+
+Salamence @ Salamencite
+Level: 58
+Ability: Intimidate
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Double-Edge
+- Dragon Claw
+- Earthquake
+- Dragon Dance
+
+=== TRAINER_ASTER_VILLAGE_DREEPY ===
+Name: ASTER
+Class: Draconid
+Pic: Aster
+Gender: Female
+Music: Intense
+Items: Full Restore / Full Restore
+Double Battle: No
+AI: Smart Trainer / Prediction / Ace Pokemon
+
+Altaria @ Leftovers
+Level: 56
+Ability: Natural Cure
+EVs: 252 HP / 252 SpA / 4 SpD
+Nature: Modest
+- Moonblast
+- Dragon Pulse
+- Roost
+- Cotton Guard
+
+Tyranitar @ Lum Berry
+Level: 56
+Ability: Unnerve
+EVs: 252 HP / 252 Atk / 4 SpD
+Nature: Adamant
+- Stone Edge
+- Crunch
+- Earthquake
+- Dragon Dance
+
+Flygon @ Soft Sand
+Level: 56
+Ability: Levitate
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Earthquake
+- Dragon Claw
+- U-turn
+- Stone Edge
+
+Noivern @ Choice Specs
+Level: 56
+Ability: Infiltrator
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Timid
+- Hurricane
+- Dragon Pulse
+- Flamethrower
+- Super Fang
+
+Kommo-o @ Kommonium Z
+Level: 57
+Ability: Bulletproof
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Timid
+- Clanging Scales
+- Aura Sphere
+- Flamethrower
+- Protect
+
+Salamence @ Salamencite
+Level: 58
+Ability: Intimidate
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Double-Edge
+- Dragon Claw
+- Earthquake
+- Dragon Dance
+
+=== TRAINER_ASTER_VILLAGE_JANGMO_O ===
+Name: ASTER
+Class: Draconid
+Pic: Aster
+Gender: Female
+Music: Intense
+Items: Full Restore / Full Restore
+Double Battle: No
+AI: Smart Trainer / Prediction / Ace Pokemon
+
+Altaria @ Leftovers
+Level: 56
+Ability: Natural Cure
+EVs: 252 HP / 252 SpA / 4 SpD
+Nature: Modest
+- Moonblast
+- Dragon Pulse
+- Roost
+- Cotton Guard
+
+Tyranitar @ Lum Berry
+Level: 56
+Ability: Unnerve
+EVs: 252 HP / 252 Atk / 4 SpD
+Nature: Adamant
+- Stone Edge
+- Crunch
+- Earthquake
+- Dragon Dance
+
+Flygon @ Soft Sand
+Level: 56
+Ability: Levitate
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Earthquake
+- Dragon Claw
+- U-turn
+- Stone Edge
+
+Noivern @ Choice Specs
+Level: 56
+Ability: Infiltrator
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Timid
+- Hurricane
+- Dragon Pulse
+- Flamethrower
+- Super Fang
+
+Hydreigon @ Darkinium Z
+Level: 57
+Ability: Levitate
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Timid
+- Dark Pulse
+- Dragon Pulse
+- Flamethrower
+- Nasty Plot
+
+Salamence @ Salamencite
+Level: 58
+Ability: Intimidate
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Double-Edge
+- Dragon Claw
+- Earthquake
+- Dragon Dance
+
 === TRAINER_MAY_ROUTE_103 ===
 Name: MAY
 Class: Rival
@@ -24645,7 +25203,7 @@ Nature: Timid
 - Dragon Pulse
 - Super Fang
 
-Dragapult @ Choice Band
+Dragapult @ Ghostium Z
 Level: 64
 Ability: Clear Body
 EVs: 252 Atk / 252 Spe / 4 HP
@@ -24716,7 +25274,7 @@ Nature: Timid
 - Dragon Pulse
 - Super Fang
 
-Kommo-o @ Throat Spray
+Kommo-o @ Kommonium Z
 Level: 64
 Ability: Bulletproof
 EVs: 252 SpA / 252 Spe / 4 HP
@@ -27255,7 +27813,7 @@ Nature: Timid
 - Dragon Pulse
 - Super Fang
 
-Hydreigon @ Expert Belt
+Hydreigon @ Darkinium Z
 Level: 64
 Ability: Levitate
 EVs: 252 SpA / 252 Spe / 4 HP
@@ -27325,7 +27883,7 @@ Nature: Timid
 - Draco Meteor
 - Flamethrower
 
-Dragapult @ Choice Band
+Dragapult @ Ghostium Z
 Level: 77
 Ability: Clear Body
 EVs: 252 Atk / 252 Spe / 4 HP
@@ -27648,7 +28206,7 @@ Nature: Timid
 - Draco Meteor
 - Flamethrower
 
-Kommo-o @ Throat Spray
+Kommo-o @ Kommonium Z
 Level: 77
 Ability: Bulletproof
 EVs: 252 SpA / 252 Spe / 4 HP
@@ -27718,7 +28276,7 @@ Nature: Timid
 - Draco Meteor
 - Flamethrower
 
-Hydreigon @ Life Orb
+Hydreigon @ Darkinium Z
 Level: 77
 Ability: Levitate
 EVs: 252 SpA / 252 Spe / 4 HP
@@ -43481,6 +44039,636 @@ Nature: Jolly
 - Earthquake
 - Dragon Dance
 
+=== TRAINER_NERINE_VILLAGE_DEINO_CHARMANDER ===
+Name: NERINE
+Class: Draconid
+Pic: Nerine
+Gender: Female
+Music: Intense
+Items: Full Restore / Full Restore
+Double Battle: No
+AI: Smart Trainer / Prediction / Ace Pokemon
+
+Dragonite @ Weakness Policy
+Level: 56
+Ability: Multiscale
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Adamant
+- Dragon Dance
+- Outrage
+- Extreme Speed
+- Earthquake
+
+Kingdra @ Mystic Water
+Level: 56
+Ability: Swift Swim
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Modest
+- Rain Dance
+- Surf
+- Dragon Pulse
+- Ice Beam
+
+Flygon @ Soft Sand
+Level: 56
+Ability: Levitate
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Earthquake
+- Dragon Claw
+- Rock Slide
+- U-turn
+
+Dragalge @ Black Sludge
+Level: 56
+Ability: Adaptability
+EVs: 252 HP / 252 SpA / 4 SpD
+Nature: Modest
+- Sludge Bomb
+- Dragon Pulse
+- Scald
+- Focus Blast
+
+Kommo-o @ Kommonium Z
+Level: 57
+Ability: Bulletproof
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Timid
+- Clanging Scales
+- Aura Sphere
+- Flamethrower
+- Clangorous Soul
+
+Feraligatr @ Feraligite
+Level: 58
+Ability: Sheer Force
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Adamant
+- Liquidation
+- Crunch
+- Earthquake
+- Dragon Dance
+
+=== TRAINER_NERINE_VILLAGE_DEINO_TOTODILE ===
+Name: NERINE
+Class: Draconid
+Pic: Nerine
+Gender: Female
+Music: Intense
+Items: Full Restore / Full Restore
+Double Battle: No
+AI: Smart Trainer / Prediction / Ace Pokemon
+
+Dragonite @ Weakness Policy
+Level: 56
+Ability: Multiscale
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Adamant
+- Dragon Dance
+- Outrage
+- Extreme Speed
+- Earthquake
+
+Kingdra @ Mystic Water
+Level: 56
+Ability: Swift Swim
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Modest
+- Rain Dance
+- Surf
+- Dragon Pulse
+- Ice Beam
+
+Flygon @ Soft Sand
+Level: 56
+Ability: Levitate
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Earthquake
+- Dragon Claw
+- Rock Slide
+- U-turn
+
+Dragalge @ Black Sludge
+Level: 56
+Ability: Adaptability
+EVs: 252 HP / 252 SpA / 4 SpD
+Nature: Modest
+- Sludge Bomb
+- Dragon Pulse
+- Scald
+- Focus Blast
+
+Kommo-o @ Kommonium Z
+Level: 57
+Ability: Bulletproof
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Timid
+- Clanging Scales
+- Aura Sphere
+- Flamethrower
+- Clangorous Soul
+
+Sceptile @ Sceptilite
+Level: 58
+Ability: Overgrow
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Leaf Blade
+- Dragon Claw
+- Earthquake
+- Swords Dance
+
+=== TRAINER_NERINE_VILLAGE_DEINO_TREECKO ===
+Name: NERINE
+Class: Draconid
+Pic: Nerine
+Gender: Female
+Music: Intense
+Items: Full Restore / Full Restore
+Double Battle: No
+AI: Smart Trainer / Prediction / Ace Pokemon
+
+Dragonite @ Weakness Policy
+Level: 56
+Ability: Multiscale
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Adamant
+- Dragon Dance
+- Outrage
+- Extreme Speed
+- Earthquake
+
+Kingdra @ Mystic Water
+Level: 56
+Ability: Swift Swim
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Modest
+- Rain Dance
+- Surf
+- Dragon Pulse
+- Ice Beam
+
+Flygon @ Soft Sand
+Level: 56
+Ability: Levitate
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Earthquake
+- Dragon Claw
+- Rock Slide
+- U-turn
+
+Dragalge @ Black Sludge
+Level: 56
+Ability: Adaptability
+EVs: 252 HP / 252 SpA / 4 SpD
+Nature: Modest
+- Sludge Bomb
+- Dragon Pulse
+- Scald
+- Focus Blast
+
+Kommo-o @ Kommonium Z
+Level: 57
+Ability: Bulletproof
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Timid
+- Clanging Scales
+- Aura Sphere
+- Flamethrower
+- Clangorous Soul
+
+Charizard @ Charizardite X
+Level: 58
+Ability: Blaze
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Flare Blitz
+- Dragon Claw
+- Earthquake
+- Dragon Dance
+
+=== TRAINER_NERINE_VILLAGE_DREEPY_CHARMANDER ===
+Name: NERINE
+Class: Draconid
+Pic: Nerine
+Gender: Female
+Music: Intense
+Items: Full Restore / Full Restore
+Double Battle: No
+AI: Smart Trainer / Prediction / Ace Pokemon
+
+Dragonite @ Weakness Policy
+Level: 56
+Ability: Multiscale
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Adamant
+- Dragon Dance
+- Outrage
+- Extreme Speed
+- Earthquake
+
+Kingdra @ Mystic Water
+Level: 56
+Ability: Swift Swim
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Modest
+- Rain Dance
+- Surf
+- Dragon Pulse
+- Ice Beam
+
+Flygon @ Soft Sand
+Level: 56
+Ability: Levitate
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Earthquake
+- Dragon Claw
+- Rock Slide
+- U-turn
+
+Dragalge @ Black Sludge
+Level: 56
+Ability: Adaptability
+EVs: 252 HP / 252 SpA / 4 SpD
+Nature: Modest
+- Sludge Bomb
+- Dragon Pulse
+- Scald
+- Focus Blast
+
+Hydreigon @ Darkinium Z
+Level: 57
+Ability: Levitate
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Modest
+- Dark Pulse
+- Dragon Pulse
+- Flamethrower
+- Nasty Plot
+
+Feraligatr @ Feraligite
+Level: 58
+Ability: Sheer Force
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Adamant
+- Liquidation
+- Crunch
+- Earthquake
+- Dragon Dance
+
+=== TRAINER_NERINE_VILLAGE_DREEPY_TOTODILE ===
+Name: NERINE
+Class: Draconid
+Pic: Nerine
+Gender: Female
+Music: Intense
+Items: Full Restore / Full Restore
+Double Battle: No
+AI: Smart Trainer / Prediction / Ace Pokemon
+
+Dragonite @ Weakness Policy
+Level: 56
+Ability: Multiscale
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Adamant
+- Dragon Dance
+- Outrage
+- Extreme Speed
+- Earthquake
+
+Kingdra @ Mystic Water
+Level: 56
+Ability: Swift Swim
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Modest
+- Rain Dance
+- Surf
+- Dragon Pulse
+- Ice Beam
+
+Flygon @ Soft Sand
+Level: 56
+Ability: Levitate
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Earthquake
+- Dragon Claw
+- Rock Slide
+- U-turn
+
+Dragalge @ Black Sludge
+Level: 56
+Ability: Adaptability
+EVs: 252 HP / 252 SpA / 4 SpD
+Nature: Modest
+- Sludge Bomb
+- Dragon Pulse
+- Scald
+- Focus Blast
+
+Hydreigon @ Darkinium Z
+Level: 57
+Ability: Levitate
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Modest
+- Dark Pulse
+- Dragon Pulse
+- Flamethrower
+- Nasty Plot
+
+Sceptile @ Sceptilite
+Level: 58
+Ability: Overgrow
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Leaf Blade
+- Dragon Claw
+- Earthquake
+- Swords Dance
+
+=== TRAINER_NERINE_VILLAGE_DREEPY_TREECKO ===
+Name: NERINE
+Class: Draconid
+Pic: Nerine
+Gender: Female
+Music: Intense
+Items: Full Restore / Full Restore
+Double Battle: No
+AI: Smart Trainer / Prediction / Ace Pokemon
+
+Dragonite @ Weakness Policy
+Level: 56
+Ability: Multiscale
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Adamant
+- Dragon Dance
+- Outrage
+- Extreme Speed
+- Earthquake
+
+Kingdra @ Mystic Water
+Level: 56
+Ability: Swift Swim
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Modest
+- Rain Dance
+- Surf
+- Dragon Pulse
+- Ice Beam
+
+Flygon @ Soft Sand
+Level: 56
+Ability: Levitate
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Earthquake
+- Dragon Claw
+- Rock Slide
+- U-turn
+
+Dragalge @ Black Sludge
+Level: 56
+Ability: Adaptability
+EVs: 252 HP / 252 SpA / 4 SpD
+Nature: Modest
+- Sludge Bomb
+- Dragon Pulse
+- Scald
+- Focus Blast
+
+Hydreigon @ Darkinium Z
+Level: 57
+Ability: Levitate
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Modest
+- Dark Pulse
+- Dragon Pulse
+- Flamethrower
+- Nasty Plot
+
+Charizard @ Charizardite X
+Level: 58
+Ability: Blaze
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Flare Blitz
+- Dragon Claw
+- Earthquake
+- Dragon Dance
+
+=== TRAINER_NERINE_VILLAGE_JANGMO_O_CHARMANDER ===
+Name: NERINE
+Class: Draconid
+Pic: Nerine
+Gender: Female
+Music: Intense
+Items: Full Restore / Full Restore
+Double Battle: No
+AI: Smart Trainer / Prediction / Ace Pokemon
+
+Dragonite @ Weakness Policy
+Level: 56
+Ability: Multiscale
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Adamant
+- Dragon Dance
+- Outrage
+- Extreme Speed
+- Earthquake
+
+Kingdra @ Mystic Water
+Level: 56
+Ability: Swift Swim
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Modest
+- Rain Dance
+- Surf
+- Dragon Pulse
+- Ice Beam
+
+Flygon @ Soft Sand
+Level: 56
+Ability: Levitate
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Earthquake
+- Dragon Claw
+- Rock Slide
+- U-turn
+
+Dragalge @ Black Sludge
+Level: 56
+Ability: Adaptability
+EVs: 252 HP / 252 SpA / 4 SpD
+Nature: Modest
+- Sludge Bomb
+- Dragon Pulse
+- Scald
+- Focus Blast
+
+Dragapult @ Ghostium Z
+Level: 57
+Ability: Clear Body
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Dragon Darts
+- Phantom Force
+- U-turn
+- Dragon Dance
+
+Feraligatr @ Feraligite
+Level: 58
+Ability: Sheer Force
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Adamant
+- Liquidation
+- Crunch
+- Earthquake
+- Dragon Dance
+
+=== TRAINER_NERINE_VILLAGE_JANGMO_O_TOTODILE ===
+Name: NERINE
+Class: Draconid
+Pic: Nerine
+Gender: Female
+Music: Intense
+Items: Full Restore / Full Restore
+Double Battle: No
+AI: Smart Trainer / Prediction / Ace Pokemon
+
+Dragonite @ Weakness Policy
+Level: 56
+Ability: Multiscale
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Adamant
+- Dragon Dance
+- Outrage
+- Extreme Speed
+- Earthquake
+
+Kingdra @ Mystic Water
+Level: 56
+Ability: Swift Swim
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Modest
+- Rain Dance
+- Surf
+- Dragon Pulse
+- Ice Beam
+
+Flygon @ Soft Sand
+Level: 56
+Ability: Levitate
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Earthquake
+- Dragon Claw
+- Rock Slide
+- U-turn
+
+Dragalge @ Black Sludge
+Level: 56
+Ability: Adaptability
+EVs: 252 HP / 252 SpA / 4 SpD
+Nature: Modest
+- Sludge Bomb
+- Dragon Pulse
+- Scald
+- Focus Blast
+
+Dragapult @ Ghostium Z
+Level: 57
+Ability: Clear Body
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Dragon Darts
+- Phantom Force
+- U-turn
+- Dragon Dance
+
+Sceptile @ Sceptilite
+Level: 58
+Ability: Overgrow
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Leaf Blade
+- Dragon Claw
+- Earthquake
+- Swords Dance
+
+=== TRAINER_NERINE_VILLAGE_JANGMO_O_TREECKO ===
+Name: NERINE
+Class: Draconid
+Pic: Nerine
+Gender: Female
+Music: Intense
+Items: Full Restore / Full Restore
+Double Battle: No
+AI: Smart Trainer / Prediction / Ace Pokemon
+
+Dragonite @ Weakness Policy
+Level: 56
+Ability: Multiscale
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Adamant
+- Dragon Dance
+- Outrage
+- Extreme Speed
+- Earthquake
+
+Kingdra @ Mystic Water
+Level: 56
+Ability: Swift Swim
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Modest
+- Rain Dance
+- Surf
+- Dragon Pulse
+- Ice Beam
+
+Flygon @ Soft Sand
+Level: 56
+Ability: Levitate
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Earthquake
+- Dragon Claw
+- Rock Slide
+- U-turn
+
+Dragalge @ Black Sludge
+Level: 56
+Ability: Adaptability
+EVs: 252 HP / 252 SpA / 4 SpD
+Nature: Modest
+- Sludge Bomb
+- Dragon Pulse
+- Scald
+- Focus Blast
+
+Dragapult @ Ghostium Z
+Level: 57
+Ability: Clear Body
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Dragon Darts
+- Phantom Force
+- U-turn
+- Dragon Dance
+
+Charizard @ Charizardite X
+Level: 58
+Ability: Blaze
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Flare Blitz
+- Dragon Claw
+- Earthquake
+- Dragon Dance
+
 === TRAINER_NERINE_POSTGAME_DEINO_CHARMANDER ===
 Name: NERINE
 Class: Draconid
@@ -43531,15 +44719,15 @@ Nature: Adamant
 - Extreme Speed
 - Earthquake
 
-Kommo-o @ Lum Berry
+Kommo-o @ Kommonium Z
 Level: 77
 Ability: Bulletproof
-EVs: 252 Atk / 252 Spe / 4 HP
-Nature: Jolly
-- Dragon Dance
-- Close Combat
-- Dragon Claw
-- Iron Head
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Timid
+- Clanging Scales
+- Aura Sphere
+- Flamethrower
+- Clangorous Soul
 
 Feraligatr @ Feraligite
 Level: 78
@@ -43601,15 +44789,15 @@ Nature: Adamant
 - Extreme Speed
 - Earthquake
 
-Kommo-o @ Lum Berry
+Kommo-o @ Kommonium Z
 Level: 77
 Ability: Bulletproof
-EVs: 252 Atk / 252 Spe / 4 HP
-Nature: Jolly
-- Dragon Dance
-- Close Combat
-- Dragon Claw
-- Iron Head
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Timid
+- Clanging Scales
+- Aura Sphere
+- Flamethrower
+- Clangorous Soul
 
 Sceptile @ Sceptilite
 Level: 78
@@ -43671,15 +44859,15 @@ Nature: Adamant
 - Extreme Speed
 - Earthquake
 
-Kommo-o @ Lum Berry
+Kommo-o @ Kommonium Z
 Level: 77
 Ability: Bulletproof
-EVs: 252 Atk / 252 Spe / 4 HP
-Nature: Jolly
-- Dragon Dance
-- Close Combat
-- Dragon Claw
-- Iron Head
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Timid
+- Clanging Scales
+- Aura Sphere
+- Flamethrower
+- Clangorous Soul
 
 Charizard @ Charizardite X
 Level: 78
@@ -43741,7 +44929,7 @@ Nature: Adamant
 - Extreme Speed
 - Earthquake
 
-Hydreigon @ Life Orb
+Hydreigon @ Darkinium Z
 Level: 77
 Ability: Levitate
 EVs: 252 SpA / 252 Spe / 4 HP
@@ -43811,7 +44999,7 @@ Nature: Adamant
 - Extreme Speed
 - Earthquake
 
-Hydreigon @ Life Orb
+Hydreigon @ Darkinium Z
 Level: 77
 Ability: Levitate
 EVs: 252 SpA / 252 Spe / 4 HP
@@ -43881,7 +45069,7 @@ Nature: Adamant
 - Extreme Speed
 - Earthquake
 
-Hydreigon @ Life Orb
+Hydreigon @ Darkinium Z
 Level: 77
 Ability: Levitate
 EVs: 252 SpA / 252 Spe / 4 HP
@@ -43951,7 +45139,7 @@ Nature: Adamant
 - Extreme Speed
 - Earthquake
 
-Dragapult @ Life Orb
+Dragapult @ Ghostium Z
 Level: 77
 Ability: Infiltrator
 EVs: 252 Atk / 252 Spe / 4 HP
@@ -44021,7 +45209,7 @@ Nature: Adamant
 - Extreme Speed
 - Earthquake
 
-Dragapult @ Life Orb
+Dragapult @ Ghostium Z
 Level: 77
 Ability: Infiltrator
 EVs: 252 Atk / 252 Spe / 4 HP
@@ -44091,7 +45279,7 @@ Nature: Adamant
 - Extreme Speed
 - Earthquake
 
-Dragapult @ Life Orb
+Dragapult @ Ghostium Z
 Level: 77
 Ability: Infiltrator
 EVs: 252 Atk / 252 Spe / 4 HP
@@ -44110,6 +45298,486 @@ Nature: Jolly
 - Outrage
 - Earthquake
 - Dragon Dance
+
+=== TRAINER_ASTER_DOUBLE_DEINO ===
+Name: ASTER
+Class: Draconid
+Pic: Aster
+Gender: Female
+Music: Intense
+Items: Full Restore / Full Restore
+Double Battle: Yes
+AI: Smart Trainer / Prediction / Ace Pokemon
+
+Tyranitar @ Assault Vest
+Level: 79
+Ability: Unnerve
+EVs: 252 HP / 252 Atk / 4 SpD
+Nature: Adamant
+- Rock Slide
+- Crunch
+- Ice Punch
+- Low Kick
+
+Dragapult @ Ghostium Z
+Level: 80
+Ability: Clear Body
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Dragon Darts
+- Phantom Force
+- U-turn
+- Protect
+
+Salamence @ Salamencite
+Level: 81
+Ability: Intimidate
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Double-Edge
+- Dragon Claw
+- Rock Slide
+- Protect
+
+=== TRAINER_ASTER_DOUBLE_DREEPY ===
+Name: ASTER
+Class: Draconid
+Pic: Aster
+Gender: Female
+Music: Intense
+Items: Full Restore / Full Restore
+Double Battle: Yes
+AI: Smart Trainer / Prediction / Ace Pokemon
+
+Tyranitar @ Assault Vest
+Level: 79
+Ability: Unnerve
+EVs: 252 HP / 252 Atk / 4 SpD
+Nature: Adamant
+- Rock Slide
+- Crunch
+- Ice Punch
+- Low Kick
+
+Kommo-o @ Kommonium Z
+Level: 80
+Ability: Bulletproof
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Timid
+- Clanging Scales
+- Aura Sphere
+- Flamethrower
+- Protect
+
+Salamence @ Salamencite
+Level: 81
+Ability: Intimidate
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Double-Edge
+- Dragon Claw
+- Rock Slide
+- Protect
+
+=== TRAINER_ASTER_DOUBLE_JANGMO_O ===
+Name: ASTER
+Class: Draconid
+Pic: Aster
+Gender: Female
+Music: Intense
+Items: Full Restore / Full Restore
+Double Battle: Yes
+AI: Smart Trainer / Prediction / Ace Pokemon
+
+Tyranitar @ Assault Vest
+Level: 79
+Ability: Unnerve
+EVs: 252 HP / 252 Atk / 4 SpD
+Nature: Adamant
+- Rock Slide
+- Crunch
+- Ice Punch
+- Low Kick
+
+Hydreigon @ Darkinium Z
+Level: 80
+Ability: Levitate
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Timid
+- Dark Pulse
+- Draco Meteor
+- Heat Wave
+- Protect
+
+Salamence @ Salamencite
+Level: 81
+Ability: Intimidate
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Double-Edge
+- Dragon Claw
+- Rock Slide
+- Protect
+
+=== TRAINER_NERINE_DOUBLE_DEINO_CHARMANDER ===
+Name: NERINE
+Class: Draconid
+Pic: Nerine
+Gender: Female
+Music: Intense
+Items: Full Restore / Full Restore
+Double Battle: Yes
+AI: Smart Trainer / Prediction / Ace Pokemon
+
+Kingdra @ Life Orb
+Level: 79
+Ability: Sniper
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Modest
+- Muddy Water
+- Ice Beam
+- Dragon Pulse
+- Protect
+
+Kommo-o @ Kommonium Z
+Level: 80
+Ability: Bulletproof
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Timid
+- Clanging Scales
+- Aura Sphere
+- Flamethrower
+- Protect
+
+Feraligatr @ Feraligite
+Level: 81
+Ability: Sheer Force
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Liquidation
+- Double-Edge
+- Ice Punch
+- Protect
+
+=== TRAINER_NERINE_DOUBLE_DEINO_TOTODILE ===
+Name: NERINE
+Class: Draconid
+Pic: Nerine
+Gender: Female
+Music: Intense
+Items: Full Restore / Full Restore
+Double Battle: Yes
+AI: Smart Trainer / Prediction / Ace Pokemon
+
+Kingdra @ Life Orb
+Level: 79
+Ability: Sniper
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Modest
+- Muddy Water
+- Ice Beam
+- Dragon Pulse
+- Protect
+
+Kommo-o @ Kommonium Z
+Level: 80
+Ability: Bulletproof
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Timid
+- Clanging Scales
+- Aura Sphere
+- Flamethrower
+- Protect
+
+Sceptile @ Sceptilite
+Level: 81
+Ability: Overgrow
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Leaf Blade
+- Dragon Claw
+- Rock Slide
+- Protect
+
+=== TRAINER_NERINE_DOUBLE_DEINO_TREECKO ===
+Name: NERINE
+Class: Draconid
+Pic: Nerine
+Gender: Female
+Music: Intense
+Items: Full Restore / Full Restore
+Double Battle: Yes
+AI: Smart Trainer / Prediction / Ace Pokemon
+
+Kingdra @ Life Orb
+Level: 79
+Ability: Sniper
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Modest
+- Muddy Water
+- Ice Beam
+- Dragon Pulse
+- Protect
+
+Kommo-o @ Kommonium Z
+Level: 80
+Ability: Bulletproof
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Timid
+- Clanging Scales
+- Aura Sphere
+- Flamethrower
+- Protect
+
+Charizard @ Charizardite X
+Level: 81
+Ability: Blaze
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Flare Blitz
+- Dragon Claw
+- Rock Slide
+- Protect
+
+=== TRAINER_NERINE_DOUBLE_DREEPY_CHARMANDER ===
+Name: NERINE
+Class: Draconid
+Pic: Nerine
+Gender: Female
+Music: Intense
+Items: Full Restore / Full Restore
+Double Battle: Yes
+AI: Smart Trainer / Prediction / Ace Pokemon
+
+Kingdra @ Life Orb
+Level: 79
+Ability: Sniper
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Modest
+- Muddy Water
+- Ice Beam
+- Dragon Pulse
+- Protect
+
+Hydreigon @ Darkinium Z
+Level: 80
+Ability: Levitate
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Modest
+- Dark Pulse
+- Dragon Pulse
+- Heat Wave
+- Protect
+
+Feraligatr @ Feraligite
+Level: 81
+Ability: Sheer Force
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Liquidation
+- Double-Edge
+- Ice Punch
+- Protect
+
+=== TRAINER_NERINE_DOUBLE_DREEPY_TOTODILE ===
+Name: NERINE
+Class: Draconid
+Pic: Nerine
+Gender: Female
+Music: Intense
+Items: Full Restore / Full Restore
+Double Battle: Yes
+AI: Smart Trainer / Prediction / Ace Pokemon
+
+Kingdra @ Life Orb
+Level: 79
+Ability: Sniper
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Modest
+- Muddy Water
+- Ice Beam
+- Dragon Pulse
+- Protect
+
+Hydreigon @ Darkinium Z
+Level: 80
+Ability: Levitate
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Modest
+- Dark Pulse
+- Dragon Pulse
+- Heat Wave
+- Protect
+
+Sceptile @ Sceptilite
+Level: 81
+Ability: Overgrow
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Leaf Blade
+- Dragon Claw
+- Rock Slide
+- Protect
+
+=== TRAINER_NERINE_DOUBLE_DREEPY_TREECKO ===
+Name: NERINE
+Class: Draconid
+Pic: Nerine
+Gender: Female
+Music: Intense
+Items: Full Restore / Full Restore
+Double Battle: Yes
+AI: Smart Trainer / Prediction / Ace Pokemon
+
+Kingdra @ Life Orb
+Level: 79
+Ability: Sniper
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Modest
+- Muddy Water
+- Ice Beam
+- Dragon Pulse
+- Protect
+
+Hydreigon @ Darkinium Z
+Level: 80
+Ability: Levitate
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Modest
+- Dark Pulse
+- Dragon Pulse
+- Heat Wave
+- Protect
+
+Charizard @ Charizardite X
+Level: 81
+Ability: Blaze
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Flare Blitz
+- Dragon Claw
+- Rock Slide
+- Protect
+
+=== TRAINER_NERINE_DOUBLE_JANGMO_O_CHARMANDER ===
+Name: NERINE
+Class: Draconid
+Pic: Nerine
+Gender: Female
+Music: Intense
+Items: Full Restore / Full Restore
+Double Battle: Yes
+AI: Smart Trainer / Prediction / Ace Pokemon
+
+Kingdra @ Life Orb
+Level: 79
+Ability: Sniper
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Modest
+- Muddy Water
+- Ice Beam
+- Dragon Pulse
+- Protect
+
+Dragapult @ Ghostium Z
+Level: 80
+Ability: Clear Body
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Dragon Darts
+- Phantom Force
+- Sucker Punch
+- Protect
+
+Feraligatr @ Feraligite
+Level: 81
+Ability: Sheer Force
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Liquidation
+- Double-Edge
+- Ice Punch
+- Protect
+
+=== TRAINER_NERINE_DOUBLE_JANGMO_O_TOTODILE ===
+Name: NERINE
+Class: Draconid
+Pic: Nerine
+Gender: Female
+Music: Intense
+Items: Full Restore / Full Restore
+Double Battle: Yes
+AI: Smart Trainer / Prediction / Ace Pokemon
+
+Kingdra @ Life Orb
+Level: 79
+Ability: Sniper
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Modest
+- Muddy Water
+- Ice Beam
+- Dragon Pulse
+- Protect
+
+Dragapult @ Ghostium Z
+Level: 80
+Ability: Clear Body
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Dragon Darts
+- Phantom Force
+- Sucker Punch
+- Protect
+
+Sceptile @ Sceptilite
+Level: 81
+Ability: Overgrow
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Leaf Blade
+- Dragon Claw
+- Rock Slide
+- Protect
+
+=== TRAINER_NERINE_DOUBLE_JANGMO_O_TREECKO ===
+Name: NERINE
+Class: Draconid
+Pic: Nerine
+Gender: Female
+Music: Intense
+Items: Full Restore / Full Restore
+Double Battle: Yes
+AI: Smart Trainer / Prediction / Ace Pokemon
+
+Kingdra @ Life Orb
+Level: 79
+Ability: Sniper
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Modest
+- Muddy Water
+- Ice Beam
+- Dragon Pulse
+- Protect
+
+Dragapult @ Ghostium Z
+Level: 80
+Ability: Clear Body
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Dragon Darts
+- Phantom Force
+- Sucker Punch
+- Protect
+
+Charizard @ Charizardite X
+Level: 81
+Ability: Blaze
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Flare Blitz
+- Dragon Claw
+- Rock Slide
+- Protect
 
 === TRAINER_WES_FRONTIER ===
 Name: WES

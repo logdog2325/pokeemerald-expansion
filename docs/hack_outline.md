@@ -14,7 +14,8 @@ undercover. Everyone else may suspect (May's doubts, Steven's "strongest MAGMA g
 1. ✅ Night prologue: a falling star; the player wakes at home, Aster at the door – the Elder is calling.
 2. ✅ The Elder's house: the meteor prophecy and the mission (walk among Team Magma, stand beside Rayquaza).
 3. ✅ The shrine egg ceremony: Deino (Unova), Dreepy (Galar), Jangmo-o (Alola); one kept aside for Nerine,
-   Aster takes the leftover.
+   Aster takes the leftover. 🚧 Then the Elder gives the **Z-Power Ring** Alola's dragon keepers sent with their egg,
+   and the first crystal, the **Normalium Z** (D-267); the other crystals come along the road (D-269).
 4. ✅ The egg hatches after 5 steps; a villager gives the Running Shoes.
 5. ✅ **Aster battle 1** – Draconid Pass (tutorial).
 6. ✅ Route 101: the Poochyena rescue. Littleroot: Brendan is Birch's son, May is Norman's daughter; Birch's
@@ -40,8 +41,11 @@ undercover. Everyone else may suspect (May's doubts, Steven's "strongest MAGMA g
     goods choice.
 16. ✅ **Gym 2 – Brawly** (Knuckle Badge); Granite Cave: Steven and the letter. 🚧 Steven doesn't register the player
     (D-256).
+    🚧 **Aster's Granite Cave battle** – she waits in the dark of B1F on the way to Steven ("the dark suits a dragon",
+    D-279).
 17. ✅ Slateport, Oceanic Museum: Tabitha's order; **Nerine battle 3**. 🚧 Tabitha hands out the Dowsing Machine
-    (D-259).
+    (D-259). 🚧 Prof. Oak by Stern's shipyard: a ship from Alola brings his cousin Samson's Z-Crystals for the three
+    starters, the second partner's first (D-269).
 18. ✅ **May battle 2** – Route 110. 🚧 She no longer registers the player or hands over the Dowsing Machine: nobody
     gives a MAGMA grunt their number (D-256, D-259).
 19. ✅ **Wally battle 1** – Mauville (hostile). 🚧 No PokéNav registration call afterwards (D-256).
@@ -49,6 +53,7 @@ undercover. Everyone else may suspect (May's doubts, Steven's "strongest MAGMA g
 
 ## Act 3 – Rising in the ranks (Meteor Falls → Lavaridge)
 21. ✅ Meteor Falls: Maxie in person, the meteorite shard, the stand-off with Aqua; **Aster battle 2** (losable).
+    🚧 Aster hands over the falls' Draconids' Dragonium Z (D-269).
 22. ✅ **Wally battle 2** – Route 112, below the cable car.
 23. ✅ Mt. Chimney: Tabitha's order; **Nerine battle 4**; **Brendan battle 3**; the player secretly pulls the
     meteorite and the machine dies.
@@ -66,9 +71,12 @@ undercover. Everyone else may suspect (May's doubts, Steven's "strongest MAGMA g
     D-256).
 31. ✅ Route 120: Steven and the Devon Scope; **Wally battle 4** on the bridge.
 32. ✅ **Gym 6 – Winona** (Feather Badge).
+    🚧 **Aster's Route 121 battle** – on the Mt. Pyre pier, watching the mountain before the player's mission
+    (optional, until the summit, D-280).
 33. ✅ Lilycove: **Wally battle 5** (Mega Gallade); **Brendan + May double battle** (Brendan 5, May 4) – both
     optional; they leave with the Mind Badge (D-273).
 34. ✅ Mt. Pyre: Maxie's order and the Magma Emblem; **Nerine battle 5**; Archie takes the Red Orb.
+    🚧 A Jangmo-o tamer finds the Kommonium Z Nerine leaves by the summit lantern (D-269).
 35. ✅ Magma Hideout: Maxie's promotion ("my right hand"), no battle; on the way out, **Brendan battle 6** at
     Jagged Pass.
 
@@ -96,6 +104,9 @@ undercover. Everyone else may suspect (May's doubts, Steven's "strongest MAGMA g
     **Shelly** (Mega Gyarados) – "ARCHIE sends his regards".
 47. 🚧 Victory Road: **Courtney (Mega Houndoom) + Tabitha (fire Mega) double battle**; they hint that Maxie and
     Archie will make the Draconids pay.
+    🚧 At home in the village (optional, from the Rain Badge until the League; the Elder's call asks the player
+    home): **Aster** on the square wants her Meteor Falls rematch, **Nerine** by the pond battles as herself for the
+    first time (D-281).
 
 ## Act 6 – Champion (Victory Road → Pokémon League)
 48. ✅ **Wally battle 6** – Victory Road (Mega Gallade).
@@ -105,9 +116,6 @@ undercover. Everyone else may suspect (May's doubts, Steven's "strongest MAGMA g
 
 ## Act 7 – The prophecy fulfilled
 51. ⬜ The Elder calls the player home: the shrine's sealed wall opens – **Regidrago**.
-    ⬜ With Regidrago the Elder unseals the gifts Alola's dragon keepers sent with the Alolan egg: the **Z-Ring** and a
-    **Dragonium Z** (+ Kommonium Z for a Jangmo-o); Aster and Nerine get a crystal each. Z-Moves exist from here on,
-    once per battle, alongside the Mega.
 52. 🚧 Sky Pillar: **Wallace**, Sootopolis's guardian of the tower (as in ORAS's Delta Episode), tests the player
     before anyone climbs to Rayquaza (Mega Gyarados).
     ✅ **The trial** – the player + Nerine (Nerine 8, partner) vs **Aster battle 3**; **Zinnia** on
@@ -124,12 +132,14 @@ undercover. Everyone else may suspect (May's doubts, Steven's "strongest MAGMA g
 ## Post-game
 57. ✅ The Elder brings the S.S. Ticket; the Lati news.  ⬜ Both Latis roam.
 58. ✅ **Brendan and May** in Birch's lab (singles and a double); **Aster** at the shrine; **Nerine** by the
-    village pond; **Deoxys** on the Sky Pillar summit.
+    village pond; **Deoxys** on the Sky Pillar summit. 🚧 After both singles, the **Aster + Nerine double** by the
+    pond, once a day (D-283).
 59. ✅ The Elite Four and **Champion Steven** rematch (ORAS post-game teams); after the finale **Wallace's rematch**
     (Mega Gyarados) by the Cave of Origin; Steven chats in his Meteor Falls cave.
 60. ✅ Battle Frontier: **Wes, Red, Blue** and the Legends' Tag.
 61. ⬜ Groudon (Magma Hideout) and Kyogre (Seafloor Cavern) catchable.
-62. ⬜ Prof. Oak visits the lab with the Z-Crystal of the second partner's type (from his cousin Samson Oak in Alola).
+62. 🚧 Prof. Oak's Z-Crystals came in Act 2 (Slateport, D-269); the species crystals with no species in the story
+    are post-game only.
 63. ☑️ **Lance** lands in the Draconid village on a visit after the S.S. Ticket: his clan in Blackthorn is the
     Draconids' Northern Wing; his PWT team with **Mega Dragonite**, then a Dratini and the Dragoninite; rematches.
 
@@ -139,8 +149,8 @@ undercover. Everyone else may suspect (May's doubts, Steven's "strongest MAGMA g
 | Brendan | Rustboro ✅ · Route 104 ✅ · Mt. Chimney ✅ · Route 119 ✅ · Lilycove double ✅ · Jagged Pass ✅ · Space Center tag ✅ · Sootopolis partner ✅ · village partner ⬜ · final partner (choice) ⬜ · post-game lab ✅ |
 | May | Route 103 ✅ · Route 110 ✅ · Lavaridge ✅ · Lilycove double ✅ · Mossdeep ✅ · Sootopolis partner ✅ · village partner ⬜ · final partner (choice) ⬜ · post-game lab ✅ |
 | Wally | Mauville ✅ · Route 112 ✅ · Petalburg Gym door ✅ · Route 120 ✅ · Lilycove ✅ · Victory Road ✅ · village partner ⬜ |
-| Aster | Draconid Pass ✅ · Meteor Falls ✅ · Sky Pillar trial ✅ · village partner ⬜ · post-game shrine ✅ |
-| Nerine | Petalburg Woods ✅ · Rusturf ✅ · Museum ✅ · Mt. Chimney ✅ · Mt. Pyre ✅ · Aqua Hideout ✅ · Seafloor (Mega) ✅ · Sky Pillar partner ✅ · post-game pond ✅ |
+| Aster | Draconid Pass ✅ · Granite Cave 🚧 · Meteor Falls ✅ · Route 121 🚧 · village, before the League 🚧 · Sky Pillar trial ✅ · village partner ⬜ · post-game shrine ✅ · post-game pond double 🚧 |
+| Nerine | Petalburg Woods ✅ · Rusturf ✅ · Museum ✅ · Mt. Chimney ✅ · Mt. Pyre ✅ · Aqua Hideout ✅ · Seafloor (Mega) ✅ · village pond, as herself 🚧 · Sky Pillar partner ✅ · post-game pond ✅ · post-game pond double 🚧 |
 | Maxie | Sootopolis ✅ (bigger scene 🚧) · before Victory Road 🚧 · village finale (Primal Groudon) ⬜ |
 
 🚧 PokéNav: no rival registers the player (nor hands them anything) while they wear the uniform; Brendan, May and
@@ -160,8 +170,9 @@ order, each at its story point (`check_progression.py` walks all eight).
   evolve at 25 and 50.
 - ✅ Gen 4–9 Pokémon in the wild (Beldum 1% in Granite Cave), on ~60% of generic trainers, every gym trainer and
   the grunts; National Dex from the start.
-- ✅ Battle gimmicks: Mega Evolution only (no Terastallization, Dynamax or Gigantamax for anyone).  ⬜ Z-Moves from the
-  Regidrago chapter on – rare: the player's three crystals, Aster and Nerine.
+- ✅ Battle gimmicks: Mega Evolution only (no Terastallization, Dynamax or Gigantamax for anyone).  🚧 Z-Moves from the
+  egg ceremony on: the Z-Power Ring and all 18 type crystals along the story (D-267, D-269); among the opponents only
+  Aster and Nerine, from Act 5½ (D-268).
 - ✅ The battle-item counter in every Mart, Gym Leaders' boosters, Mega Stones through the story.
 - ✅ Story-lock checker for Acts 1–5.  ⬜ Acts 6–7 and the post-game.
 - ✅ Base-Emerald contradiction scrub (the player's family, Norman, the uniform in leftover lines, quizzes).

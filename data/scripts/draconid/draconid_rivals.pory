@@ -1,0 +1,312 @@
+// Draconid Emerald round 1: more battles with the Draconid rivals (follow-up 29, feedback 1.60; D-279 - D-283).
+//
+//   Granite Cave B1F      Act 2: ASTER waits in the dark, on the only way through to STEVEN (S2)
+//   Route 121             Act 4: ASTER on the MT. PYRE pier, watching the mountain before the player's mission (S7)
+//   Draconid village      Act 5 1/2, the SOOTOPOLIS reveal to the LEAGUE: ASTER on the square, NERINE by the pond as
+//                         herself; both battle once the player has JUAN's BADGE (S9)
+//   Village pond          post-game: ASTER (after her shrine battle) and NERINE, a two-trainer double once a day
+//
+// Every battle names the first id of its fight (D-101: ASTER's team follows the player's egg, NERINE's the egg and
+// the second starter) and is marked done by that id's trainer flag, set after the battle as well, so no state value
+// was added (D-234's rule). Scene objects use temp flags their map's OnTransition sets when they aren't due (D-136).
+
+// ---------------------------------------------------------------------------
+// Granite Cave B1F (Act 2, D-279): from the ladder up to 1F's west end, (4, 21), the only way on to STEVEN's room
+// goes north through the one-tile passage x 3, y 16-18; the trigger at (3, 17) arms (VAR_TEMP_1 1) from the Devon
+// Goods until ASTER's METEOR FALLS battle. ASTER waits at (5, 14) on FLAG_TEMP_11. A loss whites out (to DEWFORD);
+// the trigger waits for the player's return.
+// ---------------------------------------------------------------------------
+
+script GraniteCave_B1F_EventScript_DraconidOnTransition {
+    if (var(VAR_ASTER_STATE) == ASTER_STATE_START && var(VAR_MAGMA_STATE) >= MAGMA_STATE_DEVON_GOODS
+     && !defeated(TRAINER_ASTER_GRANITE_CAVE_DEINO)) {
+        setvar(VAR_TEMP_1, 1)
+    } else {
+        setflag(FLAG_TEMP_11)
+    }
+}
+
+script GraniteCave_B1F_EventScript_DraconidAster {
+    lockall
+    setvar(VAR_TEMP_1, 0)
+    playbgm(MUS_ENCOUNTER_INTENSE, FALSE)
+    msgbox(format("ASTER: Don't bother looking for a light."))
+    closemessage
+    applymovement(LOCALID_GRANITE_CAVE_B1F_ASTER, GraniteCave_B1F_Movement_DraconidAsterApproach)
+    waitmovement(0)
+    msgbox(format("ASTER: The dark suits a dragon. Every DRACONID apprentice spends a night in a cave like this one."))
+    msgbox(format("ASTER: Hmph. So it's true. You look good in red, traitor.\p"
+                  "I know, I know. The ELDER told you to wear it. He told me to leave you alone, too."))
+    msgbox(format("ASTER: I came down the mountain to see what the lowlands are doing to you.\p"
+                  "Let's find out!"))
+    closemessage
+    trainerbattle_no_intro(TRAINER_ASTER_GRANITE_CAVE_DEINO, GraniteCave_B1F_Text_DraconidAsterDefeat)
+    settrainerflag(TRAINER_ASTER_GRANITE_CAVE_DEINO)
+    msgbox(format("ASTER: …Fine. They haven't made you soft. Yet."))
+    msgbox(format("ASTER: Remember who you are under all that red, {PLAYER}.\p"
+                  "And don't follow me. I know the way out in the dark. You don't."))
+    closemessage
+    applymovement(LOCALID_GRANITE_CAVE_B1F_ASTER, GraniteCave_B1F_Movement_DraconidAsterLeave)
+    waitmovement(0)
+    removeobject(LOCALID_GRANITE_CAVE_B1F_ASTER)
+    savebgm(MUS_DUMMY)
+    fadedefaultbgm
+    releaseall
+}
+
+text GraniteCave_B1F_Text_DraconidAsterDefeat {
+    format("Hmph. Still a DRACONID in there.")
+}
+
+// from (5, 14) to the tile above the player, (3, 16)
+movement GraniteCave_B1F_Movement_DraconidAsterApproach {
+    walk_left * 2
+    walk_down * 2
+}
+
+// back up and off east into the dark, along the passage to the ladder up
+movement GraniteCave_B1F_Movement_DraconidAsterLeave {
+    walk_up * 2
+    walk_right * 2
+    walk_up * 2
+    walk_right * 4
+}
+
+// ---------------------------------------------------------------------------
+// Route 121 (Act 4, D-280): ASTER at the end of the MT. PYRE pier, (30, 17), looking out at the mountain. The pier's
+// top row, (30, 14) / (31, 14), is the way down to the water for MT. PYRE; the triggers there arm (VAR_TEMP_1 1) from
+// the Feather Badge until the MT. PYRE summit is done, while ASTER (FLAG_TEMP_14) hasn't been battled. She leaves on
+// her dragon. A loss whites out; she waits.
+// ---------------------------------------------------------------------------
+
+script Route121_EventScript_DraconidOnTransition {
+    if (var(VAR_ASTER_STATE) == ASTER_STATE_MEGA_RING && flag(FLAG_BADGE06_GET)
+     && var(VAR_MAGMA_STATE) >= MAGMA_STATE_WEATHER_INSTITUTE && var(VAR_MAGMA_STATE) < MAGMA_STATE_MT_PYRE
+     && !defeated(TRAINER_ASTER_ROUTE_121_DEINO)) {
+        setvar(VAR_TEMP_1, 1)
+    } else {
+        setflag(FLAG_TEMP_14)
+    }
+}
+
+script Route121_EventScript_DraconidAster {
+    lockall
+    setvar(VAR_TEMP_1, 0)
+    getplayerxy(VAR_0x8004, VAR_0x8005)
+    playbgm(MUS_ENCOUNTER_INTENSE, FALSE)
+    applymovement(LOCALID_ROUTE121_ASTER, Common_Movement_WalkInPlaceFasterUp)
+    waitmovement(0)
+    msgbox(format("ASTER: {PLAYER}. Over here."))
+    closemessage
+    if (var(VAR_0x8004) == 30) {
+        applymovement(LOCALID_ROUTE121_ASTER, Route121_Movement_DraconidAsterApproachLeft)
+    } else {
+        applymovement(LOCALID_ROUTE121_ASTER, Route121_Movement_DraconidAsterApproachRight)
+    }
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterDown)
+    waitmovement(0)
+    msgbox(format("ASTER: Look at that mountain. MT. PYRE.\p"
+                  "The ELDER says the old ones are stirring, under the land and under the sea.\p"
+                  "Have you felt the weather lately? All over HOENN, it's gone wrong."))
+    msgbox(format("ASTER: Now MAGMA and AQUA are both on their way up there.\p"
+                  "You know what they want. Don't tell me. I can see it on your face."))
+    msgbox(format("ASTER: Riddle: two dragons climbed the same tower. Only one could reach the sky. Which one?\p"
+                  "…The one still standing. The sky doesn't care about anything else."))
+    msgbox(format("ASTER: So, {PLAYER}. Which of us is still standing?"))
+    closemessage
+    trainerbattle_no_intro(TRAINER_ASTER_ROUTE_121_DEINO, Route121_Text_DraconidAsterDefeat)
+    settrainerflag(TRAINER_ASTER_ROUTE_121_DEINO)
+    msgbox(format("ASTER: Go on, then. Up the mountain.\p"
+                  "Whatever MAXIE finds up there, don't let him keep it."))
+    msgbox(format("ASTER: If the old ones wake, the ELDER says only the sky can put them back to sleep.\p"
+                  "Remember that."))
+    closemessage
+    applymovement(LOCALID_ROUTE121_ASTER, Common_Movement_WalkInPlaceFasterDown)
+    waitmovement(0)
+    delay(30)
+    setfieldeffectargument(0, 1)
+    dofieldeffect(FLDEFF_NPCFLY_OUT)
+    delay(15)
+    removeobject(LOCALID_ROUTE121_ASTER)
+    waitfieldeffect(FLDEFF_NPCFLY_OUT)
+    savebgm(MUS_DUMMY)
+    fadedefaultbgm
+    releaseall
+}
+
+text Route121_Text_DraconidAsterDefeat {
+    format("…You're still standing. Hmph.")
+}
+
+// from (30, 17) to below the player at (30, 15) or (31, 15)
+movement Route121_Movement_DraconidAsterApproachLeft {
+    walk_up * 2
+}
+
+movement Route121_Movement_DraconidAsterApproachRight {
+    walk_right
+    walk_up * 2
+}
+
+// ---------------------------------------------------------------------------
+// The village (D-281, D-283): DraconidVillage_OnTransition calls this. Act 5 1/2 (the uniform is off, the player
+// isn't CHAMPION yet): ASTER on the square at (13, 13) (LOCALID_DRACONID_VILLAGE_HOME_ASTER, FLAG_TEMP_1F) and
+// NERINE by the pond at (28, 7) (her post-game object, FLAG_HIDE_DRACONID_VILLAGE_NERINE). From the CHAMPION until
+// the village is saved they are at the SKY PILLAR. Post-game, once ASTER's shrine battle is done, she stands by the
+// pond beside NERINE, (27, 7), for their double (not on the visit LANCE lands: she runs down to him then).
+// ---------------------------------------------------------------------------
+
+script DraconidVillage_EventScript_DraconidRivalsOnTransition {
+    if (var(VAR_MAGMA_STATE) >= MAGMA_STATE_TURNED && !flag(FLAG_IS_CHAMPION)
+     && var(VAR_DRACONID_FINALE_STATE) == FINALE_STATE_NONE) {
+        clearflag(FLAG_HIDE_DRACONID_VILLAGE_NERINE)
+    } elif (var(VAR_DRACONID_FINALE_STATE) >= FINALE_STATE_METEOR_DESTROYED
+         && var(VAR_ASTER_STATE) == ASTER_STATE_POSTGAME && var(VAR_TEMP_C) != 1) {
+        setobjectxyperm(LOCALID_DRACONID_VILLAGE_HOME_ASTER, 27, 7)
+        setobjectmovementtype(LOCALID_DRACONID_VILLAGE_HOME_ASTER, MOVEMENT_TYPE_FACE_RIGHT)
+    } else {
+        setflag(FLAG_TEMP_1F)
+        if (var(VAR_DRACONID_FINALE_STATE) < FINALE_STATE_METEOR_DESTROYED) {
+            setflag(FLAG_HIDE_DRACONID_VILLAGE_NERINE)
+        }
+    }
+}
+
+// ASTER on the square (Act 5 1/2) or by the pond (post-game)
+script DraconidVillage_EventScript_DraconidAsterHome {
+    lock
+    faceplayer
+    if (var(VAR_DRACONID_FINALE_STATE) >= FINALE_STATE_METEOR_DESTROYED) {
+        goto(DraconidVillage_EventScript_DraconidRivalsDouble)
+    }
+    if (defeated(TRAINER_ASTER_VILLAGE_DEINO)) {
+        msgbox(format("ASTER: What are you still doing here? The LEAGUE won't wait forever.\p"
+                      "Neither will the sky."))
+        release
+        end
+    }
+    if (!flag(FLAG_BADGE08_GET)) {
+        msgbox(format("ASTER: There you are. Out of the red at last.\p"
+                      "Hear that? The whole village has been cheering since the news came up the pass."))
+        msgbox(format("ASTER: Don't get comfortable. Go and win JUAN's BADGE first.\p"
+                      "Then come back, and we settle METEOR FALLS. Properly."))
+        release
+        end
+    }
+    msgbox(format("ASTER: Eight BADGES. Hmph. Not bad, for a former traitor."))
+    msgbox(format("ASTER: METEOR FALLS never counted. You were wearing their colors, and I was too angry to see straight.\p"
+                  "Now there's nothing in the way. No red, no secrets. Just two DRACONIDS."))
+    // her KEY STONE and her crystal came from the ELDER the night she and NERINE called RAYQUAZA (D-268, D-282)
+    msgbox(format("ASTER: And look. The night we called RAYQUAZA, the ELDER gave me a KEY STONE of my own.\p"
+                  "And a crystal from the keepers in ALOLA. You're the first one I get to try them on."))
+    msgbox(format("ASTER: Ready?"), MSGBOX_YESNO)
+    if (var(VAR_RESULT) == NO) {
+        msgbox(format("ASTER: Then hurry up and get ready. I'm not going anywhere."))
+        release
+        end
+    }
+    msgbox(format("ASTER: Good. Don't hold back!"))
+    closemessage
+    trainerbattle_no_intro(TRAINER_ASTER_VILLAGE_DEINO, DraconidVillage_Text_DraconidAsterHomeDefeat)
+    settrainerflag(TRAINER_ASTER_VILLAGE_DEINO)
+    msgbox(format("ASTER: …Fine. That one counted.\p"
+                  "Go and win your LEAGUE, {PLAYER}. The ELDER says the sky isn't finished with us."))
+    release
+}
+
+text DraconidVillage_Text_DraconidAsterHomeDefeat {
+    format("…Fine. You win this round.")
+}
+
+// NERINE by the pond before the LEAGUE (DraconidVillage_EventScript_DraconidNerine comes here before the finale)
+script DraconidVillage_EventScript_DraconidNerineHome {
+    if (defeated(TRAINER_NERINE_VILLAGE_DEINO_CHARMANDER)) {
+        msgbox(format("NERINE: Go on, {PLAYER}. The LEAGUE is waiting.\p"
+                      "The pond and I will still be here when you come home."))
+        release
+        end
+    }
+    if (!flag(FLAG_BADGE08_GET)) {
+        msgbox(format("NERINE: Home. After all those years at sea, I keep expecting the water to taste of salt."))
+        msgbox(format("NERINE: When you have JUAN's BADGE, come and see me.\p"
+                      "I'd like to battle you at your strongest."))
+        release
+        end
+    }
+    msgbox(format("NERINE: Every time we battled, I was someone else. A TEAM AQUA grunt. The ELDER's test.\p"
+                  "I never got to battle you as myself."))
+    msgbox(format("NERINE: No AQUA POKéMON this time. Only my own.\p"
+                  "And the crystal the ELDER gave me when we called RAYQUAZA. Will you?"), MSGBOX_YESNO)
+    if (var(VAR_RESULT) == NO) {
+        msgbox(format("NERINE: Whenever you're ready. The water isn't going anywhere."))
+        release
+        end
+    }
+    msgbox(format("NERINE: Then let the sky watch."))
+    closemessage
+    trainerbattle_no_intro(TRAINER_NERINE_VILLAGE_DEINO_CHARMANDER, DraconidVillage_Text_DraconidNerineHomeDefeat)
+    settrainerflag(TRAINER_NERINE_VILLAGE_DEINO_CHARMANDER)
+    msgbox(format("NERINE: So that's what it feels like. Losing as myself.\p"
+                  "…I think I like it better. Thank you, {PLAYER}."))
+    release
+}
+
+text DraconidVillage_Text_DraconidNerineHomeDefeat {
+    format("NERINE: …There you are. The real you.")
+}
+
+// ---------------------------------------------------------------------------
+// Post-game: ASTER + NERINE, a two-trainer double by the pond after both post-game singles, once a day
+// (FLAG_DAILY_DRACONID_RIVALS_DOUBLE). Both talk scripts come here; a loss whites out like their singles.
+// ---------------------------------------------------------------------------
+
+script DraconidVillage_EventScript_DraconidRivalsDouble {
+    if (var(VAR_NERINE_STATE) != NERINE_STATE_POSTGAME) {
+        msgbox(format("ASTER: Battle NERINE first. After that, the two of us. Together."))
+        release
+        end
+    }
+    if (flag(FLAG_DAILY_DRACONID_RIVALS_DOUBLE)) {
+        msgbox(format("ASTER: Once a day is plenty. Come back tomorrow."))
+        release
+        end
+    }
+    if (!defeated(TRAINER_ASTER_DOUBLE_DEINO)) {
+        msgbox(format("ASTER: Riddle: what's harder than beating one DRACONID?\p"
+                      "…Two of us at once."))
+        msgbox(format("NERINE: She's been saving that one all week.\p"
+                      "We'd like to battle you together, {PLAYER}. Will you?"), MSGBOX_YESNO)
+    } else {
+        msgbox(format("ASTER: Back again? NERINE and I have been practicing.\p"
+                      "NERINE: Two against your two, {PLAYER}. Ready?"), MSGBOX_YESNO)
+    }
+    if (var(VAR_RESULT) == NO) {
+        msgbox(format("ASTER: Hmph. We'll be here."))
+        release
+        end
+    }
+    special(HasEnoughMonsForDoubleBattle)
+    if (var(VAR_RESULT) != PLAYER_HAS_TWO_USABLE_MONS) {
+        msgbox(format("NERINE: You'll need two POKéMON who can battle for this one."))
+        release
+        end
+    }
+    msgbox(format("ASTER: NERINE, keep up!\p"
+                  "NERINE: I always do."))
+    closemessage
+    trainerbattle_two_trainers_no_intro(TRAINER_ASTER_DOUBLE_DEINO, DraconidVillage_Text_DraconidAsterDoubleDefeat, TRAINER_NERINE_DOUBLE_DEINO_CHARMANDER, DraconidVillage_Text_DraconidNerineDoubleDefeat)
+    settrainerflag(TRAINER_ASTER_DOUBLE_DEINO)
+    settrainerflag(TRAINER_NERINE_DOUBLE_DEINO_CHARMANDER)
+    setflag(FLAG_DAILY_DRACONID_RIVALS_DOUBLE)
+    msgbox(format("ASTER: Again tomorrow. Same pond.\p"
+                  "NERINE: The sky isn't going anywhere. Neither are we."))
+    release
+}
+
+text DraconidVillage_Text_DraconidAsterDoubleDefeat {
+    format("ASTER: Both of us, and still…")
+}
+
+text DraconidVillage_Text_DraconidNerineDoubleDefeat {
+    format("NERINE: The sky chose well. Again.")
+}

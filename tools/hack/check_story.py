@@ -7,7 +7,8 @@ check_story.py - static reachability checks for the Draconid Emerald flags and s
 Scans the compiled event scripts (data/**/*.inc, data/**/*.s), map.json files and src/**/*.c:
   - every Draconid flag (flags.h lines tagged "Draconid Emerald") is written somewhere (error) and read
     somewhere (a flag nothing reads is only a record, e.g. "received X": warning); an item ball's flag
-    (object script Common_EventScript_FindItem) is set by picking the ball up
+    (object script Common_EventScript_FindItem) is set by picking the ball up, a hidden item's flag (map.json
+    bg_events "hidden_item") by finding it, and the field reads it (the item is gone)
   - every FLAG_HIDE_* flag hides an object and toggles: set by the new game and cleared later (the object
     appears), or not set by the new game and set later (the object leaves)
   - every story var state constant (DRACONID_STATE_*, ASTER_STATE_*, BRENDAN_STATE_*, MAY_STATE_*,
@@ -100,6 +101,7 @@ def main():
     new_game += open(os.path.join(ROOT, "data/scripts/new_game.inc")).read()
     objects = {}  # flag -> objects hidden by it
     item_balls = set()  # flags of item balls: picking one up sets its flag (Common_EventScript_FindItem)
+    hidden_items = set()  # flags of hidden items: finding one sets its flag, the field reads it
     coord_reads = set()
     for mj in maps:
         for o in mj.get("object_events") or []:
@@ -109,6 +111,9 @@ def main():
         for ev in mj.get("coord_events") or []:
             if ev.get("var"):
                 coord_reads.add((ev["var"], str(ev.get("var_value"))))
+        for ev in mj.get("bg_events") or []:
+            if ev.get("type") == "hidden_item":
+                hidden_items.add(ev.get("flag"))
     errors = warnings = 0
 
     def report(kind, msg):
@@ -123,9 +128,9 @@ def main():
     for flag in draconid_flags():
         w = re.search(r"\b(?:setflag|clearflag) %s\b" % flag, scripts) or re.search(r"Flag(?:Set|Clear)\(%s\)" % flag, c)
         hidden_objs = objects.get(flag, [])
-        removed = any(lid in removed_localids for _, lid in hidden_objs) or flag in item_balls
+        removed = any(lid in removed_localids for _, lid in hidden_objs) or flag in item_balls or flag in hidden_items
         r = (re.search(r"\b%s %s\b" % (READ_CMDS, flag), scripts) or re.search(r"FlagGet\(%s\)" % flag, c)
-             or hidden_objs or re.search(r"\b%s\b" % flag, c))
+             or hidden_objs or re.search(r"\b%s\b" % flag, c) or flag in hidden_items)
         if flag in ALLOWED:
             continue
         if flag in PENDING_FLAGS and not (w or removed):

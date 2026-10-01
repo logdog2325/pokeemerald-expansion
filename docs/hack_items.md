@@ -1,4 +1,4 @@
-# Draconid Emerald – evolutions, battle items and Mega Stones
+# Draconid Emerald – evolutions, battle items, Mega Stones and Z-Crystals
 
 Round 1, follow-up 3 (feedback 1.31, 1.33 and the Mega Stone addition; decisions D-216 – D-222 in
 [hack_decisions.md](hack_decisions.md)). Every change is listed in [hack_changes.md](hack_changes.md).
@@ -184,6 +184,52 @@ Ampharosite, Steelixite, Scizorite, Houndoominite, Tyranitarite, Swampertite, Me
 other Legends Z-A stones (Clefable, Victreebel, Meganium, Emboar, Scolipede, Scrafty, Eelektross,
 Chesnaught, Delphox, Greninja, Floette, Malamar, Zygarde, Drampa, Falinks, Heatran, Darkrai, Zeraora, Meowstic,
 Crabominable, Magearna, Scovillain, Baxcalibur, Tatsugiri).
+
+## Z-Crystals (D-267 – D-269)
+
+The **Z-Power Ring** and the first crystal come at the egg ceremony (Act 1): Alola's dragon keepers sent them with
+their egg "for the one who carries the prophecy" (D-267). After that the crystals come along the road – **all 18
+type crystals during the story**, one to four per act, from people with a reason or in item balls where their type
+lives (`data/scripts/draconid/zmoves.pory`, the maps' `map.json`). A ball crystal replaces a low-value vanilla item
+and its pickup flag keeps its number under the crystal's name (D-222's way). One Z-Move per battle, under the level
+caps, so no early crystal decides a gym: the table says which gym each one meets first. Among the opponents only
+Aster and Nerine hold one, from the night they call Rayquaza down (D-268, `check_party.py` `Z_TRAINERS`).
+
+How to use one: a Pokémon holds the crystal; in battle choose a move of its type and press START in the move menu
+(the Elder says so at the ceremony).
+
+| Crystal | Where | When (act / segment) | Why there | First gym it meets |
+|---|---|---|---|---|
+| Normalium Z | the Elder, with the Z-Power Ring (egg ceremony, shrine) | Act 1 / S1 | the simplest crystal: every partner knows a Normal move | Roxanne (Rock resists it) |
+| Buginium Z | item ball, Petalburg Woods (4, 26), was a Paralyze Heal | Act 1 / S1 | the bug forest | Roxanne (resists it) |
+| Rockium Z | item ball, Granite Cave 1F (17, 7), was an Escape Rope | Act 2 / S2 | Granite Cave | Brawly (Fighting resists it) |
+| Fightinium Z | item ball, Granite Cave B1F (15, 21), was a Poké Ball | Act 2 / S2 | Makuhita's cave, a step from Brawly's town | Brawly (neutral) |
+| Firium Z, Waterium Z, Grassium Z | Prof. Oak by Stern's shipyard, Slateport (23, 39): his cousin Samson Oak's crystals from Alola for the three starters he brought to Hoenn, the second partner's first | Act 2 / S3 | Oak gave the second partner (D-233); the other two starters go back to his lab, so their crystals are the player's too (any Pokémon of the type can hold one) | Wattson (all three neutral) |
+| Fairium Z | item ball, Route 117 (16, 18), was a Great Ball | Act 2 / S3 | the flower meadows by the Day Care | Wattson (neutral) |
+| Poisonium Z | item ball, Route 112 (14, 43), was a Nugget | Act 3 / S4 | the volcanic gas below Mt. Chimney | Flannery (neutral) |
+| Dragonium Z | Aster at Meteor Falls, from the falls' Draconids (Jagged Pass after the Mega Ring if the bag was full) | Act 3 / S4 | the clan's kin (D-155, D-271); every egg dragon is part Dragon | Flannery (Fire doesn't resist Dragon; one hit) |
+| Groundium Z | item ball, the Route 111 desert (12, 54), was a Stardust | Act 3–4 / S5 (Go-Goggles) | the sand, after Flannery – not on Jagged Pass, right before her Fire gym | Norman (neutral) |
+| Electrium Z | item ball, New Mauville (16, 22), was an Escape Rope | Act 4 / S6 (Surf) | the power plant | Winona (Flying is weak to it; one hit under the cap) |
+| Steelium Z | item ball, New Mauville (17, 10), was a Full Heal | Act 4 / S6 (Surf) | the machines | Winona (neutral) |
+| Flyinium Z | item ball, Route 119 (12, 121), was a Super Repel | Act 4 / S6 | the long route of birds before Fortree | Winona (her Skarmory resists it) |
+| Ghostium Z | item ball, Mt. Pyre 2F (0, 10), was an Ultra Ball | Act 4 / S7 | the mountain of graves | Tate & Liza (weak to it; one hit in a double) |
+| Darkinium Z | item ball, Aqua Hideout B1F (15, 10), was a Nugget | Act 5 / S7 | Team Aqua's den | Tate & Liza (as Ghostium; still one Z-Move per battle) |
+| Psychium Z | item ball, Route 127 (14, 6), was a Zinc | Act 5 / S7 | the open sea off Mossdeep, the twins' city | Juan (neutral) |
+| Icium Z | item ball, Shoal Cave ice room (12, 21), was a Never-Melt Ice | Act 5 / S7–S8 (low tide) | the ice room | Juan (Water resists it) |
+| Kommonium Z (species) | **a Jangmo-o egg only**: Nerine leaves it by the lantern on the Mt. Pyre summit (21, 9) after her fight 4; the ball waits there until picked up | Act 4 / S7 | she knows the Alolan line's "war drum" (a hint, D-269); Kommo-o's own crystal (Clanging Scales → Clangorous Soulblaze) | – |
+| Pikanium Z (species) | item ball, Safari Zone south-west (0, 37), was a Max Revive | Act 4 / S7 | wild Pikachu live in this Safari Zone (Catastropika needs Volt Tackle: breed a Pichu holding a Light Ball – wild Pikachu may hold one) | – |
+| Mimikium Z (species) | hidden, Mt. Pyre Exterior (9, 8), was an Ultra Ball | Act 4 / S7 | wild Mimikyu live on Mt. Pyre's slopes (Play Rough → Let's Snuggle Forever) | – |
+
+**Post-game only** (no species for them in the story; the post-game shop is a separate task): Kommonium Z for
+the players whose egg wasn't Jangmo-o (Kommo-o has no other source), Aloraichium Z (Alolan Raichu doesn't evolve
+in Hoenn), Pikashunium Z (no cap Pikachu), Eevium Z, Snorlium Z, Mewnium Z, Decidium Z, Incinium Z, Primarium Z,
+Lycanium Z, Tapunium Z, Solganium Z, Lunalium Z, Marshadium Z, Ultranecrozium Z.
+
+**Who else holds one** (trainer data, D-268, D-282): Aster's and Nerine's ace from the village battles before the
+League on (Act 5½) – Aster: Ghostium Z (Dragapult) / Kommonium Z (Kommo-o) / Darkinium Z (Hydreigon) by her leftover
+egg, next to her Mega Salamence (the Elder's Key Stone); Nerine: the same crystals on the egg the Elder kept aside,
+Kommonium Z with "Clanging Scales" on the Kommo-o teams, next to her Mega from the Seafloor. Nobody else
+(`check_party.py`: a Z-Crystal outside `Z_TRAINERS` is an error).
 
 ## Dawn Stone and Dusk Stone (D-342)
 

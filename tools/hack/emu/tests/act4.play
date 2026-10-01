@@ -10,11 +10,14 @@
 #  - before Steven's wild Kecleon (a wild loss would white out) the lead gets level 100 and 999 in every
 #    stat (+0x54, +0x56..+0x63) for one battle (the stats are recalculated when it ends).
 # Matrix parameters: EGGNAME (the player's egg), SECOND/SECONDNAME (the second starter, set by hand here)
-# pick Nerine's Mt. Pyre team; MAGMA = the Magma sprite prefix for the player's gender.
+# pick Nerine's Mt. Pyre team; MAGMA = the Magma sprite prefix for the player's gender; KOMMONIUM = 1 (NOKOMMONIUM = 0)
+# for a Jangmo-o egg (the Kommonium Z Nerine leaves at the summit).
 default EGGNAME DEINO
 default SECOND 1
 default SECONDNAME CHARMANDER
 default MAGMA MAGMA_M
+default KOMMONIUM 0
+default NOKOMMONIUM 1
 loadstate rustboro_done.ss
 setflag FLAG_DEBUG_NO_ENCOUNTER
 setflag FLAG_DEBUG_NO_TRAINER_SEE
@@ -182,6 +185,17 @@ mash A 90000
 shot a4_83_after_nerine
 expect_opponent TRAINER_NERINE_MT_PYRE_${EGGNAME}_${SECONDNAME}
 expect_var VAR_NERINE_STATE 5
+# a Jangmo-o tamer gets the Kommonium Z: Nerine leaves it by the lantern, (21, 9) (zmoves.pory, D-269); from (22, 9)
+# the player faces it (nothing is there for the other eggs)
+expect_flag FLAG_TEMP_12 ${NOKOMMONIUM}
+walk UP 9
+walk LEFT 22
+shot a4_83_kommonium
+press A 2 30
+mash A 6000
+expect_item ITEM_KOMMONIUM_Z ${KOMMONIUM}
+expect_flag FLAG_RECEIVED_KOMMONIUM_Z ${KOMMONIUM}
+walk RIGHT 23
 walk UP 7
 run 30
 mash A 30000

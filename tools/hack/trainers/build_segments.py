@@ -133,10 +133,15 @@ OVERRIDES = {
     **{t + "_FRONTIER" + m: "POST" for t in ("WES", "RED", "BLUE") for m in ("", "_MULTI")},
     # Lance in the Draconid village, from the SS Ticket on (lance.pory, D-262)
     "LANCE_DRACONID": "POST",
+    # more battles with the Draconid rivals (draconid_rivals.pory, D-279 - D-283): Aster in Granite Cave B1F (Act 2,
+    # from the Devon Goods on), on Route 121's Mt. Pyre pier (Act 4, after the Feather Badge), Aster and Nerine at home
+    # from the Rain Badge to the League, their post-game double by the pond
+    **{"ASTER_%s_%s" % (f, e): seg for f, seg in (("GRANITE_CAVE", "S2"), ("ROUTE_121", "S7"), ("VILLAGE", "S9"),
+                                                 ("DOUBLE", "POST")) for e in EGGS},
     **{"NERINE_PETALBURG_WOODS_" + e: "S1" for e in EGGS},
     **{"NERINE_%s_%s_%s" % (f, e, st): seg for f, seg in (("RUSTURF", "S2"), ("SLATEPORT", "S3"), ("MT_CHIMNEY", "S4"),
                                                          ("MT_PYRE", "S7"), ("AQUA_HIDEOUT", "S7"), ("SEAFLOOR", "S8"),
-                                                         ("POSTGAME", "POST"))
+                                                         ("VILLAGE", "S9"), ("POSTGAME", "POST"), ("DOUBLE", "POST"))
        for e in EGGS for st in STARTERS},
     **{t: "POST" for t in ["BRENDAN_POSTGAME", "MAY_POSTGAME", "BRENDAN_POSTGAME_DOUBLE", "MAY_POSTGAME_DOUBLE"]},
     # the attack on the Draconid village after the Sky Pillar, the Primal finale (act7x.pory, D-205, D-206)
@@ -148,7 +153,7 @@ OVERRIDES = {
     "GABBY_AND_TY_4": "S6", "GABBY_AND_TY_5": "S7", "GABBY_AND_TY_6": "S8",
 }
 # every id the game uses (TRAINERS_COUNT_EMERALD)
-MAX_ID = 979
+MAX_ID = 1009
 
 TIER_MIN = {2: "S6", 3: "S7", 4: "S8", 5: "POST", 6: "POST"}
 

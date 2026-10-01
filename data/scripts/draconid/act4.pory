@@ -436,7 +436,8 @@ text LilycoveCity_Text_DraconidWallyDefeat {
 // MAGMA_STATE_MT_PYRE is set when ARCHIE has left (MtPyre_Summit_EventScript_TeamAquaExits), so MAXIE's
 // phone call about the two ORBS comes after it; until then the EMBLEM in the bag says his scene is done.
 // MtPyre_Summit_OnTransition calls ..._DraconidOnTransition: VAR_TEMP_1 1 = MAXIE's scene (OnFrame),
-// VAR_TEMP_2 1 = NERINE waits (coord triggers); otherwise her object is hidden by FLAG_TEMP_11.
+// VAR_TEMP_2 1 = NERINE waits (coord triggers); otherwise her object is hidden by FLAG_TEMP_11. FLAG_TEMP_12: the
+// KOMMONIUM Z she leaves a JANGMO-O tamer (zmoves.pory).
 // ---------------------------------------------------------------------------
 
 script MtPyre_Summit_EventScript_DraconidOnTransition {
@@ -454,6 +455,7 @@ script MtPyre_Summit_EventScript_DraconidOnTransition {
     } else {
         setflag(FLAG_TEMP_11)
     }
+    call(MtPyre_Summit_EventScript_DraconidKommoniumZOnTransition) // NERINE's crystal by the lantern (zmoves.pory)
 }
 
 script MtPyre_Summit_EventScript_DraconidMaxieOrders {
@@ -533,6 +535,7 @@ script MtPyre_Summit_EventScript_DraconidNerine {
     msgbox(format("NERINE: Your dragons are learning to fly.\p"
                   "Soon you'll have to choose between the red and the sky.\p"
                   "Choose well."))
+    call(MtPyre_Summit_EventScript_DraconidKommoniumZ) // for a JANGMO-O tamer (zmoves.pory, D-269)
     closemessage
     switch (var(VAR_0x8004)) {
         case 22: applymovement(LOCALID_MT_PYRE_SUMMIT_NERINE, MtPyre_Summit_Movement_DraconidNerineLeaveRight)

@@ -23,6 +23,7 @@ Checks per Pokemon:
     Emerald, or in the family of a species wild in Hoenn or on an ORAS Hoenn trainer (warning otherwise;
     story trainers with their own rosters are exempt)
   - Mega Stones only for trainers listed in MEGA_TRAINERS (warning otherwise)
+  - Z-Crystals only for the trainers in Z_TRAINERS: Aster's and Nerine's teams after the Elder's gift (error otherwise)
   - with --caps: levels do not exceed the trainer's segment cap (tools/hack/trainers/segments.json)
 Errors fail the run (exit 1).
 """
@@ -46,6 +47,11 @@ HEADER_FIELDS = ("Name", "Class", "Pic", "Gender", "Music", "Double Battle", "Ba
 MEGA_TRAINERS = re.compile(r"^(PARTNER_|TRAINER_(BRENDAN|MAY|WALLY|ASTER|NERINE|ZINNIA|MAXIE_MAGMA_HIDEOUT|MAXIE_SOOTOPOLIS|MAXIE_FINALE|ARCHIE|WALLACE_SKY_PILLAR|STEVEN|WALLACE$|"
                            r"MAXIE_VICTORY_ROAD|TABITHA_VICTORY_ROAD|COURTNEY_VICTORY_ROAD|SHELLY_EVER_GRANDE|"
                            r"(ROXANNE|BRAWLY|WATTSON|FLANNERY|NORMAN|WINONA|TATE_AND_LIZA|JUAN)_5))")
+# Z-Power is rare (D-268): among the opponents and partners only the young Draconids hold a Z-Crystal, and only once
+# the Elder has given them theirs, the night they call Rayquaza (end of Act 5) - Aster's and Nerine's battles at home
+# before the League, the Sky Pillar trial and partner teams, the post-game single and double teams. No gym leader,
+# Elite Four, villain or legend has one.
+Z_TRAINERS = re.compile(r"^(TRAINER_ASTER_(VILLAGE|SKY_PILLAR|POSTGAME|DOUBLE)_|TRAINER_NERINE_(VILLAGE|POSTGAME|DOUBLE)_|PARTNER_(ASTER|NERINE)_)")
 
 
 def levelup_file():
@@ -98,6 +104,11 @@ def load_constants(path, prefix):
 def mega_stones():
     text = open(os.path.join(ROOT, "src/data/items.h")).read()
     return set(re.findall(r"\[(ITEM_\w+)\]\s*=\s*\{[^{}]*?HOLD_EFFECT_MEGA_STONE", text, re.S))
+
+
+def z_crystals():
+    text = open(os.path.join(ROOT, "src/data/items.h")).read()
+    return set(re.findall(r"\[(ITEM_\w+)\]\s*=\s*\{[^{}]*?HOLD_EFFECT_Z_CRYSTAL", text, re.S))
 
 
 def species_pool(parents=None):
@@ -216,6 +227,7 @@ def main():
     abilities_ok = load_constants("include/constants/abilities.h", "ABILITY_")
     natures_ok = load_constants("include/constants/pokemon.h", "NATURE_")
     stones = mega_stones()
+    zcrystals = z_crystals()
     pool = species_pool(parents)
     _, base_blocks = party.split(open(os.path.join(ROOT, "src/data/trainers.party")).read())
     base = {tid: party.parse_block(raw)["fields"] for tid, raw in base_blocks}
@@ -274,6 +286,8 @@ def main():
                     elif (item in stones and not MEGA_TRAINERS.match(tid) and not ORAS_MEGA_TRAINERS.match(tid)
                           and not LEGEND_TRAINERS.match(tid)):
                         warn("%s: Mega Stone on a trainer outside MEGA_TRAINERS" % where)
+                    elif item in zcrystals and not Z_TRAINERS.match(tid):
+                        err("%s: Z-Crystal on a trainer outside Z_TRAINERS" % where)
                 if "nature" in mon and party.const_name(mon["nature"], "NATURE_") not in natures_ok:
                     err("%s: unknown nature %s" % (where, mon["nature"]))
                 if "ability" in mon:

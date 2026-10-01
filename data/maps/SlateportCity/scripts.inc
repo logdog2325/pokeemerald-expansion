@@ -8,6 +8,7 @@ SlateportCity_OnTransition:
 	call SlateportCity_EventScript_EnterSlateport
 	call_if_eq VAR_SLATEPORT_CITY_STATE, 1, SlateportCity_EventScript_MovePeopleForSternInterview
 	call_if_eq VAR_SLATEPORT_OUTSIDE_MUSEUM_STATE, 1, SlateportCity_EventScript_SetReadyForScottScene
+	call SlateportCity_EventScript_DraconidOakOnTransition @ Draconid Emerald: Prof. Oak's Z-Crystal (zmoves.pory)
 	end
 
 SlateportCity_EventScript_EnterSlateport::

@@ -1,4 +1,5 @@
 Route121_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Route121_EventScript_DraconidOnTransition @ Draconid Emerald: Aster on the Mt. Pyre pier (draconid_rivals.pory)
 	.byte 0
 
 Route121_EventScript_Woman::

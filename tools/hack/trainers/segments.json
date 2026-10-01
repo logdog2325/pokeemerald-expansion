@@ -1097,7 +1097,37 @@
   "TRAINER_ARCHIE_FINALE": "POST",
   "TRAINER_WALLACE_SKY_PILLAR": "POST",
   "TRAINER_STEVEN_REMATCH": "POST",
-  "TRAINER_LANCE_DRACONID": "POST"
+  "TRAINER_LANCE_DRACONID": "POST",
+  "TRAINER_ASTER_GRANITE_CAVE_DEINO": "S2",
+  "TRAINER_ASTER_GRANITE_CAVE_DREEPY": "S2",
+  "TRAINER_ASTER_GRANITE_CAVE_JANGMO_O": "S2",
+  "TRAINER_ASTER_ROUTE_121_DEINO": "S7",
+  "TRAINER_ASTER_ROUTE_121_DREEPY": "S7",
+  "TRAINER_ASTER_ROUTE_121_JANGMO_O": "S7",
+  "TRAINER_ASTER_VILLAGE_DEINO": "S9",
+  "TRAINER_ASTER_VILLAGE_DREEPY": "S9",
+  "TRAINER_ASTER_VILLAGE_JANGMO_O": "S9",
+  "TRAINER_NERINE_VILLAGE_DEINO_CHARMANDER": "S9",
+  "TRAINER_NERINE_VILLAGE_DEINO_TOTODILE": "S9",
+  "TRAINER_NERINE_VILLAGE_DEINO_TREECKO": "S9",
+  "TRAINER_NERINE_VILLAGE_DREEPY_CHARMANDER": "S9",
+  "TRAINER_NERINE_VILLAGE_DREEPY_TOTODILE": "S9",
+  "TRAINER_NERINE_VILLAGE_DREEPY_TREECKO": "S9",
+  "TRAINER_NERINE_VILLAGE_JANGMO_O_CHARMANDER": "S9",
+  "TRAINER_NERINE_VILLAGE_JANGMO_O_TOTODILE": "S9",
+  "TRAINER_NERINE_VILLAGE_JANGMO_O_TREECKO": "S9",
+  "TRAINER_ASTER_DOUBLE_DEINO": "POST",
+  "TRAINER_ASTER_DOUBLE_DREEPY": "POST",
+  "TRAINER_ASTER_DOUBLE_JANGMO_O": "POST",
+  "TRAINER_NERINE_DOUBLE_DEINO_CHARMANDER": "POST",
+  "TRAINER_NERINE_DOUBLE_DEINO_TOTODILE": "POST",
+  "TRAINER_NERINE_DOUBLE_DEINO_TREECKO": "POST",
+  "TRAINER_NERINE_DOUBLE_DREEPY_CHARMANDER": "POST",
+  "TRAINER_NERINE_DOUBLE_DREEPY_TOTODILE": "POST",
+  "TRAINER_NERINE_DOUBLE_DREEPY_TREECKO": "POST",
+  "TRAINER_NERINE_DOUBLE_JANGMO_O_CHARMANDER": "POST",
+  "TRAINER_NERINE_DOUBLE_JANGMO_O_TOTODILE": "POST",
+  "TRAINER_NERINE_DOUBLE_JANGMO_O_TREECKO": "POST"
  },
  "info": {
   "TRAINER_SAWYER_1": {
@@ -7297,6 +7327,186 @@
    "role": "route",
    "map": "DraconidVillage",
    "story": false
+  },
+  "TRAINER_ASTER_GRANITE_CAVE_DEINO": {
+   "segment": "S2",
+   "role": "route",
+   "map": "GraniteCave_B1F",
+   "story": true
+  },
+  "TRAINER_ASTER_GRANITE_CAVE_DREEPY": {
+   "segment": "S2",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_ASTER_GRANITE_CAVE_JANGMO_O": {
+   "segment": "S2",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_ASTER_ROUTE_121_DEINO": {
+   "segment": "S7",
+   "role": "route",
+   "map": "Route121",
+   "story": true
+  },
+  "TRAINER_ASTER_ROUTE_121_DREEPY": {
+   "segment": "S7",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_ASTER_ROUTE_121_JANGMO_O": {
+   "segment": "S7",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_ASTER_VILLAGE_DEINO": {
+   "segment": "S9",
+   "role": "route",
+   "map": "DraconidVillage",
+   "story": true
+  },
+  "TRAINER_ASTER_VILLAGE_DREEPY": {
+   "segment": "S9",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_ASTER_VILLAGE_JANGMO_O": {
+   "segment": "S9",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_VILLAGE_DEINO_CHARMANDER": {
+   "segment": "S9",
+   "role": "route",
+   "map": "DraconidVillage",
+   "story": true
+  },
+  "TRAINER_NERINE_VILLAGE_DEINO_TOTODILE": {
+   "segment": "S9",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_VILLAGE_DEINO_TREECKO": {
+   "segment": "S9",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_VILLAGE_DREEPY_CHARMANDER": {
+   "segment": "S9",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_VILLAGE_DREEPY_TOTODILE": {
+   "segment": "S9",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_VILLAGE_DREEPY_TREECKO": {
+   "segment": "S9",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_VILLAGE_JANGMO_O_CHARMANDER": {
+   "segment": "S9",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_VILLAGE_JANGMO_O_TOTODILE": {
+   "segment": "S9",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_VILLAGE_JANGMO_O_TREECKO": {
+   "segment": "S9",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_ASTER_DOUBLE_DEINO": {
+   "segment": "POST",
+   "role": "route",
+   "map": "DraconidVillage",
+   "story": true
+  },
+  "TRAINER_ASTER_DOUBLE_DREEPY": {
+   "segment": "POST",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_ASTER_DOUBLE_JANGMO_O": {
+   "segment": "POST",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_DOUBLE_DEINO_CHARMANDER": {
+   "segment": "POST",
+   "role": "route",
+   "map": "DraconidVillage",
+   "story": true
+  },
+  "TRAINER_NERINE_DOUBLE_DEINO_TOTODILE": {
+   "segment": "POST",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_DOUBLE_DEINO_TREECKO": {
+   "segment": "POST",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_DOUBLE_DREEPY_CHARMANDER": {
+   "segment": "POST",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_DOUBLE_DREEPY_TOTODILE": {
+   "segment": "POST",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_DOUBLE_DREEPY_TREECKO": {
+   "segment": "POST",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_DOUBLE_JANGMO_O_CHARMANDER": {
+   "segment": "POST",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_DOUBLE_JANGMO_O_TOTODILE": {
+   "segment": "POST",
+   "role": "route",
+   "map": null,
+   "story": true
+  },
+  "TRAINER_NERINE_DOUBLE_JANGMO_O_TREECKO": {
+   "segment": "POST",
+   "role": "route",
+   "map": null,
+   "story": true
   }
  }
 }

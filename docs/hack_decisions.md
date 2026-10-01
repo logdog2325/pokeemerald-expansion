@@ -1618,6 +1618,68 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   type). – Alt: set the Tera type to `TYPE_MYSTERY` on every created Pokémon (touches every creation path; one missed
   path brings it back); remove the Tera Orb only (opponents don't need one). – The playtester: "no teras or
   dynamaxing/gigantamaxing". The test suite keeps testing both (`TESTING`), so `make check` is unaffected.
+- **D-267 Z-Power comes with the egg: the Z-Power Ring and the Normalium Z at the ceremony** (follow-ups 26–27,
+  feedback 1.58; the playtester's later note: "get access to z moves earlier and they should be spread throughout the
+  story not a post game thing"): the Draconids keep old ties with dragon keepers abroad (the three eggs came from
+  Galar, Unova and Alola, D-230), and Alola's keepers of Vast Poni Canyon sent their egg with a **Z-Power Ring** "for
+  the one who carries the prophecy". The Elder gives it at the egg ceremony, once Aster has stormed off
+  (`DraconidVillage_Shrine_EventScript_DraconidZRing`, called from `…_EggCeremony`; `FLAG_RECEIVED_Z_POWER_RING`),
+  with the first and simplest crystal, the **Normalium Z** (`DRACONID_Z_CRYSTAL_FIRST`): every partner has a Normal
+  move from the start, so the ring is usable at once. His explanation is short: in Alola it is Z-POWER, a trainer's
+  and a Pokémon's whole strength in one move; once in a battle, it takes everything, don't lean on it; let the partner
+  hold the crystal, choose a move of its type and press START; the keepers' other crystals will come as the road goes
+  on (D-269). The expansion's rules hold as they are: the player needs `ITEM_Z_POWER_RING` in the bag (a multi
+  battle's AI partner doesn't), one Z-Move per trainer per battle and one Mega, a Pokémon that Mega Evolved can't also
+  Z-Move, a disobedient Pokémon loses its Z-Move (`B_OBEDIENCE_MECHANICS`, met level against the badges), and an AI
+  trainer whose Pokémon holds a crystal uses it on its own when the chosen move has the crystal's type (no AI flag).
+  – Alt: the first design, the Elder's gift after Regidrago in Act 7 with the Dragonium Z and Oak's crystal in the
+  post-game (replaced by the playtester's note: Z-Moves were a late, post-game thing there); the ring alone at the
+  ceremony (a key item with nothing to use it on until Act 2); a Draconid traveller in Act 2 (the gift came with the
+  Alolan egg, so the ceremony is its place). – The gift belongs with the egg it came with, and the player can try a
+  Z-Move from the first route on; under the level caps and one per battle it doesn't decide an early gym (Roxanne's
+  Rock resists Normal).
+- **D-268 Who else uses Z-Moves: Aster and Nerine, from the night they call Rayquaza** (follow-up 27: "rare and make
+  sense"): among the opponents and partners only the young Draconids hold a crystal, and only from the night they
+  call Rayquaza down at Sootopolis (end of Act 5), when the Elder gives each a crystal from the Alolan keepers – and
+  Aster a Key Stone of her own, the reason for her Mega Salamence (she says so before her village battle, D-281).
+  Each puts the crystal on her egg-line ace, beside her Mega on another Pokémon (one Mega and one Z per battle): Aster
+  Ghostium Z on Dragapult / Kommonium Z on Kommo-o / Darkinium Z on Hydreigon by her leftover egg (the player's Deino /
+  Dreepy / Jangmo-o), Nerine the same three on the egg the Elder kept aside, the Kommo-o with Clanging Scales
+  (Clangorous Soulblaze). That covers Aster's battle at home before the League, the Sky Pillar trial, her partner team
+  in the village attack, the post-game shrine and the pond double; Nerine's battle at home, her Sky Pillar partner team,
+  the post-game pond single and double. Nobody else: no gym leader, Elite Four, villain, Frontier legend or Lance.
+  `check_party.py` makes a Z-Crystal outside `Z_TRAINERS` an error. – Alt: Aster from her Act 2 battle on (she has no
+  crystal before the Elder's night; her Granite Cave and Route 121 teams carry berries and boosters); the ace of the
+  player's second starter's type (the egg lines are the clan's own). – Two rivals with one Z-Move each keep it rare,
+  and the moment they get it is a story moment the player has seen.
+- **D-269 The crystals along the road: all 18 types in the story** (the playtester: crystals "spread throughout the
+  story"; "same with z crystals" for the post-game): one to four per act from Act 1 to Act 5, none post-game only,
+  none sold in the story. People with a reason: the Elder (Normalium Z, D-267); **Prof. Oak** in Slateport (Act 2,
+  by Stern's shipyard, `SlateportCity_EventScript_DraconidOak`, `FLAG_RECEIVED_OAK_Z_CRYSTAL`): a ship from Alola
+  brings his cousin **Samson Oak**'s crystals for the three starters he brought to Hoenn – the second partner's first,
+  then the other two, since those starters go home to his lab (Firium Z, Waterium Z, Grassium Z; any Pokémon of the
+  type can hold one; all three or none if the bag is full, and he waits); **Aster** at Meteor Falls (Act 3) with the
+  falls' Draconids' **Dragonium Z** (they are the clan's kin, D-155, D-271; again at Jagged Pass after the Mega Ring if
+  the bag was full; `FLAG_RECEIVED_DRAGONIUM_Z`); **Nerine** after her Mt. Pyre fight (Act 4), for a Jangmo-o tamer
+  only: she hears the Alolan line's "war drum" in its scales and leaves the **Kommonium Z** by the summit's lantern –
+  an Aqua grunt doesn't hand things to a Magma uniform – an item ball that waits until picked up
+  (`FLAG_RECEIVED_KOMMONIUM_Z`, `FLAG_TEMP_12`). The other thirteen type crystals are item balls where their type
+  lives, each in place of a low-value vanilla item, the pickup flag keeping its
+  number under the crystal's name (D-222's way): Buginium (Petalburg Woods), Rockium and Fightinium (Granite Cave),
+  Fairium (Route 117), Poisonium (Route 112), Groundium (the Route 111 desert), Electrium and Steelium (New
+  Mauville), Flyinium (Route 119), Ghostium (Mt. Pyre 2F), Darkinium (Aqua Hideout), Psychium (Route 127), Icium
+  (Shoal Cave). Species crystals come where their species lives: Pikanium Z in the Safari Zone (wild Pikachu),
+  Mimikium Z hidden on Mt. Pyre's slopes (wild Mimikyu); the others have no species in the story (Kommonium for the
+  other eggs, Eevium, Snorlium, Decidium, …) and wait for the post-game shop (a separate task). The table with the
+  gym each crystal meets first: [hack_items.md](hack_items.md), "Z-Crystals". The Groundium Z is in the desert, not
+  on Jagged Pass, right before Flannery's Fire gym; the Electrium Z (Winona) and the Ghostium / Darkinium Z (Tate &
+  Liza) do meet a gym weak to them, but each is one move in one battle under the cap. – Alt: crystals from Draconid
+  travellers (the Lavaridge traveller's motif; the item balls put each type where it belongs without a new NPC per
+  crystal); Firium Z on the Fiery Path (the starters' three come together from Oak); a late Regidrago crystal
+  (every type is in the story already); Nerine handing the Kommonium Z over directly with a retry at home for a full
+  bag (her summit scene can't run again, so a full bag left a story path short – the hard-lock checker's reentry
+  rule; the ball can't be lost). – Z-Moves are part of the journey, each crystal with a reason to be where it is, and
+  the rare ones (Dragonium, Kommonium) come from the clan.
 - **D-270 The clan's secret and Nerine's partners** (story audit #1, #3; feedback 1.53, the audit is
   [hack_story_audit.md](hack_story_audit.md)): the Elder's secrecy order names its one exception – "No one outside this
   village may know why you go. / Only PROF. BIRCH, an old friend of our clan, will know. I have written to him."
@@ -1755,6 +1817,70 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   sets BLDALPHA to 0 (breaks alpha-blended fog); it also has to be remembered in every future script. The scripts that
   already use `fadescreenswapbuffers` (Act 5's turn, Act 7) keep working; plain `fadescreen` is now safe everywhere.
   Costs 1.2 KB of EWRAM.
+- **D-279 Aster in Granite Cave (Act 2)** (follow-up 29, feedback 1.60: "plenty of rival battles with the two
+  draconid rivals … when appropriate in the story"): Aster comes down from the mountain "to see what the lowlands are
+  doing to you" and waits in the dark of Granite Cave B1F – "the dark suits a dragon; every Draconid apprentice spends
+  a night in a cave like this one". From the ladder up to 1F's west end the only way on to Steven's room goes north
+  through a one-tile passage; a trigger there, (3, 17), arms (`VAR_TEMP_1` 1) from the Devon Goods until her Meteor
+  Falls battle while `TRAINER_ASTER_GRANITE_CAVE_DEINO` isn't beaten; she stands at (5, 14) (`FLAG_TEMP_11`), walks up
+  and battles (`draconid_rivals.pory`, the hook `GraniteCave_B1F_OnTransition` before the vanilla cracked-floor
+  script). Her lines follow the audit's rules: she knows the mission ("The ELDER told you to wear it. He told me to
+  leave you alone, too") and still calls the player traitor. S2 (cap 20): Swablu 18, Noibat 18, Bagon 19 and her
+  leftover egg at 20, an Oran Berry on each (the S1–S2 boss item), Potions. A loss whites out to Dewford and the
+  trigger waits; after Meteor Falls she is gone (`expect_flag FLAG_TEMP_11 1`). – Alt: Route 116 past the tunnel
+  (Act 1's Rusturf crowd; nothing Draconid there); Route 104's north shore (no story reason). – Between the Pass and
+  Meteor Falls she had no battle for two segments, and Granite Cave is the Act 2 place a dragon tamer would go.
+- **D-280 Aster on Route 121 (Act 4)**: the old ones stir – the weather has gone wrong all over Hoenn, Magma and Aqua
+  are on their way up Mt. Pyre – and Aster watches the mountain from the end of the Mt. Pyre pier, (30, 17), sharper
+  and worried, with the Sky Pillar lore as a riddle ("two dragons climbed the same tower; only one could reach the
+  sky… the one still standing") and the Elder's word that only the sky can put the old ones back to sleep. The pier's
+  top row, (30, 14) / (31, 14), is the way down to the water for Mt. Pyre; its triggers arm from the Feather Badge
+  (after the Weather Institute) until the Mt. Pyre summit is done, while she hasn't been battled (`FLAG_TEMP_14`; a new
+  ON_TRANSITION in `Route121/scripts.inc`). She leaves on her dragon (`FLDEFF_NPCFLY_OUT`). S7 (cap 44): Altaria,
+  Pupitar, Vibrava, Noibat, Shelgon 41–43 and her egg's middle stage at 44 (it evolves at 50, D-107). – Alt: Route
+  120 (Steven's Devon Scope scene and the Kecleon; crowded); Lilycove (the rivals' double is there). – On the way to
+  the player's Mt. Pyre mission, with the orbs and the tower in the air.
+- **D-281 Aster and Nerine at home before the League (Act 5½)**: after the Sootopolis reveal the uniform is off and
+  the village knows; until the player is Champion (`MAGMA_STATE_TURNED`, not `FLAG_IS_CHAMPION`, `FINALE_STATE_NONE`)
+  Aster waits on the square, (13, 13) (`LOCALID_DRACONID_VILLAGE_HOME_ASTER` on `FLAG_TEMP_1F`), and Nerine by the
+  pond, (28, 7), as herself (her post-game object, `FLAG_HIDE_DRACONID_VILLAGE_NERINE`). Aster wants the rematch she
+  lost at Meteor Falls ("METEOR FALLS never counted. You were wearing their colors"); Nerine "never got to battle you
+  as myself – every time we battled, I was someone else". Both battles wait for **Juan's Rain Badge**: until then
+  each says to come back with it (their teams are at the S9 cap, 60, which the badge opens). The Elder's Sootopolis
+  call gains two lines ("Come home before the LEAGUE. The clan wants to see you." – "ASTER: And I want my rematch!").
+  Optional; from the Champion title until the village is saved they are at the Sky Pillar (Act 7), so the window
+  closes; each battle is marked by its trainer flag. Nerine's post-game line knows when they battled before the
+  League (`act7.pory`). – Alt: the Draconid Pass gate for Aster (the square has the cheering villagers); Pacifidlog
+  for Nerine (her sea, but far from the clan, and the reveal is a homecoming). – The first battles as open allies, at
+  home, where the clan can see them.
+- **D-282 Aster's and Nerine's teams, one progression** (follow-up 29: "appropriate teams"; the playtester's
+  difficulty note: no team weakened, every new or touched team at full strength): Aster's teams follow the player's
+  egg (her leftover egg's line is her ace), Nerine's the egg and the second starter (the egg the Elder kept aside, and
+  the starter that counters the player's second partner, D-101); levels at each segment's cap and every battle above
+  the one before (`check_tiers.py` `STORY_CHAINS`, ace and top level). New teams: Granite Cave (S2, 18–20), Route 121
+  (S7, 41–44), the village (S9, 56–58), the post-game double (each 3 Pokémon, 79–81). Every Pokémon of a new or
+  touched team holds an item and has four moves for its role, a nature and 31 IVs (bosses); **from Act 4 on the rival
+  bosses have competitive EV spreads** (Route 121 onwards, as POST trainers do), the earlier teams none (the S2 rule).
+  Gimmicks: one Mega and one Z each from Act 5½ on (D-268) – Aster's Mega Salamence (the Elder's Key Stone, D-281),
+  Nerine's Mega of the counter starter (from the Seafloor on); the crystal on the egg-line ace. Existing teams (Aster's
+  Sky Pillar trial, post-game and partner teams; Nerine's post-game and partner teams) only swap the ace's item for its
+  crystal; Nerine's post-game Kommo-o (Deino variants) becomes a special Clanging Scales set (Clanging Scales, Aura
+  Sphere, Flamethrower, Clangorous Soul; Timid, 252 SpA / 252 Spe) for Clangorous Soulblaze. Nerine's disguised Aqua
+  teams and Aster's Pass and Meteor Falls teams are untouched. The per-battle table: [hack_trainers.md](hack_trainers.md),
+  "The Draconid rivals' battles". – Alt: no EVs before the post-game (the playtester asked for difficulty, and the
+  rivals are the story's bosses); a Z-Crystal on the Mega Pokémon (can't use both). – Signature aces that grow with the
+  story, and the hardest rival battles at the points the story makes them matter.
+- **D-283 The post-game Aster + Nerine double, once a day**: after both post-game singles (Aster's at the shrine,
+  Nerine's by the pond) Aster stands by the pond beside Nerine, (27, 7) ("Come find me by the pond later. NERINE and I
+  have an idea"), and they battle the player as a two-trainer double (`trainerbattle_two_trainers_no_intro`,
+  `TRAINER_ASTER_DOUBLE_*` + `TRAINER_NERINE_DOUBLE_*`), once a day (`FLAG_DAILY_DRACONID_RIVALS_DOUBLE`, a daily flag
+  like the lab double's rematch), through either one's talk script; a loss whites out like their singles; the player
+  needs two Pokémon able to battle. Not on the visit Lance lands (Aster runs down to him then). Trainer ids 979–1008
+  (the 30 new teams: Granite Cave, Route 121 and the village ×3 eggs for Aster, the village ×9 for Nerine, the double
+  ×3 + ×9); `MAX_TRAINERS_COUNT_EMERALD` 992 → 1024 (a multiple of 16; 32 more trainer flags, SaveBlock1 +4 bytes,
+  `test/save.c` 15616), every id in `build_segments.py`. – Alt: a double at the shrine (Aster's spot, but the pond is
+  where both live); a multi battle with a partner (the rivals are the two trainers, the player's own pair answers
+  them). – A last, hardest Draconid battle that can be fought again, with both of the clan's young tamers.
 - **D-340 The map generator places General trees on a lattice and keeps walkable ground at its elevation**
   (playtest 2.1: half trees and an invisible wall in Draconid Pass). The learned rules come from vanilla
   neighbourhoods in which the crown's cap row (1C6/1C7/1CE/1CF over grass) belongs to the tree class, so they read

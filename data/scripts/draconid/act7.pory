@@ -850,6 +850,8 @@ script DraconidVillage_Shrine_EventScript_Aster {
     trainerbattle_no_intro(TRAINER_ASTER_POSTGAME_DEINO, DraconidVillage_Shrine_Text_DraconidAsterPostgameDefeat)
     msgbox(format("ASTER: …You know what the answer to all my riddles was? The sky. It was always the sky.\p"
                   "The ELDER chose right, {PLAYER}. Don't you dare tell him I said so."))
+    // she waits by the pond next, for the double with NERINE (draconid_rivals.pory, D-283)
+    msgbox(format("ASTER: Come find me by the pond later. NERINE and I have an idea."))
     closemessage
     fadescreen(FADE_TO_BLACK)
     removeobject(LOCALID_DRACONID_SHRINE_ASTER)
@@ -871,15 +873,30 @@ text DraconidVillage_Shrine_Text_DraconidAsterPostgameDefeat {
 script DraconidVillage_EventScript_DraconidNerine {
     lock
     faceplayer
+    // before the LEAGUE she is home as herself (draconid_rivals.pory, D-281)
+    if (var(VAR_DRACONID_FINALE_STATE) < FINALE_STATE_METEOR_DESTROYED) {
+        goto(DraconidVillage_EventScript_DraconidNerineHome)
+    }
     if (var(VAR_NERINE_STATE) == NERINE_STATE_POSTGAME) {
+        // ASTER's shrine battle done too: their double by the pond (draconid_rivals.pory, D-283)
+        if (var(VAR_ASTER_STATE) == ASTER_STATE_POSTGAME) {
+            goto(DraconidVillage_EventScript_DraconidRivalsDouble)
+        }
         msgbox(format("NERINE: The pond's still muddy from KYOGRE. It'll clear. Most things do.\p"
                       "When the sky calls again, we'll answer it together."))
         release
         end
     }
-    msgbox(format("NERINE: After years of salt water, even this muddy little pond feels like a dream.\p"
-                  "I spent all that time in blue, pretending. And I watched you in red, pretending.\p"
-                  "No more pretending, {PLAYER}. One battle, as ourselves. Will you?"), MSGBOX_YESNO)
+    if (defeated(TRAINER_NERINE_VILLAGE_DEINO_CHARMANDER)) {
+        // they battled as themselves once already, before the LEAGUE (draconid_rivals.pory)
+        msgbox(format("NERINE: The pond's still muddy from KYOGRE. Even so, it's good to be home.\p"
+                      "Last time we battled, you were on your way to the LEAGUE. Look at you now.\p"
+                      "One more, {PLAYER}? Everything we've got. Will you?"), MSGBOX_YESNO)
+    } else {
+        msgbox(format("NERINE: After years of salt water, even this muddy little pond feels like a dream.\p"
+                      "I spent all that time in blue, pretending. And I watched you in red, pretending.\p"
+                      "No more pretending, {PLAYER}. One battle, as ourselves. Will you?"), MSGBOX_YESNO)
+    }
     if (var(VAR_RESULT) == NO) {
         msgbox(format("NERINE: I'll be here. The water isn't going anywhere, and neither am I."))
         release

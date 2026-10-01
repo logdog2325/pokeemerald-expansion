@@ -988,6 +988,40 @@
 #define TRAINER_ARCHIE_FINALE               966
 // Draconid Emerald: Wallace keeps SOOTOPOLIS's watch at the foot of the Sky Pillar, before the Trial of Three (D-203)
 #define TRAINER_WALLACE_SKY_PILLAR          967
+// Draconid Emerald: more battles with the Draconid rivals (draconid_rivals.pory, D-279 - D-283), named after the PLAYER's
+// egg (and second starter) like their other fights; scripts use the first id of each fight (D-101): ASTER in GRANITE CAVE
+// (Act 2) and on ROUTE 121's MT. PYRE pier (Act 4), ASTER and NERINE (as herself) at home in the village between the
+// SOOTOPOLIS reveal and the LEAGUE, and their post-game double battle by the village pond
+#define TRAINER_ASTER_GRANITE_CAVE_DEINO    979
+#define TRAINER_ASTER_GRANITE_CAVE_DREEPY   980
+#define TRAINER_ASTER_GRANITE_CAVE_JANGMO_O 981
+#define TRAINER_ASTER_ROUTE_121_DEINO       982
+#define TRAINER_ASTER_ROUTE_121_DREEPY      983
+#define TRAINER_ASTER_ROUTE_121_JANGMO_O    984
+#define TRAINER_ASTER_VILLAGE_DEINO         985
+#define TRAINER_ASTER_VILLAGE_DREEPY        986
+#define TRAINER_ASTER_VILLAGE_JANGMO_O      987
+#define TRAINER_NERINE_VILLAGE_DEINO_CHARMANDER 988
+#define TRAINER_NERINE_VILLAGE_DEINO_TOTODILE 989
+#define TRAINER_NERINE_VILLAGE_DEINO_TREECKO 990
+#define TRAINER_NERINE_VILLAGE_DREEPY_CHARMANDER 991
+#define TRAINER_NERINE_VILLAGE_DREEPY_TOTODILE 992
+#define TRAINER_NERINE_VILLAGE_DREEPY_TREECKO 993
+#define TRAINER_NERINE_VILLAGE_JANGMO_O_CHARMANDER 994
+#define TRAINER_NERINE_VILLAGE_JANGMO_O_TOTODILE 995
+#define TRAINER_NERINE_VILLAGE_JANGMO_O_TREECKO 996
+#define TRAINER_ASTER_DOUBLE_DEINO          997
+#define TRAINER_ASTER_DOUBLE_DREEPY         998
+#define TRAINER_ASTER_DOUBLE_JANGMO_O       999
+#define TRAINER_NERINE_DOUBLE_DEINO_CHARMANDER 1000
+#define TRAINER_NERINE_DOUBLE_DEINO_TOTODILE 1001
+#define TRAINER_NERINE_DOUBLE_DEINO_TREECKO 1002
+#define TRAINER_NERINE_DOUBLE_DREEPY_CHARMANDER 1003
+#define TRAINER_NERINE_DOUBLE_DREEPY_TOTODILE 1004
+#define TRAINER_NERINE_DOUBLE_DREEPY_TREECKO 1005
+#define TRAINER_NERINE_DOUBLE_JANGMO_O_CHARMANDER 1006
+#define TRAINER_NERINE_DOUBLE_JANGMO_O_TOTODILE 1007
+#define TRAINER_NERINE_DOUBLE_JANGMO_O_TREECKO 1008
 
 // NOTE: Because each Trainer uses a flag to determine when they are defeated, there is only space for 9 additional trainers before trainer flag space overflows
 // Draconid Emerald: MAX_TRAINERS_COUNT_EMERALD raised from 864 so Nerine's variants fit (D-101); system flags move up
@@ -996,11 +1030,12 @@
 //       937 - 956 for Team Magma's revenge and the Aqua gauntlet (D-249); 957 - 967 the village finale and Wallace at the Sky Pillar (D-203, D-205)
 //       944 -> 992 for the round 1 v2 follow-ups (D-251): 976 is Steven's Champion rematch, 978 Lance (D-262); 48 more trainer flags,
 //       6 flag bytes (SaveBlock1 +4, test/save.c)
+//       992 -> 1024 for the Draconid rivals' new battles (D-283): 979 - 1008, 32 more trainer flags (4 flag bytes)
 //       More space can be made by shifting flags around in constants/flags.h or changing how trainer flags are handled
 //       MAX_TRAINERS_COUNT can be increased but will take up additional saveblock space
 
-#define TRAINERS_COUNT_EMERALD     979
-#define MAX_TRAINERS_COUNT_EMERALD 992
+#define TRAINERS_COUNT_EMERALD     1009
+#define MAX_TRAINERS_COUNT_EMERALD 1024
 
 #if IS_FRLG
 #define TRAINERS_COUNT                      TRAINERS_COUNT_FRLG

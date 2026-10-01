@@ -203,7 +203,7 @@ Rayquaza shrine carved into the cliff above Draconid Village. The egg ceremony (
 - ASTER: Mine is already stirring. I'm not waiting around for yours.
 - I'll be on DRACONID PASS, {PLAYER}. Don't keep me waiting.
 - ELDER: Hohoho… That girl. Always in a hurry to reach the sky.
-- {PLAYER}, once your partner hatches, go down to LITTLEROOT TOWN.
+- ELDER: {PLAYER}, once your partner hatches, go down to LITTLEROOT TOWN.
 - A man named PROF. BIRCH lives there. He studies POKéMON.
 - Our clan and his family have shared our knowledge for many years.
 - Show him your partner. He will know what a young tamer needs.
@@ -1038,6 +1038,8 @@ Draconid Emerald round 1, Act 5 (docs/hack_story.md steps 23–28): the Aqua Hid
 - {PLAYER}, hear me. RAYQUAZA has gone back to its tower.
 - It isn't time yet. The sky will tell us when.
 - Until then, walk your own road. You need no borrowed colors now.
+- Come home before the LEAGUE. The clan wants to see you.
+- ASTER: And I want my rematch!
 - … … … … … … … … … … … Click!
 
 ### `SootopolisCity_EventScript_DraconidRivalsAftermath`
@@ -1416,10 +1418,14 @@ Draconid Emerald round 1, Act 7 (docs/hack_story.md steps 31-34): "The prophecy 
 - ASTER: I'll wait. The statue doesn't mind.
 - ASTER: …You know what the answer to all my riddles was? The sky. It was always the sky.
 - The ELDER chose right, {PLAYER}. Don't you dare tell him I said so.
+- ASTER: Come find me by the pond later. NERINE and I have an idea.
 
 ### `DraconidVillage_EventScript_DraconidNerine`
 - NERINE: The pond's still muddy from KYOGRE. It'll clear. Most things do.
 - When the sky calls again, we'll answer it together.
+- NERINE: The pond's still muddy from KYOGRE. Even so, it's good to be home.
+- Last time we battled, you were on your way to the LEAGUE. Look at you now.
+- One more, {PLAYER}? Everything we've got. Will you?
 - NERINE: After years of salt water, even this muddy little pond feels like a dream.
 - I spent all that time in blue, pretending. And I watched you in red, pretending.
 - No more pretending, {PLAYER}. One battle, as ourselves. Will you?
@@ -2031,6 +2037,85 @@ Draconid Emerald (D-258): what the Devon Goods choice in Rusturf Tunnel (FLAG_DE
 - So that's why you kept our parts. TEAM MAGMA had to believe you were theirs.
 - All is forgiven. But I did count every screw! Wahahaha!
 
+## data/scripts/draconid/draconid_rivals.pory
+
+Draconid Emerald round 1: more battles with the Draconid rivals (follow-up 29, feedback 1.60; D-279 - D-283).  Granite Cave B1F      Act 2: ASTER waits in the dark, on the only way through to STEVEN (S2) Route 121             Act 4: ASTER on the MT. PYRE pier, watching the mountain before the player's mission (S7) Draconid village      Act 5 1/2, the SOOTOPOLIS reveal to the LEAGUE: ASTER on the square, NERINE by the pond as herself; both battle once the player has JUAN's BADGE (S9) Village pond          post-game: ASTER (after her shrine battle) and NERINE, a two-trainer double once a day  Every battle names the first id of its fight (D-101: ASTER's team follows the player's egg, NERINE's the egg and the second starter) and is marked done by that id's trainer flag, set after the battle as well, so no state value was added (D-234's rule). Scene objects use temp flags their map's OnTransition sets when they aren't due (D-136).
+
+### `GraniteCave_B1F_EventScript_DraconidAster`
+- ASTER: Don't bother looking for a light.
+- ASTER: The dark suits a dragon. Every DRACONID apprentice spends a night in a cave like this one.
+- ASTER: Hmph. So it's true. You look good in red, traitor.
+- I know, I know. The ELDER told you to wear it. He told me to leave you alone, too.
+- ASTER: I came down the mountain to see what the lowlands are doing to you.
+- Let's find out!
+- ASTER: …Fine. They haven't made you soft. Yet.
+- ASTER: Remember who you are under all that red, {PLAYER}.
+- And don't follow me. I know the way out in the dark. You don't.
+
+### `Route121_EventScript_DraconidAster`
+- ASTER: {PLAYER}. Over here.
+- ASTER: Look at that mountain. MT. PYRE.
+- The ELDER says the old ones are stirring, under the land and under the sea.
+- Have you felt the weather lately? All over HOENN, it's gone wrong.
+- ASTER: Now MAGMA and AQUA are both on their way up there.
+- You know what they want. Don't tell me. I can see it on your face.
+- ASTER: Riddle: two dragons climbed the same tower. Only one could reach the sky. Which one?
+- …The one still standing. The sky doesn't care about anything else.
+- ASTER: So, {PLAYER}. Which of us is still standing?
+- ASTER: Go on, then. Up the mountain.
+- Whatever MAXIE finds up there, don't let him keep it.
+- ASTER: If the old ones wake, the ELDER says only the sky can put them back to sleep.
+- Remember that.
+
+### `DraconidVillage_EventScript_DraconidAsterHome`
+- ASTER: What are you still doing here? The LEAGUE won't wait forever.
+- Neither will the sky.
+- ASTER: There you are. Out of the red at last.
+- Hear that? The whole village has been cheering since the news came up the pass.
+- ASTER: Don't get comfortable. Go and win JUAN's BADGE first.
+- Then come back, and we settle METEOR FALLS. Properly.
+- ASTER: Eight BADGES. Hmph. Not bad, for a former traitor.
+- ASTER: METEOR FALLS never counted. You were wearing their colors, and I was too angry to see straight.
+- Now there's nothing in the way. No red, no secrets. Just two DRACONIDS.
+- ASTER: And look. The night we called RAYQUAZA, the ELDER gave me a KEY STONE of my own.
+- And a crystal from the keepers in ALOLA. You're the first one I get to try them on.
+- ASTER: Ready?
+- ASTER: Then hurry up and get ready. I'm not going anywhere.
+- ASTER: Good. Don't hold back!
+- ASTER: …Fine. That one counted.
+- Go and win your LEAGUE, {PLAYER}. The ELDER says the sky isn't finished with us.
+
+### `DraconidVillage_EventScript_DraconidNerineHome`
+- NERINE: Go on, {PLAYER}. The LEAGUE is waiting.
+- The pond and I will still be here when you come home.
+- NERINE: Home. After all those years at sea, I keep expecting the water to taste of salt.
+- NERINE: When you have JUAN's BADGE, come and see me.
+- I'd like to battle you at your strongest.
+- NERINE: Every time we battled, I was someone else. A TEAM AQUA grunt. The ELDER's test.
+- I never got to battle you as myself.
+- NERINE: No AQUA POKéMON this time. Only my own.
+- And the crystal the ELDER gave me when we called RAYQUAZA. Will you?
+- NERINE: Whenever you're ready. The water isn't going anywhere.
+- NERINE: Then let the sky watch.
+- NERINE: So that's what it feels like. Losing as myself.
+- …I think I like it better. Thank you, {PLAYER}.
+
+### `DraconidVillage_EventScript_DraconidRivalsDouble`
+- ASTER: Battle NERINE first. After that, the two of us. Together.
+- ASTER: Once a day is plenty. Come back tomorrow.
+- ASTER: Riddle: what's harder than beating one DRACONID?
+- …Two of us at once.
+- NERINE: She's been saving that one all week.
+- We'd like to battle you together, {PLAYER}. Will you?
+- ASTER: Back again? NERINE and I have been practicing.
+- NERINE: Two against your two, {PLAYER}. Ready?
+- ASTER: Hmph. We'll be here.
+- NERINE: You'll need two POKéMON who can battle for this one.
+- ASTER: NERINE, keep up!
+- NERINE: I always do.
+- ASTER: Again tomorrow. Same pond.
+- NERINE: The sky isn't going anywhere. Neither are we.
+
 ## data/scripts/draconid/frontier_legends.pory
 
 Draconid Emerald round 1 follow-up: the Battle Frontier legends (post-game, D-225 - D-229). WES (Pokémon Colosseum) waits in the BATTLE PYRAMID's sands (58, 22), RED at the foot of the cliff below ARTISAN CAVE (29, 10), BLUE by the BATTLE TOWER door (18, 15). They are there once the Hall of Fame is done (FLAG_SYS_GAME_CLEAR) and battle again whenever asked. The LEGENDS' TAG attendant beside the TOWER door (14, 15) pairs the player with a legend they have beaten (PARTNER_WES / _RED / _BLUE) against the other two: a multi battle on the mat in front of the TOWER, three POKéMON each (the *_FRONTIER_MULTI teams).
@@ -2434,6 +2519,50 @@ Draconid Emerald round 1 follow-ups (feedback 1.32, 1.34, part of 1.25; D-234 �
 - I was just checking my POKéDEX. Look how many POKéMON we've seen!
 - MAY: Hehe! My mom keeps asking about you.
 - The MAGMA grunt who saved HOENN, right here in my room!
+
+## data/scripts/draconid/zmoves.pory
+
+Draconid Emerald round 1: Z-Power, spread through the story (follow-ups 26-27 and the playtester's "get access to z moves earlier ... spread throughout the story", feedback 1.58; decisions D-267 - D-269).  Village shrine       Act 1, the egg ceremony: the ELDER gives the Z-POWER RING the dragon keepers of ALOLA sent with their egg, and the first crystal, NORMALIUM Z Slateport City       Act 2: PROF. OAK meets a ship from ALOLA - his cousin SAMSON's crystals for the three starters he brought, the second partner's first (FIRIUM Z, WATERIUM Z, GRASSIUM Z) Meteor Falls         Act 3: ASTER hands over the DRAGONIUM Z from the falls' DRACONIDS (at Jagged Pass if the BAG was full) Mt. Pyre summit      Act 4: NERINE, still in AQUA blue, leaves a JANGMO-O tamer the KOMMONIUM Z by the lantern Item balls           the other thirteen type crystals where their type lives, each in place of a low-value vanilla item (map.json; the pickup flag keeps its number, renamed): BUGINIUM Z (Petalburg Woods), ROCKIUM Z (Granite Cave 1F), FIGHTINIUM Z (Granite Cave B1F), FAIRIUM Z (Route 117), POISONIUM Z (Route 112), GROUNDIUM Z (the Route 111 desert), ELECTRIUM Z and STEELIUM Z (New Mauville), FLYINIUM Z (Route 119), GHOSTIUM Z (Mt. Pyre 2F), DARKINIUM Z (Aqua Hideout B1F), PSYCHIUM Z (Route 127), ICIUM Z (Shoal Cave); and two species crystals where their species lives: PIKANIUM Z (Safari Zone south-west), MIMIKIUM Z (hidden, Mt. Pyre's slopes) - D-269  Who else uses Z-Moves (trainer data, D-268): only ASTER and NERINE, from the night they call RAYQUAZA down (the ELDER gives them their crystals there): their battles at home before the LEAGUE, the Sky Pillar trial and partner teams, the post-game (tools/hack/trainers/check_party.py, Z_TRAINERS). The crystals: DRACONID_Z_CRYSTAL_* (include/constants/draconid.h); the list with the reasons: docs/hack_items.md, "Z-Crystals".
+
+### `DraconidVillage_Shrine_EventScript_DraconidZRing`
+- ELDER: Wait, {PLAYER}. Something else came to us with the egg from ALOLA.
+- ELDER: The dragon keepers of VAST PONI CANYON sent this, “for the one who carries the prophecy.”
+- That is you now.
+- ELDER: And the first of their crystals. The simplest one, so that any partner can use it.
+- ELDER: In ALOLA they call it Z-POWER.
+- A trainer's whole strength and a POKéMON's, made one for a single move.
+- ELDER: Once in a battle, and it takes everything you both have.
+- Do not lean on it, {PLAYER}.
+- ELDER: Let your partner hold the crystal. In battle, choose a move of the crystal's type and press START.
+- ELDER: The keepers' other crystals will come to you as the road goes on.
+
+### `SlateportCity_EventScript_DraconidOak`
+- PROF. OAK: Ah, {PLAYER}! I came down to meet a ship from ALOLA. It just came in.
+- PROF. OAK: My cousin SAMSON studies POKéMON over there.
+- I wrote to him about the partner I gave you in RUSTBORO, and look what he sent!
+- PROF. OAK: Oh! Your BAG is full. Make some room, and I'll wait right here.
+- PROF. OAK: A Z-CRYSTAL! With the ring your ELDER gave you, your partner can put everything into one move.
+- SAMSON says to use it wisely. Coming from him, that's saying something!
+- PROF. OAK: He sent one for each of the three POKéMON I brought to HOENN.
+- The other two are coming home to KANTO with me, and they hardly need crystals in a lab!
+- PROF. OAK: A crystal isn't tied to one POKéMON, you know. Any POKéMON of its type can hold it.
+- PROF. OAK: Now, I'd best not be seen chatting with a TEAM MAGMA grunt for too long. Take care, {PLAYER}!
+
+### `MeteorFalls_1F_1R_EventScript_DraconidDragoniumZ`
+- ASTER: …And this. Don't look at me like that. It isn't from me.
+- The DRACONIDS of these falls heard the ELDER gave you a Z-POWER RING. They sent you a DRAGONIUM Z.
+- ASTER: Your BAG's full? Then I'll hold on to it. You'll see me again.
+- ASTER: A dragon's crystal, for the ELDER's chosen. Don't waste it on MAGMA's errands.
+
+### `JaggedPass_EventScript_DraconidDragoniumZAgain`
+- ASTER: And the falls' crystal. You'd better have room for it this time.
+
+### `MtPyre_Summit_EventScript_DraconidKommoniumZ`
+- NERINE: …Wait. Your partner's scales ring like a war drum.
+- That line comes from ALOLA. I'd know that sound anywhere.
+- NERINE: This came off a ship from there. It belongs with your dragon more than with me.
+- NERINE: I'll leave it by the lantern. An AQUA grunt doesn't hand things to a MAGMA uniform.
+- And don't ask where I got it.
 
 ## Reworked vanilla texts (`@ Draconid Emerald` labels in `data/maps/*/scripts.inc`)
 

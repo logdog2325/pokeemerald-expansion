@@ -1085,6 +1085,8 @@ gStdScripts_End::
 	.include "data/scripts/draconid/act7.inc"
 	.include "data/scripts/draconid/magma_revenge.inc"
 	.include "data/scripts/draconid/act7x.inc"
+	.include "data/scripts/draconid/zmoves.inc"
+	.include "data/scripts/draconid/draconid_rivals.inc"
 	.include "data/scripts/draconid/reputation/dewford.inc"
 	.include "data/scripts/draconid/reputation/ever_grande.inc"
 	.include "data/scripts/draconid/reputation/fallarbor.inc"

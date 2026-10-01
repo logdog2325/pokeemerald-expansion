@@ -1,0 +1,201 @@
+# Flow test for the Draconid rivals' new battles (data/scripts/draconid/draconid_rivals.pory, D-279 - D-283): Aster on
+# Route 121's Mt. Pyre pier (Act 4), Aster on the village square and Nerine by the pond, as herself, between the
+# Sootopolis reveal and the League (Act 5 1/2: no battle before the Rain Badge), their post-game double by the pond
+# (once a day), and every optional battle gone once its window closes (the hide flags). Aster's Granite Cave battle
+# (Act 2) is fought in zmoves.play; here its window closes after Meteor Falls.
+# Needs rustboro_done.ss from tests/rustboro.play; the states are set by hand. The battles are fought by Lv 15 Deinos
+# from the debug menu (Dragon Breath, move slot 1: no Pokemon in these teams is immune to it; met at Lv 15, so they
+# obey), the egg Pokemon fainted in memory and the Deinos boosted in memory (999, play.py "boost") so the mashed
+# battles are won - the trainer data is untouched. Matrix parameters (tools/hack/emu/matrix.py): EGGNAME = the
+# player's egg in the savestate (Aster's teams), SECOND / SECONDNAME = the second starter (Nerine's teams follow both).
+default START rustboro_done.ss
+default EGGNAME DEINO
+default SECOND 1
+default SECONDNAME CHARMANDER
+loadstate ${START}
+setvar VAR_SECOND_STARTER ${SECOND}
+setflag FLAG_DEBUG_NO_ENCOUNTER
+setflag FLAG_DEBUG_NO_TRAINER_SEE
+setflag FLAG_DRACONID_NO_WHITEOUT
+# battle style SET (gSaveBlock2Ptr->optionsBattleStyle, bit 1 of byte 0x15): no "Will you switch?" prompt to mash
+pokebit *@gSaveBlock2Ptr+15 1 1
+givemon SPECIES_DEINO 15
+givemon SPECIES_DEINO 15
+setflag FLAG_BADGE01_GET
+setflag FLAG_BADGE02_GET
+setflag FLAG_BADGE03_GET
+setflag FLAG_BADGE04_GET
+setflag FLAG_BADGE05_GET
+setflag FLAG_BADGE06_GET
+
+# --- Granite Cave B1F: Aster has gone once her Meteor Falls battle is done ---
+setvar VAR_MAGMA_STATE 5
+setvar VAR_ASTER_STATE 1
+warp MAP_GRANITE_CAVE_B1F 4 20
+run 60
+expect_flag FLAG_TEMP_11 1
+expect_var VAR_TEMP_1 0
+
+# --- Route 121: Aster on the Mt. Pyre pier, after the Weather Institute, before the Mt. Pyre summit ---
+setvar VAR_DRACONID_REPUTATION 1
+setvar VAR_MAGMA_STATE 7
+setvar VAR_ASTER_STATE 6
+heal
+monstat 0 hp 0
+boost 1
+warp MAP_ROUTE121 30 12
+run 60
+shot 10_route121
+expect_flag FLAG_TEMP_14 0
+walk DOWN 14
+run 30
+press A 2 50
+shot 11_route121_aster
+press A 2 80
+shot 12_route121_aster
+press A 2 80
+press A 2 80
+press A 2 80
+shot 13_route121_riddle
+until @gMain+4 4 @@BattleMainCB2 30000 A 24
+poke @gMoveSelectionCursor 1
+poke @gMoveSelectionCursor+2 1
+run 300
+shot 14_route121_battle
+until @gMain+4 4 @@CB2_Overworld 60000 A 24
+mash A 20000
+run 30
+shot 15_route121_after
+expect_opponent TRAINER_ASTER_ROUTE_121_${EGGNAME}
+expect_trainer TRAINER_ASTER_ROUTE_121_DEINO 1
+# once the summit is done she is gone even if she was never battled
+settrainer TRAINER_ASTER_ROUTE_121_DEINO 0
+setvar VAR_MAGMA_STATE 8
+warp MAP_ROUTE121 30 12
+run 60
+expect_flag FLAG_TEMP_14 1
+expect_var VAR_TEMP_1 0
+
+# --- the village, Act 5 1/2: the uniform is off, the player isn't Champion yet ---
+setvar VAR_DRACONID_REPUTATION 2
+setvar VAR_PLAYER_OUTFIT 0
+setvar VAR_MAGMA_STATE 12
+setvar VAR_ASTER_STATE 7
+setvar VAR_NERINE_STATE 7
+setvar VAR_BRENDAN_STATE 6
+setvar VAR_MAY_STATE 4
+setflag FLAG_BADGE07_GET
+heal
+monstat 0 hp 0
+boost 1
+warp MAP_DRACONID_VILLAGE 13 14
+run 60
+shot 20_village_aster
+expect_flag FLAG_TEMP_1F 0
+expect_flag FLAG_HIDE_DRACONID_VILLAGE_NERINE 0
+# no battle before the Rain Badge
+press UP 2 20
+press A 2 30
+mash A 10000
+expect_trainer TRAINER_ASTER_VILLAGE_DEINO 0
+setflag FLAG_BADGE08_GET
+press A 2 30
+press A 2 60
+shot 21_village_aster_talk
+until @gMain+4 4 @@BattleMainCB2 30000 A 24
+poke @gMoveSelectionCursor 1
+poke @gMoveSelectionCursor+2 1
+run 300
+shot 22_village_aster_battle
+until @gMain+4 4 @@CB2_Overworld 60000 A 24
+mash A 20000
+expect_opponent TRAINER_ASTER_VILLAGE_${EGGNAME}
+expect_trainer TRAINER_ASTER_VILLAGE_DEINO 1
+# Nerine by the pond, (28, 7)
+heal
+monstat 0 hp 0
+boost 1
+warp MAP_DRACONID_VILLAGE 27 7
+run 60
+shot 23_village_nerine
+press RIGHT 2 20
+press A 2 30
+press A 2 60
+shot 24_village_nerine_talk
+until @gMain+4 4 @@BattleMainCB2 30000 A 24
+poke @gMoveSelectionCursor 1
+poke @gMoveSelectionCursor+2 1
+run 300
+shot 25_village_nerine_battle
+until @gMain+4 4 @@CB2_Overworld 60000 A 24
+mash A 20000
+expect_opponent TRAINER_NERINE_VILLAGE_${EGGNAME}_${SECONDNAME}
+expect_trainer TRAINER_NERINE_VILLAGE_DEINO_CHARMANDER 1
+# Champion: both are at the Sky Pillar until the village is saved
+setflag FLAG_IS_CHAMPION
+warp MAP_DRACONID_VILLAGE 13 14
+run 60
+expect_flag FLAG_TEMP_1F 1
+expect_flag FLAG_HIDE_DRACONID_VILLAGE_NERINE 1
+
+# --- post-game: after both singles, Aster by the pond beside Nerine, (27, 7): their double, once a day ---
+setflag FLAG_SYS_GAME_CLEAR
+setvar VAR_DRACONID_FINALE_STATE 9
+setvar VAR_DRACONID_VILLAGE_STATE 10
+setvar VAR_ASTER_STATE 9
+setvar VAR_NERINE_STATE 9
+clearflag FLAG_HIDE_DRACONID_VILLAGE_NERINE
+setflag FLAG_HIDE_DRACONID_HOUSE_ELDER
+# Lance has landed already (lance.pory), so this visit is an ordinary one
+setflag FLAG_DRACONID_LANCE_ARMED
+clearflag FLAG_HIDE_DRACONID_VILLAGE_LANCE
+heal
+monstat 0 hp 0
+boost 1
+boost 2
+warp MAP_DRACONID_VILLAGE 26 7
+run 60
+shot 30_pond
+expect_flag FLAG_TEMP_1F 0
+press RIGHT 2 20
+press A 2 30
+press A 2 80
+shot 31_pond_double_talk
+until @gMain+4 4 @@BattleMainCB2 30000 A 24
+poke @gMoveSelectionCursor 1
+poke @gMoveSelectionCursor+2 1
+run 400
+shot 32_pond_double
+until @gMain+4 4 @@CB2_Overworld 90000 A 24
+mash A 20000
+expect_opponent TRAINER_ASTER_DOUBLE_${EGGNAME}
+expect_opponent_b TRAINER_NERINE_DOUBLE_${EGGNAME}_${SECONDNAME}
+expect_flag FLAG_DAILY_DRACONID_RIVALS_DOUBLE 1
+expect_trainer TRAINER_ASTER_DOUBLE_DEINO 1
+# once a day: asked again, she sends the player away
+press A 2 30
+press A 2 60
+shot 33_pond_tomorrow
+mash A 10000
+expect_flag FLAG_DAILY_DRACONID_RIVALS_DOUBLE 1
+# the next day, through Nerine's own script
+clearflag FLAG_DAILY_DRACONID_RIVALS_DOUBLE
+heal
+monstat 0 hp 0
+boost 1
+boost 2
+warp MAP_DRACONID_VILLAGE 28 8
+run 60
+press UP 2 20
+press A 2 30
+until @gMain+4 4 @@BattleMainCB2 30000 A 24
+poke @gMoveSelectionCursor 1
+poke @gMoveSelectionCursor+2 1
+until @gMain+4 4 @@CB2_Overworld 90000 A 24
+mash A 20000
+expect_opponent_b TRAINER_NERINE_DOUBLE_${EGGNAME}_${SECONDNAME}
+expect_flag FLAG_DAILY_DRACONID_RIVALS_DOUBLE 1
+
+clearflag FLAG_DEBUG_NO_ENCOUNTER
+clearflag FLAG_DEBUG_NO_TRAINER_SEE
+clearflag FLAG_DRACONID_NO_WHITEOUT
