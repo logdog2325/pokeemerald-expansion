@@ -221,3 +221,6 @@ Petalburg Woods recruitment/outfit change, Maxie's first meeting at Meteor Falls
 
 ### Follow-up note 30 (round 1)
 - "when can i get the test rom also make sure if you weaken teams for testing you put them back to there full strength after with strong movesets and held items remember we want this rom hack to have some degree of difficulty"
+
+### Follow-up note 31 (round 1)
+- "also I think we should get access to z moves earlier and they should be spread throughout the story not a post game think"

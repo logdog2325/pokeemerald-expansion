@@ -8,6 +8,7 @@ DraconidVillage_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	map_script_2 VAR_TEMP_2, 1, DraconidVillage_EventScript_DraconidArrival
 	map_script_2 VAR_TEMP_2, 3, DraconidVillage_EventScript_DraconidFinalIntro
 	map_script_2 VAR_TEMP_2, 4, DraconidVillage_EventScript_DraconidGoodbyes
+	map_script_2 VAR_TEMP_C, 1, DraconidVillage_EventScript_LanceArrives
 	.2byte 0
 
 
@@ -18,6 +19,7 @@ DraconidVillage_OnTransition::
 DraconidVillage_OnTransition_1:
 	call Draconid_EventScript_FinaleWeather
 	call DraconidVillage_EventScript_DraconidAttackOnTransition
+	call DraconidVillage_EventScript_LanceOnTransition
 	return
 
 DraconidVillage_OnTransition_2:
