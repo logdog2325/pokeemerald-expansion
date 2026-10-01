@@ -260,6 +260,7 @@ python3 tools/hack/emu/play.py tools/hack/emu/tests/release_boot.play   -o /tmp/
 Flow tests set `FLAG_DRACONID_NO_WHITEOUT` so a battle lost by mashing A doesn't end the scene.
 Savestates only work with the ROM build that made them; rerun the chain after every rebuild.
 `battlepp N [VALUE]` refills battler N's PP mid-battle (a long mashed battle otherwise loops on "There's no PP left").
+`battlehp N [VALUE]` sets battler N's HP mid-battle (default 1): a mashed boss battle that must be won (act7x.play's Primal finale).
 `callscript LABEL` (debug builds) starts any event script the next time the player is free (the test hook in
 `include/draconid.h`). `tests/fades.play` + `fade_check.py OUTDIR` check that same-screen fades bring the picture back
 unchanged under weather and the day/night tint (D-278); the matrix runs both.

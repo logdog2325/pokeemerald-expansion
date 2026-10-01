@@ -368,6 +368,22 @@ press DOWN 2 30
 press A 2 40
 until @gMain+4 4 @@BattleMainCB2 3000
 run 60
+# a mashed win must not depend on luck (two matrix runs lost it): the leads on the field (battlers 1 and 3) and the
+# reserves (Maxie's Camerupt and Groudon, Archie's Sharpedo and Kyogre, opponent party slots 1, 2, 4, 5) are at 1 HP
+# – Groudon and Kyogre still undergo Primal Reversion on the way in – and the lead keeps its PP (in memory only, the
+# parties stay as written)
+poke @gParties+312 1
+poke @gParties+313 0
+poke @gParties+376 1
+poke @gParties+377 0
+poke @gParties+43E 1
+poke @gParties+43F 0
+poke @gParties+4A2 1
+poke @gParties+4A3 0
+run 300
+battlehp 1
+battlehp 3
+battlepp 0
 poke @gMoveSelectionCursor ${MOVE}
 wait_species 1 SPECIES_GROUDON_PRIMAL 300000 A
 run 200

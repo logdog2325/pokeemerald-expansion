@@ -26,6 +26,8 @@ A .play script is a gbarun script plus:
   wait_species N SPECIES_X [MAX] [KEY]   tap KEY (default A) until battler N (gBattleMons[N]; 1 = the
                           opponent in a single battle) is SPECIES_X, e.g. a Mega Evolution
   battlepp N [VALUE]      during a battle: the PP of battler N's four moves (gBattleMons[N]) to VALUE (default 64)
+  battlehp N [VALUE]      during a battle: battler N's current HP (gBattleMons[N].hp) to VALUE (default 1) – a
+                          mashed boss battle that must be won (memory only; the party files stay as written)
   boost SLOT [VALUE]      set the player's party Pokemon at SLOT to level 100 with VALUE (default 999) HP and
                           stats, for a flow test that must win (999) or quickly lose (1) a battle (the
                           unencrypted party fields; a level-up or a stat recalculation undoes it)
@@ -226,6 +228,7 @@ OPPONENT_A_OFFSET = "offsetof(struct _TrainerBattleParameter, opponentA)"
 OPPONENT_B_OFFSET = "offsetof(struct _TrainerBattleParameter, opponentB)"
 BATTLE_MON_SIZE, BATTLE_MON_SPECIES = "sizeof(struct BattlePokemon)", "offsetof(struct BattlePokemon, species)"
 BATTLE_MON_PP = "offsetof(struct BattlePokemon, pp)"
+BATTLE_MON_HP = "offsetof(struct BattlePokemon, hp)"
 BAG_OFFSET, SLOT_SIZE, BAG_SIZE = "offsetof(struct SaveBlock1, bag)", "sizeof(struct ItemSlot)", "sizeof(struct Bag)"
 ROAMER_OFFSET, ROAMER_SIZE = "offsetof(struct SaveBlock1, roamer)", "sizeof(struct Roamer)"
 ROAMER_SPECIES, ROAMER_ACTIVE = "offsetof(struct Roamer, species)", "offsetof(struct Roamer, active)"
@@ -273,7 +276,7 @@ def main():
     if any(l.split()[:1] == ["expect_roamer"] for l in lines):
         names += [l.split()[2] for l in lines if l.split()[:1] == ["expect_roamer"]]
         names += [ROAMER_OFFSET, ROAMER_SIZE, ROAMER_SPECIES, ROAMER_ACTIVE]
-    names += [OPPONENT_A_OFFSET, OPPONENT_B_OFFSET, GFX_OFFSET, BATTLE_MON_SIZE, BATTLE_MON_SPECIES, BATTLE_MON_PP]
+    names += [OPPONENT_A_OFFSET, OPPONENT_B_OFFSET, GFX_OFFSET, BATTLE_MON_SIZE, BATTLE_MON_SPECIES, BATTLE_MON_PP, BATTLE_MON_HP]
     names += [BAG_OFFSET, SLOT_SIZE, BAG_SIZE, "TRAINER_FLAGS_START", MON_SIZE, SECURE_OFFSET, SUBSTRUCT_SIZE]
     if any(l.split() and l.split()[0] in HOOK_COMMANDS for l in lines):
         names += [TEST_ITEM_OFFSET, TEST_HMS_OFFSET, TEST_SPECIES_OFFSET, TEST_LEVEL_OFFSET,
@@ -363,6 +366,11 @@ def main():
             addr = syms["gBattleMons"] + int(t[1]) * consts[BATTLE_MON_SIZE] + consts[BATTLE_MON_SPECIES]
             out.append("until %X 2 %X %s %s 24" % (addr, consts[t[2]], t[3] if len(t) > 3 else "60000",
                                                   t[4] if len(t) > 4 else "A"))
+        elif t[0] == "battlehp":
+            addr = syms["gBattleMons"] + int(t[1]) * consts[BATTLE_MON_SIZE] + consts[BATTLE_MON_HP]
+            value = int(t[2]) if len(t) > 2 else 1
+            out.append("poke %X %X" % (addr, value & 0xFF))
+            out.append("poke %X %X" % (addr + 1, value >> 8))
         elif t[0] == "battlepp":
             # gBattleMons[N].pp[0..3] = VALUE: a long mashed battle must not run the lead's first move out of PP
             # ("There's no PP left for this move!" and mashing A picks it again forever)
