@@ -498,6 +498,8 @@ const u8 gTrainerBackPic_PlayerMagmaF[] = INCGFX_U8("graphics/trainers/back_pics
 // Draconid Emerald: multi-battle partners seen from behind (Sky Pillar Nerine, Space Center Tabitha)
 const u8 gTrainerBackPic_Nerine[] = INCGFX_U8("graphics/trainers/back_pics/nerine.png", ".4bpp");
 const u8 gTrainerBackPic_MagmaAdmin[] = INCGFX_U8("graphics/trainers/back_pics/magma_admin.png", ".4bpp");
+// Draconid Emerald: Aster as a partner in the village attack (Act 7 extension, tools/hack/art/recipes/aster_back_pic.json)
+const u8 gTrainerBackPic_Aster[] = INCGFX_U8("graphics/trainers/back_pics/aster.png", ".4bpp");
 // Draconid Emerald: the Battle Frontier legends as partners (D-228)
 const u8 gTrainerBackPic_Wes[] = INCGFX_U8("graphics/trainers/back_pics/wes.png", ".4bpp");
 const u8 gTrainerBackPic_Blue[] = INCGFX_U8("graphics/trainers/back_pics/blue.png", ".4bpp");
@@ -516,6 +518,7 @@ const u16 gTrainerBackPicPalette_PlayerMagmaM[] = INCGFX_U16("graphics/trainers/
 const u16 gTrainerBackPicPalette_PlayerMagmaF[] = INCGFX_U16("graphics/trainers/back_pics/magma_f.png", ".gbapal");
 const u16 gTrainerBackPicPalette_Nerine[] = INCGFX_U16("graphics/trainers/back_pics/nerine.png", ".gbapal");
 const u16 gTrainerBackPicPalette_MagmaAdmin[] = INCGFX_U16("graphics/trainers/back_pics/magma_admin.png", ".gbapal");
+const u16 gTrainerBackPicPalette_Aster[] = INCGFX_U16("graphics/trainers/back_pics/aster.png", ".gbapal");
 const u16 gTrainerBackPicPalette_Wes[] = INCGFX_U16("graphics/trainers/back_pics/wes.png", ".gbapal");
 const u16 gTrainerBackPicPalette_Blue[] = INCGFX_U16("graphics/trainers/back_pics/blue.png", ".gbapal");
 const u16 gTrainerBackPicPalette_Leaf[] = INCGFX_U16("graphics/trainers/back_pics/leaf.png", ".gbapal");
@@ -669,6 +672,7 @@ const struct TrainerPicInfo gTrainerPicInfo[TRAINER_PIC_COUNT] =
     [TRAINER_PIC_ASTER] =
     {
         .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Aster, gTrainerPalette_Aster),
+        .backPic = TRAINER_BACK_PIC(5, gTrainerBackPic_Aster, gTrainerBackPicPalette_Aster, sBackAnims_Kanto),
     },
     [TRAINER_PIC_NERINE_AQUA] =
     {

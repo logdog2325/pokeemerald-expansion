@@ -5,6 +5,9 @@ DraconidVillage_MapScripts::
 
 DraconidVillage_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	map_script_2 VAR_DRACONID_STATE, DRACONID_STATE_EGG_HATCHED, DraconidVillage_EventScript_RunningShoes
+	map_script_2 VAR_TEMP_2, 1, DraconidVillage_EventScript_DraconidArrival
+	map_script_2 VAR_TEMP_2, 3, DraconidVillage_EventScript_DraconidFinalIntro
+	map_script_2 VAR_TEMP_2, 4, DraconidVillage_EventScript_DraconidGoodbyes
 	.2byte 0
 
 
@@ -14,6 +17,7 @@ DraconidVillage_OnTransition::
 	goto_if_ge DraconidVillage_OnTransition_2
 DraconidVillage_OnTransition_1:
 	call Draconid_EventScript_FinaleWeather
+	call DraconidVillage_EventScript_DraconidAttackOnTransition
 	return
 
 DraconidVillage_OnTransition_2:
@@ -107,13 +111,16 @@ DraconidVillage_EventScript_ShoesGiver::
 
 
 DraconidVillage_EventScript_GatekeeperStop::
+	compare VAR_DRACONID_VILLAGE_STATE, VILLAGE_STATE_ALARM
+	goto_if_ge DraconidVillage_EventScript_GatekeeperStop_3
+DraconidVillage_EventScript_GatekeeperStop_1:
 	lockall
 	applymovement LOCALID_DRACONID_GATEKEEPER, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
 	compare VAR_DRACONID_STATE, DRACONID_STATE_EGG_RECEIVED
-	goto_if_lt DraconidVillage_EventScript_GatekeeperStop_2
+	goto_if_lt DraconidVillage_EventScript_GatekeeperStop_7
 	msgbox DraconidVillage_EventScript_GatekeeperStop_Text_1
-DraconidVillage_EventScript_GatekeeperStop_1:
+DraconidVillage_EventScript_GatekeeperStop_6:
 	closemessage
 	applymovement LOCALID_PLAYER, DraconidVillage_Movement_PushBack
 	waitmovement 0
@@ -121,8 +128,17 @@ DraconidVillage_EventScript_GatekeeperStop_1:
 	return
 
 DraconidVillage_EventScript_GatekeeperStop_2:
-	msgbox DraconidVillage_EventScript_GatekeeperStop_Text_0
+	goto DraconidVillage_EventScript_DraconidGatekeeperAttack
 	goto DraconidVillage_EventScript_GatekeeperStop_1
+
+DraconidVillage_EventScript_GatekeeperStop_3:
+	compare VAR_DRACONID_VILLAGE_STATE, VILLAGE_STATE_SAVED
+	goto_if_lt DraconidVillage_EventScript_GatekeeperStop_2
+	goto DraconidVillage_EventScript_GatekeeperStop_1
+
+DraconidVillage_EventScript_GatekeeperStop_7:
+	msgbox DraconidVillage_EventScript_GatekeeperStop_Text_0
+	goto DraconidVillage_EventScript_GatekeeperStop_6
 
 
 DraconidVillage_Movement_PushBack:
@@ -130,18 +146,48 @@ DraconidVillage_Movement_PushBack:
 	step_end
 
 DraconidVillage_EventScript_Gatekeeper::
+	compare VAR_DRACONID_VILLAGE_STATE, VILLAGE_STATE_ALARM
+	goto_if_ge DraconidVillage_EventScript_Gatekeeper_3
+DraconidVillage_EventScript_Gatekeeper_1:
 	lock
 	faceplayer
 	compare VAR_DRACONID_STATE, DRACONID_STATE_READY_TO_LEAVE
-	goto_if_lt DraconidVillage_EventScript_Gatekeeper_2
-	msgbox DraconidVillage_EventScript_Gatekeeper_Text_1
-DraconidVillage_EventScript_Gatekeeper_1:
+	goto_if_lt DraconidVillage_EventScript_Gatekeeper_7
+	compare VAR_DRACONID_FINALE_STATE, FINALE_STATE_METEOR_DESTROYED
+	goto_if_ge DraconidVillage_EventScript_Gatekeeper_8
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq DraconidVillage_EventScript_Gatekeeper_9
+	compare VAR_DRACONID_REPUTATION, REPUTATION_REVEALED
+	goto_if_eq DraconidVillage_EventScript_Gatekeeper_10
+	msgbox DraconidVillage_EventScript_Gatekeeper_Text_4
+DraconidVillage_EventScript_Gatekeeper_6:
 	release
 	return
 
 DraconidVillage_EventScript_Gatekeeper_2:
-	msgbox DraconidVillage_EventScript_Gatekeeper_Text_0
+	goto DraconidVillage_EventScript_DraconidGatekeeperTalk
 	goto DraconidVillage_EventScript_Gatekeeper_1
+
+DraconidVillage_EventScript_Gatekeeper_3:
+	compare VAR_DRACONID_VILLAGE_STATE, VILLAGE_STATE_SAVED
+	goto_if_lt DraconidVillage_EventScript_Gatekeeper_2
+	goto DraconidVillage_EventScript_Gatekeeper_1
+
+DraconidVillage_EventScript_Gatekeeper_7:
+	msgbox DraconidVillage_EventScript_Gatekeeper_Text_0
+	goto DraconidVillage_EventScript_Gatekeeper_6
+
+DraconidVillage_EventScript_Gatekeeper_8:
+	msgbox DraconidVillage_EventScript_Gatekeeper_Text_1
+	goto DraconidVillage_EventScript_Gatekeeper_6
+
+DraconidVillage_EventScript_Gatekeeper_9:
+	msgbox DraconidVillage_EventScript_Gatekeeper_Text_2
+	goto DraconidVillage_EventScript_Gatekeeper_6
+
+DraconidVillage_EventScript_Gatekeeper_10:
+	msgbox DraconidVillage_EventScript_Gatekeeper_Text_3
+	goto DraconidVillage_EventScript_Gatekeeper_6
 
 
 DraconidVillage_EventScript_Apprentice::
@@ -164,13 +210,39 @@ DraconidVillage_EventScript_OldWoman_2:
 
 
 DraconidVillage_EventScript_PondWoman::
-	msgbox DraconidVillage_EventScript_PondWoman_Text_0, MSGBOX_NPC
+	lock
+	faceplayer
+	compare VAR_DRACONID_FINALE_STATE, FINALE_STATE_METEOR_DESTROYED
+	goto_if_ge DraconidVillage_EventScript_PondWoman_2
+	msgbox DraconidVillage_EventScript_PondWoman_Text_1
+DraconidVillage_EventScript_PondWoman_1:
+	release
 	return
+
+DraconidVillage_EventScript_PondWoman_2:
+	msgbox DraconidVillage_EventScript_PondWoman_Text_0
+	goto DraconidVillage_EventScript_PondWoman_1
 
 
 DraconidVillage_EventScript_Boy::
-	msgbox DraconidVillage_EventScript_Boy_Text_0, MSGBOX_NPC
+	lock
+	faceplayer
+	compare VAR_DRACONID_FINALE_STATE, FINALE_STATE_METEOR_DESTROYED
+	goto_if_ge DraconidVillage_EventScript_Boy_2
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq DraconidVillage_EventScript_Boy_3
+	msgbox DraconidVillage_EventScript_Boy_Text_2
+DraconidVillage_EventScript_Boy_1:
+	release
 	return
+
+DraconidVillage_EventScript_Boy_2:
+	msgbox DraconidVillage_EventScript_Boy_Text_0
+	goto DraconidVillage_EventScript_Boy_1
+
+DraconidVillage_EventScript_Boy_3:
+	msgbox DraconidVillage_EventScript_Boy_Text_1
+	goto DraconidVillage_EventScript_Boy_1
 
 
 DraconidVillage_EventScript_VillageSign::
@@ -239,6 +311,26 @@ DraconidVillage_EventScript_Gatekeeper_Text_0:
 	.string "with a partner may pass.$"
 
 DraconidVillage_EventScript_Gatekeeper_Text_1:
+	.string "GATEKEEPER: They came up my path in\n"
+	.string "the dark, and I couldn't hold them. You\l"
+	.string "did.\p"
+	.string "The gate is yours, CHAMPION. Come home\n"
+	.string "whenever you like.$"
+
+DraconidVillage_EventScript_Gatekeeper_Text_2:
+	.string "GATEKEEPER: …Is that you under the red\n"
+	.string "hood, {PLAYER}?\p"
+	.string "The ELDER said you'd come home looking\n"
+	.string "like one of them. The gate is still\l"
+	.string "yours.$"
+
+DraconidVillage_EventScript_Gatekeeper_Text_3:
+	.string "GATEKEEPER: The hero of SOOTOPOLIS, at\n"
+	.string "my gate!\p"
+	.string "I'll never tell the young ones you once\n"
+	.string "dressed like a MAGMA grunt.$"
+
+DraconidVillage_EventScript_Gatekeeper_Text_4:
 	.string "GATEKEEPER: So you're off to see the\n"
 	.string "lowlands! The clan's blessings go with\l"
 	.string "you.\p"
@@ -265,12 +357,30 @@ DraconidVillage_EventScript_OldWoman_Text_1:
 	.string "Seems like only yesterday…$"
 
 DraconidVillage_EventScript_PondWoman_Text_0:
+	.string "KYOGRE sat right there in our pool, as\n"
+	.string "big as a house!\p"
+	.string "The water's still cloudy. I'm not\n"
+	.string "drinking a drop of it until it clears.$"
+
+DraconidVillage_EventScript_PondWoman_Text_1:
 	.string "The water here comes from the peaks,\n"
 	.string "where the sky dragon is said to rest.\p"
 	.string "Drinking it is supposed to make dragons\n"
 	.string "grow strong!$"
 
 DraconidVillage_EventScript_Boy_Text_0:
+	.string "I saw a GROUDON and a KYOGRE, and\n"
+	.string "RAYQUAZA too!\p"
+	.string "Nobody down in the lowlands is ever\n"
+	.string "going to believe me.$"
+
+DraconidVillage_EventScript_Boy_Text_1:
+	.string "Why are you dressed like the bad\n"
+	.string "lowlanders?\p"
+	.string "…It's a trick, isn't it! I won't tell\n"
+	.string "anyone!$"
+
+DraconidVillage_EventScript_Boy_Text_2:
 	.string "When I get my egg, I want a dragon that\n"
 	.string "can fly all the way up to the sky!$"
 

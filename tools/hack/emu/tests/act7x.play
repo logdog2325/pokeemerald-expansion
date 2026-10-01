@@ -1,0 +1,485 @@
+# Flow test for the Act 7 extension (data/scripts/draconid/act7x.pory, D-200 - D-209): the Elder's call at the foot
+# of the Sky Pillar, the shrine wall opening, Regidrago (lost, then fought again), the Elder's lift back to the
+# Sky Pillar trial; then the attack on the village: the arrival with Brendan, May and Wally, the three house doubles
+# (one lost first: the player wakes at home and the fight waits), Aster and the player vs Tabitha and Shelly, the
+# Primal multi battle with each partner choice (Primal Groudon on the field), the Orbs, the goodbyes, the credits,
+# home; the SS Ticket and both Lati roamers; the post-game battles (Nerine, Aster, Deoxys, Groudon, Kyogre).
+# Needs rustboro_done.ss from tests/rustboro.play (a one-Pokemon party: the egg Pokemon); the Act 6-7 states are
+# set by hand. The party Pokemon is boosted where a battle must be won (play.py "boost") with the move cursor on
+# MOVE (a damaging move: Deino's Dragon Breath, Dreepy's Astonish, Jangmo-o's Tackle), and left at 1 HP for the
+# battles that must be lost; against Wallace it uses NDMOVE, a move that isn't Dragon-type (his Primarina is a Fairy).
+# Matrix parameters (tools/hack/emu/matrix.py): EGGNAME = the player's egg in the savestate (Aster's partner team is
+# named after it), MOVE / NDMOVE = that Pokemon's move slots, SECOND / SECONDNAME = the second starter (Nerine's
+# post-game team).
+default START rustboro_done.ss
+default EGGNAME DEINO
+default MOVE 2
+default NDMOVE 0
+default SECOND 1
+default SECONDNAME CHARMANDER
+loadstate ${START}
+setvar VAR_SECOND_STARTER ${SECOND}
+setvar VAR_DRACONID_REPUTATION 2
+setvar VAR_PLAYER_OUTFIT 0
+setvar VAR_MAGMA_STATE 12
+setvar VAR_NERINE_STATE 7
+setvar VAR_ASTER_STATE 7
+setvar VAR_BRENDAN_STATE 6
+setvar VAR_MAY_STATE 4
+setvar VAR_SKY_PILLAR_STATE 3
+setvar VAR_SKY_PILLAR_RAYQUAZA_CRY_DONE 1
+setflag FLAG_SYS_GAME_CLEAR
+setflag FLAG_BADGE01_GET
+setflag FLAG_BADGE02_GET
+setflag FLAG_BADGE03_GET
+setflag FLAG_BADGE04_GET
+setflag FLAG_BADGE05_GET
+setflag FLAG_BADGE06_GET
+setflag FLAG_BADGE07_GET
+setflag FLAG_BADGE08_GET
+setvar VAR_DRACONID_FINALE_STATE 3
+setflag FLAG_HIDE_DRACONID_HOUSE_ELDER
+setflag FLAG_HIDE_DRACONID_ELDERS_HOUSE_ELDER
+setflag FLAG_DEBUG_NO_ENCOUNTER
+setflag FLAG_DEBUG_NO_TRAINER_SEE
+setflag FLAG_DRACONID_NO_WHITEOUT
+# battle style SET (gSaveBlock2Ptr->optionsBattleStyle, bit 1 of byte 0x15): no "Will you switch?" prompt to mash
+pokebit *@gSaveBlock2Ptr+15 1 1
+
+# --- the Elder's call at the foot of the Sky Pillar; his dragon flies the player home ---
+warp MAP_SKY_PILLAR_OUTSIDE 17 14
+run 200
+shot 10_elder_call
+mash A 30000
+run 60
+shot 11_home_at_the_shrine
+expect_var VAR_DRACONID_VILLAGE_STATE 1
+expect_map MAP_DRACONID_VILLAGE
+expect_flag FLAG_HIDE_DRACONID_HOUSE_ELDER 1
+
+# --- the shrine: the Guardian's statue grinds forward, the carved wall opens ---
+walk UP 5
+run 120
+shot 12_shrine
+# the player walks up to the statue (y 7), then steps back to y 11 as it moves (player y + 7 MAP_OFFSET, in hex)
+until @gObjectEvents+12 2 E 3000
+until @gObjectEvents+12 2 12 30000 A 24
+run 20
+shot 13_statue_moves
+run 400
+shot 14_wall_splits
+mash A 30000
+run 30
+shot 15_wall_open
+expect_var VAR_DRACONID_VILLAGE_STATE 2
+expect_map MAP_DRACONID_VILLAGE_SHRINE
+expect_pos 10 11
+savestate act7x_seal.ss
+
+# --- down to Regidrago (round the statue, now at (10, 9)); lost first (the debug flag keeps the player there, as
+# a whiteout would not advance the story), then fought again and beaten ---
+walk LEFT 8
+walk UP 5
+walk RIGHT 10
+walk UP 4
+run 60
+expect_map MAP_DRACONID_VILLAGE_SHRINE_DEPTHS
+walk UP 8
+run 30
+shot 20_depths
+boost 0 1
+press A 2 30
+until @gMain+4 4 @@BattleMainCB2 30000 A 24
+run 400
+shot 21_regidrago
+until @gMain+4 4 @@CB2_Overworld 120000 A 24
+mash A 30000
+expect_var VAR_DRACONID_VILLAGE_STATE 2
+heal
+warp MAP_DRACONID_VILLAGE_SHRINE_DEPTHS 8 8
+run 60
+shot 22_regidrago_again
+boost 0
+press UP 2 20
+press A 2 30
+until @gMain+4 4 @@BattleMainCB2 30000 A 24
+run 60
+poke @gMoveSelectionCursor ${MOVE}
+until @gMain+4 4 @@CB2_Overworld 120000 A 24
+mash A 30000
+expect_var VAR_DRACONID_VILLAGE_STATE 3
+expect_flag FLAG_DRACONID_CAUGHT_REGIDRAGO 0
+# beaten, not caught: it is back the next time the player comes down
+warp MAP_DRACONID_VILLAGE_SHRINE_DEPTHS 8 8
+run 60
+shot 23_regidrago_back
+
+# --- back up to the shrine: the Elder's lift to the Sky Pillar (no second call); Wallace keeps the way ---
+walk DOWN 11
+press DOWN 8 60
+run 120
+shot 24_lift
+mash A 30000
+run 60
+expect_map MAP_SKY_PILLAR_OUTSIDE
+expect_flag FLAG_HIDE_DRACONID_SHRINE_ELDER 1
+# Wallace, lost first (1 HP): he tends the team and waits
+boost 0 1
+until @gMain+4 4 @@BattleMainCB2 60000 A 24
+run 400
+shot 25_wallace
+until @gMain+4 4 @@CB2_Overworld 120000 A 24
+expect_opponent TRAINER_WALLACE_SKY_PILLAR
+mash A 30000
+expect_trainer TRAINER_WALLACE_SKY_PILLAR 0
+run 30
+shot 26_wallace_waits
+# talk to him again: the rematch, won; the map reloads and the Trial of Three starts
+boost 0
+press LEFT 2 20
+press A 2 30
+until @gMain+4 4 @@BattleMainCB2 30000 A 24
+run 60
+poke @gMoveSelectionCursor ${NDMOVE}
+until @gMain+4 4 @@CB2_Overworld 200000 A 24
+expect_opponent TRAINER_WALLACE_SKY_PILLAR
+expect_trainer TRAINER_WALLACE_SKY_PILLAR 1
+until @gMain+4 4 @@CB2_UpdatePartyMenu 60000 A 24
+run 30
+shot 27_trial
+press B 2 60
+mash A 30000
+expect_map MAP_SKY_PILLAR_OUTSIDE
+expect_var VAR_DRACONID_FINALE_STATE 3
+
+# --- the attack on the village (from the alarm at the summit, set by hand; act7.play plays the alarm itself) ---
+loadstate ${START}
+setvar VAR_SECOND_STARTER ${SECOND}
+setvar VAR_DRACONID_REPUTATION 2
+setvar VAR_PLAYER_OUTFIT 0
+setvar VAR_MAGMA_STATE 12
+setvar VAR_NERINE_STATE 8
+setvar VAR_ASTER_STATE 8
+setvar VAR_BRENDAN_STATE 6
+setvar VAR_MAY_STATE 4
+setvar VAR_SKY_PILLAR_STATE 3
+setvar VAR_SKY_PILLAR_RAYQUAZA_CRY_DONE 1
+setflag FLAG_SYS_GAME_CLEAR
+setflag FLAG_BADGE01_GET
+setflag FLAG_BADGE02_GET
+setflag FLAG_BADGE03_GET
+setflag FLAG_BADGE04_GET
+setflag FLAG_BADGE05_GET
+setflag FLAG_BADGE06_GET
+setflag FLAG_BADGE07_GET
+setflag FLAG_BADGE08_GET
+setflag FLAG_DEFEATED_RAYQUAZA
+setflag FLAG_HIDE_SKY_PILLAR_TOP_ASTER
+setflag FLAG_HIDE_DRACONID_HOUSE_ELDER
+setflag FLAG_HIDE_DRACONID_ELDERS_HOUSE_ELDER
+setvar VAR_DRACONID_FINALE_STATE 6
+setvar VAR_DRACONID_VILLAGE_STATE 4
+setflag FLAG_DEBUG_NO_ENCOUNTER
+setflag FLAG_DEBUG_NO_TRAINER_SEE
+setflag FLAG_DRACONID_NO_WHITEOUT
+pokebit *@gSaveBlock2Ptr+15 1 1
+warp MAP_DRACONID_VILLAGE 19 24
+run 150
+shot 30_arrival
+# the camera pans up to the shrine (Primal Groudon), then over to the waterfall pool (Primal Kyogre)
+press A 2 30
+press A 2 10
+run 400
+press A 2 60
+run 400
+shot 31_pan_shrine
+press A 2 60
+run 120
+press A 2 60
+run 120
+press A 2 60
+run 400
+press A 2 60
+run 200
+press A 2 60
+run 400
+shot 32_pan_pool
+mash A 60000
+run 30
+shot 33_plan
+expect_var VAR_DRACONID_VILLAGE_STATE 5
+
+# the south-west house with Wally, lost (1 HP): the villagers carry the player home, the fight waits
+walk DOWN 25
+walk LEFT 13
+press UP 2 20
+boost 0 1
+press A 2 30
+until @gMain+4 4 @@CB2_UpdatePartyMenu 60000 A 24
+run 60
+shot 34_half_party
+press A 2 40
+press A 2 40
+press DOWN 2 30
+press A 2 40
+until @gMain+4 4 @@BattleMainCB2 3000
+run 300
+shot 35_wally_double
+until @gMain+4 4 @@CB2_Overworld 200000 A 24
+expect_opponent TRAINER_GRUNT_VILLAGE_1
+expect_opponent_b TRAINER_GRUNT_VILLAGE_2
+expect_partner PARTNER_WALLY_VILLAGE
+mash A 30000
+run 30
+shot 36_home_after_loss
+expect_map MAP_DRACONID_VILLAGE_PLAYERS_HOUSE_1F
+expect_trainer TRAINER_GRUNT_VILLAGE_1 0
+expect_var VAR_DRACONID_VILLAGE_STATE 5
+
+# out of the door, between the grunts at the player's house: the double with May
+walk DOWN 8
+hold DOWN 20
+run 90
+wait_free 600
+run 30
+expect_map MAP_DRACONID_VILLAGE
+expect_pos 8 15
+press LEFT 2 20
+boost 0
+press A 2 30
+until @gMain+4 4 @@CB2_UpdatePartyMenu 60000 A 24
+run 60
+press A 2 40
+press A 2 40
+press DOWN 2 30
+press A 2 40
+until @gMain+4 4 @@BattleMainCB2 3000
+run 60
+poke @gMoveSelectionCursor ${MOVE}
+run 240
+shot 40_may_double
+until @gMain+4 4 @@CB2_Overworld 200000 A 24
+expect_opponent TRAINER_GRUNT_VILLAGE_3
+expect_opponent_b TRAINER_GRUNT_VILLAGE_4
+expect_partner PARTNER_MAY_VILLAGE
+mash A 30000
+expect_trainer TRAINER_GRUNT_VILLAGE_3 1
+expect_trainer TRAINER_GRUNT_VILLAGE_4 1
+
+# back to the south-west house: Wally again, won
+path DraconidVillage 8 15 13 25
+press UP 2 20
+boost 0
+press A 2 30
+until @gMain+4 4 @@CB2_UpdatePartyMenu 60000 A 24
+run 60
+press A 2 40
+press A 2 40
+press DOWN 2 30
+press A 2 40
+until @gMain+4 4 @@BattleMainCB2 3000
+run 60
+poke @gMoveSelectionCursor ${MOVE}
+until @gMain+4 4 @@CB2_Overworld 200000 A 24
+expect_opponent TRAINER_GRUNT_VILLAGE_1
+expect_partner PARTNER_WALLY_VILLAGE
+mash A 30000
+expect_trainer TRAINER_GRUNT_VILLAGE_1 1
+expect_var VAR_DRACONID_VILLAGE_STATE 5
+
+# the east house by the pond with Brendan: the third house opens the way up to the shrine
+path DraconidVillage 13 25 16 20
+path DraconidVillage 16 20 28 19
+press UP 2 20
+boost 0
+press A 2 30
+until @gMain+4 4 @@CB2_UpdatePartyMenu 60000 A 24
+run 60
+press A 2 40
+press A 2 40
+press DOWN 2 30
+press A 2 40
+until @gMain+4 4 @@BattleMainCB2 3000
+run 60
+poke @gMoveSelectionCursor ${MOVE}
+run 240
+shot 41_brendan_double
+until @gMain+4 4 @@CB2_Overworld 200000 A 24
+expect_opponent TRAINER_GRUNT_VILLAGE_5
+expect_opponent_b TRAINER_GRUNT_VILLAGE_6
+expect_partner PARTNER_BRENDAN_VILLAGE
+mash A 30000
+expect_var VAR_DRACONID_VILLAGE_STATE 6
+
+# the way up to the shrine: Aster and the player vs Tabitha and Shelly
+path DraconidVillage 28 19 21 11
+press UP 2 20
+run 20
+shot 42_aster
+boost 0
+press A 2 30
+until @gMain+4 4 @@CB2_UpdatePartyMenu 60000 A 24
+run 60
+press A 2 40
+press A 2 40
+press DOWN 2 30
+press A 2 40
+until @gMain+4 4 @@BattleMainCB2 3000
+run 60
+poke @gMoveSelectionCursor ${MOVE}
+run 240
+shot 43_admins_double
+until @gMain+4 4 @@CB2_Overworld 200000 A 24
+expect_opponent TRAINER_TABITHA_VILLAGE
+expect_opponent_b TRAINER_SHELLY_VILLAGE
+expect_partner PARTNER_ASTER_${EGGNAME}
+
+# --- Maxie and Archie at the shrine: the intro, then the partner choice (both, from a savestate) ---
+until @sDynamicMenuEventScratchPad 4 !0 120000 A 24
+run 20
+shot 50_final_choice
+expect_var VAR_DRACONID_VILLAGE_STATE 8
+savestate act7x_choice.ss
+# MAY: only the start of the battle
+press DOWN 2 12
+press A 2 20
+boost 0
+until @gMain+4 4 @@CB2_UpdatePartyMenu 60000 A 24
+run 60
+press A 2 40
+press A 2 40
+press DOWN 2 30
+press A 2 40
+until @gMain+4 4 @@BattleMainCB2 3000
+run 400
+shot 51_final_may
+expect_partner PARTNER_MAY_FINALE
+expect_opponent TRAINER_MAXIE_FINALE
+expect_opponent_b TRAINER_ARCHIE_FINALE
+# BRENDAN: the whole battle, won; Primal Groudon comes out as Maxie's last
+loadstate act7x_choice.ss
+press A 2 20
+boost 0
+until @gMain+4 4 @@CB2_UpdatePartyMenu 60000 A 24
+run 60
+press A 2 40
+press A 2 40
+press DOWN 2 30
+press A 2 40
+until @gMain+4 4 @@BattleMainCB2 3000
+run 60
+poke @gMoveSelectionCursor ${MOVE}
+wait_species 1 SPECIES_GROUDON_PRIMAL 300000 A
+run 200
+shot 52_primal_groudon
+until @gMain+4 4 @@CB2_Overworld 300000 A 24
+expect_opponent TRAINER_MAXIE_FINALE
+expect_opponent_b TRAINER_ARCHIE_FINALE
+expect_partner PARTNER_BRENDAN_FINALE
+run 300
+shot 53_aftermath
+
+# --- the Orbs, the goodbyes, the save, the credits (A ends the last screen), home ---
+until @gMain+4 4 @@CB2_Credits 300000 A 24
+expect_item ITEM_RED_ORB 1
+expect_item ITEM_BLUE_ORB 1
+expect_var VAR_DRACONID_VILLAGE_STATE 10
+expect_var VAR_DRACONID_FINALE_STATE 7
+run 3000
+shot 60_credits
+until @gMain+4 4 @@CB2_Overworld 400000 A 120
+run 120
+shot 61_home
+until_var VAR_DRACONID_FINALE_STATE 8 3000 A
+expect_flag FLAG_HIDE_DRACONID_HOUSE_ELDER 0
+expect_flag FLAG_HIDE_DRACONID_VILLAGE_NERINE 0
+savestate act7x_postgame.ss
+
+# --- post-game: the Elder brings the SS Ticket; both Lati roam (also postgame_home.play) ---
+warp MAP_DRACONID_VILLAGE_PLAYERS_HOUSE_1F 8 2 3000
+run 150
+mash A 30000
+expect_var VAR_DRACONID_FINALE_STATE 9
+expect_flag FLAG_RECEIVED_SS_TICKET 1
+expect_roamer 0 SPECIES_LATIAS
+expect_roamer 1 SPECIES_LATIOS
+
+# --- post-game: Nerine by the village pond and Aster at the shrine (the wall stays open). Both are lost on purpose
+# (1 HP): their teams outlast the egg Pokemon's few PP (Altaria's Cotton Guard and Roost), the debug flag lets the
+# scripts go on after a loss, and act7x_postgame.play checks the teams for every egg x second starter ---
+heal
+boost 0 1
+warp MAP_DRACONID_VILLAGE 27 7
+run 60
+shot 70_village_postgame
+press RIGHT 2 20
+press A 2 30
+until @gMain+4 4 @@BattleMainCB2 30000 A 24
+until @gMain+4 4 @@CB2_Overworld 60000 A 24
+mash A 60000
+expect_opponent TRAINER_NERINE_POSTGAME_${EGGNAME}_${SECONDNAME}
+expect_var VAR_NERINE_STATE 9
+
+heal
+boost 0 1
+warp MAP_DRACONID_VILLAGE_SHRINE 10 13
+run 60
+shot 71_shrine_postgame
+walk UP 12
+press UP 2 20
+press A 2 30
+until @gMain+4 4 @@BattleMainCB2 30000 A 24
+until @gMain+4 4 @@CB2_Overworld 60000 A 24
+mash A 60000
+expect_opponent TRAINER_ASTER_POSTGAME_${EGGNAME}
+expect_var VAR_ASTER_STATE 9
+
+# --- post-game: Deoxys at the summit (beaten: gone until the next Hall of Fame) ---
+heal
+boost 0
+warp MAP_SKY_PILLAR_TOP 14 8
+run 60
+press UP 2 10
+press A 2 30
+until @gMain+4 4 @@BattleMainCB2 30000 A 24
+until @gMain+4 4 @@CB2_Overworld 60000 A 24
+mash A 20000
+expect_flag FLAG_DEFEATED_DEOXYS 1
+
+# --- post-game: Groudon asleep in the Magma Hideout (beaten, it stays catchable); the story's own sleeping Groudon
+# and Kyogre left in Acts 4-5 ---
+setflag FLAG_HIDE_MAGMA_HIDEOUT_4F_GROUDON_ASLEEP
+setflag FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_KYOGRE_ASLEEP
+heal
+boost 0
+warp MAP_MAGMA_HIDEOUT_4F 16 21
+run 60
+shot 72_groudon
+press UP 2 20
+press A 2 30
+until @gMain+4 4 @@BattleMainCB2 30000 A 24
+run 400
+shot 73_groudon_battle
+until @gMain+4 4 @@CB2_Overworld 60000 A 24
+mash A 20000
+expect_flag FLAG_DEFEATED_GROUDON 0
+
+# --- post-game: Kyogre asleep in the Seafloor Cavern ---
+heal
+boost 0
+warp MAP_SEAFLOOR_CAVERN_ROOM9 17 42
+run 60
+shot 74_kyogre
+press UP 2 20
+press A 2 30
+until @gMain+4 4 @@BattleMainCB2 30000 A 24
+run 400
+shot 75_kyogre_battle
+until @gMain+4 4 @@CB2_Overworld 60000 A 24
+mash A 20000
+expect_flag FLAG_DEFEATED_KYOGRE 0
+savestate act7x_done.ss
+
+clearflag FLAG_DEBUG_NO_ENCOUNTER
+clearflag FLAG_DEBUG_NO_TRAINER_SEE
+clearflag FLAG_DRACONID_NO_WHITEOUT

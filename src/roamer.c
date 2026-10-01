@@ -4,6 +4,7 @@
 #include "pokemon.h"
 #include "random.h"
 #include "roamer.h"
+#include "constants/draconid.h"
 
 // Despite having a variable to track it, the roamer is
 // hard-coded to only ever be in map group 0
@@ -152,13 +153,12 @@ bool8 TryAddRoamer(enum Species species, u8 level)
     return FALSE;
 }
 
-// gSpecialVar_0x8004 here corresponds to the options in the multichoice MULTI_TV_LATI (0 for 'Red', 1 for 'Blue')
+// Draconid Emerald: both Latios and Latias roam after the finale (ROAMER_COUNT 2, D-209); the vanilla red/blue
+// choice (MULTI_TV_LATI) is gone
 void InitRoamer(void)
 {
-    if (gSpecialVar_0x8004 == 0) // Red
-        TryAddRoamer(SPECIES_LATIAS, 40);
-    else
-        TryAddRoamer(SPECIES_LATIOS, 40);
+    TryAddRoamer(SPECIES_LATIAS, DRACONID_LATI_ROAMER_LEVEL);
+    TryAddRoamer(SPECIES_LATIOS, DRACONID_LATI_ROAMER_LEVEL);
 }
 
 void UpdateLocationHistoryForRoamer(void)

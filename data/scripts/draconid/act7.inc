@@ -1,16 +1,33 @@
 Draconid_EventScript_FinaleWeather::
+	compare VAR_DRACONID_VILLAGE_STATE, VILLAGE_STATE_ALARM
+	goto_if_ge Draconid_EventScript_FinaleWeather_8
+Draconid_EventScript_FinaleWeather_5:
 	compare VAR_DRACONID_FINALE_STATE, FINALE_STATE_METEOR_ALERT
-	goto_if_ge Draconid_EventScript_FinaleWeather_2
+	goto_if_ge Draconid_EventScript_FinaleWeather_4
 	return
 
 Draconid_EventScript_FinaleWeather_1:
-	setweather WEATHER_SHADE
+	setweather WEATHER_ABNORMAL
 	return
 
 Draconid_EventScript_FinaleWeather_2:
-	compare VAR_DRACONID_FINALE_STATE, FINALE_STATE_METEOR_DESTROYED
-	goto_if_lt Draconid_EventScript_FinaleWeather_1
+	setweather WEATHER_SHADE
 	return
+
+Draconid_EventScript_FinaleWeather_3:
+	compare VAR_DRACONID_VILLAGE_STATE, VILLAGE_STATE_ALARM
+	goto_if_lt Draconid_EventScript_FinaleWeather_2
+	return
+
+Draconid_EventScript_FinaleWeather_4:
+	compare VAR_DRACONID_FINALE_STATE, FINALE_STATE_METEOR_DESTROYED
+	goto_if_lt Draconid_EventScript_FinaleWeather_3
+	return
+
+Draconid_EventScript_FinaleWeather_8:
+	compare VAR_DRACONID_VILLAGE_STATE, VILLAGE_STATE_PRIMAL_WON
+	goto_if_lt Draconid_EventScript_FinaleWeather_1
+	goto Draconid_EventScript_FinaleWeather_5
 
 
 Draconid_EventScript_FinaleHeal::
@@ -29,7 +46,26 @@ SkyPillar_Outside_EventScript_DraconidOnTransition_1:
 	return
 
 SkyPillar_Outside_EventScript_DraconidOnTransition_2:
+	setflag FLAG_HIDE_SKY_PILLAR_WALLACE
+	compare VAR_DRACONID_VILLAGE_STATE, VILLAGE_STATE_NONE
+	goto_if_eq SkyPillar_Outside_EventScript_DraconidOnTransition_5
+	compare VAR_DRACONID_VILLAGE_STATE, VILLAGE_STATE_REGIDRAGO
+	goto_if_ge SkyPillar_Outside_EventScript_DraconidOnTransition_6
+	goto SkyPillar_Outside_EventScript_DraconidOnTransition_1
+
+SkyPillar_Outside_EventScript_DraconidOnTransition_5:
+	setvar VAR_TEMP_7, 2
+	goto SkyPillar_Outside_EventScript_DraconidOnTransition_1
+
+SkyPillar_Outside_EventScript_DraconidOnTransition_6:
+	checktrainerflag TRAINER_WALLACE_SKY_PILLAR
+	goto_if 0, SkyPillar_Outside_EventScript_DraconidOnTransition_9
 	setvar VAR_TEMP_7, 1
+	goto SkyPillar_Outside_EventScript_DraconidOnTransition_1
+
+SkyPillar_Outside_EventScript_DraconidOnTransition_9:
+	call SkyPillar_Outside_EventScript_DraconidShowWallace
+	setvar VAR_TEMP_7, 3
 	goto SkyPillar_Outside_EventScript_DraconidOnTransition_1
 
 
@@ -175,14 +211,21 @@ SkyPillar_Outside_Movement_DraconidCameraBack:
 SkyPillar_Outside_EventScript_DraconidAster::
 	lock
 	faceplayer
+	compare VAR_DRACONID_VILLAGE_STATE, VILLAGE_STATE_REGIDRAGO
+	goto_if_lt SkyPillar_Outside_EventScript_DraconidAster_2
+SkyPillar_Outside_EventScript_DraconidAster_1:
 	msgbox SkyPillar_Outside_EventScript_DraconidAster_Text_0, MSGBOX_YESNO
 	compare VAR_RESULT, NO
-	goto_if_eq SkyPillar_Outside_EventScript_DraconidAster_2
+	goto_if_eq SkyPillar_Outside_EventScript_DraconidAster_5
 	closemessage
 	goto SkyPillar_Outside_EventScript_DraconidDoubleBattle
 	return
 
 SkyPillar_Outside_EventScript_DraconidAster_2:
+	goto SkyPillar_Outside_EventScript_DraconidGoHomeFirst
+	goto SkyPillar_Outside_EventScript_DraconidAster_1
+
+SkyPillar_Outside_EventScript_DraconidAster_5:
 	msgbox SkyPillar_Outside_EventScript_DraconidAster_Text_1
 	release
 	end
@@ -191,14 +234,21 @@ SkyPillar_Outside_EventScript_DraconidAster_2:
 SkyPillar_Outside_EventScript_DraconidNerine::
 	lock
 	faceplayer
+	compare VAR_DRACONID_VILLAGE_STATE, VILLAGE_STATE_REGIDRAGO
+	goto_if_lt SkyPillar_Outside_EventScript_DraconidNerine_2
+SkyPillar_Outside_EventScript_DraconidNerine_1:
 	msgbox SkyPillar_Outside_EventScript_DraconidNerine_Text_0, MSGBOX_YESNO
 	compare VAR_RESULT, NO
-	goto_if_eq SkyPillar_Outside_EventScript_DraconidNerine_2
+	goto_if_eq SkyPillar_Outside_EventScript_DraconidNerine_5
 	closemessage
 	goto SkyPillar_Outside_EventScript_DraconidDoubleBattle
 	return
 
 SkyPillar_Outside_EventScript_DraconidNerine_2:
+	goto SkyPillar_Outside_EventScript_DraconidGoHomeFirst
+	goto SkyPillar_Outside_EventScript_DraconidNerine_1
+
+SkyPillar_Outside_EventScript_DraconidNerine_5:
 	msgbox SkyPillar_Outside_EventScript_DraconidNerine_Text_1
 	release
 	end
@@ -662,23 +712,8 @@ SkyPillar_Top_EventScript_DraconidMeteor::
 	waitmovement 0
 	msgbox SkyPillar_Top_EventScript_DraconidMeteor_Text_12
 	msgbox SkyPillar_Top_EventScript_DraconidMeteor_Text_13
-	msgbox SkyPillar_Top_EventScript_DraconidMeteor_Text_14
 	closemessage
-	setvar VAR_DRACONID_FINALE_STATE, FINALE_STATE_METEOR_DESTROYED
-	setflag FLAG_HIDE_SKY_PILLAR_TOP_ASTER
-	clearflag FLAG_HIDE_DRACONID_HOUSE_ELDER
-	clearflag FLAG_HIDE_DRACONID_VILLAGE_NERINE
-	fadescreen FADE_TO_BLACK
-	goto SkyPillar_Top_EventScript_DraconidCredits
-	return
-
-
-SkyPillar_Top_EventScript_DraconidCredits::
-	callnative Draconid_SaveBeforeCredits
-	playse SE_SAVE
-	waitse
-	callnative Draconid_StartCredits
-	waitstate
+	goto SkyPillar_Top_EventScript_DraconidAlarm
 	return
 
 
@@ -839,7 +874,7 @@ DraconidVillage_Shrine_EventScript_DraconidAsterPostgame::
 
 DraconidVillage_Shrine_EventScript_DraconidAsterPostgame_1:
 	clearflag FLAG_HIDE_DRACONID_SHRINE_ASTER
-	setobjectxyperm LOCALID_DRACONID_SHRINE_ASTER, 10, 9
+	setobjectxyperm LOCALID_DRACONID_SHRINE_ASTER, 10, 11
 	setobjectmovementtype LOCALID_DRACONID_SHRINE_ASTER, MOVEMENT_TYPE_FACE_UP
 	return
 
@@ -1218,9 +1253,6 @@ SkyPillar_Top_EventScript_DraconidMeteor_Text_13:
 	.string "ZINNIA: Heh. The stars got it right for\n"
 	.string "once. See you around, CHAMPION.$"
 
-SkyPillar_Top_EventScript_DraconidMeteor_Text_14:
-	.string "ELDER: Come, {PLAYER}. Let us go home.$"
-
 DraconidVillage_PlayersHouse_2F_EventScript_DraconidWakeUpAfterFinale_Text_0:
 	.string "{PLAYER} slept through a whole day and a\n"
 	.string "night.\p"
@@ -1236,8 +1268,8 @@ LittlerootTown_ProfessorBirchsLab_EventScript_DraconidPostgameMay_Text_0:
 LittlerootTown_ProfessorBirchsLab_EventScript_DraconidPostgameMay_Text_1:
 	.string "MAY: {PLAYER}! The CHAMPION who saved\n"
 	.string "the sky, right here in the lab!\p"
-	.string "I told BRENDAN you were one of the good\n"
-	.string "guys. Way back on ROUTE 110!\p"
+	.string "I KNEW it way back on ROUTE 110, and I'm\n"
+	.string "never going to stop saying so!\p"
 	.string "Now, you promised me one more battle.\n"
 	.string "Everything we've got, okay?$"
 
@@ -1252,13 +1284,11 @@ LittlerootTown_ProfessorBirchsLab_EventScript_DraconidPostgameMay_Text_3:
 	.string "true story.$"
 
 LittlerootTown_ProfessorBirchsLab_EventScript_DraconidPostgameBrendan_Text_0:
-	.string "BRENDAN: {PLAYER}. …I called you a\n"
-	.string "traitor at RUSTBORO. I said a lot of\l"
-	.string "things.\p"
-	.string "You were fighting for all of us the\n"
-	.string "whole time. I just couldn't see it.\p"
-	.string "So let me make it up to you the only way\n"
-	.string "I know. Battle me, CHAMPION?$"
+	.string "BRENDAN: {PLAYER}! You came! After your\n"
+	.string "village… Man, we never did get that real\l"
+	.string "battle.\p"
+	.string "Just you and me this time. Ready,\n"
+	.string "CHAMPION?$"
 
 LittlerootTown_ProfessorBirchsLab_EventScript_DraconidPostgameBrendan_Text_1:
 	.string "BRENDAN: SCEPTILE, MEGA EVOLVE! No\n"
@@ -1266,8 +1296,7 @@ LittlerootTown_ProfessorBirchsLab_EventScript_DraconidPostgameBrendan_Text_1:
 
 LittlerootTown_ProfessorBirchsLab_EventScript_DraconidPostgameBrendan_Text_2:
 	.string "BRENDAN: Next time, I'm winning. Count\n"
-	.string "on it.\p"
-	.string "…Friends again?$"
+	.string "on it.$"
 
 LittlerootTown_ProfessorBirchsLab_EventScript_DraconidPostgameDouble_Text_0:
 	.string "Did you battle both of us yet? Then we\n"
@@ -1292,8 +1321,7 @@ LittlerootTown_ProfessorBirchsLab_EventScript_DraconidPostgameDouble_Text_3:
 DraconidVillage_Shrine_EventScript_Aster_Text_0:
 	.string "ASTER: The CHAMPION of HOENN, back\n"
 	.string "where it all started.\p"
-	.string "The sky is quiet again. Too quiet, if you\n"
-	.string "ask me.\p"
+	.string "The shrine held. …So did you.\p"
 	.string "No riddles today. Just you, me, and\n"
 	.string "everything we've got. Ready?$"
 
@@ -1309,14 +1337,15 @@ DraconidVillage_Shrine_EventScript_Aster_Text_2:
 	.string "you dare tell him I said so.$"
 
 DraconidVillage_EventScript_DraconidNerine_Text_0:
-	.string "NERINE: It's good to be home. I'd\n"
-	.string "forgotten how still the water is here.\p"
+	.string "NERINE: The pond's still muddy from\n"
+	.string "KYOGRE. It'll clear. Most things do.\p"
 	.string "When the sky calls again, we'll answer it\n"
 	.string "together.$"
 
 DraconidVillage_EventScript_DraconidNerine_Text_1:
-	.string "NERINE: After years of salt water, this\n"
-	.string "little pond feels like a dream.\p"
+	.string "NERINE: After years of salt water, even\n"
+	.string "this muddy little pond feels like a\l"
+	.string "dream.\p"
 	.string "I spent all that time in blue,\n"
 	.string "pretending. And I watched you in red,\l"
 	.string "pretending.\p"

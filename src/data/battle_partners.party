@@ -606,3 +606,299 @@ Nature: Timid
 - Shadow Ball
 - Reflect
 
+
+=== PARTNER_BRENDAN_VILLAGE ===
+Name: BRENDAN
+Class: Rival
+Pic: Brendan
+Gender: Male
+Music: Male
+AI: Smart Trainer
+
+Slaking @ Choice Band
+Level: 64
+Ability: Truant
+Nature: Adamant
+- Double-Edge
+- Earthquake
+- Knock Off
+- Shadow Claw
+
+Latios @ Leftovers
+Level: 64
+Ability: Levitate
+Nature: Timid
+- Dragon Pulse
+- Psychic
+- Recover
+- Tailwind
+
+Sceptile @ Sceptilite
+Level: 66
+Ability: Overgrow
+EVs: 252 Atk
+Nature: Jolly
+- Leaf Blade
+- Dragon Claw
+- Rock Slide
+- Protect
+
+=== PARTNER_MAY_VILLAGE ===
+Name: MAY
+Class: Rival
+Pic: May
+Gender: Female
+Music: Female
+AI: Smart Trainer
+
+Wailord @ Leftovers
+Level: 64
+Ability: Water Veil
+Nature: Modest
+- Hydro Pump
+- Ice Beam
+- Hyper Voice
+- Protect
+
+Latias @ Leftovers
+Level: 64
+Ability: Levitate
+Nature: Timid
+- Dragon Pulse
+- Psychic
+- Recover
+- Helping Hand
+
+Blaziken @ Blazikenite
+Level: 66
+Ability: Speed Boost
+EVs: 252 Atk
+Nature: Adamant
+- Blaze Kick
+- Close Combat
+- Rock Slide
+- Protect
+
+=== PARTNER_WALLY_VILLAGE ===
+Name: WALLY
+Class: Rival
+Pic: Wally
+Gender: Male
+Music: Male
+AI: Smart Trainer
+
+Altaria @ Leftovers
+Level: 64
+Ability: Natural Cure
+Nature: Modest
+- Dragon Pulse
+- Moonblast
+- Flamethrower
+- Protect
+
+Magnezone @ Magnet
+Level: 64
+Ability: Sturdy
+Nature: Modest
+- Thunderbolt
+- Flash Cannon
+- Volt Switch
+- Protect
+
+Gallade @ Galladite
+Level: 66
+Ability: Sharpness
+EVs: 252 Atk
+Nature: Adamant
+- Sacred Sword
+- Psycho Cut
+- Leaf Blade
+- Protect
+
+=== PARTNER_ASTER_DEINO ===
+Name: ASTER
+Class: Draconid
+Pic: Aster
+Gender: Female
+Music: Intense
+AI: Smart Trainer
+
+Flygon @ Life Orb
+Level: 65
+Ability: Levitate
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Earthquake
+- Dragon Claw
+- Rock Slide
+- Protect
+
+Dragapult @ Choice Band
+Level: 66
+Ability: Clear Body
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Dragon Darts
+- Phantom Force
+- U-turn
+- Sucker Punch
+
+Salamence @ Salamencite
+Level: 66
+Ability: Intimidate
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Double-Edge
+- Dragon Claw
+- Dragon Dance
+- Protect
+
+=== PARTNER_ASTER_DREEPY ===
+Name: ASTER
+Class: Draconid
+Pic: Aster
+Gender: Female
+Music: Intense
+AI: Smart Trainer
+
+Flygon @ Life Orb
+Level: 65
+Ability: Levitate
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Earthquake
+- Dragon Claw
+- Rock Slide
+- Protect
+
+Kommo-o @ Throat Spray
+Level: 66
+Ability: Bulletproof
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Timid
+- Clanging Scales
+- Aura Sphere
+- Flamethrower
+- Protect
+
+Salamence @ Salamencite
+Level: 66
+Ability: Intimidate
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Double-Edge
+- Dragon Claw
+- Dragon Dance
+- Protect
+
+=== PARTNER_ASTER_JANGMO_O ===
+Name: ASTER
+Class: Draconid
+Pic: Aster
+Gender: Female
+Music: Intense
+AI: Smart Trainer
+
+Flygon @ Life Orb
+Level: 65
+Ability: Levitate
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Earthquake
+- Dragon Claw
+- Rock Slide
+- Protect
+
+Hydreigon @ Expert Belt
+Level: 66
+Ability: Levitate
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Timid
+- Dark Pulse
+- Dragon Pulse
+- Heat Wave
+- Protect
+
+Salamence @ Salamencite
+Level: 66
+Ability: Intimidate
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Double-Edge
+- Dragon Claw
+- Dragon Dance
+- Protect
+
+=== PARTNER_BRENDAN_FINALE ===
+Name: BRENDAN
+Class: Rival
+Pic: Brendan
+Gender: Male
+Music: Male
+AI: Smart Trainer
+
+Mightyena @ Sitrus Berry
+Level: 67
+Ability: Intimidate
+Nature: Adamant
+- Crunch
+- Play Rough
+- Fire Fang
+- Protect
+
+Sceptile @ Life Orb
+Level: 68
+Ability: Overgrow
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Leaf Blade
+- Dragon Claw
+- Rock Slide
+- Protect
+
+Latios @ Latiosite
+Level: 68
+Ability: Levitate
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Timid
+- Draco Meteor
+- Psychic
+- Recover
+- Tailwind
+
+=== PARTNER_MAY_FINALE ===
+Name: MAY
+Class: Rival
+Pic: May
+Gender: Female
+Music: Female
+AI: Smart Trainer
+
+Tropius @ Sitrus Berry
+Level: 67
+Ability: Harvest
+Nature: Modest
+- Air Slash
+- Energy Ball
+- Dragon Pulse
+- Wide Guard
+
+Blaziken @ Life Orb
+Level: 68
+Ability: Speed Boost
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Adamant
+- Blaze Kick
+- Close Combat
+- Rock Slide
+- Protect
+
+Latias @ Latiasite
+Level: 68
+Ability: Levitate
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Timid
+- Draco Meteor
+- Psychic
+- Recover
+- Helping Hand

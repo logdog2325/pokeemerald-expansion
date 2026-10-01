@@ -43826,3 +43826,489 @@ Nature: Adamant
 - Crunch
 - Fire Fang
 - Thunder Fang
+
+=== TRAINER_GRUNT_VILLAGE_1 ===
+Name: GRUNT
+Class: Team Magma
+Pic: Magma Grunt M
+Gender: Male
+Music: Magma
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+Multi Party: Half
+
+Mightyena
+Level: 62
+Ability: Intimidate
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Nature: Adamant
+- Crunch
+- Play Rough
+- Fire Fang
+- Protect
+
+Salazzle
+Level: 62
+Ability: Corrosion
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Nature: Timid
+- Flamethrower
+- Sludge Bomb
+- Dragon Pulse
+- Protect
+
+Camerupt @ Charcoal
+Level: 63
+Ability: Solid Rock
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Nature: Modest
+- Heat Wave
+- Earth Power
+- Rock Slide
+- Protect
+
+=== TRAINER_GRUNT_VILLAGE_2 ===
+Name: GRUNT
+Class: Team Aqua
+Pic: Aqua Grunt F
+Gender: Female
+Music: Aqua
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+Multi Party: Half
+
+Golbat
+Level: 62
+Ability: Inner Focus
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Nature: Jolly
+- Cross Poison
+- Air Slash
+- Bite
+- Protect
+
+Toxapex
+Level: 62
+Ability: Regenerator
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Nature: Bold
+- Liquidation
+- Poison Jab
+- Recover
+- Wide Guard
+
+Sharpedo @ Mystic Water
+Level: 63
+Ability: Rough Skin
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Nature: Adamant
+- Liquidation
+- Crunch
+- Ice Fang
+- Protect
+
+=== TRAINER_GRUNT_VILLAGE_3 ===
+Name: GRUNT
+Class: Team Aqua
+Pic: Aqua Grunt M
+Gender: Male
+Music: Aqua
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+Multi Party: Half
+
+Pelipper
+Level: 62
+Ability: Drizzle
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Nature: Modest
+- Hurricane
+- Scald
+- Tailwind
+- Protect
+
+Barraskewda
+Level: 62
+Ability: Swift Swim
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Nature: Adamant
+- Liquidation
+- Crunch
+- Close Combat
+- Protect
+
+Crawdaunt @ Black Glasses
+Level: 63
+Ability: Adaptability
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Nature: Adamant
+- Crabhammer
+- Knock Off
+- Aqua Jet
+- Protect
+
+=== TRAINER_GRUNT_VILLAGE_4 ===
+Name: GRUNT
+Class: Team Magma
+Pic: Magma Grunt F
+Gender: Female
+Music: Magma
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+Multi Party: Half
+
+Torkoal
+Level: 62
+Ability: Drought
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Nature: Quiet
+- Heat Wave
+- Earth Power
+- Body Slam
+- Protect
+
+Coalossal
+Level: 62
+Ability: Flame Body
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Nature: Adamant
+- Heat Crash
+- Rock Slide
+- Stealth Rock
+- Protect
+
+Houndoom @ Charcoal
+Level: 63
+Ability: Flash Fire
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Nature: Timid
+- Heat Wave
+- Dark Pulse
+- Sludge Bomb
+- Protect
+
+=== TRAINER_GRUNT_VILLAGE_5 ===
+Name: GRUNT
+Class: Team Magma
+Pic: Magma Grunt M
+Gender: Male
+Music: Magma
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+Multi Party: Half
+
+Magcargo
+Level: 63
+Ability: Flame Body
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Nature: Modest
+- Lava Plume
+- Earth Power
+- Ancient Power
+- Protect
+
+Excadrill
+Level: 63
+Ability: Mold Breaker
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Nature: Adamant
+- Drill Run
+- Iron Head
+- Rock Slide
+- Protect
+
+Camerupt @ Sitrus Berry
+Level: 64
+Ability: Solid Rock
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Nature: Modest
+- Eruption
+- Earth Power
+- Ancient Power
+- Protect
+
+=== TRAINER_GRUNT_VILLAGE_6 ===
+Name: GRUNT
+Class: Team Aqua
+Pic: Aqua Grunt M
+Gender: Male
+Music: Aqua
+Double Battle: No
+AI: Basic Trainer / Smart Mon Choices
+Multi Party: Half
+
+Crobat
+Level: 63
+Ability: Inner Focus
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Nature: Jolly
+- Cross Poison
+- Brave Bird
+- Tailwind
+- Protect
+
+Clawitzer
+Level: 63
+Ability: Mega Launcher
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Nature: Modest
+- Water Pulse
+- Dark Pulse
+- Aura Sphere
+- Protect
+
+Walrein @ Sitrus Berry
+Level: 64
+Ability: Thick Fat
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+Nature: Modest
+- Surf
+- Ice Beam
+- Brine
+- Protect
+
+=== TRAINER_TABITHA_VILLAGE ===
+Name: TABITHA
+Class: Magma Admin
+Pic: Magma Admin
+Gender: Male
+Music: Magma
+Items: Full Restore / Full Restore
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+Multi Party: Half
+
+Mightyena @ Sitrus Berry
+Level: 65
+Ability: Intimidate
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Adamant
+- Crunch
+- Play Rough
+- Fire Fang
+- Protect
+
+Weezing @ Black Sludge
+Level: 65
+Ability: Levitate
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Bold
+- Sludge Bomb
+- Flamethrower
+- Will-O-Wisp
+- Protect
+
+Camerupt @ Charcoal
+Level: 66
+Ability: Solid Rock
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+EVs: 252 SpA
+Nature: Modest
+- Heat Wave
+- Earth Power
+- Ancient Power
+- Protect
+
+=== TRAINER_SHELLY_VILLAGE ===
+Name: SHELLY
+Class: Aqua Admin
+Pic: Aqua Admin F
+Gender: Female
+Music: Aqua
+Items: Full Restore / Full Restore
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+Multi Party: Half
+
+Pelipper @ Damp Rock
+Level: 65
+Ability: Drizzle
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Modest
+- Hurricane
+- Scald
+- Tailwind
+- Protect
+
+Muk @ Black Sludge
+Level: 65
+Ability: Poison Touch
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+Nature: Adamant
+- Gunk Shot
+- Knock Off
+- Shadow Sneak
+- Protect
+
+Sharpedo @ Life Orb
+Level: 66
+Ability: Speed Boost
+IVs: 28 HP / 28 Atk / 28 Def / 28 SpA / 28 SpD / 28 Spe
+EVs: 252 Atk
+Nature: Adamant
+- Waterfall
+- Crunch
+- Ice Fang
+- Protect
+
+=== TRAINER_MAXIE_FINALE ===
+Name: MAXIE
+Class: Magma Leader
+Pic: Magma Leader Maxie
+Gender: Male
+Music: Magma
+Items: Full Restore / Full Restore
+Double Battle: No
+AI: Smart Trainer / Prediction / Ace Pokemon
+Multi Party: Half
+
+Crobat @ Sharp Beak
+Level: 68
+Ability: Infiltrator
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Tailwind
+- Cross Poison
+- Brave Bird
+- Protect
+
+Camerupt @ Cameruptite
+Level: 69
+Ability: Solid Rock
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 SpA / 252 HP / 4 SpD
+Nature: Modest
+- Heat Wave
+- Earth Power
+- Ancient Power
+- Protect
+
+Groudon @ Red Orb
+Level: 72
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 Atk / 252 HP / 4 Spe
+Nature: Adamant
+- Precipice Blades
+- Fire Punch
+- Stone Edge
+- Protect
+
+=== TRAINER_ARCHIE_FINALE ===
+Name: ARCHIE
+Class: Aqua Leader
+Pic: Aqua Leader Archie
+Gender: Male
+Music: Aqua
+Items: Full Restore / Full Restore
+Double Battle: No
+AI: Smart Trainer / Prediction / Ace Pokemon
+Multi Party: Half
+
+Muk @ Black Sludge
+Level: 68
+Ability: Poison Touch
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 4 Def
+Nature: Adamant
+- Gunk Shot
+- Knock Off
+- Ice Punch
+- Protect
+
+Sharpedo @ Sharpedonite
+Level: 69
+Ability: Speed Boost
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Adamant
+- Waterfall
+- Crunch
+- Ice Fang
+- Protect
+
+Kyogre @ Blue Orb
+Level: 72
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 SpA / 252 HP / 4 Spe
+Nature: Modest
+- Origin Pulse
+- Ice Beam
+- Thunder
+- Protect
+
+=== TRAINER_WALLACE_SKY_PILLAR ===
+Name: WALLACE
+Class: Pkmn Trainer 1
+Pic: Champion Wallace
+Gender: Male
+Music: Male
+Items: Full Restore / Full Restore
+Double Battle: No
+AI: Smart Trainer / Prediction / Ace Pokemon
+
+Wailord @ Damp Rock
+Level: 59
+Ability: Water Veil
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 SpA / 4 SpD
+Nature: Modest
+- Rain Dance
+- Water Spout
+- Ice Beam
+- Heavy Slam
+
+Tentacruel @ Black Sludge
+Level: 59
+Ability: Clear Body
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Timid
+- Hydro Pump
+- Sludge Bomb
+- Ice Beam
+- Toxic Spikes
+
+Ludicolo @ Life Orb
+Level: 60
+Ability: Swift Swim
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 SpA / 252 Spe / 4 HP
+Nature: Modest
+- Hydro Pump
+- Giga Drain
+- Ice Beam
+- Rain Dance
+
+Primarina @ Sitrus Berry
+Level: 60
+Ability: Torrent
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 SpA / 252 HP / 4 SpD
+Nature: Modest
+- Moonblast
+- Sparkling Aria
+- Psychic
+- Calm Mind
+
+Gyarados @ Gyaradosite
+Level: 60
+Ability: Intimidate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 Atk / 252 Spe / 4 HP
+Nature: Jolly
+- Dragon Dance
+- Waterfall
+- Crunch
+- Ice Fang
+
+Milotic @ Leftovers
+Level: 61
+Ability: Marvel Scale
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 SpA / 4 SpD
+Nature: Modest
+- Scald
+- Ice Beam
+- Dragon Pulse
+- Recover

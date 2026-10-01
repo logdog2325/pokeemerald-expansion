@@ -9,6 +9,7 @@
 #include "credits_frlg.h"
 #include "clock.h"
 #include "dexnav.h"
+#include "draconid.h"
 #include "event_data.h"
 #include "event_object_movement.h"
 #include "event_scripts.h"
@@ -1229,6 +1230,8 @@ u16 GetLocationMusic(struct WarpData *warp)
     if (NoMusicInSootopolisWithLegendaries(warp) == TRUE)
         return MUS_NONE;
     else if (ShouldLegendaryMusicPlayAtLocation(warp) == TRUE)
+        return MUS_ABNORMAL_WEATHER;
+    else if (Draconid_IsPrimalMusic(warp)) // Draconid Emerald: Primal Groudon and Kyogre are awake (Act 7 extension)
         return MUS_ABNORMAL_WEATHER;
     else if (IsInfiltratedSpaceCenter(warp) == TRUE)
         return MUS_ENCOUNTER_MAGMA;

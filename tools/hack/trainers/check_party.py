@@ -40,10 +40,10 @@ import party  # noqa: E402
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
 EVO_SLACK = 3
-STORY_TRAINERS = re.compile(r"^TRAINER_(BRENDAN|MAY|WALLY|ASTER|NERINE|ZINNIA)_")
+STORY_TRAINERS = re.compile(r"^TRAINER_(BRENDAN|MAY|WALLY|ASTER|NERINE|ZINNIA|WALLACE)_")
 HEADER_FIELDS = ("Name", "Class", "Pic", "Gender", "Music", "Double Battle", "Battle Type")
 # Trainers allowed to hold a Mega Stone (docs/hack_trainers.md, "Megas").
-MEGA_TRAINERS = re.compile(r"^(PARTNER_|TRAINER_(BRENDAN|MAY|WALLY|ASTER|NERINE|ZINNIA|MAXIE_MAGMA_HIDEOUT|MAXIE_SOOTOPOLIS|ARCHIE|STEVEN|"
+MEGA_TRAINERS = re.compile(r"^(PARTNER_|TRAINER_(BRENDAN|MAY|WALLY|ASTER|NERINE|ZINNIA|MAXIE_MAGMA_HIDEOUT|MAXIE_SOOTOPOLIS|MAXIE_FINALE|ARCHIE|WALLACE_SKY_PILLAR|STEVEN|"
                            r"(ROXANNE|BRAWLY|WATTSON|FLANNERY|NORMAN|WINONA|TATE_AND_LIZA|JUAN)_5))")
 
 

@@ -1,17 +1,26 @@
 DraconidVillage_Shrine_MapScripts::
+	map_script MAP_SCRIPT_ON_LOAD, DraconidVillage_Shrine_OnLoad
 	map_script MAP_SCRIPT_ON_TRANSITION, DraconidVillage_Shrine_OnTransition
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, DraconidVillage_Shrine_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
 	.byte 0
 
 DraconidVillage_Shrine_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	map_script_2 VAR_TEMP_1, 1, DraconidVillage_Shrine_EventScript_EggCeremony
+	map_script_2 VAR_TEMP_1, 2, DraconidVillage_Shrine_EventScript_DraconidSealScene
+	map_script_2 VAR_TEMP_1, 3, DraconidVillage_Shrine_EventScript_DraconidElderAfterRegidrago
 	.2byte 0
+
+
+DraconidVillage_Shrine_OnLoad::
+	call DraconidVillage_Shrine_EventScript_DraconidOnLoad
+	return
 
 
 DraconidVillage_Shrine_OnTransition::
 	compare VAR_DRACONID_STATE, DRACONID_STATE_CLOCK_SET
 	goto_if_eq DraconidVillage_Shrine_OnTransition_3
 DraconidVillage_Shrine_OnTransition_1:
+	call DraconidVillage_Shrine_EventScript_DraconidOnTransition
 	call DraconidVillage_Shrine_EventScript_DraconidAsterPostgame
 	return
 
@@ -168,8 +177,15 @@ DraconidVillage_Shrine_Movement_AsterLeaves:
 	step_end
 
 DraconidVillage_Shrine_EventScript_Elder::
+	compare VAR_DRACONID_FINALE_STATE, FINALE_STATE_SUMMONED
+	goto_if_ge DraconidVillage_Shrine_EventScript_Elder_2
+DraconidVillage_Shrine_EventScript_Elder_1:
 	msgbox DraconidVillage_Shrine_EventScript_Elder_Text_0, MSGBOX_NPC
 	return
+
+DraconidVillage_Shrine_EventScript_Elder_2:
+	goto DraconidVillage_Shrine_EventScript_DraconidElderTalk
+	goto DraconidVillage_Shrine_EventScript_Elder_1
 
 
 DraconidVillage_Shrine_EventScript_Egg::
@@ -183,8 +199,15 @@ DraconidVillage_Shrine_EventScript_Statue::
 
 
 DraconidVillage_Shrine_EventScript_BackWall::
+	compare VAR_DRACONID_VILLAGE_STATE, VILLAGE_STATE_SEAL_OPEN
+	goto_if_ge DraconidVillage_Shrine_EventScript_BackWall_2
+DraconidVillage_Shrine_EventScript_BackWall_1:
 	msgbox DraconidVillage_Shrine_EventScript_BackWall_Text_0, MSGBOX_SIGN
 	return
+
+DraconidVillage_Shrine_EventScript_BackWall_2:
+	goto DraconidVillage_Shrine_EventScript_DraconidOpenWallSign
+	goto DraconidVillage_Shrine_EventScript_BackWall_1
 
 
 DraconidVillage_Shrine_EventScript_Lore1::

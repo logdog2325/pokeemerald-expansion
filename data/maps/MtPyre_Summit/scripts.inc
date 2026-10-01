@@ -161,6 +161,7 @@ MtPyre_Summit_EventScript_OldManNewTale::
 MtPyre_Summit_EventScript_OldLady::
 	lock
 	faceplayer
+	goto_if_ge VAR_DRACONID_VILLAGE_STATE, VILLAGE_STATE_SAVED, MtPyre_Summit_EventScript_DraconidOldLadyOrbs  @ Draconid Emerald: the Orbs after the finale (act7x.pory)
 	goto_if_set FLAG_RETURNED_RED_OR_BLUE_ORB, MtPyre_Summit_EventScript_OldLadyAfterOrbsReturned
 	call_if_ge VAR_MT_PYRE_STATE, 3, MtPyre_Summit_EventScript_OldLadyOrbsReturned
 	goto_if_set FLAG_KYOGRE_ESCAPED_SEAFLOOR_CAVERN, MtPyre_Summit_EventScript_OldLadyLegendariesAwake

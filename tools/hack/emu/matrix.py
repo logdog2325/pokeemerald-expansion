@@ -13,8 +13,10 @@ second starter second_starter (Tabitha + Prof. Oak's pick), aster
 second starter; the Totodile runs keep the Devon Goods for Magma), act3 (Aster's and Nerine's teams, the
 Mega Stone for the second starter), act4 (Nerine's Mt. Pyre team for egg x second starter, the Magma
 sprite for the gender) and act5 (Nerine's teams for egg x second starter; the Totodile runs take May as the
-Sootopolis partner), and act7 (the Sky Pillar double: Aster's team by egg, Nerine's partner and post-game
-teams by egg x second starter; act6 before it, once, with Deino). Needs a debug build (the warp hook).
+Sootopolis partner), act7 (the Sky Pillar double: Aster's team by egg, Nerine's partner and post-game
+teams by egg x second starter; act6 before it, once, with Deino) and act7x_postgame (Nerine's and Aster's
+post-game teams), then act7x once (the Act 7 extension: Aster's partner team by egg, the village and Primal multi
+battles). Needs a debug build (the warp hook).
 Prints one line per test run and a summary table; exit 1 if any run failed. Logs are in -o.
 """
 
@@ -31,6 +33,8 @@ TESTS = os.path.join(HERE, "tests")
 EGGS = [("DEINO", 0), ("DREEPY", 1), ("JANGMO_O", 2)]                # DRACONID_EGG_*
 # act7.play's attacking move slot for the egg Pokemon in rustboro_done.ss (Dragon Breath, Astonish, Tackle)
 MOVE_SLOT = {"DEINO": 2, "DREEPY": 2, "JANGMO_O": 0}
+# act7x.play's move slot against Wallace, whose Primarina is immune to Dragon (Tackle, Astonish, Tackle)
+NON_DRAGON_MOVE_SLOT = {"DEINO": 0, "DREEPY": 2, "JANGMO_O": 0}
 SECONDS = [("CHARMANDER", 1, "ITEM_CHARIZARDITE_X"),                 # SECOND_STARTER_*, Mega Stone
            ("TOTODILE", 2, "ITEM_FERALIGITE"),
            ("TREECKO", 3, "ITEM_SCEPTILITE")]
@@ -83,9 +87,17 @@ def chain(gender, egg, egg_id, root):
                                "PARTNER": 1 if second == "TOTODILE" else 0, "GFX": "DRACONID_" + gender}))
         # Act 7: the Sky Pillar double picks Aster's team by egg and Nerine's partner team by egg x second starter
         steps.append(("act7", {"EGGNAME": egg, "MOVE": MOVE_SLOT[egg], "SECOND": value, "SECONDNAME": second}))
+        # the post-game rematches (Nerine by egg x second starter, Aster by egg), after the credits moved to act7x
+        steps.append(("act7x_postgame", {"EGGNAME": egg, "SECOND": value, "SECONDNAME": second}))
+    # Act 7 extension, once per chain (a long run): Aster's partner team by egg (the admins' double), Regidrago,
+    # Wallace, the village doubles, the Primal multi battle with both partners, both roamers (Nerine's post-game
+    # team by egg x second starter is act7x_postgame's)
+    steps.append(("act7x", {"EGGNAME": egg, "MOVE": MOVE_SLOT[egg], "NDMOVE": NON_DRAGON_MOVE_SLOT[egg],
+                            "SECOND": 1, "SECONDNAME": "CHARMANDER"}))
     for test, defines in steps:
         ok, bad = run(test, out, defines, log)
-        label = test + ("" if test not in ("second_starter", "aster", "act2", "act3", "act4", "act5", "act7")
+        label = test + ("" if test not in ("second_starter", "aster", "act2", "act3", "act4", "act5", "act7",
+                                           "act7x_postgame")
                         else " " + SECONDS[defines["SECOND"] - 1][0])
         results.append((name, label, ok, bad))
         if not ok and test in ("opening", "route103", "woods", "rustboro"):

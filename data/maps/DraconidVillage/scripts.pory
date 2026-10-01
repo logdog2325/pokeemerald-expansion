@@ -4,6 +4,10 @@ mapscripts DraconidVillage_MapScripts {
     MAP_SCRIPT_ON_TRANSITION: DraconidVillage_OnTransition
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_DRACONID_STATE, DRACONID_STATE_EGG_HATCHED: DraconidVillage_EventScript_RunningShoes
+        // the attack on the village (data/scripts/draconid/act7x.pory)
+        VAR_TEMP_2, 1: DraconidVillage_EventScript_DraconidArrival
+        VAR_TEMP_2, 3: DraconidVillage_EventScript_DraconidFinalIntro
+        VAR_TEMP_2, 4: DraconidVillage_EventScript_DraconidGoodbyes
     ]
 }
 
@@ -15,6 +19,8 @@ script DraconidVillage_OnTransition {
     }
     // Acts 6-7: the sky stays dark from the meteor alert to the end of the finale (act7.pory)
     call(Draconid_EventScript_FinaleWeather)
+    // the attack on the village: its weather, its people and the fights at each stage (act7x.pory)
+    call(DraconidVillage_EventScript_DraconidAttackOnTransition)
 }
 
 // ---------------------------------------------------------------------------
@@ -100,6 +106,9 @@ script DraconidVillage_EventScript_ShoesGiver {
 // South exit: nobody leaves the village without a partner
 // ---------------------------------------------------------------------------
 script DraconidVillage_EventScript_GatekeeperStop {
+    if (var(VAR_DRACONID_VILLAGE_STATE) >= VILLAGE_STATE_ALARM && var(VAR_DRACONID_VILLAGE_STATE) < VILLAGE_STATE_SAVED) {
+        goto(DraconidVillage_EventScript_DraconidGatekeeperAttack) // act7x.pory
+    }
     lockall
     applymovement(LOCALID_DRACONID_GATEKEEPER, Common_Movement_WalkInPlaceFasterLeft)
     waitmovement(0)
@@ -121,11 +130,23 @@ movement DraconidVillage_Movement_PushBack {
 }
 
 script DraconidVillage_EventScript_Gatekeeper {
+    if (var(VAR_DRACONID_VILLAGE_STATE) >= VILLAGE_STATE_ALARM && var(VAR_DRACONID_VILLAGE_STATE) < VILLAGE_STATE_SAVED) {
+        goto(DraconidVillage_EventScript_DraconidGatekeeperTalk) // act7x.pory
+    }
     lock
     faceplayer
     if (var(VAR_DRACONID_STATE) < DRACONID_STATE_READY_TO_LEAVE) {
         msgbox(format("GATEKEEPER: Beyond this path lies DRACONID PASS, and past the river, the lowlands.\p"
                       "Wild Pokémon live out there. Only tamers with a partner may pass."))
+    } elif (var(VAR_DRACONID_FINALE_STATE) >= FINALE_STATE_METEOR_DESTROYED) {
+        msgbox(format("GATEKEEPER: They came up my path in the dark, and I couldn't hold them. You did.\p"
+                      "The gate is yours, CHAMPION. Come home whenever you like."))
+    } elif (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        msgbox(format("GATEKEEPER: …Is that you under the red hood, {PLAYER}?\p"
+                      "The ELDER said you'd come home looking like one of them. The gate is still yours."))
+    } elif (var(VAR_DRACONID_REPUTATION) == REPUTATION_REVEALED) {
+        msgbox(format("GATEKEEPER: The hero of SOOTOPOLIS, at my gate!\p"
+                      "I'll never tell the young ones you once dressed like a MAGMA grunt."))
     } else {
         msgbox(format("GATEKEEPER: So you're off to see the lowlands! The clan's blessings go with you.\p"
                       "Follow the path over the bridge and head east to ROUTE 101. LITTLEROOT TOWN is south of there."))
@@ -155,12 +176,31 @@ script DraconidVillage_EventScript_OldWoman {
 }
 
 script DraconidVillage_EventScript_PondWoman {
-    msgbox(format("The water here comes from the peaks, where the sky dragon is said to rest.\p"
-                  "Drinking it is supposed to make dragons grow strong!"), MSGBOX_NPC)
+    lock
+    faceplayer
+    if (var(VAR_DRACONID_FINALE_STATE) >= FINALE_STATE_METEOR_DESTROYED) {
+        msgbox(format("KYOGRE sat right there in our pool, as big as a house!\p"
+                      "The water's still cloudy. I'm not drinking a drop of it until it clears."))
+    } else {
+        msgbox(format("The water here comes from the peaks, where the sky dragon is said to rest.\p"
+                      "Drinking it is supposed to make dragons grow strong!"))
+    }
+    release
 }
 
 script DraconidVillage_EventScript_Boy {
-    msgbox(format("When I get my egg, I want a dragon that can fly all the way up to the sky!"), MSGBOX_NPC)
+    lock
+    faceplayer
+    if (var(VAR_DRACONID_FINALE_STATE) >= FINALE_STATE_METEOR_DESTROYED) {
+        msgbox(format("I saw a GROUDON and a KYOGRE, and RAYQUAZA too!\p"
+                      "Nobody down in the lowlands is ever going to believe me."))
+    } elif (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        msgbox(format("Why are you dressed like the bad lowlanders?\p"
+                      "…It's a trick, isn't it! I won't tell anyone!"))
+    } else {
+        msgbox(format("When I get my egg, I want a dragon that can fly all the way up to the sky!"))
+    }
+    release
 }
 
 script DraconidVillage_EventScript_VillageSign {

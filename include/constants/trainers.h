@@ -182,7 +182,7 @@ enum __attribute__((packed)) TrainerPicID
     TRAINER_PIC_DRACONID_F,
     TRAINER_PIC_PLAYER_MAGMA_M, // Team Magma disguise: grunt front pic, own back pic
     TRAINER_PIC_PLAYER_MAGMA_F,
-    TRAINER_PIC_ASTER, // Draconid Emerald: Aster (front pic only)
+    TRAINER_PIC_ASTER, // Draconid Emerald: Aster (front + back pic: partner in the village attack)
     TRAINER_PIC_NERINE_AQUA, // Draconid Emerald: Nerine undercover in Team Aqua (front pic only)
     TRAINER_PIC_NERINE, // Draconid Emerald: Nerine after the reveal (front + back pic: Sky Pillar partner)
     TRAINER_PIC_WES, // Draconid Emerald: Battle Frontier legend (front + back pic: legends' tag partner)

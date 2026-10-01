@@ -129,12 +129,16 @@ OVERRIDES = {
                                                          ("POSTGAME", "POST"))
        for e in EGGS for st in STARTERS},
     **{t: "POST" for t in ["BRENDAN_POSTGAME", "MAY_POSTGAME", "BRENDAN_POSTGAME_DOUBLE", "MAY_POSTGAME_DOUBLE"]},
+    # the attack on the Draconid village after the Sky Pillar, the Primal finale (act7x.pory, D-205, D-206)
+    **{"GRUNT_VILLAGE_%d" % i: "POST" for i in range(1, 7)},
+    "TABITHA_VILLAGE": "POST", "SHELLY_VILLAGE": "POST", "MAXIE_FINALE": "POST", "ARCHIE_FINALE": "POST",
+    "WALLACE_SKY_PILLAR": "POST",  # before the Trial of Three (D-203)
     # Gabby & Ty move on after every battle (Route 111 -> 118 -> 120 ...)
     "GABBY_AND_TY_1": "S4", "GABBY_AND_TY_2": "S4", "GABBY_AND_TY_3": "S5",
     "GABBY_AND_TY_4": "S6", "GABBY_AND_TY_5": "S7", "GABBY_AND_TY_6": "S8",
 }
 # every id the game uses (TRAINERS_COUNT_EMERALD)
-MAX_ID = 937
+MAX_ID = 968
 
 TIER_MIN = {2: "S6", 3: "S7", 4: "S8", 5: "POST", 6: "POST"}
 
@@ -143,7 +147,8 @@ ELITE = ["SIDNEY", "PHOEBE", "GLACIA", "DRAKE", "WALLACE", "STEVEN"]
 BOSSES = ["MAXIE", "ARCHIE"]
 ADMINS = ["TABITHA", "SHELLY", "MATT"]
 # Battles written by hand with the story (Phase 5): not in the trainer batches.
-STORY = re.compile(r"^TRAINER_(BRENDAN|MAY|WALLY|ASTER|NERINE|ZINNIA|STEVEN_MOSSDEEP|MAXIE_SOOTOPOLIS|ARCHIE_SOOTOPOLIS)")
+STORY = re.compile(r"^TRAINER_(BRENDAN|MAY|WALLY|ASTER|NERINE|ZINNIA|STEVEN_MOSSDEEP|MAXIE_SOOTOPOLIS|ARCHIE_SOOTOPOLIS|"
+                   r"MAXIE_FINALE|ARCHIE_FINALE|TABITHA_VILLAGE|SHELLY_VILLAGE|GRUNT_VILLAGE_|WALLACE_SKY_PILLAR)")
 SKIP = {"TRAINER_BRENDAN_PLACEHOLDER", "TRAINER_MAY_PLACEHOLDER", "TRAINER_RED", "TRAINER_LEAF",
         "TRAINER_GRUNT_UNUSED", "TRAINER_CINDY_2", "TRAINER_AMY_AND_LIV_3", "TRAINER_GINA_AND_MIA_2",
         "TRAINER_LUCAS_2", "TRAINER_MIKE_1", "TRAINER_DUDLEY", "TRAINER_KAYLEE", "TRAINER_TERRY",

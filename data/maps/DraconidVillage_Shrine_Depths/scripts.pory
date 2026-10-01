@@ -1,0 +1,72 @@
+// The chamber behind the shrine's carved wall (Act 7 extension, D-202; layout: tools/hack/mapgen/specs/
+// draconid_shrine_depths.py): REGIDRAGO, the clan's stone dragon, sleeps at (8, 7). A static battle at
+// DRACONID_REGIDRAGO_LEVEL: beaten or fled, it wakes again the next time the player comes down (its object uses a
+// temp flag); caught, it is gone (FLAG_DRACONID_CAUGHT_REGIDRAGO). The first battle that is not lost (won, caught or
+// fled) lets the ELDER fly the player back to the Sky Pillar (VILLAGE_STATE_REGIDRAGO, data/scripts/draconid/act7x.pory).
+
+mapscripts DraconidVillage_Shrine_Depths_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION: DraconidVillage_Shrine_Depths_OnTransition
+    MAP_SCRIPT_ON_RESUME: DraconidVillage_Shrine_Depths_OnResume
+}
+
+script DraconidVillage_Shrine_Depths_OnTransition {
+    if (flag(FLAG_DRACONID_CAUGHT_REGIDRAGO)) {
+        setflag(FLAG_TEMP_11)
+    }
+}
+
+// Back from a battle that caught it: gone before the screen fades in (as in the vanilla Regi chambers)
+script DraconidVillage_Shrine_Depths_OnResume {
+    if (flag(FLAG_SYS_CTRL_OBJ_DELETE)) {
+        specialvar(VAR_RESULT, GetBattleOutcome)
+        if (var(VAR_RESULT) == B_OUTCOME_CAUGHT) {
+            removeobject(VAR_LAST_TALKED)
+        }
+    }
+}
+
+script DraconidVillage_Shrine_Depths_EventScript_Regidrago {
+    lock
+    faceplayer
+    if (var(VAR_DRACONID_VILLAGE_STATE) < VILLAGE_STATE_REGIDRAGO) {
+        msgbox(format("A dragon of living stone lay before the carved wall.\p"
+                      "Its eyes began to glow as {PLAYER} came near…"))
+        closemessage
+    }
+    waitse
+    playmoncry(SPECIES_REGIDRAGO, CRY_MODE_ENCOUNTER)
+    delay(40)
+    waitmoncry
+    setwildbattle(SPECIES_REGIDRAGO, DRACONID_REGIDRAGO_LEVEL)
+    // its level-up set at 65 has no Dragon move (Hammer Arm, Dragon Dance, Thrash, Focus Energy): the stone dragon
+    // gets its signature move and a bite (D-202)
+    createmon(1, 0, SPECIES_REGIDRAGO, DRACONID_REGIDRAGO_LEVEL, move1=MOVE_DRAGON_ENERGY, move2=MOVE_CRUNCH, move3=MOVE_HAMMER_ARM, move4=MOVE_DRAGON_DANCE)
+    setflag(FLAG_SYS_CTRL_OBJ_DELETE)
+    special(StartRegiBattle)
+    clearflag(FLAG_SYS_CTRL_OBJ_DELETE)
+    specialvar(VAR_RESULT, GetBattleOutcome)
+    // a lost battle whites out (the script ends there); the debug flag FLAG_DRACONID_NO_WHITEOUT lands here instead
+    if (var(VAR_RESULT) == B_OUTCOME_LOST || var(VAR_RESULT) == B_OUTCOME_DREW) {
+        release
+        end
+    }
+    if (var(VAR_DRACONID_VILLAGE_STATE) < VILLAGE_STATE_REGIDRAGO) {
+        setvar(VAR_DRACONID_VILLAGE_STATE, VILLAGE_STATE_REGIDRAGO)
+    }
+    if (var(VAR_RESULT) == B_OUTCOME_CAUGHT) {
+        setflag(FLAG_DRACONID_CAUGHT_REGIDRAGO)
+        release
+        end
+    }
+    fadescreenswapbuffers(FADE_TO_BLACK)
+    removeobject(LOCALID_SHRINE_DEPTHS_REGIDRAGO)
+    fadescreenswapbuffers(FADE_FROM_BLACK)
+    msgbox(format("REGIDRAGO sank back into the stone of the wall…\p"
+                  "It is still here, sleeping. It will wake again."))
+    release
+}
+
+script DraconidVillage_Shrine_Depths_EventScript_Carving {
+    msgbox(format("Words are carved into the rock, older than the shrine above:\p"
+                  "“THE STONE DRAGON WAITS FOR THE ONE WHO STANDS BESIDE THE SKY.”"), MSGBOX_SIGN)
+}

@@ -176,6 +176,10 @@
     {"id": "5.15", "act": 5, "name": "Rain Badge (end of Act 5)",
      "scenes": [{"label": "SootopolisCity_Gym_1F_EventScript_Juan", "expect": ["FLAG_BADGE08_GET"]}]},
     {"id": "5.15b", "act": 5, "side": true, "name": "Way on to Act 6: out of Sootopolis, up the waterfall to Victory Road",
-     "to": "MAP_VICTORY_ROAD_1F"}
+     "to": "MAP_VICTORY_ROAD_1F"},
+    {"id": "7x.01", "act": 7, "side": true, "name": "Post-game (D-208): to Groudon asleep in the Magma Hideout, the ledge below the magma pool",
+     "to": "MAP_MAGMA_HIDEOUT_4F 16 21"},
+    {"id": "7x.02", "act": 7, "side": true, "name": "Post-game (D-208): down to Kyogre asleep in the Seafloor Cavern, the shore of the deep pool",
+     "to": "MAP_SEAFLOOR_CAVERN_ROOM9 17 42"}
   ]
 }

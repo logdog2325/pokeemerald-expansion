@@ -1,8 +1,9 @@
 # Flow test for Act 7 (data/scripts/draconid/act7.pory): the Trial of Three at the foot of the Sky Pillar (the
 # player + Nerine vs Aster), Zinnia on 3F, the summit (the Rayquaza catch, Dragon Ascent, Deoxys, Mega Rayquaza and
-# the meteor), the save and the credits, the wake-up at home and the post-game battles (Nerine by the pond, Aster at
-# the shrine, Deoxys at the summit). Needs rustboro_done.ss from tests/rustboro.play (a one-Pokemon party: Deino);
-# the state act6.play ends in (summoned, the Elder's dragon lands the player at the cave mouth) is set by hand.
+# the meteor), then the alarm over the village (May's call) and the flight home. The attack on the village, the
+# credits, the wake-up at home and the post-game battles are in act7x.play (the Act 7 extension). Needs
+# rustboro_done.ss from tests/rustboro.play (a one-Pokemon party: Deino); the state act6.play ends in (summoned, the
+# Elder's dragon lands the player at the cave mouth) and Regidrago faced (act7x.play tests that part) are set by hand.
 # The party Pokemon is boosted where a battle must be won (play.py "boost"), and the move cursor is put on MOVE, a
 # damaging move (Deino: Dragon Breath, as a Ghost type in Aster's team is immune to Tackle); it has 1 HP and
 # 1 Attack for the must-catch Rayquaza.
@@ -37,6 +38,9 @@ setflag FLAG_BADGE06_GET
 setflag FLAG_BADGE07_GET
 setflag FLAG_BADGE08_GET
 setvar VAR_DRACONID_FINALE_STATE 3
+# the Elder's call, Regidrago and Wallace come first (act7x.play); with them done, the trial is armed
+setvar VAR_DRACONID_VILLAGE_STATE 3
+settrainer TRAINER_WALLACE_SKY_PILLAR 1
 setflag FLAG_HIDE_DRACONID_HOUSE_ELDER
 setflag FLAG_HIDE_DRACONID_ELDERS_HOUSE_ELDER
 setflag FLAG_DEBUG_NO_ENCOUNTER
@@ -111,70 +115,18 @@ boost 0
 until @gMain+4 4 @@BattleMainCB2 30000 A 24
 run 400
 shot 52_deoxys
-until_var VAR_DRACONID_FINALE_STATE 7 300000 A
-shot 53_meteor_destroyed
-expect_flag FLAG_HIDE_DRACONID_VILLAGE_NERINE 0
-expect_flag FLAG_HIDE_DRACONID_HOUSE_ELDER 0
+until_var VAR_DRACONID_VILLAGE_STATE 4 300000 A
+shot 53_alarm
+# no credits yet: the attack on the village follows (act7x.play); the post-game waits for it
+expect_var VAR_DRACONID_FINALE_STATE 6
 expect_flag FLAG_HIDE_SKY_PILLAR_TOP_ASTER 1
-savestate act7_meteor.ss
-
-# --- the save, the credits (A ends the last screen), and home ---
-until @gMain+4 4 @@CB2_Credits 30000 A 24
-run 3000
-shot 60_credits
-until @gMain+4 4 @@CB2_Overworld 400000 A 120
-run 120
-shot 61_home
-mapid
-until_var VAR_DRACONID_FINALE_STATE 8 3000 A
-savestate act7_postgame.ss
-
-# --- post-game: the Elder brings the SS Ticket (also postgame_home.play) ---
-warp MAP_DRACONID_VILLAGE_PLAYERS_HOUSE_1F 8 2 3000
-run 150
-mash A 30000
-expect_var VAR_DRACONID_FINALE_STATE 9
-expect_flag FLAG_RECEIVED_SS_TICKET 1
-
-# --- post-game: Nerine by the village pond ---
-heal
-boost 0
-warp MAP_DRACONID_VILLAGE 27 7
+expect_flag FLAG_HIDE_DRACONID_VILLAGE_NERINE 1
+# the flight home: the village's arrival scene runs on its OnFrame (act7x.play goes on from there)
+until_var VAR_DRACONID_VILLAGE_STATE 5 60000 A
 run 60
-press RIGHT 2 20
-press A 2 30
-run 30
-shot 70_nerine
-mash A 60000
-expect_opponent TRAINER_NERINE_POSTGAME_${EGGNAME}_${SECONDNAME}
-expect_var VAR_NERINE_STATE 9
-
-# --- post-game: Aster at the shrine ---
-heal
-boost 0
-warp MAP_DRACONID_VILLAGE_SHRINE 10 11
-run 60
-walk UP 10
-press A 2 30
-run 30
-shot 71_shrine
-mash A 60000
-expect_opponent TRAINER_ASTER_POSTGAME_${EGGNAME}
-expect_var VAR_ASTER_STATE 9
-
-# --- post-game: Deoxys at the summit (beaten: gone until the next Hall of Fame) ---
-heal
-boost 0
-warp MAP_SKY_PILLAR_TOP 14 8
-run 60
-shot 72_deoxys
-press UP 2 10
-press A 2 30
-until @gMain+4 4 @@BattleMainCB2 30000 A 24
-until @gMain+4 4 @@CB2_Overworld 60000 A 24
-mash A 20000
-expect_flag FLAG_DEFEATED_DEOXYS 1
-savestate act7_done.ss
+shot 54_village
+expect_map MAP_DRACONID_VILLAGE
+savestate act7_village.ss
 
 clearflag FLAG_DEBUG_NO_ENCOUNTER
 clearflag FLAG_DEBUG_NO_TRAINER_SEE

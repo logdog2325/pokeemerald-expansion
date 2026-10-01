@@ -10,6 +10,7 @@
 #include "overworld.h"
 #include "constants/flags.h"
 #include "constants/map_types.h"
+#include "constants/maps.h"
 #include "pokemon.h"
 #include "pokemon_storage_system.h"
 #include "rayquaza_scene.h"
@@ -40,10 +41,12 @@ struct DraconidVariantTrainer
 
 #include "data/draconid_variant_trainers.h"
 
-// Draconid Emerald: Nerine's partner team at the Sky Pillar finale follows the same choices (Act 7, D-151)
+// Draconid Emerald: Nerine's partner team at the Sky Pillar finale follows the same choices (Act 7, D-151);
+// Aster's in the attack on the village follows the player's egg, like her trainer teams (Act 7 extension, D-205)
 static const struct DraconidVariantTrainer sDraconidVariantPartners[] =
 {
     {VARIANT_BY_EGG_AND_STARTER, {PARTNER_NERINE_DEINO_CHARMANDER, PARTNER_NERINE_DEINO_TOTODILE, PARTNER_NERINE_DEINO_TREECKO, PARTNER_NERINE_DREEPY_CHARMANDER, PARTNER_NERINE_DREEPY_TOTODILE, PARTNER_NERINE_DREEPY_TREECKO, PARTNER_NERINE_JANGMO_O_CHARMANDER, PARTNER_NERINE_JANGMO_O_TOTODILE, PARTNER_NERINE_JANGMO_O_TREECKO}},
+    {VARIANT_BY_EGG, {PARTNER_ASTER_DEINO, PARTNER_ASTER_DREEPY, PARTNER_ASTER_JANGMO_O}},
 };
 
 // The trainer a battle loads after the Hall of Fame, instead of the first one (round 1, D-174)
@@ -345,4 +348,46 @@ bool32 Draconid_ShouldDoMaxieCall(void)
 u16 Draconid_GetDueMaxieCall(void)
 {
     return GetDueMaxieCall();
+}
+
+// ---------------------------------------------------------------------------
+// Act 7 extension: the attack on the village (data/scripts/draconid/act7x.pory, D-204)
+// ---------------------------------------------------------------------------
+
+// From the alarm at the summit until Maxie and Archie are beaten, Primal Groudon and Kyogre are awake
+static bool32 IsPrimalSequence(void)
+{
+    u16 state = VarGet(VAR_DRACONID_VILLAGE_STATE);
+
+    return state >= VILLAGE_STATE_ALARM && state < VILLAGE_STATE_PRIMAL_WON;
+}
+
+static bool32 IsMapTypeUnderOpenSky(enum MapType mapType)
+{
+    switch (mapType)
+    {
+    case MAP_TYPE_TOWN:
+    case MAP_TYPE_CITY:
+    case MAP_TYPE_ROUTE:
+    case MAP_TYPE_OCEAN_ROUTE:
+        return TRUE;
+    default:
+        return FALSE;
+    }
+}
+
+// SetSavedWeatherFromCurrMapHeader: while Primal Groudon and Kyogre are awake, every map under the open sky shows
+// Emerald's alternating drought and downpour of the Sootopolis clash (WEATHER_ABNORMAL) whenever it is loaded:
+// a warp, Fly, a whiteout, a saved game. Underwater, indoor and cave maps keep their own (D-204).
+bool32 Draconid_IsPrimalWeather(void)
+{
+    return IsPrimalSequence() && IsMapTypeUnderOpenSky(gMapHeader.mapType);
+}
+
+// GetLocationMusic: the abnormal weather theme plays with that weather
+bool32 Draconid_IsPrimalMusic(struct WarpData *warp)
+{
+    const struct MapHeader *header = Overworld_GetMapHeaderByGroupAndId(warp->mapGroup, warp->mapNum);
+
+    return IsPrimalSequence() && IsMapTypeUnderOpenSky(header->mapType);
 }

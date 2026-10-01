@@ -126,6 +126,14 @@
 #define METATILE_Cave_CrackedFloor                       0x22F
 #define METATILE_Cave_CrackedFloor_Hole                  0x206
 #define METATILE_Cave_EntranceCover                      0x229
+// Draconid Emerald: the purple rock cave mouth of the Seafloor Cavern, cut into the Draconid shrine's carved wall
+// when it opens (Act 7 extension, D-201)
+#define METATILE_Cave_DoorwayPurple                      0x306
+#define METATILE_Cave_DoorwayPurple_Left                 0x316
+#define METATILE_Cave_DoorwayPurple_Right                0x307
+#define METATILE_Cave_DoorwayPurple_Top                  0x2FE
+#define METATILE_Cave_DoorwayPurple_TopLeft              0x30E
+#define METATILE_Cave_DoorwayPurple_TopRight             0x2FF
 #define METATILE_Cave_Floor_Ledge_Bottom                 0x2E1
 #define METATILE_Cave_Floor_Ledge_Top                    0x2D1
 #define METATILE_Cave_RockBarrier_Bottom                 0x317

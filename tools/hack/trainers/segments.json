@@ -1067,7 +1067,18 @@
   "TRAINER_MAY_LAVARIDGE": "S5",
   "TRAINER_WALLY_ROUTE_120": "S6",
   "TRAINER_BRENDAN_JAGGED_PASS": "S7",
-  "TRAINER_MAY_MOSSDEEP": "S8"
+  "TRAINER_MAY_MOSSDEEP": "S8",
+  "TRAINER_GRUNT_VILLAGE_1": "POST",
+  "TRAINER_GRUNT_VILLAGE_2": "POST",
+  "TRAINER_GRUNT_VILLAGE_3": "POST",
+  "TRAINER_GRUNT_VILLAGE_4": "POST",
+  "TRAINER_GRUNT_VILLAGE_5": "POST",
+  "TRAINER_GRUNT_VILLAGE_6": "POST",
+  "TRAINER_TABITHA_VILLAGE": "POST",
+  "TRAINER_SHELLY_VILLAGE": "POST",
+  "TRAINER_MAXIE_FINALE": "POST",
+  "TRAINER_ARCHIE_FINALE": "POST",
+  "TRAINER_WALLACE_SKY_PILLAR": "POST"
  },
  "info": {
   "TRAINER_SAWYER_1": {
@@ -7086,6 +7097,72 @@
    "segment": "S8",
    "role": "route",
    "map": "MossdeepCity",
+   "story": true
+  },
+  "TRAINER_GRUNT_VILLAGE_1": {
+   "segment": "POST",
+   "role": "grunt",
+   "map": "DraconidVillage",
+   "story": true
+  },
+  "TRAINER_GRUNT_VILLAGE_2": {
+   "segment": "POST",
+   "role": "grunt",
+   "map": "DraconidVillage",
+   "story": true
+  },
+  "TRAINER_GRUNT_VILLAGE_3": {
+   "segment": "POST",
+   "role": "grunt",
+   "map": "DraconidVillage",
+   "story": true
+  },
+  "TRAINER_GRUNT_VILLAGE_4": {
+   "segment": "POST",
+   "role": "grunt",
+   "map": "DraconidVillage",
+   "story": true
+  },
+  "TRAINER_GRUNT_VILLAGE_5": {
+   "segment": "POST",
+   "role": "grunt",
+   "map": "DraconidVillage",
+   "story": true
+  },
+  "TRAINER_GRUNT_VILLAGE_6": {
+   "segment": "POST",
+   "role": "grunt",
+   "map": "DraconidVillage",
+   "story": true
+  },
+  "TRAINER_TABITHA_VILLAGE": {
+   "segment": "POST",
+   "role": "admin",
+   "map": "DraconidVillage",
+   "story": true
+  },
+  "TRAINER_SHELLY_VILLAGE": {
+   "segment": "POST",
+   "role": "admin",
+   "map": "DraconidVillage",
+   "story": true
+  },
+  "TRAINER_MAXIE_FINALE": {
+   "segment": "POST",
+   "role": "boss",
+   "map": "DraconidVillage",
+   "story": true
+  },
+  "TRAINER_ARCHIE_FINALE": {
+   "segment": "POST",
+   "role": "boss",
+   "map": "DraconidVillage",
+   "story": true
+  },
+  "TRAINER_WALLACE_SKY_PILLAR": {
+   "segment": "POST",
+   "role": "route",
+   "map": "SkyPillar_Outside",
    "story": true
   }
  }

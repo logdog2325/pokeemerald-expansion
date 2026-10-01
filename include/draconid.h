@@ -16,6 +16,11 @@ void Draconid_DoRayquazaFlightScene(struct ScriptContext *ctx);
 void Draconid_SaveBeforeCredits(struct ScriptContext *ctx);
 void Draconid_StartCredits(struct ScriptContext *ctx);
 
+// Act 7 extension: the attack on the village (data/scripts/draconid/act7x.pory)
+struct WarpData;
+bool32 Draconid_IsPrimalWeather(void);
+bool32 Draconid_IsPrimalMusic(struct WarpData *warp);
+
 #if DEBUG_OVERWORLD_MENU
 // Emulator test hook (tools/hack/emu/play.py "warp"), debug builds only
 #define DRACONID_TEST_WARP (1 << 0)
