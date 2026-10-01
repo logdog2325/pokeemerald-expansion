@@ -634,6 +634,11 @@ poke @gParties+60 E7
 poke @gParties+61 3
 poke @gParties+62 E7
 poke @gParties+63 3
+# once the battle is on, both of the player's battlers get their PP back: a long mashed double can run the lead's
+# first move dry ("There's no PP left", mashing A picks it again forever; seen once in the uniform batch)
+wait_species 1 SPECIES_RHYPERIOR 30000
+battlepp 0
+battlepp 2
 mash A 60000
 shot r8_11_after
 expect_opponent TRAINER_GRUNT_POKEMON_LEAGUE_1

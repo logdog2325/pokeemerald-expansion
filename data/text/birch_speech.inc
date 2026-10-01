@@ -15,9 +15,9 @@ gText_Birch_Pokemon::
 	.string "Come out, old friend.{PAUSE 96}\p"
 	.string "$"
 
-@ Draconid Emerald: ALTARIA is DRACONID_ELDER_DRAGON (include/constants/draconid.h)
+@ Draconid Emerald: SALAMENCE is DRACONID_ELDER_DRAGON (include/constants/draconid.h)
 gText_Birch_MainSpeech::
-	.string "This is my ALTARIA. We have flown\n"
+	.string "This is my SALAMENCE. We have flown\n"
 	.string "these peaks together for sixty years.\p"
 	.string "Creatures such as this are POKéMON.\n"
 	.string "Every sky, sea and stone holds them.\p"

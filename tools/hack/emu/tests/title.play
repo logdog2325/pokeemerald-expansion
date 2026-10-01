@@ -36,7 +36,7 @@ until @gMain+4 4 @@CB2_MainMenu 600
 run 120
 shot menu
 # NEW GAME: the ELDER's new-game speech (D-420), one shot per page (text at the default MID speed: ~340 frames
-# a page). speech_04/05: his ALTARIA comes out of its ball; speech_13: the player pics (the girl slides in);
+# a page). speech_04/05: his SALAMENCE comes out of its ball; speech_13: the player pics (the girl slides in);
 # speech_16: the naming screen; speech_23: the shrink into the world; speech_24: the first scene in the bedroom.
 press A 2 10
 run 900
@@ -73,7 +73,7 @@ shot speech_10
 press A 2 10
 run 340
 shot speech_11
-# "And you are?" needs no key: the ELDER and ALTARIA fade, the platform slides, the tamer fades in
+# "And you are?" needs no key: the ELDER and SALAMENCE fade, the platform slides, the tamer fades in
 press A 2 10
 run 120
 expect_text gText_Birch_AndYouAre

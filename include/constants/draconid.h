@@ -27,7 +27,7 @@
 
 // The ELDER's old dragon: his partner in the new-game speech (src/main_menu.c; named in data/text/birch_speech.inc),
 // the dragon that carries the egg and the player in the story (D-421)
-#define DRACONID_ELDER_DRAGON          SPECIES_ALTARIA
+#define DRACONID_ELDER_DRAGON          SPECIES_SALAMENCE
 
 // Level the hatchling is raised to when it hatches (eggs hatch at EGG_HATCH_LEVEL = 1)
 #define DRACONID_HATCHLING_LEVEL       5

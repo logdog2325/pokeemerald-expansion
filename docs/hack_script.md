@@ -7,7 +7,7 @@ The story they follow: [hack_story.md](hack_story.md).
 
 ## The new-game speech (`data/text/birch_speech.inc`)
 
-The ELDER of the DRACONID clan gives the speech (the tasks in `src/main_menu.c`); his ALTARIA comes out of its ball after `gText_Birch_Pokemon`, the player chooses boy or girl after `gText_Birch_BoyOrGirl` and names themselves after `gText_Birch_WhatsYourName`.
+The ELDER of the DRACONID clan gives the speech (the tasks in `src/main_menu.c`); his SALAMENCE comes out of its ball after `gText_Birch_Pokemon`, the player chooses boy or girl after `gText_Birch_BoyOrGirl` and names themselves after `gText_Birch_WhatsYourName`.
 
 ### `gText_Birch_Welcome`
 - Hohoho… Come in, come in. The mountain wind bites tonight.

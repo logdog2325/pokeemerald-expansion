@@ -2226,15 +2226,17 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   Birch with new lines (still Emerald's scene, the complaint); a new cutscene of the night sky (vanilla's animation
   carries the gender and name choice well, and the falling star is already the first scene). – The voice of his
   shrine lines (terse, warm, "Hohoho", the sky), the speech's length (20 boxes; vanilla 21).
-- **D-421 His dragon is ALTARIA** (`DRACONID_ELDER_DRAGON`): the story never names the species of "my old dragon"
+- **D-421 His dragon is SALAMENCE** (`DRACONID_ELDER_DRAGON`): the story never named the species of "my old dragon"
   that flies Nerine's egg away (D-270), carries the player to the Sky Pillar (D-150) and back home (Act 7), so the
-  speech picks one: **ALTARIA**, Hoenn's own sky dragon (Dragon/Flying, it soars among the clouds and hums), gentle
-  and old in feeling, a flier for a rider and an egg; its front pic and cry are in the game.
-  It comes out at Lotad's spot, where its crest overlaps the ELDER's raised hand, as if he rests it there. – Alt:
-  SALAMENCE (DRAKE's ace, and DRAKE is getting a story of his own), DRAGONITE (LANCE's; the ELDER is surprised to see
-  one land, D-261), FLYGON (a desert dragon), one of the three egg lines (they came from far lands, D-230), Hydreigon
-  or Noivern (fierce, not an old friend). The constant lets later scenes name it; the scenes that say "my old dragon"
-  are unchanged.
+  speech picks one. The Elder agent chose **ALTARIA** (Hoenn's gentle sky dragon); on merging it with Drake's story
+  (D-440: the brothers "hatched our BAGON the same spring", the Elder's old dragon being "the other Salamence") the two
+  disagreed, and the lead made it **SALAMENCE** everywhere: the twin of Drake's ace ties the speech to his backstory, a
+  big flier carries a rider and an egg, and ALTARIA is already WALLY's dragon in the Act 7 attack (he flies in on it,
+  act7x.pory), so two Altaria in one story would blur. Its front pic and cry are in the game; it comes out of
+  its ball at Lotad's spot. – Alt: ALTARIA (the Elder agent's pick; WALLY's, above), DRAGONITE (LANCE's; the ELDER is
+  surprised to see one land, D-261), FLYGON (a desert dragon), one of the three egg lines (they came from far lands,
+  D-230), Hydreigon or Noivern (fierce, not an old friend). The constant lets later scenes name it; the scenes that say
+  "my old dragon" are unchanged.
 - **D-422 The ELDER's speech portrait**: `graphics/birch_speech/elder.png`, 64×64 in Birch's format (4bpp, its own
   16-colour palette), built by `tools/hack/art/recipes/draconid_elder_portrait.json` from the vanilla **Expert M trainer
   front pic** – the base of his overworld sprite – so the man in the speech is the man in the village: the white gi
