@@ -208,4 +208,31 @@
 #define DRACONID_Z_CRYSTAL_TOTODILE    ITEM_WATERIUM_Z
 #define DRACONID_Z_CRYSTAL_TREECKO     ITEM_GRASSIUM_Z
 
+// The debug menu's "Jump to act…" (debug builds only, D-480 - D-489): the menu and the warps in
+// data/scripts/draconid/debug_jumps.pory, the story state at each stop from tools/hack/gen_debug_jumps.py
+// (data/scripts/draconid/debug_jumps_state.inc), the party and the supplies in src/draconid_debug_jumps.c.
+// The stops in story order (gen_debug_jumps.py checks these numbers against its own list):
+#define DRACONID_JUMP_STOP_WOODS       0 // Act 1: Petalburg Woods, before Nerine robs the researcher (leg 1.13)
+#define DRACONID_JUMP_STOP_ACT2        1 // Act 2: Rustboro, before Nerine steals the Devon Goods (2.01)
+#define DRACONID_JUMP_STOP_ACT3        2 // Act 3: Meteor Falls, before Maxie takes the meteorite (3.01)
+#define DRACONID_JUMP_STOP_ACT4        3 // Act 4: Petalburg, before Wally at the Gym door (4.01)
+#define DRACONID_JUMP_STOP_ACT5        4 // Act 5: the Aqua Hideout B2F, before Nerine fight 5 and Matt (5.01)
+#define DRACONID_JUMP_STOP_REVENGE     5 // the Sootopolis aftermath: out of Juan's Gym into Magma's revenge (6.R1)
+#define DRACONID_JUMP_STOP_LEAGUE      6 // Act 6: the Pokemon League's door guards (6.02)
+#define DRACONID_JUMP_STOP_ELDER       7 // Act 7: the Elder's call at the foot of the Sky Pillar (7.01)
+#define DRACONID_JUMP_STOP_VILLAGE     8 // Act 7: the attack on the village (7.09)
+#define DRACONID_JUMP_STOP_POSTGAME    9 // the post-game: home after the SS Ticket (P.01)
+#define DRACONID_JUMP_STOP_COUNT      10
+// The ready team's level: the stop's level cap (src/caps.c); after the Champion there is none, so these:
+#define DRACONID_JUMP_LEVEL_ELDER      60 // the Champion's cap: the team that has just beaten STEVEN
+#define DRACONID_JUMP_LEVEL_VILLAGE    DRACONID_REGIDRAGO_LEVEL     // after the Sky Pillar's battles
+#define DRACONID_JUMP_LEVEL_POSTGAME   DRACONID_PRIMAL_LEGEND_LEVEL // the level of the finale's Primal legends
+#define DRACONID_JUMP_LEVEL_SLACK       5 // a party this close to the stop's level keeps playing as it is
+#define DRACONID_JUMP_MONEY_PER_LEVEL 1000 // the wallet is topped up to this times the stop's level
+#define DRACONID_JUMP_MEDICINE         10 // potions of the stop's kind, topped up to this many
+#define DRACONID_JUMP_REVIVES           5
+#define DRACONID_JUMP_BALLS            10 // Poke Balls of the stop's kind
+#define DRACONID_JUMP_HYPER_LEVEL      30 // from this level on: Hyper Potions and Great Balls
+#define DRACONID_JUMP_MAX_LEVEL        48 // from this level on: Max Potions and Ultra Balls
+
 #endif // GUARD_CONSTANTS_DRACONID_H

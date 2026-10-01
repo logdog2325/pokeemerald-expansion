@@ -1116,6 +1116,11 @@ gStdScripts_End::
 	.include "data/scripts/draconid/audit_fixes.inc"
 	.include "data/scripts/draconid/lance.inc"
 	.include "data/scripts/draconid/drake.inc"
+.if DEBUG_OVERWORLD_MENU == TRUE
+	@ the debug menu's "Jump to act…" (debug builds only, D-480 - D-489)
+	.include "data/scripts/draconid/debug_jumps.inc"
+	.include "data/scripts/draconid/debug_jumps_state.inc"
+.endif
 	.include "data/scripts/hall_of_fame.inc"
 	.include "data/scripts/hall_of_fame_frlg.inc"
 

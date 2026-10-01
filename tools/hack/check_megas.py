@@ -104,7 +104,7 @@ PENDING_ITEM_BALLS = {
     "ITEM_DUSK_STONE": [("MAP_MT_PYRE_EXTERIOR", 27, 15), ("MAP_MT_PYRE_EXTERIOR", 16, 22)],  # a ball, a hidden item
 }
 # Scripts that never reach the player in this ROM.
-SKIP_SCRIPT = re.compile(r"(^|/)(debug\.inc|gift_\w+\.inc|script_cmd_table\.inc|\w+_frlg\.inc)$|_Frlg/")
+SKIP_SCRIPT = re.compile(r"(^|/)(debug\.inc|debug_jumps\w*\.(inc|pory)|gift_\w+\.inc|script_cmd_table\.inc|\w+_frlg\.inc)$|_Frlg/")
 
 GIFT_MON = re.compile(r"\b(givemon|giveegg|givecustommon|setwildbattle)\b[\s(]+(\w+)")
 TRADE = re.compile(r"\bingame_trade\b[\s(]+(INGAME_TRADE_\w+)")

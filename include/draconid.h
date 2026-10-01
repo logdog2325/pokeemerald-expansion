@@ -55,6 +55,13 @@ struct DraconidTestWarp
 };
 extern struct DraconidTestWarp gDraconidTestWarp;
 bool32 Draconid_TryTestWarp(void);
+
+// The debug menu's "Jump to act…" (callnative from data/scripts/draconid/debug_jumps.pory; src/draconid_debug_jumps.c)
+void Draconid_DebugJumpSetItem(struct ScriptContext *ctx);
+void Draconid_DebugJumpTeam(struct ScriptContext *ctx);
+void Draconid_DebugJumpSupplies(struct ScriptContext *ctx);
+void Draconid_DebugJumpRayquaza(struct ScriptContext *ctx);
+void Draconid_DebugJumpRoamers(struct ScriptContext *ctx);
 #endif
 
 #endif // GUARD_DRACONID_H

@@ -180,7 +180,32 @@ and runs in the Deino chains.
 GAME and every page of the ELDER's new-game speech into the bedroom, D-420) boots from power-on, needs no savestate
 and runs in the Deino chains. The other chains start with Quickstart, which skips the speech.
 Round 2's checks run in the Deino chains too: `draconid_pass`, `stones`, `multi_teams` and `bag_room` (from
-`opening.play`'s states), `uniform_npcs` and `drake` (from `rustboro_done.ss`).
+`opening.play`'s states), `uniform_npcs`, `drake` and `act_jumps` (from `rustboro_done.ss`).
+`act_jumps.play` (the debug menu's "Jump to act…", D-480 – D-489; `-D GFX=… -D MAGMA=…`) opens the menu once
+(R + START, the first entry, `choose`), then calls every stop's script in story order from the stop before
+(`callscript`): the key states, the ready team, the arrival shot (`aj_<stop>.png`) and the act's first scene
+starting (`until_text` on its first line); one rewind (Act 3 → Act 1) answers the question NO, then YES; a save that kept the Devon Goods keeps that choice.
+
+## Jump to an act – `tools/hack/gen_debug_jumps.py`
+```sh
+python3 tools/hack/gen_debug_jumps.py              # write data/scripts/draconid/debug_jumps_state.inc (~35 s)
+python3 tools/hack/gen_debug_jumps.py --check      # exit 1 if it is stale (rerun after a story change)
+python3 tools/hack/gen_debug_jumps.py --show ACT3  # one stop: what it sets, the unknown keys, its marker
+```
+The debug menu's first entry, **Jump to act…** (debug builds only), lands next to the first scene of an act with the
+save in the state a real playthrough has there (D-480 – D-489). The menu, the warps, the respawn points and what the
+simulation can't give are hand-written in `data/scripts/draconid/debug_jumps.pory`; the party, the supplies and the
+bag counts are C (`src/draconid_debug_jumps.c`, debug builds only). The generator runs `check_progression.py`'s story
+simulation (its `run_story` hooks) and writes, for each stop in its `STOPS` list (the leg whose first scene starts
+the act): every flag, var, trainer flag and story item the simulation writes anywhere in the story, set or cleared
+to its value at the end of the walk to that scene – a chain of steps, the first stop the whole state, each later one
+what changed –; `FLAG_VISITED_*` of the towns the walk entered; the trainer flags of the map trainers the walk
+passed in their own level-cap segment or later (`tools/hack/trainers/segments.json`; story fights and the table's
+own battles only from the simulation); the player's choices (`CHOICES`: the egg, Prof. Oak's partner, the Devon
+Goods, Regidrago) kept if the save has made them; and `Debug_EventScript_DraconidJumpProgress` (how many stops a
+save has started, from a marker per stop that its first scene moves on for good) for the rewind question. A new
+stop: a leg id in `STOPS`, a `DRACONID_JUMP_STOP_*` constant (the generator checks the numbers), a script in
+`debug_jumps.pory`, a line in the menu and in `act_jumps.play`.
 
 ## Story checks – `tools/hack/check_story.py`
 ```sh
@@ -210,6 +235,9 @@ python3 tools/hack/check_progression.py --list          # the story table
 python3 tools/hack/check_progression.py --markdown      # the leg table for docs/hack_progression.md
 python3 tools/hack/check_progression.py --state 4.16 --grep SLATEPORT   # simulated flags/vars/items at a leg
 ```
+(`--state` names a value by its Emerald constant – not an FRLG alias of the same number – and an item handed over
+through a var, `giveitem VAR_0x8004` / `Common_EventScript_PlayerHandedOverTheItem`, is the item the var holds.
+The debug menu's jump scripts, `data/scripts/draconid/debug_jumps*.inc`, are not part of the story it reads.)
 Walks the v2 story leg by leg, Act 1 to the post-game (`tools/hack/progression.json`: scene labels in story order,
 badges/HMs by then, side trips for the ways back). A static simulator runs the scenes' flag/var/item commands from
 the new game on (unknown branches taken both ways, listed with `-v`; enums, the player's scripted movement and the

@@ -9,7 +9,8 @@ the Magma sprite for the gender) -> rustboro, then rivals, rivals2, postgame_hom
 (HM field moves without a Pokémon that knows them), frontier_legends and lance (post-game) and the checks of wild,
 progression, trade_evos, battle_items, gen49_trainers, magma_revenge (Team Magma's revenge after the
 Sootopolis reveal), fades, the title screen and round 2's checks (draconid_pass, stones, multi_teams, bag_room,
-uniform_npcs, drake) – none depends on the egg, so only with Deino – then zmoves (Z-Power
+uniform_npcs, drake, act_jumps: the debug menu's "Jump to act…") – none depends on the egg, so only with Deino – then
+zmoves (Z-Power
 through the story: Aster's Granite Cave team by egg, Prof. Oak's crystals, the crystal balls), then for each
 second starter second_starter (Tabitha + Prof. Oak's pick), aster
 (Aster's trainer ids for the egg, the Draconid / Magma sprites for the gender), act2 (Nerine's teams for egg x
@@ -90,9 +91,11 @@ def chain(gender, egg, egg_id, root):
         steps.append(("magma_revenge", {"GFX": "DRACONID_" + gender}))
         steps.append(("fades", {}))  # same-screen fades under weather and the day/night tint (D-278)
         # round 2: the Draconid Pass table (D-300), Dawn / Dusk Stones (D-342), the multi team check (D-343), the
-        # Items pocket (D-344), the uniform lines (D-360), Drake's story (D-440 - D-444)
+        # Items pocket (D-344), the uniform lines (D-360), Drake's story (D-440 - D-444), the debug menu's
+        # "Jump to act…" (D-480 - D-489; the sprites by gender)
         steps += [("draconid_pass", {}), ("stones", {}), ("multi_teams", {}), ("bag_room", {}),
-                  ("uniform_npcs", {}), ("drake", {})]
+                  ("uniform_npcs", {}), ("drake", {}),
+                  ("act_jumps", {"GFX": "DRACONID_" + gender, "MAGMA": "MAGMA_" + gender})]
     # Z-Power through the story (D-267 - D-269): Aster's Granite Cave team by egg, Oak's crystals, the item balls
     steps.append(("zmoves", {"EGGNAME": egg, "SECOND": 2}))
     for second, value, stone in SECONDS:

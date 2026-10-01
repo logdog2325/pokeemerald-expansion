@@ -1,0 +1,378 @@
+Debug_EventScript_DraconidJumpToAct::
+	lockall
+	message Debug_EventScript_DraconidJumpToAct_Text_0
+	waitmessage
+	dynmultichoice 1, 1, FALSE, 6, 0, DYN_MULTICHOICE_CB_NONE, Debug_EventScript_DraconidJumpToAct_Text_1, Debug_EventScript_DraconidJumpToAct_Text_2, Debug_EventScript_DraconidJumpToAct_Text_3, Debug_EventScript_DraconidJumpToAct_Text_4, Debug_EventScript_DraconidJumpToAct_Text_5, Debug_EventScript_DraconidJumpToAct_Text_6, Debug_EventScript_DraconidJumpToAct_Text_7, Debug_EventScript_DraconidJumpToAct_Text_8, Debug_EventScript_DraconidJumpToAct_Text_9, Debug_EventScript_DraconidJumpToAct_Text_10
+	closemessage
+	switch VAR_RESULT
+	case DRACONID_JUMP_STOP_WOODS, Debug_EventScript_DraconidJumpToAct_3
+	case DRACONID_JUMP_STOP_ACT2, Debug_EventScript_DraconidJumpToAct_4
+	case DRACONID_JUMP_STOP_ACT3, Debug_EventScript_DraconidJumpToAct_5
+	case DRACONID_JUMP_STOP_ACT4, Debug_EventScript_DraconidJumpToAct_6
+	case DRACONID_JUMP_STOP_ACT5, Debug_EventScript_DraconidJumpToAct_7
+	case DRACONID_JUMP_STOP_REVENGE, Debug_EventScript_DraconidJumpToAct_8
+	case DRACONID_JUMP_STOP_LEAGUE, Debug_EventScript_DraconidJumpToAct_9
+	case DRACONID_JUMP_STOP_ELDER, Debug_EventScript_DraconidJumpToAct_10
+	case DRACONID_JUMP_STOP_VILLAGE, Debug_EventScript_DraconidJumpToAct_11
+	case DRACONID_JUMP_STOP_POSTGAME, Debug_EventScript_DraconidJumpToAct_12
+Debug_EventScript_DraconidJumpToAct_1:
+	releaseall
+	return
+
+Debug_EventScript_DraconidJumpToAct_3:
+	goto Debug_EventScript_DraconidJumpWoods
+	goto Debug_EventScript_DraconidJumpToAct_1
+
+Debug_EventScript_DraconidJumpToAct_4:
+	goto Debug_EventScript_DraconidJumpAct2
+	goto Debug_EventScript_DraconidJumpToAct_1
+
+Debug_EventScript_DraconidJumpToAct_5:
+	goto Debug_EventScript_DraconidJumpAct3
+	goto Debug_EventScript_DraconidJumpToAct_1
+
+Debug_EventScript_DraconidJumpToAct_6:
+	goto Debug_EventScript_DraconidJumpAct4
+	goto Debug_EventScript_DraconidJumpToAct_1
+
+Debug_EventScript_DraconidJumpToAct_7:
+	goto Debug_EventScript_DraconidJumpAct5
+	goto Debug_EventScript_DraconidJumpToAct_1
+
+Debug_EventScript_DraconidJumpToAct_8:
+	goto Debug_EventScript_DraconidJumpRevenge
+	goto Debug_EventScript_DraconidJumpToAct_1
+
+Debug_EventScript_DraconidJumpToAct_9:
+	goto Debug_EventScript_DraconidJumpLeague
+	goto Debug_EventScript_DraconidJumpToAct_1
+
+Debug_EventScript_DraconidJumpToAct_10:
+	goto Debug_EventScript_DraconidJumpElder
+	goto Debug_EventScript_DraconidJumpToAct_1
+
+Debug_EventScript_DraconidJumpToAct_11:
+	goto Debug_EventScript_DraconidJumpVillage
+	goto Debug_EventScript_DraconidJumpToAct_1
+
+Debug_EventScript_DraconidJumpToAct_12:
+	goto Debug_EventScript_DraconidJumpPostgame
+	goto Debug_EventScript_DraconidJumpToAct_1
+
+
+Debug_EventScript_DraconidJumpWoods::
+	lockall
+	setvar VAR_0x8008, DRACONID_JUMP_STOP_WOODS
+	call Debug_EventScript_DraconidJumpBegin
+	call Debug_EventScript_DraconidJumpState_WOODS
+	setrespawn HEAL_LOCATION_PETALBURG_CITY
+	setvar VAR_0x8006, 0
+	call Debug_EventScript_DraconidJumpCommon
+	warp MAP_PETALBURG_WOODS, 26, 25
+	waitstate
+	return
+
+
+Debug_EventScript_DraconidJumpAct2::
+	lockall
+	setvar VAR_0x8008, DRACONID_JUMP_STOP_ACT2
+	call Debug_EventScript_DraconidJumpBegin
+	call Debug_EventScript_DraconidJumpState_ACT2
+	setrespawn HEAL_LOCATION_RUSTBORO_CITY
+	setvar VAR_0x8006, 0
+	call Debug_EventScript_DraconidJumpCommon
+	warp MAP_RUSTBORO_CITY, 26, 20
+	waitstate
+	return
+
+
+Debug_EventScript_DraconidJumpAct3::
+	lockall
+	setvar VAR_0x8008, DRACONID_JUMP_STOP_ACT3
+	call Debug_EventScript_DraconidJumpBegin
+	call Debug_EventScript_DraconidJumpState_ACT3
+	setrespawn HEAL_LOCATION_FALLARBOR_TOWN
+	setvar VAR_0x8006, 0
+	call Debug_EventScript_DraconidJumpCommon
+	warp MAP_METEOR_FALLS_1F_1R, 17, 18
+	waitstate
+	return
+
+
+Debug_EventScript_DraconidJumpAct4::
+	lockall
+	setvar VAR_0x8008, DRACONID_JUMP_STOP_ACT4
+	call Debug_EventScript_DraconidJumpBegin
+	call Debug_EventScript_DraconidJumpState_ACT4
+	setrespawn HEAL_LOCATION_PETALBURG_CITY
+	setvar VAR_0x8006, 0
+	call Debug_EventScript_DraconidJumpCommon
+	warp MAP_PETALBURG_CITY, 15, 11
+	waitstate
+	return
+
+
+Debug_EventScript_DraconidJumpAct5::
+	lockall
+	setvar VAR_0x8008, DRACONID_JUMP_STOP_ACT5
+	call Debug_EventScript_DraconidJumpBegin
+	call Debug_EventScript_DraconidJumpState_ACT5
+	setrespawn HEAL_LOCATION_LILYCOVE_CITY
+	setvar VAR_0x8006, 0
+	call Debug_EventScript_DraconidJumpCommon
+	warp MAP_AQUA_HIDEOUT_B2F, 26, 19
+	waitstate
+	return
+
+
+Debug_EventScript_DraconidJumpRevenge::
+	lockall
+	setvar VAR_0x8008, DRACONID_JUMP_STOP_REVENGE
+	call Debug_EventScript_DraconidJumpBegin
+	call Debug_EventScript_DraconidJumpState_REVENGE
+	setrespawn HEAL_LOCATION_SOOTOPOLIS_CITY
+	setvar VAR_0x8006, 0
+	call Debug_EventScript_DraconidJumpCommon
+	warp MAP_SOOTOPOLIS_CITY, 31, 33
+	waitstate
+	return
+
+
+Debug_EventScript_DraconidJumpLeague::
+	lockall
+	setvar VAR_0x8008, DRACONID_JUMP_STOP_LEAGUE
+	call Debug_EventScript_DraconidJumpBegin
+	call Debug_EventScript_DraconidJumpState_LEAGUE
+	setrespawn HEAL_LOCATION_EVER_GRANDE_CITY_POKEMON_LEAGUE
+	setvar VAR_0x8006, 0
+	call Debug_EventScript_DraconidJumpCommon
+	warp MAP_EVER_GRANDE_CITY_POKEMON_LEAGUE_1F, 9, 9
+	waitstate
+	return
+
+
+Debug_EventScript_DraconidJumpElder::
+	lockall
+	setvar VAR_0x8008, DRACONID_JUMP_STOP_ELDER
+	call Debug_EventScript_DraconidJumpBegin
+	call Debug_EventScript_DraconidJumpState_ELDER
+	setrespawn HEAL_LOCATION_DRACONID_VILLAGE_PLAYERS_HOUSE_2F
+	setvar VAR_0x8006, DRACONID_JUMP_LEVEL_ELDER
+	call Debug_EventScript_DraconidJumpCommon
+	warp MAP_SKY_PILLAR_OUTSIDE, 17, 14
+	waitstate
+	return
+
+
+Debug_EventScript_DraconidJumpVillage::
+	lockall
+	setvar VAR_0x8008, DRACONID_JUMP_STOP_VILLAGE
+	call Debug_EventScript_DraconidJumpBegin
+	call Debug_EventScript_DraconidJumpState_VILLAGE
+	setrespawn HEAL_LOCATION_DRACONID_VILLAGE_PLAYERS_HOUSE_2F
+	setvar VAR_0x8006, DRACONID_JUMP_LEVEL_VILLAGE
+	call Debug_EventScript_DraconidJumpCommon
+	warp MAP_DRACONID_VILLAGE, 19, 24
+	waitstate
+	return
+
+
+Debug_EventScript_DraconidJumpPostgame::
+	lockall
+	setvar VAR_0x8008, DRACONID_JUMP_STOP_POSTGAME
+	call Debug_EventScript_DraconidJumpBegin
+	call Debug_EventScript_DraconidJumpState_POSTGAME
+	setrespawn HEAL_LOCATION_DRACONID_VILLAGE_PLAYERS_HOUSE_2F
+	setvar VAR_0x8006, DRACONID_JUMP_LEVEL_POSTGAME
+	call Debug_EventScript_DraconidJumpCommon
+	warp MAP_DRACONID_VILLAGE_PLAYERS_HOUSE_1F, 8, 6
+	waitstate
+	return
+
+
+Debug_EventScript_DraconidJumpBegin::
+	call Debug_EventScript_DraconidJumpProgress
+	compare VAR_RESULT, VAR_0x8008
+	goto_if_gt Debug_EventScript_DraconidJumpBegin_2
+Debug_EventScript_DraconidJumpBegin_1:
+	call Debug_EventScript_DraconidJumpKeepChoices
+	return
+
+Debug_EventScript_DraconidJumpBegin_2:
+	msgbox Debug_EventScript_DraconidJumpBegin_Text_0, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+	goto_if_eq Debug_EventScript_DraconidJumpBegin_5
+	closemessage
+	goto Debug_EventScript_DraconidJumpBegin_1
+
+Debug_EventScript_DraconidJumpBegin_5:
+	closemessage
+	releaseall
+	end
+
+
+Debug_EventScript_DraconidJumpCommon::
+	special EnableNationalPokedex
+	compare VAR_0x8008, DRACONID_JUMP_STOP_ACT3
+	goto_if_ge Debug_EventScript_DraconidJumpCommon_2
+	clearflag FLAG_RECEIVED_OAK_Z_CRYSTAL
+	setvar VAR_0x8005, 0
+Debug_EventScript_DraconidJumpCommon_1:
+	setvar VAR_0x8004, DRACONID_Z_CRYSTAL_CHARMANDER
+	callnative Draconid_DebugJumpSetItem
+	setvar VAR_0x8004, DRACONID_Z_CRYSTAL_TOTODILE
+	callnative Draconid_DebugJumpSetItem
+	setvar VAR_0x8004, DRACONID_Z_CRYSTAL_TREECKO
+	callnative Draconid_DebugJumpSetItem
+	compare VAR_0x8008, DRACONID_JUMP_STOP_ACT4
+	goto_if_ge Debug_EventScript_DraconidJumpCommon_6
+	setvar VAR_0x8005, 0
+	setvar VAR_0x8004, ITEM_CHARIZARDITE_X
+	callnative Draconid_DebugJumpSetItem
+	setvar VAR_0x8004, ITEM_FERALIGITE
+	callnative Draconid_DebugJumpSetItem
+	setvar VAR_0x8004, ITEM_SCEPTILITE
+	callnative Draconid_DebugJumpSetItem
+Debug_EventScript_DraconidJumpCommon_5:
+	compare VAR_0x8008, DRACONID_JUMP_STOP_ACT3
+	goto_if_ge Debug_EventScript_DraconidJumpCommon_11
+Debug_EventScript_DraconidJumpCommon_9:
+	setvar VAR_0x8005, 0
+	clearflag FLAG_RECEIVED_KOMMONIUM_Z
+	compare VAR_0x8008, DRACONID_JUMP_STOP_ACT5
+	goto_if_ge Debug_EventScript_DraconidJumpCommon_21
+Debug_EventScript_DraconidJumpCommon_19:
+	setvar VAR_0x8004, DRACONID_Z_CRYSTAL_JANGMO_O
+	callnative Draconid_DebugJumpSetItem
+	specialvar VAR_RESULT, Draconid_GetDueMaxieCall
+	compare VAR_RESULT, MAXIE_CALL_NONE
+	goto_if_ne Debug_EventScript_DraconidJumpCommon_29
+Debug_EventScript_DraconidJumpCommon_28:
+	setvar VAR_MAXIE_CALL_STEPS, 0
+	setvar VAR_0x8004, FALSE
+	compare VAR_0x8008, DRACONID_JUMP_STOP_POSTGAME
+	goto_if_ge Debug_EventScript_DraconidJumpCommon_32
+Debug_EventScript_DraconidJumpCommon_31:
+	callnative Draconid_DebugJumpRoamers
+	callnative Draconid_DebugJumpTeam
+	compare VAR_0x8008, DRACONID_JUMP_STOP_VILLAGE
+	goto_if_ge Debug_EventScript_DraconidJumpCommon_35
+Debug_EventScript_DraconidJumpCommon_34:
+	callnative Draconid_DebugJumpSupplies
+	special HealPlayerParty
+	setvar VAR_0x8004, PLAYER_OUTFIT_DRACONID
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq Debug_EventScript_DraconidJumpCommon_38
+Debug_EventScript_DraconidJumpCommon_37:
+	call Draconid_EventScript_ChangeOutfit
+	return
+
+Debug_EventScript_DraconidJumpCommon_2:
+	setflag FLAG_RECEIVED_OAK_Z_CRYSTAL
+	setvar VAR_0x8005, 1
+	goto Debug_EventScript_DraconidJumpCommon_1
+
+Debug_EventScript_DraconidJumpCommon_6:
+	switch VAR_SECOND_STARTER
+	case SECOND_STARTER_CHARMANDER, Debug_EventScript_DraconidJumpCommon_16
+	case SECOND_STARTER_TOTODILE, Debug_EventScript_DraconidJumpCommon_17
+	setvar VAR_0x8004, ITEM_SCEPTILITE
+Debug_EventScript_DraconidJumpCommon_14:
+	checkitem VAR_0x8004
+	compare VAR_RESULT, FALSE
+	goto_if_eq Debug_EventScript_DraconidJumpCommon_26
+	goto Debug_EventScript_DraconidJumpCommon_5
+
+Debug_EventScript_DraconidJumpCommon_10:
+	clearflag FLAG_RECEIVED_AMULET_COIN
+	setvar VAR_0x8004, DRACONID_GOODS_THANKS_ITEM
+	setvar VAR_0x8005, 0
+	callnative Draconid_DebugJumpSetItem
+	checkitem DRACONID_GOODS_REWARD_ITEM
+	compare VAR_RESULT, FALSE
+	goto_if_eq Debug_EventScript_DraconidJumpCommon_24
+	goto Debug_EventScript_DraconidJumpCommon_9
+
+Debug_EventScript_DraconidJumpCommon_11:
+	goto_if_unset FLAG_DEVON_GOODS_RETURNED, Debug_EventScript_DraconidJumpCommon_10
+	goto Debug_EventScript_DraconidJumpCommon_9
+
+Debug_EventScript_DraconidJumpCommon_16:
+	setvar VAR_0x8004, ITEM_CHARIZARDITE_X
+	goto Debug_EventScript_DraconidJumpCommon_14
+
+Debug_EventScript_DraconidJumpCommon_17:
+	setvar VAR_0x8004, ITEM_FERALIGITE
+	goto Debug_EventScript_DraconidJumpCommon_14
+
+Debug_EventScript_DraconidJumpCommon_20:
+	setflag FLAG_RECEIVED_KOMMONIUM_Z
+	setvar VAR_0x8005, 1
+	goto Debug_EventScript_DraconidJumpCommon_19
+
+Debug_EventScript_DraconidJumpCommon_21:
+	compare VAR_STARTER_MON, DRACONID_EGG_JANGMO_O
+	goto_if_eq Debug_EventScript_DraconidJumpCommon_20
+	goto Debug_EventScript_DraconidJumpCommon_19
+
+Debug_EventScript_DraconidJumpCommon_24:
+	additem DRACONID_GOODS_REWARD_ITEM
+	goto Debug_EventScript_DraconidJumpCommon_9
+
+Debug_EventScript_DraconidJumpCommon_26:
+	additem VAR_0x8004
+	goto Debug_EventScript_DraconidJumpCommon_5
+
+Debug_EventScript_DraconidJumpCommon_29:
+	copyvar VAR_MAXIE_CALL, VAR_RESULT
+	goto Debug_EventScript_DraconidJumpCommon_28
+
+Debug_EventScript_DraconidJumpCommon_32:
+	setvar VAR_0x8004, TRUE
+	goto Debug_EventScript_DraconidJumpCommon_31
+
+Debug_EventScript_DraconidJumpCommon_35:
+	callnative Draconid_DebugJumpRayquaza
+	callnative Draconid_PrepareRayquaza
+	goto Debug_EventScript_DraconidJumpCommon_34
+
+Debug_EventScript_DraconidJumpCommon_38:
+	setvar VAR_0x8004, PLAYER_OUTFIT_MAGMA
+	goto Debug_EventScript_DraconidJumpCommon_37
+
+
+Debug_EventScript_DraconidJumpToAct_Text_0:
+	.string "Jump to which act?$"
+
+Debug_EventScript_DraconidJumpToAct_Text_1:
+	.string "ACT 1: P. WOODS$"
+
+Debug_EventScript_DraconidJumpToAct_Text_2:
+	.string "ACT 2: RUSTBORO$"
+
+Debug_EventScript_DraconidJumpToAct_Text_3:
+	.string "ACT 3: METEOR FALLS$"
+
+Debug_EventScript_DraconidJumpToAct_Text_4:
+	.string "ACT 4: PETALBURG$"
+
+Debug_EventScript_DraconidJumpToAct_Text_5:
+	.string "ACT 5: AQUA HIDEOUT$"
+
+Debug_EventScript_DraconidJumpToAct_Text_6:
+	.string "MAGMA'S REVENGE$"
+
+Debug_EventScript_DraconidJumpToAct_Text_7:
+	.string "ACT 6: THE LEAGUE$"
+
+Debug_EventScript_DraconidJumpToAct_Text_8:
+	.string "ACT 7: ELDER'S CALL$"
+
+Debug_EventScript_DraconidJumpToAct_Text_9:
+	.string "ACT 7: THE VILLAGE$"
+
+Debug_EventScript_DraconidJumpToAct_Text_10:
+	.string "POST-GAME$"
+
+Debug_EventScript_DraconidJumpBegin_Text_0:
+	.string "This rewinds the story. Continue?$"

@@ -1,0 +1,290 @@
+// Draconid Emerald: "Jump to act…" in the debug menu (R + START in the overworld, debug builds only; D-480 - D-489).
+// The playtester picks an act and lands next to its first scene with the save in the state a real playthrough has
+// there. data/event_scripts.s includes this only under DEBUG_OVERWORLD_MENU: `make release` has none of it.
+//
+//   the menu, the rewind question, the warps        this file (hand-written)
+//   the story state at each stop                    debug_jumps_state.inc, written by tools/hack/gen_debug_jumps.py
+//                                                   from the story simulation (check_progression.py); --check
+//                                                   fails when a story change has made it stale
+//   the bag counts, the ready team, the supplies,   src/draconid_debug_jumps.c (callnative)
+//   Rayquaza, the Lati roamers
+//
+// A stop (VAR_0x8008 = DRACONID_JUMP_STOP_*): the rewind question if this save has already played the stop's first
+// scene; the player's own choices read (the egg, Prof. Oak's partner, the Devon Goods, Regidrago); the generated
+// state; then what the simulation doesn't model (Debug_EventScript_DraconidJumpCommon); the warp.
+
+script Debug_EventScript_DraconidJumpToAct {
+    lockall
+    message("Jump to which act?")
+    waitmessage
+    dynmultichoice(1, 1, FALSE, 6, 0, DYN_MULTICHOICE_CB_NONE,
+                   "ACT 1: P. WOODS", "ACT 2: RUSTBORO", "ACT 3: METEOR FALLS", "ACT 4: PETALBURG",
+                   "ACT 5: AQUA HIDEOUT", "MAGMA'S REVENGE", "ACT 6: THE LEAGUE", "ACT 7: ELDER'S CALL",
+                   "ACT 7: THE VILLAGE", "POST-GAME")
+    closemessage
+    switch (var(VAR_RESULT)) {
+        case DRACONID_JUMP_STOP_WOODS:    goto(Debug_EventScript_DraconidJumpWoods)
+        case DRACONID_JUMP_STOP_ACT2:     goto(Debug_EventScript_DraconidJumpAct2)
+        case DRACONID_JUMP_STOP_ACT3:     goto(Debug_EventScript_DraconidJumpAct3)
+        case DRACONID_JUMP_STOP_ACT4:     goto(Debug_EventScript_DraconidJumpAct4)
+        case DRACONID_JUMP_STOP_ACT5:     goto(Debug_EventScript_DraconidJumpAct5)
+        case DRACONID_JUMP_STOP_REVENGE:  goto(Debug_EventScript_DraconidJumpRevenge)
+        case DRACONID_JUMP_STOP_LEAGUE:   goto(Debug_EventScript_DraconidJumpLeague)
+        case DRACONID_JUMP_STOP_ELDER:    goto(Debug_EventScript_DraconidJumpElder)
+        case DRACONID_JUMP_STOP_VILLAGE:  goto(Debug_EventScript_DraconidJumpVillage)
+        case DRACONID_JUMP_STOP_POSTGAME: goto(Debug_EventScript_DraconidJumpPostgame)
+    }
+    releaseall
+}
+
+// ---------------------------------------------------------------------------
+// The stops. Each lands a few steps from its act's first scene, never on its trigger; the respawn is the
+// Pokémon Center a real playthrough has last used there; VAR_0x8006 = the ready team's level after the Champion
+// (0: the stop's level cap, src/caps.c).
+// ---------------------------------------------------------------------------
+
+// Act 1: south of the Devon researcher in Petalburg Woods; two steps north is Nerine's robbery (then Courtney)
+script Debug_EventScript_DraconidJumpWoods {
+    lockall
+    setvar(VAR_0x8008, DRACONID_JUMP_STOP_WOODS)
+    call(Debug_EventScript_DraconidJumpBegin)
+    call(Debug_EventScript_DraconidJumpState_WOODS)
+    setrespawn(HEAL_LOCATION_PETALBURG_CITY)
+    setvar(VAR_0x8006, 0)
+    call(Debug_EventScript_DraconidJumpCommon)
+    warp(MAP_PETALBURG_WOODS, 26, 25)
+    waitstate
+}
+
+// Act 2: outside the Rustboro Gym with the Stone Badge and Prof. Oak's partner; three steps west, Nerine runs off
+// with the Devon Goods
+script Debug_EventScript_DraconidJumpAct2 {
+    lockall
+    setvar(VAR_0x8008, DRACONID_JUMP_STOP_ACT2)
+    call(Debug_EventScript_DraconidJumpBegin)
+    call(Debug_EventScript_DraconidJumpState_ACT2)
+    setrespawn(HEAL_LOCATION_RUSTBORO_CITY)
+    setvar(VAR_0x8006, 0)
+    call(Debug_EventScript_DraconidJumpCommon)
+    warp(MAP_RUSTBORO_CITY, 26, 20)
+    waitstate
+}
+
+// Act 3: Meteor Falls, east of the bridge; three steps west, Maxie's squad takes the meteorite
+script Debug_EventScript_DraconidJumpAct3 {
+    lockall
+    setvar(VAR_0x8008, DRACONID_JUMP_STOP_ACT3)
+    call(Debug_EventScript_DraconidJumpBegin)
+    call(Debug_EventScript_DraconidJumpState_ACT3)
+    setrespawn(HEAL_LOCATION_FALLARBOR_TOWN)
+    setvar(VAR_0x8006, 0)
+    call(Debug_EventScript_DraconidJumpCommon)
+    warp(MAP_METEOR_FALLS_1F_1R, 17, 18)
+    waitstate
+}
+
+// Act 4: Petalburg, back through Rusturf Tunnel with the Heat Badge; two steps north, Wally waits at the Gym door
+script Debug_EventScript_DraconidJumpAct4 {
+    lockall
+    setvar(VAR_0x8008, DRACONID_JUMP_STOP_ACT4)
+    call(Debug_EventScript_DraconidJumpBegin)
+    call(Debug_EventScript_DraconidJumpState_ACT4)
+    setrespawn(HEAL_LOCATION_PETALBURG_CITY)
+    setvar(VAR_0x8006, 0)
+    call(Debug_EventScript_DraconidJumpCommon)
+    warp(MAP_PETALBURG_CITY, 15, 11)
+    waitstate
+}
+
+// Act 5: the Aqua Hideout's submarine dock (Maxie's order after the promotion); MATT stands two steps west, and
+// talking to him brings Nerine in (fight 5)
+script Debug_EventScript_DraconidJumpAct5 {
+    lockall
+    setvar(VAR_0x8008, DRACONID_JUMP_STOP_ACT5)
+    call(Debug_EventScript_DraconidJumpBegin)
+    call(Debug_EventScript_DraconidJumpState_ACT5)
+    setrespawn(HEAL_LOCATION_LILYCOVE_CITY)
+    setvar(VAR_0x8006, 0)
+    call(Debug_EventScript_DraconidJumpCommon)
+    warp(MAP_AQUA_HIDEOUT_B2F, 26, 19)
+    waitstate
+}
+
+// The Sootopolis aftermath: in front of Juan's Gym door with the Rain Badge; the first step off it brings Team
+// Magma's revenge (6.R1)
+script Debug_EventScript_DraconidJumpRevenge {
+    lockall
+    setvar(VAR_0x8008, DRACONID_JUMP_STOP_REVENGE)
+    call(Debug_EventScript_DraconidJumpBegin)
+    call(Debug_EventScript_DraconidJumpState_REVENGE)
+    setrespawn(HEAL_LOCATION_SOOTOPOLIS_CITY)
+    setvar(VAR_0x8006, 0)
+    call(Debug_EventScript_DraconidJumpCommon)
+    warp(MAP_SOOTOPOLIS_CITY, 31, 33)
+    waitstate
+}
+
+// Act 6: the Pokémon League's lobby, the revenge arc behind; the door guards check the badges
+script Debug_EventScript_DraconidJumpLeague {
+    lockall
+    setvar(VAR_0x8008, DRACONID_JUMP_STOP_LEAGUE)
+    call(Debug_EventScript_DraconidJumpBegin)
+    call(Debug_EventScript_DraconidJumpState_LEAGUE)
+    setrespawn(HEAL_LOCATION_EVER_GRANDE_CITY_POKEMON_LEAGUE)
+    setvar(VAR_0x8006, 0)
+    call(Debug_EventScript_DraconidJumpCommon)
+    warp(MAP_EVER_GRANDE_CITY_POKEMON_LEAGUE_1F, 9, 9)
+    waitstate
+}
+
+// Act 7: where the Elder's dragon sets the player down after the meteor alert; his PokéNav call comes at once
+script Debug_EventScript_DraconidJumpElder {
+    lockall
+    setvar(VAR_0x8008, DRACONID_JUMP_STOP_ELDER)
+    call(Debug_EventScript_DraconidJumpBegin)
+    call(Debug_EventScript_DraconidJumpState_ELDER)
+    setrespawn(HEAL_LOCATION_DRACONID_VILLAGE_PLAYERS_HOUSE_2F)
+    setvar(VAR_0x8006, DRACONID_JUMP_LEVEL_ELDER)
+    call(Debug_EventScript_DraconidJumpCommon)
+    warp(MAP_SKY_PILLAR_OUTSIDE, 17, 14)
+    waitstate
+}
+
+// Act 7: the meteor is broken and May's call came; the dragon lands the player at the village's south end, where
+// Brendan, May and Wally come down beside them (the arrival plays at once)
+script Debug_EventScript_DraconidJumpVillage {
+    lockall
+    setvar(VAR_0x8008, DRACONID_JUMP_STOP_VILLAGE)
+    call(Debug_EventScript_DraconidJumpBegin)
+    call(Debug_EventScript_DraconidJumpState_VILLAGE)
+    setrespawn(HEAL_LOCATION_DRACONID_VILLAGE_PLAYERS_HOUSE_2F)
+    setvar(VAR_0x8006, DRACONID_JUMP_LEVEL_VILLAGE)
+    call(Debug_EventScript_DraconidJumpCommon)
+    warp(MAP_DRACONID_VILLAGE, 19, 24)
+    waitstate
+}
+
+// The post-game: downstairs at home, the SS Ticket in the bag and the Lati news aired; out of the door the village
+// waits (Nerine by the pond, Aster at the shrine, Drake by the Elder's door; Lance lands on a later visit)
+script Debug_EventScript_DraconidJumpPostgame {
+    lockall
+    setvar(VAR_0x8008, DRACONID_JUMP_STOP_POSTGAME)
+    call(Debug_EventScript_DraconidJumpBegin)
+    call(Debug_EventScript_DraconidJumpState_POSTGAME)
+    setrespawn(HEAL_LOCATION_DRACONID_VILLAGE_PLAYERS_HOUSE_2F)
+    setvar(VAR_0x8006, DRACONID_JUMP_LEVEL_POSTGAME)
+    call(Debug_EventScript_DraconidJumpCommon)
+    warp(MAP_DRACONID_VILLAGE_PLAYERS_HOUSE_1F, 8, 6)
+    waitstate
+}
+
+// ---------------------------------------------------------------------------
+// Shared
+// ---------------------------------------------------------------------------
+
+// The rewind question (D-484): a save that has already played the chosen stop's first scene goes backwards; NO
+// leaves everything as it was. Then the player's own choices are read before the state overwrites them.
+script Debug_EventScript_DraconidJumpBegin {
+    call(Debug_EventScript_DraconidJumpProgress)
+    if (var(VAR_RESULT) > VAR_0x8008) {
+        msgbox(format("This rewinds the story. Continue?"), MSGBOX_YESNO)
+        if (var(VAR_RESULT) == NO) {
+            closemessage
+            releaseall
+            end
+        }
+        closemessage
+    }
+    call(Debug_EventScript_DraconidJumpKeepChoices)
+}
+
+// What the story simulation doesn't give (D-482; docs/hack_progression.md, "Not modelled"), by the stop
+// (VAR_0x8008) and the state just set
+script Debug_EventScript_DraconidJumpCommon {
+    // the Pokédex: the lab turns on the National Dex with a special (every stop is past the lab)
+    special(EnableNationalPokedex)
+    // Prof. Oak's crystals from ALOLA, by Stern's shipyard in Slateport (Act 2; he is off the story table's path):
+    // every stop from Act 3 on has passed him
+    if (var(VAR_0x8008) >= DRACONID_JUMP_STOP_ACT3) {
+        setflag(FLAG_RECEIVED_OAK_Z_CRYSTAL)
+        setvar(VAR_0x8005, 1)
+    } else {
+        clearflag(FLAG_RECEIVED_OAK_Z_CRYSTAL)
+        setvar(VAR_0x8005, 0)
+    }
+    setvar(VAR_0x8004, DRACONID_Z_CRYSTAL_CHARMANDER)
+    callnative(Draconid_DebugJumpSetItem)
+    setvar(VAR_0x8004, DRACONID_Z_CRYSTAL_TOTODILE)
+    callnative(Draconid_DebugJumpSetItem)
+    setvar(VAR_0x8004, DRACONID_Z_CRYSTAL_TREECKO)
+    callnative(Draconid_DebugJumpSetItem)
+    // the Mega Stone for Prof. Oak's partner, from the Draconid traveller in Lavaridge (3.05; the simulation can't
+    // tell which): Act 4 on, the partner's stone; before, none of the three
+    if (var(VAR_0x8008) >= DRACONID_JUMP_STOP_ACT4) {
+        switch (var(VAR_SECOND_STARTER)) {
+            case SECOND_STARTER_CHARMANDER: setvar(VAR_0x8004, ITEM_CHARIZARDITE_X)
+            case SECOND_STARTER_TOTODILE:   setvar(VAR_0x8004, ITEM_FERALIGITE)
+            default:                        setvar(VAR_0x8004, ITEM_SCEPTILITE)
+        }
+        checkitem(VAR_0x8004)
+        if (var(VAR_RESULT) == FALSE) {
+            additem(VAR_0x8004)
+        }
+    } else {
+        setvar(VAR_0x8005, 0)
+        setvar(VAR_0x8004, ITEM_CHARIZARDITE_X)
+        callnative(Draconid_DebugJumpSetItem)
+        setvar(VAR_0x8004, ITEM_FERALIGITE)
+        callnative(Draconid_DebugJumpSetItem)
+        setvar(VAR_0x8004, ITEM_SCEPTILITE)
+        callnative(Draconid_DebugJumpSetItem)
+    }
+    // the Devon Goods' reward follows the choice (D-258; the simulation takes the "returned" way, so the state has
+    // Mr. Stone's AMULET COIN): a save that kept them has Tabitha's FIRE STONE instead (the museum, Act 2)
+    if (var(VAR_0x8008) >= DRACONID_JUMP_STOP_ACT3 && !flag(FLAG_DEVON_GOODS_RETURNED)) {
+        clearflag(FLAG_RECEIVED_AMULET_COIN)
+        setvar(VAR_0x8004, DRACONID_GOODS_THANKS_ITEM)
+        setvar(VAR_0x8005, 0)
+        callnative(Draconid_DebugJumpSetItem)
+        checkitem(DRACONID_GOODS_REWARD_ITEM)
+        if (var(VAR_RESULT) == FALSE) {
+            additem(DRACONID_GOODS_REWARD_ITEM)
+        }
+    }
+    // the KOMMONIUM Z Nerine leaves a Jangmo-o tamer on the Mt. Pyre summit (4.13): Act 5 on, for that egg only
+    setvar(VAR_0x8005, 0)
+    clearflag(FLAG_RECEIVED_KOMMONIUM_Z)
+    if (var(VAR_0x8008) >= DRACONID_JUMP_STOP_ACT5 && var(VAR_STARTER_MON) == DRACONID_EGG_JANGMO_O) {
+        setflag(FLAG_RECEIVED_KOMMONIUM_Z)
+        setvar(VAR_0x8005, 1)
+    }
+    setvar(VAR_0x8004, DRACONID_Z_CRYSTAL_JANGMO_O)
+    callnative(Draconid_DebugJumpSetItem)
+    // Maxie's calls (D-186) ring from a C step hook: the one due here has rung already, none is left to ring
+    specialvar(VAR_RESULT, Draconid_GetDueMaxieCall)
+    if (var(VAR_RESULT) != MAXIE_CALL_NONE) {
+        copyvar(VAR_MAXIE_CALL, VAR_RESULT)
+    }
+    setvar(VAR_MAXIE_CALL_STEPS, 0)
+    // the Lati roamers: from the SS Ticket's news on (the post-game), not before
+    setvar(VAR_0x8004, FALSE)
+    if (var(VAR_0x8008) >= DRACONID_JUMP_STOP_POSTGAME) {
+        setvar(VAR_0x8004, TRUE)
+    }
+    callnative(Draconid_DebugJumpRoamers)
+    // the party (D-483): a ready team if the player's own is behind the stop's level; after the summit, RAYQUAZA
+    // with DRAGON ASCENT; then money, medicine and Poké Balls
+    callnative(Draconid_DebugJumpTeam)
+    if (var(VAR_0x8008) >= DRACONID_JUMP_STOP_VILLAGE) {
+        callnative(Draconid_DebugJumpRayquaza)
+        callnative(Draconid_PrepareRayquaza)
+    }
+    callnative(Draconid_DebugJumpSupplies)
+    special(HealPlayerParty)
+    // the outfit follows the reputation (the Magma uniform from the outpost to the Sootopolis turn, D-101)
+    setvar(VAR_0x8004, PLAYER_OUTFIT_DRACONID)
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        setvar(VAR_0x8004, PLAYER_OUTFIT_MAGMA)
+    }
+    call(Draconid_EventScript_ChangeOutfit)
+}
