@@ -1529,6 +1529,64 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   (a `FLAG_DAILY_*` flag; the legends' precedent is every time); the Dragoninite alone (useless without a Dratini);
   Dratini in a Hoenn wild table (wild tables have their own rules and owner, docs/hack_wild.md). – The PWT roster is
   the one the brief asked for, and the gifts make the Mega he shows off one the player can earn.
+- **D-263 The story table covers the whole game** (feedback 1.39 "make sure there's no story locks until the post
+  game", 1.46): `tools/hack/progression.json` walks Act 1 to the post-game – 111 legs and 5 side trips (D-214's
+  rules). The stale Act 1 legs describe the reworked opening (D-230/D-231: the prophecy, the shrine ceremony, the
+  hatch the C step hook starts on the 5th step outdoors, the Running Shoes). After Act 5 the legs follow the head:
+  Rain Badge → Victory Road (Wally) → the door guards → each Elite Four member as a leg of their own (the walk-in
+  shuts the door, the walk on starts where it leaves the player) → Steven, Brendan, Birch and May → the Hall of Fame
+  (C sends the player home) → the homecoming, the meteor alert and the Elder's lift (his NO as a side trip by Fly and
+  Surf) → the Trial of Three, Zinnia, the summit and the credits (home again) → the SS Ticket. The **post-game is
+  one order of many, walked from home with the state carried on**: Nerine, Aster, Birch's National Dex and the
+  rivals' three battles, the SS Tidal from Slateport (Scott's invitation on board, the crossing given as `pre`),
+  the ferry from Lilycove to the Frontier, Blue, Red, Wes and the LEGENDS' TAG, the ferry back, Deoxys, the Elite
+  Four and Steven again, Wallace, Steven at Meteor Falls. New table fields: `via` (waypoints walked through first –
+  entering a map runs its load scripts), `assume` (a specialvar's C answer: `HasAllHoennMons` FALSE), a `then` that
+  prunes the branches warping elsewhere and is reported if the scene never goes there, `TRAINER_X` in `expect`.
+  The simulator learnt what the new legs needed (enum constants, `checktrainerflag`, multi battles, OnWarp
+  `addobject`, the player's scripted movement, `GameClear` and the credits' warp home, repeated states pruned);
+  every earlier leg still passes. – Alt: post-game legs each `from` home, independent (the rivals' double needs
+  both singles, the Frontier needs Scott's flag from the first crossing); the post-game as side trips (checked, then
+  undone: the same objection); stop at the credits (the brief names the post-game spots). – One walk through every
+  spot with the state the game would have, and the order the playtester is most likely to take.
+- **D-264 What counts as a hard lock** (feedback 1.46 "do one last check to make sure there's no story locks or hard
+  locks"; `tools/hack/check_hardlock.py`): every path of the round 1 scripts on its own, from each place the game
+  starts one, with three severities – **LOCK** the player is stuck or the story can't go on, **CHECK** a lead to
+  verify in the emulator, **NOTE** by design (shown with `-v`). LOCK: an explicit `waitstate` nothing resumes (no
+  warp, no self-waiting special, no C that calls `ScriptContext_Enable` or returns with `CB2_ReturnToField-
+  ContinueScript*`), a movement script without `step_end`, an OnFrame path that changes neither its var nor the
+  map with no choice on it, a coord trigger the player can't step off without starting it again, a whiteout that
+  leaves its scene unable to start or with no walk back from a Pokémon Center the player may have used last, a
+  scene warp landing with neither a heal location nor the next scene in reach, an early way out of a story scene
+  that neither re-entry nor talking to someone there can retry. **A `lock`/`lockall` left in force is a CHECK, not a
+  lock:** the engine unlocks the player's controls whenever a script ends, only the other objects stay frozen until
+  the map reloads, and back from a battle they are set up again unfrozen – both seen in the emulator on the vanilla
+  Space Center scene whose `releaseall` is only under `BUGFIX` (`hardlock.play`). The whiteout's respawn is any
+  Pokémon Center the story passed in this act or the one before (the village house in Acts 1–2), each with what its
+  load scripts wrote when the player passed (Mr. Briney's spot), then `EventScript_WhiteOut`; the walk back may use
+  the table's boat, cable car and ferry rides and any object whose script warps. Save and reload get no check of
+  their own: a continued game keeps its temp vars and flags (`CB2_ContinueSavedGame`), so only leaving the map
+  resets them, which the re-entry check covers. Shut-in maps by design go under the table's `no_heal_ok` (the Elite
+  Four, the Hall of Fame, the SS Tidal). – Alt: every unreleased lock a hard lock (the brief's premise, disproved in
+  the emulator); the walk back from every Center ever passed (4½ minutes a run, and a Center three acts back is no
+  likely respawn) or only from the last one the story passed (misses a player who walked past it); merging the
+  branches as check_progression does (one path's early `end` hides behind another's state). – Low false positives:
+  every LOCK class was shown to fire by breaking a script on purpose (D-265), and the run is quiet on the head.
+- **D-265 The hard-lock pass: findings and how they are handled**: on the head the check reports **0 LOCK and 0
+  CHECK** – no script changes, nothing for the other owners. 41 of the 54 round 1 battles white out and every one
+  restarts (none writes before its battle what hides or disarms its scene; the story-table ones have their walk back,
+  Mr. Briney included); the 13 a loss doesn't end clear `FLAG_DRACONID_NO_WHITEOUT` on every path; every early way
+  out of a story scene is retryable; the ferry menus' island branches have their boats back. The checker was
+  proved by five deliberate breaks (restored, never committed): the homecoming without its state change (frame
+  LOCK), a stray `waitstate` in the meteor alert (wait LOCK), Brendan's Rustboro trigger var moved on before the
+  battle (battle LOCK), the Lilycove ferry landing in the link Trade Center (trap LOCK), the egg ceremony without
+  `releaseall` (lock CHECK). The emulator test `hardlock.play` (in the chain after act7.play) shows the engine facts
+  it relies on: the player walks right after the Space Center raid, a lost Brendan battle at Rustboro whites out and
+  restarts, a lost Zinnia battle heals, clears the flag, asks again and restarts on re-entry. – Alt: add the vanilla
+  Space Center's missing `releaseall` (no visible effect, see D-264); add rivals2's extra route fights as table legs
+  (their scenes are being reworked by the story-logic pass right now; the static battle check already covers their
+  own writes – a later pass can add them with the revenge arc, the village finale and Lance). – The playtester's
+  "no story locks or hard locks", shown rather than assumed, with the checks ready for the branches still to merge.
 - **D-266 Megas are the gimmick: no Terastallization, no Dynamax** (follow-up 26): `B_ALLOW_TERASTALLIZATION` and
   `B_ALLOW_DYNAMAX` (new, `include/config/battle.h`) are FALSE, and `CanTerastallize` / `CanDynamax` return FALSE for
   every battler outside the test suite. The trainer data never set a Tera type or Dynamax level (`check_party.py`

@@ -192,16 +192,32 @@ python3 tools/hack/check_progression.py --list          # the story table
 python3 tools/hack/check_progression.py --markdown      # the leg table for docs/hack_progression.md
 python3 tools/hack/check_progression.py --state 4.16 --grep SLATEPORT   # simulated flags/vars/items at a leg
 ```
-Walks the v2 story leg by leg (`tools/hack/progression.json`: scene labels in story order, badges/HMs by then,
-side trips for the ways back). A static simulator runs the scenes' flag/var/item commands from the new game on
-(unknown branches taken both ways, listed with `-v`), checks that each scene can start and that OnFrame scenes
-move their var on, then searches the tiles to the next scene across maps: collision, elevation, ledges, doors,
-arrow/step warps, dive/emerge, holes, Fly; objects whose flag is clear, turn-back coord triggers, water /
-waterfalls / boulders / rocks / trees without the HM **and** badge, bike tiles without a bike. A blocked leg
-names its first obstacle and what clears it; a way that opens only through a scene off the path is a detour
-(DTOR). Also checks every round 1 and table scene warp destination (walkable, not a closed pocket). ~40 s.
-Table fields: `to`, `then`, `expect`, `pre` (what C does), `side`, `at`/`map`/`talk`, `puzzles`; the audit and
-how to extend it: [hack_progression.md](hack_progression.md).
+Walks the v2 story leg by leg, Act 1 to the post-game (`tools/hack/progression.json`: scene labels in story order,
+badges/HMs by then, side trips for the ways back). A static simulator runs the scenes' flag/var/item commands from
+the new game on (unknown branches taken both ways, listed with `-v`; enums, the player's scripted movement and the
+Hall of Fame's / credits' way home included), checks that each scene can start and that OnFrame scenes move their
+var on, then searches the tiles to the next scene across maps: collision, elevation, ledges, doors, arrow/step
+warps, dive/emerge, holes, Fly; objects whose flag is clear, turn-back coord triggers, water / waterfalls /
+boulders / rocks / trees without the HM **and** badge, bike tiles without a bike. A blocked leg names its first
+obstacle and what clears it; a way that opens only through a scene off the path is a detour (DTOR). Also checks
+every round 1 and table scene warp destination (walkable, not a closed pocket). ~45 s. Table fields: `to`, `via`,
+`then`, `expect`, `pre` + `why` (what C does), `side`, `at`/`map`/`talk`, `assume`, `puzzles`, `no_heal_ok`; the
+audit and how to extend it: [hack_progression.md](hack_progression.md).
+## Hard locks – `tools/hack/check_hardlock.py`
+```sh
+python3 tools/hack/check_hardlock.py                    # every check; exit 1 on a LOCK (~2 min)
+python3 tools/hack/check_hardlock.py -v                 # with the notes: retries, whiteouts, by-design spots
+python3 tools/hack/check_hardlock.py --only battle,trap # some checks: lock, wait, frame, coord, battle, trap, reentry
+python3 tools/hack/check_hardlock.py --battles [--markdown]   # every round 1 battle and what a loss does
+```
+Follows every path of the round 1 scripts on its own (no merging; branches it took are remembered) from each place
+the game starts one, story-table scenes from the table's simulated state. LOCK / CHECK / NOTE findings with
+file:line label: a `waitstate` nothing resumes, a movement without `step_end`, an OnFrame path that changes neither
+its var nor the map, a coord trigger the player can't step off, a whiteout whose scene can't start again or can't be
+walked back to from the Pokémon Centers passed (rides and Mr. Briney included), a scene warp landing with no heal
+location or next scene in reach, an early way out of a story scene that can't be retried; an unreleased
+`lock`/`lockall` is only a CHECK (the engine frees the player when a script ends – D-264). The emulator side is
+`tests/hardlock.play`; details and the findings in [hack_progression.md](hack_progression.md).
 ## Evolution check – `tools/hack/check_evos.py`
 ```sh
 python3 tools/hack/check_evos.py [--markdown]
@@ -229,6 +245,7 @@ python3 tools/hack/emu/play.py tools/hack/emu/tests/postgame_home.play  -o /tmp/
 python3 tools/hack/emu/play.py tools/hack/emu/tests/hm_free.play        -o /tmp/emu   # HM field moves without a Pokémon (D-190)
 python3 tools/hack/emu/play.py tools/hack/emu/tests/wild.play           -o /tmp/emu   # National Dex, wild battles, a Gen 4-9 trainer swap
 python3 tools/hack/emu/play.py tools/hack/emu/tests/progression.play    -o /tmp/emu   # story-lock fixes: the Aqua Hideout opens with Maxie's order
+python3 tools/hack/emu/play.py tools/hack/emu/tests/hardlock.play       -o /tmp/emu   # after act7.play: an unreleased lock, a whiteout and a retry (D-264)
 python3 tools/hack/emu/play.py tools/hack/emu/tests/trade_evos.play     -o /tmp/emu   # Kadabra -> Alakazam, Slowpoke + King's Rock -> Slowking
 python3 tools/hack/emu/play.py tools/hack/emu/tests/battle_items.play   -o /tmp/emu   # battle item counter by badges, a Gym booster, a Mega Stone ball
 python3 tools/hack/emu/play.py tools/hack/emu/tests/rival_calls.play    -o /tmp/emu   # after act5.play: the rivals' and Mr. Stone's PokéNav calls (D-243, D-256, D-258)

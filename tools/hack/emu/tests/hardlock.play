@@ -1,0 +1,85 @@
+# Emulator checks behind tools/hack/check_hardlock.py (D-264, docs/hack_progression.md "Hard locks").
+# Runs after act7.play in the regression chain: needs woods_done.ss (woods.play), act5_space_center.ss (act5.play)
+# and act7_3f.ss (act7.play) in the same -o directory.
+#   python3 tools/hack/emu/play.py tools/hack/emu/tests/hardlock.play -o DIR
+#
+# 1. A script that ends while lockall is in force does not freeze the player: the Space Center raid ends in the
+#    vanilla MossdeepCity_SpaceCenter_2F_EventScript_DefeatedMaxieTabitha, whose releaseall is only under BUGFIX.
+#    The engine unlocks the player's controls when a script ends, and back from the battle the objects were set up
+#    again unfrozen - so the checker reports a lock left in force only as a CHECK, and not after a battle.
+loadstate act5_space_center.ss
+pos
+walk LEFT 1
+expect_pos 1 8
+walk DOWN 9
+expect_pos 1 9
+shot hl_10_space_center_walk
+
+# 2. A whiteout in a story scene (leg 1.15, Brendan at Rustboro's south edge; the checker's battle check): the
+#    player respawns, Brendan's trigger and object are still there (VAR_BRENDAN_STATE 0), and the scene plays
+#    again from the start when the player walks back.
+loadstate woods_done.ss
+setflag FLAG_DEBUG_NO_ENCOUNTER
+setflag FLAG_DEBUG_NO_TRAINER_SEE
+clearflag FLAG_DRACONID_NO_WHITEOUT
+boost 0 1
+warp MAP_RUSTBORO_CITY 13 57
+path RustboroCity 13 57 13 54
+press UP 2 10
+run 200
+mash A 60000
+run 60
+mapid
+shot hl_20_after_whiteout
+expect_var VAR_BRENDAN_STATE 0
+expect_flag FLAG_HIDE_RUSTBORO_CITY_RIVAL 0
+expect_trainer TRAINER_BRENDAN_RUSTBORO 0
+heal
+boost 0
+warp MAP_RUSTBORO_CITY 13 57
+path RustboroCity 13 57 13 54
+press UP 2 10
+run 200
+shot hl_21_brendan_again
+mash A 60000
+expect_opponent TRAINER_BRENDAN_RUSTBORO
+expect_var VAR_BRENDAN_STATE 1
+expect_flag FLAG_HIDE_RUSTBORO_CITY_RIVAL 1
+
+# 3. A lost battle that goes on (FLAG_DRACONID_NO_WHITEOUT; leg 7.02, Zinnia on the Sky Pillar 3F; the checker's
+#    re-entry check): the party is healed, the flag is cleared again, the finale state stays at the climb; talking
+#    to Zinnia asks again (answered NO here), and re-entering the floor starts the scene over - then it is won.
+loadstate act7_3f.ss
+boost 0 1
+run 60
+until @gMain+4 4 @@BattleMainCB2 30000 A 24
+run 60
+shot hl_30_zinnia_loss
+until @gMain+4 4 @@CB2_Overworld 90000 A 24
+mash A 30000
+shot hl_31_after_loss
+expect_var VAR_DRACONID_FINALE_STATE 4
+expect_flag FLAG_DRACONID_NO_WHITEOUT 0
+expect_trainer TRAINER_ZINNIA_SKY_PILLAR 0
+mapid
+# Zinnia stands at (3, 4) after her walk up; ask her from (3, 3), answer NO
+walk DOWN 3
+press A 2 30
+run 60
+shot hl_32_zinnia_asks
+press B 2 30
+mash B 10000
+expect_var VAR_DRACONID_FINALE_STATE 4
+# leave and come back: the floor's load script arms the scene again (VAR_TEMP_7)
+boost 0
+warp MAP_SKY_PILLAR_3F 3 2
+run 60
+shot hl_33_zinnia_again
+until @gMain+4 4 @@BattleMainCB2 30000 A 24
+run 60
+until @gMain+4 4 @@CB2_Overworld 90000 A 24
+mash A 30000
+shot hl_34_summit
+expect_opponent TRAINER_ZINNIA_SKY_PILLAR
+expect_var VAR_DRACONID_FINALE_STATE 5
+expect_map MAP_SKY_PILLAR_TOP
