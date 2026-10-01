@@ -2205,6 +2205,26 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   "Which of these POKéMON was chasing PROF. BIRCH?" → "…fell with the star on ROUTE 101?" (LUNATONE replaces
   POOCHYENA as the first, right, answer).
 
+- **D-401 The LUNATONE starts at full HP, Lv 1** (playtest 2.18: "The lunar one started the battle already damaged";
+  supersedes D-400's 2/3 HP): a wild Pokémon whose HP bar is already short at "You encountered a wild…" reads as a bug,
+  whatever the story says about the fall. `DRACONID_RESCUE_LEVEL` 2 → 1 and `DRACONID_RESCUE_HP_PERCENT` removed, so
+  `Draconid_SetUpRescueMon` only sets the moves. Re-simulated (Gen 5+ formula, random IVs/natures, a random LUNATONE
+  move each turn, the flee at 20% HP, 20,000 battles): Jangmo-o mashing Tackle wins 94.7% (93.7% before; Lv 2 at full
+  HP would be 57.6%), Deino and Dreepy 100% – the same game as before. – Alt: Lv 2 at full HP (Jangmo-o loses four in
+  ten); keep the cut and say so in battle (a message no wild battle has); a weaker moveset at Lv 2 (Harden alone makes
+  Tackle weaker still).
+- **D-402 The old woman with the Running Shoes walks up from off-screen** (playtest 2.19: "when the egg hatches and you
+  get your running shoes the lady appears out of no where behind you"): she used to be placed on the tile the player
+  had just left and added there. The egg hatches wherever the player takes the fifth step, so there is no fixed route:
+  `DraconidPrepareApproach` (`src/draconid.c`) searches outward from the player (breadth first, with the collision
+  rules NPCs walk by – walls, elevation, other people, no water, ledges or doorways) for the nearest tile out of view
+  (`DRACONID_APPROACH_OFFSCREEN_*`: 8 tiles to a side, 5 up, 6 down) and walks her from there along the shortest path
+  to the tile beside the player (`DraconidStartApproach`, at most `DRACONID_APPROACH_MAX_STEPS` = 20 steps); the
+  player turns to her when she arrives. Her line "Was that a dragon's cry I heard?" comes first, from off-screen. If
+  the player were walled in she would come from the farthest free tile (never seen in the village). Checked in the
+  emulator: after the hatch below the shrine she comes down from the top edge of the screen. – Alt: a fade to black
+  and back with her beside the player (still a teleport); a fixed spot the player walks to (the hatch can happen
+  anywhere and she could be missed); a fixed route from her house (no single route reaches every hatch spot).
 - **D-420 The ELDER gives the new-game speech** (feedback 2.13: "also we need to change up the birch intro its way to
   similar to emeralds" / "I think we should replace birch in the intro with the elder a old woman sprite or something
   maybe even drake from the elite four"): the speech before the bedroom is the **ELDER's**, not PROF. BIRCH's. He is

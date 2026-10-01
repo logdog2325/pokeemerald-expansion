@@ -30,6 +30,8 @@ Notes sent while playing the interim v2 preview (release + debug ROMs from batch
 | 2.15 | bug | (task) Stale battle flags in the multi-battle team check: after a wild battle the pick of three for the Space Center / Sootopolis / Sky Pillar multis was ignored | [x] the macro asks about the battle being set up; `tests/multi_teams.play` (D-343) |
 | 2.16 | balance | (task) Room in the bag's Items pocket for the Z-Crystals and Mega Stones | [x] 60 slots instead of 30; `tests/bag_room.play` (D-344) |
 | 2.17 | art | "can we create a short falling star animation for this intro segment I know you can do it" (the black screen and "A falling star tore across the heavens and vanished beyond the mountains." of the first night) | [x] a 2.7 s scene of its own in place of the white flash: a banded night sky with twinkling stars, the clan's peaks in silhouette, Game Freak's falling star (FRLG's Game Freak intro, recoloured white-gold) with its sparkle trail, sinking behind the ridge, a glow on the ridge, `SE_M_DETECT` / `SE_THUNDER2`; back to the dark bedroom and the boxes as before (D-460 – D-463); `opening.play` checks it |
+| 2.18 | bug | "The lunar one started the battle already damaged in the beginning of the game" | [x] the LUNATONE starts at full HP, at Lv 1 instead of Lv 2 at 2/3 HP – the hatchlings win as often as before (D-401) |
+| 2.19 | bug | "also when the egg hatches and you get your running shoes the lady appears out of no where behind you" | [x] she calls out off-screen, then walks up from the nearest tile out of view along a free path (a search outward from the player with the NPC collision rules); the player turns to her (D-402) |
 
 ## Round 1 (after v1, commit 94f937d3)
 

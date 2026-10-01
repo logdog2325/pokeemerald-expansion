@@ -46,25 +46,21 @@ DraconidVillage_EventScript_EggHatch::
 
 DraconidVillage_EventScript_RunningShoes::
 	lockall
-	getplayerxy VAR_0x8004, VAR_0x8005
-	specialvar VAR_0x8006, GetPlayerFacingDirection
-	switch VAR_0x8006
-	case DIR_NORTH, DraconidVillage_EventScript_RunningShoes_3
-	case DIR_SOUTH, DraconidVillage_EventScript_RunningShoes_4
-	case DIR_WEST, DraconidVillage_EventScript_RunningShoes_5
-	subvar VAR_0x8004, 1
-	setobjectmovementtype LOCALID_DRACONID_VILLAGE_SHOES_GIVER, MOVEMENT_TYPE_FACE_RIGHT
-DraconidVillage_EventScript_RunningShoes_1:
-	setobjectxyperm LOCALID_DRACONID_VILLAGE_SHOES_GIVER, VAR_0x8004, VAR_0x8005
+	setvar VAR_0x8004, LOCALID_DRACONID_VILLAGE_SHOES_GIVER
+	special DraconidPrepareApproach
+	copyvar VAR_0x8006, VAR_RESULT
 	msgbox DraconidVillage_EventScript_RunningShoes_Text_0
 	closemessage
 	addobject LOCALID_DRACONID_VILLAGE_SHOES_GIVER
+	compare VAR_0x8006, DIR_NONE
+	goto_if_ne DraconidVillage_EventScript_RunningShoes_2
+DraconidVillage_EventScript_RunningShoes_1:
 	switch VAR_0x8006
-	case DIR_NORTH, DraconidVillage_EventScript_RunningShoes_9
-	case DIR_SOUTH, DraconidVillage_EventScript_RunningShoes_10
-	case DIR_WEST, DraconidVillage_EventScript_RunningShoes_11
-	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
-DraconidVillage_EventScript_RunningShoes_7:
+	case DIR_NORTH, DraconidVillage_EventScript_RunningShoes_6
+	case DIR_SOUTH, DraconidVillage_EventScript_RunningShoes_7
+	case DIR_WEST, DraconidVillage_EventScript_RunningShoes_8
+	case DIR_EAST, DraconidVillage_EventScript_RunningShoes_9
+DraconidVillage_EventScript_RunningShoes_4:
 	waitmovement 0
 	msgbox DraconidVillage_EventScript_RunningShoes_Text_1
 	playfanfare MUS_OBTAIN_ITEM
@@ -81,32 +77,27 @@ DraconidVillage_EventScript_RunningShoes_7:
 	releaseall
 	return
 
-DraconidVillage_EventScript_RunningShoes_3:
-	addvar VAR_0x8005, 1
-	setobjectmovementtype LOCALID_DRACONID_VILLAGE_SHOES_GIVER, MOVEMENT_TYPE_FACE_UP
+DraconidVillage_EventScript_RunningShoes_2:
+	setvar VAR_0x8004, LOCALID_DRACONID_VILLAGE_SHOES_GIVER
+	special DraconidStartApproach
+	waitmovement LOCALID_DRACONID_VILLAGE_SHOES_GIVER
 	goto DraconidVillage_EventScript_RunningShoes_1
 
-DraconidVillage_EventScript_RunningShoes_4:
-	subvar VAR_0x8005, 1
-	setobjectmovementtype LOCALID_DRACONID_VILLAGE_SHOES_GIVER, MOVEMENT_TYPE_FACE_DOWN
-	goto DraconidVillage_EventScript_RunningShoes_1
+DraconidVillage_EventScript_RunningShoes_6:
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	goto DraconidVillage_EventScript_RunningShoes_4
 
-DraconidVillage_EventScript_RunningShoes_5:
-	addvar VAR_0x8004, 1
-	setobjectmovementtype LOCALID_DRACONID_VILLAGE_SHOES_GIVER, MOVEMENT_TYPE_FACE_LEFT
-	goto DraconidVillage_EventScript_RunningShoes_1
+DraconidVillage_EventScript_RunningShoes_7:
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+	goto DraconidVillage_EventScript_RunningShoes_4
+
+DraconidVillage_EventScript_RunningShoes_8:
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+	goto DraconidVillage_EventScript_RunningShoes_4
 
 DraconidVillage_EventScript_RunningShoes_9:
-	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-	goto DraconidVillage_EventScript_RunningShoes_7
-
-DraconidVillage_EventScript_RunningShoes_10:
-	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-	goto DraconidVillage_EventScript_RunningShoes_7
-
-DraconidVillage_EventScript_RunningShoes_11:
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight
-	goto DraconidVillage_EventScript_RunningShoes_7
+	goto DraconidVillage_EventScript_RunningShoes_4
 
 
 DraconidVillage_EventScript_ShoesGiver::

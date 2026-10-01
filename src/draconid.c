@@ -4,6 +4,12 @@
 #include "battle_util.h"
 #include "credits.h"
 #include "event_data.h"
+#include "event_object_movement.h"
+#include "fieldmap.h"
+#include "malloc.h"
+#include "metatile_behavior.h"
+#include "script_movement.h"
+#include "constants/event_object_movement.h"
 #include "field_screen_effect.h"
 #include "item.h"
 #include "load_save.h"
@@ -138,19 +144,14 @@ void DraconidRaiseHatchling(void)
 }
 
 // Route 101's first battle (SetUpBattleVarsAndBirchZigzagoon, after CreateWildMon): the LUNATONE that fell with
-// the star knows a soft moveset and is hurt by the fall, so every egg's hatchling can tire it out (round 2, D-400).
+// the star knows a soft moveset, so every egg's hatchling can tire it out (round 2, D-400; full HP since D-401).
 void Draconid_SetUpRescueMon(struct Pokemon *mon)
 {
     static const u16 sMoves[] = {DRACONID_RESCUE_MOVE_1, DRACONID_RESCUE_MOVE_2, DRACONID_RESCUE_MOVE_3};
     u32 i;
-    u16 hp;
 
     for (i = 0; i < MAX_MON_MOVES; i++)
         SetMonMoveSlot(mon, i < ARRAY_COUNT(sMoves) ? sMoves[i] : MOVE_NONE, i);
-    hp = GetMonData(mon, MON_DATA_MAX_HP) * DRACONID_RESCUE_HP_PERCENT / 100;
-    if (hp == 0)
-        hp = 1;
-    SetMonData(mon, MON_DATA_HP, &hp);
 }
 
 // Step hook (TryStartStepCountScript): the egg from the shrine ceremony hatches after DRACONID_EGG_HATCH_STEPS
@@ -432,4 +433,129 @@ void Draconid_ScriptAreMultiPartiesFullTeams(void)
     gBattleTypeFlags = BATTLE_TYPE_TRAINER;
     AreMultiPartiesFullTeams(); // sets gSpecialVar_Result
     gBattleTypeFlags = flags;
+}
+
+// ---------------------------------------------------------------------------------------------------------------
+// Someone walks up to the player from off-screen (round 2 playtest, D-402): DraconidPrepareApproach finds the
+// nearest tile out of view that a walker could stand on and a shortest walkable path from it to a tile beside the
+// player (a breadth-first search outward from the player, with the object collision rules NPCs move by), puts the
+// hidden object's template there and writes the walk; the script then adds the object and starts the walk with
+// DraconidStartApproach. In: VAR_0x8004 = the object's local id. Out: VAR_RESULT = the direction the player turns to
+// face the walker at the end (DIR_NONE if no free tile was found: the template stays where it was).
+// ---------------------------------------------------------------------------------------------------------------
+static EWRAM_DATA u8 sApproachMovement[DRACONID_APPROACH_MAX_STEPS + 2] = {0};
+
+static const s8 sApproachDelta[][2] = {[DIR_SOUTH] = {0, 1}, [DIR_NORTH] = {0, -1}, [DIR_WEST] = {-1, 0}, [DIR_EAST] = {1, 0}};
+static const u8 sApproachFacingType[] =
+{
+    [DIR_SOUTH] = MOVEMENT_TYPE_FACE_DOWN,
+    [DIR_NORTH] = MOVEMENT_TYPE_FACE_UP,
+    [DIR_WEST] = MOVEMENT_TYPE_FACE_LEFT,
+    [DIR_EAST] = MOVEMENT_TYPE_FACE_RIGHT,
+};
+
+static bool32 Draconid_IsApproachTileFree(s32 x, s32 y, u8 elevation)
+{
+    u32 behavior = MapGridGetMetatileBehaviorAt(x, y);
+
+    if (MapGridGetCollisionAt(x, y) || IsElevationMismatchAt(elevation, x, y)
+     || GetObjectEventIdByXY(x, y) != OBJECT_EVENTS_COUNT)
+        return FALSE;
+    // no wading, no ledges, no standing in a doorway
+    if (MetatileBehavior_IsSurfableWaterOrUnderwater(behavior) || MetatileBehavior_IsDoor(behavior)
+     || MetatileBehavior_IsWarpDoor(behavior)
+     || MetatileBehavior_IsJumpEast(behavior) || MetatileBehavior_IsJumpWest(behavior)
+     || MetatileBehavior_IsJumpNorth(behavior) || MetatileBehavior_IsJumpSouth(behavior))
+        return FALSE;
+    return TRUE;
+}
+
+static bool32 Draconid_IsOffscreen(s32 dx, s32 dy)
+{
+    return dx <= -DRACONID_APPROACH_OFFSCREEN_X || dx >= DRACONID_APPROACH_OFFSCREEN_X
+        || dy <= -DRACONID_APPROACH_OFFSCREEN_UP || dy >= DRACONID_APPROACH_OFFSCREEN_DOWN;
+}
+
+void DraconidPrepareApproach(void)
+{
+    struct ObjectEvent *player = &gObjectEvents[gPlayerAvatar.objectEventId];
+    struct ObjectEvent walker = {0};
+    s32 px = player->currentCoords.x, py = player->currentCoords.y;
+    s32 range = DRACONID_APPROACH_MAX_STEPS + 1;
+    s32 x0 = max(px - range, MAP_OFFSET), y0 = max(py - range, MAP_OFFSET);
+    s32 x1 = min(px + range, gMapHeader.mapLayout->width + MAP_OFFSET - 1);
+    s32 y1 = min(py + range, gMapHeader.mapLayout->height + MAP_OFFSET - 1);
+    s32 w = x1 - x0 + 1, cells = w * (y1 - y0 + 1);
+    u8 *dist = AllocZeroed(cells);       // BFS distance + 1 (0 = not reached)
+    u8 *toPlayer = AllocZeroed(cells);   // the walker's step from this tile toward the player
+    u16 *queue = AllocZeroed(cells * sizeof(u16));
+    s32 head = 0, tail = 0, start = -1, farthest = -1;
+    u32 i, steps = 0;
+
+    gSpecialVar_Result = DIR_NONE;
+    if (dist == NULL || toPlayer == NULL || queue == NULL)
+        goto done;
+    walker.currentElevation = player->currentElevation;
+    dist[(py - y0) * w + (px - x0)] = 1;
+    queue[tail++] = (py - y0) * w + (px - x0);
+    while (head < tail && start < 0)
+    {
+        s32 cell = queue[head++];
+        s32 cx = x0 + cell % w, cy = y0 + cell / w;
+        enum Direction dir;
+
+        if (dist[cell] > DRACONID_APPROACH_MAX_STEPS + 1)
+            break;
+        for (dir = DIR_SOUTH; dir <= DIR_EAST; dir++)
+        {
+            s32 nx = cx + sApproachDelta[dir][0], ny = cy + sApproachDelta[dir][1];
+            s32 next = (ny - y0) * w + (nx - x0);
+            enum Direction back = GetOppositeDirection(dir);
+
+            if (nx < x0 || nx > x1 || ny < y0 || ny > y1 || dist[next] || !Draconid_IsApproachTileFree(nx, ny, walker.currentElevation))
+                continue;
+            // the walker's step from the new tile back to this one, by the rules NPCs move by (the player's own tile
+            // is never stepped on: the walk stops beside it)
+            walker.currentCoords.x = nx;
+            walker.currentCoords.y = ny;
+            walker.currentMetatileBehavior = MapGridGetMetatileBehaviorAt(nx, ny);
+            if (!(cx == px && cy == py) && GetCollisionAtCoords(&walker, cx, cy, back) != COLLISION_NONE)
+                continue;
+            dist[next] = dist[cell] + 1;
+            toPlayer[next] = back;
+            queue[tail++] = next;
+            farthest = next;
+            if (Draconid_IsOffscreen(nx - px, ny - py))
+            {
+                start = next;
+                break;
+            }
+        }
+    }
+    if (start < 0)
+        start = farthest;  // walled in: from as far away as there is
+    if (start < 0)
+        goto done;
+
+    // the walk: one step per tile to the tile beside the player, then face the player
+    for (i = start; dist[i] > 2 && steps < DRACONID_APPROACH_MAX_STEPS; steps++)
+    {
+        sApproachMovement[steps] = MOVEMENT_ACTION_WALK_NORMAL_DOWN + toPlayer[i] - DIR_SOUTH;
+        i += sApproachDelta[toPlayer[i]][1] * w + sApproachDelta[toPlayer[i]][0];
+    }
+    sApproachMovement[steps++] = MOVEMENT_ACTION_FACE_DOWN + toPlayer[i] - DIR_SOUTH;
+    sApproachMovement[steps] = MOVEMENT_ACTION_STEP_END;
+    SetObjEventTemplateCoords(gSpecialVar_0x8004, x0 + start % w - MAP_OFFSET, y0 + start / w - MAP_OFFSET);
+    SetObjEventTemplateMovementType(gSpecialVar_0x8004, sApproachFacingType[toPlayer[start]]);
+    gSpecialVar_Result = GetOppositeDirection(toPlayer[i]);
+done:
+    Free(dist);
+    Free(toPlayer);
+    Free(queue);
+}
+
+void DraconidStartApproach(void)
+{
+    ScriptMovement_StartObjectMovementScript(gSpecialVar_0x8004, gSaveBlock1Ptr->location.mapNum,
+                                             gSaveBlock1Ptr->location.mapGroup, sApproachMovement);
 }

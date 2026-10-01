@@ -56,33 +56,24 @@ script DraconidVillage_EventScript_EggHatch {
 // ---------------------------------------------------------------------------
 script DraconidVillage_EventScript_RunningShoes {
     lockall
-    // she hurries over to the tile the player just walked from (always free: the egg hatches right after a
-    // step), facing the player; VAR_0x8006 keeps the player's facing for the turn around
-    getplayerxy(VAR_0x8004, VAR_0x8005)
-    specialvar(VAR_0x8006, GetPlayerFacingDirection)
-    switch (var(VAR_0x8006)) {
-        case DIR_NORTH:
-            addvar(VAR_0x8005, 1)
-            setobjectmovementtype(LOCALID_DRACONID_VILLAGE_SHOES_GIVER, MOVEMENT_TYPE_FACE_UP)
-        case DIR_SOUTH:
-            subvar(VAR_0x8005, 1)
-            setobjectmovementtype(LOCALID_DRACONID_VILLAGE_SHOES_GIVER, MOVEMENT_TYPE_FACE_DOWN)
-        case DIR_WEST:
-            addvar(VAR_0x8004, 1)
-            setobjectmovementtype(LOCALID_DRACONID_VILLAGE_SHOES_GIVER, MOVEMENT_TYPE_FACE_LEFT)
-        default:
-            subvar(VAR_0x8004, 1)
-            setobjectmovementtype(LOCALID_DRACONID_VILLAGE_SHOES_GIVER, MOVEMENT_TYPE_FACE_RIGHT)
-    }
-    setobjectxyperm(LOCALID_DRACONID_VILLAGE_SHOES_GIVER, VAR_0x8004, VAR_0x8005)
+    // round 2 playtest (D-402): she calls out off-screen, then walks up from out of view along a free path
+    // (DraconidPrepareApproach, src/draconid.c); the player turns to face her when she arrives
+    setvar(VAR_0x8004, LOCALID_DRACONID_VILLAGE_SHOES_GIVER)
+    special(DraconidPrepareApproach)
+    copyvar(VAR_0x8006, VAR_RESULT)
     msgbox(format("OLD WOMAN: Oh, my! Was that a dragon's cry I heard?"))
     closemessage
     addobject(LOCALID_DRACONID_VILLAGE_SHOES_GIVER)
+    if (var(VAR_0x8006) != DIR_NONE) {
+        setvar(VAR_0x8004, LOCALID_DRACONID_VILLAGE_SHOES_GIVER)
+        special(DraconidStartApproach)
+        waitmovement(LOCALID_DRACONID_VILLAGE_SHOES_GIVER)
+    }
     switch (var(VAR_0x8006)) {
-        case DIR_NORTH: applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterDown)
-        case DIR_SOUTH: applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp)
-        case DIR_WEST:  applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight)
-        default:        applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft)
+        case DIR_NORTH: applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp)
+        case DIR_SOUTH: applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterDown)
+        case DIR_WEST:  applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft)
+        case DIR_EAST:  applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight)
     }
     waitmovement(0)
     msgbox(format("OLD WOMAN: So the egg answered the sky. Let me see… Oh, what a bright little dragon!\p"

@@ -30,6 +30,10 @@ bool32 Draconid_IsPrimalMusic(struct WarpData *warp);
 // setmultitrainerbattle has just set up
 void Draconid_ScriptAreMultiPartiesFullTeams(void);
 
+// Someone walks up to the player from off-screen (round 2 playtest, D-402): the Running Shoes after the hatch
+void DraconidPrepareApproach(void);
+void DraconidStartApproach(void);
+
 #if DEBUG_OVERWORLD_MENU
 // Emulator test hook (tools/hack/emu/play.py "warp"), debug builds only
 #define DRACONID_TEST_WARP (1 << 0)
