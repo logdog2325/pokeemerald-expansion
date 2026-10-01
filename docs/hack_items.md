@@ -290,7 +290,7 @@ Not added here: a shop or repeatable source (the battle-item counter stays battl
 Ice Stone evolutions (Roselia → Roserade still has no stone).
 
 
-## Z-Crystals (D-320)
+## Z-Crystals at the counter (D-320)
 
 The Z-Move work (feedback 1.58 / 1.62) gives the Z-Ring and spreads crystals through Acts 1–5; the battle item
 counter sells **every** Z-Crystal after the Champion (Z-CRYSTALS, 30,000 each). `check_megas.py` lists each
