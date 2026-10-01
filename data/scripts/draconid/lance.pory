@@ -15,7 +15,7 @@
 //
 // Objects (DraconidVillage/map.json, the last four): LANCE (13, 13) with his DRAGONITE (13, 12) behind him, hidden by
 // FLAG_HIDE_DRACONID_VILLAGE_LANCE until he lands (then cleared for good); the scene's ELDER (21, 13) and ASTER
-// (12, 9), hidden by FLAG_TEMP_1D, which the OnTransition hook sets (scene-only objects, D-136).
+// (12, 9), hidden by FLAG_TEMP_1E, which the OnTransition hook sets (scene-only objects, D-136).
 // Hooks: DraconidVillage_OnTransition calls ..._LanceOnTransition; the village's OnFrame table runs ..._LanceArrives
 // while VAR_TEMP_C is 1.
 
@@ -30,7 +30,7 @@ const LANCE_DRATINI_LEVEL = 15
 // ---------------------------------------------------------------------------
 
 script DraconidVillage_EventScript_LanceOnTransition {
-    setflag(FLAG_TEMP_1D) // the scene's ELDER and ASTER only appear through addobject
+    setflag(FLAG_TEMP_1E) // the scene's ELDER and ASTER only appear through addobject
     if (var(VAR_DRACONID_FINALE_STATE) < FINALE_STATE_POSTGAME) {
         setflag(FLAG_HIDE_DRACONID_VILLAGE_LANCE)
     } elif (!flag(FLAG_DRACONID_LANCE_ARMED)) {

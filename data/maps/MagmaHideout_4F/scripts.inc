@@ -1,4 +1,5 @@
 MagmaHideout_4F_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, MagmaHideout_4F_EventScript_DraconidOnTransition  @ Draconid Emerald: GROUDON asleep again (post-game, act7x.pory)
 	.byte 0
 
 MagmaHideout_4F_EventScript_Maxie::

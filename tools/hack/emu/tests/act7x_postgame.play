@@ -1,0 +1,62 @@
+# The post-game rematches in the Draconid village by egg x second starter (the Act 7 extension moved the credits
+# after the attack on the village, so act7x.play reaches the post-game once per chain, with Charmander): Nerine by the
+# pond (TRAINER_NERINE_POSTGAME_<egg>_<second>) and Aster at the shrine (TRAINER_ASTER_POSTGAME_<egg>). The states
+# after the credits are set by hand; both battles are lost on purpose (1 HP: this checks the teams, not the balance;
+# the debug flag lets the scripts go on after a loss).
+# Needs rustboro_done.ss from tests/rustboro.play. Matrix parameters (tools/hack/emu/matrix.py): EGGNAME = the
+# player's egg in the savestate, SECOND / SECONDNAME = the second starter.
+default START rustboro_done.ss
+default EGGNAME DEINO
+default SECOND 1
+default SECONDNAME CHARMANDER
+loadstate ${START}
+setvar VAR_SECOND_STARTER ${SECOND}
+setvar VAR_DRACONID_REPUTATION 2
+setvar VAR_PLAYER_OUTFIT 0
+setvar VAR_MAGMA_STATE 12
+setvar VAR_NERINE_STATE 8
+setvar VAR_ASTER_STATE 8
+setvar VAR_BRENDAN_STATE 6
+setvar VAR_MAY_STATE 4
+setflag FLAG_SYS_GAME_CLEAR
+setflag FLAG_DEFEATED_RAYQUAZA
+setvar VAR_DRACONID_FINALE_STATE 9
+setvar VAR_DRACONID_VILLAGE_STATE 10
+setflag FLAG_HIDE_DRACONID_HOUSE_ELDER
+clearflag FLAG_HIDE_DRACONID_VILLAGE_NERINE
+setflag FLAG_DEBUG_NO_ENCOUNTER
+setflag FLAG_DEBUG_NO_TRAINER_SEE
+setflag FLAG_DRACONID_NO_WHITEOUT
+pokebit *@gSaveBlock2Ptr+15 1 1
+
+# --- Nerine by the village pond ---
+boost 0 1
+warp MAP_DRACONID_VILLAGE 27 7
+run 60
+press RIGHT 2 20
+press A 2 30
+until @gMain+4 4 @@BattleMainCB2 30000 A 24
+run 300
+shot 80_nerine_postgame
+until @gMain+4 4 @@CB2_Overworld 60000 A 24
+mash A 60000
+expect_opponent TRAINER_NERINE_POSTGAME_${EGGNAME}_${SECONDNAME}
+expect_var VAR_NERINE_STATE 9
+
+# --- Aster at the shrine, below the Guardian's statue ---
+heal
+boost 0 1
+warp MAP_DRACONID_VILLAGE_SHRINE 10 13
+run 60
+walk UP 12
+press UP 2 20
+press A 2 30
+until @gMain+4 4 @@BattleMainCB2 30000 A 24
+until @gMain+4 4 @@CB2_Overworld 60000 A 24
+mash A 60000
+expect_opponent TRAINER_ASTER_POSTGAME_${EGGNAME}
+expect_var VAR_ASTER_STATE 9
+
+clearflag FLAG_DEBUG_NO_ENCOUNTER
+clearflag FLAG_DEBUG_NO_TRAINER_SEE
+clearflag FLAG_DRACONID_NO_WHITEOUT

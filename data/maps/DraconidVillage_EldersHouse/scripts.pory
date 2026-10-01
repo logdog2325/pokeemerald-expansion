@@ -67,6 +67,10 @@ script DraconidVillage_EldersHouse_EventScript_Elder {
     } elif (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
         msgbox(format("ELDER: So you wear their red. It suits the task, if not the heart.\p"
                       "Remember who you are under it, {PLAYER}. The sky remembers."))
+    } elif (var(VAR_DRACONID_FINALE_STATE) >= FINALE_STATE_METEOR_DESTROYED) {
+        // Draconid Emerald, Act 7 extension: after the attack on the village
+        msgbox(format("ELDER: The sky's debt is paid, and the old ones sleep again.\p"
+                      "Go and see the world, {PLAYER}. It is still wide."))
     } else {
         msgbox(format("ELDER: You set the red aside when it mattered. I am proud of you, {PLAYER}.\p"
                       "But the star still falls. Keep your eyes on the sky."))

@@ -610,6 +610,7 @@ gStdScripts_End::
 	.include "data/maps/DraconidVillage_House1/scripts.inc"
 	.include "data/maps/DraconidVillage_House2/scripts.inc"
 	.include "data/maps/PetalburgWoods_MagmaOutpost/scripts.inc"
+	.include "data/maps/DraconidVillage_Shrine_Depths/scripts.inc"
 
 .if IS_FRLG
 
@@ -1083,6 +1084,7 @@ gStdScripts_End::
 	.include "data/scripts/draconid/act6.inc"
 	.include "data/scripts/draconid/act7.inc"
 	.include "data/scripts/draconid/magma_revenge.inc"
+	.include "data/scripts/draconid/act7x.inc"
 	.include "data/scripts/draconid/reputation/dewford.inc"
 	.include "data/scripts/draconid/reputation/ever_grande.inc"
 	.include "data/scripts/draconid/reputation/fallarbor.inc"

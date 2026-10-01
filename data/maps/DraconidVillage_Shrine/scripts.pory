@@ -1,11 +1,20 @@
 // Rayquaza shrine carved into the cliff above Draconid Village.
 // The egg ceremony (Act 1, round 1 D-230): the Elder brings the player and Aster up from his house after the prophecy.
+// The carved wall behind the statue opens before the Sky Pillar finale: REGIDRAGO below (Act 7 extension, D-201).
 
 mapscripts DraconidVillage_Shrine_MapScripts {
+    MAP_SCRIPT_ON_LOAD: DraconidVillage_Shrine_OnLoad
     MAP_SCRIPT_ON_TRANSITION: DraconidVillage_Shrine_OnTransition
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_TEMP_1, 1: DraconidVillage_Shrine_EventScript_EggCeremony
+        VAR_TEMP_1, 2: DraconidVillage_Shrine_EventScript_DraconidSealScene
+        VAR_TEMP_1, 3: DraconidVillage_Shrine_EventScript_DraconidElderAfterRegidrago
     ]
+}
+
+// the carved wall stays open once REGIDRAGO's seal has broken (data/scripts/draconid/act7x.pory)
+script DraconidVillage_Shrine_OnLoad {
+    call(DraconidVillage_Shrine_EventScript_DraconidOnLoad)
 }
 
 script DraconidVillage_Shrine_OnTransition {
@@ -13,6 +22,7 @@ script DraconidVillage_Shrine_OnTransition {
     if (var(VAR_DRACONID_STATE) == DRACONID_STATE_CLOCK_SET && !flag(FLAG_HIDE_DRACONID_SHRINE_ELDER)) {
         setvar(VAR_TEMP_1, 1)
     }
+    call(DraconidVillage_Shrine_EventScript_DraconidOnTransition) // the seal and REGIDRAGO: data/scripts/draconid/act7x.pory
     call(DraconidVillage_Shrine_EventScript_DraconidAsterPostgame) // data/scripts/draconid/act7.pory
 }
 
@@ -139,6 +149,9 @@ movement DraconidVillage_Shrine_Movement_AsterLeaves {
 }
 
 script DraconidVillage_Shrine_EventScript_Elder {
+    if (var(VAR_DRACONID_FINALE_STATE) >= FINALE_STATE_SUMMONED) {
+        goto(DraconidVillage_Shrine_EventScript_DraconidElderTalk) // the seal (act7x.pory)
+    }
     msgbox(format("ELDER: Walk with your egg under the open sky, {PLAYER}. It is ready to meet you."), MSGBOX_NPC)
 }
 
@@ -152,6 +165,9 @@ script DraconidVillage_Shrine_EventScript_Statue {
 }
 
 script DraconidVillage_Shrine_EventScript_BackWall {
+    if (var(VAR_DRACONID_VILLAGE_STATE) >= VILLAGE_STATE_SEAL_OPEN) {
+        goto(DraconidVillage_Shrine_EventScript_DraconidOpenWallSign) // act7x.pory
+    }
     msgbox(format("Words are carved deep into the rock:\p"
                   "“HERE THE CLAN SPEAKS TO THE SKY. HERE THE SKY ANSWERS.”"), MSGBOX_SIGN)
 }

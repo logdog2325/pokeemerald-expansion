@@ -21,6 +21,17 @@
 #define PARTNER_WES 14
 #define PARTNER_RED 15
 #define PARTNER_BLUE 16
-#define PARTNER_COUNT 17
+// Draconid Emerald: the attack on the Draconid village (Act 7 extension, D-205, D-206): the rivals at the houses,
+// Aster on the way up to the shrine (named after the PLAYER's egg, like her trainer teams), and the partner the
+// player picks for the Primal multi battle (with their Lati and its Mega Stone)
+#define PARTNER_BRENDAN_VILLAGE 17
+#define PARTNER_MAY_VILLAGE 18
+#define PARTNER_WALLY_VILLAGE 19
+#define PARTNER_ASTER_DEINO 20
+#define PARTNER_ASTER_DREEPY 21
+#define PARTNER_ASTER_JANGMO_O 22
+#define PARTNER_BRENDAN_FINALE 23
+#define PARTNER_MAY_FINALE 24
+#define PARTNER_COUNT 25
 
 #endif  // GUARD_CONSTANTS_BATTLE_PARTNERS_H

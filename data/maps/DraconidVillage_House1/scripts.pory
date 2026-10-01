@@ -8,6 +8,15 @@ script DraconidVillage_House1_EventScript_Weaver {
 }
 
 script DraconidVillage_House1_EventScript_Girl {
-    msgbox(format("Grandpa ELDER says the Guardian of the Sky lives above the clouds and never comes down.\p"
-                  "But then how does anyone know what it looks like?"), MSGBOX_NPC)
+    lock
+    faceplayer
+    if (var(VAR_DRACONID_FINALE_STATE) >= FINALE_STATE_METEOR_DESTROYED) {
+        // Draconid Emerald, Act 7 extension: RAYQUAZA came down over the shrine (D-207)
+        msgbox(format("The Guardian of the Sky came down! Right over the shrine, I saw it from our window!\p"
+                      "Now I know what it looks like. It's green, and it's REALLY long."))
+    } else {
+        msgbox(format("Grandpa ELDER says the Guardian of the Sky lives above the clouds and never comes down.\p"
+                      "But then how does anyone know what it looks like?"))
+    }
+    release
 }

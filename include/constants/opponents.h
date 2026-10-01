@@ -973,12 +973,27 @@
 #define TRAINER_GRUNT_POKEMON_LEAGUE_2      953
 // Draconid Emerald: LANCE of BLACKTHORN, the post-game boss in the Draconid village (lance.pory, D-262)
 #define TRAINER_LANCE_DRACONID              978
+// Draconid Emerald: the attack on the Draconid village, the Primal finale (Act 7 extension, act7x.pory, D-205 - D-206):
+// three MAGMA + AQUA grunt pairs at the houses, the admins on the way up to the shrine, MAXIE and ARCHIE at the shrine
+// (937 - 956: Team Magma's revenge and the Aqua gauntlet; 957 - 975: this arc)
+#define TRAINER_GRUNT_VILLAGE_1             957
+#define TRAINER_GRUNT_VILLAGE_2             958
+#define TRAINER_GRUNT_VILLAGE_3             959
+#define TRAINER_GRUNT_VILLAGE_4             960
+#define TRAINER_GRUNT_VILLAGE_5             961
+#define TRAINER_GRUNT_VILLAGE_6             962
+#define TRAINER_TABITHA_VILLAGE             963
+#define TRAINER_SHELLY_VILLAGE              964
+#define TRAINER_MAXIE_FINALE                965
+#define TRAINER_ARCHIE_FINALE               966
+// Draconid Emerald: Wallace keeps SOOTOPOLIS's watch at the foot of the Sky Pillar, before the Trial of Three (D-203)
+#define TRAINER_WALLACE_SKY_PILLAR          967
 
 // NOTE: Because each Trainer uses a flag to determine when they are defeated, there is only space for 9 additional trainers before trainer flag space overflows
 // Draconid Emerald: MAX_TRAINERS_COUNT_EMERALD raised from 864 so Nerine's variants fit (D-101); system flags move up
 //       928 -> 944 for the Battle Frontier legends and the finale (D-229): 16 more trainer flags, 2 save bytes
 //       937 of 944 used (924: Zinnia, Act 7): 7 spare ids before MAX_TRAINERS_COUNT_EMERALD must grow again
-//       937 - 956 for Team Magma's revenge and the Aqua gauntlet (D-249); 957+ the village finale
+//       937 - 956 for Team Magma's revenge and the Aqua gauntlet (D-249); 957 - 967 the village finale and Wallace at the Sky Pillar (D-203, D-205)
 //       944 -> 992 for the round 1 v2 follow-ups (D-251): 976 is Steven's Champion rematch, 978 Lance (D-262); 48 more trainer flags,
 //       6 flag bytes (SaveBlock1 +4, test/save.c)
 //       More space can be made by shifting flags around in constants/flags.h or changing how trainer flags are handled

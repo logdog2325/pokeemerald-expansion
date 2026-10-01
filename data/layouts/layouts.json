@@ -9400,6 +9400,17 @@
       "border_filepath": "data/layouts/PetalburgWoods_MagmaOutpost/border.bin",
       "blockdata_filepath": "data/layouts/PetalburgWoods_MagmaOutpost/map.bin",
       "layout_version": "emerald"
+    },
+    {
+      "id": "LAYOUT_DRACONID_VILLAGE_SHRINE_DEPTHS",
+      "name": "DraconidVillage_Shrine_Depths_Layout",
+      "width": 17,
+      "height": 15,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/DraconidVillage_Shrine_Depths/border.bin",
+      "blockdata_filepath": "data/layouts/DraconidVillage_Shrine_Depths/map.bin",
+      "layout_version": "emerald"
     }
   ]
 }

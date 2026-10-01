@@ -60,7 +60,9 @@ DraconidVillage_EldersHouse_EventScript_Elder::
 	goto_if_eq DraconidVillage_EldersHouse_EventScript_Elder_3
 	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
 	goto_if_eq DraconidVillage_EldersHouse_EventScript_Elder_4
-	msgbox DraconidVillage_EldersHouse_EventScript_Elder_Text_3
+	compare VAR_DRACONID_FINALE_STATE, FINALE_STATE_METEOR_DESTROYED
+	goto_if_ge DraconidVillage_EldersHouse_EventScript_Elder_5
+	msgbox DraconidVillage_EldersHouse_EventScript_Elder_Text_4
 DraconidVillage_EldersHouse_EventScript_Elder_1:
 	release
 	return
@@ -75,6 +77,10 @@ DraconidVillage_EldersHouse_EventScript_Elder_3:
 
 DraconidVillage_EldersHouse_EventScript_Elder_4:
 	msgbox DraconidVillage_EldersHouse_EventScript_Elder_Text_2
+	goto DraconidVillage_EldersHouse_EventScript_Elder_1
+
+DraconidVillage_EldersHouse_EventScript_Elder_5:
+	msgbox DraconidVillage_EldersHouse_EventScript_Elder_Text_3
 	goto DraconidVillage_EldersHouse_EventScript_Elder_1
 
 
@@ -166,6 +172,12 @@ DraconidVillage_EldersHouse_EventScript_Elder_Text_2:
 	.string "The sky remembers.$"
 
 DraconidVillage_EldersHouse_EventScript_Elder_Text_3:
+	.string "ELDER: The sky's debt is paid, and the\n"
+	.string "old ones sleep again.\p"
+	.string "Go and see the world, {PLAYER}. It is\n"
+	.string "still wide.$"
+
+DraconidVillage_EldersHouse_EventScript_Elder_Text_4:
 	.string "ELDER: You set the red aside when it\n"
 	.string "mattered. I am proud of you, {PLAYER}.\p"
 	.string "But the star still falls. Keep your eyes\n"

@@ -1,0 +1,19 @@
+{
+  "notes": "Aster's back pic (partner in the village attack, Act 7 extension, D-205): the Draconid F back pic (the Leaf-based player tamer) recoloured to Aster's front pic: maroon-black hair, a crimson headband with gold horns, a black top; the clan scarf takes her crimson. The headband shares the jacket's teal indices, so it is moved to the crimson ones frame by frame first. Only the horns (the ivory above the headband) turn gold; the eye keeps its white.",
+  "steps": [
+    {"op": "load", "src": "graphics/trainers/back_pics/draconid_f.png"},
+    {"op": "remap_region", "frames": [0], "frame_h": 64, "axis": "y", "box": [12, 25, 40, 6], "map": {"7": 11, "5": 11, "6": 12}},
+    {"op": "remap_region", "frames": [1], "frame_h": 64, "axis": "y", "box": [10, 29, 40, 6], "map": {"7": 11, "5": 11, "6": 12}},
+    {"op": "remap_region", "frames": [2], "frame_h": 64, "axis": "y", "box": [18, 26, 36, 6], "map": {"7": 11, "5": 11, "6": 12}},
+    {"op": "remap_region", "frames": [3], "frame_h": 64, "axis": "y", "box": [10, 24, 36, 6], "map": {"7": 11, "5": 11, "6": 12}},
+    {"op": "remap_region", "frames": [4], "frame_h": 64, "axis": "y", "box": [12, 28, 36, 6], "map": {"7": 11, "5": 11, "6": 12}},
+    {"op": "remap_region", "frames": [0, 1, 2, 3, 4], "frame_h": 64, "axis": "y", "box": [0, 0, 64, 24], "map": {"9": 13, "10": 14}},
+    {"op": "palette", "pal": [
+      [112, 192, 160], [136, 56, 80], [248, 200, 160], [224, 152, 120],
+      [88, 32, 48], [56, 56, 72], [24, 24, 32], [96, 96, 112],
+      [48, 16, 32], [248, 240, 216], [200, 184, 144], [232, 72, 64],
+      [176, 32, 40], [232, 192, 64], [176, 128, 40], [0, 0, 0]
+    ]},
+    {"op": "save", "dst": "graphics/trainers/back_pics/aster.png"}
+  ]
+}

@@ -22,6 +22,7 @@ A .play script is a gbarun script plus:
                           up; works when a mashed battle is lost, unlike expect_trainer)
   expect_opponent_b TRAINER_X   the same for opponent B of the last two-trainer battle (multi, double)
   expect_partner PARTNER_X      the last multi battle's in-game partner (gPartnerTrainerId)
+  expect_roamer N SPECIES_X     roamer slot N (gSaveBlock1Ptr->roamer[N]) is active and SPECIES_X
   wait_species N SPECIES_X [MAX] [KEY]   tap KEY (default A) until battler N (gBattleMons[N]; 1 = the
                           opponent in a single battle) is SPECIES_X, e.g. a Mega Evolution
   boost SLOT [VALUE]      set the player's party Pokemon at SLOT to level 100 with VALUE (default 999) HP and
@@ -224,6 +225,8 @@ OPPONENT_A_OFFSET = "offsetof(struct _TrainerBattleParameter, opponentA)"
 OPPONENT_B_OFFSET = "offsetof(struct _TrainerBattleParameter, opponentB)"
 BATTLE_MON_SIZE, BATTLE_MON_SPECIES = "sizeof(struct BattlePokemon)", "offsetof(struct BattlePokemon, species)"
 BAG_OFFSET, SLOT_SIZE, BAG_SIZE = "offsetof(struct SaveBlock1, bag)", "sizeof(struct ItemSlot)", "sizeof(struct Bag)"
+ROAMER_OFFSET, ROAMER_SIZE = "offsetof(struct SaveBlock1, roamer)", "sizeof(struct Roamer)"
+ROAMER_SPECIES, ROAMER_ACTIVE = "offsetof(struct Roamer, species)", "offsetof(struct Roamer, active)"
 # the debug-build test hook (include/draconid.h): only probed when a test uses giveitem / givemon / expect_party_hms
 HOOK_COMMANDS = ("giveitem", "givemon", "expect_party_hms", "callscript")
 TEST_ITEM_OFFSET, TEST_HMS_OFFSET = "offsetof(struct DraconidTestWarp, item)", "offsetof(struct DraconidTestWarp, partyHMMoves)"
@@ -265,6 +268,9 @@ def main():
     names += sorted({l.split()[3] for l in lines if l.split() and l.split()[0] == "givemon" and len(l.split()) > 3})
     names += ["TRAINER_PARTNER(%s)" % l.split()[1] for l in lines if l.split()[:1] == ["expect_partner"]]
     names += [l.split()[2] for l in lines if l.split()[:1] == ["wait_species"]]
+    if any(l.split()[:1] == ["expect_roamer"] for l in lines):
+        names += [l.split()[2] for l in lines if l.split()[:1] == ["expect_roamer"]]
+        names += [ROAMER_OFFSET, ROAMER_SIZE, ROAMER_SPECIES, ROAMER_ACTIVE]
     names += [OPPONENT_A_OFFSET, OPPONENT_B_OFFSET, GFX_OFFSET, BATTLE_MON_SIZE, BATTLE_MON_SPECIES]
     names += [BAG_OFFSET, SLOT_SIZE, BAG_SIZE, "TRAINER_FLAGS_START", MON_SIZE, SECURE_OFFSET, SUBSTRUCT_SIZE]
     if any(l.split() and l.split()[0] in HOOK_COMMANDS for l in lines):
@@ -343,6 +349,14 @@ def main():
             label = "partner_%s#%d" % (t[1], len(expects))
             expects.append((label, consts["TRAINER_PARTNER(%s)" % t[1]]))
             out.append("read %X 2 %s" % (syms["gPartnerTrainerId"], label))
+        elif t[0] == "expect_roamer":
+            base = consts[ROAMER_OFFSET] + int(t[1]) * consts[ROAMER_SIZE]
+            label = "roamer%s_species_%s#%d" % (t[1], t[2], len(expects))
+            expects.append((label, consts[t[2]]))
+            out.append("read %s+%X 2 %s" % (sb1, base + consts[ROAMER_SPECIES], label))
+            label = "roamer%s_active#%d" % (t[1], len(expects))
+            expects.append((label, 1))
+            out.append("read %s+%X 1 %s" % (sb1, base + consts[ROAMER_ACTIVE], label))
         elif t[0] == "wait_species":
             addr = syms["gBattleMons"] + int(t[1]) * consts[BATTLE_MON_SIZE] + consts[BATTLE_MON_SPECIES]
             out.append("until %X 2 %X %s %s 24" % (addr, consts[t[2]], t[3] if len(t) > 3 else "60000",

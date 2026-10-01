@@ -1,5 +1,6 @@
 #include "global.h"
 #include "battle_anim.h"
+#include "draconid.h"
 #include "event_object_movement.h"
 #include "fieldmap.h"
 #include "field_weather.h"
@@ -2528,6 +2529,8 @@ void SetSavedWeatherFromCurrMapHeader(void)
 {
     enum OverworldWeather oldWeather = gSaveBlock1Ptr->weather;
     gSaveBlock1Ptr->weather = TranslateWeatherNum(gMapHeader.weather);
+    if (Draconid_IsPrimalWeather()) // Draconid Emerald: Primal Groudon and Kyogre are awake (Act 7 extension)
+        gSaveBlock1Ptr->weather = WEATHER_ABNORMAL;
     UpdateRainCounter(gSaveBlock1Ptr->weather, oldWeather);
 }
 

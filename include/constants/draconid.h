@@ -155,8 +155,10 @@
 #define FINALE_STATE_SUMMONED          3 // the Elder sent the player to the Sky Pillar (open; Aster and Nerine wait)
 #define FINALE_STATE_CLIMB             4 // the player + Nerine beat Aster; Zinnia waits on the Sky Pillar 3F
 #define FINALE_STATE_SUMMIT            5 // Zinnia beaten; the Elder and Rayquaza at the summit
-#define FINALE_STATE_RAYQUAZA          6 // Rayquaza caught, Dragon Ascent learned; Deoxys attacks
-#define FINALE_STATE_METEOR_DESTROYED  7 // Deoxys beaten, Mega Rayquaza broke the meteor: credits, then home
+#define FINALE_STATE_RAYQUAZA          6 // Rayquaza caught, Dragon Ascent learned; Deoxys attacks, the meteor breaks, and
+                                         // then the attack on the village (VAR_DRACONID_VILLAGE_STATE, D-200)
+#define FINALE_STATE_METEOR_DESTROYED  7 // the meteor broken and the village saved from Maxie and Archie: credits, then
+                                         // home (set before the credits, D-200)
 #define FINALE_STATE_HOME              8 // woke up at home after the credits; the Elder waits downstairs
 #define FINALE_STATE_POSTGAME          9 // the Elder brought the SS Ticket, the Lati TV news aired
 
@@ -164,5 +166,25 @@
 #define DRACONID_RAYQUAZA_LEVEL        70 // the must-catch Rayquaza at the summit
 #define DRACONID_DEOXYS_BOSS_LEVEL     72 // Deoxys attacks right after (no catching, no running)
 #define DRACONID_DEOXYS_LEVEL          80 // post-game: Deoxys where it fell, at the summit (as in ORAS)
+
+// VAR_DRACONID_VILLAGE_STATE: the Act 7 extension (feedback 1.25, 1.29, 1.30; D-200 - D-209,
+// data/scripts/draconid/act7x.pory): the Elder's call and Regidrago before the Sky Pillar trial, then the attack on
+// the village after the meteor breaks (the Primal finale); each value = that step is done
+#define VILLAGE_STATE_NONE             0
+#define VILLAGE_STATE_ELDER_CALLED     1 // the Elder called at the Sky Pillar's foot: the shrine's seal woke; flown home
+#define VILLAGE_STATE_SEAL_OPEN        2 // the shrine wall opened (DraconidVillage_Shrine_Depths: Regidrago waits)
+#define VILLAGE_STATE_REGIDRAGO        3 // Regidrago faced once (caught or not); the Elder's lift back to the Sky Pillar
+#define VILLAGE_STATE_ALARM            4 // the meteor broken; May's call: Magma and Aqua attack the village
+#define VILLAGE_STATE_ATTACK           5 // home with Brendan, May and Wally: the three house doubles (trainer flags)
+#define VILLAGE_STATE_SHRINE_PATH      6 // the houses freed; Tabitha and Shelly hold the way up to the shrine
+#define VILLAGE_STATE_SHRINE           7 // the admins beaten with Aster; Maxie and Archie come to the shrine (a scene)
+#define VILLAGE_STATE_FINAL            8 // the Primal multi battle is on (after a loss: talk to Maxie or Archie)
+#define VILLAGE_STATE_PRIMAL_WON       9 // Maxie and Archie beaten: Groudon and Kyogre calm, the Orbs handed over
+#define VILLAGE_STATE_SAVED           10 // the village saved, goodbyes said: the credits (FINALE_STATE_METEOR_DESTROYED)
+
+// The Act 7 extension's wild Pokemon (D-203, D-207, D-208)
+#define DRACONID_REGIDRAGO_LEVEL       65 // the shrine depths: above the League (cap 60), below the finale's Rayquaza
+#define DRACONID_PRIMAL_LEGEND_LEVEL   72 // post-game Groudon and Kyogre, the level of Maxie's and Archie's in the finale
+#define DRACONID_LATI_ROAMER_LEVEL     60 // post-game: both Latios and Latias roam Hoenn (ROAMER_COUNT 2)
 
 #endif // GUARD_CONSTANTS_DRACONID_H

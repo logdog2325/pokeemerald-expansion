@@ -2,7 +2,7 @@
 # the Elder brings the SS Ticket (sent by Captain Stern) and the Lati TV news airs (D-112, act7.pory).
 # Needs rustboro_done.ss from tests/rustboro.play. The finale leaves the Elder in the house and the player wakes
 # upstairs (FINALE_STATE_HOME); this sets that by hand and arrives on the stairs like the player coming down from
-# the bedroom. Mashing A picks the first colour (red) in the "What colour?" menu.
+# the bedroom. Both Latios and Latias roam after the news (D-209, ROAMER_COUNT 2; no "What colour?" menu any more).
 loadstate rustboro_done.ss
 setvar VAR_DRACONID_FINALE_STATE 8
 clearflag FLAG_HIDE_DRACONID_HOUSE_ELDER
@@ -15,6 +15,8 @@ shot 11_after_scene
 expect_flag FLAG_RECEIVED_SS_TICKET 1
 expect_item ITEM_SS_TICKET 1
 expect_flag FLAG_LATIOS_OR_LATIAS_ROAMING 1
+expect_roamer 0 SPECIES_LATIAS
+expect_roamer 1 SPECIES_LATIOS
 expect_flag FLAG_HIDE_DRACONID_HOUSE_ELDER 1
 expect_flag FLAG_HIDE_DRACONID_ELDERS_HOUSE_ELDER 0
 expect_var VAR_LITTLEROOT_HOUSES_STATE_MAY 4

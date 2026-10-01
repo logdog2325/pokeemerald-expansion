@@ -1,7 +1,11 @@
 SeafloorCavern_Room9_MapScripts::
-	map_script MAP_SCRIPT_ON_TRANSITION, SeafloorCavern_Room9_EventScript_DraconidOnTransition  @ Draconid Emerald: Nerine's reveal (act5.pory)
+	map_script MAP_SCRIPT_ON_TRANSITION, SeafloorCavern_Room9_OnTransition  @ Draconid Emerald
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, SeafloorCavern_Room9_OnFrame  @ Draconid Emerald
 	.byte 0
+
+SeafloorCavern_Room9_OnTransition:  @ Draconid Emerald
+	call SeafloorCavern_Room9_EventScript_DraconidKyogreOnTransition  @ Draconid Emerald: KYOGRE asleep again (post-game, act7x.pory)
+	goto SeafloorCavern_Room9_EventScript_DraconidOnTransition  @ Draconid Emerald: Nerine's reveal (act5.pory)
 
 SeafloorCavern_Room9_OnFrame:  @ Draconid Emerald
 	map_script_2 VAR_NERINE_STATE, NERINE_STATE_AQUA_HIDEOUT, SeafloorCavern_Room9_EventScript_DraconidNerineReveal

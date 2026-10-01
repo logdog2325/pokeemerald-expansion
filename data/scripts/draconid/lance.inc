@@ -1,5 +1,5 @@
 DraconidVillage_EventScript_LanceOnTransition::
-	setflag FLAG_TEMP_1D
+	setflag FLAG_TEMP_1E
 	compare VAR_DRACONID_FINALE_STATE, FINALE_STATE_POSTGAME
 	goto_if_lt DraconidVillage_EventScript_LanceOnTransition_1
 	goto_if_unset FLAG_DRACONID_LANCE_ARMED, DraconidVillage_EventScript_LanceOnTransition_2

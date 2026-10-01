@@ -3,8 +3,17 @@
 mapscripts DraconidVillage_House2_MapScripts {}
 
 script DraconidVillage_House2_EventScript_Hunter {
-    msgbox(format("I trade dragon scales in the lowland towns.\p"
-                  "Down there most folks have never seen a dragon up close. Expect some stares!"), MSGBOX_NPC)
+    lock
+    faceplayer
+    if (var(VAR_DRACONID_FINALE_STATE) >= FINALE_STATE_METEOR_DESTROYED) {
+        // Draconid Emerald, Act 7 extension: WALLY freed this house (D-205)
+        msgbox(format("That green-haired boy from the lowlands stood at our door with you. Pale as milk, and brave as anyone!\p"
+                      "Next time I'm down in PETALBURG, I'm bringing him a dragon scale."))
+    } else {
+        msgbox(format("I trade dragon scales in the lowland towns.\p"
+                      "Down there most folks have never seen a dragon up close. Expect some stares!"))
+    }
+    release
 }
 
 script DraconidVillage_House2_EventScript_Wife {

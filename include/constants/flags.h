@@ -95,7 +95,7 @@
 #define FLAG_HIDE_OCEANIC_MUSEUM_TABITHA         0x49 // Draconid Emerald: Tabitha in the Oceanic Museum 1F (Act 2)
 #define FLAG_HIDE_AQUA_HIDEOUT_NERINE            0x4A // Draconid Emerald: Nerine beside Matt in the Aqua Hideout B2F (Act 5)
 #define FLAG_HIDE_SEAFLOOR_CAVERN_NERINE         0x4B // Draconid Emerald: Nerine at the Seafloor Cavern Room 9 entrance (her reveal, Act 5)
-#define FLAG_UNUSED_0x04C    0x4C // Unused Flag
+#define FLAG_DRACONID_CAUGHT_REGIDRAGO           0x4C // Draconid Emerald: Regidrago caught in the shrine depths (it comes back until then, Act 7 extension)
 #define FLAG_UNUSED_0x04D    0x4D // Unused Flag
 #define FLAG_DRACONID_NO_RUNNING                 0x4E // Draconid Emerald: WE_FLAG_NO_RUNNING, set around the Sky Pillar Rayquaza and Deoxys battles (Act 7)
 #define FLAG_DRACONID_NO_CATCHING                0x4F // Draconid Emerald: WE_FLAG_NO_CATCHING, set around the Deoxys boss battle (Act 7)

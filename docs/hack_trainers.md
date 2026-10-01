@@ -1414,5 +1414,16 @@ give a species. `check_party.py` now resolves species aliases before it takes a 
 | WES_FRONTIER_MULTI | BattleFrontier_OutsideEast | route | 3 | 82–85 | Ho-Oh 85 | colosseum |
 | RED_FRONTIER_MULTI | BattleFrontier_OutsideEast | route | 3 | 82–85 | Charizard 85 | pwt |
 | BLUE_FRONTIER_MULTI | BattleFrontier_OutsideEast | route | 3 | 83–85 | Alakazam 85 | pwt |
+| GRUNT_VILLAGE_1 | DraconidVillage | grunt | 3 | 62–63 | Camerupt 63 | story |
+| GRUNT_VILLAGE_2 | DraconidVillage | grunt | 3 | 62–63 | Sharpedo 63 | story |
+| GRUNT_VILLAGE_3 | DraconidVillage | grunt | 3 | 62–63 | Crawdaunt 63 | story |
+| GRUNT_VILLAGE_4 | DraconidVillage | grunt | 3 | 62–63 | Houndoom 63 | story |
+| GRUNT_VILLAGE_5 | DraconidVillage | grunt | 3 | 63–64 | Camerupt 64 | story |
+| GRUNT_VILLAGE_6 | DraconidVillage | grunt | 3 | 63–64 | Walrein 64 | story |
+| TABITHA_VILLAGE | DraconidVillage | admin | 3 | 65–66 | Camerupt 66 | story |
+| SHELLY_VILLAGE | DraconidVillage | admin | 3 | 65–66 | Sharpedo 66 | story |
+| MAXIE_FINALE | DraconidVillage | boss | 3 | 68–72 | Groudon 72 | story |
+| ARCHIE_FINALE | DraconidVillage | boss | 3 | 68–72 | Kyogre 72 | story |
+| WALLACE_SKY_PILLAR | SkyPillar_Outside | route | 6 | 59–61 | Milotic 61 | story |
 | STEVEN_REMATCH |  | elite | 6 | 77–79 | Metagross 79 | oras-rematch |
 | LANCE_DRACONID | DraconidVillage | route | 6 | 82–86 | Dragonite 86 | pwt |

@@ -14,6 +14,8 @@ Spec (JSON):
   -- or, instead of brush/grid, reuse vanilla blocks: --
   "copy_layout": "LAYOUT_X" | "MapName"     copy that layout's blocks into a new layout (editable copy)
   "use_layout": "LAYOUT_X"                  point the map at an existing layout (shared, no copy)
+  "blockgrid": ["2F1:1:0 2EB:1:0 ...", ...] every block written out (metatile:collision:elevation), one row a
+  "tilesets": ["gTileset_General", "gTileset_Cave"]    string: small rooms put together from another map's blocks
   "grid": ["TTTT....", ...]                 one char per metatile
   "legend": {"h": "ground", "d": {"block": "20A:0:3"}, "_": {"class": "ground", "elev": 4}}
                                             chars not listed use the brush's class chars
@@ -89,6 +91,14 @@ class Build:
         self.name = spec["name"]
         self.proj = pokemap.Project()
         self.src_layout = None
+        if "blockgrid" in spec:
+            rows = [r.split() for r in spec["blockgrid"]]
+            self.h, self.w = len(rows), len(rows[0])
+            assert all(len(r) == self.w for r in rows), "blockgrid rows differ in length"
+            self.blockgrid = [parse_block_full(b) for r in rows for b in r]
+            primary, secondary = spec["tilesets"]
+            self.brush = {"primary": primary, "secondary": secondary, "classes": {}, "_member_class": {}}
+            return
         if "copy_layout" in spec or "use_layout" in spec:
             ref = spec.get("copy_layout") or spec.get("use_layout")
             lid = ref if ref.startswith("LAYOUT_") else self.proj.map_json(ref)["layout"]
@@ -116,6 +126,13 @@ class Build:
 
     def build(self):
         w, h = self.w, self.h
+        if "blockgrid" in self.spec:
+            self.blocks = list(self.blockgrid)
+            for b in self.spec.get("blocks", []):
+                x, y = b["at"]
+                self.blocks[y * w + x] = parse_block_full(b["block"])
+            self.diag = []
+            return self.blocks
         if self.src_layout is not None:
             self.blocks = list(self.src_layout.blocks)
             for b in self.spec.get("blocks", []):

@@ -689,6 +689,136 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   species is a warning. – Alt: a flat cap + 6 for every slot (vanilla Route 115 and Mirage Island go 6 over). –
   Vanilla levels are Emerald's own design and wild Pokémon are caught, not fought for EXP; the hack itself never
   raises a slot over the cap.
+- **D-200 The Act 7 extension's order and its state** (follow-up note 2: Regidrago, the Primal finale, Groudon /
+  Kyogre and the Latis; follow-up 15: the attack on the village): Hall of Fame → the meteor alert (Act 6, unchanged) →
+  **the Elder's call** → Regidrago in the shrine → Wallace (D-203) → the Trial of Three, Zinnia, the summit
+  (unchanged) → "The sky's debt is paid… for now." → **the alarm** (May's call) → the attack on the village → the
+  Primal multi battle → **the credits** → home, the SS Ticket, the post-game. The playtester's "the Elder calls you
+  and tells you to return to the village" is kept literally: the merged finale already has the player at home with the
+  Elder at the meteor alert, so the call comes where the player is first away from home before the tower – on landing
+  at the Sky Pillar's foot (by the Elder's dragon or on foot), where Aster and Nerine wait: "Do not climb yet… Come
+  home"; his dragon flies the player home, and back after Regidrago. The call says why it can't wait for the morning
+  (story audit 29): the seal broke when the star caught fire, the stone dragon wakes only when the sky is in danger,
+  and no tamer has ever climbed to Rayquaza without its blessing; his dragon brings the player back before the night
+  is out. The new steps have their own var, `VAR_DRACONID_VILLAGE_STATE` (0x40DC, `VILLAGE_STATE_*` 0–10), and
+  `VAR_DRACONID_FINALE_STATE` keeps its values: it stays at `FINALE_STATE_RAYQUAZA` through the attack and becomes
+  `FINALE_STATE_METEOR_DESTROYED` right before the credits, so everything the post-game opens (the Elder at home,
+  Nerine by the pond, Deoxys, Aster at the shrine, the rivals' lab battles) waits for the village to be saved. – Alt:
+  the Elder tells the player in person at the meteor alert (Act 6's file, another branch); new `FINALE_STATE_*` values
+  in between (the numbers the other branches' tests set would shift); Regidrago after the finale (the playtester said
+  "before sky pillar").
+- **D-201 The shrine wall**: the carved wall behind the Guardian's statue (x 9–11, y 2–4, the Sealed Chamber's braille
+  wall in the shrine's copy) opens like vanilla's Sealed Chamber and Regi doors – the long and short shakes
+  (`DoSealedChamberShakingEffect_*`), `SE_TRUCK_MOVE` and three `SE_DOOR`s, `setmetatile`, `SE_BANG` – into the
+  purple-rock cave mouth of the Seafloor Cavern (`METATILE_Cave_DoorwayPurple*`: the only doorway in the shrine's rock
+  colour; the Regi rooms' own opening is brown). The Elder waits in the hall at (13, 10); the player puts a hand on
+  the Guardian, which grinds forward three tiles, (10, 6) → (10, 9), and stays there (its 64 × 64 sprite would hide
+  the doorway and the player in it); the camera goes up to the wall as it splits. The shrine's OnLoad redraws it open
+  from `VILLAGE_STATE_SEAL_OPEN` on (for good), with a warp at (10, 4); its OnTransition puts the statue at (10, 9).
+  When the player comes back up from the depths, the Elder, now beside the door at (11, 5), offers his dragon to the
+  Sky Pillar (YES/NO; talk to him again). – Alt: the brown IslandCave entrance metatiles (a brown patch in a purple
+  wall); an opening under the statue; the statue left in place (it covered the doorway).
+- **D-202 The depths and Regidrago**: a new map `DraconidVillage_Shrine_Depths` (17 × 15), a Regi-style chamber (a
+  boulder in each corner, the legend before a carved alcove, the way out at the bottom) built from the shrine's own
+  purple rock (`tools/hack/mapgen/specs/draconid_shrine_depths.py`, a `blockgrid` spec) instead of a copy of the brown
+  IslandCave room. Regidrago (`OBJ_EVENT_GFX_SPECIES(REGIDRAGO)`, the expansion's overworld sprite) at (8, 7), a
+  static battle with the Regi music and transition (`StartRegiBattle`) at **Lv 65** with Dragon Energy, Crunch, Hammer
+  Arm and Dragon Dance (`createmon` over the `setwildbattle` mon: its level-up set has no Dragon move until 66)
+  (`DRACONID_REGIDRAGO_LEVEL`: above the League's cap of 60, below the finale's Rayquaza at 70); beaten or fled, it
+  sinks back into the wall and wakes again on the next visit (its object has a temp flag); caught, it is gone
+  (`FLAG_DRACONID_CAUGHT_REGIDRAGO`, 0x4C). The first battle that isn't lost (won, caught or fled) sets
+  `VILLAGE_STATE_REGIDRAGO`, which lets the trial start – the catch is not required (its catch rate stays 3). A loss
+  is a normal wild whiteout. – Alt: a must-catch like Rayquaza (a legend the player didn't ask to need); the level of
+  the League (60).
+- **D-203 Wallace at the Sky Pillar** (playtester follow-up 23, feedback 1.54; follow-up 24 for his Mega):
+  Sootopolis's guardian keeps the same watch over Rayquaza's tower the Draconids keep over the sky. On the way back
+  from Regidrago he waits at the foot of the tower, (15, 14), between the cave mouth and the door (the vanilla
+  `LOCALID_SKY_PILLAR_WALLACE`, now with `SkyPillar_Outside_EventScript_DraconidWallace`; its vanilla scene at
+  `VAR_SOOTOPOLIS_CITY_STATE` 3 stays dead). He knows the truth since Sootopolis, so it is a guardian's duty, not
+  suspicion: one battle before anyone climbs to Rayquaza ("Let us see whether your strength is as refined as your
+  resolve"); after his loss one warm beat to Aster and Nerine (one sky, two guardians) and he steps aside; the map
+  reloads and the trial plays as before. `TRAINER_WALLACE_SKY_PILLAR` (967): his Emerald Champion team at 59–61
+  (Wailord, Tentacruel, Ludicolo, Primarina for Whiscash, **Mega Gyarados** – the playtester's pick – and Milotic, the
+  ace), at or below Zinnia's 60–62 and under the Primal finale; class "PKMN TRAINER" (Steven is the Champion on
+  another branch). A loss doesn't white out: he tends the team and waits (talk to him), as the trial. – Alt: the Sky
+  Pillar Entrance cave (the Outside has room); Wallace's own Champion class.
+- **D-204 The village under attack**: the alarm at the summit turns the sky (Emerald's alternating drought and
+  downpour of the Sootopolis clash, `WEATHER_ABNORMAL`, with `MUS_ABNORMAL_WEATHER`), May calls ("TEAM MAGMA and TEAM
+  AQUA went up DRACONID PASS… They woke GROUDON and KYOGRE up again"), the Elder, Aster and Nerine fly ahead to the
+  shrine and Rayquaza carries the player home; Zinnia stays. The player lands at the south path (19, 24): a camera pan
+  up the village (Primal Groudon by the trees, the admins at the shrine, Primal Kyogre in the waterfall pool, the
+  overworld sprites of the expansion's Primal forms), then Brendan, May and Wally land (the Latis' beat: each came to
+  its trainer when the star broke). Grunts of both teams stand at the three houses, the player's house door flanked
+  (not blocked, so the loss warp home can never trap the player), the Elder down in the shrine door with Nerine, Aster
+  beside them, Tabitha and Shelly in the crater before the shrine, Maxie by Groudon, Archie by Kyogre. The attack's 20
+  objects use temp flags that `DraconidVillage_EventScript_DraconidAttackOnTransition` sets for everyone who isn't
+  there at the current state (D-136); the village's own strollers hide indoors (`FLAG_TEMP_1C`). The weather is
+  `WEATHER_ABNORMAL` on **every map under the open sky** (town, city, route, ocean route) from `VILLAGE_STATE_ALARM`
+  until the Primal battle is won, set whenever a map loads (a C hook in `SetSavedWeatherFromCurrMapHeader`, so Fly, a
+  whiteout and a saved game get it too; `Draconid_EventScript_FinaleWeather` for the Sky Pillar and the village), with
+  its music (`GetLocationMusic`); the village's battles start in the rain or the sun the cycle shows then (the
+  expansion's overworld weather); caves, houses and underwater keep their own. The gatekeeper turns the player back
+  from the pass; Fly is not blocked (nothing in the engine does it, and the attack simply waits). – Alt: split weather
+  by area (per-map only in the engine); a fixed drought (Groudon's side only); forbidding Fly (new engine code for one
+  scene).
+- **D-205 The four doubles**: each rival fights beside the player once, as the playtester asked – Wally at the
+  south-west house (Mega Gallade), May at the player's house (Mega Blaziken, "Your village is our village now"),
+  Brendan at the east house (Mega Sceptile) – in any order, talking to either grunt or the rival; with the three
+  freed, Aster comes down from the shrine and the two of them take Tabitha and Shelly (her partner team follows the
+  player's egg like her trainer teams, `PARTNER_ASTER_*` resolved by `Draconid_ResolveVariantPartner`; a back pic
+  recoloured from the Draconid F one, `recipes/aster_back_pic.json`). All are `multi_2_vs_2` with the half-party menu,
+  against a Magma + an Aqua grunt (62–64, one Gen 4–9 Pokémon each, D-242) or the admins (65–66, no Megas); a freed
+  villager heals the team after each win. The scripted multi battle never whites out: a loss fades out, heals and puts
+  the player in their house (the village has no Centre); the fight waits where it was. Trainer ids 957–966
+  (`TRAINER_GRUNT_VILLAGE_1..6`, `TRAINER_TABITHA_VILLAGE`, `TRAINER_SHELLY_VILLAGE`, `TRAINER_MAXIE_FINALE`,
+  `TRAINER_ARCHIE_FINALE`) and 967 (Wallace); partners 17–24; `MAX_TRAINERS_COUNT_EMERALD` 992 (the value the other
+  round 1 branches set). A house counts as freed by its first grunt's trainer flag (the scene sets both; multi battles
+  don't). – Alt: a fixed order (less of a village to defend); Courtney as an admin (she has no battle pic); a Pokémon
+  Center warp after a loss.
+- **D-206 The Primal multi battle**: after the admins the map reloads with Maxie and Archie in the crater before the
+  shrine door, where the Elder lies with Nerine and Aster guarding him. Maxie hates the player (the Sootopolis
+  betrayal, battle #3: "You stood beside me… And all the while you carried my plans to these sky-watchers") and wants
+  the shrine gone ("how the DRACONIDS call RAYQUAZA down upon us"); Archie is blunter. The pact that made it work:
+  **they traded Orbs** (vanilla gave Magma the Blue Orb and Aqua the Red, which is why Groudon and Kyogre never
+  listened) – Maxie's team ends with Groudon @ Red Orb, Archie's with Kyogre @ Blue Orb, both Lv 72 (the expansion
+  reverts them on switch-in), Mega Camerupt and Mega Sharpedo before them (68–69, `Smart Trainer / Prediction / Ace
+  Pokemon`, IVs 31). Courtney and Matt come up the pass: the player picks Brendan or May (the Sootopolis choice) and
+  the other one and Wally hold the pass off-screen. The partner brings their Lati with its Mega Stone
+  (`PARTNER_BRENDAN_FINALE`: Latios @ Latiosite, `PARTNER_MAY_FINALE`: Latias @ Latiasite, and May's Tropius with Wide
+  Guard against Origin Pulse and Precipice Blades). A loss sends the player home; talking to Maxie or Archie
+  (`VILLAGE_STATE_FINAL`) asks for the partner again. – Alt: at the village square (the shrine door is where the
+  clan's story is); Courtney and Matt drawn (four more objects on an already full screen).
+- **D-207 After the win**: Groudon and Kyogre stop listening to anyone; Rayquaza bursts from its ball over the shrine
+  and roars, the Elder gets to his feet and tells the old ones to go home and sleep; Groudon sinks into the mountain,
+  Kyogre slips away toward the sea, the weather clears. Maxie's last word is defeat and a grudging acknowledgement ("I
+  will not thank you… But the land has chosen who stands for it"), Archie is nearer to regret ("We came up here to
+  wreck a village of kids and old folks"); both hand over their Orb (`ITEM_RED_ORB`, `ITEM_BLUE_ORB`, so a caught
+  Groudon or Kyogre can Primal-revert). That evening (the map reloads) the Elder, on his feet between Aster and
+  Nerine, thanks the rivals; Wally asks to come back, Brendan points to the lab rematch, May wants the whole story;
+  they fly home; "Come. Let us go in." – the save and the credits (moved here from the summit). The Orbs come from the
+  leaders, who kept them after Sootopolis (the revenge branch cuts vanilla's Mt. Pyre return, story audit 27); the Mt.
+  Pyre old lady tells the player to keep them. The post-game village remembers the attack (audit 30–32): the Elder's
+  first words at home, Aster, Nerine, the Elder in his house, the gatekeeper, the villagers and the lab rivals
+  (Brendan owes a battle for the village instead of a third apology). – Alt: the Primals beaten in battle and caught
+  on the spot (the playtester wants them catchable later).
+- **D-208 Groudon and Kyogre after the finale**: they sleep where they first woke – Groudon at the edge of the Magma
+  Hideout's magma pool (4F, (16, 20), talked to from the ledge where Maxie stood) and Kyogre in the Seafloor Cavern's
+  deep pool (Room 9, (17, 41), from the shore, through a sign event on its water tile): new objects with the vanilla
+  sleeping sprites, shown once the finale is over; static battles at Lv 72 (`DRACONID_PRIMAL_LEGEND_LEVEL`, the
+  finale's); beaten or fled, they come back on the next visit; caught, gone (`FLAG_DEFEATED_GROUDON` / `_KYOGRE`,
+  which the Weather Institute reads). Vanilla's post-game abnormal weather (the Terra and Marine Caves) never starts:
+  it would have handed out a Groudon or Kyogre before the finale (the Hall of Fame sets `FLAG_SYS_GAME_CLEAR` first);
+  the Weather Institute scientist points at the two places instead. Both are reachable after the finale: the Magma
+  Emblem door on Jagged Pass stays open, the hideout's grunts left with the promotion, and the Seafloor Cavern is
+  Route 128's Dive spot with the HMs used from the bag (D-190). – Alt: keep the Terra / Marine Caves (random routes,
+  the story says they went home); the Cave of Origin (another branch's post-game Wallace).
+- **D-209 The Latis roam**: Brendan and May keep theirs (their post-game teams, D-237), and "new ones being spotted" –
+  after the credits the Lati TV news tells of a second pair, wild, and **both Latios and Latias roam** Hoenn
+  (`ROAMER_COUNT` 2, `InitRoamer` adds both at Lv 60, `DRACONID_LATI_ROAMER_LEVEL`; the vanilla red/blue menu is
+  gone). `SaveBlock1` grows by one `struct Roamer` (28 bytes; 15612 with the trainer flags of D-205, `test/save.c`),
+  so older saves don't carry over. Southern Island (the Eon Ticket's other Lati) stays unreachable without the event
+  ticket. – Alt: the rivals release theirs (the playtester's other option; they bring them to the finale); one roamer
+  picked by colour (vanilla).
 - **D-210 Maxie's voice** (feedback 1.26): composed and formal, full sentences with few contractions, grandiose and
   sincere about the land, humankind and "our ideal"; dry pride ("That is the difference between us"); short and
   sharp only when something goes wrong ("What?! The METEORITE is gone!"), then composed again. He praises the player

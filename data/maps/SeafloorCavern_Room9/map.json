@@ -125,6 +125,20 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "0x0",
       "flag": "FLAG_HIDE_SEAFLOOR_CAVERN_NERINE"
+    },
+    {
+      "local_id": "LOCALID_SEAFLOOR_CAVERN_KYOGRE_POSTGAME",
+      "graphics_id": "OBJ_EVENT_GFX_KYOGRE_ASLEEP",
+      "x": 17,
+      "y": 41,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "SeafloorCavern_Room9_EventScript_DraconidKyogre",
+      "flag": "FLAG_TEMP_11"
     }
   ],
   "warp_events": [
@@ -147,5 +161,14 @@
       "script": "SeafloorCavern_Room9_EventScript_ArchieAwakenKyogre"
     }
   ],
-  "bg_events": []
+  "bg_events": [
+    {
+      "type": "sign",
+      "x": 17,
+      "y": 41,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "SeafloorCavern_Room9_EventScript_DraconidKyogreSpot"
+    }
+  ]
 }

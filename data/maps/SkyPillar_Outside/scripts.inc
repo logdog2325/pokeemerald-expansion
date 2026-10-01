@@ -31,6 +31,8 @@ SkyPillar_Outside_EventScript_OpenDoor::
 SkyPillar_Outside_OnFrame:
 	map_script_2 VAR_SOOTOPOLIS_CITY_STATE, 3, SkyPillar_Outside_EventScript_WallaceScene
 	map_script_2 VAR_TEMP_7, 1, SkyPillar_Outside_EventScript_DraconidTrialOfThree  @ Draconid Emerald (act7.pory)
+	map_script_2 VAR_TEMP_7, 2, SkyPillar_Outside_EventScript_DraconidElderCall  @ Draconid Emerald: REGIDRAGO first (act7x.pory)
+	map_script_2 VAR_TEMP_7, 3, SkyPillar_Outside_EventScript_DraconidWallaceScene  @ Draconid Emerald: WALLACE keeps the way (act7x.pory)
 	.2byte 0
 
 SkyPillar_Outside_EventScript_WallaceScene::

@@ -10,7 +10,8 @@ mapscripts DraconidVillage_PlayersHouse_1F_MapScripts {
 }
 
 // After the finale's credits (D-112): the ELDER brings the SS TICKET, sent by CAPTAIN STERN, and the Lati TV
-// news flash airs. The player comes down the stairs (and steps off them to (8, 3)); the ELDER waits at the table,
+// news flash airs: both LATIOS and LATIAS roam HOENN from now on (D-209, ROAMER_COUNT 2; the vanilla "which colour"
+// choice is gone). The player comes down the stairs (and steps off them to (8, 3)); the ELDER waits at the table,
 // (2, 6).
 script DraconidVillage_PlayersHouse_1F_EventScript_SSTicketAndLatiTV {
     lockall
@@ -18,8 +19,8 @@ script DraconidVillage_PlayersHouse_1F_EventScript_SSTicketAndLatiTV {
     waitmovement(0)
     applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft)
     waitmovement(0)
-    msgbox(format("ELDER: You slept through a whole day and a night, {PLAYER}. You earned every hour of it.\p"
-                  "The children counted falling stars until dawn. They are still arguing about the total."))
+    msgbox(format("ELDER: You slept through a whole day and a night, {PLAYER}. The village did not.\p"
+                  "Every roof the old ones cracked is mended. The children built a GROUDON out of the rubble in the square."))
     msgbox(format("ELDER: A letter came for you, from CAPTAIN STERN of SLATEPORT.\p"
                   "He writes that HOENN owes you a voyage, and he sent this with it."))
     giveitem(ITEM_SS_TICKET)
@@ -38,20 +39,20 @@ script DraconidVillage_PlayersHouse_1F_EventScript_SSTicketAndLatiTV {
     closemessage
     applymovement(LOCALID_PLAYER, DraconidVillage_PlayersHouse_1F_Movement_PlayerToTV)
     waitmovement(0)
-    msgbox(PlayersHouse_1F_Text_LatiEmergencyNewsFlash)
+    msgbox(format("…We interrupt this program with a news flash!\p"
+                  "Two dragon-like POKéMON, one red and one blue, have been sighted flying over HOENN!\p"
+                  "Viewers may remember the pair seen with two young TRAINERS from LITTLEROOT during the trouble in the mountains.\p"
+                  "Experts say these two are a second pair, wild and free. Where they will be seen next is anyone's guess!"))
     closemessage
     clearflag(FLAG_SYS_TV_LATIAS_LATIOS)
     setflag(FLAG_LATIOS_OR_LATIAS_ROAMING)
+    special(InitRoamer)
     special(TurnOffTVScreen)
     applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight)
     waitmovement(0)
-    msgbox(format("ELDER: A dragon in flight, over HOENN… Did you catch its colour, {PLAYER}?"))
-    multichoice(22, 8, MULTI_TV_LATI, TRUE)
-    copyvar(VAR_0x8004, VAR_RESULT)
-    special(InitRoamer)
-    copyvar(VAR_ROAMER_POKEMON, VAR_RESULT)
-    msgbox(format("ELDER: A dragon of the sky, roaming free. Our songs speak of the EON twins.\p"
-                  "Perhaps one will cross your path. Keep your eyes on the sky, {PLAYER}."))
+    msgbox(format("ELDER: Red and blue, flying together… Our songs speak of the EON twins.\p"
+                  "BRENDAN and MAY found theirs when the star broke. It seems the sky had more to share.\p"
+                  "Perhaps they will cross your path, {PLAYER}. Keep your eyes on the sky."))
     closemessage
     applymovement(LOCALID_DRACONID_HOUSE_ELDER, DraconidVillage_PlayersHouse_1F_Movement_ElderLeaves)
     waitmovement(0)

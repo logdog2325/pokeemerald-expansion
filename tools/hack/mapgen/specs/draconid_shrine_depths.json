@@ -1,0 +1,92 @@
+{
+  "name": "DraconidVillage_Shrine_Depths",
+  "blockgrid": [
+    "2F1:1:0 2EB:1:0 2F9:1:0 2F9:1:0 2F9:1:0 2F9:1:0 2F9:1:0 2F9:1:0 2F9:1:0 2F9:1:0 2F9:1:0 2F9:1:0 2F9:1:0 2F9:1:0 2F9:1:0 2EC:1:0 2F1:1:0",
+    "2F1:1:0 2F2:1:0 2EB:1:0 2F9:1:0 2F9:1:0 2F9:1:0 2F9:1:0 2F9:1:0 2F9:1:0 2F9:1:0 2F9:1:0 2F9:1:0 2F9:1:0 2F9:1:0 2EC:1:0 2F0:1:0 2F1:1:0",
+    "2EB:1:0 2FA:1:0 2F2:1:0 2EB:1:0 2F9:1:0 2F9:1:0 2EC:1:0 2F1:1:0 2F1:1:0 2F1:1:0 2EB:1:0 2F9:1:0 2F9:1:0 2EC:1:0 2F0:1:0 2F8:1:0 2EC:1:0",
+    "2F2:1:0 2EB:1:0 2FA:1:0 2F2:1:0 201:0:3 201:0:3 2F0:1:0 2F1:1:0 2F1:1:0 2F1:1:0 2F2:1:0 201:0:3 201:0:3 2F0:1:0 2F8:1:0 2EC:1:0 2F0:1:0",
+    "2F2:1:0 2F2:1:0 2EB:1:0 2FA:1:0 201:0:3 201:0:3 2F8:1:0 237:1:0 237:1:0 237:1:0 2FA:1:0 201:0:3 201:0:3 2F8:1:0 2EC:1:0 2F0:1:0 2F0:1:0",
+    "2F2:1:0 2F2:1:0 2F2:1:0 201:0:3 201:0:3 201:0:3 201:0:3 201:0:3 201:0:3 201:0:3 201:0:3 201:0:3 201:0:3 201:0:3 2F0:1:0 2F0:1:0 2F0:1:0",
+    "2F2:1:0 2F2:1:0 2F2:1:0 201:0:3 201:0:3 2ED:1:0 201:0:3 201:0:3 201:0:3 201:0:3 201:0:3 2ED:1:0 201:0:3 201:0:3 2F0:1:0 2F0:1:0 2F0:1:0",
+    "2F2:1:0 2F2:1:0 2F2:1:0 201:0:3 201:0:3 201:0:3 201:0:3 201:0:3 201:0:3 201:0:3 201:0:3 201:0:3 201:0:3 201:0:3 2F0:1:0 2F0:1:0 2F0:1:0",
+    "2F2:1:0 2F2:1:0 2F2:1:0 201:0:3 201:0:3 201:0:3 201:0:3 201:0:3 201:0:3 201:0:3 201:0:3 201:0:3 201:0:3 201:0:3 2F0:1:0 2F0:1:0 2F0:1:0",
+    "2F2:1:0 2F2:1:0 2F2:1:0 201:0:3 2ED:1:0 201:0:3 201:0:3 201:0:3 201:0:3 201:0:3 201:0:3 201:0:3 2ED:1:0 201:0:3 2F0:1:0 2F0:1:0 2F0:1:0",
+    "2F2:1:0 2F2:1:0 2F4:1:0 2EA:1:0 201:0:3 201:0:3 201:0:3 201:0:3 201:0:3 201:0:3 201:0:3 201:0:3 201:0:3 2E8:1:0 2F3:1:0 2F0:1:0 2F0:1:0",
+    "2F2:1:0 2F4:1:0 303:1:0 2F2:1:0 201:0:3 201:0:3 201:0:3 201:0:3 207:0:3 201:0:3 201:0:3 201:0:3 201:0:3 2F0:1:0 302:1:0 2F3:1:0 2F0:1:0",
+    "2F4:1:0 303:1:0 2F2:1:0 2F4:1:0 2E9:1:0 2E9:1:0 2E9:1:0 2E5:1:0 2E6:1:0 2E7:1:0 2E9:1:0 2E9:1:0 2E9:1:0 2F3:1:0 2F0:1:0 302:1:0 2F3:1:0",
+    "2F1:1:0 2F2:1:0 2F4:1:0 2E9:1:0 2E9:1:0 2E9:1:0 2E9:1:0 2E9:1:0 2E9:1:0 2E9:1:0 2E9:1:0 2E9:1:0 2E9:1:0 2E9:1:0 2F3:1:0 2F0:1:0 2F1:1:0",
+    "2F1:1:0 2F4:1:0 2E9:1:0 2E9:1:0 2E9:1:0 2E9:1:0 2E9:1:0 2E9:1:0 2E9:1:0 2E9:1:0 2E9:1:0 2E9:1:0 2E9:1:0 2E9:1:0 2E9:1:0 2F3:1:0 2F1:1:0"
+  ],
+  "tilesets": [
+    "gTileset_General",
+    "gTileset_Cave"
+  ],
+  "border": {
+    "from": "DraconidVillage_Shrine"
+  },
+  "header": {
+    "music": "MUS_SEALED_CHAMBER",
+    "region_map_section": "MAPSEC_DRACONID_VILLAGE",
+    "weather": "WEATHER_NONE",
+    "map_type": "MAP_TYPE_UNDERGROUND",
+    "allow_cycling": false,
+    "allow_escaping": false,
+    "allow_running": false,
+    "show_map_name": false
+  },
+  "group": "gMapGroup_IndoorDraconid",
+  "events": {
+    "object_events": [
+      {
+        "local_id": "LOCALID_SHRINE_DEPTHS_REGIDRAGO",
+        "graphics_id": "OBJ_EVENT_GFX_SPECIES(REGIDRAGO)",
+        "x": 8,
+        "y": 7,
+        "elevation": 3,
+        "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+        "movement_range_x": 0,
+        "movement_range_y": 0,
+        "trainer_type": "TRAINER_TYPE_NONE",
+        "trainer_sight_or_berry_tree_id": "0",
+        "script": "DraconidVillage_Shrine_Depths_EventScript_Regidrago",
+        "flag": "FLAG_TEMP_11"
+      }
+    ],
+    "warp_events": [
+      {
+        "x": 8,
+        "y": 11,
+        "elevation": 3,
+        "dest_map": "MAP_DRACONID_VILLAGE_SHRINE",
+        "dest_warp_id": "1"
+      }
+    ],
+    "coord_events": [],
+    "bg_events": [
+      {
+        "type": "sign",
+        "x": 7,
+        "y": 4,
+        "elevation": 0,
+        "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+        "script": "DraconidVillage_Shrine_Depths_EventScript_Carving"
+      },
+      {
+        "type": "sign",
+        "x": 8,
+        "y": 4,
+        "elevation": 0,
+        "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+        "script": "DraconidVillage_Shrine_Depths_EventScript_Carving"
+      },
+      {
+        "type": "sign",
+        "x": 9,
+        "y": 4,
+        "elevation": 0,
+        "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+        "script": "DraconidVillage_Shrine_Depths_EventScript_Carving"
+      }
+    ]
+  }
+}

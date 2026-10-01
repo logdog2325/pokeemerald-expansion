@@ -300,6 +300,10 @@
     {"id": "P.21", "act": "post", "name": "Wallace by the Cave of Origin",
      "scenes": [{"label": "SootopolisCity_EventScript_DraconidPostgameWallace", "expect": ["TRAINER_WALLACE"]}]},
     {"id": "P.22", "act": "post", "name": "Steven's hideaway in Meteor Falls",
-     "scenes": ["MeteorFalls_StevensCave_EventScript_DraconidSteven"]}
+     "scenes": ["MeteorFalls_StevensCave_EventScript_DraconidSteven"]},
+    {"id": "7x.01", "act": 7, "side": true, "name": "Post-game (D-208): to Groudon asleep in the Magma Hideout, the ledge below the magma pool",
+     "to": "MAP_MAGMA_HIDEOUT_4F 16 21"},
+    {"id": "7x.02", "act": 7, "side": true, "name": "Post-game (D-208): down to Kyogre asleep in the Seafloor Cavern, the shore of the deep pool",
+     "to": "MAP_SEAFLOOR_CAVERN_ROOM9 17 42"}
   ]
 }

@@ -1085,6 +1085,17 @@
   "TRAINER_GRUNT_VICTORY_ROAD_EXIT": "S9",
   "TRAINER_GRUNT_POKEMON_LEAGUE_1": "S9",
   "TRAINER_GRUNT_POKEMON_LEAGUE_2": "S9",
+  "TRAINER_GRUNT_VILLAGE_1": "POST",
+  "TRAINER_GRUNT_VILLAGE_2": "POST",
+  "TRAINER_GRUNT_VILLAGE_3": "POST",
+  "TRAINER_GRUNT_VILLAGE_4": "POST",
+  "TRAINER_GRUNT_VILLAGE_5": "POST",
+  "TRAINER_GRUNT_VILLAGE_6": "POST",
+  "TRAINER_TABITHA_VILLAGE": "POST",
+  "TRAINER_SHELLY_VILLAGE": "POST",
+  "TRAINER_MAXIE_FINALE": "POST",
+  "TRAINER_ARCHIE_FINALE": "POST",
+  "TRAINER_WALLACE_SKY_PILLAR": "POST",
   "TRAINER_STEVEN_REMATCH": "POST",
   "TRAINER_LANCE_DRACONID": "POST"
  },
@@ -7207,6 +7218,72 @@
    "segment": "S9",
    "role": "grunt",
    "map": "EverGrandeCity",
+   "story": true
+  },
+  "TRAINER_GRUNT_VILLAGE_1": {
+   "segment": "POST",
+   "role": "grunt",
+   "map": "DraconidVillage",
+   "story": true
+  },
+  "TRAINER_GRUNT_VILLAGE_2": {
+   "segment": "POST",
+   "role": "grunt",
+   "map": "DraconidVillage",
+   "story": true
+  },
+  "TRAINER_GRUNT_VILLAGE_3": {
+   "segment": "POST",
+   "role": "grunt",
+   "map": "DraconidVillage",
+   "story": true
+  },
+  "TRAINER_GRUNT_VILLAGE_4": {
+   "segment": "POST",
+   "role": "grunt",
+   "map": "DraconidVillage",
+   "story": true
+  },
+  "TRAINER_GRUNT_VILLAGE_5": {
+   "segment": "POST",
+   "role": "grunt",
+   "map": "DraconidVillage",
+   "story": true
+  },
+  "TRAINER_GRUNT_VILLAGE_6": {
+   "segment": "POST",
+   "role": "grunt",
+   "map": "DraconidVillage",
+   "story": true
+  },
+  "TRAINER_TABITHA_VILLAGE": {
+   "segment": "POST",
+   "role": "admin",
+   "map": "DraconidVillage",
+   "story": true
+  },
+  "TRAINER_SHELLY_VILLAGE": {
+   "segment": "POST",
+   "role": "admin",
+   "map": "DraconidVillage",
+   "story": true
+  },
+  "TRAINER_MAXIE_FINALE": {
+   "segment": "POST",
+   "role": "boss",
+   "map": "DraconidVillage",
+   "story": true
+  },
+  "TRAINER_ARCHIE_FINALE": {
+   "segment": "POST",
+   "role": "boss",
+   "map": "DraconidVillage",
+   "story": true
+  },
+  "TRAINER_WALLACE_SKY_PILLAR": {
+   "segment": "POST",
+   "role": "route",
+   "map": "SkyPillar_Outside",
    "story": true
   },
   "TRAINER_STEVEN_REMATCH": {

@@ -33,17 +33,21 @@ The player's bedroom in Draconid Village: where a new game starts.
 Ground floor of the player's house in Draconid Village.
 
 ### `DraconidVillage_PlayersHouse_1F_EventScript_SSTicketAndLatiTV`
-- ELDER: You slept through a whole day and a night, {PLAYER}. You earned every hour of it.
-- The children counted falling stars until dawn. They are still arguing about the total.
+- ELDER: You slept through a whole day and a night, {PLAYER}. The village did not.
+- Every roof the old ones cracked is mended. The children built a GROUDON out of the rubble in the square.
 - ELDER: A letter came for you, from CAPTAIN STERN of SLATEPORT.
 - He writes that HOENN owes you a voyage, and he sent this with it.
 - ELDER: A ticket for the S.S. TIDAL. The ship sails from SLATEPORT and from LILYCOVE.
 - The world beyond the mountains is wide. Go and see it.
 - The sky will call again when it has need of you.
 - ELDER: Hm? The picture box is speaking by itself again.
-- ELDER: A dragon in flight, over HOENN… Did you catch its colour, {PLAYER}?
-- ELDER: A dragon of the sky, roaming free. Our songs speak of the EON twins.
-- Perhaps one will cross your path. Keep your eyes on the sky, {PLAYER}.
+- …We interrupt this program with a news flash!
+- Two dragon-like POKéMON, one red and one blue, have been sighted flying over HOENN!
+- Viewers may remember the pair seen with two young TRAINERS from LITTLEROOT during the trouble in the mountains.
+- Experts say these two are a second pair, wild and free. Where they will be seen next is anyone's guess!
+- ELDER: Red and blue, flying together… Our songs speak of the EON twins.
+- BRENDAN and MAY found theirs when the star broke. It seems the sky had more to share.
+- Perhaps they will cross your path, {PLAYER}. Keep your eyes on the sky.
 
 ### `DraconidVillage_PlayersHouse_1F_EventScript_Elder`
 - ELDER: The sky's debt is paid, {PLAYER}. For now.
@@ -80,6 +84,12 @@ Draconid Village: the player's home, at the foot of the cliffs below the Rayquaz
 ### `DraconidVillage_EventScript_Gatekeeper`
 - GATEKEEPER: Beyond this path lies DRACONID PASS, and past the river, the lowlands.
 - Wild Pokémon live out there. Only tamers with a partner may pass.
+- GATEKEEPER: They came up my path in the dark, and I couldn't hold them. You did.
+- The gate is yours, CHAMPION. Come home whenever you like.
+- GATEKEEPER: …Is that you under the red hood, {PLAYER}?
+- The ELDER said you'd come home looking like one of them. The gate is still yours.
+- GATEKEEPER: The hero of SOOTOPOLIS, at my gate!
+- I'll never tell the young ones you once dressed like a MAGMA grunt.
 - GATEKEEPER: So you're off to see the lowlands! The clan's blessings go with you.
 - Follow the path over the bridge and head east to ROUTE 101. LITTLEROOT TOWN is south of there.
 
@@ -94,10 +104,16 @@ Draconid Village: the player's home, at the foot of the cliffs below the Rayquaz
 - I was your age when I received mine. Seems like only yesterday…
 
 ### `DraconidVillage_EventScript_PondWoman`
+- KYOGRE sat right there in our pool, as big as a house!
+- The water's still cloudy. I'm not drinking a drop of it until it clears.
 - The water here comes from the peaks, where the sky dragon is said to rest.
 - Drinking it is supposed to make dragons grow strong!
 
 ### `DraconidVillage_EventScript_Boy`
+- I saw a GROUDON and a KYOGRE, and RAYQUAZA too!
+- Nobody down in the lowlands is ever going to believe me.
+- Why are you dressed like the bad lowlanders?
+- …It's a trick, isn't it! I won't tell anyone!
 - When I get my egg, I want a dragon that can fly all the way up to the sky!
 
 ### `DraconidVillage_EventScript_VillageSign`
@@ -136,6 +152,8 @@ The Elder's house: the prophecy and the mission (Act 1, docs/hack_story.md). The
 - The red ones will find you soon enough. Let them.
 - ELDER: So you wear their red. It suits the task, if not the heart.
 - Remember who you are under it, {PLAYER}. The sky remembers.
+- ELDER: The sky's debt is paid, and the old ones sleep again.
+- Go and see the world, {PLAYER}. It is still wide.
 - ELDER: You set the red aside when it mattered. I am proud of you, {PLAYER}.
 - But the star still falls. Keep your eyes on the sky.
 
@@ -151,7 +169,7 @@ The Elder's house: the prophecy and the mission (Act 1, docs/hack_story.md). The
 
 ## data/maps/DraconidVillage_Shrine/scripts.pory
 
-Rayquaza shrine carved into the cliff above Draconid Village. The egg ceremony (Act 1, round 1 D-230): the Elder brings the player and Aster up from his house after the prophecy.
+Rayquaza shrine carved into the cliff above Draconid Village. The egg ceremony (Act 1, round 1 D-230): the Elder brings the player and Aster up from his house after the prophecy. The carved wall behind the statue opens before the Sky Pillar finale: REGIDRAGO below (Act 7 extension, D-201).
 
 ### `DraconidVillage_Shrine_EventScript_EggCeremony`
 - ELDER: Come forward, {PLAYER}.
@@ -238,6 +256,8 @@ East house of Draconid Village: the scarf weaver and her daughter.
 - It keeps you warm on the peaks… and it tells other tamers where you come from.
 
 ### `DraconidVillage_House1_EventScript_Girl`
+- The Guardian of the Sky came down! Right over the shrine, I saw it from our window!
+- Now I know what it looks like. It's green, and it's REALLY long.
 - Grandpa ELDER says the Guardian of the Sky lives above the clouds and never comes down.
 - But then how does anyone know what it looks like?
 
@@ -246,6 +266,8 @@ East house of Draconid Village: the scarf weaver and her daughter.
 South-west house of Draconid Village: a hunter who travels to the lowlands.
 
 ### `DraconidVillage_House2_EventScript_Hunter`
+- That green-haired boy from the lowlands stood at our door with you. Pale as milk, and brave as anyone!
+- Next time I'm down in PETALBURG, I'm bringing him a dragon scale.
 - I trade dragon scales in the lowland towns.
 - Down there most folks have never seen a dragon up close. Expect some stares!
 
@@ -1203,7 +1225,7 @@ Draconid Emerald round 1, Act 6 (docs/hack_story.md steps 29-30): the Champion's
 
 ## data/scripts/draconid/act7.pory
 
-Draconid Emerald round 1, Act 7 (docs/hack_story.md steps 31-34): "The prophecy fulfilled".  Sky Pillar, outside   ASTER and NERINE wait at the base: the TRIAL OF THREE, a double battle (the player + NERINE vs ASTER); the door opens and the three climb together Sky Pillar 3F         ZINNIA, the LOREKEEPER of the METEOR FALLS DRACONIDS, tests the ELDER's chosen Sky Pillar summit     the ELDER calls RAYQUAZA down: the must-catch battle, DRAGON ASCENT; DEOXYS attacks at once (boss battle); MEGA RAYQUAZA breaks the meteor; "The sky's debt is paid… for now."; the game saves and the credits roll, then the player wakes at home Post-game             the ELDER brings the SS TICKET (DraconidVillage_PlayersHouse_1F/scripts.pory), BRENDAN and MAY in the Littleroot lab (singles, then a double), ASTER at the village shrine, NERINE by the village pond, DEOXYS at the summit (once, D-111)  VAR_DRACONID_FINALE_STATE: FINALE_STATE_* (include/constants/draconid.h). Every finale battle is fought again after a loss instead of whiting out (D-110, D-151, D-155). Scenes start from OnFrame on VAR_TEMP_7, which each map's OnTransition hook sets from the finale state (a lost battle ends the scene without looping it). Vanilla hooks are listed in docs/hack_changes.md ("Scripts").
+Draconid Emerald round 1, Act 7 (docs/hack_story.md steps 31-34): "The prophecy fulfilled".  Sky Pillar, outside   ASTER and NERINE wait at the base: the TRIAL OF THREE, a double battle (the player + NERINE vs ASTER); the door opens and the three climb together Sky Pillar 3F         ZINNIA, the LOREKEEPER of the METEOR FALLS DRACONIDS, tests the ELDER's chosen Sky Pillar summit     the ELDER calls RAYQUAZA down: the must-catch battle, DRAGON ASCENT; DEOXYS attacks at once (boss battle); MEGA RAYQUAZA breaks the meteor; "The sky's debt is paid… for now."; then MAXIE and ARCHIE attack the village (act7x.pory): after it the game saves and the credits roll, then the player wakes at home Before the trial the ELDER calls the player home to REGIDRAGO (act7x.pory). Post-game             the ELDER brings the SS TICKET (DraconidVillage_PlayersHouse_1F/scripts.pory), BRENDAN and MAY in the Littleroot lab (singles, then a double), ASTER at the village shrine, NERINE by the village pond, DEOXYS at the summit (once, D-111)  VAR_DRACONID_FINALE_STATE: FINALE_STATE_* (include/constants/draconid.h). Every finale battle is fought again after a loss instead of whiting out (D-110, D-151, D-155). Scenes start from OnFrame on VAR_TEMP_7, which each map's OnTransition hook sets from the finale state (a lost battle ends the scene without looping it). Vanilla hooks are listed in docs/hack_changes.md ("Scripts").
 
 ### `SkyPillar_Outside_EventScript_DraconidTrialOfThree`
 - ASTER: There you are, CHAMPION. You took your time.
@@ -1335,7 +1357,6 @@ Draconid Emerald round 1, Act 7 (docs/hack_story.md steps 31-34): "The prophecy 
 - NERINE: The sky is blue again.
 - I never did like red, you know. Even on you.
 - ZINNIA: Heh. The stars got it right for once. See you around, CHAMPION.
-- ELDER: Come, {PLAYER}. Let us go home.
 
 ### `DraconidVillage_PlayersHouse_2F_EventScript_DraconidWakeUpAfterFinale`
 - {PLAYER} slept through a whole day and a night.
@@ -1345,7 +1366,7 @@ Draconid Emerald round 1, Act 7 (docs/hack_story.md steps 31-34): "The prophecy 
 - MAY: Have you seen the sky? Something's burning up there!
 - If it has anything to do with dragons, {PLAYER}, it has to do with you. Go!
 - MAY: {PLAYER}! The CHAMPION who saved the sky, right here in the lab!
-- I told BRENDAN you were one of the good guys. Way back on ROUTE 110!
+- I KNEW it way back on ROUTE 110, and I'm never going to stop saying so!
 - Now, you promised me one more battle. Everything we've got, okay?
 - MAY: BLAZIKEN, let's show {PLAYER} what we learned!
 - MAY: I'm writing all of this down, you know.
@@ -1353,12 +1374,10 @@ Draconid Emerald round 1, Act 7 (docs/hack_story.md steps 31-34): "The prophecy 
 - Any time you're ready!
 
 ### `LittlerootTown_ProfessorBirchsLab_EventScript_DraconidPostgameBrendan`
-- BRENDAN: {PLAYER}. …I called you a traitor at RUSTBORO. I said a lot of things.
-- You were fighting for all of us the whole time. I just couldn't see it.
-- So let me make it up to you the only way I know. Battle me, CHAMPION?
+- BRENDAN: {PLAYER}! You came! After your village… Man, we never did get that real battle.
+- Just you and me this time. Ready, CHAMPION?
 - BRENDAN: SCEPTILE, MEGA EVOLVE! No holding back this time!
 - BRENDAN: Next time, I'm winning. Count on it.
-- …Friends again?
 - Any time you're ready!
 
 ### `LittlerootTown_ProfessorBirchsLab_EventScript_DraconidPostgameDouble`
@@ -1380,16 +1399,16 @@ Draconid Emerald round 1, Act 7 (docs/hack_story.md steps 31-34): "The prophecy 
 
 ### `DraconidVillage_Shrine_EventScript_Aster`
 - ASTER: The CHAMPION of HOENN, back where it all started.
-- The sky is quiet again. Too quiet, if you ask me.
+- The shrine held. …So did you.
 - No riddles today. Just you, me, and everything we've got. Ready?
 - ASTER: I'll wait. The statue doesn't mind.
 - ASTER: …You know what the answer to all my riddles was? The sky. It was always the sky.
 - The ELDER chose right, {PLAYER}. Don't you dare tell him I said so.
 
 ### `DraconidVillage_EventScript_DraconidNerine`
-- NERINE: It's good to be home. I'd forgotten how still the water is here.
+- NERINE: The pond's still muddy from KYOGRE. It'll clear. Most things do.
 - When the sky calls again, we'll answer it together.
-- NERINE: After years of salt water, this little pond feels like a dream.
+- NERINE: After years of salt water, even this muddy little pond feels like a dream.
 - I spent all that time in blue, pretending. And I watched you in red, pretending.
 - No more pretending, {PLAYER}. One battle, as ourselves. Will you?
 - NERINE: I'll be here. The water isn't going anywhere, and neither am I.
@@ -1407,6 +1426,341 @@ Draconid Emerald: rival scenes that belong to no single act (Phase 5, cut down i
 ### `LilycoveCity_Text_DraconidRivalsGo`
 - BRENDAN: Here we come!
 - MAY: Don't hold back, {PLAYER}!
+
+## data/maps/DraconidVillage_Shrine_Depths/scripts.pory
+
+The chamber behind the shrine's carved wall (Act 7 extension, D-202; layout: tools/hack/mapgen/specs/ draconid_shrine_depths.py): REGIDRAGO, the clan's stone dragon, sleeps at (8, 7). A static battle at DRACONID_REGIDRAGO_LEVEL: beaten or fled, it wakes again the next time the player comes down (its object uses a temp flag); caught, it is gone (FLAG_DRACONID_CAUGHT_REGIDRAGO). The first battle that is not lost (won, caught or fled) lets the ELDER fly the player back to the Sky Pillar (VILLAGE_STATE_REGIDRAGO, data/scripts/draconid/act7x.pory).
+
+### `DraconidVillage_Shrine_Depths_EventScript_Regidrago`
+- A dragon of living stone lay before the carved wall.
+- Its eyes began to glow as {PLAYER} came near…
+- REGIDRAGO sank back into the stone of the wall…
+- It is still here, sleeping. It will wake again.
+
+### `DraconidVillage_Shrine_Depths_EventScript_Carving`
+- Words are carved into the rock, older than the shrine above:
+- “THE STONE DRAGON WAITS FOR THE ONE WHO STANDS BESIDE THE SKY.”
+
+## data/scripts/draconid/act7x.pory
+
+Draconid Emerald round 1, the Act 7 extension (docs/hack_story.md, follow-up notes 2 and 15; feedback 1.25, 1.29, 1.30; decisions D-200 - D-209): REGIDRAGO before the Sky Pillar, and the attack on the village after it.  Sky Pillar, outside   the ELDER calls as the player lands: the shrine's old seal has woken; his dragon flies the player home (before the TRIAL OF THREE, act7.pory) Village shrine        the carved wall behind the GUARDIAN's statue opens; REGIDRAGO waits below (DraconidVillage_Shrine_Depths/scripts.pory); the ELDER's dragon flies the player back Sky Pillar summit     after "The sky's debt is paid… for now." the sky over the mountains splits: MAY calls, MAGMA and AQUA are at the village with PRIMAL GROUDON and PRIMAL KYOGRE Village               BRENDAN, MAY (LATIAS) and WALLY land with the player (BRENDAN's LATIOS); three double battles at the houses, each rival as partner; ASTER and the player vs TABITHA and SHELLY on the way up to the shrine; MAXIE and ARCHIE at the shrine, the partner BRENDAN or MAY: the Primal multi battle; RAYQUAZA calms GROUDON and KYOGRE, the ORBS, goodbyes, credits Post-game             GROUDON asleep in the MAGMA HIDEOUT, KYOGRE in the SEAFLOOR CAVERN (static, they come back until caught); both LATIOS and LATIAS roam (DraconidVillage_PlayersHouse_1F)  VAR_DRACONID_VILLAGE_STATE: VILLAGE_STATE_* (include/constants/draconid.h). VAR_DRACONID_FINALE_STATE stays at FINALE_STATE_RAYQUAZA through the attack and becomes FINALE_STATE_METEOR_DESTROYED just before the credits, so everything the post-game opens waits for the village to be saved. The village's scenes start from its OnFrame through VAR_TEMP_2 (set by DraconidVillage_EventScript_DraconidAttackOnTransition); its objects for the attack use temp flags that the OnTransition sets for everyone who isn't there at the current state (D-136, D-204). A lost battle in the village sends the player home to rest (the house is safe); the fight waits where it was.
+
+### `Draconid_EventScript_VillageChooseMons`
+- Choose the POKéMON that will battle beside your partner!
+
+### `Draconid_EventScript_VillageLost`
+- {PLAYER} was driven back…
+- The villagers carried {PLAYER} home. There, the POKéMON were tended until they could fight again.
+
+### `Draconid_EventScript_VillageHeal`
+- {PLAYER}'s POKéMON were restored to full health!
+
+### `SkyPillar_Outside_EventScript_DraconidElderCall`
+- … … … … … … … … … … … Beep!
+- ELDER: {PLAYER}. It is the ELDER. Do not climb yet.
+- When the star caught fire, the old seal in our shrine broke. The wall behind the GUARDIAN is singing.
+- Long ago the clan sealed a dragon of stone there. REGIDRAGO.
+- It wakes only when the sky is in danger. No tamer has ever climbed to RAYQUAZA without its blessing.
+- It answers only the one who carries the prophecy. That one is you.
+- My dragon is on its way to you. Come home, face the stone dragon, and you will be back at the pillar before the night is out.
+- … … … … … … … … … … … Click!
+- NERINE: {PLAYER}! We heard the stones sing, even out here.
+- Go quickly. We'll keep the door until you're back.
+- ASTER: And don't you dare keep us waiting! That star won't!
+- The ELDER's old dragon came down out of the dark sky, and carried {PLAYER} home…
+
+### `SkyPillar_Outside_EventScript_DraconidWallaceScene`
+- WALLACE: Welcome, {PLAYER}. I thought the sky might bring you here tonight.
+- WALLACE: SOOTOPOLIS has kept watch over this tower for as long as RAYQUAZA has slept in it.
+- Your clan keeps the sky. We keep the water that sleeps beneath it.
+- WALLACE: I saw you cast off that uniform. I know who you are.
+- Still, no one climbs to RAYQUAZA before I have seen them battle with my own eyes.
+- WALLACE: Let us see whether your strength is as refined as your resolve.
+
+### `SkyPillar_Outside_EventScript_DraconidBattleWallace`
+- WALLACE: The tide turns, and turns again. Let me tend to your partners.
+- {PLAYER}'s POKéMON were restored to full health!
+- WALLACE: Speak to me when you are ready. I will be here.
+- WALLACE: Magnificent. The clan chose well.
+- The tower is yours, {PLAYER}.
+- WALLACE: ASTER, NERINE! SOOTOPOLIS watches the water, and the DRACONIDS watch the sky.
+- It has always been one sky. I am glad to share it with you.
+- NERINE: Then keep the sea calm for us tonight, WALLACE.
+
+### `SkyPillar_Outside_EventScript_DraconidWallace`
+- WALLACE: Shall we try again, {PLAYER}?
+- WALLACE: Take your time. Calm water runs deepest.
+
+### `SkyPillar_Outside_EventScript_DraconidGoHomeFirst`
+- ASTER: The ELDER is waiting for you at the shrine, {PLAYER}. Go on home first.
+- We'll keep the door. Nobody climbs without us.
+
+### `DraconidVillage_Shrine_EventScript_DraconidSealScene`
+- ELDER: You came quickly. Good.
+- ELDER: Listen, {PLAYER}. Can you hear it?
+- ELDER: Our clan's first tamers carved the wall behind the GUARDIAN around a dragon of living stone.
+- REGIDRAGO. It slept there through the war of the land and the sea.
+- It was sealed away to wait for one thing: the one who would stand beside the sky.
+- ELDER: The star is near, and it has woken. Put your hand on the GUARDIAN, {PLAYER}.
+- The GUARDIAN's statue began to move!
+- Behind the statue, the carved wall split open!
+- Cold air rose from a passage leading down into the rock.
+- ELDER: It is open. Go down to it, {PLAYER}.
+- It will test you, as the sky tests us all. I will wait for you by the door.
+
+### `DraconidVillage_Shrine_EventScript_DraconidElderAfterRegidrago`
+- ELDER: So the stone dragon has chosen you. I felt it.
+- The clan waited a very long time for that, {PLAYER}.
+- ELDER: The stone dragon sleeps again. But it knows you now.
+- It will be waiting down there, whenever you return to it.
+
+### `DraconidVillage_Shrine_EventScript_DraconidOfferLift`
+- ELDER: Now, the pillar. ASTER and NERINE have waited long enough.
+- My dragon will carry you there. Are you ready?
+- ELDER: Then make ready. I will be here.
+- Or go by your own wings: the pillar stands on ROUTE 131, west of PACIFIDLOG TOWN.
+- ELDER: Hold on tight, and do not look down.
+
+### `DraconidVillage_Shrine_EventScript_DraconidElderTalk`
+- ELDER: REGIDRAGO waits below. Go to it, {PLAYER}.
+
+### `DraconidVillage_Shrine_EventScript_DraconidOpenWallSign`
+- The old carving has split around a dark passage.
+- A cold wind rises from deep in the rock.
+
+### `SkyPillar_Top_EventScript_DraconidAlarm`
+- A deep rumble rolled in over the sea from the east.
+- Far away, above the mountains, the sky had split in two.
+- A blazing sun on one side. Black rain on the other.
+- ASTER: That's over the mountains. That's over HOME.
+- NERINE: The sun and the rain, both at once… Only the old ones of the land and the sea do that.
+- … … … … … … … … … … … Beep!
+- MAY: {PLAYER}! {PLAYER}, can you hear me?!
+- TEAM MAGMA and TEAM AQUA went up DRACONID PASS. Both of them, together!
+- BRENDAN saw MAXIE with the RED ORB. And ARCHIE had the BLUE one!
+- They woke GROUDON and KYOGRE up again. And they're different now. Huge, and glowing!
+- The sky over your village is half fire and half storm!
+- BRENDAN and WALLY are here with me. We're going up there right now!
+- Hurry, {PLAYER}!
+- … … … … … … … … … … … Click!
+- ELDER: MAXIE and ARCHIE, together. The DRACONIDS stood in their way, and now they come for us.
+- ELDER: ASTER, NERINE. With me, to the shrine.
+- {PLAYER}, follow as fast as the sky will carry you.
+- ZINNIA: Go! This is your clan's fight.
+- I'll keep watch on the sky from up here.
+- The ELDER's dragon rose into the air, with ASTER's and NERINE's close behind.
+- {STR_VAR_1} carried {PLAYER} after them, east, into the split sky…
+
+### `DraconidVillage_EventScript_DraconidArrival`
+- {PLAYER} came down at the foot of the village…
+- PRIMAL GROUDON towered over the houses, burning like the heart of a volcano.
+- TEAM MAGMA and TEAM AQUA stood at every door.
+- Up at the shrine, the ELDER, ASTER and NERINE held the way in.
+- In the waterfall pool, PRIMAL KYOGRE rose, and the rain came down in sheets.
+- BRENDAN: {PLAYER}! Man… Look at this place.
+- MAY: We saw the sky from LITTLEROOT. Half of it was on fire!
+- WALLY: There are people in those houses, {PLAYER}. They can't get out!
+- MAY: Oh! You haven't met her yet.
+- When the star broke over HOENN, a LATIAS came down right outside the LAB.
+- She hasn't left my side since. She flew me all the way up here!
+- BRENDAN: A LATIOS found me the same night. It just stared at me until I got on.
+- …Don't laugh.
+- BRENDAN: They've got grunts at every door. We take them one house at a time.
+- I've got the house by the pond. MAY, {PLAYER}'s house. WALLY, the one down here.
+- MAY: Whichever house you reach first, {PLAYER}, we fight it together!
+- WALLY: I'm not scared of them anymore. Let's go!
+
+### `DraconidVillage_EventScript_DraconidHouse2`
+- GRUNT: The traitor's come home! MAXIE said you would.
+- GRUNT: ARCHIE says the DRACONIDS called the sky down on us twice.
+- Nobody leaves this house until your clan pays for it.
+- WALLY: {PLAYER}! I'll fight with you.
+- I stood up to you when you wore red. I can stand up to them.
+- GRUNT: Fall back! Fall back to the shrine!
+- WALLY: They ran… They actually ran from us!
+- I used to be scared of TEAM MAGMA. Now they're scared of us.
+- A voice called from the doorway: “Thank the sky! They've been at our door for hours!”
+- The family from the house hurried out to tend {PLAYER}'s team.
+
+### `DraconidVillage_EventScript_DraconidPlayersHouse`
+- GRUNT: So this is the traitor's house. MAXIE wants it turned upside down.
+- GRUNT: Eheh. Nice little hut. Shame about the weather!
+- MAY: Hey! Get away from that door!
+- {PLAYER}, your village is our village now. Let's go!
+- GRUNT: This isn't worth it! I'm out of here!
+- MAY: Hehe! Nobody touches {PLAYER}'s house while I'm around!
+- LATIAS, you were amazing! Did you see her, {PLAYER}?
+- The OLD WOMAN who gave {PLAYER} the RUNNING SHOES came out of hiding next door.
+- “Oh, my! Come here, let me see to your partners.”
+
+### `DraconidVillage_EventScript_DraconidHouse1`
+- GRUNT: More DRACONIDS? The grown-ups already ran up to that shrine.
+- GRUNT: Just a weaver and a little girl in there. Easy pickings.
+- BRENDAN: Easy, huh? Try us.
+- {PLAYER}, you and me. Let's show them what we've got!
+- GRUNT: Forget this! Back to the boss!
+- BRENDAN: Hah! Not bad, partner.
+- The weaver and her daughter peeked out of the door.
+- “You came back for us!” They brought water and warm cloth for {PLAYER}'s team.
+
+### `DraconidVillage_EventScript_DraconidHouseFreed`
+- Up at the shrine, something crashed against the rock.
+- Every house was free. Only the way up to the shrine was left.
+- ASTER's voice rang down from the shrine: “{PLAYER}! Up here! NOW!”
+- There were still grunts at the other houses.
+
+### `DraconidVillage_EventScript_DraconidWallyTalk`
+- WALLY: I'll stay with this family until it's over.
+- Go help the others, {PLAYER}!
+- WALLY: Let's go when you're ready, {PLAYER}.
+
+### `DraconidVillage_EventScript_DraconidMayTalk`
+- MAY: I'll keep watch on your house. Go on, {PLAYER}!
+- MAY: Ready when you are, {PLAYER}!
+
+### `DraconidVillage_EventScript_DraconidBrendanTalk`
+- BRENDAN: I've got this house covered. Go!
+- BRENDAN: Whenever you're ready. Don't keep them waiting.
+
+### `DraconidVillage_EventScript_DraconidAdmins`
+- TABITHA: Hehehe! Look who finally came home.
+- Your neighbors are still at our mercy, traitor. Go on. Run along and save them.
+
+### `DraconidVillage_EventScript_DraconidAster`
+- ASTER: Help the houses first! We can hold the door a while longer!
+
+### `DraconidVillage_EventScript_DraconidAdminsBattle`
+- ASTER: {PLAYER}. The ELDER stood in the shrine door against both of their monsters.
+- He took a blow meant for the GUARDIAN's statue.
+- NERINE is with him. He's breathing. He's too stubborn not to.
+- ASTER: I'm done watching. These two are mine.
+- Yours too, if you want them.
+- TABITHA: The ELDER's little pets, side by side at last. MAXIE will be so pleased.
+- SHELLY: Ahahahaha! Two baby dragon tamers? This'll be over in a minute!
+- TABITHA: MAXIE! They're through!
+- SHELLY: ARCHIE, your turn! I'm done with these kids!
+- ASTER: Hmph. Side by side with you.
+- …I could get used to that.
+
+### `DraconidVillage_EventScript_DraconidFinalIntro`
+- MAXIE: So. My recruit comes home at last.
+- MAXIE: You stood beside me, {PLAYER}. I made you my right hand.
+- And all the while you carried my plans to these sky-watchers.
+- MAXIE: This shrine is how the DRACONIDS call RAYQUAZA down upon us.
+- No sky will stand between humankind and its land again. It ends today.
+- ARCHIE: Fufufu! Don't look so shocked, kid.
+- Your clan made fools of both of us. That was a mistake.
+- ARCHIE: Turns out MAXIE and I had each other's ORB the whole time.
+- One trade, and look what they do now!
+- MAXIE: The RED ORB answers me now.
+- Behold GROUDON as it was at the dawn of the world.
+- BRENDAN: {PLAYER}! COURTNEY and MATT are coming up the pass!
+- They've got a whole crowd of grunts with them!
+- MAY: Then two of us hold the pass, and one fights beside {PLAYER}!
+
+### `DraconidVillage_EventScript_DraconidMaxieArchie`
+- MAXIE: You again. You never know when to stay down, do you?
+- MAY: {PLAYER}! We're still here! Who's fighting with you this time?
+
+### `DraconidVillage_EventScript_DraconidMaxieArchieWaiting`
+- MAXIE: Humph. My ADMINS will deal with you.
+- I have waited a long time for this. I can wait a little longer.
+- ARCHIE: Look at it, kid! KYOGRE as it was meant to be!
+- Go on, play with SHELLY first. I'll be right here.
+
+### `DraconidVillage_EventScript_DraconidFinalChoice`
+- Who will fight beside {PLAYER}?
+- BRENDAN: Me again, huh? Good.
+- LATIOS, you're up!
+- MAY: Then WALLY and I will hold the pass! Don't you dare lose, {PLAYER}!
+- MAY: Yes! LATIAS, let's go!
+- BRENDAN: WALLY, with me. Nobody gets up that path!
+- WALLY: Right behind you!
+- ASTER: NERINE and I have the ELDER, {PLAYER}. Don't look back here.
+- NERINE: Win, {PLAYER}. Then come home to us.
+- ARCHIE: Two kids against MAGMA and AQUA together, and the old ones of land and sea?
+- Fufufu… Bring it on!
+- MAXIE: Enough talk. Humankind will have its land, {PLAYER}.
+- Even if I must bury this mountain to give it to them.
+
+### `DraconidVillage_EventScript_DraconidPrimalWon`
+- MAXIE: No… GROUDON! Crush them!
+- The ground heaved. GROUDON and KYOGRE thrashed, no longer listening to anyone.
+- RAYQUAZA burst from its POKé BALL and rose over the shrine!
+- In the shrine door, the ELDER pulled himself to his feet and raised his voice to the old ones.
+- ELDER: Old ones of the land and the sea. The sky has spoken for you once before.
+- Your war ended long ago. Go home now, and sleep.
+- GROUDON's glow went dark. It sank down into the mountain and was gone.
+- KYOGRE slipped away down the river, back toward the sea.
+- The storm broke. The sun over the mountains was only the sun again.
+- RAYQUAZA came down and returned to its POKé BALL.
+- MAXIE: …Humph. RAYQUAZA answers you. It never once answered me.
+- MAXIE: I will not thank you, {PLAYER}. Nor will I forgive you.
+- But the land has chosen who stands for it. Even I can see that much.
+- MAXIE: Take it. The RED ORB is wasted on a man GROUDON will not hear.
+- ARCHIE: Hah… Look at this place.
+- We came up here to wreck a village of kids and old folks.
+- ARCHIE: That's not what the sea ever asked of me. …Here. Keep this away from me.
+- MAXIE: TEAM MAGMA is finished here. Come, ARCHIE.
+- MAXIE and ARCHIE led what was left of their teams back down the pass.
+- By evening the fires were out, and the villagers came out of their houses one by one…
+
+### `MtPyre_Summit_EventScript_DraconidOldLadyOrbs`
+- So the RED ORB and the BLUE ORB came to you in the end.
+- Keep them. The one who calmed the old ones should hold them.
+
+### `DraconidVillage_EventScript_DraconidGoodbyes`
+- ELDER: {PLAYER}. You brought friends home with you.
+- ELDER: The sky's debt was ours to pay. You have paid far more than your share.
+- ELDER: BRENDAN. MAY. WALLY.
+- The DRACONIDS will not forget what you did for us today. This village is yours, always.
+- WALLY: Um… Is it okay if I come back sometime?
+- I can breathe really well up here.
+- BRENDAN: We'll be back. You still owe me a real battle, {PLAYER}.
+- Come find me at my dad's LAB. I'll be ready.
+- MAY: And you owe me the whole story. Every single part of it!
+- See you soon, {PLAYER}!
+- LATIOS and LATIAS carried BRENDAN and MAY off toward LITTLEROOT, with WALLY's ALTARIA close behind.
+- ASTER: Riddle: what's quiet, a little burnt, and still standing?
+- …Home, {PLAYER}. That's the answer.
+- NERINE: Welcome home, {PLAYER}.
+- ELDER: Come. Let us go in.
+
+### `DraconidVillage_EventScript_DraconidElder`
+- ELDER: I am only bruised, {PLAYER}. Old dragons are hard to break.
+- The ELDER was down on one knee in the shrine door, breathing hard.
+- ELDER: Do not worry for me, {PLAYER}… Protect the village.
+
+### `DraconidVillage_EventScript_DraconidNerineAtShrine`
+- NERINE: I've got him. He took a hard blow, but he's breathing.
+- Go, {PLAYER}. The sea and I will hold this door.
+
+### `DraconidVillage_EventScript_DraconidGatekeeperAttack`
+- GATEKEEPER: {PLAYER}! Don't go down the pass now!
+- They came up it in the dark, dozens of them. I couldn't hold them back.
+- Our people are still in the village. Please!
+
+### `DraconidVillage_EventScript_DraconidGatekeeperTalk`
+- GATEKEEPER: They came up the pass in the dark, MAGMA and AQUA both.
+- I couldn't hold them back, {PLAYER}. Please… Save our village.
+
+### `MagmaHideout_4F_EventScript_DraconidGroudon`
+- GROUDON is sleeping at the edge of the magma, the RED ORB's glow long gone from its body.
+- …It stirred!
+- GROUDON sank back into the magma…
+- It will surely rise again.
+
+### `SeafloorCavern_Room9_EventScript_DraconidKyogre`
+- KYOGRE is sleeping in the deep pool, the BLUE ORB's glow long gone from its body.
+- …It stirred!
+- KYOGRE sank into the dark water…
+- It will surely rise again.
+
+### `Route119_WeatherInstitute_2F_EventScript_DraconidLegendsHome`
+- The skies over HOENN went strange tonight. None of our instruments can explain it!
+- After that storm over the mountains, our readings went quiet again.
+- The heat sank back toward the MAGMA HIDEOUT by MT. CHIMNEY, and the rain toward the SEAFLOOR CAVERN off ROUTE 128.
+- If you ask me, GROUDON and KYOGRE went home to sleep where they first woke!
 
 ## data/scripts/draconid/audit_fixes.pory
 
@@ -1758,7 +2112,7 @@ Draconid Emerald round 1 follow-up: the Battle Frontier legends (post-game, D-22
 
 ## data/scripts/draconid/lance.pory
 
-Draconid Emerald round 1 follow-up 25 (feedback 1.56): LANCE, a post-game boss in the Draconid village (D-260 - D-262).  Lore (D-260)     LANCE's dragon clan of BLACKTHORN CITY (JOHTO) is the DRACONIDS' NORTHERN WING: generations ago some DRACONIDS followed their dragons north and founded it. Both branches kept the old stories but lost touch; the ELDER knows the old name from the clan's songs. Arrival (D-261)  post-game only (VAR_DRACONID_FINALE_STATE >= FINALE_STATE_POSTGAME: the ELDER has brought the SS TICKET). The first village visit after that only arms it (FLAG_DRACONID_LANCE_ARMED); on a later one, when the player comes out of their house or flies home (both put them on the fly spot, LANCE_ARRIVAL_X/Y), a DRAGONITE swoops down onto the square with LANCE on its back, the ELDER and ASTER come over, and LANCE challenges the player. Declined, he waits in the village. Battle (D-262)   TRAINER_LANCE_DRACONID: his PWT team with MEGA DRAGONITE last. A loss whites out, like ASTER's and NERINE's post-game battles; he stays. The first win brings a DRATINI from the DRAGON'S DEN and the DRAGONINITE (FLAG_RECEIVED_DRAGONINITE); after that he battles again whenever asked.  Objects (DraconidVillage/map.json, the last four): LANCE (13, 13) with his DRAGONITE (13, 12) behind him, hidden by FLAG_HIDE_DRACONID_VILLAGE_LANCE until he lands (then cleared for good); the scene's ELDER (21, 13) and ASTER (12, 9), hidden by FLAG_TEMP_1D, which the OnTransition hook sets (scene-only objects, D-136). Hooks: DraconidVillage_OnTransition calls ..._LanceOnTransition; the village's OnFrame table runs ..._LanceArrives while VAR_TEMP_C is 1.
+Draconid Emerald round 1 follow-up 25 (feedback 1.56): LANCE, a post-game boss in the Draconid village (D-260 - D-262).  Lore (D-260)     LANCE's dragon clan of BLACKTHORN CITY (JOHTO) is the DRACONIDS' NORTHERN WING: generations ago some DRACONIDS followed their dragons north and founded it. Both branches kept the old stories but lost touch; the ELDER knows the old name from the clan's songs. Arrival (D-261)  post-game only (VAR_DRACONID_FINALE_STATE >= FINALE_STATE_POSTGAME: the ELDER has brought the SS TICKET). The first village visit after that only arms it (FLAG_DRACONID_LANCE_ARMED); on a later one, when the player comes out of their house or flies home (both put them on the fly spot, LANCE_ARRIVAL_X/Y), a DRAGONITE swoops down onto the square with LANCE on its back, the ELDER and ASTER come over, and LANCE challenges the player. Declined, he waits in the village. Battle (D-262)   TRAINER_LANCE_DRACONID: his PWT team with MEGA DRAGONITE last. A loss whites out, like ASTER's and NERINE's post-game battles; he stays. The first win brings a DRATINI from the DRAGON'S DEN and the DRAGONINITE (FLAG_RECEIVED_DRAGONINITE); after that he battles again whenever asked.  Objects (DraconidVillage/map.json, the last four): LANCE (13, 13) with his DRAGONITE (13, 12) behind him, hidden by FLAG_HIDE_DRACONID_VILLAGE_LANCE until he lands (then cleared for good); the scene's ELDER (21, 13) and ASTER (12, 9), hidden by FLAG_TEMP_1E, which the OnTransition hook sets (scene-only objects, D-136). Hooks: DraconidVillage_OnTransition calls ..._LanceOnTransition; the village's OnFrame table runs ..._LanceArrives while VAR_TEMP_C is 1.
 
 ### `DraconidVillage_EventScript_LanceArrives`
 - LANCE: So this is the DRACONID village.

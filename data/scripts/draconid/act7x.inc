@@ -1,0 +1,2199 @@
+Draconid_EventScript_VillageChooseMons::
+	special SavePlayerParty
+	fadescreen FADE_TO_BLACK
+	special ChooseHalfPartyForBattle
+Draconid_EventScript_VillageChooseMons_1:
+	compare VAR_RESULT, FALSE
+	goto_if_eq Draconid_EventScript_VillageChooseMons_2
+	return
+
+Draconid_EventScript_VillageChooseMons_2:
+	special LoadPlayerParty
+	msgbox Draconid_EventScript_VillageChooseMons_Text_0
+	closemessage
+	special SavePlayerParty
+	fadescreen FADE_TO_BLACK
+	special ChooseHalfPartyForBattle
+	goto Draconid_EventScript_VillageChooseMons_1
+
+
+Draconid_EventScript_VillageLost::
+	fadescreen FADE_TO_BLACK
+	special HealPlayerParty
+	msgbox Draconid_EventScript_VillageLost_Text_0
+	closemessage
+	warp MAP_DRACONID_VILLAGE_PLAYERS_HOUSE_1F, 8, 6
+	waitstate
+	return
+
+
+Draconid_EventScript_VillageHeal::
+	call Draconid_EventScript_FinaleHeal
+	msgbox Draconid_EventScript_VillageHeal_Text_0
+	return
+
+
+SkyPillar_Outside_EventScript_DraconidElderCall::
+	lockall
+	setvar VAR_TEMP_7, 0
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	delay 30
+	pokenavcall SkyPillar_Outside_Text_DraconidElderCall
+	waitmessage
+	closemessage
+	msgbox SkyPillar_Outside_EventScript_DraconidElderCall_Text_0
+	msgbox SkyPillar_Outside_EventScript_DraconidElderCall_Text_1
+	closemessage
+	setvar VAR_DRACONID_VILLAGE_STATE, VILLAGE_STATE_ELDER_CALLED
+	setflag FLAG_HIDE_DRACONID_HOUSE_ELDER
+	playse SE_M_FLY
+	fadescreen FADE_TO_BLACK
+	msgbox SkyPillar_Outside_EventScript_DraconidElderCall_Text_2
+	closemessage
+	warp MAP_DRACONID_VILLAGE, 19, 6
+	waitstate
+	return
+
+
+SkyPillar_Outside_EventScript_DraconidShowWallace::
+	clearflag FLAG_HIDE_SKY_PILLAR_WALLACE
+	setobjectxyperm LOCALID_SKY_PILLAR_WALLACE, 15, 14
+	setobjectmovementtype LOCALID_SKY_PILLAR_WALLACE, MOVEMENT_TYPE_FACE_RIGHT
+	return
+
+
+SkyPillar_Outside_EventScript_DraconidWallaceScene::
+	lockall
+	setvar VAR_TEMP_7, 0
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement 0
+	applymovement LOCALID_SKY_PILLAR_WALLACE, Common_Movement_WalkRight
+	waitmovement 0
+	msgbox SkyPillar_Outside_EventScript_DraconidWallaceScene_Text_0
+	msgbox SkyPillar_Outside_EventScript_DraconidWallaceScene_Text_1
+	msgbox SkyPillar_Outside_EventScript_DraconidWallaceScene_Text_2
+	msgbox SkyPillar_Outside_EventScript_DraconidWallaceScene_Text_3
+	closemessage
+	goto SkyPillar_Outside_EventScript_DraconidBattleWallace
+	return
+
+
+SkyPillar_Outside_EventScript_DraconidBattleWallace::
+	setflag FLAG_DRACONID_NO_WHITEOUT
+	trainerbattle_no_intro TRAINER_WALLACE_SKY_PILLAR, SkyPillar_Outside_Text_DraconidWallaceDefeat
+	clearflag FLAG_DRACONID_NO_WHITEOUT
+	specialvar VAR_RESULT, GetBattleOutcome
+	compare VAR_RESULT, B_OUTCOME_WON
+	goto_if_ne SkyPillar_Outside_EventScript_DraconidBattleWallace_2
+	msgbox SkyPillar_Outside_EventScript_DraconidBattleWallace_Text_2
+	applymovement LOCALID_SKY_PILLAR_WALLACE, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	msgbox SkyPillar_Outside_EventScript_DraconidBattleWallace_Text_3
+	msgbox SkyPillar_Outside_EventScript_DraconidBattleWallace_Text_4
+	closemessage
+	applymovement LOCALID_SKY_PILLAR_WALLACE, SkyPillar_Outside_Movement_DraconidWallaceStepsAside
+	waitmovement 0
+	fadescreen FADE_TO_BLACK
+	setflag FLAG_HIDE_SKY_PILLAR_WALLACE
+	warpsilent MAP_SKY_PILLAR_OUTSIDE, 17, 14
+	waitstate
+	return
+
+SkyPillar_Outside_EventScript_DraconidBattleWallace_2:
+	msgbox SkyPillar_Outside_EventScript_DraconidBattleWallace_Text_0
+	call Draconid_EventScript_FinaleHeal
+	msgbox Draconid_EventScript_VillageHeal_Text_0
+	msgbox SkyPillar_Outside_EventScript_DraconidBattleWallace_Text_1
+	releaseall
+	end
+
+
+SkyPillar_Outside_Movement_DraconidWallaceStepsAside:
+	walk_down
+	walk_left
+	face_right
+	step_end
+
+SkyPillar_Outside_EventScript_DraconidWallace::
+	lock
+	faceplayer
+	msgbox SkyPillar_Outside_EventScript_DraconidWallace_Text_0, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+	goto_if_eq SkyPillar_Outside_EventScript_DraconidWallace_2
+	closemessage
+	goto SkyPillar_Outside_EventScript_DraconidBattleWallace
+	return
+
+SkyPillar_Outside_EventScript_DraconidWallace_2:
+	msgbox SkyPillar_Outside_EventScript_DraconidWallace_Text_1
+	release
+	end
+
+
+SkyPillar_Outside_EventScript_DraconidGoHomeFirst::
+	msgbox SkyPillar_Outside_EventScript_DraconidGoHomeFirst_Text_0
+	release
+	end
+
+
+DraconidVillage_Shrine_EventScript_DraconidOnLoad::
+	compare VAR_DRACONID_VILLAGE_STATE, VILLAGE_STATE_SEAL_OPEN
+	goto_if_ge DraconidVillage_Shrine_EventScript_DraconidOnLoad_1
+	return
+
+DraconidVillage_Shrine_EventScript_DraconidOnLoad_1:
+	call DraconidVillage_Shrine_EventScript_DraconidOpenWall
+	return
+
+
+DraconidVillage_Shrine_EventScript_DraconidOpenWall::
+	setmetatile 9, 3, METATILE_Cave_DoorwayPurple_TopLeft, TRUE
+	setmetatile 10, 3, METATILE_Cave_DoorwayPurple_Top, TRUE
+	setmetatile 11, 3, METATILE_Cave_DoorwayPurple_TopRight, TRUE
+	setmetatile 9, 4, METATILE_Cave_DoorwayPurple_Left, TRUE
+	setmetatile 10, 4, METATILE_Cave_DoorwayPurple, FALSE
+	setmetatile 11, 4, METATILE_Cave_DoorwayPurple_Right, TRUE
+	return
+
+
+DraconidVillage_Shrine_EventScript_DraconidOnTransition::
+	compare VAR_DRACONID_FINALE_STATE, FINALE_STATE_SUMMONED
+	goto_if_lt DraconidVillage_Shrine_EventScript_DraconidOnTransition_2
+	compare VAR_DRACONID_VILLAGE_STATE, VILLAGE_STATE_SEAL_OPEN
+	goto_if_ge DraconidVillage_Shrine_EventScript_DraconidOnTransition_5
+DraconidVillage_Shrine_EventScript_DraconidOnTransition_4:
+	compare VAR_DRACONID_FINALE_STATE, FINALE_STATE_SUMMONED
+	goto_if_eq DraconidVillage_Shrine_EventScript_DraconidOnTransition_10
+DraconidVillage_Shrine_EventScript_DraconidOnTransition_8:
+	setflag FLAG_HIDE_DRACONID_SHRINE_ELDER
+	return
+
+DraconidVillage_Shrine_EventScript_DraconidOnTransition_2:
+	return
+
+DraconidVillage_Shrine_EventScript_DraconidOnTransition_5:
+	setobjectxyperm LOCALID_DRACONID_SHRINE_STATUE, 10, 9
+	goto DraconidVillage_Shrine_EventScript_DraconidOnTransition_4
+
+DraconidVillage_Shrine_EventScript_DraconidOnTransition_7:
+	clearflag FLAG_HIDE_DRACONID_SHRINE_ELDER
+	getplayerxy VAR_TEMP_2, VAR_TEMP_3
+	compare VAR_DRACONID_VILLAGE_STATE, VILLAGE_STATE_ELDER_CALLED
+	goto_if_eq DraconidVillage_Shrine_EventScript_DraconidOnTransition_14
+	setobjectxyperm LOCALID_DRACONID_SHRINE_ELDER, 11, 5
+	setobjectmovementtype LOCALID_DRACONID_SHRINE_ELDER, MOVEMENT_TYPE_FACE_LEFT
+	compare VAR_DRACONID_VILLAGE_STATE, VILLAGE_STATE_REGIDRAGO
+	goto_if_eq DraconidVillage_Shrine_EventScript_DraconidOnTransition_18
+	return
+
+DraconidVillage_Shrine_EventScript_DraconidOnTransition_9:
+	compare VAR_DRACONID_VILLAGE_STATE, VILLAGE_STATE_REGIDRAGO
+	goto_if_le DraconidVillage_Shrine_EventScript_DraconidOnTransition_7
+	goto DraconidVillage_Shrine_EventScript_DraconidOnTransition_8
+
+DraconidVillage_Shrine_EventScript_DraconidOnTransition_10:
+	compare VAR_DRACONID_VILLAGE_STATE, VILLAGE_STATE_ELDER_CALLED
+	goto_if_ge DraconidVillage_Shrine_EventScript_DraconidOnTransition_9
+	goto DraconidVillage_Shrine_EventScript_DraconidOnTransition_8
+
+DraconidVillage_Shrine_EventScript_DraconidOnTransition_14:
+	setobjectxyperm LOCALID_DRACONID_SHRINE_ELDER, 13, 10
+	setobjectmovementtype LOCALID_DRACONID_SHRINE_ELDER, MOVEMENT_TYPE_FACE_LEFT
+	setvar VAR_TEMP_1, 2
+	return
+
+DraconidVillage_Shrine_EventScript_DraconidOnTransition_17:
+	setvar VAR_TEMP_1, 3
+	return
+
+DraconidVillage_Shrine_EventScript_DraconidOnTransition_18:
+	compare VAR_TEMP_3, 4
+	goto_if_eq DraconidVillage_Shrine_EventScript_DraconidOnTransition_17
+	return
+
+
+DraconidVillage_Shrine_EventScript_DraconidSealScene::
+	lockall
+	setvar VAR_TEMP_1, 0
+	applymovement LOCALID_PLAYER, DraconidVillage_Shrine_Movement_DraconidPlayerToStatue
+	waitmovement 0
+	applymovement LOCALID_DRACONID_SHRINE_ELDER, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement 0
+	msgbox DraconidVillage_Shrine_EventScript_DraconidSealScene_Text_0
+	msgbox DraconidVillage_Shrine_EventScript_DraconidSealScene_Text_1
+	closemessage
+	special DoSealedChamberShakingEffect_Short
+	playse SE_M_EARTHQUAKE
+	waitse
+	msgbox DraconidVillage_Shrine_EventScript_DraconidSealScene_Text_2
+	msgbox DraconidVillage_Shrine_EventScript_DraconidSealScene_Text_3
+	closemessage
+	delay 30
+	fadeoutbgm 0
+	playse SE_TRUCK_MOVE
+	special DoSealedChamberShakingEffect_Long
+	msgbox DraconidVillage_Shrine_EventScript_DraconidSealScene_Text_4
+	closemessage
+	applymovement LOCALID_PLAYER, DraconidVillage_Shrine_Movement_DraconidPlayerStepsBack
+	waitmovement 0
+	playse SE_TRUCK_MOVE
+	applymovement LOCALID_DRACONID_SHRINE_STATUE, DraconidVillage_Shrine_Movement_DraconidStatueSlides
+	waitmovement 0
+	special SpawnCameraObject
+	applymovement LOCALID_CAMERA, DraconidVillage_Shrine_Movement_DraconidCameraToWall
+	waitmovement 0
+	special DoSealedChamberShakingEffect_Short
+	playse SE_DOOR
+	delay 40
+	special DoSealedChamberShakingEffect_Short
+	playse SE_DOOR
+	delay 40
+	call DraconidVillage_Shrine_EventScript_DraconidOpenWall
+	special DrawWholeMapView
+	playse SE_BANG
+	msgbox DraconidVillage_Shrine_EventScript_DraconidSealScene_Text_5
+	closemessage
+	applymovement LOCALID_CAMERA, DraconidVillage_Shrine_Movement_DraconidCameraBack
+	waitmovement 0
+	special RemoveCameraObject
+	fadeinbgm 0
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
+	msgbox DraconidVillage_Shrine_EventScript_DraconidSealScene_Text_6
+	closemessage
+	setvar VAR_DRACONID_VILLAGE_STATE, VILLAGE_STATE_SEAL_OPEN
+	releaseall
+	return
+
+
+DraconidVillage_Shrine_Movement_DraconidPlayerToStatue:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
+DraconidVillage_Shrine_Movement_DraconidPlayerStepsBack:
+	lock_facing_direction
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	unlock_facing_direction
+	step_end
+
+DraconidVillage_Shrine_Movement_DraconidStatueSlides:
+	lock_facing_direction
+	slide_down
+	slide_down
+	slide_down
+	unlock_facing_direction
+	step_end
+
+DraconidVillage_Shrine_Movement_DraconidCameraToWall:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
+DraconidVillage_Shrine_Movement_DraconidCameraBack:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+DraconidVillage_Shrine_EventScript_DraconidElderAfterRegidrago::
+	lockall
+	setvar VAR_TEMP_1, 0
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
+	applymovement LOCALID_DRACONID_SHRINE_ELDER, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement 0
+	goto_if_set FLAG_DRACONID_CAUGHT_REGIDRAGO, DraconidVillage_Shrine_EventScript_DraconidElderAfterRegidrago_2
+	msgbox DraconidVillage_Shrine_EventScript_DraconidElderAfterRegidrago_Text_1
+DraconidVillage_Shrine_EventScript_DraconidElderAfterRegidrago_1:
+	goto DraconidVillage_Shrine_EventScript_DraconidOfferLift
+	return
+
+DraconidVillage_Shrine_EventScript_DraconidElderAfterRegidrago_2:
+	msgbox DraconidVillage_Shrine_EventScript_DraconidElderAfterRegidrago_Text_0
+	goto DraconidVillage_Shrine_EventScript_DraconidElderAfterRegidrago_1
+
+
+DraconidVillage_Shrine_EventScript_DraconidOfferLift::
+	msgbox DraconidVillage_Shrine_EventScript_DraconidOfferLift_Text_0, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+	goto_if_eq DraconidVillage_Shrine_EventScript_DraconidOfferLift_2
+	msgbox DraconidVillage_Shrine_EventScript_DraconidOfferLift_Text_2
+	closemessage
+	playse SE_M_FLY
+	fadescreen FADE_TO_BLACK
+	setflag FLAG_HIDE_DRACONID_SHRINE_ELDER
+	warp MAP_SKY_PILLAR_OUTSIDE, 17, 14
+	waitstate
+	return
+
+DraconidVillage_Shrine_EventScript_DraconidOfferLift_2:
+	msgbox DraconidVillage_Shrine_EventScript_DraconidOfferLift_Text_1
+	releaseall
+	end
+
+
+DraconidVillage_Shrine_EventScript_DraconidElderTalk::
+	lockall
+	faceplayer
+	compare VAR_DRACONID_VILLAGE_STATE, VILLAGE_STATE_SEAL_OPEN
+	goto_if_eq DraconidVillage_Shrine_EventScript_DraconidElderTalk_2
+	goto DraconidVillage_Shrine_EventScript_DraconidOfferLift
+	return
+
+DraconidVillage_Shrine_EventScript_DraconidElderTalk_2:
+	msgbox DraconidVillage_Shrine_EventScript_DraconidElderTalk_Text_0
+	releaseall
+	end
+
+
+DraconidVillage_Shrine_EventScript_DraconidOpenWallSign::
+	msgbox DraconidVillage_Shrine_EventScript_DraconidOpenWallSign_Text_0, MSGBOX_SIGN
+	return
+
+
+SkyPillar_Top_EventScript_DraconidAlarm::
+	delay 30
+	call Draconid_EventScript_FinaleQuake
+	applymovement LOCALID_SKY_PILLAR_TOP_ELDER, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
+	msgbox SkyPillar_Top_EventScript_DraconidAlarm_Text_0
+	closemessage
+	playbgm MUS_ABNORMAL_WEATHER, FALSE
+	setweather WEATHER_ABNORMAL
+	doweather
+	delay 60
+	msgbox SkyPillar_Top_EventScript_DraconidAlarm_Text_1
+	msgbox SkyPillar_Top_EventScript_DraconidAlarm_Text_2
+	msgbox SkyPillar_Top_EventScript_DraconidAlarm_Text_3
+	closemessage
+	delay 20
+	pokenavcall SkyPillar_Top_Text_DraconidMayCall
+	waitmessage
+	closemessage
+	applymovement LOCALID_SKY_PILLAR_TOP_ELDER, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	msgbox SkyPillar_Top_EventScript_DraconidAlarm_Text_4
+	msgbox SkyPillar_Top_EventScript_DraconidAlarm_Text_5
+	msgbox SkyPillar_Top_EventScript_DraconidAlarm_Text_6
+	closemessage
+	setflag FLAG_HIDE_SKY_PILLAR_TOP_ASTER
+	setvar VAR_DRACONID_VILLAGE_STATE, VILLAGE_STATE_ALARM
+	playse SE_M_FLY
+	fadescreen FADE_TO_BLACK
+	bufferpartymonnick STR_VAR_1, 0
+	msgbox SkyPillar_Top_EventScript_DraconidAlarm_Text_7
+	closemessage
+	warp MAP_DRACONID_VILLAGE, 19, 24
+	waitstate
+	return
+
+
+DraconidVillage_EventScript_DraconidAttackOnTransition::
+	setflag FLAG_TEMP_1D
+	compare VAR_DRACONID_VILLAGE_STATE, VILLAGE_STATE_ALARM
+	goto_if_lt DraconidVillage_EventScript_DraconidAttackOnTransition_2
+	compare VAR_DRACONID_VILLAGE_STATE, VILLAGE_STATE_SAVED
+	goto_if_ge DraconidVillage_EventScript_DraconidAttackOnTransition_2
+	setflag FLAG_TEMP_1C
+	setvar VAR_TEMP_1, 0
+	switch VAR_DRACONID_VILLAGE_STATE
+	case VILLAGE_STATE_ALARM, DraconidVillage_EventScript_DraconidAttackOnTransition_7
+	case VILLAGE_STATE_ATTACK, DraconidVillage_EventScript_DraconidAttackOnTransition_8
+	case VILLAGE_STATE_SHRINE_PATH, DraconidVillage_EventScript_DraconidAttackOnTransition_9
+	case VILLAGE_STATE_SHRINE, DraconidVillage_EventScript_DraconidAttackOnTransition_10
+	case VILLAGE_STATE_FINAL, DraconidVillage_EventScript_DraconidAttackOnTransition_11
+	case VILLAGE_STATE_PRIMAL_WON, DraconidVillage_EventScript_DraconidAttackOnTransition_12
+	return
+
+DraconidVillage_EventScript_DraconidAttackOnTransition_2:
+	call DraconidVillage_EventScript_DraconidHideAttack
+	return
+
+DraconidVillage_EventScript_DraconidAttackOnTransition_7:
+	setflag FLAG_TEMP_11
+	setflag FLAG_TEMP_12
+	setflag FLAG_TEMP_13
+	setobjectxyperm LOCALID_DRACONID_VILLAGE_BRENDAN, 18, 24
+	setobjectmovementtype LOCALID_DRACONID_VILLAGE_BRENDAN, MOVEMENT_TYPE_FACE_UP
+	setobjectxyperm LOCALID_DRACONID_VILLAGE_MAY, 20, 24
+	setobjectmovementtype LOCALID_DRACONID_VILLAGE_MAY, MOVEMENT_TYPE_FACE_UP
+	setobjectxyperm LOCALID_DRACONID_VILLAGE_WALLY, 19, 25
+	setobjectmovementtype LOCALID_DRACONID_VILLAGE_WALLY, MOVEMENT_TYPE_FACE_UP
+	setvar VAR_TEMP_2, 1
+	return
+
+DraconidVillage_EventScript_DraconidAttackOnTransition_8:
+	call DraconidVillage_EventScript_DraconidHouseGrunts
+	return
+
+DraconidVillage_EventScript_DraconidAttackOnTransition_9:
+	call DraconidVillage_EventScript_DraconidHouseGrunts
+	call DraconidVillage_EventScript_DraconidAsterOnPath
+	return
+
+DraconidVillage_EventScript_DraconidAttackOnTransition_10:
+	call DraconidVillage_EventScript_DraconidFinalLayout
+	setvar VAR_TEMP_2, 3
+	return
+
+DraconidVillage_EventScript_DraconidAttackOnTransition_11:
+	call DraconidVillage_EventScript_DraconidFinalLayout
+	return
+
+DraconidVillage_EventScript_DraconidAttackOnTransition_12:
+	call DraconidVillage_EventScript_DraconidGoodbyeLayout
+	setvar VAR_TEMP_2, 4
+	return
+
+
+DraconidVillage_EventScript_DraconidHideAttack::
+	setflag FLAG_TEMP_11
+	setflag FLAG_TEMP_12
+	setflag FLAG_TEMP_13
+	setflag FLAG_TEMP_14
+	setflag FLAG_TEMP_15
+	setflag FLAG_TEMP_16
+	setflag FLAG_TEMP_17
+	setflag FLAG_TEMP_18
+	setflag FLAG_TEMP_19
+	setflag FLAG_TEMP_1A
+	setflag FLAG_TEMP_1B
+	return
+
+
+DraconidVillage_EventScript_DraconidHouseGrunts::
+	checktrainerflag TRAINER_GRUNT_VILLAGE_1
+	goto_if 1, DraconidVillage_EventScript_DraconidHouseGrunts_2
+DraconidVillage_EventScript_DraconidHouseGrunts_1:
+	checktrainerflag TRAINER_GRUNT_VILLAGE_3
+	goto_if 1, DraconidVillage_EventScript_DraconidHouseGrunts_5
+DraconidVillage_EventScript_DraconidHouseGrunts_4:
+	checktrainerflag TRAINER_GRUNT_VILLAGE_5
+	goto_if 1, DraconidVillage_EventScript_DraconidHouseGrunts_7
+	return
+
+DraconidVillage_EventScript_DraconidHouseGrunts_2:
+	setflag FLAG_TEMP_14
+	goto DraconidVillage_EventScript_DraconidHouseGrunts_1
+
+DraconidVillage_EventScript_DraconidHouseGrunts_5:
+	setflag FLAG_TEMP_15
+	goto DraconidVillage_EventScript_DraconidHouseGrunts_4
+
+DraconidVillage_EventScript_DraconidHouseGrunts_7:
+	setflag FLAG_TEMP_16
+	return
+
+
+DraconidVillage_EventScript_DraconidAsterOnPath::
+	setobjectxyperm LOCALID_DRACONID_VILLAGE_ASTER, 21, 10
+	setobjectmovementtype LOCALID_DRACONID_VILLAGE_ASTER, MOVEMENT_TYPE_FACE_LEFT
+	return
+
+
+DraconidVillage_EventScript_DraconidFinalLayout::
+	setflag FLAG_TEMP_14
+	setflag FLAG_TEMP_15
+	setflag FLAG_TEMP_16
+	setflag FLAG_TEMP_19
+	setobjectxyperm LOCALID_DRACONID_VILLAGE_MAXIE, 18, 8
+	setobjectmovementtype LOCALID_DRACONID_VILLAGE_MAXIE, MOVEMENT_TYPE_FACE_DOWN
+	setobjectxyperm LOCALID_DRACONID_VILLAGE_ARCHIE, 20, 8
+	setobjectmovementtype LOCALID_DRACONID_VILLAGE_ARCHIE, MOVEMENT_TYPE_FACE_DOWN
+	setobjectxyperm LOCALID_DRACONID_VILLAGE_BRENDAN, 18, 12
+	setobjectmovementtype LOCALID_DRACONID_VILLAGE_BRENDAN, MOVEMENT_TYPE_FACE_UP
+	setobjectxyperm LOCALID_DRACONID_VILLAGE_MAY, 20, 12
+	setobjectmovementtype LOCALID_DRACONID_VILLAGE_MAY, MOVEMENT_TYPE_FACE_UP
+	setobjectxyperm LOCALID_DRACONID_VILLAGE_WALLY, 19, 13
+	setobjectmovementtype LOCALID_DRACONID_VILLAGE_WALLY, MOVEMENT_TYPE_FACE_UP
+	return
+
+
+DraconidVillage_EventScript_DraconidGoodbyeLayout::
+	call DraconidVillage_EventScript_DraconidFinalLayout
+	setflag FLAG_TEMP_1A
+	setflag FLAG_TEMP_1B
+	setobjectxyperm LOCALID_DRACONID_VILLAGE_ELDER, 19, 8
+	setobjectxyperm LOCALID_DRACONID_VILLAGE_ATTACK_NERINE, 20, 8
+	setobjectmovementtype LOCALID_DRACONID_VILLAGE_ATTACK_NERINE, MOVEMENT_TYPE_FACE_DOWN
+	setobjectxyperm LOCALID_DRACONID_VILLAGE_ASTER, 18, 8
+	setobjectmovementtype LOCALID_DRACONID_VILLAGE_ASTER, MOVEMENT_TYPE_FACE_DOWN
+	setobjectxyperm LOCALID_DRACONID_VILLAGE_BRENDAN, 18, 10
+	setobjectmovementtype LOCALID_DRACONID_VILLAGE_BRENDAN, MOVEMENT_TYPE_FACE_RIGHT
+	setobjectxyperm LOCALID_DRACONID_VILLAGE_MAY, 20, 10
+	setobjectmovementtype LOCALID_DRACONID_VILLAGE_MAY, MOVEMENT_TYPE_FACE_LEFT
+	setobjectxyperm LOCALID_DRACONID_VILLAGE_WALLY, 19, 11
+	setobjectmovementtype LOCALID_DRACONID_VILLAGE_WALLY, MOVEMENT_TYPE_FACE_UP
+	return
+
+
+DraconidVillage_EventScript_DraconidArrival::
+	lockall
+	setvar VAR_TEMP_2, 0
+	playbgm MUS_ABNORMAL_WEATHER, FALSE
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	call Draconid_EventScript_FinaleQuake
+	msgbox DraconidVillage_EventScript_DraconidArrival_Text_0
+	closemessage
+	special SpawnCameraObject
+	applymovement LOCALID_CAMERA, DraconidVillage_Movement_DraconidCameraToShrine
+	waitmovement 0
+	playmoncry SPECIES_GROUDON_PRIMAL, CRY_MODE_ENCOUNTER
+	call Draconid_EventScript_FinaleQuake
+	waitmoncry
+	msgbox DraconidVillage_EventScript_DraconidArrival_Text_1
+	msgbox DraconidVillage_EventScript_DraconidArrival_Text_2
+	closemessage
+	applymovement LOCALID_CAMERA, DraconidVillage_Movement_DraconidCameraToPool
+	waitmovement 0
+	playmoncry SPECIES_KYOGRE_PRIMAL, CRY_MODE_ENCOUNTER
+	waitmoncry
+	msgbox DraconidVillage_EventScript_DraconidArrival_Text_3
+	closemessage
+	applymovement LOCALID_CAMERA, DraconidVillage_Movement_DraconidCameraBack
+	waitmovement 0
+	special RemoveCameraObject
+	playse SE_M_FLY
+	clearflag FLAG_TEMP_11
+	addobject LOCALID_DRACONID_VILLAGE_BRENDAN
+	delay 16
+	playse SE_M_FLY
+	clearflag FLAG_TEMP_12
+	addobject LOCALID_DRACONID_VILLAGE_MAY
+	delay 16
+	playse SE_M_FLY
+	clearflag FLAG_TEMP_13
+	addobject LOCALID_DRACONID_VILLAGE_WALLY
+	delay 30
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement 0
+	msgbox DraconidVillage_EventScript_DraconidArrival_Text_4
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
+	msgbox DraconidVillage_EventScript_DraconidArrival_Text_5
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	msgbox DraconidVillage_EventScript_DraconidArrival_Text_6
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
+	msgbox DraconidVillage_EventScript_DraconidArrival_Text_7
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement 0
+	msgbox DraconidVillage_EventScript_DraconidArrival_Text_8
+	msgbox DraconidVillage_EventScript_DraconidArrival_Text_9
+	msgbox DraconidVillage_EventScript_DraconidArrival_Text_10
+	msgbox DraconidVillage_EventScript_DraconidArrival_Text_11
+	closemessage
+	fadescreen FADE_TO_BLACK
+	setobjectxyperm LOCALID_DRACONID_VILLAGE_BRENDAN, 26, 18
+	setobjectmovementtype LOCALID_DRACONID_VILLAGE_BRENDAN, MOVEMENT_TYPE_FACE_RIGHT
+	setobjectxyperm LOCALID_DRACONID_VILLAGE_MAY, 11, 15
+	setobjectmovementtype LOCALID_DRACONID_VILLAGE_MAY, MOVEMENT_TYPE_FACE_LEFT
+	setobjectxyperm LOCALID_DRACONID_VILLAGE_WALLY, 15, 24
+	setobjectmovementtype LOCALID_DRACONID_VILLAGE_WALLY, MOVEMENT_TYPE_FACE_LEFT
+	removeobject LOCALID_DRACONID_VILLAGE_BRENDAN
+	removeobject LOCALID_DRACONID_VILLAGE_MAY
+	removeobject LOCALID_DRACONID_VILLAGE_WALLY
+	clearflag FLAG_TEMP_11
+	clearflag FLAG_TEMP_12
+	clearflag FLAG_TEMP_13
+	addobject LOCALID_DRACONID_VILLAGE_BRENDAN
+	addobject LOCALID_DRACONID_VILLAGE_MAY
+	addobject LOCALID_DRACONID_VILLAGE_WALLY
+	setvar VAR_DRACONID_VILLAGE_STATE, VILLAGE_STATE_ATTACK
+	fadescreen FADE_FROM_BLACK
+	releaseall
+	return
+
+
+DraconidVillage_Movement_DraconidCameraToShrine:
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	delay_16
+	walk_left
+	walk_left
+	walk_left
+	delay_16
+	step_end
+
+DraconidVillage_Movement_DraconidCameraToPool:
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	delay_16
+	step_end
+
+DraconidVillage_Movement_DraconidCameraBack:
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	step_end
+
+DraconidVillage_EventScript_DraconidHouse2::
+	lockall
+	faceplayer
+	compare VAR_DRACONID_VILLAGE_STATE, VILLAGE_STATE_ATTACK
+	goto_if_ne DraconidVillage_EventScript_DraconidHouse2_2
+	checktrainerflag TRAINER_GRUNT_VILLAGE_1
+	goto_if 1, DraconidVillage_EventScript_DraconidHouse2_2
+DraconidVillage_EventScript_DraconidHouse2_1:
+	msgbox DraconidVillage_EventScript_DraconidHouse2_Text_0
+	msgbox DraconidVillage_EventScript_DraconidHouse2_Text_1
+	msgbox DraconidVillage_EventScript_DraconidHouse2_Text_2
+	closemessage
+	call Draconid_EventScript_VillageChooseMons
+	multi_2_vs_2 TRAINER_GRUNT_VILLAGE_1, DraconidVillage_Text_DraconidGrunt1Defeat, TRAINER_GRUNT_VILLAGE_2, DraconidVillage_Text_DraconidGrunt2Defeat, PARTNER_WALLY_VILLAGE
+	specialvar VAR_RESULT, GetBattleOutcome
+	compare VAR_RESULT, B_OUTCOME_WON
+	goto_if_ne DraconidVillage_EventScript_DraconidHouse2_7
+DraconidVillage_EventScript_DraconidHouse2_6:
+	settrainerflag TRAINER_GRUNT_VILLAGE_1
+	settrainerflag TRAINER_GRUNT_VILLAGE_2
+	msgbox DraconidVillage_EventScript_DraconidHouse2_Text_3
+	closemessage
+	fadescreen FADE_TO_BLACK
+	removeobject LOCALID_DRACONID_VILLAGE_GRUNT_1
+	removeobject LOCALID_DRACONID_VILLAGE_GRUNT_2
+	fadescreen FADE_FROM_BLACK
+	applymovement LOCALID_DRACONID_VILLAGE_WALLY, Common_Movement_FacePlayer
+	waitmovement 0
+	msgbox DraconidVillage_EventScript_DraconidHouse2_Text_4
+	msgbox DraconidVillage_EventScript_DraconidHouse2_Text_5
+	call Draconid_EventScript_VillageHeal
+	goto DraconidVillage_EventScript_DraconidHouseFreed
+	return
+
+DraconidVillage_EventScript_DraconidHouse2_2:
+	goto DraconidVillage_EventScript_DraconidWallyTalk
+	goto DraconidVillage_EventScript_DraconidHouse2_1
+
+DraconidVillage_EventScript_DraconidHouse2_7:
+	goto Draconid_EventScript_VillageLost
+	goto DraconidVillage_EventScript_DraconidHouse2_6
+
+
+DraconidVillage_EventScript_DraconidPlayersHouse::
+	lockall
+	faceplayer
+	compare VAR_DRACONID_VILLAGE_STATE, VILLAGE_STATE_ATTACK
+	goto_if_ne DraconidVillage_EventScript_DraconidPlayersHouse_2
+	checktrainerflag TRAINER_GRUNT_VILLAGE_3
+	goto_if 1, DraconidVillage_EventScript_DraconidPlayersHouse_2
+DraconidVillage_EventScript_DraconidPlayersHouse_1:
+	msgbox DraconidVillage_EventScript_DraconidPlayersHouse_Text_0
+	msgbox DraconidVillage_EventScript_DraconidPlayersHouse_Text_1
+	msgbox DraconidVillage_EventScript_DraconidPlayersHouse_Text_2
+	closemessage
+	call Draconid_EventScript_VillageChooseMons
+	multi_2_vs_2 TRAINER_GRUNT_VILLAGE_3, DraconidVillage_Text_DraconidGrunt3Defeat, TRAINER_GRUNT_VILLAGE_4, DraconidVillage_Text_DraconidGrunt4Defeat, PARTNER_MAY_VILLAGE
+	specialvar VAR_RESULT, GetBattleOutcome
+	compare VAR_RESULT, B_OUTCOME_WON
+	goto_if_ne DraconidVillage_EventScript_DraconidPlayersHouse_7
+DraconidVillage_EventScript_DraconidPlayersHouse_6:
+	settrainerflag TRAINER_GRUNT_VILLAGE_3
+	settrainerflag TRAINER_GRUNT_VILLAGE_4
+	msgbox DraconidVillage_EventScript_DraconidPlayersHouse_Text_3
+	closemessage
+	fadescreen FADE_TO_BLACK
+	removeobject LOCALID_DRACONID_VILLAGE_GRUNT_3
+	removeobject LOCALID_DRACONID_VILLAGE_GRUNT_4
+	fadescreen FADE_FROM_BLACK
+	applymovement LOCALID_DRACONID_VILLAGE_MAY, Common_Movement_FacePlayer
+	waitmovement 0
+	msgbox DraconidVillage_EventScript_DraconidPlayersHouse_Text_4
+	msgbox DraconidVillage_EventScript_DraconidPlayersHouse_Text_5
+	call Draconid_EventScript_VillageHeal
+	goto DraconidVillage_EventScript_DraconidHouseFreed
+	return
+
+DraconidVillage_EventScript_DraconidPlayersHouse_2:
+	goto DraconidVillage_EventScript_DraconidMayTalk
+	goto DraconidVillage_EventScript_DraconidPlayersHouse_1
+
+DraconidVillage_EventScript_DraconidPlayersHouse_7:
+	goto Draconid_EventScript_VillageLost
+	goto DraconidVillage_EventScript_DraconidPlayersHouse_6
+
+
+DraconidVillage_EventScript_DraconidHouse1::
+	lockall
+	faceplayer
+	compare VAR_DRACONID_VILLAGE_STATE, VILLAGE_STATE_ATTACK
+	goto_if_ne DraconidVillage_EventScript_DraconidHouse1_2
+	checktrainerflag TRAINER_GRUNT_VILLAGE_5
+	goto_if 1, DraconidVillage_EventScript_DraconidHouse1_2
+DraconidVillage_EventScript_DraconidHouse1_1:
+	msgbox DraconidVillage_EventScript_DraconidHouse1_Text_0
+	msgbox DraconidVillage_EventScript_DraconidHouse1_Text_1
+	msgbox DraconidVillage_EventScript_DraconidHouse1_Text_2
+	closemessage
+	call Draconid_EventScript_VillageChooseMons
+	multi_2_vs_2 TRAINER_GRUNT_VILLAGE_5, DraconidVillage_Text_DraconidGrunt5Defeat, TRAINER_GRUNT_VILLAGE_6, DraconidVillage_Text_DraconidGrunt6Defeat, PARTNER_BRENDAN_VILLAGE
+	specialvar VAR_RESULT, GetBattleOutcome
+	compare VAR_RESULT, B_OUTCOME_WON
+	goto_if_ne DraconidVillage_EventScript_DraconidHouse1_7
+DraconidVillage_EventScript_DraconidHouse1_6:
+	settrainerflag TRAINER_GRUNT_VILLAGE_5
+	settrainerflag TRAINER_GRUNT_VILLAGE_6
+	msgbox DraconidVillage_EventScript_DraconidHouse1_Text_3
+	closemessage
+	fadescreen FADE_TO_BLACK
+	removeobject LOCALID_DRACONID_VILLAGE_GRUNT_5
+	removeobject LOCALID_DRACONID_VILLAGE_GRUNT_6
+	fadescreen FADE_FROM_BLACK
+	applymovement LOCALID_DRACONID_VILLAGE_BRENDAN, Common_Movement_FacePlayer
+	waitmovement 0
+	msgbox DraconidVillage_EventScript_DraconidHouse1_Text_4
+	msgbox DraconidVillage_EventScript_DraconidHouse1_Text_5
+	call Draconid_EventScript_VillageHeal
+	goto DraconidVillage_EventScript_DraconidHouseFreed
+	return
+
+DraconidVillage_EventScript_DraconidHouse1_2:
+	goto DraconidVillage_EventScript_DraconidBrendanTalk
+	goto DraconidVillage_EventScript_DraconidHouse1_1
+
+DraconidVillage_EventScript_DraconidHouse1_7:
+	goto Draconid_EventScript_VillageLost
+	goto DraconidVillage_EventScript_DraconidHouse1_6
+
+
+DraconidVillage_EventScript_DraconidHouseFreed::
+	checktrainerflag TRAINER_GRUNT_VILLAGE_1
+	goto_if 1, DraconidVillage_EventScript_DraconidHouseFreed_5
+DraconidVillage_EventScript_DraconidHouseFreed_3:
+	msgbox DraconidVillage_EventScript_DraconidHouseFreed_Text_2
+	closemessage
+DraconidVillage_EventScript_DraconidHouseFreed_1:
+	releaseall
+	return
+
+DraconidVillage_EventScript_DraconidHouseFreed_2:
+	call Draconid_EventScript_FinaleQuake
+	msgbox DraconidVillage_EventScript_DraconidHouseFreed_Text_0
+	msgbox DraconidVillage_EventScript_DraconidHouseFreed_Text_1
+	closemessage
+	call DraconidVillage_EventScript_DraconidAsterOnPath
+	setobjectxy LOCALID_DRACONID_VILLAGE_ASTER, 21, 10
+	setvar VAR_DRACONID_VILLAGE_STATE, VILLAGE_STATE_SHRINE_PATH
+	goto DraconidVillage_EventScript_DraconidHouseFreed_1
+
+DraconidVillage_EventScript_DraconidHouseFreed_4:
+	checktrainerflag TRAINER_GRUNT_VILLAGE_5
+	goto_if 1, DraconidVillage_EventScript_DraconidHouseFreed_2
+	goto DraconidVillage_EventScript_DraconidHouseFreed_3
+
+DraconidVillage_EventScript_DraconidHouseFreed_5:
+	checktrainerflag TRAINER_GRUNT_VILLAGE_3
+	goto_if 1, DraconidVillage_EventScript_DraconidHouseFreed_4
+	goto DraconidVillage_EventScript_DraconidHouseFreed_3
+
+
+DraconidVillage_EventScript_DraconidWallyTalk::
+	checktrainerflag TRAINER_GRUNT_VILLAGE_1
+	goto_if 1, DraconidVillage_EventScript_DraconidWallyTalk_2
+	msgbox DraconidVillage_EventScript_DraconidWallyTalk_Text_1
+DraconidVillage_EventScript_DraconidWallyTalk_1:
+	releaseall
+	end
+
+DraconidVillage_EventScript_DraconidWallyTalk_2:
+	msgbox DraconidVillage_EventScript_DraconidWallyTalk_Text_0
+	goto DraconidVillage_EventScript_DraconidWallyTalk_1
+
+
+DraconidVillage_EventScript_DraconidMayTalk::
+	checktrainerflag TRAINER_GRUNT_VILLAGE_3
+	goto_if 1, DraconidVillage_EventScript_DraconidMayTalk_2
+	msgbox DraconidVillage_EventScript_DraconidMayTalk_Text_1
+DraconidVillage_EventScript_DraconidMayTalk_1:
+	releaseall
+	end
+
+DraconidVillage_EventScript_DraconidMayTalk_2:
+	msgbox DraconidVillage_EventScript_DraconidMayTalk_Text_0
+	goto DraconidVillage_EventScript_DraconidMayTalk_1
+
+
+DraconidVillage_EventScript_DraconidBrendanTalk::
+	checktrainerflag TRAINER_GRUNT_VILLAGE_5
+	goto_if 1, DraconidVillage_EventScript_DraconidBrendanTalk_2
+	msgbox DraconidVillage_EventScript_DraconidBrendanTalk_Text_1
+DraconidVillage_EventScript_DraconidBrendanTalk_1:
+	releaseall
+	end
+
+DraconidVillage_EventScript_DraconidBrendanTalk_2:
+	msgbox DraconidVillage_EventScript_DraconidBrendanTalk_Text_0
+	goto DraconidVillage_EventScript_DraconidBrendanTalk_1
+
+
+DraconidVillage_EventScript_DraconidAdmins::
+	lockall
+	faceplayer
+	compare VAR_DRACONID_VILLAGE_STATE, VILLAGE_STATE_ATTACK
+	goto_if_eq DraconidVillage_EventScript_DraconidAdmins_2
+	goto DraconidVillage_EventScript_DraconidAdminsBattle
+	return
+
+DraconidVillage_EventScript_DraconidAdmins_2:
+	msgbox DraconidVillage_EventScript_DraconidAdmins_Text_0
+	releaseall
+	end
+
+
+DraconidVillage_EventScript_DraconidAster::
+	lockall
+	faceplayer
+	compare VAR_DRACONID_VILLAGE_STATE, VILLAGE_STATE_ATTACK
+	goto_if_eq DraconidVillage_EventScript_DraconidAster_2
+	goto DraconidVillage_EventScript_DraconidAdminsBattle
+	return
+
+DraconidVillage_EventScript_DraconidAster_2:
+	msgbox DraconidVillage_EventScript_DraconidAster_Text_0
+	releaseall
+	end
+
+
+DraconidVillage_EventScript_DraconidAdminsBattle::
+	msgbox DraconidVillage_EventScript_DraconidAdminsBattle_Text_0
+	msgbox DraconidVillage_EventScript_DraconidAdminsBattle_Text_1
+	msgbox DraconidVillage_EventScript_DraconidAdminsBattle_Text_2
+	msgbox DraconidVillage_EventScript_DraconidAdminsBattle_Text_3
+	closemessage
+	call Draconid_EventScript_VillageChooseMons
+	multi_2_vs_2 TRAINER_TABITHA_VILLAGE, DraconidVillage_Text_DraconidTabithaDefeat, TRAINER_SHELLY_VILLAGE, DraconidVillage_Text_DraconidShellyDefeat, PARTNER_ASTER_DEINO
+	specialvar VAR_RESULT, GetBattleOutcome
+	compare VAR_RESULT, B_OUTCOME_WON
+	goto_if_ne DraconidVillage_EventScript_DraconidAdminsBattle_2
+DraconidVillage_EventScript_DraconidAdminsBattle_1:
+	settrainerflag TRAINER_TABITHA_VILLAGE
+	settrainerflag TRAINER_SHELLY_VILLAGE
+	msgbox DraconidVillage_EventScript_DraconidAdminsBattle_Text_4
+	msgbox DraconidVillage_EventScript_DraconidAdminsBattle_Text_5
+	closemessage
+	fadescreen FADE_TO_BLACK
+	removeobject LOCALID_DRACONID_VILLAGE_TABITHA
+	removeobject LOCALID_DRACONID_VILLAGE_SHELLY
+	fadescreen FADE_FROM_BLACK
+	msgbox DraconidVillage_EventScript_DraconidAdminsBattle_Text_6
+	closemessage
+	call Draconid_EventScript_VillageHeal
+	setvar VAR_DRACONID_VILLAGE_STATE, VILLAGE_STATE_SHRINE
+	fadescreen FADE_TO_BLACK
+	warpsilent MAP_DRACONID_VILLAGE, 19, 11
+	waitstate
+	return
+
+DraconidVillage_EventScript_DraconidAdminsBattle_2:
+	goto Draconid_EventScript_VillageLost
+	goto DraconidVillage_EventScript_DraconidAdminsBattle_1
+
+
+DraconidVillage_EventScript_DraconidFinalIntro::
+	lockall
+	setvar VAR_TEMP_2, 0
+	playbgm MUS_ABNORMAL_WEATHER, FALSE
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	delay 20
+	msgbox DraconidVillage_EventScript_DraconidFinalIntro_Text_0
+	msgbox DraconidVillage_EventScript_DraconidFinalIntro_Text_1
+	msgbox DraconidVillage_EventScript_DraconidFinalIntro_Text_2
+	msgbox DraconidVillage_EventScript_DraconidFinalIntro_Text_3
+	msgbox DraconidVillage_EventScript_DraconidFinalIntro_Text_4
+	closemessage
+	playmoncry SPECIES_GROUDON_PRIMAL, CRY_MODE_ENCOUNTER
+	call Draconid_EventScript_FinaleQuake
+	waitmoncry
+	playmoncry SPECIES_KYOGRE_PRIMAL, CRY_MODE_ENCOUNTER
+	waitmoncry
+	msgbox DraconidVillage_EventScript_DraconidFinalIntro_Text_5
+	closemessage
+	applymovement LOCALID_DRACONID_VILLAGE_BRENDAN, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	msgbox DraconidVillage_EventScript_DraconidFinalIntro_Text_6
+	msgbox DraconidVillage_EventScript_DraconidFinalIntro_Text_7
+	setvar VAR_DRACONID_VILLAGE_STATE, VILLAGE_STATE_FINAL
+	goto DraconidVillage_EventScript_DraconidFinalChoice
+	return
+
+
+DraconidVillage_EventScript_DraconidMaxieArchie::
+	lockall
+	faceplayer
+	compare VAR_DRACONID_VILLAGE_STATE, VILLAGE_STATE_SHRINE
+	goto_if_lt DraconidVillage_EventScript_DraconidMaxieArchie_2
+DraconidVillage_EventScript_DraconidMaxieArchie_1:
+	msgbox DraconidVillage_EventScript_DraconidMaxieArchie_Text_0
+	msgbox DraconidVillage_EventScript_DraconidMaxieArchie_Text_1
+	goto DraconidVillage_EventScript_DraconidFinalChoice
+	return
+
+DraconidVillage_EventScript_DraconidMaxieArchie_2:
+	goto DraconidVillage_EventScript_DraconidMaxieArchieWaiting
+	goto DraconidVillage_EventScript_DraconidMaxieArchie_1
+
+
+DraconidVillage_EventScript_DraconidMaxieArchieWaiting::
+	getplayerxy VAR_TEMP_3, VAR_TEMP_4
+	compare VAR_TEMP_3, 20
+	goto_if_lt DraconidVillage_EventScript_DraconidMaxieArchieWaiting_2
+	msgbox DraconidVillage_EventScript_DraconidMaxieArchieWaiting_Text_1
+DraconidVillage_EventScript_DraconidMaxieArchieWaiting_1:
+	releaseall
+	end
+
+DraconidVillage_EventScript_DraconidMaxieArchieWaiting_2:
+	msgbox DraconidVillage_EventScript_DraconidMaxieArchieWaiting_Text_0
+	goto DraconidVillage_EventScript_DraconidMaxieArchieWaiting_1
+
+
+DraconidVillage_EventScript_DraconidFinalChoice::
+	message DraconidVillage_EventScript_DraconidFinalChoice_Text_0
+	waitmessage
+	dynmultichoice 15, 6, TRUE, 2, 0, DYN_MULTICHOICE_CB_NONE, DraconidVillage_EventScript_DraconidFinalChoice_Text_1, DraconidVillage_EventScript_DraconidFinalChoice_Text_2
+	closemessage
+	compare VAR_RESULT, 0
+	goto_if_eq DraconidVillage_EventScript_DraconidFinalChoice_2
+	setvar VAR_TEMP_5, PARTNER_MAY_FINALE
+	msgbox DraconidVillage_EventScript_DraconidFinalChoice_Text_5
+	msgbox DraconidVillage_EventScript_DraconidFinalChoice_Text_6
+	msgbox DraconidVillage_EventScript_DraconidFinalChoice_Text_7
+	closemessage
+	applymovement LOCALID_DRACONID_VILLAGE_BRENDAN, DraconidVillage_Movement_DraconidToThePass
+	applymovement LOCALID_DRACONID_VILLAGE_WALLY, DraconidVillage_Movement_DraconidToThePass
+	waitmovement 0
+	removeobject LOCALID_DRACONID_VILLAGE_BRENDAN
+	removeobject LOCALID_DRACONID_VILLAGE_WALLY
+DraconidVillage_EventScript_DraconidFinalChoice_1:
+	msgbox DraconidVillage_EventScript_DraconidFinalChoice_Text_8
+	msgbox DraconidVillage_EventScript_DraconidFinalChoice_Text_9
+	msgbox DraconidVillage_EventScript_DraconidFinalChoice_Text_10
+	msgbox DraconidVillage_EventScript_DraconidFinalChoice_Text_11
+	closemessage
+	call Draconid_EventScript_VillageChooseMons
+	compare VAR_TEMP_5, PARTNER_BRENDAN_FINALE
+	goto_if_eq DraconidVillage_EventScript_DraconidFinalChoice_6
+	multi_2_vs_2 TRAINER_MAXIE_FINALE, DraconidVillage_Text_DraconidMaxieDefeat, TRAINER_ARCHIE_FINALE, DraconidVillage_Text_DraconidArchieDefeat, PARTNER_MAY_FINALE
+DraconidVillage_EventScript_DraconidFinalChoice_5:
+	specialvar VAR_RESULT, GetBattleOutcome
+	compare VAR_RESULT, B_OUTCOME_WON
+	goto_if_ne DraconidVillage_EventScript_DraconidFinalChoice_10
+DraconidVillage_EventScript_DraconidFinalChoice_9:
+	settrainerflag TRAINER_MAXIE_FINALE
+	settrainerflag TRAINER_ARCHIE_FINALE
+	goto DraconidVillage_EventScript_DraconidPrimalWon
+	return
+
+DraconidVillage_EventScript_DraconidFinalChoice_2:
+	setvar VAR_TEMP_5, PARTNER_BRENDAN_FINALE
+	msgbox DraconidVillage_EventScript_DraconidFinalChoice_Text_3
+	msgbox DraconidVillage_EventScript_DraconidFinalChoice_Text_4
+	closemessage
+	applymovement LOCALID_DRACONID_VILLAGE_MAY, DraconidVillage_Movement_DraconidToThePass
+	applymovement LOCALID_DRACONID_VILLAGE_WALLY, DraconidVillage_Movement_DraconidToThePass
+	waitmovement 0
+	removeobject LOCALID_DRACONID_VILLAGE_MAY
+	removeobject LOCALID_DRACONID_VILLAGE_WALLY
+	goto DraconidVillage_EventScript_DraconidFinalChoice_1
+
+DraconidVillage_EventScript_DraconidFinalChoice_6:
+	multi_2_vs_2 TRAINER_MAXIE_FINALE, DraconidVillage_Text_DraconidMaxieDefeat, TRAINER_ARCHIE_FINALE, DraconidVillage_Text_DraconidArchieDefeat, PARTNER_BRENDAN_FINALE
+	goto DraconidVillage_EventScript_DraconidFinalChoice_5
+
+DraconidVillage_EventScript_DraconidFinalChoice_10:
+	goto Draconid_EventScript_VillageLost
+	goto DraconidVillage_EventScript_DraconidFinalChoice_9
+
+
+DraconidVillage_Movement_DraconidToThePass:
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	step_end
+
+DraconidVillage_EventScript_DraconidPrimalWon::
+	msgbox DraconidVillage_EventScript_DraconidPrimalWon_Text_0
+	closemessage
+	playmoncry SPECIES_GROUDON_PRIMAL, CRY_MODE_ENCOUNTER
+	call Draconid_EventScript_FinaleQuake
+	waitmoncry
+	msgbox DraconidVillage_EventScript_DraconidPrimalWon_Text_1
+	closemessage
+	playse SE_BALL_OPEN
+	setobjectxyperm LOCALID_DRACONID_VILLAGE_RAYQUAZA, 19, 1
+	clearflag FLAG_TEMP_1D
+	addobject LOCALID_DRACONID_VILLAGE_RAYQUAZA
+	applymovement LOCALID_DRACONID_VILLAGE_RAYQUAZA, DraconidVillage_Movement_DraconidRayquazaDescends
+	waitmovement 0
+	msgbox DraconidVillage_EventScript_DraconidPrimalWon_Text_2
+	closemessage
+	playmoncry SPECIES_RAYQUAZA, CRY_MODE_ENCOUNTER
+	call Draconid_EventScript_FinaleQuake
+	waitmoncry
+	msgbox DraconidVillage_EventScript_DraconidPrimalWon_Text_3
+	closemessage
+	playse SE_M_EARTHQUAKE
+	fadescreenswapbuffers FADE_TO_WHITE
+	removeobject LOCALID_DRACONID_VILLAGE_GROUDON
+	fadescreenswapbuffers FADE_FROM_WHITE
+	msgbox DraconidVillage_EventScript_DraconidPrimalWon_Text_4
+	closemessage
+	playse SE_M_DIVE
+	fadescreenswapbuffers FADE_TO_WHITE
+	removeobject LOCALID_DRACONID_VILLAGE_KYOGRE
+	fadescreenswapbuffers FADE_FROM_WHITE
+	msgbox DraconidVillage_EventScript_DraconidPrimalWon_Text_5
+	closemessage
+	setweather WEATHER_NONE
+	doweather
+	special WaitWeather
+	applymovement LOCALID_DRACONID_VILLAGE_RAYQUAZA, DraconidVillage_Movement_DraconidRayquazaLeaves
+	waitmovement 0
+	playse SE_BALL
+	removeobject LOCALID_DRACONID_VILLAGE_RAYQUAZA
+	msgbox DraconidVillage_EventScript_DraconidPrimalWon_Text_6
+	closemessage
+	fadedefaultbgm
+	applymovement LOCALID_DRACONID_VILLAGE_MAXIE, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	msgbox DraconidVillage_EventScript_DraconidPrimalWon_Text_7
+	msgbox DraconidVillage_EventScript_DraconidPrimalWon_Text_8
+	msgbox DraconidVillage_EventScript_DraconidPrimalWon_Text_9
+	giveitem ITEM_RED_ORB
+	msgbox DraconidVillage_EventScript_DraconidPrimalWon_Text_10
+	msgbox DraconidVillage_EventScript_DraconidPrimalWon_Text_11
+	giveitem ITEM_BLUE_ORB
+	msgbox DraconidVillage_EventScript_DraconidPrimalWon_Text_12
+	closemessage
+	applymovement LOCALID_DRACONID_VILLAGE_MAXIE, DraconidVillage_Movement_DraconidLeaderLeaves
+	applymovement LOCALID_DRACONID_VILLAGE_ARCHIE, DraconidVillage_Movement_DraconidLeaderLeaves
+	waitmovement 0
+	removeobject LOCALID_DRACONID_VILLAGE_MAXIE
+	removeobject LOCALID_DRACONID_VILLAGE_ARCHIE
+	setvar VAR_DRACONID_VILLAGE_STATE, VILLAGE_STATE_PRIMAL_WON
+	fadescreen FADE_TO_BLACK
+	msgbox DraconidVillage_EventScript_DraconidPrimalWon_Text_13
+	closemessage
+	warpsilent MAP_DRACONID_VILLAGE, 19, 10
+	waitstate
+	return
+
+
+MtPyre_Summit_EventScript_DraconidOldLadyOrbs::
+	msgbox MtPyre_Summit_EventScript_DraconidOldLadyOrbs_Text_0
+	release
+	end
+
+
+DraconidVillage_Movement_DraconidRayquazaDescends:
+	walk_in_place_faster_up
+	lock_facing_direction
+	slide_down
+	slide_down
+	slide_down
+	slide_down
+	unlock_facing_direction
+	delay_16
+	walk_in_place_down
+	delay_16
+	step_end
+
+DraconidVillage_Movement_DraconidRayquazaLeaves:
+	walk_in_place_down
+	delay_8
+	lock_facing_direction
+	slide_up
+	slide_up
+	slide_up
+	slide_up
+	unlock_facing_direction
+	step_end
+
+DraconidVillage_Movement_DraconidLeaderLeaves:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+DraconidVillage_EventScript_DraconidGoodbyes::
+	lockall
+	setvar VAR_TEMP_2, 0
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	delay 30
+	msgbox DraconidVillage_EventScript_DraconidGoodbyes_Text_0
+	msgbox DraconidVillage_EventScript_DraconidGoodbyes_Text_1
+	msgbox DraconidVillage_EventScript_DraconidGoodbyes_Text_2
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	msgbox DraconidVillage_EventScript_DraconidGoodbyes_Text_3
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement 0
+	msgbox DraconidVillage_EventScript_DraconidGoodbyes_Text_4
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
+	msgbox DraconidVillage_EventScript_DraconidGoodbyes_Text_5
+	closemessage
+	playse SE_M_FLY
+	fadescreen FADE_TO_BLACK
+	removeobject LOCALID_DRACONID_VILLAGE_BRENDAN
+	removeobject LOCALID_DRACONID_VILLAGE_MAY
+	removeobject LOCALID_DRACONID_VILLAGE_WALLY
+	fadescreen FADE_FROM_BLACK
+	msgbox DraconidVillage_EventScript_DraconidGoodbyes_Text_6
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	msgbox DraconidVillage_EventScript_DraconidGoodbyes_Text_7
+	msgbox DraconidVillage_EventScript_DraconidGoodbyes_Text_8
+	msgbox DraconidVillage_EventScript_DraconidGoodbyes_Text_9
+	closemessage
+	goto DraconidVillage_EventScript_DraconidCredits
+	return
+
+
+DraconidVillage_EventScript_DraconidCredits::
+	setvar VAR_DRACONID_VILLAGE_STATE, VILLAGE_STATE_SAVED
+	setvar VAR_DRACONID_FINALE_STATE, FINALE_STATE_METEOR_DESTROYED
+	clearflag FLAG_HIDE_DRACONID_HOUSE_ELDER
+	clearflag FLAG_HIDE_DRACONID_VILLAGE_NERINE
+	fadescreen FADE_TO_BLACK
+	callnative Draconid_SaveBeforeCredits
+	playse SE_SAVE
+	waitse
+	callnative Draconid_StartCredits
+	waitstate
+	return
+
+
+DraconidVillage_EventScript_DraconidElder::
+	lockall
+	compare VAR_DRACONID_VILLAGE_STATE, VILLAGE_STATE_PRIMAL_WON
+	goto_if_ge DraconidVillage_EventScript_DraconidElder_2
+	msgbox DraconidVillage_EventScript_DraconidElder_Text_1
+DraconidVillage_EventScript_DraconidElder_1:
+	releaseall
+	return
+
+DraconidVillage_EventScript_DraconidElder_2:
+	faceplayer
+	msgbox DraconidVillage_EventScript_DraconidElder_Text_0
+	goto DraconidVillage_EventScript_DraconidElder_1
+
+
+DraconidVillage_EventScript_DraconidNerineAtShrine::
+	lockall
+	faceplayer
+	msgbox DraconidVillage_EventScript_DraconidNerineAtShrine_Text_0
+	releaseall
+	return
+
+
+DraconidVillage_EventScript_DraconidGatekeeperAttack::
+	lockall
+	applymovement LOCALID_DRACONID_GATEKEEPER, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement 0
+	msgbox DraconidVillage_EventScript_DraconidGatekeeperAttack_Text_0
+	closemessage
+	applymovement LOCALID_PLAYER, DraconidVillage_Movement_PushBack
+	waitmovement 0
+	releaseall
+	return
+
+
+DraconidVillage_EventScript_DraconidGatekeeperTalk::
+	lock
+	faceplayer
+	msgbox DraconidVillage_EventScript_DraconidGatekeeperTalk_Text_0
+	release
+	return
+
+
+MagmaHideout_4F_EventScript_DraconidOnTransition::
+	compare VAR_DRACONID_FINALE_STATE, FINALE_STATE_METEOR_DESTROYED
+	goto_if_lt MagmaHideout_4F_EventScript_DraconidOnTransition_1
+	goto_if_set FLAG_DEFEATED_GROUDON, MagmaHideout_4F_EventScript_DraconidOnTransition_1
+	return
+
+MagmaHideout_4F_EventScript_DraconidOnTransition_1:
+	setflag FLAG_TEMP_11
+	return
+
+
+MagmaHideout_4F_EventScript_DraconidGroudon::
+	lock
+	faceplayer
+	msgbox MagmaHideout_4F_EventScript_DraconidGroudon_Text_0
+	closemessage
+	waitse
+	playmoncry SPECIES_GROUDON, CRY_MODE_ENCOUNTER
+	delay 40
+	waitmoncry
+	setwildbattle SPECIES_GROUDON, DRACONID_PRIMAL_LEGEND_LEVEL
+	special BattleSetup_StartLegendaryBattle
+	specialvar VAR_RESULT, GetBattleOutcome
+	compare VAR_RESULT, B_OUTCOME_CAUGHT
+	goto_if_eq MagmaHideout_4F_EventScript_DraconidGroudon_2
+	fadescreenswapbuffers FADE_TO_BLACK
+	removeobject LOCALID_MAGMA_HIDEOUT_4F_GROUDON_POSTGAME
+	fadescreenswapbuffers FADE_FROM_BLACK
+	msgbox MagmaHideout_4F_EventScript_DraconidGroudon_Text_1
+	release
+	return
+
+MagmaHideout_4F_EventScript_DraconidGroudon_2:
+	setflag FLAG_DEFEATED_GROUDON
+	removeobject LOCALID_MAGMA_HIDEOUT_4F_GROUDON_POSTGAME
+	release
+	end
+
+
+SeafloorCavern_Room9_EventScript_DraconidKyogreOnTransition::
+	compare VAR_DRACONID_FINALE_STATE, FINALE_STATE_METEOR_DESTROYED
+	goto_if_lt SeafloorCavern_Room9_EventScript_DraconidKyogreOnTransition_2
+	goto_if_set FLAG_DEFEATED_KYOGRE, SeafloorCavern_Room9_EventScript_DraconidKyogreOnTransition_2
+SeafloorCavern_Room9_EventScript_DraconidKyogreOnTransition_1:
+	return
+
+SeafloorCavern_Room9_EventScript_DraconidKyogreOnTransition_2:
+	setflag FLAG_TEMP_11
+	goto SeafloorCavern_Room9_EventScript_DraconidKyogreOnTransition_1
+
+
+SeafloorCavern_Room9_EventScript_DraconidKyogreSpot::
+	goto_if_set FLAG_TEMP_11, SeafloorCavern_Room9_EventScript_DraconidKyogreSpot_2
+	goto SeafloorCavern_Room9_EventScript_DraconidKyogre
+	return
+
+SeafloorCavern_Room9_EventScript_DraconidKyogreSpot_2:
+	end
+
+
+SeafloorCavern_Room9_EventScript_DraconidKyogre::
+	lockall
+	msgbox SeafloorCavern_Room9_EventScript_DraconidKyogre_Text_0
+	closemessage
+	waitse
+	playmoncry SPECIES_KYOGRE, CRY_MODE_ENCOUNTER
+	delay 40
+	waitmoncry
+	setwildbattle SPECIES_KYOGRE, DRACONID_PRIMAL_LEGEND_LEVEL
+	special BattleSetup_StartLegendaryBattle
+	specialvar VAR_RESULT, GetBattleOutcome
+	compare VAR_RESULT, B_OUTCOME_CAUGHT
+	goto_if_eq SeafloorCavern_Room9_EventScript_DraconidKyogre_2
+	fadescreenswapbuffers FADE_TO_BLACK
+	removeobject LOCALID_SEAFLOOR_CAVERN_KYOGRE_POSTGAME
+	fadescreenswapbuffers FADE_FROM_BLACK
+	msgbox SeafloorCavern_Room9_EventScript_DraconidKyogre_Text_1
+	releaseall
+	return
+
+SeafloorCavern_Room9_EventScript_DraconidKyogre_2:
+	setflag FLAG_DEFEATED_KYOGRE
+	removeobject LOCALID_SEAFLOOR_CAVERN_KYOGRE_POSTGAME
+	releaseall
+	end
+
+
+Route119_WeatherInstitute_2F_EventScript_DraconidLegendsHome::
+	compare VAR_DRACONID_FINALE_STATE, FINALE_STATE_METEOR_DESTROYED
+	goto_if_lt Route119_WeatherInstitute_2F_EventScript_DraconidLegendsHome_2
+	goto_if_set FLAG_DEFEATED_GROUDON, Route119_WeatherInstitute_2F_EventScript_DraconidLegendsHome_5
+Route119_WeatherInstitute_2F_EventScript_DraconidLegendsHome_4:
+	msgbox Route119_WeatherInstitute_2F_EventScript_DraconidLegendsHome_Text_1
+Route119_WeatherInstitute_2F_EventScript_DraconidLegendsHome_1:
+	release
+	end
+
+Route119_WeatherInstitute_2F_EventScript_DraconidLegendsHome_2:
+	msgbox Route119_WeatherInstitute_2F_EventScript_DraconidLegendsHome_Text_0
+	goto Route119_WeatherInstitute_2F_EventScript_DraconidLegendsHome_1
+
+Route119_WeatherInstitute_2F_EventScript_DraconidLegendsHome_3:
+	msgbox Route119_WeatherInstitute_2F_Text_NoAbnormalWeather
+	goto Route119_WeatherInstitute_2F_EventScript_DraconidLegendsHome_1
+
+Route119_WeatherInstitute_2F_EventScript_DraconidLegendsHome_5:
+	goto_if_set FLAG_DEFEATED_KYOGRE, Route119_WeatherInstitute_2F_EventScript_DraconidLegendsHome_3
+	goto Route119_WeatherInstitute_2F_EventScript_DraconidLegendsHome_4
+
+
+Draconid_EventScript_VillageChooseMons_Text_0:
+	.string "Choose the POKéMON that will battle\n"
+	.string "beside your partner!$"
+
+Draconid_EventScript_VillageLost_Text_0:
+	.string "{PLAYER} was driven back…\p"
+	.string "The villagers carried {PLAYER} home.\n"
+	.string "There, the POKéMON were tended until\l"
+	.string "they could fight again.$"
+
+Draconid_EventScript_VillageHeal_Text_0:
+	.string "{PLAYER}'s POKéMON were restored to\n"
+	.string "full health!$"
+
+SkyPillar_Outside_EventScript_DraconidElderCall_Text_0:
+	.string "NERINE: {PLAYER}! We heard the stones\n"
+	.string "sing, even out here.\p"
+	.string "Go quickly. We'll keep the door until\n"
+	.string "you're back.$"
+
+SkyPillar_Outside_EventScript_DraconidElderCall_Text_1:
+	.string "ASTER: And don't you dare keep us\n"
+	.string "waiting! That star won't!$"
+
+SkyPillar_Outside_EventScript_DraconidElderCall_Text_2:
+	.string "The ELDER's old dragon came down out of\n"
+	.string "the dark sky, and carried {PLAYER} home…$"
+
+SkyPillar_Outside_EventScript_DraconidWallaceScene_Text_0:
+	.string "WALLACE: Welcome, {PLAYER}. I thought\n"
+	.string "the sky might bring you here tonight.$"
+
+SkyPillar_Outside_EventScript_DraconidWallaceScene_Text_1:
+	.string "WALLACE: SOOTOPOLIS has kept watch\n"
+	.string "over this tower for as long as RAYQUAZA\l"
+	.string "has slept in it.\p"
+	.string "Your clan keeps the sky. We keep the\n"
+	.string "water that sleeps beneath it.$"
+
+SkyPillar_Outside_EventScript_DraconidWallaceScene_Text_2:
+	.string "WALLACE: I saw you cast off that\n"
+	.string "uniform. I know who you are.\p"
+	.string "Still, no one climbs to RAYQUAZA before\n"
+	.string "I have seen them battle with my own\l"
+	.string "eyes.$"
+
+SkyPillar_Outside_EventScript_DraconidWallaceScene_Text_3:
+	.string "WALLACE: Let us see whether your\n"
+	.string "strength is as refined as your resolve.$"
+
+SkyPillar_Outside_EventScript_DraconidBattleWallace_Text_0:
+	.string "WALLACE: The tide turns, and turns\n"
+	.string "again. Let me tend to your partners.$"
+
+SkyPillar_Outside_EventScript_DraconidBattleWallace_Text_1:
+	.string "WALLACE: Speak to me when you are\n"
+	.string "ready. I will be here.$"
+
+SkyPillar_Outside_EventScript_DraconidBattleWallace_Text_2:
+	.string "WALLACE: Magnificent. The clan chose\n"
+	.string "well.\p"
+	.string "The tower is yours, {PLAYER}.$"
+
+SkyPillar_Outside_EventScript_DraconidBattleWallace_Text_3:
+	.string "WALLACE: ASTER, NERINE! SOOTOPOLIS\n"
+	.string "watches the water, and the DRACONIDS\l"
+	.string "watch the sky.\p"
+	.string "It has always been one sky. I am glad to\n"
+	.string "share it with you.$"
+
+SkyPillar_Outside_EventScript_DraconidBattleWallace_Text_4:
+	.string "NERINE: Then keep the sea calm for us\n"
+	.string "tonight, WALLACE.$"
+
+SkyPillar_Outside_EventScript_DraconidWallace_Text_0:
+	.string "WALLACE: Shall we try again, {PLAYER}?$"
+
+SkyPillar_Outside_EventScript_DraconidWallace_Text_1:
+	.string "WALLACE: Take your time. Calm water\n"
+	.string "runs deepest.$"
+
+SkyPillar_Outside_EventScript_DraconidGoHomeFirst_Text_0:
+	.string "ASTER: The ELDER is waiting for you at\n"
+	.string "the shrine, {PLAYER}. Go on home first.\p"
+	.string "We'll keep the door. Nobody climbs\n"
+	.string "without us.$"
+
+DraconidVillage_Shrine_EventScript_DraconidSealScene_Text_0:
+	.string "ELDER: You came quickly. Good.$"
+
+DraconidVillage_Shrine_EventScript_DraconidSealScene_Text_1:
+	.string "ELDER: Listen, {PLAYER}. Can you hear\n"
+	.string "it?$"
+
+DraconidVillage_Shrine_EventScript_DraconidSealScene_Text_2:
+	.string "ELDER: Our clan's first tamers carved\n"
+	.string "the wall behind the GUARDIAN around a\l"
+	.string "dragon of living stone.\p"
+	.string "REGIDRAGO. It slept there through the\n"
+	.string "war of the land and the sea.\p"
+	.string "It was sealed away to wait for one\n"
+	.string "thing: the one who would stand beside\l"
+	.string "the sky.$"
+
+DraconidVillage_Shrine_EventScript_DraconidSealScene_Text_3:
+	.string "ELDER: The star is near, and it has\n"
+	.string "woken. Put your hand on the GUARDIAN,\l"
+	.string "{PLAYER}.$"
+
+DraconidVillage_Shrine_EventScript_DraconidSealScene_Text_4:
+	.string "The GUARDIAN's statue began to move!$"
+
+DraconidVillage_Shrine_EventScript_DraconidSealScene_Text_5:
+	.string "Behind the statue, the carved wall split\n"
+	.string "open!\p"
+	.string "Cold air rose from a passage leading\n"
+	.string "down into the rock.$"
+
+DraconidVillage_Shrine_EventScript_DraconidSealScene_Text_6:
+	.string "ELDER: It is open. Go down to it,\n"
+	.string "{PLAYER}.\p"
+	.string "It will test you, as the sky tests us\n"
+	.string "all. I will wait for you by the door.$"
+
+DraconidVillage_Shrine_EventScript_DraconidElderAfterRegidrago_Text_0:
+	.string "ELDER: So the stone dragon has chosen\n"
+	.string "you. I felt it.\p"
+	.string "The clan waited a very long time for\n"
+	.string "that, {PLAYER}.$"
+
+DraconidVillage_Shrine_EventScript_DraconidElderAfterRegidrago_Text_1:
+	.string "ELDER: The stone dragon sleeps again.\n"
+	.string "But it knows you now.\p"
+	.string "It will be waiting down there, whenever\n"
+	.string "you return to it.$"
+
+DraconidVillage_Shrine_EventScript_DraconidOfferLift_Text_0:
+	.string "ELDER: Now, the pillar. ASTER and NERINE\n"
+	.string "have waited long enough.\p"
+	.string "My dragon will carry you there. Are you\n"
+	.string "ready?$"
+
+DraconidVillage_Shrine_EventScript_DraconidOfferLift_Text_1:
+	.string "ELDER: Then make ready. I will be here.\p"
+	.string "Or go by your own wings: the pillar\n"
+	.string "stands on ROUTE 131, west of\l"
+	.string "PACIFIDLOG TOWN.$"
+
+DraconidVillage_Shrine_EventScript_DraconidOfferLift_Text_2:
+	.string "ELDER: Hold on tight, and do not look\n"
+	.string "down.$"
+
+DraconidVillage_Shrine_EventScript_DraconidElderTalk_Text_0:
+	.string "ELDER: REGIDRAGO waits below. Go to it,\n"
+	.string "{PLAYER}.$"
+
+DraconidVillage_Shrine_EventScript_DraconidOpenWallSign_Text_0:
+	.string "The old carving has split around a dark\n"
+	.string "passage.\p"
+	.string "A cold wind rises from deep in the rock.$"
+
+SkyPillar_Top_EventScript_DraconidAlarm_Text_0:
+	.string "A deep rumble rolled in over the sea\n"
+	.string "from the east.$"
+
+SkyPillar_Top_EventScript_DraconidAlarm_Text_1:
+	.string "Far away, above the mountains, the sky\n"
+	.string "had split in two.\p"
+	.string "A blazing sun on one side. Black rain on\n"
+	.string "the other.$"
+
+SkyPillar_Top_EventScript_DraconidAlarm_Text_2:
+	.string "ASTER: That's over the mountains.\n"
+	.string "That's over HOME.$"
+
+SkyPillar_Top_EventScript_DraconidAlarm_Text_3:
+	.string "NERINE: The sun and the rain, both at\n"
+	.string "once… Only the old ones of the land and\l"
+	.string "the sea do that.$"
+
+SkyPillar_Top_EventScript_DraconidAlarm_Text_4:
+	.string "ELDER: MAXIE and ARCHIE, together. The\n"
+	.string "DRACONIDS stood in their way, and now\l"
+	.string "they come for us.$"
+
+SkyPillar_Top_EventScript_DraconidAlarm_Text_5:
+	.string "ELDER: ASTER, NERINE. With me, to the\n"
+	.string "shrine.\p"
+	.string "{PLAYER}, follow as fast as the sky will\n"
+	.string "carry you.$"
+
+SkyPillar_Top_EventScript_DraconidAlarm_Text_6:
+	.string "ZINNIA: Go! This is your clan's fight.\p"
+	.string "I'll keep watch on the sky from up here.$"
+
+SkyPillar_Top_EventScript_DraconidAlarm_Text_7:
+	.string "The ELDER's dragon rose into the air,\n"
+	.string "with ASTER's and NERINE's close behind.\p"
+	.string "{STR_VAR_1} carried {PLAYER} after\n"
+	.string "them, east, into the split sky…$"
+
+DraconidVillage_EventScript_DraconidArrival_Text_0:
+	.string "{PLAYER} came down at the foot of the\n"
+	.string "village…$"
+
+DraconidVillage_EventScript_DraconidArrival_Text_1:
+	.string "PRIMAL GROUDON towered over the\n"
+	.string "houses, burning like the heart of a\l"
+	.string "volcano.$"
+
+DraconidVillage_EventScript_DraconidArrival_Text_2:
+	.string "TEAM MAGMA and TEAM AQUA stood at\n"
+	.string "every door.\p"
+	.string "Up at the shrine, the ELDER, ASTER and\n"
+	.string "NERINE held the way in.$"
+
+DraconidVillage_EventScript_DraconidArrival_Text_3:
+	.string "In the waterfall pool, PRIMAL KYOGRE\n"
+	.string "rose, and the rain came down in sheets.$"
+
+DraconidVillage_EventScript_DraconidArrival_Text_4:
+	.string "BRENDAN: {PLAYER}! Man… Look at this\n"
+	.string "place.$"
+
+DraconidVillage_EventScript_DraconidArrival_Text_5:
+	.string "MAY: We saw the sky from LITTLEROOT.\n"
+	.string "Half of it was on fire!$"
+
+DraconidVillage_EventScript_DraconidArrival_Text_6:
+	.string "WALLY: There are people in those\n"
+	.string "houses, {PLAYER}. They can't get out!$"
+
+DraconidVillage_EventScript_DraconidArrival_Text_7:
+	.string "MAY: Oh! You haven't met her yet.\p"
+	.string "When the star broke over HOENN, a\n"
+	.string "LATIAS came down right outside the LAB.\p"
+	.string "She hasn't left my side since. She flew\n"
+	.string "me all the way up here!$"
+
+DraconidVillage_EventScript_DraconidArrival_Text_8:
+	.string "BRENDAN: A LATIOS found me the same\n"
+	.string "night. It just stared at me until I got\l"
+	.string "on.\p"
+	.string "…Don't laugh.$"
+
+DraconidVillage_EventScript_DraconidArrival_Text_9:
+	.string "BRENDAN: They've got grunts at every\n"
+	.string "door. We take them one house at a time.\p"
+	.string "I've got the house by the pond. MAY,\n"
+	.string "{PLAYER}'s house. WALLY, the one down\l"
+	.string "here.$"
+
+DraconidVillage_EventScript_DraconidArrival_Text_10:
+	.string "MAY: Whichever house you reach first,\n"
+	.string "{PLAYER}, we fight it together!$"
+
+DraconidVillage_EventScript_DraconidArrival_Text_11:
+	.string "WALLY: I'm not scared of them anymore.\n"
+	.string "Let's go!$"
+
+DraconidVillage_EventScript_DraconidHouse2_Text_0:
+	.string "GRUNT: The traitor's come home! MAXIE\n"
+	.string "said you would.$"
+
+DraconidVillage_EventScript_DraconidHouse2_Text_1:
+	.string "GRUNT: ARCHIE says the DRACONIDS\n"
+	.string "called the sky down on us twice.\p"
+	.string "Nobody leaves this house until your\n"
+	.string "clan pays for it.$"
+
+DraconidVillage_EventScript_DraconidHouse2_Text_2:
+	.string "WALLY: {PLAYER}! I'll fight with you.\p"
+	.string "I stood up to you when you wore red. I\n"
+	.string "can stand up to them.$"
+
+DraconidVillage_EventScript_DraconidHouse2_Text_3:
+	.string "GRUNT: Fall back! Fall back to the\n"
+	.string "shrine!$"
+
+DraconidVillage_EventScript_DraconidHouse2_Text_4:
+	.string "WALLY: They ran… They actually ran from\n"
+	.string "us!\p"
+	.string "I used to be scared of TEAM MAGMA. Now\n"
+	.string "they're scared of us.$"
+
+DraconidVillage_EventScript_DraconidHouse2_Text_5:
+	.string "A voice called from the doorway: “Thank\n"
+	.string "the sky! They've been at our door for\l"
+	.string "hours!”\p"
+	.string "The family from the house hurried out\n"
+	.string "to tend {PLAYER}'s team.$"
+
+DraconidVillage_EventScript_DraconidPlayersHouse_Text_0:
+	.string "GRUNT: So this is the traitor's house.\n"
+	.string "MAXIE wants it turned upside down.$"
+
+DraconidVillage_EventScript_DraconidPlayersHouse_Text_1:
+	.string "GRUNT: Eheh. Nice little hut. Shame\n"
+	.string "about the weather!$"
+
+DraconidVillage_EventScript_DraconidPlayersHouse_Text_2:
+	.string "MAY: Hey! Get away from that door!\p"
+	.string "{PLAYER}, your village is our village now.\n"
+	.string "Let's go!$"
+
+DraconidVillage_EventScript_DraconidPlayersHouse_Text_3:
+	.string "GRUNT: This isn't worth it! I'm out of\n"
+	.string "here!$"
+
+DraconidVillage_EventScript_DraconidPlayersHouse_Text_4:
+	.string "MAY: Hehe! Nobody touches {PLAYER}'s\n"
+	.string "house while I'm around!\p"
+	.string "LATIAS, you were amazing! Did you see\n"
+	.string "her, {PLAYER}?$"
+
+DraconidVillage_EventScript_DraconidPlayersHouse_Text_5:
+	.string "The OLD WOMAN who gave {PLAYER} the\n"
+	.string "RUNNING SHOES came out of hiding next\l"
+	.string "door.\p"
+	.string "“Oh, my! Come here, let me see to your\n"
+	.string "partners.”$"
+
+DraconidVillage_EventScript_DraconidHouse1_Text_0:
+	.string "GRUNT: More DRACONIDS? The grown-ups\n"
+	.string "already ran up to that shrine.$"
+
+DraconidVillage_EventScript_DraconidHouse1_Text_1:
+	.string "GRUNT: Just a weaver and a little girl in\n"
+	.string "there. Easy pickings.$"
+
+DraconidVillage_EventScript_DraconidHouse1_Text_2:
+	.string "BRENDAN: Easy, huh? Try us.\p"
+	.string "{PLAYER}, you and me. Let's show them\n"
+	.string "what we've got!$"
+
+DraconidVillage_EventScript_DraconidHouse1_Text_3:
+	.string "GRUNT: Forget this! Back to the boss!$"
+
+DraconidVillage_EventScript_DraconidHouse1_Text_4:
+	.string "BRENDAN: Hah! Not bad, partner.$"
+
+DraconidVillage_EventScript_DraconidHouse1_Text_5:
+	.string "The weaver and her daughter peeked out\n"
+	.string "of the door.\p"
+	.string "“You came back for us!” They brought\n"
+	.string "water and warm cloth for {PLAYER}'s\l"
+	.string "team.$"
+
+DraconidVillage_EventScript_DraconidHouseFreed_Text_0:
+	.string "Up at the shrine, something crashed\n"
+	.string "against the rock.\p"
+	.string "Every house was free. Only the way up\n"
+	.string "to the shrine was left.$"
+
+DraconidVillage_EventScript_DraconidHouseFreed_Text_1:
+	.string "ASTER's voice rang down from the\n"
+	.string "shrine: “{PLAYER}! Up here! NOW!”$"
+
+DraconidVillage_EventScript_DraconidHouseFreed_Text_2:
+	.string "There were still grunts at the other\n"
+	.string "houses.$"
+
+DraconidVillage_EventScript_DraconidWallyTalk_Text_0:
+	.string "WALLY: I'll stay with this family until\n"
+	.string "it's over.\p"
+	.string "Go help the others, {PLAYER}!$"
+
+DraconidVillage_EventScript_DraconidWallyTalk_Text_1:
+	.string "WALLY: Let's go when you're ready,\n"
+	.string "{PLAYER}.$"
+
+DraconidVillage_EventScript_DraconidMayTalk_Text_0:
+	.string "MAY: I'll keep watch on your house. Go\n"
+	.string "on, {PLAYER}!$"
+
+DraconidVillage_EventScript_DraconidMayTalk_Text_1:
+	.string "MAY: Ready when you are, {PLAYER}!$"
+
+DraconidVillage_EventScript_DraconidBrendanTalk_Text_0:
+	.string "BRENDAN: I've got this house covered.\n"
+	.string "Go!$"
+
+DraconidVillage_EventScript_DraconidBrendanTalk_Text_1:
+	.string "BRENDAN: Whenever you're ready. Don't\n"
+	.string "keep them waiting.$"
+
+DraconidVillage_EventScript_DraconidAdmins_Text_0:
+	.string "TABITHA: Hehehe! Look who finally came\n"
+	.string "home.\p"
+	.string "Your neighbors are still at our mercy,\n"
+	.string "traitor. Go on. Run along and save them.$"
+
+DraconidVillage_EventScript_DraconidAster_Text_0:
+	.string "ASTER: Help the houses first! We can\n"
+	.string "hold the door a while longer!$"
+
+DraconidVillage_EventScript_DraconidAdminsBattle_Text_0:
+	.string "ASTER: {PLAYER}. The ELDER stood in the\n"
+	.string "shrine door against both of their\l"
+	.string "monsters.\p"
+	.string "He took a blow meant for the GUARDIAN's\n"
+	.string "statue.\p"
+	.string "NERINE is with him. He's breathing. He's\n"
+	.string "too stubborn not to.$"
+
+DraconidVillage_EventScript_DraconidAdminsBattle_Text_1:
+	.string "ASTER: I'm done watching. These two are\n"
+	.string "mine.\p"
+	.string "Yours too, if you want them.$"
+
+DraconidVillage_EventScript_DraconidAdminsBattle_Text_2:
+	.string "TABITHA: The ELDER's little pets, side\n"
+	.string "by side at last. MAXIE will be so\l"
+	.string "pleased.$"
+
+DraconidVillage_EventScript_DraconidAdminsBattle_Text_3:
+	.string "SHELLY: Ahahahaha! Two baby dragon\n"
+	.string "tamers? This'll be over in a minute!$"
+
+DraconidVillage_EventScript_DraconidAdminsBattle_Text_4:
+	.string "TABITHA: MAXIE! They're through!$"
+
+DraconidVillage_EventScript_DraconidAdminsBattle_Text_5:
+	.string "SHELLY: ARCHIE, your turn! I'm done\n"
+	.string "with these kids!$"
+
+DraconidVillage_EventScript_DraconidAdminsBattle_Text_6:
+	.string "ASTER: Hmph. Side by side with you.\p"
+	.string "…I could get used to that.$"
+
+DraconidVillage_EventScript_DraconidFinalIntro_Text_0:
+	.string "MAXIE: So. My recruit comes home at\n"
+	.string "last.$"
+
+DraconidVillage_EventScript_DraconidFinalIntro_Text_1:
+	.string "MAXIE: You stood beside me, {PLAYER}. I\n"
+	.string "made you my right hand.\p"
+	.string "And all the while you carried my plans to\n"
+	.string "these sky-watchers.$"
+
+DraconidVillage_EventScript_DraconidFinalIntro_Text_2:
+	.string "MAXIE: This shrine is how the DRACONIDS\n"
+	.string "call RAYQUAZA down upon us.\p"
+	.string "No sky will stand between humankind and\n"
+	.string "its land again. It ends today.$"
+
+DraconidVillage_EventScript_DraconidFinalIntro_Text_3:
+	.string "ARCHIE: Fufufu! Don't look so shocked,\n"
+	.string "kid.\p"
+	.string "Your clan made fools of both of us. That\n"
+	.string "was a mistake.$"
+
+DraconidVillage_EventScript_DraconidFinalIntro_Text_4:
+	.string "ARCHIE: Turns out MAXIE and I had each\n"
+	.string "other's ORB the whole time.\p"
+	.string "One trade, and look what they do now!$"
+
+DraconidVillage_EventScript_DraconidFinalIntro_Text_5:
+	.string "MAXIE: The RED ORB answers me now.\p"
+	.string "Behold GROUDON as it was at the dawn of\n"
+	.string "the world.$"
+
+DraconidVillage_EventScript_DraconidFinalIntro_Text_6:
+	.string "BRENDAN: {PLAYER}! COURTNEY and MATT\n"
+	.string "are coming up the pass!\p"
+	.string "They've got a whole crowd of grunts\n"
+	.string "with them!$"
+
+DraconidVillage_EventScript_DraconidFinalIntro_Text_7:
+	.string "MAY: Then two of us hold the pass, and\n"
+	.string "one fights beside {PLAYER}!$"
+
+DraconidVillage_EventScript_DraconidMaxieArchie_Text_0:
+	.string "MAXIE: You again. You never know when\n"
+	.string "to stay down, do you?$"
+
+DraconidVillage_EventScript_DraconidMaxieArchie_Text_1:
+	.string "MAY: {PLAYER}! We're still here! Who's\n"
+	.string "fighting with you this time?$"
+
+DraconidVillage_EventScript_DraconidMaxieArchieWaiting_Text_0:
+	.string "MAXIE: Humph. My ADMINS will deal with\n"
+	.string "you.\p"
+	.string "I have waited a long time for this. I can\n"
+	.string "wait a little longer.$"
+
+DraconidVillage_EventScript_DraconidMaxieArchieWaiting_Text_1:
+	.string "ARCHIE: Look at it, kid! KYOGRE as it\n"
+	.string "was meant to be!\p"
+	.string "Go on, play with SHELLY first. I'll be\n"
+	.string "right here.$"
+
+DraconidVillage_EventScript_DraconidFinalChoice_Text_0:
+	.string "Who will fight beside {PLAYER}?$"
+
+DraconidVillage_EventScript_DraconidFinalChoice_Text_1:
+	.string "BRENDAN$"
+
+DraconidVillage_EventScript_DraconidFinalChoice_Text_2:
+	.string "MAY$"
+
+DraconidVillage_EventScript_DraconidFinalChoice_Text_3:
+	.string "BRENDAN: Me again, huh? Good.\p"
+	.string "LATIOS, you're up!$"
+
+DraconidVillage_EventScript_DraconidFinalChoice_Text_4:
+	.string "MAY: Then WALLY and I will hold the\n"
+	.string "pass! Don't you dare lose, {PLAYER}!$"
+
+DraconidVillage_EventScript_DraconidFinalChoice_Text_5:
+	.string "MAY: Yes! LATIAS, let's go!$"
+
+DraconidVillage_EventScript_DraconidFinalChoice_Text_6:
+	.string "BRENDAN: WALLY, with me. Nobody gets up\n"
+	.string "that path!$"
+
+DraconidVillage_EventScript_DraconidFinalChoice_Text_7:
+	.string "WALLY: Right behind you!$"
+
+DraconidVillage_EventScript_DraconidFinalChoice_Text_8:
+	.string "ASTER: NERINE and I have the ELDER,\n"
+	.string "{PLAYER}. Don't look back here.$"
+
+DraconidVillage_EventScript_DraconidFinalChoice_Text_9:
+	.string "NERINE: Win, {PLAYER}. Then come home to\n"
+	.string "us.$"
+
+DraconidVillage_EventScript_DraconidFinalChoice_Text_10:
+	.string "ARCHIE: Two kids against MAGMA and\n"
+	.string "AQUA together, and the old ones of land\l"
+	.string "and sea?\p"
+	.string "Fufufu… Bring it on!$"
+
+DraconidVillage_EventScript_DraconidFinalChoice_Text_11:
+	.string "MAXIE: Enough talk. Humankind will have\n"
+	.string "its land, {PLAYER}.\p"
+	.string "Even if I must bury this mountain to\n"
+	.string "give it to them.$"
+
+DraconidVillage_EventScript_DraconidPrimalWon_Text_0:
+	.string "MAXIE: No… GROUDON! Crush them!$"
+
+DraconidVillage_EventScript_DraconidPrimalWon_Text_1:
+	.string "The ground heaved. GROUDON and KYOGRE\n"
+	.string "thrashed, no longer listening to\l"
+	.string "anyone.$"
+
+DraconidVillage_EventScript_DraconidPrimalWon_Text_2:
+	.string "RAYQUAZA burst from its POKé BALL and\n"
+	.string "rose over the shrine!$"
+
+DraconidVillage_EventScript_DraconidPrimalWon_Text_3:
+	.string "In the shrine door, the ELDER pulled\n"
+	.string "himself to his feet and raised his voice\l"
+	.string "to the old ones.\p"
+	.string "ELDER: Old ones of the land and the sea.\n"
+	.string "The sky has spoken for you once before.\p"
+	.string "Your war ended long ago. Go home now,\n"
+	.string "and sleep.$"
+
+DraconidVillage_EventScript_DraconidPrimalWon_Text_4:
+	.string "GROUDON's glow went dark. It sank down\n"
+	.string "into the mountain and was gone.$"
+
+DraconidVillage_EventScript_DraconidPrimalWon_Text_5:
+	.string "KYOGRE slipped away down the river,\n"
+	.string "back toward the sea.$"
+
+DraconidVillage_EventScript_DraconidPrimalWon_Text_6:
+	.string "The storm broke. The sun over the\n"
+	.string "mountains was only the sun again.\p"
+	.string "RAYQUAZA came down and returned to its\n"
+	.string "POKé BALL.$"
+
+DraconidVillage_EventScript_DraconidPrimalWon_Text_7:
+	.string "MAXIE: …Humph. RAYQUAZA answers you.\n"
+	.string "It never once answered me.$"
+
+DraconidVillage_EventScript_DraconidPrimalWon_Text_8:
+	.string "MAXIE: I will not thank you, {PLAYER}.\n"
+	.string "Nor will I forgive you.\p"
+	.string "But the land has chosen who stands for\n"
+	.string "it. Even I can see that much.$"
+
+DraconidVillage_EventScript_DraconidPrimalWon_Text_9:
+	.string "MAXIE: Take it. The RED ORB is wasted on\n"
+	.string "a man GROUDON will not hear.$"
+
+DraconidVillage_EventScript_DraconidPrimalWon_Text_10:
+	.string "ARCHIE: Hah… Look at this place.\p"
+	.string "We came up here to wreck a village of\n"
+	.string "kids and old folks.$"
+
+DraconidVillage_EventScript_DraconidPrimalWon_Text_11:
+	.string "ARCHIE: That's not what the sea ever\n"
+	.string "asked of me. …Here. Keep this away from\l"
+	.string "me.$"
+
+DraconidVillage_EventScript_DraconidPrimalWon_Text_12:
+	.string "MAXIE: TEAM MAGMA is finished here.\n"
+	.string "Come, ARCHIE.$"
+
+DraconidVillage_EventScript_DraconidPrimalWon_Text_13:
+	.string "MAXIE and ARCHIE led what was left of\n"
+	.string "their teams back down the pass.\p"
+	.string "By evening the fires were out, and the\n"
+	.string "villagers came out of their houses one\l"
+	.string "by one…$"
+
+MtPyre_Summit_EventScript_DraconidOldLadyOrbs_Text_0:
+	.string "So the RED ORB and the BLUE ORB came to\n"
+	.string "you in the end.\p"
+	.string "Keep them. The one who calmed the old\n"
+	.string "ones should hold them.$"
+
+DraconidVillage_EventScript_DraconidGoodbyes_Text_0:
+	.string "ELDER: {PLAYER}. You brought friends\n"
+	.string "home with you.$"
+
+DraconidVillage_EventScript_DraconidGoodbyes_Text_1:
+	.string "ELDER: The sky's debt was ours to pay.\n"
+	.string "You have paid far more than your share.$"
+
+DraconidVillage_EventScript_DraconidGoodbyes_Text_2:
+	.string "ELDER: BRENDAN. MAY. WALLY.\p"
+	.string "The DRACONIDS will not forget what you\n"
+	.string "did for us today. This village is yours,\l"
+	.string "always.$"
+
+DraconidVillage_EventScript_DraconidGoodbyes_Text_3:
+	.string "WALLY: Um… Is it okay if I come back\n"
+	.string "sometime?\p"
+	.string "I can breathe really well up here.$"
+
+DraconidVillage_EventScript_DraconidGoodbyes_Text_4:
+	.string "BRENDAN: We'll be back. You still owe me\n"
+	.string "a real battle, {PLAYER}.\p"
+	.string "Come find me at my dad's LAB. I'll be\n"
+	.string "ready.$"
+
+DraconidVillage_EventScript_DraconidGoodbyes_Text_5:
+	.string "MAY: And you owe me the whole story.\n"
+	.string "Every single part of it!\p"
+	.string "See you soon, {PLAYER}!$"
+
+DraconidVillage_EventScript_DraconidGoodbyes_Text_6:
+	.string "LATIOS and LATIAS carried BRENDAN and\n"
+	.string "MAY off toward LITTLEROOT, with\l"
+	.string "WALLY's ALTARIA close behind.$"
+
+DraconidVillage_EventScript_DraconidGoodbyes_Text_7:
+	.string "ASTER: Riddle: what's quiet, a little\n"
+	.string "burnt, and still standing?\p"
+	.string "…Home, {PLAYER}. That's the answer.$"
+
+DraconidVillage_EventScript_DraconidGoodbyes_Text_8:
+	.string "NERINE: Welcome home, {PLAYER}.$"
+
+DraconidVillage_EventScript_DraconidGoodbyes_Text_9:
+	.string "ELDER: Come. Let us go in.$"
+
+DraconidVillage_EventScript_DraconidElder_Text_0:
+	.string "ELDER: I am only bruised, {PLAYER}. Old\n"
+	.string "dragons are hard to break.$"
+
+DraconidVillage_EventScript_DraconidElder_Text_1:
+	.string "The ELDER was down on one knee in the\n"
+	.string "shrine door, breathing hard.\p"
+	.string "ELDER: Do not worry for me, {PLAYER}…\n"
+	.string "Protect the village.$"
+
+DraconidVillage_EventScript_DraconidNerineAtShrine_Text_0:
+	.string "NERINE: I've got him. He took a hard\n"
+	.string "blow, but he's breathing.\p"
+	.string "Go, {PLAYER}. The sea and I will hold this\n"
+	.string "door.$"
+
+DraconidVillage_EventScript_DraconidGatekeeperAttack_Text_0:
+	.string "GATEKEEPER: {PLAYER}! Don't go down the\n"
+	.string "pass now!\p"
+	.string "They came up it in the dark, dozens of\n"
+	.string "them. I couldn't hold them back.\p"
+	.string "Our people are still in the village.\n"
+	.string "Please!$"
+
+DraconidVillage_EventScript_DraconidGatekeeperTalk_Text_0:
+	.string "GATEKEEPER: They came up the pass in\n"
+	.string "the dark, MAGMA and AQUA both.\p"
+	.string "I couldn't hold them back, {PLAYER}.\n"
+	.string "Please… Save our village.$"
+
+MagmaHideout_4F_EventScript_DraconidGroudon_Text_0:
+	.string "GROUDON is sleeping at the edge of the\n"
+	.string "magma, the RED ORB's glow long gone from\l"
+	.string "its body.\p"
+	.string "…It stirred!$"
+
+MagmaHideout_4F_EventScript_DraconidGroudon_Text_1:
+	.string "GROUDON sank back into the magma…\p"
+	.string "It will surely rise again.$"
+
+SeafloorCavern_Room9_EventScript_DraconidKyogre_Text_0:
+	.string "KYOGRE is sleeping in the deep pool, the\n"
+	.string "BLUE ORB's glow long gone from its body.\p"
+	.string "…It stirred!$"
+
+SeafloorCavern_Room9_EventScript_DraconidKyogre_Text_1:
+	.string "KYOGRE sank into the dark water…\p"
+	.string "It will surely rise again.$"
+
+Route119_WeatherInstitute_2F_EventScript_DraconidLegendsHome_Text_0:
+	.string "The skies over HOENN went strange\n"
+	.string "tonight. None of our instruments can\l"
+	.string "explain it!$"
+
+Route119_WeatherInstitute_2F_EventScript_DraconidLegendsHome_Text_1:
+	.string "After that storm over the mountains,\n"
+	.string "our readings went quiet again.\p"
+	.string "The heat sank back toward the MAGMA\n"
+	.string "HIDEOUT by MT. CHIMNEY, and the rain\l"
+	.string "toward the SEAFLOOR CAVERN off ROUTE\l"
+	.string "128.\p"
+	.string "If you ask me, GROUDON and KYOGRE went\n"
+	.string "home to sleep where they first woke!$"
+
+SkyPillar_Outside_Text_DraconidElderCall::
+	.string "… … … … … …\n"
+	.string "… … … … … Beep!\p"
+	.string "ELDER: {PLAYER}. It is the ELDER. Do\n"
+	.string "not climb yet.\p"
+	.string "When the star caught fire, the old\n"
+	.string "seal in our shrine broke. The wall\l"
+	.string "behind the GUARDIAN is singing.\p"
+	.string "Long ago the clan sealed a dragon\n"
+	.string "of stone there. REGIDRAGO.\p"
+	.string "It wakes only when the sky is in\n"
+	.string "danger. No tamer has ever climbed\l"
+	.string "to RAYQUAZA without its blessing.\p"
+	.string "It answers only the one who\n"
+	.string "carries the prophecy. That one is\l"
+	.string "you.\p"
+	.string "My dragon is on its way to you. Come\n"
+	.string "home, face the stone dragon, and\l"
+	.string "you will be back at the pillar\l"
+	.string "before the night is out.\p"
+	.string "… … … … … …\n"
+	.string "… … … … … Click!$"
+
+SkyPillar_Outside_Text_DraconidWallaceDefeat::
+	.string "Your bond flows like a river to the sea.\n"
+	.string "Truly beautiful.$"
+
+SkyPillar_Top_Text_DraconidMayCall::
+	.string "… … … … … …\n"
+	.string "… … … … … Beep!\p"
+	.string "MAY: {PLAYER}! {PLAYER}, can you\n"
+	.string "hear me?!\p"
+	.string "TEAM MAGMA and TEAM AQUA went up\n"
+	.string "DRACONID PASS. Both of them,\l"
+	.string "together!\p"
+	.string "BRENDAN saw MAXIE with the RED\n"
+	.string "ORB. And ARCHIE had the BLUE one!\p"
+	.string "They woke GROUDON and KYOGRE up\n"
+	.string "again. And they're different now.\l"
+	.string "Huge, and glowing!\p"
+	.string "The sky over your village is half\n"
+	.string "fire and half storm!\p"
+	.string "BRENDAN and WALLY are here with\n"
+	.string "me. We're going up there right now!\p"
+	.string "Hurry, {PLAYER}!\p"
+	.string "… … … … … …\n"
+	.string "… … … … … Click!$"
+
+DraconidVillage_Text_DraconidGrunt1Defeat::
+	.string "No way! The traitor AND a sickly kid?!$"
+
+DraconidVillage_Text_DraconidGrunt2Defeat::
+	.string "The sea won't forget this!$"
+
+DraconidVillage_Text_DraconidGrunt3Defeat::
+	.string "The ORB was supposed to make this\n"
+	.string "easy!$"
+
+DraconidVillage_Text_DraconidGrunt4Defeat::
+	.string "Ugh! MAXIE's not going to like this.$"
+
+DraconidVillage_Text_DraconidGrunt5Defeat::
+	.string "That LATIOS came out of nowhere!$"
+
+DraconidVillage_Text_DraconidGrunt6Defeat::
+	.string "We had the ORBS! How are we losing?!$"
+
+DraconidVillage_Text_DraconidTabithaDefeat::
+	.string "Hehe… MAXIE won't forgive this.$"
+
+DraconidVillage_Text_DraconidShellyDefeat::
+	.string "Ahahaha! You two are no joke.$"
+
+DraconidVillage_Text_DraconidMaxieDefeat::
+	.string "Three times… Three times you have\n"
+	.string "stood in my way.$"
+
+DraconidVillage_Text_DraconidArchieDefeat::
+	.string "Blast it! Even with the BLUE ORB?!$"

@@ -139,6 +139,10 @@ OVERRIDES = {
                                                          ("POSTGAME", "POST"))
        for e in EGGS for st in STARTERS},
     **{t: "POST" for t in ["BRENDAN_POSTGAME", "MAY_POSTGAME", "BRENDAN_POSTGAME_DOUBLE", "MAY_POSTGAME_DOUBLE"]},
+    # the attack on the Draconid village after the Sky Pillar, the Primal finale (act7x.pory, D-205, D-206)
+    **{"GRUNT_VILLAGE_%d" % i: "POST" for i in range(1, 7)},
+    "TABITHA_VILLAGE": "POST", "SHELLY_VILLAGE": "POST", "MAXIE_FINALE": "POST", "ARCHIE_FINALE": "POST",
+    "WALLACE_SKY_PILLAR": "POST",  # before the Trial of Three (D-203)
     # Gabby & Ty move on after every battle (Route 111 -> 118 -> 120 ...)
     "GABBY_AND_TY_1": "S4", "GABBY_AND_TY_2": "S4", "GABBY_AND_TY_3": "S5",
     "GABBY_AND_TY_4": "S6", "GABBY_AND_TY_5": "S7", "GABBY_AND_TY_6": "S8",
@@ -156,7 +160,9 @@ ADMINS = ["TABITHA", "SHELLY", "MATT", "COURTNEY"]
 STORY = re.compile(r"^TRAINER_(BRENDAN|MAY|WALLY|ASTER|NERINE|ZINNIA|STEVEN_MOSSDEEP|MAXIE_SOOTOPOLIS|ARCHIE_SOOTOPOLIS|"
                    # Team Magma's revenge (magma_revenge.pory, D-245 - D-247)
                    r"GRUNT_SOOTOPOLIS_REVENGE|GRUNT_EVER_GRANDE|GRUNT_AQUA_GAUNTLET|SHELLY_EVER_GRANDE|MAXIE_VICTORY_ROAD|"
-                   r"TABITHA_VICTORY_ROAD|COURTNEY_VICTORY_ROAD|GRUNT_VICTORY_ROAD_EXIT|GRUNT_POKEMON_LEAGUE)")
+                   r"TABITHA_VICTORY_ROAD|COURTNEY_VICTORY_ROAD|GRUNT_VICTORY_ROAD_EXIT|GRUNT_POKEMON_LEAGUE|"
+                   # the village attack and the Primal finale, Wallace at the Sky Pillar (act7x.pory, D-203, D-205)
+                   r"MAXIE_FINALE|ARCHIE_FINALE|TABITHA_VILLAGE|SHELLY_VILLAGE|GRUNT_VILLAGE_|WALLACE_SKY_PILLAR)")
 SKIP = {"TRAINER_BRENDAN_PLACEHOLDER", "TRAINER_MAY_PLACEHOLDER", "TRAINER_RED", "TRAINER_LEAF",
         "TRAINER_GRUNT_UNUSED", "TRAINER_CINDY_2", "TRAINER_AMY_AND_LIV_3", "TRAINER_GINA_AND_MIA_2",
         "TRAINER_LUCAS_2", "TRAINER_MIKE_1", "TRAINER_DUDLEY", "TRAINER_KAYLEE", "TRAINER_TERRY",

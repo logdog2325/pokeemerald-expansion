@@ -30,18 +30,14 @@ DraconidVillage_PlayersHouse_1F_EventScript_SSTicketAndLatiTV::
 	closemessage
 	applymovement LOCALID_PLAYER, DraconidVillage_PlayersHouse_1F_Movement_PlayerToTV
 	waitmovement 0
-	msgbox PlayersHouse_1F_Text_LatiEmergencyNewsFlash
+	msgbox DraconidVillage_PlayersHouse_1F_EventScript_SSTicketAndLatiTV_Text_4
 	closemessage
 	clearflag FLAG_SYS_TV_LATIAS_LATIOS
 	setflag FLAG_LATIOS_OR_LATIAS_ROAMING
+	special InitRoamer
 	special TurnOffTVScreen
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
-	msgbox DraconidVillage_PlayersHouse_1F_EventScript_SSTicketAndLatiTV_Text_4
-	multichoice 22, 8, MULTI_TV_LATI, TRUE
-	copyvar VAR_0x8004, VAR_RESULT
-	special InitRoamer
-	copyvar VAR_ROAMER_POKEMON, VAR_RESULT
 	msgbox DraconidVillage_PlayersHouse_1F_EventScript_SSTicketAndLatiTV_Text_5
 	closemessage
 	applymovement LOCALID_DRACONID_HOUSE_ELDER, DraconidVillage_PlayersHouse_1F_Movement_ElderLeaves
@@ -103,11 +99,11 @@ DraconidVillage_PlayersHouse_1F_EventScript_Elder_2:
 
 DraconidVillage_PlayersHouse_1F_EventScript_SSTicketAndLatiTV_Text_0:
 	.string "ELDER: You slept through a whole day\n"
-	.string "and a night, {PLAYER}. You earned every\l"
-	.string "hour of it.\p"
-	.string "The children counted falling stars\n"
-	.string "until dawn. They are still arguing about\l"
-	.string "the total.$"
+	.string "and a night, {PLAYER}. The village did\l"
+	.string "not.\p"
+	.string "Every roof the old ones cracked is\n"
+	.string "mended. The children built a GROUDON\l"
+	.string "out of the rubble in the square.$"
 
 DraconidVillage_PlayersHouse_1F_EventScript_SSTicketAndLatiTV_Text_1:
 	.string "ELDER: A letter came for you, from\n"
@@ -129,14 +125,26 @@ DraconidVillage_PlayersHouse_1F_EventScript_SSTicketAndLatiTV_Text_3:
 	.string "by itself again.$"
 
 DraconidVillage_PlayersHouse_1F_EventScript_SSTicketAndLatiTV_Text_4:
-	.string "ELDER: A dragon in flight, over HOENN…\n"
-	.string "Did you catch its colour, {PLAYER}?$"
+	.string "…We interrupt this program with a news\n"
+	.string "flash!\p"
+	.string "Two dragon-like POKéMON, one red and\n"
+	.string "one blue, have been sighted flying over\l"
+	.string "HOENN!\p"
+	.string "Viewers may remember the pair seen with\n"
+	.string "two young TRAINERS from LITTLEROOT\l"
+	.string "during the trouble in the mountains.\p"
+	.string "Experts say these two are a second\n"
+	.string "pair, wild and free. Where they will be\l"
+	.string "seen next is anyone's guess!$"
 
 DraconidVillage_PlayersHouse_1F_EventScript_SSTicketAndLatiTV_Text_5:
-	.string "ELDER: A dragon of the sky, roaming\n"
-	.string "free. Our songs speak of the EON twins.\p"
-	.string "Perhaps one will cross your path. Keep\n"
-	.string "your eyes on the sky, {PLAYER}.$"
+	.string "ELDER: Red and blue, flying together…\n"
+	.string "Our songs speak of the EON twins.\p"
+	.string "BRENDAN and MAY found theirs when the\n"
+	.string "star broke. It seems the sky had more\l"
+	.string "to share.\p"
+	.string "Perhaps they will cross your path,\n"
+	.string "{PLAYER}. Keep your eyes on the sky.$"
 
 DraconidVillage_PlayersHouse_1F_EventScript_Elder_Text_0:
 	.string "ELDER: The sky's debt is paid, {PLAYER}.\n"

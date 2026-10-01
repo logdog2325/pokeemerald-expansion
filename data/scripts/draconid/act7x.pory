@@ -1,0 +1,1392 @@
+// Draconid Emerald round 1, the Act 7 extension (docs/hack_story.md, follow-up notes 2 and 15; feedback 1.25,
+// 1.29, 1.30; decisions D-200 - D-209): REGIDRAGO before the Sky Pillar, and the attack on the village after it.
+//
+//   Sky Pillar, outside   the ELDER calls as the player lands: the shrine's old seal has woken; his dragon flies
+//                         the player home (before the TRIAL OF THREE, act7.pory)
+//   Village shrine        the carved wall behind the GUARDIAN's statue opens; REGIDRAGO waits below
+//                         (DraconidVillage_Shrine_Depths/scripts.pory); the ELDER's dragon flies the player back
+//   Sky Pillar summit     after "The sky's debt is paid… for now." the sky over the mountains splits: MAY calls,
+//                         MAGMA and AQUA are at the village with PRIMAL GROUDON and PRIMAL KYOGRE
+//   Village               BRENDAN, MAY (LATIAS) and WALLY land with the player (BRENDAN's LATIOS); three double
+//                         battles at the houses, each rival as partner; ASTER and the player vs TABITHA and SHELLY
+//                         on the way up to the shrine; MAXIE and ARCHIE at the shrine, the partner BRENDAN or MAY:
+//                         the Primal multi battle; RAYQUAZA calms GROUDON and KYOGRE, the ORBS, goodbyes, credits
+//   Post-game             GROUDON asleep in the MAGMA HIDEOUT, KYOGRE in the SEAFLOOR CAVERN (static, they come
+//                         back until caught); both LATIOS and LATIAS roam (DraconidVillage_PlayersHouse_1F)
+//
+// VAR_DRACONID_VILLAGE_STATE: VILLAGE_STATE_* (include/constants/draconid.h). VAR_DRACONID_FINALE_STATE stays at
+// FINALE_STATE_RAYQUAZA through the attack and becomes FINALE_STATE_METEOR_DESTROYED just before the credits, so
+// everything the post-game opens waits for the village to be saved. The village's scenes start from its OnFrame
+// through VAR_TEMP_2 (set by DraconidVillage_EventScript_DraconidAttackOnTransition); its objects for the attack
+// use temp flags that the OnTransition sets for everyone who isn't there at the current state (D-136, D-204).
+// A lost battle in the village sends the player home to rest (the house is safe); the fight waits where it was.
+
+// ---------------------------------------------------------------------------
+// Shared
+// ---------------------------------------------------------------------------
+
+// The half-party menu of a multi battle, again until three are picked (the Sootopolis multi battle's loop)
+script Draconid_EventScript_VillageChooseMons {
+    special(SavePlayerParty)
+    fadescreen(FADE_TO_BLACK)
+    special(ChooseHalfPartyForBattle)
+    while (var(VAR_RESULT) == FALSE) {
+        special(LoadPlayerParty)
+        msgbox(format("Choose the POKéMON that will battle beside your partner!"))
+        closemessage
+        special(SavePlayerParty)
+        fadescreen(FADE_TO_BLACK)
+        special(ChooseHalfPartyForBattle)
+    }
+}
+
+// A lost battle in the village: the villagers carry the player home, the party is healed, the fight waits
+// (its objects stay where they are, D-205)
+script Draconid_EventScript_VillageLost {
+    fadescreen(FADE_TO_BLACK)
+    special(HealPlayerParty)
+    msgbox(format("{PLAYER} was driven back…\p"
+                  "The villagers carried {PLAYER} home. There, the POKéMON were tended until they could fight again."))
+    closemessage
+    warp(MAP_DRACONID_VILLAGE_PLAYERS_HOUSE_1F, 8, 6)
+    waitstate
+}
+
+// After a won fight: the freed villagers tend the team (the next fight comes straight after)
+script Draconid_EventScript_VillageHeal {
+    call(Draconid_EventScript_FinaleHeal)
+    msgbox(format("{PLAYER}'s POKéMON were restored to full health!"))
+}
+
+// ---------------------------------------------------------------------------
+// Sky Pillar, outside: the ELDER's call as the player lands (FINALE_STATE_SUMMONED, VILLAGE_STATE_NONE). The player
+// arrives at (17, 14) by the ELDER's dragon or on foot; ASTER and NERINE wait below the door. The OnTransition hook
+// (act7.pory) arms VAR_TEMP_7 = 2; after the call the ELDER's dragon flies the player home to the shrine.
+// ---------------------------------------------------------------------------
+
+script SkyPillar_Outside_EventScript_DraconidElderCall {
+    lockall
+    setvar(VAR_TEMP_7, 0)
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp)
+    waitmovement(0)
+    delay(30)
+    pokenavcall(SkyPillar_Outside_Text_DraconidElderCall)
+    waitmessage
+    closemessage
+    msgbox(format("NERINE: {PLAYER}! We heard the stones sing, even out here.\p"
+                  "Go quickly. We'll keep the door until you're back."))
+    msgbox(format("ASTER: And don't you dare keep us waiting! That star won't!"))
+    closemessage
+    setvar(VAR_DRACONID_VILLAGE_STATE, VILLAGE_STATE_ELDER_CALLED)
+    // if the player came on foot, the ELDER has left the house for the shrine
+    setflag(FLAG_HIDE_DRACONID_HOUSE_ELDER)
+    playse(SE_M_FLY)
+    fadescreen(FADE_TO_BLACK)
+    msgbox(format("The ELDER's old dragon came down out of the dark sky, and carried {PLAYER} home…"))
+    closemessage
+    warp(MAP_DRACONID_VILLAGE, 19, 6)
+    waitstate
+}
+
+text SkyPillar_Outside_Text_DraconidElderCall {
+    format("… … … … … …\n"
+           "… … … … … Beep!\p"
+           "ELDER: {PLAYER}. It is the ELDER. Do not climb yet.\p"
+           "When the star caught fire, the old seal in our shrine broke. The wall behind the GUARDIAN is singing.\p"
+           "Long ago the clan sealed a dragon of stone there. REGIDRAGO.\p"
+           "It wakes only when the sky is in danger. No tamer has ever climbed to RAYQUAZA without its blessing.\p"
+           "It answers only the one who carries the prophecy. That one is you.\p"
+           "My dragon is on its way to you. Come home, face the stone dragon, and you will be back at the pillar before the night is out.\p"
+           "… … … … … …\n"
+           "… … … … … Click!", 184)
+}
+
+// ---------------------------------------------------------------------------
+// Sky Pillar, outside: WALLACE keeps SOOTOPOLIS's watch over RAYQUAZA's tower (playtester follow-up 23, D-203). Back
+// from REGIDRAGO (VILLAGE_STATE_REGIDRAGO) the player lands at (17, 14); WALLACE waits at (15, 14), on the way to the
+// door. The OnTransition hook (act7.pory) shows him and arms VAR_TEMP_7 = 3 until he is beaten; a loss doesn't white
+// out (he tends the team and waits); after the win the map reloads and the TRIAL OF THREE starts as before.
+// ---------------------------------------------------------------------------
+
+script SkyPillar_Outside_EventScript_DraconidShowWallace {
+    clearflag(FLAG_HIDE_SKY_PILLAR_WALLACE)
+    setobjectxyperm(LOCALID_SKY_PILLAR_WALLACE, 15, 14)
+    setobjectmovementtype(LOCALID_SKY_PILLAR_WALLACE, MOVEMENT_TYPE_FACE_RIGHT)
+}
+
+script SkyPillar_Outside_EventScript_DraconidWallaceScene {
+    lockall
+    setvar(VAR_TEMP_7, 0)
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft)
+    waitmovement(0)
+    applymovement(LOCALID_SKY_PILLAR_WALLACE, Common_Movement_WalkRight)
+    waitmovement(0)
+    msgbox(format("WALLACE: Welcome, {PLAYER}. I thought the sky might bring you here tonight."))
+    msgbox(format("WALLACE: SOOTOPOLIS has kept watch over this tower for as long as RAYQUAZA has slept in it.\p"
+                  "Your clan keeps the sky. We keep the water that sleeps beneath it."))
+    msgbox(format("WALLACE: I saw you cast off that uniform. I know who you are.\p"
+                  "Still, no one climbs to RAYQUAZA before I have seen them battle with my own eyes."))
+    msgbox(format("WALLACE: Let us see whether your strength is as refined as your resolve."))
+    closemessage
+    goto(SkyPillar_Outside_EventScript_DraconidBattleWallace)
+}
+
+// A loss doesn't white out: WALLACE tends the team and waits for the rematch (as the TRIAL OF THREE, D-151)
+script SkyPillar_Outside_EventScript_DraconidBattleWallace {
+    setflag(FLAG_DRACONID_NO_WHITEOUT)
+    trainerbattle_no_intro(TRAINER_WALLACE_SKY_PILLAR, SkyPillar_Outside_Text_DraconidWallaceDefeat)
+    clearflag(FLAG_DRACONID_NO_WHITEOUT)
+    specialvar(VAR_RESULT, GetBattleOutcome)
+    if (var(VAR_RESULT) != B_OUTCOME_WON) {
+        msgbox(format("WALLACE: The tide turns, and turns again. Let me tend to your partners."))
+        call(Draconid_EventScript_FinaleHeal)
+        msgbox(format("{PLAYER}'s POKéMON were restored to full health!"))
+        msgbox(format("WALLACE: Speak to me when you are ready. I will be here."))
+        releaseall
+        end
+    }
+    msgbox(format("WALLACE: Magnificent. The clan chose well.\p"
+                  "The tower is yours, {PLAYER}."))
+    applymovement(LOCALID_SKY_PILLAR_WALLACE, Common_Movement_WalkInPlaceFasterUp)
+    waitmovement(0)
+    msgbox(format("WALLACE: ASTER, NERINE! SOOTOPOLIS watches the water, and the DRACONIDS watch the sky.\p"
+                  "It has always been one sky. I am glad to share it with you."))
+    msgbox(format("NERINE: Then keep the sea calm for us tonight, WALLACE."))
+    closemessage
+    applymovement(LOCALID_SKY_PILLAR_WALLACE, SkyPillar_Outside_Movement_DraconidWallaceStepsAside)
+    waitmovement(0)
+    fadescreen(FADE_TO_BLACK)
+    // the trial starts from the reloaded map, with everyone in place (act7.pory)
+    setflag(FLAG_HIDE_SKY_PILLAR_WALLACE)
+    warpsilent(MAP_SKY_PILLAR_OUTSIDE, 17, 14)
+    waitstate
+}
+
+// off the path, down and away toward the shore
+movement SkyPillar_Outside_Movement_DraconidWallaceStepsAside {
+    walk_down
+    walk_left
+    face_right
+}
+
+text SkyPillar_Outside_Text_DraconidWallaceDefeat {
+    format("Your bond flows like a river to the sea. Truly beautiful.")
+}
+
+// WALLACE after a lost battle (his object's script)
+script SkyPillar_Outside_EventScript_DraconidWallace {
+    lock
+    faceplayer
+    msgbox(format("WALLACE: Shall we try again, {PLAYER}?"), MSGBOX_YESNO)
+    if (var(VAR_RESULT) == NO) {
+        msgbox(format("WALLACE: Take your time. Calm water runs deepest."))
+        release
+        end
+    }
+    closemessage
+    goto(SkyPillar_Outside_EventScript_DraconidBattleWallace)
+}
+
+// ASTER and NERINE before REGIDRAGO has been faced (act7.pory's talk scripts come here first)
+script SkyPillar_Outside_EventScript_DraconidGoHomeFirst {
+    msgbox(format("ASTER: The ELDER is waiting for you at the shrine, {PLAYER}. Go on home first.\p"
+                  "We'll keep the door. Nobody climbs without us."))
+    release
+    end
+}
+
+// ---------------------------------------------------------------------------
+// Village shrine: the carved wall behind the GUARDIAN's statue (9-11, 2-4) opens (D-201): the statue grinds forward
+// from (10, 6) to (10, 9), out of the way of the door (its 64x64 sprite hid the tiles behind it). The ELDER waits at
+// (13, 10); the player comes in at (10, 19). DraconidVillage_Shrine's OnLoad draws the open wall from
+// VILLAGE_STATE_SEAL_OPEN on (a cave mouth, the warp at (10, 4) leads down to the depths); its OnTransition shows the
+// ELDER and arms the scenes on VAR_TEMP_1 (2: the seal, 3: the lift, when the player comes back up from the depths).
+// ---------------------------------------------------------------------------
+
+script DraconidVillage_Shrine_EventScript_DraconidOnLoad {
+    if (var(VAR_DRACONID_VILLAGE_STATE) >= VILLAGE_STATE_SEAL_OPEN) {
+        call(DraconidVillage_Shrine_EventScript_DraconidOpenWall)
+    }
+}
+
+script DraconidVillage_Shrine_EventScript_DraconidOpenWall {
+    setmetatile(9, 3, METATILE_Cave_DoorwayPurple_TopLeft, TRUE)
+    setmetatile(10, 3, METATILE_Cave_DoorwayPurple_Top, TRUE)
+    setmetatile(11, 3, METATILE_Cave_DoorwayPurple_TopRight, TRUE)
+    setmetatile(9, 4, METATILE_Cave_DoorwayPurple_Left, TRUE)
+    setmetatile(10, 4, METATILE_Cave_DoorwayPurple, FALSE)
+    setmetatile(11, 4, METATILE_Cave_DoorwayPurple_Right, TRUE)
+}
+
+script DraconidVillage_Shrine_EventScript_DraconidOnTransition {
+    if (var(VAR_DRACONID_FINALE_STATE) < FINALE_STATE_SUMMONED) {
+        return
+    }
+    // the statue stands where it ground to when the wall opened, (10, 9)
+    if (var(VAR_DRACONID_VILLAGE_STATE) >= VILLAGE_STATE_SEAL_OPEN) {
+        setobjectxyperm(LOCALID_DRACONID_SHRINE_STATUE, 10, 9)
+    }
+    // the ELDER waits in the shrine from his call until he flies the player back to the pillar: at (13, 10) for the
+    // seal, then beside the open door, (11, 5)
+    if (var(VAR_DRACONID_FINALE_STATE) == FINALE_STATE_SUMMONED
+     && var(VAR_DRACONID_VILLAGE_STATE) >= VILLAGE_STATE_ELDER_CALLED
+     && var(VAR_DRACONID_VILLAGE_STATE) <= VILLAGE_STATE_REGIDRAGO) {
+        clearflag(FLAG_HIDE_DRACONID_SHRINE_ELDER)
+        getplayerxy(VAR_TEMP_2, VAR_TEMP_3)
+        if (var(VAR_DRACONID_VILLAGE_STATE) == VILLAGE_STATE_ELDER_CALLED) {
+            setobjectxyperm(LOCALID_DRACONID_SHRINE_ELDER, 13, 10)
+            setobjectmovementtype(LOCALID_DRACONID_SHRINE_ELDER, MOVEMENT_TYPE_FACE_LEFT)
+            setvar(VAR_TEMP_1, 2)
+        } else {
+            setobjectxyperm(LOCALID_DRACONID_SHRINE_ELDER, 11, 5)
+            setobjectmovementtype(LOCALID_DRACONID_SHRINE_ELDER, MOVEMENT_TYPE_FACE_LEFT)
+            if (var(VAR_DRACONID_VILLAGE_STATE) == VILLAGE_STATE_REGIDRAGO && var(VAR_TEMP_3) == 4) {
+                // back up from the depths through the doorway at (10, 4) (the player steps out of it to (10, 5))
+                setvar(VAR_TEMP_1, 3)
+            }
+        }
+    } else {
+        setflag(FLAG_HIDE_DRACONID_SHRINE_ELDER)
+    }
+}
+
+script DraconidVillage_Shrine_EventScript_DraconidSealScene {
+    lockall
+    setvar(VAR_TEMP_1, 0)
+    applymovement(LOCALID_PLAYER, DraconidVillage_Shrine_Movement_DraconidPlayerToStatue)
+    waitmovement(0)
+    applymovement(LOCALID_DRACONID_SHRINE_ELDER, Common_Movement_WalkInPlaceFasterLeft)
+    waitmovement(0)
+    msgbox(format("ELDER: You came quickly. Good."))
+    msgbox(format("ELDER: Listen, {PLAYER}. Can you hear it?"))
+    closemessage
+    special(DoSealedChamberShakingEffect_Short)
+    playse(SE_M_EARTHQUAKE)
+    waitse
+    msgbox(format("ELDER: Our clan's first tamers carved the wall behind the GUARDIAN around a dragon of living stone.\p"
+                  "REGIDRAGO. It slept there through the war of the land and the sea.\p"
+                  "It was sealed away to wait for one thing: the one who would stand beside the sky."))
+    msgbox(format("ELDER: The star is near, and it has woken. Put your hand on the GUARDIAN, {PLAYER}."))
+    closemessage
+    delay(30)
+    fadeoutbgm(0)
+    playse(SE_TRUCK_MOVE)
+    special(DoSealedChamberShakingEffect_Long)
+    msgbox(format("The GUARDIAN's statue began to move!"))
+    closemessage
+    // the player steps back and the statue grinds forward off its old place, (10, 6) -> (10, 9)
+    applymovement(LOCALID_PLAYER, DraconidVillage_Shrine_Movement_DraconidPlayerStepsBack)
+    waitmovement(0)
+    playse(SE_TRUCK_MOVE)
+    applymovement(LOCALID_DRACONID_SHRINE_STATUE, DraconidVillage_Shrine_Movement_DraconidStatueSlides)
+    waitmovement(0)
+    special(SpawnCameraObject)
+    applymovement(LOCALID_CAMERA, DraconidVillage_Shrine_Movement_DraconidCameraToWall)
+    waitmovement(0)
+    special(DoSealedChamberShakingEffect_Short)
+    playse(SE_DOOR)
+    delay(40)
+    special(DoSealedChamberShakingEffect_Short)
+    playse(SE_DOOR)
+    delay(40)
+    call(DraconidVillage_Shrine_EventScript_DraconidOpenWall)
+    special(DrawWholeMapView)
+    playse(SE_BANG)
+    msgbox(format("Behind the statue, the carved wall split open!\p"
+                  "Cold air rose from a passage leading down into the rock."))
+    closemessage
+    applymovement(LOCALID_CAMERA, DraconidVillage_Shrine_Movement_DraconidCameraBack)
+    waitmovement(0)
+    special(RemoveCameraObject)
+    fadeinbgm(0)
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight)
+    waitmovement(0)
+    msgbox(format("ELDER: It is open. Go down to it, {PLAYER}.\p"
+                  "It will test you, as the sky tests us all. I will wait for you by the door."))
+    closemessage
+    setvar(VAR_DRACONID_VILLAGE_STATE, VILLAGE_STATE_SEAL_OPEN)
+    releaseall
+}
+
+// from the shrine's mouth (10, 19) up the hall to below the statue, (10, 7)
+movement DraconidVillage_Shrine_Movement_DraconidPlayerToStatue {
+    walk_up * 12
+}
+
+// back down the hall to (10, 11), still facing the statue
+movement DraconidVillage_Shrine_Movement_DraconidPlayerStepsBack {
+    lock_facing_direction
+    walk_down * 4
+    unlock_facing_direction
+}
+
+movement DraconidVillage_Shrine_Movement_DraconidStatueSlides {
+    lock_facing_direction
+    slide_down * 3
+    unlock_facing_direction
+}
+
+// from the player (10, 11) up to the wall, (10, 5), and back
+movement DraconidVillage_Shrine_Movement_DraconidCameraToWall {
+    walk_up * 6
+}
+
+movement DraconidVillage_Shrine_Movement_DraconidCameraBack {
+    walk_down * 6
+}
+
+// Back up from the depths (VILLAGE_STATE_REGIDRAGO): the ELDER flies the player back to the pillar
+script DraconidVillage_Shrine_EventScript_DraconidElderAfterRegidrago {
+    lockall
+    setvar(VAR_TEMP_1, 0)
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight)
+    waitmovement(0)
+    applymovement(LOCALID_DRACONID_SHRINE_ELDER, Common_Movement_WalkInPlaceFasterLeft)
+    waitmovement(0)
+    if (flag(FLAG_DRACONID_CAUGHT_REGIDRAGO)) {
+        msgbox(format("ELDER: So the stone dragon has chosen you. I felt it.\p"
+                      "The clan waited a very long time for that, {PLAYER}."))
+    } else {
+        msgbox(format("ELDER: The stone dragon sleeps again. But it knows you now.\p"
+                      "It will be waiting down there, whenever you return to it."))
+    }
+    // the end of the REGIDRAGO chapter: anything the ELDER hands over for it goes here, before the lift
+    goto(DraconidVillage_Shrine_EventScript_DraconidOfferLift)
+}
+
+script DraconidVillage_Shrine_EventScript_DraconidOfferLift {
+    msgbox(format("ELDER: Now, the pillar. ASTER and NERINE have waited long enough.\p"
+                  "My dragon will carry you there. Are you ready?"), MSGBOX_YESNO)
+    if (var(VAR_RESULT) == NO) {
+        msgbox(format("ELDER: Then make ready. I will be here.\p"
+                      "Or go by your own wings: the pillar stands on ROUTE 131, west of PACIFIDLOG TOWN."))
+        releaseall
+        end
+    }
+    msgbox(format("ELDER: Hold on tight, and do not look down."))
+    closemessage
+    playse(SE_M_FLY)
+    fadescreen(FADE_TO_BLACK)
+    // he flies on to the summit (act7.pory); the shrine is empty again
+    setflag(FLAG_HIDE_DRACONID_SHRINE_ELDER)
+    warp(MAP_SKY_PILLAR_OUTSIDE, 17, 14)
+    waitstate
+}
+
+// The shrine's ELDER object after the call (DraconidVillage_Shrine_EventScript_Elder comes here)
+script DraconidVillage_Shrine_EventScript_DraconidElderTalk {
+    lockall
+    faceplayer
+    if (var(VAR_DRACONID_VILLAGE_STATE) == VILLAGE_STATE_SEAL_OPEN) {
+        msgbox(format("ELDER: REGIDRAGO waits below. Go to it, {PLAYER}."))
+        releaseall
+        end
+    }
+    goto(DraconidVillage_Shrine_EventScript_DraconidOfferLift)
+}
+
+// The carved wall once it is open (DraconidVillage_Shrine_EventScript_BackWall comes here)
+script DraconidVillage_Shrine_EventScript_DraconidOpenWallSign {
+    msgbox(format("The old carving has split around a dark passage.\p"
+                  "A cold wind rises from deep in the rock."), MSGBOX_SIGN)
+}
+
+// ---------------------------------------------------------------------------
+// Sky Pillar summit (after "The sky's debt is paid… for now.", act7.pory): the sky over the mountains splits, MAY
+// calls (the vanilla pokenavcall, as the ELDER did at Sootopolis), the ELDER, ASTER and NERINE fly ahead to the
+// shrine and RAYQUAZA carries the player home; ZINNIA stays. The player lands at the village's south path, (19, 24).
+// ---------------------------------------------------------------------------
+
+script SkyPillar_Top_EventScript_DraconidAlarm {
+    delay(30)
+    call(Draconid_EventScript_FinaleQuake)
+    applymovement(LOCALID_SKY_PILLAR_TOP_ELDER, Common_Movement_WalkInPlaceFasterRight)
+    waitmovement(0)
+    msgbox(format("A deep rumble rolled in over the sea from the east."))
+    closemessage
+    // the sky turns: the drought and the downpour of the old ones, taking turns (D-204)
+    playbgm(MUS_ABNORMAL_WEATHER, FALSE)
+    setweather(WEATHER_ABNORMAL)
+    doweather
+    delay(60)
+    msgbox(format("Far away, above the mountains, the sky had split in two.\p"
+                  "A blazing sun on one side. Black rain on the other."))
+    msgbox(format("ASTER: That's over the mountains. That's over HOME."))
+    msgbox(format("NERINE: The sun and the rain, both at once… Only the old ones of the land and the sea do that."))
+    closemessage
+    delay(20)
+    pokenavcall(SkyPillar_Top_Text_DraconidMayCall)
+    waitmessage
+    closemessage
+    applymovement(LOCALID_SKY_PILLAR_TOP_ELDER, Common_Movement_WalkInPlaceFasterDown)
+    waitmovement(0)
+    msgbox(format("ELDER: MAXIE and ARCHIE, together. The DRACONIDS stood in their way, and now they come for us."))
+    msgbox(format("ELDER: ASTER, NERINE. With me, to the shrine.\p"
+                  "{PLAYER}, follow as fast as the sky will carry you."))
+    msgbox(format("ZINNIA: Go! This is your clan's fight.\p"
+                  "I'll keep watch on the sky from up here."))
+    closemessage
+    setflag(FLAG_HIDE_SKY_PILLAR_TOP_ASTER)
+    setvar(VAR_DRACONID_VILLAGE_STATE, VILLAGE_STATE_ALARM)
+    playse(SE_M_FLY)
+    fadescreen(FADE_TO_BLACK)
+    bufferpartymonnick(STR_VAR_1, 0)
+    msgbox(format("The ELDER's dragon rose into the air, with ASTER's and NERINE's close behind.\p"
+                  "{STR_VAR_1} carried {PLAYER} after them, east, into the split sky…"))
+    closemessage
+    warp(MAP_DRACONID_VILLAGE, 19, 24)
+    waitstate
+}
+
+text SkyPillar_Top_Text_DraconidMayCall {
+    format("… … … … … …\n"
+           "… … … … … Beep!\p"
+           "MAY: {PLAYER}! {PLAYER}, can you hear me?!\p"
+           "TEAM MAGMA and TEAM AQUA went up DRACONID PASS. Both of them, together!\p"
+           "BRENDAN saw MAXIE with the RED ORB. And ARCHIE had the BLUE one!\p"
+           "They woke GROUDON and KYOGRE up again. And they're different now. Huge, and glowing!\p"
+           "The sky over your village is half fire and half storm!\p"
+           "BRENDAN and WALLY are here with me. We're going up there right now!\p"
+           "Hurry, {PLAYER}!\p"
+           "… … … … … …\n"
+           "… … … … … Click!", 184)
+}
+
+// ---------------------------------------------------------------------------
+// The village under attack (VILLAGE_STATE_ALARM to VILLAGE_STATE_PRIMAL_WON, D-204). DraconidVillage's
+// OnTransition calls this after its own weather; the objects (map.json) and their temp flags:
+//   FLAG_TEMP_11 BRENDAN (26, 18) by the east house      FLAG_TEMP_12 MAY (11, 15) by the player's house
+//   FLAG_TEMP_13 WALLY (15, 24) by the south-west house   FLAG_TEMP_14 GRUNT_1 (12, 24), GRUNT_2 (13, 24)
+//   FLAG_TEMP_15 GRUNT_3 (7, 15), GRUNT_4 (9, 15)         FLAG_TEMP_16 GRUNT_5 (29, 18), GRUNT_6 (28, 18)
+//   FLAG_TEMP_17 the ELDER (19, 6), NERINE (18, 6)         FLAG_TEMP_18 ASTER (20, 6)
+//   FLAG_TEMP_19 TABITHA (18, 8), SHELLY (20, 8)           FLAG_TEMP_1A MAXIE (15, 8), ARCHIE (28, 8)
+//   FLAG_TEMP_1B PRIMAL GROUDON (12, 9), PRIMAL KYOGRE (31, 8) in the waterfall pool
+//   FLAG_TEMP_1C the villagers who stroll the village (hiding indoors during the attack)
+//   FLAG_TEMP_1D RAYQUAZA (19, 7), only for the calming
+// VAR_TEMP_2 arms the OnFrame scenes: 1 the arrival, 3 MAXIE and ARCHIE come to the shrine, 4 the goodbyes.
+// ---------------------------------------------------------------------------
+
+script DraconidVillage_EventScript_DraconidAttackOnTransition {
+    setflag(FLAG_TEMP_1D)
+    if (var(VAR_DRACONID_VILLAGE_STATE) < VILLAGE_STATE_ALARM || var(VAR_DRACONID_VILLAGE_STATE) >= VILLAGE_STATE_SAVED) {
+        call(DraconidVillage_EventScript_DraconidHideAttack)
+        return
+    }
+    setflag(FLAG_TEMP_1C)
+    // nobody leaves by the pass while the village is under attack (the gatekeeper's triggers, VAR_TEMP_1 == 0)
+    setvar(VAR_TEMP_1, 0)
+    // the weather: WEATHER_ABNORMAL until PRIMAL_WON (Draconid_EventScript_FinaleWeather, called before this)
+    switch (var(VAR_DRACONID_VILLAGE_STATE)) {
+        case VILLAGE_STATE_ALARM:
+            // the rivals fly in during the arrival scene, beside the player at (19, 24)
+            setflag(FLAG_TEMP_11)
+            setflag(FLAG_TEMP_12)
+            setflag(FLAG_TEMP_13)
+            setobjectxyperm(LOCALID_DRACONID_VILLAGE_BRENDAN, 18, 24)
+            setobjectmovementtype(LOCALID_DRACONID_VILLAGE_BRENDAN, MOVEMENT_TYPE_FACE_UP)
+            setobjectxyperm(LOCALID_DRACONID_VILLAGE_MAY, 20, 24)
+            setobjectmovementtype(LOCALID_DRACONID_VILLAGE_MAY, MOVEMENT_TYPE_FACE_UP)
+            setobjectxyperm(LOCALID_DRACONID_VILLAGE_WALLY, 19, 25)
+            setobjectmovementtype(LOCALID_DRACONID_VILLAGE_WALLY, MOVEMENT_TYPE_FACE_UP)
+            setvar(VAR_TEMP_2, 1)
+        case VILLAGE_STATE_ATTACK:
+            call(DraconidVillage_EventScript_DraconidHouseGrunts)
+        case VILLAGE_STATE_SHRINE_PATH:
+            call(DraconidVillage_EventScript_DraconidHouseGrunts)
+            call(DraconidVillage_EventScript_DraconidAsterOnPath)
+        case VILLAGE_STATE_SHRINE:
+            call(DraconidVillage_EventScript_DraconidFinalLayout)
+            setvar(VAR_TEMP_2, 3)
+        case VILLAGE_STATE_FINAL:
+            call(DraconidVillage_EventScript_DraconidFinalLayout)
+        case VILLAGE_STATE_PRIMAL_WON:
+            call(DraconidVillage_EventScript_DraconidGoodbyeLayout)
+            setvar(VAR_TEMP_2, 4)
+    }
+}
+
+script DraconidVillage_EventScript_DraconidHideAttack {
+    setflag(FLAG_TEMP_11)
+    setflag(FLAG_TEMP_12)
+    setflag(FLAG_TEMP_13)
+    setflag(FLAG_TEMP_14)
+    setflag(FLAG_TEMP_15)
+    setflag(FLAG_TEMP_16)
+    setflag(FLAG_TEMP_17)
+    setflag(FLAG_TEMP_18)
+    setflag(FLAG_TEMP_19)
+    setflag(FLAG_TEMP_1A)
+    setflag(FLAG_TEMP_1B)
+}
+
+// the grunts at a freed house are gone (their trainer flags, D-205)
+script DraconidVillage_EventScript_DraconidHouseGrunts {
+    if (defeated(TRAINER_GRUNT_VILLAGE_1)) {
+        setflag(FLAG_TEMP_14)
+    }
+    if (defeated(TRAINER_GRUNT_VILLAGE_3)) {
+        setflag(FLAG_TEMP_15)
+    }
+    if (defeated(TRAINER_GRUNT_VILLAGE_5)) {
+        setflag(FLAG_TEMP_16)
+    }
+}
+
+// With the houses freed ASTER comes down from the shrine to the foot of the crater, (21, 10)
+script DraconidVillage_EventScript_DraconidAsterOnPath {
+    setobjectxyperm(LOCALID_DRACONID_VILLAGE_ASTER, 21, 10)
+    setobjectmovementtype(LOCALID_DRACONID_VILLAGE_ASTER, MOVEMENT_TYPE_FACE_LEFT)
+}
+
+// MAXIE and ARCHIE in the crater before the shrine, (18, 8) and (20, 8); the rivals behind the player at (19, 11)
+script DraconidVillage_EventScript_DraconidFinalLayout {
+    setflag(FLAG_TEMP_14)
+    setflag(FLAG_TEMP_15)
+    setflag(FLAG_TEMP_16)
+    setflag(FLAG_TEMP_19)
+    setobjectxyperm(LOCALID_DRACONID_VILLAGE_MAXIE, 18, 8)
+    setobjectmovementtype(LOCALID_DRACONID_VILLAGE_MAXIE, MOVEMENT_TYPE_FACE_DOWN)
+    setobjectxyperm(LOCALID_DRACONID_VILLAGE_ARCHIE, 20, 8)
+    setobjectmovementtype(LOCALID_DRACONID_VILLAGE_ARCHIE, MOVEMENT_TYPE_FACE_DOWN)
+    setobjectxyperm(LOCALID_DRACONID_VILLAGE_BRENDAN, 18, 12)
+    setobjectmovementtype(LOCALID_DRACONID_VILLAGE_BRENDAN, MOVEMENT_TYPE_FACE_UP)
+    setobjectxyperm(LOCALID_DRACONID_VILLAGE_MAY, 20, 12)
+    setobjectmovementtype(LOCALID_DRACONID_VILLAGE_MAY, MOVEMENT_TYPE_FACE_UP)
+    setobjectxyperm(LOCALID_DRACONID_VILLAGE_WALLY, 19, 13)
+    setobjectmovementtype(LOCALID_DRACONID_VILLAGE_WALLY, MOVEMENT_TYPE_FACE_UP)
+}
+
+// After the win, that evening: the ELDER on his feet between ASTER and NERINE at the crater, (18-20, 8), the rivals
+// left, right and below the player at (19, 10)
+script DraconidVillage_EventScript_DraconidGoodbyeLayout {
+    call(DraconidVillage_EventScript_DraconidFinalLayout)
+    setflag(FLAG_TEMP_1A)
+    setflag(FLAG_TEMP_1B)
+    setobjectxyperm(LOCALID_DRACONID_VILLAGE_ELDER, 19, 8)
+    setobjectxyperm(LOCALID_DRACONID_VILLAGE_ATTACK_NERINE, 20, 8)
+    setobjectmovementtype(LOCALID_DRACONID_VILLAGE_ATTACK_NERINE, MOVEMENT_TYPE_FACE_DOWN)
+    setobjectxyperm(LOCALID_DRACONID_VILLAGE_ASTER, 18, 8)
+    setobjectmovementtype(LOCALID_DRACONID_VILLAGE_ASTER, MOVEMENT_TYPE_FACE_DOWN)
+    setobjectxyperm(LOCALID_DRACONID_VILLAGE_BRENDAN, 18, 10)
+    setobjectmovementtype(LOCALID_DRACONID_VILLAGE_BRENDAN, MOVEMENT_TYPE_FACE_RIGHT)
+    setobjectxyperm(LOCALID_DRACONID_VILLAGE_MAY, 20, 10)
+    setobjectmovementtype(LOCALID_DRACONID_VILLAGE_MAY, MOVEMENT_TYPE_FACE_LEFT)
+    setobjectxyperm(LOCALID_DRACONID_VILLAGE_WALLY, 19, 11)
+    setobjectmovementtype(LOCALID_DRACONID_VILLAGE_WALLY, MOVEMENT_TYPE_FACE_UP)
+}
+
+// ---------------------------------------------------------------------------
+// The arrival (VILLAGE_STATE_ALARM): the player lands at (19, 24); the camera looks up the village at the shrine,
+// the PRIMAL pair and the teams; BRENDAN (LATIOS), MAY (LATIAS) and WALLY (ALTARIA) fly in; the plan.
+// ---------------------------------------------------------------------------
+
+script DraconidVillage_EventScript_DraconidArrival {
+    lockall
+    setvar(VAR_TEMP_2, 0)
+    playbgm(MUS_ABNORMAL_WEATHER, FALSE)
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp)
+    waitmovement(0)
+    call(Draconid_EventScript_FinaleQuake)
+    msgbox(format("{PLAYER} came down at the foot of the village…"))
+    closemessage
+    special(SpawnCameraObject)
+    applymovement(LOCALID_CAMERA, DraconidVillage_Movement_DraconidCameraToShrine)
+    waitmovement(0)
+    playmoncry(SPECIES_GROUDON_PRIMAL, CRY_MODE_ENCOUNTER)
+    call(Draconid_EventScript_FinaleQuake)
+    waitmoncry
+    msgbox(format("PRIMAL GROUDON towered over the houses, burning like the heart of a volcano."))
+    msgbox(format("TEAM MAGMA and TEAM AQUA stood at every door.\p"
+                  "Up at the shrine, the ELDER, ASTER and NERINE held the way in."))
+    closemessage
+    applymovement(LOCALID_CAMERA, DraconidVillage_Movement_DraconidCameraToPool)
+    waitmovement(0)
+    playmoncry(SPECIES_KYOGRE_PRIMAL, CRY_MODE_ENCOUNTER)
+    waitmoncry
+    msgbox(format("In the waterfall pool, PRIMAL KYOGRE rose, and the rain came down in sheets."))
+    closemessage
+    applymovement(LOCALID_CAMERA, DraconidVillage_Movement_DraconidCameraBack)
+    waitmovement(0)
+    special(RemoveCameraObject)
+    // BRENDAN on LATIOS, MAY on LATIAS, WALLY on his ALTARIA
+    playse(SE_M_FLY)
+    clearflag(FLAG_TEMP_11)
+    addobject(LOCALID_DRACONID_VILLAGE_BRENDAN)
+    delay(16)
+    playse(SE_M_FLY)
+    clearflag(FLAG_TEMP_12)
+    addobject(LOCALID_DRACONID_VILLAGE_MAY)
+    delay(16)
+    playse(SE_M_FLY)
+    clearflag(FLAG_TEMP_13)
+    addobject(LOCALID_DRACONID_VILLAGE_WALLY)
+    delay(30)
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft)
+    waitmovement(0)
+    msgbox(format("BRENDAN: {PLAYER}! Man… Look at this place."))
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight)
+    waitmovement(0)
+    msgbox(format("MAY: We saw the sky from LITTLEROOT. Half of it was on fire!"))
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterDown)
+    waitmovement(0)
+    msgbox(format("WALLY: There are people in those houses, {PLAYER}. They can't get out!"))
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight)
+    waitmovement(0)
+    msgbox(format("MAY: Oh! You haven't met her yet.\p"
+                  "When the star broke over HOENN, a LATIAS came down right outside the LAB.\p"
+                  "She hasn't left my side since. She flew me all the way up here!"))
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft)
+    waitmovement(0)
+    msgbox(format("BRENDAN: A LATIOS found me the same night. It just stared at me until I got on.\p"
+                  "…Don't laugh."))
+    msgbox(format("BRENDAN: They've got grunts at every door. We take them one house at a time.\p"
+                  "I've got the house by the pond. MAY, {PLAYER}'s house. WALLY, the one down here."))
+    msgbox(format("MAY: Whichever house you reach first, {PLAYER}, we fight it together!"))
+    msgbox(format("WALLY: I'm not scared of them anymore. Let's go!"))
+    closemessage
+    fadescreen(FADE_TO_BLACK)
+    setobjectxyperm(LOCALID_DRACONID_VILLAGE_BRENDAN, 26, 18)
+    setobjectmovementtype(LOCALID_DRACONID_VILLAGE_BRENDAN, MOVEMENT_TYPE_FACE_RIGHT)
+    setobjectxyperm(LOCALID_DRACONID_VILLAGE_MAY, 11, 15)
+    setobjectmovementtype(LOCALID_DRACONID_VILLAGE_MAY, MOVEMENT_TYPE_FACE_LEFT)
+    setobjectxyperm(LOCALID_DRACONID_VILLAGE_WALLY, 15, 24)
+    setobjectmovementtype(LOCALID_DRACONID_VILLAGE_WALLY, MOVEMENT_TYPE_FACE_LEFT)
+    removeobject(LOCALID_DRACONID_VILLAGE_BRENDAN)
+    removeobject(LOCALID_DRACONID_VILLAGE_MAY)
+    removeobject(LOCALID_DRACONID_VILLAGE_WALLY)
+    clearflag(FLAG_TEMP_11)
+    clearflag(FLAG_TEMP_12)
+    clearflag(FLAG_TEMP_13)
+    addobject(LOCALID_DRACONID_VILLAGE_BRENDAN)
+    addobject(LOCALID_DRACONID_VILLAGE_MAY)
+    addobject(LOCALID_DRACONID_VILLAGE_WALLY)
+    setvar(VAR_DRACONID_VILLAGE_STATE, VILLAGE_STATE_ATTACK)
+    fadescreen(FADE_FROM_BLACK)
+    releaseall
+}
+
+// from the landing spot (19, 24) up to the shrine, (19, 10)
+movement DraconidVillage_Movement_DraconidCameraToShrine {
+    walk_faster_up * 14
+    delay_16
+    walk_left * 3
+    delay_16
+}
+
+// over to the waterfall pool, (28, 10)
+movement DraconidVillage_Movement_DraconidCameraToPool {
+    walk_faster_right * 12
+    delay_16
+}
+
+// back to the player, (19, 24)
+movement DraconidVillage_Movement_DraconidCameraBack {
+    walk_faster_left * 9
+    walk_faster_down * 14
+}
+
+// ---------------------------------------------------------------------------
+// The houses (VILLAGE_STATE_ATTACK): talk to a grunt or the rival at a house for its double battle, in any order.
+// A house is freed when its opponent A is marked defeated (the multi battle doesn't set trainer flags; the scene
+// does, D-205). The third freed house opens the way up to the shrine (VILLAGE_STATE_SHRINE_PATH).
+// ---------------------------------------------------------------------------
+
+// South-west house (door (12, 23)): WALLY and the player vs a MAGMA grunt and an AQUA grunt
+script DraconidVillage_EventScript_DraconidHouse2 {
+    lockall
+    faceplayer
+    if (var(VAR_DRACONID_VILLAGE_STATE) != VILLAGE_STATE_ATTACK || defeated(TRAINER_GRUNT_VILLAGE_1)) {
+        goto(DraconidVillage_EventScript_DraconidWallyTalk)
+    }
+    msgbox(format("GRUNT: The traitor's come home! MAXIE said you would."))
+    msgbox(format("GRUNT: ARCHIE says the DRACONIDS called the sky down on us twice.\p"
+                  "Nobody leaves this house until your clan pays for it."))
+    msgbox(format("WALLY: {PLAYER}! I'll fight with you.\p"
+                  "I stood up to you when you wore red. I can stand up to them."))
+    closemessage
+    call(Draconid_EventScript_VillageChooseMons)
+    multi_2_vs_2(TRAINER_GRUNT_VILLAGE_1, DraconidVillage_Text_DraconidGrunt1Defeat, TRAINER_GRUNT_VILLAGE_2, DraconidVillage_Text_DraconidGrunt2Defeat, PARTNER_WALLY_VILLAGE)
+    specialvar(VAR_RESULT, GetBattleOutcome)
+    if (var(VAR_RESULT) != B_OUTCOME_WON) {
+        goto(Draconid_EventScript_VillageLost)
+    }
+    settrainerflag(TRAINER_GRUNT_VILLAGE_1)
+    settrainerflag(TRAINER_GRUNT_VILLAGE_2)
+    msgbox(format("GRUNT: Fall back! Fall back to the shrine!"))
+    closemessage
+    fadescreen(FADE_TO_BLACK)
+    removeobject(LOCALID_DRACONID_VILLAGE_GRUNT_1)
+    removeobject(LOCALID_DRACONID_VILLAGE_GRUNT_2)
+    fadescreen(FADE_FROM_BLACK)
+    applymovement(LOCALID_DRACONID_VILLAGE_WALLY, Common_Movement_FacePlayer)
+    waitmovement(0)
+    msgbox(format("WALLY: They ran… They actually ran from us!\p"
+                  "I used to be scared of TEAM MAGMA. Now they're scared of us."))
+    msgbox(format("A voice called from the doorway: “Thank the sky! They've been at our door for hours!”\p"
+                  "The family from the house hurried out to tend {PLAYER}'s team."))
+    call(Draconid_EventScript_VillageHeal)
+    goto(DraconidVillage_EventScript_DraconidHouseFreed)
+}
+
+text DraconidVillage_Text_DraconidGrunt1Defeat {
+    format("No way! The traitor AND a sickly kid?!")
+}
+
+text DraconidVillage_Text_DraconidGrunt2Defeat {
+    format("The sea won't forget this!")
+}
+
+// The player's house (door (8, 14)): MAY and the player vs an AQUA grunt and a MAGMA grunt
+script DraconidVillage_EventScript_DraconidPlayersHouse {
+    lockall
+    faceplayer
+    if (var(VAR_DRACONID_VILLAGE_STATE) != VILLAGE_STATE_ATTACK || defeated(TRAINER_GRUNT_VILLAGE_3)) {
+        goto(DraconidVillage_EventScript_DraconidMayTalk)
+    }
+    msgbox(format("GRUNT: So this is the traitor's house. MAXIE wants it turned upside down."))
+    msgbox(format("GRUNT: Eheh. Nice little hut. Shame about the weather!"))
+    msgbox(format("MAY: Hey! Get away from that door!\p"
+                  "{PLAYER}, your village is our village now. Let's go!"))
+    closemessage
+    call(Draconid_EventScript_VillageChooseMons)
+    multi_2_vs_2(TRAINER_GRUNT_VILLAGE_3, DraconidVillage_Text_DraconidGrunt3Defeat, TRAINER_GRUNT_VILLAGE_4, DraconidVillage_Text_DraconidGrunt4Defeat, PARTNER_MAY_VILLAGE)
+    specialvar(VAR_RESULT, GetBattleOutcome)
+    if (var(VAR_RESULT) != B_OUTCOME_WON) {
+        goto(Draconid_EventScript_VillageLost)
+    }
+    settrainerflag(TRAINER_GRUNT_VILLAGE_3)
+    settrainerflag(TRAINER_GRUNT_VILLAGE_4)
+    msgbox(format("GRUNT: This isn't worth it! I'm out of here!"))
+    closemessage
+    fadescreen(FADE_TO_BLACK)
+    removeobject(LOCALID_DRACONID_VILLAGE_GRUNT_3)
+    removeobject(LOCALID_DRACONID_VILLAGE_GRUNT_4)
+    fadescreen(FADE_FROM_BLACK)
+    applymovement(LOCALID_DRACONID_VILLAGE_MAY, Common_Movement_FacePlayer)
+    waitmovement(0)
+    msgbox(format("MAY: Hehe! Nobody touches {PLAYER}'s house while I'm around!\p"
+                  "LATIAS, you were amazing! Did you see her, {PLAYER}?"))
+    msgbox(format("The OLD WOMAN who gave {PLAYER} the RUNNING SHOES came out of hiding next door.\p"
+                  "“Oh, my! Come here, let me see to your partners.”"))
+    call(Draconid_EventScript_VillageHeal)
+    goto(DraconidVillage_EventScript_DraconidHouseFreed)
+}
+
+text DraconidVillage_Text_DraconidGrunt3Defeat {
+    format("The ORB was supposed to make this easy!")
+}
+
+text DraconidVillage_Text_DraconidGrunt4Defeat {
+    format("Ugh! MAXIE's not going to like this.")
+}
+
+// The east house by the pond (door (29, 17)): BRENDAN and the player vs a MAGMA grunt and an AQUA grunt
+script DraconidVillage_EventScript_DraconidHouse1 {
+    lockall
+    faceplayer
+    if (var(VAR_DRACONID_VILLAGE_STATE) != VILLAGE_STATE_ATTACK || defeated(TRAINER_GRUNT_VILLAGE_5)) {
+        goto(DraconidVillage_EventScript_DraconidBrendanTalk)
+    }
+    msgbox(format("GRUNT: More DRACONIDS? The grown-ups already ran up to that shrine."))
+    msgbox(format("GRUNT: Just a weaver and a little girl in there. Easy pickings."))
+    msgbox(format("BRENDAN: Easy, huh? Try us.\p"
+                  "{PLAYER}, you and me. Let's show them what we've got!"))
+    closemessage
+    call(Draconid_EventScript_VillageChooseMons)
+    multi_2_vs_2(TRAINER_GRUNT_VILLAGE_5, DraconidVillage_Text_DraconidGrunt5Defeat, TRAINER_GRUNT_VILLAGE_6, DraconidVillage_Text_DraconidGrunt6Defeat, PARTNER_BRENDAN_VILLAGE)
+    specialvar(VAR_RESULT, GetBattleOutcome)
+    if (var(VAR_RESULT) != B_OUTCOME_WON) {
+        goto(Draconid_EventScript_VillageLost)
+    }
+    settrainerflag(TRAINER_GRUNT_VILLAGE_5)
+    settrainerflag(TRAINER_GRUNT_VILLAGE_6)
+    msgbox(format("GRUNT: Forget this! Back to the boss!"))
+    closemessage
+    fadescreen(FADE_TO_BLACK)
+    removeobject(LOCALID_DRACONID_VILLAGE_GRUNT_5)
+    removeobject(LOCALID_DRACONID_VILLAGE_GRUNT_6)
+    fadescreen(FADE_FROM_BLACK)
+    applymovement(LOCALID_DRACONID_VILLAGE_BRENDAN, Common_Movement_FacePlayer)
+    waitmovement(0)
+    msgbox(format("BRENDAN: Hah! Not bad, partner."))
+    msgbox(format("The weaver and her daughter peeked out of the door.\p"
+                  "“You came back for us!” They brought water and warm cloth for {PLAYER}'s team."))
+    call(Draconid_EventScript_VillageHeal)
+    goto(DraconidVillage_EventScript_DraconidHouseFreed)
+}
+
+text DraconidVillage_Text_DraconidGrunt5Defeat {
+    format("That LATIOS came out of nowhere!")
+}
+
+text DraconidVillage_Text_DraconidGrunt6Defeat {
+    format("We had the ORBS! How are we losing?!")
+}
+
+// After each freed house: the third one sends the player up to the shrine
+script DraconidVillage_EventScript_DraconidHouseFreed {
+    if (defeated(TRAINER_GRUNT_VILLAGE_1) && defeated(TRAINER_GRUNT_VILLAGE_3) && defeated(TRAINER_GRUNT_VILLAGE_5)) {
+        call(Draconid_EventScript_FinaleQuake)
+        msgbox(format("Up at the shrine, something crashed against the rock.\p"
+                      "Every house was free. Only the way up to the shrine was left."))
+        msgbox(format("ASTER's voice rang down from the shrine: “{PLAYER}! Up here! NOW!”"))
+        closemessage
+        call(DraconidVillage_EventScript_DraconidAsterOnPath)
+        setobjectxy(LOCALID_DRACONID_VILLAGE_ASTER, 21, 10)
+        setvar(VAR_DRACONID_VILLAGE_STATE, VILLAGE_STATE_SHRINE_PATH)
+    } else {
+        msgbox(format("There were still grunts at the other houses."))
+        closemessage
+    }
+    releaseall
+}
+
+// The rivals between their fights
+script DraconidVillage_EventScript_DraconidWallyTalk {
+    if (defeated(TRAINER_GRUNT_VILLAGE_1)) {
+        msgbox(format("WALLY: I'll stay with this family until it's over.\p"
+                      "Go help the others, {PLAYER}!"))
+    } else {
+        msgbox(format("WALLY: Let's go when you're ready, {PLAYER}."))
+    }
+    releaseall
+    end
+}
+
+script DraconidVillage_EventScript_DraconidMayTalk {
+    if (defeated(TRAINER_GRUNT_VILLAGE_3)) {
+        msgbox(format("MAY: I'll keep watch on your house. Go on, {PLAYER}!"))
+    } else {
+        msgbox(format("MAY: Ready when you are, {PLAYER}!"))
+    }
+    releaseall
+    end
+}
+
+script DraconidVillage_EventScript_DraconidBrendanTalk {
+    if (defeated(TRAINER_GRUNT_VILLAGE_5)) {
+        msgbox(format("BRENDAN: I've got this house covered. Go!"))
+    } else {
+        msgbox(format("BRENDAN: Whenever you're ready. Don't keep them waiting."))
+    }
+    releaseall
+    end
+}
+
+// ---------------------------------------------------------------------------
+// The way up to the shrine: TABITHA and SHELLY hold the crater (18, 8) / (20, 8). Before the houses are freed they
+// only taunt; after, ASTER (21, 10) fights beside the player (her partner team follows her egg, PARTNER_ASTER_*,
+// resolved by Draconid_ResolveVariantPartner). Then MAXIE and ARCHIE come to the shrine (VILLAGE_STATE_SHRINE).
+// ---------------------------------------------------------------------------
+
+script DraconidVillage_EventScript_DraconidAdmins {
+    lockall
+    faceplayer
+    if (var(VAR_DRACONID_VILLAGE_STATE) == VILLAGE_STATE_ATTACK) {
+        msgbox(format("TABITHA: Hehehe! Look who finally came home.\p"
+                      "Your neighbors are still at our mercy, traitor. Go on. Run along and save them."))
+        releaseall
+        end
+    }
+    goto(DraconidVillage_EventScript_DraconidAdminsBattle)
+}
+
+script DraconidVillage_EventScript_DraconidAster {
+    lockall
+    faceplayer
+    if (var(VAR_DRACONID_VILLAGE_STATE) == VILLAGE_STATE_ATTACK) {
+        msgbox(format("ASTER: Help the houses first! We can hold the door a while longer!"))
+        releaseall
+        end
+    }
+    goto(DraconidVillage_EventScript_DraconidAdminsBattle)
+}
+
+script DraconidVillage_EventScript_DraconidAdminsBattle {
+    msgbox(format("ASTER: {PLAYER}. The ELDER stood in the shrine door against both of their monsters.\p"
+                  "He took a blow meant for the GUARDIAN's statue.\p"
+                  "NERINE is with him. He's breathing. He's too stubborn not to."))
+    msgbox(format("ASTER: I'm done watching. These two are mine.\p"
+                  "Yours too, if you want them."))
+    msgbox(format("TABITHA: The ELDER's little pets, side by side at last. MAXIE will be so pleased."))
+    msgbox(format("SHELLY: Ahahahaha! Two baby dragon tamers? This'll be over in a minute!"))
+    closemessage
+    call(Draconid_EventScript_VillageChooseMons)
+    multi_2_vs_2(TRAINER_TABITHA_VILLAGE, DraconidVillage_Text_DraconidTabithaDefeat, TRAINER_SHELLY_VILLAGE, DraconidVillage_Text_DraconidShellyDefeat, PARTNER_ASTER_DEINO)
+    specialvar(VAR_RESULT, GetBattleOutcome)
+    if (var(VAR_RESULT) != B_OUTCOME_WON) {
+        goto(Draconid_EventScript_VillageLost)
+    }
+    settrainerflag(TRAINER_TABITHA_VILLAGE)
+    settrainerflag(TRAINER_SHELLY_VILLAGE)
+    msgbox(format("TABITHA: MAXIE! They're through!"))
+    msgbox(format("SHELLY: ARCHIE, your turn! I'm done with these kids!"))
+    closemessage
+    fadescreen(FADE_TO_BLACK)
+    removeobject(LOCALID_DRACONID_VILLAGE_TABITHA)
+    removeobject(LOCALID_DRACONID_VILLAGE_SHELLY)
+    fadescreen(FADE_FROM_BLACK)
+    msgbox(format("ASTER: Hmph. Side by side with you.\p"
+                  "…I could get used to that."))
+    closemessage
+    call(Draconid_EventScript_VillageHeal)
+    setvar(VAR_DRACONID_VILLAGE_STATE, VILLAGE_STATE_SHRINE)
+    // MAXIE and ARCHIE come down to the shrine: the map reloads with everyone in place (the OnFrame scene)
+    fadescreen(FADE_TO_BLACK)
+    warpsilent(MAP_DRACONID_VILLAGE, 19, 11)
+    waitstate
+}
+
+text DraconidVillage_Text_DraconidTabithaDefeat {
+    format("Hehe… MAXIE won't forgive this.")
+}
+
+text DraconidVillage_Text_DraconidShellyDefeat {
+    format("Ahahaha! You two are no joke.")
+}
+
+// ---------------------------------------------------------------------------
+// The final (VILLAGE_STATE_SHRINE): MAXIE and ARCHIE come to the crater before the shrine; the ELDER lies hurt in
+// the shrine door with NERINE, ASTER goes back to them; COURTNEY and MATT come up the pass; the player picks
+// BRENDAN or MAY (the Sootopolis choice) and the other one and WALLY hold the pass (D-206). After a loss, talking to
+// MAXIE or ARCHIE (VILLAGE_STATE_FINAL) goes straight to the choice.
+// ---------------------------------------------------------------------------
+
+script DraconidVillage_EventScript_DraconidFinalIntro {
+    lockall
+    setvar(VAR_TEMP_2, 0)
+    playbgm(MUS_ABNORMAL_WEATHER, FALSE)
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp)
+    waitmovement(0)
+    delay(20)
+    msgbox(format("MAXIE: So. My recruit comes home at last."))
+    msgbox(format("MAXIE: You stood beside me, {PLAYER}. I made you my right hand.\p"
+                  "And all the while you carried my plans to these sky-watchers."))
+    msgbox(format("MAXIE: This shrine is how the DRACONIDS call RAYQUAZA down upon us.\p"
+                  "No sky will stand between humankind and its land again. It ends today."))
+    msgbox(format("ARCHIE: Fufufu! Don't look so shocked, kid.\p"
+                  "Your clan made fools of both of us. That was a mistake."))
+    msgbox(format("ARCHIE: Turns out MAXIE and I had each other's ORB the whole time.\p"
+                  "One trade, and look what they do now!"))
+    closemessage
+    playmoncry(SPECIES_GROUDON_PRIMAL, CRY_MODE_ENCOUNTER)
+    call(Draconid_EventScript_FinaleQuake)
+    waitmoncry
+    playmoncry(SPECIES_KYOGRE_PRIMAL, CRY_MODE_ENCOUNTER)
+    waitmoncry
+    msgbox(format("MAXIE: The RED ORB answers me now.\p"
+                  "Behold GROUDON as it was at the dawn of the world."))
+    closemessage
+    applymovement(LOCALID_DRACONID_VILLAGE_BRENDAN, Common_Movement_WalkInPlaceFasterUp)
+    waitmovement(0)
+    msgbox(format("BRENDAN: {PLAYER}! COURTNEY and MATT are coming up the pass!\p"
+                  "They've got a whole crowd of grunts with them!"))
+    msgbox(format("MAY: Then two of us hold the pass, and one fights beside {PLAYER}!"))
+    setvar(VAR_DRACONID_VILLAGE_STATE, VILLAGE_STATE_FINAL)
+    goto(DraconidVillage_EventScript_DraconidFinalChoice)
+}
+
+// MAXIE or ARCHIE after a lost final
+script DraconidVillage_EventScript_DraconidMaxieArchie {
+    lockall
+    faceplayer
+    if (var(VAR_DRACONID_VILLAGE_STATE) < VILLAGE_STATE_SHRINE) {
+        goto(DraconidVillage_EventScript_DraconidMaxieArchieWaiting)
+    }
+    msgbox(format("MAXIE: You again. You never know when to stay down, do you?"))
+    msgbox(format("MAY: {PLAYER}! We're still here! Who's fighting with you this time?"))
+    goto(DraconidVillage_EventScript_DraconidFinalChoice)
+}
+
+// Before the admins are beaten: MAXIE by GROUDON, ARCHIE by KYOGRE
+script DraconidVillage_EventScript_DraconidMaxieArchieWaiting {
+    getplayerxy(VAR_TEMP_3, VAR_TEMP_4)
+    if (var(VAR_TEMP_3) < 20) {
+        msgbox(format("MAXIE: Humph. My ADMINS will deal with you.\p"
+                      "I have waited a long time for this. I can wait a little longer."))
+    } else {
+        msgbox(format("ARCHIE: Look at it, kid! KYOGRE as it was meant to be!\p"
+                      "Go on, play with SHELLY first. I'll be right here."))
+    }
+    releaseall
+    end
+}
+
+script DraconidVillage_EventScript_DraconidFinalChoice {
+    message(format("Who will fight beside {PLAYER}?"))
+    waitmessage
+    dynmultichoice(15, 6, TRUE, 2, 0, DYN_MULTICHOICE_CB_NONE, "BRENDAN", "MAY")
+    closemessage
+    if (var(VAR_RESULT) == 0) {
+        setvar(VAR_TEMP_5, PARTNER_BRENDAN_FINALE)
+        msgbox(format("BRENDAN: Me again, huh? Good.\p"
+                      "LATIOS, you're up!"))
+        msgbox(format("MAY: Then WALLY and I will hold the pass! Don't you dare lose, {PLAYER}!"))
+        closemessage
+        applymovement(LOCALID_DRACONID_VILLAGE_MAY, DraconidVillage_Movement_DraconidToThePass)
+        applymovement(LOCALID_DRACONID_VILLAGE_WALLY, DraconidVillage_Movement_DraconidToThePass)
+        waitmovement(0)
+        removeobject(LOCALID_DRACONID_VILLAGE_MAY)
+        removeobject(LOCALID_DRACONID_VILLAGE_WALLY)
+    } else {
+        setvar(VAR_TEMP_5, PARTNER_MAY_FINALE)
+        msgbox(format("MAY: Yes! LATIAS, let's go!"))
+        msgbox(format("BRENDAN: WALLY, with me. Nobody gets up that path!"))
+        msgbox(format("WALLY: Right behind you!"))
+        closemessage
+        applymovement(LOCALID_DRACONID_VILLAGE_BRENDAN, DraconidVillage_Movement_DraconidToThePass)
+        applymovement(LOCALID_DRACONID_VILLAGE_WALLY, DraconidVillage_Movement_DraconidToThePass)
+        waitmovement(0)
+        removeobject(LOCALID_DRACONID_VILLAGE_BRENDAN)
+        removeobject(LOCALID_DRACONID_VILLAGE_WALLY)
+    }
+    msgbox(format("ASTER: NERINE and I have the ELDER, {PLAYER}. Don't look back here."))
+    msgbox(format("NERINE: Win, {PLAYER}. Then come home to us."))
+    msgbox(format("ARCHIE: Two kids against MAGMA and AQUA together, and the old ones of land and sea?\p"
+                  "Fufufu… Bring it on!"))
+    msgbox(format("MAXIE: Enough talk. Humankind will have its land, {PLAYER}.\p"
+                  "Even if I must bury this mountain to give it to them."))
+    closemessage
+    call(Draconid_EventScript_VillageChooseMons)
+    if (var(VAR_TEMP_5) == PARTNER_BRENDAN_FINALE) {
+        multi_2_vs_2(TRAINER_MAXIE_FINALE, DraconidVillage_Text_DraconidMaxieDefeat, TRAINER_ARCHIE_FINALE, DraconidVillage_Text_DraconidArchieDefeat, PARTNER_BRENDAN_FINALE)
+    } else {
+        multi_2_vs_2(TRAINER_MAXIE_FINALE, DraconidVillage_Text_DraconidMaxieDefeat, TRAINER_ARCHIE_FINALE, DraconidVillage_Text_DraconidArchieDefeat, PARTNER_MAY_FINALE)
+    }
+    specialvar(VAR_RESULT, GetBattleOutcome)
+    if (var(VAR_RESULT) != B_OUTCOME_WON) {
+        goto(Draconid_EventScript_VillageLost)
+    }
+    settrainerflag(TRAINER_MAXIE_FINALE)
+    settrainerflag(TRAINER_ARCHIE_FINALE)
+    goto(DraconidVillage_EventScript_DraconidPrimalWon)
+}
+
+// from behind the player down the path toward the pass (off screen)
+movement DraconidVillage_Movement_DraconidToThePass {
+    walk_fast_down * 6
+}
+
+text DraconidVillage_Text_DraconidMaxieDefeat {
+    format("Three times… Three times you have stood in my way.")
+}
+
+text DraconidVillage_Text_DraconidArchieDefeat {
+    format("Blast it! Even with the BLUE ORB?!")
+}
+
+// ---------------------------------------------------------------------------
+// After the win (D-207): RAYQUAZA comes out and roars, the ELDER speaks to the old ones, GROUDON and KYOGRE calm and
+// go home; MAXIE (still hating the player) and ARCHIE (nearer to regret) leave the ORBS; then (the map reloads that
+// evening, VILLAGE_STATE_PRIMAL_WON) the goodbyes and the credits.
+// ---------------------------------------------------------------------------
+
+script DraconidVillage_EventScript_DraconidPrimalWon {
+    msgbox(format("MAXIE: No… GROUDON! Crush them!"))
+    closemessage
+    playmoncry(SPECIES_GROUDON_PRIMAL, CRY_MODE_ENCOUNTER)
+    call(Draconid_EventScript_FinaleQuake)
+    waitmoncry
+    msgbox(format("The ground heaved. GROUDON and KYOGRE thrashed, no longer listening to anyone."))
+    closemessage
+    playse(SE_BALL_OPEN)
+    setobjectxyperm(LOCALID_DRACONID_VILLAGE_RAYQUAZA, 19, 1)
+    clearflag(FLAG_TEMP_1D)
+    addobject(LOCALID_DRACONID_VILLAGE_RAYQUAZA)
+    applymovement(LOCALID_DRACONID_VILLAGE_RAYQUAZA, DraconidVillage_Movement_DraconidRayquazaDescends)
+    waitmovement(0)
+    msgbox(format("RAYQUAZA burst from its POKé BALL and rose over the shrine!"))
+    closemessage
+    playmoncry(SPECIES_RAYQUAZA, CRY_MODE_ENCOUNTER)
+    call(Draconid_EventScript_FinaleQuake)
+    waitmoncry
+    msgbox(format("In the shrine door, the ELDER pulled himself to his feet and raised his voice to the old ones.\p"
+                  "ELDER: Old ones of the land and the sea. The sky has spoken for you once before.\p"
+                  "Your war ended long ago. Go home now, and sleep."))
+    closemessage
+    playse(SE_M_EARTHQUAKE)
+    fadescreenswapbuffers(FADE_TO_WHITE)
+    removeobject(LOCALID_DRACONID_VILLAGE_GROUDON)
+    fadescreenswapbuffers(FADE_FROM_WHITE)
+    msgbox(format("GROUDON's glow went dark. It sank down into the mountain and was gone."))
+    closemessage
+    playse(SE_M_DIVE)
+    fadescreenswapbuffers(FADE_TO_WHITE)
+    removeobject(LOCALID_DRACONID_VILLAGE_KYOGRE)
+    fadescreenswapbuffers(FADE_FROM_WHITE)
+    msgbox(format("KYOGRE slipped away down the river, back toward the sea."))
+    closemessage
+    setweather(WEATHER_NONE)
+    doweather
+    special(WaitWeather)
+    applymovement(LOCALID_DRACONID_VILLAGE_RAYQUAZA, DraconidVillage_Movement_DraconidRayquazaLeaves)
+    waitmovement(0)
+    playse(SE_BALL)
+    removeobject(LOCALID_DRACONID_VILLAGE_RAYQUAZA)
+    msgbox(format("The storm broke. The sun over the mountains was only the sun again.\p"
+                  "RAYQUAZA came down and returned to its POKé BALL."))
+    closemessage
+    fadedefaultbgm
+    applymovement(LOCALID_DRACONID_VILLAGE_MAXIE, Common_Movement_WalkInPlaceFasterDown)
+    waitmovement(0)
+    msgbox(format("MAXIE: …Humph. RAYQUAZA answers you. It never once answered me."))
+    msgbox(format("MAXIE: I will not thank you, {PLAYER}. Nor will I forgive you.\p"
+                  "But the land has chosen who stands for it. Even I can see that much."))
+    msgbox(format("MAXIE: Take it. The RED ORB is wasted on a man GROUDON will not hear."))
+    giveitem(ITEM_RED_ORB)
+    msgbox(format("ARCHIE: Hah… Look at this place.\p"
+                  "We came up here to wreck a village of kids and old folks."))
+    msgbox(format("ARCHIE: That's not what the sea ever asked of me. …Here. Keep this away from me."))
+    giveitem(ITEM_BLUE_ORB)
+    msgbox(format("MAXIE: TEAM MAGMA is finished here. Come, ARCHIE."))
+    closemessage
+    applymovement(LOCALID_DRACONID_VILLAGE_MAXIE, DraconidVillage_Movement_DraconidLeaderLeaves)
+    applymovement(LOCALID_DRACONID_VILLAGE_ARCHIE, DraconidVillage_Movement_DraconidLeaderLeaves)
+    waitmovement(0)
+    removeobject(LOCALID_DRACONID_VILLAGE_MAXIE)
+    removeobject(LOCALID_DRACONID_VILLAGE_ARCHIE)
+    setvar(VAR_DRACONID_VILLAGE_STATE, VILLAGE_STATE_PRIMAL_WON)
+    fadescreen(FADE_TO_BLACK)
+    msgbox(format("MAXIE and ARCHIE led what was left of their teams back down the pass.\p"
+                  "By evening the fires were out, and the villagers came out of their houses one by one…"))
+    closemessage
+    warpsilent(MAP_DRACONID_VILLAGE, 19, 10)
+    waitstate
+}
+
+// Mt. Pyre summit, the OLD LADY after the finale (MtPyre_Summit_EventScript_OldLady comes here from
+// VILLAGE_STATE_SAVED on): MAXIE and ARCHIE never brought the ORBS back (D-207); the player has them now
+script MtPyre_Summit_EventScript_DraconidOldLadyOrbs {
+    msgbox(format("So the RED ORB and the BLUE ORB came to you in the end.\p"
+                  "Keep them. The one who calmed the old ones should hold them."))
+    release
+    end
+}
+
+// down from the sky to above the shrine door, (19, 5); it faces the player
+movement DraconidVillage_Movement_DraconidRayquazaDescends {
+    walk_in_place_faster_up
+    lock_facing_direction
+    slide_down * 4
+    unlock_facing_direction
+    delay_16
+    walk_in_place_down
+    delay_16
+}
+
+movement DraconidVillage_Movement_DraconidRayquazaLeaves {
+    walk_in_place_down
+    delay_8
+    lock_facing_direction
+    slide_up * 4
+    unlock_facing_direction
+}
+
+// down the path from the crater and away (off screen)
+movement DraconidVillage_Movement_DraconidLeaderLeaves {
+    walk_down * 8
+}
+
+// That evening (VILLAGE_STATE_PRIMAL_WON): the ELDER, ASTER and NERINE, the rivals' goodbyes, then the credits
+script DraconidVillage_EventScript_DraconidGoodbyes {
+    lockall
+    setvar(VAR_TEMP_2, 0)
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp)
+    waitmovement(0)
+    delay(30)
+    msgbox(format("ELDER: {PLAYER}. You brought friends home with you."))
+    msgbox(format("ELDER: The sky's debt was ours to pay. You have paid far more than your share."))
+    msgbox(format("ELDER: BRENDAN. MAY. WALLY.\p"
+                  "The DRACONIDS will not forget what you did for us today. This village is yours, always."))
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterDown)
+    waitmovement(0)
+    msgbox(format("WALLY: Um… Is it okay if I come back sometime?\p"
+                  "I can breathe really well up here."))
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft)
+    waitmovement(0)
+    msgbox(format("BRENDAN: We'll be back. You still owe me a real battle, {PLAYER}.\p"
+                  "Come find me at my dad's LAB. I'll be ready."))
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight)
+    waitmovement(0)
+    msgbox(format("MAY: And you owe me the whole story. Every single part of it!\p"
+                  "See you soon, {PLAYER}!"))
+    closemessage
+    playse(SE_M_FLY)
+    fadescreen(FADE_TO_BLACK)
+    removeobject(LOCALID_DRACONID_VILLAGE_BRENDAN)
+    removeobject(LOCALID_DRACONID_VILLAGE_MAY)
+    removeobject(LOCALID_DRACONID_VILLAGE_WALLY)
+    fadescreen(FADE_FROM_BLACK)
+    msgbox(format("LATIOS and LATIAS carried BRENDAN and MAY off toward LITTLEROOT, with WALLY's ALTARIA close behind."))
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp)
+    waitmovement(0)
+    msgbox(format("ASTER: Riddle: what's quiet, a little burnt, and still standing?\p"
+                  "…Home, {PLAYER}. That's the answer."))
+    msgbox(format("NERINE: Welcome home, {PLAYER}."))
+    msgbox(format("ELDER: Come. Let us go in."))
+    closemessage
+    goto(DraconidVillage_EventScript_DraconidCredits)
+}
+
+// Save first (D-152), then the credits; they end in the bedroom (src/credits.c, CB2_ReturnHomeDraconid). The finale
+// state moves on here, so the post-game (the ELDER at home with the SS TICKET, NERINE by the pond, DEOXYS, the
+// rivals' lab battles) opens only now (D-200).
+script DraconidVillage_EventScript_DraconidCredits {
+    setvar(VAR_DRACONID_VILLAGE_STATE, VILLAGE_STATE_SAVED)
+    setvar(VAR_DRACONID_FINALE_STATE, FINALE_STATE_METEOR_DESTROYED)
+    clearflag(FLAG_HIDE_DRACONID_HOUSE_ELDER)
+    clearflag(FLAG_HIDE_DRACONID_VILLAGE_NERINE)
+    fadescreen(FADE_TO_BLACK)
+    callnative(Draconid_SaveBeforeCredits)
+    playse(SE_SAVE)
+    waitse
+    callnative(Draconid_StartCredits)
+    waitstate
+}
+
+// ---------------------------------------------------------------------------
+// The shrine group during the attack
+// ---------------------------------------------------------------------------
+
+script DraconidVillage_EventScript_DraconidElder {
+    lockall
+    if (var(VAR_DRACONID_VILLAGE_STATE) >= VILLAGE_STATE_PRIMAL_WON) {
+        faceplayer
+        msgbox(format("ELDER: I am only bruised, {PLAYER}. Old dragons are hard to break."))
+    } else {
+        msgbox(format("The ELDER was down on one knee in the shrine door, breathing hard.\p"
+                      "ELDER: Do not worry for me, {PLAYER}… Protect the village."))
+    }
+    releaseall
+}
+
+script DraconidVillage_EventScript_DraconidNerineAtShrine {
+    lockall
+    faceplayer
+    msgbox(format("NERINE: I've got him. He took a hard blow, but he's breathing.\p"
+                  "Go, {PLAYER}. The sea and I will hold this door."))
+    releaseall
+}
+
+// The grunts' other half after the pair's line (a talk to either grunt of a house starts its battle)
+script DraconidVillage_EventScript_DraconidGatekeeperAttack {
+    lockall
+    applymovement(LOCALID_DRACONID_GATEKEEPER, Common_Movement_WalkInPlaceFasterLeft)
+    waitmovement(0)
+    msgbox(format("GATEKEEPER: {PLAYER}! Don't go down the pass now!\p"
+                  "They came up it in the dark, dozens of them. I couldn't hold them back.\p"
+                  "Our people are still in the village. Please!"))
+    closemessage
+    applymovement(LOCALID_PLAYER, DraconidVillage_Movement_PushBack)
+    waitmovement(0)
+    releaseall
+}
+
+script DraconidVillage_EventScript_DraconidGatekeeperTalk {
+    lock
+    faceplayer
+    msgbox(format("GATEKEEPER: They came up the pass in the dark, MAGMA and AQUA both.\p"
+                  "I couldn't hold them back, {PLAYER}. Please… Save our village."))
+    release
+}
+
+// ---------------------------------------------------------------------------
+// Post-game: GROUDON asleep again at the edge of the MAGMA HIDEOUT's magma pool, (16, 20), and KYOGRE in the
+// SEAFLOOR CAVERN's deep pool, (17, 41) (D-208). Static battles at DRACONID_PRIMAL_LEGEND_LEVEL; beaten or fled, they
+// come back when the player comes in again; caught, they are gone (FLAG_DEFEATED_GROUDON / _KYOGRE, which the
+// Weather Institute already reads). Shown once the finale is over.
+// ---------------------------------------------------------------------------
+
+script MagmaHideout_4F_EventScript_DraconidOnTransition {
+    if (var(VAR_DRACONID_FINALE_STATE) < FINALE_STATE_METEOR_DESTROYED || flag(FLAG_DEFEATED_GROUDON)) {
+        setflag(FLAG_TEMP_11)
+    }
+}
+
+script MagmaHideout_4F_EventScript_DraconidGroudon {
+    lock
+    faceplayer
+    msgbox(format("GROUDON is sleeping at the edge of the magma, the RED ORB's glow long gone from its body.\p"
+                  "…It stirred!"))
+    closemessage
+    waitse
+    playmoncry(SPECIES_GROUDON, CRY_MODE_ENCOUNTER)
+    delay(40)
+    waitmoncry
+    setwildbattle(SPECIES_GROUDON, DRACONID_PRIMAL_LEGEND_LEVEL)
+    special(BattleSetup_StartLegendaryBattle)
+    specialvar(VAR_RESULT, GetBattleOutcome)
+    if (var(VAR_RESULT) == B_OUTCOME_CAUGHT) {
+        setflag(FLAG_DEFEATED_GROUDON)
+        removeobject(LOCALID_MAGMA_HIDEOUT_4F_GROUDON_POSTGAME)
+        release
+        end
+    }
+    fadescreenswapbuffers(FADE_TO_BLACK)
+    removeobject(LOCALID_MAGMA_HIDEOUT_4F_GROUDON_POSTGAME)
+    fadescreenswapbuffers(FADE_FROM_BLACK)
+    msgbox(format("GROUDON sank back into the magma…\p"
+                  "It will surely rise again."))
+    release
+}
+
+// SeafloorCavern_Room9_OnTransition calls this before NERINE's reveal hook (act5.pory)
+script SeafloorCavern_Room9_EventScript_DraconidKyogreOnTransition {
+    if (var(VAR_DRACONID_FINALE_STATE) < FINALE_STATE_METEOR_DESTROYED || flag(FLAG_DEFEATED_KYOGRE)) {
+        setflag(FLAG_TEMP_11)
+    }
+    return
+}
+
+// Kyogre's object stands in the water (elevation 1) and the player on the shore (3), so the object can't be talked
+// to: a sign (elevation 0, facing up) on its tile runs the battle while it is there (FLAG_TEMP_11 clear)
+script SeafloorCavern_Room9_EventScript_DraconidKyogreSpot {
+    if (flag(FLAG_TEMP_11)) {
+        end
+    }
+    goto(SeafloorCavern_Room9_EventScript_DraconidKyogre)
+}
+
+script SeafloorCavern_Room9_EventScript_DraconidKyogre {
+    lockall
+    msgbox(format("KYOGRE is sleeping in the deep pool, the BLUE ORB's glow long gone from its body.\p"
+                  "…It stirred!"))
+    closemessage
+    waitse
+    playmoncry(SPECIES_KYOGRE, CRY_MODE_ENCOUNTER)
+    delay(40)
+    waitmoncry
+    setwildbattle(SPECIES_KYOGRE, DRACONID_PRIMAL_LEGEND_LEVEL)
+    special(BattleSetup_StartLegendaryBattle)
+    specialvar(VAR_RESULT, GetBattleOutcome)
+    if (var(VAR_RESULT) == B_OUTCOME_CAUGHT) {
+        setflag(FLAG_DEFEATED_KYOGRE)
+        removeobject(LOCALID_SEAFLOOR_CAVERN_KYOGRE_POSTGAME)
+        releaseall
+        end
+    }
+    fadescreenswapbuffers(FADE_TO_BLACK)
+    removeobject(LOCALID_SEAFLOOR_CAVERN_KYOGRE_POSTGAME)
+    fadescreenswapbuffers(FADE_FROM_BLACK)
+    msgbox(format("KYOGRE sank into the dark water…\p"
+                  "It will surely rise again."))
+    releaseall
+}
+
+// The Weather Institute 2F scientist after the Hall of Fame (Route119_WeatherInstitute_2F_EventScript_
+// ScientistMentionWeather): vanilla sent the player after GROUDON or KYOGRE in the TERRA / MARINE CAVE; here they are
+// MAXIE's and ARCHIE's until the finale and then sleep where they first woke, so the scientist points there instead
+// (the abnormal weather never starts, D-208)
+script Route119_WeatherInstitute_2F_EventScript_DraconidLegendsHome {
+    if (var(VAR_DRACONID_FINALE_STATE) < FINALE_STATE_METEOR_DESTROYED) {
+        msgbox(format("The skies over HOENN went strange tonight. None of our instruments can explain it!"))
+    } elif (flag(FLAG_DEFEATED_GROUDON) && flag(FLAG_DEFEATED_KYOGRE)) {
+        msgbox(Route119_WeatherInstitute_2F_Text_NoAbnormalWeather)
+    } else {
+        msgbox(format("After that storm over the mountains, our readings went quiet again.\p"
+                      "The heat sank back toward the MAGMA HIDEOUT by MT. CHIMNEY, and the rain toward the SEAFLOOR CAVERN off ROUTE 128.\p"
+                      "If you ask me, GROUDON and KYOGRE went home to sleep where they first woke!"))
+    }
+    release
+    end
+}
