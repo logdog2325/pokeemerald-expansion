@@ -7,7 +7,7 @@ The story they follow: [hack_story.md](hack_story.md).
 
 ## The new-game speech (`data/text/birch_speech.inc`)
 
-The ELDER of the DRACONID clan gives the speech (the tasks in `src/main_menu.c`); his SALAMENCE comes out of its ball after `gText_Birch_Pokemon`, the player chooses boy or girl after `gText_Birch_BoyOrGirl` and names themselves after `gText_Birch_WhatsYourName`.
+The ELDER of the DRACONID clan gives the speech (the tasks in `src/main_menu.c`); his ALTARIA comes out of its ball after `gText_Birch_Pokemon`, the player chooses boy or girl after `gText_Birch_BoyOrGirl` and names themselves after `gText_Birch_WhatsYourName`.
 
 ### `gText_Birch_Welcome`
 - Hohoho… Come in, come in. The mountain wind bites tonight.
@@ -18,7 +18,7 @@ The ELDER of the DRACONID clan gives the speech (the tasks in `src/main_menu.c`)
 - Come out, old friend.
 
 ### `gText_Birch_MainSpeech`
-- This is my ALTARIA. We have flown these peaks together for sixty years.
+- This is my SALAMENCE. We have flown these peaks together for sixty years.
 - Creatures such as this are POKéMON. Every sky, sea and stone holds them.
 - Down in the lowlands, people live beside POKéMON as friends and helpers.
 - They work together, play together… and sometimes, they battle together.
@@ -340,16 +340,21 @@ Draconid Pass: from the village over the river to Littleroot Town. Aster waits a
 
 ## data/scripts/draconid/birch_intro.pory
 
-Draconid Emerald: meeting Prof. Birch, Brendan and May (Phase 4, story event 2).  Draconid Pass -> Route 101 west edge: Birch is attacked; the hatchling fights the Poochyena (special StartBirchRescueBattle, the vanilla first battle without a starter) -> warp to the lab: Birch gives Brendan Treecko and May Torchic, the player gets the Pokédex and Poké Balls -> May waits on Route 103.  Vanilla hooks: Route101_OnTransition calls Route101_EventScript_DraconidOnTransition, the lab's OnFrame runs LittlerootTown_ProfessorBirchsLab_EventScript_DraconidWelcome at VAR_BIRCH_LAB_STATE 2, and Route103_EventScript_Rival goes to Route103_EventScript_DraconidMay.
+Draconid Emerald: meeting Prof. Birch, Brendan and May (Phase 4, story event 2).  Draconid Pass -> Route 101 west edge, where last night's falling star came down: Birch kneels by the METEORITE, a dazed LUNATONE that fell with it lashes out, and the hatchling tires it out (special StartBirchRescueBattle, the vanilla first battle without a starter) -> it drifts off toward METEOR FALLS and Birch picks up the star -> warp to the lab: Birch gives Brendan Treecko and May Torchic, the player gets the Pokédex and Poké Balls -> May waits on Route 103. Round 2 (feedback 2.11, D-400): this replaced the round 1 Poochyena rescue, which was too close to Emerald's.  Vanilla hooks: Route101_OnTransition calls Route101_EventScript_DraconidOnTransition, the lab's OnFrame runs LittlerootTown_ProfessorBirchsLab_EventScript_DraconidWelcome at VAR_BIRCH_LAB_STATE 2, and Route103_EventScript_Rival goes to Route103_EventScript_DraconidMay.
 
-### `Route101_EventScript_DraconidRescue`
-- Hello! You over there!
-- Is that a POKéMON with you? Please, help me!
-- Chase this POOCHYENA off!
-- PROF. BIRCH: Whew… I was in the tall grass studying wild POKéMON when it jumped me.
-- You saved me. Thanks a lot!
-- Hm? That's a {STR_VAR_1}! A Dragon-type, and so young…
-- Then you must be {PLAYER}, from DRACONID VILLAGE! The ELDER wrote that you'd be coming.
+### `Route101_EventScript_DraconidFallenStar`
+- PROF. BIRCH: Whoa! Easy… easy, now.
+- PROF. BIRCH: Hm? Is that a {STR_VAR_1}?
+- A dragon! Then you're {PLAYER}! The ELDER wrote that you'd come.
+- PROF. BIRCH: Last night's falling star came down right here.
+- This LUNATONE fell with it. It's dazed, and it lashes out at anything that moves.
+- PROF. BIRCH: If it keeps this up, it'll hurt itself.
+- Can your partner tire it out for me? Gently, now!
+- The LUNATONE's light grew soft and steady.
+- PROF. BIRCH: Thank you, {PLAYER}. Your partner was very gentle with it.
+- There it goes, toward the mountains. METEOR FALLS, maybe.
+- PROF. BIRCH: …Still warm.
+- So this is the star your ELDER saw fall.
 - PROF. BIRCH: …He wrote me why, too.
 - TEAM MAGMA. And you, walking in among them. Alone.
 - That's a heavy burden to put on someone so young. Heavier than any POKéDEX.
@@ -358,7 +363,7 @@ Draconid Emerald: meeting Prof. Birch, Brendan and May (Phase 4, story event 2).
 - …Well! This is no place to chat. Come to my POKéMON LAB in LITTLEROOT TOWN, just south of here!
 
 ### `LittlerootTown_ProfessorBirchsLab_EventScript_DraconidWelcome`
-- PROF. BIRCH: Welcome to my LAB, {PLAYER}! You've met me at my worst, I'm afraid.
+- PROF. BIRCH: Welcome to my LAB, {PLAYER}! That star can wait on my desk for now.
 - Let me introduce these two. This is my son, BRENDAN…
 - BRENDAN: Hey. A baby dragon, huh?
 - Everybody talks about the Draconid clan like they're legends. We'll see.
@@ -440,7 +445,7 @@ Draconid Emerald round 1, Act 1 (docs/hack_story.md): Littleroot families, Petal
 ### `RustboroCity_EventScript_DraconidBrendan`
 - BRENDAN: Huh? {PLAYER}?
 - Wait a second. Is that a TEAM MAGMA uniform?
-- You saved my dad on ROUTE 101! He hasn't stopped talking about you since.
+- You helped my dad on ROUTE 101! He hasn't stopped talking about you since.
 - And now you've joined MAGMA?! Those guys want to wreck HOENN!
 - BRENDAN: Well? Say something!
 - …Fine. Then I'll stop you myself!
@@ -2163,6 +2168,104 @@ Draconid Emerald round 1: more battles with the Draconid rivals (follow-up 29, f
 - ASTER: Again tomorrow. Same pond.
 - NERINE: The sky isn't going anywhere. Neither are we.
 
+## data/scripts/draconid/drake.pory
+
+Draconid Emerald round 2, feedback 2.14 ("give drake something cool to do in the story … or have some of his backstory revealed"): DRAKE, the ELITE FOUR's DRAGON master, is the ELDER's younger brother (D-440 - D-444).  Lore (D-440)      Born in the village below the shrine. He and his brother hatched their BAGON the same spring (the ELDER's "old dragon" is the other SALAMENCE). Forty years ago he flew down off the mountain to see the sea; the clan keeps to its mountain (its people go down to trade and come home), and his brother told him that if he left, he need not come back. He never did: he sailed the world and became HOENN's dragon master, and never once flew over the mountains. The LEAGUE (D-442) his room's speeches (EverGrandeCity_DrakesRoom/scripts.inc calls these): before the first win he knows the player's horned band; after it he tells them who he is and asks them to say nothing to his brother (FLAG_DRACONID_DRAKE_TOLD). Later runs: a short line, and after the finale (VILLAGE_STATE_SAVED) the lines of a man who has gone home. His teams are unchanged. The village (D-443) the Act 7 attack, at the shrine (act7x.pory calls these): MAXIE turns PRIMAL GROUDON on the shrine door; DRAKE's SALAMENCE drops out of the storm and takes the blow, and DRAKE holds the door while the player and BRENDAN or MAY fight MAXIE and ARCHIE. After the win the brothers face each other for the first time in forty years; DRAKE keeps watch on the pass that night. Post-game (D-444) DRAKE and his SALAMENCE by the ELDER's door. The first talk: the ELDER comes out and the two make peace (FLAG_DRACONID_DRAKE_RECONCILED); from then on DRAKE teaches DRACO METEOR.  Objects (DraconidVillage/map.json, the last two): DRAKE (26, 12) and his SALAMENCE (27, 12), on FLAG_TEMP_10 (FLAG_TEMP_1F is ASTER's home object, D-279), which DraconidVillage_EventScript_DrakeOnTransition sets whenever they aren't there (D-136). During the Primal battle (VILLAGE_STATE_FINAL) DRAKE stands before the shrine door and the SALAMENCE at the foot of the crater, glaring at GROUDON; post-game at their map.json spot.
+
+### `EverGrandeCity_DrakesRoom_EventScript_DraconidIntro`
+- Ah, {PLAYER}! These days I keep the LEAGUE's door by day, and fly home to the village by night.
+- My brother says it took me forty years to learn the way back.
+- But in this room, I am still the last of the ELITE FOUR.
+- Show me again what is needed!
+- You again, {PLAYER}. I take it you have said nothing to my brother.
+- Good. Then let our POKéMON do the talking.
+- I am the last of the POKéMON LEAGUE ELITE FOUR, DRAKE the DRAGON master!
+- Show me again what is needed!
+- I am the last of the POKéMON LEAGUE ELITE FOUR, DRAKE the DRAGON master!
+- …Hm? That band on your brow. Teal cloth, two horns of ivory.
+- I have not seen one of those in forty years.
+- For us to battle with POKéMON as partners, do you know what it takes?
+- Do you know what is needed?
+- If you don't, then you will never prevail over me!
+
+### `EverGrandeCity_DrakesRoom_EventScript_DraconidPostBattle`
+- Go onwards, {PLAYER}. The CHAMPION is waiting.
+- I will see you at home.
+- Go! Go onwards! The CHAMPION is waiting!
+- …And not a word to my brother.
+- You deserve every credit for coming this far, {PLAYER}.
+- You do seem to know what is needed.
+- And that dragon of yours fought like one hatched below the shrine, from one of the ELDER's eggs.
+- Yes. I know that band, and I know that shrine. I was born below it.
+- The ELDER who gave you your egg is my older brother.
+- We hatched our BAGON the same spring.
+- Forty years ago, I flew mine down off the mountain to see the sea.
+- Our clan keeps to its mountain. My brother told me that if I left, I need not come back.
+- I never did.
+- …Say nothing of me to him. Forty years is too long for a message.
+- Go! Go onwards! The CHAMPION is waiting!
+
+### `DraconidVillage_EventScript_DrakeComesHome`
+- MAXIE: GROUDON! Bury that shrine, and the old man in its door!
+- A SALAMENCE plunged out of the storm and took GROUDON's blow on its wings!
+- DRAKE: Hmph. Is that how you knock on a door, MAXIE?
+- MAXIE: DRAKE… The ELITE FOUR's DRAGON master.
+- This is no concern of the LEAGUE's.
+- DRAKE: The LEAGUE didn't send me. I was born on this mountain.
+- ARCHIE: Born up here? Fufufu… So the old sea dog is a sky-watcher too!
+- ELDER: …DRAKE.
+- DRAKE: Forty years, brother. And still you guard the door yourself.
+- ASTER: B-BROTHER?!
+- DRAKE: {PLAYER}! MAXIE and ARCHIE are yours.
+- Nothing touches this door while I stand in it.
+
+### `DraconidVillage_EventScript_DrakeAndTheElder`
+- ELDER: You came home.
+- DRAKE: The sky split open over half of HOENN, brother. Even an old sailor knows what that means.
+- ELDER: The traders spoke of a dragon master in the lowlanders' LEAGUE, with a SALAMENCE.
+- I knew it was you. I never said your name aloud.
+- DRAKE: And I never once flew over these mountains, for fear you would see me.
+- ELDER: Forty years, DRAKE.
+- DRAKE: …I know. We will talk, brother. There is a great deal to say.
+- DRAKE: Tonight I will watch the pass, in case MAXIE's people come back.
+- {PLAYER}… Thank you. You brought an old fool home.
+
+### `DraconidVillage_EventScript_Drake`
+- DRAKE: Nothing touches this door while I stand in it.
+- Go, {PLAYER}! MAXIE and ARCHIE are yours.
+- DRAKE: So the NORTHERN WING came home this year, too.
+- The old songs will need a new verse.
+- DRAKE: My brother and I have forty years of stories to trade.
+- Some of mine are even true.
+
+### `DraconidVillage_EventScript_DrakeMakesPeace`
+- DRAKE: {PLAYER}. I asked you to say nothing of me to my brother.
+- And then I flew home and told him everything myself.
+- DRAKE: Forty years I kept away. In the end, it took MAXIE and ARCHIE knocking on our door.
+- ELDER: DRAKE. Your tea has gone cold again.
+- DRAKE: I was telling {PLAYER} how I ran off to sea, brother.
+- ELDER: And how I told you never to come back.
+- I said it in anger, and then I was too proud to take it back.
+- DRAKE: And I was too proud to ask. Two stubborn old dragons.
+- ELDER: Our songs say that one wing flew north and did not come back.
+- I never wanted to sing that verse for my own brother.
+- ELDER: Now I will not have to. Welcome home, DRAKE.
+- DRAKE: …It is good to be home.
+- DRAKE: Before I left, our father taught us both the clan's oldest move.
+- It is time someone else learned it.
+
+### `DraconidVillage_EventScript_DrakeTutorDeclined`
+- DRAKE: Come back whenever you like. I am not going anywhere now.
+
+### `DraconidVillage_EventScript_DrakeTutorTaught`
+- DRAKE: Every time the stars fall, they take something from the TRAINER who called them.
+- Use it wisely.
+
+### `DraconidVillage_EventScript_DrakeSalamence`
+- SALAMENCE: Grrooaah!
+- DRAKE's SALAMENCE kept its eyes on GROUDON, its wings spread before the shrine.
+- DRAKE's SALAMENCE has curled up by the ELDER's door, as if it had never left.
+
 ## data/scripts/draconid/frontier_legends.pory
 
 Draconid Emerald round 1 follow-up: the Battle Frontier legends (post-game, D-225 - D-229). WES (Pokémon Colosseum) waits in the BATTLE PYRAMID's sands (58, 22), RED at the foot of the cliff below ARTISAN CAVE (29, 10), BLUE by the BATTLE TOWER door (18, 15). They are there once the Hall of Fame is done (FLAG_SYS_GAME_CLEAR) and battle again whenever asked. The LEGENDS' TAG attendant beside the TOWER door (14, 15) pairs the player with a legend they have beaten (PARTNER_WES / _RED / _BLUE) against the other two: a multi battle on the mat in front of the TOWER, three POKéMON each (the *_FRONTIER_MULTI teams).
@@ -2801,6 +2904,7 @@ Draconid Emerald round 1: Z-Power, spread through the story (follow-ups 26-27 an
 
 ### Route110_TrickHousePuzzle5
 - `Route110_TrickHousePuzzle5_Text_Mechadoll2Quiz1`: MECHADOLL 2 QUIZ. / Which of these POKéMON did WALLY borrow from NORMAN?
+- `Route110_TrickHousePuzzle5_Text_Mechadoll2Quiz2`: MECHADOLL 2 QUIZ. / Which of these POKéMON fell with the star on ROUTE 101?
 
 ### Route112
 - `Route112_Text_CantLetAnyonePassUntilTheyreBack`: You got it. And until they come back, we're not to let anyone pass, right. / …Hey, you! The rookie! / What are you standing around for? The LEADER's squad went to METEOR FALLS, past FALLARBOR. / Get over there and catch up!
