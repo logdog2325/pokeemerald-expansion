@@ -61,7 +61,7 @@ fill('"', 15, 29, 21, 32)
 fill('"', 5, 28, 9, 31)
 trees("Z", 16, 20, 19, 23)       # copse in the valley
 fill(":", 11, 18, 12, 26)        # worn path
-fill(":", 11, 26, W - 1, 27)
+fill(":", 11, 26, W - 5, 27)  # the worn path ends at the trees; plain grass to Route 101 (caps over the trees below)
 
 spec = {
     "name": "DraconidPass",

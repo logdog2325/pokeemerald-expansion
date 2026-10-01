@@ -184,3 +184,21 @@ Ampharosite, Steelixite, Scizorite, Houndoominite, Tyranitarite, Swampertite, Me
 other Legends Z-A stones (Clefable, Victreebel, Meganium, Emboar, Scolipede, Scrafty, Eelektross,
 Chesnaught, Delphox, Greninja, Floette, Malamar, Zygarde, Drampa, Falinks, Heatran, Darkrai, Zeraora, Meowstic,
 Crabominable, Magearna, Scovillain, Baxcalibur, Tatsugiri).
+
+## Dawn Stone and Dusk Stone (D-342)
+
+Vanilla Emerald has neither stone, so Gallade, Froslass, Chandelure, Honchkrow, Mismagius and Aegislash could not be
+evolved. Four item balls now hold them, at the ORAS spots where Emerald has a counterpart (Serebii's Item Dex, read
+2026-10-01: Dusk Stone on Mt. Pyre; Dawn Stone in Victory Road and Sea Mauville – Emerald's sunken-ship stand-in is
+the Abandoned Ship). Each replaces a low-value vanilla item (the Mt. Pyre 2F ball went to the Ghostium Z, D-269); the pickup flag keeps its number and is renamed after
+the stone. Tested by `tests/stones.play`.
+
+| Stone | Where (was) | Opens | For |
+|---|---|---|---|
+| Dawn Stone | Abandoned Ship, Rooms 1F (4, 5) (Harbor Mail) | Surf, Route 108 (S6) | Kirlia ♂ → Gallade (Ralts, Route 102), Snorunt ♀ → Froslass (Shoal Cave) |
+| Dawn Stone | Victory Road 1F (40, 26) (Max Elixir) | eight badges (S9) | the second of the two |
+| Dusk Stone | Mt. Pyre exterior (16, 22), hidden by a grave (Max Ether) | Mt. Pyre (S7) | Lampent → Chandelure (Litwick, Mt. Pyre), Murkrow → Honchkrow (Route 120), Misdreavus → Mismagius (Mt. Pyre 4F–6F) |
+| Dusk Stone | Mt. Pyre exterior (27, 15) (Max Potion) | Mt. Pyre (S7) | a second one; Doublade → Aegislash if Honedge becomes obtainable |
+
+Not added here: a shop or repeatable source (the battle-item counter stays battle items), and the Shiny Stone /
+Ice Stone evolutions (Roselia → Roserade still has no stone).

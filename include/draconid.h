@@ -21,6 +21,10 @@ struct WarpData;
 bool32 Draconid_IsPrimalWeather(void);
 bool32 Draconid_IsPrimalMusic(struct WarpData *warp);
 
+// The multi_do script macro (asm/macros/battle_frontier/battle_tower.inc): the team-size check for the battle
+// setmultitrainerbattle has just set up
+void Draconid_ScriptAreMultiPartiesFullTeams(void);
+
 #if DEBUG_OVERWORLD_MENU
 // Emulator test hook (tools/hack/emu/play.py "warp"), debug builds only
 #define DRACONID_TEST_WARP (1 << 0)

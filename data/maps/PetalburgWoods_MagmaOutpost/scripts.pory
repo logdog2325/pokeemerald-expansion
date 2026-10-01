@@ -20,11 +20,16 @@ script PetalburgWoods_MagmaOutpost_EventScript_Uniform {
     delay(30)
     applymovement(LOCALID_MAGMA_OUTPOST_GRUNT_M, Common_Movement_ExclamationMark)
     waitmovement(0)
-    msgbox(format("GRUNT: COURTNEY! Who's the kid?"), MSGBOX_DEFAULT)
-    msgbox(format("COURTNEY: New member. Beat an AQUA woman in the woods. Alone."), MSGBOX_DEFAULT)
-    msgbox(format("GRUNT: Alone? At that age?\n"
-                  "…Well, we could use the muscle."), MSGBOX_DEFAULT)
-    msgbox(format("COURTNEY: Uniform. Put it on."), MSGBOX_DEFAULT)
+    // playtest 2.7: the grunt has a name, COURTNEY her giggle and her MAXIE (D-341)
+    msgbox(format("ASHER: Whoa! COURTNEY! Who's the kid?"), MSGBOX_DEFAULT)
+    msgbox(format("COURTNEY: Ahaha… Breathe, ASHER.\p"
+                  "That troublesome AQUA grunt. The one sneaking around the woods, picking DEVON's pockets?\p"
+                  "This one flattened her. With a dragon. A real one.\p"
+                  "I watched the whole thing. …I enjoyed it. Ahahahaha!"), MSGBOX_DEFAULT)
+    msgbox(format("ASHER: A dragon? At that age?\p"
+                  "…Ha! Fine by me. We could use the muscle."), MSGBOX_DEFAULT)
+    msgbox(format("COURTNEY: So I picked it up. Mine now. …Ours, I mean.\p"
+                  "Uniform. Put it on. …Go on. I want to see."), MSGBOX_DEFAULT)
     closemessage
     setvar(VAR_0x8004, PLAYER_OUTFIT_MAGMA)
     call(Draconid_EventScript_ChangeOutfit)
@@ -33,20 +38,21 @@ script PetalburgWoods_MagmaOutpost_EventScript_Uniform {
     // Brendan waits at Rustboro's south edge (act1.pory)
     clearflag(FLAG_HIDE_RUSTBORO_CITY_RIVAL)
     msgbox(format("{PLAYER} put on the TEAM MAGMA uniform."), MSGBOX_DEFAULT)
-    msgbox(format("COURTNEY: …Red. It suits you.\p"
-                  "TABITHA leads the grunts in the field. He will find you.\p"
-                  "Until then: RUSTBORO. Get strong.\p"
-                  "Leader MAXIE… likes strong."), MSGBOX_DEFAULT)
+    msgbox(format("COURTNEY: …Red. Ahaha. It suits you.\p"
+                  "TABITHA leads the grunts in the field. He'll come looking for you.\p"
+                  "Until then… RUSTBORO. Get strong.\p"
+                  "Leader MAXIE likes strong. And I like whatever Leader MAXIE likes."), MSGBOX_DEFAULT)
     setvar(VAR_PETALBURG_WOODS_STATE, 3)
     releaseall
 }
 
 script PetalburgWoods_MagmaOutpost_EventScript_Courtney {
-    msgbox(format("COURTNEY: RUSTBORO. Get strong. TABITHA will find you."), MSGBOX_NPC)
+    msgbox(format("COURTNEY: Still here? Ahaha…\p"
+                  "RUSTBORO. Get strong. TABITHA will find you."), MSGBOX_NPC)
 }
 
 script PetalburgWoods_MagmaOutpost_EventScript_GruntM {
-    msgbox(format("GRUNT: Welcome to the team, kid.\p"
+    msgbox(format("ASHER: Welcome to the team, kid.\p"
                   "Folks in town will stare at the uniform. Let 'em."), MSGBOX_NPC)
 }
 

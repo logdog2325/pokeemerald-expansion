@@ -98,7 +98,7 @@
 	.endm
 
 	.macro multi_do type:req
-	callnative AreMultiPartiesFullTeams
+	callnative Draconid_ScriptAreMultiPartiesFullTeams @ Draconid Emerald (D-343): not the last battle's flags
 	goto_if_eq VAR_RESULT, TRUE, 1f
 	special ReducePlayerPartyToSelectedMons
 	1:

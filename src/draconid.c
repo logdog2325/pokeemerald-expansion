@@ -1,5 +1,7 @@
 #include "global.h"
 #include "draconid.h"
+#include "battle.h"
+#include "battle_util.h"
 #include "credits.h"
 #include "event_data.h"
 #include "field_screen_effect.h"
@@ -396,4 +398,19 @@ bool32 Draconid_IsPrimalMusic(struct WarpData *warp)
     const struct MapHeader *header = Overworld_GetMapHeaderByGroupAndId(warp->mapGroup, warp->mapNum);
 
     return IsPrimalSequence() && IsMapTypeUnderOpenSky(header->mapType);
+}
+
+// multi_do (the scripted multi battles: the Space Center raid, the Sootopolis multi, the Sky Pillar trial, the
+// village doubles) asks whether both sides bring full teams before BattleSetup_StartMultiBattle sets
+// gBattleTypeFlags for the new battle, so the flags may still be the last battle's. After a wild battle
+// AreMultiPartiesFullTeams saw no BATTLE_TYPE_TRAINER, answered "full teams" and the player's pick of three was
+// skipped (D-343). setmultitrainerbattle has just set up a trainer battle: ask about that one. The in-battle
+// callers keep using the real flags.
+void Draconid_ScriptAreMultiPartiesFullTeams(void)
+{
+    u32 flags = gBattleTypeFlags;
+
+    gBattleTypeFlags = BATTLE_TYPE_TRAINER;
+    AreMultiPartiesFullTeams(); // sets gSpecialVar_Result
+    gBattleTypeFlags = flags;
 }
