@@ -1,84 +1,84 @@
 {
  "name": "magma_m",
- "note": "Team Magma grunt disguise (male). Base: FRLG Red (recoloured, hood head). See docs/hack_art_pipeline.md.",
- "base_dir": "graphics/object_events/pics/people/red",
+ "note": "Team Magma disguise (male): the vanilla grunt (team_magma/magma_member_m.png) and poses built from it. Built by tools/hack/art/player/magma_grunt.py, which reads this file for the palette, the overlay roles and the derived sheets (not by build_player.py). See docs/hack_art_pipeline.md and D-380.",
  "out_dir": "graphics/object_events/pics/people/magma_m",
  "palette_out": "graphics/object_events/palettes/magma_m.pal",
+ "reflection_palette_out": "graphics/object_events/palettes/magma_m_reflection.pal",
  "palette": [
   [
-   131,
-   123,
+   115,
+   197,
    164
   ],
   [
-   112,
-   72,
-   48
+   255,
+   213,
+   180
   ],
   [
    255,
-   205,
-   160
+   197,
+   148
   ],
   [
-   226,
-   152,
-   120
+   222,
+   148,
+   115
   ],
   [
-   120,
-   64,
-   64
-  ],
-  [
-   88,
-   88,
-   96
-  ],
-  [
-   48,
-   48,
-   56
-  ],
-  [
-   128,
-   128,
-   136
-  ],
-  [
-   112,
-   24,
-   32
-  ],
-  [
-   224,
-   224,
-   224
-  ],
-  [
-   160,
-   160,
-   168
-  ],
-  [
-   240,
-   96,
-   72
+   123,
+   65,
+   65
   ],
   [
    200,
-   48,
-   48
+   200,
+   208
   ],
   [
-   80,
-   80,
-   88
+   136,
+   136,
+   144
   ],
   [
-   40,
-   40,
-   48
+   72,
+   72,
+   80
+  ],
+  [
+   230,
+   82,
+   98
+  ],
+  [
+   197,
+   0,
+   49
+  ],
+  [
+   98,
+   0,
+   24
+  ],
+  [
+   82,
+   98,
+   148
+  ],
+  [
+   106,
+   49,
+   49
+  ],
+  [
+   49,
+   0,
+   24
+  ],
+  [
+   255,
+   255,
+   255
   ],
   [
    0,
@@ -88,214 +88,10 @@
  ],
  "roles": {
   "K": 15,
-  "H": 6,
-  "h": 7,
-  "T": 12,
-  "t": 11,
-  "d": 8,
-  "W": 9,
-  "w": 10,
-  "S": 2,
-  "s": 3,
-  "b": 4,
-  "R": 13,
-  "r": 14,
-  "B": 1,
-  "P": 5
+  "R": 6,
+  "r": 7,
+  "W": 14
  },
- "cap": [
-  8,
-  11,
-  12
- ],
- "clear": [
-  8,
-  9,
-  10,
-  11,
-  12,
-  15,
-  1,
-  4
- ],
- "heads": {
-  "down": {
-   "anchor": [
-    -4,
-    -1
-   ],
-   "rows": [
-    "....KK....KK....",
-    "...KtTK..KTtK...",
-    "...KTTTKKTTTK...",
-    "..KTTTTTTTTTTK..",
-    "..KTtTTTTTTTTK..",
-    ".KTTTTTTTTTTTTK.",
-    ".KTTTKKKKKKTTTK.",
-    ".KTTKHHHHHHKTTK.",
-    ".KTKSSSSSSSSKTK.",
-    "..KKsSSSSSSsKK.."
-   ]
-  },
-  "up": {
-   "anchor": [
-    -4,
-    -1
-   ],
-   "rows": [
-    "....KK....KK....",
-    "...KtTK..KTtK...",
-    "...KTTTKKTTTK...",
-    "..KTTTTTTTTTTK..",
-    "..KTtTTTTTTTTK..",
-    ".KTTTTTTTTTTTTK.",
-    ".KTTTTTTTTTTTTK.",
-    ".KTTTTTTTTTTTTK.",
-    ".KdTTTTTTTTTTdK.",
-    "..KddTTTTTTddK..",
-    "..KKdddddddKK..."
-   ]
-  },
-  "left": {
-   "anchor": [
-    -4,
-    -1
-   ],
-   "rows": [
-    ".....KK..KK.....",
-    "....KtTKKTtK....",
-    "...KTTTTTTTTK...",
-    "..KTtTTTTTTTTK..",
-    "..KTTTTTTTTTTTK.",
-    ".KTTTTTTTTTTTTK.",
-    ".KKKKTTTTTTTTTK.",
-    ".KHHKTTTTTTTTTK.",
-    ".KSSKTTTTTTTTdK.",
-    "..KsSKTTTTTTdK.."
-   ]
-  }
- },
- "sheets": [
-  {
-   "src": "red_normal.png",
-   "out": "walking.png",
-   "w": 16,
-   "h": 32,
-   "heads": [
-    "down",
-    "up",
-    "left",
-    "down",
-    "down",
-    "up",
-    "up",
-    "left",
-    "left"
-   ]
-  },
-  {
-   "src": "red_surf_run.png",
-   "out": "running.png",
-   "w": 16,
-   "h": 32,
-   "pick": [
-    3,
-    6,
-    9,
-    4,
-    5,
-    7,
-    8,
-    10,
-    11
-   ],
-   "heads": [
-    "down",
-    "up",
-    "left",
-    "down",
-    "down",
-    "up",
-    "up",
-    "left",
-    "left"
-   ]
-  },
-  {
-   "src": "red_surf_run.png",
-   "out": "surfing.png",
-   "w": 16,
-   "h": 32,
-   "pick": [
-    0,
-    1,
-    2
-   ],
-   "heads": [
-    "down",
-    "up",
-    "left"
-   ]
-  },
-  {
-   "src": "red_bike.png",
-   "out": "bike.png",
-   "w": 32,
-   "h": 32,
-   "heads": [
-    "down",
-    "up",
-    "left",
-    "down",
-    "down",
-    "up",
-    "up",
-    "left",
-    "left"
-   ]
-  },
-  {
-   "src": "red_item.png",
-   "out": "field_move.png",
-   "w": 16,
-   "h": 32,
-   "pick": [
-    0,
-    1,
-    2,
-    3,
-    4
-   ],
-   "heads": [
-    "down",
-    "down",
-    "down",
-    "down",
-    "down"
-   ]
-  },
-  {
-   "src": "red_fish.png",
-   "out": "fishing.png",
-   "w": 32,
-   "h": 32,
-   "heads": [
-    "left",
-    "left",
-    "left",
-    "left",
-    "up",
-    "up",
-    "up",
-    "up",
-    "down",
-    "down",
-    "down",
-    "down"
-   ]
-  }
- ],
- "reflection_palette_out": "graphics/object_events/palettes/magma_m_reflection.pal",
  "derived": [
   {
    "out": "acro_bike.png",
@@ -772,8 +568,8 @@
      ],
      "overlay": {
       "at": [
-       18,
-       23
+       22,
+       24
       ],
       "rows": [
        "..KKK.",
@@ -792,8 +588,8 @@
      ],
      "overlay": {
       "at": [
-       18,
-       23
+       22,
+       24
       ],
       "rows": [
        "..KKK.",
@@ -814,8 +610,8 @@
      ],
      "overlay": {
       "at": [
-       21,
-       22
+       22,
+       25
       ],
       "rows": [
        "KK",
@@ -832,8 +628,8 @@
      ],
      "overlay": {
       "at": [
-       21,
-       22
+       22,
+       25
       ],
       "rows": [
        "KK",
@@ -850,8 +646,8 @@
      ],
      "overlay": {
       "at": [
-       5,
-       22
+       9,
+       24
       ],
       "rows": [
        "..KKK.",
@@ -870,8 +666,8 @@
      ],
      "overlay": {
       "at": [
-       4,
-       22
+       8,
+       24
       ],
       "rows": [
        "KK.KK..",
@@ -911,7 +707,7 @@
      "frame": 0,
      "place": [
       0,
-      -9
+      -10
      ]
     }
    ]

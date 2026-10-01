@@ -11,7 +11,9 @@ Tools: `tools/hack/art/` (validate, contact sheet, quantize, recolor, kitbash) a
 ## Player outfits (Phase 2)
 
 Four sets: Draconid tamer M/F (`draconid_m`, `draconid_f`) and Team Magma disguise M/F
-(`magma_m`, `magma_f`). Each set has every avatar state the engine uses.
+(`magma_m`, `magma_f`). Each set has every avatar state the engine uses. The table and the build steps below are
+the tamer's; since round 2 the Magma disguise is the vanilla grunt and has its own builder (`magma_grunt.py`,
+"Round 2: the Magma disguise as a real grunt" below).
 
 | Sheet | Frames | Source |
 |---|---|---|
@@ -27,7 +29,7 @@ Four sets: Draconid tamer M/F (`draconid_m`, `draconid_f`) and Team Magma disgui
 | `decorating.png` | 1 × 16×32 | walk frame 2 |
 | region map icon | 16×16 | head of walk frame 0 → `graphics/pokenav/region_map/<set>_icon.png` |
 | trainer front pic | 64×64 | FRLG Red/Leaf front pic (Magma disguise: the vanilla Magma Grunt front pics) |
-| trainer back pic | 5 × 64×64 (idle + throw) | FRLG Red/Leaf back pic, `sBackAnims_Kanto` |
+| trainer back pic | 5 × 64×64 (idle + throw) | FRLG Red/Leaf back pic, `sBackAnims_Kanto` (Magma disguise: drawn as a grunt from behind, round 2) |
 
 ### How a set is built
 `tools/hack/art/player/build_player.py <set>.json` (overworld) and `build_pics.py <set>_pics.json`
@@ -52,7 +54,9 @@ After changing a spec: rebuild the PNGs, then `python3 tools/hack/art/player/gen
   dragon horns, teal jacket/top, red skirt and gold bag (F), and a long red **dragon-scale scarf** (round 1,
   below): wrapped at the neck, its ends a short cape down the back (M, where Red's backpack was) or two tails
   over the long hair (F), streaming behind when running or cycling.
-- **Magma disguise**: the grunt's red hood with its two ear points, charcoal and red uniform.
+- **Magma disguise**: an ordinary Team Magma grunt – the vanilla grunt's overworld sprite and poses built from it,
+  the grunt front pic, and a back pic of a grunt seen from behind (round 2, D-380 – D-382). The female has navy hair,
+  as on the female grunt's front pic.
 
 ### Engine side
 `src/player_outfit.c`: `VAR_PLAYER_OUTFIT` → object event graphics per avatar state and gender,
@@ -99,7 +103,6 @@ on black (the speech's background) and the whole speech in the emulator (`title.
 M, hair → dark navy), and a side-view head (spiky hair or a smooth top over the long hair, teal band, one horn
 leaning back) is drawn over the cap. The head rows were laid out from shapes (hair dome, spikes, horn line, band)
 with a 1 px outline, then checked at 1× and in the emulator.
-- Magma F back pic: the hood still has Leaf's hat silhouette.
 
 ## Round 1: Nerine, Courtney and the partner back pics
 
@@ -114,10 +117,11 @@ specs under `tools/hack/art/`.
 | Nerine, front pic | `front_pics/nerine.png` | `recipes/nerine_front_pic.json` (kitbash) | Winona's pic | same, with a scale-lattice shawl and gold cuffs |
 | Nerine, back pic (5 frames) | `back_pics/nerine.png` | `player/nerine_pics.json` (`build_pics.py`) | FRLG Leaf's back pic | own crown + horn clip, shawl, navy sleeves |
 | Courtney, overworld | `draconid/courtney.png`, `courtney{,_reflection}.pal` | `recipes/courtney.json` (kitbash) | Magma grunt F walk sheet | lilac hair, crimson admin jacket, gold emblem (D-162) |
-| Tabitha, back pic (5 frames) | `back_pics/magma_admin.png` | `player/tabitha_pics.json` (`build_pics.py`) | Magma disguise back pic (Red) | recoloured into his crimson hooded jacket (D-163) |
+| Tabitha, back pic (5 frames) | `back_pics/magma_admin.png` | `player/magma_grunt.py` (round 2; was `tabitha_pics.json`) | the male grunt back pic (round 2) | recoloured into his crimson hooded jacket (D-163, D-382) |
 
 Rebuild: `python3 tools/hack/art/kitbash.py tools/hack/art/recipes/{nerine_aqua,nerine_aqua_front_pic,nerine,nerine_front_pic,courtney}.json`
-and `python3 tools/hack/art/player/build_pics.py tools/hack/art/player/{nerine,tabitha}_pics.json`, then `make`. The
+and `python3 tools/hack/art/player/build_pics.py tools/hack/art/player/nerine_pics.json`, then `make` (Tabitha's back pic:
+`magma_grunt.py`, round 2). The
 overworld recipes also write the palette and its water-reflection version (`save_pal`). No C regeneration is needed:
 the object events were registered with the placeholders; the back pics are `.backPic` entries of
 `TRAINER_PIC_NERINE` / `TRAINER_PIC_MAGMA_ADMIN` in `src/data/graphics/trainers.h` (yOffset 5, `sBackAnims_Kanto`).
@@ -146,8 +150,8 @@ How they were made:
   side by side with the real grunts in all four facings, both Nerine front pics in battle, and both partners'
   back pics through the multi-battle intro and throw.
 
-Known gaps (`TODO(art)`): Tabitha's back pic keeps Red's slim build (he is heavier in his front pic); Courtney has
-no trainer pic (she does not battle yet); Nerine's shawl pattern is only a hint at 16×32.
+Known gaps (`TODO(art)`): ~~Tabitha's back pic keeps Red's slim build~~ (round 2: the broad grunt back pic, D-382);
+Courtney has no trainer pic (she does not battle yet); Nerine's shawl pattern is only a hint at 16×32.
 
 ## Round 1: Zinnia, the Lorekeeper
 
@@ -370,3 +374,57 @@ How they were made:
 
 Known gaps (polish only): the star keeps Game Freak's five-pointed shape (a recolour, not a new meteor head); the
 glow's rings are visible as bands up close (Game Freak's banding, not a smooth gradient).
+## Round 2: the Magma disguise as a real grunt (feedback 2.10)
+
+The playtester: the uniform's overworld sprite and throwing back pic were "obviously a recolored Red"; the player
+should look like a regular Team Magma grunt, and the back pic "how a team magma grunt backsprite would look in game"
+(Emerald style, not cartoonish; no ears out of the hood). Everything is built by one script (D-380 – D-382):
+
+| Asset | File(s) | Built from |
+|---|---|---|
+| walk (9 × 16×32) | `pics/people/magma_{m,f}/walking.png` | **the vanilla grunt sheet** (`team_magma/magma_member_{m,f}.png`), index for index |
+| run (9) | `…/running.png` | the grunt's walk frames: the standing frames crouch a pixel (torso over the boots, as Brendan's run frames do), the side frames lean a pixel forward, the strides are the grunt's |
+| surf (3) | `…/surfing.png` | the walk frames without the trousers / thigh row (the surf blob hides the legs) |
+| Mach Bike (9 × 32×32) | `…/bike.png` | the grunt's hood and torso, gloves on the grips, a foot on the pedal in the pedalling frames; front / rear wheel drawn, the side view's bike from FRLG `red_bike.png` (recoloured: red frame, grey rims) |
+| field move (5) | `…/field_move.png` | the walk frame with drawn arms: the glove raised beside the hood, a dip, the Poké Ball at the chest, at the shoulder, thrust up |
+| fishing (12 × 32×32) | `…/fishing.png` | the grunt's walk frames at the positions of FRLG `red_fish.png` (the anims line up as before), Red's rod (grey, red tip), drawn gloves on the rod |
+| Acro Bike, underwater, watering, decorating, region map icon | `…/acro_bike.png` … `graphics/pokenav/region_map/magma_{m,f}_icon.png` | derived as before (`"derived"` in `magma_{m,f}.json`); the grey watering can sits in the grunt's glove; the icon is the hood and face (walk frame 0, 10 px up) |
+| palettes | `palettes/magma_{m,f}.pal`, `…_reflection.pal` | `npc_2.pal`'s grunt colours on the same indices + greys for bike / rod / can; the female's hair indices are navy (her front pic's hair) |
+| back pic M (5 × 64×64) | `trainers/back_pics/magma_m.png` | hood drawn in the script; body from **Steven's** back pic (broad shoulders, GF cloth): suit → red top (lit rims, cloth, shade, dark-red inner lines), cuffs → grey wristbands, hands → grey gloves |
+| back pic F | `trainers/back_pics/magma_f.png` | the same hood; body from **Leaf's** poses: hat removed, long hair → navy (out of the hood at the nape), top → red, bag strap removed, bare shoulders and arms, hands → grey gloves, skirt → grey |
+| Tabitha's back pic | `trainers/back_pics/magma_admin.png` | the male grunt's frames in his deeper crimson admin jacket (D-382) |
+
+Rebuild: `python3 tools/hack/art/player/magma_grunt.py [--preview DIR]`, then `make` (same files, frame counts and palette
+tags: no C regeneration). `magma_m_pics.json`, `magma_f_pics.json` and `tabitha_pics.json` are gone (they rebuilt the old
+Red / Leaf versions); `build_player.py` no longer reads `magma_{m,f}.json`.
+
+How they were made:
+- **Overworld**: `Grunt` reads the vanilla walk frames and cuts them into rows (head = hood + face, torso with the
+  black "M" and the long gloves, legs); every pose is those rows placed and patched with small ASCII drawings
+  (`G`/`g` = the glove's two shades – the female's bare hands use skin –, `R`/`r`/`w` = the rod or can greys, `W` = the
+  ball's white). The fishing rod is the largest rod-coloured blob of Red's frame that lies outside the grunt's body.
+  The female's hair (indices b, c, 7 and the 4s that shade it, spreading along strands that leave the hood) is navy.
+- **Back pics**: the palette is the vanilla grunt front pic's, all 16 colours, so the player stands beside real grunts.
+  The hood is fabric over a dome and a cowl lying on the shoulders, in the front pic hood's four tones lit from the
+  upper left: light (with the front pic's dithered pale sheen on the crown), mid, shade and the darkest red for the
+  creases; coloured lines inside, black only on the outer edge. It has a centre seam, a side panel seam from the left
+  horn, soft creases running down the back of the head to the nape, the turn under the crown and short folds where it
+  gathers into the collar, and on the right the opening: a lit rim, the hood's dark inside as a band along the edge,
+  and in it a thin sliver of cheek (no ear). The two horn points are small, stiff and grey like the front pic's, part
+  of the hood's silhouette (one outline, a lit edge, a dark stitched base). Kanto order, female on Leaf's poses: 0 idle,
+  1 wind-up with the ball, 2 arm up with the ball, 3 release, 4 follow-through. The male throws with his right arm,
+  drawn here on Steven's idle body (his right arm removed below the shoulder; a red sleeve shaded like the recoloured
+  suit, a grey wristband and glove): 0 idle (Steven 3), 1 the arm drawn back and down, the ball cupped by the hip,
+  2 elbow out and forearm up, the ball held above the right shoulder, 3 the arm thrown forward to the right with the
+  hand opening, 4 the follow-through swung on down to the right with the body turning (Steven 2). Arms that pass in
+  front of the hood are drawn over it. The ball in frames 1–2 is the front pic's; from frame 3 on the engine's ball flies.
+  Round 2 polish (the playtester's "style of emerald, not cartoonish"): the hood's opening, creases, sheen and smaller
+  horns, and the male's real throw replaced Steven's wind-up arms (a big hand beside the head).
+- **Checks**: `validate.py --manifest` (same files); contact sheets of every sheet next to the vanilla grunt sheets
+  (game palettes, 4–8×); the back pics at 1× and 3× next to Red's, Leaf's, Steven's and Wally's back pics and the grunt
+  front pics; in the emulator (a temporary `.play`, not committed) both genders walking and running in Rustboro and
+  Brendan's battle at the city's south edge (slide-in, wind-up, throw); `woods.play`, `rustboro.play`.
+
+Known gaps (polish only): the back pic is framed like the vanilla back pics (cut at the waist), so the grunt's grey
+trousers don't show; the male's drawn throwing arm is a plain sleeve (no folds of Steven's cloth); the female's Mach Bike side view keeps
+the male bike's frame; the surf frames don't show the legs (the blob covers them).

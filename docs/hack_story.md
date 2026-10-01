@@ -256,3 +256,5 @@ Petalburg Woods recruitment/outfit change, Maxie's first meeting at Meteor Falls
   (the Elder gives the speech, D-420: he is a man throughout the story, and Drake is the League's – he gets his own story role separately)
 ### Follow-up note (round 2, the opening's falling star – feedback 2.17)
 - (with a screenshot of the black screen and the box "A falling star tore across the heavens and vanished beyond the mountains.") "can we create a short falling star animation for this intro segment I know you can do it"
+### Follow-up note (round 2, feedback 2.10)
+- "also can we make our overworld sprite look a lot more like a regular team magma grunt and same with the backthrowing sprite its obviously a recolored Red" – "try and make it how a team magma grunt backsprite would look in game"
