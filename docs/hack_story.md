@@ -224,3 +224,6 @@ Petalburg Woods recruitment/outfit change, Maxie's first meeting at Meteor Falls
 
 ### Follow-up note 31 (round 1)
 - "also I think we should get access to z moves earlier and they should be spread throughout the story not a post game think"
+
+### Follow-up note (round 2, wild Pokémon – feedback 2.2, 2.3)
+- "also I think there are no pokemon you can encounter in draconid pass you probably want to make an encounter table for that area" / "also did you add some gens 1-9 pokemon on every route that makes sense for the area?"

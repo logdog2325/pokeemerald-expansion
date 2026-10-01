@@ -20,6 +20,10 @@ Checks (docs/hack_wild.md):
   - no legendary, sub-legendary, mythical, paradox or Ultra Beast; no Mega / Primal / Gigantamax / Totem /
     Tera / Ultra Burst form; no regional form (Alolan, Galarian, Hisuian, Paldean) outside REGIONAL_OK (D-193)
   - every table keeps its slot count and encounter rate; FRLG, Battle Pyramid and Battle Pike tables stay vanilla
+  - a table of a map the hack added (HACK_MAPS, e.g. Draconid Pass) has no vanilla counterpart: it must have
+    the field's slot count and an encounter rate some vanilla Hoenn table of that field uses, and every slot
+    counts as changed (the level rule below uses the area's cap); any other table without a vanilla
+    counterpart is an error
   - 1 <= min <= max <= 100; a slot the hack changed keeps its vanilla levels or stays within the area's
     level cap + LEVEL_MARGIN (area -> segment in WILD_SEGMENTS, the method can push it later, caps from
     src/caps.c)
@@ -60,6 +64,7 @@ REGIONAL_FLAGS = ("isAlolanForm", "isGalarianForm", "isHisuianForm", "isPaldeanF
 # Exact map names first, then prefixes.
 WILD_SEGMENTS = [
     ("MAP_METEOR_FALLS_1F_1R", "S4"), ("MAP_METEOR_FALLS_STEVENS_CAVE", "POST"),
+    ("MAP_DRACONID_PASS", "S1"),
     ("MAP_ROUTE101", "S1"), ("MAP_ROUTE102", "S1"), ("MAP_ROUTE103", "S1"), ("MAP_ROUTE104", "S1"),
     ("MAP_PETALBURG_WOODS", "S1"), ("MAP_ROUTE116", "S1"), ("MAP_PETALBURG_CITY", "S1"),
     ("MAP_RUSTURF_TUNNEL", "S2"), ("MAP_GRANITE_CAVE", "S2"), ("MAP_ROUTE115", "S2"), ("MAP_DEWFORD_TOWN", "S2"),
@@ -82,6 +87,8 @@ WILD_SEGMENTS = [
 # the Old Rod (Dewford), Good Rod (Route 118), Super Rod (Mossdeep).
 METHOD_SEGMENT = {"water_mons": "S6", "rock_smash_mons": "S4", "old_rod": "S2", "good_rod": "S3", "super_rod": "S7"}
 DIVE_SEGMENT = "S8"
+# Maps the hack added (D-300): their tables have no vanilla counterpart, so every slot is new.
+HACK_MAPS = {"MAP_DRACONID_PASS"}
 
 
 def cpp_command():
@@ -368,14 +375,19 @@ def main():
         warnings += 1
 
     vtables = {}
+    vrates = {}  # field type -> the encounter rates vanilla Hoenn tables use (for the hack's new tables)
     if vanilla is None:
         warn("no vanilla wild_encounters.json (master branch missing): vanilla comparisons skipped")
     else:
         for g in vanilla["wild_encounter_groups"]:
             for e in g["encounters"]:
                 vtables[(g["label"], e["base_label"])] = e
+                if "fields" in g and is_hoenn(g, e):
+                    for ftype, mons in ((k, v) for k, v in e.items() if k.endswith("_mons")):
+                        vrates.setdefault(ftype, set()).add(mons.get("encounter_rate"))
 
     changes = []
+    hack_tables = set()  # base labels of the tables of maps the hack added
     now_species = set()
     for g in data["wild_encounter_groups"]:
         if "fields" not in g:  # Battle Pyramid / Pike: their rates live in the C code
@@ -398,6 +410,14 @@ def main():
             if hoenn and seg is None:
                 err("%s (%s): no segment in WILD_SEGMENTS" % (e["base_label"], mapname))
                 seg = "POST"
+            hack_only = mapname in HACK_MAPS
+            if vanilla is not None and hack_only and ve is not None:
+                err("%s (%s): in HACK_MAPS, but vanilla has this table" % (e["base_label"], mapname))
+            if vanilla is not None and not hack_only and ve is None:
+                err("%s (%s): no vanilla counterpart (a table for a map the hack added goes in HACK_MAPS)" % (
+                    e["base_label"], mapname))
+            if hack_only:
+                hack_tables.add(e["base_label"])
             for ftype, mons in ((k, v) for k, v in e.items() if k.endswith("_mons")):
                 where = "%s %s" % (e["base_label"], ftype)
                 vmons = ve.get(ftype) if ve else None
@@ -406,6 +426,11 @@ def main():
                 if vmons and mons.get("encounter_rate") != vmons.get("encounter_rate"):
                     err("%s: encounter rate changed (%s -> %s)" % (where, vmons.get("encounter_rate"),
                                                                     mons.get("encounter_rate")))
+                if hack_only and vanilla is not None and mons.get("encounter_rate") not in vrates.get(ftype, ()):
+                    err("%s: encounter rate %s, vanilla Hoenn tables use %s" % (
+                        where, mons.get("encounter_rate"), sorted(vrates.get(ftype, ()))))
+                if ve is not None and vmons is None:
+                    err("%s: a field vanilla's table doesn't have" % where)
                 if vmons:
                     lost = {canon(m["species"]) for m in vmons["mons"]} - {canon(m["species"]) for m in mons["mons"]}
                     for sp in sorted(lost):
@@ -484,34 +509,53 @@ def main():
             sp = canon(sp)
             return species[sp]["name"] if sp in species else pretty_species(sp)
 
-        per_map = {}
+        def levels(mon):
+            return "%d" % mon["min_level"] if mon["min_level"] == mon["max_level"] else \
+                "%d–%d" % (mon["min_level"], mon["max_level"])
+
+        per_map = {}  # vanilla tables: the changed slots
+        new_tables = {}  # tables of maps the hack added: every slot, grouped by field / rod
         for e, ftype, i, rate, method, vmon, mon in changes:
             table = FIELD_NAME[ftype] if method not in ROD_NAME else ROD_NAME[method]
-            lv = "%d" % mon["min_level"] if mon["min_level"] == mon["max_level"] else \
-                "%d–%d" % (mon["min_level"], mon["max_level"])
+            if e["base_label"] in hack_tables:
+                parts = new_tables.setdefault(e["base_label"], (pretty_map(e["map"]), {}))[1]
+                parts.setdefault(table, []).append("%s %s (%d%%)" % (name(mon["species"]), levels(mon), rate))
+                continue
             old = name(vmon["species"]) if vmon else "–"
             per_map.setdefault(e["base_label"], (pretty_map(e["map"]), []))[1].append(
-                "%s %d (%d%%): %s → **%s** %s" % (table, i, rate, old, name(mon["species"]), lv))
+                "%s %d (%d%%): %s → **%s** %s" % (table, i, rate, old, name(mon["species"]), levels(mon)))
         groups = {}
         for label, (area, items) in per_map.items():
             groups.setdefault("; ".join(items), []).append(area)
         lines = ["| Area | Slot (rate): vanilla → new, levels |", "|---|---|"]
         for items, areas in groups.items():
             lines.append("| %s | %s |" % (", ".join(areas), items))
+        new_lines = ["| Area | Table | Species, levels (rate) |", "|---|---|---|"]
+        for label, (area, parts) in new_tables.items():
+            for table, items in parts.items():
+                new_lines.append("| %s | %s | %s |" % (area, table, ", ".join(items)))
         if args.changes:
+            if new_tables:
+                print("\n".join(new_lines) + "\n")
             print("\n".join(lines))
             return
+        n_vanilla = sum(1 for c in changes if c[0]["base_label"] not in hack_tables)
         text = open(DOC).read()
         head = text.index(DOC_HEADING)
-        body = [DOC_HEADING, "<!-- generated by tools/hack/check_wild.py --doc -->", "",
-                "%d slots in %d tables changed (every slot keeps its vanilla levels)." % (len(changes), len(per_map)),
-                ""] + lines + [""]
+        body = [DOC_HEADING, "<!-- generated by tools/hack/check_wild.py --doc -->", ""]
+        if new_tables:
+            body += ["New tables for maps the hack added (`HACK_MAPS`; every level within the area's cap + %d):"
+                     % LEVEL_MARGIN, ""] + new_lines + [""]
+        body += ["%d slots in %d vanilla tables changed (every slot keeps its vanilla levels)." % (
+                 n_vanilla, len(per_map)), ""] + lines + [""]
         open(DOC, "w").write(text[:head] + "\n".join(body))
-        print("wrote %s (%d rows)" % (os.path.relpath(DOC, ROOT), len(groups)))
+        print("wrote %s (%d rows)" % (os.path.relpath(DOC, ROOT), len(groups) + len(new_lines) - 2))
         return
 
     new = {canon(m["species"]) for _, _, _, _, _, v, m in changes if not v or canon(v["species"]) != canon(m["species"])}
-    print("%d Hoenn slot(s) changed, %d species added by the hack" % (len(changes), len(new - set(
+    n_new = sum(1 for c in changes if c[0]["base_label"] in hack_tables)
+    print("%d Hoenn slot(s) changed in vanilla tables, %d slot(s) in %d new table(s), %d species added by the hack" % (
+        len(changes) - n_new, n_new, len(hack_tables), len(new - set(
         canon(m["species"]) for g in (vanilla or data)["wild_encounter_groups"] for e in g["encounters"]
         if is_hoenn(g, e) for k, v in e.items() if k.endswith("_mons") for m in v["mons"]))))
     print("%d error(s), %d warning(s)" % (errors, warnings))

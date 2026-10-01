@@ -638,7 +638,7 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   every HM behaves the same and the vanilla teaching path is one "No" away.
 - **D-192 HMs can be forgotten**: `P_CAN_FORGET_HIDDEN_MOVE` is TRUE (a new move can replace an HM move, the Move
   Deleter takes the last Surf). – Alt: keep HM moves locked. – With D-190 no Pokémon has to keep an HM move.
-- **D-193 Gen 4–9 in the wild** (feedback 1.28, docs/hack_wild.md): 95 species from Gens 4–9 join the Hoenn
+- **D-193 Gen 4–9 in the wild** *(extended by D-300 – D-302, round 2: the Draconid Pass table, Gens 1–2, richer seas)* (feedback 1.28, docs/hack_wild.md): 95 species from Gens 4–9 join the Hoenn
   tables (281 slots in 110 tables: land, surf, Rock Smash, all three rods) by habitat, region and story point –
   forest bugs and birds, cave rock/ground/ghost types and bats, desert ground types, Mt. Chimney's coal and fire
   types, ghosts on Mt. Pyre, sea birds, rays and reef fish; Alolan and Paldean species suit subtropical Hoenn.
@@ -1755,3 +1755,41 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   sets BLDALPHA to 0 (breaks alpha-blended fog); it also has to be remembered in every future script. The scripts that
   already use `fadescreenswapbuffers` (Act 5's turn, Act 7) keep working; plain `fadescreen` is now safe everywhere.
   Costs 1.2 KB of EWRAM.
+
+## Round 2 (playtest feedback on the round 1 ROM)
+
+- **D-300 A wild table for the Draconid Pass** (feedback 2.2, docs/hack_wild.md "Draconid Pass"): the pass's valley
+  grass gave no encounters because the hack-only map had no table. `gDraconidPass` (S1): land Lv 3–5 with Emerald's
+  rates – the Hoenn regulars of Routes 101–104 (Zigzagoon, Poochyena, Wurmple, Taillow) 69%, newcomers 31% (Pidgey
+  10%, Bidoof 10%, Teddiursa 5%, Mareep 4%, Rockruff 1%, Flabébé 1%); a stream table (surf: Marill, Wooper,
+  Quagsire, Poliwag, Goldeen; rods: Magikarp, Goldeen, the Poliwag line, Basculin, Seaking) with Route 102's levels,
+  the Good Rod capped at 10–25 (S3 cap 25 + 3). No dragons, only first stages. `check_wild.py` lists hack-only maps
+  in `HACK_MAPS` (no vanilla counterpart; slot counts and a vanilla Hoenn rate per field; levels within the cap + 3);
+  any other table without a vanilla counterpart is an error. `draconid_pass.play` checks five battles in the grass
+  against the table (new `play.py` command `expect_wild`). – Alt: copy Route 101's table (Lv 2–3, no identity of
+  its own); only Hoenn species (the pass is the Draconid country, and the playtester asked for Gens 1–9 on every
+  route); a dragon at 1% (D-195: dragons rare and late, the egg lines never wild). – The player crosses the pass
+  with a Lv 5 hatchling and no Poké Balls yet: Lv 3–5 sits between Aster's battle and Route 101, and the pass is
+  worth a return trip once the player has balls, a rod and Surf.
+- **D-301 Gens 1–2 in the wild, richer seas** (feedback 2.3, docs/hack_wild.md): the Kanto and Johto species the
+  Hoenn Pokédex leaves out (every Gen 3 species is in it) join the Hoenn tables under D-193's rules – only duplicate
+  slots, vanilla levels, slot rate = rarity, first stages early, no regional forms, no legendaries – by the habitat
+  their own games give them: Sentret, Ledyba, Hoppip and Ekans on the first routes, Diglett, Onix, Dunsparce in the
+  early caves, Ponyta, Houndour, Magby and Growlithe around Mt. Chimney, Elekid (1%) and Furret near Mauville, Yanma
+  and Murkrow on Routes 119/120, Clefairy in Meteor Falls, Gastly, Haunter, Misdreavus and Cubone on Mt. Pyre, Seel,
+  Shellder and Swinub in Shoal Cave, Ursaring and Steelix on Victory Road, Nidoran♀/♂, Tauros, Kangaskhan (1%) and
+  Scyther (1%) in the Safari Zone; on the water Slowpoke (beaches), Mantine (western seas), the Poliwag line
+  (ponds), Krabby and Shellder (Good Rod), Remoraid (eastern seas, with Mantyke – so Mantyke can evolve) and
+  Qwilfish (southern seas). The tables that had one newcomer got the one of the next floor (Bronzor in the Cave of
+  Origin entrance, Tadbulb in New Mauville's). A land table's newcomer share stays at most ~30% (now 9–26%); a
+  surf table's first slot stays vanilla. 80 more slots (361 in 110 vanilla tables), 38 more species new to the
+  wild (133); every route has 3–6 species its vanilla table lacks, the seas 3–4 instead of 2. – Alt: Gen 1–2
+  species on every route (would crowd out Hoenn's own feel and repeat the same Kanto species everywhere); Hoenn-dex
+  Kanto species the brief named (Psyduck, Horsea, Staryu, Chinchou, Phanpy – already wild in vanilla Emerald, so
+  they add no species; left where they were); more surf newcomers (Tentacool and Wingull hold the only other surf
+  slots and have no duplicate). – "Gens 1–9 on every route that makes sense": each route gains what fits its
+  habitat; a species' home game is the best guide to where it belongs.
+- **D-302 Larvesta 1% in Petalburg Woods too** (feedback 2.4): the woods' last 1% land slot (a duplicate Slakoth
+  Lv 6; Slakoth keeps its 4% slot) is Larvesta Lv 6; the Fiery Path keeps its 1% Larvesta (Lv 14). – Alt: a 4%
+  slot (too common for a rare find that becomes Volcarona); only the Fiery Path (the playtester asked for both).
+  – The playtester's ask; the slot keeps the duplicate-slot rule and its vanilla level.

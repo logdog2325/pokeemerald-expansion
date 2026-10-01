@@ -1,0 +1,73 @@
+# Draconid Pass wild encounters (round 2, feedback 2.2, D-300): the valley's tall grass (metatile 0x00D,
+# x 4-9, y 19-23) starts wild battles, and every wild Pokémon is one of the pass's land table
+# (src/data/wild_encounters.json, gDraconidPass; expect_wild reads the table from there).
+# Needs opening_after_aster.ss from tests/opening.play in the same output directory: the player stands at the
+# bridge's foot (row 18) right after Aster's battle with the Lv 5 hatchling. The walk to the grass runs with
+# FLAG_DEBUG_NO_ENCOUNTER; in the grass the player paces x 5-7 until a battle starts, the test checks the species,
+# pokes the hatchling's battle speed to 1023 (a faster Pokémon always escapes) and picks RUN (B, DOWN, RIGHT, A),
+# as in wild.play. Five battles; the species ids print with their constants.
+loadstate opening_after_aster.ss
+expect_map MAP_DRACONID_PASS
+pos
+setflag FLAG_DEBUG_NO_ENCOUNTER
+walk DOWN 20
+walk LEFT 7
+expect_pos 7 20
+shot p01_grass
+clearflag FLAG_DEBUG_NO_ENCOUNTER
+until @gMain+4 4 @@BattleMainCB2 20000 LEFT,LEFT,RIGHT,RIGHT 18
+run 400
+expect_wild MAP_DRACONID_PASS
+poke @gBattleMons+6 FF
+poke @gBattleMons+7 03
+shot p02_wild
+until @gMain+4 4 !@@BattleMainCB2 20000 B,DOWN,RIGHT,A 24
+setflag FLAG_DEBUG_NO_ENCOUNTER
+run 120
+heal
+clearflag FLAG_DEBUG_NO_ENCOUNTER
+until @gMain+4 4 @@BattleMainCB2 20000 LEFT,LEFT,RIGHT,RIGHT 18
+run 400
+expect_wild MAP_DRACONID_PASS
+poke @gBattleMons+6 FF
+poke @gBattleMons+7 03
+shot p03_wild
+until @gMain+4 4 !@@BattleMainCB2 20000 B,DOWN,RIGHT,A 24
+setflag FLAG_DEBUG_NO_ENCOUNTER
+run 120
+heal
+clearflag FLAG_DEBUG_NO_ENCOUNTER
+until @gMain+4 4 @@BattleMainCB2 20000 LEFT,LEFT,RIGHT,RIGHT 18
+run 400
+expect_wild MAP_DRACONID_PASS
+poke @gBattleMons+6 FF
+poke @gBattleMons+7 03
+shot p04_wild
+until @gMain+4 4 !@@BattleMainCB2 20000 B,DOWN,RIGHT,A 24
+setflag FLAG_DEBUG_NO_ENCOUNTER
+run 120
+heal
+clearflag FLAG_DEBUG_NO_ENCOUNTER
+until @gMain+4 4 @@BattleMainCB2 20000 LEFT,LEFT,RIGHT,RIGHT 18
+run 400
+expect_wild MAP_DRACONID_PASS
+poke @gBattleMons+6 FF
+poke @gBattleMons+7 03
+shot p05_wild
+until @gMain+4 4 !@@BattleMainCB2 20000 B,DOWN,RIGHT,A 24
+setflag FLAG_DEBUG_NO_ENCOUNTER
+run 120
+heal
+clearflag FLAG_DEBUG_NO_ENCOUNTER
+until @gMain+4 4 @@BattleMainCB2 20000 LEFT,LEFT,RIGHT,RIGHT 18
+run 400
+expect_wild MAP_DRACONID_PASS
+poke @gBattleMons+6 FF
+poke @gBattleMons+7 03
+shot p06_wild
+until @gMain+4 4 !@@BattleMainCB2 20000 B,DOWN,RIGHT,A 24
+setflag FLAG_DEBUG_NO_ENCOUNTER
+run 120
+expect_map MAP_DRACONID_PASS
+shot p07_after
+clearflag FLAG_DEBUG_NO_ENCOUNTER
