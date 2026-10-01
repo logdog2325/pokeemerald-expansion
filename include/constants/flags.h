@@ -98,7 +98,7 @@
 #define FLAG_DRACONID_CAUGHT_REGIDRAGO           0x4C // Draconid Emerald: Regidrago caught in the shrine depths (it comes back until then, Act 7 extension)
 #define FLAG_UNUSED_0x04D    0x4D // Unused Flag
 #define FLAG_DRACONID_NO_RUNNING                 0x4E // Draconid Emerald: WE_FLAG_NO_RUNNING, set around the Sky Pillar Rayquaza and Deoxys battles (Act 7)
-#define FLAG_DRACONID_NO_CATCHING                0x4F // Draconid Emerald: WE_FLAG_NO_CATCHING, set around the Deoxys boss battle (Act 7)
+#define FLAG_DRACONID_NO_CATCHING                0x4F // Draconid Emerald: WE_FLAG_NO_CATCHING, set around the Deoxys boss battle (Act 7) and the Route 101 LUNATONE (D-400)
 
 // Scripts
 #define FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA_STILL  0x50

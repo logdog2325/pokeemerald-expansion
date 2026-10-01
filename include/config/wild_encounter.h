@@ -13,7 +13,7 @@
 // Wild Battle Flags
 #define WE_FLAG_FORCE_DOUBLE_WILD    0     // If this flag is set, all land and surfing wild battles will be double battles.
 #define WE_SMART_WILD_AI_FLAG        0     // If this flag is set, wild Pokémon will become smart, with all AI flags enabled.
-#define WE_FLAG_NO_CATCHING          FLAG_DRACONID_NO_CATCHING // Draconid Emerald: set around the Sky Pillar Deoxys boss battle. If this flag is set, the ability to catch wild Pokémon is disabled.
+#define WE_FLAG_NO_CATCHING          FLAG_DRACONID_NO_CATCHING // Draconid Emerald: set around the Sky Pillar Deoxys boss battle and the Route 101 LUNATONE. If this flag is set, the ability to catch wild Pokémon is disabled.
 #define WE_FLAG_NO_RUNNING           FLAG_DRACONID_NO_RUNNING  // Draconid Emerald: set around the Sky Pillar Rayquaza and Deoxys battles. If this flag is set, the ability to escape from wild battles is disabled. Also makes Roar/Whirlwind and Teleport (under Gen8) fail.
 
 // Overworld Wild Encounters (OWEs)

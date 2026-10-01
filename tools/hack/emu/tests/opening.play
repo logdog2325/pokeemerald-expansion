@@ -95,7 +95,8 @@ expect_opponent TRAINER_ASTER_PASS_${EGGNAME}
 expect_flag FLAG_DRACONID_NO_WHITEOUT 0
 shot 03_after_aster
 savestate opening_after_aster.ss
-# east along the valley path to Route 101: Birch's rescue, the lab
+# east along the valley path to Route 101: Birch, the fallen star and the dazed LUNATONE (round 2, D-400) – the
+# first battle (no catching, running or whiteout; mashing A uses the first move), the LUNATONE drifts off, the lab
 walk DOWN 26
 walk RIGHT 27
 hold RIGHT 16
@@ -107,6 +108,11 @@ mash A 20000
 mapid
 pos
 shot 05_lab_done
+expect_seen SPECIES_LUNATONE 1
+expect_caught SPECIES_LUNATONE 0
+expect_flag FLAG_DRACONID_NO_CATCHING 0
+expect_flag FLAG_HIDE_ROUTE_101_BIRCH_ZIGZAGOON_BATTLE 1
+expect_flag FLAG_HIDE_ROUTE_101_ZIGZAGOON 1
 expect_flag FLAG_RESCUED_BIRCH 1
 expect_flag FLAG_SYS_POKEDEX_GET 1
 expect_flag FLAG_ADVENTURE_STARTED 1

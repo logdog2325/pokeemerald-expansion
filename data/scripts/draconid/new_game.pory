@@ -5,12 +5,14 @@
 script DraconidEmerald_EventScript_NewGameSetup {
     // Littleroot: no truck, no moving boxes, no player's Mom, no set-the-clock scenes
     setvar(VAR_LITTLEROOT_INTRO_STATE, 7)
-    // 4 = inert: the player only reaches Littleroot after rescuing Birch on Route 101
+    // 4 = inert: the player only reaches Littleroot after meeting Birch on Route 101
     // (0 traps the player, 1/2 are the twin's "go save Birch" lines, 3 is Mom's Running Shoes)
     setvar(VAR_LITTLEROOT_TOWN_STATE, 4)
-    // 1 = the rescue starts at Route 101's west entrance (birch_intro.pory), no popup hiding
+    // 1 = the fallen-star scene starts at Route 101's west entrance (birch_intro.pory), no popup hiding
     setvar(VAR_ROUTE101_STATE, 1)
     setflag(FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG)
+    // vanilla's Zigzagoon chasing Birch has no scene any more (round 2, D-400)
+    setflag(FLAG_HIDE_ROUTE_101_ZIGZAGOON)
     setflag(FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BRENDAN)
     // Rival scenes that vanilla doesn't have (rivals.pory) start hidden
     setflag(FLAG_HIDE_OCEANIC_MUSEUM_TABITHA)

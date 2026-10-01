@@ -548,6 +548,10 @@ const u16 gObjectEventPic_ProfOak[] = INCGFX_U16("graphics/object_events/pics/pe
 // Draconid Emerald: Lance's FRLG sprite in every build (the post-game boss in the Draconid village, D-262)
 const u16 gObjectEventPic_Lance[] = INCGFX_U16("graphics/object_events/pics/people/lance.png", ".4bpp", "-mwidth 2 -mheight 4");
 
+// Draconid Emerald: the FRLG meteorite (Birth Island's stone) in every build (Route 101's fallen star, D-400)
+const u16 gObjectEventPal_Meteorite[] = INCGFX_U16("graphics/object_events/palettes/meteorite.pal", ".gbapal");
+const u16 gObjectEventPic_BirthIslandStoneFrlg[] = INCGFX_U16("graphics/object_events/pics/misc/birth_island_stone_frlg.png", ".4bpp");
+
 #if IS_FRLG
 
 const u16 gObjectEventPic_RedNormal[] = INCGFX_U16("graphics/object_events/pics/people/red/red_normal.png", ".4bpp", "-mwidth 2 -mheight 4");
@@ -662,8 +666,6 @@ const u16 gObjectEventPic_GymSign[] = INCGFX_U16("graphics/object_events/pics/mi
 const u16 gObjectEventPic_Sign[] = INCGFX_U16("graphics/object_events/pics/misc/sign.png", ".4bpp");
 const u16 gObjectEventPic_WoodenSign[] = INCGFX_U16("graphics/object_events/pics/misc/wooden_sign.png", ".4bpp");
 const u16 gObjectEventPic_Clipboard[] = INCGFX_U16("graphics/object_events/pics/misc/clipboard.png", ".4bpp");
-const u16 gObjectEventPal_Meteorite[] = INCGFX_U16("graphics/object_events/palettes/meteorite.pal", ".gbapal");
-const u16 gObjectEventPic_BirthIslandStoneFrlg[] = INCGFX_U16("graphics/object_events/pics/misc/birth_island_stone_frlg.png", ".4bpp");
 const u16 gObjectEventPic_LaprasDoll[] = INCGFX_U16("graphics/object_events/pics/misc/lapras_doll.png", ".4bpp");
 const u16 gObjectEventPal_Seagallop[] = INCGFX_U16("graphics/object_events/palettes/seagallop.pal", ".gbapal");
 const u16 gObjectEventPic_Seagallop[] = INCGFX_U16("graphics/object_events/pics/misc/seagallop.png", ".4bpp");

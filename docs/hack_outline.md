@@ -18,8 +18,10 @@ undercover. Everyone else may suspect (May's doubts, Steven's "strongest MAGMA g
    and the first crystal, the **Normalium Z** (D-267); the other crystals come along the road (D-269).
 4. ✅ The egg hatches after 5 steps; a villager gives the Running Shoes.
 5. ✅ **Aster battle 1** – Draconid Pass (tutorial).
-6. ✅ Route 101: the Poochyena rescue. Littleroot: Brendan is Birch's son, May is Norman's daughter; Birch's
-   lab – Brendan gets Treecko, May Torchic, the player the Pokédex (National Dex).
+6. ☑️ Route 101: the fallen star (round 2, D-400) – last night's star came down by the west entrance; Birch kneels
+   by the meteorite, the hatchling tires out the dazed Lunatone that fell with it, Birch keeps the star. Littleroot:
+   Brendan is Birch's son, May is Norman's daughter; Birch's lab – Brendan gets Treecko, May Torchic, the player the
+   Pokédex (National Dex).
 7. ✅ **May battle 1** – Route 103.
 8. ✅ Petalburg (Norman, Wally's catching tutorial).
 9. ✅ **Nerine battle 1** – Petalburg Woods (in Aqua disguise); Courtney recruits the player; the outpost cabin;

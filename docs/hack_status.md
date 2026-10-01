@@ -22,7 +22,7 @@ menu) → `pokeemerald.gba`, `make release` → `pokeemerald-release.gba`; zippe
 - [x] Core: reputation var, outfit timeline, variant trainers (D-101), Nerine + Aster leftover egg
 - [x] Story teams: Nerine (75), Aster (12), Brendan (7), May (5), Steven / Maxie / Archie; partners Tabitha,
       May, Brendan, Nerine ×9 – rival trainer ids renamed to the round 1 schedule
-- [x] Act 1: village without Mom (prologue, Aster, Elder's prophecy), Poochyena rescue, families (Birch/Brendan,
+- [x] Act 1: village without Mom (prologue, Aster, Elder's prophecy), Birch and the fallen star (round 2: the Lunatone, D-400), families (Birch/Brendan,
       Norman/May), Littleroot moms, Petalburg Woods (Nerine, Courtney, outpost cabin, uniform), Rustboro (Brendan,
       Tabitha's order, Birch's lines); v1 Route 104 Brendan and Route 119 Aster removed – emulator-tested
       (`woods.play`, `rustboro.play`, matrix 18/18)
@@ -104,7 +104,7 @@ menu) → `pokeemerald.gba`, `make release` → `pokeemerald-release.gba`; zippe
 ## Phase 4 – Story events
 - [x] Egg event (Deino / Dreepy / Jangmo-o) + Aster counter-pick var + hatch rite at the shrine (Lv 5) –
       verified in the emulator: bedroom → clock → ceremony → rite → Running Shoes → Aster battle → Littleroot
-- [x] Birch intro rework: Route 101 rescue with the hatchling; lab: Brendan Treecko, May Torchic, player Pokédex;
+- [x] Birch intro rework: Route 101 with the hatchling (round 2: the fallen star and a dazed Lunatone, D-400); lab: Brendan Treecko, May Torchic, player Pokédex;
       Route 103 May – verified in the emulator (`tools/hack/emu/tests/opening.play`, `route103.play`)
 - [x] Rival houses in Littleroot belong to Brendan's and May's families; remaining gender branches (Oldale,
       Lavaridge, Champion's room, lab post-game) always use May; Hall of Fame respawns in the Draconid bedroom;

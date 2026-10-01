@@ -77,7 +77,7 @@ when a playtest note overrides something here, the entry is updated and marked.
   battle with a separate script path. – One script path, no softlock, no free money loss on turn 1 of the game.
 - **D-036 Placeholder sprites**: until Phase 3 art lands, Elder = `OBJ_EVENT_GFX_OLD_MAN`, Aster = `WOMAN_3`,
   Aster's trainer pic = Cooltrainer F, eggs = item balls, Rayquaza statue = `RAYQUAZA_STILL`. All marked `TODO(art)`.
-- **D-038 Route 101 rescue**: entering Route 101 from the pass starts the rescue; Birch and the Zigzagoon run laps
+- **D-038 Route 101 rescue** *(the rescue superseded by D-400, round 2: the fallen star and a dazed Lunatone)*: entering Route 101 from the pass starts the rescue; Birch and the Zigzagoon run laps
   in the clearing by the entrance and the **hatchling fights the Zigzagoon** in the vanilla first-battle mode
   (Lv 2, no running), via a new special instead of `ChooseStarter`. Birch then warps the player to the lab as in
   vanilla. – Alt: keep the bag and let the player pick a vanilla starter. – The player already has a partner and
@@ -1973,5 +1973,45 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   menu code for a sixth pocket); Key Items (they are held items, and the bag won't give a Key Item to hold); 64
   slots (16 more bytes, kept in reserve for later flags). Saves from earlier builds won't load.
 
-## Round 2 (playtest feedback on the round 1 ROM)
 
+- **D-400 Birch's intro is the fallen star, not a rescue** (feedback 2.11: "also we need to change up the birch intro
+  its way to similar to emeralds"; supersedes the Route 101 staging of D-038): the star the Elder saw fall the night
+  before (Act 1 prologue, "Last night a star fell over the mountains") came down on Route 101's west edge. Birch
+  kneels by the small METEORITE (`OBJ_EVENT_GFX_METEORITE`, FRLG's Birth Island stone, the meteorite Deoxys is tied
+  to there – its sprite and palette moved out of the `IS_FRLG` blocks like Oak's, D-233) with a dazed **LUNATONE**
+  hovering over it (`OBJ_EVENT_GFX_SPECIES(LUNATONE)`, the expansion's overworld Pokémon sprite; `OW_POKEMON_OBJECT_EVENTS`
+  is on). It lashes out (its cry, a lunge, a short shake, a white flash); Birch is calming it, not calling for help.
+  He knows the hatchling ("A dragon! Then you're {PLAYER}! The ELDER wrote that you'd come"), says the star and the
+  LUNATONE came down together and asks the player to tire it out before it hurts itself. After the battle it glows
+  (Moonlight's sound, a flash), drifts north-west toward the mountains ("METEOR FALLS, maybe"), Birch picks up the
+  star ("…Still warm. / So this is the star your ELDER saw fall."), then his burden lines (D-341) and the lab, whose greeting
+  now remembers the star instead of "You've met me at my worst". LUNATONE because its own Pokédex entry says it "was first
+  discovered 40 years ago at the site of a meteor strike", and a moon Pokémon suits a star that fell at night;
+  METEOR FALLS is where Hoenn's stones from the sky come down.
+  **The battle** stays the round 1 special (`StartBirchRescueBattle`, `BATTLE_TYPE_FIRST_BATTLE`): no running (the
+  run text is now Birch's "Don't go yet! It'll hurt itself!"), no critical hits, the wild Pokémon flees once the
+  player's is at 20% HP (`AI_FLAG_FIRST_BATTLE`), and no whiteout – `CB2_EndFirstBattle` returns to the script
+  whatever the outcome, which heals the party and goes on. `FLAG_DRACONID_NO_CATCHING` is set around it (the
+  player has no Poké Balls yet, but a debug or later-branch ball can't catch the story's LUNATONE). **Balance**:
+  LUNATONE Lv 2 with Tackle, Harden and Confusion (its default Lv 2 set adds Rock Throw; Moonblast and Moonlight
+  are shifted out by the Lv 1 moves) at 2/3 HP ("hurt by the fall"; `DRACONID_RESCUE_*` in
+  `include/constants/draconid.h`, set by `Draconid_SetUpRescueMon`). Simulated with the Gen 5+ damage formula,
+  random IVs and natures, a random LUNATONE move each turn (4000 battles per case, the hatchlings at Lv 5 with
+  their real movesets): Deino (immune to Confusion) and Dreepy (immune to Tackle; Bite and Astonish are super
+  effective) win every battle, in 1–2 turns with their best move, Deino in ~5 mashing Tackle; Jangmo-o, whose only
+  attack (Tackle) is resisted by Rock, wins 97–99% in ~6 turns – otherwise the LUNATONE flees, which plays the
+  same. At full HP it won only 64% (Lv 2) and 0% (Lv 3, the LUNATONE always fled); without the 2/3 HP it would
+  need Lv 1. In the emulator all three hatchlings won mashing their first move (`opening.play` with each egg:
+  Tackle, Bite, Tackle; `gBattleOutcome` 1). – Alt: Solrock (a sun Pokémon for a night star; same typing); keep the
+  Poochyena with new staging (still "Birch chased by a wild Pokémon", the playtester's complaint); a catchable LUNATONE (a story Pokémon
+  given away in the first minutes, and the player has no Poké Balls); a scorch mark or crater under the meteorite
+  – no General metatile reads as burnt grass and the clearing is within 8 tiles of the Draconid Pass seam (only
+  primary metatiles there), so it would need new tile art; Birch's "…Still warm." says where it came from instead. – The scene keeps
+  what the old one did (Birch meets the player and the hatchling, the first battle, the lab), ties Route 101 to
+  the prophecy, and is no longer Emerald's "help me, a wild Pokémon!".
+  **Clean-up**: the vanilla Zigzagoon object (`LOCALID_ROUTE101_ZIGZAGOON`, still named by the unreachable vanilla
+  rescue script) gets its vanilla sprite back and is hidden from the new game (`FLAG_HIDE_ROUTE_101_ZIGZAGOON`); the
+  new meteorite and LUNATONE objects share Birch's `FLAG_HIDE_ROUTE_101_BIRCH_ZIGZAGOON_BATTLE` (no new flags). Lines
+  that remembered the rescue: Brendan's Rustboro "You saved my dad" → "You helped my dad"; the Trick House quiz
+  "Which of these POKéMON was chasing PROF. BIRCH?" → "…fell with the star on ROUTE 101?" (LUNATONE replaces
+  POOCHYENA as the first, right, answer).

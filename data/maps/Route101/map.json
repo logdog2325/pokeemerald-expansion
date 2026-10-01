@@ -73,7 +73,7 @@
     },
     {
       "local_id": "LOCALID_ROUTE101_ZIGZAGOON",
-      "graphics_id": "OBJ_EVENT_GFX_POOCHYENA",
+      "graphics_id": "OBJ_EVENT_GFX_ZIGZAGOON_1",
       "x": 10,
       "y": 13,
       "elevation": 0,
@@ -110,6 +110,34 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route101_EventScript_Boy",
       "flag": "FLAG_HIDE_ROUTE_101_BOY"
+    },
+    {
+      "local_id": "LOCALID_ROUTE101_METEORITE",
+      "graphics_id": "OBJ_EVENT_GFX_METEORITE",
+      "x": 8,
+      "y": 4,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "0x0",
+      "flag": "FLAG_HIDE_ROUTE_101_BIRCH_ZIGZAGOON_BATTLE"
+    },
+    {
+      "local_id": "LOCALID_ROUTE101_LUNATONE",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(LUNATONE)",
+      "x": 9,
+      "y": 3,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "0x0",
+      "flag": "FLAG_HIDE_ROUTE_101_BIRCH_ZIGZAGOON_BATTLE"
     }
   ],
   "warp_events": [],
@@ -202,7 +230,7 @@
       "elevation": 3,
       "var": "VAR_ROUTE101_STATE",
       "var_value": "1",
-      "script": "Route101_EventScript_DraconidRescueTop"
+      "script": "Route101_EventScript_DraconidFallenStarTop"
     },
     {
       "type": "trigger",
@@ -211,7 +239,7 @@
       "elevation": 3,
       "var": "VAR_ROUTE101_STATE",
       "var_value": "1",
-      "script": "Route101_EventScript_DraconidRescueBottom"
+      "script": "Route101_EventScript_DraconidFallenStarBottom"
     }
   ],
   "bg_events": [

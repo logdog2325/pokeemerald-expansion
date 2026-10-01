@@ -136,6 +136,22 @@ void DraconidRaiseHatchling(void)
     SetMonData(mon, MON_DATA_HP, &hp);
 }
 
+// Route 101's first battle (SetUpBattleVarsAndBirchZigzagoon, after CreateWildMon): the LUNATONE that fell with
+// the star knows a soft moveset and is hurt by the fall, so every egg's hatchling can tire it out (round 2, D-400).
+void Draconid_SetUpRescueMon(struct Pokemon *mon)
+{
+    static const u16 sMoves[] = {DRACONID_RESCUE_MOVE_1, DRACONID_RESCUE_MOVE_2, DRACONID_RESCUE_MOVE_3};
+    u32 i;
+    u16 hp;
+
+    for (i = 0; i < MAX_MON_MOVES; i++)
+        SetMonMoveSlot(mon, i < ARRAY_COUNT(sMoves) ? sMoves[i] : MOVE_NONE, i);
+    hp = GetMonData(mon, MON_DATA_MAX_HP) * DRACONID_RESCUE_HP_PERCENT / 100;
+    if (hp == 0)
+        hp = 1;
+    SetMonData(mon, MON_DATA_HP, &hp);
+}
+
 // Step hook (TryStartStepCountScript): the egg from the shrine ceremony hatches after DRACONID_EGG_HATCH_STEPS
 // steps outdoors (round 1, D-231), so the scene always plays in the open village.
 bool32 Draconid_ShouldHatchEgg(void)

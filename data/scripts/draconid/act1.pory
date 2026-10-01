@@ -116,7 +116,7 @@ movement PetalburgWoods_Movement_DraconidCourtneyApproachRight {
 script RustboroCity_EventScript_DraconidBrendan {
     msgbox(format("BRENDAN: Huh? {PLAYER}?\p"
                   "Wait a second.\nIs that a TEAM MAGMA uniform?\p"
-                  "You saved my dad on ROUTE 101! He hasn't stopped talking about you since.\p"
+                  "You helped my dad on ROUTE 101! He hasn't stopped talking about you since.\p"
                   "And now you've joined MAGMA?! Those guys want to wreck HOENN!"))
     msgbox(format("BRENDAN: Well? Say something!\p"
                   "…Fine. Then I'll stop you myself!"))

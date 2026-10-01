@@ -339,7 +339,7 @@ Route110_TrickHousePuzzle5_EventScript_Mechadoll2Quiz2::
 	msgbox Route110_TrickHousePuzzle5_Text_Mechadoll2Quiz2, MSGBOX_DEFAULT
 	multichoice 0, 0, MULTI_MECHADOLL2_Q2, TRUE
 	switch VAR_RESULT
-	case 0, Route110_TrickHousePuzzle5_EventScript_CorrectAnswer  @ Draconid Emerald: POOCHYENA chased PROF. BIRCH (birch_intro.pory)
+	case 0, Route110_TrickHousePuzzle5_EventScript_CorrectAnswer  @ Draconid Emerald: LUNATONE fell with the star on ROUTE 101 (birch_intro.pory, D-400)
 	goto Route110_TrickHousePuzzle5_EventScript_IncorrectAnswer
 	end
 
@@ -950,10 +950,10 @@ Route110_TrickHousePuzzle5_Text_Mechadoll2Quiz1:  @ Draconid Emerald
 	.string "Which of these POKéMON did WALLY\n"
 	.string "borrow from NORMAN?$"
 
-Route110_TrickHousePuzzle5_Text_Mechadoll2Quiz2:
+Route110_TrickHousePuzzle5_Text_Mechadoll2Quiz2:  @ Draconid Emerald
 	.string "MECHADOLL 2 QUIZ.\p"
-	.string "Which of these POKéMON was chasing\n"
-	.string "PROF. BIRCH?$"
+	.string "Which of these POKéMON fell with\n"
+	.string "the star on ROUTE 101?$"
 
 Route110_TrickHousePuzzle5_Text_Mechadoll2Quiz3:
 	.string "MECHADOLL 2 QUIZ.\p"

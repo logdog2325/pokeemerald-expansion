@@ -29,9 +29,16 @@
 #define DRACONID_HATCHLING_LEVEL       5
 // Steps outdoors after the shrine ceremony until the egg hatches (VAR_DRACONID_EGG_STEPS, src/draconid.c, D-231)
 #define DRACONID_EGG_HATCH_STEPS       5
-// Route 101: the wild Pokemon chasing Prof. Birch (round 1: Poochyena, as in the story)
-#define DRACONID_RESCUE_SPECIES        SPECIES_POOCHYENA
+// Route 101: the dazed wild Pokemon that fell with last night's star; the hatchling tires it out for Prof. Birch
+// (StartBirchRescueBattle, data/scripts/draconid/birch_intro.pory). Round 2 (feedback 2.11, D-400; round 1 had
+// Poochyena chasing Birch): a low level, a soft moveset and hurt by the fall, so all three Lv 5 hatchlings can
+// win it (Deino is immune to Confusion, Dreepy to Tackle; Jangmo-o's Tackle is resisted by Rock)
+#define DRACONID_RESCUE_SPECIES        SPECIES_LUNATONE
 #define DRACONID_RESCUE_LEVEL          2
+#define DRACONID_RESCUE_MOVE_1         MOVE_TACKLE
+#define DRACONID_RESCUE_MOVE_2         MOVE_HARDEN
+#define DRACONID_RESCUE_MOVE_3         MOVE_CONFUSION
+#define DRACONID_RESCUE_HP_PERCENT     67 // of its max HP when the battle starts
 // The three dragon egg lines evolve earlier than in the core games (round 1, D-107)
 #define DRACONID_EVO_LEVEL_MIDDLE      25 // Deino -> Zweilous, Dreepy -> Drakloak, Jangmo-o -> Hakamo-o
 #define DRACONID_EVO_LEVEL_FINAL       50 // Zweilous -> Hydreigon, Drakloak -> Dragapult, Hakamo-o -> Kommo-o
