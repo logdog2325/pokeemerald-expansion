@@ -36,15 +36,20 @@ stuck or the story can't go on), CHECK (a lead to verify in the emulator) and NO
           After a whiteout the scene must start again: its object shown, its trigger's var as it was (temp vars and
           flags reset, load scripts run); for story-table scenes that is checked on the table's state, and a walk
           back from every heal location the story passed before (boats, the cable car and ferries included: the
-          table's "then" rides and objects whose script warps)
+          table's "then" rides and objects whose script warps). A loss that goes on is a path of its own: no
+          trainer flags (CB2_EndTrainerBattle sets them on a win only; a multi battle sets none, its script does),
+          GetBattleOutcome gives B_OUTCOME_LOST. Multi battles (multi_2_vs_2 & co.: BattleSetup_StartMultiBattle ->
+          CB2_EndSpecialTrainerBattle, src/battle_special.c) never white out
   trap    from the end of every story leg's walk and the landing of every warp its scenes take, a heal location
           (a Pokémon Center, the village house) can be reached with what the player has then; maps where being
           shut in is the design (the Elite Four) are listed in the table ("no_heal_ok")
   reentry every story-scene path that gives control back before the scene is done - it writes less than another
           path of the same scene (a declined prompt, a lost battle) - must leave the scene startable again after
           leaving and re-entering the map (temp vars and flags reset, load scripts run again) or retryable by
-          talking to someone on the map; and a temp var/flag a script sets to the value a warp's destination
-          waits for is lost in the warp (CHECK)
+          talking to someone on the map; a path that sends the player elsewhere instead (a lost village battle:
+          Draconid_EventScript_VillageLost carries them home) must leave the scene startable and its place
+          reachable from where the warp lands (the same walk back as after a whiteout); and a temp var/flag a script
+          sets to the value a warp's destination waits for is lost in the warp (CHECK)
 
 Not modelled: what C code does inside specials (a special's VAR_RESULT is a fork), the party (every battle can be
 won or lost), gym puzzles (the table's "puzzles": getting in is enough), which Pokémon Centers the player really
@@ -75,8 +80,10 @@ HEAL_SPECIALS = {"HealPlayerParty"}
 # msgbox types whose std script locks and releases by itself (data/scripts/std_msgbox.inc)
 MSGBOX_RELEASES = {"MSGBOX_NPC", "MSGBOX_SIGN", "MSGBOX_AUTOCLOSE"}
 WILD_BATTLE = re.compile(r"^(BattleSetup_Start\w*Battle|Start\w*Battle)$")
-# battles whose loss never whites out: the early-rival battle (heals, VAR_RESULT = lost), the first battle
-LOSS_GOES_ON = {"trainerbattle_earlyrival", "StartBirchRescueBattle", "StartOldManTutorialBattle"}
+# battles whose loss never whites out: the early-rival battle (heals, VAR_RESULT = lost), the first battle, and every
+# multi battle (BattleSetup_StartMultiBattle ends in CB2_EndSpecialTrainerBattle, which goes back to the script
+# whatever the outcome: src/battle_special.c)
+LOSS_GOES_ON = {"trainerbattle_earlyrival", "StartBirchRescueBattle", "StartOldManTutorialBattle"} | cp.MULTI_BATTLE_OPS
 CONT_BATTLES = {"trainerbattle_no_intro", "trainerbattle_two_trainers_no_intro", "trainerbattle_earlyrival"}
 # vars/flags that aren't story state
 SCRATCH_VARS = re.compile(r"^VAR_(0x80[0-9A-F]{2}|RESULT|FACING|LAST_TALKED|TEMP_\w+)$")
@@ -140,7 +147,7 @@ class CSource:
 class P:
     """one path through a script"""
     __slots__ = ("pc", "stack", "w", "a", "facing_not", "lock", "nowo", "healed", "xy", "choices", "events", "touched",
-                 "enabler", "labels", "cmp", "cmpkey")
+                 "enabler", "labels", "cmp", "cmpkey", "outcome", "lost_at", "bkeys")
 
     def __init__(self, pc):
         self.pc = pc
@@ -159,6 +166,9 @@ class P:
         self.cmp = None        # (a, b) of the last compare / checkflag
         self.cmpkey = None     # (key, constant) the last compare / checkflag tested
         self.facing_not = frozenset()  # directions VAR_FACING was found not to be (a switch / if chain on it)
+        self.outcome = None    # the last battle: "won" (a trainer battle the path goes on from), "lost", None (wild)
+        self.lost_at = None    # the pc of the battle this path lost (and went on from)
+        self.bkeys = frozenset()  # trainer flags a won battle set by itself (not story progress of the script's own)
 
     def fork(self):
         q = P(self.pc)
@@ -259,7 +269,8 @@ class Explorer:
                     break
                 pc = p.pc
                 if pc in self.label_pcs:
-                    k = (pc, p.stack, frozenset(p.w.items()), frozenset(p.a.items()), p.lock is None, p.nowo is None)
+                    k = (pc, p.stack, frozenset(p.w.items()), frozenset(p.a.items()), p.lock is None, p.nowo is None,
+                         p.outcome)  # a won and a lost multi battle write the same: only the outcome tells them apart
                     if k in seen:
                         ends.append(End("cut", pc, p, "repeats"))
                         break
@@ -416,8 +427,22 @@ class Explorer:
         if op in ("special", "callnative"):
             p.enabler = pc  # the special's own waitstate
         p.lock = None  # back from a battle the map's objects are set up again, unfrozen (emulator-checked)
-        for t in trainers:
-            p.w[("F", self.sim.trainer_flag(t))] = True
+        trainer_battle = op not in ("special", "callnative")
+        if goes_on is not None and cont:
+            # the loss, on its own path: no trainer flags (set on a win only), GetBattleOutcome = B_OUTCOME_LOST
+            lost = p.fork()
+            lost.outcome, lost.lost_at = "lost", pc
+            lost.pc += 1
+            if op == "trainerbattle_earlyrival":  # CB2_EndTrainerBattle: VAR_RESULT TRUE after a loss, FALSE after a win
+                lost.w[self.vkey("VAR_RESULT")] = 1
+                p.w[self.vkey("VAR_RESULT")] = 0
+            work.append(lost)
+        if op not in cp.MULTI_BATTLE_OPS:  # a multi battle sets no trainer flags (its script does, D-205)
+            for t in trainers:
+                key = ("F", self.sim.trainer_flag(t))
+                p.w[key] = True
+                p.bkeys = p.bkeys | {key}
+        p.outcome = "won" if trainer_battle else None  # a lost trainer battle that doesn't go on whites out
         if not cont:
             return End("battle", pc, p, (op, tuple(trainers)))
         p.pc += 1
@@ -453,6 +478,8 @@ class Explorer:
         elif op in ("addvar", "subvar") and len(args) >= 2:
             cur, d = self.get(p, self.vkey(args[0]), base), self.val(args[1], p, base)
             p.w[self.vkey(args[0])] = UNK if UNK in (cur, d) else (cur + d if op == "addvar" else cur - d) & 0xFFFF
+        elif op == "specialvar" and len(args) > 1 and args[1] == "GetBattleOutcome" and p.outcome:
+            p.w[self.vkey(args[0])] = c.value("B_OUTCOME_WON" if p.outcome == "won" else "B_OUTCOME_LOST")
         elif op == "specialvar" and args:
             v = self.sim.assume.get(args[1]) if len(args) > 1 else None
             p.w[self.vkey(args[0])] = UNK if v is None else c.value(v)
@@ -464,6 +491,11 @@ class Explorer:
             if (args[0] in self.special_ws or any("waitstate" in a for a in args[1:])
                     or self.csrc.resumes(args[0])):
                 p.enabler = p.pc
+        elif op in ("settrainerflag", "cleartrainerflag") and args:  # Poryscript's defeated() scenes
+            p.w[("F", self.sim.trainer_flag(args[0]))] = op == "settrainerflag"
+        elif op == "getplayerxy" and len(args) >= 2:  # where the player stands: both ways (not a choice)
+            p.w[self.vkey(args[0])] = UNK
+            p.w[self.vkey(args[1])] = UNK
         elif op in cp.RESULT_UNKNOWN_OPS:
             p.w[self.vkey("VAR_RESULT")] = UNK
         elif op in ("giveitem", "additem", "finditem") and args:
@@ -649,6 +681,7 @@ class Hardlock:
         self._cand_cache = {}
         self.scene_after_states = {}  # label -> State after the scene
         self.loss_info = {}           # battle pc -> what a whiteout there leads to
+        self.resume_info = {}         # battle pc -> what a loss that goes on leads to (the scene again, the way back)
         self.travelling = set()       # hide flags a ride scene clears: the boatman who arrives with the player
         c = self.chk.c
         self.temp_flags = range(c.value("TEMP_FLAGS_START"), c.value("TEMP_FLAGS_END") + 1)
@@ -883,10 +916,12 @@ class Hardlock:
         # 2. with the story state
         after = self.whiteout_state(st, w.path.w)
         again, view = self.startable(en, after)
-        if not again:
+        retry = None if again else self.retry_by_talk(en, view, w)  # e.g. Lance, who stays in the village
+        if not again and not retry:
             self.add(LOCK, "battle", where(s, w.pc),
                      "leg %s %s: a whiteout here leaves %s %s unable to start again (writes before the battle: %s)" % (
                          scene[0].get("id"), who, en.kind, en.label, self.fmt_writes(w.path.w)))
+        again_how = "the scene starts again" if again else "talking to %s fights again" % retry
         if en.map in gauntlet:
             self.loss_info[w.pc] = "leg %s: back through %s (%s)" % (scene[0].get("id"), self.chk.world.pretty(en.map),
                                                                      gauntlet[en.map])
@@ -926,8 +961,8 @@ class Hardlock:
                     continue
                 end, prev = srch.search([start], goal, goal_tiles)
                 (okd if end is not None else failed).append(self.chk.world.pretty(h["map"]))
-        self.loss_info[w.pc] = ("leg %s: the scene starts again; the way back is open from %s" % (
-            leg.get("id"), ", ".join(okd)) if not failed else "leg %s: NO WAY BACK from %s" % (leg.get("id"), ", ".join(failed)))
+        self.loss_info[w.pc] = ("leg %s: %s; the way back is open from %s" % (
+            leg.get("id"), again_how, ", ".join(okd)) if not failed else "leg %s: NO WAY BACK from %s" % (leg.get("id"), ", ".join(failed)))
         self.way_back[ckey] = self.loss_info[w.pc]
         if failed:
             self.add(LOCK, "battle", where(s, w.pc),
@@ -1070,16 +1105,22 @@ class Hardlock:
         s = self.chk.scripts
         leg, e, st, target, pos, scene_map = scene
         done = [x for x in ends if x.how in ("end", "return", "warp", "battle")]
-        sets = [(x, {k for k, v in x.path.w.items() if self.is_story(k)}) for x in done]
+        # a lost battle that goes on and a won one end the same scene: the won battle's own trainer flags don't count
+        sets = [(x, {k for k, v in x.path.w.items() if self.is_story(k) and k not in x.path.bkeys}) for x in done]
         for end, keys in sets:
-            if end.how not in ("end", "return"):
+            if end.how not in ("end", "return", "warp"):
                 continue
             longer = [x for x, ks in sets if keys < ks]
             if not longer:
                 continue  # nothing goes further: this is how the scene ends
             after = self.state_with(st, end.path.w, keep_temps=False)
             again, view = self.startable(en, after)
-            retry = self.retry_by_talk(en, view, end)
+            retry = self.retry_by_talk(en, view, end, longer)
+            if end.how == "warp":
+                self.check_resume(en, end, after, again, retry, scene)
+                continue
+            if end.path.lost_at is not None and (again or retry):
+                self.resume_info.setdefault(end.path.lost_at, "leg %s: %s" % (leg.get("id"), self.again_how(en, again, retry)))
             if not again and not retry:
                 self.add(LOCK, "reentry", where(s, end.pc),
                          "leg %s %s: this path gives control back before the scene is done (%s), and neither "
@@ -1096,19 +1137,64 @@ class Hardlock:
                          "leg %s %s: gives control back before the scene is done (%s); %s" % (
                              leg.get("id"), en.label, self.why(end), " and ".join(how)))
 
+    def again_how(self, en, again, retry):
+        if en.kind == "object" and again:
+            ob = en.info.get("local_id") or "object %d" % en.info["index"]
+            return "talking to %s starts it again%s" % (ob, " (or to %s)" % retry if retry and retry != ob else "")
+        return " and ".join((["talking to %s fights again" % retry] if retry else []) +
+                            (["re-entering %s starts the scene again" % self.chk.world.pretty(en.map)] if again else []))
+
+    def check_resume(self, en, end, after, again, retry, scene):
+        """a path that leaves the scene undone and sends the player elsewhere (a lost village battle: home to rest):
+        the scene must start again, and its place must be reachable from where the warp lands"""
+        s = self.chk.scripts
+        leg, e, st, target, pos, scene_map = scene
+        what = "a lost battle" if end.path.lost_at is not None else self.why(end)
+        dest = end.info
+        if not again and not retry:
+            self.add(LOCK, "reentry", where(s, end.pc),
+                     "leg %s %s: this path (%s) sends the player to %s before the scene is done, and neither re-entering "
+                     "%s nor talking to anyone there starts it again (writes: %s)" % (
+                         leg.get("id"), en.label, what, self.chk.world.pretty(dest[1]) if dest else "a warp",
+                         self.chk.world.pretty(en.map), self.fmt_writes(end.path.w)))
+            return
+        if not dest or dest[1] not in self.chk.world.maps or target is None:
+            return
+        land = self.chk.warp_position(dest)
+        srch = RideSearch(self, after, set(), self.rides_until(leg.get("id")))
+        goal, goal_tiles = cp.goal_for(srch, target)
+        start = srch.node_at(*land) if land else None
+        found = srch.search([start], goal, goal_tiles)[0] if start is not None else None
+        how = self.again_how(en, again, retry)
+        info = "leg %s: %s sends the player to %s (%d, %d); %s; the way back is %s" % (
+            leg.get("id"), end.path.labels[-1] if end.path.labels else en.label, self.chk.world.pretty(land[0]),
+            land[1], land[2], how, "open" if found is not None else "SHUT") if land else None
+        if end.path.lost_at is not None and info:
+            self.resume_info.setdefault(end.path.lost_at, info)
+        if found is None:
+            self.add(LOCK, "reentry", where(s, end.pc),
+                     "leg %s %s: this path (%s) sends the player to %s, and from there they can't get back to %s" % (
+                         leg.get("id"), en.label, what, cp.fmt_pos(self.chk, land) if land else "a warp",
+                         cp.fmt_target(self.chk, target)))
+        elif self.verbose:
+            self.add(NOTE, "reentry", where(s, end.pc), "%s %s: %s" % (en.label, what, info))
+
     def why(self, end):
         s = self.chk.scripts
         return ("a choice at %s" % ", ".join(sorted({s.label_at[c] for c in end.path.choices}))
                 if end.path.choices else "no choice")
 
-    def retry_by_talk(self, en, view, end):
-        """an object shown on the map whose script leads to a battle this path went through, or to the scene"""
+    def retry_by_talk(self, en, view, end, longer=()):
+        """an object shown on the map whose script leads to a battle this path went through or the longer paths
+        fight (a declined challenge: Lance waits in the village and asks again), or to the scene"""
         s = self.chk.scripts
-        want = {pc for kind, pc, info in end.path.events if kind == "battle"} | {s.labels[en.label]} | set(end.path.choices)
-        for o in view.objects:
-            lab = o.get("script")
-            if lab and lab in s.labels and want & self.reachable(lab):
-                return o.get("local_id") or "object %d" % o["index"]
+        battles = {pc for x in (end,) + tuple(longer) for kind, pc, info in x.path.events if kind == "battle"}
+        # the scene's own objects first, then whoever fights the same battle, then whoever reaches the scene's branches
+        for want in ({s.labels[en.label]}, battles, set(end.path.choices)):
+            for o in view.objects:
+                lab = o.get("script")
+                if lab and lab in s.labels and want & self.reachable(lab):
+                    return o.get("local_id") or "object %d" % o["index"]
         return None
 
     def reachable(self, label, cache={}):
@@ -1217,7 +1303,10 @@ class Hardlock:
             label, (op, who, goes_on, cont) = self.battles[pc]
             if goes_on:
                 loss = "goes on (%s)" % ("FLAG_DRACONID_NO_WHITEOUT" if goes_on == "NO_WHITEOUT" else
+                                         "a multi battle" if op in cp.MULTI_BATTLE_OPS else
                                          "early-rival / first battle rule")
+                if pc in self.resume_info:
+                    loss += "; " + self.resume_info[pc]
             else:
                 loss = "whites out; " + self.loss_info.get(pc, "the scene can start again (not in the story table: "
                                                                "no walk back checked)")

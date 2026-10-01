@@ -26,7 +26,8 @@ no_heal_ok (check_hardlock.py). For every leg the checker
     simulated state decides takes one branch; an unknown one (a YES/NO, a multichoice, a battle's outcome)
     takes both – a value written on one side only is kept (the player takes the path that moves the story
     on), values that differ become unknown – and is reported as a guess (-v); a branch cut short in a loop or
-    repeating a state already seen gives way to the other. What C code does is given in the table ("pre",
+    repeating a state already seen gives way to the other. A warp after a branch on the player's answer
+    (VAR_RESULT, Poryscript's compare + goto_if included) is only a "may warp": the table says where ("then"). What C code does is given in the table ("pre",
     "assume") or known here: the cable car's warp, the Hall of Fame's and the credits' way home (GameClear sets
     FLAG_SYS_GAME_CLEAR), a menu special's VAR_RESULT. Enum constants (SS_TIDAL_*, DIR_*) are read from the
     headers too, and the player's scripted movement is followed (applymovement, getplayerxy), so a scene's next
@@ -626,6 +627,7 @@ class Sim:
 
     def _exec(self, pc, st, ctx, stack):
         cmp_state = None
+        cmp_var = None  # what the last compare looked at (Poryscript: compare VAR_RESULT, X + goto_if_ne label)
         n = len(self.s.cmds)
         while pc < n:
             ctx.steps += 1
@@ -667,11 +669,13 @@ class Sim:
                 continue
             if op == "compare":
                 cmp_state = (self.val(args[0], st), self.val(args[1], st))
+                cmp_var = args[0]
                 pc += 1
                 continue
             if op in ("checkflag", "checktrainerflag"):  # Poryscript: flag() / defeated() -> check… + goto_if 0/1
                 v = st.flag(self.fkey(args[0]) if op == "checkflag" else self.trainer_flag(args[0]))
                 cmp_state = (UNK if v == UNK else int(v), 1)
+                cmp_var = None
                 pc += 1
                 continue
             if op == "goto_if" or op == "call_if":  # after checkflag: goto_if TRUE/FALSE, dest
@@ -694,7 +698,10 @@ class Sim:
                 res = self._branch("goto", cond, args[1], pc, st, ctx, stack, "case %s" % args[0])
             elif op.startswith("goto_if") or op.startswith("call_if"):
                 cond, target = self._cond(op, args, st, cmp_state)
-                res = self._branch(op[:4], cond, target, pc, st, ctx, stack, "%s %s" % (op, ", ".join(args)))
+                what = "%s %s" % (op, ", ".join(args))
+                if len(args) == 1 and cmp_var:
+                    what += " (after compare %s)" % cmp_var  # a branch on the player's answer is a choice
+                res = self._branch(op[:4], cond, target, pc, st, ctx, stack, what)
             elif op.startswith("trainerbattle"):
                 res = self._trainerbattle(op, args, pc, st, ctx)
                 if res is None or res is LOOP:

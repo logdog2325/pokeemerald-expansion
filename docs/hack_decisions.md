@@ -1587,6 +1587,28 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   (their scenes are being reworked by the story-logic pass right now; the static battle check already covers their
   own writes – a later pass can add them with the revenge arc, the village finale and Lance). – The playtester's
   "no story locks or hard locks", shown rather than assumed, with the checks ready for the branches still to merge.
+- **D-265a The checkers follow the Act 7 extension, the rivals' route fights and Lance; a lost multi battle goes on**:
+  the story table walks Act 7 in the extension's order (D-200 – D-209): 7.01 – 7.17 from the Elder's call at the
+  Sky Pillar to the SS Ticket, with the Elder's NO at the shrine as side trip 7.04b; the rivals' must-win route
+  fights (Brendan on Route 104, Wally on Routes 112 and 120) and early-rival ones (Brendan on Jagged Pass, May at
+  Mossdeep) are legs of their own (`2.06r` … `5.05r`), and 2.06a plays the vanilla Devon scientist's PokéNav scene,
+  an OnFrame scene the walk passed but didn't play – it arms Brendan's trigger. Lance is side trip P.02b, starting on
+  the fly spot after P.01's walk out of the house (the first post-game visit, which arms him), so it checks D-261's
+  "a later visit, on the fly spot" without a second trip home; Groudon and Kyogre's side trips play their battles.
+  The hard-lock check now models what a loss really does: **a multi battle never whites out**
+  (`BattleSetup_StartMultiBattle` ends in `CB2_EndSpecialTrainerBattle`, which returns to the script whatever the
+  outcome – read in `src/battle_special.c`, seen in `hardlock.play` section 4: home at (8, 6), not a respawn); a loss
+  that goes on is a path of its own (no trainer flags, `GetBattleOutcome` lost); a path that sends the player away
+  before the scene is done (`Draconid_EventScript_VillageLost`) must leave the fight startable and reachable from
+  where it lands; a retry by talking counts after a whiteout (Lance stays in the village) and for the battle a longer
+  path fights (a declined challenge). Result on da506630: 136 legs + 9 side trips, 0 failing; 0 LOCK, 0 CHECK; no
+  script changed. – Alt: keep treating multi battles as whiteouts (wrong for the engine: it reported all five
+  village battles as LOCKs whose "respawn" couldn't restart them); make Lance a main leg (an optional fight would
+  then carry its flags into every later leg) or walk him from the shrine via the house (the walk ends where the map
+  is first entered, at the shrine door, not on the fly spot); fold the rival fights into the legs they happen on
+  (they'd vanish from the leg table, and a failing fight would read as a failing Gym leg). – The playtester's "no
+  story locks or hard locks" for the whole merged game, with every losable village battle's way home and the
+  gauntlet's restart checked rather than assumed.
 - **D-266 Megas are the gimmick: no Terastallization, no Dynamax** (follow-up 26): `B_ALLOW_TERASTALLIZATION` and
   `B_ALLOW_DYNAMAX` (new, `include/config/battle.h`) are FALSE, and `CanTerastallize` / `CanDynamax` return FALSE for
   every battler outside the test suite. The trainer data never set a Tera type or Dynamax level (`check_party.py`
