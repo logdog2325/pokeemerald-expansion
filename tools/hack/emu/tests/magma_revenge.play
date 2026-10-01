@@ -602,6 +602,9 @@ expect_var VAR_TEMP_6 1
 walk UP 14
 run 60
 shot r8_10_league_grunts
+# both party slots boosted, as for the admins' double: with only the lead boosted, the weak second POKéMON can
+# faint and a mashed double is sometimes lost (seen once in the matrix: F_DEINO)
+boost 1
 poke @gParties+54 64
 poke @gParties+56 E7
 poke @gParties+57 3
