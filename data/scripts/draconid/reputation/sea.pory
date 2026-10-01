@@ -1,0 +1,241 @@
+// Draconid Emerald: reputation dialogue – Sea routes 105–109, 124–134, the SEASHORE HOUSE, the ABANDONED SHIP and SHOAL CAVE (D-103, D-360; shared NPCs in shared.pory).
+// Each person's map.json "script" points here; outside the uniform (and where no revealed line is
+// written) it goes on to the vanilla script. Lines collected in docs/reputation_dialogue.md.
+
+// MR. BRINEY on the SLATEPORT beach at (21, 24) (vanilla: "MR. BRINEY: Ahoy! For you, I'll go out to sea anytime!")
+script Route109_EventScript_DraconidRepMrBriney {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(Route109_Text_DraconidRepMrBrineyUniform, MSGBOX_DEFAULT)
+    }
+    goto(Route109_EventScript_MrBriney)
+}
+
+text Route109_Text_DraconidRepMrBrineyUniform {
+    format("MR. BRINEY: The beach folk give your red getup funny looks.\p"
+           "Let 'em look! PEEKO and I know who you are.")
+}
+
+// Little girl at (11, 6) (vanilla: "Yo, TRAINERS! Whether you're hot to trot, or cool cat not, chill…")
+script Route109_EventScript_DraconidRepSeashoreHouseGirl {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(Route109_Text_DraconidRepSeashoreHouseGirlUniform, MSGBOX_NPC)
+        default:
+            goto(Route109_EventScript_SeashoreHouseGirl)
+    }
+}
+
+text Route109_Text_DraconidRepSeashoreHouseGirlUniform {
+    format("Yo, TRAINERS! Chill at my papa's spot!\p"
+           "…Except you, TEAM MAGMA. You're too hot to chill. Papa said so.")
+}
+
+// Boy in a float at (24, 18) (vanilla: "Our sand castle's taking a long time to make.")
+script Route109_EventScript_DraconidRepSandCastleBoy {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(Route109_Text_DraconidRepSandCastleBoyUniform, MSGBOX_NPC)
+        default:
+            goto(Route109_EventScript_SandCastleBoy)
+    }
+}
+
+text Route109_Text_DraconidRepSandCastleBoyUniform {
+    format("Our sand castle's taking a long time to make.\p"
+           "Don't stomp on it, TEAM MAGMA! You want land? Make your own castle!")
+}
+
+// Girl in a float at (25, 18) (vanilla: "You can have this!")
+script Route109_EventScript_DraconidRepSoftSandGirl {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(Route109_Text_DraconidRepSoftSandGirlUniform, MSGBOX_DEFAULT)
+    }
+    goto(Route109_EventScript_SoftSandGirl)
+}
+
+text Route109_Text_DraconidRepSoftSandGirlUniform {
+    format("A TEAM MAGMA grunt at the beach? Are you going to take all our sand?")
+}
+
+// Woman at (30, 32) (vanilla: "Little kids can dart around so quickly…")
+script Route109_EventScript_DraconidRepWoman {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(Route109_Text_DraconidRepWomanUniform, MSGBOX_NPC)
+        default:
+            goto(Route109_EventScript_Woman)
+    }
+}
+
+text Route109_Text_DraconidRepWomanUniform {
+    format("Little kids dart around so quickly. You can't take your eyes off them.\p"
+           "Especially not with TEAM MAGMA on the beach.")
+}
+
+// Old man at (33, 6) (vanilla: "The water around these parts is clean.")
+script Route109_EventScript_DraconidRepOldMan {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(Route109_Text_DraconidRepOldManUniform, MSGBOX_NPC)
+        default:
+            goto(Route109_EventScript_OldMan)
+    }
+}
+
+text Route109_Text_DraconidRepOldManUniform {
+    format("The water around here is clean. My ZIGZAGOON helps pick up litter.\p"
+           "TEAM MAGMA wants less sea, they say.\p"
+           "Then what would we have left to keep clean?")
+}
+
+// MR. SEA, owner of the SEASHORE HOUSE at (6, 2) (vanilla: "I'm the owner of the SEASHORE HOUSE. But you can call me MR. SEA!")
+script Route109_SeashoreHouse_EventScript_DraconidRepOwner {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(Route109_SeashoreHouse_Text_DraconidRepOwnerUniform, MSGBOX_DEFAULT)
+    }
+    goto(Route109_SeashoreHouse_EventScript_Owner)
+}
+
+text Route109_SeashoreHouse_Text_DraconidRepOwnerUniform {
+    format("Whoa! A TEAM MAGMA grunt in my SEASHORE HOUSE?\p"
+           "You'd better not start any fires!\p"
+           "…Well, hot battles are hot battles. I don't care who's fighting!")
+}
+
+// CAPT. STERN's aide at (3, 4) (vanilla: "I'm investigating this ship on behalf of CAPT. STERN.")
+script AbandonedShip_CaptainsOffice_EventScript_DraconidRepCaptSternAide {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(AbandonedShip_CaptainsOffice_Text_DraconidRepCaptSternAideUniform, MSGBOX_DEFAULT)
+    }
+    goto(AbandonedShip_CaptainsOffice_EventScript_CaptSternAide)
+}
+
+text AbandonedShip_CaptainsOffice_Text_DraconidRepCaptSternAideUniform {
+    format("A TEAM MAGMA grunt on the ABANDONED SHIP? What could you want here?")
+}
+
+// Youngster at (17, 7) (vanilla: "Isn't it fun here? I get excited just being here!")
+script AbandonedShip_Corridors_1F_EventScript_DraconidRepYoungster {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(AbandonedShip_Corridors_1F_Text_DraconidRepYoungsterUniform, MSGBOX_NPC)
+        default:
+            goto(AbandonedShip_Corridors_1F_EventScript_Youngster)
+    }
+}
+
+text AbandonedShip_Corridors_1F_Text_DraconidRepYoungsterUniform {
+    format("Isn't it fun here? I get excited just being here!\p"
+           "And now there's TEAM MAGMA! This is like an adventure movie!")
+}
+
+// Boy in a float at (2, 8) (vanilla: "Yay! It's a ship!")
+script AbandonedShip_Corridors_B1F_EventScript_DraconidRepTuberM {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(AbandonedShip_Corridors_B1F_Text_DraconidRepTuberMUniform, MSGBOX_NPC)
+        default:
+            goto(AbandonedShip_Corridors_B1F_EventScript_TuberM)
+    }
+}
+
+text AbandonedShip_Corridors_B1F_Text_DraconidRepTuberMUniform {
+    format("Yay! It's a ship!\p"
+           "Boo! It's TEAM MAGMA!")
+}
+
+// Camper at (3, 4) (vanilla: "This is a perfect place to go exploring! It's exciting here!")
+script AbandonedShip_Rooms2_B1F_EventScript_DraconidRepCamper {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(AbandonedShip_Rooms2_B1F_Text_DraconidRepCamperUniform, MSGBOX_NPC)
+        default:
+            goto(AbandonedShip_Rooms2_B1F_EventScript_Camper)
+    }
+}
+
+text AbandonedShip_Rooms2_B1F_Text_DraconidRepCamperUniform {
+    format("There must be amazing treasures on board!\p"
+           "You're not after the treasure too, are you, TEAM MAGMA?")
+}
+
+// Gentleman at (12, 5) (vanilla: "Ships of this sort are rare, so I'm taking a look around.")
+script AbandonedShip_Rooms_1F_EventScript_DraconidRepGentleman {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(AbandonedShip_Rooms_1F_Text_DraconidRepGentlemanUniform, MSGBOX_NPC)
+        default:
+            goto(AbandonedShip_Rooms_1F_EventScript_Gentleman)
+    }
+}
+
+text AbandonedShip_Rooms_1F_Text_DraconidRepGentlemanUniform {
+    format("Ships like this are rare, so I'm taking a look around.\p"
+           "TEAM MAGMA grunts on a ship are rare, too. I'll keep my distance.")
+}
+
+// Man at (25, 6) (vanilla: "Urrrrppp… I'm getting queasy just being aboard this ship…")
+script AbandonedShip_Rooms_B1F_EventScript_DraconidRepFatMan {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(AbandonedShip_Rooms_B1F_Text_DraconidRepFatManUniform, MSGBOX_NPC)
+        default:
+            goto(AbandonedShip_Rooms_B1F_EventScript_FatMan)
+    }
+}
+
+text AbandonedShip_Rooms_B1F_Text_DraconidRepFatManUniform {
+    format("Urrrrppp… I'm getting queasy on this ship.\p"
+           "Seeing a TEAM MAGMA grunt isn't helping…")
+}
+
+// Man at (5, 4) (vanilla: "I'm the DIVING TREASURE HUNTER!")
+script Route124_DivingTreasureHuntersHouse_EventScript_DraconidRepTreasureHunter {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(Route124_DivingTreasureHuntersHouse_Text_DraconidRepTreasureHunterUniform, MSGBOX_DEFAULT)
+    }
+    goto(Route124_DivingTreasureHuntersHouse_EventScript_TreasureHunter)
+}
+
+text Route124_DivingTreasureHuntersHouse_Text_DraconidRepTreasureHunterUniform {
+    format("Whoa, TEAM MAGMA! You don't dive, do you? Your people hate the sea!")
+}
+
+// Old man at (18, 15) (vanilla: "Oh, hey! SHOAL SALT and SHOAL SHELLS! And enough of them, too!")
+script ShoalCave_LowTideEntranceRoom_EventScript_DraconidRepShellBellExpert {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(ShoalCave_LowTideEntranceRoom_Text_DraconidRepShellBellExpertUniform, MSGBOX_DEFAULT)
+    }
+    goto(ShoalCave_LowTideEntranceRoom_EventScript_ShellBellExpert)
+}
+
+text ShoalCave_LowTideEntranceRoom_Text_DraconidRepShellBellExpertUniform {
+    format("TEAM MAGMA, in SHOAL CAVE? Brr… You won't find any fire in here.")
+}
+
+// Black belt at (11, 4) (vanilla: "The penetrating cold around these parts is an impediment to training.")
+script ShoalCave_LowTideLowerRoom_EventScript_DraconidRepBlackBelt {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(ShoalCave_LowTideLowerRoom_Text_DraconidRepBlackBeltUniform, MSGBOX_DEFAULT)
+    }
+    goto(ShoalCave_LowTideLowerRoom_EventScript_BlackBelt)
+}
+
+text ShoalCave_LowTideLowerRoom_Text_DraconidRepBlackBeltUniform {
+    format("Hmph. A TEAM MAGMA grunt, watching me train?\p"
+           "Focus… Focus…")
+}

@@ -202,6 +202,25 @@ names its first obstacle and what clears it; a way that opens only through a sce
 (DTOR). Also checks every round 1 and table scene warp destination (walkable, not a closed pocket). ~40 s.
 Table fields: `to`, `then`, `expect`, `pre` (what C does), `side`, `at`/`map`/`talk`, `puzzles`; the audit and
 how to extend it: [hack_progression.md](hack_progression.md).
+## Reputation coverage – `tools/hack/check_reputation.py`
+```sh
+python3 tools/hack/check_reputation.py                # coverage per map + the total; exit 1 if a person is missing
+python3 tools/hack/check_reputation.py --missing      # the people without a uniform branch: map, spot, script, vanilla line
+python3 tools/hack/check_reputation.py --skipped [-v] # what isn't counted, by reason (-v: every object)
+python3 tools/hack/check_reputation.py --map Rustboro # every object of the matching maps with its verdict
+python3 tools/hack/check_reputation.py --maps         # the maps that can / can't be entered in uniform
+python3 tools/hack/check_reputation.py --doc          # rewrite the generated part of docs/reputation_dialogue.md
+```
+Does every person the player can meet in the TEAM MAGMA uniform react to it (D-360, D-361)? The uniform legs of the
+story table are simulated with check_progression.py; from each, the tiles are flooded (its walking rules, Fly to
+towns reached, plus the warping scripts of objects, signs and triggers, run on that leg's state) and the people shown
+next to a reached tile are collected; flags only side talks write are unknown (people they bring out count). A person
+reacts if code reachable from their script compares `VAR_DRACONID_REPUTATION` (or `VAR_PLAYER_OUTFIT`), through an
+`@ Draconid Emerald` hook too, or is in the tool's `UNIFORM_ONLY` table (story lines written for the uniform, with the
+reason); trainers, item balls, berry trees, field obstacles, Pokémon and things are skipped, and `SKIP` names the rest.
+`--doc` writes the tables between the `GENERATED` markers of docs/reputation_dialogue.md from the reputation scripts
+the hand-written tables don't list: the comment above a script (`// <who> at (x, y) (vanilla: "<line>")`) and the
+texts it shows (`…Uniform…` / `…Revealed…`). ~70 s.
 ## Evolution check – `tools/hack/check_evos.py`
 ```sh
 python3 tools/hack/check_evos.py [--markdown]
@@ -231,6 +250,7 @@ python3 tools/hack/emu/play.py tools/hack/emu/tests/wild.play           -o /tmp/
 python3 tools/hack/emu/play.py tools/hack/emu/tests/progression.play    -o /tmp/emu   # story-lock fixes: the Aqua Hideout opens with Maxie's order
 python3 tools/hack/emu/play.py tools/hack/emu/tests/trade_evos.play     -o /tmp/emu   # Kadabra -> Alakazam, Slowpoke + King's Rock -> Slowking
 python3 tools/hack/emu/play.py tools/hack/emu/tests/battle_items.play   -o /tmp/emu   # battle item counter by badges, a Gym booster, a Mega Stone ball
+python3 tools/hack/emu/play.py tools/hack/emu/tests/uniform_npcs.play   -o /tmp/emu   # after rustboro.play: townsfolk's uniform lines, a gift after the line (D-360)
 python3 tools/hack/emu/play.py tools/hack/emu/tests/rival_calls.play    -o /tmp/emu   # after act5.play: the rivals' and Mr. Stone's PokéNav calls (D-243, D-256, D-258)
 python3 tools/hack/emu/play.py tools/hack/emu/tests/release_boot.play   -o /tmp/rel --rom pokeemerald-release.gba
 ```

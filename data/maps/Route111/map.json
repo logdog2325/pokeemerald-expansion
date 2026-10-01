@@ -42,7 +42,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route111_EventScript_Victor",
+      "script": "Route111_EventScript_DraconidRepVictor",
       "flag": "FLAG_HIDE_ROUTE_111_VICTOR_WINSTRATE"
     },
     {
@@ -136,7 +136,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route111_EventScript_Man1",
+      "script": "Route111_EventScript_DraconidRepMan1",
       "flag": "0"
     },
     {
@@ -255,7 +255,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route111_EventScript_Girl",
+      "script": "Route111_EventScript_DraconidRepGirl",
       "flag": "0"
     },
     {
@@ -467,7 +467,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route111_EventScript_SecretPowerMan",
+      "script": "Route111_EventScript_DraconidRepSecretPowerMan",
       "flag": "FLAG_HIDE_ROUTE_111_SECRET_POWER_MAN"
     },
     {
@@ -480,7 +480,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route111_EventScript_Man2",
+      "script": "Route111_EventScript_DraconidRepMan2",
       "flag": "0"
     },
     {
@@ -597,7 +597,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route111_EventScript_Hiker",
+      "script": "Route111_EventScript_DraconidRepHiker",
       "flag": "0"
     },
     {
@@ -638,7 +638,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route111_EventScript_RockSmashTipFatMan",
+      "script": "Route111_EventScript_DraconidRepRockSmashTipFatMan",
       "flag": "FLAG_HIDE_ROUTE_111_ROCK_SMASH_TIP_GUY"
     }
   ],

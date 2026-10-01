@@ -1,0 +1,205 @@
+// Draconid Emerald: reputation dialogue – Draconid Village (D-103, D-360; shared NPCs in shared.pory).
+// Each person's map.json "script" points here; outside the uniform (and where no revealed line is
+// written) it goes on to the vanilla script. Lines collected in docs/reputation_dialogue.md.
+
+// Draconid man at (16, 8) (vanilla: "That crater was made by the star that fell here long ago.")
+script DraconidVillage_EventScript_DraconidRepApprentice {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(DraconidVillage_Text_DraconidRepApprenticeUniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(DraconidVillage_Text_DraconidRepApprenticeRevealed, MSGBOX_NPC)
+        default:
+            goto(DraconidVillage_EventScript_Apprentice)
+    }
+}
+
+text DraconidVillage_Text_DraconidRepApprenticeUniform {
+    format("…{PLAYER}? I nearly didn't know you in that red.\p"
+           "The ELDER told us why you wear it. Keep the path up here a secret, all right?")
+}
+
+text DraconidVillage_Text_DraconidRepApprenticeRevealed {
+    format("Word came up from SOOTOPOLIS.\p"
+           "You threw off the red right in front of MAXIE!\p"
+           "The whole clan is proud of you, {PLAYER}.")
+}
+
+// Draconid old woman at (22, 6) (vanilla: "Every child of the clan receives a dragon egg when they come of age.")
+script DraconidVillage_EventScript_DraconidRepOldWoman {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(DraconidVillage_Text_DraconidRepOldWomanUniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(DraconidVillage_Text_DraconidRepOldWomanRevealed, MSGBOX_NPC)
+        default:
+            goto(DraconidVillage_EventScript_OldWoman)
+    }
+}
+
+text DraconidVillage_Text_DraconidRepOldWomanUniform {
+    format("Oh, child… Red never suited anyone from the mountains.\p"
+           "Is your little one eating well down there?\p"
+           "Don't let those people make it cruel.")
+}
+
+text DraconidVillage_Text_DraconidRepOldWomanRevealed {
+    format("A dragon raised from the egg never forgets the face it saw first.\p"
+           "Yours saw a brave one. I always knew it would.")
+}
+
+// Draconid woman at (30, 10) (vanilla: "The water here comes from the peaks, where the sky dragon is said…")
+script DraconidVillage_EventScript_DraconidRepPondWoman {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(DraconidVillage_Text_DraconidRepPondWomanUniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(DraconidVillage_Text_DraconidRepPondWomanRevealed, MSGBOX_NPC)
+        default:
+            goto(DraconidVillage_EventScript_PondWoman)
+    }
+}
+
+text DraconidVillage_Text_DraconidRepPondWomanUniform {
+    format("Drink some of the peak water before you go back down.\p"
+           "You look tired, {PLAYER}. That uniform must weigh more than it looks.")
+}
+
+text DraconidVillage_Text_DraconidRepPondWomanRevealed {
+    format("The water from the peaks tastes sweeter after good news!\p"
+           "And the news from SOOTOPOLIS was the best we've had in years.")
+}
+
+// Draconid boy at (10, 18) (vanilla: "When I get my egg, I want a dragon that can fly all the way up to…")
+script DraconidVillage_EventScript_DraconidRepBoy {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(DraconidVillage_Text_DraconidRepBoyUniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(DraconidVillage_Text_DraconidRepBoyRevealed, MSGBOX_NPC)
+        default:
+            goto(DraconidVillage_EventScript_Boy)
+    }
+}
+
+text DraconidVillage_Text_DraconidRepBoyUniform {
+    format("Whoa! Is that what the red ones down there wear?\p"
+           "When I get my egg, I'm never wearing anything that itchy-looking.")
+}
+
+text DraconidVillage_Text_DraconidRepBoyRevealed {
+    format("When I get my egg, I want to be a tamer just like you!\p"
+           "Someone who goes down to the lowlands and comes back a hero!")
+}
+
+// Gatekeeper at (22, 25) (vanilla: "GATEKEEPER: So you're off to see the lowlands! The clan's…")
+script DraconidVillage_EventScript_DraconidRepGatekeeper {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(DraconidVillage_Text_DraconidRepGatekeeperUniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(DraconidVillage_Text_DraconidRepGatekeeperRevealed, MSGBOX_NPC)
+        default:
+            goto(DraconidVillage_EventScript_Gatekeeper)
+    }
+}
+
+text DraconidVillage_Text_DraconidRepGatekeeperUniform {
+    format("GATEKEEPER: Halt! Who goes… Oh. It's you, {PLAYER}.\p"
+           "In that red, I almost raised the alarm. Welcome home, tamer.")
+}
+
+text DraconidVillage_Text_DraconidRepGatekeeperRevealed {
+    format("GATEKEEPER: Welcome home, {PLAYER}!\p"
+           "The lowlands finally know what kind of tamer we sent them.")
+}
+
+// Weaver at (4, 4) (vanilla: "Every tamer of the clan wears a scarf woven from dragon down.")
+script DraconidVillage_House1_EventScript_DraconidRepWeaver {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(DraconidVillage_House1_Text_DraconidRepWeaverUniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(DraconidVillage_House1_Text_DraconidRepWeaverRevealed, MSGBOX_NPC)
+        default:
+            goto(DraconidVillage_House1_EventScript_Weaver)
+    }
+}
+
+text DraconidVillage_House1_Text_DraconidRepWeaverUniform {
+    format("Where is your scarf, child? Tucked away under all that red, I hope.\p"
+           "Down there it would give you away. Up here, it's the first thing I look for.")
+}
+
+text DraconidVillage_House1_Text_DraconidRepWeaverRevealed {
+    format("Your scarf is back where it belongs!\p"
+           "I'll weave you a new one. One fit for the tamer who stood up to MAXIE.")
+}
+
+// Little girl at (6, 5) (vanilla: "Grandpa ELDER says the Guardian of the Sky lives above the clouds…")
+script DraconidVillage_House1_EventScript_DraconidRepGirl {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(DraconidVillage_House1_Text_DraconidRepGirlUniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(DraconidVillage_House1_Text_DraconidRepGirlRevealed, MSGBOX_NPC)
+        default:
+            goto(DraconidVillage_House1_EventScript_Girl)
+    }
+}
+
+text DraconidVillage_House1_Text_DraconidRepGirlUniform {
+    format("Grandpa ELDER says you're playing a secret game with the people in red.\p"
+           "I won't tell anyone! Cross my heart!")
+}
+
+text DraconidVillage_House1_Text_DraconidRepGirlRevealed {
+    format("You won the secret game!\p"
+           "Grandpa ELDER says everybody in HOENN knows your name now!")
+}
+
+// Scale trader at (6, 4) (vanilla: "I trade dragon scales in the lowland towns.")
+script DraconidVillage_House2_EventScript_DraconidRepHunter {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(DraconidVillage_House2_Text_DraconidRepHunterUniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(DraconidVillage_House2_Text_DraconidRepHunterRevealed, MSGBOX_NPC)
+        default:
+            goto(DraconidVillage_House2_EventScript_Hunter)
+    }
+}
+
+text DraconidVillage_House2_Text_DraconidRepHunterUniform {
+    format("I trade scales down in the lowland towns.\p"
+           "Folks there talk about a TEAM MAGMA grunt with a dragon.\p"
+           "I just nod and say nothing. Mind you're careful down there.")
+}
+
+text DraconidVillage_House2_Text_DraconidRepHunterRevealed {
+    format("Down in the lowland towns, everyone's talking about you!\p"
+           "My scales sell twice as fast since I started saying I'm from your village.")
+}
+
+// Draconid woman at (5, 6) (vanilla: "Lowlanders keep strange hours… They run their whole lives by those…")
+script DraconidVillage_House2_EventScript_DraconidRepWife {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(DraconidVillage_House2_Text_DraconidRepWifeUniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(DraconidVillage_House2_Text_DraconidRepWifeRevealed, MSGBOX_NPC)
+        default:
+            goto(DraconidVillage_House2_EventScript_Wife)
+    }
+}
+
+text DraconidVillage_House2_Text_DraconidRepWifeUniform {
+    format("The lowlanders run their whole lives by their clocks.\p"
+           "And now by their colors, too.\p"
+           "Red, blue… Up here we only ask if your dragon trusts you.")
+}
+
+text DraconidVillage_House2_Text_DraconidRepWifeRevealed {
+    format("I bet even the lowlanders' clocks stopped for the news from SOOTOPOLIS!\p"
+           "Welcome home, dear.")
+}

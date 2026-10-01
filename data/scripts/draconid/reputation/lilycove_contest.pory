@@ -1,0 +1,809 @@
+// Draconid Emerald: reputation dialogue – Lilycove CONTEST HALL and CONTEST lobby (D-103, D-360; shared NPCs in shared.pory).
+// Each person's map.json "script" points here; outside the uniform (and where no revealed line is
+// written) it goes on to the vanilla script. Lines collected in docs/reputation_dialogue.md.
+
+// Boy at (30, 30) (vanilla: "This POKéMON won the BEAUTY CONTEST here before.")
+script LilycoveCity_ContestHall_EventScript_DraconidRepBoy1 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_ContestHall_Text_DraconidRepBoy1Uniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_ContestHall_EventScript_Boy1)
+    }
+}
+
+text LilycoveCity_ContestHall_Text_DraconidRepBoy1Uniform {
+    format("My POKéMON won a BEAUTY CONTEST, and now a SMARTNESS one!\p"
+           "A TEAM MAGMA grunt in the audience?\p"
+           "My abilities scare even me… But you scare me more.")
+}
+
+// Boy at (11, 7) (vanilla: "I've entered a bunch of CONTESTS, so I'm seeing how things work.")
+script LilycoveCity_ContestHall_EventScript_DraconidRepBoy2 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_ContestHall_Text_DraconidRepBoy2Uniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_ContestHall_EventScript_Boy2)
+    }
+}
+
+text LilycoveCity_ContestHall_Text_DraconidRepBoy2Uniform {
+    format("Cool moves go over well in a COOLNESS CONTEST.\p"
+           "Is there a SCARINESS CONTEST? You'd win that one in a walk.")
+}
+
+// Girl at (40, 8) (vanilla: "That young man who won earlier had a whole bunch of different…")
+script LilycoveCity_ContestHall_EventScript_DraconidRepGirl {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_ContestHall_Text_DraconidRepGirlUniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_ContestHall_EventScript_Girl)
+    }
+}
+
+text LilycoveCity_ContestHall_Text_DraconidRepGirlUniform {
+    format("The winner earlier had all kinds of {POKEBLOCK}S.\p"
+           "Do TEAM MAGMA grunts make {POKEBLOCK}S? I bet yours taste like ash.")
+}
+
+// SMART CONTEST MC at (12, 22) (vanilla: "MC: Okay, SMART POKéMON and their TRAINERS, are you ready?!")
+script LilycoveCity_ContestHall_EventScript_DraconidRepSmartContestMC {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_ContestHall_Text_DraconidRepSmartContestMCUniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_ContestHall_EventScript_SmartContestMC)
+    }
+}
+
+text LilycoveCity_ContestHall_Text_DraconidRepSmartContestMCUniform {
+    format("MC: Okay, SMART POKéMON and their TRAINERS…\p"
+           "Is that a TEAM MAGMA uniform in the crowd?\p"
+           "Ahem! Give it your best showing! Let's appeal!")
+}
+
+// SMART CONTEST JUDGE at (15, 22) (vanilla: "JUDGE: Are you enjoying this CONTEST?")
+script LilycoveCity_ContestHall_EventScript_DraconidRepSmartContestJudge {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_ContestHall_Text_DraconidRepSmartContestJudgeUniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_ContestHall_EventScript_SmartContestJudge)
+    }
+}
+
+text LilycoveCity_ContestHall_Text_DraconidRepSmartContestJudgeUniform {
+    format("JUDGE: Enjoying the CONTEST? We judge POKéMON, not the TRAINERS' clothes.\p"
+           "…Though I'd score that uniform rather low.")
+}
+
+// Black belt at (10, 25) (vanilla: "Ayayayay… I entered the wrong CONTEST.")
+script LilycoveCity_ContestHall_EventScript_DraconidRepSmartContestant1 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_ContestHall_Text_DraconidRepSmartContestant1Uniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_ContestHall_EventScript_SmartContestant1)
+    }
+}
+
+text LilycoveCity_ContestHall_Text_DraconidRepSmartContestant1Uniform {
+    format("Ayayayay… I entered a tough POKéMON in the SMARTNESS CONTEST.\p"
+           "And there's TEAM MAGMA watching. Could this get any worse?")
+}
+
+// Old man at (12, 25) (vanilla: "I've spent many a year, and all my wisdom besides, raising this…")
+script LilycoveCity_ContestHall_EventScript_DraconidRepSmartContestant2 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_ContestHall_Text_DraconidRepSmartContestant2Uniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_ContestHall_EventScript_SmartContestant2)
+    }
+}
+
+text LilycoveCity_ContestHall_Text_DraconidRepSmartContestant2Uniform {
+    format("Years of wisdom went into raising this smart POKéMON.\p"
+           "It won't be bested by some young pup's POKéMON.\p"
+           "Least of all a TEAM MAGMA pup's.")
+}
+
+// Man at (14, 25) (vanilla: "There it is! If my POKéMON pulls a smart move next, the audience's…")
+script LilycoveCity_ContestHall_EventScript_DraconidRepSmartContestant3 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_ContestHall_Text_DraconidRepSmartContestant3Uniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_ContestHall_EventScript_SmartContestant3)
+    }
+}
+
+text LilycoveCity_ContestHall_Text_DraconidRepSmartContestant3Uniform {
+    format("If my POKéMON pulls a smart move next, the crowd will go wild!\p"
+           "Unless TEAM MAGMA scares them all off first.")
+}
+
+// Receptionist at (16, 25) (vanilla: "Oh, dear, no! My darling ZUBAT's LEECH LIFE is so cute I kept…")
+script LilycoveCity_ContestHall_EventScript_DraconidRepSmartContestant4 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_ContestHall_Text_DraconidRepSmartContestant4Uniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_ContestHall_EventScript_SmartContestant4)
+    }
+}
+
+text LilycoveCity_ContestHall_Text_DraconidRepSmartContestant4Uniform {
+    format("Oh, dear, no! Nobody appreciates my ZUBAT's LEECH LIFE!\p"
+           "You do? …You're TEAM MAGMA. That doesn't count.")
+}
+
+// Old woman at (8, 24) (vanilla: "Kiyaaah! You're beautiful, Grandpa!")
+script LilycoveCity_ContestHall_EventScript_DraconidRepSmartContestAudience1 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_ContestHall_Text_DraconidRepSmartContestAudience1Uniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_ContestHall_EventScript_SmartContestAudience1)
+    }
+}
+
+text LilycoveCity_ContestHall_Text_DraconidRepSmartContestAudience1Uniform {
+    format("Kiyaaah! You're beautiful, Grandpa!\p"
+           "…Who invited TEAM MAGMA? Shoo, you're blocking my view!")
+}
+
+// Woman at (18, 24) (vanilla: "When all's said and done, I still love SMARTNESS CONTESTS.")
+script LilycoveCity_ContestHall_EventScript_DraconidRepSmartContestAudience4 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_ContestHall_Text_DraconidRepSmartContestAudience4Uniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_ContestHall_EventScript_SmartContestAudience4)
+    }
+}
+
+text LilycoveCity_ContestHall_Text_DraconidRepSmartContestAudience4Uniform {
+    format("I still love SMARTNESS CONTESTS. That intellectual green color…\p"
+           "So much nicer than TEAM MAGMA red.")
+}
+
+// Boy at (8, 22) (vanilla: "Even when TRAINERS enter the same kind of POKéMON, they all seem…")
+script LilycoveCity_ContestHall_EventScript_DraconidRepSmartContestAudience2 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_ContestHall_Text_DraconidRepSmartContestAudience2Uniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_ContestHall_EventScript_SmartContestAudience2)
+    }
+}
+
+text LilycoveCity_ContestHall_Text_DraconidRepSmartContestAudience2Uniform {
+    format("Every TRAINER uses different appeals, the way they battle differently.\p"
+           "What's TEAM MAGMA's style? Burning down the stage?")
+}
+
+// BEAUTY CONTEST MC at (24, 10) (vanilla: "MC: Are you entering the BEAUTY CONTEST, too? Good luck!")
+script LilycoveCity_ContestHall_EventScript_DraconidRepBeautyContestMC {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_ContestHall_Text_DraconidRepBeautyContestMCUniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_ContestHall_EventScript_BeautyContestMC)
+    }
+}
+
+text LilycoveCity_ContestHall_Text_DraconidRepBeautyContestMCUniform {
+    format("MC: Are you entering the BEAUTY CONTEST, too?\p"
+           "In that uniform? …Well, good luck!")
+}
+
+// BEAUTY CONTEST JUDGE at (27, 10) (vanilla: "JUDGE: Ah, every POKéMON here is a model of pristine beauty!")
+script LilycoveCity_ContestHall_EventScript_DraconidRepBeautyContestJudge {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_ContestHall_Text_DraconidRepBeautyContestJudgeUniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_ContestHall_EventScript_BeautyContestJudge)
+    }
+}
+
+text LilycoveCity_ContestHall_Text_DraconidRepBeautyContestJudgeUniform {
+    format("JUDGE: Every POKéMON here is a model of pristine beauty!\p"
+           "Why, I nearly scored your uniform by mistake. Zero points.")
+}
+
+// Woman at (22, 13) (vanilla: "A POKéMON this beautiful… There isn't another one like it.")
+script LilycoveCity_ContestHall_EventScript_DraconidRepBeautyContestant1 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_ContestHall_Text_DraconidRepBeautyContestant1Uniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_ContestHall_EventScript_BeautyContestant1)
+    }
+}
+
+text LilycoveCity_ContestHall_Text_DraconidRepBeautyContestant1Uniform {
+    format("A POKéMON this beautiful… Everyone's eyes will be glued to my beauty.\p"
+           "Not to the TEAM MAGMA grunt in the crowd, I hope.")
+}
+
+// Little girl at (24, 13) (vanilla: "Waaaah! I brushed and groomed my POKéMON carefully for this CONTEST…")
+script LilycoveCity_ContestHall_EventScript_DraconidRepBeautyContestant2 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_ContestHall_Text_DraconidRepBeautyContestant2Uniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_ContestHall_EventScript_BeautyContestant2)
+    }
+}
+
+text LilycoveCity_ContestHall_Text_DraconidRepBeautyContestant2Uniform {
+    format("Waaaah! I overdid the grooming and my POKéMON's coat went scraggly!\p"
+           "And now TEAM MAGMA's laughing at me! Waaaah!")
+}
+
+// Psychic at (26, 13) (vanilla: "This AURORA BEAM is so dazzling, the JUDGE won't be able to see it.")
+script LilycoveCity_ContestHall_EventScript_DraconidRepBeautyContestant3 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_ContestHall_Text_DraconidRepBeautyContestant3Uniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_ContestHall_EventScript_BeautyContestant3)
+    }
+}
+
+text LilycoveCity_ContestHall_Text_DraconidRepBeautyContestant3Uniform {
+    format("This AURORA BEAM is so dazzling, the JUDGE won't see a thing!\p"
+           "Maybe I'll dazzle that TEAM MAGMA grunt into leaving.")
+}
+
+// Woman at (28, 13) (vanilla: "This pretty POKéMON looks just like me when I was younger.")
+script LilycoveCity_ContestHall_EventScript_DraconidRepBeautyContestant4 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_ContestHall_Text_DraconidRepBeautyContestant4Uniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_ContestHall_EventScript_BeautyContestant4)
+    }
+}
+
+text LilycoveCity_ContestHall_Text_DraconidRepBeautyContestant4Uniform {
+    format("This pretty POKéMON looks just like me when I was younger.\p"
+           "A TEAM MAGMA grunt just snorted. Did I say something funny?")
+}
+
+// Woman at (20, 10) (vanilla: "You know, if I win at a BEAUTY CONTEST, sure it makes me happy.…")
+script LilycoveCity_ContestHall_EventScript_DraconidRepBeautyContestAudience1 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_ContestHall_Text_DraconidRepBeautyContestAudience1Uniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_ContestHall_EventScript_BeautyContestAudience1)
+    }
+}
+
+text LilycoveCity_ContestHall_Text_DraconidRepBeautyContestAudience1Uniform {
+    format("Winning a BEAUTY CONTEST makes me happy. More than usual.\p"
+           "Seeing TEAM MAGMA here makes me less happy than usual.")
+}
+
+// Woman at (30, 11) (vanilla: "You can't always win on just beauty alone.")
+script LilycoveCity_ContestHall_EventScript_DraconidRepBeautyContestAudience3 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_ContestHall_Text_DraconidRepBeautyContestAudience3Uniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_ContestHall_EventScript_BeautyContestAudience3)
+    }
+}
+
+text LilycoveCity_ContestHall_Text_DraconidRepBeautyContestAudience3Uniform {
+    format("You can't win on beauty alone. Grooming is the key.\p"
+           "That uniform could use some grooming, TEAM MAGMA.")
+}
+
+// Man at (26, 8) (vanilla: "Wahahahah! Will you take a gander at all those pretty POKéMON! I…")
+script LilycoveCity_ContestHall_EventScript_DraconidRepBeautyContestAudience2 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_ContestHall_Text_DraconidRepBeautyContestAudience2Uniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_ContestHall_EventScript_BeautyContestAudience2)
+    }
+}
+
+text LilycoveCity_ContestHall_Text_DraconidRepBeautyContestAudience2Uniform {
+    format("Wahahahah! Look at all those pretty POKéMON! I love this glitz!\p"
+           "Even TEAM MAGMA came to see the glitz! Wahahah! …Wait, really?")
+}
+
+// Camper at (13, 20) (vanilla: "I think the POKéMON look smarter than their TRAINERS. By a lot.")
+script LilycoveCity_ContestHall_EventScript_DraconidRepSmartContestAudience3 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_ContestHall_Text_DraconidRepSmartContestAudience3Uniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_ContestHall_EventScript_SmartContestAudience3)
+    }
+}
+
+text LilycoveCity_ContestHall_Text_DraconidRepSmartContestAudience3Uniform {
+    format("The POKéMON look smarter than their TRAINERS. By a lot.\p"
+           "Yours, too. Especially yours, TEAM MAGMA.")
+}
+
+// CUTE CONTEST MC at (36, 22) (vanilla: "MC: Uh-oh! Hello! We're in the middle of a CONTEST!")
+script LilycoveCity_ContestHall_EventScript_DraconidRepCuteContestMC {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_ContestHall_Text_DraconidRepCuteContestMCUniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_ContestHall_EventScript_CuteContestMC)
+    }
+}
+
+text LilycoveCity_ContestHall_Text_DraconidRepCuteContestMCUniform {
+    format("MC: Uh-oh! Hello! We're in the middle of a CONTEST!\p"
+           "And TEAM MAGMA, too? Please enter at the counter like everyone else, okay?")
+}
+
+// CUTE CONTEST JUDGE at (39, 22) (vanilla: "JUDGE: Oh, such charming and cute appeals!")
+script LilycoveCity_ContestHall_EventScript_DraconidRepCuteContestJudge {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_ContestHall_Text_DraconidRepCuteContestJudgeUniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_ContestHall_EventScript_CuteContestJudge)
+    }
+}
+
+text LilycoveCity_ContestHall_Text_DraconidRepCuteContestJudgeUniform {
+    format("JUDGE: Oh, such charming and cute appeals!\p"
+           "Oh, my goodness! A TEAM MAGMA grunt! Not charming at all!")
+}
+
+// Boy at (34, 25) (vanilla: "Oh, no… My sweet AZURILL was distracted by another POKéMON.")
+script LilycoveCity_ContestHall_EventScript_DraconidRepCuteContestant1 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_ContestHall_Text_DraconidRepCuteContestant1Uniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_ContestHall_EventScript_CuteContestant1)
+    }
+}
+
+text LilycoveCity_ContestHall_Text_DraconidRepCuteContestant1Uniform {
+    format("Oh, no… My sweet AZURILL got distracted.\p"
+           "It was staring at your red uniform. Thanks a lot.")
+}
+
+// Girl at (36, 25) (vanilla: "My POKéMON has never won in a battle, but put it in a CONTEST and…")
+script LilycoveCity_ContestHall_EventScript_DraconidRepCuteContestant2 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_ContestHall_Text_DraconidRepCuteContestant2Uniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_ContestHall_EventScript_CuteContestant2)
+    }
+}
+
+text LilycoveCity_ContestHall_Text_DraconidRepCuteContestant2Uniform {
+    format("My POKéMON never wins battles, but in a CONTEST, look out!\p"
+           "So no battling, TEAM MAGMA. Not here.")
+}
+
+// Boy at (38, 25) (vanilla: "My POKéMON's PETAL DANCE is a marvel of elegance.")
+script LilycoveCity_ContestHall_EventScript_DraconidRepCuteContestant3 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_ContestHall_Text_DraconidRepCuteContestant3Uniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_ContestHall_EventScript_CuteContestant3)
+    }
+}
+
+text LilycoveCity_ContestHall_Text_DraconidRepCuteContestant3Uniform {
+    format("My POKéMON's PETAL DANCE is a marvel of elegance.\p"
+           "I won't let anyone disturb it. Especially not TEAM MAGMA.")
+}
+
+// Old woman at (40, 25) (vanilla: "Everyone's POKéMON are very cute.")
+script LilycoveCity_ContestHall_EventScript_DraconidRepCuteContestant4 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_ContestHall_Text_DraconidRepCuteContestant4Uniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_ContestHall_EventScript_CuteContestant4)
+    }
+}
+
+text LilycoveCity_ContestHall_Text_DraconidRepCuteContestant4Uniform {
+    format("Everyone's POKéMON are cute, but mine would be cuter.\p"
+           "A TEAM MAGMA POKéMON entering the CUTE CONTEST? Unthinkable.")
+}
+
+// Woman at (32, 23) (vanilla: "My child is in this CONTEST.")
+script LilycoveCity_ContestHall_EventScript_DraconidRepCuteContestAudience1 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_ContestHall_Text_DraconidRepCuteContestAudience1Uniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_ContestHall_EventScript_CuteContestAudience1)
+    }
+}
+
+text LilycoveCity_ContestHall_Text_DraconidRepCuteContestAudience1Uniform {
+    format("My child is in this CONTEST.\p"
+           "Please stay away from my child, TEAM MAGMA. And from the stage.")
+}
+
+// Man at (37, 20) (vanilla: "I think that girl over there is the cutest of the lot.")
+script LilycoveCity_ContestHall_EventScript_DraconidRepCuteContestAudience3 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_ContestHall_Text_DraconidRepCuteContestAudience3Uniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_ContestHall_EventScript_CuteContestAudience3)
+    }
+}
+
+text LilycoveCity_ContestHall_Text_DraconidRepCuteContestAudience3Uniform {
+    format("That girl over there is the cutest of the lot.\p"
+           "What's that? I'm supposed to watch the POKéMON? And you're TEAM MAGMA? Huh.")
+}
+
+// Little girl at (42, 24) (vanilla: "Ohh, seeing all these cute POKéMON, they make we want to get my own!")
+script LilycoveCity_ContestHall_EventScript_DraconidRepCuteContestAudience2 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_ContestHall_Text_DraconidRepCuteContestAudience2Uniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_ContestHall_EventScript_CuteContestAudience2)
+    }
+}
+
+text LilycoveCity_ContestHall_Text_DraconidRepCuteContestAudience2Uniform {
+    format("All these cute POKéMON make me want my own!\p"
+           "I won't catch any near TEAM MAGMA, though. They might get scared.")
+}
+
+// Sailor at (23, 26) (vanilla: "Whoa, isn't this place humongous!")
+script LilycoveCity_ContestHall_EventScript_DraconidRepSailor {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_ContestHall_Text_DraconidRepSailorUniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_ContestHall_EventScript_Sailor)
+    }
+}
+
+text LilycoveCity_ContestHall_Text_DraconidRepSailorUniform {
+    format("Whoa, isn't this place humongous! The tension in the air…\p"
+           "And now TEAM MAGMA's here. More tension than ever.")
+}
+
+// CONTEST receptionist at (14, 2) (vanilla: "Please come in through here. Good luck!")
+script LilycoveCity_ContestLobby_EventScript_DraconidRepContestReceptionist {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(LilycoveCity_ContestLobby_Text_DraconidRepContestReceptionistUniform, MSGBOX_DEFAULT)
+    }
+    goto(LilycoveCity_ContestLobby_EventScript_ContestReceptionist)
+}
+
+text LilycoveCity_ContestLobby_Text_DraconidRepContestReceptionistUniform {
+    format("Welcome to the… Oh. A TEAM MAGMA member.\p"
+           "The CONTEST rules say anyone may enter. I'll follow them.")
+}
+
+// CONTEST link receptionist at (15, 2) (vanilla: "Welcome! This is the POKéMON CONTEST link reception counter.")
+script LilycoveCity_ContestLobby_EventScript_DraconidRepLinkContestReceptionist {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(LilycoveCity_ContestLobby_Text_DraconidRepLinkContestReceptionistUniform, MSGBOX_DEFAULT)
+    }
+    goto(LilycoveCity_ContestLobby_EventScript_LinkContestReceptionist)
+}
+
+text LilycoveCity_ContestLobby_Text_DraconidRepLinkContestReceptionistUniform {
+    format("Welcome… The link counter is open to all TRAINERS. Even TEAM MAGMA.")
+}
+
+// Man at (26, 9) (vanilla: "Okay! Today's going to be the day that I set a new BLENDER speed…")
+script LilycoveCity_ContestLobby_EventScript_DraconidRepBlender2Man {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(LilycoveCity_ContestLobby_Text_DraconidRepBlender2ManUniform, MSGBOX_DEFAULT)
+    }
+    goto(BerryBlender_EventScript_Blender2Man)
+}
+
+text LilycoveCity_ContestLobby_Text_DraconidRepBlender2ManUniform {
+    format("Hey, are you trying to blend with us, TEAM MAGMA? Hmph. Okay, fine.")
+}
+
+// Black belt at (18, 8) (vanilla: "Hoo, boy… Master Rank CONTESTS, here I come.")
+script LilycoveCity_ContestLobby_EventScript_DraconidRepBlackBelt {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_ContestLobby_Text_DraconidRepBlackBeltUniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_ContestLobby_EventScript_BlackBelt)
+    }
+}
+
+text LilycoveCity_ContestLobby_Text_DraconidRepBlackBeltUniform {
+    format("Hoo, boy… Master Rank CONTESTS, here I come!\p"
+           "My POKéMON's cuteness will melt even a TEAM MAGMA heart. Uheheheh.")
+}
+
+// Girl at (4, 9) (vanilla: "You can see a whole variety of POKéMON here.")
+script LilycoveCity_ContestLobby_EventScript_DraconidRepGirl {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_ContestLobby_Text_DraconidRepGirlUniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_ContestLobby_EventScript_Girl)
+    }
+}
+
+text LilycoveCity_ContestLobby_Text_DraconidRepGirlUniform {
+    format("You can see all kinds of POKéMON here. That's why I stroll by daily.\p"
+           "All kinds of people, too. Even TEAM MAGMA, apparently.")
+}
+
+// Artist at (3, 4) (vanilla: "Wow, coming out to a CONTEST is a feast for these eyes!")
+script LilycoveCity_ContestLobby_EventScript_DraconidRepArtist {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_ContestLobby_Text_DraconidRepArtistUniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_ContestLobby_EventScript_Artist)
+    }
+}
+
+text LilycoveCity_ContestLobby_Text_DraconidRepArtistUniform {
+    format("All these POKéMON just scream to be painted!\p"
+           "You, though, TEAM MAGMA? I'd need a lot more red paint.")
+}
+
+// Boy at (23, 8) (vanilla: "Let's get blending already!")
+script LilycoveCity_ContestLobby_EventScript_DraconidRepBlender3Boy {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(LilycoveCity_ContestLobby_Text_DraconidRepBlender3BoyUniform, MSGBOX_DEFAULT)
+    }
+    goto(LilycoveCity_ContestLobby_EventScript_Blender3Boy)
+}
+
+text LilycoveCity_ContestLobby_Text_DraconidRepBlender3BoyUniform {
+    format("TEAM MAGMA wants to blend with us? Ugh, fine.")
+}
+
+// Little girl at (28, 9) (vanilla: "I'm going to make delicious {POKEBLOCK}S and make my POKéMON cuter.")
+script LilycoveCity_ContestLobby_EventScript_DraconidRepBlender2Twin {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(LilycoveCity_ContestLobby_Text_DraconidRepBlender2TwinUniform, MSGBOX_DEFAULT)
+    }
+    goto(BerryBlender_EventScript_Blender2Twin)
+}
+
+text LilycoveCity_ContestLobby_Text_DraconidRepBlender2TwinUniform {
+    format("You want to make {POKEBLOCK}S, TEAM MAGMA? Okay…")
+}
+
+// Fisherman at (5, 6) (vanilla: "Day in and day out, I lavished my care on this POKéMON.")
+script LilycoveCity_ContestLobby_EventScript_DraconidRepFisherman {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_ContestLobby_Text_DraconidRepFishermanUniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_ContestLobby_EventScript_Fisherman)
+    }
+}
+
+text LilycoveCity_ContestLobby_Text_DraconidRepFishermanUniform {
+    format("Day after day, I lavished care on this POKéMON. Today, victory is mine!\p"
+           "Unless TEAM MAGMA sabotages me. You won't, right? Right?")
+}
+
+// Man at (0, 8) (vanilla: "The TOUGHNESS CONTEST is like extreme, man!")
+script LilycoveCity_ContestLobby_EventScript_DraconidRepFatMan {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_ContestLobby_Text_DraconidRepFatManUniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_ContestLobby_EventScript_FatMan)
+    }
+}
+
+text LilycoveCity_ContestLobby_Text_DraconidRepFatManUniform {
+    format("The TOUGHNESS CONTEST is extreme, man! Those muscular appeals…\p"
+           "TEAM MAGMA should enter. You guys love extreme stuff.")
+}
+
+// Boy at (8, 7) (vanilla: "I made {POKEBLOCK}S with Mom, Dad, and Big Sister. They turned out…")
+script LilycoveCity_ContestLobby_EventScript_DraconidRepNinjaBoy {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_ContestLobby_Text_DraconidRepNinjaBoyUniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_ContestLobby_EventScript_NinjaBoy)
+    }
+}
+
+text LilycoveCity_ContestLobby_Text_DraconidRepNinjaBoyUniform {
+    format("I made {POKEBLOCK}S with my family. They turned out great!\p"
+           "Do TEAM MAGMA grunts make {POKEBLOCK}S together? That'd be funny.")
+}
+
+// Woman at (22, 9) (vanilla: "Oh, dear! You look as if you're good at blending. Would you like…")
+script LilycoveCity_ContestLobby_EventScript_DraconidRepBlender3PokefanF {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(LilycoveCity_ContestLobby_Text_DraconidRepBlender3PokefanFUniform, MSGBOX_DEFAULT)
+    }
+    goto(BerryBlender_EventScript_Blender3PokefanF)
+}
+
+text LilycoveCity_ContestLobby_Text_DraconidRepBlender3PokefanFUniform {
+    format("Oh, dear! A TEAM MAGMA member… Well, everyone's welcome at the BLENDER.")
+}
+
+// Old man at (26, 5) (vanilla: "I love making {POKEBLOCK}S.")
+script LilycoveCity_ContestLobby_EventScript_DraconidRepBlender1ExpertM {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(LilycoveCity_ContestLobby_Text_DraconidRepBlender1ExpertMUniform, MSGBOX_DEFAULT)
+    }
+    goto(BerryBlender_EventScript_Blender1ExpertM)
+}
+
+text LilycoveCity_ContestLobby_Text_DraconidRepBlender1ExpertMUniform {
+    format("TEAM MAGMA, at the BERRY BLENDER? My, my.")
+}
+
+// Girl at (24, 9) (vanilla: "I wonder what kind of {POKEBLOCK} I'll get? This is so exciting!")
+script LilycoveCity_ContestLobby_EventScript_DraconidRepBlender3Girl {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(LilycoveCity_ContestLobby_Text_DraconidRepBlender3GirlUniform, MSGBOX_DEFAULT)
+    }
+    goto(LilycoveCity_ContestLobby_EventScript_Blender3Girl)
+}
+
+text LilycoveCity_ContestLobby_Text_DraconidRepBlender3GirlUniform {
+    format("Is TEAM MAGMA going to blend with us? So exciting! And so scary!")
+}
+
+// Man at (27, 3) (vanilla: "Wickedly fast!")
+script LilycoveCity_ContestLobby_EventScript_DraconidRepBlendMasterOnlooker2 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_ContestLobby_Text_DraconidRepBlendMasterOnlooker2Uniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_ContestLobby_EventScript_BlendMasterOnlooker2)
+    }
+}
+
+text LilycoveCity_ContestLobby_Text_DraconidRepBlendMasterOnlooker2Uniform {
+    format("Wickedly fast!\p"
+           "…Hey, no cutting in to watch, TEAM MAGMA.")
+}
+
+// Camper at (28, 3) (vanilla: "What an expert!")
+script LilycoveCity_ContestLobby_EventScript_DraconidRepBlendMasterOnlooker3 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_ContestLobby_Text_DraconidRepBlendMasterOnlooker3Uniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_ContestLobby_EventScript_BlendMasterOnlooker3)
+    }
+}
+
+text LilycoveCity_ContestLobby_Text_DraconidRepBlendMasterOnlooker3Uniform {
+    format("What an expert!\p"
+           "You'd never blend that fast, TEAM MAGMA. You're too busy plotting.")
+}
+
+// Little girl at (28, 7) (vanilla: "When I blended with the MASTER, we made amazing {POKEBLOCK}S!")
+script LilycoveCity_ContestLobby_EventScript_DraconidRepBlendMasterOnlooker4 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_ContestLobby_Text_DraconidRepBlendMasterOnlooker4Uniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_ContestLobby_EventScript_BlendMasterOnlooker4)
+    }
+}
+
+text LilycoveCity_ContestLobby_Text_DraconidRepBlendMasterOnlooker4Uniform {
+    format("When I blended with the MASTER, we made amazing {POKEBLOCK}S!\p"
+           "Are you going to blend with him, TEAM MAGMA? He blends with anyone…")
+}
+
+// Scientist at (26, 7) (vanilla: "Eyes that track the arrow with machinelike intensity…")
+script LilycoveCity_ContestLobby_EventScript_DraconidRepBlendMasterOnlooker5 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_ContestLobby_Text_DraconidRepBlendMasterOnlooker5Uniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_ContestLobby_EventScript_BlendMasterOnlooker5)
+    }
+}
+
+text LilycoveCity_ContestLobby_Text_DraconidRepBlendMasterOnlooker5Uniform {
+    format("Eyes that track the arrow with machinelike intensity…\p"
+           "Not the eyes of a TEAM MAGMA grunt. Those are shifty.")
+}
+
+// Woman at (27, 7) (vanilla: "The BLEND MASTER's supposed to work on his skills deep in the…")
+script LilycoveCity_ContestLobby_EventScript_DraconidRepBlendMasterOnlooker6 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_ContestLobby_Text_DraconidRepBlendMasterOnlooker6Uniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_ContestLobby_EventScript_BlendMasterOnlooker6)
+    }
+}
+
+text LilycoveCity_ContestLobby_Text_DraconidRepBlendMasterOnlooker6Uniform {
+    format("The BLEND MASTER trains deep in the mountains.\p"
+           "Clean mountain air must be good for blending.\p"
+           "TEAM MAGMA should try it instead of volcano smoke.")
+}
+
+// Boy at (26, 3) (vanilla: "Whoa! Awesome!")
+script LilycoveCity_ContestLobby_EventScript_DraconidRepBlendMasterOnlooker1 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_ContestLobby_Text_DraconidRepBlendMasterOnlooker1Uniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_ContestLobby_EventScript_BlendMasterOnlooker1)
+    }
+}
+
+text LilycoveCity_ContestLobby_Text_DraconidRepBlendMasterOnlooker1Uniform {
+    format("Whoa! Awesome!\p"
+           "Huh? A TEAM MAGMA grunt? Whoa… Less awesome.")
+}
+
+// BLEND MASTER at (26, 5) (vanilla: "BLEND MASTER: Indeed I am! The BLEND MASTER am I!")
+script LilycoveCity_ContestLobby_EventScript_DraconidRepBlendMaster {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(LilycoveCity_ContestLobby_Text_DraconidRepBlendMasterUniform, MSGBOX_DEFAULT)
+    }
+    goto(LilycoveCity_ContestLobby_EventScript_BlendMaster)
+}
+
+text LilycoveCity_ContestLobby_Text_DraconidRepBlendMasterUniform {
+    format("BLEND MASTER: Hmm! A TEAM MAGMA grunt, come to test my mastery?")
+}
+
+// Little girl at (9, 10) (vanilla: "Yippee! The lady at the reception counter gave me a case for…")
+script LilycoveCity_ContestLobby_EventScript_DraconidRepLittleGirl {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_ContestLobby_Text_DraconidRepLittleGirlUniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_ContestLobby_EventScript_LittleGirl)
+    }
+}
+
+text LilycoveCity_ContestLobby_Text_DraconidRepLittleGirlUniform {
+    format("Yippee! The lady at the counter gave me a case for {POKEBLOCK}S!\p"
+           "You can't have it, TEAM MAGMA. It's mine!")
+}

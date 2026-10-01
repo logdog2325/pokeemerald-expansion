@@ -25,7 +25,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "MauvilleCity_GameCorner_EventScript_Woman2",
+      "script": "MauvilleCity_GameCorner_EventScript_DraconidRepWoman2",
       "flag": "0"
     },
     {
@@ -38,7 +38,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "MauvilleCity_GameCorner_EventScript_Gentleman",
+      "script": "MauvilleCity_GameCorner_EventScript_DraconidRepGentleman",
       "flag": "0"
     },
     {
@@ -51,7 +51,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "MauvilleCity_GameCorner_EventScript_CoinsClerk",
+      "script": "MauvilleCity_GameCorner_EventScript_DraconidRepCoinsClerk",
       "flag": "0"
     },
     {
@@ -64,7 +64,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "MauvilleCity_GameCorner_EventScript_PrizeCornerDolls",
+      "script": "MauvilleCity_GameCorner_EventScript_DraconidRepPrizeCornerDolls",
       "flag": "0"
     },
     {
@@ -77,7 +77,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "MauvilleCity_GameCorner_EventScript_Girl",
+      "script": "MauvilleCity_GameCorner_EventScript_DraconidRepGirl",
       "flag": "0"
     },
     {
@@ -90,7 +90,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "MauvilleCity_GameCorner_EventScript_PokefanM",
+      "script": "MauvilleCity_GameCorner_EventScript_DraconidRepPokefanM",
       "flag": "0"
     },
     {
@@ -103,7 +103,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "MauvilleCity_GameCorner_EventScript_OldMan",
+      "script": "MauvilleCity_GameCorner_EventScript_DraconidRepOldMan",
       "flag": "0"
     },
     {
@@ -116,7 +116,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "MauvilleCity_GameCorner_EventScript_Cook",
+      "script": "MauvilleCity_GameCorner_EventScript_DraconidRepCook",
       "flag": "0"
     },
     {
@@ -129,7 +129,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "MauvilleCity_GameCorner_EventScript_PrizeCornerTMs",
+      "script": "MauvilleCity_GameCorner_EventScript_DraconidRepPrizeCornerTMs",
       "flag": "0"
     },
     {
@@ -142,7 +142,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "MauvilleCity_GameCorner_EventScript_Man",
+      "script": "MauvilleCity_GameCorner_EventScript_DraconidRepMan",
       "flag": "0"
     },
     {
@@ -155,7 +155,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "MauvilleCity_GameCorner_EventScript_Maniac",
+      "script": "MauvilleCity_GameCorner_EventScript_DraconidRepManiac",
       "flag": "0"
     },
     {
@@ -168,7 +168,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "MauvilleCity_GameCorner_EventScript_Woman",
+      "script": "MauvilleCity_GameCorner_EventScript_DraconidRepWoman",
       "flag": "0"
     }
   ],

@@ -54,7 +54,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "RustboroCity_EventScript_FatMan",
+      "script": "RustboroCity_EventScript_DraconidRepFatMan",
       "flag": "0"
     },
     {
@@ -67,7 +67,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "RustboroCity_EventScript_NinjaBoy",
+      "script": "RustboroCity_EventScript_DraconidRepNinjaBoy",
       "flag": "0"
     },
     {
@@ -93,7 +93,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "RustboroCity_EventScript_Boy2",
+      "script": "RustboroCity_EventScript_DraconidRepBoy2",
       "flag": "0"
     },
     {
@@ -120,7 +120,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "RustboroCity_EventScript_LittleBoy",
+      "script": "RustboroCity_EventScript_DraconidRepLittleBoy",
       "flag": "0"
     },
     {
@@ -134,7 +134,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "RustboroCity_EventScript_LittleGirl",
+      "script": "RustboroCity_EventScript_DraconidRepLittleGirl",
       "flag": "0"
     },
     {
@@ -175,7 +175,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "RustboroCity_EventScript_DevonEmployee2",
+      "script": "RustboroCity_EventScript_DraconidRepDevonEmployee2",
       "flag": "0"
     },
     {

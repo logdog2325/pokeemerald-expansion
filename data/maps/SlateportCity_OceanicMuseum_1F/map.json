@@ -25,7 +25,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "SlateportCity_OceanicMuseum_1F_EventScript_EntranceAttendant",
+      "script": "SlateportCity_OceanicMuseum_1F_EventScript_DraconidRepEntranceAttendant",
       "flag": "0"
     },
     {
@@ -38,7 +38,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "SlateportCity_OceanicMuseum_1F_EventScript_MuseumGrunt3",
+      "script": "SlateportCity_OceanicMuseum_1F_EventScript_DraconidRepMuseumGrunt3",
       "flag": "FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_AQUA_GRUNTS"
     },
     {
@@ -51,7 +51,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "SlateportCity_OceanicMuseum_1F_EventScript_MuseumGrunt4",
+      "script": "SlateportCity_OceanicMuseum_1F_EventScript_DraconidRepMuseumGrunt4",
       "flag": "FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_AQUA_GRUNTS"
     },
     {
@@ -64,7 +64,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "SlateportCity_OceanicMuseum_1F_EventScript_MuseumGrunt2",
+      "script": "SlateportCity_OceanicMuseum_1F_EventScript_DraconidRepMuseumGrunt2",
       "flag": "FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_AQUA_GRUNTS"
     },
     {
@@ -77,7 +77,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "SlateportCity_OceanicMuseum_1F_EventScript_MuseumGrunt1",
+      "script": "SlateportCity_OceanicMuseum_1F_EventScript_DraconidRepMuseumGrunt1",
       "flag": "FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_AQUA_GRUNTS"
     },
     {
@@ -90,7 +90,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "SlateportCity_OceanicMuseum_1F_EventScript_MuseumGrunt5",
+      "script": "SlateportCity_OceanicMuseum_1F_EventScript_DraconidRepMuseumGrunt5",
       "flag": "FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_AQUA_GRUNTS"
     },
     {
@@ -103,7 +103,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "SlateportCity_OceanicMuseum_1F_EventScript_EntranceAttendant",
+      "script": "SlateportCity_OceanicMuseum_1F_EventScript_DraconidRepEntranceAttendant2",
       "flag": "0"
     },
     {
@@ -116,7 +116,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "SlateportCity_OceanicMuseum_1F_EventScript_MuseumGrunt6",
+      "script": "SlateportCity_OceanicMuseum_1F_EventScript_DraconidRepMuseumGrunt6",
       "flag": "FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_AQUA_GRUNTS"
     },
     {
@@ -129,7 +129,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "SlateportCity_OceanicMuseum_1F_EventScript_MuseumPatron1",
+      "script": "SlateportCity_OceanicMuseum_1F_EventScript_DraconidRepMuseumPatron1",
       "flag": "FLAG_HIDE_SLATEPORT_MUSEUM_POPULATION"
     },
     {
@@ -142,7 +142,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "SlateportCity_OceanicMuseum_1F_EventScript_MuseumPatron2",
+      "script": "SlateportCity_OceanicMuseum_1F_EventScript_DraconidRepMuseumPatron2",
       "flag": "FLAG_HIDE_SLATEPORT_MUSEUM_POPULATION"
     },
     {
@@ -155,7 +155,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "SlateportCity_OceanicMuseum_1F_EventScript_MuseumPatron3",
+      "script": "SlateportCity_OceanicMuseum_1F_EventScript_DraconidRepMuseumPatron3",
       "flag": "FLAG_HIDE_SLATEPORT_MUSEUM_POPULATION"
     },
     {
@@ -168,7 +168,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "SlateportCity_OceanicMuseum_1F_EventScript_MuseumPatron4",
+      "script": "SlateportCity_OceanicMuseum_1F_EventScript_DraconidRepMuseumPatron4",
       "flag": "FLAG_HIDE_SLATEPORT_MUSEUM_POPULATION"
     },
     {
@@ -195,7 +195,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "SlateportCity_OceanicMuseum_1F_EventScript_Reporter",
+      "script": "SlateportCity_OceanicMuseum_1F_EventScript_DraconidRepReporter",
       "flag": "FLAG_HIDE_SLATEPORT_MUSEUM_POPULATION"
     },
     {

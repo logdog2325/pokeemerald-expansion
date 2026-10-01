@@ -81,6 +81,841 @@ LilycoveCity_EventScript_DraconidRepExpertF_3:
 	return
 
 
+LilycoveCity_EventScript_DraconidRepSailor2::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq LilycoveCity_EventScript_DraconidRepSailor2_2
+LilycoveCity_EventScript_DraconidRepSailor2_1:
+	goto LilycoveCity_EventScript_Sailor2
+	return
+
+LilycoveCity_EventScript_DraconidRepSailor2_2:
+	lock
+	faceplayer
+	msgbox LilycoveCity_Text_DraconidRepSailor2Uniform, MSGBOX_DEFAULT
+	goto LilycoveCity_EventScript_DraconidRepSailor2_1
+
+
+LilycoveCity_EventScript_DraconidRepGirl::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq LilycoveCity_EventScript_DraconidRepGirl_2
+LilycoveCity_EventScript_DraconidRepGirl_1:
+	goto LilycoveCity_EventScript_Girl
+	return
+
+LilycoveCity_EventScript_DraconidRepGirl_2:
+	lock
+	faceplayer
+	msgbox LilycoveCity_Text_DraconidRepGirlUniform, MSGBOX_DEFAULT
+	goto LilycoveCity_EventScript_DraconidRepGirl_1
+
+
+LilycoveCity_EventScript_DraconidRepMan2::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, LilycoveCity_EventScript_DraconidRepMan2_2
+	goto LilycoveCity_EventScript_Man2
+	return
+
+LilycoveCity_EventScript_DraconidRepMan2_2:
+	msgbox LilycoveCity_Text_DraconidRepMan2Uniform, MSGBOX_NPC
+	return
+
+
+LilycoveCity_EventScript_DraconidRepWoman2::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq LilycoveCity_EventScript_DraconidRepWoman2_2
+LilycoveCity_EventScript_DraconidRepWoman2_1:
+	goto LilycoveCity_EventScript_Woman2
+	return
+
+LilycoveCity_EventScript_DraconidRepWoman2_2:
+	lock
+	faceplayer
+	msgbox LilycoveCity_Text_DraconidRepWoman2Uniform, MSGBOX_DEFAULT
+	goto LilycoveCity_EventScript_DraconidRepWoman2_1
+
+
+LilycoveCity_EventScript_DraconidRepExpertM1::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, LilycoveCity_EventScript_DraconidRepExpertM1_2
+	goto LilycoveCity_EventScript_ExpertM1
+	return
+
+LilycoveCity_EventScript_DraconidRepExpertM1_2:
+	msgbox LilycoveCity_Text_DraconidRepExpertM1Uniform, MSGBOX_NPC
+	return
+
+
+LilycoveCity_EventScript_DraconidRepExpertM2::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq LilycoveCity_EventScript_DraconidRepExpertM2_2
+LilycoveCity_EventScript_DraconidRepExpertM2_1:
+	goto LilycoveCity_EventScript_ExpertM2
+	return
+
+LilycoveCity_EventScript_DraconidRepExpertM2_2:
+	lock
+	faceplayer
+	msgbox LilycoveCity_Text_DraconidRepExpertM2Uniform, MSGBOX_DEFAULT
+	goto LilycoveCity_EventScript_DraconidRepExpertM2_1
+
+
+LilycoveCity_EventScript_DraconidRepWailmerTrainerGrunt::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq LilycoveCity_EventScript_DraconidRepWailmerTrainerGrunt_2
+LilycoveCity_EventScript_DraconidRepWailmerTrainerGrunt_1:
+	goto LilycoveCity_EventScript_WailmerTrainerGrunt
+	return
+
+LilycoveCity_EventScript_DraconidRepWailmerTrainerGrunt_2:
+	lock
+	faceplayer
+	msgbox LilycoveCity_Text_DraconidRepWailmerTrainerGruntUniform, MSGBOX_DEFAULT
+	goto LilycoveCity_EventScript_DraconidRepWailmerTrainerGrunt_1
+
+
+LilycoveCity_EventScript_DraconidRepAquaGrunt4::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, LilycoveCity_EventScript_DraconidRepAquaGrunt4_2
+	goto LilycoveCity_EventScript_AquaGrunt4
+	return
+
+LilycoveCity_EventScript_DraconidRepAquaGrunt4_2:
+	msgbox LilycoveCity_Text_DraconidRepAquaGrunt4Uniform, MSGBOX_NPC
+	return
+
+
+LilycoveCity_EventScript_DraconidRepAquaGrunt1::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, LilycoveCity_EventScript_DraconidRepAquaGrunt1_2
+	goto LilycoveCity_EventScript_AquaGrunt1
+	return
+
+LilycoveCity_EventScript_DraconidRepAquaGrunt1_2:
+	msgbox LilycoveCity_Text_DraconidRepAquaGrunt1Uniform, MSGBOX_NPC
+	return
+
+
+LilycoveCity_EventScript_DraconidRepAquaGrunt2::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, LilycoveCity_EventScript_DraconidRepAquaGrunt2_2
+	goto LilycoveCity_EventScript_AquaGrunt2
+	return
+
+LilycoveCity_EventScript_DraconidRepAquaGrunt2_2:
+	msgbox LilycoveCity_Text_DraconidRepAquaGrunt2Uniform, MSGBOX_NPC
+	return
+
+
+LilycoveCity_EventScript_DraconidRepAquaGrunt3::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, LilycoveCity_EventScript_DraconidRepAquaGrunt3_2
+	goto LilycoveCity_EventScript_AquaGrunt3
+	return
+
+LilycoveCity_EventScript_DraconidRepAquaGrunt3_2:
+	msgbox LilycoveCity_Text_DraconidRepAquaGrunt3Uniform, MSGBOX_NPC
+	return
+
+
+LilycoveCity_EventScript_DraconidRepBerryGentleman::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq LilycoveCity_EventScript_DraconidRepBerryGentleman_2
+LilycoveCity_EventScript_DraconidRepBerryGentleman_1:
+	goto LilycoveCity_EventScript_BerryGentleman
+	return
+
+LilycoveCity_EventScript_DraconidRepBerryGentleman_2:
+	lock
+	faceplayer
+	msgbox LilycoveCity_Text_DraconidRepBerryGentlemanUniform, MSGBOX_DEFAULT
+	goto LilycoveCity_EventScript_DraconidRepBerryGentleman_1
+
+
+LilycoveCity_EventScript_DraconidRepSchoolKidM::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq LilycoveCity_EventScript_DraconidRepSchoolKidM_2
+LilycoveCity_EventScript_DraconidRepSchoolKidM_1:
+	goto LilycoveCity_EventScript_SchoolKidM
+	return
+
+LilycoveCity_EventScript_DraconidRepSchoolKidM_2:
+	lock
+	faceplayer
+	msgbox LilycoveCity_Text_DraconidRepSchoolKidMUniform, MSGBOX_DEFAULT
+	goto LilycoveCity_EventScript_DraconidRepSchoolKidM_1
+
+
+LilycoveCity_EventScript_DraconidRepWoman1::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, LilycoveCity_EventScript_DraconidRepWoman1_2
+	goto LilycoveCity_EventScript_Woman1
+	return
+
+LilycoveCity_EventScript_DraconidRepWoman1_2:
+	msgbox LilycoveCity_Text_DraconidRepWoman1Uniform, MSGBOX_NPC
+	return
+
+
+LilycoveCity_EventScript_DraconidRepMan1::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, LilycoveCity_EventScript_DraconidRepMan1_2
+	goto LilycoveCity_EventScript_Man1
+	return
+
+LilycoveCity_EventScript_DraconidRepMan1_2:
+	msgbox LilycoveCity_Text_DraconidRepMan1Uniform, MSGBOX_NPC
+	return
+
+
+LilycoveCity_CoveLilyMotel_1F_EventScript_DraconidRepMotelOwner::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq LilycoveCity_CoveLilyMotel_1F_EventScript_DraconidRepMotelOwner_2
+LilycoveCity_CoveLilyMotel_1F_EventScript_DraconidRepMotelOwner_1:
+	goto LilycoveCity_CoveLilyMotel_1F_EventScript_MotelOwner
+	return
+
+LilycoveCity_CoveLilyMotel_1F_EventScript_DraconidRepMotelOwner_2:
+	lock
+	faceplayer
+	msgbox LilycoveCity_CoveLilyMotel_1F_Text_DraconidRepMotelOwnerUniform, MSGBOX_DEFAULT
+	goto LilycoveCity_CoveLilyMotel_1F_EventScript_DraconidRepMotelOwner_1
+
+
+LilycoveCity_CoveLilyMotel_2F_EventScript_DraconidRepScott::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq LilycoveCity_CoveLilyMotel_2F_EventScript_DraconidRepScott_2
+LilycoveCity_CoveLilyMotel_2F_EventScript_DraconidRepScott_1:
+	goto LilycoveCity_CoveLilyMotel_2F_EventScript_Scott
+	return
+
+LilycoveCity_CoveLilyMotel_2F_EventScript_DraconidRepScott_2:
+	lock
+	faceplayer
+	msgbox LilycoveCity_CoveLilyMotel_2F_Text_DraconidRepScottUniform, MSGBOX_DEFAULT
+	goto LilycoveCity_CoveLilyMotel_2F_EventScript_DraconidRepScott_1
+
+
+LilycoveCity_DepartmentStoreElevator_EventScript_DraconidRepAttendant::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq LilycoveCity_DepartmentStoreElevator_EventScript_DraconidRepAttendant_2
+LilycoveCity_DepartmentStoreElevator_EventScript_DraconidRepAttendant_1:
+	goto LilycoveCity_DepartmentStoreElevator_EventScript_Attendant
+	return
+
+LilycoveCity_DepartmentStoreElevator_EventScript_DraconidRepAttendant_2:
+	lock
+	faceplayer
+	msgbox LilycoveCity_DepartmentStoreElevator_Text_DraconidRepAttendantUniform, MSGBOX_DEFAULT
+	goto LilycoveCity_DepartmentStoreElevator_EventScript_DraconidRepAttendant_1
+
+
+LilycoveCity_DepartmentStoreRooftop_EventScript_DraconidRepMan::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq LilycoveCity_DepartmentStoreRooftop_EventScript_DraconidRepMan_2
+LilycoveCity_DepartmentStoreRooftop_EventScript_DraconidRepMan_1:
+	goto LilycoveCity_DepartmentStoreRooftop_EventScript_Man
+	return
+
+LilycoveCity_DepartmentStoreRooftop_EventScript_DraconidRepMan_2:
+	lock
+	faceplayer
+	msgbox LilycoveCity_DepartmentStoreRooftop_Text_DraconidRepManUniform, MSGBOX_DEFAULT
+	goto LilycoveCity_DepartmentStoreRooftop_EventScript_DraconidRepMan_1
+
+
+LilycoveCity_DepartmentStoreRooftop_EventScript_DraconidRepThirstyMan::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, LilycoveCity_DepartmentStoreRooftop_EventScript_DraconidRepThirstyMan_2
+	goto LilycoveCity_DepartmentStoreRooftop_EventScript_ThirstyMan
+	return
+
+LilycoveCity_DepartmentStoreRooftop_EventScript_DraconidRepThirstyMan_2:
+	msgbox LilycoveCity_DepartmentStoreRooftop_Text_DraconidRepThirstyManUniform, MSGBOX_NPC
+	return
+
+
+LilycoveCity_DepartmentStoreRooftop_EventScript_DraconidRepSubstituteTutor::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq LilycoveCity_DepartmentStoreRooftop_EventScript_DraconidRepSubstituteTutor_2
+LilycoveCity_DepartmentStoreRooftop_EventScript_DraconidRepSubstituteTutor_1:
+	goto LilycoveCity_DepartmentStoreRooftop_EventScript_SubstituteTutor
+	return
+
+LilycoveCity_DepartmentStoreRooftop_EventScript_DraconidRepSubstituteTutor_2:
+	lock
+	faceplayer
+	msgbox LilycoveCity_DepartmentStoreRooftop_Text_DraconidRepSubstituteTutorUniform, MSGBOX_DEFAULT
+	goto LilycoveCity_DepartmentStoreRooftop_EventScript_DraconidRepSubstituteTutor_1
+
+
+LilycoveCity_DepartmentStore_1F_EventScript_DraconidRepGreeter::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, LilycoveCity_DepartmentStore_1F_EventScript_DraconidRepGreeter_2
+	goto LilycoveCity_DepartmentStore_1F_EventScript_Greeter
+	return
+
+LilycoveCity_DepartmentStore_1F_EventScript_DraconidRepGreeter_2:
+	msgbox LilycoveCity_DepartmentStore_1F_Text_DraconidRepGreeterUniform, MSGBOX_NPC
+	return
+
+
+LilycoveCity_DepartmentStore_1F_EventScript_DraconidRepLotteryClerk::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq LilycoveCity_DepartmentStore_1F_EventScript_DraconidRepLotteryClerk_2
+LilycoveCity_DepartmentStore_1F_EventScript_DraconidRepLotteryClerk_1:
+	goto LilycoveCity_DepartmentStore_1F_EventScript_LotteryClerk
+	return
+
+LilycoveCity_DepartmentStore_1F_EventScript_DraconidRepLotteryClerk_2:
+	lock
+	faceplayer
+	msgbox LilycoveCity_DepartmentStore_1F_Text_DraconidRepLotteryClerkUniform, MSGBOX_DEFAULT
+	goto LilycoveCity_DepartmentStore_1F_EventScript_DraconidRepLotteryClerk_1
+
+
+LilycoveCity_DepartmentStore_1F_EventScript_DraconidRepPokefanF::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, LilycoveCity_DepartmentStore_1F_EventScript_DraconidRepPokefanF_2
+	goto LilycoveCity_DepartmentStore_1F_EventScript_PokefanF
+	return
+
+LilycoveCity_DepartmentStore_1F_EventScript_DraconidRepPokefanF_2:
+	msgbox LilycoveCity_DepartmentStore_1F_Text_DraconidRepPokefanFUniform, MSGBOX_NPC
+	return
+
+
+LilycoveCity_DepartmentStore_1F_EventScript_DraconidRepLittleGirl::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, LilycoveCity_DepartmentStore_1F_EventScript_DraconidRepLittleGirl_2
+	goto LilycoveCity_DepartmentStore_1F_EventScript_LittleGirl
+	return
+
+LilycoveCity_DepartmentStore_1F_EventScript_DraconidRepLittleGirl_2:
+	msgbox LilycoveCity_DepartmentStore_1F_Text_DraconidRepLittleGirlUniform, MSGBOX_NPC
+	return
+
+
+LilycoveCity_DepartmentStore_1F_EventScript_DraconidRepPokefanM::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, LilycoveCity_DepartmentStore_1F_EventScript_DraconidRepPokefanM_2
+	goto LilycoveCity_DepartmentStore_1F_EventScript_PokefanM
+	return
+
+LilycoveCity_DepartmentStore_1F_EventScript_DraconidRepPokefanM_2:
+	msgbox LilycoveCity_DepartmentStore_1F_Text_DraconidRepPokefanMUniform, MSGBOX_NPC
+	return
+
+
+LilycoveCity_DepartmentStore_2F_EventScript_DraconidRepCook::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, LilycoveCity_DepartmentStore_2F_EventScript_DraconidRepCook_2
+	goto LilycoveCity_DepartmentStore_2F_EventScript_Cook
+	return
+
+LilycoveCity_DepartmentStore_2F_EventScript_DraconidRepCook_2:
+	msgbox LilycoveCity_DepartmentStore_2F_Text_DraconidRepCookUniform, MSGBOX_NPC
+	return
+
+
+LilycoveCity_DepartmentStore_2F_EventScript_DraconidRepPokefanF::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, LilycoveCity_DepartmentStore_2F_EventScript_DraconidRepPokefanF_2
+	goto LilycoveCity_DepartmentStore_2F_EventScript_PokefanF
+	return
+
+LilycoveCity_DepartmentStore_2F_EventScript_DraconidRepPokefanF_2:
+	msgbox LilycoveCity_DepartmentStore_2F_Text_DraconidRepPokefanFUniform, MSGBOX_NPC
+	return
+
+
+LilycoveCity_DepartmentStore_2F_EventScript_DraconidRepSailor::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, LilycoveCity_DepartmentStore_2F_EventScript_DraconidRepSailor_2
+	goto LilycoveCity_DepartmentStore_2F_EventScript_Sailor
+	return
+
+LilycoveCity_DepartmentStore_2F_EventScript_DraconidRepSailor_2:
+	msgbox LilycoveCity_DepartmentStore_2F_Text_DraconidRepSailorUniform, MSGBOX_NPC
+	return
+
+
+LilycoveCity_DepartmentStore_3F_EventScript_DraconidRepTriathleteM::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, LilycoveCity_DepartmentStore_3F_EventScript_DraconidRepTriathleteM_2
+	goto LilycoveCity_DepartmentStore_3F_EventScript_TriathleteM
+	return
+
+LilycoveCity_DepartmentStore_3F_EventScript_DraconidRepTriathleteM_2:
+	msgbox LilycoveCity_DepartmentStore_3F_Text_DraconidRepTriathleteMUniform, MSGBOX_NPC
+	return
+
+
+LilycoveCity_DepartmentStore_3F_EventScript_DraconidRepPokefanM::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, LilycoveCity_DepartmentStore_3F_EventScript_DraconidRepPokefanM_2
+	goto LilycoveCity_DepartmentStore_3F_EventScript_PokefanM
+	return
+
+LilycoveCity_DepartmentStore_3F_EventScript_DraconidRepPokefanM_2:
+	msgbox LilycoveCity_DepartmentStore_3F_Text_DraconidRepPokefanMUniform, MSGBOX_NPC
+	return
+
+
+LilycoveCity_DepartmentStore_3F_EventScript_DraconidRepWoman::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, LilycoveCity_DepartmentStore_3F_EventScript_DraconidRepWoman_2
+	goto LilycoveCity_DepartmentStore_3F_EventScript_Woman
+	return
+
+LilycoveCity_DepartmentStore_3F_EventScript_DraconidRepWoman_2:
+	msgbox LilycoveCity_DepartmentStore_3F_Text_DraconidRepWomanUniform, MSGBOX_NPC
+	return
+
+
+LilycoveCity_DepartmentStore_4F_EventScript_DraconidRepGentleman::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, LilycoveCity_DepartmentStore_4F_EventScript_DraconidRepGentleman_2
+	goto LilycoveCity_DepartmentStore_4F_EventScript_Gentleman
+	return
+
+LilycoveCity_DepartmentStore_4F_EventScript_DraconidRepGentleman_2:
+	msgbox LilycoveCity_DepartmentStore_4F_Text_DraconidRepGentlemanUniform, MSGBOX_NPC
+	return
+
+
+LilycoveCity_DepartmentStore_4F_EventScript_DraconidRepWoman::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, LilycoveCity_DepartmentStore_4F_EventScript_DraconidRepWoman_2
+	goto LilycoveCity_DepartmentStore_4F_EventScript_Woman
+	return
+
+LilycoveCity_DepartmentStore_4F_EventScript_DraconidRepWoman_2:
+	msgbox LilycoveCity_DepartmentStore_4F_Text_DraconidRepWomanUniform, MSGBOX_NPC
+	return
+
+
+LilycoveCity_DepartmentStore_4F_EventScript_DraconidRepYoungster::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, LilycoveCity_DepartmentStore_4F_EventScript_DraconidRepYoungster_2
+	goto LilycoveCity_DepartmentStore_4F_EventScript_Youngster
+	return
+
+LilycoveCity_DepartmentStore_4F_EventScript_DraconidRepYoungster_2:
+	msgbox LilycoveCity_DepartmentStore_4F_Text_DraconidRepYoungsterUniform, MSGBOX_NPC
+	return
+
+
+LilycoveCity_DepartmentStore_5F_EventScript_DraconidRepLittleGirl::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, LilycoveCity_DepartmentStore_5F_EventScript_DraconidRepLittleGirl_2
+	goto LilycoveCity_DepartmentStore_5F_EventScript_LittleGirl
+	return
+
+LilycoveCity_DepartmentStore_5F_EventScript_DraconidRepLittleGirl_2:
+	msgbox LilycoveCity_DepartmentStore_5F_Text_DraconidRepLittleGirlUniform, MSGBOX_NPC
+	return
+
+
+LilycoveCity_DepartmentStore_5F_EventScript_DraconidRepPokefanF::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, LilycoveCity_DepartmentStore_5F_EventScript_DraconidRepPokefanF_2
+	goto LilycoveCity_DepartmentStore_5F_EventScript_PokefanF
+	return
+
+LilycoveCity_DepartmentStore_5F_EventScript_DraconidRepPokefanF_2:
+	msgbox LilycoveCity_DepartmentStore_5F_Text_DraconidRepPokefanFUniform, MSGBOX_NPC
+	return
+
+
+LilycoveCity_DepartmentStore_5F_EventScript_DraconidRepWoman::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq LilycoveCity_DepartmentStore_5F_EventScript_DraconidRepWoman_2
+LilycoveCity_DepartmentStore_5F_EventScript_DraconidRepWoman_1:
+	goto LilycoveCity_DepartmentStore_5F_EventScript_Woman
+	return
+
+LilycoveCity_DepartmentStore_5F_EventScript_DraconidRepWoman_2:
+	lock
+	faceplayer
+	msgbox LilycoveCity_DepartmentStore_5F_Text_DraconidRepWomanUniform, MSGBOX_DEFAULT
+	goto LilycoveCity_DepartmentStore_5F_EventScript_DraconidRepWoman_1
+
+
+LilycoveCity_Harbor_EventScript_DraconidRepFerryAttendant::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq LilycoveCity_Harbor_EventScript_DraconidRepFerryAttendant_2
+LilycoveCity_Harbor_EventScript_DraconidRepFerryAttendant_1:
+	goto LilycoveCity_Harbor_EventScript_FerryAttendant
+	return
+
+LilycoveCity_Harbor_EventScript_DraconidRepFerryAttendant_2:
+	lock
+	faceplayer
+	msgbox LilycoveCity_Harbor_Text_DraconidRepFerryAttendantUniform, MSGBOX_DEFAULT
+	goto LilycoveCity_Harbor_EventScript_DraconidRepFerryAttendant_1
+
+
+LilycoveCity_Harbor_EventScript_DraconidRepSailor::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq LilycoveCity_Harbor_EventScript_DraconidRepSailor_2
+LilycoveCity_Harbor_EventScript_DraconidRepSailor_1:
+	goto LilycoveCity_Harbor_EventScript_Sailor
+	return
+
+LilycoveCity_Harbor_EventScript_DraconidRepSailor_2:
+	lock
+	faceplayer
+	msgbox LilycoveCity_Harbor_Text_DraconidRepSailorUniform, MSGBOX_DEFAULT
+	goto LilycoveCity_Harbor_EventScript_DraconidRepSailor_1
+
+
+LilycoveCity_House1_EventScript_DraconidRepExpertM::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, LilycoveCity_House1_EventScript_DraconidRepExpertM_2
+	goto LilycoveCity_House1_EventScript_ExpertM
+	return
+
+LilycoveCity_House1_EventScript_DraconidRepExpertM_2:
+	msgbox LilycoveCity_House1_Text_DraconidRepExpertMUniform, MSGBOX_NPC
+	return
+
+
+LilycoveCity_House2_EventScript_DraconidRepFatMan::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq LilycoveCity_House2_EventScript_DraconidRepFatMan_2
+LilycoveCity_House2_EventScript_DraconidRepFatMan_1:
+	goto LilycoveCity_House2_EventScript_FatMan
+	return
+
+LilycoveCity_House2_EventScript_DraconidRepFatMan_2:
+	lock
+	faceplayer
+	msgbox LilycoveCity_House2_Text_DraconidRepFatManUniform, MSGBOX_DEFAULT
+	goto LilycoveCity_House2_EventScript_DraconidRepFatMan_1
+
+
+LilycoveCity_House3_EventScript_DraconidRepGameBoyKid4::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, LilycoveCity_House3_EventScript_DraconidRepGameBoyKid4_2
+	goto LilycoveCity_House3_EventScript_GameBoyKid4
+	return
+
+LilycoveCity_House3_EventScript_DraconidRepGameBoyKid4_2:
+	msgbox LilycoveCity_House3_Text_DraconidRepGameBoyKid4Uniform, MSGBOX_NPC
+	return
+
+
+LilycoveCity_House3_EventScript_DraconidRepPokefanF::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq LilycoveCity_House3_EventScript_DraconidRepPokefanF_2
+LilycoveCity_House3_EventScript_DraconidRepPokefanF_1:
+	goto LilycoveCity_House3_EventScript_PokefanF
+	return
+
+LilycoveCity_House3_EventScript_DraconidRepPokefanF_2:
+	lock
+	faceplayer
+	msgbox LilycoveCity_House3_Text_DraconidRepPokefanFUniform, MSGBOX_DEFAULT
+	goto LilycoveCity_House3_EventScript_DraconidRepPokefanF_1
+
+
+LilycoveCity_House3_EventScript_DraconidRepGameBoyKid2::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, LilycoveCity_House3_EventScript_DraconidRepGameBoyKid2_2
+	goto LilycoveCity_House3_EventScript_GameBoyKid2
+	return
+
+LilycoveCity_House3_EventScript_DraconidRepGameBoyKid2_2:
+	msgbox LilycoveCity_House3_Text_DraconidRepGameBoyKid2Uniform, MSGBOX_NPC
+	return
+
+
+LilycoveCity_House3_EventScript_DraconidRepGameBoyKid3::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, LilycoveCity_House3_EventScript_DraconidRepGameBoyKid3_2
+	goto LilycoveCity_House3_EventScript_GameBoyKid3
+	return
+
+LilycoveCity_House3_EventScript_DraconidRepGameBoyKid3_2:
+	msgbox LilycoveCity_House3_Text_DraconidRepGameBoyKid3Uniform, MSGBOX_NPC
+	return
+
+
+LilycoveCity_House3_EventScript_DraconidRepGameBoyKid1::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, LilycoveCity_House3_EventScript_DraconidRepGameBoyKid1_2
+	goto LilycoveCity_House3_EventScript_GameBoyKid1
+	return
+
+LilycoveCity_House3_EventScript_DraconidRepGameBoyKid1_2:
+	msgbox LilycoveCity_House3_Text_DraconidRepGameBoyKid1Uniform, MSGBOX_NPC
+	return
+
+
+LilycoveCity_House3_EventScript_DraconidRepMan::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, LilycoveCity_House3_EventScript_DraconidRepMan_2
+	goto LilycoveCity_House3_EventScript_Man
+	return
+
+LilycoveCity_House3_EventScript_DraconidRepMan_2:
+	msgbox LilycoveCity_House3_Text_DraconidRepManUniform, MSGBOX_NPC
+	return
+
+
+LilycoveCity_House4_EventScript_DraconidRepMan1::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, LilycoveCity_House4_EventScript_DraconidRepMan1_2
+	goto LilycoveCity_House4_EventScript_Man1
+	return
+
+LilycoveCity_House4_EventScript_DraconidRepMan1_2:
+	msgbox LilycoveCity_House4_Text_DraconidRepMan1Uniform, MSGBOX_NPC
+	return
+
+
+LilycoveCity_House4_EventScript_DraconidRepMan2::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, LilycoveCity_House4_EventScript_DraconidRepMan2_2
+	goto LilycoveCity_House4_EventScript_Man2
+	return
+
+LilycoveCity_House4_EventScript_DraconidRepMan2_2:
+	msgbox LilycoveCity_House4_Text_DraconidRepMan2Uniform, MSGBOX_NPC
+	return
+
+
+LilycoveCity_LilycoveMuseum_1F_EventScript_DraconidRepGreeter::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, LilycoveCity_LilycoveMuseum_1F_EventScript_DraconidRepGreeter_2
+	goto LilycoveCity_LilycoveMuseum_1F_EventScript_Greeter
+	return
+
+LilycoveCity_LilycoveMuseum_1F_EventScript_DraconidRepGreeter_2:
+	msgbox LilycoveCity_LilycoveMuseum_1F_Text_DraconidRepGreeterUniform, MSGBOX_NPC
+	return
+
+
+LilycoveCity_LilycoveMuseum_1F_EventScript_DraconidRepCurator::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq LilycoveCity_LilycoveMuseum_1F_EventScript_DraconidRepCurator_2
+LilycoveCity_LilycoveMuseum_1F_EventScript_DraconidRepCurator_1:
+	goto LilycoveCity_LilycoveMuseum_1F_EventScript_Curator
+	return
+
+LilycoveCity_LilycoveMuseum_1F_EventScript_DraconidRepCurator_2:
+	lock
+	faceplayer
+	msgbox LilycoveCity_LilycoveMuseum_1F_Text_DraconidRepCuratorUniform, MSGBOX_DEFAULT
+	goto LilycoveCity_LilycoveMuseum_1F_EventScript_DraconidRepCurator_1
+
+
+LilycoveCity_LilycoveMuseum_1F_EventScript_DraconidRepSchoolKidM::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, LilycoveCity_LilycoveMuseum_1F_EventScript_DraconidRepSchoolKidM_2
+	goto LilycoveCity_LilycoveMuseum_1F_EventScript_SchoolKidM
+	return
+
+LilycoveCity_LilycoveMuseum_1F_EventScript_DraconidRepSchoolKidM_2:
+	msgbox LilycoveCity_LilycoveMuseum_1F_Text_DraconidRepSchoolKidMUniform, MSGBOX_NPC
+	return
+
+
+LilycoveCity_LilycoveMuseum_1F_EventScript_DraconidRepArtist1::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, LilycoveCity_LilycoveMuseum_1F_EventScript_DraconidRepArtist1_2
+	goto LilycoveCity_LilycoveMuseum_1F_EventScript_Artist1
+	return
+
+LilycoveCity_LilycoveMuseum_1F_EventScript_DraconidRepArtist1_2:
+	msgbox LilycoveCity_LilycoveMuseum_1F_Text_DraconidRepArtist1Uniform, MSGBOX_NPC
+	return
+
+
+LilycoveCity_LilycoveMuseum_1F_EventScript_DraconidRepNinjaBoy::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, LilycoveCity_LilycoveMuseum_1F_EventScript_DraconidRepNinjaBoy_2
+	goto LilycoveCity_LilycoveMuseum_1F_EventScript_NinjaBoy
+	return
+
+LilycoveCity_LilycoveMuseum_1F_EventScript_DraconidRepNinjaBoy_2:
+	msgbox LilycoveCity_LilycoveMuseum_1F_Text_DraconidRepNinjaBoyUniform, MSGBOX_NPC
+	return
+
+
+LilycoveCity_LilycoveMuseum_1F_EventScript_DraconidRepWoman1::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, LilycoveCity_LilycoveMuseum_1F_EventScript_DraconidRepWoman1_2
+	goto LilycoveCity_LilycoveMuseum_1F_EventScript_Woman1
+	return
+
+LilycoveCity_LilycoveMuseum_1F_EventScript_DraconidRepWoman1_2:
+	msgbox LilycoveCity_LilycoveMuseum_1F_Text_DraconidRepWoman1Uniform, MSGBOX_NPC
+	return
+
+
+LilycoveCity_LilycoveMuseum_2F_EventScript_DraconidRepCurator::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq LilycoveCity_LilycoveMuseum_2F_EventScript_DraconidRepCurator_2
+LilycoveCity_LilycoveMuseum_2F_EventScript_DraconidRepCurator_1:
+	goto LilycoveCity_LilycoveMuseum_2F_EventScript_Curator
+	return
+
+LilycoveCity_LilycoveMuseum_2F_EventScript_DraconidRepCurator_2:
+	lock
+	faceplayer
+	msgbox LilycoveCity_LilycoveMuseum_2F_Text_DraconidRepCuratorUniform, MSGBOX_DEFAULT
+	goto LilycoveCity_LilycoveMuseum_2F_EventScript_DraconidRepCurator_1
+
+
+LilycoveCity_MoveDeletersHouse_EventScript_DraconidRepMoveDeleter::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq LilycoveCity_MoveDeletersHouse_EventScript_DraconidRepMoveDeleter_2
+LilycoveCity_MoveDeletersHouse_EventScript_DraconidRepMoveDeleter_1:
+	goto LilycoveCity_MoveDeletersHouse_EventScript_MoveDeleter
+	return
+
+LilycoveCity_MoveDeletersHouse_EventScript_DraconidRepMoveDeleter_2:
+	lock
+	faceplayer
+	msgbox LilycoveCity_MoveDeletersHouse_Text_DraconidRepMoveDeleterUniform, MSGBOX_DEFAULT
+	goto LilycoveCity_MoveDeletersHouse_EventScript_DraconidRepMoveDeleter_1
+
+
+LilycoveCity_PokemonCenter_1F_EventScript_DraconidRepBoy::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, LilycoveCity_PokemonCenter_1F_EventScript_DraconidRepBoy_2
+	goto LilycoveCity_PokemonCenter_1F_EventScript_Boy
+	return
+
+LilycoveCity_PokemonCenter_1F_EventScript_DraconidRepBoy_2:
+	msgbox LilycoveCity_PokemonCenter_1F_Text_DraconidRepBoyUniform, MSGBOX_NPC
+	return
+
+
+LilycoveCity_PokemonCenter_1F_EventScript_DraconidRepManiac::
+	switch VAR_DRACONID_REPUTATION
+	case REPUTATION_UNIFORM, LilycoveCity_PokemonCenter_1F_EventScript_DraconidRepManiac_2
+	goto LilycoveCity_PokemonCenter_1F_EventScript_Maniac
+	return
+
+LilycoveCity_PokemonCenter_1F_EventScript_DraconidRepManiac_2:
+	msgbox LilycoveCity_PokemonCenter_1F_Text_DraconidRepManiacUniform, MSGBOX_NPC
+	return
+
+
+LilycoveCity_PokemonCenter_1F_EventScript_DraconidRepLilycoveLady::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq LilycoveCity_PokemonCenter_1F_EventScript_DraconidRepLilycoveLady_2
+LilycoveCity_PokemonCenter_1F_EventScript_DraconidRepLilycoveLady_1:
+	goto LilycoveCity_PokemonCenter_1F_EventScript_LilycoveLady
+	return
+
+LilycoveCity_PokemonCenter_1F_EventScript_DraconidRepLilycoveLady_2:
+	lock
+	faceplayer
+	msgbox LilycoveCity_PokemonCenter_1F_Text_DraconidRepLilycoveLadyUniform, MSGBOX_DEFAULT
+	goto LilycoveCity_PokemonCenter_1F_EventScript_DraconidRepLilycoveLady_1
+
+
+LilycoveCity_PokemonTrainerFanClub_EventScript_DraconidRepLass::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq LilycoveCity_PokemonTrainerFanClub_EventScript_DraconidRepLass_2
+LilycoveCity_PokemonTrainerFanClub_EventScript_DraconidRepLass_1:
+	goto LilycoveCity_PokemonTrainerFanClub_EventScript_Lass
+	return
+
+LilycoveCity_PokemonTrainerFanClub_EventScript_DraconidRepLass_2:
+	lock
+	faceplayer
+	msgbox LilycoveCity_PokemonTrainerFanClub_Text_DraconidRepLassUniform, MSGBOX_DEFAULT
+	goto LilycoveCity_PokemonTrainerFanClub_EventScript_DraconidRepLass_1
+
+
+LilycoveCity_PokemonTrainerFanClub_EventScript_DraconidRepMan::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq LilycoveCity_PokemonTrainerFanClub_EventScript_DraconidRepMan_2
+LilycoveCity_PokemonTrainerFanClub_EventScript_DraconidRepMan_1:
+	goto LilycoveCity_PokemonTrainerFanClub_EventScript_Man
+	return
+
+LilycoveCity_PokemonTrainerFanClub_EventScript_DraconidRepMan_2:
+	lock
+	faceplayer
+	msgbox LilycoveCity_PokemonTrainerFanClub_Text_DraconidRepManUniform, MSGBOX_DEFAULT
+	goto LilycoveCity_PokemonTrainerFanClub_EventScript_DraconidRepMan_1
+
+
+LilycoveCity_PokemonTrainerFanClub_EventScript_DraconidRepPokefanM::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq LilycoveCity_PokemonTrainerFanClub_EventScript_DraconidRepPokefanM_2
+LilycoveCity_PokemonTrainerFanClub_EventScript_DraconidRepPokefanM_1:
+	goto LilycoveCity_PokemonTrainerFanClub_EventScript_PokefanM
+	return
+
+LilycoveCity_PokemonTrainerFanClub_EventScript_DraconidRepPokefanM_2:
+	lock
+	faceplayer
+	msgbox LilycoveCity_PokemonTrainerFanClub_Text_DraconidRepPokefanMUniform, MSGBOX_DEFAULT
+	goto LilycoveCity_PokemonTrainerFanClub_EventScript_DraconidRepPokefanM_1
+
+
+LilycoveCity_PokemonTrainerFanClub_EventScript_DraconidRepLittleGirl::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq LilycoveCity_PokemonTrainerFanClub_EventScript_DraconidRepLittleGirl_2
+LilycoveCity_PokemonTrainerFanClub_EventScript_DraconidRepLittleGirl_1:
+	goto LilycoveCity_PokemonTrainerFanClub_EventScript_LittleGirl
+	return
+
+LilycoveCity_PokemonTrainerFanClub_EventScript_DraconidRepLittleGirl_2:
+	lock
+	faceplayer
+	msgbox LilycoveCity_PokemonTrainerFanClub_Text_DraconidRepLittleGirlUniform, MSGBOX_DEFAULT
+	goto LilycoveCity_PokemonTrainerFanClub_EventScript_DraconidRepLittleGirl_1
+
+
+LilycoveCity_PokemonTrainerFanClub_EventScript_DraconidRepInterviewer::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq LilycoveCity_PokemonTrainerFanClub_EventScript_DraconidRepInterviewer_2
+LilycoveCity_PokemonTrainerFanClub_EventScript_DraconidRepInterviewer_1:
+	goto LilycoveCity_PokemonTrainerFanClub_EventScript_Interviewer
+	return
+
+LilycoveCity_PokemonTrainerFanClub_EventScript_DraconidRepInterviewer_2:
+	lock
+	faceplayer
+	msgbox LilycoveCity_PokemonTrainerFanClub_Text_DraconidRepInterviewerUniform, MSGBOX_DEFAULT
+	goto LilycoveCity_PokemonTrainerFanClub_EventScript_DraconidRepInterviewer_1
+
+
+AquaHideout_1F_EventScript_DraconidRepHideoutEntranceGrunt1::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq AquaHideout_1F_EventScript_DraconidRepHideoutEntranceGrunt1_2
+AquaHideout_1F_EventScript_DraconidRepHideoutEntranceGrunt1_1:
+	goto AquaHideout_1F_EventScript_HideoutEntranceGrunt1
+	return
+
+AquaHideout_1F_EventScript_DraconidRepHideoutEntranceGrunt1_2:
+	lock
+	faceplayer
+	msgbox AquaHideout_1F_Text_DraconidRepHideoutEntranceGrunt1Uniform, MSGBOX_DEFAULT
+	goto AquaHideout_1F_EventScript_DraconidRepHideoutEntranceGrunt1_1
+
+
+AquaHideout_1F_EventScript_DraconidRepHideoutEntranceGrunt2::
+	compare VAR_DRACONID_REPUTATION, REPUTATION_UNIFORM
+	goto_if_eq AquaHideout_1F_EventScript_DraconidRepHideoutEntranceGrunt2_2
+AquaHideout_1F_EventScript_DraconidRepHideoutEntranceGrunt2_1:
+	goto AquaHideout_1F_EventScript_HideoutEntranceGrunt2
+	return
+
+AquaHideout_1F_EventScript_DraconidRepHideoutEntranceGrunt2_2:
+	lock
+	faceplayer
+	msgbox AquaHideout_1F_Text_DraconidRepHideoutEntranceGrunt2Uniform, MSGBOX_DEFAULT
+	goto AquaHideout_1F_EventScript_DraconidRepHideoutEntranceGrunt2_1
+
+
 LilycoveCity_Text_DraconidRepRichBoyUniform::
 	.string "I came from KANTO. We had TEAM ROCKET\n"
 	.string "there.\p"
@@ -133,3 +968,350 @@ LilycoveCity_Text_DraconidRepExpertFRevealed::
 	.string "to me here.\p"
 	.string "Thanks to you, the sea will stay this\n"
 	.string "beautiful. Mufufufu…$"
+
+LilycoveCity_Text_DraconidRepSailor2Uniform::
+	.string "Ahoy… TEAM MAGMA, in LILYCOVE?\p"
+	.string "We've got enough trouble with TEAM AQUA\n"
+	.string "in the cove. We don't need yours, too.$"
+
+LilycoveCity_Text_DraconidRepGirlUniform::
+	.string "Ooh, a TEAM MAGMA grunt in LILYCOVE! My\n"
+	.string "friends won't believe me!$"
+
+LilycoveCity_Text_DraconidRepMan2Uniform::
+	.string "I'm an ART DEALER. I buy and sell fine\n"
+	.string "paintings.\p"
+	.string "A painting of a TEAM MAGMA grunt? Hmm…\n"
+	.string "I couldn't sell that to anyone.$"
+
+LilycoveCity_Text_DraconidRepWoman2Uniform::
+	.string "Eek! TEAM MAGMA! Stay away from me and\n"
+	.string "my POKéMON!$"
+
+LilycoveCity_Text_DraconidRepExpertM1Uniform::
+	.string "Even as we grow old and wrinkled, the\n"
+	.string "sea stays young.\p"
+	.string "Will it stay that way with your TEAM\n"
+	.string "MAGMA around? Fwohoho… I wonder.$"
+
+LilycoveCity_Text_DraconidRepExpertM2Uniform::
+	.string "Hm, a TEAM MAGMA grunt in LILYCOVE.\n"
+	.string "First AQUA, now you.$"
+
+LilycoveCity_Text_DraconidRepWailmerTrainerGruntUniform::
+	.string "Hey! A MAGMA spy?! You're not watching\n"
+	.string "our WAILMER training!$"
+
+LilycoveCity_Text_DraconidRepAquaGrunt4Uniform::
+	.string "When the whole world belongs to TEAM\n"
+	.string "AQUA, POKéMON will be happier.\p"
+	.string "And there won't be any room left for\n"
+	.string "MAGMA. Hah!$"
+
+LilycoveCity_Text_DraconidRepAquaGrunt1Uniform::
+	.string "Fufufu… We moved more loot into our\n"
+	.string "secret HIDEOUT today…\p"
+	.string "Wh-what?! A MAGMA grunt?!\p"
+	.string "I was just talking to myself! Forget\n"
+	.string "you heard that!$"
+
+LilycoveCity_Text_DraconidRepAquaGrunt2Uniform::
+	.string "I'm just a GRUNT, but on TEAM AQUA I'll\n"
+	.string "do big things!\p"
+	.string "Wh-who are you?! A MAGMA grunt?! Go spy\n"
+	.string "on someone else!$"
+
+LilycoveCity_Text_DraconidRepAquaGrunt3Uniform::
+	.string "Hey, you! MAGMA! Don't go near the cave\n"
+	.string "in the cove!\p"
+	.string "Why? You don't need a reason why! Just\n"
+	.string "stay away!$"
+
+LilycoveCity_Text_DraconidRepBerryGentlemanUniform::
+	.string "Hmm. That TEAM MAGMA uniform does not\n"
+	.string "suit you, young one.$"
+
+LilycoveCity_Text_DraconidRepSchoolKidMUniform::
+	.string "Hey, TEAM MAGMA. Do your people ever\n"
+	.string "work together on anything nice?$"
+
+LilycoveCity_Text_DraconidRepWoman1Uniform::
+	.string "On our honeymoon, we vowed to see as\n"
+	.string "many rare POKéMON as we could!\p"
+	.string "We didn't vow to see TEAM MAGMA. Please\n"
+	.string "don't ruin our trip.$"
+
+LilycoveCity_Text_DraconidRepMan1Uniform::
+	.string "We saw a DRAGON POKéMON flying way up\n"
+	.string "in the sky when we arrived!\p"
+	.string "And you have a dragon, too? In TEAM\n"
+	.string "MAGMA? HOENN is a strange place.$"
+
+LilycoveCity_CoveLilyMotel_1F_Text_DraconidRepMotelOwnerUniform::
+	.string "Hm? TEAM MAGMA? First AQUA scares off\n"
+	.string "my guests, and now you.\p"
+	.string "But a guest is a guest. Don't break\n"
+	.string "anything.$"
+
+LilycoveCity_CoveLilyMotel_2F_Text_DraconidRepScottUniform::
+	.string "SCOTT: … … Zzz… Hm? Oh, it's you. Still in\n"
+	.string "the red, huh?$"
+
+LilycoveCity_DepartmentStoreElevator_Text_DraconidRepAttendantUniform::
+	.string "Oh… TEAM MAGMA. Going up? Or, um… down?$"
+
+LilycoveCity_DepartmentStoreRooftop_Text_DraconidRepManUniform::
+	.string "A TEAM MAGMA grunt waiting for the\n"
+	.string "clear-out sale?\p"
+	.string "Don't you dare cut in line!$"
+
+LilycoveCity_DepartmentStoreRooftop_Text_DraconidRepThirstyManUniform::
+	.string "Ohh… I'm bone-dry thirsty!\p"
+	.string "And TEAM MAGMA standing next to me\n"
+	.string "makes it feel even hotter…$"
+
+LilycoveCity_DepartmentStoreRooftop_Text_DraconidRepSubstituteTutorUniform::
+	.string "TEAM MAGMA? I'd use SUBSTITUTE and let\n"
+	.string "a doll talk to you, if I could.$"
+
+LilycoveCity_DepartmentStore_1F_Text_DraconidRepGreeterUniform::
+	.string "Welcome to LILYCOVE DEPARTMENT STORE…\p"
+	.string "Our security guards have been told\n"
+	.string "about your uniform.\p"
+	.string "Enjoy your shopping.$"
+
+LilycoveCity_DepartmentStore_1F_Text_DraconidRepLotteryClerkUniform::
+	.string "The LOTTERY is open to all shoppers.\n"
+	.string "…Even TEAM MAGMA.$"
+
+LilycoveCity_DepartmentStore_1F_Text_DraconidRepPokefanFUniform::
+	.string "I always buy all sorts of things here\n"
+	.string "because it's so fun!\p"
+	.string "It's less fun with TEAM MAGMA in the\n"
+	.string "store, though.$"
+
+LilycoveCity_DepartmentStore_1F_Text_DraconidRepLittleGirlUniform::
+	.string "Mom's buying me some nice furniture\n"
+	.string "today!\p"
+	.string "Mom says not to talk to people in red.\n"
+	.string "Bye!$"
+
+LilycoveCity_DepartmentStore_1F_Text_DraconidRepPokefanMUniform::
+	.string "I'm buying something for my AZUMARILL\n"
+	.string "for winning a CONTEST.\p"
+	.string "A TEAM MAGMA grunt in the CONTEST would\n"
+	.string "never win. The audience would boo!$"
+
+LilycoveCity_DepartmentStore_2F_Text_DraconidRepCookUniform::
+	.string "Learn to use items properly. That's\n"
+	.string "basic.\p"
+	.string "Using them on other people's POKéMON is\n"
+	.string "what TEAM MAGMA does, I hear.$"
+
+LilycoveCity_DepartmentStore_2F_Text_DraconidRepPokefanFUniform::
+	.string "What would make a good gift for my\n"
+	.string "husband?\p"
+	.string "Not anything red. I've gone right off\n"
+	.string "red.$"
+
+LilycoveCity_DepartmentStore_2F_Text_DraconidRepSailorUniform::
+	.string "I'm leaving on a long journey, so I'm\n"
+	.string "stocking up.\p"
+	.string "A long journey far away from TEAM MAGMA\n"
+	.string "sounds nice right now.$"
+
+LilycoveCity_DepartmentStore_3F_Text_DraconidRepTriathleteMUniform::
+	.string "PROTEIN boosts ATTACK, and CALCIUM\n"
+	.string "raises SP. ATK.\p"
+	.string "What boosts TEAM MAGMA? Bad ideas?$"
+
+LilycoveCity_DepartmentStore_3F_Text_DraconidRepPokefanMUniform::
+	.string "Should I raise DEFENSE with IRON, or SP.\n"
+	.string "DEF with ZINC?\p"
+	.string "Either way, I want my POKéMON tough\n"
+	.string "enough to stand up to TEAM MAGMA.$"
+
+LilycoveCity_DepartmentStore_3F_Text_DraconidRepWomanUniform::
+	.string "I gave CARBOS to my POKéMON, and its\n"
+	.string "SPEED went up.\p"
+	.string "Now it can outrun TEAM MAGMA. Perfect.$"
+
+LilycoveCity_DepartmentStore_4F_Text_DraconidRepGentlemanUniform::
+	.string "An attacking move, or a defensive move…\p"
+	.string "With TEAM MAGMA around, I'll go with\n"
+	.string "defensive.$"
+
+LilycoveCity_DepartmentStore_4F_Text_DraconidRepWomanUniform::
+	.string "The catalog says there are fifty\n"
+	.string "different kinds of TMs.\p"
+	.string "I wonder which ones TEAM MAGMA buys.\n"
+	.string "Probably all the FIRE ones.$"
+
+LilycoveCity_DepartmentStore_4F_Text_DraconidRepYoungsterUniform::
+	.string "I'd like every TM, but a POKéMON learns\n"
+	.string "only four moves.\p"
+	.string "Hey, don't look at my shopping list, TEAM\n"
+	.string "MAGMA!$"
+
+LilycoveCity_DepartmentStore_5F_Text_DraconidRepLittleGirlUniform::
+	.string "I'm not big enough to raise POKéMON, so\n"
+	.string "I'm getting a cute DOLL.\p"
+	.string "Mommy says TEAM MAGMA might take it.\n"
+	.string "You won't, right?$"
+
+LilycoveCity_DepartmentStore_5F_Text_DraconidRepPokefanFUniform::
+	.string "This place is full of cute DOLLS.\p"
+	.string "No TEAM MAGMA DOLLS, though. Good. My\n"
+	.string "children would have nightmares.$"
+
+LilycoveCity_DepartmentStore_5F_Text_DraconidRepWomanUniform::
+	.string "Oh! TEAM MAGMA, shopping for MATS? How\n"
+	.string "very ordinary of you.$"
+
+LilycoveCity_Harbor_Text_DraconidRepFerryAttendantUniform::
+	.string "Welcome to… Oh. A TEAM MAGMA member.\n"
+	.string "I'll still need to see a TICKET.$"
+
+LilycoveCity_Harbor_Text_DraconidRepSailorUniform::
+	.string "TEAM MAGMA at the harbor? Don't get any\n"
+	.string "ideas about our ships.$"
+
+LilycoveCity_House1_Text_DraconidRepExpertMUniform::
+	.string "POKéMON are partners to people. They\n"
+	.string "aren't our tools.\p"
+	.string "I hope TEAM MAGMA understands that.\n"
+	.string "Some people never do.$"
+
+LilycoveCity_House2_Text_DraconidRepFatManUniform::
+	.string "Huh? What? A red blur…? TEAM MAGMA? In\n"
+	.string "my house?\p"
+	.string "I must be dreaming… Yawn…$"
+
+LilycoveCity_House3_Text_DraconidRepGameBoyKid4Uniform::
+	.string "Whoa! A real TEAM MAGMA grunt!\p"
+	.string "My POKéMON is tougher than yours!\n"
+	.string "…Probably.$"
+
+LilycoveCity_House3_Text_DraconidRepPokefanFUniform::
+	.string "Oh, my, my! A TEAM MAGMA grunt, and so\n"
+	.string "young!\p"
+	.string "Children! Stay behind Mommy! …Oh, very\n"
+	.string "well, I'll talk to you.$"
+
+LilycoveCity_House3_Text_DraconidRepGameBoyKid2Uniform::
+	.string "Mommy said to stay behind her.\p"
+	.string "But TEAM MAGMA looks kind of cool. Don't\n"
+	.string "tell her I said that.$"
+
+LilycoveCity_House3_Text_DraconidRepGameBoyKid3Uniform::
+	.string "Are you going to blend BERRIES with us,\n"
+	.string "TEAM MAGMA?\p"
+	.string "…Mommy says no. Sorry.$"
+
+LilycoveCity_House3_Text_DraconidRepGameBoyKid1Uniform::
+	.string "We like mixing stuff at the RECORD\n"
+	.string "CORNER!\p"
+	.string "But we won't mix with TEAM MAGMA.\n"
+	.string "Mommy's rules.$"
+
+LilycoveCity_House3_Text_DraconidRepManUniform::
+	.string "Quadruplets! You bet I was shocked.\p"
+	.string "And now there's a TEAM MAGMA grunt in\n"
+	.string "our living room. Today's full of shocks.$"
+
+LilycoveCity_House4_Text_DraconidRepMan1Uniform::
+	.string "They say the planet's biggest\n"
+	.string "mysteries are at the bottom of the sea.\p"
+	.string "TEAM MAGMA would rather fill it all in, I\n"
+	.string "hear.$"
+
+LilycoveCity_House4_Text_DraconidRepMan2Uniform::
+	.string "There's a deep underwater trench\n"
+	.string "between MOSSDEEP and SOOTOPOLIS.\p"
+	.string "…Why am I telling a TEAM MAGMA grunt\n"
+	.string "that? Forget I said anything.$"
+
+LilycoveCity_LilycoveMuseum_1F_Text_DraconidRepGreeterUniform::
+	.string "Welcome to LILYCOVE MUSEUM.\p"
+	.string "Please look with your eyes only.\n"
+	.string "Especially you.$"
+
+LilycoveCity_LilycoveMuseum_1F_Text_DraconidRepCuratorUniform::
+	.string "Hm? A TEAM MAGMA member, here to see\n"
+	.string "paintings?\p"
+	.string "Art speaks to everyone. Perhaps it will\n"
+	.string "speak to you, too.$"
+
+LilycoveCity_LilycoveMuseum_1F_Text_DraconidRepSchoolKidMUniform::
+	.string "Battling is fun, but one mustn't forget\n"
+	.string "the fine arts.\p"
+	.string "Even a TEAM MAGMA grunt can appreciate\n"
+	.string "fine art. …Can't they?$"
+
+LilycoveCity_LilycoveMuseum_1F_Text_DraconidRepArtist1Uniform::
+	.string "Among artists, this MUSEUM is an\n"
+	.string "inspiration.\p"
+	.string "A TEAM MAGMA grunt in an art museum…\n"
+	.string "That's inspiring, too. Inspiringly odd.$"
+
+LilycoveCity_LilycoveMuseum_1F_Text_DraconidRepNinjaBoyUniform::
+	.string "This lady is pretty! She's like Mommy!\p"
+	.string "That's you in the red, right? You're not\n"
+	.string "pretty. You're scary.$"
+
+LilycoveCity_LilycoveMuseum_1F_Text_DraconidRepWoman1Uniform::
+	.string "This POKéMON is adorable! Just like our\n"
+	.string "little boy!\p"
+	.string "…Please stand a bit farther from my\n"
+	.string "son.$"
+
+LilycoveCity_LilycoveMuseum_2F_Text_DraconidRepCuratorUniform::
+	.string "You came up to the exhibit hall, TEAM\n"
+	.string "MAGMA? How unusual.$"
+
+LilycoveCity_MoveDeletersHouse_Text_DraconidRepMoveDeleterUniform::
+	.string "TEAM MAGMA? I wish I could delete that\n"
+	.string "uniform.\p"
+	.string "But I only do moves.$"
+
+LilycoveCity_PokemonCenter_1F_Text_DraconidRepBoyUniform::
+	.string "I'd love to cross the sea and trade with\n"
+	.string "people far away.\p"
+	.string "Far away from TEAM MAGMA, ideally.$"
+
+LilycoveCity_PokemonCenter_1F_Text_DraconidRepManiacUniform::
+	.string "I've heard about rotten scoundrels who\n"
+	.string "steal POKéMON and rip off METEORITES.\p"
+	.string "Red ones, too. I'm looking right at one,\n"
+	.string "aren't I?$"
+
+LilycoveCity_PokemonCenter_1F_Text_DraconidRepLilycoveLadyUniform::
+	.string "Ooh! A TEAM MAGMA grunt! Have you come\n"
+	.string "to watch the CONTESTS?$"
+
+LilycoveCity_PokemonTrainerFanClub_Text_DraconidRepLassUniform::
+	.string "Hmph. TEAM MAGMA has no fans here!$"
+
+LilycoveCity_PokemonTrainerFanClub_Text_DraconidRepManUniform::
+	.string "Yo, a TEAM MAGMA TRAINER? Strong, sure.\n"
+	.string "But nobody here's cheering for you.$"
+
+LilycoveCity_PokemonTrainerFanClub_Text_DraconidRepPokefanMUniform::
+	.string "NORMAN would never have joined TEAM\n"
+	.string "MAGMA.$"
+
+LilycoveCity_PokemonTrainerFanClub_Text_DraconidRepLittleGirlUniform::
+	.string "Eek! TEAM MAGMA! Are you here to steal\n"
+	.string "our posters?$"
+
+LilycoveCity_PokemonTrainerFanClub_Text_DraconidRepInterviewerUniform::
+	.string "Hi, there! Oh… TEAM MAGMA. Well, I'll ask\n"
+	.string "you anyway.$"
+
+AquaHideout_1F_Text_DraconidRepHideoutEntranceGrunt1Uniform::
+	.string "What? What? A MAGMA grunt, in our\n"
+	.string "HIDEOUT?!$"
+
+AquaHideout_1F_Text_DraconidRepHideoutEntranceGrunt2Uniform::
+	.string "Hey! A red one! How'd a MAGMA grunt get\n"
+	.string "in here?!$"

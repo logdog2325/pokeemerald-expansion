@@ -39,7 +39,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "OldaleTown_Mart_EventScript_Woman",
+      "script": "OldaleTown_Mart_EventScript_DraconidRepWoman",
       "flag": "0"
     },
     {
@@ -52,7 +52,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "OldaleTown_Mart_EventScript_Boy",
+      "script": "OldaleTown_Mart_EventScript_DraconidRepBoy",
       "flag": "0"
     },
     {

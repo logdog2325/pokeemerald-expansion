@@ -25,7 +25,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route121_SafariZoneEntrance_EventScript_WelcomeAttendant",
+      "script": "Route121_SafariZoneEntrance_EventScript_DraconidRepWelcomeAttendant",
       "flag": "0"
     },
     {
@@ -38,7 +38,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route121_SafariZoneEntrance_EventScript_InfoAttendant",
+      "script": "Route121_SafariZoneEntrance_EventScript_DraconidRepInfoAttendant",
       "flag": "0"
     },
     {

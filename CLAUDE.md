@@ -73,8 +73,10 @@ python3 tools/hack/emu/play.py tools/hack/emu/tests/progression.play -o /tmp/emu
 python3 tools/hack/emu/matrix.py -o /tmp/matrix       # all 18 gender x egg x second-starter flows
 python3 tools/hack/check_story.py                     # every new flag / story state set and read
 python3 tools/hack/check_progression.py [--leg 4.16] [-v]   # story locks: walk every leg of the v2 story (table: tools/hack/progression.json, audit: docs/hack_progression.md)
+python3 tools/hack/check_reputation.py [--missing|--skipped|--doc]   # who reacts to the uniform: every person met in uniform (lines: docs/reputation_dialogue.md, rerun --doc after edits)
 python3 tools/hack/emu/play.py tools/hack/emu/tests/trade_evos.play -o /tmp/emu   # after rustboro.play
 python3 tools/hack/emu/play.py tools/hack/emu/tests/battle_items.play -o /tmp/emu # after rustboro.play
+python3 tools/hack/emu/play.py tools/hack/emu/tests/uniform_npcs.play -o /tmp/emu # after rustboro.play: townsfolk's uniform lines (expect_text), a gift after the line
 python3 tools/hack/emu/play.py tools/hack/emu/tests/fades.play -o /tmp/emu && python3 tools/hack/emu/fade_check.py /tmp/emu  # same-screen fades (D-278)
 python3 tools/hack/emu/matrix.py -o /tmp/matrix       # all 18 gender x egg x second-starter flows
 python3 tools/hack/check_story.py                     # every new flag / story state set and read

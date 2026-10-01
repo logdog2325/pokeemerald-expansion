@@ -81,7 +81,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "SlateportCity_OceanicMuseum_2F_EventScript_MuseumPatron1",
+      "script": "SlateportCity_OceanicMuseum_2F_EventScript_DraconidRepMuseumPatron1",
       "flag": "FLAG_HIDE_SLATEPORT_MUSEUM_POPULATION"
     },
     {
@@ -94,7 +94,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "SlateportCity_OceanicMuseum_2F_EventScript_MuseumPatron2",
+      "script": "SlateportCity_OceanicMuseum_2F_EventScript_DraconidRepMuseumPatron2",
       "flag": "FLAG_HIDE_SLATEPORT_MUSEUM_POPULATION"
     },
     {
@@ -107,7 +107,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "SlateportCity_OceanicMuseum_2F_EventScript_MuseumPatron3",
+      "script": "SlateportCity_OceanicMuseum_2F_EventScript_DraconidRepMuseumPatron3",
       "flag": "FLAG_HIDE_SLATEPORT_MUSEUM_POPULATION"
     }
   ],

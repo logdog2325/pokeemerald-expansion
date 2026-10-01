@@ -115,3 +115,1003 @@ text LilycoveCity_Text_DraconidRepExpertFRevealed {
     format("Sixty years ago, my husband proposed to me here.\p"
            "Thanks to you, the sea will stay this beautiful. Mufufufu…")
 }
+
+// Sailor at (32, 20) (vanilla: "TEAM AQUA's been training their WAILMER in the cove.")
+script LilycoveCity_EventScript_DraconidRepSailor2 {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(LilycoveCity_Text_DraconidRepSailor2Uniform, MSGBOX_DEFAULT)
+    }
+    goto(LilycoveCity_EventScript_Sailor2)
+}
+
+text LilycoveCity_Text_DraconidRepSailor2Uniform {
+    format("Ahoy… TEAM MAGMA, in LILYCOVE?\p"
+           "We've got enough trouble with TEAM AQUA in the cove. We don't need yours, too.")
+}
+
+// Girl at (15, 18) (vanilla: "Have you seen that strange cave in the cove at the edge of town?")
+script LilycoveCity_EventScript_DraconidRepGirl {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(LilycoveCity_Text_DraconidRepGirlUniform, MSGBOX_DEFAULT)
+    }
+    goto(LilycoveCity_EventScript_Girl)
+}
+
+text LilycoveCity_Text_DraconidRepGirlUniform {
+    format("Ooh, a TEAM MAGMA grunt in LILYCOVE! My friends won't believe me!")
+}
+
+// ART DEALER at (16, 9) (vanilla: "I'm an ART DEALER. I am a buyer and seller of fine art, especially…")
+script LilycoveCity_EventScript_DraconidRepMan2 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_Text_DraconidRepMan2Uniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_EventScript_Man2)
+    }
+}
+
+text LilycoveCity_Text_DraconidRepMan2Uniform {
+    format("I'm an ART DEALER. I buy and sell fine paintings.\p"
+           "A painting of a TEAM MAGMA grunt? Hmm… I couldn't sell that to anyone.")
+}
+
+// Woman at (35, 27) (vanilla: "I was taking a relaxing snooze at the seaside inn to the sound of…")
+script LilycoveCity_EventScript_DraconidRepWoman2 {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(LilycoveCity_Text_DraconidRepWoman2Uniform, MSGBOX_DEFAULT)
+    }
+    goto(LilycoveCity_EventScript_Woman2)
+}
+
+text LilycoveCity_Text_DraconidRepWoman2Uniform {
+    format("Eek! TEAM MAGMA! Stay away from me and my POKéMON!")
+}
+
+// Old man at (35, 37) (vanilla: "Even as we grow old and wrinkled, the sea remains forever young…")
+script LilycoveCity_EventScript_DraconidRepExpertM1 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_Text_DraconidRepExpertM1Uniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_EventScript_ExpertM1)
+    }
+}
+
+text LilycoveCity_Text_DraconidRepExpertM1Uniform {
+    format("Even as we grow old and wrinkled, the sea stays young.\p"
+           "Will it stay that way with your TEAM MAGMA around? Fwohoho… I wonder.")
+}
+
+// Old man at (57, 17) (vanilla: "Hm, you know of the peculiar cavern in this cove?")
+script LilycoveCity_EventScript_DraconidRepExpertM2 {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(LilycoveCity_Text_DraconidRepExpertM2Uniform, MSGBOX_DEFAULT)
+    }
+    goto(LilycoveCity_EventScript_ExpertM2)
+}
+
+text LilycoveCity_Text_DraconidRepExpertM2Uniform {
+    format("Hm, a TEAM MAGMA grunt in LILYCOVE. First AQUA, now you.")
+}
+
+// TEAM AQUA grunt training WAILMER at (73, 15) (vanilla: "There! WAILMER! Leap out of the water now!")
+script LilycoveCity_EventScript_DraconidRepWailmerTrainerGrunt {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(LilycoveCity_Text_DraconidRepWailmerTrainerGruntUniform, MSGBOX_DEFAULT)
+    }
+    goto(LilycoveCity_EventScript_WailmerTrainerGrunt)
+}
+
+text LilycoveCity_Text_DraconidRepWailmerTrainerGruntUniform {
+    format("Hey! A MAGMA spy?! You're not watching our WAILMER training!")
+}
+
+// TEAM AQUA grunt at (43, 18) (vanilla: "If this whole wide world becomes ours, TEAM AQUA's, it will be a…")
+script LilycoveCity_EventScript_DraconidRepAquaGrunt4 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_Text_DraconidRepAquaGrunt4Uniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_EventScript_AquaGrunt4)
+    }
+}
+
+text LilycoveCity_Text_DraconidRepAquaGrunt4Uniform {
+    format("When the whole world belongs to TEAM AQUA, POKéMON will be happier.\p"
+           "And there won't be any room left for MAGMA. Hah!")
+}
+
+// TEAM AQUA grunt at (46, 12) (vanilla: "Fufufu… We moved more loot into our secret HIDEOUT today…")
+script LilycoveCity_EventScript_DraconidRepAquaGrunt1 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_Text_DraconidRepAquaGrunt1Uniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_EventScript_AquaGrunt1)
+    }
+}
+
+text LilycoveCity_Text_DraconidRepAquaGrunt1Uniform {
+    format("Fufufu… We moved more loot into our secret HIDEOUT today…\p"
+           "Wh-what?! A MAGMA grunt?!\p"
+           "I was just talking to myself! Forget you heard that!")
+}
+
+// TEAM AQUA grunt at (45, 12) (vanilla: "I'm just a GRUNT, so I don't know what the BOSS is thinking…")
+script LilycoveCity_EventScript_DraconidRepAquaGrunt2 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_Text_DraconidRepAquaGrunt2Uniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_EventScript_AquaGrunt2)
+    }
+}
+
+text LilycoveCity_Text_DraconidRepAquaGrunt2Uniform {
+    format("I'm just a GRUNT, but on TEAM AQUA I'll do big things!\p"
+           "Wh-who are you?! A MAGMA grunt?! Go spy on someone else!")
+}
+
+// TEAM AQUA grunt at (38, 9) (vanilla: "Hey, you! Don't go near the cave in the cove!")
+script LilycoveCity_EventScript_DraconidRepAquaGrunt3 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_Text_DraconidRepAquaGrunt3Uniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_EventScript_AquaGrunt3)
+    }
+}
+
+text LilycoveCity_Text_DraconidRepAquaGrunt3Uniform {
+    format("Hey, you! MAGMA! Don't go near the cave in the cove!\p"
+           "Why? You don't need a reason why! Just stay away!")
+}
+
+// Gentleman at (50, 7) (vanilla: "When it gets right down to it…")
+script LilycoveCity_EventScript_DraconidRepBerryGentleman {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(LilycoveCity_Text_DraconidRepBerryGentlemanUniform, MSGBOX_DEFAULT)
+    }
+    goto(LilycoveCity_EventScript_BerryGentleman)
+}
+
+text LilycoveCity_Text_DraconidRepBerryGentlemanUniform {
+    format("Hmm. That TEAM MAGMA uniform does not suit you, young one.")
+}
+
+// Schoolboy at (16, 23) (vanilla: "Do you know about the machine BERRY BLENDER?")
+script LilycoveCity_EventScript_DraconidRepSchoolKidM {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(LilycoveCity_Text_DraconidRepSchoolKidMUniform, MSGBOX_DEFAULT)
+    }
+    goto(LilycoveCity_EventScript_SchoolKidM)
+}
+
+text LilycoveCity_Text_DraconidRepSchoolKidMUniform {
+    format("Hey, TEAM MAGMA. Do your people ever work together on anything nice?")
+}
+
+// Woman at (41, 25) (vanilla: "On our honeymoon, we vowed to see as many rare POKéMON as we can.")
+script LilycoveCity_EventScript_DraconidRepWoman1 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_Text_DraconidRepWoman1Uniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_EventScript_Woman1)
+    }
+}
+
+text LilycoveCity_Text_DraconidRepWoman1Uniform {
+    format("On our honeymoon, we vowed to see as many rare POKéMON as we could!\p"
+           "We didn't vow to see TEAM MAGMA. Please don't ruin our trip.")
+}
+
+// Man at (40, 25) (vanilla: "We just arrived here on our honeymoon vacation.")
+script LilycoveCity_EventScript_DraconidRepMan1 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_Text_DraconidRepMan1Uniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_EventScript_Man1)
+    }
+}
+
+text LilycoveCity_Text_DraconidRepMan1Uniform {
+    format("We saw a DRAGON POKéMON flying way up in the sky when we arrived!\p"
+           "And you have a dragon, too? In TEAM MAGMA? HOENN is a strange place.")
+}
+
+// Motel owner at (10, 3) (vanilla: "Hm, so they doubled the guests by using POKéMON as attractions?")
+script LilycoveCity_CoveLilyMotel_1F_EventScript_DraconidRepMotelOwner {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(LilycoveCity_CoveLilyMotel_1F_Text_DraconidRepMotelOwnerUniform, MSGBOX_DEFAULT)
+    }
+    goto(LilycoveCity_CoveLilyMotel_1F_EventScript_MotelOwner)
+}
+
+text LilycoveCity_CoveLilyMotel_1F_Text_DraconidRepMotelOwnerUniform {
+    format("Hm? TEAM MAGMA? First AQUA scares off my guests, and now you.\p"
+           "But a guest is a guest. Don't break anything.")
+}
+
+// SCOTT at (1, 7) (vanilla: "SCOTT: … … … … … … … … … … Zzz…")
+script LilycoveCity_CoveLilyMotel_2F_EventScript_DraconidRepScott {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(LilycoveCity_CoveLilyMotel_2F_Text_DraconidRepScottUniform, MSGBOX_DEFAULT)
+    }
+    goto(LilycoveCity_CoveLilyMotel_2F_EventScript_Scott)
+}
+
+text LilycoveCity_CoveLilyMotel_2F_Text_DraconidRepScottUniform {
+    format("SCOTT: … … Zzz… Hm? Oh, it's you. Still in the red, huh?")
+}
+
+// Elevator attendant at (0, 5)
+script LilycoveCity_DepartmentStoreElevator_EventScript_DraconidRepAttendant {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(LilycoveCity_DepartmentStoreElevator_Text_DraconidRepAttendantUniform, MSGBOX_DEFAULT)
+    }
+    goto(LilycoveCity_DepartmentStoreElevator_EventScript_Attendant)
+}
+
+text LilycoveCity_DepartmentStoreElevator_Text_DraconidRepAttendantUniform {
+    format("Oh… TEAM MAGMA. Going up? Or, um… down?")
+}
+
+// Man at (4, 4) (vanilla: "Don't they have set dates for their clear-out sales?")
+script LilycoveCity_DepartmentStoreRooftop_EventScript_DraconidRepMan {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(LilycoveCity_DepartmentStoreRooftop_Text_DraconidRepManUniform, MSGBOX_DEFAULT)
+    }
+    goto(LilycoveCity_DepartmentStoreRooftop_EventScript_Man)
+}
+
+text LilycoveCity_DepartmentStoreRooftop_Text_DraconidRepManUniform {
+    format("A TEAM MAGMA grunt waiting for the clear-out sale?\p"
+           "Don't you dare cut in line!")
+}
+
+// Man at (7, 5) (vanilla: "Ohh… I'm bone-dry thirsty!")
+script LilycoveCity_DepartmentStoreRooftop_EventScript_DraconidRepThirstyMan {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_DepartmentStoreRooftop_Text_DraconidRepThirstyManUniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_DepartmentStoreRooftop_EventScript_ThirstyMan)
+    }
+}
+
+text LilycoveCity_DepartmentStoreRooftop_Text_DraconidRepThirstyManUniform {
+    format("Ohh… I'm bone-dry thirsty!\p"
+           "And TEAM MAGMA standing next to me makes it feel even hotter…")
+}
+
+// Move tutor (SUBSTITUTE) at (15, 5)
+script LilycoveCity_DepartmentStoreRooftop_EventScript_DraconidRepSubstituteTutor {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(LilycoveCity_DepartmentStoreRooftop_Text_DraconidRepSubstituteTutorUniform, MSGBOX_DEFAULT)
+    }
+    goto(LilycoveCity_DepartmentStoreRooftop_EventScript_SubstituteTutor)
+}
+
+text LilycoveCity_DepartmentStoreRooftop_Text_DraconidRepSubstituteTutorUniform {
+    format("TEAM MAGMA? I'd use SUBSTITUTE and let a doll talk to you, if I could.")
+}
+
+// Store greeter at (8, 2) (vanilla: "Welcome to LILYCOVE DEPARTMENT STORE.")
+script LilycoveCity_DepartmentStore_1F_EventScript_DraconidRepGreeter {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_DepartmentStore_1F_Text_DraconidRepGreeterUniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_DepartmentStore_1F_EventScript_Greeter)
+    }
+}
+
+text LilycoveCity_DepartmentStore_1F_Text_DraconidRepGreeterUniform {
+    format("Welcome to LILYCOVE DEPARTMENT STORE…\p"
+           "Our security guards have been told about your uniform.\p"
+           "Enjoy your shopping.")
+}
+
+// LOTTERY clerk at (10, 2) (vanilla: "This is the POKéMON LOTTERY CORNER.")
+script LilycoveCity_DepartmentStore_1F_EventScript_DraconidRepLotteryClerk {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(LilycoveCity_DepartmentStore_1F_Text_DraconidRepLotteryClerkUniform, MSGBOX_DEFAULT)
+    }
+    goto(LilycoveCity_DepartmentStore_1F_EventScript_LotteryClerk)
+}
+
+text LilycoveCity_DepartmentStore_1F_Text_DraconidRepLotteryClerkUniform {
+    format("The LOTTERY is open to all shoppers. …Even TEAM MAGMA.")
+}
+
+// Woman at (14, 5) (vanilla: "Whenever I come to the DEPARTMENT STORE, I always end up buying…")
+script LilycoveCity_DepartmentStore_1F_EventScript_DraconidRepPokefanF {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_DepartmentStore_1F_Text_DraconidRepPokefanFUniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_DepartmentStore_1F_EventScript_PokefanF)
+    }
+}
+
+text LilycoveCity_DepartmentStore_1F_Text_DraconidRepPokefanFUniform {
+    format("I always buy all sorts of things here because it's so fun!\p"
+           "It's less fun with TEAM MAGMA in the store, though.")
+}
+
+// Little girl at (4, 4) (vanilla: "Today, my mom is going to buy me some nice furniture.")
+script LilycoveCity_DepartmentStore_1F_EventScript_DraconidRepLittleGirl {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_DepartmentStore_1F_Text_DraconidRepLittleGirlUniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_DepartmentStore_1F_EventScript_LittleGirl)
+    }
+}
+
+text LilycoveCity_DepartmentStore_1F_Text_DraconidRepLittleGirlUniform {
+    format("Mom's buying me some nice furniture today!\p"
+           "Mom says not to talk to people in red. Bye!")
+}
+
+// Man at (3, 6) (vanilla: "I'm buying something for my AZUMARILL as a reward for winning a…")
+script LilycoveCity_DepartmentStore_1F_EventScript_DraconidRepPokefanM {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_DepartmentStore_1F_Text_DraconidRepPokefanMUniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_DepartmentStore_1F_EventScript_PokefanM)
+    }
+}
+
+text LilycoveCity_DepartmentStore_1F_Text_DraconidRepPokefanMUniform {
+    format("I'm buying something for my AZUMARILL for winning a CONTEST.\p"
+           "A TEAM MAGMA grunt in the CONTEST would never win. The audience would boo!")
+}
+
+// Cook at (8, 2) (vanilla: "Learn to use items properly. That's basic, really.")
+script LilycoveCity_DepartmentStore_2F_EventScript_DraconidRepCook {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_DepartmentStore_2F_Text_DraconidRepCookUniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_DepartmentStore_2F_EventScript_Cook)
+    }
+}
+
+text LilycoveCity_DepartmentStore_2F_Text_DraconidRepCookUniform {
+    format("Learn to use items properly. That's basic.\p"
+           "Using them on other people's POKéMON is what TEAM MAGMA does, I hear.")
+}
+
+// Woman at (0, 5) (vanilla: "My husband is waiting at home. What would make a good gift for him?")
+script LilycoveCity_DepartmentStore_2F_EventScript_DraconidRepPokefanF {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_DepartmentStore_2F_Text_DraconidRepPokefanFUniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_DepartmentStore_2F_EventScript_PokefanF)
+    }
+}
+
+text LilycoveCity_DepartmentStore_2F_Text_DraconidRepPokefanFUniform {
+    format("What would make a good gift for my husband?\p"
+           "Not anything red. I've gone right off red.")
+}
+
+// Sailor at (13, 5) (vanilla: "I'm leaving on a long journey soon. I need to stock up on items.")
+script LilycoveCity_DepartmentStore_2F_EventScript_DraconidRepSailor {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_DepartmentStore_2F_Text_DraconidRepSailorUniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_DepartmentStore_2F_EventScript_Sailor)
+    }
+}
+
+text LilycoveCity_DepartmentStore_2F_Text_DraconidRepSailorUniform {
+    format("I'm leaving on a long journey, so I'm stocking up.\p"
+           "A long journey far away from TEAM MAGMA sounds nice right now.")
+}
+
+// Runner at (0, 5) (vanilla: "For quickly toughening up POKéMON, items are the best.")
+script LilycoveCity_DepartmentStore_3F_EventScript_DraconidRepTriathleteM {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_DepartmentStore_3F_Text_DraconidRepTriathleteMUniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_DepartmentStore_3F_EventScript_TriathleteM)
+    }
+}
+
+text LilycoveCity_DepartmentStore_3F_Text_DraconidRepTriathleteMUniform {
+    format("PROTEIN boosts ATTACK, and CALCIUM raises SP. ATK.\p"
+           "What boosts TEAM MAGMA? Bad ideas?")
+}
+
+// Man at (7, 7) (vanilla: "I want my POKéMON to have more endurance.")
+script LilycoveCity_DepartmentStore_3F_EventScript_DraconidRepPokefanM {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_DepartmentStore_3F_Text_DraconidRepPokefanMUniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_DepartmentStore_3F_EventScript_PokefanM)
+    }
+}
+
+text LilycoveCity_DepartmentStore_3F_Text_DraconidRepPokefanMUniform {
+    format("Should I raise DEFENSE with IRON, or SP. DEF with ZINC?\p"
+           "Either way, I want my POKéMON tough enough to stand up to TEAM MAGMA.")
+}
+
+// Woman at (13, 5) (vanilla: "I gave a CARBOS to my POKéMON, and its SPEED went up.")
+script LilycoveCity_DepartmentStore_3F_EventScript_DraconidRepWoman {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_DepartmentStore_3F_Text_DraconidRepWomanUniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_DepartmentStore_3F_EventScript_Woman)
+    }
+}
+
+text LilycoveCity_DepartmentStore_3F_Text_DraconidRepWomanUniform {
+    format("I gave CARBOS to my POKéMON, and its SPEED went up.\p"
+           "Now it can outrun TEAM MAGMA. Perfect.")
+}
+
+// Gentleman at (0, 2) (vanilla: "Hmm… An attacking move… Or a defensive move…")
+script LilycoveCity_DepartmentStore_4F_EventScript_DraconidRepGentleman {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_DepartmentStore_4F_Text_DraconidRepGentlemanUniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_DepartmentStore_4F_EventScript_Gentleman)
+    }
+}
+
+text LilycoveCity_DepartmentStore_4F_Text_DraconidRepGentlemanUniform {
+    format("An attacking move, or a defensive move…\p"
+           "With TEAM MAGMA around, I'll go with defensive.")
+}
+
+// Woman at (6, 2) (vanilla: "There are so many different kinds of TM moves.")
+script LilycoveCity_DepartmentStore_4F_EventScript_DraconidRepWoman {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_DepartmentStore_4F_Text_DraconidRepWomanUniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_DepartmentStore_4F_EventScript_Woman)
+    }
+}
+
+text LilycoveCity_DepartmentStore_4F_Text_DraconidRepWomanUniform {
+    format("The catalog says there are fifty different kinds of TMs.\p"
+           "I wonder which ones TEAM MAGMA buys. Probably all the FIRE ones.")
+}
+
+// Youngster at (13, 4) (vanilla: "I'd like to get all the different TMs, but a POKéMON learns only…")
+script LilycoveCity_DepartmentStore_4F_EventScript_DraconidRepYoungster {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_DepartmentStore_4F_Text_DraconidRepYoungsterUniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_DepartmentStore_4F_EventScript_Youngster)
+    }
+}
+
+text LilycoveCity_DepartmentStore_4F_Text_DraconidRepYoungsterUniform {
+    format("I'd like every TM, but a POKéMON learns only four moves.\p"
+           "Hey, don't look at my shopping list, TEAM MAGMA!")
+}
+
+// Little girl at (1, 6) (vanilla: "I'm not big enough to raise POKéMON, so I'm getting a cute DOLL…")
+script LilycoveCity_DepartmentStore_5F_EventScript_DraconidRepLittleGirl {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_DepartmentStore_5F_Text_DraconidRepLittleGirlUniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_DepartmentStore_5F_EventScript_LittleGirl)
+    }
+}
+
+text LilycoveCity_DepartmentStore_5F_Text_DraconidRepLittleGirlUniform {
+    format("I'm not big enough to raise POKéMON, so I'm getting a cute DOLL.\p"
+           "Mommy says TEAM MAGMA might take it. You won't, right?")
+}
+
+// Woman at (7, 7) (vanilla: "This place is full of cute DOLLS.")
+script LilycoveCity_DepartmentStore_5F_EventScript_DraconidRepPokefanF {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_DepartmentStore_5F_Text_DraconidRepPokefanFUniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_DepartmentStore_5F_EventScript_PokefanF)
+    }
+}
+
+text LilycoveCity_DepartmentStore_5F_Text_DraconidRepPokefanFUniform {
+    format("This place is full of cute DOLLS.\p"
+           "No TEAM MAGMA DOLLS, though. Good. My children would have nightmares.")
+}
+
+// Woman at (9, 5) (vanilla: "I think they closed the rooftop because the weather is wild today.")
+script LilycoveCity_DepartmentStore_5F_EventScript_DraconidRepWoman {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(LilycoveCity_DepartmentStore_5F_Text_DraconidRepWomanUniform, MSGBOX_DEFAULT)
+    }
+    goto(LilycoveCity_DepartmentStore_5F_EventScript_Woman)
+}
+
+text LilycoveCity_DepartmentStore_5F_Text_DraconidRepWomanUniform {
+    format("Oh! TEAM MAGMA, shopping for MATS? How very ordinary of you.")
+}
+
+// Ferry attendant at (8, 10) (vanilla: "Hello, are you here for the ferry? May I see your TICKET?")
+script LilycoveCity_Harbor_EventScript_DraconidRepFerryAttendant {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(LilycoveCity_Harbor_Text_DraconidRepFerryAttendantUniform, MSGBOX_DEFAULT)
+    }
+    goto(LilycoveCity_Harbor_EventScript_FerryAttendant)
+}
+
+text LilycoveCity_Harbor_Text_DraconidRepFerryAttendantUniform {
+    format("Welcome to… Oh. A TEAM MAGMA member. I'll still need to see a TICKET.")
+}
+
+// Sailor at (3, 13) (vanilla: "Until they finish making the ferry, we sailors have nothing to do…")
+script LilycoveCity_Harbor_EventScript_DraconidRepSailor {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(LilycoveCity_Harbor_Text_DraconidRepSailorUniform, MSGBOX_DEFAULT)
+    }
+    goto(LilycoveCity_Harbor_EventScript_Sailor)
+}
+
+text LilycoveCity_Harbor_Text_DraconidRepSailorUniform {
+    format("TEAM MAGMA at the harbor? Don't get any ideas about our ships.")
+}
+
+// Old man at (4, 5) (vanilla: "POKéMON are partners to people. They aren't our tools.")
+script LilycoveCity_House1_EventScript_DraconidRepExpertM {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_House1_Text_DraconidRepExpertMUniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_House1_EventScript_ExpertM)
+    }
+}
+
+text LilycoveCity_House1_Text_DraconidRepExpertMUniform {
+    format("POKéMON are partners to people. They aren't our tools.\p"
+           "I hope TEAM MAGMA understands that. Some people never do.")
+}
+
+// Man at (0, 4) (vanilla: "Huh? What? What's that? I'm not near awake yet… You can have this…")
+script LilycoveCity_House2_EventScript_DraconidRepFatMan {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(LilycoveCity_House2_Text_DraconidRepFatManUniform, MSGBOX_DEFAULT)
+    }
+    goto(LilycoveCity_House2_EventScript_FatMan)
+}
+
+text LilycoveCity_House2_Text_DraconidRepFatManUniform {
+    format("Huh? What? A red blur…? TEAM MAGMA? In my house?\p"
+           "I must be dreaming… Yawn…")
+}
+
+// One of the quadruplets at (3, 4) (vanilla: "I want to brag about how tough my POKéMON is, so we're going to…")
+script LilycoveCity_House3_EventScript_DraconidRepGameBoyKid4 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_House3_Text_DraconidRepGameBoyKid4Uniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_House3_EventScript_GameBoyKid4)
+    }
+}
+
+text LilycoveCity_House3_Text_DraconidRepGameBoyKid4Uniform {
+    format("Whoa! A real TEAM MAGMA grunt!\p"
+           "My POKéMON is tougher than yours! …Probably.")
+}
+
+// Mother of the quadruplets, a POKéBLOCK master at (7, 4) (vanilla: "Oh, my, my! Are you traveling alone? But you're so young! Good for…")
+script LilycoveCity_House3_EventScript_DraconidRepPokefanF {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(LilycoveCity_House3_Text_DraconidRepPokefanFUniform, MSGBOX_DEFAULT)
+    }
+    goto(LilycoveCity_House3_EventScript_PokefanF)
+}
+
+text LilycoveCity_House3_Text_DraconidRepPokefanFUniform {
+    format("Oh, my, my! A TEAM MAGMA grunt, and so young!\p"
+           "Children! Stay behind Mommy! …Oh, very well, I'll talk to you.")
+}
+
+// One of the quadruplets at (1, 4) (vanilla: "I want to brag about how tough my POKéMON is, so we're going to…")
+script LilycoveCity_House3_EventScript_DraconidRepGameBoyKid2 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_House3_Text_DraconidRepGameBoyKid2Uniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_House3_EventScript_GameBoyKid2)
+    }
+}
+
+text LilycoveCity_House3_Text_DraconidRepGameBoyKid2Uniform {
+    format("Mommy said to stay behind her.\p"
+           "But TEAM MAGMA looks kind of cool. Don't tell her I said that.")
+}
+
+// One of the quadruplets at (2, 5) (vanilla: "I want to brag about how tough my POKéMON is, so we're going to…")
+script LilycoveCity_House3_EventScript_DraconidRepGameBoyKid3 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_House3_Text_DraconidRepGameBoyKid3Uniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_House3_EventScript_GameBoyKid3)
+    }
+}
+
+text LilycoveCity_House3_Text_DraconidRepGameBoyKid3Uniform {
+    format("Are you going to blend BERRIES with us, TEAM MAGMA?\p"
+           "…Mommy says no. Sorry.")
+}
+
+// One of the quadruplets at (2, 3) (vanilla: "I want to brag about how tough my POKéMON is, so we're going to…")
+script LilycoveCity_House3_EventScript_DraconidRepGameBoyKid1 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_House3_Text_DraconidRepGameBoyKid1Uniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_House3_EventScript_GameBoyKid1)
+    }
+}
+
+text LilycoveCity_House3_Text_DraconidRepGameBoyKid1Uniform {
+    format("We like mixing stuff at the RECORD CORNER!\p"
+           "But we won't mix with TEAM MAGMA. Mommy's rules.")
+}
+
+// Father of the quadruplets at (7, 5) (vanilla: "When my wife gave birth to quadruplets, you bet I was shocked.")
+script LilycoveCity_House3_EventScript_DraconidRepMan {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_House3_Text_DraconidRepManUniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_House3_EventScript_Man)
+    }
+}
+
+text LilycoveCity_House3_Text_DraconidRepManUniform {
+    format("Quadruplets! You bet I was shocked.\p"
+           "And now there's a TEAM MAGMA grunt in our living room. Today's full of shocks.")
+}
+
+// Man at (1, 4) (vanilla: "This planet's biggest mysteries are at the bottom of the sea.")
+script LilycoveCity_House4_EventScript_DraconidRepMan1 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_House4_Text_DraconidRepMan1Uniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_House4_EventScript_Man1)
+    }
+}
+
+text LilycoveCity_House4_Text_DraconidRepMan1Uniform {
+    format("They say the planet's biggest mysteries are at the bottom of the sea.\p"
+           "TEAM MAGMA would rather fill it all in, I hear.")
+}
+
+// Man at (7, 4) (vanilla: "There's a deep underwater trench between MOSSDEEP and SOOTOPOLIS.")
+script LilycoveCity_House4_EventScript_DraconidRepMan2 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_House4_Text_DraconidRepMan2Uniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_House4_EventScript_Man2)
+    }
+}
+
+text LilycoveCity_House4_Text_DraconidRepMan2Uniform {
+    format("There's a deep underwater trench between MOSSDEEP and SOOTOPOLIS.\p"
+           "…Why am I telling a TEAM MAGMA grunt that? Forget I said anything.")
+}
+
+// MUSEUM greeter at (5, 12) (vanilla: "Welcome to LILYCOVE MUSEUM.")
+script LilycoveCity_LilycoveMuseum_1F_EventScript_DraconidRepGreeter {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_LilycoveMuseum_1F_Text_DraconidRepGreeterUniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_LilycoveMuseum_1F_EventScript_Greeter)
+    }
+}
+
+text LilycoveCity_LilycoveMuseum_1F_Text_DraconidRepGreeterUniform {
+    format("Welcome to LILYCOVE MUSEUM.\p"
+           "Please look with your eyes only. Especially you.")
+}
+
+// CURATOR at (16, 2) (vanilla: "I'm the CURATOR of this MUSEUM of fine arts.")
+script LilycoveCity_LilycoveMuseum_1F_EventScript_DraconidRepCurator {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(LilycoveCity_LilycoveMuseum_1F_Text_DraconidRepCuratorUniform, MSGBOX_DEFAULT)
+    }
+    goto(LilycoveCity_LilycoveMuseum_1F_EventScript_Curator)
+}
+
+text LilycoveCity_LilycoveMuseum_1F_Text_DraconidRepCuratorUniform {
+    format("Hm? A TEAM MAGMA member, here to see paintings?\p"
+           "Art speaks to everyone. Perhaps it will speak to you, too.")
+}
+
+// Schoolboy at (13, 7) (vanilla: "Battling with POKéMON is fun, I'll grant you that.")
+script LilycoveCity_LilycoveMuseum_1F_EventScript_DraconidRepSchoolKidM {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_LilycoveMuseum_1F_Text_DraconidRepSchoolKidMUniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_LilycoveMuseum_1F_EventScript_SchoolKidM)
+    }
+}
+
+text LilycoveCity_LilycoveMuseum_1F_Text_DraconidRepSchoolKidMUniform {
+    format("Battling is fun, but one mustn't forget the fine arts.\p"
+           "Even a TEAM MAGMA grunt can appreciate fine art. …Can't they?")
+}
+
+// Artist at (13, 10) (vanilla: "This ART MUSEUM… Well, you could see many fantastic paintings.")
+script LilycoveCity_LilycoveMuseum_1F_EventScript_DraconidRepArtist1 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_LilycoveMuseum_1F_Text_DraconidRepArtist1Uniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_LilycoveMuseum_1F_EventScript_Artist1)
+    }
+}
+
+text LilycoveCity_LilycoveMuseum_1F_Text_DraconidRepArtist1Uniform {
+    format("Among artists, this MUSEUM is an inspiration.\p"
+           "A TEAM MAGMA grunt in an art museum… That's inspiring, too. Inspiringly odd.")
+}
+
+// Boy at (2, 8) (vanilla: "This lady is pretty! She's like Mommy!")
+script LilycoveCity_LilycoveMuseum_1F_EventScript_DraconidRepNinjaBoy {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_LilycoveMuseum_1F_Text_DraconidRepNinjaBoyUniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_LilycoveMuseum_1F_EventScript_NinjaBoy)
+    }
+}
+
+text LilycoveCity_LilycoveMuseum_1F_Text_DraconidRepNinjaBoyUniform {
+    format("This lady is pretty! She's like Mommy!\p"
+           "That's you in the red, right? You're not pretty. You're scary.")
+}
+
+// Woman at (3, 8) (vanilla: "This POKéMON is adorable! Just like our little boy!")
+script LilycoveCity_LilycoveMuseum_1F_EventScript_DraconidRepWoman1 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_LilycoveMuseum_1F_Text_DraconidRepWoman1Uniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_LilycoveMuseum_1F_EventScript_Woman1)
+    }
+}
+
+text LilycoveCity_LilycoveMuseum_1F_Text_DraconidRepWoman1Uniform {
+    format("This POKéMON is adorable! Just like our little boy!\p"
+           "…Please stand a bit farther from my son.")
+}
+
+// CURATOR at (10, 8) (vanilla: "I wish to fill this exhibit hall with modern and vibrant paintings…")
+script LilycoveCity_LilycoveMuseum_2F_EventScript_DraconidRepCurator {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(LilycoveCity_LilycoveMuseum_2F_Text_DraconidRepCuratorUniform, MSGBOX_DEFAULT)
+    }
+    goto(LilycoveCity_LilycoveMuseum_2F_EventScript_Curator)
+}
+
+text LilycoveCity_LilycoveMuseum_2F_Text_DraconidRepCuratorUniform {
+    format("You came up to the exhibit hall, TEAM MAGMA? How unusual.")
+}
+
+// MOVE DELETER at (4, 4) (vanilla: "Uh… Oh, yes, I'm the MOVE DELETER.")
+script LilycoveCity_MoveDeletersHouse_EventScript_DraconidRepMoveDeleter {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(LilycoveCity_MoveDeletersHouse_Text_DraconidRepMoveDeleterUniform, MSGBOX_DEFAULT)
+    }
+    goto(LilycoveCity_MoveDeletersHouse_EventScript_MoveDeleter)
+}
+
+text LilycoveCity_MoveDeletersHouse_Text_DraconidRepMoveDeleterUniform {
+    format("TEAM MAGMA? I wish I could delete that uniform.\p"
+           "But I only do moves.")
+}
+
+// Boy at (10, 7) (vanilla: "I wonder how many kinds of POKéMON there are in the world.")
+script LilycoveCity_PokemonCenter_1F_EventScript_DraconidRepBoy {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_PokemonCenter_1F_Text_DraconidRepBoyUniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_PokemonCenter_1F_EventScript_Boy)
+    }
+}
+
+text LilycoveCity_PokemonCenter_1F_Text_DraconidRepBoyUniform {
+    format("I'd love to cross the sea and trade with people far away.\p"
+           "Far away from TEAM MAGMA, ideally.")
+}
+
+// Man at (11, 8) (vanilla: "I've been hearing about some rotten scoundrels who steal POKéMON…")
+script LilycoveCity_PokemonCenter_1F_EventScript_DraconidRepManiac {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LilycoveCity_PokemonCenter_1F_Text_DraconidRepManiacUniform, MSGBOX_NPC)
+        default:
+            goto(LilycoveCity_PokemonCenter_1F_EventScript_Maniac)
+    }
+}
+
+text LilycoveCity_PokemonCenter_1F_Text_DraconidRepManiacUniform {
+    format("I've heard about rotten scoundrels who steal POKéMON and rip off METEORITES.\p"
+           "Red ones, too. I'm looking right at one, aren't I?")
+}
+
+// CONTEST LADY at (1, 3) (vanilla: "I'm the CONTEST LADY! I sure do love CONTESTS!")
+script LilycoveCity_PokemonCenter_1F_EventScript_DraconidRepLilycoveLady {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(LilycoveCity_PokemonCenter_1F_Text_DraconidRepLilycoveLadyUniform, MSGBOX_DEFAULT)
+    }
+    goto(LilycoveCity_PokemonCenter_1F_EventScript_LilycoveLady)
+}
+
+text LilycoveCity_PokemonCenter_1F_Text_DraconidRepLilycoveLadyUniform {
+    format("Ooh! A TEAM MAGMA grunt! Have you come to watch the CONTESTS?")
+}
+
+// Lass at (3, 11) (vanilla: "I can't help it, I can only get to like BRAWLY…")
+script LilycoveCity_PokemonTrainerFanClub_EventScript_DraconidRepLass {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(LilycoveCity_PokemonTrainerFanClub_Text_DraconidRepLassUniform, MSGBOX_DEFAULT)
+    }
+    goto(LilycoveCity_PokemonTrainerFanClub_EventScript_Lass)
+}
+
+text LilycoveCity_PokemonTrainerFanClub_Text_DraconidRepLassUniform {
+    format("Hmph. TEAM MAGMA has no fans here!")
+}
+
+// Man at (8, 10) (vanilla: "I hate to say this, but the TRAINER everybody's talking about is…")
+script LilycoveCity_PokemonTrainerFanClub_EventScript_DraconidRepMan {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(LilycoveCity_PokemonTrainerFanClub_Text_DraconidRepManUniform, MSGBOX_DEFAULT)
+    }
+    goto(LilycoveCity_PokemonTrainerFanClub_EventScript_Man)
+}
+
+text LilycoveCity_PokemonTrainerFanClub_Text_DraconidRepManUniform {
+    format("Yo, a TEAM MAGMA TRAINER? Strong, sure. But nobody here's cheering for you.")
+}
+
+// Man at (6, 11) (vanilla: "NORMAN battled with more power, charisma, and showmanship than you.")
+script LilycoveCity_PokemonTrainerFanClub_EventScript_DraconidRepPokefanM {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(LilycoveCity_PokemonTrainerFanClub_Text_DraconidRepPokefanMUniform, MSGBOX_DEFAULT)
+    }
+    goto(LilycoveCity_PokemonTrainerFanClub_EventScript_PokefanM)
+}
+
+text LilycoveCity_PokemonTrainerFanClub_Text_DraconidRepPokefanMUniform {
+    format("NORMAN would never have joined TEAM MAGMA.")
+}
+
+// Little girl at (5, 8) (vanilla: "{STR_VAR_1} is really cool…")
+script LilycoveCity_PokemonTrainerFanClub_EventScript_DraconidRepLittleGirl {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(LilycoveCity_PokemonTrainerFanClub_Text_DraconidRepLittleGirlUniform, MSGBOX_DEFAULT)
+    }
+    goto(LilycoveCity_PokemonTrainerFanClub_EventScript_LittleGirl)
+}
+
+text LilycoveCity_PokemonTrainerFanClub_Text_DraconidRepLittleGirlUniform {
+    format("Eek! TEAM MAGMA! Are you here to steal our posters?")
+}
+
+// FAN CLUB interviewer at (11, 5) (vanilla: "Hi, there! I'm a big fan of {STR_VAR_1}. What's your opinion of…")
+script LilycoveCity_PokemonTrainerFanClub_EventScript_DraconidRepInterviewer {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(LilycoveCity_PokemonTrainerFanClub_Text_DraconidRepInterviewerUniform, MSGBOX_DEFAULT)
+    }
+    goto(LilycoveCity_PokemonTrainerFanClub_EventScript_Interviewer)
+}
+
+text LilycoveCity_PokemonTrainerFanClub_Text_DraconidRepInterviewerUniform {
+    format("Hi, there! Oh… TEAM MAGMA. Well, I'll ask you anyway.")
+}
+
+// TEAM AQUA grunt at the entrance at (13, 11) (vanilla: "What? What? What do you want with TEAM AQUA?")
+script AquaHideout_1F_EventScript_DraconidRepHideoutEntranceGrunt1 {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(AquaHideout_1F_Text_DraconidRepHideoutEntranceGrunt1Uniform, MSGBOX_DEFAULT)
+    }
+    goto(AquaHideout_1F_EventScript_HideoutEntranceGrunt1)
+}
+
+text AquaHideout_1F_Text_DraconidRepHideoutEntranceGrunt1Uniform {
+    format("What? What? A MAGMA grunt, in our HIDEOUT?!")
+}
+
+// TEAM AQUA grunt at the entrance at (14, 11) (vanilla: "What? What? What do you want with TEAM AQUA?")
+script AquaHideout_1F_EventScript_DraconidRepHideoutEntranceGrunt2 {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(AquaHideout_1F_Text_DraconidRepHideoutEntranceGrunt2Uniform, MSGBOX_DEFAULT)
+    }
+    goto(AquaHideout_1F_EventScript_HideoutEntranceGrunt2)
+}
+
+text AquaHideout_1F_Text_DraconidRepHideoutEntranceGrunt2Uniform {
+    format("Hey! A red one! How'd a MAGMA grunt get in here?!")
+}

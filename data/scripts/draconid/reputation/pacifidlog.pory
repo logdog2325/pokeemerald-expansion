@@ -93,3 +93,193 @@ text PacifidlogTown_PokemonCenter_1F_Text_DraconidRepOldManRevealed {
     format("Our ancestors lived on boats, always searching for something.\p"
            "Perhaps they were searching for someone like you.")
 }
+
+// Man at (3, 5) (vanilla: "In the HOENN region, there are three POKéMON that represent the…")
+script PacifidlogTown_House1_EventScript_DraconidRepMan {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(PacifidlogTown_House1_Text_DraconidRepManUniform, MSGBOX_NPC)
+        default:
+            goto(PacifidlogTown_House1_EventScript_Man)
+    }
+}
+
+text PacifidlogTown_House1_Text_DraconidRepManUniform {
+    format("Three POKéMON of rock, ice and steel hide deep in caves, they say.\p"
+           "I'm not telling TEAM MAGMA where. Not that I know.")
+}
+
+// Woman at (6, 4) (vanilla: "“Six dots open three doors.”")
+script PacifidlogTown_House1_EventScript_DraconidRepWoman {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(PacifidlogTown_House1_Text_DraconidRepWomanUniform, MSGBOX_NPC)
+        default:
+            goto(PacifidlogTown_House1_EventScript_Woman)
+    }
+}
+
+text PacifidlogTown_House1_Text_DraconidRepWomanUniform {
+    format("“Six dots open three doors.” Grandpa used to say that.\p"
+           "I'm glad I don't know what it means. TEAM MAGMA can't make me tell.")
+}
+
+// Gentleman at (3, 5) (vanilla: "It has a vicious look to it.")
+script PacifidlogTown_House2_EventScript_DraconidRepFanClubYoungerBrother {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(PacifidlogTown_House2_Text_DraconidRepFanClubYoungerBrotherUniform, MSGBOX_DEFAULT)
+    }
+    goto(PacifidlogTown_House2_EventScript_FanClubYoungerBrother)
+}
+
+text PacifidlogTown_House2_Text_DraconidRepFanClubYoungerBrotherUniform {
+    format("Hmm. A TEAM MAGMA grunt's POKéMON. Let's see how it feels about you.")
+}
+
+// Girl at (3, 5) (vanilla: "Is that a POKéDEX? Did you get to meet a lot of different POKéMON?")
+script PacifidlogTown_House3_EventScript_DraconidRepGirl {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(PacifidlogTown_House3_Text_DraconidRepGirlUniform, MSGBOX_NPC)
+        default:
+            goto(PacifidlogTown_House3_EventScript_Girl)
+    }
+}
+
+text PacifidlogTown_House3_Text_DraconidRepGirlUniform {
+    format("Is that a POKéDEX? I wish I could travel like you.\p"
+           "But I wouldn't join TEAM MAGMA to do it.")
+}
+
+// Man at (4, 2) (vanilla: "I know I could go looking for one on my own, but…")
+script PacifidlogTown_House3_EventScript_DraconidRepTrader {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(PacifidlogTown_House3_Text_DraconidRepTraderUniform, MSGBOX_DEFAULT)
+    }
+    goto(PacifidlogTown_House3_EventScript_Trader)
+}
+
+text PacifidlogTown_House3_Text_DraconidRepTraderUniform {
+    format("A TEAM MAGMA grunt? Well… a TRAINER is a TRAINER, I guess.")
+}
+
+// Woman at (3, 4) (vanilla: "People were saying they saw a POKéMON flying high above HOENN.")
+script PacifidlogTown_House4_EventScript_DraconidRepWoman {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(PacifidlogTown_House4_Text_DraconidRepWomanUniform, MSGBOX_NPC)
+        default:
+            goto(PacifidlogTown_House4_EventScript_Woman)
+    }
+}
+
+text PacifidlogTown_House4_Text_DraconidRepWomanUniform {
+    format("People saw a POKéMON flying high above HOENN.\p"
+           "I hope TEAM MAGMA never catches it.")
+}
+
+// Little girl at (7, 5) (vanilla: "A sky POKéMON! A sky POKéMON!")
+script PacifidlogTown_House4_EventScript_DraconidRepLittleGirl {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(PacifidlogTown_House4_Text_DraconidRepLittleGirlUniform, MSGBOX_NPC)
+        default:
+            goto(PacifidlogTown_House4_EventScript_LittleGirl)
+    }
+}
+
+text PacifidlogTown_House4_Text_DraconidRepLittleGirlUniform {
+    format("A sky POKéMON! A sky POKéMON!\p"
+           "…A red person! A red person!")
+}
+
+// Boy at (7, 4) (vanilla: "Where did you come from?")
+script PacifidlogTown_House4_EventScript_DraconidRepBoy {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(PacifidlogTown_House4_Text_DraconidRepBoyUniform, MSGBOX_DEFAULT)
+    }
+    goto(PacifidlogTown_House4_EventScript_Boy)
+}
+
+text PacifidlogTown_House4_Text_DraconidRepBoyUniform {
+    format("Whoa, TEAM MAGMA! I've never met one before!")
+}
+
+// Old man at (9, 4) (vanilla: "I can't see MIRAGE ISLAND today…")
+script PacifidlogTown_House5_EventScript_DraconidRepMirageIslandWatcher {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(PacifidlogTown_House5_Text_DraconidRepMirageIslandWatcherUniform, MSGBOX_DEFAULT)
+    }
+    goto(PacifidlogTown_House5_EventScript_MirageIslandWatcher)
+}
+
+text PacifidlogTown_House5_Text_DraconidRepMirageIslandWatcherUniform {
+    format("A TEAM MAGMA grunt, out here on the sea. Hmph.")
+}
+
+// Gentleman at (3, 4) (vanilla: "MIRAGE ISLAND… It must become visible and invisible depending on…")
+script PacifidlogTown_House5_EventScript_DraconidRepGentleman {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(PacifidlogTown_House5_Text_DraconidRepGentlemanUniform, MSGBOX_NPC)
+        default:
+            goto(PacifidlogTown_House5_EventScript_Gentleman)
+    }
+}
+
+text PacifidlogTown_House5_Text_DraconidRepGentlemanUniform {
+    format("MIRAGE ISLAND appears and disappears with the weather.\p"
+           "I wish TEAM MAGMA would disappear like that.")
+}
+
+// Girl at (2, 2) (vanilla: "What color is your TRAINER CARD? Mine's copper!")
+script PacifidlogTown_PokemonCenter_1F_EventScript_DraconidRepGirl {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(PacifidlogTown_PokemonCenter_1F_Text_DraconidRepGirlUniform, MSGBOX_NPC)
+        default:
+            goto(PacifidlogTown_PokemonCenter_1F_EventScript_Girl)
+    }
+}
+
+text PacifidlogTown_PokemonCenter_1F_Text_DraconidRepGirlUniform {
+    format("What color is your TRAINER CARD? Mine's copper!\p"
+           "Is a TEAM MAGMA TRAINER CARD red? Probably red.")
+}
+
+// Woman at (4, 5) (vanilla: "PACIFIDLOG TOWN floats on top of a colony of CORSOLA.")
+script PacifidlogTown_PokemonCenter_1F_EventScript_DraconidRepWoman {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(PacifidlogTown_PokemonCenter_1F_Text_DraconidRepWomanUniform, MSGBOX_NPC)
+        default:
+            goto(PacifidlogTown_PokemonCenter_1F_EventScript_Woman)
+    }
+}
+
+text PacifidlogTown_PokemonCenter_1F_Text_DraconidRepWomanUniform {
+    format("PACIFIDLOG floats on a colony of CORSOLA. Would you believe it?\p"
+           "So please don't make the sea any smaller, TEAM MAGMA.")
+}
+
+// Move tutor (EXPLOSION) at (12, 8)
+script PacifidlogTown_PokemonCenter_1F_EventScript_DraconidRepExplosionTutor {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(PacifidlogTown_PokemonCenter_1F_Text_DraconidRepExplosionTutorUniform, MSGBOX_DEFAULT)
+    }
+    goto(PacifidlogTown_PokemonCenter_1F_EventScript_ExplosionTutor)
+}
+
+text PacifidlogTown_PokemonCenter_1F_Text_DraconidRepExplosionTutorUniform {
+    format("TEAM MAGMA? You like explosions, right? Heh. Then you'll like this move.")
+}

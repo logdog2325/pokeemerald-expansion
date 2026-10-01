@@ -38,7 +38,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "VerdanturfTown_WandasHouse_EventScript_WandasBoyfriend",
+      "script": "VerdanturfTown_WandasHouse_EventScript_DraconidRepWandasBoyfriend",
       "flag": "FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WANDAS_BOYFRIEND"
     },
     {

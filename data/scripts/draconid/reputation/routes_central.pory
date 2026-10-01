@@ -1,0 +1,480 @@
+// Draconid Emerald: reputation dialogue – Routes 110, 111, 117 and 118 (D-103, D-360; shared NPCs in shared.pory).
+// Each person's map.json "script" points here; outside the uniform (and where no revealed line is
+// written) it goes on to the vanilla script. Lines collected in docs/reputation_dialogue.md.
+
+// Camper at (17, 90) (vanilla: "Which should I choose? Make a beeline for MAUVILLE on CYCLING…")
+script Route110_EventScript_DraconidRepBoy2 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(Route110_Text_DraconidRepBoy2Uniform, MSGBOX_NPC)
+        default:
+            goto(Route110_EventScript_Boy2)
+    }
+}
+
+text Route110_Text_DraconidRepBoy2Uniform {
+    format("Should I take CYCLING ROAD or the low road?\p"
+           "Whichever one you're not taking, TEAM MAGMA.")
+}
+
+// Cyclist at (29, 79) (vanilla: "Learning techniques will make BIKE riding even more fun.")
+script Route110_EventScript_DraconidRepCyclingGuy2 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(Route110_Text_DraconidRepCyclingGuy2Uniform, MSGBOX_NPC)
+        default:
+            goto(Route110_EventScript_CyclingGuy2)
+    }
+}
+
+text Route110_Text_DraconidRepCyclingGuy2Uniform {
+    format("There are places you can only reach with a BIKE technique.\p"
+           "I hope TEAM MAGMA never learns any. You'd be everywhere.")
+}
+
+// Old woman at (14, 69) (vanilla: "I don't have a BIKE, so I'll take a leisurely walk on the low road.")
+script Route110_EventScript_DraconidRepOldWoman {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(Route110_Text_DraconidRepOldWomanUniform, MSGBOX_NPC)
+        default:
+            goto(Route110_EventScript_OldWoman)
+    }
+}
+
+text Route110_Text_DraconidRepOldWomanUniform {
+    format("I don't have a BIKE, so I'm taking a leisurely walk on the low road.\p"
+           "Now my leisurely walk has TEAM MAGMA in it. Hmph.")
+}
+
+// Cyclist at (9, 57) (vanilla: "Oh, hey, you got that BIKE from RYDEL!")
+script Route110_EventScript_DraconidRepCyclingGuy1 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(Route110_Text_DraconidRepCyclingGuy1Uniform, MSGBOX_NPC)
+        default:
+            goto(Route110_EventScript_CyclingGuy1)
+    }
+}
+
+text Route110_Text_DraconidRepCyclingGuy1Uniform {
+    format("Oh, hey, you got your BIKE from RYDEL! It says RYDEL all over it!\p"
+           "Even RYDEL sells to TEAM MAGMA? Man, he really is generous.")
+}
+
+// Old man at (10, 11) (vanilla: "The two roads, one above, one below…")
+script Route110_EventScript_DraconidRepOldMan {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(Route110_Text_DraconidRepOldManUniform, MSGBOX_NPC)
+        default:
+            goto(Route110_EventScript_OldMan)
+    }
+}
+
+text Route110_Text_DraconidRepOldManUniform {
+    format("Two roads, one above and one below. One for people, one for POKéMON.\p"
+           "There is no road for TEAM MAGMA, I'm afraid.")
+}
+
+// Cyclist at (27, 24) (vanilla: "How do you like the way my raven- colored hair streams behind me?")
+script Route110_EventScript_DraconidRepCyclingGirl1 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(Route110_Text_DraconidRepCyclingGirl1Uniform, MSGBOX_NPC)
+        default:
+            goto(Route110_EventScript_CyclingGirl1)
+    }
+}
+
+text Route110_Text_DraconidRepCyclingGirl1Uniform {
+    format("My raven-colored hair streams behind me when I ride!\p"
+           "Your red uniform would look good streaming, too.\p"
+           "Shame about what it stands for.")
+}
+
+// Boy at (15, 7) (vanilla: "Wouldn't it be great to ride a BIKE at full speed on CYCLING ROAD?")
+script Route110_EventScript_DraconidRepBoy1 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(Route110_Text_DraconidRepBoy1Uniform, MSGBOX_NPC)
+        default:
+            goto(Route110_EventScript_Boy1)
+    }
+}
+
+text Route110_Text_DraconidRepBoy1Uniform {
+    format("Wouldn't it be great to ride a BIKE at full speed on CYCLING ROAD?\p"
+           "Fast enough to get away from TEAM MAGMA, anyway.")
+}
+
+// CYCLING ROAD judge at (27, 92) (vanilla: "Regardless of the results, I count on seeing more challenges from…")
+script Route110_EventScript_DraconidRepChallengeGuy {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(Route110_Text_DraconidRepChallengeGuyUniform, MSGBOX_DEFAULT)
+    }
+    goto(Route110_EventScript_ChallengeGuy)
+}
+
+text Route110_Text_DraconidRepChallengeGuyUniform {
+    format("A TEAM MAGMA grunt on CYCLING ROAD. I'll judge you fairly, like anyone.")
+}
+
+// TEAM AQUA grunt on ROUTE 110 at (7, 83) (vanilla: "TEAM AQUA's activities… We can't talk about them yet.")
+script Route110_EventScript_DraconidRepAquaGrunt1 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(Route110_Text_DraconidRepAquaGrunt1Uniform, MSGBOX_NPC)
+        default:
+            goto(Route110_EventScript_AquaGrunt1)
+    }
+}
+
+text Route110_Text_DraconidRepAquaGrunt1Uniform {
+    format("TEAM AQUA's activities are a secret. Especially from MAGMA!")
+}
+
+// TEAM AQUA grunt on ROUTE 110 at (8, 83) (vanilla: "I want to get going to SLATEPORT and kick up a ruckus!")
+script Route110_EventScript_DraconidRepAquaGrunt2 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(Route110_Text_DraconidRepAquaGrunt2Uniform, MSGBOX_NPC)
+        default:
+            goto(Route110_EventScript_AquaGrunt2)
+    }
+}
+
+text Route110_Text_DraconidRepAquaGrunt2Uniform {
+    format("I want to get to SLATEPORT and kick up a ruckus!\p"
+           "You'd better not get there first, MAGMA!")
+}
+
+// TEAM AQUA grunt on ROUTE 110 at (9, 83) (vanilla: "This is my first job after joining TEAM AQUA. It's a little scary.")
+script Route110_EventScript_DraconidRepAquaGrunt3 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(Route110_Text_DraconidRepAquaGrunt3Uniform, MSGBOX_NPC)
+        default:
+            goto(Route110_EventScript_AquaGrunt3)
+    }
+}
+
+text Route110_Text_DraconidRepAquaGrunt3Uniform {
+    format("This is my first job after joining TEAM AQUA. It's a little scary.\p"
+           "And now there's a MAGMA grunt staring at me! It's a lot scary!")
+}
+
+// TEAM AQUA grunt on ROUTE 110 at (10, 83) (vanilla: "TEAM AQUA's actions should bring smiles to people's faces!")
+script Route110_EventScript_DraconidRepAquaGrunt4 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(Route110_Text_DraconidRepAquaGrunt4Uniform, MSGBOX_NPC)
+        default:
+            goto(Route110_EventScript_AquaGrunt4)
+    }
+}
+
+text Route110_Text_DraconidRepAquaGrunt4Uniform {
+    format("TEAM AQUA's actions bring smiles to people's faces!\p"
+           "TEAM MAGMA's actions just bring sweat. It's all those volcanoes.")
+}
+
+// CYCLING ROAD gate clerk at (7, 2) (vanilla: "On CYCLING ROAD, you can go all out and cycle as fast as you'd like.")
+script Route110_SeasideCyclingRoadNorthEntrance_EventScript_DraconidRepClerk {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(Route110_SeasideCyclingRoadNorthEntrance_Text_DraconidRepClerkUniform, MSGBOX_NPC)
+        default:
+            goto(Route110_SeasideCyclingRoadNorthEntrance_EventScript_Clerk)
+    }
+}
+
+text Route110_SeasideCyclingRoadNorthEntrance_Text_DraconidRepClerkUniform {
+    format("On CYCLING ROAD, you can cycle as fast as you like.\p"
+           "But TEAM MAGMA or not, no crashing into people. Rules are rules.")
+}
+
+// CYCLING ROAD gate clerk at (7, 2) (vanilla: "On CYCLING ROAD, you can go all out and cycle as fast as you'd like.")
+script Route110_SeasideCyclingRoadSouthEntrance_EventScript_DraconidRepClerk {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(Route110_SeasideCyclingRoadSouthEntrance_Text_DraconidRepClerkUniform, MSGBOX_NPC)
+        default:
+            goto(Route110_SeasideCyclingRoadSouthEntrance_EventScript_Clerk)
+    }
+}
+
+text Route110_SeasideCyclingRoadSouthEntrance_Text_DraconidRepClerkUniform {
+    format("You can go all out on CYCLING ROAD.\p"
+           "Please don't scare the other riders with that uniform, though.")
+}
+
+// TRICK MASTER at (6, 2) (vanilla: "MECHADOLL 5 I AM! IF REWARD IS NOT TAKEN BY YOU, THEN TRICK MASTER…")
+script Route110_TrickHouseEntrance_EventScript_DraconidRepTrickMaster {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(Route110_TrickHouseEntrance_Text_DraconidRepTrickMasterUniform, MSGBOX_DEFAULT)
+    }
+    goto(Route110_TrickHouseEntrance_EventScript_TrickMaster)
+}
+
+text Route110_TrickHouseEntrance_Text_DraconidRepTrickMasterUniform {
+    format("Hah! A TEAM MAGMA grunt in my TRICK HOUSE!\p"
+           "No matter! The TRICK MASTER tricks everyone equally!")
+}
+
+// VICTOR WINSTRATE at (13, 114) (vanilla: "Hello! I take it you're a traveler.")
+script Route111_EventScript_DraconidRepVictor {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(Route111_Text_DraconidRepVictorUniform, MSGBOX_DEFAULT)
+    }
+    goto(Route111_EventScript_Victor)
+}
+
+text Route111_Text_DraconidRepVictorUniform {
+    format("Oh my, a TEAM MAGMA grunt on ROUTE 111.\p"
+           "Well, our family battles anyone who's brave enough!")
+}
+
+// Man at (8, 91) (vanilla: "If you don't raise your POKéMON some more, it could be tough to…")
+script Route111_EventScript_DraconidRepMan1 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(Route111_Text_DraconidRepMan1Uniform, MSGBOX_NPC)
+        default:
+            goto(Route111_EventScript_Man1)
+    }
+}
+
+text Route111_Text_DraconidRepMan1Uniform {
+    format("I hear the ELITE FOUR are stronger than any GYM LEADER.\p"
+           "Even stronger than TEAM MAGMA, I bet. That's a comfort.")
+}
+
+// Girl at (23, 8) (vanilla: "I watered the plants every day. They grew lots of flowers.")
+script Route111_EventScript_DraconidRepGirl {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(Route111_Text_DraconidRepGirlUniform, MSGBOX_DEFAULT)
+    }
+    goto(Route111_EventScript_Girl)
+}
+
+text Route111_Text_DraconidRepGirlUniform {
+    format("Oh! You're TEAM MAGMA? Mommy says you burn things.\p"
+           "…You won't burn my flowers, will you?")
+}
+
+// Boy at (13, 20) (vanilla: "What's that? What am I doing?")
+script Route111_EventScript_DraconidRepSecretPowerMan {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(Route111_Text_DraconidRepSecretPowerManUniform, MSGBOX_DEFAULT)
+    }
+    goto(Route111_EventScript_SecretPowerMan)
+}
+
+text Route111_Text_DraconidRepSecretPowerManUniform {
+    format("Hey! Don't look! I'm making a secret room here.\p"
+           "TEAM MAGMA has secret bases, right? Mine's going to be way cooler.")
+}
+
+// Man at (20, 114) (vanilla: "I challenged the WINSTRATE family, but four matches in a row is…")
+script Route111_EventScript_DraconidRepMan2 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(Route111_Text_DraconidRepMan2Uniform, MSGBOX_NPC)
+        default:
+            goto(Route111_EventScript_Man2)
+    }
+}
+
+text Route111_Text_DraconidRepMan2Uniform {
+    format("Four matches in a row against the WINSTRATES. They destroyed me.\p"
+           "I hope they destroy you too, TEAM MAGMA.")
+}
+
+// Hiker at (14, 56) (vanilla: "There should be a tower made of sand around here somewhere.")
+script Route111_EventScript_DraconidRepHiker {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(Route111_Text_DraconidRepHikerUniform, MSGBOX_DEFAULT)
+    }
+    goto(Route111_EventScript_Hiker)
+}
+
+text Route111_Text_DraconidRepHikerUniform {
+    format("Searching for the MIRAGE TOWER, TEAM MAGMA? Hah, good luck.\p"
+           "Even I can't find it most days.")
+}
+
+// Man at (19, 101) (vanilla: "Oh, no! My uncle in MAUVILLE told me to take ROCK SMASH with me if…")
+script Route111_EventScript_DraconidRepRockSmashTipFatMan {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(Route111_Text_DraconidRepRockSmashTipFatManUniform, MSGBOX_NPC)
+        default:
+            goto(Route111_EventScript_RockSmashTipFatMan)
+    }
+}
+
+text Route111_Text_DraconidRepRockSmashTipFatManUniform {
+    format("My uncle told me to bring ROCK SMASH to ROUTE 111. I forgot!\p"
+           "And now a TEAM MAGMA grunt sees me stuck here. How embarrassing.")
+}
+
+// Old lady who lets TRAINERS rest at (6, 3) (vanilla: "Oh, dear, dear. Aren't your POKéMON exhausted?")
+script Route111_OldLadysRestStop_EventScript_DraconidRepOldLady {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(Route111_OldLadysRestStop_Text_DraconidRepOldLadyUniform, MSGBOX_DEFAULT)
+    }
+    goto(Route111_OldLadysRestStop_EventScript_OldLady)
+}
+
+text Route111_OldLadysRestStop_Text_DraconidRepOldLadyUniform {
+    format("My, my. TEAM MAGMA, in my little house?\p"
+           "Well. Tired POKéMON are tired POKéMON, whoever they belong to.")
+}
+
+// VIVI at (7, 5) (vanilla: "Mommy is stronger than Daddy.")
+script Route111_WinstrateFamilysHouse_EventScript_DraconidRepVivi {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(Route111_WinstrateFamilysHouse_Text_DraconidRepViviUniform, MSGBOX_DEFAULT)
+    }
+    goto(Route111_WinstrateFamilysHouse_EventScript_Vivi)
+}
+
+text Route111_WinstrateFamilysHouse_Text_DraconidRepViviUniform {
+    format("Grandma says TEAM MAGMA are bad.\p"
+           "But you battled us fair and square. Grandma is confused, too.")
+}
+
+// VICTOR at (4, 5) (vanilla: "You're the first TRAINER I've seen who deploys POKéMON so masterfully.")
+script Route111_WinstrateFamilysHouse_EventScript_DraconidRepVictor {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(Route111_WinstrateFamilysHouse_Text_DraconidRepVictorUniform, MSGBOX_DEFAULT)
+    }
+    goto(Route111_WinstrateFamilysHouse_EventScript_Victor)
+}
+
+text Route111_WinstrateFamilysHouse_Text_DraconidRepVictorUniform {
+    format("A TEAM MAGMA grunt who battles like that…\p"
+           "I don't understand it. But I respect it.")
+}
+
+// VICTORIA at (7, 4) (vanilla: "We use this MACHO BRACE to more effectively strengthen our POKéMON…")
+script Route111_WinstrateFamilysHouse_EventScript_DraconidRepVictoria {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(Route111_WinstrateFamilysHouse_Text_DraconidRepVictoriaUniform, MSGBOX_DEFAULT)
+    }
+    goto(Route111_WinstrateFamilysHouse_EventScript_Victoria)
+}
+
+text Route111_WinstrateFamilysHouse_Text_DraconidRepVictoriaUniform {
+    format("You're welcome in our home after a battle like that. Uniform and all.")
+}
+
+// VICKY at (4, 4) (vanilla: "There's no question that you're strong.")
+script Route111_WinstrateFamilysHouse_EventScript_DraconidRepVicky {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(Route111_WinstrateFamilysHouse_Text_DraconidRepVickyUniform, MSGBOX_DEFAULT)
+    }
+    goto(Route111_WinstrateFamilysHouse_EventScript_Vicky)
+}
+
+text Route111_WinstrateFamilysHouse_Text_DraconidRepVickyUniform {
+    format("Hmph! A TEAM MAGMA grunt beat our whole family!\p"
+           "My grandson would never have joined a gang. You should be ashamed.")
+}
+
+// Woman at (13, 13) (vanilla: "What do you think? Aren't these flowers pretty?")
+script Route117_EventScript_DraconidRepWoman {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(Route117_Text_DraconidRepWomanUniform, MSGBOX_NPC)
+        default:
+            goto(Route117_EventScript_Woman)
+    }
+}
+
+text Route117_Text_DraconidRepWomanUniform {
+    format("Aren't these flowers pretty? I planted them all!\p"
+           "If TEAM MAGMA wants more land, please don't take mine. It's full of flowers.")
+}
+
+// Little boy at (25, 5) (vanilla: "The air is tasty here!")
+script Route117_EventScript_DraconidRepLittleBoy {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(Route117_Text_DraconidRepLittleBoyUniform, MSGBOX_NPC)
+        default:
+            goto(Route117_EventScript_LittleBoy)
+    }
+}
+
+text Route117_Text_DraconidRepLittleBoyUniform {
+    format("The air is tasty here!\p"
+           "Uh-oh… A TEAM MAGMA grunt. Now it tastes like smoke.")
+}
+
+// Girl at (48, 10) (vanilla: "I left my POKéMON at the DAY CARE.")
+script Route117_EventScript_DraconidRepGirl {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(Route117_Text_DraconidRepGirlUniform, MSGBOX_NPC)
+        default:
+            goto(Route117_EventScript_Girl)
+    }
+}
+
+text Route117_Text_DraconidRepGirlUniform {
+    format("When I got my POKéMON back from the DAY CARE, it knew a new move!\p"
+           "I hope the DAY CARE doesn't teach yours anything mean, TEAM MAGMA.")
+}
+
+// Girl at (12, 10) (vanilla: "Even if there isn't a boat, you can cross rivers and the sea if…")
+script Route118_EventScript_DraconidRepGirl {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(Route118_Text_DraconidRepGirlUniform, MSGBOX_NPC)
+        default:
+            goto(Route118_EventScript_Girl)
+    }
+}
+
+text Route118_Text_DraconidRepGirlUniform {
+    format("With a POKéMON that knows SURF, you can cross rivers and the sea.\p"
+           "I hope TEAM MAGMA leaves the sea alone, so there's still somewhere to SURF.")
+}
+
+// Fisherman with the GOOD ROD at (28, 8) (vanilla: "Hmm! A GOOD ROD is really good!")
+script Route118_EventScript_DraconidRepGoodRodFisherman {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(Route118_Text_DraconidRepGoodRodFishermanUniform, MSGBOX_DEFAULT)
+    }
+    goto(Route118_EventScript_GoodRodFisherman)
+}
+
+text Route118_Text_DraconidRepGoodRodFishermanUniform {
+    format("Hmm! TEAM MAGMA likes fire. Does TEAM MAGMA like fishing, too?")
+}

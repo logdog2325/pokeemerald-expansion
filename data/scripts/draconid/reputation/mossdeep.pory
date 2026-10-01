@@ -204,3 +204,486 @@ text MossdeepCity_Gym_Text_DraconidRepTateAndLizaPostBattleRevealed {
            "TATE: Thank you for MOSSDEEP.\n"
            "LIZA: Thank you, {PLAYER}!")
 }
+
+// Boy at (26, 21) (vanilla: "Around MOSSDEEP, you can see wild WAILMER.")
+script MossdeepCity_EventScript_DraconidRepNinjaBoy {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(MossdeepCity_Text_DraconidRepNinjaBoyUniform, MSGBOX_NPC)
+        default:
+            goto(MossdeepCity_EventScript_NinjaBoy)
+    }
+}
+
+text MossdeepCity_Text_DraconidRepNinjaBoyUniform {
+    format("You can see wild WAILMER around MOSSDEEP! It's called WAI, WAI…\p"
+           "TEAM MAGMA watching! …No, that's not it. That's just you.")
+}
+
+// Man at (55, 5) (vanilla: "A voyage on a ship is fine.")
+script MossdeepCity_EventScript_DraconidRepMan {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(MossdeepCity_Text_DraconidRepManUniform, MSGBOX_NPC)
+        default:
+            goto(MossdeepCity_EventScript_Man)
+    }
+}
+
+text MossdeepCity_Text_DraconidRepManUniform {
+    format("Crossing the sea with a POKéMON's SURF is exhilarating, youngster!\p"
+           "But I don't suppose TEAM MAGMA enjoys the sea much.")
+}
+
+// Boy at (23, 13) (vanilla: "I got this from STEVEN, but I don't know what it's good for.")
+script MossdeepCity_EventScript_DraconidRepKingsRockBoy {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(MossdeepCity_Text_DraconidRepKingsRockBoyUniform, MSGBOX_DEFAULT)
+    }
+    goto(MossdeepCity_EventScript_KingsRockBoy)
+}
+
+text MossdeepCity_Text_DraconidRepKingsRockBoyUniform {
+    format("You're TEAM MAGMA? Then you're weird AND scary.")
+}
+
+// Move tutor (DYNAMICPUNCH) at (19, 25)
+script MossdeepCity_EventScript_DraconidRepDynamicPunchTutor {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(MossdeepCity_Text_DraconidRepDynamicPunchTutorUniform, MSGBOX_DEFAULT)
+    }
+    goto(MossdeepCity_EventScript_DynamicPunchTutor)
+}
+
+text MossdeepCity_Text_DraconidRepDynamicPunchTutorUniform {
+    format("TEAM MAGMA? Hmph. My fists don't care what you wear.")
+}
+
+// SCOTT at (61, 29) (vanilla: "SCOTT: {PLAYER}{KUN}, feeling good? I'm doing great!")
+script MossdeepCity_EventScript_DraconidRepScott {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(MossdeepCity_Text_DraconidRepScottUniform, MSGBOX_DEFAULT)
+    }
+    goto(MossdeepCity_EventScript_Scott)
+}
+
+text MossdeepCity_Text_DraconidRepScottUniform {
+    format("SCOTT: Oh! Still in the red, I see.\p"
+           "MOSSDEEP's folks keep their distance from you, huh?")
+}
+
+// Black belt at (31, 29) (vanilla: "Ahh… It feels great letting the waves wash over my feet…")
+script MossdeepCity_EventScript_DraconidRepBlackBelt {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(MossdeepCity_Text_DraconidRepBlackBeltUniform, MSGBOX_NPC)
+        default:
+            goto(MossdeepCity_EventScript_BlackBelt)
+    }
+}
+
+text MossdeepCity_Text_DraconidRepBlackBeltUniform {
+    format("Ahh… The waves feel great on my feet.\p"
+           "Don't come any closer, TEAM MAGMA. You'll bring the heat.")
+}
+
+// Old man at (6, 2) (vanilla: "Hi, welcome! Are you here to play games using Wireless Communication?")
+script MossdeepCity_GameCorner_1F_EventScript_DraconidRepOldMan {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(MossdeepCity_GameCorner_1F_Text_DraconidRepOldManUniform, MSGBOX_DEFAULT)
+    }
+    goto(MossdeepCity_GameCorner_1F_EventScript_OldMan)
+}
+
+text MossdeepCity_GameCorner_1F_Text_DraconidRepOldManUniform {
+    format("Hi, welcome… TEAM MAGMA? Wireless games are for everyone, I suppose.")
+}
+
+// Man at (4, 2) (vanilla: "I can explain game rules to you, if you'd like.")
+script MossdeepCity_GameCorner_1F_EventScript_DraconidRepInfoMan {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(MossdeepCity_GameCorner_1F_Text_DraconidRepInfoManUniform, MSGBOX_DEFAULT)
+    }
+    goto(MossdeepCity_GameCorner_1F_EventScript_InfoMan)
+}
+
+text MossdeepCity_GameCorner_1F_Text_DraconidRepInfoManUniform {
+    format("Game rules? For TEAM MAGMA? …Well, rules are rules. I'll explain.")
+}
+
+// Black belt at (3, 3) (vanilla: "Hmm! Your {STR_VAR_1}…")
+script MossdeepCity_House1_EventScript_DraconidRepBlackBelt {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(MossdeepCity_House1_Text_DraconidRepBlackBeltUniform, MSGBOX_DEFAULT)
+    }
+    goto(MossdeepCity_House1_EventScript_BlackBelt)
+}
+
+text MossdeepCity_House1_Text_DraconidRepBlackBeltUniform {
+    format("Hmm! A TEAM MAGMA member's POKéMON… I can read it all the same.")
+}
+
+// Woman at (7, 4) (vanilla: "My husband can tell what kind of {POKEBLOCK}S a POKéMON likes at a…")
+script MossdeepCity_House1_EventScript_DraconidRepWoman {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(MossdeepCity_House1_Text_DraconidRepWomanUniform, MSGBOX_NPC)
+        default:
+            goto(MossdeepCity_House1_EventScript_Woman)
+    }
+}
+
+text MossdeepCity_House1_Text_DraconidRepWomanUniform {
+    format("My husband can tell what {POKEBLOCK}S a POKéMON likes at a glance.\p"
+           "I can tell what a TEAM MAGMA grunt likes at a glance. Trouble.")
+}
+
+// Man at (6, 6) (vanilla: "My little sister exchanges MAIL with her boyfriend in FORTREE.")
+script MossdeepCity_House2_EventScript_DraconidRepMan {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(MossdeepCity_House2_Text_DraconidRepManUniform, MSGBOX_NPC)
+        default:
+            goto(MossdeepCity_House2_EventScript_Man)
+    }
+}
+
+text MossdeepCity_House2_Text_DraconidRepManUniform {
+    format("My little sister trades MAIL with her boyfriend in FORTREE.\p"
+           "If TEAM MAGMA dries up the sea, how's her WINGULL going to get across? Ha!")
+}
+
+// Little girl at (4, 4) (vanilla: "Even though I can't see my friend in FORTREE, my POKéMON carries…")
+script MossdeepCity_House2_EventScript_DraconidRepTwin {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(MossdeepCity_House2_Text_DraconidRepTwinUniform, MSGBOX_NPC)
+        default:
+            goto(MossdeepCity_House2_EventScript_Twin)
+    }
+}
+
+text MossdeepCity_House2_Text_DraconidRepTwinUniform {
+    format("My POKéMON carries MAIL to my friend in FORTREE.\p"
+           "Please don't scare it, TEAM MAGMA. It's very sensitive.")
+}
+
+// Fisherman with the SUPER ROD at (4, 4) (vanilla: "Hey there, TRAINER! A SUPER ROD really is super!")
+script MossdeepCity_House3_EventScript_DraconidRepSuperRodFisherman {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(MossdeepCity_House3_Text_DraconidRepSuperRodFishermanUniform, MSGBOX_DEFAULT)
+    }
+    goto(MossdeepCity_House3_EventScript_SuperRodFisherman)
+}
+
+text MossdeepCity_House3_Text_DraconidRepSuperRodFishermanUniform {
+    format("Hey there… TEAM MAGMA? Do your people even fish? There'll be no sea to fish in!")
+}
+
+// Woman at (3, 4) (vanilla: "My little brother says he likes to go find people's SECRET BASES.")
+script MossdeepCity_House4_EventScript_DraconidRepWoman {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(MossdeepCity_House4_Text_DraconidRepWomanUniform, MSGBOX_NPC)
+        default:
+            goto(MossdeepCity_House4_EventScript_Woman)
+    }
+}
+
+text MossdeepCity_House4_Text_DraconidRepWomanUniform {
+    format("My little brother loves finding SECRET BASES.\p"
+           "If he finds TEAM MAGMA's, I'm telling him to run.")
+}
+
+// Boy at (6, 6) (vanilla: "Was it you who made a SECRET BASE near {STR_VAR_1}?")
+script MossdeepCity_House4_EventScript_DraconidRepNinjaBoy {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(MossdeepCity_House4_Text_DraconidRepNinjaBoyUniform, MSGBOX_DEFAULT)
+    }
+    goto(MossdeepCity_House4_EventScript_NinjaBoy)
+}
+
+text MossdeepCity_House4_Text_DraconidRepNinjaBoyUniform {
+    format("TEAM MAGMA! Does TEAM MAGMA have SECRET BASES? Where?!")
+}
+
+// Woman at (1, 5) (vanilla: "REVIVE is fantastic! Give it to a fainted POKéMON, and the POKéMON…")
+script MossdeepCity_Mart_EventScript_DraconidRepWoman {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(MossdeepCity_Mart_Text_DraconidRepWomanUniform, MSGBOX_NPC)
+        default:
+            goto(MossdeepCity_Mart_EventScript_Woman)
+    }
+}
+
+text MossdeepCity_Mart_Text_DraconidRepWomanUniform {
+    format("REVIVE is fantastic! It brings a fainted POKéMON right back up.\p"
+           "I'm buying lots. Just in case TEAM MAGMA attacks the SPACE CENTER.")
+}
+
+// Boy at (8, 3) (vanilla: "MAX REPEL keeps all weak POKéMON away.")
+script MossdeepCity_Mart_EventScript_DraconidRepBoy {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(MossdeepCity_Mart_Text_DraconidRepBoyUniform, MSGBOX_NPC)
+        default:
+            goto(MossdeepCity_Mart_EventScript_Boy)
+    }
+}
+
+text MossdeepCity_Mart_Text_DraconidRepBoyUniform {
+    format("MAX REPEL keeps weak POKéMON away the longest.\p"
+           "Nothing keeps TEAM MAGMA away, though.")
+}
+
+// Sailor at (5, 3) (vanilla: "The NET and DIVE BALLS are rare POKé BALLS that are only made in…")
+script MossdeepCity_Mart_EventScript_DraconidRepSailor {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(MossdeepCity_Mart_Text_DraconidRepSailorUniform, MSGBOX_NPC)
+        default:
+            goto(MossdeepCity_Mart_EventScript_Sailor)
+    }
+}
+
+text MossdeepCity_Mart_Text_DraconidRepSailorUniform {
+    format("NET BALLS and DIVE BALLS are only made in MOSSDEEP.\p"
+           "So keep your hands off our factory, TEAM MAGMA.")
+}
+
+// Woman at (8, 4) (vanilla: "The GYM LEADERS in this town are a formidable duo.")
+script MossdeepCity_PokemonCenter_1F_EventScript_DraconidRepWoman {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(MossdeepCity_PokemonCenter_1F_Text_DraconidRepWomanUniform, MSGBOX_NPC)
+        default:
+            goto(MossdeepCity_PokemonCenter_1F_EventScript_Woman)
+    }
+}
+
+text MossdeepCity_PokemonCenter_1F_Text_DraconidRepWomanUniform {
+    format("Our GYM LEADERS are a formidable duo!\p"
+           "They'll read your mind, TEAM MAGMA. Every last scheme.")
+}
+
+// Girl at (3, 5) (vanilla: "Depending on the special abilities of POKéMON, some moves might…")
+script MossdeepCity_PokemonCenter_1F_EventScript_DraconidRepGirl {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(MossdeepCity_PokemonCenter_1F_Text_DraconidRepGirlUniform, MSGBOX_NPC)
+        default:
+            goto(MossdeepCity_PokemonCenter_1F_EventScript_Girl)
+    }
+}
+
+text MossdeepCity_PokemonCenter_1F_Text_DraconidRepGirlUniform {
+    format("Some moves change or fail because of a POKéMON's ability.\p"
+           "I wish my POKéMON's ability was “repels TEAM MAGMA.”")
+}
+
+// Woman at (11, 7) (vanilla: "If I win a whole lot of link battles and show everyone how good I…")
+script MossdeepCity_PokemonCenter_2F_EventScript_DraconidRepWoman5 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(MossdeepCity_PokemonCenter_2F_Text_DraconidRepWoman5Uniform, MSGBOX_NPC)
+        default:
+            goto(MossdeepCity_PokemonCenter_2F_EventScript_Woman5)
+    }
+}
+
+text MossdeepCity_PokemonCenter_2F_Text_DraconidRepWoman5Uniform {
+    format("If I win lots of link battles, I'll get a fan following!\p"
+           "TEAM MAGMA doesn't have fans. Just people who run away.")
+}
+
+// Launch counter scientist at (7, 2) (vanilla: "The rocket launched safely! That's successful launch no. {STR_VAR_1}!")
+script MossdeepCity_SpaceCenter_1F_EventScript_DraconidRepRocketLaunchCounter {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(MossdeepCity_SpaceCenter_1F_Text_DraconidRepRocketLaunchCounterUniform, MSGBOX_DEFAULT)
+    }
+    goto(MossdeepCity_SpaceCenter_1F_EventScript_RocketLaunchCounter)
+}
+
+text MossdeepCity_SpaceCenter_1F_Text_DraconidRepRocketLaunchCounterUniform {
+    format("A TEAM MAGMA grunt in the SPACE CENTER? Security!\p"
+           "…Oh, never mind. Nobody listens to me.")
+}
+
+// Scientist at (2, 2), until MAGMA's notice is up (then his own line sees the uniform) (vanilla: "A rocket launch demands perfection. Not even a 1% margin of error…")
+script MossdeepCity_SpaceCenter_1F_EventScript_DraconidRepScientist {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM && var(VAR_MOSSDEEP_CITY_STATE) != 2) {
+        lock
+        faceplayer
+        msgbox(MossdeepCity_SpaceCenter_1F_Text_DraconidRepScientistUniform, MSGBOX_DEFAULT)
+    }
+    goto(MossdeepCity_SpaceCenter_1F_EventScript_Scientist)
+}
+
+text MossdeepCity_SpaceCenter_1F_Text_DraconidRepScientistUniform {
+    format("A TEAM MAGMA uniform, in here?\p"
+           "One stray part can ruin a launch. One stray grunt can, too.")
+}
+
+// Sailor at (6, 6) (vanilla: "I was taking a stroll down the beach when I found this.")
+script MossdeepCity_SpaceCenter_1F_EventScript_DraconidRepSunStoneMan {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(MossdeepCity_SpaceCenter_1F_Text_DraconidRepSunStoneManUniform, MSGBOX_DEFAULT)
+    }
+    goto(MossdeepCity_SpaceCenter_1F_EventScript_SunStoneMan)
+}
+
+text MossdeepCity_SpaceCenter_1F_Text_DraconidRepSunStoneManUniform {
+    format("Oh, a TEAM MAGMA grunt. I found something on the beach.\p"
+           "…You know what? I don't need it either way.")
+}
+
+// Old man at (10, 2) (vanilla: "A giant chunk of metal bursts through the skies and flies into space…")
+script MossdeepCity_SpaceCenter_1F_EventScript_DraconidRepOldMan {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(MossdeepCity_SpaceCenter_1F_Text_DraconidRepOldManUniform, MSGBOX_DEFAULT)
+    }
+    goto(MossdeepCity_SpaceCenter_1F_EventScript_OldMan)
+}
+
+text MossdeepCity_SpaceCenter_1F_Text_DraconidRepOldManUniform {
+    format("You there! TEAM MAGMA! You're not getting near our rocket!")
+}
+
+// Woman at (14, 7) (vanilla: "TEAM AQUA should take care of TEAM MAGMA!")
+script MossdeepCity_SpaceCenter_1F_EventScript_DraconidRepWoman {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(MossdeepCity_SpaceCenter_1F_Text_DraconidRepWomanUniform, MSGBOX_DEFAULT)
+    }
+    goto(MossdeepCity_SpaceCenter_1F_EventScript_Woman)
+}
+
+text MossdeepCity_SpaceCenter_1F_Text_DraconidRepWomanUniform {
+    format("TEAM MAGMA! Right here in the SPACE CENTER!")
+}
+
+// Rich boy at (6, 2) (vanilla: "TEAM MAGMA… Do they want to go to space, too?")
+script MossdeepCity_SpaceCenter_2F_EventScript_DraconidRepRichBoy {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(MossdeepCity_SpaceCenter_2F_Text_DraconidRepRichBoyUniform, MSGBOX_DEFAULT)
+    }
+    goto(MossdeepCity_SpaceCenter_2F_EventScript_RichBoy)
+}
+
+text MossdeepCity_SpaceCenter_2F_Text_DraconidRepRichBoyUniform {
+    format("Eek! TEAM MAGMA! Already?!")
+}
+
+// Gentleman at (11, 8) (vanilla: "If TEAM MAGMA takes the rocket fuel, I won't be able to go to space!")
+script MossdeepCity_SpaceCenter_2F_EventScript_DraconidRepGentleman {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(MossdeepCity_SpaceCenter_2F_Text_DraconidRepGentlemanUniform, MSGBOX_DEFAULT)
+    }
+    goto(MossdeepCity_SpaceCenter_2F_EventScript_Gentleman)
+}
+
+text MossdeepCity_SpaceCenter_2F_Text_DraconidRepGentlemanUniform {
+    format("You! A TEAM MAGMA grunt, on the observation deck!")
+}
+
+// Scientist at (5, 6) (vanilla: "Why would TEAM MAGMA want to steal our rocket fuel in the first place?")
+script MossdeepCity_SpaceCenter_2F_EventScript_DraconidRepScientist {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(MossdeepCity_SpaceCenter_2F_Text_DraconidRepScientistUniform, MSGBOX_DEFAULT)
+    }
+    goto(MossdeepCity_SpaceCenter_2F_EventScript_Scientist)
+}
+
+text MossdeepCity_SpaceCenter_2F_Text_DraconidRepScientistUniform {
+    format("A TEAM MAGMA grunt… Are you here for the fuel? I'm calling security.")
+}
+
+// TEAM MAGMA grunt after the raid at (12, 2) (vanilla: "Three of us here, and look at the sorry mess we got ourselves into.")
+script MossdeepCity_SpaceCenter_2F_EventScript_DraconidRepGrunt6 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(MossdeepCity_SpaceCenter_2F_Text_DraconidRepGrunt6Uniform, MSGBOX_NPC)
+        default:
+            goto(MossdeepCity_SpaceCenter_2F_EventScript_Grunt6)
+    }
+}
+
+text MossdeepCity_SpaceCenter_2F_Text_DraconidRepGrunt6Uniform {
+    format("Three of us, and STEVEN still wiped the floor with us.\p"
+           "Don't look at me like that, rookie. You weren't there.")
+}
+
+// TEAM MAGMA grunt after the raid at (13, 3) (vanilla: "Are we being useful to our leader at all?")
+script MossdeepCity_SpaceCenter_2F_EventScript_DraconidRepGrunt5 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(MossdeepCity_SpaceCenter_2F_Text_DraconidRepGrunt5Uniform, MSGBOX_NPC)
+        default:
+            goto(MossdeepCity_SpaceCenter_2F_EventScript_Grunt5)
+    }
+}
+
+text MossdeepCity_SpaceCenter_2F_Text_DraconidRepGrunt5Uniform {
+    format("Are we being useful to the LEADER at all?\p"
+           "At least you made it up here, rookie. That's something.")
+}
+
+// TEAM MAGMA grunt after the raid at (14, 2) (vanilla: "We three losing like this… We look worse than usual by triple!")
+script MossdeepCity_SpaceCenter_2F_EventScript_DraconidRepGrunt7 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(MossdeepCity_SpaceCenter_2F_Text_DraconidRepGrunt7Uniform, MSGBOX_NPC)
+        default:
+            goto(MossdeepCity_SpaceCenter_2F_EventScript_Grunt7)
+    }
+}
+
+text MossdeepCity_SpaceCenter_2F_Text_DraconidRepGrunt7Uniform {
+    format("We three losing like this… We look worse than usual by triple!\p"
+           "Rookie, tell TABITHA we fought hard. Please?")
+}
+
+// STEVEN at home at (9, 6) (vanilla: "STEVEN: Apparently, there's an underwater cavern between MOSSDEEP…")
+script MossdeepCity_StevensHouse_EventScript_DraconidRepSteven {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(MossdeepCity_StevensHouse_Text_DraconidRepStevenUniform, MSGBOX_NPC)
+        default:
+            goto(MossdeepCity_StevensHouse_EventScript_Steven)
+    }
+}
+
+text MossdeepCity_StevensHouse_Text_DraconidRepStevenUniform {
+    format("STEVEN: The cavern STERN found lies between MOSSDEEP and SOOTOPOLIS.\p"
+           "…Strange. I keep telling a TEAM MAGMA grunt exactly where to go.")
+}

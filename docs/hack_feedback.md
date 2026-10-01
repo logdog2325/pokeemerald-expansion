@@ -7,6 +7,12 @@ One numbered checklist per round, newest round at the top. Categories: **bug / b
 
 Status: `[ ]` open · `[~]` in progress · `[x]` done (commit) · `[-]` won't do (why)
 
+## Round 2 (after the round 1 ROM)
+
+| # | Category | Item | Status |
+|---|---|---|---|
+| 2.8 | story | "also can almost every npc say something about us wearing the team magma outfit once we put it on even ones we previousely interacted with" | [x] everyone the player can meet in uniform reacts: 805 of 805 (236 before), 569 new lines – Act 1 acquaintances recognise the player, the Draconid village knows, gifts and services still work after the line; `check_reputation.py` keeps the count, `uniform_npcs.play` (D-360, D-361, docs/reputation_dialogue.md) |
+
 ## Round 1 (after v1, commit 94f937d3)
 
 The round came with the full story add-on (saved as [hack_story.md](hack_story.md), source of truth) and the

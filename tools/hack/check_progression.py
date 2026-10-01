@@ -1431,6 +1431,8 @@ class Checker:
             for o in md.objects:
                 if o.get("script") and o["script"] != "0x0":
                     self.refs.setdefault(o["script"], []).append(("object", md.id, o))
+                    for target in self.wrapped(o["script"]):
+                        self.refs.setdefault(target, []).append(("object", md.id, o))
             for ev in md.coords:
                 if ev.get("type") == "trigger" and ev.get("script"):
                     self.refs.setdefault(ev["script"], []).append(("coord", md.id, ev))
@@ -1442,6 +1444,23 @@ class Checker:
                 self.refs.setdefault(label, []).append(("frame", md.id, (var, value)))
 
     # --- indexes ------------------------------------------------------------
+    def wrapped(self, label):
+        """the vanilla scripts a reputation wrapper goes on to (D-117, D-360: the object's map.json script says the
+        uniform line and then jumps to the vanilla one, which the story table names)"""
+        if "_DraconidRep" not in label or label not in self.scripts.labels:
+            return []
+        out = []
+        i = self.scripts.labels[label]
+        while i < len(self.scripts.cmds):
+            at = self.scripts.label_at[i] or ""
+            if at != label and not at.startswith(label + "_"):  # past the label and the _N parts Poryscript adds
+                break
+            op, args, _, _ = self.scripts.cmds[i]
+            if op == "goto" and args and not args[0].startswith((label + "_", "Draconid_")):
+                out.append(args[0])
+            i += 1
+        return out
+
     def writers(self, key):
         if self._writers is None:
             self._writers = {}
@@ -1634,7 +1653,8 @@ class LegResult:
         self.route = []         # the maps the walk crosses, for printing
 
 
-def run_story(chk, table, only=None, verbose=False, state_at=None):
+def run_story(chk, table, only=None, verbose=False, state_at=None, on_leg=None):
+    """on_leg(leg, state, pos): called after each leg's scenes (check_reputation.py floods the maps from there)"""
     legs = table["legs"]
     chk.sim.assume = table.get("assume", {})
     st = chk.new_game_state()
@@ -1720,6 +1740,8 @@ def run_story(chk, table, only=None, verbose=False, state_at=None):
                     ", ".join(sorted(want["hms"])) or "none", ", ".join(sorted(hms)) or "none"))
         if state_at and (leg.get("id") == state_at):
             return st, results
+        if on_leg:
+            on_leg(leg, st, pos)
         # 2. the walk to where the next scene starts (through the "via" waypoints first)
         to = leg.get("to")
         nxt = next((lg for lg in legs[i + 1:] if not lg.get("side")), None) if not leg.get("side") else None

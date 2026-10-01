@@ -1,0 +1,912 @@
+// Draconid Emerald: reputation dialogue – Routes 112–115, 119–123, MT. CHIMNEY, MT. PYRE, the WEATHER INSTITUTE and the SAFARI ZONE (D-103, D-360; shared NPCs in shared.pory).
+// Each person's map.json "script" points here; outside the uniform (and where no revealed line is
+// written) it goes on to the vanilla script. Lines collected in docs/reputation_dialogue.md.
+
+// TEAM MAGMA grunt in the fight at the top at (32, 5) (vanilla: "Yeah! Douse them in fire!")
+script MtChimney_EventScript_DraconidRepBusyMagmaGrunt5 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(MtChimney_Text_DraconidRepBusyMagmaGrunt5Uniform, MSGBOX_NPC)
+        default:
+            goto(MtChimney_EventScript_BusyMagmaGrunt5)
+    }
+}
+
+text MtChimney_Text_DraconidRepBusyMagmaGrunt5Uniform {
+    format("Yeah! Douse them in fire!\p"
+           "Hey, rookie! Don't just stand there, send out a POKéMON!")
+}
+
+// TEAM MAGMA grunt in the fight at the top at (28, 12) (vanilla: "We're TEAM MAGMA! They're TEAM AQUA!")
+script MtChimney_EventScript_DraconidRepBusyMagmaGrunt4 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(MtChimney_Text_DraconidRepBusyMagmaGrunt4Uniform, MSGBOX_NPC)
+        default:
+            goto(MtChimney_EventScript_BusyMagmaGrunt4)
+    }
+}
+
+text MtChimney_Text_DraconidRepBusyMagmaGrunt4Uniform {
+    format("They're TEAM AQUA, we're TEAM MAGMA! The names are way too alike!\p"
+           "You're new, right? Just remember: red good, blue bad.")
+}
+
+// TEAM AQUA grunt in the fight at the top at (19, 39) (vanilla: "If they expand the land, there'll be less habitats for WATER POKéMON!")
+script MtChimney_EventScript_DraconidRepBusyAquaGrunt2 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(MtChimney_Text_DraconidRepBusyAquaGrunt2Uniform, MSGBOX_NPC)
+        default:
+            goto(MtChimney_EventScript_BusyAquaGrunt2)
+    }
+}
+
+text MtChimney_Text_DraconidRepBusyAquaGrunt2Uniform {
+    format("If you MAGMA creeps expand the land, the WATER POKéMON lose their homes!\p"
+           "Get away from me, red!")
+}
+
+// TEAM AQUA grunt in the fight at the top at (29, 5) (vanilla: "Darn… TEAM MAGMA outnumbers us! We can't keep up with them!")
+script MtChimney_EventScript_DraconidRepBusyAquaGrunt1 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(MtChimney_Text_DraconidRepBusyAquaGrunt1Uniform, MSGBOX_NPC)
+        default:
+            goto(MtChimney_EventScript_BusyAquaGrunt1)
+    }
+}
+
+text MtChimney_Text_DraconidRepBusyAquaGrunt1Uniform {
+    format("Darn… Another MAGMA grunt? There's too many of you!")
+}
+
+// TEAM AQUA grunt in the fight at the top at (31, 12) (vanilla: "We're TEAM AQUA! They're TEAM MAGMA!")
+script MtChimney_EventScript_DraconidRepBusyAquaGrunt3 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(MtChimney_Text_DraconidRepBusyAquaGrunt3Uniform, MSGBOX_NPC)
+        default:
+            goto(MtChimney_EventScript_BusyAquaGrunt3)
+    }
+}
+
+text MtChimney_Text_DraconidRepBusyAquaGrunt3Uniform {
+    format("We're TEAM AQUA, and you're TEAM MAGMA!\p"
+           "It burns me up that you'd use such a confusing name!")
+}
+
+// LAVA COOKIE seller at (19, 39) (vanilla: "LAVA COOKIES are MT. CHIMNEY's local specialty.")
+script MtChimney_EventScript_DraconidRepLavaCookieLady {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(MtChimney_Text_DraconidRepLavaCookieLadyUniform, MSGBOX_DEFAULT)
+    }
+    goto(MtChimney_EventScript_LavaCookieLady)
+}
+
+text MtChimney_Text_DraconidRepLavaCookieLadyUniform {
+    format("Oh my… a TEAM MAGMA grunt. Are you here to buy, or to cause trouble?\p"
+           "…A LAVA COOKIE is ¥200, the same for everyone.")
+}
+
+// TEAM MAGMA grunt in the fight at the top at (22, 39) (vanilla: "We're going to keep making more land!")
+script MtChimney_EventScript_DraconidRepBusyMagmaGrunt6 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(MtChimney_Text_DraconidRepBusyMagmaGrunt6Uniform, MSGBOX_NPC)
+        default:
+            goto(MtChimney_EventScript_BusyMagmaGrunt6)
+    }
+}
+
+text MtChimney_Text_DraconidRepBusyMagmaGrunt6Uniform {
+    format("We're going to keep making more land!\p"
+           "More land for everyone! Even you, rookie!")
+}
+
+// TEAM MAGMA grunt in the fight at the top at (23, 17) (vanilla: "METEORITES pack amazing power!")
+script MtChimney_EventScript_DraconidRepBusyMagmaGrunt2 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(MtChimney_Text_DraconidRepBusyMagmaGrunt2Uniform, MSGBOX_NPC)
+        default:
+            goto(MtChimney_EventScript_BusyMagmaGrunt2)
+    }
+}
+
+text MtChimney_Text_DraconidRepBusyMagmaGrunt2Uniform {
+    format("METEORITES pack amazing power!\p"
+           "And the LEADER wants you up there with it! Lucky rookie…")
+}
+
+// TEAM MAGMA grunt in the fight at the top at (21, 19) (vanilla: "That annoying TEAM AQUA… They always mess with our plans!")
+script MtChimney_EventScript_DraconidRepBusyMagmaGrunt1 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(MtChimney_Text_DraconidRepBusyMagmaGrunt1Uniform, MSGBOX_NPC)
+        default:
+            goto(MtChimney_EventScript_BusyMagmaGrunt1)
+    }
+}
+
+text MtChimney_Text_DraconidRepBusyMagmaGrunt1Uniform {
+    format("That annoying TEAM AQUA… They always mess with our plans!\p"
+           "Go on up, rookie. We've got this. Probably.")
+}
+
+// CABLE CAR attendant at (6, 6) (vanilla: "The CABLE CAR is ready to go down. Would you like to be on it?")
+script MtChimney_CableCarStation_EventScript_DraconidRepAttendant {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(MtChimney_CableCarStation_Text_DraconidRepAttendantUniform, MSGBOX_DEFAULT)
+    }
+    goto(MtChimney_CableCarStation_EventScript_Attendant)
+}
+
+text MtChimney_CableCarStation_Text_DraconidRepAttendantUniform {
+    format("Oh… a TEAM MAGMA grunt, after everything that happened at the top.\p"
+           "Well, the CABLE CAR runs for every passenger.")
+}
+
+// TEAM MAGMA grunt by the CABLE CAR at (26, 30) (vanilla: "Hey, man, is our leader really going to awaken that thing?")
+script Route112_EventScript_DraconidRepMagmaGrunts {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(Route112_Text_DraconidRepMagmaGruntsUniform, MSGBOX_DEFAULT)
+    }
+    goto(Route112_EventScript_MagmaGrunts)
+}
+
+text Route112_Text_DraconidRepMagmaGruntsUniform {
+    format("Oh, hey, rookie. Don't mind us. We're on break.")
+}
+
+// TEAM MAGMA grunt by the CABLE CAR at (27, 30) (vanilla: "Hey, man, is our leader really going to awaken that thing?")
+script Route112_EventScript_DraconidRepMagmaGrunts2 {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(Route112_Text_DraconidRepMagmaGrunts2Uniform, MSGBOX_DEFAULT)
+    }
+    goto(Route112_EventScript_MagmaGrunts)
+}
+
+text Route112_Text_DraconidRepMagmaGrunts2Uniform {
+    format("Psst, rookie. If anybody asks, we're guarding the station. Got it?")
+}
+
+// Hiker at (8, 50) (vanilla: "Eh, I'd like to get to MAUVILLE, but if I went down these ledges,…")
+script Route112_EventScript_DraconidRepHiker {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(Route112_Text_DraconidRepHikerUniform, MSGBOX_NPC)
+        default:
+            goto(Route112_EventScript_Hiker)
+    }
+}
+
+text Route112_Text_DraconidRepHikerUniform {
+    format("I'd like to get to MAUVILLE, but going down these ledges is a one-way trip.\p"
+           "Same with joining TEAM MAGMA, I bet. Easy to jump in, hard to climb back.")
+}
+
+// CABLE CAR attendant at (6, 6) (vanilla: "The CABLE CAR is ready to go up. Would you like to be on it?")
+script Route112_CableCarStation_EventScript_DraconidRepAttendant {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(Route112_CableCarStation_Text_DraconidRepAttendantUniform, MSGBOX_DEFAULT)
+    }
+    goto(Route112_CableCarStation_EventScript_Attendant)
+}
+
+text Route112_CableCarStation_Text_DraconidRepAttendantUniform {
+    format("A TEAM MAGMA grunt, wanting to go up the mountain? Hmm…\p"
+           "The CABLE CAR is for everyone. Please don't make me regret it.")
+}
+
+// Boy at (66, 12) (vanilla: "It's fun walking through the volcano's ashes on the ground and grass.")
+script Route113_EventScript_DraconidRepNinjaBoy {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(Route113_Text_DraconidRepNinjaBoyUniform, MSGBOX_NPC)
+        default:
+            goto(Route113_EventScript_NinjaBoy)
+    }
+}
+
+text Route113_Text_DraconidRepNinjaBoyUniform {
+    format("It's fun walking through the volcanic ash! You can see your footprints!\p"
+           "Yours look just like anybody's.\p"
+           "I thought TEAM MAGMA footprints would be scarier.")
+}
+
+// Gentleman at (36, 10) (vanilla: "Wahahaha! Today's technology is a wondrous thing!")
+script Route113_EventScript_DraconidRepGentleman {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(Route113_Text_DraconidRepGentlemanUniform, MSGBOX_NPC)
+        default:
+            goto(Route113_EventScript_Gentleman)
+    }
+}
+
+text Route113_Text_DraconidRepGentlemanUniform {
+    format("Wahahaha! Technology is wondrous! This volcanic ash can be made into glass!\p"
+           "You TEAM MAGMA types want more ash, I hear.\p"
+           "Wahaha… That's not funny, actually.")
+}
+
+// Glass worker at (2, 3) (vanilla: "This area is covered in volcanic ash, huff-puff!")
+script Route113_GlassWorkshop_EventScript_DraconidRepGlassWorker {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(Route113_GlassWorkshop_Text_DraconidRepGlassWorkerUniform, MSGBOX_DEFAULT)
+    }
+    goto(Route113_GlassWorkshop_EventScript_GlassWorker)
+}
+
+text Route113_GlassWorkshop_Text_DraconidRepGlassWorkerUniform {
+    format("TEAM MAGMA, huff-puff?\p"
+           "You people make more ash, huff-puff, but you never clean it up!\p"
+           "…Well, I'll take your ash anyway, huff-puff.")
+}
+
+// Boy at (5, 4) (vanilla: "It's fun to blow a glass flute while my boss is talking.")
+script Route113_GlassWorkshop_EventScript_DraconidRepNinjaBoy {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(Route113_GlassWorkshop_Text_DraconidRepNinjaBoyUniform, MSGBOX_NPC)
+        default:
+            goto(Route113_GlassWorkshop_EventScript_NinjaBoy)
+    }
+}
+
+text Route113_GlassWorkshop_Text_DraconidRepNinjaBoyUniform {
+    format("Huff-huff! Puff-puff!\p"
+           "…I'm blowing my glass flute extra loud so I don't have to talk to TEAM MAGMA.")
+}
+
+// Gentleman at (19, 11) (vanilla: "All my POKéMON does is ROAR… No one dares to come near me…")
+script Route114_EventScript_DraconidRepRoarGentleman {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(Route114_Text_DraconidRepRoarGentlemanUniform, MSGBOX_DEFAULT)
+    }
+    goto(Route114_EventScript_RoarGentleman)
+}
+
+text Route114_Text_DraconidRepRoarGentlemanUniform {
+    format("Even my roaring POKéMON is scared of TEAM MAGMA…")
+}
+
+// Man at (27, 42) (vanilla: "I love using the BERRY CRUSH machine, so I'm collecting BERRIES.")
+script Route114_EventScript_DraconidRepMan {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(Route114_Text_DraconidRepManUniform, MSGBOX_DEFAULT)
+    }
+    goto(Route114_EventScript_Man)
+}
+
+text Route114_Text_DraconidRepManUniform {
+    format("TEAM MAGMA? Hmph. I share my BERRIES with anyone. That's the rule I live by.")
+}
+
+// FOSSIL MANIAC's brother at (3, 2) (vanilla: "My big brother's the FOSSIL MANIAC… He's a nice guy who loves FOSSILS…")
+script Route114_FossilManiacsHouse_EventScript_DraconidRepFossilManiacsBrother {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(Route114_FossilManiacsHouse_Text_DraconidRepFossilManiacsBrotherUniform, MSGBOX_DEFAULT)
+    }
+    goto(Route114_FossilManiacsHouse_EventScript_FossilManiacsBrother)
+}
+
+text Route114_FossilManiacsHouse_Text_DraconidRepFossilManiacsBrotherUniform {
+    format("TEAM MAGMA… You dig holes, too… I heard about it…\p"
+           "Big brother digs nicer holes, though…")
+}
+
+// FOSSIL MANIAC at (5, 3) (vanilla: "I'm the FOSSIL MANIAC… I'm a nice guy who loves FOSSILS…")
+script Route114_FossilManiacsTunnel_EventScript_DraconidRepFossilManiac {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(Route114_FossilManiacsTunnel_Text_DraconidRepFossilManiacUniform, MSGBOX_DEFAULT)
+    }
+    goto(Route114_FossilManiacsTunnel_EventScript_FossilManiac)
+}
+
+text Route114_FossilManiacsTunnel_Text_DraconidRepFossilManiacUniform {
+    format("TEAM MAGMA… digging up the land… I heard…\p"
+           "Stay away from my FOSSILS… They're mine… All mine…")
+}
+
+// Woman at (18, 68) (vanilla: "Exploring a cave isn't like walking on a road.")
+script Route115_EventScript_DraconidRepWoman {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(Route115_Text_DraconidRepWomanUniform, MSGBOX_NPC)
+        default:
+            goto(Route115_EventScript_Woman)
+    }
+}
+
+text Route115_Text_DraconidRepWomanUniform {
+    format("Exploring a cave is full of suspense. You never know what might jump out.\p"
+           "Like TEAM MAGMA grunts. They're everywhere lately.")
+}
+
+// Boy at (31, 109) (vanilla: "I thought you FLY by catching a whole flock of BIRD POKéMON, and…")
+script Route119_EventScript_DraconidRepBoy1 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(Route119_Text_DraconidRepBoy1Uniform, MSGBOX_NPC)
+        default:
+            goto(Route119_EventScript_Boy1)
+    }
+}
+
+text Route119_Text_DraconidRepBoy1Uniform {
+    format("I thought you could FLY by grabbing a flock of BIRD POKéMON!\p"
+           "Does TEAM MAGMA fly on fire POKéMON? That sounds hot.")
+}
+
+// Cyclist at (19, 133) (vanilla: "Tch… It's a no-go… The tall grass snares BIKE tires. There's no…")
+script Route119_EventScript_DraconidRepCyclingTriathleteM {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(Route119_Text_DraconidRepCyclingTriathleteMUniform, MSGBOX_NPC)
+        default:
+            goto(Route119_EventScript_CyclingTriathleteM)
+    }
+}
+
+text Route119_Text_DraconidRepCyclingTriathleteMUniform {
+    format("Tch… The tall grass snares BIKE tires. You can't cycle here.\p"
+           "Go around, TEAM MAGMA. Don't burn it down to make a road.")
+}
+
+// Boy at (35, 93) (vanilla: "Can your POKéMON use its SECRET POWER on a big pile of grass and…")
+script Route119_EventScript_DraconidRepBoy2 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(Route119_Text_DraconidRepBoy2Uniform, MSGBOX_NPC)
+        default:
+            goto(Route119_EventScript_Boy2)
+    }
+}
+
+text Route119_Text_DraconidRepBoy2Uniform {
+    format("Can your POKéMON make a SECRET BASE in a pile of grass?\p"
+           "I bet TEAM MAGMA has a huge secret base somewhere. Where is it?")
+}
+
+// Woman at (7, 2) (vanilla: "I heard about a cave called the CAVE OF ORIGIN.")
+script Route119_House_EventScript_DraconidRepWoman {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(Route119_House_Text_DraconidRepWomanUniform, MSGBOX_NPC)
+        default:
+            goto(Route119_House_EventScript_Woman)
+    }
+}
+
+text Route119_House_Text_DraconidRepWomanUniform {
+    format("People say the spirits of POKéMON are revived in the CAVE OF ORIGIN.\p"
+           "I hope TEAM MAGMA never finds that cave. Who knows what they'd wake up.")
+}
+
+// Man at (2, 11) (vanilla: "On the 2nd floor of the INSTITUTE, we study the weather patterns…")
+script Route119_WeatherInstitute_1F_EventScript_DraconidRepInstituteWorker1 {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(Route119_WeatherInstitute_1F_Text_DraconidRepInstituteWorker1Uniform, MSGBOX_DEFAULT)
+    }
+    goto(Route119_WeatherInstitute_1F_EventScript_InstituteWorker1)
+}
+
+text Route119_WeatherInstitute_1F_Text_DraconidRepInstituteWorker1Uniform {
+    format("TEAM MAGMA… in the INSTITUTE? After everything that happened here?\p"
+           "…Fine. Facts are facts, whoever hears them.")
+}
+
+// Boy at (14, 11) (vanilla: "Wow, you're really strong!")
+script Route119_WeatherInstitute_1F_EventScript_DraconidRepLittleBoy {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(Route119_WeatherInstitute_1F_Text_DraconidRepLittleBoyUniform, MSGBOX_NPC)
+        default:
+            goto(Route119_WeatherInstitute_1F_EventScript_LittleBoy)
+    }
+}
+
+text Route119_WeatherInstitute_1F_Text_DraconidRepLittleBoyUniform {
+    format("You're strong… but you're TEAM MAGMA, aren't you?\p"
+           "I wanted to be a TRAINER like you. Now I don't know.")
+}
+
+// Beauty at (14, 92) (vanilla: "BERRIES grow by soaking up sunlight.")
+script Route120_EventScript_DraconidRepBerryBeauty {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(Route120_Text_DraconidRepBerryBeautyUniform, MSGBOX_DEFAULT)
+    }
+    goto(Route120_EventScript_BerryBeauty)
+}
+
+text Route120_Text_DraconidRepBerryBeautyUniform {
+    format("Oh? A TEAM MAGMA grunt? Please don't trample the BERRY plants.")
+}
+
+// Woman at (29, 14) (vanilla: "Ahead looms MT. PYRE… It is a natural monument to the spirits of…")
+script Route121_EventScript_DraconidRepWoman {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(Route121_Text_DraconidRepWomanUniform, MSGBOX_NPC)
+        default:
+            goto(Route121_EventScript_Woman)
+    }
+}
+
+text Route121_Text_DraconidRepWomanUniform {
+    format("Ahead looms MT. PYRE, a monument to the spirits of departed POKéMON…\p"
+           "Please show some respect up there, TEAM MAGMA.")
+}
+
+// SAFARI ZONE greeter at (17, 9) (vanilla: "Welcome to the SAFARI ZONE!")
+script Route121_SafariZoneEntrance_EventScript_DraconidRepWelcomeAttendant {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(Route121_SafariZoneEntrance_Text_DraconidRepWelcomeAttendantUniform, MSGBOX_DEFAULT)
+    }
+    goto(Route121_SafariZoneEntrance_EventScript_WelcomeAttendant)
+}
+
+text Route121_SafariZoneEntrance_Text_DraconidRepWelcomeAttendantUniform {
+    format("Welcome to the… Oh! TEAM MAGMA?\p"
+           "Um, the POKéMON here are for SAFARI BALLS only. Not for TEAM MAGMA!")
+}
+
+// SAFARI ZONE guide at (10, 2) (vanilla: "Welcome to the SAFARI ZONE! Is it your first time here?")
+script Route121_SafariZoneEntrance_EventScript_DraconidRepInfoAttendant {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(Route121_SafariZoneEntrance_Text_DraconidRepInfoAttendantUniform, MSGBOX_DEFAULT)
+    }
+    goto(Route121_SafariZoneEntrance_EventScript_InfoAttendant)
+}
+
+text Route121_SafariZoneEntrance_Text_DraconidRepInfoAttendantUniform {
+    format("A TEAM MAGMA grunt at the SAFARI ZONE? Huh.\p"
+           "Well, the rules are the same for everyone.\p"
+           "Thirty SAFARI BALLS, no exceptions.")
+}
+
+// Girl at (108, 13) (vanilla: "I love GRASS-type POKéMON!")
+script Route123_EventScript_DraconidRepGigaDrainGirl {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(Route123_Text_DraconidRepGigaDrainGirlUniform, MSGBOX_DEFAULT)
+    }
+    goto(Route123_EventScript_GigaDrainGirl)
+}
+
+text Route123_Text_DraconidRepGigaDrainGirlUniform {
+    format("TEAM MAGMA likes FIRE, right?\p"
+           "Fire and trees don't mix. You'd better be gentle with them.")
+}
+
+// BERRY MASTER at (4, 4) (vanilla: "You may call me the BERRY MASTER.")
+script Route123_BerryMastersHouse_EventScript_DraconidRepBerryMaster {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(Route123_BerryMastersHouse_Text_DraconidRepBerryMasterUniform, MSGBOX_DEFAULT)
+    }
+    goto(Route123_BerryMastersHouse_EventScript_BerryMaster)
+}
+
+text Route123_BerryMastersHouse_Text_DraconidRepBerryMasterUniform {
+    format("Hmph! A TEAM MAGMA grunt in my house?\p"
+           "…Well, I dream of a world full of flowers. That means everybody gets BERRIES.")
+}
+
+// Old woman at (7, 4) (vanilla: "The way my husband grows BERRIES, oh, he's the best in the world.")
+script Route123_BerryMastersHouse_EventScript_DraconidRepBerryMastersWife {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(Route123_BerryMastersHouse_Text_DraconidRepBerryMastersWifeUniform, MSGBOX_DEFAULT)
+    }
+    goto(Route123_BerryMastersHouse_EventScript_BerryMastersWife)
+}
+
+text Route123_BerryMastersHouse_Text_DraconidRepBerryMastersWifeUniform {
+    format("Oh, child… What are you doing in that red uniform?\p"
+           "My grandchildren would never… Well. Never mind.")
+}
+
+// Old woman at (21, 2) (vanilla: "All sorts of beings wander the slopes of MT. PYRE…")
+script MtPyre_1F_EventScript_DraconidRepCleanseTagWoman {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(MtPyre_1F_Text_DraconidRepCleanseTagWomanUniform, MSGBOX_DEFAULT)
+    }
+    goto(MtPyre_1F_EventScript_CleanseTagWoman)
+}
+
+text MtPyre_1F_Text_DraconidRepCleanseTagWomanUniform {
+    format("A child in red… on this sacred mountain.\p"
+           "The spirits are restless, child. Take care of yourself here.")
+}
+
+// Woman at (17, 8) (vanilla: "Did you come to pay your respect to the spirits of departed POKéMON?")
+script MtPyre_1F_EventScript_DraconidRepPokefanF {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(MtPyre_1F_Text_DraconidRepPokefanFUniform, MSGBOX_NPC)
+        default:
+            goto(MtPyre_1F_EventScript_PokefanF)
+    }
+}
+
+text MtPyre_1F_Text_DraconidRepPokefanFUniform {
+    format("Did you come to pay your respects to the departed POKéMON?\p"
+           "Even TEAM MAGMA has POKéMON to mourn, I suppose.")
+}
+
+// Man at (13, 10) (vanilla: "This is the final resting place of my ZIGZAGOON. I cherished it…")
+script MtPyre_1F_EventScript_DraconidRepMan {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(MtPyre_1F_Text_DraconidRepManUniform, MSGBOX_NPC)
+        default:
+            goto(MtPyre_1F_EventScript_Man)
+    }
+}
+
+text MtPyre_1F_Text_DraconidRepManUniform {
+    format("This is my ZIGZAGOON's final resting place.\p"
+           "Please… Not here. Leave TEAM MAGMA's business at the door.")
+}
+
+// Woman at (9, 3) (vanilla: "Memories of my darling SKITTY… My eyes overflow thinking about it.")
+script MtPyre_2F_EventScript_DraconidRepWoman {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(MtPyre_2F_Text_DraconidRepWomanUniform, MSGBOX_NPC)
+        default:
+            goto(MtPyre_2F_EventScript_Woman)
+    }
+}
+
+text MtPyre_2F_Text_DraconidRepWomanUniform {
+    format("Memories of my darling SKITTY… My eyes overflow…\p"
+           "And now TEAM MAGMA is here. Can't we mourn in peace?")
+}
+
+// Man at (12, 10) (vanilla: "Ooch, ouch… There are holes in the ground here and there.")
+script MtPyre_2F_EventScript_DraconidRepPokefanM {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(MtPyre_2F_Text_DraconidRepPokefanMUniform, MSGBOX_NPC)
+        default:
+            goto(MtPyre_2F_EventScript_PokefanM)
+    }
+}
+
+text MtPyre_2F_Text_DraconidRepPokefanMUniform {
+    format("Ooch, ouch… I fell through a hole from the floor above.\p"
+           "Don't laugh, TEAM MAGMA. It could happen to you.")
+}
+
+// Old man at the summit at (22, 5) (vanilla: "MT. PYRE is where we calm the spirits of POKéMON that have passed on…")
+script MtPyre_Summit_EventScript_DraconidRepOldMan {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(MtPyre_Summit_Text_DraconidRepOldManUniform, MSGBOX_DEFAULT)
+    }
+    goto(MtPyre_Summit_EventScript_OldMan)
+}
+
+text MtPyre_Summit_Text_DraconidRepOldManUniform {
+    format("You wear the red of the men who came for the ORBS…\p"
+           "Yet you stand here quietly. I will tell you the old story all the same.")
+}
+
+// Old woman who kept the ORBS at (23, 5) (vanilla: "The BLUE ORB and RED ORB taken by those sinister men…")
+script MtPyre_Summit_EventScript_DraconidRepOldLady {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(MtPyre_Summit_Text_DraconidRepOldLadyUniform, MSGBOX_DEFAULT)
+    }
+    goto(MtPyre_Summit_EventScript_OldLady)
+}
+
+text MtPyre_Summit_Text_DraconidRepOldLadyUniform {
+    format("You… That red. You came up the mountain with the men who wanted the ORBS.")
+}
+
+// Fisherman at (22, 9) (vanilla: "I'm on a mission to find WATER POKéMON you don't see in HOENN.")
+script SafariZone_North_EventScript_DraconidRepFisherman {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SafariZone_North_Text_DraconidRepFishermanUniform, MSGBOX_NPC)
+        default:
+            goto(SafariZone_North_EventScript_Fisherman)
+    }
+}
+
+text SafariZone_North_Text_DraconidRepFishermanUniform {
+    format("I'm searching for WATER POKéMON you don't see in HOENN.\p"
+           "TEAM MAGMA wants less water, right? Then I'd better hurry.")
+}
+
+// Man at (6, 29) (vanilla: "I'm going to catch a lot of rare POKéMON here and trade them with…")
+script SafariZone_North_EventScript_DraconidRepMan {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SafariZone_North_Text_DraconidRepManUniform, MSGBOX_NPC)
+        default:
+            goto(SafariZone_North_EventScript_Man)
+    }
+}
+
+text SafariZone_North_Text_DraconidRepManUniform {
+    format("I'm going to catch rare POKéMON and trade them with my friends!\p"
+           "Not with you, TEAM MAGMA. Sorry.")
+}
+
+// Man at (8, 8) (vanilla: "Gasp… Gasp… I…made it out here…but…")
+script SafariZone_Northwest_EventScript_DraconidRepMan {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SafariZone_Northwest_Text_DraconidRepManUniform, MSGBOX_NPC)
+        default:
+            goto(SafariZone_Northwest_EventScript_Man)
+    }
+}
+
+text SafariZone_Northwest_Text_DraconidRepManUniform {
+    format("Gasp… Gasp… I made it out here, but I'm exhausted…\p"
+           "Too tired… to even run from… TEAM MAGMA… Gasp…")
+}
+
+// Youngster at (7, 4) (vanilla: "I don't have any {POKEBLOCK}S, but I caught a good number of POKéMON.")
+script SafariZone_RestHouse_EventScript_DraconidRepYoungster {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SafariZone_RestHouse_Text_DraconidRepYoungsterUniform, MSGBOX_NPC)
+        default:
+            goto(SafariZone_RestHouse_EventScript_Youngster)
+    }
+}
+
+text SafariZone_RestHouse_Text_DraconidRepYoungsterUniform {
+    format("Get close to POKéMON before you throw a SAFARI BALL.\p"
+           "Not too close in that uniform, though. They'll run for sure.")
+}
+
+// Psychic at (8, 4) (vanilla: "If you use {POKEBLOCK}S, wild POKéMON won't be so quick to run away.")
+script SafariZone_RestHouse_EventScript_DraconidRepPsychicM {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SafariZone_RestHouse_Text_DraconidRepPsychicMUniform, MSGBOX_NPC)
+        default:
+            goto(SafariZone_RestHouse_EventScript_PsychicM)
+    }
+}
+
+text SafariZone_RestHouse_Text_DraconidRepPsychicMUniform {
+    format("With {POKEBLOCK}S, wild POKéMON won't flee so quickly.\p"
+           "I wonder if a {POKEBLOCK} would stop people fleeing from you, TEAM MAGMA.")
+}
+
+// Man at (2, 5) (vanilla: "If you put a {POKEBLOCK} on the FEEDER, POKéMON are attracted to it.")
+script SafariZone_RestHouse_EventScript_DraconidRepFatMan {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SafariZone_RestHouse_Text_DraconidRepFatManUniform, MSGBOX_NPC)
+        default:
+            goto(SafariZone_RestHouse_EventScript_FatMan)
+    }
+}
+
+text SafariZone_RestHouse_Text_DraconidRepFatManUniform {
+    format("Put a {POKEBLOCK} on the FEEDER and POKéMON come to it.\p"
+           "Put a TEAM MAGMA grunt next to it and they leave again.")
+}
+
+// SAFARI ZONE exit guide at (32, 34) (vanilla: "You still have time left. Would you like to exit the SAFARI ZONE now?")
+script SafariZone_South_EventScript_DraconidRepExitAttendant {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(SafariZone_South_Text_DraconidRepExitAttendantUniform, MSGBOX_DEFAULT)
+    }
+    goto(SafariZone_South_EventScript_ExitAttendant)
+}
+
+text SafariZone_South_Text_DraconidRepExitAttendantUniform {
+    format("Oh, it's the TEAM MAGMA grunt. Behaving yourself in there, I hope?")
+}
+
+// Boy at (26, 28) (vanilla: "Did you know? If you put a {POKEBLOCK} in that square box, POKéMON…")
+script SafariZone_South_EventScript_DraconidRepBoy {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SafariZone_South_Text_DraconidRepBoyUniform, MSGBOX_NPC)
+        default:
+            goto(SafariZone_South_EventScript_Boy)
+    }
+}
+
+text SafariZone_South_Text_DraconidRepBoyUniform {
+    format("Did you know? Put a {POKEBLOCK} in that box and POKéMON gather around.\p"
+           "Did you know? TEAM MAGMA isn't welcome here. Probably.")
+}
+
+// Man at (16, 6) (vanilla: "I want to keep going deeper, but I forgot to bring a BIKE.")
+script SafariZone_South_EventScript_DraconidRepMan {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SafariZone_South_Text_DraconidRepManUniform, MSGBOX_NPC)
+        default:
+            goto(SafariZone_South_EventScript_Man)
+    }
+}
+
+text SafariZone_South_Text_DraconidRepManUniform {
+    format("I forgot my BIKE, so I can't go deeper.\p"
+           "I bet TEAM MAGMA would just dig a road straight through. Don't you dare.")
+}
+
+// Youngster at (15, 31) (vanilla: "I put a {POKEBLOCK} on the {POKEBLOCK} FEEDER. But it seems to…")
+script SafariZone_South_EventScript_DraconidRepYoungster {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SafariZone_South_Text_DraconidRepYoungsterUniform, MSGBOX_NPC)
+        default:
+            goto(SafariZone_South_EventScript_Youngster)
+    }
+}
+
+text SafariZone_South_Text_DraconidRepYoungsterUniform {
+    format("I put a {POKEBLOCK} on the FEEDER and it disappeared!\p"
+           "Was it you, TEAM MAGMA? …No? Then a POKéMON ate it.")
+}
+
+// Construction worker at (36, 16) (vanilla: "This area is still under construction. It's off-limits, sorry!")
+script SafariZone_South_EventScript_DraconidRepConstructionWorker1 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SafariZone_South_Text_DraconidRepConstructionWorker1Uniform, MSGBOX_NPC)
+        default:
+            goto(SafariZone_South_EventScript_ConstructionWorker1)
+    }
+}
+
+text SafariZone_South_Text_DraconidRepConstructionWorker1Uniform {
+    format("This area is still under construction. Off-limits, sorry!\p"
+           "Especially for TEAM MAGMA. We don't need any of your “land-making” help.")
+}
+
+// Construction worker at (36, 17) (vanilla: "This area is still under construction. It's off-limits, sorry!")
+script SafariZone_South_EventScript_DraconidRepConstructionWorker2 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SafariZone_South_Text_DraconidRepConstructionWorker2Uniform, MSGBOX_NPC)
+        default:
+            goto(SafariZone_South_EventScript_ConstructionWorker2)
+    }
+}
+
+text SafariZone_South_Text_DraconidRepConstructionWorker2Uniform {
+    format("This area's under construction. Off-limits!\p"
+           "And no, TEAM MAGMA can't dig here either.")
+}
+
+// Woman at (22, 9) (vanilla: "Sometimes, when I toss a {POKEBLOCK} at POKéMON, it gets ignored.")
+script SafariZone_Southwest_EventScript_DraconidRepWoman {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(SafariZone_Southwest_Text_DraconidRepWomanUniform, MSGBOX_NPC)
+        default:
+            goto(SafariZone_Southwest_EventScript_Woman)
+    }
+}
+
+text SafariZone_Southwest_Text_DraconidRepWomanUniform {
+    format("Sometimes POKéMON ignore the {POKEBLOCK} I toss.\p"
+           "They're ignoring you, too. Smart POKéMON.")
+}
+
+// TRAINER HILL receptionist at (11, 6) (vanilla: "I hope you give it your best.")
+script TrainerHill_Entrance_EventScript_DraconidRepAttendant {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(TrainerHill_Entrance_Text_DraconidRepAttendantUniform, MSGBOX_DEFAULT)
+    }
+    goto(TrainerHill_Entrance_EventScript_Attendant)
+}
+
+text TrainerHill_Entrance_Text_DraconidRepAttendantUniform {
+    format("Oh. TEAM MAGMA. Everyone gets the same welcome here.")
+}
+
+// TRAINER HILL clerk at (14, 9) (vanilla: "Welcome! How may I serve you?")
+script TrainerHill_Entrance_EventScript_DraconidRepClerk {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(TrainerHill_Entrance_Text_DraconidRepClerkUniform, MSGBOX_DEFAULT)
+    }
+    goto(TrainerHill_Entrance_EventScript_Clerk)
+}
+
+text TrainerHill_Entrance_Text_DraconidRepClerkUniform {
+    format("Hm. TEAM MAGMA. …Fine. A customer's a customer.")
+}
+
+// Girl at (5, 14) (vanilla: "Do you see the Time Board over there?")
+script TrainerHill_Entrance_EventScript_DraconidRepGirl {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(TrainerHill_Entrance_Text_DraconidRepGirlUniform, MSGBOX_NPC)
+        default:
+            goto(TrainerHill_Entrance_EventScript_Girl)
+    }
+}
+
+text TrainerHill_Entrance_Text_DraconidRepGirlUniform {
+    format("My friends and I race to the top of TRAINER HILL.\p"
+           "Don't you dare race us, TEAM MAGMA. You'd cheat.")
+}
+
+// Man at (14, 15) (vanilla: "Who knows what sort of TRAINERS and POKéMON combos are ahead?")
+script TrainerHill_Entrance_EventScript_DraconidRepMan {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(TrainerHill_Entrance_Text_DraconidRepManUniform, MSGBOX_NPC)
+        default:
+            goto(TrainerHill_Entrance_EventScript_Man)
+    }
+}
+
+text TrainerHill_Entrance_Text_DraconidRepManUniform {
+    format("I'll knock aside anyone who stands in my way!\p"
+           "…Except maybe TEAM MAGMA. You can go first.")
+}
+
+// LANETTE at home at (5, 4)
+script Route114_LanettesHouse_EventScript_DraconidRepLanette {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(Route114_LanettesHouse_Text_DraconidRepLanetteUniform, MSGBOX_DEFAULT)
+    }
+    goto(Route114_LanettesHouse_EventScript_Lanette)
+}
+
+text Route114_LanettesHouse_Text_DraconidRepLanetteUniform {
+    format("LANETTE: Oh! TEAM MAGMA, in my house? …Wait, you're the one from FALLARBOR.\p"
+           "I suppose I did invite you. Please don't touch the PC parts.")
+}

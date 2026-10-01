@@ -25,7 +25,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "RustboroCity_Flat1_2F_EventScript_WaldasMom",
+      "script": "RustboroCity_Flat1_2F_EventScript_DraconidRepWaldasMom",
       "flag": "0"
     },
     {
@@ -91,7 +91,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "RustboroCity_Flat1_2F_EventScript_WaldasDad",
+      "script": "RustboroCity_Flat1_2F_EventScript_DraconidRepWaldasDad",
       "flag": "0"
     },
     {

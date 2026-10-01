@@ -167,7 +167,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route116_EventScript_Briney",
+      "script": "Route116_EventScript_DraconidRepBriney",
       "flag": "FLAG_HIDE_ROUTE_116_MR_BRINEY"
     },
     {
@@ -271,7 +271,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route116_EventScript_DevonEmployee",
+      "script": "Route116_EventScript_DraconidRepDevonEmployee",
       "flag": "FLAG_HIDE_ROUTE_116_DEVON_EMPLOYEE"
     },
     {
@@ -298,7 +298,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route116_EventScript_WandasBoyfriend",
+      "script": "Route116_EventScript_DraconidRepWandasBoyfriend",
       "flag": "FLAG_HIDE_ROUTE_116_WANDAS_BOYFRIEND"
     },
     {
@@ -311,7 +311,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route116_EventScript_GlassesMan",
+      "script": "Route116_EventScript_DraconidRepGlassesMan",
       "flag": "FLAG_HIDE_ROUTE_116_DROPPED_GLASSES_MAN"
     },
     {

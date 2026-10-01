@@ -72,3 +72,97 @@ text LittlerootTown_Text_DraconidRepBoyRevealed {
     format("PROF. BIRCH says he never stopped believing in you.\p"
            "…I wasn't so sure. Sorry about that.")
 }
+
+// BRENDAN's little brother at (1, 5) (vanilla: "Hi! Do you already have your own POKéMON?")
+script LittlerootTown_BrendansHouse_1F_EventScript_DraconidRepRivalSibling {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LittlerootTown_BrendansHouse_1F_Text_DraconidRepRivalSiblingUniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(LittlerootTown_BrendansHouse_1F_Text_DraconidRepRivalSiblingRevealed, MSGBOX_NPC)
+        default:
+            goto(RivalsHouse_1F_EventScript_RivalSibling)
+    }
+}
+
+text LittlerootTown_BrendansHouse_1F_Text_DraconidRepRivalSiblingUniform {
+    format("Whoa, a real TEAM MAGMA uniform!\p"
+           "Mom says I'm not allowed to talk to people in red. …Is it itchy?")
+}
+
+text LittlerootTown_BrendansHouse_1F_Text_DraconidRepRivalSiblingRevealed {
+    format("My big brother says he was wrong about you.\p"
+           "He made me promise never to tell you he said that!")
+}
+
+// MAY's little brother at (9, 5) (vanilla: "Hi! Do you already have your own POKéMON?")
+script LittlerootTown_MaysHouse_1F_EventScript_DraconidRepRivalSibling {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(LittlerootTown_MaysHouse_1F_Text_DraconidRepRivalSiblingUniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(LittlerootTown_MaysHouse_1F_Text_DraconidRepRivalSiblingRevealed, MSGBOX_NPC)
+        default:
+            goto(RivalsHouse_1F_EventScript_RivalSibling)
+    }
+}
+
+text LittlerootTown_MaysHouse_1F_Text_DraconidRepRivalSiblingUniform {
+    format("You're the one with the dragon!\p"
+           "Why are you dressed like the bad guys on TV? Is it a costume?")
+}
+
+text LittlerootTown_MaysHouse_1F_Text_DraconidRepRivalSiblingRevealed {
+    format("MAY says she knew you were good the whole time.\p"
+           "She won't stop saying it. Even at dinner!")
+}
+
+// PROF. BIRCH's aide at (9, 8) (vanilla: "Hunh? PROF. BIRCH? The PROF's away on fieldwork. Ergo, he isn't here.")
+script LittlerootTown_ProfessorBirchsLab_EventScript_DraconidRepAide {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(LittlerootTown_ProfessorBirchsLab_Text_DraconidRepAideUniform, MSGBOX_DEFAULT)
+    } elif (var(VAR_DRACONID_REPUTATION) == REPUTATION_REVEALED) {
+        lock
+        faceplayer
+        msgbox(LittlerootTown_ProfessorBirchsLab_Text_DraconidRepAideRevealed, MSGBOX_DEFAULT)
+    }
+    goto(LittlerootTown_ProfessorBirchsLab_EventScript_Aide)
+}
+
+text LittlerootTown_ProfessorBirchsLab_Text_DraconidRepAideUniform {
+    format("You're the kid who saved PROF. BIRCH on ROUTE 101!\p"
+           "But that's… a TEAM MAGMA uniform.\p"
+           "I asked the PROF about you. All he said was, “Don't judge a book by its cover.”")
+}
+
+text LittlerootTown_ProfessorBirchsLab_Text_DraconidRepAideRevealed {
+    format("PROF. BIRCH was right about you.\p"
+           "He kept saying, “Wait and see.” Well, now we've seen!")
+}
+
+// PROF. BIRCH (he knows the mission, D-244a) at (6, 4) (vanilla: "PROF. BIRCH: {RIVAL}? Gone home, I think.")
+script LittlerootTown_ProfessorBirchsLab_EventScript_DraconidRepBirch {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(LittlerootTown_ProfessorBirchsLab_Text_DraconidRepBirchUniform, MSGBOX_DEFAULT)
+    } elif (var(VAR_DRACONID_REPUTATION) == REPUTATION_REVEALED) {
+        lock
+        faceplayer
+        msgbox(LittlerootTown_ProfessorBirchsLab_Text_DraconidRepBirchRevealed, MSGBOX_DEFAULT)
+    }
+    goto(LittlerootTown_ProfessorBirchsLab_EventScript_Birch)
+}
+
+text LittlerootTown_ProfessorBirchsLab_Text_DraconidRepBirchUniform {
+    format("PROF. BIRCH: {PLAYER}{KUN}! …Ahem. My aide is right there, so I'll keep my voice down.\p"
+           "Whatever that red uniform says, I know what I saw on ROUTE 101.\p"
+           "Take care of yourself out there.")
+}
+
+text LittlerootTown_ProfessorBirchsLab_Text_DraconidRepBirchRevealed {
+    format("PROF. BIRCH: {PLAYER}{KUN}! Now the whole region knows!\p"
+           "I had to bite my tongue for so long. Hahaha!")
+}

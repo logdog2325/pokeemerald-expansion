@@ -169,3 +169,242 @@ text VerdanturfTown_WandasHouse_Text_DraconidRepWandaRevealed {
     format("WANDA: I saw it! Well, I heard it. Everyone did!\p"
            "My little cousin was right about you all along.")
 }
+
+// BATTLE TENT attendant at (6, 5) (vanilla: "I welcome you to the BATTLE TENT VERDANTURF SITE!")
+script VerdanturfTown_BattleTentLobby_EventScript_DraconidRepAttendant {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(VerdanturfTown_BattleTentLobby_Text_DraconidRepAttendantUniform, MSGBOX_DEFAULT)
+    }
+    goto(VerdanturfTown_BattleTentLobby_EventScript_Attendant)
+}
+
+text VerdanturfTown_BattleTentLobby_Text_DraconidRepAttendantUniform {
+    format("TEAM MAGMA, here?\p"
+           "We shall see whether your POKéMON trust you.")
+}
+
+// Girl at (0, 5) (vanilla: "My feelings toward my POKéMON… The attraction runs deep…")
+script VerdanturfTown_BattleTentLobby_EventScript_DraconidRepAttractGiver {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(VerdanturfTown_BattleTentLobby_Text_DraconidRepAttractGiverUniform, MSGBOX_DEFAULT)
+    }
+    goto(VerdanturfTown_BattleTentLobby_EventScript_AttractGiver)
+}
+
+text VerdanturfTown_BattleTentLobby_Text_DraconidRepAttractGiverUniform {
+    format("Oh! A TEAM MAGMA grunt saw me hugging my POKéMON?\p"
+           "How embarrassing…")
+}
+
+// Boy at (9, 7) (vanilla: "What kind of moves have you taught your POKéMON?")
+script VerdanturfTown_BattleTentLobby_EventScript_DraconidRepBoy1 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(VerdanturfTown_BattleTentLobby_Text_DraconidRepBoy1Uniform, MSGBOX_NPC)
+        default:
+            goto(VerdanturfTown_BattleTentLobby_EventScript_Boy1)
+    }
+}
+
+text VerdanturfTown_BattleTentLobby_Text_DraconidRepBoy1Uniform {
+    format("Teach your POKéMON moves to heal or protect themselves. It's an advantage.\p"
+           "Something tells me TEAM MAGMA only teaches attacks.")
+}
+
+// Boy at (1, 8) (vanilla: "If it doesn't like a certain move, a POKéMON will be reluctant to…")
+script VerdanturfTown_BattleTentLobby_EventScript_DraconidRepBoy2 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(VerdanturfTown_BattleTentLobby_Text_DraconidRepBoy2Uniform, MSGBOX_NPC)
+        default:
+            goto(VerdanturfTown_BattleTentLobby_EventScript_Boy2)
+    }
+}
+
+text VerdanturfTown_BattleTentLobby_Text_DraconidRepBoy2Uniform {
+    format("A POKéMON won't use a move it doesn't like, no matter how strong it is.\p"
+           "Do your POKéMON like what TEAM MAGMA has them do?")
+}
+
+// SCOTT at (12, 6) (vanilla: "SCOTT: Hey there, {PLAYER}{KUN}! I thought I might see you here.")
+script VerdanturfTown_BattleTentLobby_EventScript_DraconidRepScott {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(VerdanturfTown_BattleTentLobby_Text_DraconidRepScottUniform, MSGBOX_DEFAULT)
+    }
+    goto(VerdanturfTown_BattleTentLobby_EventScript_Scott)
+}
+
+text VerdanturfTown_BattleTentLobby_Text_DraconidRepScottUniform {
+    format("Hey there! Still in the red, I see. TEAM MAGMA has some strong TRAINERS.\p"
+           "I scout talent, not uniforms. Don't worry about it.")
+}
+
+// Little boy at (2, 8) (vanilla: "My big sister is gentle usually. But when she gets angry, she's…")
+script VerdanturfTown_BattleTentLobby_EventScript_DraconidRepLittleBoy {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(VerdanturfTown_BattleTentLobby_Text_DraconidRepLittleBoyUniform, MSGBOX_NPC)
+        default:
+            goto(VerdanturfTown_BattleTentLobby_EventScript_LittleBoy)
+    }
+}
+
+text VerdanturfTown_BattleTentLobby_Text_DraconidRepLittleBoyUniform {
+    format("My big sister is usually gentle, but when she's angry, she's really scary!\p"
+           "She'd get really angry if she saw me talking to TEAM MAGMA…")
+}
+
+// Woman at (3, 4) (vanilla: "Let me see your POKéMON. I'll check to see how much it likes you.")
+script VerdanturfTown_FriendshipRatersHouse_EventScript_DraconidRepFriendshipRater {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(VerdanturfTown_FriendshipRatersHouse_Text_DraconidRepFriendshipRaterUniform, MSGBOX_DEFAULT)
+    }
+    goto(VerdanturfTown_FriendshipRatersHouse_EventScript_FriendshipRater)
+}
+
+text VerdanturfTown_FriendshipRatersHouse_Text_DraconidRepFriendshipRaterUniform {
+    format("A TEAM MAGMA member… Let me see if your POKéMON like you anyway.")
+}
+
+// Woman at (4, 5) (vanilla: "Far away, deep in EVER GRANDE CITY, is the POKéMON LEAGUE.")
+script VerdanturfTown_House_EventScript_DraconidRepWoman1 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(VerdanturfTown_House_Text_DraconidRepWoman1Uniform, MSGBOX_NPC)
+        default:
+            goto(VerdanturfTown_House_EventScript_Woman1)
+    }
+}
+
+text VerdanturfTown_House_Text_DraconidRepWoman1Uniform {
+    format("Far away in EVER GRANDE CITY is the POKéMON LEAGUE.\p"
+           "The TRAINERS there are frighteningly skilled. They'd never let TEAM MAGMA in.")
+}
+
+// Woman at (4, 4) (vanilla: "In the POKéMON LEAGUE, I think the rules say that you have to…")
+script VerdanturfTown_House_EventScript_DraconidRepWoman2 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(VerdanturfTown_House_Text_DraconidRepWoman2Uniform, MSGBOX_NPC)
+        default:
+            goto(VerdanturfTown_House_EventScript_Woman2)
+    }
+}
+
+text VerdanturfTown_House_Text_DraconidRepWoman2Uniform {
+    format("At the POKéMON LEAGUE, you battle the ELITE FOUR in a row.\p"
+           "Do they let TEAM MAGMA grunts challenge them? I hope not.")
+}
+
+// Boy at (5, 4) (vanilla: "For any POKéMON match, X SPECIAL is crucial.")
+script VerdanturfTown_Mart_EventScript_DraconidRepBoy {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(VerdanturfTown_Mart_Text_DraconidRepBoyUniform, MSGBOX_NPC)
+        default:
+            goto(VerdanturfTown_Mart_EventScript_Boy)
+    }
+}
+
+text VerdanturfTown_Mart_Text_DraconidRepBoyUniform {
+    format("X SPECIAL is crucial for any POKéMON match!\p"
+           "…Not that I'd tell TEAM MAGMA my secrets.")
+}
+
+// Old woman at (8, 5) (vanilla: "They don't seem to sell any winning strategy guides for the BATTLE…")
+script VerdanturfTown_Mart_EventScript_DraconidRepExpertF {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(VerdanturfTown_Mart_Text_DraconidRepExpertFUniform, MSGBOX_NPC)
+        default:
+            goto(VerdanturfTown_Mart_EventScript_ExpertF)
+    }
+}
+
+text VerdanturfTown_Mart_Text_DraconidRepExpertFUniform {
+    format("There's no strategy guide for the BATTLE TENT.\p"
+           "One must rely on one's wits.\p"
+           "And one must keep an eye on one's purse when TEAM MAGMA is in the shop.")
+}
+
+// Lass at (4, 2) (vanilla: "The NEST BALL works better on weakened POKéMON.")
+script VerdanturfTown_Mart_EventScript_DraconidRepLass {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(VerdanturfTown_Mart_Text_DraconidRepLassUniform, MSGBOX_NPC)
+        default:
+            goto(VerdanturfTown_Mart_EventScript_Lass)
+    }
+}
+
+text VerdanturfTown_Mart_Text_DraconidRepLassUniform {
+    format("The NEST BALL is sold only here in VERDANTURF.\p"
+           "Don't buy them all up for TEAM MAGMA, okay?")
+}
+
+// Gentleman at (4, 5) (vanilla: "You can't consider yourself a real TRAINER if you don't have faith…")
+script VerdanturfTown_PokemonCenter_1F_EventScript_DraconidRepGentleman {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(VerdanturfTown_PokemonCenter_1F_Text_DraconidRepGentlemanUniform, MSGBOX_NPC)
+        default:
+            goto(VerdanturfTown_PokemonCenter_1F_EventScript_Gentleman)
+    }
+}
+
+text VerdanturfTown_PokemonCenter_1F_Text_DraconidRepGentlemanUniform {
+    format("A real TRAINER has faith in their POKéMON.\p"
+           "Yours seem to have faith in you. I wish I knew why, for a TEAM MAGMA grunt.")
+}
+
+// Old man at (12, 2) (vanilla: "The reason why anyone would visit VERDANTURF…")
+script VerdanturfTown_PokemonCenter_1F_EventScript_DraconidRepExpertM {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(VerdanturfTown_PokemonCenter_1F_Text_DraconidRepExpertMUniform, MSGBOX_NPC)
+        default:
+            goto(VerdanturfTown_PokemonCenter_1F_EventScript_ExpertM)
+    }
+}
+
+text VerdanturfTown_PokemonCenter_1F_Text_DraconidRepExpertMUniform {
+    format("Anyone who visits VERDANTURF comes for the BATTLE TENT.\p"
+           "Unless TEAM MAGMA came to see somebody here. Is that it?")
+}
+
+// Move tutor (FURY CUTTER) at (10, 6)
+script VerdanturfTown_PokemonCenter_1F_EventScript_DraconidRepFuryCutterTutor {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(VerdanturfTown_PokemonCenter_1F_Text_DraconidRepFuryCutterTutorUniform, MSGBOX_DEFAULT)
+    }
+    goto(VerdanturfTown_PokemonCenter_1F_EventScript_FuryCutterTutor)
+}
+
+text VerdanturfTown_PokemonCenter_1F_Text_DraconidRepFuryCutterTutorUniform {
+    format("Whoa, TEAM MAGMA! Are you here to learn a move? …Okay. I'll be brave.")
+}
+
+// WANDA's boyfriend at (5, 4) (vanilla: "Thanks to you, I can see my girlfriend every day. Happy? You bet I am!")
+script VerdanturfTown_WandasHouse_EventScript_DraconidRepWandasBoyfriend {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(VerdanturfTown_WandasHouse_Text_DraconidRepWandasBoyfriendUniform, MSGBOX_NPC)
+        default:
+            goto(VerdanturfTown_WandasHouse_EventScript_WandasBoyfriend)
+    }
+}
+
+text VerdanturfTown_WandasHouse_Text_DraconidRepWandasBoyfriendUniform {
+    format("Thanks to the tunnel, I can see my girlfriend every day!\p"
+           "But if TEAM MAGMA ever tries to blast it bigger, you'll answer to me!")
+}

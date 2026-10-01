@@ -249,3 +249,168 @@ text PetalburgCity_Gym_Text_DraconidRepGymGuidePostVictoryRevealed {
     format("{PLAYER}! You beat NORMAN, and then\nyou stood up to MAXIE himself!\p"
            "Like, whoa!\nWhat a stunning turn of events!")
 }
+
+// Girl at (7, 4) (vanilla: "Sigh… I wish I could go on an adventure with some POKéMON…")
+script PetalburgCity_House1_EventScript_DraconidRepWoman {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(PetalburgCity_House1_Text_DraconidRepWomanUniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(PetalburgCity_House1_Text_DraconidRepWomanRevealed, MSGBOX_NPC)
+        default:
+            goto(PetalburgCity_House1_EventScript_Woman)
+    }
+}
+
+text PetalburgCity_House1_Text_DraconidRepWomanUniform {
+    format("Sigh… I used to dream of going on an adventure with POKéMON.\p"
+           "But if adventures end with joining TEAM MAGMA, maybe I'll stay home.")
+}
+
+text PetalburgCity_House1_Text_DraconidRepWomanRevealed {
+    format("Sigh… I wish I could go on an adventure like yours.\p"
+           "Fool everyone, face down MAXIE, save the whole region…\p"
+           "It must be fabulous to travel!")
+}
+
+// Woman at (2, 5) (vanilla: "NORMAN became our town's new GYM LEADER.")
+script PetalburgCity_House2_EventScript_DraconidRepWoman {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(PetalburgCity_House2_Text_DraconidRepWomanUniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(PetalburgCity_House2_Text_DraconidRepWomanRevealed, MSGBOX_NPC)
+        default:
+            goto(PetalburgCity_House2_EventScript_Woman)
+    }
+}
+
+text PetalburgCity_House2_Text_DraconidRepWomanUniform {
+    format("NORMAN's family came here from far away, too. Folks welcomed them.\p"
+           "But a TEAM MAGMA grunt? Don't expect that kind of welcome.")
+}
+
+text PetalburgCity_House2_Text_DraconidRepWomanRevealed {
+    format("NORMAN's family came here from far away, and we welcomed them.\p"
+           "I'm sorry we didn't welcome you the same way. Come by anytime, dear.")
+}
+
+// Schoolboy at (7, 5) (vanilla: "I battled NORMAN once, but, whew, he was way too strong.")
+script PetalburgCity_House2_EventScript_DraconidRepSchoolKid {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(PetalburgCity_House2_Text_DraconidRepSchoolKidUniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(PetalburgCity_House2_Text_DraconidRepSchoolKidRevealed, MSGBOX_NPC)
+        default:
+            goto(PetalburgCity_House2_EventScript_SchoolKid)
+    }
+}
+
+text PetalburgCity_House2_Text_DraconidRepSchoolKidUniform {
+    format("Hey, you went to the GYM to see NORMAN once. With that boy, WALLY.\p"
+           "Does NORMAN know you joined TEAM MAGMA? He won't like it one bit.")
+}
+
+text PetalburgCity_House2_Text_DraconidRepSchoolKidRevealed {
+    format("You went toe-to-toe with NORMAN and then with MAXIE!\p"
+           "How would I put it? You just live for doing the right thing.")
+}
+
+// Man at (9, 4) (vanilla: "Do you have any ANTIDOTES with you?")
+script PetalburgCity_Mart_EventScript_DraconidRepMan {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(PetalburgCity_Mart_Text_DraconidRepManUniform, MSGBOX_NPC)
+        default:
+            goto(PetalburgCity_Mart_EventScript_Man)
+    }
+}
+
+text PetalburgCity_Mart_Text_DraconidRepManUniform {
+    format("Do you have any ANTIDOTES with… Wait, you're TEAM MAGMA now?\p"
+           "Then you can learn about poison the hard way.")
+}
+
+// Boy at (6, 3) (vanilla: "Do you use REPEL? It keeps POKéMON away, so it's useful when…")
+script PetalburgCity_Mart_EventScript_DraconidRepBoy {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(PetalburgCity_Mart_Text_DraconidRepBoyUniform, MSGBOX_NPC)
+        default:
+            goto(PetalburgCity_Mart_EventScript_Boy)
+    }
+}
+
+text PetalburgCity_Mart_Text_DraconidRepBoyUniform {
+    format("Do you use REPEL? It keeps POKéMON away.\p"
+           "I wish they made one that kept TEAM MAGMA away.")
+}
+
+// Woman at (5, 5) (vanilla: "Even if a POKéMON is weak now, it will grow stronger.")
+script PetalburgCity_Mart_EventScript_DraconidRepWoman {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(PetalburgCity_Mart_Text_DraconidRepWomanUniform, MSGBOX_NPC)
+        case REPUTATION_REVEALED:
+            msgbox(PetalburgCity_Mart_Text_DraconidRepWomanRevealed, MSGBOX_NPC)
+        default:
+            goto(PetalburgCity_Mart_EventScript_Woman)
+    }
+}
+
+text PetalburgCity_Mart_Text_DraconidRepWomanUniform {
+    format("The most important thing is love! Love for your POKéMON!\p"
+           "Yours still look loved, even with you in that uniform. I don't understand it.")
+}
+
+text PetalburgCity_Mart_Text_DraconidRepWomanRevealed {
+    format("The most important thing is love! Love for your POKéMON!\p"
+           "Yours always looked loved. Now I understand why.")
+}
+
+// Man who collects profiles at (11, 2) (vanilla: "Hello there, TRAINER! You've got a wonderful smile, there.")
+script PetalburgCity_PokemonCenter_1F_EventScript_DraconidRepMan {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(PetalburgCity_PokemonCenter_1F_Text_DraconidRepManUniform, MSGBOX_DEFAULT)
+    }
+    goto(ProfileMan_EventScript_Man)
+}
+
+text PetalburgCity_PokemonCenter_1F_Text_DraconidRepManUniform {
+    format("Oh my, a TEAM MAGMA grunt! I've never collected one of those.\p"
+           "Well, a profile is a profile!")
+}
+
+// Man at (2, 3) (vanilla: "That PC-based POKéMON Storage System…")
+script PetalburgCity_PokemonCenter_1F_EventScript_DraconidRepFatMan {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(PetalburgCity_PokemonCenter_1F_Text_DraconidRepFatManUniform, MSGBOX_NPC)
+        default:
+            goto(PetalburgCity_PokemonCenter_1F_EventScript_FatMan)
+    }
+}
+
+text PetalburgCity_PokemonCenter_1F_Text_DraconidRepFatManUniform {
+    format("That PC storage system… Whoever made it must be a scientific wizard!\p"
+           "I hope TEAM MAGMA never gets its hands on the wizard.")
+}
+
+// Woman at (5, 4) (vanilla: "There are many types of POKéMON.")
+script PetalburgCity_PokemonCenter_1F_EventScript_DraconidRepWoman {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(PetalburgCity_PokemonCenter_1F_Text_DraconidRepWomanUniform, MSGBOX_NPC)
+        default:
+            goto(PetalburgCity_PokemonCenter_1F_EventScript_Woman)
+    }
+}
+
+text PetalburgCity_PokemonCenter_1F_Text_DraconidRepWomanUniform {
+    format("Every type of POKéMON has strengths and weaknesses.\p"
+           "FIRE beats GRASS, WATER beats FIRE, GRASS beats WATER…\p"
+           "I bet TEAM MAGMA only cares about FIRE. And GROUND.")
+}

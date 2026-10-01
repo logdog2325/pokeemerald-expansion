@@ -169,3 +169,225 @@ text DewfordTown_Gym_Text_DraconidRepBrawlyPostBattleRevealed {
     format("Hey, {PLAYER}! The whole island's talking about you!\p"
            "You rode that wave all the way to TEAM MAGMA's boss! Respect!")
 }
+
+// MR. BRINEY at the DEWFORD dock at (12, 9) (vanilla: "MR. BRINEY: Ahoy! For you, I'll go out to sea anytime!")
+script DewfordTown_EventScript_DraconidRepBriney {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(DewfordTown_Text_DraconidRepBrineyUniform, MSGBOX_DEFAULT)
+    }
+    goto(DewfordTown_EventScript_Briney)
+}
+
+text DewfordTown_Text_DraconidRepBrineyUniform {
+    format("MR. BRINEY: The island folk whisper about that red getup of yours.\p"
+           "Pay them no mind! Aboard my boat, you're the one who saved PEEKO.")
+}
+
+// Fisherman with the OLD ROD at (12, 14) (vanilla: "This is a renowned fishing spot. Are you getting the itch to fish?")
+script DewfordTown_EventScript_DraconidRepOldRodFisherman {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(DewfordTown_Text_DraconidRepOldRodFishermanUniform, MSGBOX_DEFAULT)
+    }
+    goto(DewfordTown_EventScript_OldRodFisherman)
+}
+
+text DewfordTown_Text_DraconidRepOldRodFishermanUniform {
+    format("Huh. A TEAM MAGMA grunt on the dock.\p"
+           "The fish don't care what you wear, so I guess I won't either.")
+}
+
+// Trend-watching boy at (1, 6) (vanilla: "I like what's hip, happening, and trendy. I'm always checking it out.")
+script DewfordTown_EventScript_DraconidRepTrendyPhraseBoy {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(DewfordTown_Text_DraconidRepTrendyPhraseBoyUniform, MSGBOX_DEFAULT)
+    }
+    goto(DewfordTown_EventScript_TrendyPhraseBoy)
+}
+
+text DewfordTown_Text_DraconidRepTrendyPhraseBoyUniform {
+    format("Whoa, TEAM MAGMA red! Is that the new look on the mainland?\p"
+           "Nah, I'm not wearing it. Trendy is one thing, but that's just scary.")
+}
+
+// Girl at (4, 6) (vanilla: "What's in vogue? Why, it has to be “{STR_VAR_1}”!")
+script DewfordTown_Hall_EventScript_DraconidRepGirl {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(DewfordTown_Hall_Text_DraconidRepGirlUniform, MSGBOX_DEFAULT)
+    }
+    goto(DewfordTown_Hall_EventScript_Girl)
+}
+
+text DewfordTown_Hall_Text_DraconidRepGirlUniform {
+    format("Ooh, a TEAM MAGMA uniform! Is red in vogue now?\p"
+           "…No, I don't think so. Never mind.")
+}
+
+// Woman at (1, 5) (vanilla: "I'm teaching my POKéMON about “{STR_VAR_1},” but it's not going well.")
+script DewfordTown_Hall_EventScript_DraconidRepWoman {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(DewfordTown_Hall_Text_DraconidRepWomanUniform, MSGBOX_DEFAULT)
+    }
+    goto(DewfordTown_Hall_EventScript_Woman)
+}
+
+text DewfordTown_Hall_Text_DraconidRepWomanUniform {
+    format("Shh! You're scaring my POKéMON in that uniform.")
+}
+
+// Man at (5, 4) (vanilla: "I'm studying up on the hip and trendy “{STR_VAR_1}” now.")
+script DewfordTown_Hall_EventScript_DraconidRepMan {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(DewfordTown_Hall_Text_DraconidRepManUniform, MSGBOX_DEFAULT)
+    }
+    goto(DewfordTown_Hall_EventScript_Man)
+}
+
+text DewfordTown_Hall_Text_DraconidRepManUniform {
+    format("Whoa, a TEAM MAGMA grunt! Should I be studying up on you, too?")
+}
+
+// Old man at (9, 3) (vanilla: "This whole business about “{STR_VAR_1}”… Isn't there a TV show on it?")
+script DewfordTown_Hall_EventScript_DraconidRepExpertM {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(DewfordTown_Hall_Text_DraconidRepExpertMUniform, MSGBOX_DEFAULT)
+    }
+    goto(DewfordTown_Hall_EventScript_ExpertM)
+}
+
+text DewfordTown_Hall_Text_DraconidRepExpertMUniform {
+    format("Hmm… A TEAM MAGMA grunt in DEWFORD HALL.\p"
+           "That'll be on TV next, I suppose.")
+}
+
+// Little girl at (5, 2) (vanilla: "Across the sea… Is “{STR_VAR_1}” even more popular?")
+script DewfordTown_Hall_EventScript_DraconidRepTwin {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(DewfordTown_Hall_Text_DraconidRepTwinUniform, MSGBOX_DEFAULT)
+    }
+    goto(DewfordTown_Hall_EventScript_Twin)
+}
+
+text DewfordTown_Hall_Text_DraconidRepTwinUniform {
+    format("Did you come over the sea in that scary uniform?")
+}
+
+// Little boy at (14, 7) (vanilla: "I collect official “{STR_VAR_1}” licensed merchandise.")
+script DewfordTown_Hall_EventScript_DraconidRepLittleBoy {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(DewfordTown_Hall_Text_DraconidRepLittleBoyUniform, MSGBOX_DEFAULT)
+    }
+    goto(DewfordTown_Hall_EventScript_LittleBoy)
+}
+
+text DewfordTown_Hall_Text_DraconidRepLittleBoyUniform {
+    format("Whoa, TEAM MAGMA! Is there official TEAM MAGMA merchandise?\p"
+           "…No. I don't want any. Never mind.")
+}
+
+// Schoolboy at (12, 3) (vanilla: "If you and me team up as a combo, we'll be invincible when it…")
+script DewfordTown_Hall_EventScript_DraconidRepSchoolKidM {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(DewfordTown_Hall_Text_DraconidRepSchoolKidMUniform, MSGBOX_DEFAULT)
+    }
+    goto(DewfordTown_Hall_EventScript_SchoolKidM)
+}
+
+text DewfordTown_Hall_Text_DraconidRepSchoolKidMUniform {
+    format("Whoa! You'd better not want in on our combo, TEAM MAGMA!")
+}
+
+// Psychic at (15, 3) (vanilla: "If you and me team up as a combo, we'll be invincible when it…")
+script DewfordTown_Hall_EventScript_DraconidRepPsychicM {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(DewfordTown_Hall_Text_DraconidRepPsychicMUniform, MSGBOX_DEFAULT)
+    }
+    goto(DewfordTown_Hall_EventScript_PsychicM)
+}
+
+text DewfordTown_Hall_Text_DraconidRepPsychicMUniform {
+    format("My partner and I are a famous DUO.\p"
+           "A TEAM MAGMA grunt can't join, even if you beg.")
+}
+
+// Man at (8, 6) (vanilla: "For me, SLUDGE BOMB is at the peak of popularity. It's the one.")
+script DewfordTown_Hall_EventScript_DraconidRepSludgeBombMan {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(DewfordTown_Hall_Text_DraconidRepSludgeBombManUniform, MSGBOX_DEFAULT)
+    }
+    goto(DewfordTown_Hall_EventScript_SludgeBombMan)
+}
+
+text DewfordTown_Hall_Text_DraconidRepSludgeBombManUniform {
+    format("Hunh? TEAM MAGMA? You probably think SLUDGE BOMB is too gross for you.\p"
+           "Well, I'm telling you about it anyway!")
+}
+
+// Woman at (6, 3) (vanilla: "I left the major port of SLATEPORT CITY when I married my husband…")
+script DewfordTown_House1_EventScript_DraconidRepWoman {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(DewfordTown_House1_Text_DraconidRepWomanUniform, MSGBOX_NPC)
+        default:
+            goto(DewfordTown_House1_EventScript_Woman)
+    }
+}
+
+text DewfordTown_House1_Text_DraconidRepWomanUniform {
+    format("I left SLATEPORT to marry my husband here.\p"
+           "Life on this island is slow and peaceful.\p"
+           "Please don't bring TEAM MAGMA's hurry and noise across the sea with you.")
+}
+
+// Man at (6, 5) (vanilla: "Gorge your eyes on this! It's a SILK SCARF. It's right at the…")
+script DewfordTown_House2_EventScript_DraconidRepMan {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(DewfordTown_House2_Text_DraconidRepManUniform, MSGBOX_DEFAULT)
+    }
+    goto(DewfordTown_House2_EventScript_Man)
+}
+
+text DewfordTown_House2_Text_DraconidRepManUniform {
+    format("Whoa, TEAM MAGMA red? On an island this stylish?\p"
+           "Well, my SILK SCARF goes with almost anything. Even that.")
+}
+
+// Man at (5, 5) (vanilla: "Even if a POKéMON faints and can't battle, it can still use a move…")
+script DewfordTown_PokemonCenter_1F_EventScript_DraconidRepMan {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(DewfordTown_PokemonCenter_1F_Text_DraconidRepManUniform, MSGBOX_NPC)
+        default:
+            goto(DewfordTown_PokemonCenter_1F_EventScript_Man)
+    }
+}
+
+text DewfordTown_PokemonCenter_1F_Text_DraconidRepManUniform {
+    format("Even a fainted POKéMON can use a move from an HM.\p"
+           "I bet TEAM MAGMA uses HMs to dig where it shouldn't.")
+}

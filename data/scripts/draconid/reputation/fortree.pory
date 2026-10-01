@@ -183,3 +183,330 @@ text FortreeCity_Gym_Text_DraconidRepWinonaPostBattleRevealed {
     format("The skies over HOENN are calm again, thanks to you.\p"
            "My BIRD POKéMON and I are grateful.")
 }
+
+// Woman at (32, 10) (vanilla: "I want to go to the POKéMON GYM, but something's blocking the way.")
+script FortreeCity_EventScript_DraconidRepWoman {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(FortreeCity_Text_DraconidRepWomanUniform, MSGBOX_DEFAULT)
+    }
+    goto(FortreeCity_EventScript_Woman)
+}
+
+text FortreeCity_Text_DraconidRepWomanUniform {
+    format("I trained hard on ROUTE 120 to challenge WINONA.\p"
+           "If a TEAM MAGMA grunt beats her before I do, I'll never live it down!")
+}
+
+// Boy at (11, 14) (vanilla: "Living on top of trees is okay.")
+script FortreeCity_EventScript_DraconidRepBoy {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(FortreeCity_Text_DraconidRepBoyUniform, MSGBOX_NPC)
+        default:
+            goto(FortreeCity_EventScript_Boy)
+    }
+}
+
+text FortreeCity_Text_DraconidRepBoyUniform {
+    format("Sometimes BUG POKéMON come in through the windows. It's really startling.\p"
+           "But a TEAM MAGMA grunt on our walkways is even more startling!")
+}
+
+// Man at (6, 5) (vanilla: "Merchandise you buy here is sent to your own PC.")
+script FortreeCity_DecorationShop_EventScript_DraconidRepPokefanM {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(FortreeCity_DecorationShop_Text_DraconidRepPokefanMUniform, MSGBOX_NPC)
+        default:
+            goto(FortreeCity_DecorationShop_EventScript_PokefanM)
+    }
+}
+
+text FortreeCity_DecorationShop_Text_DraconidRepPokefanMUniform {
+    format("Things you buy here get sent straight to your PC. Fantastic!\p"
+           "I wish they'd send TEAM MAGMA straight home, too.")
+}
+
+// Girl at (0, 4) (vanilla: "I'm buying a pretty desk and I'm putting my cute DOLLS on it.")
+script FortreeCity_DecorationShop_EventScript_DraconidRepGirl {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(FortreeCity_DecorationShop_Text_DraconidRepGirlUniform, MSGBOX_NPC)
+        default:
+            goto(FortreeCity_DecorationShop_EventScript_Girl)
+    }
+}
+
+text FortreeCity_DecorationShop_Text_DraconidRepGirlUniform {
+    format("I'm buying a desk for my DOLLS so they don't get splinters.\p"
+           "Does TEAM MAGMA even decorate its SECRET BASES? I bet it's all lava lamps.")
+}
+
+// Desk clerk at (1, 2) (vanilla: "Welcome! How may I serve you?")
+script FortreeCity_DecorationShop_EventScript_DraconidRepClerkDesks {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(FortreeCity_DecorationShop_Text_DraconidRepClerkDesksUniform, MSGBOX_DEFAULT)
+    }
+    goto(FortreeCity_DecorationShop_EventScript_ClerkDesks)
+}
+
+text FortreeCity_DecorationShop_Text_DraconidRepClerkDesksUniform {
+    format("TEAM MAGMA shops for furniture? Well… a sale is a sale.")
+}
+
+// Chair clerk at (6, 2) (vanilla: "Welcome! How may I serve you?")
+script FortreeCity_DecorationShop_EventScript_DraconidRepClerkChairs {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(FortreeCity_DecorationShop_Text_DraconidRepClerkChairsUniform, MSGBOX_DEFAULT)
+    }
+    goto(FortreeCity_DecorationShop_EventScript_ClerkChairs)
+}
+
+text FortreeCity_DecorationShop_Text_DraconidRepClerkChairsUniform {
+    format("Please, have a seat… Er, look at the seats, I mean. Then go.")
+}
+
+// Boy at (1, 3) (vanilla: "I'm going to make VOLBEAT super strong from this moment on!")
+script FortreeCity_House1_EventScript_DraconidRepTrader {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(FortreeCity_House1_Text_DraconidRepTraderUniform, MSGBOX_DEFAULT)
+    }
+    goto(FortreeCity_House1_EventScript_Trader)
+}
+
+text FortreeCity_House1_Text_DraconidRepTraderUniform {
+    format("You want to trade with me, TEAM MAGMA? Hmm…\p"
+           "As long as my VOLBEAT doesn't end up working for MAXIE.")
+}
+
+// Old woman at (7, 4) (vanilla: "Trading POKéMON with others…")
+script FortreeCity_House1_EventScript_DraconidRepExpertF {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(FortreeCity_House1_Text_DraconidRepExpertFUniform, MSGBOX_NPC)
+        default:
+            goto(FortreeCity_House1_EventScript_ExpertF)
+    }
+}
+
+text FortreeCity_House1_Text_DraconidRepExpertFUniform {
+    format("Trading POKéMON is like trading your memories with others.\p"
+           "What memories would a TEAM MAGMA grunt trade, I wonder? I'd rather not know.")
+}
+
+// Old woman at (2, 3) (vanilla: "Let this old woman see if your hidden power has awoken…")
+script FortreeCity_House2_EventScript_DraconidRepHiddenPowerGiver {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(FortreeCity_House2_Text_DraconidRepHiddenPowerGiverUniform, MSGBOX_DEFAULT)
+    }
+    goto(FortreeCity_House2_EventScript_HiddenPowerGiver)
+}
+
+text FortreeCity_House2_Text_DraconidRepHiddenPowerGiverUniform {
+    format("Hmm. A child in TEAM MAGMA's colors.\p"
+           "There may be more to you than that uniform. Let us find out.")
+}
+
+// Move tutor (SLEEP TALK) at (6, 3)
+script FortreeCity_House2_EventScript_DraconidRepSleepTalkTutor {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(FortreeCity_House2_Text_DraconidRepSleepTalkTutorUniform, MSGBOX_DEFAULT)
+    }
+    goto(FortreeCity_House2_EventScript_SleepTalkTutor)
+}
+
+text FortreeCity_House2_Text_DraconidRepSleepTalkTutorUniform {
+    format("Zzz… Hm? TEAM MAGMA? I was having such a nice dream until now.")
+}
+
+// Man at (0, 3) (vanilla: "While speaking about POKéDEXES, I remembered something.")
+script FortreeCity_House3_EventScript_DraconidRepManiac {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(FortreeCity_House3_Text_DraconidRepManiacUniform, MSGBOX_NPC)
+        default:
+            goto(FortreeCity_House3_EventScript_Maniac)
+    }
+}
+
+text FortreeCity_House3_Text_DraconidRepManiacUniform {
+    format("I met a TRAINER named STEVEN once, searching for rare stones.\p"
+           "He'd never wear a gang's uniform. He has too much class.")
+}
+
+// Schoolboy at (5, 4) (vanilla: "What's that thing you have there?")
+script FortreeCity_House3_EventScript_DraconidRepSchoolKidM {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(FortreeCity_House3_Text_DraconidRepSchoolKidMUniform, MSGBOX_NPC)
+        default:
+            goto(FortreeCity_House3_EventScript_SchoolKidM)
+    }
+}
+
+text FortreeCity_House3_Text_DraconidRepSchoolKidMUniform {
+    format("What's that thing you have? A POKéDEX? Awesome!\p"
+           "Wait, TEAM MAGMA grunts get POKéDEXES, too? That's not fair!")
+}
+
+// Woman at (6, 4) (vanilla: "By being together with POKéMON, people make more and more friends.")
+script FortreeCity_House4_EventScript_DraconidRepWoman {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(FortreeCity_House4_Text_DraconidRepWomanUniform, MSGBOX_NPC)
+        default:
+            goto(FortreeCity_House4_EventScript_Woman)
+    }
+}
+
+text FortreeCity_House4_Text_DraconidRepWomanUniform {
+    format("Being together with POKéMON brings people closer together.\p"
+           "Even TEAM MAGMA grunts, I hope. Somehow.")
+}
+
+// Boy at (1, 3) (vanilla: "There! Go, BIRD POKéMON!")
+script FortreeCity_House4_EventScript_DraconidRepBoy {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(FortreeCity_House4_Text_DraconidRepBoyUniform, MSGBOX_DEFAULT)
+    }
+    goto(FortreeCity_House4_EventScript_Boy)
+}
+
+text FortreeCity_House4_Text_DraconidRepBoyUniform {
+    format("Heheh, my WINGULL's off on an errand.\p"
+           "If it sees your uniform when it comes back, it'll fly off again!")
+}
+
+// Woman at (6, 4) (vanilla: "The tree houses of FORTREE are great!")
+script FortreeCity_House5_EventScript_DraconidRepPokefanF {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(FortreeCity_House5_Text_DraconidRepPokefanFUniform, MSGBOX_NPC)
+        default:
+            goto(FortreeCity_House5_EventScript_PokefanF)
+    }
+}
+
+text FortreeCity_House5_Text_DraconidRepPokefanFUniform {
+    format("FORTREE is the number one town for living with POKéMON.\p"
+           "As long as TEAM MAGMA doesn't set the trees on fire, that is.")
+}
+
+// Man at (2, 4) (vanilla: "POKéMON and people have adapted to nature for survival.")
+script FortreeCity_House5_EventScript_DraconidRepMan {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(FortreeCity_House5_Text_DraconidRepManUniform, MSGBOX_NPC)
+        default:
+            goto(FortreeCity_House5_EventScript_Man)
+    }
+}
+
+text FortreeCity_House5_Text_DraconidRepManUniform {
+    format("People and POKéMON adapted to nature to survive.\p"
+           "There's no need to bend nature to suit us. Tell that to your TEAM MAGMA.")
+}
+
+// Woman at (9, 3) (vanilla: "SUPER REPEL lasts a long time, and it gets the job done.")
+script FortreeCity_Mart_EventScript_DraconidRepWoman {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(FortreeCity_Mart_Text_DraconidRepWomanUniform, MSGBOX_NPC)
+        default:
+            goto(FortreeCity_Mart_EventScript_Woman)
+    }
+}
+
+text FortreeCity_Mart_Text_DraconidRepWomanUniform {
+    format("SUPER REPEL lasts a long time and gets the job done.\p"
+           "I wish it worked on TEAM MAGMA grunts.")
+}
+
+// Girl at (8, 5) (vanilla: "I always stock up on more items than I'm sure I'll need.")
+script FortreeCity_Mart_EventScript_DraconidRepGirl {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(FortreeCity_Mart_Text_DraconidRepGirlUniform, MSGBOX_NPC)
+        default:
+            goto(FortreeCity_Mart_EventScript_Girl)
+    }
+}
+
+text FortreeCity_Mart_Text_DraconidRepGirlUniform {
+    format("I always stock up on extra items. You never know what might happen!\p"
+           "Like a TEAM MAGMA grunt showing up in the MART. See?")
+}
+
+// Boy at (5, 6) (vanilla: "A RARE CANDY makes a POKéMON grow immediately by one level.")
+script FortreeCity_Mart_EventScript_DraconidRepBoy {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(FortreeCity_Mart_Text_DraconidRepBoyUniform, MSGBOX_NPC)
+        default:
+            goto(FortreeCity_Mart_EventScript_Boy)
+    }
+}
+
+text FortreeCity_Mart_Text_DraconidRepBoyUniform {
+    format("A RARE CANDY makes a POKéMON grow one level right away.\p"
+           "Don't get any ideas, TEAM MAGMA. They're not for stealing.")
+}
+
+// Gentleman at (4, 7) (vanilla: "Listen, kid, are you working on a POKéDEX?")
+script FortreeCity_PokemonCenter_1F_EventScript_DraconidRepGentleman {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(FortreeCity_PokemonCenter_1F_Text_DraconidRepGentlemanUniform, MSGBOX_NPC)
+        default:
+            goto(FortreeCity_PokemonCenter_1F_EventScript_Gentleman)
+    }
+}
+
+text FortreeCity_PokemonCenter_1F_Text_DraconidRepGentlemanUniform {
+    format("Working on a POKéDEX, kid? Go to the SAFARI ZONE.\p"
+           "…Hmph. I didn't notice the uniform. Well, the advice stands.")
+}
+
+// Man at (8, 5) (vanilla: "Have you done anything at the RECORD CORNER?")
+script FortreeCity_PokemonCenter_1F_EventScript_DraconidRepMan {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(FortreeCity_PokemonCenter_1F_Text_DraconidRepManUniform, MSGBOX_NPC)
+        default:
+            goto(FortreeCity_PokemonCenter_1F_EventScript_Man)
+    }
+}
+
+text FortreeCity_PokemonCenter_1F_Text_DraconidRepManUniform {
+    format("The RECORD CORNER mixes the records of TRAINERS. It's exciting!\p"
+           "I'd rather not mix my records with TEAM MAGMA's, though.")
+}
+
+// Boy at (2, 3) (vanilla: "Oh, wow, you have a POKéNAV! And it's just like mine!")
+script FortreeCity_PokemonCenter_1F_EventScript_DraconidRepBoy {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(FortreeCity_PokemonCenter_1F_Text_DraconidRepBoyUniform, MSGBOX_NPC)
+        default:
+            goto(FortreeCity_PokemonCenter_1F_EventScript_Boy)
+    }
+}
+
+text FortreeCity_PokemonCenter_1F_Text_DraconidRepBoyUniform {
+    format("Oh, wow, you have a POKéNAV just like mine!\p"
+           "Only… you're not registered with me. And you're not going to be, TEAM MAGMA.")
+}

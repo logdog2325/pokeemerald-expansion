@@ -25,7 +25,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "DewfordTown_Hall_EventScript_Girl",
+      "script": "DewfordTown_Hall_EventScript_DraconidRepGirl",
       "flag": "0"
     },
     {
@@ -38,7 +38,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "DewfordTown_Hall_EventScript_Woman",
+      "script": "DewfordTown_Hall_EventScript_DraconidRepWoman",
       "flag": "0"
     },
     {
@@ -51,7 +51,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "DewfordTown_Hall_EventScript_Man",
+      "script": "DewfordTown_Hall_EventScript_DraconidRepMan",
       "flag": "0"
     },
     {
@@ -65,7 +65,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "DewfordTown_Hall_EventScript_ExpertM",
+      "script": "DewfordTown_Hall_EventScript_DraconidRepExpertM",
       "flag": "0"
     },
     {
@@ -79,7 +79,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "DewfordTown_Hall_EventScript_Twin",
+      "script": "DewfordTown_Hall_EventScript_DraconidRepTwin",
       "flag": "0"
     },
     {
@@ -92,7 +92,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "DewfordTown_Hall_EventScript_LittleBoy",
+      "script": "DewfordTown_Hall_EventScript_DraconidRepLittleBoy",
       "flag": "0"
     },
     {
@@ -106,7 +106,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "DewfordTown_Hall_EventScript_SchoolKidM",
+      "script": "DewfordTown_Hall_EventScript_DraconidRepSchoolKidM",
       "flag": "0"
     },
     {
@@ -120,7 +120,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "DewfordTown_Hall_EventScript_PsychicM",
+      "script": "DewfordTown_Hall_EventScript_DraconidRepPsychicM",
       "flag": "0"
     },
     {
@@ -133,7 +133,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "DewfordTown_Hall_EventScript_SludgeBombMan",
+      "script": "DewfordTown_Hall_EventScript_DraconidRepSludgeBombMan",
       "flag": "FLAG_HIDE_DEWFORD_HALL_SLUDGE_BOMB_MAN"
     }
   ],

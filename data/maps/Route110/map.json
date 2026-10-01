@@ -41,7 +41,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route110_EventScript_Boy2",
+      "script": "Route110_EventScript_DraconidRepBoy2",
       "flag": "0"
     },
     {
@@ -54,7 +54,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route110_EventScript_CyclingGuy2",
+      "script": "Route110_EventScript_DraconidRepCyclingGuy2",
       "flag": "0"
     },
     {
@@ -67,7 +67,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route110_EventScript_OldWoman",
+      "script": "Route110_EventScript_DraconidRepOldWoman",
       "flag": "0"
     },
     {
@@ -80,7 +80,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route110_EventScript_CyclingGuy1",
+      "script": "Route110_EventScript_DraconidRepCyclingGuy1",
       "flag": "0"
     },
     {
@@ -93,7 +93,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route110_EventScript_OldMan",
+      "script": "Route110_EventScript_DraconidRepOldMan",
       "flag": "0"
     },
     {
@@ -106,7 +106,7 @@
       "movement_range_y": 3,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route110_EventScript_CyclingGirl1",
+      "script": "Route110_EventScript_DraconidRepCyclingGirl1",
       "flag": "0"
     },
     {
@@ -119,7 +119,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route110_EventScript_Boy1",
+      "script": "Route110_EventScript_DraconidRepBoy1",
       "flag": "0"
     },
     {
@@ -302,7 +302,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route110_EventScript_ChallengeGuy",
+      "script": "Route110_EventScript_DraconidRepChallengeGuy",
       "flag": "0"
     },
     {
@@ -315,7 +315,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route110_EventScript_AquaGrunt1",
+      "script": "Route110_EventScript_DraconidRepAquaGrunt1",
       "flag": "FLAG_HIDE_ROUTE_110_TEAM_AQUA"
     },
     {
@@ -328,7 +328,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route110_EventScript_AquaGrunt2",
+      "script": "Route110_EventScript_DraconidRepAquaGrunt2",
       "flag": "FLAG_HIDE_ROUTE_110_TEAM_AQUA"
     },
     {
@@ -341,7 +341,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route110_EventScript_AquaGrunt3",
+      "script": "Route110_EventScript_DraconidRepAquaGrunt3",
       "flag": "FLAG_HIDE_ROUTE_110_TEAM_AQUA"
     },
     {
@@ -354,7 +354,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route110_EventScript_AquaGrunt4",
+      "script": "Route110_EventScript_DraconidRepAquaGrunt4",
       "flag": "FLAG_HIDE_ROUTE_110_TEAM_AQUA"
     },
     {

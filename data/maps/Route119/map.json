@@ -363,7 +363,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route119_EventScript_Boy1",
+      "script": "Route119_EventScript_DraconidRepBoy1",
       "flag": "0"
     },
     {
@@ -428,7 +428,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route119_EventScript_CyclingTriathleteM",
+      "script": "Route119_EventScript_DraconidRepCyclingTriathleteM",
       "flag": "0"
     },
     {
@@ -454,7 +454,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route119_EventScript_Boy2",
+      "script": "Route119_EventScript_DraconidRepBoy2",
       "flag": "0"
     },
     {

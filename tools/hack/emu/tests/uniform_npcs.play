@@ -1,0 +1,97 @@
+# Uniform reactions (D-360, docs/reputation_dialogue.md): people the player knew before the uniform, the
+# Draconid village and townsfolk see the TEAM MAGMA uniform; a gift-giver says the uniform line and then gives
+# the vanilla item; outside the uniform the same person falls back to vanilla, after the turn to the revealed
+# line. Needs rustboro_done.ss from tests/rustboro.play (the player in uniform). Each talk: the warp puts the
+# player next to the person (and waits out the fade), a press turns towards them, A talks and expect_text checks
+# the text shown.
+loadstate rustboro_done.ss
+setflag FLAG_DEBUG_NO_ENCOUNTER
+setflag FLAG_DEBUG_NO_TRAINER_SEE
+expect_var VAR_DRACONID_REPUTATION 1
+
+# --- Route 101: the youngster who saw PROF. BIRCH's rescue recognises the player
+warp MAP_ROUTE101 16 9
+run 150
+press UP 2 20
+press A 2 60
+shot u01_route101_youngster
+expect_text Route101_Text_DraconidRepYoungsterUniform
+mash A 600
+
+# --- the Draconid village knows why the player wears red
+warp MAP_DRACONID_VILLAGE 21 25
+run 150
+press RIGHT 2 20
+press A 2 60
+shot u02_gatekeeper
+expect_text DraconidVillage_Text_DraconidRepGatekeeperUniform
+mash A 600
+warp MAP_DRACONID_VILLAGE_HOUSE1 4 5
+run 150
+press UP 2 20
+press A 2 60
+shot u03_weaver
+expect_text DraconidVillage_House1_Text_DraconidRepWeaverUniform
+mash A 600
+
+# --- Petalburg: a Mart customer and a Pokémon Center visitor
+warp MAP_PETALBURG_CITY_MART 4 5
+run 150
+press RIGHT 2 20
+press A 2 60
+shot u04_petalburg_mart
+expect_text PetalburgCity_Mart_Text_DraconidRepWomanUniform
+mash A 600
+warp MAP_PETALBURG_CITY_POKEMON_CENTER_1F 2 4
+run 150
+press UP 2 20
+press A 2 60
+shot u05_petalburg_pc
+expect_text PetalburgCity_PokemonCenter_1F_Text_DraconidRepFatManUniform
+mash A 600
+
+# --- Rustboro: a child at home, and the teacher, whose QUICK CLAW still comes after the uniform line
+warp MAP_RUSTBORO_CITY_HOUSE2 3 5
+run 150
+press RIGHT 2 20
+press A 2 60
+shot u06_rustboro_house
+expect_text RustboroCity_House2_Text_DraconidRepLittleGirlUniform
+mash A 600
+expect_item ITEM_QUICK_CLAW 0
+# (his desk is in front of him: talk from the west, so he walks round the class before the vanilla line)
+warp MAP_RUSTBORO_CITY_POKEMON_SCHOOL 4 3
+run 150
+press RIGHT 2 20
+press A 2 60
+shot u07_teacher
+expect_text RustboroCity_PokemonSchool_Text_DraconidRepTeacherUniform
+# (the uniform line: a box, a two-line box and a scroll; then the vanilla script takes over)
+run 150
+press A 2 150
+press A 2 150
+press A 2 150
+press A 2 400
+shot u07b_vanilla
+expect_text RustboroCity_PokemonSchool_Text_StudentsWhoDontStudyGetQuickClaw
+mash A 3000
+shot u08_quick_claw
+expect_item ITEM_QUICK_CLAW 1
+
+# --- the same youngster outside the uniform: vanilla before it, the revealed line after the turn
+setvar VAR_DRACONID_REPUTATION 0
+warp MAP_ROUTE101 16 9
+run 150
+press UP 2 20
+press A 2 60
+expect_text Route101_Text_TakeTiredPokemonToPokeCenter
+mash A 600
+setvar VAR_DRACONID_REPUTATION 2
+press UP 2 20
+press A 2 60
+shot u09_revealed
+expect_text Route101_Text_DraconidRepYoungsterRevealed
+mash A 600
+setvar VAR_DRACONID_REPUTATION 1
+clearflag FLAG_DEBUG_NO_ENCOUNTER
+clearflag FLAG_DEBUG_NO_TRAINER_SEE

@@ -175,3 +175,341 @@ text MauvilleCity_Gym_Text_DraconidRepWattsonPostBattleRevealed {
     format("Wahahahah! So you were never one of them!\p"
            "You fooled this old man completely! What a shock, what a shock!")
 }
+
+// Schoolboy at (17, 14) (vanilla: "Hi, do you check out TV at all?")
+script MauvilleCity_EventScript_DraconidRepSchoolKidM {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(MauvilleCity_Text_DraconidRepSchoolKidMUniform, MSGBOX_DEFAULT)
+    }
+    goto(MauvilleCity_EventScript_SchoolKidM)
+}
+
+text MauvilleCity_Text_DraconidRepSchoolKidMUniform {
+    format("Hi! Did you know you can end up on TV out of the blue?\p"
+           "If a camera catches that TEAM MAGMA uniform, all of HOENN will see it!")
+}
+
+// Move tutor (ROLLOUT) at (13, 7)
+script MauvilleCity_EventScript_DraconidRepRolloutTutor {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(MauvilleCity_Text_DraconidRepRolloutTutorUniform, MSGBOX_DEFAULT)
+    }
+    goto(MauvilleCity_EventScript_RolloutTutor)
+}
+
+text MauvilleCity_Text_DraconidRepRolloutTutorUniform {
+    format("Hmm? TEAM MAGMA? I don't care. I teach anybody who asks.")
+}
+
+// Man at (7, 6) (vanilla: "I'm learning about BIKES while I work here.")
+script MauvilleCity_BikeShop_EventScript_DraconidRepAssistant {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(MauvilleCity_BikeShop_Text_DraconidRepAssistantUniform, MSGBOX_NPC)
+        default:
+            goto(MauvilleCity_BikeShop_EventScript_Assistant)
+    }
+}
+
+text MauvilleCity_BikeShop_Text_DraconidRepAssistantUniform {
+    format("I'm learning about BIKES while I work here.\p"
+           "The boss sold you a BIKE? Huh. He'd sell one to anybody.")
+}
+
+// Woman at (12, 7) (vanilla: "COINS are needed to play here in the GAME CORNER.")
+script MauvilleCity_GameCorner_EventScript_DraconidRepWoman2 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(MauvilleCity_GameCorner_Text_DraconidRepWoman2Uniform, MSGBOX_NPC)
+        default:
+            goto(MauvilleCity_GameCorner_EventScript_Woman2)
+    }
+}
+
+text MauvilleCity_GameCorner_Text_DraconidRepWoman2Uniform {
+    format("COINS are needed to play here.\p"
+           "And luck. Lots of luck. Which you'll need, wearing that around here.")
+}
+
+// Gentleman at (16, 5) (vanilla: "This ROULETTE thing… It's rather demanding.")
+script MauvilleCity_GameCorner_EventScript_DraconidRepGentleman {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(MauvilleCity_GameCorner_Text_DraconidRepGentlemanUniform, MSGBOX_NPC)
+        default:
+            goto(MauvilleCity_GameCorner_EventScript_Gentleman)
+    }
+}
+
+text MauvilleCity_GameCorner_Text_DraconidRepGentlemanUniform {
+    format("Win or lose, ROULETTE is only luck.\p"
+           "Rather like running into TEAM MAGMA on the street, I'd say.")
+}
+
+// COINS clerk at (11, 2) (vanilla: "This is MAUVILLE GAME CORNER.")
+script MauvilleCity_GameCorner_EventScript_DraconidRepCoinsClerk {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(MauvilleCity_GameCorner_Text_DraconidRepCoinsClerkUniform, MSGBOX_DEFAULT)
+    }
+    goto(MauvilleCity_GameCorner_EventScript_CoinsClerk)
+}
+
+text MauvilleCity_GameCorner_Text_DraconidRepCoinsClerkUniform {
+    format("Oh. TEAM MAGMA. …The GAME CORNER takes everyone's money.")
+}
+
+// Prize clerk (DOLLS) at (14, 2) (vanilla: "Welcome. You can exchange your COINS for prizes here.")
+script MauvilleCity_GameCorner_EventScript_DraconidRepPrizeCornerDolls {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(MauvilleCity_GameCorner_Text_DraconidRepPrizeCornerDollsUniform, MSGBOX_DEFAULT)
+    }
+    goto(MauvilleCity_GameCorner_EventScript_PrizeCornerDolls)
+}
+
+text MauvilleCity_GameCorner_Text_DraconidRepPrizeCornerDollsUniform {
+    format("Our prizes are for COINS only. No “borrowing” them for your team.")
+}
+
+// Girl at (7, 3) (vanilla: "I made a mistake and got two of the same DOLLS.")
+script MauvilleCity_GameCorner_EventScript_DraconidRepGirl {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(MauvilleCity_GameCorner_Text_DraconidRepGirlUniform, MSGBOX_DEFAULT)
+    }
+    goto(MauvilleCity_GameCorner_EventScript_Girl)
+}
+
+text MauvilleCity_GameCorner_Text_DraconidRepGirlUniform {
+    format("Oh! A TEAM MAGMA grunt…\p"
+           "Um, I'm being nice to everybody today. Even you.")
+}
+
+// Man at (19, 4) (vanilla: "Hey, kid, if you want to play here, you need a COIN CASE.")
+script MauvilleCity_GameCorner_EventScript_DraconidRepPokefanM {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(MauvilleCity_GameCorner_Text_DraconidRepPokefanMUniform, MSGBOX_DEFAULT)
+    }
+    goto(MauvilleCity_GameCorner_EventScript_PokefanM)
+}
+
+text MauvilleCity_GameCorner_Text_DraconidRepPokefanMUniform {
+    format("Hey, kid… You're TEAM MAGMA? Heh. Takes all kinds in MAUVILLE.")
+}
+
+// Old man at (20, 8) (vanilla: "The ROULETTE tables have different rates.")
+script MauvilleCity_GameCorner_EventScript_DraconidRepOldMan {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(MauvilleCity_GameCorner_Text_DraconidRepOldManUniform, MSGBOX_NPC)
+        default:
+            goto(MauvilleCity_GameCorner_EventScript_OldMan)
+    }
+}
+
+text MauvilleCity_GameCorner_Text_DraconidRepOldManUniform {
+    format("The ROULETTE tables have different rates.\p"
+           "Gambling with TEAM MAGMA would have the worst rate of all.")
+}
+
+// Cook at (6, 8) (vanilla: "It's easy to lose track of time in here. I should get back to work.")
+script MauvilleCity_GameCorner_EventScript_DraconidRepCook {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(MauvilleCity_GameCorner_Text_DraconidRepCookUniform, MSGBOX_NPC)
+        default:
+            goto(MauvilleCity_GameCorner_EventScript_Cook)
+    }
+}
+
+text MauvilleCity_GameCorner_Text_DraconidRepCookUniform {
+    format("It's easy to lose track of time in here.\p"
+           "Wait, there's a TEAM MAGMA grunt next to me? I really should get back to work.")
+}
+
+// Prize clerk (TMs) at (13, 2) (vanilla: "Welcome. You can exchange your COINS for prizes here.")
+script MauvilleCity_GameCorner_EventScript_DraconidRepPrizeCornerTMs {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(MauvilleCity_GameCorner_Text_DraconidRepPrizeCornerTMsUniform, MSGBOX_DEFAULT)
+    }
+    goto(MauvilleCity_GameCorner_EventScript_PrizeCornerTMs)
+}
+
+text MauvilleCity_GameCorner_Text_DraconidRepPrizeCornerTMsUniform {
+    format("Welcome… TEAM MAGMA? Our TMs are prizes, not loot. Understood?")
+}
+
+// Man at (1, 7) (vanilla: "Up to three COINS can be used to play the SLOTS.")
+script MauvilleCity_GameCorner_EventScript_DraconidRepMan {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(MauvilleCity_GameCorner_Text_DraconidRepManUniform, MSGBOX_NPC)
+        default:
+            goto(MauvilleCity_GameCorner_EventScript_Man)
+    }
+}
+
+text MauvilleCity_GameCorner_Text_DraconidRepManUniform {
+    format("Up to three COINS can be used to play the SLOTS.\p"
+           "Please don't stand behind me. You're bad luck in that uniform.")
+}
+
+// Man at (9, 8) (vanilla: "It's very difficult to make it stop right on “7.”")
+script MauvilleCity_GameCorner_EventScript_DraconidRepManiac {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(MauvilleCity_GameCorner_Text_DraconidRepManiacUniform, MSGBOX_NPC)
+        default:
+            goto(MauvilleCity_GameCorner_EventScript_Maniac)
+    }
+}
+
+text MauvilleCity_GameCorner_Text_DraconidRepManiacUniform {
+    format("It's tough to make the reel stop right on “7.”\p"
+           "Seeing TEAM MAGMA in here put me right off my timing!")
+}
+
+// Woman at (4, 6) (vanilla: "Here's some information for you about the SLOTS.")
+script MauvilleCity_GameCorner_EventScript_DraconidRepWoman {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(MauvilleCity_GameCorner_Text_DraconidRepWomanUniform, MSGBOX_DEFAULT)
+    }
+    goto(MauvilleCity_GameCorner_EventScript_Woman)
+}
+
+text MauvilleCity_GameCorner_Text_DraconidRepWomanUniform {
+    format("You want tips on the SLOTS, TEAM MAGMA?\p"
+           "…Fine. Information is free. Even for you.")
+}
+
+// Woman at (4, 5) (vanilla: "If I had a BIKE, it'd be easy to cycle to SLATEPORT for some shopping.")
+script MauvilleCity_House2_EventScript_DraconidRepWoman {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(MauvilleCity_House2_Text_DraconidRepWomanUniform, MSGBOX_DEFAULT)
+    }
+    goto(MauvilleCity_House2_EventScript_Woman)
+}
+
+text MauvilleCity_House2_Text_DraconidRepWomanUniform {
+    format("You're TEAM MAGMA? Well, I suppose you can still trade fair and square.")
+}
+
+// Old man at (5, 4) (vanilla: "There are items that temporarily elevate the stats of POKéMON.")
+script MauvilleCity_Mart_EventScript_DraconidRepExpertM {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(MauvilleCity_Mart_Text_DraconidRepExpertMUniform, MSGBOX_NPC)
+        default:
+            goto(MauvilleCity_Mart_EventScript_ExpertM)
+    }
+}
+
+text MauvilleCity_Mart_Text_DraconidRepExpertMUniform {
+    format("Some items raise a POKéMON's stats for one battle. X ATTACK, X DEFEND…\p"
+           "I'm sure TEAM MAGMA buys them by the crate.")
+}
+
+// Man at (5, 5) (vanilla: "Use a certain move, or use an item instead…")
+script MauvilleCity_Mart_EventScript_DraconidRepMan {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(MauvilleCity_Mart_Text_DraconidRepManUniform, MSGBOX_NPC)
+        default:
+            goto(MauvilleCity_Mart_EventScript_Man)
+    }
+}
+
+text MauvilleCity_Mart_Text_DraconidRepManUniform {
+    format("A TRAINER's choices decide how battles turn out, I think.\p"
+           "And how lives turn out. Joining TEAM MAGMA was a choice, too.")
+}
+
+// The old man who tells stories at (2, 3) (vanilla: "I'm GIDDY! I have a scintillating story for you!")
+script MauvilleCity_PokemonCenter_1F_EventScript_DraconidRepMauvilleOldMan {
+    if (var(VAR_DRACONID_REPUTATION) == REPUTATION_UNIFORM) {
+        lock
+        faceplayer
+        msgbox(MauvilleCity_PokemonCenter_1F_Text_DraconidRepMauvilleOldManUniform, MSGBOX_DEFAULT)
+    }
+    goto(MauvilleCity_PokemonCenter_1F_EventScript_MauvilleOldMan)
+}
+
+text MauvilleCity_PokemonCenter_1F_Text_DraconidRepMauvilleOldManUniform {
+    format("Oh-ho! A TEAM MAGMA grunt! Now there's a story waiting to be told!")
+}
+
+// Woman at (8, 6) (vanilla: "That man over there, he says weird things!")
+script MauvilleCity_PokemonCenter_1F_EventScript_DraconidRepWoman1 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(MauvilleCity_PokemonCenter_1F_Text_DraconidRepWoman1Uniform, MSGBOX_NPC)
+        default:
+            goto(MauvilleCity_PokemonCenter_1F_EventScript_Woman1)
+    }
+}
+
+text MauvilleCity_PokemonCenter_1F_Text_DraconidRepWoman1Uniform {
+    format("That man over there says weird things!\p"
+           "But a TEAM MAGMA grunt in the POKéMON CENTER? That's even weirder.")
+}
+
+// Woman at (11, 4) (vanilla: "When I accessed the RECORD CORNER, the data for what's hot in…")
+script MauvilleCity_PokemonCenter_1F_EventScript_DraconidRepWoman2 {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(MauvilleCity_PokemonCenter_1F_Text_DraconidRepWoman2Uniform, MSGBOX_NPC)
+        default:
+            goto(MauvilleCity_PokemonCenter_1F_EventScript_Woman2)
+    }
+}
+
+text MauvilleCity_PokemonCenter_1F_Text_DraconidRepWoman2Uniform {
+    format("The RECORD CORNER updated what's hot in DEWFORD.\p"
+           "I hope TEAM MAGMA never becomes what's hot.")
+}
+
+// Youngster at (2, 8) (vanilla: "A RECORD CORNER opened upstairs in the POKéMON CENTER.")
+script MauvilleCity_PokemonCenter_1F_EventScript_DraconidRepYoungster {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(MauvilleCity_PokemonCenter_1F_Text_DraconidRepYoungsterUniform, MSGBOX_NPC)
+        default:
+            goto(MauvilleCity_PokemonCenter_1F_EventScript_Youngster)
+    }
+}
+
+text MauvilleCity_PokemonCenter_1F_Text_DraconidRepYoungsterUniform {
+    format("A RECORD CORNER opened upstairs! I'll go check it out!\p"
+           "…Right after you leave. No offense, TEAM MAGMA.")
+}
+
+// Youngster at (8, 8) (vanilla: "Did you know that you can link battle at the COLOSSEUM here?")
+script MauvilleCity_PokemonCenter_2F_EventScript_DraconidRepYoungster {
+    switch (var(VAR_DRACONID_REPUTATION)) {
+        case REPUTATION_UNIFORM:
+            msgbox(MauvilleCity_PokemonCenter_2F_Text_DraconidRepYoungsterUniform, MSGBOX_NPC)
+        default:
+            goto(MauvilleCity_PokemonCenter_2F_EventScript_Youngster)
+    }
+}
+
+text MauvilleCity_PokemonCenter_2F_Text_DraconidRepYoungsterUniform {
+    format("They put your link battle record on the wall up here.\p"
+           "I bet a TEAM MAGMA record would scare everyone off.")
+}

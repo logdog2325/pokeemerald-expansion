@@ -51,7 +51,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route109_EventScript_MrBriney",
+      "script": "Route109_EventScript_DraconidRepMrBriney",
       "flag": "FLAG_HIDE_ROUTE_109_MR_BRINEY"
     },
     {
@@ -142,7 +142,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route109_EventScript_SeashoreHouseGirl",
+      "script": "Route109_EventScript_DraconidRepSeashoreHouseGirl",
       "flag": "0"
     },
     {
@@ -207,7 +207,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route109_EventScript_SandCastleBoy",
+      "script": "Route109_EventScript_DraconidRepSandCastleBoy",
       "flag": "0"
     },
     {
@@ -220,7 +220,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route109_EventScript_SoftSandGirl",
+      "script": "Route109_EventScript_DraconidRepSoftSandGirl",
       "flag": "0"
     },
     {
@@ -233,7 +233,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route109_EventScript_Woman",
+      "script": "Route109_EventScript_DraconidRepWoman",
       "flag": "0"
     },
     {
@@ -272,7 +272,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route109_EventScript_OldMan",
+      "script": "Route109_EventScript_DraconidRepOldMan",
       "flag": "0"
     },
     {

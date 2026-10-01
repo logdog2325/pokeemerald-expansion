@@ -26,7 +26,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_ContestLobby_EventScript_ContestReceptionist",
+      "script": "LilycoveCity_ContestLobby_EventScript_DraconidRepContestReceptionist",
       "flag": "0"
     },
     {
@@ -40,7 +40,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_ContestLobby_EventScript_LinkContestReceptionist",
+      "script": "LilycoveCity_ContestLobby_EventScript_DraconidRepLinkContestReceptionist",
       "flag": "0"
     },
     {
@@ -54,7 +54,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "BerryBlender_EventScript_Blender2Man",
+      "script": "LilycoveCity_ContestLobby_EventScript_DraconidRepBlender2Man",
       "flag": "0"
     },
     {
@@ -81,7 +81,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_ContestLobby_EventScript_BlackBelt",
+      "script": "LilycoveCity_ContestLobby_EventScript_DraconidRepBlackBelt",
       "flag": "0"
     },
     {
@@ -94,7 +94,7 @@
       "movement_range_y": 2,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_ContestLobby_EventScript_Girl",
+      "script": "LilycoveCity_ContestLobby_EventScript_DraconidRepGirl",
       "flag": "0"
     },
     {
@@ -107,7 +107,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_ContestLobby_EventScript_Artist",
+      "script": "LilycoveCity_ContestLobby_EventScript_DraconidRepArtist",
       "flag": "0"
     },
     {
@@ -134,7 +134,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_ContestLobby_EventScript_Blender3Boy",
+      "script": "LilycoveCity_ContestLobby_EventScript_DraconidRepBlender3Boy",
       "flag": "0"
     },
     {
@@ -148,7 +148,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "BerryBlender_EventScript_Blender2Twin",
+      "script": "LilycoveCity_ContestLobby_EventScript_DraconidRepBlender2Twin",
       "flag": "0"
     },
     {
@@ -175,7 +175,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_ContestLobby_EventScript_Fisherman",
+      "script": "LilycoveCity_ContestLobby_EventScript_DraconidRepFisherman",
       "flag": "0"
     },
     {
@@ -188,7 +188,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_ContestLobby_EventScript_FatMan",
+      "script": "LilycoveCity_ContestLobby_EventScript_DraconidRepFatMan",
       "flag": "0"
     },
     {
@@ -201,7 +201,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_ContestLobby_EventScript_NinjaBoy",
+      "script": "LilycoveCity_ContestLobby_EventScript_DraconidRepNinjaBoy",
       "flag": "0"
     },
     {
@@ -215,7 +215,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "BerryBlender_EventScript_Blender3PokefanF",
+      "script": "LilycoveCity_ContestLobby_EventScript_DraconidRepBlender3PokefanF",
       "flag": "0"
     },
     {
@@ -229,7 +229,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "BerryBlender_EventScript_Blender1ExpertM",
+      "script": "LilycoveCity_ContestLobby_EventScript_DraconidRepBlender1ExpertM",
       "flag": "FLAG_HIDE_LILYCOVE_CONTEST_HALL_BLEND_MASTER_REPLACEMENT"
     },
     {
@@ -243,7 +243,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_ContestLobby_EventScript_Blender3Girl",
+      "script": "LilycoveCity_ContestLobby_EventScript_DraconidRepBlender3Girl",
       "flag": "0"
     },
     {
@@ -256,7 +256,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_ContestLobby_EventScript_BlendMasterOnlooker2",
+      "script": "LilycoveCity_ContestLobby_EventScript_DraconidRepBlendMasterOnlooker2",
       "flag": "FLAG_HIDE_LILYCOVE_CONTEST_HALL_BLEND_MASTER"
     },
     {
@@ -269,7 +269,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_ContestLobby_EventScript_BlendMasterOnlooker3",
+      "script": "LilycoveCity_ContestLobby_EventScript_DraconidRepBlendMasterOnlooker3",
       "flag": "FLAG_HIDE_LILYCOVE_CONTEST_HALL_BLEND_MASTER"
     },
     {
@@ -282,7 +282,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_ContestLobby_EventScript_BlendMasterOnlooker4",
+      "script": "LilycoveCity_ContestLobby_EventScript_DraconidRepBlendMasterOnlooker4",
       "flag": "FLAG_HIDE_LILYCOVE_CONTEST_HALL_BLEND_MASTER"
     },
     {
@@ -295,7 +295,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_ContestLobby_EventScript_BlendMasterOnlooker5",
+      "script": "LilycoveCity_ContestLobby_EventScript_DraconidRepBlendMasterOnlooker5",
       "flag": "FLAG_HIDE_LILYCOVE_CONTEST_HALL_BLEND_MASTER"
     },
     {
@@ -308,7 +308,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_ContestLobby_EventScript_BlendMasterOnlooker6",
+      "script": "LilycoveCity_ContestLobby_EventScript_DraconidRepBlendMasterOnlooker6",
       "flag": "FLAG_HIDE_LILYCOVE_CONTEST_HALL_BLEND_MASTER"
     },
     {
@@ -321,7 +321,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_ContestLobby_EventScript_BlendMasterOnlooker1",
+      "script": "LilycoveCity_ContestLobby_EventScript_DraconidRepBlendMasterOnlooker1",
       "flag": "FLAG_HIDE_LILYCOVE_CONTEST_HALL_BLEND_MASTER"
     },
     {
@@ -334,7 +334,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_ContestLobby_EventScript_BlendMaster",
+      "script": "LilycoveCity_ContestLobby_EventScript_DraconidRepBlendMaster",
       "flag": "FLAG_HIDE_LILYCOVE_CONTEST_HALL_BLEND_MASTER"
     },
     {
@@ -347,7 +347,7 @@
       "movement_range_y": 2,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_ContestLobby_EventScript_LittleGirl",
+      "script": "LilycoveCity_ContestLobby_EventScript_DraconidRepLittleGirl",
       "flag": "0"
     }
   ],

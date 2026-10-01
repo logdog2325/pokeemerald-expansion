@@ -218,3 +218,6 @@ Petalburg Woods recruitment/outfit change, Maxie's first meeting at Meteor Falls
 
 ### Follow-up note 29 (round 1)
 - "also make sure theres plenty of rival battles with the two draconid rivals too when approrpiate in the story and that they have appropriate teams"
+
+### Follow-up note (round 2, uniform reactions – feedback 2.8)
+- "also can almost every npc say something about us wearing the team magma outfit once we put it on even ones we previousely interacted with"
