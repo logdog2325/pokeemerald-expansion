@@ -126,8 +126,8 @@
       "x": 16,
       "y": 22,
       "elevation": 0,
-      "item": "ITEM_MAX_ETHER",
-      "flag": "FLAG_HIDDEN_ITEM_MT_PYRE_EXTERIOR_MAX_ETHER"
+      "item": "ITEM_DUSK_STONE",
+      "flag": "FLAG_HIDDEN_ITEM_MT_PYRE_EXTERIOR_DUSK_STONE"
     }
   ]
 }

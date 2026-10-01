@@ -17,8 +17,9 @@ Notes sent while playing the interim v2 preview (release + debug ROMs from batch
 | 2.6 | story | Courtney's recruitment: a YES/NO choice; NO makes her laugh ("you're joking, right?") and the player joins anyway; no narration | [x] D-341 |
 | 2.7 | story | The outpost: the grunt gets a name, Courtney's answer less robotic, a line about beating that troublesome Aqua grunt with the dragon | [x] ASHER; Courtney's giggle and her MAXIE (D-341) |
 | 2.9 | story | Birch says something about the heavy burden before he takes the player to the lab | [x] D-341 |
+| 2.16 | balance | (task) Room in the bag's Items pocket for the Z-Crystals and Mega Stones | [x] 60 slots instead of 30; `tests/bag_room.play` (D-344) |
 | 2.15 | bug | (task) Stale battle flags in the multi-battle team check: after a wild battle the pick of three for the Space Center / Sootopolis / Sky Pillar multis was ignored | [x] the macro asks about the battle being set up; `tests/multi_teams.play` (D-343) |
-| 2.12 | balance | (task) Dawn Stone and Dusk Stone sources – Gallade, Froslass, Chandelure, Honchkrow, Mismagius could not evolve | [x] two of each as item balls at the ORAS spots: Abandoned Ship and Victory Road (Dawn), Mt. Pyre 2F and exterior (Dusk); `tests/stones.play` (D-342) |
+| 2.12 | balance | (task) Dawn Stone and Dusk Stone sources – Gallade, Froslass, Chandelure, Honchkrow, Mismagius could not evolve | [x] two of each as item balls at the ORAS spots: Abandoned Ship and Victory Road (Dawn), Mt. Pyre exterior, a ball and a hidden one (Dusk); `tests/stones.play` (D-342) |
 
 ## Round 1 (after v1, commit 94f937d3)
 

@@ -1,0 +1,65 @@
+# The bag's Items pocket holds 60 different items (D-344): 44 distinct Items-pocket items, Z-Crystals and Mega Stones
+# included, all land in the bag. Needs opening_lab_done.ss from tests/opening.play in the same output directory; debug build.
+loadstate opening_lab_done.ss
+setflag FLAG_DEBUG_NO_ENCOUNTER
+giveitem ITEM_POTION
+giveitem ITEM_SUPER_POTION
+giveitem ITEM_HYPER_POTION
+giveitem ITEM_MAX_POTION
+giveitem ITEM_FULL_RESTORE
+giveitem ITEM_REVIVE
+giveitem ITEM_MAX_REVIVE
+giveitem ITEM_FRESH_WATER
+giveitem ITEM_SODA_POP
+giveitem ITEM_LEMONADE
+giveitem ITEM_MOOMOO_MILK
+giveitem ITEM_ENERGY_POWDER
+giveitem ITEM_ENERGY_ROOT
+giveitem ITEM_HEAL_POWDER
+giveitem ITEM_REVIVAL_HERB
+giveitem ITEM_ANTIDOTE
+giveitem ITEM_PARALYZE_HEAL
+giveitem ITEM_BURN_HEAL
+giveitem ITEM_ICE_HEAL
+giveitem ITEM_AWAKENING
+giveitem ITEM_FULL_HEAL
+giveitem ITEM_ETHER
+giveitem ITEM_MAX_ETHER
+giveitem ITEM_ELIXIR
+giveitem ITEM_MAX_ELIXIR
+giveitem ITEM_BERRY_JUICE
+giveitem ITEM_SACRED_ASH
+giveitem ITEM_SWEET_HEART
+giveitem ITEM_RAGE_CANDY_BAR
+giveitem ITEM_LAVA_COOKIE
+giveitem ITEM_OLD_GATEAU
+giveitem ITEM_HP_UP
+giveitem ITEM_PROTEIN
+giveitem ITEM_IRON
+giveitem ITEM_CALCIUM
+giveitem ITEM_ZINC
+giveitem ITEM_CARBOS
+giveitem ITEM_PP_UP
+giveitem ITEM_NORMALIUM_Z
+giveitem ITEM_FIRIUM_Z
+giveitem ITEM_WATERIUM_Z
+giveitem ITEM_ALAKAZITE
+giveitem ITEM_AGGRONITE
+giveitem ITEM_GARCHOMPITE
+run 30
+expect_item ITEM_RAGE_CANDY_BAR 1
+expect_item ITEM_LAVA_COOKIE 1
+expect_item ITEM_OLD_GATEAU 1
+expect_item ITEM_HP_UP 1
+expect_item ITEM_PROTEIN 1
+expect_item ITEM_IRON 1
+expect_item ITEM_CALCIUM 1
+expect_item ITEM_ZINC 1
+expect_item ITEM_CARBOS 1
+expect_item ITEM_PP_UP 1
+expect_item ITEM_NORMALIUM_Z 1
+expect_item ITEM_FIRIUM_Z 1
+expect_item ITEM_WATERIUM_Z 1
+expect_item ITEM_ALAKAZITE 1
+expect_item ITEM_AGGRONITE 1
+expect_item ITEM_GARCHOMPITE 1

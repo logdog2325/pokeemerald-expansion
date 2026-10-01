@@ -110,7 +110,7 @@ enum Language
 #define ROAMER_COUNT 2 // Number of maximum concurrent active roamers. Draconid Emerald: Latios and Latias both roam (D-209)
 
 // Bag constants
-#define BAG_ITEMS_COUNT 30
+#define BAG_ITEMS_COUNT 60 // Draconid Emerald (D-344): was 30; Mega Stones and Z-Crystals share the Items pocket
 #define BAG_KEYITEMS_COUNT 30
 #define BAG_POKEBALLS_COUNT 16
 #define BAG_TMHM_COUNT 64

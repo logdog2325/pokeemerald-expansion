@@ -3,13 +3,6 @@
 loadstate opening_lab_done.ss
 setflag FLAG_DEBUG_NO_ENCOUNTER
 setflag FLAG_DEBUG_NO_TRAINER_SEE
-warp MAP_MT_PYRE_2F 1 10
-run 150
-press LEFT 2 20
-press A 2 30
-mash A 600
-expect_item ITEM_DUSK_STONE 1
-expect_flag FLAG_ITEM_MT_PYRE_2F_DUSK_STONE 1
 warp MAP_MT_PYRE_EXTERIOR 27 16
 run 150
 press UP 2 20
@@ -17,6 +10,13 @@ press A 2 30
 mash A 600
 expect_item ITEM_DUSK_STONE 1
 expect_flag FLAG_ITEM_MT_PYRE_EXTERIOR_DUSK_STONE 1
+# the hidden one beside the grave at (16, 22)
+warp MAP_MT_PYRE_EXTERIOR 16 23
+run 150
+press UP 2 20
+press A 2 30
+mash A 600
+expect_flag FLAG_HIDDEN_ITEM_MT_PYRE_EXTERIOR_DUSK_STONE 1
 warp MAP_ABANDONED_SHIP_ROOMS_1F 4 6
 run 150
 press UP 2 20

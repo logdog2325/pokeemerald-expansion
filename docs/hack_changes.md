@@ -179,8 +179,8 @@ Grouped by area; each entry names the file(s).
 | `FLAG_HIDE_SKY_PILLAR_WALLACE` (vanilla, reused; D-203) | Wallace at the foot of the Sky Pillar: shown by the OnTransition hook while he waits for his battle, set otherwise |
 | `FLAG_DEFEATED_GROUDON` / `FLAG_DEFEATED_KYOGRE` (vanilla, reused; D-208) | set when the post-game Groudon / Kyogre is caught; the Weather Institute reads them as before |
 - D-342: four item-ball flags renamed after the stones they now hold (same numbers): `FLAG_ITEM_ABANDONED_SHIP_ROOMS_1F_DAWN_STONE`
-  (was …_HARBOR_MAIL), `FLAG_ITEM_VICTORY_ROAD_1F_DAWN_STONE` (was …_MAX_ELIXIR), `FLAG_ITEM_MT_PYRE_2F_DUSK_STONE`
-  (was …_ULTRA_BALL), `FLAG_ITEM_MT_PYRE_EXTERIOR_DUSK_STONE` (was …_MAX_POTION); the maps' item balls hold the stones.
+  (was …_HARBOR_MAIL), `FLAG_ITEM_VICTORY_ROAD_1F_DAWN_STONE` (was …_MAX_ELIXIR), `FLAG_HIDDEN_ITEM_MT_PYRE_EXTERIOR_DUSK_STONE`
+  (was …_MAX_ETHER, a hidden item), `FLAG_ITEM_MT_PYRE_EXTERIOR_DUSK_STONE` (was …_MAX_POTION); the maps' item balls hold the stones.
 
 ## Vars
 | Var | Values |
@@ -310,6 +310,10 @@ Grouped by area; each entry names the file(s).
 | `METATILE_Cave_DoorwayPurple`, `_Left`, `_Right`, `_Top`, `_TopLeft`, `_TopRight` (the Seafloor Cavern's purple cave mouth, for the shrine wall, D-201) | `include/constants/metatile_labels.h` |
 | New objects (Act 7 extension): `DraconidVillage` – `LOCALID_DRACONID_VILLAGE_BRENDAN` (26, 18), `_MAY` (11, 15), `_WALLY` (15, 24), `_GRUNT_1` – `_6` (12, 24), (13, 24), (7, 15), (9, 15), (29, 18), (28, 18), `_ELDER` (19, 6), `_ATTACK_NERINE` (18, 6), `_ASTER` (20, 6), `_TABITHA` (18, 8), `_SHELLY` (20, 8), `_MAXIE` (15, 8), `_ARCHIE` (28, 8), `_GROUDON` (12, 9, `OBJ_EVENT_GFX_SPECIES(GROUDON_PRIMAL)`), `_KYOGRE` (31, 8, `…(KYOGRE_PRIMAL)`), `_RAYQUAZA` (19, 5, `…(RAYQUAZA)`); the four strollers get `FLAG_TEMP_1C`; `LOCALID_MAGMA_HIDEOUT_4F_GROUDON_POSTGAME` (16, 20), `LOCALID_SEAFLOOR_CAVERN_KYOGRE_POSTGAME` (17, 41) with a sign bg event on its tile (elevation 0, facing north, `SeafloorCavern_Room9_EventScript_DraconidKyogreSpot`: the object stands in the water at elevation 1, out of reach of the shore's 3); the Sky Pillar's vanilla Wallace object runs `SkyPillar_Outside_EventScript_DraconidWallace` | `data/maps/{DraconidVillage,MagmaHideout_4F,SeafloorCavern_Room9,SkyPillar_Outside}/map.json` |
 | Aster's back pic (`gTrainerBackPic_Aster`, `gTrainerBackPicPalette_Aster`, `TRAINER_PIC_ASTER` gets `.backPic`; `graphics/trainers/back_pics/aster.png`, kitbashed from the Draconid F back pic, D-205) | `src/data/graphics/trainers.h`, `include/constants/trainers.h` (comment) |
+- D-344: `BAG_ITEMS_COUNT` 30 → 60 (include/constants/global.h): the Items pocket holds 60 different items; SaveBlock1
+  grows by 120 bytes (`test/save.c` `T_SAVEBLOCK1_SIZE` 15732; 15736 once the Z-Move branch's +4 is in), of the 15872
+  the four SaveBlock1 sectors hold. Saves from earlier builds don't load (the bag moves every later field). Test
+  `tests/bag_room.play`.
 
 ## C changes
 | Change | File |

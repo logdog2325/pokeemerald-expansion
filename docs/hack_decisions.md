@@ -1783,8 +1783,8 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   *Alternatives:* NO repeats the question (nagging), NO starts a battle (out of tone for a recruitment), no choice
   (the playtester asked for one).
 - **D-342 Dawn Stone and Dusk Stone on the map** (the task "Add Dawn Stone and Dusk Stone sources"): two of each,
-  as item balls in place of low-value vanilla items at the ORAS spots – Dusk Stone on Mt. Pyre (2F and the
-  exterior), Dawn Stone in the Abandoned Ship (ORAS's Sea Mauville has no Emerald map; the ship is the same kind of
+  as item balls in place of low-value vanilla items at the ORAS spots – Dusk Stone on Mt. Pyre (an exterior item ball and a
+  hidden item by a grave – the 2F ball holds the Ghostium Z, D-269), Dawn Stone in the Abandoned Ship (ORAS's Sea Mauville has no Emerald map; the ship is the same kind of
   sunken wreck off Slateport) and Victory Road. The Abandoned Ship stone comes after Surf (S6), before Wally's
   Lilycove Gallade and the Shoal Cave Snorunt; the Mt. Pyre stones meet the Litwick, Misdreavus and Murkrow of the
   wild tables (D-300). Two of each covers the evolutions the player can reach (Gallade + Froslass; Chandelure +
@@ -1802,3 +1802,12 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   says full (1), the wrapper half (0). *Alternatives:* setting BATTLE_TYPE_TRAINER in the macro (a new script
   command), or reading `TRAINER_BATTLE_PARAM` inside `AreMultiPartiesFullTeams` (changes the shared function for
   every caller).
+- **D-344 The Items pocket holds 60 items** (the task "Make room in the bag's Items pocket", from the Z-Move work):
+  Z-Crystals (all 18 type crystals and a few species ones in the story) and the Mega Stones share the Items pocket
+  with medicine, battle items, held items and evolution stones, and 30 slots fill up late in the game (a full
+  pocket leaves an item ball where it is and the player digging through the PC). `BAG_ITEMS_COUNT` goes to 60:
+  120 bytes of SaveBlock1, which then uses 15736 of its 15872 bytes with the Z-Move branch; the bag's list buffers
+  are already sized for the 64-slot TM pocket, and 44 distinct items scroll fine (`tests/bag_room.play`).
+  *Alternatives:* a pocket of their own for Mega Stones and Z-Crystals (new bag pocket graphics, names, sorting and
+  menu code for a sixth pocket); Key Items (they are held items, and the bag won't give a Key Item to hold); 64
+  slots (16 more bytes, kept in reserve for later flags). Saves from earlier builds won't load.
