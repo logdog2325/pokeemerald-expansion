@@ -1,6 +1,7 @@
 # Emulator checks behind tools/hack/check_hardlock.py (D-264, docs/hack_progression.md "Hard locks").
 # Runs after act7.play in the regression chain: needs woods_done.ss (woods.play), act5_space_center.ss (act5.play)
-# and act7_3f.ss (act7.play) in the same -o directory.
+# and act7_3f.ss (act7.play) in the same -o directory; section 4 starts from rustboro_done.ss (rustboro.play) with the
+# states set by hand, as act7x.play does.
 #   python3 tools/hack/emu/play.py tools/hack/emu/tests/hardlock.play -o DIR
 #
 # 1. A script that ends while lockall is in force does not freeze the player: the Space Center raid ends in the
@@ -83,3 +84,98 @@ shot hl_34_summit
 expect_opponent TRAINER_ZINNIA_SKY_PILLAR
 expect_var VAR_DRACONID_FINALE_STATE 5
 expect_map MAP_SKY_PILLAR_TOP
+
+# 4. A lost multi battle never whites out (BattleSetup_StartMultiBattle -> CB2_EndSpecialTrainerBattle goes back to
+#    the script whatever the outcome; the checker's battle check, D-265a): leg 7.10, the south-west house in the
+#    village under attack, lost with the whiteout flag off. Draconid_EventScript_VillageLost carries the player home
+#    to (8, 6) - a whiteout would respawn them at (2, 7) or at another Pokemon Center - the house's grunts wait
+#    (VILLAGE_STATE_ATTACK, no trainer flag), and talking to them again starts the same double battle.
+default MOVE 2
+loadstate rustboro_done.ss
+setvar VAR_SECOND_STARTER 1
+setvar VAR_DRACONID_REPUTATION 2
+setvar VAR_PLAYER_OUTFIT 0
+setvar VAR_MAGMA_STATE 12
+setvar VAR_NERINE_STATE 8
+setvar VAR_ASTER_STATE 8
+setvar VAR_BRENDAN_STATE 6
+setvar VAR_MAY_STATE 4
+setvar VAR_SKY_PILLAR_STATE 3
+setvar VAR_SKY_PILLAR_RAYQUAZA_CRY_DONE 1
+setflag FLAG_SYS_GAME_CLEAR
+setflag FLAG_BADGE01_GET
+setflag FLAG_BADGE02_GET
+setflag FLAG_BADGE03_GET
+setflag FLAG_BADGE04_GET
+setflag FLAG_BADGE05_GET
+setflag FLAG_BADGE06_GET
+setflag FLAG_BADGE07_GET
+setflag FLAG_BADGE08_GET
+setflag FLAG_DEFEATED_RAYQUAZA
+setflag FLAG_HIDE_SKY_PILLAR_TOP_ASTER
+setflag FLAG_HIDE_DRACONID_HOUSE_ELDER
+setflag FLAG_HIDE_DRACONID_ELDERS_HOUSE_ELDER
+setvar VAR_DRACONID_FINALE_STATE 6
+setvar VAR_DRACONID_VILLAGE_STATE 4
+setflag FLAG_DEBUG_NO_ENCOUNTER
+setflag FLAG_DEBUG_NO_TRAINER_SEE
+clearflag FLAG_DRACONID_NO_WHITEOUT
+pokebit *@gSaveBlock2Ptr+15 1 1
+warp MAP_DRACONID_VILLAGE 19 24
+run 150
+until_var VAR_DRACONID_VILLAGE_STATE 5 120000 A
+run 30
+wait_free 600
+walk DOWN 25
+walk LEFT 13
+press UP 2 20
+boost 0 1
+press A 2 30
+until @gMain+4 4 @@CB2_UpdatePartyMenu 60000 A 24
+run 60
+press A 2 40
+press A 2 40
+press DOWN 2 30
+press A 2 40
+until @gMain+4 4 @@BattleMainCB2 3000
+run 300
+until @gMain+4 4 @@CB2_Overworld 200000 A 24
+expect_opponent TRAINER_GRUNT_VILLAGE_1
+expect_partner PARTNER_WALLY_VILLAGE
+mash A 30000
+run 30
+shot hl_40_village_lost
+expect_map MAP_DRACONID_VILLAGE_PLAYERS_HOUSE_1F
+expect_pos 8 6
+expect_flag FLAG_DRACONID_NO_WHITEOUT 0
+expect_trainer TRAINER_GRUNT_VILLAGE_1 0
+expect_var VAR_DRACONID_VILLAGE_STATE 5
+# out of the door and back to the house: the same double battle again, won this time
+walk DOWN 8
+hold DOWN 20
+run 90
+wait_free 600
+run 30
+expect_map MAP_DRACONID_VILLAGE
+expect_pos 8 15
+path DraconidVillage 8 15 13 25
+press UP 2 20
+boost 0
+press A 2 30
+until @gMain+4 4 @@CB2_UpdatePartyMenu 60000 A 24
+run 60
+press A 2 40
+press A 2 40
+press DOWN 2 30
+press A 2 40
+until @gMain+4 4 @@BattleMainCB2 3000
+run 60
+poke @gMoveSelectionCursor ${MOVE}
+until @gMain+4 4 @@CB2_Overworld 200000 A 24
+expect_opponent TRAINER_GRUNT_VILLAGE_1
+expect_partner PARTNER_WALLY_VILLAGE
+mash A 30000
+shot hl_41_village_won
+expect_trainer TRAINER_GRUNT_VILLAGE_1 1
+expect_trainer TRAINER_GRUNT_VILLAGE_2 1
+expect_var VAR_DRACONID_VILLAGE_STATE 5
