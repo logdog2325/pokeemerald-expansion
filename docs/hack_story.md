@@ -258,3 +258,8 @@ Petalburg Woods recruitment/outfit change, Maxie's first meeting at Meteor Falls
 - (with a screenshot of the black screen and the box "A falling star tore across the heavens and vanished beyond the mountains.") "can we create a short falling star animation for this intro segment I know you can do it"
 ### Follow-up note (round 2, feedback 2.10)
 - "also can we make our overworld sprite look a lot more like a regular team magma grunt and same with the backthrowing sprite its obviously a recolored Red" – "try and make it how a team magma grunt backsprite would look in game"
+### Follow-up note (round 2, wild Pokémon – feedback 2.2, 2.3)
+- "also I think there are no pokemon you can encounter in draconid pass you probably want to make an encounter table for that area" / "also did you add some gens 1-9 pokemon on every route that makes sense for the area?"
+
+### Follow-up note (round 2, Mega Stones and Z-Crystals – feedback 2.5)
+- "also make sure all mega stones are accessible throughout the game and after you beat the champion you can purchase them all and same with z crystals"

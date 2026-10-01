@@ -7,6 +7,7 @@
 #include "field_screen_effect.h"
 #include "item.h"
 #include "load_save.h"
+#include "money.h"
 #include "main.h"
 #include "new_game.h"
 #include "overworld.h"
@@ -297,6 +298,8 @@ bool32 Draconid_TryTestWarp(void)
         ScriptGiveMon(gDraconidTestWarp.species, gDraconidTestWarp.level, gDraconidTestWarp.item);
     if (request & DRACONID_TEST_COUNT_HMS)
         gDraconidTestWarp.partyHMMoves = CountPartyHMMoves();
+    if (request & DRACONID_TEST_MAX_MONEY)
+        SetMoney(&gSaveBlock1Ptr->money, MAX_MONEY);
     if ((request & DRACONID_TEST_SCRIPT) && gDraconidTestWarp.script != NULL)
     {
         ScriptContext_SetupScript(gDraconidTestWarp.script);

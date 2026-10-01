@@ -950,7 +950,7 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   full bag only costs the booster (the counter sells it). Vanilla item balls and hidden items for battle items
   stay. – Alt: item balls on routes (new flags in a crowded range while other work adds flags too). – No new flag
   (the TM flag already makes it once), and the gift says what the Leader's type is about.
-- **D-221 Mega Stones through the story** (the player's addition to 1.33): nothing before the Mega Ring (Jagged
+- **D-221 Mega Stones through the story** *(extended by D-320 – D-323, round 2: every stone after the Champion, a source before it for every line the player can get)* (the player's addition to 1.33): nothing before the Mega Ring (Jagged
   Pass, Act 3); the second starter's stone stays the Lavaridge traveller's gift (D-126). After the Ring, **nine
   stones lie on maps the story opens later**, at ORAS's spot where Emerald has it (Serebii's ORAS Mega Evolution
   page, 2026-09-30): Manectite – New Mauville (ORAS: the Cycling Road, passed long before the Ring); Banettite –
@@ -971,7 +971,7 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   Diancite or the other Z-A stones; docs/hack_items.md lists them to recheck against docs/hack_wild.md. – Alt: all
   stones post-game (the player wants them "throughout the story"); ORAS's exact spots (most are towns and routes
   the player passes before the Ring). – Paced like the counter tiers, and every stone has a Pokémon to use it.
-- **D-222 Mega Stone details**: placed stones **replace low-value vanilla items** (Paralyze Heal, Super Repel,
+- **D-222 Mega Stone details** *(every stone priced, none sellable: D-322)*: placed stones **replace low-value vanilla items** (Paralyze Heal, Super Repel,
   Escape Rope, Nugget, Ultra Ball, Nest Ball, Net Ball, Ice Heal, Full Heal) and keep their pickup flag's number,
   renamed after the stone – no new flags. Sold stones cost **50,000** (`MEGA_STONE_PRICE` in `src/data/items.h`,
   about a quarter of what the Winona → Tate & Liza stretch pays); stones that are only found or given stay at 0
@@ -1916,6 +1916,106 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   Lv 6; Slakoth keeps its 4% slot) is Larvesta Lv 6; the Fiery Path keeps its 1% Larvesta (Lv 14). – Alt: a 4%
   slot (too common for a rare find that becomes Volcarona); only the Fiery Path (the playtester asked for both).
   – The playtester's ask; the slot keeps the duplicate-slot rule and its vanilla level.
+- **D-320 After the Champion the counter sells every Mega Stone and every Z-Crystal** (feedback 2.5: "after you beat
+  the champion you can purchase them all and same with z crystals"): the post-game tier (`FLAG_IS_CHAMPION`, as
+  D-218) now sells all **92** Mega Stones of the build (Gen 6/7 and Legends Z-A, the 38 whose line isn't in the game
+  too) and all **35** Z-Crystals (18 type, 17 species). The clerk asks **BATTLE ITEMS / MEGA STONES / Z-CRYSTALS /
+  CANCEL** (a `dynmultichoice`) and asks again after each list until CANCEL or B ("Would you like to see another
+  list?"): BATTLE ITEMS is the tier 5 list, i.e. every tier as before (126 entries); MEGA STONES is the stones in
+  **National Dex order** of their Pokémon (X before Y, Absolite Z / Garchompite Z / Lucarionite Z right after the
+  first stone of the species); Z-CRYSTALS the type crystals in type order, then the species crystals in item order.
+  The two lists are written by `check_megas.py --write` from every `HOLD_EFFECT_MEGA_STONE` / `HOLD_EFFECT_Z_CRYSTAL`
+  item in `src/data/items.h`, and `check_megas.py` fails while one is missing or out of order (a stone a later
+  expansion adds can't be forgotten). **Prices**: every stone `MEGA_STONE_PRICE` 50,000 (D-222), every crystal
+  `Z_CRYSTAL_PRICE` **30,000**: post-game money is rematch money – a League run pays 45,200 (Sidney 7,200, Phoebe
+  7,300, Glacia 7,400, Drake 7,500, Steven 15,800; doubled by the Amulet Coin), Lance ≈17,200 – so a stone is about
+  one League run and a crystal two thirds of one (a Z-Move is once per battle, a Mega lasts the battle; a type
+  crystal fits any Pokémon with a move of its type, so not cheaper than that); one price per kind, as D-222. All 92
+  stones cost 4.6 million, all 35 crystals 1.05 million: a post-game goal, not a shopping list. The pre-post-game
+  tiers are unchanged except D-323's five stones. – Alt: one list of 216 entries newest-first as the tiers are built
+  (D-218: the post-game stones on top, then tier 5's stones and items, tier 4's stones and items …), which scatters
+  the stones over three places in a list scrolled one entry at a time; one long list with every stone and crystal
+  first and the battle items after (the tier 4/5 stones would be listed twice in one shop); a second clerk for stones
+  and crystals (13 Marts edited again; the Pokémon League's single counter tile). – A list per kind, each in an order
+  the player knows, and the battle items exactly as the tiers already sell them.
+- **D-321 LEFT / RIGHT turn a page in every mart list**: `sShopBuyMenuListTemplate.scrollMultiple` was
+  `LIST_NO_MULTIPLE_SCROLL`; now `LIST_MULTIPLE_SCROLL_DPAD`, as the bag has it (`src/shop.c`). The buy list shows 8
+  rows, so the 92 stones are 12 pages and the battle items 16; LEFT / RIGHT do nothing else in the buy list (the
+  "how many" box that uses them for ±10 is its own task). The mart copes with the lengths: `itemCount` is a `u16`,
+  `ListMenuTemplate.totalItems` 12 bits (4,095), and the buy menu allocates one name and one list entry per item
+  (about 4 KB for the battle items) only while it is open. – Alt: leave it (holding DOWN scrolls, but from Venusaurite
+  to Baxcalibrite is 91 steps); L / R (the "L = A" button mode would clash). – Paging is what the bag already does.
+- **D-322 Every stone and crystal has a price, and shops don't buy them back**: a 0-price item in a mart is free –
+  `Task_BuyMenu` checks `IsEnoughMoney(0)`, `Task_BuyHowManyDialogueInit` then allows up to 999 – so the 58 stones and
+  35 crystals that were at 0 (found, given or not in the game) get `MEGA_STONE_PRICE` / `Z_CRYSTAL_PRICE`. The story
+  keeps every found or given stone where it was (the item balls, the Lavaridge traveller's gift, Lance's
+  Dragoninite), and the Z-Move work's crystals stay its own. A price would also make a found stone worth ₽12,500 at
+  any Mart (a quarter of the price, Gen 9 `I_SELL_VALUE_FRACTION`) – about 140,000 for the story's stones and 135,000
+  for 18 story crystals, together half the ~554,000 prize money of the whole story (D-219) – so the new config option
+  `I_SELL_MEGA_STONES_Z_CRYSTALS` (FALSE) makes `GetItemSellPrice` 0 for both kinds, and the bag's SELL refuses an
+  item whose **sell** price is 0 (it checked the price), with the vanilla "can't buy that" line; this also covers an
+  item whose price rounds down to a sell price of 0 (the sell box divided by it). A stone bought at a counter can't
+  be sold back either (it could, at 12,500, before). `test/draconid_items.c` checks both. – Alt: keep found stones at
+  0 and give the counter its own price list (a mart reads `GetItemPrice`; it would need a per-shop price hook);
+  leave the stones sellable (story money the economy wasn't built for). – D-222 already kept found stones unsellable;
+  now every stone has a price and none can be cashed in.
+- **D-323 Every Mega Stone whose line the player can get has a source before the post-game** (feedback 2.5: "make
+  sure all mega stones are accessible throughout the game"): `check_megas.py` (D-324) lists the stones of lines the
+  player gets before the Champion with no source before it; with the round 2 wild tables (D-300 – D-302: Gen 1–2
+  species) those are fourteen. Rules as D-221/D-222: the ORAS spot when Emerald has it and the story reaches it
+  after the Ring – an item ball in place of a low-value vanilla item, its flag renamed (same number); a spot passed
+  before the Ring, a Legends Z-A stone or no spot at all – the counter, at the tier whose badges match the line.
+  **Item balls**: **Ampharosite** at New Mauville (32, 25), was an Ultra Ball (`FLAG_ITEM_NEW_MAUVILLE_AMPHAROSITE`,
+  0x433; ORAS: New Mauville; Mareep is on the Draconid Pass); **Slowbronite** in the Shoal Cave entrance room (30, 3),
+  was a Big Pearl (`FLAG_ITEM_SHOAL_CAVE_ENTRANCE_SLOWBRONITE`, 0x439; ORAS: the Shoal Salt / Shell man of that room;
+  Slowpoke surfs from Route 103). **6 badges**: **Absolite** – its D-221 ball is in the Safari Zone's north-east
+  area, which opens only at the Hall of Fame (the construction workers' `FLAG_HIDE_…` is set by
+  `EverGrandeCity_HallOfFame_EventScript_SetGameClearFlags`; checked with `check_progression.py`: blocked before the
+  Hall of Fame, every other placed stone reachable); the ball stays, a post-game spare (Absol on Route 120 comes after
+  Winona); **Galladite** (Cozmo, Fallarbor); **Pidgeotite** (Mr. Stone, Rustboro), **Steelixite** (Granite Cave),
+  **Scizorite** (Petalburg Woods), **Houndoominite** (Lavaridge) – ORAS spots passed before the Ring; **Gengarite**
+  (ORAS: the Battle Resort) and **Kangaskhanite** (ORAS: Pacifidlog, which has no item to replace): Gastly on Mt. Pyre
+  and Kangaskhan in the Safari Zone come with the sixth badge; **Clefablite** (Legends Z-A, Clefairy at Meteor Falls,
+  an early new species like D-221's Excadrite). **8 badges**: **Salamencite** – Bagon's room (Meteor Falls B1F 2R)
+  needs Waterfall and the Rain Badge; the ORAS spot is Meteor Falls, but its only items behind the waterfall are TM
+  Iron Tail, a PP Up and TM Dragon Claw (not low-value, D-222), and its Full Heal is reachable in Act 3, before the
+  Ring; **Garchompite Z**, **Froslassite** (Legends Z-A stones of Hoenn lines, D-221's rule). The Dawn / Dusk
+  Stone spots of the main session's evolution-stone work (Abandoned Ship Rooms 1F, Victory Road 1F, the Mt. Pyre
+  exterior's ball and hidden item) and the 15 item balls and hidden items the Z-Move work turned into Z-Crystals
+  (D-269; New Mauville's Full Heal and Escape Rope among them) are left alone. The nine D-221 balls, the Lavaridge
+  gift and the earlier tier stones stay. Now 50 stones have a line before the post-game and every one of them a
+  source before it; four lines come only after the
+  Champion (Dragonite: Lance's Dratini; Meganium: Birch's Chikorita; the two Latis) and 38 never – those 42 are
+  post-game only, which the feedback's "after you beat the champion you can purchase them all" covers. – Alt: new item
+  balls with new flags at more ORAS spots (flags are shared with parallel work, D-222); move the Safari Zone Absolite
+  to a Hoenn area (the brief keeps the placements); everything new at the counter (two lines have an ORAS spot after
+  the Ring with a low-value item to replace). – The counter's tiers already follow the level caps, and ORAS's spots
+  are used where the story allows.
+- **D-324 `tools/hack/check_megas.py`**: for every Mega Stone the Pokémon that Mega Evolves with it
+  (`FORM_CHANGE_BATTLE_MEGA_EVOLUTION_ITEM`), its **line** (every species linked by evolutions; an evolution that only
+  happens in another region, `IF_REGION`, doesn't link – Pikachu's line is not Alolan Raichu's), **when** the player
+  can first get the line (story segments S1 – S9 of `build_segments.py`, POST = after the Champion): the Hoenn wild
+  tables (the area's segment from `MAP_WHEN` or `check_wild.py`'s `WILD_SEGMENTS`, later for Surf, Dive and the rods;
+  `MAP_WHEN` puts the Safari Zone's Johto areas and the Sky Pillar – the finale's, after the Hall of Fame – in POST),
+  `givemon` / `giveegg` / `setwildbattle` / `ingame_trade` in the event scripts (the map's segment or `SCRIPT_WHEN`;
+  `GIFT_WHEN` for gifts a flag holds back: Birch's Johto starters, Steven's Beldum) and `EXTRA_SOURCES` (the roaming
+  Latis); and the stone's **sources** (item balls, hidden items, `giveitem`, a stone set into a var that `giveitem`
+  hands over, the counter tiers). **Errors** (exit 1): an obtainable-before-the-post-game line whose stone has no
+  source before it; a stone or crystal missing from the post-game lists or the lists out of `--write`'s order; a
+  price of 0; a stone source before the Mega Ring (S4); a gift or source whose "when" is unknown (so a new map or
+  script is classified, not guessed). **Notes**: an evolution into the Mega's species that needs an item the game
+  never hands out (Dawn Stone, Dusk Stone), how many type crystals have a story source. Z-Crystals are listed the same
+  way: story sources (the Z-Move work's), the post-game list; a species crystal's Pokémon and when the player can get
+  them. It reads the wild tables, so it is rerun after the wild-table work merges. – Alt: a table of stones and
+  species by hand (D-221's "recheck against the wild tables at merge time" was that, and Absolite's post-game ball
+  slipped through). – Derived from the build's own data, it can't go stale.
+- **D-325 Evolution items are checked, not placed here**: Gallade (Kirlia ♂) and Froslass (Snorunt ♀) evolve with a
+  Dawn Stone and Chandelure with a Dusk Stone; this build had neither anywhere, so their stones were on sale for lines
+  that couldn't reach the Mega. The main session's evolution-stone work places them (Dawn Stone: Abandoned Ship
+  Rooms 1F, Victory Road 1F; Dusk Stone: the Mt. Pyre exterior, a ball and a hidden item); until both branches are merged `check_megas.py`
+  knows those balls from `PENDING_ITEM_BALLS`, and it notes any Mega line whose evolution needs an item with no
+  source in the game. – Alt: sell the evolution stones at the counter here (evolution items are that work's, and other
+  Pokémon evolve with them too). – One owner per item; the check keeps the two in step.
 - **D-340 The map generator places General trees on a lattice and keeps walkable ground at its elevation**
   (playtest 2.1: half trees and an invisible wall in Draconid Pass). The learned rules come from vanilla
   neighbourhoods in which the crown's cap row (1C6/1C7/1CE/1CF over grass) belongs to the tree class, so they read

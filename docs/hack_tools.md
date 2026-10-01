@@ -143,6 +143,7 @@ python3 tools/hack/emu/play.py test.play -o /tmp/out
 | `warp MAP_X X Y [MAX]` | debug builds: warp to (X, Y) on MAP_X the next time the player is free (`gDraconidTestWarp`) |
 | `heal` | debug builds: heal the party the next time the player is free |
 | `givemon SPECIES_X LEVEL [ITEM_X]`, `giveitem ITEM_X [N]` | debug builds: add a Pokémon (holding ITEM_X) to the party / N items (default 1) to the bag the next time the player is free |
+| `maxmoney` | debug builds: the wallet at `MAX_MONEY` (999,999) the next time the player is free (a test that buys) |
 | `expect_party SLOT SPECIES_X` | the species in party slot SLOT (0 = first), decrypted from the box data |
 | `expect_seen SPECIES_X 0/1`, `expect_caught SPECIES_X 0/1` | the Pokédex's seen / caught flag for the species (`dexSeen` / `dexCaught`, by its `NATIONAL_DEX_*` number) |
 | `expect_text LABEL [BUFFER]` | the text in BUFFER (default `gStringVar4`) starts like the ROM text LABEL (up to 24 bytes, stopping at its first placeholder); e.g. a PokéNav call |
@@ -243,6 +244,19 @@ python3 tools/hack/check_evos.py [--markdown]
 No species may keep a trade evolution (D-216), and no held-item level branch may be hidden behind an earlier
 unconditional level entry (the first matching entry wins). Prints the former trade evolutions with level, held
 item and base stat totals; `--markdown` gives the table in [hack_items.md](hack_items.md).
+## Mega Stones and Z-Crystals – `tools/hack/check_megas.py`
+```sh
+python3 tools/hack/check_megas.py              # report, exit 1 on an error
+python3 tools/hack/check_megas.py --problems   # only the stones / crystals with an error or a note
+python3 tools/hack/check_megas.py --write      # regenerate the post-game lists in data/scripts/draconid/battle_items.pory
+```
+Every Mega Stone (`HOLD_EFFECT_MEGA_STONE`) with the Pokémon that Mega Evolves with it, its line (evolution
+links), when the player can first get the line (wild tables, gifts, eggs, trades, static encounters; story segment
+or POST) and the stone's sources (item balls, hidden items, gifts, the battle item counter's tiers); every Z-Crystal
+with its story sources. Fails when a line the player gets before the post-game has a stone with no source before
+it, a stone or crystal is missing from the post-game lists (or they are out of order), a price is 0, a stone comes
+before the Mega Ring, or a gift's map / script has no known segment (`MAP_WHEN`, `SCRIPT_WHEN`, `GIFT_WHEN` in the
+script). Rerun after the wild tables, the gifts or the items change (D-324).
 | `savestate F`, `loadstate F` | relative paths are inside the `-o` output directory |
 
 Regression tests live in `tools/hack/emu/tests/` and chain through savestates in one output dir:

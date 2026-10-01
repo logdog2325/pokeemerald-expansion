@@ -1125,13 +1125,13 @@
 #define FLAG_ITEM_AQUA_HIDEOUT_B2F_SHARPEDONITE                     0x430 // Draconid Emerald (D-222): was ITEM_NEST_BALL
 #define FLAG_ITEM_MT_PYRE_EXTERIOR_DUSK_STONE                       0x431 // Draconid Emerald (D-342): was ITEM_MAX_POTION
 #define FLAG_ITEM_MT_PYRE_EXTERIOR_TM_SKILL_SWAP                    0x432
-#define FLAG_ITEM_NEW_MAUVILLE_ULTRA_BALL                           0x433
+#define FLAG_ITEM_NEW_MAUVILLE_AMPHAROSITE                          0x433 // Draconid Emerald (D-323): was ITEM_ULTRA_BALL
 #define FLAG_ITEM_NEW_MAUVILLE_ELECTRIUM_Z                          0x434 // Draconid Emerald (D-269): was ITEM_ESCAPE_ROPE
 #define FLAG_ITEM_ABANDONED_SHIP_HIDDEN_FLOOR_ROOM_6_LUXURY_BALL    0x435
 #define FLAG_ITEM_ABANDONED_SHIP_HIDDEN_FLOOR_ROOM_2_SCANNER        0x436
 #define FLAG_ITEM_SCORCHED_SLAB_TM_SUNNY_DAY                        0x437
 #define FLAG_ITEM_METEOR_FALLS_B1F_2R_TM_DRAGON_CLAW                0x438
-#define FLAG_ITEM_SHOAL_CAVE_ENTRANCE_BIG_PEARL                     0x439
+#define FLAG_ITEM_SHOAL_CAVE_ENTRANCE_SLOWBRONITE                   0x439 // Draconid Emerald (D-323): was ITEM_BIG_PEARL
 #define FLAG_ITEM_SHOAL_CAVE_INNER_ROOM_RARE_CANDY                  0x43A
 #define FLAG_ITEM_SHOAL_CAVE_STAIRS_ROOM_GLALITITE                  0x43B // Draconid Emerald (D-222): was ITEM_ICE_HEAL
 #define FLAG_ITEM_VICTORY_ROAD_1F_DAWN_STONE                        0x43C // Draconid Emerald (D-342): was ITEM_MAX_ELIXIR
