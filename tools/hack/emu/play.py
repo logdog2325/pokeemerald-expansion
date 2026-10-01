@@ -24,6 +24,8 @@ A .play script is a gbarun script plus:
   expect_partner PARTNER_X      the last multi battle's in-game partner (gPartnerTrainerId)
   wait_species N SPECIES_X [MAX] [KEY]   tap KEY (default A) until battler N (gBattleMons[N]; 1 = the
                           opponent in a single battle) is SPECIES_X, e.g. a Mega Evolution
+  expect_wild MAP_X [FIELD]   during a wild battle: the opponent (gBattleMons[1]) is one of the species of MAP_X's
+                          FIELD table (default land_mons) in src/data/wild_encounters.json
   battlepp N [VALUE]      during a battle: the PP of battler N's four moves (gBattleMons[N]) to VALUE (default 64)
   boost SLOT [VALUE]      set the player's party Pokemon at SLOT to level 100 with VALUE (default 999) HP and
                           stats, for a flow test that must win (999) or quickly lose (1) a battle (the
@@ -95,6 +97,21 @@ def check_savestate(path, rom, stamp):
     if os.path.exists(path) and os.path.getmtime(path) < os.path.getmtime(rom):
         return "savestate %s is older than the ROM and has no .rom stamp" % path
     return None
+
+
+def wild_species(map_name, field):
+    """The SPECIES_* constants of MAP_X's FIELD table (the Emerald one, gWildMonHeaders) in wild_encounters.json."""
+    import json
+    data = json.load(open(os.path.join(ROOT, "src/data/wild_encounters.json")))
+    for group in data["wild_encounter_groups"]:
+        if group["label"] != "gWildMonHeaders":
+            continue
+        for enc in group["encounters"]:
+            if enc.get("map") == map_name and not enc["base_label"].endswith(("_FireRed", "_LeafGreen")):
+                if field not in enc:
+                    sys.exit("expect_wild: %s has no %s table" % (map_name, field))
+                return sorted({m["species"] for m in enc[field]["mons"]})
+    sys.exit("expect_wild: no wild table for %s" % map_name)
 
 
 def symbols(elf):
@@ -267,6 +284,13 @@ def main():
     names += sorted({l.split()[3] for l in lines if l.split() and l.split()[0] == "givemon" and len(l.split()) > 3})
     names += ["TRAINER_PARTNER(%s)" % l.split()[1] for l in lines if l.split()[:1] == ["expect_partner"]]
     names += [l.split()[2] for l in lines if l.split()[:1] == ["wait_species"]]
+    wild_tables = {}  # (MAP_X, field) -> its SPECIES_* constants (expect_wild)
+    for l in lines:
+        t = l.split()
+        if t[:1] == ["expect_wild"]:
+            key = (t[1], t[2] if len(t) > 2 else "land_mons")
+            wild_tables.setdefault(key, wild_species(*key))
+    names += sorted({sp for spp in wild_tables.values() for sp in spp})
     names += [OPPONENT_A_OFFSET, OPPONENT_B_OFFSET, GFX_OFFSET, BATTLE_MON_SIZE, BATTLE_MON_SPECIES, BATTLE_MON_PP]
     names += [BAG_OFFSET, SLOT_SIZE, BAG_SIZE, "TRAINER_FLAGS_START", MON_SIZE, SECURE_OFFSET, SUBSTRUCT_SIZE]
     if any(l.split() and l.split()[0] in HOOK_COMMANDS for l in lines):
@@ -285,6 +309,7 @@ def main():
     item_checks = {}  # label -> [item name, item id, wanted, found]
     party_checks = {}  # label -> [species name, species id, slot, {word key: value}]
     text_checks = {}  # label -> [text label, {"b<i>": RAM word, "r<i>": ROM word}]
+    wild_checks = {}  # label -> [MAP_X, field, {species id: SPECIES_*}, species read or None]
 
     def sym(m):
         name = m.group(2)
@@ -349,6 +374,13 @@ def main():
             addr = syms["gBattleMons"] + int(t[1]) * consts[BATTLE_MON_SIZE] + consts[BATTLE_MON_SPECIES]
             out.append("until %X 2 %X %s %s 24" % (addr, consts[t[2]], t[3] if len(t) > 3 else "60000",
                                                   t[4] if len(t) > 4 else "A"))
+        elif t[0] == "expect_wild":
+            # the wild opponent (battler 1) is one of the species of the map's table
+            key = (t[1], t[2] if len(t) > 2 else "land_mons")
+            label = "wild%d" % len(wild_checks)
+            wild_checks[label] = [key[0], key[1], {consts[sp]: sp for sp in wild_tables[key]}, None]
+            addr = syms["gBattleMons"] + consts[BATTLE_MON_SIZE] + consts[BATTLE_MON_SPECIES]
+            out.append("read %X 2 %s" % (addr, label))
         elif t[0] == "battlepp":
             # gBattleMons[N].pp[0..3] = VALUE: a long mashed battle must not run the lead's first move out of PP
             # ("There's no PP left for this move!" and mashing A picks it again forever)
@@ -536,6 +568,9 @@ def main():
             prefix, key = m.group(1).split("_", 1)
             party_checks[prefix][3][key] = int(m.group(3), 16)
             continue  # reported after the run
+        if m and m.group(1) in wild_checks:
+            wild_checks[m.group(1)][3] = int(m.group(3), 16)
+            continue  # reported after the run
         if m and m.group(1) in item_checks:
             check = item_checks[m.group(1)]
             check[3] |= int(m.group(3), 16) == check[1]
@@ -565,6 +600,14 @@ def main():
         line = "party slot %d species = %d (%s = %d)" % (slot, species, name, want)
         if species != want:
             line += "   <-- EXPECTED %s" % name
+            ok = False
+        print(line)
+    for map_name, field, ids, got in wild_checks.values():
+        line = "wild species = %s (%s %s)" % (got, map_name, field)
+        if got in ids:
+            line += ": %s" % ids[got]
+        else:
+            line += "   <-- EXPECTED one of %s" % ", ".join(sorted(ids.values()))
             ok = False
         print(line)
     for name, words in text_checks.values():

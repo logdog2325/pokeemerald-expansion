@@ -7,6 +7,14 @@ One numbered checklist per round, newest round at the top. Categories: **bug / b
 
 Status: `[ ]` open · `[~]` in progress · `[x]` done (commit) · `[-]` won't do (why)
 
+## Round 2 (after the round 1 ROM)
+
+| # | Category | Item | Status |
+|---|---|---|---|
+| 2.2 | balance | "also I think there are no pokemon you can encounter in draconid pass you probably want to make an encounter table for that area" | [x] `gDraconidPass`: land Lv 3–5 (Hoenn regulars + Pidgey, Bidoof, Teddiursa, Mareep, Rockruff 1%, Flabébé 1%), surf and rods for the stream; `check_wild.py` `HACK_MAPS`; `draconid_pass.play` (D-300) |
+| 2.3 | balance | "also did you add some gens 1-9 pokemon on every route that makes sense for the area?" | [x] Gen 1–2 species not in the Hoenn dex by habitat (35 new to the wild), more variety on the seas (Slowpoke, Mantine, Krabby, Shellder, Remoraid, Qwilfish); every route 3–6 newcomers, the seas 3–4; 361 slots in 110 tables (D-301, docs/hack_wild.md) |
+| 2.4 | balance | "also is larvesta in petalburg forrest?" – "also make it a 1% encounter in petalburg too" | [x] Larvesta Lv 6 in Petalburg Woods' last 1% slot (was a duplicate Slakoth); the Fiery Path keeps its 1% Larvesta (D-302) |
+
 ## Round 1 (after v1, commit 94f937d3)
 
 The round came with the full story add-on (saved as [hack_story.md](hack_story.md), source of truth) and the
