@@ -16,6 +16,16 @@ add-on ([hack_story.md](hack_story.md)) and a fourth rival, Nerine; the checklis
 menu) → `pokeemerald.gba`, `make release` → `pokeemerald-release.gba`; zipped ROMs for the playtester go to
 `dist/` (gitignored).
 
+## Round 2 – notes on the v2 preview
+The checklist is in [hack_feedback.md](hack_feedback.md) (2.1 – 2.17, all done); decisions D-300 – D-463.
+- [x] Batch m9 pushed (c5f9dd42): Draconid Pass fix and its wild table, Gen 1–2 species on the routes, Larvesta 1% in
+      Petalburg Woods, Courtney's YES/NO and ASHER, Birch's burden line, Dawn/Dusk Stones, the multi team check, a
+      60-slot Items pocket, Z-Moves through the story, more Aster/Nerine battles – `make check` 5413, matrix green
+- [~] Batch m10: Mega Stones everywhere + the post-game counter, uniform lines for every NPC, the Magma grunt sprites,
+      Birch and the meteor on Route 101, the ELDER's new-game speech (his SALAMENCE, D-421), Drake's story, the falling
+      star; the matrix now runs round 2's tests in the Deino chains
+- [ ] "Jump to act" debug menu + playtest guide v2 (D-480 –), then the v2 ROM
+
 ## Round 1 – v2 story (in progress)
 - [x] Docs: story saved, feedback checklist, superseded decisions marked, v2 decisions (D-100–D-119; acts D-120–D-159)
 - [x] Quick fixes: dragon lines evolve at 25/50 (D-107), every Mega checked, player sprite audit (never Brendan/May)
