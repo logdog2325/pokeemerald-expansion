@@ -1,0 +1,33 @@
+# Dawn Stone / Dusk Stone item balls (D-342): warp next to each ball, face it, pick it up.
+# Needs opening_lab_done.ss from tests/opening.play in the same output directory; debug build (warp).
+loadstate opening_lab_done.ss
+setflag FLAG_DEBUG_NO_ENCOUNTER
+setflag FLAG_DEBUG_NO_TRAINER_SEE
+warp MAP_MT_PYRE_2F 1 10
+run 150
+press LEFT 2 20
+press A 2 30
+mash A 600
+expect_item ITEM_DUSK_STONE 1
+expect_flag FLAG_ITEM_MT_PYRE_2F_DUSK_STONE 1
+warp MAP_MT_PYRE_EXTERIOR 27 16
+run 150
+press UP 2 20
+press A 2 30
+mash A 600
+expect_item ITEM_DUSK_STONE 1
+expect_flag FLAG_ITEM_MT_PYRE_EXTERIOR_DUSK_STONE 1
+warp MAP_ABANDONED_SHIP_ROOMS_1F 4 6
+run 150
+press UP 2 20
+press A 2 30
+mash A 600
+expect_item ITEM_DAWN_STONE 1
+expect_flag FLAG_ITEM_ABANDONED_SHIP_ROOMS_1F_DAWN_STONE 1
+warp MAP_VICTORY_ROAD_1F 39 26
+run 150
+press RIGHT 2 20
+press A 2 30
+mash A 600
+expect_item ITEM_DAWN_STONE 1
+expect_flag FLAG_ITEM_VICTORY_ROAD_1F_DAWN_STONE 1

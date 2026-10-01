@@ -178,6 +178,9 @@ Grouped by area; each entry names the file(s).
 | `FLAG_HIDE_DRACONID_HOUSE_ELDER`, `FLAG_HIDE_DRACONID_VILLAGE_NERINE` (changed, Act 7 extension) | the Elder's call sets the first (he is at the shrine); both are cleared right before the credits in the village (they were cleared at the summit) |
 | `FLAG_HIDE_SKY_PILLAR_WALLACE` (vanilla, reused; D-203) | Wallace at the foot of the Sky Pillar: shown by the OnTransition hook while he waits for his battle, set otherwise |
 | `FLAG_DEFEATED_GROUDON` / `FLAG_DEFEATED_KYOGRE` (vanilla, reused; D-208) | set when the post-game Groudon / Kyogre is caught; the Weather Institute reads them as before |
+- D-342: four item-ball flags renamed after the stones they now hold (same numbers): `FLAG_ITEM_ABANDONED_SHIP_ROOMS_1F_DAWN_STONE`
+  (was …_HARBOR_MAIL), `FLAG_ITEM_VICTORY_ROAD_1F_DAWN_STONE` (was …_MAX_ELIXIR), `FLAG_ITEM_MT_PYRE_2F_DUSK_STONE`
+  (was …_ULTRA_BALL), `FLAG_ITEM_MT_PYRE_EXTERIOR_DUSK_STONE` (was …_MAX_POTION); the maps' item balls hold the stones.
 
 ## Vars
 | Var | Values |

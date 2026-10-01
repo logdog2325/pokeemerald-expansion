@@ -1782,3 +1782,12 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   that he'll know who the player really is whatever they wear – a promise the uniform reactions later test.
   *Alternatives:* NO repeats the question (nagging), NO starts a battle (out of tone for a recruitment), no choice
   (the playtester asked for one).
+- **D-342 Dawn Stone and Dusk Stone on the map** (the task "Add Dawn Stone and Dusk Stone sources"): two of each,
+  as item balls in place of low-value vanilla items at the ORAS spots – Dusk Stone on Mt. Pyre (2F and the
+  exterior), Dawn Stone in the Abandoned Ship (ORAS's Sea Mauville has no Emerald map; the ship is the same kind of
+  sunken wreck off Slateport) and Victory Road. The Abandoned Ship stone comes after Surf (S6), before Wally's
+  Lilycove Gallade and the Shoal Cave Snorunt; the Mt. Pyre stones meet the Litwick, Misdreavus and Murkrow of the
+  wild tables (D-300). Two of each covers the evolutions the player can reach (Gallade + Froslass; Chandelure +
+  Honchkrow or Mismagius); flags keep their numbers, renamed. *Alternatives:* selling them at the battle-item
+  counter (it is a battle-item shop, and its post-game tier is being rebuilt for the Mega Stones and Z-Crystals);
+  NPC gifts (no fitting giver at those spots); one of each (two Dawn Stone evolutions exist in reach).

@@ -79,6 +79,7 @@ python3 tools/hack/check_hardlock.py [-v] [--battles]       # hard locks: waitst
 python3 tools/hack/emu/play.py tools/hack/emu/tests/hardlock.play -o /tmp/emu   # after act7.play: lock, whiteout, retry and lost-multi-battle facts the checker relies on
 python3 tools/hack/emu/play.py tools/hack/emu/tests/trade_evos.play -o /tmp/emu   # after rustboro.play
 python3 tools/hack/emu/play.py tools/hack/emu/tests/battle_items.play -o /tmp/emu # after rustboro.play
+python3 tools/hack/emu/play.py tools/hack/emu/tests/stones.play -o /tmp/emu       # Dawn / Dusk Stone item balls (after opening.play)
 python3 tools/hack/emu/play.py tools/hack/emu/tests/fades.play -o /tmp/emu && python3 tools/hack/emu/fade_check.py /tmp/emu  # same-screen fades (D-278)
 python3 tools/hack/emu/matrix.py -o /tmp/matrix       # all 18 gender x egg x second-starter flows
 python3 tools/hack/check_story.py                     # every new flag / story state set and read
