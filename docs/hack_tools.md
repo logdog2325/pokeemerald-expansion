@@ -179,6 +179,8 @@ and runs in the Deino chains.
 `title.play` (the title screen: the movie into the title, the banner, Regidrago's glow, START → main menu; then NEW
 GAME and every page of the ELDER's new-game speech into the bedroom, D-420) boots from power-on, needs no savestate
 and runs in the Deino chains. The other chains start with Quickstart, which skips the speech.
+Round 2's checks run in the Deino chains too: `draconid_pass`, `stones`, `multi_teams` and `bag_room` (from
+`opening.play`'s states), `uniform_npcs` and `drake` (from `rustboro_done.ss`).
 
 ## Story checks – `tools/hack/check_story.py`
 ```sh
