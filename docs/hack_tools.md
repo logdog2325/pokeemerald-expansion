@@ -147,6 +147,7 @@ python3 tools/hack/emu/play.py test.play -o /tmp/out
 | `expect_party SLOT SPECIES_X` | the species in party slot SLOT (0 = first), decrypted from the box data |
 | `expect_seen SPECIES_X 0/1`, `expect_caught SPECIES_X 0/1` | the Pokédex's seen / caught flag for the species (`dexSeen` / `dexCaught`, by its `NATIONAL_DEX_*` number) |
 | `expect_text LABEL [BUFFER]` | the text in BUFFER (default `gStringVar4`) starts like the ROM text LABEL (up to 24 bytes, stopping at its first placeholder); e.g. a PokéNav call |
+| `until_text LABEL MAX [KEYS] [OFFSET]` | run until `gStringVar4` holds the ROM text LABEL (4 bytes at OFFSET, a multiple of 4, default 8: past a "NAME: " speaker; no placeholder there), tapping KEYS meanwhile – a sync point in a long scene that doesn't count the text boxes before it (`drake.play`) |
 | `settrainer TRAINER_X 0/1` | set or clear a trainer's defeated flag |
 | `setvar NAME V`, `gender M/F`, `default NAME V` (+ `-D NAME=V`) | change a var, the player's gender, script defaults |
 | `setflag NAME`, `clearflag NAME` | change a save-block flag, e.g. `setflag FLAG_DEBUG_NO_ENCOUNTER` to walk without wild battles |

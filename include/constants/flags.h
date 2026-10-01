@@ -681,8 +681,8 @@
 #define FLAG_UNUSED_0x272  0x272 // Unused Flag
 #define FLAG_UNUSED_0x273  0x273 // Unused Flag
 #define FLAG_UNUSED_0x274  0x274 // Unused Flag
-#define FLAG_UNUSED_0x275  0x275 // Unused Flag
-#define FLAG_UNUSED_0x276  0x276 // Unused Flag
+#define FLAG_DRACONID_DRAKE_TOLD            0x275 // Draconid Emerald: DRAKE told the player after his first LEAGUE defeat that he was born a DRACONID (D-442)
+#define FLAG_DRACONID_DRAKE_RECONCILED      0x276 // Draconid Emerald: post-game, DRAKE and the ELDER made peace by the ELDER's door; DRACO METEOR from then on (D-444)
 #define FLAG_DRACONID_LANCE_ARMED           0x277 // Draconid Emerald: set on the first village visit of the post-game; LANCE lands on a later one (D-261)
 #define FLAG_HIDE_DRACONID_VILLAGE_LANCE    0x278 // Draconid Emerald: LANCE and his DRAGONITE in the village; cleared for good when he lands (D-261)
 #define FLAG_RECEIVED_DRAGONINITE           0x279 // Draconid Emerald: LANCE's gifts after the first win, a DRATINI and the DRAGONINITE (D-262)

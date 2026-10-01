@@ -68,6 +68,9 @@ A .play script is a gbarun script plus:
   expect_party SLOT SPECIES_X   the species in party slot SLOT (0 = first; decrypts the box data)
   expect_text LABEL [BUFFER]    the text now in BUFFER (default gStringVar4) starts like the ROM text LABEL
                           (up to 24 bytes, stopping at its first placeholder such as {PLAYER}; e.g. a PokéNav call)
+  until_text LABEL MAX [KEYS] [OFFSET]   run until the text in gStringVar4 is the ROM text LABEL (4 bytes at OFFSET,
+                          default 8: past a "NAME: " speaker), tapping KEYS (e.g. A) meanwhile – a sync point in a
+                          long scene that doesn't depend on how many text boxes came before
   expect_pos X Y          the player's map coordinates (without MAP_OFFSET)
   expect_map MAP_X        the current map (gSaveBlock1Ptr->location)
   bagcursor POCKET_X N    the bag opens on pocket POCKET_X with the cursor on its entry N (0 = first), and the
@@ -583,6 +586,15 @@ def main():
             label = "map_%s#%d" % (t[1], len(expects))
             expects.append((label, (m >> 8) | ((m & 0xFF) << 8)))
             out.append("read %s+%X 2 %s" % (sb1, loc_off, label))
+        elif t[0] == "until_text":
+            # until_text LABEL MAX [KEYS] [OFFSET]: the 4 bytes at OFFSET (a multiple of 4, default 8: past a
+            # "NAME: " speaker) of gStringVar4 match the ROM text LABEL, read from the ROM file now
+            off = int(t[4]) if len(t) > 4 else 8
+            with open(args.rom, "rb") as f:
+                f.seek(syms[t[1]] - 0x08000000 + off)
+                want = int.from_bytes(f.read(4), "little")
+            keys = " %s 24" % t[3] if len(t) > 3 else ""
+            out.append("until %X 4 %X %s%s" % (syms["gStringVar4"] + off, want, t[2], keys))
         elif t[0] == "expect_text":
             # compare the first TEXT_BYTES bytes of the buffer (RAM) and of the text label (ROM)
             label = "text%d" % len(text_checks)

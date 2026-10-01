@@ -21,6 +21,7 @@ DraconidVillage_OnTransition_1:
 	call DraconidVillage_EventScript_DraconidAttackOnTransition
 	call DraconidVillage_EventScript_LanceOnTransition
 	call DraconidVillage_EventScript_DraconidRivalsOnTransition
+	call DraconidVillage_EventScript_DrakeOnTransition
 	return
 
 DraconidVillage_OnTransition_2:

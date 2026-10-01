@@ -2247,6 +2247,72 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   left a small dome that read as a hat), horns rising from the middle of the band (a crown). Vanilla `birch.png`
   stays in the repository, unused.
 
+- **D-440 Drake is the Elder's younger brother** (feedback 2.14: "give drake something cool to do in the story … or
+  have some of his backstory revealed"): Hoenn's Elite Four dragon master was born in the village below the shrine.
+  He and his older brother hatched their **Bagon** the same spring – the Elder's "old dragon" that flies the player to
+  the Sky Pillar (D-150) is the other Salamence, never named before – and forty years ago Drake flew his down off the
+  mountain to see the sea. The clan keeps to its mountain: its people go down to trade and come home (the hunter of
+  House 2, the clan's travellers with the eggs, D-230), Birch is "an old friend of our clan" (D-270), and "few
+  travellers find this valley" (Lance's scene); a tamer who leaves for good, and shows a clan dragon off in the
+  lowlanders' League, breaks that. His brother, already the heir, told him that if he left he need not come back; he
+  kept to it, sailed the world (canon's old sailor), became the League's dragon master and never once flew over the
+  mountains. The Elder heard of "a dragon master in the lowlanders' LEAGUE, with a SALAMENCE" from the traders and never
+  said his name. **Lance** (D-260) is the clan's old loss – the verse "One wing flew north, and did not come back" –
+  and Drake its new one, which is how the Elder makes peace: "I never wanted to sing that verse for my own brother.
+  Now I will not have to." Nothing the Elder said before contradicts it: he never spoke of family (D-100: the clan
+  raised the player). – Alt: a sworn brother (the brief's other option; "brother" carries the scene without a
+  definition); a Draconid of the falls (Zinnia's sister clan, D-155: the Elder would have no stake); Drake knowing
+  the mission (nobody outside the clan, Birch and Oak knows it before Sootopolis, D-244a – he is clan, but he left
+  long before it). – The brothers' quarrel is old and plain, and it makes the Elder's grave calm a man's.
+- **D-441 Where his moment goes: the village attack, after the League** (at most two scenes before the League – it has
+  none): the League is where the player first meets him (6.06), so the reveal comes there and the payoff in Act 7's
+  attack on the village (step 55), the one place he would come back for; a reconciliation follows in the post-game.
+  He *does* something rather than fights: Maxie turns Primal Groudon on the shrine door where the Elder lies hurt (he
+  already took one blow, D-206), and Drake's Salamence takes the second; Drake holds the door through the Primal
+  multi battle. No new battle or team: the village already has five doubles with five partners, the playtester asked
+  for Brendan or May beside the player in the final (follow-up 2), and his League teams stay as they are
+  (`check_strength.py`: 0 weaker). – Alt: a mid-game rescue (Act 5½ at Ever Grande, his own doorstep; but the
+  revenge arc already crowds those terraces, and he would meet the player before the League with nothing to say
+  yet); a multi battle beside him in the village (a sixth double); Drake as a third partner choice in the final (it
+  would take the Latis' moment from the rivals). – Three scenes, each a beat: a hint, a confession, a homecoming.
+- **D-442 The League lines** (`EverGrandeCity_DrakesRoom`, one `call` per vanilla `msgbox`): his room has no speaker
+  names, as vanilla. First run: vanilla's opening and question around one new beat – the player's teal band with two
+  ivory horns (the clan mark, D-051), "I have not seen one of those in forty years." After the first win (in the
+  vanilla Defeated script, before talking again): the dragon "fought like one hatched below the shrine, from one of
+  the ELDER's eggs", "I was born below it", the Elder is his older brother, the Bagon, the rule, "I never did", and
+  "Say nothing of me to him. Forty years is too long for a message." (`FLAG_DRACONID_DRAKE_TOLD`). Later runs before
+  the finale: "I take it you have said nothing to my brother." From `VILLAGE_STATE_SAVED` (he has gone home): "These
+  days I keep the LEAGUE's door by day, and fly home to the village by night" and "I will see you at home." The
+  rematch team after the Hall of Fame is unchanged (D-174). – Alt: the reveal before the battle (it would answer the
+  hint at once); a reveal on every run (it is a confession, made once).
+- **D-443 The village staging** (`drake.pory`, two one-line hooks in `act7x.pory`): in the final's intro, after
+  Maxie's "Behold GROUDON", the camera goes up three tiles to the shrine door (from the player's (19, 11) the Elder
+  at (19, 6) is off the top of the screen), Maxie orders Groudon to "Bury that shrine, and the old man in its door!",
+  a Salamence's cry, and it dives into the crater (`fly_down`) with Drake on its back; a white flash
+  (`fadescreenswapbuffers`) throws Maxie and Archie a step aside, (18, 8) → (17, 8) and (20, 8) → (21, 8), and Drake
+  leaps from its back to (19, 7), in front of his brother. The Salamence stays at the foot of the crater, (19, 9),
+  facing Groudon: its 32×32 sprite covers the tile above it, so at (19, 8) it hid him. Maxie knows him ("This is no
+  concern of the LEAGUE's"), Archie the sailor laughs at "the old sea dog", the Elder says only "…DRAKE.", Aster
+  "B-BROTHER?!", and Drake gives the fight to the player: "Nothing touches this door while I stand in it." The
+  battle and its retries keep that layout (`VILLAGE_STATE_FINAL` in his OnTransition hook, which also keeps the
+  leaders aside). After the win, once Maxie and Archie have gone: the brothers face to face for six boxes ("You came
+  home." … "Forty years, DRAKE." / "…I know."), then he flies off to watch the pass in case Maxie's people come back –
+  so the evening's goodbyes stay the rivals' and the two talk properly in the post-game. His objects are hidden by
+  `FLAG_TEMP_1F` (the next free one after the attack's 11 – 1D and Lance's 1E) whenever he isn't there (D-136). – Alt: the Salamence between
+  the leaders at (19, 8) (it covered Drake); leaving the leaders where they were (its wings over them); Drake at the
+  evening goodbyes (a silent figure, or new lines in act7x's scene).
+- **D-444 Post-game: by the Elder's door, peace, Draco Meteor**: from `VILLAGE_STATE_SAVED` Drake and his Salamence
+  stand by the Elder's house, (26, 12) / (27, 12) – off the paths, away from Lance's square and the attack's spots.
+  The first talk is the reconciliation: the Elder comes out of his door (lance.pory's scene Elder, added there) –
+  "Your tea has gone cold again." – the anger and the pride on both sides, the verse, "Welcome home, DRAKE."
+  (`FLAG_DRACONID_DRAKE_RECONCILED`). Then, and on every later talk, **Draco Meteor**, "the clan's oldest move", the
+  brothers' father taught them: the vanilla `move_tutor`, any number of times, for any Pokémon that can learn it in
+  some game (the expansion's teachable check; 77 species, every dragon the player can own). For that the tutor scan
+  (`make_tutors.py`) reads `data/scripts/draconid/*.inc` too. Once Lance has landed, Drake's line is "So the NORTHERN
+  WING came home this year, too. The old songs will need a new verse." – Alt: a Draco Meteor tutor that asks for max
+  friendship (HGSS; the hack has no friendship checker to point at); a once-only tutor (vanilla's Emerald tutors, but
+  this is a teacher at home); a post-game battle with Drake (he has his League rematch). – The playtester's two
+  optional payoffs in one short scene.
 - **D-460 The opening's falling star is a scene of its own** (feedback 2.17: "can we create a short falling star
   animation for this intro segment I know you can do it"): the new game's first night
   (`DraconidVillage_PlayersHouse_2F_EventScript_WakeUp`) no longer flashes the black screen white
@@ -2313,5 +2379,6 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   behind for the test (a variable kept only for testing; the main callback already proves it ran). – Checked both
   ways: a wrong text label or position fails the run. On the release ROM (no Quickstart) the same checks passed
   after `release_boot.play`'s real new-game menus (a scratch copy, not committed).
+
 
 

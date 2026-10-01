@@ -975,6 +975,7 @@ DraconidVillage_EventScript_DraconidFinalIntro::
 	waitmoncry
 	msgbox DraconidVillage_EventScript_DraconidFinalIntro_Text_5
 	closemessage
+	call DraconidVillage_EventScript_DrakeComesHome
 	applymovement LOCALID_DRACONID_VILLAGE_BRENDAN, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
 	msgbox DraconidVillage_EventScript_DraconidFinalIntro_Text_6
@@ -1140,6 +1141,7 @@ DraconidVillage_EventScript_DraconidPrimalWon::
 	waitmovement 0
 	removeobject LOCALID_DRACONID_VILLAGE_MAXIE
 	removeobject LOCALID_DRACONID_VILLAGE_ARCHIE
+	call DraconidVillage_EventScript_DrakeAndTheElder
 	setvar VAR_DRACONID_VILLAGE_STATE, VILLAGE_STATE_PRIMAL_WON
 	fadescreen FADE_TO_BLACK
 	msgbox DraconidVillage_EventScript_DraconidPrimalWon_Text_13

@@ -27,6 +27,8 @@ script DraconidVillage_OnTransition {
     call(DraconidVillage_EventScript_LanceOnTransition)
     // ASTER and NERINE at home before the LEAGUE, and by the pond for their post-game double (draconid_rivals.pory)
     call(DraconidVillage_EventScript_DraconidRivalsOnTransition)
+    // DRAKE and his SALAMENCE: at the shrine door in the Primal battle, by the ELDER's door after the finale (drake.pory)
+    call(DraconidVillage_EventScript_DrakeOnTransition)
 }
 
 // ---------------------------------------------------------------------------
