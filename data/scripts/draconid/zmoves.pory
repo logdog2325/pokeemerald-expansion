@@ -1,0 +1,180 @@
+// Draconid Emerald round 1: Z-Power, spread through the story (follow-ups 26-27 and the playtester's "get access to
+// z moves earlier ... spread throughout the story", feedback 1.58; decisions D-267 - D-269).
+//
+//   Village shrine       Act 1, the egg ceremony: the ELDER gives the Z-POWER RING the dragon keepers of ALOLA sent
+//                        with their egg, and the first crystal, NORMALIUM Z
+//   Slateport City       Act 2: PROF. OAK meets a ship from ALOLA - his cousin SAMSON's crystals for the three
+//                        starters he brought, the second partner's first (FIRIUM Z, WATERIUM Z, GRASSIUM Z)
+//   Meteor Falls         Act 3: ASTER hands over the DRAGONIUM Z from the falls' DRACONIDS (at Jagged Pass if the BAG
+//                        was full)
+//   Mt. Pyre summit      Act 4: NERINE, still in AQUA blue, leaves a JANGMO-O tamer the KOMMONIUM Z by the lantern
+//   Item balls           the other thirteen type crystals where their type lives, each in place of a low-value vanilla
+//                        item (map.json; the pickup flag keeps its number, renamed): BUGINIUM Z (Petalburg Woods),
+//                        ROCKIUM Z (Granite Cave 1F), FIGHTINIUM Z (Granite Cave B1F), FAIRIUM Z (Route 117),
+//                        POISONIUM Z (Route 112), GROUNDIUM Z (the Route 111 desert), ELECTRIUM Z and STEELIUM Z
+//                        (New Mauville), FLYINIUM Z (Route 119), GHOSTIUM Z (Mt. Pyre 2F), DARKINIUM Z (Aqua
+//                        Hideout B1F), PSYCHIUM Z (Route 127), ICIUM Z (Shoal Cave); and two species crystals where
+//                        their species lives: PIKANIUM Z (Safari Zone south-west), MIMIKIUM Z (hidden, Mt. Pyre's
+//                        slopes) - D-269
+//
+// Who else uses Z-Moves (trainer data, D-268): only ASTER and NERINE, from the night they call RAYQUAZA down (the
+// ELDER gives them their crystals there): their battles at home before the LEAGUE, the Sky Pillar trial and partner
+// teams, the post-game (tools/hack/trainers/check_party.py, Z_TRAINERS). The crystals: DRACONID_Z_CRYSTAL_*
+// (include/constants/draconid.h); the list with the reasons: docs/hack_items.md, "Z-Crystals".
+
+// ---------------------------------------------------------------------------
+// The egg ceremony (DraconidVillage_Shrine_EventScript_EggCeremony calls this once ASTER has left): the ring and
+// the first crystal. The BAG is empty this early, so both always fit.
+// ---------------------------------------------------------------------------
+
+script DraconidVillage_Shrine_EventScript_DraconidZRing {
+    msgbox(format("ELDER: Wait, {PLAYER}. Something else came to us with the egg from ALOLA."))
+    msgbox(format("ELDER: The dragon keepers of VAST PONI CANYON sent this, “for the one who carries the prophecy.”\p"
+                  "That is you now."))
+    giveitem(ITEM_Z_POWER_RING)
+    msgbox(format("ELDER: And the first of their crystals. The simplest one, so that any partner can use it."))
+    giveitem(DRACONID_Z_CRYSTAL_FIRST)
+    setflag(FLAG_RECEIVED_Z_POWER_RING)
+    msgbox(format("ELDER: In ALOLA they call it Z-POWER.\p"
+                  "A trainer's whole strength and a POKéMON's, made one for a single move."))
+    msgbox(format("ELDER: Once in a battle, and it takes everything you both have.\p"
+                  "Do not lean on it, {PLAYER}."))
+    msgbox(format("ELDER: Let your partner hold the crystal. In battle, choose a move of the crystal's type and press START."))
+    msgbox(format("ELDER: The keepers' other crystals will come to you as the road goes on."))
+}
+
+// ---------------------------------------------------------------------------
+// Slateport City (Act 2): PROF. OAK waits by STERN's shipyard, (23, 39), a few steps from the main street up from the
+// beach, until he has given the crystals (LOCALID_SLATEPORT_OAK on FLAG_TEMP_11; SlateportCity_OnTransition calls
+// ..._DraconidOakOnTransition). He gave the second partner (D-233) and knows the mission (D-244a).
+// ---------------------------------------------------------------------------
+
+script SlateportCity_EventScript_DraconidOakOnTransition {
+    if (var(VAR_SECOND_STARTER) == SECOND_STARTER_NONE || flag(FLAG_RECEIVED_OAK_Z_CRYSTAL)) {
+        setflag(FLAG_TEMP_11)
+    }
+}
+
+script SlateportCity_EventScript_DraconidOak {
+    lock
+    faceplayer
+    msgbox(format("PROF. OAK: Ah, {PLAYER}! I came down to meet a ship from ALOLA. It just came in."))
+    msgbox(format("PROF. OAK: My cousin SAMSON studies POKéMON over there.\p"
+                  "I wrote to him about the partner I gave you in RUSTBORO, and look what he sent!"))
+    // all three or none: a full BAG keeps OAK waiting here (the object stays until FLAG_RECEIVED_OAK_Z_CRYSTAL)
+    checkitemspace(DRACONID_Z_CRYSTAL_CHARMANDER)
+    if (var(VAR_RESULT) == TRUE) {
+        checkitemspace(DRACONID_Z_CRYSTAL_TOTODILE)
+    }
+    if (var(VAR_RESULT) == TRUE) {
+        checkitemspace(DRACONID_Z_CRYSTAL_TREECKO)
+    }
+    if (var(VAR_RESULT) == FALSE) {
+        msgbox(format("PROF. OAK: Oh! Your BAG is full. Make some room, and I'll wait right here."))
+        release
+        end
+    }
+    // the second partner's crystal first
+    switch (var(VAR_SECOND_STARTER)) {
+        case SECOND_STARTER_CHARMANDER:
+            giveitem(DRACONID_Z_CRYSTAL_CHARMANDER)
+        case SECOND_STARTER_TOTODILE:
+            giveitem(DRACONID_Z_CRYSTAL_TOTODILE)
+        default:
+            giveitem(DRACONID_Z_CRYSTAL_TREECKO)
+    }
+    setflag(FLAG_RECEIVED_OAK_Z_CRYSTAL)
+    msgbox(format("PROF. OAK: A Z-CRYSTAL! With the ring your ELDER gave you, your partner can put everything into one move.\p"
+                  "SAMSON says to use it wisely. Coming from him, that's saying something!"))
+    msgbox(format("PROF. OAK: He sent one for each of the three POKéMON I brought to HOENN.\p"
+                  "The other two are coming home to KANTO with me, and they hardly need crystals in a lab!"))
+    // then the other two starters' (Oak is their only source, so the BAG has exactly the partner's)
+    checkitem(DRACONID_Z_CRYSTAL_CHARMANDER)
+    if (var(VAR_RESULT) == FALSE) {
+        giveitem(DRACONID_Z_CRYSTAL_CHARMANDER)
+    }
+    checkitem(DRACONID_Z_CRYSTAL_TOTODILE)
+    if (var(VAR_RESULT) == FALSE) {
+        giveitem(DRACONID_Z_CRYSTAL_TOTODILE)
+    }
+    checkitem(DRACONID_Z_CRYSTAL_TREECKO)
+    if (var(VAR_RESULT) == FALSE) {
+        giveitem(DRACONID_Z_CRYSTAL_TREECKO)
+    }
+    msgbox(format("PROF. OAK: A crystal isn't tied to one POKéMON, you know. Any POKéMON of its type can hold it."))
+    msgbox(format("PROF. OAK: Now, I'd best not be seen chatting with a TEAM MAGMA grunt for too long. Take care, {PLAYER}!"))
+    closemessage
+    fadescreen(FADE_TO_BLACK)
+    removeobject(LOCALID_SLATEPORT_OAK)
+    fadescreen(FADE_FROM_BLACK)
+    release
+}
+
+// ---------------------------------------------------------------------------
+// Meteor Falls (Act 3): ASTER, once she has taken MAXIE's shard (MeteorFalls_1F_1R_EventScript_DraconidAster calls
+// this); JaggedPass_EventScript_DraconidAster calls ..._DraconidDragoniumZAgain after the MEGA RING, for a full BAG.
+// The falls' DRACONIDS are the clan's kin (D-155, D-271).
+// ---------------------------------------------------------------------------
+
+script MeteorFalls_1F_1R_EventScript_DraconidDragoniumZ {
+    if (flag(FLAG_RECEIVED_DRAGONIUM_Z)) {
+        return
+    }
+    msgbox(format("ASTER: …And this. Don't look at me like that. It isn't from me.\p"
+                  "The DRACONIDS of these falls heard the ELDER gave you a Z-POWER RING. They sent you a DRAGONIUM Z."))
+    giveitem(DRACONID_Z_CRYSTAL_FALLS)
+    if (var(VAR_RESULT) == FALSE) {
+        msgbox(format("ASTER: Your BAG's full? Then I'll hold on to it. You'll see me again."))
+        return
+    }
+    setflag(FLAG_RECEIVED_DRAGONIUM_Z)
+    msgbox(format("ASTER: A dragon's crystal, for the ELDER's chosen. Don't waste it on MAGMA's errands."))
+}
+
+script JaggedPass_EventScript_DraconidDragoniumZAgain {
+    if (flag(FLAG_RECEIVED_DRAGONIUM_Z)) {
+        return
+    }
+    msgbox(format("ASTER: And the falls' crystal. You'd better have room for it this time."))
+    giveitem(DRACONID_Z_CRYSTAL_FALLS)
+    if (var(VAR_RESULT) == TRUE) {
+        setflag(FLAG_RECEIVED_DRAGONIUM_Z)
+    }
+}
+
+// ---------------------------------------------------------------------------
+// Mt. Pyre summit (Act 4): NERINE after her fight 4 (MtPyre_Summit_EventScript_DraconidNerine calls this), for a
+// player whose egg was the Alolan one: she knows where the line comes from (a hint, D-269). She won't be seen
+// handing anything to a MAGMA uniform, so she sets the crystal down by the lantern, (21, 9): an item ball
+// (LOCALID_MT_PYRE_SUMMIT_KOMMONIUM_Z on FLAG_TEMP_12) that stays there until it is picked up - a full BAG only
+// leaves it where it is. MtPyre_Summit_EventScript_DraconidOnTransition calls ..._DraconidKommoniumZOnTransition.
+// ---------------------------------------------------------------------------
+
+script MtPyre_Summit_EventScript_DraconidKommoniumZ {
+    if (var(VAR_STARTER_MON) != DRACONID_EGG_JANGMO_O) {
+        return
+    }
+    msgbox(format("NERINE: …Wait. Your partner's scales ring like a war drum.\p"
+                  "That line comes from ALOLA. I'd know that sound anywhere."))
+    msgbox(format("NERINE: This came off a ship from there. It belongs with your dragon more than with me."))
+    clearflag(FLAG_TEMP_12)
+    addobject(LOCALID_MT_PYRE_SUMMIT_KOMMONIUM_Z)
+    msgbox(format("NERINE: I'll leave it by the lantern. An AQUA grunt doesn't hand things to a MAGMA uniform.\p"
+                  "And don't ask where I got it."))
+}
+
+script MtPyre_Summit_EventScript_DraconidKommoniumZOnTransition {
+    if (var(VAR_STARTER_MON) != DRACONID_EGG_JANGMO_O || var(VAR_NERINE_STATE) < NERINE_STATE_MT_PYRE
+     || flag(FLAG_RECEIVED_KOMMONIUM_Z)) {
+        setflag(FLAG_TEMP_12)
+    }
+}
+
+// the ball: Std_FindItem takes it only if it fits (and removes the object, setting FLAG_TEMP_12)
+script MtPyre_Summit_EventScript_DraconidKommoniumZBall {
+    checkitemspace(DRACONID_Z_CRYSTAL_JANGMO_O)
+    if (var(VAR_RESULT) == TRUE) {
+        setflag(FLAG_RECEIVED_KOMMONIUM_Z)
+    }
+    finditem(DRACONID_Z_CRYSTAL_JANGMO_O)
+}

@@ -121,8 +121,9 @@ script DraconidVillage_Shrine_EventScript_EggCeremony {
     waitmovement(0)
     removeobject(LOCALID_DRACONID_SHRINE_ASTER)
     clearflag(FLAG_HIDE_DRACONID_PASS_ASTER)
-    msgbox(format("ELDER: Hohoho… That girl. Always in a hurry to reach the sky.\p"
-                  "{PLAYER}, once your partner hatches, go down to LITTLEROOT TOWN.\p"
+    msgbox(format("ELDER: Hohoho… That girl. Always in a hurry to reach the sky."))
+    call(DraconidVillage_Shrine_EventScript_DraconidZRing) // the Z-POWER RING and NORMALIUM Z (zmoves.pory, D-267)
+    msgbox(format("ELDER: {PLAYER}, once your partner hatches, go down to LITTLEROOT TOWN.\p"
                   "A man named PROF. BIRCH lives there. He studies POKéMON.\p"
                   "Our clan and his family have shared our knowledge for many years.\p"
                   "Show him your partner. He will know what a young tamer needs.\p"

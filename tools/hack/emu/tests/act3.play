@@ -36,6 +36,9 @@ expect_var VAR_METEOR_FALLS_STATE 1
 expect_flag FLAG_HIDE_ROUTE_112_TEAM_MAGMA 1
 expect_flag FLAG_HIDE_METEOR_FALLS_ASTER 1
 expect_opponent TRAINER_ASTER_METEOR_FALLS_${EGGNAME}
+# the falls' Dragonium Z from Aster (zmoves.pory, D-269)
+expect_item ITEM_DRAGONIUM_Z 1
+expect_flag FLAG_RECEIVED_DRAGONIUM_Z 1
 # Prof. Cozmo, scared of the uniform
 path MeteorFalls_1F_1R 14 18 13 22
 press DOWN 2 10

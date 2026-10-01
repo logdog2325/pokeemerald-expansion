@@ -1,0 +1,229 @@
+# Flow test for Z-Power spread through the story (data/scripts/draconid/zmoves.pory, D-267 - D-269): the Z-Power Ring
+# and the Normalium Z from the egg ceremony (opening.play's run, so already in rustboro_done.ss); an early Z-Move in
+# Aster's Act 2 battle on Granite Cave B1F (Breakneck Blitz, screenshots); Prof. Oak's three crystals in Slateport
+# (Firium Z, Waterium Z, Grassium Z, the second partner's first); some of the crystals in item balls (Rockium Z on
+# Granite Cave 1F, Groundium Z in the Route 111 desert, Electrium Z in New Mauville, Ghostium Z on Mt. Pyre 2F,
+# Darkinium Z in the Aqua Hideout B1F, Buginium Z in Petalburg Woods, Fightinium Z on Granite Cave B1F, Fairium Z on
+# Route 117) and the hidden Mimikium Z on Mt. Pyre's slopes; then a post-game Z-Move against the summit's Deoxys (the wild legend's
+# turn: no Terastallization, D-266). Aster's Dragonium Z at Meteor Falls is checked in act3.play, the Kommonium Z
+# Nerine leaves at the Mt. Pyre summit in act4.play (a Jangmo-o egg only), Aster's and Nerine's own Z-Moves in
+# draconid_rivals.play.
+# Needs rustboro_done.ss from tests/rustboro.play. The battles use a Pokemon given by the debug menu holding the
+# crystal (givemon), made the lead by fainting the others in memory and boosted in memory (999, play.py "boost");
+# the trainer data is untouched. Matrix parameters (tools/hack/emu/matrix.py): EGGNAME = the player's egg in the
+# savestate (Aster's team is named after it), SECOND = the second starter Oak's crystals are ordered by.
+default START rustboro_done.ss
+default EGGNAME DEINO
+default SECOND 2
+loadstate ${START}
+expect_item ITEM_Z_POWER_RING 1
+expect_item ITEM_NORMALIUM_Z 1
+expect_flag FLAG_RECEIVED_Z_POWER_RING 1
+setflag FLAG_DEBUG_NO_ENCOUNTER
+setflag FLAG_DEBUG_NO_TRAINER_SEE
+setflag FLAG_DRACONID_NO_WHITEOUT
+# battle style SET (gSaveBlock2Ptr->optionsBattleStyle, bit 1 of byte 0x15): no "Will you switch?" prompt to mash
+pokebit *@gSaveBlock2Ptr+15 1 1
+
+# --- Act 2: Granite Cave 1F, the Rockium Z in the old Escape Rope's ball ---
+setvar VAR_MAGMA_STATE 3
+setvar VAR_ASTER_STATE 0
+warp MAP_GRANITE_CAVE_1F 17 8
+run 60
+press UP 2 20
+press A 2 30
+mash A 10000
+expect_item ITEM_ROCKIUM_Z 1
+
+# --- Act 2: an early Z-Move. Aster waits on Granite Cave B1F (draconid_rivals.pory); a Lv 20 Deino holding the
+# Normalium Z leads (Headbutt, move slot 3) and turns it into BREAKNECK BLITZ ---
+givemon SPECIES_DEINO 20 ITEM_NORMALIUM_Z
+# the Stone Badge (Act 2): a Pokemon met at Lv 20 obeys it (B_OBEDIENCE_MECHANICS; a disobedient one loses its Z-Move)
+setflag FLAG_BADGE01_GET
+heal
+monstat 0 hp 0
+boost 1
+warp MAP_GRANITE_CAVE_B1F 4 20
+run 60
+walk LEFT 3
+walk UP 17
+until @gMain+4 4 @@BattleMainCB2 30000 A 24
+run 200
+shot 10_granite_battle
+# through the intro to FIGHT: tap A until the move menu takes input (gBattlerControllerFuncs[0])
+poke @gMoveSelectionCursor 3
+until @gBattlerControllerFuncs 4 @@HandleInputChooseMove 6000 A 30
+run 20
+press LEFT 2 10
+press RIGHT 2 10
+shot 11_menu
+press START 2 30
+shot 12_zmenu
+press A 2 20
+wait_gimmick 0 GIMMICK_Z_MOVE 3000 B
+shot 13_blitz_00
+run 40
+shot 13_blitz_01
+run 40
+shot 13_blitz_02
+run 40
+shot 13_blitz_03
+run 40
+shot 13_blitz_04
+run 40
+shot 13_blitz_05
+run 40
+shot 13_blitz_06
+run 40
+shot 13_blitz_07
+# then Bite (move slot 0) for the rest: Headbutt can't touch her Ghost-type ace
+poke @gMoveSelectionCursor 0
+until @gMain+4 4 @@CB2_Overworld 60000 A 24
+mash A 20000
+expect_opponent TRAINER_ASTER_GRANITE_CAVE_${EGGNAME}
+expect_trainer TRAINER_ASTER_GRANITE_CAVE_DEINO 1
+
+# --- Act 2: Prof. Oak by Stern's shipyard in Slateport: his cousin's crystals from Alola for the three starters he
+# brought, the second partner's first (here Totodile's Waterium Z; the order follows VAR_SECOND_STARTER) ---
+heal
+setvar VAR_SECOND_STARTER ${SECOND}
+warp MAP_SLATEPORT_CITY 22 39
+run 60
+shot 20_oak
+press RIGHT 2 20
+press A 2 30
+press A 2 60
+shot 21_oak_talk
+press A 2 60
+press A 2 60
+shot 22_oak_crystal
+mash A 20000
+expect_item ITEM_FIRIUM_Z 1
+expect_item ITEM_WATERIUM_Z 1
+expect_item ITEM_GRASSIUM_Z 1
+expect_flag FLAG_RECEIVED_OAK_Z_CRYSTAL 1
+warp MAP_SLATEPORT_CITY 22 39
+run 60
+shot 23_oak_gone
+expect_flag FLAG_TEMP_11 1
+
+# --- the crystals in item balls ---
+# the Route 111 desert (Go-Goggles), (12, 54)
+warp MAP_ROUTE111 12 55
+run 60
+press UP 2 20
+press A 2 30
+mash A 10000
+expect_item ITEM_GROUNDIUM_Z 1
+warp MAP_NEW_MAUVILLE_INSIDE 16 23
+run 60
+press UP 2 20
+press A 2 30
+mash A 10000
+expect_item ITEM_ELECTRIUM_Z 1
+warp MAP_MT_PYRE_2F 1 10
+run 60
+press LEFT 2 20
+press A 2 30
+mash A 10000
+expect_item ITEM_GHOSTIUM_Z 1
+warp MAP_AQUA_HIDEOUT_B1F 15 11
+run 60
+press UP 2 20
+press A 2 30
+mash A 10000
+expect_item ITEM_DARKINIUM_Z 1
+warp MAP_PETALBURG_WOODS 4 27
+run 60
+press UP 2 20
+press A 2 30
+mash A 10000
+expect_item ITEM_BUGINIUM_Z 1
+warp MAP_GRANITE_CAVE_B1F 15 22
+run 60
+press UP 2 20
+press A 2 30
+mash A 10000
+expect_item ITEM_FIGHTINIUM_Z 1
+warp MAP_ROUTE117 16 19
+run 60
+press UP 2 20
+press A 2 30
+mash A 10000
+expect_item ITEM_FAIRIUM_Z 1
+# a hidden one: the Mimikium Z on Mt. Pyre's slopes, where Mimikyu lives
+warp MAP_MT_PYRE_EXTERIOR 9 9
+run 60
+press UP 2 20
+press A 2 30
+mash A 10000
+expect_item ITEM_MIMIKIUM_Z 1
+
+# --- post-game: Deoxys at the summit; a Lv 60 Hydreigon holding a Dragonium Z (Dragon Rush, move slot 2) at Speed 1,
+# so the wild legend moves first (D-266: no Terastallization), then DEVASTATING DRAKE ---
+setvar VAR_DRACONID_REPUTATION 2
+setvar VAR_PLAYER_OUTFIT 0
+setvar VAR_MAGMA_STATE 12
+setflag FLAG_SYS_GAME_CLEAR
+setflag FLAG_IS_CHAMPION
+# the Champion's eight badges: a Pokemon met at Lv 60 obeys them (B_OBEDIENCE_MECHANICS)
+setflag FLAG_BADGE01_GET
+setflag FLAG_BADGE02_GET
+setflag FLAG_BADGE03_GET
+setflag FLAG_BADGE04_GET
+setflag FLAG_BADGE05_GET
+setflag FLAG_BADGE06_GET
+setflag FLAG_BADGE07_GET
+setflag FLAG_BADGE08_GET
+setvar VAR_DRACONID_FINALE_STATE 9
+setvar VAR_DRACONID_VILLAGE_STATE 10
+setvar VAR_ASTER_STATE 9
+setvar VAR_NERINE_STATE 9
+givemon SPECIES_HYDREIGON 60 ITEM_DRAGONIUM_Z
+heal
+monstat 0 hp 0
+monstat 1 hp 0
+boost 2
+monstat 2 speed 1
+warp MAP_SKY_PILLAR_TOP 14 8
+run 60
+press UP 2 10
+press A 2 30
+until @gMain+4 4 @@BattleMainCB2 30000 A 24
+run 200
+shot 40_deoxys
+poke @gMoveSelectionCursor 2
+until @gBattlerControllerFuncs 4 @@HandleInputChooseMove 6000 A 30
+run 20
+press RIGHT 2 10
+press LEFT 2 10
+shot 41_menu
+press START 2 30
+shot 42_zmenu
+press A 2 20
+run 60
+shot 43_deoxys_turn_00
+run 60
+shot 43_deoxys_turn_01
+run 60
+shot 43_deoxys_turn_02
+run 60
+shot 43_deoxys_turn_03
+wait_gimmick 0 GIMMICK_Z_MOVE 3000 B
+shot 44_drake_00
+run 40
+shot 44_drake_01
+run 40
+shot 44_drake_02
+run 40
+shot 44_drake_03
+run 40
+shot 44_drake_04
+run 40
+shot 44_drake_05
+until @gMain+4 4 @@CB2_Overworld 60000 A 24
+mash A 20000
+
+clearflag FLAG_DEBUG_NO_ENCOUNTER
+clearflag FLAG_DEBUG_NO_TRAINER_SEE
+clearflag FLAG_DRACONID_NO_WHITEOUT

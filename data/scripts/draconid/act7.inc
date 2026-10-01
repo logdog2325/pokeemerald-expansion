@@ -899,6 +899,7 @@ DraconidVillage_Shrine_EventScript_Aster::
 	goto_if_eq DraconidVillage_Shrine_EventScript_Aster_2
 	trainerbattle_no_intro TRAINER_ASTER_POSTGAME_DEINO, DraconidVillage_Shrine_Text_DraconidAsterPostgameDefeat
 	msgbox DraconidVillage_Shrine_EventScript_Aster_Text_2
+	msgbox DraconidVillage_Shrine_EventScript_Aster_Text_3
 	closemessage
 	fadescreen FADE_TO_BLACK
 	removeobject LOCALID_DRACONID_SHRINE_ASTER
@@ -917,25 +918,46 @@ DraconidVillage_Shrine_EventScript_Aster_2:
 DraconidVillage_EventScript_DraconidNerine::
 	lock
 	faceplayer
+	compare VAR_DRACONID_FINALE_STATE, FINALE_STATE_METEOR_DESTROYED
+	goto_if_lt DraconidVillage_EventScript_DraconidNerine_2
+DraconidVillage_EventScript_DraconidNerine_1:
 	compare VAR_NERINE_STATE, NERINE_STATE_POSTGAME
-	goto_if_eq DraconidVillage_EventScript_DraconidNerine_2
-	msgbox DraconidVillage_EventScript_DraconidNerine_Text_1, MSGBOX_YESNO
-	compare VAR_RESULT, NO
 	goto_if_eq DraconidVillage_EventScript_DraconidNerine_5
-	msgbox DraconidVillage_EventScript_DraconidNerine_Text_3
+	checktrainerflag TRAINER_NERINE_VILLAGE_DEINO_CHARMANDER
+	goto_if 1, DraconidVillage_EventScript_DraconidNerine_8
+	msgbox DraconidVillage_EventScript_DraconidNerine_Text_2, MSGBOX_YESNO
+DraconidVillage_EventScript_DraconidNerine_7:
+	compare VAR_RESULT, NO
+	goto_if_eq DraconidVillage_EventScript_DraconidNerine_15
+	msgbox DraconidVillage_EventScript_DraconidNerine_Text_4
 	trainerbattle_no_intro TRAINER_NERINE_POSTGAME_DEINO_CHARMANDER, DraconidVillage_Text_DraconidNerinePostgameDefeat
 	setvar VAR_NERINE_STATE, NERINE_STATE_POSTGAME
-	msgbox DraconidVillage_EventScript_DraconidNerine_Text_4
+	msgbox DraconidVillage_EventScript_DraconidNerine_Text_5
 	release
 	return
 
 DraconidVillage_EventScript_DraconidNerine_2:
+	goto DraconidVillage_EventScript_DraconidNerineHome
+	goto DraconidVillage_EventScript_DraconidNerine_1
+
+DraconidVillage_EventScript_DraconidNerine_5:
+	compare VAR_ASTER_STATE, ASTER_STATE_POSTGAME
+	goto_if_eq DraconidVillage_EventScript_DraconidNerine_12
+DraconidVillage_EventScript_DraconidNerine_11:
 	msgbox DraconidVillage_EventScript_DraconidNerine_Text_0
 	release
 	end
 
-DraconidVillage_EventScript_DraconidNerine_5:
-	msgbox DraconidVillage_EventScript_DraconidNerine_Text_2
+DraconidVillage_EventScript_DraconidNerine_8:
+	msgbox DraconidVillage_EventScript_DraconidNerine_Text_1, MSGBOX_YESNO
+	goto DraconidVillage_EventScript_DraconidNerine_7
+
+DraconidVillage_EventScript_DraconidNerine_12:
+	goto DraconidVillage_EventScript_DraconidRivalsDouble
+	goto DraconidVillage_EventScript_DraconidNerine_11
+
+DraconidVillage_EventScript_DraconidNerine_15:
+	msgbox DraconidVillage_EventScript_DraconidNerine_Text_3
 	release
 	end
 
@@ -1351,6 +1373,10 @@ DraconidVillage_Shrine_EventScript_Aster_Text_2:
 	.string "The ELDER chose right, {PLAYER}. Don't\n"
 	.string "you dare tell him I said so.$"
 
+DraconidVillage_Shrine_EventScript_Aster_Text_3:
+	.string "ASTER: Come find me by the pond later.\n"
+	.string "NERINE and I have an idea.$"
+
 DraconidVillage_EventScript_DraconidNerine_Text_0:
 	.string "NERINE: The pond's still muddy from\n"
 	.string "KYOGRE. It'll clear. Most things do.\p"
@@ -1358,6 +1384,14 @@ DraconidVillage_EventScript_DraconidNerine_Text_0:
 	.string "together.$"
 
 DraconidVillage_EventScript_DraconidNerine_Text_1:
+	.string "NERINE: The pond's still muddy from\n"
+	.string "KYOGRE. Even so, it's good to be home.\p"
+	.string "Last time we battled, you were on your\n"
+	.string "way to the LEAGUE. Look at you now.\p"
+	.string "One more, {PLAYER}? Everything we've\n"
+	.string "got. Will you?$"
+
+DraconidVillage_EventScript_DraconidNerine_Text_2:
 	.string "NERINE: After years of salt water, even\n"
 	.string "this muddy little pond feels like a\l"
 	.string "dream.\p"
@@ -1367,14 +1401,14 @@ DraconidVillage_EventScript_DraconidNerine_Text_1:
 	.string "No more pretending, {PLAYER}. One\n"
 	.string "battle, as ourselves. Will you?$"
 
-DraconidVillage_EventScript_DraconidNerine_Text_2:
+DraconidVillage_EventScript_DraconidNerine_Text_3:
 	.string "NERINE: I'll be here. The water isn't\n"
 	.string "going anywhere, and neither am I.$"
 
-DraconidVillage_EventScript_DraconidNerine_Text_3:
+DraconidVillage_EventScript_DraconidNerine_Text_4:
 	.string "NERINE: Then let the sky watch.$"
 
-DraconidVillage_EventScript_DraconidNerine_Text_4:
+DraconidVillage_EventScript_DraconidNerine_Text_5:
 	.string "NERINE: …Yes. That's the tamer the\n"
 	.string "ELDER saw, all those years ago.\p"
 	.string "I think I'll stay a while. It's good to be\n"

@@ -187,4 +187,14 @@
 #define DRACONID_PRIMAL_LEGEND_LEVEL   72 // post-game Groudon and Kyogre, the level of Maxie's and Archie's in the finale
 #define DRACONID_LATI_ROAMER_LEVEL     60 // post-game: both Latios and Latias roam Hoenn (ROAMER_COUNT 2)
 
+// Z-Power (D-267 - D-269, data/scripts/draconid/zmoves.pory): the dragon keepers of Alola sent their egg with a
+// Z-Power Ring "for the one who carries the prophecy"; the Elder gives it at the egg ceremony with the first and
+// simplest crystal, and the others come along the road (the list: docs/hack_items.md, "Z-Crystals").
+#define DRACONID_Z_CRYSTAL_FIRST       ITEM_NORMALIUM_Z  // the egg ceremony (Act 1): any partner has a Normal move
+#define DRACONID_Z_CRYSTAL_FALLS       ITEM_DRAGONIUM_Z  // Aster, from the Meteor Falls Draconids (Act 3)
+#define DRACONID_Z_CRYSTAL_JANGMO_O    ITEM_KOMMONIUM_Z  // Nerine, for a Jangmo-o tamer: the Alolan line's own (Act 4)
+#define DRACONID_Z_CRYSTAL_CHARMANDER  ITEM_FIRIUM_Z     // Prof. Oak in Slateport, from his cousin Samson in Alola (Act 2)
+#define DRACONID_Z_CRYSTAL_TOTODILE    ITEM_WATERIUM_Z
+#define DRACONID_Z_CRYSTAL_TREECKO     ITEM_GRASSIUM_Z
+
 #endif // GUARD_CONSTANTS_DRACONID_H

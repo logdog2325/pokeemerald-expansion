@@ -151,6 +151,7 @@ script MeteorFalls_1F_1R_EventScript_DraconidAster {
                   "A piece of the METEORITE? MAXIE handed you a piece of the sky like it was a sweet?\p"
                   "Give it here. The ELDER should see what MAGMA is playing with."))
     msgbox(format("{PLAYER} handed the shard to ASTER."))
+    call(MeteorFalls_1F_1R_EventScript_DraconidDragoniumZ) // the falls' DRAGONIUM Z (zmoves.pory, D-269)
     msgbox(format("ASTER: Don't follow me. And don't get too comfortable in red."))
     closemessage
     applymovement(LOCALID_METEOR_FALLS_ASTER, MeteorFalls_1F_1R_Movement_DraconidAsterLeave)
@@ -564,6 +565,7 @@ script JaggedPass_EventScript_DraconidAster {
                   "When a POKéMON gives you its whole\nheart, the stone lets it MEGA EVOLVE."))
     giveitem(ITEM_MEGA_RING)
     setflag(FLAG_RECEIVED_MEGA_RING)
+    call(JaggedPass_EventScript_DraconidDragoniumZAgain) // if the BAG was full at Meteor Falls (zmoves.pory)
     msgbox(format("ASTER: The ELDER says you're doing well.\p"
                   "I say we'll see."))
     msgbox(format("ASTER: One more thing. Someone from the village is waiting in LAVARIDGE.\p"

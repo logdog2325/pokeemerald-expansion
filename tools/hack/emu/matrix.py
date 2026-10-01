@@ -8,17 +8,19 @@ Per gender and egg (6 chains, run in parallel): opening -> route103 -> woods (Ne
 the Magma sprite for the gender) -> rustboro, then rivals, rivals2, postgame_home, maxie_calls, elite_four, hm_free
 (HM field moves without a Pokémon that knows them), frontier_legends and lance (post-game) and the checks of wild,
 progression, trade_evos, battle_items, gen49_trainers, magma_revenge (Team Magma's revenge after the
-Sootopolis reveal), fades and the title screen – none depends on the egg, so only with Deino – then for each
+Sootopolis reveal), fades and the title screen – none depends on the egg, so only with Deino – then zmoves (Z-Power
+through the story: Aster's Granite Cave team by egg, Prof. Oak's crystals, the crystal balls), then for each
 second starter second_starter (Tabitha + Prof. Oak's pick), aster
 (Aster's trainer ids for the egg, the Draconid / Magma sprites for the gender), act2 (Nerine's teams for egg x
 second starter; the Totodile runs keep the Devon Goods for Magma), act3 (Aster's and Nerine's teams, the
 Mega Stone for the second starter), act4 (Nerine's Mt. Pyre team for egg x second starter, the Magma
-sprite for the gender) and act5 (Nerine's teams for egg x second starter; the Totodile runs take May as the
-Sootopolis partner), act7 (the Sky Pillar double: Aster's team by egg, Nerine's partner and post-game
-teams by egg x second starter; act6 before it, once, with Deino) and act7x_postgame (Nerine's and Aster's
-post-game teams); last, with Deino, rival_calls (it starts from act5's Sootopolis aftermath, where the rivals
-register, D-256), then act7x once (the Act 7 extension: Aster's partner team by egg, the village and Primal multi
-battles). Needs a debug build (the warp hook).
+sprite for the gender; the Kommonium Z Nerine leaves a Jangmo-o tamer) and act5 (Nerine's teams for egg x second
+starter; the Totodile runs take May as the Sootopolis partner), act7 (the Sky Pillar double: Aster's team by egg,
+Nerine's partner and post-game teams by egg x second starter; act6 before it, once, with Deino), act7x_postgame
+(Nerine's and Aster's post-game teams) and draconid_rivals (the rivals' new battles: Aster's by egg, Nerine's and
+the post-game double by egg x second starter); last, with Deino, rival_calls (it starts from act5's Sootopolis
+aftermath, where the rivals register, D-256), then act7x once (the Act 7 extension: Aster's partner team by egg, the
+village and Primal multi battles). Needs a debug build (the warp hook).
 Prints one line per test run and a summary table; exit 1 if any run failed. Logs are in -o.
 """
 
@@ -86,6 +88,8 @@ def chain(gender, egg, egg_id, root):
         # Team Magma's revenge after the Sootopolis reveal, to the League door (D-244 - D-249)
         steps.append(("magma_revenge", {"GFX": "DRACONID_" + gender}))
         steps.append(("fades", {}))  # same-screen fades under weather and the day/night tint (D-278)
+    # Z-Power through the story (D-267 - D-269): Aster's Granite Cave team by egg, Oak's crystals, the item balls
+    steps.append(("zmoves", {"EGGNAME": egg, "SECOND": 2}))
     for second, value, stone in SECONDS:
         steps.append(("second_starter", {"PICK": value - 1, "SECOND": value, "MAGMA": "MAGMA_" + gender}))
         steps.append(("aster", {"EGGNAME": egg, "SECOND": value,
@@ -96,8 +100,10 @@ def chain(gender, egg, egg_id, root):
                                "GOODS": goods, "RETURNED": 1 - goods, "GOODSNAME": "Kept" if goods else "Returned"}))
         # Act 3 (Aster's team for the egg, Nerine's for egg x second starter, the second starter's Mega Stone)
         steps.append(("act3", {"EGGNAME": egg, "SECOND": value, "SECONDNAME": second, "STONE": stone}))
-        # Act 4 (Nerine's Mt. Pyre team for egg x second starter)
-        steps.append(("act4", {"EGGNAME": egg, "SECOND": value, "SECONDNAME": second, "MAGMA": "MAGMA_" + gender}))
+        # Act 4 (Nerine's Mt. Pyre team for egg x second starter; the Kommonium Z she leaves a Jangmo-o tamer, D-269)
+        kommonium = 1 if egg == "JANGMO_O" else 0
+        steps.append(("act4", {"EGGNAME": egg, "SECOND": value, "SECONDNAME": second, "MAGMA": "MAGMA_" + gender,
+                               "KOMMONIUM": kommonium, "NOKOMMONIUM": 1 - kommonium}))
         # Act 5 (Nerine's teams for egg x second starter); the Totodile runs take May as the Sootopolis partner
         steps.append(("act5", {"EGGNAME": egg, "SECOND": value, "SECONDNAME": second,
                                "PARTNER": 1 if second == "TOTODILE" else 0, "GFX": "DRACONID_" + gender}))
@@ -105,6 +111,8 @@ def chain(gender, egg, egg_id, root):
         steps.append(("act7", {"EGGNAME": egg, "MOVE": MOVE_SLOT[egg], "SECOND": value, "SECONDNAME": second}))
         # the post-game rematches (Nerine by egg x second starter, Aster by egg), after the credits moved to act7x
         steps.append(("act7x_postgame", {"EGGNAME": egg, "SECOND": value, "SECONDNAME": second}))
+        # the Draconid rivals' new battles (D-279 - D-283): Aster's teams by egg, Nerine's by egg x second starter
+        steps.append(("draconid_rivals", {"EGGNAME": egg, "SECOND": value, "SECONDNAME": second}))
     if egg_id == 0:
         steps.append(("rival_calls", {}))  # the PokéNav calls of the rivals (D-243, D-256) and Mr. Stone (D-258)
     # Act 7 extension, once per chain (a long run): Aster's partner team by egg (the admins' double), Regidrago,
@@ -115,7 +123,7 @@ def chain(gender, egg, egg_id, root):
     for test, defines in steps:
         ok, bad = run(test, out, defines, log)
         label = test + ("" if test not in ("second_starter", "aster", "act2", "act3", "act4", "act5", "act7",
-                                           "act7x_postgame")
+                                           "act7x_postgame", "draconid_rivals")
                         else " " + SECONDS[defines["SECOND"] - 1][0])
         results.append((name, label, ok, bad))
         if not ok and test in ("opening", "route103", "woods", "rustboro"):

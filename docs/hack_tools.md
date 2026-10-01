@@ -151,6 +151,8 @@ python3 tools/hack/emu/play.py test.play -o /tmp/out
 | `bagcursor POCKET_X N` | the bag opens on POCKET_X at entry N and the start menu on its first entry (then START, DOWN, DOWN, A opens the bag) |
 | `expect_opponent_b TRAINER_X`, `expect_partner PARTNER_X` | opponent B and the in-game partner of the last two-trainer / multi battle |
 | `wait_species N SPECIES_X [MAX] [KEY]` | tap KEY (default A) until battler N (`gBattleMons[N]`, 1 = the single-battle opponent) is SPECIES_X, e.g. `SPECIES_CHARIZARD_MEGA_X` after a Mega Evolution |
+| `wait_gimmick N GIMMICK_X [MAX] [KEY]` | tap KEY (default A) until battler N's trainer has used GIMMICK_X this battle (`gBattleStruct->gimmick.activated`), e.g. `GIMMICK_Z_MOVE` once the Z-Move starts |
+| `battlemon N FIELD VALUE`, `monstat SLOT FIELD VALUE` | set one stat of battler N mid-battle (`gBattleMons[N]`), or one unencrypted field of the player's party Pokémon at SLOT (level, hp, speed, …; e.g. Speed 1 after `boost` so the opponent moves first) |
 
 `matrix.py` runs the flow tests for every gender × egg × second starter (18 combinations, 6 chains in
 parallel) and prints one line per run:
@@ -249,6 +251,8 @@ python3 tools/hack/emu/play.py tools/hack/emu/tests/hardlock.play       -o /tmp/
 python3 tools/hack/emu/play.py tools/hack/emu/tests/trade_evos.play     -o /tmp/emu   # Kadabra -> Alakazam, Slowpoke + King's Rock -> Slowking
 python3 tools/hack/emu/play.py tools/hack/emu/tests/battle_items.play   -o /tmp/emu   # battle item counter by badges, a Gym booster, a Mega Stone ball
 python3 tools/hack/emu/play.py tools/hack/emu/tests/rival_calls.play    -o /tmp/emu   # after act5.play: the rivals' and Mr. Stone's PokéNav calls (D-243, D-256, D-258)
+python3 tools/hack/emu/play.py tools/hack/emu/tests/zmoves.play         -o /tmp/emu   # Z-Power: the Ring, Oak's crystals, the crystal balls, Breakneck Blitz, Devastating Drake (D-267 - D-269)
+python3 tools/hack/emu/play.py tools/hack/emu/tests/draconid_rivals.play -o /tmp/emu  # Aster's and Nerine's new battles and their windows (D-279 - D-283)
 python3 tools/hack/emu/play.py tools/hack/emu/tests/release_boot.play   -o /tmp/rel --rom pokeemerald-release.gba
 ```
 `release_boot.play` goes through the real title and new-game menus, since release builds have neither Quickstart

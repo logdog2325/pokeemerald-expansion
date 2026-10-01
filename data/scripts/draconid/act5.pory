@@ -872,6 +872,8 @@ text SootopolisCity_Text_DraconidElderCall {
            "{PLAYER}, hear me. RAYQUAZA has gone back to its tower.\p"
            "It isn't time yet. The sky will tell us when.\p"
            "Until then, walk your own road. You need no borrowed colors now.\p"
+           "Come home before the LEAGUE. The clan wants to see you.\p"
+           "ASTER: And I want my rematch!\p"
            "… … … … … …\n"
            "… … … … … Click!", 184)
 }

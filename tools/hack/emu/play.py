@@ -26,6 +26,12 @@ A .play script is a gbarun script plus:
   wait_species N SPECIES_X [MAX] [KEY]   tap KEY (default A) until battler N (gBattleMons[N]; 1 = the
                           opponent in a single battle) is SPECIES_X, e.g. a Mega Evolution
   battlepp N [VALUE]      during a battle: the PP of battler N's four moves (gBattleMons[N]) to VALUE (default 64)
+  wait_gimmick N GIMMICK_X [MAX] [KEY]   tap KEY (default A) until battler N's trainer has used GIMMICK_X in this battle
+                          (gBattleStruct->gimmick.activated[N][GIMMICK_X], e.g. GIMMICK_Z_MOVE: the Z-Move is starting)
+  battlemon N FIELD VALUE   during a battle: one stat of battler N (gBattleMons[N]: hp, maxHP, attack, defense, speed,
+                          spAttack, spDefense), e.g. speed 999 once a slow Pokemon has let the opponent show its move
+  monstat SLOT FIELD VALUE   one unencrypted field of the player's party Pokemon at SLOT (level, hp, maxHP, attack,
+                          defense, speed, spAttack, spDefense), e.g. after boost: speed 1 so the opponent moves first
   boost SLOT [VALUE]      set the player's party Pokemon at SLOT to level 100 with VALUE (default 999) HP and
                           stats, for a flow test that must win (999) or quickly lose (1) a battle (the
                           unencrypted party fields; a level-up or a stat recalculation undoes it)
@@ -243,6 +249,9 @@ TEXT_BYTES = 24  # expect_text compares up to 24 bytes
 SUBSTRUCT0_POS = [0, 0, 0, 0, 0, 0, 1, 1, 2, 3, 2, 3, 1, 1, 2, 3, 2, 3, 1, 1, 2, 3, 2, 3]  # pokemon.c sSubstructOffsets[0]
 # boost: the unencrypted party fields
 MON_FIELD = "offsetof(struct Pokemon, %s)"
+# wait_gimmick: whether battler N's trainer has used a gimmick (Mega Evolution, a Z-Move) in this battle
+GIMMICK_FIELD = "offsetof(struct BattleStruct, gimmick.activated[%s][%s])"
+BATTLE_MON_FIELD = "offsetof(struct BattlePokemon, %s)"
 MON_STATS = ("level", "hp", "maxHP", "attack", "defense", "speed", "spAttack", "spDefense")
 
 LEDGE_JUMP = {"DOWN": "MB_JUMP_SOUTH", "UP": "MB_JUMP_NORTH", "LEFT": "MB_JUMP_WEST", "RIGHT": "MB_JUMP_EAST"}
@@ -270,6 +279,8 @@ def main():
     names += sorted({l.split()[3] for l in lines if l.split() and l.split()[0] == "givemon" and len(l.split()) > 3})
     names += ["TRAINER_PARTNER(%s)" % l.split()[1] for l in lines if l.split()[:1] == ["expect_partner"]]
     names += [l.split()[2] for l in lines if l.split()[:1] == ["wait_species"]]
+    names += [GIMMICK_FIELD % (l.split()[1], l.split()[2]) for l in lines if l.split()[:1] == ["wait_gimmick"]]
+    names += [BATTLE_MON_FIELD % l.split()[2] for l in lines if l.split()[:1] == ["battlemon"]]
     if any(l.split()[:1] == ["expect_roamer"] for l in lines):
         names += [l.split()[2] for l in lines if l.split()[:1] == ["expect_roamer"]]
         names += [ROAMER_OFFSET, ROAMER_SIZE, ROAMER_SPECIES, ROAMER_ACTIVE]
@@ -280,7 +291,7 @@ def main():
                   TEST_GIVE_ITEM, TEST_COUNT_HMS, TEST_GIVE_MON, TEST_SCRIPT, TEST_SCRIPT_OFFSET]
     if any(l.split() and l.split()[0] == "bagcursor" for l in lines):
         names += [BAG_POCKET, BAG_CURSOR, BAG_SCROLL]
-    if any(l.split() and l.split()[0] == "boost" for l in lines):
+    if any(l.split() and l.split()[0] in ("boost", "monstat") for l in lines):
         names += ["B_TRAINER_PLAYER", "PARTY_SIZE"] + [MON_FIELD % f for f in MON_STATS]
     flags_off, vars_off, loc_off, coords_off, consts = probe(names)
     # the player is object event 0 (spawned first on every map load); MAP_OFFSET is 7
@@ -363,6 +374,21 @@ def main():
             addr = syms["gBattleMons"] + int(t[1]) * consts[BATTLE_MON_SIZE] + consts[BATTLE_MON_SPECIES]
             out.append("until %X 2 %X %s %s 24" % (addr, consts[t[2]], t[3] if len(t) > 3 else "60000",
                                                   t[4] if len(t) > 4 else "A"))
+        elif t[0] == "wait_gimmick":
+            # gBattleStruct is allocated per battle: read through the pointer
+            off = consts[GIMMICK_FIELD % (t[1], t[2])]
+            out.append("until *%X+%X 1 1 %s %s 24" % (syms["gBattleStruct"], off, t[3] if len(t) > 3 else "60000",
+                                                     t[4] if len(t) > 4 else "A"))
+        elif t[0] == "battlemon":
+            addr, val = syms["gBattleMons"] + int(t[1]) * consts[BATTLE_MON_SIZE] + consts[BATTLE_MON_FIELD % t[2]], int(t[3])
+            out.append("poke %X %X" % (addr, val & 0xFF))
+            out.append("poke %X %X" % (addr + 1, val >> 8))
+        elif t[0] == "monstat":
+            mon = syms["gParties"] + (consts["B_TRAINER_PLAYER"] * consts["PARTY_SIZE"] + int(t[1])) * consts[MON_SIZE]
+            addr, val = mon + consts[MON_FIELD % t[2]], int(t[3])
+            out.append("poke %X %X" % (addr, val & 0xFF))
+            if t[2] != "level":
+                out.append("poke %X %X" % (addr + 1, val >> 8))
         elif t[0] == "battlepp":
             # gBattleMons[N].pp[0..3] = VALUE: a long mashed battle must not run the lead's first move out of PP
             # ("There's no PP left for this move!" and mashing A picks it again forever)

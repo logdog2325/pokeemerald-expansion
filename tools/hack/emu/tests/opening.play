@@ -47,6 +47,10 @@ expect_flag FLAG_DRACONID_EGG_HATCHED 0
 expect_flag FLAG_HIDE_DRACONID_PASS_ASTER 0
 expect_flag FLAG_HIDE_DRACONID_SHRINE_ELDER 1
 expect_flag FLAG_HIDE_DRACONID_ELDERS_HOUSE_ELDER 0
+# the Z-Power Ring and the first crystal from the Elder (zmoves.pory, D-267)
+expect_item ITEM_Z_POWER_RING 1
+expect_item ITEM_NORMALIUM_Z 1
+expect_flag FLAG_RECEIVED_Z_POWER_RING 1
 var VAR_STARTER_MON
 var VAR_ASTER_EGG
 mapid

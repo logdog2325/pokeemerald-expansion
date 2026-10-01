@@ -18,7 +18,9 @@ setflag FLAG_BADGE05_GET
 givemon SPECIES_KADABRA 35
 giveitem ITEM_RARE_CANDY
 expect_party 1 SPECIES_KADABRA
-# START menu: POKéDEX, POKéMON, BAG -> the Items pocket holds only the candy -> USE -> slot 1
+# START menu: POKéDEX, POKéMON, BAG -> the Items pocket holds the Normalium Z from the egg ceremony (D-267) and the
+# candy: the cursor on the candy (entry 1; the bag remembers it for the candies below) -> USE -> slot 1
+bagcursor POCKET_ITEMS 1
 press START 2 40
 press DOWN 2 10
 press DOWN 2 10

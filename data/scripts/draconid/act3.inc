@@ -115,6 +115,7 @@ MeteorFalls_1F_1R_EventScript_DraconidAster::
 MeteorFalls_1F_1R_EventScript_DraconidAster_1:
 	msgbox MeteorFalls_1F_1R_EventScript_DraconidAster_Text_7
 	msgbox MeteorFalls_1F_1R_EventScript_DraconidAster_Text_8
+	call MeteorFalls_1F_1R_EventScript_DraconidDragoniumZ
 	msgbox MeteorFalls_1F_1R_EventScript_DraconidAster_Text_9
 	closemessage
 	applymovement LOCALID_METEOR_FALLS_ASTER, MeteorFalls_1F_1R_Movement_DraconidAsterLeave
@@ -581,6 +582,7 @@ JaggedPass_EventScript_DraconidAster_1:
 	msgbox JaggedPass_EventScript_DraconidAster_Text_2
 	giveitem ITEM_MEGA_RING
 	setflag FLAG_RECEIVED_MEGA_RING
+	call JaggedPass_EventScript_DraconidDragoniumZAgain
 	msgbox JaggedPass_EventScript_DraconidAster_Text_3
 	msgbox JaggedPass_EventScript_DraconidAster_Text_4
 	closemessage

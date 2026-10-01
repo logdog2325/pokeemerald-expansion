@@ -83,6 +83,8 @@ DraconidVillage_Shrine_EventScript_EggCeremony_22:
 	removeobject LOCALID_DRACONID_SHRINE_ASTER
 	clearflag FLAG_HIDE_DRACONID_PASS_ASTER
 	msgbox DraconidVillage_Shrine_EventScript_EggCeremony_Text_18
+	call DraconidVillage_Shrine_EventScript_DraconidZRing
+	msgbox DraconidVillage_Shrine_EventScript_EggCeremony_Text_19
 	closemessage
 	setflag FLAG_HIDE_DRACONID_SHRINE_ELDER
 	clearflag FLAG_HIDE_DRACONID_ELDERS_HOUSE_ELDER
@@ -339,9 +341,11 @@ DraconidVillage_Shrine_EventScript_EggCeremony_Text_17:
 
 DraconidVillage_Shrine_EventScript_EggCeremony_Text_18:
 	.string "ELDER: Hohoho… That girl. Always in a\n"
-	.string "hurry to reach the sky.\p"
-	.string "{PLAYER}, once your partner hatches, go\n"
-	.string "down to LITTLEROOT TOWN.\p"
+	.string "hurry to reach the sky.$"
+
+DraconidVillage_Shrine_EventScript_EggCeremony_Text_19:
+	.string "ELDER: {PLAYER}, once your partner\n"
+	.string "hatches, go down to LITTLEROOT TOWN.\p"
 	.string "A man named PROF. BIRCH lives there. He\n"
 	.string "studies POKéMON.\p"
 	.string "Our clan and his family have shared our\n"

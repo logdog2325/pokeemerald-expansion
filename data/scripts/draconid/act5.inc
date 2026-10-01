@@ -1637,5 +1637,8 @@ SootopolisCity_Text_DraconidElderCall::
 	.string "us when.\p"
 	.string "Until then, walk your own road. You\n"
 	.string "need no borrowed colors now.\p"
+	.string "Come home before the LEAGUE. The\n"
+	.string "clan wants to see you.\p"
+	.string "ASTER: And I want my rematch!\p"
 	.string "… … … … … …\n"
 	.string "… … … … … Click!$"
