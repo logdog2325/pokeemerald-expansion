@@ -92,6 +92,7 @@ resolver was checked to give identical output to the Python one.
 | `quantize.py in.png out.png [--pal x.pal] [--key r,g,b]` | RGBA → indexed, GBA 15-bit colours, index 0 transparent |
 | `recolor.py in.png out.png --pal/--set/--remap`, `recolor.py in.png --show` | palette swaps and index remaps |
 | `kitbash.py recipe.json` | reproducible sprite builds: load, palette, remap, paste regions, ASCII pixel overlays, frame reorder, save |
+| `player/magma_grunt.py [--preview DIR] [--only ow\|back]` | the Magma disguise (round 2, D-380 – D-382): every overworld sheet from the vanilla grunt, the grunt back pics (M, F, Tabitha) in the grunt front pic's palette |
 Profiles: `ow_walk` (9× 16×32), `ow_mach_bike` (9× 32×32), `ow_acro_bike` (27×), `ow_surf` (6×),
 `ow_field_move` (5×), `ow_fishing` (12×), `ow_underwater` (4×), `ow_watering` (6×),
 `ow_decorating` (1× 16×32), `trainer_front` (64×64), `trainer_back` (4× 64×64 stacked).

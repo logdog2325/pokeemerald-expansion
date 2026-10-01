@@ -224,3 +224,6 @@ Petalburg Woods recruitment/outfit change, Maxie's first meeting at Meteor Falls
 
 ### Follow-up note 31 (round 1)
 - "also I think we should get access to z moves earlier and they should be spread throughout the story not a post game think"
+
+### Follow-up note (round 2, feedback 2.10)
+- "also can we make our overworld sprite look a lot more like a regular team magma grunt and same with the backthrowing sprite its obviously a recolored Red" – "try and make it how a team magma grunt backsprite would look in game"

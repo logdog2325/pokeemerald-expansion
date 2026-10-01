@@ -1755,3 +1755,44 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   sets BLDALPHA to 0 (breaks alpha-blended fog); it also has to be remembered in every future script. The scripts that
   already use `fadescreenswapbuffers` (Act 5's turn, Act 7) keep working; plain `fadescreen` is now safe everywhere.
   Costs 1.2 KB of EWRAM.
+
+## Round 2
+
+- **D-380 The Magma disguise is an ordinary grunt in the field** (feedback 2.10: "make our overworld sprite look a lot
+  more like a regular team magma grunt"): the uniform's walking sheet *is* the vanilla grunt
+  (`team_magma/magma_member_{m,f}.png`, index for index, `npc_2.pal`'s colours on the player's own palette tag), and
+  every other state the outfit system draws (run, surf, Mach / Acro Bike, field move, fishing, underwater, watering,
+  decorating, map icon) is built from the grunt's own rows – hood, face, torso with the black "M" and the long gloves,
+  boots – plus small drawn arms, gloves and the Poké Ball; the bike's side view and the rods are Red's (the old base),
+  recoloured, at Red's frame positions so the anims line up. The male is pixel for pixel a grunt; the female has
+  **navy hair** (the female grunt's front pic has navy hair, the vanilla overworld brown), which keeps her front pic,
+  back pic and sprite one person and lets the player be told apart in a crowd of grunts without a different
+  silhouette. Built by `tools/hack/art/player/magma_grunt.py`. – Alt: the old head swap on Red / Leaf with a better
+  hood (rejected by the feedback: the body stays Red's); the grunt sheet for walking only and Red's poses for the rest
+  (two different people on screen); brown hair for the female (the vanilla overworld, but then her front pic and back
+  pic disagree with it). – The grunt sheet is Game Freak's own grunt, so the player "reads instantly" as one.
+- **D-381 The throwing back pic is a grunt seen from behind, in the front pic's palette** (feedback 2.10 "its
+  obviously a recolored Red", "try and make it how a team magma grunt backsprite would look in game"; the playtester's
+  notes: not cartoonish, Emerald style, no ears out of the hood): 5 frames in the Kanto order and timing as before
+  (0 idle, 1 wind-up with the ball in the glove, 2 arm up with the ball, 3 release, 4 follow-through). The palette is
+  the vanilla grunt front pic's 16 colours (reds, greys, skin, the female's navy hair), so the player sits beside the
+  real grunts. The **hood** is drawn (dome over a cowl on the shoulders, centre and side seams, the crease to the nape,
+  nape folds, the front pic's pale sheen, a folded rim; two small stiff grey horn points that share the hood's outline;
+  only a thin sliver of cheek inside the front edge, no ear). The **bodies** are Game Freak's back-pic cloth and arms
+  re-coloured, so proportions, folds and shading are official: the male on **Steven's** back pic (broad build; the
+  suit's two greys → light rims / red cloth, its dark → shade, inner black lines → dark red, cuffs → grey wristbands,
+  hands → grey gloves; release and follow-through are both his forward frame), the female on **Leaf's** poses (hat
+  removed, long hair → navy coming out of the hood at the nape, top → red, bag strap removed, bare shoulders as on the
+  grunt's front pic, hands → grey gloves, skirt → grey). Like every vanilla back pic it is cut at the waist, so the grey
+  trousers are below the frame. – Alt: Red's / Leaf's frames with only a new head (what feedback 2.10 rejected); drawing
+  the bodies from shapes (tried: flat, "cartoonish" next to Red and Steven); switching to the 4-frame Hoenn layout of
+  Steven's pic (the outfit keeps its 5-frame Kanto timing); Brendan's / May's back pics (never used: they are the
+  rivals). – Steven and Leaf give official proportions and cloth; the hood, horns, palette and colours make it a grunt.
+- **D-382 Tabitha's back pic follows the grunt** (D-163 recoloured the old disguise back pic for him): his
+  `magma_admin.png` back pic is now the male grunt's five frames in his deeper crimson admin jacket (the front pic
+  palette with its four reds and the sheen darkened, so at the Space Center the player's grunt red and his crimson
+  stand apart), written by `magma_grunt.py`; `tabitha_pics.json`, `magma_m_pics.json` and `magma_f_pics.json` are removed (they
+  rebuilt the Red / Leaf versions). The broad Steven build also closes D-163's gap ("keeps Red's slim build; he is
+  heavier"). – Alt: leave his Red-based back pic (the Space Center tag battle would show the new grunt next to the old
+  recoloured Red); give him his front pic's cape too (more drawing for one battle; a later polish). – Same team, same
+  hood, his own colour.

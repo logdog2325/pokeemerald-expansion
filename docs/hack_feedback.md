@@ -7,6 +7,12 @@ One numbered checklist per round, newest round at the top. Categories: **bug / b
 
 Status: `[ ]` open · `[~]` in progress · `[x]` done (commit) · `[-]` won't do (why)
 
+## Round 2
+
+| # | Category | Item | Status |
+|---|---|---|---|
+| 2.10 | art | The Team Magma uniform's overworld sprite should look a lot more like a regular Magma grunt, and the throwing back pic is "obviously a recolored Red": make it how a grunt back sprite would look in game (Emerald style, not cartoonish, no ears out of the hood) | [x] overworld = the vanilla grunt + every pose built from it, female with navy hair (D-380); back pics M/F drawn as a grunt from behind in the grunt front pic's palette, hood with stiff horn points, bodies from Steven's / Leaf's back pics (D-381); Tabitha's back pic follows (D-382); `magma_grunt.py` |
+
 ## Round 1 (after v1, commit 94f937d3)
 
 The round came with the full story add-on (saved as [hack_story.md](hack_story.md), source of truth) and the
