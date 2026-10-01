@@ -457,6 +457,15 @@ poke @gParties+60 E7
 poke @gParties+61 3
 poke @gParties+62 E7
 poke @gParties+63 3
+# Maxie's POKéMON still in their balls come in with 1 HP (gParties[B_TRAINER_OPPONENT_A] at +0x258, slots 1–3, hp at
+# +0x56): mashed, Mega Camerupt's burns could wear the boosted lead down over his whole team and lose the battle
+until @gMain+4 4 @@BattleMainCB2 20000 A 24
+poke @gParties+312 1
+poke @gParties+313 0
+poke @gParties+376 1
+poke @gParties+377 0
+poke @gParties+3DA 1
+poke @gParties+3DB 0
 wait_species 1 SPECIES_CAMERUPT_MEGA 120000
 run 150
 shot r5_11_mega_camerupt_01
@@ -464,6 +473,7 @@ run 300
 shot r5_11_mega_camerupt_02
 run 300
 shot r5_11_mega_camerupt_03
+battlepp 0
 mash A 60000
 shot r5_12_after
 expect_opponent TRAINER_MAXIE_VICTORY_ROAD
@@ -529,6 +539,8 @@ poke @gParties+88A 1
 poke @gParties+88B 0
 # in a double battle the "…is reacting" message waits for a button
 wait_species 1 SPECIES_CHARIZARD_MEGA_Y 150000
+battlepp 0
+battlepp 2
 run 150
 shot r6_11_mega_charizard_y_01
 press A 2 30
@@ -558,6 +570,8 @@ shot r6_12_mega_houndoom_04
 press A 2 30
 run 150
 shot r6_12_mega_houndoom_05
+battlepp 0
+battlepp 2
 mash A 60000
 shot r6_13_after
 expect_opponent TRAINER_TABITHA_VICTORY_ROAD
