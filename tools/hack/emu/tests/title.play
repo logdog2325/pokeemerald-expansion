@@ -3,7 +3,8 @@
 #   python3 tools/hack/emu/play.py tools/hack/emu/tests/title.play -o /tmp/title
 # Shots: intro_end (the movie's last scene), logo_1 (the POKéMON logo alone), logo_2..4 (the banner
 # fading in and sliding down while the logo slides up), glow_0..6 (the full title every 40 frames across one 256-frame
-# glow cycle; PRESS START blinks every 16 frames, so it shows on every other shot), menu (after START).
+# glow cycle; PRESS START blinks every 16 frames, so it shows on every other shot), menu (after START), then NEW GAME
+# and the whole new-game speech (speech_01..24, below) into the bedroom.
 run 3300
 shot intro_end
 # the movie hands over to the title screen
@@ -34,3 +35,90 @@ press START 2 10
 until @gMain+4 4 @@CB2_MainMenu 600
 run 120
 shot menu
+# NEW GAME: the ELDER's new-game speech (D-420), one shot per page (text at the default MID speed: ~340 frames
+# a page). speech_04/05: his ALTARIA comes out of its ball; speech_13: the player pics (the girl slides in);
+# speech_16: the naming screen; speech_23: the shrink into the world; speech_24: the first scene in the bedroom.
+press A 2 10
+run 900
+expect_text gText_Birch_Welcome
+shot speech_01
+press A 2 10
+run 340
+shot speech_02
+press A 2 10
+run 340
+shot speech_03
+press A 2 10
+run 125
+expect_text gText_Birch_Pokemon
+shot speech_04
+run 115
+shot speech_05
+press A 2 10
+run 340
+expect_text gText_Birch_MainSpeech
+shot speech_06
+press A 2 10
+run 340
+shot speech_07
+press A 2 10
+run 340
+shot speech_08
+press A 2 10
+run 340
+shot speech_09
+press A 2 10
+run 340
+shot speech_10
+press A 2 10
+run 340
+shot speech_11
+# "And you are?" needs no key: the ELDER and ALTARIA fade, the platform slides, the tamer fades in
+press A 2 10
+run 120
+expect_text gText_Birch_AndYouAre
+shot speech_12
+run 480
+expect_text gText_Birch_BoyOrGirl
+shot speech_13
+press A 2 10
+run 220
+press DOWN 2 60
+shot speech_14
+press A 2 10
+run 200
+expect_text gText_Birch_WhatsYourName
+shot speech_15
+# the naming screen keeps the default name (START jumps to OK)
+press A 2 10
+run 120
+shot speech_16
+press START 2 20
+press A 2 10
+run 200
+shot speech_17
+press A 2 10
+run 340
+expect_text gText_Birch_YourePlayer
+shot speech_18
+press A 2 10
+run 340
+shot speech_19
+press A 2 10
+run 520
+expect_text gText_Birch_AreYouReady
+shot speech_20
+press A 2 10
+run 340
+shot speech_21
+press A 2 10
+run 340
+shot speech_22
+press A 2 10
+run 30
+shot speech_23
+until @gMain+4 4 @@CB2_Overworld 1200
+run 450
+shot speech_24
+expect_map MAP_DRACONID_VILLAGE_PLAYERS_HOUSE_2F
+expect_var VAR_DRACONID_STATE 0

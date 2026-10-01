@@ -28,6 +28,7 @@ Most of the game the player wears the **Magma grunt uniform**. Ordinary people t
 ## Story outline
 
 ### Act 1 – The prophecy (Draconid village → Rustboro)
+0. **New-game speech** (round 2, replaces Prof. Birch's): the **Elder** welcomes the player with his old dragon **Altaria** – the world of POKéMON as the clan sees it (the lowlands beside POKéMON, the clan beside the dragons, watching the sky), "And you are?", boy or girl, the name – and sends them to bed: "Watch the sky as you fall asleep. It has been restless these nights…" The falling star is the first scene.
 1. **Village intro** (replaces the truck intro and Mom): the player wakes in the village. A falling star crosses the sky at night. The Elder tells the prophecy, offers **3 eggs** (Deino / Dreepy / Jangmo-o), and gives the mission: "Walk among the red ones. Learn what Maxie seeks. When the sky splits, you must stand beside Rayquaza." Aster objects and battles the player once the egg hatches (tutorial battle). A villager gives the Running Shoes (replaces Mom's gift).
 2. **Descent to Route 101**: the player saves **Birch** from the wild Poochyena using their hatched dragon (replaces the bag-starter scene). Birch gives the Pokédex and introduces **Brendan** (Treecko) and **May** (Torchic). First rival battle vs May on Route 103.
 3. **Petalburg**: meet Norman (May's dad) and help **Wally** catch Ralts (vanilla, but Norman is May's father, not the player's).
@@ -224,3 +225,12 @@ Petalburg Woods recruitment/outfit change, Maxie's first meeting at Meteor Falls
 
 ### Follow-up note 31 (round 1)
 - "also I think we should get access to z moves earlier and they should be spread throughout the story not a post game think"
+
+---
+
+## Round 2 notes (after the test ROM)
+
+### The new-game speech (round 2, feedback 2.13)
+- "also we need to change up the birch intro its way to similar to emeralds"
+- "I think we should replace birch in the intro with the elder a old woman sprite or something maybe even drake from the elite four"
+  (the Elder gives the speech, D-420: he is a man throughout the story, and Drake is the League's – he gets his own story role separately)

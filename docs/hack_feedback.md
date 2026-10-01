@@ -7,6 +7,12 @@ One numbered checklist per round, newest round at the top. Categories: **bug / b
 
 Status: `[ ]` open · `[~]` in progress · `[x]` done (commit) · `[-]` won't do (why)
 
+## Round 2 (after the test ROM)
+
+| # | Category | Item | Status |
+|---|---|---|---|
+| 2.13 | story | The new-game speech is too much like Emerald's: replace Birch with the Elder ("a old woman sprite or something maybe even drake") | [x] the ELDER gives it, with his ALTARIA and a portrait from the Expert M front pic (his overworld base: teal robe, red sash, the circlet with ivory horns); new words in his voice, vanilla staging kept; a man throughout the story, so not an old woman, and Drake stays the League's (D-420 – D-422); `title.play` goes through every page |
+
 ## Round 1 (after v1, commit 94f937d3)
 
 The round came with the full story add-on (saved as [hack_story.md](hack_story.md), source of truth) and the

@@ -1,0 +1,36 @@
+{
+ "notes": "The Draconid ELDER's portrait for the new-game speech (64x64, Birch's format; D-422): the vanilla Expert M front pic - the base of his overworld sprite - keeps its skin and hair colours; slots 6-8 take the overworld palette's teal (draconid_npc.pal 5-7), 11 its ivory, 12-13 its reds. The white gi becomes the teal robe (white -> light, light grey -> mid, the shading -> dark teal) around the face, the beard (row 21, x 32-37) and the hands; the hakama's white ties become robe highlights; then the beard's tip over the robe, the Poke Ball's button, the red sash and the circlet (teal band, ivory boss, two ivory horns at the temples).",
+ "steps": [
+  {"op": "load", "src": "graphics/trainers/front_pics/expert_m.png"},
+  {"op": "palette", "pal": [
+   [115, 197, 164], [255, 222, 205], [238, 180, 148], [197, 139, 106],
+   [106, 74, 74], [180, 180, 172], [88, 192, 176], [32, 128, 128],
+   [16, 72, 80], [213, 222, 230], [139, 139, 131], [232, 224, 200],
+   [232, 96, 80], [192, 40, 48], [255, 255, 255], [0, 0, 0]]},
+  {"op": "remap_region", "box": [0, 21, 32, 1], "map": {"14": 6, "9": 7, "5": 8, "10": 8}},
+  {"op": "remap_region", "box": [38, 21, 26, 1], "map": {"14": 6, "9": 7, "5": 8, "10": 8}},
+  {"op": "remap_region", "box": [0, 22, 64, 11], "map": {"14": 6, "9": 7, "5": 8, "10": 8}},
+  {"op": "remap_region", "box": [0, 33, 30, 7], "map": {"14": 6, "9": 7, "5": 8, "10": 8}},
+  {"op": "remap_region", "box": [45, 33, 19, 7], "map": {"14": 6, "9": 7, "5": 8, "10": 8}},
+  {"op": "remap_region", "box": [30, 33, 15, 8], "map": {"14": 6, "9": 6, "5": 7, "10": 8}},
+  {"op": "pixels", "at": [32, 22], "key": {"5": 5, "9": 9, "A": 10, "W": 14}, "rows": [
+   "5AWAW5",
+   ".5W9A.",
+   "..59A.",
+   "...A.."]},
+  {"op": "pixels", "at": [39, 35], "key": {"W": 14}, "rows": ["W"]},
+  {"op": "pixels", "at": [31, 31], "key": {"R": 12, "r": 13, "d": 8}, "rows": [
+   "RRRRRR",
+   "rrrrrr",
+   ".ddddd"]},
+  {"op": "pixels", "at": [27, 4], "key": {"K": 15, "I": 11, "S": 5, "T": 6, "d": 8}, "rows": [
+   ".K..............K.",
+   "KIK............KIK",
+   "KISK..........KISK",
+   ".KISK........KISK.",
+   "..KISKKKKKKKKISKK.",
+   "...KTTTTIITTTTTTK.",
+   "....ddddSSddddddK."]},
+  {"op": "save", "dst": "graphics/birch_speech/elder.png"}
+ ]
+}

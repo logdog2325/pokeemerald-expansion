@@ -5,6 +5,48 @@ rerun the tool. One bullet per text box, in the order the scene shows them (bran
 other). Townsfolk, services and gyms by reputation state: [reputation_dialogue.md](reputation_dialogue.md).
 The story they follow: [hack_story.md](hack_story.md).
 
+## The new-game speech (`data/text/birch_speech.inc`)
+
+The ELDER of the DRACONID clan gives the speech (the tasks in `src/main_menu.c`); his ALTARIA comes out of its ball after `gText_Birch_Pokemon`, the player chooses boy or girl after `gText_Birch_BoyOrGirl` and names themselves after `gText_Birch_WhatsYourName`.
+
+### `gText_Birch_Welcome`
+- Hohoho… Come in, come in. The mountain wind bites tonight.
+- I am the ELDER of the DRACONID clan, keeper of our mountain's shrine.
+- Welcome to the world of POKéMON, as our clan has always known it.
+
+### `gText_Birch_Pokemon`
+- Come out, old friend.
+
+### `gText_Birch_MainSpeech`
+- This is my ALTARIA. We have flown these peaks together for sixty years.
+- Creatures such as this are POKéMON. Every sky, sea and stone holds them.
+- Down in the lowlands, people live beside POKéMON as friends and helpers.
+- They work together, play together… and sometimes, they battle together.
+- Up here, our clan lives beside the dragons, as our ancestors did.
+- We keep the old ways, and we watch the sky. The lowlands have forgotten.
+
+### `gText_Birch_AndYouAre`
+- Now then. And you are?
+
+### `gText_Birch_BoyOrGirl`
+- Come closer. These old eyes are not what they once were.
+- Are you a boy? Or are you a girl?
+
+### `gText_Birch_WhatsYourName`
+- Ah, yes. And what is your name, child?
+
+### `gText_Birch_SoItsPlayer`
+- {PLAYER}… Is that right?
+
+### `gText_Birch_YourePlayer`
+- Hohoho. Of course it is. Forgive an old man his memory.
+- You are {PLAYER} of the DRACONID clan. I held you the day you were born.
+
+### `gText_Birch_AreYouReady`
+- Go and rest now, {PLAYER}. The hour is late.
+- Watch the sky as you fall asleep. It has been restless these nights…
+- Sleep well, child. When the sky speaks, the clan must answer.
+
 ## data/maps/DraconidVillage_PlayersHouse_2F/scripts.pory
 
 The player's bedroom in Draconid Village: where a new game starts.
