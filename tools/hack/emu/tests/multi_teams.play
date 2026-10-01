@@ -1,0 +1,13 @@
+# The scripted multi battles' team-size check right after a wild battle (D-343): multi_do asks before the new
+# battle's flags are set, so the vanilla check saw the wild battle's flags and answered "full teams" (the player's
+# pick of three was ignored). Needs opening_lab_done.ss from tests/opening.play in the same output directory; debug build.
+loadstate opening_lab_done.ss
+setflag FLAG_DEBUG_NO_ENCOUNTER
+callscript Debug_EventScript_DraconidTestMultiTeams
+until @gMain+4 4 @@BattleMainCB2 3000
+mash A 20000
+until @gMain+4 4 @@CB2_Overworld 20000 A 24
+run 120
+# the Space Center's Steven and Brendan bring half teams (Multi Party: Half)
+expect_var VAR_TEMP_1 1
+expect_var VAR_TEMP_2 0

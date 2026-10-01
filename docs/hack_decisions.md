@@ -1791,3 +1791,14 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   Honchkrow or Mismagius); flags keep their numbers, renamed. *Alternatives:* selling them at the battle-item
   counter (it is a battle-item shop, and its post-game tier is being rebuilt for the Mega Stones and Z-Crystals);
   NPC gifts (no fitting giver at those spots); one of each (two Dawn Stone evolutions exist in reach).
+- **D-343 The scripted multi battles ask about the battle being set up** (the task "Fix stale battle flags in
+  multi-battle team check", found by the Z-Move work): `multi_do` checks `AreMultiPartiesFullTeams` after
+  `setmultitrainerbattle` but before `BattleSetup_StartMultiBattle` sets `gBattleTypeFlags`, so right after a wild
+  battle the check saw no trainer battle, answered "full teams" and skipped `ReducePlayerPartyToSelectedMons`: in the
+  Space Center raid, the Sootopolis multi and the Sky Pillar trial (all `Multi Party: Half`) the player's pick of
+  three was ignored. A Draconid wrapper used only by the macro sets the trainer flag for the call and restores the
+  flags; the in-battle callers (battle_main, battle_util2, the AI, trainer slides, the summary screen, the partner
+  party) keep reading the real flags. Measured by `tests/multi_teams.play`: after a wild battle the vanilla check
+  says full (1), the wrapper half (0). *Alternatives:* setting BATTLE_TYPE_TRAINER in the macro (a new script
+  command), or reading `TRAINER_BATTLE_PARAM` inside `AreMultiPartiesFullTeams` (changes the shared function for
+  every caller).

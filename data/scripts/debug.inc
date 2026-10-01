@@ -846,3 +846,17 @@ Debug_EventScript_DraconidTestFadeWhite::
 	fadescreen FADE_FROM_WHITE
 	releaseall
 	end
+
+@ Draconid Emerald (D-343): the multi team-size check right after a wild battle (tools/hack/emu/tests/multi_teams.play):
+@ VAR_TEMP_1 = the vanilla check with the wild battle's flags, VAR_TEMP_2 = the check multi_do uses now
+Debug_EventScript_DraconidTestMultiTeams::
+	lockall
+	setwildbattle SPECIES_ZIGZAGOON, 2
+	dowildbattle
+	setmultitrainerbattle TRAINER_STEVEN_MOSSDEEP, MossdeepCity_SpaceCenter_2F_Text_DraconidStevenDefeat, TRAINER_BRENDAN_MOSSDEEP, MossdeepCity_SpaceCenter_2F_Text_DraconidBrendanDefeat, PARTNER_TABITHA
+	callnative AreMultiPartiesFullTeams
+	copyvar VAR_TEMP_1, VAR_RESULT
+	callnative Draconid_ScriptAreMultiPartiesFullTeams
+	copyvar VAR_TEMP_2, VAR_RESULT
+	releaseall
+	end

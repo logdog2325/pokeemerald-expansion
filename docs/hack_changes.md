@@ -365,6 +365,12 @@ Grouped by area; each entry names the file(s).
 | Act 7 extension (D-204, D-209): `Draconid_IsPrimalWeather` – `SetSavedWeatherFromCurrMapHeader` makes every map under the open sky (town, city, route, ocean route) `WEATHER_ABNORMAL` from `VILLAGE_STATE_ALARM` until the Primal battle is won; `Draconid_IsPrimalMusic` – `GetLocationMusic` plays `MUS_ABNORMAL_WEATHER` there; `Draconid_ResolveVariantPartner` also resolves `PARTNER_ASTER_*` by the player's egg; `InitRoamer` adds both Latias and Latios at `DRACONID_LATI_ROAMER_LEVEL` (the red/blue choice is gone) | `src/draconid.c`, `include/draconid.h`, `src/field_weather_effect.c`, `src/overworld.c`, `src/roamer.c`, `include/constants/global.h` |
 
 | Same-screen fades (D-278): `FadeSelectedPals` (`src/field_weather.c`) keeps the untinted palettes at a fade-out (`KeepPreFadePalettes`, checksums) and restores the untouched ones at the fade-in (`RestorePreFadePalettes`); `LoadMapTilesetPalettes` (`src/fieldmap.c`) calls the new `ForgetPreFadePalettes` (`include/field_weather.h`). Debug test hook `DRACONID_TEST_SCRIPT` + `script` field (`include/draconid.h`, `Draconid_TryTestWarp` starts the script) |
+- D-343: `Draconid_ScriptAreMultiPartiesFullTeams` (src/draconid.c) – the `multi_do` macro (asm/macros/battle_frontier/
+  battle_tower.inc, `@ Draconid Emerald`) calls it instead of `AreMultiPartiesFullTeams`: it answers for the trainer
+  battle `setmultitrainerbattle` just set up (gBattleTypeFlags = BATTLE_TYPE_TRAINER for the call), not for the
+  last battle; the in-battle callers are unchanged. Test hook `Debug_EventScript_DraconidTestMultiTeams`
+  (data/scripts/debug.inc) and `tests/multi_teams.play`.
+
 ## Scripts
 | Script / label | File |
 |---|---|
