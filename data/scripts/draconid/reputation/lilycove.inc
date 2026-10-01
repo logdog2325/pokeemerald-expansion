@@ -815,6 +815,7 @@ LilycoveCity_PokemonCenter_1F_EventScript_DraconidRepLilycoveLady_2:
 	lock
 	faceplayer
 	msgbox LilycoveCity_PokemonCenter_1F_Text_DraconidRepLilycoveLadyUniform, MSGBOX_DEFAULT
+	release
 	goto LilycoveCity_PokemonCenter_1F_EventScript_DraconidRepLilycoveLady_1
 
 

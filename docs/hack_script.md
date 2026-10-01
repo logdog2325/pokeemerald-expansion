@@ -1928,6 +1928,13 @@ Draconid Emerald: base-Emerald leftovers that contradicted the v2 story (feedbac
 - RYDEL: …Hm? That red uniform. TEAM MAGMA, is it?
 - Well! A BIKE doesn't ask who's riding it!
 
+## data/scripts/draconid/debug_jumps.pory
+
+Draconid Emerald: "Jump to act…" in the debug menu (R + START in the overworld, debug builds only; D-480 - D-489). The playtester picks an act and lands next to its first scene with the save in the state a real playthrough has there. data/event_scripts.s includes this only under DEBUG_OVERWORLD_MENU: `make release` has none of it.  the menu, the rewind question, the warps        this file (hand-written) the story state at each stop                    debug_jumps_state.inc, written by tools/hack/gen_debug_jumps.py from the story simulation (check_progression.py); --check fails when a story change has made it stale the bag counts, the ready team, the supplies,   src/draconid_debug_jumps.c (callnative) Rayquaza, the Lati roamers  A stop (VAR_0x8008 = DRACONID_JUMP_STOP_*): the rewind question if this save has already played the stop's first scene; the player's own choices read (the egg, Prof. Oak's partner, the Devon Goods, Regidrago); the generated state; then what the simulation doesn't model (Debug_EventScript_DraconidJumpCommon); the warp.
+
+### `Debug_EventScript_DraconidJumpBegin`
+- This rewinds the story. Continue?
+
 ## data/scripts/draconid/devon_goods.pory
 
 Draconid Emerald (D-258): what the Devon Goods choice in Rusturf Tunnel (FLAG_DEVON_GOODS_RETURNED, act2.pory) changes. "Return to DEVON": the employee gets the parcel back at the edge of town, Mr. Stone sends the player on with it and adds a thank-you gift, the AMULET COIN. "Keep for MAGMA": the player says nothing, so DEVON believes the thief got away; Mr. Stone asks the player to tell CAPT. STERN, the player hands STERN the parts as a MAGMA grunt who "found" them, STERN tells Mr. Stone, and TABITHA pays for the job (money and a FIRE STONE, SlateportCity_OceanicMuseum_1F_EventScript_DraconidTabithaOrder). The Devon staff, Mr. Stone (his lines and his PokéNav calls), STERN and Rustboro's townsfolk (reputation/rustboro.pory) react while the player wears the uniform and after the Sootopolis reveal (Mr. Stone forgives; some of his staff remember). Maxie's first call (maxie_calls.pory) and TABITHA follow it too.

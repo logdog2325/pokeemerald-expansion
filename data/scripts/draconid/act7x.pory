@@ -73,6 +73,14 @@ script SkyPillar_Outside_EventScript_DraconidElderCall {
     pokenavcall(SkyPillar_Outside_Text_DraconidElderCall)
     waitmessage
     closemessage
+    // they come down from the door, around the rocks, to stand beside the player (round 2: they used to speak from
+    // seven rows up, out of view; D-403)
+    applymovement(LOCALID_SKY_PILLAR_OUTSIDE_ASTER, SkyPillar_Outside_Movement_DraconidAsterComesDown)
+    applymovement(LOCALID_SKY_PILLAR_OUTSIDE_NERINE, SkyPillar_Outside_Movement_DraconidNerineComesDown)
+    waitmovement(LOCALID_SKY_PILLAR_OUTSIDE_ASTER)
+    waitmovement(LOCALID_SKY_PILLAR_OUTSIDE_NERINE)
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft)
+    waitmovement(0)
     msgbox(format("NERINE: {PLAYER}! We heard the stones sing, even out here.\p"
                   "Go quickly. We'll keep the door until you're back."))
     msgbox(format("ASTER: And don't you dare keep us waiting! That star won't!"))
@@ -86,6 +94,22 @@ script SkyPillar_Outside_EventScript_DraconidElderCall {
     closemessage
     warp(MAP_DRACONID_VILLAGE, 19, 6)
     waitstate
+}
+
+// ASTER (13, 7) and NERINE (15, 7) to (16, 14) and (15, 14), beside the player at (17, 14): west of the rocks below
+// the door (x 13), NERINE two steps behind
+movement SkyPillar_Outside_Movement_DraconidAsterComesDown {
+    walk_down * 7
+    walk_right * 3
+}
+
+movement SkyPillar_Outside_Movement_DraconidNerineComesDown {
+    walk_down * 2
+    walk_left
+    walk_down
+    walk_left
+    walk_down * 4
+    walk_right * 2
 }
 
 text SkyPillar_Outside_Text_DraconidElderCall {

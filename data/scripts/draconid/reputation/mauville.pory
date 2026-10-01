@@ -446,6 +446,9 @@ script MauvilleCity_PokemonCenter_1F_EventScript_DraconidRepMauvilleOldMan {
         lock
         faceplayer
         msgbox(MauvilleCity_PokemonCenter_1F_Text_DraconidRepMauvilleOldManUniform, MSGBOX_DEFAULT)
+        // the vanilla script locks again where it needs to; a path through it that ends without a release would leave
+        // the map frozen (check_hardlock, round 2)
+        release
     }
     goto(MauvilleCity_PokemonCenter_1F_EventScript_MauvilleOldMan)
 }

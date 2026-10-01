@@ -42,6 +42,12 @@ SkyPillar_Outside_EventScript_DraconidElderCall::
 	pokenavcall SkyPillar_Outside_Text_DraconidElderCall
 	waitmessage
 	closemessage
+	applymovement LOCALID_SKY_PILLAR_OUTSIDE_ASTER, SkyPillar_Outside_Movement_DraconidAsterComesDown
+	applymovement LOCALID_SKY_PILLAR_OUTSIDE_NERINE, SkyPillar_Outside_Movement_DraconidNerineComesDown
+	waitmovement LOCALID_SKY_PILLAR_OUTSIDE_ASTER
+	waitmovement LOCALID_SKY_PILLAR_OUTSIDE_NERINE
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement 0
 	msgbox SkyPillar_Outside_EventScript_DraconidElderCall_Text_0
 	msgbox SkyPillar_Outside_EventScript_DraconidElderCall_Text_1
 	closemessage
@@ -55,6 +61,33 @@ SkyPillar_Outside_EventScript_DraconidElderCall::
 	waitstate
 	return
 
+
+SkyPillar_Outside_Movement_DraconidAsterComesDown:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_right
+	walk_right
+	walk_right
+	step_end
+
+SkyPillar_Outside_Movement_DraconidNerineComesDown:
+	walk_down
+	walk_down
+	walk_left
+	walk_down
+	walk_left
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_right
+	walk_right
+	step_end
 
 SkyPillar_Outside_EventScript_DraconidShowWallace::
 	clearflag FLAG_HIDE_SKY_PILLAR_WALLACE

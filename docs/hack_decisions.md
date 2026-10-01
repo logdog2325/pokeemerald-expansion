@@ -2225,6 +2225,13 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   emulator: after the hatch below the shrine she comes down from the top edge of the screen. – Alt: a fade to black
   and back with her beside the player (still a teleport); a fixed spot the player walks to (the hatch can happen
   anywhere and she could be missed); a fixed route from her house (no single route reaches every hatch spot).
+- **D-403 At the ELDER's call, ASTER and NERINE come down to the player** (round 2, found while building the act
+  jumps): they waited below the Sky Pillar's door at (13, 7) and (15, 7) and spoke from there, seven rows above the
+  player at (17, 14) – out of view, so their lines came from nowhere. After the call they now walk down the sand
+  west of the rocks below the door (x 13, NERINE two steps behind) to (16, 14) and (15, 14), beside the player, who
+  turns to them before they speak. Checked in the emulator (the "Jump to act" stop for the call). – Alt: the player
+  walks up to them (the door is the climb they are told not to start yet); a camera pan up and back (the pan would
+  cross the rocks for no reason); place them near the landing spot from the start (they are guarding the door).
 - **D-420 The ELDER gives the new-game speech** (feedback 2.13: "also we need to change up the birch intro its way to
   similar to emeralds" / "I think we should replace birch in the intro with the elder a old woman sprite or something
   maybe even drake from the elite four"): the speech before the bedroom is the **ELDER's**, not PROF. BIRCH's. He is

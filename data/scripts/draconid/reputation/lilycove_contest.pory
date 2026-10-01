@@ -491,6 +491,9 @@ script LilycoveCity_ContestLobby_EventScript_DraconidRepContestReceptionist {
         lock
         faceplayer
         msgbox(LilycoveCity_ContestLobby_Text_DraconidRepContestReceptionistUniform, MSGBOX_DEFAULT)
+        // the vanilla script locks again where it needs to; a path through it that ends without a release would leave
+        // the map frozen (check_hardlock, round 2)
+        release
     }
     goto(LilycoveCity_ContestLobby_EventScript_ContestReceptionist)
 }

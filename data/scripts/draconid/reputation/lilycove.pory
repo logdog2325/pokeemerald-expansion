@@ -1010,6 +1010,9 @@ script LilycoveCity_PokemonCenter_1F_EventScript_DraconidRepLilycoveLady {
         lock
         faceplayer
         msgbox(LilycoveCity_PokemonCenter_1F_Text_DraconidRepLilycoveLadyUniform, MSGBOX_DEFAULT)
+        // the vanilla script locks again where it needs to; a path through it that ends without a release would leave
+        // the map frozen (check_hardlock, round 2)
+        release
     }
     goto(LilycoveCity_PokemonCenter_1F_EventScript_LilycoveLady)
 }

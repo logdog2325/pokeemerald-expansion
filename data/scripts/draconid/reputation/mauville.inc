@@ -369,6 +369,7 @@ MauvilleCity_PokemonCenter_1F_EventScript_DraconidRepMauvilleOldMan_2:
 	lock
 	faceplayer
 	msgbox MauvilleCity_PokemonCenter_1F_Text_DraconidRepMauvilleOldManUniform, MSGBOX_DEFAULT
+	release
 	goto MauvilleCity_PokemonCenter_1F_EventScript_DraconidRepMauvilleOldMan_1
 
 

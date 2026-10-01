@@ -361,6 +361,7 @@ LilycoveCity_ContestLobby_EventScript_DraconidRepContestReceptionist_2:
 	lock
 	faceplayer
 	msgbox LilycoveCity_ContestLobby_Text_DraconidRepContestReceptionistUniform, MSGBOX_DEFAULT
+	release
 	goto LilycoveCity_ContestLobby_EventScript_DraconidRepContestReceptionist_1
 
 
