@@ -173,8 +173,9 @@ python3 tools/hack/emu/matrix.py -o /tmp/matrix [-j 3] [--only F_DREEPY]
 `-D EGGNAME=… -D SECOND=… -D SECONDNAME=… -D MAGMA=…` (see the comments at the top of each).
 `frontier_legends.play` (the Battle Frontier legends and the LEGENDS' TAG, post-game) needs only `rustboro_done.ss`
 and runs in the Deino chains.
-`title.play` (the title screen: the movie into the title, the banner, Regidrago's glow, START → main menu) boots
-from power-on, needs no savestate and runs in the Deino chains.
+`title.play` (the title screen: the movie into the title, the banner, Regidrago's glow, START → main menu; then NEW
+GAME and every page of the ELDER's new-game speech into the bedroom, D-420) boots from power-on, needs no savestate
+and runs in the Deino chains. The other chains start with Quickstart, which skips the speech.
 
 ## Story checks – `tools/hack/check_story.py`
 ```sh

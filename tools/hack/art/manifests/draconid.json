@@ -322,5 +322,9 @@
   "path": "graphics/trainers/back_pics/blue.png",
   "profile": "trainer_back",
   "frames": 4
+ },
+ {
+  "path": "graphics/birch_speech/elder.png",
+  "profile": "trainer_front"
  }
 ]

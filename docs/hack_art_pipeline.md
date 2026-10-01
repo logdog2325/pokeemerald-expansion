@@ -68,11 +68,23 @@ is saved, so the outfit survives saving and map changes.
 | Aster overworld (`draconid/aster.png`) | `tools/hack/art/player/aster.json` (`build_player.py`) | Leaf walk frames, own head (crimson band, gold horns) |
 | Aster front pic | `tools/hack/art/player/aster_pics.json` (`build_pics.py`) | Cooltrainer F front pic, recoloured + band/horns |
 | Dragon eggs (`pics/misc/draconid_egg_*.png`) | `tools/hack/art/objects/draconid_eggs.py` | drawn from scratch |
+| Elder, new-game speech portrait (`graphics/birch_speech/elder.png`, 64×64, round 2) | `tools/hack/art/recipes/draconid_elder_portrait.json` (`kitbash.py`) | `expert_m` **trainer front pic** (the base of his overworld sprite): the gi → teal robe, red sash, a teal circlet with two ivory horns (D-422) |
 
 All villagers share **one palette** (`graphics/object_events/palettes/draconid_npc.pal`: skin 1–4, teal 5–7,
 red 8–10, ivory/grey/charcoal 11–13), so a village map never runs out of sprite palettes; the recipes only
 move the bases' indices onto those roles. Aster and the eggs have their own palettes. The C data comes from
 `gen_outfit_code.py` (`NPCS`, `OBJECTS`, `NPC_PALETTES`).
+
+**The Elder's speech portrait** (round 2, D-420 – D-422) replaces Birch's in the new-game speech (same format: a
+64×64 4bpp sprite with its own palette, `src/field_effect.c` loads it). The recipe keeps the Expert M pic's skin and
+hair colours and puts the overworld palette's teal (`draconid_npc.pal` 5–7), reds (8–9) and ivory (11) in the other
+slots; `remap_region` boxes turn the white gi into the teal robe (white → light, light grey → mid, the shading →
+dark teal) around the face, the beard and the hands, the hakama's white ties become robe highlights, and three
+`pixels` steps draw the beard's tip over the robe, the red sash over the waist and the circlet (a teal band with an
+ivory boss, two ivory horns with a black outline at the temples, leaning out like the overworld sprite's). Rebuild:
+`python3 tools/hack/art/kitbash.py tools/hack/art/recipes/draconid_elder_portrait.json`, then `make`. Checks:
+`validate.py --manifest` (added), a contact sheet next to `expert_m` and his overworld sheet at 4×, 1×/2×/6× views
+on black (the speech's background) and the whole speech in the emulator (`title.play`, `speech_01` … `speech_24`).
 
 ### Known gaps (`TODO(art)`)
 - Acro Bike wheelies and hops are shifted/sheared Mach Bike frames.

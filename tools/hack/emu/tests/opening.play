@@ -3,6 +3,7 @@
 # Saves opening_*.ss states in the output directory for follow-up scripts.
 # The quickstart gender is random: -D GENDER=F tests the female player.
 # -D EGG=0|1|2 -D EGGNAME=DEINO|DREEPY|JANGMO_O picks Deino / Dreepy / Jangmo-o (DRACONID_EGG_*).
+# Quickstart skips the ELDER's new-game speech; title.play goes through every page of it (D-420).
 default GENDER M
 default EGG 0
 default EGGNAME DEINO

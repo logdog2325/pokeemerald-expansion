@@ -1,62 +1,65 @@
+@ Draconid Emerald: the new-game speech is given by the ELDER of the DRACONID clan, not PROF. BIRCH (D-420).
+@ The labels and the tasks in src/main_menu.c stay as they were; only the words (and his dragon) changed.
+
 gText_Birch_Welcome::
-	.string "Hi! Sorry to keep you waiting!\p"
-	.string "Welcome to the world of POKéMON!\p"
-	.string "My name is BIRCH.\p"
-	.string "But everyone calls me the POKéMON\n"
-	.string "PROFESSOR.\p"
+	.string "Hohoho… Come in, come in.\n"
+	.string "The mountain wind bites tonight.\p"
+	.string "I am the ELDER of the DRACONID clan,\n"
+	.string "keeper of our mountain's shrine.\p"
+	.string "Welcome to the world of POKéMON,\n"
+	.string "as our clan has always known it.\p"
 	.string "$"
 
+@ Draconid Emerald: his dragon comes out of its ball at the {PAUSE} (NewGameBirchSpeech_WaitForThisIsPokemonText)
 gText_Birch_Pokemon::
-	.string "This is what we call a “POKéMON.”\p"
-	.string "\n"
+	.string "Come out, old friend.{PAUSE 96}\p"
 	.string "$"
 
+@ Draconid Emerald: ALTARIA is DRACONID_ELDER_DRAGON (include/constants/draconid.h)
 gText_Birch_MainSpeech::
-	.string "This world is widely inhabited by\n"
-	.string "creatures known as POKéMON.\p"
-	.string "We humans live alongside POKéMON,\n"
-	.string "at times as friendly playmates, and\l"
-	.string "at times as cooperative workmates.\p"
-	.string "And sometimes, we band together\n"
-	.string "and battle others like us.\p"
-	.string "But despite our closeness, we don't\n"
-	.string "know everything about POKéMON.\p"
-	.string "In fact, there are many, many\n"
-	.string "secrets surrounding POKéMON.\p"
-	.string "To unravel POKéMON mysteries,\n"
-	.string "I've been undertaking research.\l"
-	.string "That's what I do.\p"
+	.string "This is my ALTARIA. We have flown\n"
+	.string "these peaks together for sixty years.\p"
+	.string "Creatures such as this are POKéMON.\n"
+	.string "Every sky, sea and stone holds them.\p"
+	.string "Down in the lowlands, people live\n"
+	.string "beside POKéMON as friends and helpers.\p"
+	.string "They work together, play together…\n"
+	.string "and sometimes, they battle together.\p"
+	.string "Up here, our clan lives beside the\n"
+	.string "dragons, as our ancestors did.\p"
+	.string "We keep the old ways, and we watch\n"
+	.string "the sky. The lowlands have forgotten.\p"
 	.string "$"
 
 gText_Birch_AndYouAre::
-	.string "And you are?$"
+	.string "Now then. And you are?$"
 
 gText_Birch_BoyOrGirl::
+	.string "Come closer. These old eyes\n"
+	.string "are not what they once were.\p"
 	.string "Are you a boy?\n"
 	.string "Or are you a girl?$"
 
 gText_Birch_WhatsYourName::
-	.string "All right.\n"
-	.string "What's your name?$"
+	.string "Ah, yes.\n"
+	.string "And what is your name, child?$"
 
 gText_Birch_SoItsPlayer::
-	.string "So it's {PLAYER}{KUN}?$"
+	.string "{PLAYER}…\n"
+	.string "Is that right?$"
 
 gText_Birch_YourePlayer::
-	.string "Ah, okay!\p"
-	@ Draconid Emerald: the player grows up in Draconid Village, not a newcomer to Littleroot
-	.string "You're {PLAYER}{KUN} of the DRACONID\n"
-	.string "clan, from the village in the\l"
-	.string "mountains. I get it now!\p"
+	.string "Hohoho. Of course it is.\n"
+	.string "Forgive an old man his memory.\p"
+	.string "You are {PLAYER} of the DRACONID\n"
+	.string "clan. I held you the day you were born.\p"
 	.string "$"
 
 gText_Birch_AreYouReady::
-	.string "All right, are you ready?\p"
-	.string "Your very own adventure is about\n"
-	.string "to unfold.\p"
-	.string "Take courage, and leap into the\n"
-	.string "world of POKéMON where dreams,\l"
-	.string "adventure, and friendships await!\p"
-	.string "Well, I'll be expecting you later.\n"
-	.string "Come see me in my POKéMON LAB.\p"
+	.string "Go and rest now, {PLAYER}.\n"
+	.string "The hour is late.\p"
+	.string "Watch the sky as you fall asleep.\n"
+	.string "It has been restless these nights…\p"
+	.string "Sleep well, child. When the sky\n"
+	.string "speaks, the clan must answer.\p"
 	.string "$"

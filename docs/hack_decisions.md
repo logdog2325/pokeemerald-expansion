@@ -2015,3 +2015,45 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   that remembered the rescue: Brendan's Rustboro "You saved my dad" → "You helped my dad"; the Trick House quiz
   "Which of these POKéMON was chasing PROF. BIRCH?" → "…fell with the star on ROUTE 101?" (LUNATONE replaces
   POOCHYENA as the first, right, answer).
+
+- **D-420 The ELDER gives the new-game speech** (feedback 2.13: "also we need to change up the birch intro its way to
+  similar to emeralds" / "I think we should replace birch in the intro with the elder a old woman sprite or something
+  maybe even drake from the elite four"): the speech before the bedroom is the **ELDER's**, not PROF. BIRCH's. He is
+  the man who sends the player out in the story, so he is the one who welcomes them; the playtester's other two
+  ideas don't fit: the ELDER is a man throughout the story ("he/his" in every scene, the old man of the overworld
+  sprite), and the village's old woman only hands over the Running Shoes; DRAKE belongs to the POKéMON LEAGUE (another
+  session is giving DRAKE his own story role, and a cameo here would spoil it). Vanilla's staging is kept as it is –
+  the fade in on the platform, the Poké Ball release with its cry, the platform sliding away, the gender pics (the
+  Draconid tamers), the naming screen, the return, the shrink into the world – and only the speaker, his Pokémon and
+  the words change (`data/text/birch_speech.inc`, the labels kept). His words: a welcome with no "Hi! Sorry to keep
+  you waiting", "Come out, old friend" before the ball, the world of POKéMON as the clan sees it (the lowlands live
+  beside POKéMON as friends, helpers and in battle; the clan lives beside the dragons and watches the sky, "The
+  lowlands have forgotten"), then "And you are?", boy or girl and the name, which an old man who has known the
+  player all their life asks because "these old eyes are not what they once were" ("Forgive an old man his memory",
+  "I held you the day you were born" – the clan raises its young, D-100). The closing doesn't tell of the star (the
+  first scene does): "Watch the sky as you fall asleep. It has been restless these nights… When the sky speaks, the
+  clan must answer." – then "That night, the DRACONID village slept…". No Birch, professor or research;
+  "Welcome to the world of POKéMON" is the one vanilla line kept, in his words. – Alt: an old woman or DRAKE (above);
+  Birch with new lines (still Emerald's scene, the complaint); a new cutscene of the night sky (vanilla's animation
+  carries the gender and name choice well, and the falling star is already the first scene). – The voice of his
+  shrine lines (terse, warm, "Hohoho", the sky), the speech's length (20 boxes; vanilla 21).
+- **D-421 His dragon is ALTARIA** (`DRACONID_ELDER_DRAGON`): the story never names the species of "my old dragon"
+  that flies Nerine's egg away (D-270), carries the player to the Sky Pillar (D-150) and back home (Act 7), so the
+  speech picks one: **ALTARIA**, Hoenn's own sky dragon (Dragon/Flying, it soars among the clouds and hums), gentle
+  and old in feeling, a flier for a rider and an egg; its front pic and cry are in the game.
+  It comes out at Lotad's spot, where its crest overlaps the ELDER's raised hand, as if he rests it there. – Alt:
+  SALAMENCE (DRAKE's ace, and DRAKE is getting a story of his own), DRAGONITE (LANCE's; the ELDER is surprised to see
+  one land, D-261), FLYGON (a desert dragon), one of the three egg lines (they came from far lands, D-230), Hydreigon
+  or Noivern (fierce, not an old friend). The constant lets later scenes name it; the scenes that say "my old dragon"
+  are unchanged.
+- **D-422 The ELDER's speech portrait**: `graphics/birch_speech/elder.png`, 64×64 in Birch's format (4bpp, its own
+  16-colour palette), built by `tools/hack/art/recipes/draconid_elder_portrait.json` from the vanilla **Expert M trainer
+  front pic** – the base of his overworld sprite – so the man in the speech is the man in the village: the white gi
+  becomes his **teal robe** (the overworld palette's teal, `draconid_npc.pal` 5–7), the hakama's white ties go into
+  the robe, a **red sash** (8–9) crosses the waist, and he wears the **clan circlet**: a teal band with a small ivory
+  boss and **two ivory horns** at the temples (11 with the grey 5 – his overworld sprite shows only the horns, 16 px
+  have no room for the band; teal is the clan's colour, as on the player's headband). Face, white hair and beard (the
+  beard's tip drawn over the robe), hands, Poké Ball and tabi are Game Freak's pixels. – Alt (tried, previews in the
+  session): an ivory band (on the white hair it read as a bandage), a bald crown as on the overworld sprite (the band
+  left a small dome that read as a hat), horns rising from the middle of the band (a crown). Vanilla `birch.png`
+  stays in the repository, unused.

@@ -5,6 +5,7 @@ gen_script_doc.py - collect every new or reworked line of dialogue into docs/hac
   python3 tools/hack/gen_script_doc.py [--check]
 
 Sources, in story order:
+  - the ELDER's new-game speech, data/text/birch_speech.inc (vanilla labels, rewritten; D-420);
   - data/scripts/draconid/new_game.pory, the Draconid maps' scripts.pory (the village and the pass),
     birch_intro / act1 / second_starter / act2 … act7 / rivals / aster .pory: every script and text block,
     with the lines of each msgbox / message in order;
@@ -153,6 +154,28 @@ def pory_section(path):
     return out + lines
 
 
+def speech_section():
+    """The new-game speech: the gText_Birch_* labels of data/text/birch_speech.inc in the order the speech shows them."""
+    path = "data/text/birch_speech.inc"
+    src = open(os.path.join(ROOT, path)).read()
+    out = ["## The new-game speech (`%s`)" % path, "",
+           "The ELDER of the DRACONID clan gives the speech (the tasks in `src/main_menu.c`); his ALTARIA comes out of "
+           "its ball after `gText_Birch_Pokemon`, the player chooses boy or girl after `gText_Birch_BoyOrGirl` and "
+           "names themselves after `gText_Birch_WhatsYourName`.", ""]
+    order = ["Welcome", "Pokemon", "MainSpeech", "AndYouAre", "BoyOrGirl", "WhatsYourName", "SoItsPlayer",
+             "YourePlayer", "AreYouReady"]
+    for name in order:
+        m = re.search(r'^gText_Birch_%s::\n((?:\t\.string .*\n)+)' % name, src, re.M)
+        if not m:
+            continue
+        text = "".join(re.findall(r'\.string "((?:[^"\\]|\\.)*)"', m.group(1)))
+        out.append("### `gText_Birch_%s`" % name)
+        for box in pretty(re.sub(r"\{PAUSE \d+\}", "", text)):
+            out.append("- %s" % box)
+        out.append("")
+    return out
+
+
 def vanilla_section():
     out = ["## Reworked vanilla texts (`@ Draconid Emerald` labels in `data/maps/*/scripts.inc`)", ""]
     label = re.compile(r'^(\w+_Text_\w+):{1,2}\s*@ Draconid Emerald[^\n]*\n((?:\t\.string .*\n)+)', re.M)
@@ -184,6 +207,7 @@ def build():
         "The story they follow: [hack_story.md](hack_story.md).",
         "",
     ]
+    out += speech_section()
     for p in paths:
         out += pory_section(p)
     out += vanilla_section()
