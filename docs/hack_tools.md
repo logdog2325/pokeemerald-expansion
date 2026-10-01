@@ -366,3 +366,10 @@ the OOM killer stepped in – killing parallel runs.) A healthy run logs no emul
 Tips: the wall clock needs exact presses (`press A 2 450; press A 2 150; press A 2 40; press UP 2 20;
 press A 2 60; mash A 3000`); indoor door mats need an extra `hold DOWN 20`. Exit code 1 on any failed
 expectation or `until` timeout, so scripts double as regression tests.
+
+## Dragon egg art – `tools/hack/art/draconid_eggs.py`
+```sh
+python3 tools/hack/art/draconid_eggs.py [--check]
+```
+Writes `graphics/pokemon/draconid_eggs/<egg>/` (`egg_sprite.png`, `hatch.png`, `icon_egg.png`) for Deino, Dreepy and
+Jangmo-o from the ceremony's overworld eggs and vanilla's egg art (D-404); `--check` exits 1 if the committed PNGs differ.

@@ -346,6 +346,10 @@ const u8 gText_OddEggFoundByCouple[] = _("An odd POKéMON EGG found\nby the DAY 
 const u8 gText_PeculiarEggNicePlace[] = _("A peculiar POKéMON EGG\nobtained at the nice place.");
 const u8 gText_PeculiarEggTrade[] = _("A peculiar POKéMON EGG\nobtained in a trade.");
 const u8 gText_EggFromHotSprings[] = _("A POKéMON EGG obtained\nat the hot springs.");
+// Draconid Emerald: the shrine ceremony's eggs name the land each came from (round 2 playtest, D-404)
+const u8 gText_DraconidEggFromUnova[] = _("A dragon EGG carried home\nfrom far-off UNOVA by the\nDRACONID clan's travelers.");
+const u8 gText_DraconidEggFromGalar[] = _("A dragon EGG carried home\nfrom far-off GALAR by the\nDRACONID clan's travelers.");
+const u8 gText_DraconidEggFromAlola[] = _("A dragon EGG carried home\nfrom far-off ALOLA by the\nDRACONID clan's travelers.");
 const u8 gText_EggFromTraveler[] = _("An odd POKéMON EGG\nobtained from a traveler.");
 const u8 gText_ApostropheSBase[] = _("'s BASE");
 const u8 gText_OkayToDeleteFromRegistry[] = _("Is it okay to delete {STR_VAR_1}\nfrom the REGISTRY?");

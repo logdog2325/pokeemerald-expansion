@@ -2232,6 +2232,20 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   turns to them before they speak. Checked in the emulator (the "Jump to act" stop for the call). – Alt: the player
   walks up to them (the door is the climb they are told not to start yet); a camera pan up and back (the pan would
   cross the rocks for no reason); place them near the landing spot from the start (they are guarding the door).
+- **D-404 The ceremony's eggs look and read like themselves** (playtest 2.20/2.21: "all three eggs in there memo it
+  says egg from the hot spring instead of egg from unova alola or galar … could we possibly make the eggs look like
+  how they do in the overworld"): `giveegg` marks a script egg `METLOC_SPECIAL_EGG`, which Emerald's summary reads as
+  the Lavaridge hot-springs egg. **Memo**: for a Deino, Dreepy or Jangmo-o egg with that mark, "A dragon EGG carried
+  home / from far-off UNOVA (GALAR, ALOLA) by the / DRACONID clan's travelers." (the lands of D-230), checked to fit
+  the memo box. **Art**: the expansion's custom-egg slots (`eggId`, `gEggDatas`, as Manaphy's egg) for the three
+  species – the summary egg, the party / PC icon and the hatching egg with its cracks; the default shards take the
+  egg's palette. `tools/hack/art/draconid_eggs.py` makes them from the ceremony's overworld eggs: vanilla's 24×24 egg
+  keeps its outline, cracks and shading and takes the overworld egg's colours and markings at 2× (Deino navy with pink
+  eyes and the checker band, Dreepy mint with pale bands and red eyes, Jangmo-o silver with gold scales); the icon is
+  the overworld egg itself in the nearest colours of an icon palette (Deino pal 3, Dreepy 0, Jangmo-o 2). Every Deino,
+  Dreepy and Jangmo-o egg uses them (a bred one too: it is the same egg). Checked in the emulator for all three eggs:
+  party icon, summary, memo, hatch. – Alt: a met location of the village (the memo would still be a generic one);
+  upscale the 12×14 overworld egg (blocky beside every other summary pic); keep vanilla's egg (the complaint).
 - **D-420 The ELDER gives the new-game speech** (feedback 2.13: "also we need to change up the birch intro its way to
   similar to emeralds" / "I think we should replace birch in the intro with the elder a old woman sprite or something
   maybe even drake from the elite four"): the speech before the bedroom is the **ELDER's**, not PROF. BIRCH's. He is

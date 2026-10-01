@@ -27503,3 +27503,20 @@ const u32 gObjectEventPic_Substitute[] = INCGFX_COMP("graphics/pokemon/question_
     const u32 gMonFrontPic_Egg[] = INCGFX_U32("graphics/pokemon/egg/anim_front.png", ".4bpp.smol");
     const u16 gMonPalette_Egg[] = INCGFX_U16("graphics/pokemon/egg/normal.pal", ".gbapal");
     const u8 gMonIcon_Egg[] = INCGFX_U8("graphics/pokemon/egg/icon.png", ".4bpp");
+
+// Draconid Emerald: the dragon eggs of the shrine ceremony, made by tools/hack/art/draconid_eggs.py (round 2, D-404)
+    const u8 gMonEggIcon_DraconidDeino[] = INCGFX_U8("graphics/pokemon/draconid_eggs/deino/icon_egg.png", ".4bpp");
+    const u32 gMonEggGfx_DraconidDeino[] = INCGFX_U32("graphics/pokemon/draconid_eggs/deino/egg_sprite.png", ".4bpp.smol");
+    const u16 gMonEggPal_DraconidDeino[] = INCGFX_U16("graphics/pokemon/draconid_eggs/deino/egg_sprite.png", ".gbapal");
+    const u32 gMonHatchGfx_DraconidDeino[] = INCGFX_U32("graphics/pokemon/draconid_eggs/deino/hatch.png", ".4bpp.smol");
+    const u16 gMonHatchPal_DraconidDeino[] = INCGFX_U16("graphics/pokemon/draconid_eggs/deino/hatch.png", ".gbapal");
+    const u8 gMonEggIcon_DraconidDreepy[] = INCGFX_U8("graphics/pokemon/draconid_eggs/dreepy/icon_egg.png", ".4bpp");
+    const u32 gMonEggGfx_DraconidDreepy[] = INCGFX_U32("graphics/pokemon/draconid_eggs/dreepy/egg_sprite.png", ".4bpp.smol");
+    const u16 gMonEggPal_DraconidDreepy[] = INCGFX_U16("graphics/pokemon/draconid_eggs/dreepy/egg_sprite.png", ".gbapal");
+    const u32 gMonHatchGfx_DraconidDreepy[] = INCGFX_U32("graphics/pokemon/draconid_eggs/dreepy/hatch.png", ".4bpp.smol");
+    const u16 gMonHatchPal_DraconidDreepy[] = INCGFX_U16("graphics/pokemon/draconid_eggs/dreepy/hatch.png", ".gbapal");
+    const u8 gMonEggIcon_DraconidJangmoO[] = INCGFX_U8("graphics/pokemon/draconid_eggs/jangmo_o/icon_egg.png", ".4bpp");
+    const u32 gMonEggGfx_DraconidJangmoO[] = INCGFX_U32("graphics/pokemon/draconid_eggs/jangmo_o/egg_sprite.png", ".4bpp.smol");
+    const u16 gMonEggPal_DraconidJangmoO[] = INCGFX_U16("graphics/pokemon/draconid_eggs/jangmo_o/egg_sprite.png", ".gbapal");
+    const u32 gMonHatchGfx_DraconidJangmoO[] = INCGFX_U32("graphics/pokemon/draconid_eggs/jangmo_o/hatch.png", ".4bpp.smol");
+    const u16 gMonHatchPal_DraconidJangmoO[] = INCGFX_U16("graphics/pokemon/draconid_eggs/jangmo_o/hatch.png", ".gbapal");

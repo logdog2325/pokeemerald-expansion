@@ -6760,6 +6760,7 @@ const struct SpeciesInfo gSpeciesInfoGen8[] =
         .eggMoveLearnset = sDreepyEggMoveLearnset,
         // Draconid Emerald: was 50 (D-107)
         .evolutions = EVOLUTION({EVO_LEVEL, DRACONID_EVO_LEVEL_MIDDLE, SPECIES_DRAKLOAK}),
+        .eggId = EGG_ID_DREEPY, // Draconid Emerald: the shrine ceremony's egg (D-404)
     },
 
     [SPECIES_DRAKLOAK] =

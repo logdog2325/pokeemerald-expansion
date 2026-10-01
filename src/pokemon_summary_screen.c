@@ -3716,6 +3716,13 @@ static void PrintEggMemo(void)
             text = gText_PeculiarEggNicePlace;
         else if (DidMonComeFromGBAGames() == FALSE || DoesMonOTMatchOwner() == FALSE)
             text = gText_PeculiarEggTrade;
+        // Draconid Emerald: the shrine ceremony's eggs (giveegg) name the land each came from, not the hot springs (D-404)
+        else if (sum->metLocation == METLOC_SPECIAL_EGG && gSpeciesInfo[sum->species].eggId == EGG_ID_DEINO)
+            text = gText_DraconidEggFromUnova;
+        else if (sum->metLocation == METLOC_SPECIAL_EGG && gSpeciesInfo[sum->species].eggId == EGG_ID_DREEPY)
+            text = gText_DraconidEggFromGalar;
+        else if (sum->metLocation == METLOC_SPECIAL_EGG && gSpeciesInfo[sum->species].eggId == EGG_ID_JANGMO_O)
+            text = gText_DraconidEggFromAlola;
         else if (sum->metLocation == METLOC_SPECIAL_EGG)
             text = (DidMonComeFromRSE() == TRUE) ? gText_EggFromHotSprings : gText_EggFromTraveler;
         else

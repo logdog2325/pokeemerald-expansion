@@ -43,6 +43,7 @@ python3 tools/hack/art/contact_sheet.py -o sheet.png <png...> [--pal x.pal]
 python3 tools/hack/art/kitbash.py tools/hack/art/recipes/<recipe>.json
 python3 tools/hack/art/quantize.py in.png out.png [--pal x.pal]
 python3 tools/hack/art/recolor.py in.png --show
+python3 tools/hack/art/draconid_eggs.py [--check]       # the dragon eggs' summary / hatch / icon art from the ceremony eggs (D-404)
 python3 tools/hack/mapgen/check_seams.py [MapName...]   # tileset seams across connections
 python3 tools/hack/mapgen/check_maps.py [MapName...]    # half trees, invisible walls (elevation pockets)
 # porymap
