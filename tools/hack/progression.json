@@ -1,8 +1,23 @@
 {
-  "about": "Story table for tools/hack/check_progression.py: legs in v2 story order. Each leg's scenes happen first (script labels: the object, coord trigger, sign or OnFrame entry that starts them; 'at' / 'map' / 'talk' when a label is used in several places, 'then' where a scene warps to one of several places, 'expect' flags/vars/items the scene must set), then the player walks to where the next leg's first scene starts (or to 'to': 'MAP x y', a MAP name, or a label). 'have' is the badges/HMs by then (checked against the simulation). Add Acts 6-7 at the end.",
+  "about": "Story table for tools/hack/check_progression.py (and check_hardlock.py): legs in v2 story order, Act 1 to the post-game (ids 1.xx-7.xx, P.xx). Each leg's scenes happen first (script labels: the object, coord trigger, sign or OnFrame entry that starts them; 'at' / 'map' / 'talk' when a label is used in several places or started by C, 'then' where a scene warps to one of several places, 'expect' flags/vars/items/TRAINER_X the scene must set, 'pre' + 'why' what C code does first), then the player walks to where the next leg's first scene starts (or to 'to': 'MAP_X x y', a MAP name, or a label; through the 'via' waypoints first). 'have' is the badges/HMs by then. 'assume': what a specialvar's C function returns; 'puzzles': gyms whose puzzle is C code; 'no_heal_ok': maps where being shut in without a heal location is the design. The revenge arc, the Act 7 village finale and Lance go in as their own legs where they happen (docs/hack_progression.md, Extending).",
   "start": "MAP_DRACONID_VILLAGE_PLAYERS_HOUSE_2F 3 4",
   "assume": {
     "HasAllHoennMons": "FALSE"
+  },
+  "no_heal_ok": {
+    "MAP_EVER_GRANDE_CITY_SIDNEYS_ROOM": "the Elite Four (vanilla): each room's door shuts behind the player, a loss whites out and resets them",
+    "MAP_EVER_GRANDE_CITY_HALL1": "the Elite Four (vanilla)",
+    "MAP_EVER_GRANDE_CITY_PHOEBES_ROOM": "the Elite Four (vanilla)",
+    "MAP_EVER_GRANDE_CITY_HALL2": "the Elite Four (vanilla)",
+    "MAP_EVER_GRANDE_CITY_GLACIAS_ROOM": "the Elite Four (vanilla)",
+    "MAP_EVER_GRANDE_CITY_HALL3": "the Elite Four (vanilla)",
+    "MAP_EVER_GRANDE_CITY_DRAKES_ROOM": "the Elite Four (vanilla)",
+    "MAP_EVER_GRANDE_CITY_HALL4": "the Elite Four (vanilla)",
+    "MAP_EVER_GRANDE_CITY_CHAMPIONS_ROOM": "the Champion's room (vanilla): the Hall of Fame is the only way on",
+    "MAP_EVER_GRANDE_CITY_HALL_OF_FAME": "the Hall of Fame scene sends the player home",
+    "MAP_SS_TIDAL_CORRIDOR": "the SS Tidal: the crossing (C: the step counter, or the cabin bed) lands the player in Lilycove or Slateport",
+    "MAP_SS_TIDAL_ROOMS": "the SS Tidal (see the corridor)",
+    "MAP_SS_TIDAL_LOWER_DECK": "the SS Tidal (see the corridor)"
   },
   "puzzles": {
     "MAP_MAUVILLE_CITY_GYM": "electric barriers switched by C code (specials MauvilleGymPressSwitch, MauvilleGymDeactivatePuzzle)",

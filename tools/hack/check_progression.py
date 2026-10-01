@@ -9,10 +9,14 @@ check_progression.py - story-lock checker: can the player walk every leg of the 
   python3 tools/hack/check_progression.py -v              # also scenes passed on the way, guesses, map-load notes
   python3 tools/hack/check_progression.py --state 3.05    # the simulated flags/vars at a leg (after its scenes)
 
-The story table is tools/hack/progression.json: ordered legs in v2 story order, each naming the scene(s)
-that happen before it (script labels) and the badges/HMs the player has by then; after its scenes the player
-walks to where the next leg's first scene starts. "side" legs (ways back, the way on) are checked and then
-undone. For every leg the checker
+The story table is tools/hack/progression.json: ordered legs in v2 story order (Act 1 to the post-game), each
+naming the scene(s) that happen before it (script labels) and the badges/HMs the player has by then; after its
+scenes the player walks to where the next leg's first scene starts. "side" legs (ways back, the way on) are
+checked and then undone. Leg fields: scenes, to, via (waypoints walked through first; entering a map runs its
+load scripts for real), from, side, have; scene fields: at / map / talk (where it starts), then (where it
+leaves the player; branches that warp elsewhere give way), expect, pre (+ why: what C code does first), enter.
+Table fields: start, assume (the value a specialvar's C function gives, e.g. HasAllHoennMons), puzzles,
+no_heal_ok (check_hardlock.py). For every leg the checker
 
  1. simulates the flags/vars/bag: new game (EventScript_ResetAllMapFlags, the Draconid new-game setup), then
     every scene of every leg so far, statically: setflag/clearflag/setvar/addvar/subvar/copyvar,
@@ -21,11 +25,17 @@ undone. For every leg the checker
     Poryscript generates; entering a map runs its OnTransition/OnLoad/OnResume scripts. A condition the
     simulated state decides takes one branch; an unknown one (a YES/NO, a multichoice, a battle's outcome)
     takes both – a value written on one side only is kept (the player takes the path that moves the story
-    on), values that differ become unknown – and is reported as a guess (-v). What C code does is given in
-    the table ("pre"), and the cable car's special warp is known;
+    on), values that differ become unknown – and is reported as a guess (-v); a branch cut short in a loop or
+    repeating a state already seen gives way to the other. What C code does is given in the table ("pre",
+    "assume") or known here: the cable car's warp, the Hall of Fame's and the credits' way home (GameClear sets
+    FLAG_SYS_GAME_CLEAR), a menu special's VAR_RESULT. Enum constants (SS_TIDAL_*, DIR_*) are read from the
+    headers too, and the player's scripted movement is followed (applymovement, getplayerxy), so a scene's next
+    walk starts where it leaves the player;
  2. checks that each scene can start: its object is shown, its coord trigger's var matches, its OnFrame
-    entry is the first one due after the map's load scripts; that it sets what the table expects; and that an
-    OnFrame scene moves its var on (else it starts again every frame: a softlock);
+    entry is the first one due after the map's load scripts (and an object an OnWarp table adds counts as
+    shown); that it sets what the table expects (flags, VAR=VALUE, ITEM_X, TRAINER_X defeated); that an OnFrame
+    scene moves its var on (else it starts again every frame: a softlock); and that a "then" is a place the
+    scene really warps to;
  3. searches the tiles (breadth first) from where the player is to where the next scene starts, across
     maps (connections, warps as field_control_avatar.c takes them – doors walked into from below, arrows
     stepped off the way they point –, dive/emerge incl. setdivewarp, holes, Fly from outdoors to towns
@@ -46,7 +56,8 @@ undone. For every leg the checker
 
 Not modelled (a note where they matter): gym puzzles (the table's "puzzles": only getting in is checked),
 sea currents, the party (a "do you have a Pokémon that knows ..." branch is a guess), wild battles, which
-places a Pokémon Center visit or a whiteout returns the player to.
+places a Pokémon Center visit or a whiteout returns the player to (tools/hack/check_hardlock.py checks those).
+run_story(hooks=...) lets check_hardlock.py see the state before and after each scene and at each leg's end.
 """
 
 import argparse
@@ -468,6 +479,7 @@ class Ctx:
         self.moves_player = False       # an applymovement on the player (a trigger that walks them back)
         self.depth = 0                  # nested unknown branches
         self.label = None               # the label of the command being applied
+        self.then_map = None            # the table's "then": branches warping elsewhere give way
 
 
 VAR_RESULT = "VAR_RESULT"
@@ -672,6 +684,9 @@ class Sim:
                 ctx.switch_on_result = args[0] == VAR_RESULT
                 pc += 1
                 continue
+            elif op == "case" and len(args) < 2:
+                pc += 1  # a malformed case line (FRLG's pkmn_center_nurse_frlg.inc): not in this build
+                continue
             elif op == "case":
                 v = st.var(self.vkey("VAR_0x8000"))
                 c = self.c.value(args[0])
@@ -688,6 +703,8 @@ class Sim:
             elif op in WARP_OPS:
                 ctx.warps.append(self._warp_dest(op, args))
                 ctx.warp_depths.append(ctx.choice)
+                if ctx.then_map and args and args[0] != ctx.then_map and ctx.depth:
+                    st.cut = True  # a branch the table's "then" says the player doesn't take
                 return st
             else:
                 ctx.label = self.s.label_at[pc]
@@ -1627,7 +1644,9 @@ class LegResult:
         self.route = []         # the maps the walk crosses, for printing
 
 
-def run_story(chk, table, only=None, verbose=False, state_at=None):
+def run_story(chk, table, only=None, verbose=False, state_at=None, hooks=None):
+    """walk the story table. hooks (check_hardlock.py): an object with scene(leg, entry, state, target, pos, map, view)
+    called before each scene runs and leg_end(leg, res, state, pos) after each leg's walk"""
     legs = table["legs"]
     chk.sim.assume = table.get("assume", {})
     st = chk.new_game_state()
@@ -1665,6 +1684,8 @@ def run_story(chk, table, only=None, verbose=False, state_at=None):
             view = MapView(chk, chk.world.maps[scene_map], st, persist=entering)
             if entering:
                 st = view.state  # the player walked in: the map's load scripts ran for real
+            if hooks:
+                hooks.scene(leg, e, st.flattened(), target, pos, scene_map, view)
             if target and not e.get("no_trigger_check"):
                 for p in chk.check_trigger(e, target, view):
                     res.problems.append("%s can't start: %s" % (e["label"], p))
@@ -1674,9 +1695,12 @@ def run_story(chk, table, only=None, verbose=False, state_at=None):
             # where scripted movement leaves the player (a pseudo var the simulator moves with applymovement)
             st.vars[PLAYER_XY] = (pos[1], pos[2]) if pos[0] == scene_map else UNK
             ctx = Ctx(scene_map, last_talked=ob["index"] if isinstance(ob, dict) and "index" in ob else 0)
+            ctx.then_map = parse_pos(e["then"])[0] if e.get("then") else None
             st = chk.sim.run(e["label"], st, ctx).flattened()
             moved = st.vars.pop(PLAYER_XY, UNK)
             res.guesses += [(e["label"],) + g for g in ctx.guesses]
+            if hooks and hasattr(hooks, "scene_after"):
+                hooks.scene_after(leg, e, st)
             for p in chk.check_expect(e.get("expect", []), st):
                 res.problems.append("%s: expected %s" % (e["label"], p))
             loop = chk.frame_loop(scene_map, e["label"], st, ctx)
@@ -1728,6 +1752,8 @@ def run_story(chk, table, only=None, verbose=False, state_at=None):
             res.skipped = bool(only) and not (leg.get("id") == only or only.lower() in leg.get("name", "").lower())
             results.append(res)
             res.ok = not res.problems
+            if hooks:
+                hooks.leg_end(leg, res, st.flattened(), pos, set(visited))
             if leg.get("side"):
                 st, pos, entered_map, visited = saved
             continue
@@ -1770,6 +1796,8 @@ def run_story(chk, table, only=None, verbose=False, state_at=None):
         pos = new
         res.ok = not res.problems and not res.blockers and not res.detours
         results.append(res)
+        if hooks:
+            hooks.leg_end(leg, res, st.flattened(), pos, set(visited))
         if leg.get("side"):
             st, pos, entered_map, visited = saved
     return st, results
