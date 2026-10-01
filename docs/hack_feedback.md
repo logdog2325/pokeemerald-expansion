@@ -14,12 +14,15 @@ Notes sent while playing the interim v2 preview (release + debug ROMs from batch
 | # | Category | Item | Status |
 |---|---|---|---|
 | 2.1 | map | Draconid Pass: trees cut off (a half tree at the stream, half crowns in the valley copse), an invisible wall, "more tile errors" | [x] the generator's General trees were broken at the top row and variety picks carried a vanilla elevation 5 into the grass; mapbuild now places 2x2 trees on a lattice with their crown caps and keeps walkable ground at its elevation, the pass regenerated; `check_maps.py` lints every generated map (D-340) |
+| 2.2 | balance | "also I think there are no pokemon you can encounter in draconid pass you probably want to make an encounter table for that area" | [x] `gDraconidPass`: land Lv 3–5 (Hoenn regulars + Pidgey, Bidoof, Teddiursa, Mareep, Rockruff 1%, Flabébé 1%), surf and rods for the stream; `check_wild.py` `HACK_MAPS`; `draconid_pass.play` (D-300) |
+| 2.3 | balance | "also did you add some gens 1-9 pokemon on every route that makes sense for the area?" | [x] Gen 1–2 species not in the Hoenn dex by habitat (35 new to the wild), more variety on the seas (Slowpoke, Mantine, Krabby, Shellder, Remoraid, Qwilfish); every route 3–6 newcomers, the seas 3–4; 361 slots in 110 tables (D-301, docs/hack_wild.md) |
+| 2.4 | balance | "also is larvesta in petalburg forrest?" – "also make it a 1% encounter in petalburg too" | [x] Larvesta Lv 6 in Petalburg Woods' last 1% slot (was a duplicate Slakoth); the Fiery Path keeps its 1% Larvesta (D-302) |
 | 2.6 | story | Courtney's recruitment: a YES/NO choice; NO makes her laugh ("you're joking, right?") and the player joins anyway; no narration | [x] D-341 |
 | 2.7 | story | The outpost: the grunt gets a name, Courtney's answer less robotic, a line about beating that troublesome Aqua grunt with the dragon | [x] ASHER; Courtney's giggle and her MAXIE (D-341) |
 | 2.9 | story | Birch says something about the heavy burden before he takes the player to the lab | [x] D-341 |
-| 2.16 | balance | (task) Room in the bag's Items pocket for the Z-Crystals and Mega Stones | [x] 60 slots instead of 30; `tests/bag_room.play` (D-344) |
-| 2.15 | bug | (task) Stale battle flags in the multi-battle team check: after a wild battle the pick of three for the Space Center / Sootopolis / Sky Pillar multis was ignored | [x] the macro asks about the battle being set up; `tests/multi_teams.play` (D-343) |
 | 2.12 | balance | (task) Dawn Stone and Dusk Stone sources – Gallade, Froslass, Chandelure, Honchkrow, Mismagius could not evolve | [x] two of each as item balls at the ORAS spots: Abandoned Ship and Victory Road (Dawn), Mt. Pyre exterior, a ball and a hidden one (Dusk); `tests/stones.play` (D-342) |
+| 2.15 | bug | (task) Stale battle flags in the multi-battle team check: after a wild battle the pick of three for the Space Center / Sootopolis / Sky Pillar multis was ignored | [x] the macro asks about the battle being set up; `tests/multi_teams.play` (D-343) |
+| 2.16 | balance | (task) Room in the bag's Items pocket for the Z-Crystals and Mega Stones | [x] 60 slots instead of 30; `tests/bag_room.play` (D-344) |
 
 ## Round 1 (after v1, commit 94f937d3)
 

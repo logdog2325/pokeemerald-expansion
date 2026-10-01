@@ -240,3 +240,6 @@ Petalburg Woods recruitment/outfit change, Maxie's first meeting at Meteor Falls
 
 ### Playtest note 2.9
 - "maybe have birch say something about the heavy burden your gonna take on before he takes you to the lab" (from: "also can almost every npc say something about us wearing the team magma outfit once we put it on even ones we previousely interacted with and maybe have birch say something about the heavy burden your gonna take on before he takes you to the lab")
+
+### Playtest notes 2.2 – 2.4 (wild Pokémon)
+- "also I think there are no pokemon you can encounter in draconid pass you probably want to make an encounter table for that area" / "also did you add some gens 1-9 pokemon on every route that makes sense for the area?"

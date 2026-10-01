@@ -63,6 +63,9 @@ python3 tools/hack/emu/play.py tools/hack/emu/tests/aster.play -o /tmp/emu
 python3 tools/hack/emu/play.py tools/hack/emu/tests/postgame_home.play -o /tmp/emu
 python3 tools/hack/emu/play.py tools/hack/emu/tests/hm_free.play -o /tmp/emu    # HM field moves (debug build)
 python3 tools/hack/emu/play.py tools/hack/emu/tests/wild.play -o /tmp/emu       # National Dex, wild battles
+python3 tools/hack/emu/play.py tools/hack/emu/tests/draconid_pass.play -o /tmp/emu  # Draconid Pass wild table (after opening.play)
+python3 tools/hack/emu/play.py tools/hack/emu/tests/zmoves.play -o /tmp/emu     # Z-Ring, crystals, Z-Moves in battle (the chain; see the file header)
+python3 tools/hack/emu/play.py tools/hack/emu/tests/draconid_rivals.play -o /tmp/emu  # Aster/Nerine battles of D-279 - D-283 (the chain; see the file header)
 python3 tools/hack/emu/play.py tools/hack/emu/tests/rival_calls.play -o /tmp/emu  # rivals' PokéNav calls (expect_text)
 python3 tools/hack/emu/play.py tools/hack/emu/tests/gen49_trainers.play -o /tmp/emu  # four trainers' Gen 4-9 send-outs
 python3 tools/hack/emu/play.py tools/hack/emu/tests/frontier_legends.play -o /tmp/emu   # Wes, Red, Blue + the tag

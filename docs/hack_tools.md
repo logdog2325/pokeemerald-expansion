@@ -159,6 +159,7 @@ python3 tools/hack/emu/play.py test.play -o /tmp/out
 | `wait_species N SPECIES_X [MAX] [KEY]` | tap KEY (default A) until battler N (`gBattleMons[N]`, 1 = the single-battle opponent) is SPECIES_X, e.g. `SPECIES_CHARIZARD_MEGA_X` after a Mega Evolution |
 | `wait_gimmick N GIMMICK_X [MAX] [KEY]` | tap KEY (default A) until battler N's trainer has used GIMMICK_X this battle (`gBattleStruct->gimmick.activated`), e.g. `GIMMICK_Z_MOVE` once the Z-Move starts |
 | `battlemon N FIELD VALUE`, `monstat SLOT FIELD VALUE` | set one stat of battler N mid-battle (`gBattleMons[N]`), or one unencrypted field of the player's party Pokémon at SLOT (level, hp, speed, …; e.g. Speed 1 after `boost` so the opponent moves first) |
+| `expect_wild MAP_X [FIELD]` | during a wild battle: the opponent (`gBattleMons[1]`) is one of the species of MAP_X's FIELD table (default `land_mons`) in `src/data/wild_encounters.json` (prints the species and its constant) |
 
 `matrix.py` runs the flow tests for every gender × egg × second starter (18 combinations, 6 chains in
 parallel) and prints one line per run:
@@ -191,7 +192,9 @@ python3 tools/hack/check_wild.py --changes        # every Hoenn slot that differ
 python3 tools/hack/check_wild.py --doc            # the same table at the end of docs/hack_wild.md
 ```
 Species data comes from the preprocessed `species_info.h`, so disabled families count as missing. Rules and
-the level check (area → story segment, cap + 3 for changed slots) are in docs/hack_wild.md (D-197).
+the level check (area → story segment, cap + 3 for changed slots) are in docs/hack_wild.md (D-197). A map the
+hack added gets its table listed in `HACK_MAPS` (D-300: no vanilla counterpart, every slot new and within the
+cap + 3); `--changes` / `--doc` print such tables in full before the changed vanilla slots.
 ## Story locks – `tools/hack/check_progression.py`
 ```sh
 python3 tools/hack/check_progression.py                 # every leg + the warp check; exit 1 on a lock
@@ -256,6 +259,7 @@ python3 tools/hack/emu/play.py tools/hack/emu/tests/elite_four.play     -o /tmp/
 python3 tools/hack/emu/play.py tools/hack/emu/tests/postgame_home.play  -o /tmp/emu   # SS Ticket / Lati TV at home
 python3 tools/hack/emu/play.py tools/hack/emu/tests/hm_free.play        -o /tmp/emu   # HM field moves without a Pokémon (D-190)
 python3 tools/hack/emu/play.py tools/hack/emu/tests/wild.play           -o /tmp/emu   # National Dex, wild battles, a Gen 4-9 trainer swap
+python3 tools/hack/emu/play.py tools/hack/emu/tests/draconid_pass.play  -o /tmp/emu   # after opening.play: wild battles in the pass's grass (expect_wild)
 python3 tools/hack/emu/play.py tools/hack/emu/tests/progression.play    -o /tmp/emu   # story-lock fixes: the Aqua Hideout opens with Maxie's order
 python3 tools/hack/emu/play.py tools/hack/emu/tests/hardlock.play       -o /tmp/emu   # after act7.play: an unreleased lock, a whiteout, a retry, a lost village multi battle (D-264, D-265a)
 python3 tools/hack/emu/play.py tools/hack/emu/tests/trade_evos.play     -o /tmp/emu   # Kadabra -> Alakazam, Slowpoke + King's Rock -> Slowking
