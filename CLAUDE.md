@@ -90,5 +90,6 @@ python3 tools/hack/trainers/learnset.py Grovyle --level 23 [--all]       # moves
 python3 tools/hack/trainers/check_tiers.py                               # rematch tiers grow tier to tier
 python3 tools/hack/trainers/gen49.py --coverage                          # Gen 4-9 share per segment, gym types, grunts (D-240)
 python3 tools/hack/trainers/report.py                                    # trainer table in docs/hack_trainers.md
+python3 tools/hack/trainers/check_strength.py [--ref origin/draconid-emerald]  # no trainer got weaker (tests weaken in memory only)
 ```
 Scratch output (previews, sheets) goes to the session scratchpad, not the repo.
