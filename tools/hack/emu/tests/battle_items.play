@@ -93,7 +93,8 @@ setflag FLAG_IS_CHAMPION
 setvar VAR_DRACONID_REPUTATION 2
 maxmoney
 expect_item ITEM_VENUSAURITE 0
-expect_item ITEM_NORMALIUM_Z 0
+# (the egg ceremony gave Normalium Z already, D-267: the test buys the second crystal, Firium Z)
+expect_item ITEM_FIRIUM_Z 0
 warp MAP_RUSTBORO_CITY_MART 3 3
 walk UP 2
 press LEFT 2 20
@@ -134,11 +135,12 @@ shot 47_stones_end
 press B 2 120
 press B 2 200
 press B 2 200
-# Z-CRYSTALS: the type crystals, then the species crystals; buy the first (Normalium Z, 30,000)
+# Z-CRYSTALS: the type crystals, then the species crystals; buy the second (Firium Z, 30,000)
 choose 2
 run 60
 press A 2 120
 shot 48_z_crystals
+press DOWN 2 20
 press A 2 120
 press A 2 60
 press A 2 120
@@ -147,7 +149,6 @@ press A 2 120
 press A 2 120
 press A 2 150
 shot 49_bought_crystal
-press A 2 120
 repeat 5 press RIGHT 2 20
 shot 4a_crystals_end
 press B 2 120
@@ -157,7 +158,7 @@ choose 3
 mash B 3000
 shot 4b_goodbye
 expect_item ITEM_VENUSAURITE 1
-expect_item ITEM_NORMALIUM_Z 1
+expect_item ITEM_FIRIUM_Z 1
 
 # --- Lilycove Department Store 3F: the third clerk at (9, 2), talked to from (9, 4) across the counter ---
 warp MAP_LILYCOVE_CITY_DEPARTMENT_STORE_3F 9 5

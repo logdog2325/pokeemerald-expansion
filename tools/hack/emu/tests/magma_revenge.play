@@ -149,6 +149,8 @@ expect_map MAP_EVER_GRANDE_CITY_POKEMON_CENTER_1F
 heal
 
 # --- 4. the Aqua gauntlet, all six battles in one run, each won by the boosted lead (no heal in between) ---
+# (each boosted gauntlet battle puts the opponent's lead at 1 HP once it is out: Toxic and poison take a share of the
+# inflated max HP every turn, so a long mashed battle can still be lost – Skuntank, m10 matrix, M_DEINO)
 warp MAP_EVER_GRANDE_CITY 19 52
 run 60
 expect_var VAR_TEMP_3 1
@@ -173,6 +175,8 @@ poke @gParties+60 E7
 poke @gParties+61 3
 poke @gParties+62 E7
 poke @gParties+63 3
+wait_species 1 SPECIES_FLOATZEL 30000
+battlehp 1
 wait_opponent TRAINER_GRUNT_AQUA_GAUNTLET_2 60000
 expect_trainer TRAINER_GRUNT_AQUA_GAUNTLET_1 1
 expect_opponent TRAINER_GRUNT_AQUA_GAUNTLET_2
@@ -191,6 +195,8 @@ poke @gParties+60 E7
 poke @gParties+61 3
 poke @gParties+62 E7
 poke @gParties+63 3
+wait_species 1 SPECIES_BARRASKEWDA 30000
+battlehp 1
 wait_opponent TRAINER_GRUNT_AQUA_GAUNTLET_3 60000
 expect_trainer TRAINER_GRUNT_AQUA_GAUNTLET_2 1
 expect_opponent TRAINER_GRUNT_AQUA_GAUNTLET_3
@@ -209,6 +215,8 @@ poke @gParties+60 E7
 poke @gParties+61 3
 poke @gParties+62 E7
 poke @gParties+63 3
+wait_species 1 SPECIES_SKUNTANK 30000
+battlehp 1
 wait_opponent TRAINER_GRUNT_AQUA_GAUNTLET_4 60000
 expect_trainer TRAINER_GRUNT_AQUA_GAUNTLET_3 1
 expect_opponent TRAINER_GRUNT_AQUA_GAUNTLET_4
@@ -227,6 +235,8 @@ poke @gParties+60 E7
 poke @gParties+61 3
 poke @gParties+62 E7
 poke @gParties+63 3
+wait_species 1 SPECIES_THIEVUL 30000
+battlehp 1
 wait_opponent TRAINER_GRUNT_AQUA_GAUNTLET_5 60000
 expect_trainer TRAINER_GRUNT_AQUA_GAUNTLET_4 1
 expect_opponent TRAINER_GRUNT_AQUA_GAUNTLET_5
@@ -245,6 +255,8 @@ poke @gParties+60 E7
 poke @gParties+61 3
 poke @gParties+62 E7
 poke @gParties+63 3
+wait_species 1 SPECIES_DREDNAW 30000
+battlehp 1
 wait_opponent TRAINER_SHELLY_EVER_GRANDE 60000
 expect_trainer TRAINER_GRUNT_AQUA_GAUNTLET_5 1
 expect_opponent TRAINER_SHELLY_EVER_GRANDE
@@ -295,6 +307,8 @@ poke @gParties+60 E7
 poke @gParties+61 3
 poke @gParties+62 E7
 poke @gParties+63 3
+wait_species 1 SPECIES_FLOATZEL 30000
+battlehp 1
 wait_opponent TRAINER_GRUNT_AQUA_GAUNTLET_2 60000
 poke @gParties+54 64
 poke @gParties+56 E7
@@ -311,6 +325,8 @@ poke @gParties+60 E7
 poke @gParties+61 3
 poke @gParties+62 E7
 poke @gParties+63 3
+wait_species 1 SPECIES_BARRASKEWDA 30000
+battlehp 1
 wait_opponent TRAINER_GRUNT_AQUA_GAUNTLET_3 60000
 expect_trainer TRAINER_GRUNT_AQUA_GAUNTLET_1 1
 expect_trainer TRAINER_GRUNT_AQUA_GAUNTLET_2 1
@@ -349,6 +365,8 @@ poke @gParties+60 E7
 poke @gParties+61 3
 poke @gParties+62 E7
 poke @gParties+63 3
+wait_species 1 SPECIES_FLOATZEL 30000
+battlehp 1
 wait_opponent TRAINER_GRUNT_AQUA_GAUNTLET_2 60000
 poke @gParties+54 64
 poke @gParties+56 E7
@@ -365,6 +383,8 @@ poke @gParties+60 E7
 poke @gParties+61 3
 poke @gParties+62 E7
 poke @gParties+63 3
+wait_species 1 SPECIES_BARRASKEWDA 30000
+battlehp 1
 wait_opponent TRAINER_GRUNT_AQUA_GAUNTLET_3 60000
 poke @gParties+54 64
 poke @gParties+56 E7
@@ -381,6 +401,8 @@ poke @gParties+60 E7
 poke @gParties+61 3
 poke @gParties+62 E7
 poke @gParties+63 3
+wait_species 1 SPECIES_SKUNTANK 30000
+battlehp 1
 wait_opponent TRAINER_GRUNT_AQUA_GAUNTLET_4 60000
 poke @gParties+54 64
 poke @gParties+56 E7
@@ -397,6 +419,8 @@ poke @gParties+60 E7
 poke @gParties+61 3
 poke @gParties+62 E7
 poke @gParties+63 3
+wait_species 1 SPECIES_THIEVUL 30000
+battlehp 1
 wait_opponent TRAINER_GRUNT_AQUA_GAUNTLET_5 60000
 poke @gParties+54 64
 poke @gParties+56 E7
@@ -413,6 +437,8 @@ poke @gParties+60 E7
 poke @gParties+61 3
 poke @gParties+62 E7
 poke @gParties+63 3
+wait_species 1 SPECIES_DREDNAW 30000
+battlehp 1
 wait_opponent TRAINER_SHELLY_EVER_GRANDE 60000
 poke @gParties+54 64
 poke @gParties+56 E7
@@ -429,6 +455,8 @@ poke @gParties+60 E7
 poke @gParties+61 3
 poke @gParties+62 E7
 poke @gParties+63 3
+wait_species 1 SPECIES_PELIPPER 30000
+battlehp 1
 mash A 90000
 expect_trainer TRAINER_GRUNT_AQUA_GAUNTLET_3 1
 expect_trainer TRAINER_SHELLY_EVER_GRANDE 1
@@ -634,11 +662,15 @@ poke @gParties+60 E7
 poke @gParties+61 3
 poke @gParties+62 E7
 poke @gParties+63 3
-# once the battle is on, both of the player's battlers get their PP back: a long mashed double can run the lead's
-# first move dry ("There's no PP left", mashing A picks it again forever; seen once in the uniform batch)
+# once the battle is on, both of the player's battlers get their PP back (a long mashed double can run the lead's
+# first move dry: "There's no PP left", mashing A picks it again forever) and both opponents' leads go to 1 HP:
+# Salazzle's Corrosion poisons the boosted Pokémon, and poison takes 1/8 of the inflated max HP a turn, so a long
+# mashed double is lost (seen in the m10 matrix, F_DEINO, twice in a row; memory only, the party file is unchanged)
 wait_species 1 SPECIES_RHYPERIOR 30000
 battlepp 0
 battlepp 2
+battlehp 1
+battlehp 3
 mash A 60000
 shot r8_11_after
 expect_opponent TRAINER_GRUNT_POKEMON_LEAGUE_1

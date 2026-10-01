@@ -126,7 +126,7 @@ settrainer TRAINER_TABITHA_VILLAGE 1
 settrainer TRAINER_SHELLY_VILLAGE 1
 warp MAP_DRACONID_VILLAGE 19 11
 run 120
-expect_flag FLAG_TEMP_1F 1
+expect_flag FLAG_TEMP_10 1
 # Maxie turns Groudon on the shrine door; the Salamence dives in and takes the blow; Drake before the door
 until_text DraconidVillage_EventScript_DrakeComesHome_Text_0 30000 A
 run 120
@@ -134,7 +134,7 @@ shot dk_20_maxie_order
 until_text DraconidVillage_EventScript_DrakeComesHome_Text_1 30000 A
 run 120
 shot dk_21_salamence_lands
-expect_flag FLAG_TEMP_1F 0
+expect_flag FLAG_TEMP_10 0
 until_text DraconidVillage_EventScript_DrakeComesHome_Text_6 30000 A
 run 60
 shot dk_22_brothers
@@ -163,7 +163,7 @@ setvar VAR_DRACONID_FINALE_STATE 6
 setvar VAR_DRACONID_VILLAGE_STATE 8
 warp MAP_DRACONID_VILLAGE 19 11
 run 120
-expect_flag FLAG_TEMP_1F 0
+expect_flag FLAG_TEMP_10 0
 run 400
 shot dk_24_retry_layout
 
@@ -207,7 +207,7 @@ expect_item ITEM_RED_ORB 1
 # that evening the map reloads for the goodbyes: Drake isn't there
 until_text DraconidVillage_EventScript_DraconidGoodbyes_Text_1 30000 A
 run 200
-expect_flag FLAG_TEMP_1F 1
+expect_flag FLAG_TEMP_10 1
 shot dk_27_evening
 
 # --- (3) post-game: Drake by the Elder's door; the brothers make peace; Draco Meteor ---
@@ -217,7 +217,7 @@ setvar VAR_ASTER_STATE 9
 setflag FLAG_RECEIVED_SS_TICKET
 warp MAP_DRACONID_VILLAGE 26 13
 run 120
-expect_flag FLAG_TEMP_1F 0
+expect_flag FLAG_TEMP_10 0
 expect_flag FLAG_DRACONID_DRAKE_RECONCILED 0
 shot dk_30_postgame
 press UP 2 30
