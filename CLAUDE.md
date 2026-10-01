@@ -44,6 +44,7 @@ python3 tools/hack/art/kitbash.py tools/hack/art/recipes/<recipe>.json
 python3 tools/hack/art/quantize.py in.png out.png [--pal x.pal]
 python3 tools/hack/art/recolor.py in.png --show
 python3 tools/hack/mapgen/check_seams.py [MapName...]   # tileset seams across connections
+python3 tools/hack/mapgen/check_maps.py [MapName...]    # half trees, invisible walls (elevation pockets)
 # porymap
 python3 tools/hack/porymap_scripts/register.py      # registers the JS tools in porymap.user.cfg
 # emulator regression tests (rerun after every build; savestates chain in one -o dir)

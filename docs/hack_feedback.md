@@ -7,6 +7,17 @@ One numbered checklist per round, newest round at the top. Categories: **bug / b
 
 Status: `[ ]` open · `[~]` in progress · `[x]` done (commit) · `[-]` won't do (why)
 
+## Round 2 (v2 preview, interim build 375ab509)
+
+Notes sent while playing the interim v2 preview (release + debug ROMs from batch m8). Items:
+
+| # | Category | Item | Status |
+|---|---|---|---|
+| 2.1 | map | Draconid Pass: trees cut off (a half tree at the stream, half crowns in the valley copse), an invisible wall, "more tile errors" | [x] the generator's General trees were broken at the top row and variety picks carried a vanilla elevation 5 into the grass; mapbuild now places 2x2 trees on a lattice with their crown caps and keeps walkable ground at its elevation, the pass regenerated; `check_maps.py` lints every generated map (D-340) |
+| 2.6 | story | Courtney's recruitment: a YES/NO choice; NO makes her laugh ("you're joking, right?") and the player joins anyway; no narration | [x] D-341 |
+| 2.7 | story | The outpost: the grunt gets a name, Courtney's answer less robotic, a line about beating that troublesome Aqua grunt with the dragon | [x] ASHER; Courtney's giggle and her MAXIE (D-341) |
+| 2.9 | story | Birch says something about the heavy burden before he takes the player to the lab | [x] D-341 |
+
 ## Round 1 (after v1, commit 94f937d3)
 
 The round came with the full story add-on (saved as [hack_story.md](hack_story.md), source of truth) and the

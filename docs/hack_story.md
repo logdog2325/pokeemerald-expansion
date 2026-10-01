@@ -224,3 +224,19 @@ Petalburg Woods recruitment/outfit change, Maxie's first meeting at Meteor Falls
 
 ### Follow-up note 31 (round 1)
 - "also I think we should get access to z moves earlier and they should be spread throughout the story not a post game think"
+
+## Round 2 notes (v2 preview playtest)
+
+### Playtest note 2.1
+- "noticed this tree is partially cut off btw just gotta say amazing work and intro im only a little bit in but I can tell you poured everything into this game"
+- "here as well too"
+- "also an invisible wall here and more tile errors you really need to clean up draconid pass"
+
+### Playtest note 2.6
+- "for the scene where courntey recruits you have a yes or no dialogue option if you say no she laughs and says your joking right and you join anywhere narrating the scene is a little weird"
+
+### Playtest note 2.7
+- "also for the scene where you get recruited lets give the grunt a name, who asks who you are and courtneys response is a little robotic add her personality, and maybe throw something in there about how the player beat that troublesome aqua grunt with the dragon"
+
+### Playtest note 2.9
+- "maybe have birch say something about the heavy burden your gonna take on before he takes you to the lab" (from: "also can almost every npc say something about us wearing the team magma outfit once we put it on even ones we previousely interacted with and maybe have birch say something about the heavy burden your gonna take on before he takes you to the lab")

@@ -308,7 +308,12 @@ Draconid Emerald: meeting Prof. Birch, Brendan and May (Phase 4, story event 2).
 - You saved me. Thanks a lot!
 - Hm? That's a {STR_VAR_1}! A Dragon-type, and so young…
 - Then you must be {PLAYER}, from DRACONID VILLAGE! The ELDER wrote that you'd be coming.
-- This is no place to chat. Come to my POKéMON LAB in LITTLEROOT TOWN, just south of here!
+- PROF. BIRCH: …He wrote me why, too.
+- TEAM MAGMA. And you, walking in among them. Alone.
+- That's a heavy burden to put on someone so young. Heavier than any POKéDEX.
+- Whatever you have to wear out there, whatever people say about you…
+- I'll know who you really are. Remember that.
+- …Well! This is no place to chat. Come to my POKéMON LAB in LITTLEROOT TOWN, just south of here!
 
 ### `LittlerootTown_ProfessorBirchsLab_EventScript_DraconidWelcome`
 - PROF. BIRCH: Welcome to my LAB, {PLAYER}! You've met me at my worst, I'm afraid.
@@ -377,17 +382,18 @@ Draconid Emerald round 1, Act 1 (docs/hack_story.md): Littleroot families, Petal
 - Come by for dinner sometime. NORMAN would like to thank you properly.
 
 ### `PetalburgWoods_EventScript_DraconidRecruitment`
-- ???: …Observed. The whole battle.
-- Result: an AQUA member, crushed. By a child. With a dragon.
-- COURTNEY: I am COURTNEY. TEAM MAGMA.
-- Anyone who crushes AQUA that easily… belongs with us.
-- More land. For people. For POKéMON. That is our goal.
-- You. Join us.
-- {PLAYER} remembered the ELDER's words.
-- “Walk among the red ones. Learn what MAXIE seeks.”
-- {PLAYER} nodded.
-- COURTNEY: …Answer: correct.
-- Follow. There is an outpost at the edge of the woods.
+- ???: Ahaha… I watched the whole battle, you know.
+- That AQUA nuisance, crushed. By a child. With a dragon.
+- COURTNEY: I'm COURTNEY. TEAM MAGMA. Ahaha…
+- Anyone who crushes AQUA that easily belongs with us.
+- More land. For people. For POKéMON. Leader MAXIE's dream.
+- So… will you join us?
+- COURTNEY: …Ahaha. Good answer.
+- Follow me. There's an outpost at the edge of the woods.
+- COURTNEY: …Ahahahaha!
+- You're joking. Right?
+- Nobody beats AQUA like that and walks away from TEAM MAGMA.
+- …Follow me. There's an outpost at the edge of the woods.
 
 ### `RustboroCity_EventScript_DraconidBrendan`
 - BRENDAN: Huh? {PLAYER}?
@@ -412,21 +418,27 @@ Draconid Emerald round 1, Act 1 (docs/hack_story.md): Littleroot families, Petal
 Draconid Emerald: the Team Magma outpost cabin at the edge of Petalburg Woods (Act 1, D-113). Only reached by COURTNEY's cutscene (PetalburgWoods_EventScript_DraconidRecruitment); the door leads out to the woods' north entrance on Route 104.
 
 ### `PetalburgWoods_MagmaOutpost_EventScript_Uniform`
-- GRUNT: COURTNEY! Who's the kid?
-- COURTNEY: New member. Beat an AQUA woman in the woods. Alone.
-- GRUNT: Alone? At that age? …Well, we could use the muscle.
-- COURTNEY: Uniform. Put it on.
+- ASHER: Whoa! COURTNEY! Who's the kid?
+- COURTNEY: Ahaha… Breathe, ASHER.
+- That troublesome AQUA grunt. The one sneaking around the woods, picking DEVON's pockets?
+- This one flattened her. With a dragon. A real one.
+- I watched the whole thing. …I enjoyed it. Ahahahaha!
+- ASHER: A dragon? At that age?
+- …Ha! Fine by me. We could use the muscle.
+- COURTNEY: So I picked it up. Mine now. …Ours, I mean.
+- Uniform. Put it on. …Go on. I want to see.
 - {PLAYER} put on the TEAM MAGMA uniform.
-- COURTNEY: …Red. It suits you.
-- TABITHA leads the grunts in the field. He will find you.
-- Until then: RUSTBORO. Get strong.
-- Leader MAXIE… likes strong.
+- COURTNEY: …Red. Ahaha. It suits you.
+- TABITHA leads the grunts in the field. He'll come looking for you.
+- Until then… RUSTBORO. Get strong.
+- Leader MAXIE likes strong. And I like whatever Leader MAXIE likes.
 
 ### `PetalburgWoods_MagmaOutpost_EventScript_Courtney`
-- COURTNEY: RUSTBORO. Get strong. TABITHA will find you.
+- COURTNEY: Still here? Ahaha…
+- RUSTBORO. Get strong. TABITHA will find you.
 
 ### `PetalburgWoods_MagmaOutpost_EventScript_GruntM`
-- GRUNT: Welcome to the team, kid.
+- ASHER: Welcome to the team, kid.
 - Folks in town will stare at the uniform. Let 'em.
 
 ### `PetalburgWoods_MagmaOutpost_EventScript_GruntF`

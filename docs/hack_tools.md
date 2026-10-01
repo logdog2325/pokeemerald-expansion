@@ -76,6 +76,12 @@ project. Tools menu entries:
 - **Draconid: Scatter grass tufts / flowers…**, **Scatter meteorite rocks…**, **Tree border…**
 
 **Seams** – the game draws the cells across a map connection with the *current* map's tilesets.
+`check_maps.py [MAP…]` lints the hack's maps (default: every `specs/*.json` map): every General / Fallarbor tree
+2x2 is whole (corners, crown caps) and no walled-in pocket of walkable land sits at an elevation its neighbours
+don't share (an invisible wall). `--vanilla` runs the same rules on the vanilla maps (34 findings, mostly raised
+platforms – the baseline). `mapbuild.py` places classes with a brush `lattice` entry (the General trees) itself,
+caps included, and resets walkable classes to their default elevation (D-340).
+
 `check_seams.py [MAP…]` lists every secondary metatile that can be drawn across a seam where the two
 maps' tilesets differ (window: 16×16 metatiles around each walkable cell). `mapbuild.py --write`
 runs it for the map it wrote. Vanilla has a few such seams already (Route 113/112, Route 134/Slateport…);

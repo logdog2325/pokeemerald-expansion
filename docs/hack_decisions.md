@@ -1755,3 +1755,30 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   sets BLDALPHA to 0 (breaks alpha-blended fog); it also has to be remembered in every future script. The scripts that
   already use `fadescreenswapbuffers` (Act 5's turn, Act 7) keep working; plain `fadescreen` is now safe everywhere.
   Costs 1.2 KB of EWRAM.
+- **D-340 The map generator places General trees on a lattice and keeps walkable ground at its elevation**
+  (playtest 2.1: half trees and an invisible wall in Draconid Pass). The learned rules come from vanilla
+  neighbourhoods in which the crown's cap row (1C6/1C7/1CE/1CF over grass) belongs to the tree class, so they read
+  the top row of every painted 2x2 tree as a cap row: half crowns over a tree's lower half (the valley copse, the
+  south edge), a cap in place of a tree's corner (the stream bank). Variety picks also carried a vanilla mapper's
+  elevation 5 into the grass: six cells nobody could step on. Now `mapbuild.py` resolves classes with a brush
+  `lattice` entry (`gtree`) itself – corner tiles from the neighbours, rules that match 96.5% of the tree tiles on
+  every vanilla General map (the rest are vanilla quirks), the cap above a tree with nothing above it (1CE/1CF over
+  grass, 1C6/1C7 over tall grass, none over water: 1E8/1E9 draw a grass bank, seen in game) – and resets every
+  walkable class to its default collision/elevation. The worn path to Route 101 ends a tile before the trees so
+  their caps fit (plain grass to the seam, no wild grass on the opening's path). `check_maps.py` lints tree
+  integrity and walled-in elevation pockets on every spec-built map (0 findings; the old pass had 59; vanilla has
+  34, mostly raised platforms). The village would regenerate with 25 cosmetic changes (elevation 0 → 3 on the
+  unreachable cliff-top strip) and was left as committed. *Alternatives:* hand-editing map.bin in Porymap (lost
+  at the next regenerate); teaching the learned rules about caps (the vanilla data itself says caps are tree
+  cells).
+- **D-341 Courtney asks, ASHER asks back, Birch names the burden** (playtest 2.6, 2.7, 2.9). Courtney's offer is
+  a YES/NO; YES gets "…Ahaha. Good answer.", NO gets her laugh and "You're joking. Right? Nobody beats AQUA like
+  that and walks away from TEAM MAGMA." and the player follows anyway – the Elder sent them to join, so the choice
+  colours the scene without branching the story; the narration ("remembered the ELDER's words… nodded") is gone.
+  Courtney's voice follows ORAS: a soft "Ahaha…", MAXIE first in everything, clipped analytical words used
+  sparingly (her later lines – "Battle: won. Fuel: none." – stay her cold mode). The outpost grunt is ASHER (Magma's
+  ash), on his NPC line too, and Courtney tells him the player flattened "that troublesome AQUA grunt" with a real
+  dragon. Birch, who knows the mission from the Elder's letter, says before the lab that it is a heavy burden and
+  that he'll know who the player really is whatever they wear – a promise the uniform reactions later test.
+  *Alternatives:* NO repeats the question (nagging), NO starts a battle (out of tone for a recruitment), no choice
+  (the playtester asked for one).
