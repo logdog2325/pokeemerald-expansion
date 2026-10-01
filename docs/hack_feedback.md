@@ -7,6 +7,12 @@ One numbered checklist per round, newest round at the top. Categories: **bug / b
 
 Status: `[ ]` open · `[~]` in progress · `[x]` done (commit) · `[-]` won't do (why)
 
+## Round 2 (after the round 1 ROM)
+
+| # | Category | Item | Status |
+|---|---|---|---|
+| 2.17 | art | "can we create a short falling star animation for this intro segment I know you can do it" (the black screen and "A falling star tore across the heavens and vanished beyond the mountains." of the first night) | [x] a 2.7 s scene of its own in place of the white flash: a banded night sky with twinkling stars, the clan's peaks in silhouette, Game Freak's falling star (FRLG's Game Freak intro, recoloured white-gold) with its sparkle trail, sinking behind the ridge, a glow on the ridge, `SE_M_DETECT` / `SE_THUNDER2`; back to the dark bedroom and the boxes as before (D-460 – D-463); `opening.play` checks it |
+
 ## Round 1 (after v1, commit 94f937d3)
 
 The round came with the full story add-on (saved as [hack_story.md](hack_story.md), source of truth) and the

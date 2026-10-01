@@ -316,3 +316,45 @@ How they were made:
 
 Known gaps (polish only): the drawn letters have fewer stray grey pixels than vanilla's hand-anti-aliased ones; the
 intro movie still ends on Rayquaza's eyes in the clouds (`src/intro.c`, Emerald's own scene) before the title.
+
+## Round 2: the opening's falling star (feedback 2.17)
+
+The first night of a new game (D-460 – D-462): a star crosses the night sky and drops behind the clan's peaks,
+lighting the ridge. The star and every sparkle are Game Freak's; the sky, the mountains and the glow are drawn by
+`tools/hack/art/falling_star/build_falling_star.py` (shapes and colours in the script, no third-party art).
+
+| Piece | File(s) | Built by | Source / look |
+|---|---|---|---|
+| Night sky (BG3, BG palette 0) | `graphics/falling_star/sky.png` (63 tiles), `sky.bin` | `build_falling_star.py` | seven flat night blues, near black (8, 8, 24) at the top to deep blue (40, 64, 120) at the horizon, joined by the vanilla title sky's 3-row 1-px checker step (`graphics/title_screen/rayquaza.png`); 46 single-pixel stars (every third on one of the four twinkle entries 11–14) and four bright crosses |
+| The clan's peaks (BG1, BG palette 1) | `graphics/falling_star/mountains.png` (124 tiles), `mountains.bin` | `build_falling_star.py` | far range (lit / shadowed faces, a starlit rim, snow on the two highest peaks) and a near-black near range; six glow entries (9–14) on the far ridge's top pixel around the saddle where the star lands |
+| Glow (OBJ 64×32, alpha-blended) | `graphics/falling_star/glow.png` | `build_falling_star.py` | five dithered rings, warm white → dim rose, a dome wider than tall |
+| The star's palette | `graphics/falling_star/star.pal` | `build_falling_star.py` (`STAR_ANCHORS`) | FRLG's star ramp recoloured: blue-grey edge → gold → warm white core |
+| Star | none: `graphics/intro_frlg/game_freak/star.png` | – | the FRLG Game Freak intro's falling star, mirrored (it flew left there) |
+| Trail and landing burst | none: `graphics/intro_frlg/game_freak/sparkles_small.png`, `sparkles_big.png`, `sparkles.pal` | – | the same intro's sparkles, its palette |
+| Glints on the bright stars | none: `graphics/intro/scene_1/sparkle.png` (`gIntroSparkle_Gfx`, `gIntroLightning_Pal`) | – | Emerald's intro sparkle, its dot / cross / small x frames |
+
+Rebuild: `python3 tools/hack/art/falling_star/build_falling_star.py [--preview scratch.png]`, then `make`. The scene's
+constants that point into the art (`LAND_X` / `LAND_Y`, the twinkle and glow entries, the bright stars' coordinates in
+`sGlintCoords`) are in `src/draconid_falling_star.c` and must follow the script's `LAND_X`, `SKY_TWINKLE`, `M_GLOW_*`
+and `BRIGHT_STARS`.
+
+How they were made:
+- **Sky**: the bands narrow towards the horizon (steps at y 18, 36, 52, 66, 78, 88); stars are placed by a fixed seed,
+  at least 11 px apart, thinning out towards the horizon and never closer than 8 px to the far ridge.
+- **Peaks**: each ridge is a list of control points (the far range's highest peak at x 176, the saddle at 128), joined
+  by straight runs roughened with midpoint displacement and a 3-tap median (no single-pixel spikes). A peak's
+  shadowed face is a wedge right of its divide (a jagged line running down and right from the summit) and left of the
+  next valley's gully; it reaches 30 rows (near range 18) below the summit and fades out in the same checker step, so
+  the feet of each range are one flat silhouette. The lit faces get a 1-px rim; the snow follows the ridge (thickest
+  at the summit, thinning down the shoulders) with a ragged lower edge (a 1-px random walk) and short tapering
+  tongues in the gullies, a little deeper on the shadowed face.
+- **Glow**: the rings are distances from the bottom centre (horizontal radius 32, vertical 24) with a checker step
+  between them; the scene blends it over the sky with EVB 16 (additive light) and EVA rising to 11 and back.
+- **Checks**: `validate.py` (indexed, ≤ 16 colours: sky 14, mountains 15, glow 6); `--preview` composites while
+  drawing; in the emulator a frame series of the whole scene every 2 frames (`opening.play`'s path with extra shots,
+  not committed) as a contact sheet and a GIF – the fade-in, the star's flight and trail, the star sinking behind the
+  ridge, the glow and the burst, the fade-out – and the bedroom after the wake-up compared with the old build's
+  (identical).
+
+Known gaps (polish only): the star keeps Game Freak's five-pointed shape (a recolour, not a new meteor head); the
+glow's rings are visible as bands up close (Game Freak's banding, not a smooth gradient).

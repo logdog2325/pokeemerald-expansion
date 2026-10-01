@@ -31,9 +31,8 @@ DraconidVillage_PlayersHouse_2F_EventScript_WakeUp::
 	delay 30
 	msgbox DraconidVillage_PlayersHouse_2F_EventScript_WakeUp_Text_0
 	closemessage
-	playse SE_M_DETECT
-	fadescreenswapbuffers FADE_TO_WHITE
-	fadescreenswapbuffers FADE_FROM_WHITE
+	callnative Draconid_DoFallingStarScene
+	waitstate
 	msgbox DraconidVillage_PlayersHouse_2F_EventScript_WakeUp_Text_1
 	closemessage
 	delay 40

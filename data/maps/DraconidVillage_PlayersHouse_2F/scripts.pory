@@ -27,10 +27,10 @@ script DraconidVillage_PlayersHouse_2F_EventScript_WakeUp {
     delay(30)
     msgbox(format("That night, the DRACONID village slept under a clear, cold sky…"))
     closemessage
-    playse(SE_M_DETECT)
-    // the falling star: a hardware flash (a palette fade to white here would leave the map black afterwards)
-    fadescreenswapbuffers(FADE_TO_WHITE)
-    fadescreenswapbuffers(FADE_FROM_WHITE)
+    // the falling star crosses the night sky and drops behind the peaks (a scene of its own, D-460);
+    // it comes back to the bedroom still in the dark
+    callnative(Draconid_DoFallingStarScene)
+    waitstate
     msgbox(format("A falling star tore across the heavens and vanished beyond the mountains.\p"
                   "In the ELDER's house, a lamp was lit, and it burned until dawn."))
     closemessage

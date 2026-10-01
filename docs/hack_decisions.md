@@ -216,7 +216,7 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   script; `Draconid_ResolveVariantTrainer` remaps it when the battle loads to base + variant (egg: 3 variants;
   egg × second starter: 9). `MAX_TRAINERS_COUNT` is raised so the variants fit (a few save bytes: trainer flags).
   – Alt: 9-way branches in every script; party pools. – One script line per fight and one table to check.
-- **D-102 Opening (Act 1)** *(the ceremony and the hatch superseded by D-230/D-231, round 1)*: night prologue (a falling star, screen flash) → the player wakes in their own house
+- **D-102 Opening (Act 1)** *(the ceremony and the hatch superseded by D-230/D-231, round 1; the flash by the falling-star scene, D-460, round 2)*: night prologue (a falling star, screen flash) → the player wakes in their own house
   (Aster at the door: the Elder calls) → wall clock → egg ceremony with the prophecy and the mission → hatching rite
   → a villager gives the Running Shoes → **Aster's tutorial battle** on Draconid Pass → Route 101. – Alt: the
   Elder wakes the player. – Keeps the tested egg/hatch flow; Aster is there from the first minute.
@@ -1755,3 +1755,72 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   sets BLDALPHA to 0 (breaks alpha-blended fog); it also has to be remembered in every future script. The scripts that
   already use `fadescreenswapbuffers` (Act 5's turn, Act 7) keep working; plain `fadescreen` is now safe everywhere.
   Costs 1.2 KB of EWRAM.
+
+## Round 2 (playtest feedback on the round 1 ROM)
+
+- **D-460 The opening's falling star is a scene of its own** (feedback 2.17: "can we create a short falling star
+  animation for this intro segment I know you can do it"): the new game's first night
+  (`DraconidVillage_PlayersHouse_2F_EventScript_WakeUp`) no longer flashes the black screen white
+  (`SE_M_DETECT` + `fadescreenswapbuffers`); after "That night, the DRACONID village slept under a clear, cold sky…"
+  the script calls `callnative(Draconid_DoFallingStarScene)` + `waitstate` and a 2.7 s scene plays
+  (`src/draconid_falling_star.c`): the night sky fades in (16 frames), at 0.47 s a star enters at the top left
+  and falls diagonally to a saddle in the far ridge, speeding up as it drops (58 frames, three times as fast at the
+  end), trailing sparkles; it sinks behind the ridge (the mountains are the layer in front of the sprites), the ridge
+  lights up with a glow behind it (rise 6 frames, hold 8, fade 54), and the scene fades to black (from frame 142).
+  It ends in `gMain.savedCallback` (set by the native, as the wall clock does), which returns through
+  `CB2_ReturnToField` with the scene's own field callback, which keeps the bedroom black
+  (`FieldCB_ContinueScriptInTheDark`: the faded palette buffer filled black, the script enabled), so "A falling star
+  tore across the heavens…" and the lamp line print over the dark room exactly as before and the script's own
+  `fadescreen(FADE_FROM_BLACK)` brings the room back (checked: the bedroom after the wake-up is pixel-identical to
+  the old build's). The music (the bedroom's) plays on through it. – Alt: a task drawing on the faded field (the
+  field's BG layers, VRAM and palettes would have to be borrowed and given back mid-script; the full-screen scene
+  has its own VRAM layout and the map reload restores everything, as the wall clock and the Rayquaza flight do);
+  returning with `CB2_ReturnToFieldContinueScript` (it fades the room in before the narration ends). – Same
+  pattern as the finale's `Draconid_DoRayquazaFlightScene`, and the boxes, their timing and the rest of the
+  wake-up stay as they were.
+- **D-461 Game Freak's star and sparkles, a sky and peaks drawn here** (feedback 2.17): the star is the FRLG Game
+  Freak intro's star (`graphics/intro_frlg/game_freak/star.png`, the falling star of the copyright scene), mirrored so
+  its point leads, in a new white-gold palette (`graphics/falling_star/star.pal`: the same 16-step ramp, from a dim
+  blue-grey edge to a warm white core instead of saturated yellow, so it reads as a meteor's head against the night
+  rather than a cartoon star); its trail is that intro's small sparkles (`sparkles_small.png` and its blue-white
+  palette, the same 4-frame twinkle), one a frame just behind the star, spread across the path and fanning out,
+  drifting back and sinking a little, flickering out after 14–24 frames so the trail tapers (FRLG's trail lived
+  longer; here it would cover half the sky); the landing flashes that intro's big sparkle once
+  (`sparkles_big.png`) behind the ridge. Four bright stars glint with Emerald's own intro sparkle
+  (`gIntroSparkle_Gfx` with `gIntroLightning_Pal`, as in `src/intro.c`) – only its dot, cross and small x frames
+  (the long diagonal and the big X read as strokes beside a star). New art (`tools/hack/art/falling_star/
+  build_falling_star.py`, every shape and colour in the script): the **sky** (BG3) is Game Freak's banding – seven
+  flat night blues from near black at the top to deep blue at the horizon, joined by the 3-row 1-px checker step of
+  the vanilla title sky (`rayquaza.png`), the bands narrowing towards the horizon – with 46 stars (dim single
+  pixels, every third one twinkling: four palette entries on a 64-frame triangle wave, staggered) and four bright
+  crosses; the **clan's peaks** (BG1) are two ranges in silhouette – the far one lighter (aerial perspective), its
+  shadowed faces wedges right of each summit's divide that fade out in the same checker step, a starlit 1-px rim on
+  the lit faces and snow caps on the two highest peaks (thickest at the summit, thinning down the shoulders, short
+  tapering tongues in the gullies), the near one near black with a rim; the far ridge's top pixel around the
+  landing point uses six glow entries (three rings by distance × lit and shadowed face) that the scene blends from
+  their face colour to warm light and back; the **glow** (`glow.png`, a 64×32 OBJ, five dithered rings from warm white
+  to a dim rose) is alpha-blended over the sky (`BLDCNT` target 2 = BG3, `BLDALPHA` EVB 16, EVA 0 → 11 → 0: additive
+  light) and sits behind the mountains, so only its dome above the saddle shows. 4bpp, two BG palettes, 63 + 124
+  tiles. – Alt: a meteor drawn here (a head and a streak; the brief asked for Game Freak's own falling star); the
+  vanilla title sky's gradient tiles as they are (their bands sit where Rayquaza's sky needed them; the scene needs
+  them above the peaks); one range (flat; the two ranges give depth and a far ridge for the star to go behind);
+  the glow as a palette flash of the whole horizon (it lit every valley, not the place where the star fell). – Every
+  sprite is Game Freak's; the new art keeps to their palette discipline and to the banding and checker dithering of
+  Game Freak's night skies.
+- **D-462 Its sounds: `SE_M_DETECT` and `SE_THUNDER2`** (feedback 2.17): the streak keeps the old flash's
+  `SE_M_DETECT` (a bright 0.5 s shimmer) as the star appears; the landing plays `SE_THUNDER2`, vanilla's low
+  distant rumble – Emerald plays it for the Deoxys rock breaking on Birth Island (`field_effect.c`), and this star is
+  the omen of the meteor that carries Deoxys (`docs/hack_story.md`). It is a single decaying note (1.4 s) on the first SE player, so it does not cut
+  the shimmer (second player). – Alt: `SE_M_MORNING_SUN` or `SE_M_HEAL_BELL` (soft chimes: a second shimmer right
+  after the first); `SE_M_STRENGTH` (a thud, close by); `SE_M_EARTHQUAKE` (3.4 s, longer than the scene); a
+  quieter `SE_THUNDER` through `m4aMPlayVolumeControl` (a new song resets the track volume on its first tick, so it
+  would need a frame's delay). – A far-away impact sounds like a low rumble, and it is the story's own sound.
+- **D-463 `opening.play` checks the scene** (feedback 2.17): the bedroom part now waits for the scene's main callback
+  (`until @gMain+4 4 @@CB2_FallingStarScene 3000 A 30` – a timeout fails the run: the scene never started), takes
+  `00_falling_star.png` at the glow, waits for `CB2_Overworld` and checks the player is back in the bedroom
+  (`expect_map MAP_DRACONID_VILLAGE_PLAYERS_HOUSE_2F`, `expect_pos 3 4`) with the script going on
+  (`expect_text DraconidVillage_PlayersHouse_2F_EventScript_WakeUp_Text_1`, the falling-star box), then mashes on
+  as before. The new-game speech lines at the top of the test are untouched. – Alt: a marker the scene leaves
+  behind for the test (a variable kept only for testing; the main callback already proves it ran). – Checked both
+  ways: a wrong text label or position fails the run. On the release ROM (no Quickstart) the same checks passed
+  after `release_boot.play`'s real new-game menus (a scratch copy, not committed).
