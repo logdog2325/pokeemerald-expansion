@@ -14,10 +14,11 @@ come from the "derived" / "palette" entries of magma_{m,f}.json (build_player.bu
 
 Battle back pic, graphics/trainers/back_pics/magma_{m,f}.png (5 frames, sBackAnims_Kanto): drawn in
 the vanilla grunt front pic's palette (front_pics/magma_grunt_{m,f}.png, all 16 colours). The hood is
-drawn here (dome, centre seam, folds, folded rim with a sliver of the face, two dark-grey horn
-points); the body is Game Freak's back-pic cloth and arms re-coloured: the male on Steven's back pic
-(broad build; suit -> red top, cuffs -> grey wristbands, hands -> grey gloves), the female on Leaf's
-poses (hat removed, hair -> navy, top -> red, bag strap removed, hands -> grey gloves, skirt -> grey).
+drawn here (four tones, seams, creases to the nape, collar folds, the opening with its dark inside and a
+sliver of cheek, two small grey horn points); the body is Game Freak's back-pic cloth re-coloured: the male
+on Steven's back pic (broad build; suit -> red top, cuffs -> grey wristbands, hands -> grey gloves) with his
+right throwing arm drawn here for the wind-up, arm-up and release, the female on Leaf's poses (hat removed,
+hair -> navy, top -> red, bag strap removed, hands -> grey gloves, skirt -> grey).
 Kanto frame order: 0 idle, 1 wind-up (ball in hand), 2 arm up (ball), 3 release, 4 follow-through.
 Tabitha's back pic (back_pics/magma_admin.png, his Space Center partner role) is the male grunt's frames in
 his deeper crimson admin jacket.
@@ -438,16 +439,18 @@ def horn_poly(cx, cy, rx, ry, t1, t2, tip):
     return [p1, (mid[0] + tip[0], mid[1] + tip[1]), p2, inner]
 
 
-def hood(cx, cy, rx=13.0, ry=12.0, cowl=None, horn=1.25):
+def hood(cx, cy, rx=13.0, ry=12.0, cowl=None, horn=1.05):
     """The grunt's hood from behind and a little to the left, facing right: {(x, y): index} in the front
-    pic palette (c light, d mid, a dark, 4 darkest red, 2 sheen, f outline; horns 5/6/8; cheek 2/3).
-    The two horn points are part of the hood: one silhouette, one outline. No ear shows: only a thin
-    sliver of cheek inside the hood's front edge."""
-    m = {}
+    pic palette. Four tones like the front pic's hood: sheen (2 dithered on c) and light c on the crown,
+    mid d, shade a, dark creases 4; coloured lines inside, black only on the outer edge. Fabric: a centre
+    seam, soft creases running down to the nape where the hood gathers into the collar, the opening on
+    the right (a lit rim, the dark inside of the hood, a thin sliver of cheek at the edge - no ear) and
+    two small stiff grey horn points that are part of the hood's silhouette."""
+    m, light = {}, {}
     cowl = cowl or [(cx - rx, cy + 2), (cx + rx, cy + 2), (cx + rx + 2, cy + 12), (cx + 4, cy + 19),
                     (cx - 3, cy + 19), (cx - rx - 3, cy + 14)]
-    horns = [horn_poly(cx, cy, rx, ry, 212, 236, (-1.6 * horn, -4.6 * horn)),
-             horn_poly(cx, cy, rx, ry, 292, 312, (1.4 * horn, -4.2 * horn))]
+    horns = [horn_poly(cx, cy, rx, ry, 208, 238, (-1.2 * horn, -4.0 * horn)),
+             horn_poly(cx, cy, rx, ry, 291, 315, (1.0 * horn, -3.6 * horn))]
     for y in range(int(cy - ry - 8), int(cy + ry + 12)):
         for x in range(int(cx - rx - 6), int(cx + rx + 6)):
             px, py = x + 0.5, y + 0.5
@@ -459,7 +462,8 @@ def hood(cx, cy, rx=13.0, ry=12.0, cowl=None, horn=1.25):
                 ny = (py - cy + 1) / (ry + 9)
                 nz = math.sqrt(max(0.0, 1 - nx * nx - ny * ny))
                 dot = -0.64 * nx - 0.56 * ny + 0.52 * nz        # light from the upper left
-                m[(x, y)] = 0xc if dot > 0.64 else 0xd if dot > 0.20 else 0xa
+                light[(x, y)] = dot
+                m[(x, y)] = 0xc if dot > 0.62 else 0xd if dot > 0.18 else 0xa
     # horn shading: lit left edge, mid, shadowed right edge, a dark stitched base where it meets the red
     for (x, y), c in list(m.items()):
         if c != -1:
@@ -468,50 +472,40 @@ def hood(cx, cy, rx=13.0, ry=12.0, cowl=None, horn=1.25):
         right = (x + 1, y) not in m or m[(x + 1, y)] != -1
         base = (x, y + 1) in m and m[(x, y + 1)] != -1
         m[(x, y)] = 0x8 if base or right else 0x5 if left else 0x6
-    # folded rim of the face opening on the right: a lit edge with the shadow inside it
-    for y in range(int(cy - ry * 0.45), int(cy + ry * 0.95)):
-        xs = [x for (x, yy) in m if yy == y]
-        if xs:
-            xr = max(xs)
-            m[(xr - 1, y)] = 0xd
-            if (xr - 2, y) in m:
-                m[(xr - 2, y)] = 0x4 if m[(xr - 2, y)] == 0xa else 0xa
+    # sheen on the crown, dithered like the front pic's (2 on c)
+    for p, dot in light.items():
+        if dot > 0.86 and (p[0] + p[1]) % 2 == 0:
+            m[p] = 0x2
+
+    def crease(pts, deep=True):
+        """A soft fold: a dark line, the side towards the light a tone lighter, the far side a tone darker."""
+        for (x, y) in line_px([(int(round(a)), int(round(b))) for a, b in pts]):
+            if m.get((x, y), -1) not in (0x2, 0xc, 0xd, 0xa):
+                continue
+            m[(x, y)] = 0x4 if (deep and m[(x, y)] == 0xa) else 0xa
+            if m.get((x - 1, y)) in (0xa, 0xd):
+                m[(x - 1, y)] = {0xa: 0xd, 0xd: 0xc}[m[(x - 1, y)]]
+            if m.get((x + 1, y)) in (0xc, 0xd):
+                m[(x + 1, y)] = {0xc: 0xd, 0xd: 0xa}[m[(x + 1, y)]]
+
     # centre seam from the crown to the nape (right of centre in a 3/4 back view), lit on its right
     for (x, y) in line_px([(int(cx + 1), int(cy - ry + 1)), (int(cx + 3), int(cy - 3)), (int(cx + 3), int(cy + 6)),
                           (int(cx + 2), int(cy + 14))]):
-        if (x, y) in m and (x + 1, y) in m and m[(x, y)] in (0xc, 0xd, 0xa):
+        if (x, y) in m and (x + 1, y) in m and m[(x, y)] in (0x2, 0xc, 0xd, 0xa):
             m[(x, y)] = 0xa if m[(x, y)] != 0xa else 0x4
             m[(x + 1, y)] = {0xd: 0xc, 0xa: 0xd}.get(m[(x + 1, y)], m[(x + 1, y)])
-    # side panel seam from the left horn down the side of the head (subtle on the lit side)
-    for (x, y) in line_px([(int(cx - rx * 0.62), int(cy - ry * 0.62)), (int(cx - rx * 0.8), int(cy - ry * 0.1)),
-                          (int(cx - rx * 0.78), int(cy + ry * 0.45))]):
-        if (x, y) in m and m[(x, y)] in (0xc, 0xd) and (x + 1, y) in m:
-            m[(x, y)] = 0xd if m[(x, y)] == 0xc else 0xa
-    # the crease where the hood turns under towards the nape: dark below, lit lip above
-    crease = line_px([(int(cx - rx * 0.85), int(cy + ry * 0.5)), (int(cx - rx * 0.3), int(cy + ry * 0.72)),
-                      (int(cx + rx * 0.25), int(cy + ry * 0.78))])
-    for (x, y) in crease:
-        if (x, y) in m and m[(x, y)] in (0xc, 0xd, 0xa):
-            m[(x, y)] = 0xa if m[(x, y)] != 0xa else 0x4
-            if (x, y - 1) in m and m[(x, y - 1)] == 0xd:
-                m[(x, y - 1)] = 0xc
-            for k in (1, 2):
-                if (x, y + k) in m and m[(x, y + k)] == 0xc:
-                    m[(x, y + k)] = 0xd
-    # folds where the hood gathers at the nape and lies on the shoulders
-    for f in ([(cx - 9, cy + 9), (cx - 7, cy + 13), (cx - 6, cy + 16)],
-              [(cx - 4, cy + 11), (cx - 3, cy + 15), (cx - 2, cy + 18)],
-              [(cx + 7, cy + 9), (cx + 8, cy + 13), (cx + 9, cy + 15)]):
-        for (x, y) in line_px([(int(a), int(b)) for a, b in f]):
-            if (x, y) in m and (x + 1, y) in m:
-                m[(x, y)] = 0x4 if m[(x, y)] == 0xa else 0xa
-                m[(x + 1, y)] = {0xa: 0xd, 0xd: 0xc}.get(m[(x + 1, y)], m[(x + 1, y)])
-    # pale sheen on the crown (the front pic's light dots on the hood)
-    for k in range(6):
-        a = math.radians(200 + k * 11)
-        p = (int(round(cx + (rx - 2.2) * math.cos(a) + 1)), int(round(cy + (ry - 2.2) * math.sin(a))))
-        if p in m and m[p] in (0xc, 0xd):
-            m[p] = 0x2
+    # soft folds: down the back of the head towards the nape, the turn under the crown, the gathering at the
+    # collar
+    crease([(cx - rx * 0.6, cy - ry * 0.62), (cx - rx * 0.8, cy - ry * 0.12), (cx - rx * 0.8, cy + ry * 0.38)],
+           deep=False)                                            # side panel seam from the left horn
+    crease([(cx - rx * 0.62, cy - ry * 0.05), (cx - rx * 0.5, cy + ry * 0.45), (cx - rx * 0.3, cy + ry * 0.9),
+            (cx - rx * 0.18, cy + ry * 1.35)])
+    crease([(cx + rx * 0.5, cy + ry * 0.1), (cx + rx * 0.46, cy + ry * 0.6), (cx + rx * 0.36, cy + ry * 1.05)])
+    crease([(cx - rx * 0.85, cy + ry * 0.5), (cx - rx * 0.3, cy + ry * 0.72), (cx + rx * 0.25, cy + ry * 0.78)],
+           deep=False)
+    crease([(cx - rx * 0.78, cy + ry * 0.8), (cx - rx * 0.66, cy + ry * 1.2)])
+    crease([(cx + rx * 0.72, cy + ry * 0.75), (cx + rx * 0.8, cy + ry * 1.12)])
+    crease([(cx - rx * 0.05, cy + ry * 1.02), (cx + rx * 0.02, cy + ry * 1.4)])
     # one outline around hood and horns: black outside, dark red where the hem lies on the body
     out = dict(m)
     for (x, y), c in m.items():
@@ -520,12 +514,23 @@ def hood(cx, cy, rx=13.0, ry=12.0, cowl=None, horn=1.25):
         elif (x, y + 1) not in m:
             out[(x, y)] = 0x4
     m = out
-    # a thin sliver of cheek and jaw just inside the front edge (never outside the hood's outline)
-    for y in range(int(cy + 1), int(cy + 7)):
-        xs = [x for (x, yy) in m if yy == y]
-        if xs:
-            xr = max(xs)
+    # the opening on the right: at the edge a sliver of cheek (jaw rows) or the hood's dark inside, then the
+    # lit rim of the folded edge
+    y0, y1 = int(cy - ry * 0.5), int(cy + ry * 0.95)
+    for y in range(y0, y1):
+        xs = [x for (x, yy) in m if yy == y and m[(x, yy)] == 0xf]
+        if not xs:
+            continue
+        xr = max(xs)
+        t = (y - y0) / max(1, y1 - y0)
+        w = 1 + int(round(2.2 * math.sin(math.pi * t)))
+        for k in range(w):
+            if (xr - 1 - k, y) in m:
+                m[(xr - 1 - k, y)] = 0x4
+        if int(cy + 1) <= y <= int(cy + 6):
             m[(xr - 1, y)] = 0x2 if y < cy + 4 else 0x3
+        if (xr - 1 - w, y) in m:
+            m[(xr - 1 - w, y)] = 0xc if y < cy + 2 else 0xd
     return m
 
 
@@ -584,29 +589,104 @@ def steven_body(i, gloves=(), front=(), keep=(), erase=(), face_x0=27):
     return out, {p: c for p, c in out.items() if in_rects(p, front)}
 
 
+# the male's throwing arm, drawn here on Steven's idle body (his right arm removed below the shoulder): a red
+# sleeve shaded like the recoloured suit (lit rim c, d, cloth a, black outline), a grey wristband, a grey glove
+GLOVE_FIST = [".ffffff.", "f556666f", "f566668f", "f666888f", ".f6888f.", "..ffff.."]   # under the ball
+GLOVE_CUP = [".fff.", "f566f", "f666f", "f668f", "f668f", "f688f", ".fff."]           # fingers round it
+GLOVE_OPEN = ["....fff..", "..ff556f.", ".f5b6666f", "f5666668f", "f666668f.", ".f8868f..", "..ffff..."]
+
+
+def tube(p0, p1, r0, r1):
+    """Pixels of a tapered capsule p0 -> p1: {(x, y): (t along, s across)}."""
+    (x0, y0), (x1, y1) = p0, p1
+    dx, dy = x1 - x0, y1 - y0
+    L = math.hypot(dx, dy) or 1.0
+    nx, ny = -dy / L, dx / L
+    out = {}
+    rr = max(r0, r1)
+    for y in range(int(min(y0, y1) - rr) - 1, int(max(y0, y1) + rr) + 2):
+        for x in range(int(min(x0, x1) - rr) - 1, int(max(x0, x1) + rr) + 2):
+            px, py = x + 0.5, y + 0.5
+            t = max(0.0, min(1.0, ((px - x0) * dx + (py - y0) * dy) / (L * L)))
+            r = r0 + (r1 - r0) * t
+            sx, sy = px - (x0 + t * dx), py - (y0 + t * dy)
+            if sx * sx + sy * sy <= r * r:
+                out[(x, y)] = (t, (sx * nx + sy * ny) / max(r, 0.1))
+    return out, (nx, ny)
+
+
+def draw_arm(body, joints, radii, cuff=True):
+    """Shoulder -> elbow -> wrist sleeve in front of the body. Returns the wrist point."""
+    arm = {}
+    for i in range(len(joints) - 1):
+        px, (nx, ny) = tube(joints[i], joints[i + 1], radii[i], radii[i + 1])
+        lit_sign = 1 if (-0.7 * nx - 0.7 * ny) > 0 else -1          # which side of the tube faces the light
+        last = i == len(joints) - 2
+        for p, (t, s) in px.items():
+            f = (1 - lit_sign * s) / 2                                # 0 = lit edge, 1 = shadow edge
+            c = 0xc if f < 0.22 else 0xd if f < 0.45 else 0xa
+            if cuff and last and t > 0.84:
+                c = 0x5 if f < 0.3 else 0x6 if f < 0.7 else 0x8   # grey wristband
+            if p not in arm or c != 0xa:
+                arm[p] = c
+    sx, sy = joints[0]
+    for (x, y), c in arm.items():
+        joint = math.hypot(x + 0.5 - sx, y + 0.5 - sy) < radii[0] - 0.5
+        if not joint and any(q not in arm for q in nb4(x, y)):
+            arm[(x, y)] = 0xf
+    body.update(arm)
+    return joints[-1]
+
+
+def stamp(out, rows, x0, y0):
+    for ty, r in enumerate(rows):
+        for tx, ch in enumerate(r):
+            if ch != "." and 0 <= x0 + tx < 64 and 0 <= y0 + ty < 64:
+                out[(x0 + tx, y0 + ty)] = int(ch, 16)
+
+
+def steven_idle_armless():
+    """Steven's idle frame with his right arm (the throwing arm) gone below the shoulder, edge closed."""
+    body, _ = steven_body(3)
+    for p in [p for p in body if p[0] >= 43 and p[1] >= 46]:
+        del body[p]
+    for y in range(46, 64):
+        xs = [x for (x, yy) in body if yy == y and x >= 30]
+        if xs:
+            body[(max(xs), y)] = 0xf
+    return body
+
+
 def back_m():
     frames = []
     # 0 idle (Steven 3)
     body, fr = steven_body(3)
     body.update(hood(32, 21))
     frames.append(body)
-    # 1 wind-up, ball in the glove (Steven 0); the arm passes in front of the hood
-    body, fr = steven_body(0, gloves=[(0, 28, 22, 43)], front=[(0, 28, 25, 43)], face_x0=24)
-    body.update(hood(29, 22))
-    body.update(fr)
-    stamp_ball(body, 2, 28)
+    # 1 wind-up: the right arm drawn back and down, the ball cupped in the glove by the hip
+    body = steven_idle_armless()
+    body.update(hood(32, 21))
+    wx, wy = draw_arm(body, [(45, 46), (52, 53), (54, 57)], [5.0, 4.3, 3.6])
+    stamp_ball(body, wx - 3, wy - 1)
+    stamp(body, GLOVE_CUP, wx + 3, wy - 1)
     frames.append(body)
-    # 2 arm up behind the head, ball (Steven 1)
-    hand = [(12, 28, 21, 39)]
-    body, fr = steven_body(1, gloves=hand, front=hand, keep=hand, face_x0=28)
-    body.update(hood(31, 21))
-    body.update(fr)
-    stamp_ball(body, 13, 25)
+    # 2 arm up: elbow out to the side, forearm up, the ball held above the right shoulder
+    body = steven_idle_armless()
+    body.update(hood(32, 21))
+    wx, wy = draw_arm(body, [(45, 46), (55, 43), (57, 31)], [5.0, 4.3, 3.6])
+    stamp_ball(body, wx - 4, wy - 12)
+    stamp(body, GLOVE_FIST, wx - 4, wy - 7)
     frames.append(body)
-    # 3 release and 4 follow-through: the arm swung forward (Steven 2, his own throw's forward frame)
+    # 3 release: the arm thrown forward to the right, the hand opening
+    body = steven_idle_armless()
+    body.update(hood(32, 21))
+    wx, wy = draw_arm(body, [(45, 46), (53, 40), (57, 35)], [5.0, 4.3, 3.6])
+    stamp(body, GLOVE_OPEN, wx - 1, wy - 4)
+    frames.append(body)
+    # 4 follow-through: the arm swung on down to the right, body turning (Steven 2)
     body, fr = steven_body(2, gloves=[(52, 55, 63, 63)], face_x0=18)
     body.update(hood(22, 21))
-    frames += [body, dict(body)]
+    frames.append(body)
     return [to_grid(f) for f in frames]
 
 

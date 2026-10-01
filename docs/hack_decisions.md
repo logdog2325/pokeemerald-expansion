@@ -1781,10 +1781,15 @@ The playtester's story add-on is the source of truth; these fill its gaps and re
   only a thin sliver of cheek inside the front edge, no ear). The **bodies** are Game Freak's back-pic cloth and arms
   re-coloured, so proportions, folds and shading are official: the male on **Steven's** back pic (broad build; the
   suit's two greys → light rims / red cloth, its dark → shade, inner black lines → dark red, cuffs → grey wristbands,
-  hands → grey gloves; release and follow-through are both his forward frame), the female on **Leaf's** poses (hat
+  hands → grey gloves; the throwing arm is drawn, see the polish pass), the female on **Leaf's** poses (hat
   removed, long hair → navy coming out of the hood at the nape, top → red, bag strap removed, bare shoulders as on the
   grunt's front pic, hands → grey gloves, skirt → grey). Like every vanilla back pic it is cut at the waist, so the grey
-  trousers are below the frame. – Alt: Red's / Leaf's frames with only a new head (what feedback 2.10 rejected); drawing
+  trousers are below the frame. **Polish pass** (the playtester: "the style of emerald, not cartoonish"; the hood read
+  as a smooth helmet, the male's wind-up held the ball beside his head): the hood got the front pic hood's four tones
+  and dithered sheen, a visible opening (lit rim, dark inside, cheek sliver), a side seam, creases to the nape and
+  folds at the collar, and smaller horns; the male now throws with his **right arm drawn on Steven's idle body** –
+  drawn back low with the ball by the hip, raised with the ball above the right shoulder, thrown forward to the right –
+  and follows through with Steven's forward frame, so his five frames are five poses in the same timing. – Alt: Red's / Leaf's frames with only a new head (what feedback 2.10 rejected); drawing
   the bodies from shapes (tried: flat, "cartoonish" next to Red and Steven); switching to the 4-frame Hoenn layout of
   Steven's pic (the outfit keeps its 5-frame Kanto timing); Brendan's / May's back pics (never used: they are the
   rivals). – Steven and Leaf give official proportions and cloth; the hood, horns, palette and colours make it a grunt.

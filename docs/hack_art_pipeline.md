@@ -352,19 +352,26 @@ How they were made:
   ball's white). The fishing rod is the largest rod-coloured blob of Red's frame that lies outside the grunt's body.
   The female's hair (indices b, c, 7 and the 4s that shade it, spreading along strands that leave the hood) is navy.
 - **Back pics**: the palette is the vanilla grunt front pic's, all 16 colours, so the player stands beside real grunts.
-  The hood is a dome over a cowl lying on the shoulders, lit from the upper left (light / mid / dark red + the darkest
-  red), with the centre seam, a side seam from the left horn, the crease where it turns under to the nape, folds at
-  the nape, the front pic's pale sheen dots, and a folded rim at the face opening. The two horn points are part of the
-  hood's silhouette (one outline, grey with a lit edge and a dark stitched base), small and stiff; no ear shows – only
-  a thin sliver of cheek just inside the front edge. Kanto order: 0 idle (Steven 3 / Leaf 0), 1 wind-up with the ball
-  in the glove (Steven 0 / Leaf 1), 2 arm up behind the head with the ball (Steven 1 / Leaf 2), 3 release (Steven 2,
-  the forward frame of his own throw / Leaf 3), 4 follow-through (Steven 2 again / Leaf 4). Arms that pass in
+  The hood is fabric over a dome and a cowl lying on the shoulders, in the front pic hood's four tones lit from the
+  upper left: light (with the front pic's dithered pale sheen on the crown), mid, shade and the darkest red for the
+  creases; coloured lines inside, black only on the outer edge. It has a centre seam, a side panel seam from the left
+  horn, soft creases running down the back of the head to the nape, the turn under the crown and short folds where it
+  gathers into the collar, and on the right the opening: a lit rim, the hood's dark inside as a band along the edge,
+  and in it a thin sliver of cheek (no ear). The two horn points are small, stiff and grey like the front pic's, part
+  of the hood's silhouette (one outline, a lit edge, a dark stitched base). Kanto order, female on Leaf's poses: 0 idle,
+  1 wind-up with the ball, 2 arm up with the ball, 3 release, 4 follow-through. The male throws with his right arm,
+  drawn here on Steven's idle body (his right arm removed below the shoulder; a red sleeve shaded like the recoloured
+  suit, a grey wristband and glove): 0 idle (Steven 3), 1 the arm drawn back and down, the ball cupped by the hip,
+  2 elbow out and forearm up, the ball held above the right shoulder, 3 the arm thrown forward to the right with the
+  hand opening, 4 the follow-through swung on down to the right with the body turning (Steven 2). Arms that pass in
   front of the hood are drawn over it. The ball in frames 1–2 is the front pic's; from frame 3 on the engine's ball flies.
+  Round 2 polish (the playtester's "style of emerald, not cartoonish"): the hood's opening, creases, sheen and smaller
+  horns, and the male's real throw replaced Steven's wind-up arms (a big hand beside the head).
 - **Checks**: `validate.py --manifest` (same files); contact sheets of every sheet next to the vanilla grunt sheets
   (game palettes, 4–8×); the back pics at 1× and 3× next to Red's, Leaf's, Steven's and Wally's back pics and the grunt
   front pics; in the emulator (a temporary `.play`, not committed) both genders walking and running in Rustboro and
   Brendan's battle at the city's south edge (slide-in, wind-up, throw); `woods.play`, `rustboro.play`.
 
 Known gaps (polish only): the back pic is framed like the vanilla back pics (cut at the waist), so the grunt's grey
-trousers don't show; the male's release frame (6 ticks) is the same as his follow-through; the female's Mach Bike side view keeps
+trousers don't show; the male's drawn throwing arm is a plain sleeve (no folds of Steven's cloth); the female's Mach Bike side view keeps
 the male bike's frame; the surf frames don't show the legs (the blob covers them).
