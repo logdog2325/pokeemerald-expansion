@@ -68,6 +68,7 @@ python3 tools/hack/emu/play.py tools/hack/emu/tests/frontier_legends.play -o /tm
 python3 tools/hack/emu/play.py tools/hack/emu/tests/title.play -o /tmp/emu      # title screen from power-on (Regidrago, banner)
 python3 tools/hack/emu/matrix.py -o /tmp/matrix       # all 18 gender x egg x second-starter flows
 python3 tools/hack/check_story.py                     # every new flag / story state set and read
+python3 tools/hack/check_pory.py [--fix]               # every committed .inc matches its .pory (run after merges)
 python3 tools/hack/check_wild.py [--info X|--doc]     # wild tables: species legal, levels, Hoenn species kept, 1% Beldum
 python3 tools/hack/emu/play.py tools/hack/emu/tests/progression.play -o /tmp/emu  # story-lock fixes (Aqua Hideout entrance)
 python3 tools/hack/emu/matrix.py -o /tmp/matrix       # all 18 gender x egg x second-starter flows
