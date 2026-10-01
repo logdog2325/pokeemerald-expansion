@@ -139,7 +139,7 @@ static const struct MenuAction MultichoiceList_Mechadoll2_Q1[] =
 
 static const struct MenuAction MultichoiceList_Mechadoll2_Q2[] =
 {
-    {COMPOUND_STRING("POOCHYENA")},
+    {COMPOUND_STRING("LUNATONE")}, // Draconid Emerald: fell with the star on Route 101 (was POOCHYENA, D-400)
     {COMPOUND_STRING("SHROOMISH")},
     {COMPOUND_STRING("ZIGZAGOON")},
 };

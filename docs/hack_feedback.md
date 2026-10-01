@@ -7,6 +7,12 @@ One numbered checklist per round, newest round at the top. Categories: **bug / b
 
 Status: `[ ]` open · `[~]` in progress · `[x]` done (commit) · `[-]` won't do (why)
 
+## Round 2 (after the round 1 ROM)
+
+| # | Category | Item | Status |
+|---|---|---|---|
+| 2.11 | story | "also we need to change up the birch intro its way to similar to emeralds" | [x] no more rescue: last night's falling star came down on Route 101's west edge; Birch kneels by the meteorite, a dazed Lunatone that fell with it lashes out and the hatchling tires it out (Lv 2, soft moveset, no catching, running or whiteout), it drifts off toward Meteor Falls and Birch picks up the star; the Poochyena scene is gone; `opening.play` checks it (D-400) |
+
 ## Round 1 (after v1, commit 94f937d3)
 
 The round came with the full story add-on (saved as [hack_story.md](hack_story.md), source of truth) and the

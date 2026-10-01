@@ -40,7 +40,7 @@ Tick each checkpoint as you pass it; note anything odd with where it happened.
 | 3 | Outside the shrine | The egg hatches on the 5th step outside (normal hatch animation), partner at Lv 5 | not before the 5th step, level, moves |
 | 4 | Village | An old villager hurries over and gives the Running Shoes | B to run |
 | 5 | Draconid Pass | First Aster battle (can't white out; you're healed after) | her Pokémon counters yours |
-| 6 | Route 101 | Birch chased by Zigzagoon; your hatchling fights it | battle, warp to the lab |
+| 6 | Route 101 | Last night's falling star came down here: Birch kneels by the meteorite, your hatchling tires out the dazed Lunatone that fell with it (round 2, D-400) | Lv 2 Lunatone at 2/3 HP, no catching/running/whiteout; it drifts off, Birch picks up the star, warp to the lab |
 | 7 | Birch's lab | Birch gives Brendan Treecko and May Torchic; you get the Pokédex and 5 Poké Balls | text, Pokédex works |
 | 8 | Route 103 | May battle (losing heals you and the story goes on) | May sends out Torchic |
 | 9 | Route 104 (Petalburg Woods entrance) | Brendan battle | |

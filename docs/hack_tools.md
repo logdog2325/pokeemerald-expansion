@@ -137,6 +137,7 @@ python3 tools/hack/emu/play.py test.play -o /tmp/out
 | `heal` | debug builds: heal the party the next time the player is free |
 | `givemon SPECIES_X LEVEL [ITEM_X]`, `giveitem ITEM_X [N]` | debug builds: add a Pokémon (holding ITEM_X) to the party / N items (default 1) to the bag the next time the player is free |
 | `expect_party SLOT SPECIES_X` | the species in party slot SLOT (0 = first), decrypted from the box data |
+| `expect_seen SPECIES_X 0/1`, `expect_caught SPECIES_X 0/1` | the Pokédex's seen / caught flag for the species (`dexSeen` / `dexCaught`, by its `NATIONAL_DEX_*` number) |
 | `expect_text LABEL [BUFFER]` | the text in BUFFER (default `gStringVar4`) starts like the ROM text LABEL (up to 24 bytes, stopping at its first placeholder); e.g. a PokéNav call |
 | `settrainer TRAINER_X 0/1` | set or clear a trainer's defeated flag |
 | `setvar NAME V`, `gender M/F`, `default NAME V` (+ `-D NAME=V`) | change a var, the player's gender, script defaults |

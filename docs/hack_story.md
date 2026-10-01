@@ -30,6 +30,7 @@ Most of the game the player wears the **Magma grunt uniform**. Ordinary people t
 ### Act 1 – The prophecy (Draconid village → Rustboro)
 1. **Village intro** (replaces the truck intro and Mom): the player wakes in the village. A falling star crosses the sky at night. The Elder tells the prophecy, offers **3 eggs** (Deino / Dreepy / Jangmo-o), and gives the mission: "Walk among the red ones. Learn what Maxie seeks. When the sky splits, you must stand beside Rayquaza." Aster objects and battles the player once the egg hatches (tutorial battle). A villager gives the Running Shoes (replaces Mom's gift).
 2. **Descent to Route 101**: the player saves **Birch** from the wild Poochyena using their hatched dragon (replaces the bag-starter scene). Birch gives the Pokédex and introduces **Brendan** (Treecko) and **May** (Torchic). First rival battle vs May on Route 103.
+   *Round 2 (feedback 2.11: too close to Emerald's; D-400): no more rescue. Last night's falling star came down on Route 101's west edge. Birch kneels by the still-warm meteorite while a dazed **Lunatone** that fell with it lashes out; he knows the hatchling at once ("A dragon! Then you're {PLAYER}! The ELDER wrote that you'd come") and asks the player to tire it out before it hurts itself. Calmed, the Lunatone drifts off toward the mountains (Meteor Falls), and Birch picks up the star the Elder saw fall.*
 3. **Petalburg**: meet Norman (May's dad) and help **Wally** catch Ralts (vanilla, but Norman is May's father, not the player's).
 4. **Petalburg Woods – recruitment**: an Aqua grunt, **Nerine in disguise**, robs the Devon researcher. The player beats her. She whispers a first hint: "Strong... for a lowlander. Or are you?" **Courtney** (Magma) watched the battle and recruits the player: "Anyone who crushes Aqua that easily belongs with us." The player accepts, as the Elder instructed. **Outfit changes to the Magma grunt uniform** (cutscene: a Magma outpost cabin at the edge of the woods, a small new map).
 5. **Rustboro**: people stare and whisper. **Brendan** confronts the player at the city edge: "You joined MAGMA?!" Battle. Win Roxanne's badge. Tabitha's order: "Maxie wants strong grunts. Collect badges, it opens doors for us."
@@ -224,3 +225,6 @@ Petalburg Woods recruitment/outfit change, Maxie's first meeting at Meteor Falls
 
 ### Follow-up note 31 (round 1)
 - "also I think we should get access to z moves earlier and they should be spread throughout the story not a post game think"
+
+### Follow-up note (round 2, the Birch intro – feedback 2.11)
+- "also we need to change up the birch intro its way to similar to emeralds"

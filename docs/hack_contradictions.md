@@ -99,7 +99,7 @@ Status: **fixed** · **left** (in a file another agent owns right now – passed
 
 | File | Label | What was wrong | Status |
 |---|---|---|---|
-| `data/maps/Route110_TrickHousePuzzle5` | `Route110_TrickHousePuzzle5_EventScript_Mechadoll2Quiz2` | "Which of these POKéMON was chasing PROF. BIRCH?" – the right answer was ZIGZAGOON; the v2 rescue is a POOCHYENA (story audit #8). | **fixed**: POOCHYENA is the right answer |
+| `data/maps/Route110_TrickHousePuzzle5` | `Route110_TrickHousePuzzle5_EventScript_Mechadoll2Quiz2` | "Which of these POKéMON was chasing PROF. BIRCH?" – the right answer was ZIGZAGOON; the v2 rescue is a POOCHYENA (story audit #8). | **fixed**: POOCHYENA is the right answer; round 2 (D-400): nothing chases Birch any more, so the quiz asks "Which of these POKéMON fell with the star on ROUTE 101?" and LUNATONE (the first entry, was POOCHYENA) is right |
 | `data/maps/Route110_TrickHousePuzzle5` | `Route110_TrickHousePuzzle5_EventScript_Mechadoll2Quiz3` | "Which of these POKéMON did TEAM AQUA use in PETALBURG FOREST?" – the right answer was POOCHYENA; the Aqua grunt there is NERINE, whose cover team leads with CARVANHA (story audit #8). | **fixed**: CARVANHA is the right answer |
 | `data/maps/Route110_TrickHousePuzzle5` | `…_Mechadoll1Quiz1` | "One of these POKéMON is not found on ROUTE 110" | **fine**: TAILLOW still isn't there after the Gen 4–9 additions |
 

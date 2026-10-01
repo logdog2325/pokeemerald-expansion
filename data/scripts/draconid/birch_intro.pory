@@ -1,52 +1,46 @@
 // Draconid Emerald: meeting Prof. Birch, Brendan and May (Phase 4, story event 2).
 //
-//   Draconid Pass -> Route 101 west edge: Birch is attacked; the hatchling fights the
-//   Poochyena (special StartBirchRescueBattle, the vanilla first battle without a starter)
-//   -> warp to the lab: Birch gives Brendan Treecko and May Torchic, the player gets the
+//   Draconid Pass -> Route 101 west edge, where last night's falling star came down: Birch kneels by the
+//   METEORITE, a dazed LUNATONE that fell with it lashes out, and the hatchling tires it out (special
+//   StartBirchRescueBattle, the vanilla first battle without a starter) -> it drifts off toward METEOR FALLS and
+//   Birch picks up the star -> warp to the lab: Birch gives Brendan Treecko and May Torchic, the player gets the
 //   Pokédex and Poké Balls -> May waits on Route 103.
+//   Round 2 (feedback 2.11, D-400): this replaced the round 1 Poochyena rescue, which was too close to Emerald's.
 //
 // Vanilla hooks: Route101_OnTransition calls Route101_EventScript_DraconidOnTransition,
 // the lab's OnFrame runs LittlerootTown_ProfessorBirchsLab_EventScript_DraconidWelcome at
 // VAR_BIRCH_LAB_STATE 2, and Route103_EventScript_Rival goes to Route103_EventScript_DraconidMay.
 
 // ---------------------------------------------------------------------------
-// Route 101: the rescue
+// Route 101: the fallen star
 // ---------------------------------------------------------------------------
 
-// Before the rescue, Birch and the Poochyena (object LOCALID_ROUTE101_ZIGZAGOON) wait just out of view of the west entrance
-// (objects spawn within 10 tiles, so they exist when the scene starts).
+// Before the scene Birch kneels by the METEORITE (8, 4), facing it, and the LUNATONE hovers at (9, 3). The meteorite
+// and the LUNATONE are object templates there, hidden by Birch's flag (FLAG_HIDE_ROUTE_101_BIRCH_ZIGZAGOON_BATTLE);
+// objects spawn within 10 tiles, so all three exist when the scene starts at the west entrance.
 script Route101_EventScript_DraconidOnTransition {
     if (var(VAR_ROUTE101_STATE) == 1) {
-        setobjectxyperm(LOCALID_ROUTE101_BIRCH, 9, 3)
-        setobjectxyperm(LOCALID_ROUTE101_ZIGZAGOON, 10, 3)
-        setobjectmovementtype(LOCALID_ROUTE101_BIRCH, MOVEMENT_TYPE_FACE_LEFT)
-        setobjectmovementtype(LOCALID_ROUTE101_ZIGZAGOON, MOVEMENT_TYPE_FACE_LEFT)
+        setobjectxyperm(LOCALID_ROUTE101_BIRCH, 7, 4)
+        setobjectmovementtype(LOCALID_ROUTE101_BIRCH, MOVEMENT_TYPE_FACE_RIGHT)
     }
 }
 
 // Coord triggers on the two cells of the west entrance, (0, 4) and (0, 5).
-script Route101_EventScript_DraconidRescueTop {
+script Route101_EventScript_DraconidFallenStarTop {
     setvar(VAR_0x8008, 0)
-    goto(Route101_EventScript_DraconidRescue)
+    goto(Route101_EventScript_DraconidFallenStar)
 }
 
-script Route101_EventScript_DraconidRescueBottom {
+script Route101_EventScript_DraconidFallenStarBottom {
     setvar(VAR_0x8008, 1)
-    goto(Route101_EventScript_DraconidRescue)
+    goto(Route101_EventScript_DraconidFallenStar)
 }
 
-script Route101_EventScript_DraconidRescue {
+script Route101_EventScript_DraconidFallenStar {
     lockall
-    playbgm(MUS_HELP, TRUE)
-    msgbox(Route101_Text_HelpMe)
+    call(Route101_EventScript_DraconidLunatoneLashesOut)
+    msgbox(format("PROF. BIRCH: Whoa! Easy… easy, now."))
     closemessage
-    // Birch runs laps around the clearing (6..9, 2..4), the Poochyena one step behind
-    applymovement(LOCALID_ROUTE101_BIRCH, Route101_Movement_DraconidBirchLaps)
-    applymovement(LOCALID_ROUTE101_ZIGZAGOON, Route101_Movement_DraconidZigzagoonLaps)
-    waitmovement(0)
-    applymovement(LOCALID_ROUTE101_BIRCH, Common_Movement_WalkInPlaceFasterDown)
-    applymovement(LOCALID_ROUTE101_ZIGZAGOON, Common_Movement_WalkInPlaceFasterUp)
-    waitmovement(0)
     if (var(VAR_0x8008) == 0) {
         applymovement(LOCALID_PLAYER, Route101_Movement_DraconidPlayerApproachTop)
     } else {
@@ -55,23 +49,45 @@ script Route101_EventScript_DraconidRescue {
     waitmovement(0)
     applymovement(LOCALID_ROUTE101_BIRCH, Common_Movement_WalkInPlaceFasterLeft)
     waitmovement(0)
-    msgbox(format("Hello! You over there!\p"
-                  "Is that a POKéMON with you? Please, help me!\p"
-                  "Chase this POOCHYENA off!"))
-    closemessage
-    special(StartBirchRescueBattle)
-    // back from the battle: the Poochyena flees
-    applymovement(LOCALID_ROUTE101_ZIGZAGOON, Route101_Movement_DraconidZigzagoonFlee)
+    applymovement(LOCALID_ROUTE101_BIRCH, Common_Movement_ExclamationMark)
     waitmovement(0)
-    removeobject(LOCALID_ROUTE101_ZIGZAGOON)
-    applymovement(LOCALID_ROUTE101_BIRCH, Route101_Movement_DraconidBirchApproach)
-    waitmovement(0)
-    special(HealPlayerParty)
     bufferleadmonspeciesname(STR_VAR_1)
-    msgbox(format("PROF. BIRCH: Whew… I was in the tall grass studying wild POKéMON when it jumped me.\p"
-                  "You saved me. Thanks a lot!\p"
-                  "Hm? That's a {STR_VAR_1}! A Dragon-type, and so young…\p"
-                  "Then you must be {PLAYER}, from DRACONID VILLAGE! The ELDER wrote that you'd be coming."))
+    msgbox(format("PROF. BIRCH: Hm? Is that a {STR_VAR_1}?\p"
+                  "A dragon! Then you're {PLAYER}! The ELDER wrote that you'd come."))
+    msgbox(format("PROF. BIRCH: Last night's falling star came down right here.\p"
+                  "This LUNATONE fell with it. It's dazed, and it lashes out at anything that moves."))
+    msgbox(format("PROF. BIRCH: If it keeps this up, it'll hurt itself.\p"
+                  "Can your partner tire it out for me? Gently, now!"))
+    closemessage
+    call(Route101_EventScript_DraconidLunatoneLashesOut)
+    // the first battle: no running, no whiteout, the LUNATONE flees once the hatchling is low (D-400); no catching
+    setflag(FLAG_DRACONID_NO_CATCHING)
+    special(StartBirchRescueBattle)
+    clearflag(FLAG_DRACONID_NO_CATCHING)
+    // back from the battle, whatever its outcome: the LUNATONE calms down and drifts off to the north-west
+    special(HealPlayerParty)
+    playse(SE_M_MOONLIGHT)
+    fadescreenswapbuffers(FADE_TO_WHITE)
+    fadescreenswapbuffers(FADE_FROM_WHITE)
+    waitse
+    msgbox(format("The LUNATONE's light grew soft and steady."))
+    closemessage
+    applymovement(LOCALID_ROUTE101_LUNATONE, Route101_Movement_DraconidLunatoneDriftsAway)
+    waitmovement(0)
+    removeobject(LOCALID_ROUTE101_LUNATONE)
+    msgbox(format("PROF. BIRCH: Thank you, {PLAYER}. Your partner was very gentle with it.\p"
+                  "There it goes, toward the mountains. METEOR FALLS, maybe."))
+    closemessage
+    // Birch picks up the star
+    applymovement(LOCALID_ROUTE101_BIRCH, Common_Movement_WalkInPlaceFasterRight)
+    waitmovement(0)
+    playse(SE_M_ROCK_THROW)
+    removeobject(LOCALID_ROUTE101_METEORITE)
+    waitse
+    msgbox(format("PROF. BIRCH: …Still warm.\p"
+                  "So this is the star your ELDER saw fall."))
+    applymovement(LOCALID_ROUTE101_BIRCH, Common_Movement_WalkInPlaceFasterLeft)
+    waitmovement(0)
     // playtest 2.9: Birch knows the mission (the Elder's letter, act1) and says so before the lab (D-341)
     msgbox(format("PROF. BIRCH: …He wrote me why, too.\p"
                   "TEAM MAGMA. And you, walking in among them. Alone.\p"
@@ -98,54 +114,44 @@ script Route101_EventScript_DraconidRescue {
     releaseall
 }
 
-// Birch starts at (9, 3), laps the clearing twice and stops at (9, 3).
-movement Route101_Movement_DraconidBirchLaps {
-    walk_fast_up
-    walk_fast_left * 3
-    walk_fast_down * 2
-    walk_fast_right * 3
-    walk_fast_up * 2
-    walk_fast_left * 3
-    walk_fast_down * 2
-    walk_fast_right * 3
-    walk_fast_up
+// The LUNATONE's cry, a lunge at Birch, a jolt and a flash
+script Route101_EventScript_DraconidLunatoneLashesOut {
+    playmoncry(SPECIES_LUNATONE, CRY_MODE_ENCOUNTER)
+    applymovement(LOCALID_ROUTE101_LUNATONE, Route101_Movement_DraconidLunatoneLashOut)
+    waitmovement(0)
+    playse(SE_M_PSYBEAM)
+    setvar(VAR_0x8004, 1)  // vertical pan
+    setvar(VAR_0x8005, 1)  // horizontal pan
+    setvar(VAR_0x8006, 6)  // num shakes
+    setvar(VAR_0x8007, 3)  // shake delay
+    special(ShakeCamera)
+    waitstate
+    fadescreenswapbuffers(FADE_TO_WHITE)
+    fadescreenswapbuffers(FADE_FROM_WHITE)
+    waitse
+    waitmoncry
 }
 
-// The Poochyena starts at (10, 3), follows Birch's path one step behind and stops at (9, 4).
-movement Route101_Movement_DraconidZigzagoonLaps {
-    walk_fast_left
-    walk_fast_up
-    walk_fast_left * 3
-    walk_fast_down * 2
-    walk_fast_right * 3
-    walk_fast_up * 2
-    walk_fast_left * 3
-    walk_fast_down * 2
-    walk_fast_right * 3
+movement Route101_Movement_DraconidLunatoneLashOut {
+    face_left
+    jump_in_place_left
 }
 
-// from (0, 4) or (0, 5) to (8, 4), next to the Poochyena
+// from (9, 3) over the trees toward the mountains, out of sight
+movement Route101_Movement_DraconidLunatoneDriftsAway {
+    face_left
+    walk_slow_diag_northwest * 5
+}
+
+// from (0, 4) or (0, 5) to (6, 4), facing Birch
 movement Route101_Movement_DraconidPlayerApproachTop {
-    walk_right * 8
-    walk_in_place_faster_right
+    walk_right * 6
 }
 
 movement Route101_Movement_DraconidPlayerApproachBottom {
     walk_right * 5
     walk_up
-    walk_right * 3
-    walk_in_place_faster_right
-}
-
-movement Route101_Movement_DraconidZigzagoonFlee {
-    walk_in_place_faster_right
-    walk_fast_right * 3
-}
-
-// Birch steps down into the Poochyena's place, next to the player at (8, 4)
-movement Route101_Movement_DraconidBirchApproach {
-    walk_down
-    walk_in_place_faster_left
+    walk_right
 }
 
 // ---------------------------------------------------------------------------
@@ -155,7 +161,7 @@ movement Route101_Movement_DraconidBirchApproach {
 // The player arrives at (6, 5) facing Birch (6, 4); Brendan stands at (5, 4), May at (7, 4).
 script LittlerootTown_ProfessorBirchsLab_EventScript_DraconidWelcome {
     lockall
-    msgbox(format("PROF. BIRCH: Welcome to my LAB, {PLAYER}! You've met me at my worst, I'm afraid.\p"
+    msgbox(format("PROF. BIRCH: Welcome to my LAB, {PLAYER}! That star can wait on my desk for now.\p"
                   "Let me introduce these two. This is my son, BRENDAN…"))
     applymovement(LOCALID_BIRCHS_LAB_BRENDAN, Common_Movement_WalkInPlaceFasterDown)
     waitmovement(0)

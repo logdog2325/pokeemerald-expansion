@@ -272,7 +272,7 @@ RustboroCity_EventScript_DraconidBrendan_Text_0:
 	.string "BRENDAN: Huh? {PLAYER}?\p"
 	.string "Wait a second.\n"
 	.string "Is that a TEAM MAGMA uniform?\p"
-	.string "You saved my dad on ROUTE 101! He\n"
+	.string "You helped my dad on ROUTE 101! He\n"
 	.string "hasn't stopped talking about you since.\p"
 	.string "And now you've joined MAGMA?! Those\n"
 	.string "guys want to wreck HOENN!$"

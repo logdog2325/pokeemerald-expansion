@@ -4,55 +4,67 @@ Route101_EventScript_DraconidOnTransition::
 	return
 
 Route101_EventScript_DraconidOnTransition_1:
-	setobjectxyperm LOCALID_ROUTE101_BIRCH, 9, 3
-	setobjectxyperm LOCALID_ROUTE101_ZIGZAGOON, 10, 3
-	setobjectmovementtype LOCALID_ROUTE101_BIRCH, MOVEMENT_TYPE_FACE_LEFT
-	setobjectmovementtype LOCALID_ROUTE101_ZIGZAGOON, MOVEMENT_TYPE_FACE_LEFT
+	setobjectxyperm LOCALID_ROUTE101_BIRCH, 7, 4
+	setobjectmovementtype LOCALID_ROUTE101_BIRCH, MOVEMENT_TYPE_FACE_RIGHT
 	return
 
 
-Route101_EventScript_DraconidRescueTop::
+Route101_EventScript_DraconidFallenStarTop::
 	setvar VAR_0x8008, 0
-	goto Route101_EventScript_DraconidRescue
+	goto Route101_EventScript_DraconidFallenStar
 	return
 
 
-Route101_EventScript_DraconidRescueBottom::
+Route101_EventScript_DraconidFallenStarBottom::
 	setvar VAR_0x8008, 1
-	goto Route101_EventScript_DraconidRescue
+	goto Route101_EventScript_DraconidFallenStar
 	return
 
 
-Route101_EventScript_DraconidRescue::
+Route101_EventScript_DraconidFallenStar::
 	lockall
-	playbgm MUS_HELP, TRUE
-	msgbox Route101_Text_HelpMe
+	call Route101_EventScript_DraconidLunatoneLashesOut
+	msgbox Route101_EventScript_DraconidFallenStar_Text_0
 	closemessage
-	applymovement LOCALID_ROUTE101_BIRCH, Route101_Movement_DraconidBirchLaps
-	applymovement LOCALID_ROUTE101_ZIGZAGOON, Route101_Movement_DraconidZigzagoonLaps
-	waitmovement 0
-	applymovement LOCALID_ROUTE101_BIRCH, Common_Movement_WalkInPlaceFasterDown
-	applymovement LOCALID_ROUTE101_ZIGZAGOON, Common_Movement_WalkInPlaceFasterUp
-	waitmovement 0
 	compare VAR_0x8008, 0
-	goto_if_eq Route101_EventScript_DraconidRescue_2
+	goto_if_eq Route101_EventScript_DraconidFallenStar_2
 	applymovement LOCALID_PLAYER, Route101_Movement_DraconidPlayerApproachBottom
-Route101_EventScript_DraconidRescue_1:
+Route101_EventScript_DraconidFallenStar_1:
 	waitmovement 0
 	applymovement LOCALID_ROUTE101_BIRCH, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
-	msgbox Route101_EventScript_DraconidRescue_Text_0
-	closemessage
-	special StartBirchRescueBattle
-	applymovement LOCALID_ROUTE101_ZIGZAGOON, Route101_Movement_DraconidZigzagoonFlee
+	applymovement LOCALID_ROUTE101_BIRCH, Common_Movement_ExclamationMark
 	waitmovement 0
-	removeobject LOCALID_ROUTE101_ZIGZAGOON
-	applymovement LOCALID_ROUTE101_BIRCH, Route101_Movement_DraconidBirchApproach
-	waitmovement 0
-	special HealPlayerParty
 	bufferleadmonspeciesname STR_VAR_1
-	msgbox Route101_EventScript_DraconidRescue_Text_1
-	msgbox Route101_EventScript_DraconidRescue_Text_2
+	msgbox Route101_EventScript_DraconidFallenStar_Text_1
+	msgbox Route101_EventScript_DraconidFallenStar_Text_2
+	msgbox Route101_EventScript_DraconidFallenStar_Text_3
+	closemessage
+	call Route101_EventScript_DraconidLunatoneLashesOut
+	setflag FLAG_DRACONID_NO_CATCHING
+	special StartBirchRescueBattle
+	clearflag FLAG_DRACONID_NO_CATCHING
+	special HealPlayerParty
+	playse SE_M_MOONLIGHT
+	fadescreenswapbuffers FADE_TO_WHITE
+	fadescreenswapbuffers FADE_FROM_WHITE
+	waitse
+	msgbox Route101_EventScript_DraconidFallenStar_Text_4
+	closemessage
+	applymovement LOCALID_ROUTE101_LUNATONE, Route101_Movement_DraconidLunatoneDriftsAway
+	waitmovement 0
+	removeobject LOCALID_ROUTE101_LUNATONE
+	msgbox Route101_EventScript_DraconidFallenStar_Text_5
+	closemessage
+	applymovement LOCALID_ROUTE101_BIRCH, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
+	playse SE_M_ROCK_THROW
+	removeobject LOCALID_ROUTE101_METEORITE
+	waitse
+	msgbox Route101_EventScript_DraconidFallenStar_Text_6
+	applymovement LOCALID_ROUTE101_BIRCH, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement 0
+	msgbox Route101_EventScript_DraconidFallenStar_Text_7
 	closemessage
 	setflag FLAG_SYS_POKEMON_GET
 	setflag FLAG_RESCUED_BIRCH
@@ -71,55 +83,41 @@ Route101_EventScript_DraconidRescue_1:
 	releaseall
 	return
 
-Route101_EventScript_DraconidRescue_2:
+Route101_EventScript_DraconidFallenStar_2:
 	applymovement LOCALID_PLAYER, Route101_Movement_DraconidPlayerApproachTop
-	goto Route101_EventScript_DraconidRescue_1
+	goto Route101_EventScript_DraconidFallenStar_1
 
 
-Route101_Movement_DraconidBirchLaps:
-	walk_fast_up
-	walk_fast_left
-	walk_fast_left
-	walk_fast_left
-	walk_fast_down
-	walk_fast_down
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_up
-	walk_fast_up
-	walk_fast_left
-	walk_fast_left
-	walk_fast_left
-	walk_fast_down
-	walk_fast_down
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_up
+Route101_EventScript_DraconidLunatoneLashesOut::
+	playmoncry SPECIES_LUNATONE, CRY_MODE_ENCOUNTER
+	applymovement LOCALID_ROUTE101_LUNATONE, Route101_Movement_DraconidLunatoneLashOut
+	waitmovement 0
+	playse SE_M_PSYBEAM
+	setvar VAR_0x8004, 1
+	setvar VAR_0x8005, 1
+	setvar VAR_0x8006, 6
+	setvar VAR_0x8007, 3
+	special ShakeCamera
+	waitstate
+	fadescreenswapbuffers FADE_TO_WHITE
+	fadescreenswapbuffers FADE_FROM_WHITE
+	waitse
+	waitmoncry
+	return
+
+
+Route101_Movement_DraconidLunatoneLashOut:
+	face_left
+	jump_in_place_left
 	step_end
 
-Route101_Movement_DraconidZigzagoonLaps:
-	walk_fast_left
-	walk_fast_up
-	walk_fast_left
-	walk_fast_left
-	walk_fast_left
-	walk_fast_down
-	walk_fast_down
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_up
-	walk_fast_up
-	walk_fast_left
-	walk_fast_left
-	walk_fast_left
-	walk_fast_down
-	walk_fast_down
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
+Route101_Movement_DraconidLunatoneDriftsAway:
+	face_left
+	walk_slow_diag_northwest
+	walk_slow_diag_northwest
+	walk_slow_diag_northwest
+	walk_slow_diag_northwest
+	walk_slow_diag_northwest
 	step_end
 
 Route101_Movement_DraconidPlayerApproachTop:
@@ -129,9 +127,6 @@ Route101_Movement_DraconidPlayerApproachTop:
 	walk_right
 	walk_right
 	walk_right
-	walk_right
-	walk_right
-	walk_in_place_faster_right
 	step_end
 
 Route101_Movement_DraconidPlayerApproachBottom:
@@ -142,21 +137,6 @@ Route101_Movement_DraconidPlayerApproachBottom:
 	walk_right
 	walk_up
 	walk_right
-	walk_right
-	walk_right
-	walk_in_place_faster_right
-	step_end
-
-Route101_Movement_DraconidZigzagoonFlee:
-	walk_in_place_faster_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	step_end
-
-Route101_Movement_DraconidBirchApproach:
-	walk_down
-	walk_in_place_faster_left
 	step_end
 
 LittlerootTown_ProfessorBirchsLab_EventScript_DraconidWelcome::
@@ -277,24 +257,43 @@ Route103_EventScript_DraconidMay_2:
 	goto Route103_EventScript_DraconidMay_1
 
 
-Route101_EventScript_DraconidRescue_Text_0:
-	.string "Hello! You over there!\p"
-	.string "Is that a POKéMON with you? Please,\n"
-	.string "help me!\p"
-	.string "Chase this POOCHYENA off!$"
+Route101_EventScript_DraconidFallenStar_Text_0:
+	.string "PROF. BIRCH: Whoa! Easy… easy, now.$"
 
-Route101_EventScript_DraconidRescue_Text_1:
-	.string "PROF. BIRCH: Whew… I was in the tall\n"
-	.string "grass studying wild POKéMON when it\l"
-	.string "jumped me.\p"
-	.string "You saved me. Thanks a lot!\p"
-	.string "Hm? That's a {STR_VAR_1}! A\n"
-	.string "Dragon-type, and so young…\p"
-	.string "Then you must be {PLAYER}, from\n"
-	.string "DRACONID VILLAGE! The ELDER wrote\l"
-	.string "that you'd be coming.$"
+Route101_EventScript_DraconidFallenStar_Text_1:
+	.string "PROF. BIRCH: Hm? Is that a\n"
+	.string "{STR_VAR_1}?\p"
+	.string "A dragon! Then you're {PLAYER}! The\n"
+	.string "ELDER wrote that you'd come.$"
 
-Route101_EventScript_DraconidRescue_Text_2:
+Route101_EventScript_DraconidFallenStar_Text_2:
+	.string "PROF. BIRCH: Last night's falling star\n"
+	.string "came down right here.\p"
+	.string "This LUNATONE fell with it. It's dazed,\n"
+	.string "and it lashes out at anything that\l"
+	.string "moves.$"
+
+Route101_EventScript_DraconidFallenStar_Text_3:
+	.string "PROF. BIRCH: If it keeps this up, it'll\n"
+	.string "hurt itself.\p"
+	.string "Can your partner tire it out for me?\n"
+	.string "Gently, now!$"
+
+Route101_EventScript_DraconidFallenStar_Text_4:
+	.string "The LUNATONE's light grew soft and\n"
+	.string "steady.$"
+
+Route101_EventScript_DraconidFallenStar_Text_5:
+	.string "PROF. BIRCH: Thank you, {PLAYER}. Your\n"
+	.string "partner was very gentle with it.\p"
+	.string "There it goes, toward the mountains.\n"
+	.string "METEOR FALLS, maybe.$"
+
+Route101_EventScript_DraconidFallenStar_Text_6:
+	.string "PROF. BIRCH: …Still warm.\p"
+	.string "So this is the star your ELDER saw fall.$"
+
+Route101_EventScript_DraconidFallenStar_Text_7:
 	.string "PROF. BIRCH: …He wrote me why, too.\p"
 	.string "TEAM MAGMA. And you, walking in among\n"
 	.string "them. Alone.\p"
@@ -311,8 +310,8 @@ Route101_EventScript_DraconidRescue_Text_2:
 
 LittlerootTown_ProfessorBirchsLab_EventScript_DraconidWelcome_Text_0:
 	.string "PROF. BIRCH: Welcome to my LAB,\n"
-	.string "{PLAYER}! You've met me at my worst, I'm\l"
-	.string "afraid.\p"
+	.string "{PLAYER}! That star can wait on my desk\l"
+	.string "for now.\p"
 	.string "Let me introduce these two. This is my\n"
 	.string "son, BRENDAN…$"
 

@@ -12,6 +12,7 @@
 #include "battle_setup.h"
 #include "battle_tv.h"
 #include "cable_club.h"
+#include "draconid.h"
 #include "event_data.h"
 #include "event_object_movement.h"
 #include "item.h"
@@ -161,7 +162,11 @@ void SetUpBattleVarsAndBirchZigzagoon(void)
     BattleAI_SetupFlags();
 
     if (!IS_FRLG && gBattleTypeFlags & BATTLE_TYPE_FIRST_BATTLE)
-        CreateWildMon(DRACONID_RESCUE_SPECIES, DRACONID_RESCUE_LEVEL); // Draconid Emerald: was Zigzagoon Lv 2
+    {
+        // Draconid Emerald: was Zigzagoon Lv 2; the Route 101 LUNATONE's moves and HP (round 2, D-400)
+        CreateWildMon(DRACONID_RESCUE_SPECIES, DRACONID_RESCUE_LEVEL);
+        Draconid_SetUpRescueMon(&gParties[B_TRAINER_OPPONENT_A][0]);
+    }
 }
 
 void InitBattleControllers(void)

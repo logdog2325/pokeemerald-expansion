@@ -1760,6 +1760,11 @@ static const struct SpriteFrameImage sPicTable_Lance[] = {
     overworld_frame(gObjectEventPic_Lance, 2, 4, 2),
 };
 
+// Draconid Emerald: the FRLG meteorite (Birth Island's stone) in every build (Route 101's fallen star, D-400)
+static const struct SpriteFrameImage sPicTable_BirthIslandStoneFrlg[] = {
+    overworld_frame(gObjectEventPic_BirthIslandStoneFrlg, 4, 4, 0),
+};
+
 #if IS_FRLG
 
 static const struct SpriteFrameImage sPicTable_RedNormal[] = {
@@ -2368,10 +2373,6 @@ static const struct SpriteFrameImage sPicTable_WoodenSign[] = {
 
 static const struct SpriteFrameImage sPicTable_Clipboard[] = {
     overworld_frame(gObjectEventPic_Clipboard, 2, 2, 0),
-};
-
-static const struct SpriteFrameImage sPicTable_BirthIslandStoneFrlg[] = {
-    overworld_frame(gObjectEventPic_BirthIslandStoneFrlg, 4, 4, 0),
 };
 
 static const struct SpriteFrameImage sPicTable_LaprasDoll[] = {

@@ -8,6 +8,8 @@ u16 Draconid_ResolveVariantTrainer(u16 trainerId);
 u16 Draconid_ResolveVariantPartner(u16 partnerId);
 bool32 Draconid_ShouldDoMaxieCall(void);
 u16 Draconid_GetDueMaxieCall(void);
+struct Pokemon;
+void Draconid_SetUpRescueMon(struct Pokemon *mon);
 
 // Acts 6-7: the Sky Pillar finale (callnative from data/scripts/draconid/act7.pory)
 struct ScriptContext;

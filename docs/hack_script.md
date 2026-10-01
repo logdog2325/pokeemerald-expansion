@@ -298,20 +298,30 @@ Draconid Pass: from the village over the river to Littleroot Town. Aster waits a
 
 ## data/scripts/draconid/birch_intro.pory
 
-Draconid Emerald: meeting Prof. Birch, Brendan and May (Phase 4, story event 2).  Draconid Pass -> Route 101 west edge: Birch is attacked; the hatchling fights the Poochyena (special StartBirchRescueBattle, the vanilla first battle without a starter) -> warp to the lab: Birch gives Brendan Treecko and May Torchic, the player gets the Pokédex and Poké Balls -> May waits on Route 103.  Vanilla hooks: Route101_OnTransition calls Route101_EventScript_DraconidOnTransition, the lab's OnFrame runs LittlerootTown_ProfessorBirchsLab_EventScript_DraconidWelcome at VAR_BIRCH_LAB_STATE 2, and Route103_EventScript_Rival goes to Route103_EventScript_DraconidMay.
+Draconid Emerald: meeting Prof. Birch, Brendan and May (Phase 4, story event 2).  Draconid Pass -> Route 101 west edge, where last night's falling star came down: Birch kneels by the METEORITE, a dazed LUNATONE that fell with it lashes out, and the hatchling tires it out (special StartBirchRescueBattle, the vanilla first battle without a starter) -> it drifts off toward METEOR FALLS and Birch picks up the star -> warp to the lab: Birch gives Brendan Treecko and May Torchic, the player gets the Pokédex and Poké Balls -> May waits on Route 103. Round 2 (feedback 2.11, D-400): this replaced the round 1 Poochyena rescue, which was too close to Emerald's.  Vanilla hooks: Route101_OnTransition calls Route101_EventScript_DraconidOnTransition, the lab's OnFrame runs LittlerootTown_ProfessorBirchsLab_EventScript_DraconidWelcome at VAR_BIRCH_LAB_STATE 2, and Route103_EventScript_Rival goes to Route103_EventScript_DraconidMay.
 
-### `Route101_EventScript_DraconidRescue`
-- Hello! You over there!
-- Is that a POKéMON with you? Please, help me!
-- Chase this POOCHYENA off!
-- PROF. BIRCH: Whew… I was in the tall grass studying wild POKéMON when it jumped me.
-- You saved me. Thanks a lot!
-- Hm? That's a {STR_VAR_1}! A Dragon-type, and so young…
-- Then you must be {PLAYER}, from DRACONID VILLAGE! The ELDER wrote that you'd be coming.
-- This is no place to chat. Come to my POKéMON LAB in LITTLEROOT TOWN, just south of here!
+### `Route101_EventScript_DraconidFallenStar`
+- PROF. BIRCH: Whoa! Easy… easy, now.
+- PROF. BIRCH: Hm? Is that a {STR_VAR_1}?
+- A dragon! Then you're {PLAYER}! The ELDER wrote that you'd come.
+- PROF. BIRCH: Last night's falling star came down right here.
+- This LUNATONE fell with it. It's dazed, and it lashes out at anything that moves.
+- PROF. BIRCH: If it keeps this up, it'll hurt itself.
+- Can your partner tire it out for me? Gently, now!
+- The LUNATONE's light grew soft and steady.
+- PROF. BIRCH: Thank you, {PLAYER}. Your partner was very gentle with it.
+- There it goes, toward the mountains. METEOR FALLS, maybe.
+- PROF. BIRCH: …Still warm.
+- So this is the star your ELDER saw fall.
+- PROF. BIRCH: …He wrote me why, too.
+- TEAM MAGMA. And you, walking in among them. Alone.
+- That's a heavy burden to put on someone so young. Heavier than any POKéDEX.
+- Whatever you have to wear out there, whatever people say about you…
+- I'll know who you really are. Remember that.
+- …Well! This is no place to chat. Come to my POKéMON LAB in LITTLEROOT TOWN, just south of here!
 
 ### `LittlerootTown_ProfessorBirchsLab_EventScript_DraconidWelcome`
-- PROF. BIRCH: Welcome to my LAB, {PLAYER}! You've met me at my worst, I'm afraid.
+- PROF. BIRCH: Welcome to my LAB, {PLAYER}! That star can wait on my desk for now.
 - Let me introduce these two. This is my son, BRENDAN…
 - BRENDAN: Hey. A baby dragon, huh?
 - Everybody talks about the Draconid clan like they're legends. We'll see.
@@ -377,22 +387,23 @@ Draconid Emerald round 1, Act 1 (docs/hack_story.md): Littleroot families, Petal
 - Come by for dinner sometime. NORMAN would like to thank you properly.
 
 ### `PetalburgWoods_EventScript_DraconidRecruitment`
-- ???: …Observed. The whole battle.
-- Result: an AQUA member, crushed. By a child. With a dragon.
-- COURTNEY: I am COURTNEY. TEAM MAGMA.
-- Anyone who crushes AQUA that easily… belongs with us.
-- More land. For people. For POKéMON. That is our goal.
-- You. Join us.
-- {PLAYER} remembered the ELDER's words.
-- “Walk among the red ones. Learn what MAXIE seeks.”
-- {PLAYER} nodded.
-- COURTNEY: …Answer: correct.
-- Follow. There is an outpost at the edge of the woods.
+- ???: Ahaha… I watched the whole battle, you know.
+- That AQUA nuisance, crushed. By a child. With a dragon.
+- COURTNEY: I'm COURTNEY. TEAM MAGMA. Ahaha…
+- Anyone who crushes AQUA that easily belongs with us.
+- More land. For people. For POKéMON. Leader MAXIE's dream.
+- So… will you join us?
+- COURTNEY: …Ahaha. Good answer.
+- Follow me. There's an outpost at the edge of the woods.
+- COURTNEY: …Ahahahaha!
+- You're joking. Right?
+- Nobody beats AQUA like that and walks away from TEAM MAGMA.
+- …Follow me. There's an outpost at the edge of the woods.
 
 ### `RustboroCity_EventScript_DraconidBrendan`
 - BRENDAN: Huh? {PLAYER}?
 - Wait a second. Is that a TEAM MAGMA uniform?
-- You saved my dad on ROUTE 101! He hasn't stopped talking about you since.
+- You helped my dad on ROUTE 101! He hasn't stopped talking about you since.
 - And now you've joined MAGMA?! Those guys want to wreck HOENN!
 - BRENDAN: Well? Say something!
 - …Fine. Then I'll stop you myself!
@@ -412,21 +423,27 @@ Draconid Emerald round 1, Act 1 (docs/hack_story.md): Littleroot families, Petal
 Draconid Emerald: the Team Magma outpost cabin at the edge of Petalburg Woods (Act 1, D-113). Only reached by COURTNEY's cutscene (PetalburgWoods_EventScript_DraconidRecruitment); the door leads out to the woods' north entrance on Route 104.
 
 ### `PetalburgWoods_MagmaOutpost_EventScript_Uniform`
-- GRUNT: COURTNEY! Who's the kid?
-- COURTNEY: New member. Beat an AQUA woman in the woods. Alone.
-- GRUNT: Alone? At that age? …Well, we could use the muscle.
-- COURTNEY: Uniform. Put it on.
+- ASHER: Whoa! COURTNEY! Who's the kid?
+- COURTNEY: Ahaha… Breathe, ASHER.
+- That troublesome AQUA grunt. The one sneaking around the woods, picking DEVON's pockets?
+- This one flattened her. With a dragon. A real one.
+- I watched the whole thing. …I enjoyed it. Ahahahaha!
+- ASHER: A dragon? At that age?
+- …Ha! Fine by me. We could use the muscle.
+- COURTNEY: So I picked it up. Mine now. …Ours, I mean.
+- Uniform. Put it on. …Go on. I want to see.
 - {PLAYER} put on the TEAM MAGMA uniform.
-- COURTNEY: …Red. It suits you.
-- TABITHA leads the grunts in the field. He will find you.
-- Until then: RUSTBORO. Get strong.
-- Leader MAXIE… likes strong.
+- COURTNEY: …Red. Ahaha. It suits you.
+- TABITHA leads the grunts in the field. He'll come looking for you.
+- Until then… RUSTBORO. Get strong.
+- Leader MAXIE likes strong. And I like whatever Leader MAXIE likes.
 
 ### `PetalburgWoods_MagmaOutpost_EventScript_Courtney`
-- COURTNEY: RUSTBORO. Get strong. TABITHA will find you.
+- COURTNEY: Still here? Ahaha…
+- RUSTBORO. Get strong. TABITHA will find you.
 
 ### `PetalburgWoods_MagmaOutpost_EventScript_GruntM`
-- GRUNT: Welcome to the team, kid.
+- ASHER: Welcome to the team, kid.
 - Folks in town will stare at the uniform. Let 'em.
 
 ### `PetalburgWoods_MagmaOutpost_EventScript_GruntF`
@@ -2613,6 +2630,7 @@ Draconid Emerald round 1 follow-ups (feedback 1.32, 1.34, part of 1.25; D-234 �
 
 ### Route110_TrickHousePuzzle5
 - `Route110_TrickHousePuzzle5_Text_Mechadoll2Quiz1`: MECHADOLL 2 QUIZ. / Which of these POKéMON did WALLY borrow from NORMAN?
+- `Route110_TrickHousePuzzle5_Text_Mechadoll2Quiz2`: MECHADOLL 2 QUIZ. / Which of these POKéMON fell with the star on ROUTE 101?
 
 ### Route112
 - `Route112_Text_CantLetAnyonePassUntilTheyreBack`: You got it. And until they come back, we're not to let anyone pass, right. / …Hey, you! The rookie! / What are you standing around for? The LEADER's squad went to METEOR FALLS, past FALLARBOR. / Get over there and catch up!

@@ -137,7 +137,7 @@ multi battle and the LEGENDS' TAG are multi battles: since D-265a a loss there g
 - **Every lost battle that goes on cleans up.** The 13 battles a loss doesn't end (`FLAG_DRACONID_NO_WHITEOUT`:
   Aster on Draconid Pass, the Space Center tag battle, the Trial of Three, Zinnia, Rayquaza and Deoxys at the summit;
   the early-rival rule: May on Route 103, Aster at Meteor Falls, Brendan on Mt. Chimney and Jagged Pass, May in
-  Lavaridge and Mossdeep; the first battle, Birch's rescue on Route 101) clear the flag again on every path.
+  Lavaridge and Mossdeep; the first battle, Birch's Lunatone on Route 101) clear the flag again on every path.
   `hardlock.play` loses to Zinnia: healed, flag clear, state still the climb, Zinnia asks again, and re-entering the
   floor restarts the scene.
 - **Every early way out can be tried again** (the reentry notes): a declined YES/NO or a lost battle in the Trial
@@ -307,7 +307,7 @@ player to where the next scene starts.
 | 1.04 | Egg ceremony in the shrine; out under the open sky<br>`DraconidVillage_Shrine_EventScript_EggCeremony` | 0 / – | DraconidVillage_Shrine (10, 9) → DraconidVillage (entering) | ok, 11 steps via DraconidVillage_Shrine, DraconidVillage |
 | 1.05 | The egg hatches after 5 steps outdoors, the Running Shoes; down to Draconid Pass<br>`DraconidVillage_EventScript_EggHatch`<br>`DraconidVillage_EventScript_RunningShoes` | 0 / – | DraconidVillage (19, 5) → DraconidPass (10, 18) (11, 18) (12, 18) … | ok, 43 steps via DraconidVillage, DraconidPass |
 | 1.06 | Aster's tutorial battle, on to Route 101<br>`DraconidPass_EventScript_AsterBattle` | 0 / – | DraconidPass (11, 18) → Route101 (0, 4) | ok, 25 steps via DraconidPass, Route101 |
-| 1.07 | Birch's rescue, the lab<br>`Route101_EventScript_DraconidRescueTop` | 0 / – | LittlerootTown_ProfessorBirchsLab (6, 5) → LittlerootTown_ProfessorBirchsLab (entering) | ok, 0 steps via LittlerootTown_ProfessorBirchsLab |
+| 1.07 | Birch and the fallen star (the Lunatone battle), the lab<br>`Route101_EventScript_DraconidFallenStarTop` | 0 / – | LittlerootTown_ProfessorBirchsLab (6, 5) → LittlerootTown_ProfessorBirchsLab (entering) | ok, 0 steps via LittlerootTown_ProfessorBirchsLab |
 | 1.08 | Lab welcome (Pokédex), to May on Route 103<br>`LittlerootTown_ProfessorBirchsLab_EventScript_DraconidWelcome` | 0 / – | LittlerootTown_ProfessorBirchsLab (6, 5) → Route103 next to (10, 3) | ok, 121 steps via LittlerootTown_ProfessorBirchsLab, LittlerootTown, Route101, OldaleTown, Route103 |
 | 1.09 | May on Route 103, to Norman in Petalburg<br>`Route103_EventScript_Rival` | 0 / – | Route103 (9, 3) → PetalburgCity_Gym (entering) | ok, 125 steps via Route103, OldaleTown, Route102, PetalburgCity, PetalburgCity_Gym |
 | 1.10 | Norman sends the player with Wally<br>`PetalburgCity_Gym_EventScript_Norman` | 0 / – | PetalburgCity (15, 8) → PetalburgCity (entering) | ok, 0 steps via PetalburgCity |
@@ -499,8 +499,8 @@ scenes outside the story table get the static check only.
 | `data/scripts/draconid/act7x.inc:795 DraconidVillage_EventScript_DraconidHouse1_1` | GRUNT_VILLAGE_5, GRUNT_VILLAGE_6 | goes on (a multi battle); leg 7.12: Draconid_EventScript_VillageLost sends the player to DraconidVillage_PlayersHouse_1F (8, 6); talking to LOCALID_DRACONID_VILLAGE_BRENDAN starts it again; the way back is open |
 | `data/scripts/draconid/act7x.inc:84 SkyPillar_Outside_EventScript_DraconidBattleWallace` | WALLACE_SKY_PILLAR | goes on (FLAG_DRACONID_NO_WHITEOUT); leg 7.05: talking to LOCALID_SKY_PILLAR_WALLACE fights again and re-entering SkyPillar_Outside starts the scene again |
 | `data/scripts/draconid/act7x.inc:930 DraconidVillage_EventScript_DraconidAdminsBattle` | TABITHA_VILLAGE, SHELLY_VILLAGE | goes on (a multi battle); leg 7.13: Draconid_EventScript_VillageLost sends the player to DraconidVillage_PlayersHouse_1F (8, 6); talking to LOCALID_DRACONID_VILLAGE_ASTER starts it again; the way back is open |
-| `data/scripts/draconid/birch_intro.inc:266 Route103_EventScript_DraconidMay` | MAY_ROUTE_103 | goes on (early-rival / first battle rule) |
-| `data/scripts/draconid/birch_intro.inc:46 Route101_EventScript_DraconidRescue_1` | StartBirchRescueBattle | goes on (early-rival / first battle rule) |
+| `data/scripts/draconid/birch_intro.inc:247 Route103_EventScript_DraconidMay` | MAY_ROUTE_103 | goes on (early-rival / first battle rule) |
+| `data/scripts/draconid/birch_intro.inc:45 Route101_EventScript_DraconidFallenStar_1` | StartBirchRescueBattle | goes on (early-rival / first battle rule) |
 | `data/scripts/draconid/frontier_legends.inc:104 BattleFrontier_OutsideEast_EventScript_DraconidBlue` | BLUE_FRONTIER | whites out; leg P.10: the scene starts again; the way back is open from DraconidVillage, LittlerootTown, SlateportCity, BattleFrontier_OutsideEast |
 | `data/scripts/draconid/frontier_legends.inc:26 BattleFrontier_OutsideEast_EventScript_DraconidWes` | WES_FRONTIER | whites out; leg P.12: the scene starts again; the way back is open from DraconidVillage, LittlerootTown, SlateportCity, BattleFrontier_OutsideEast |
 | `data/scripts/draconid/frontier_legends.inc:285 BattleFrontier_OutsideEast_EventScript_DraconidTagBattle_12` | WES_FRONTIER_MULTI, RED_FRONTIER_MULTI | goes on (a multi battle) |

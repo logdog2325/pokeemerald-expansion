@@ -1040,9 +1040,10 @@ static void CB2_StartFirstBattle(void)
     }
 }
 
-// Draconid Emerald: the Route 101 rescue. The same battle as the vanilla starter battle
-// (BATTLE_TYPE_FIRST_BATTLE: DRACONID_RESCUE_SPECIES, no running), but fought by the hatchling
-// the player already has, so no starter is chosen or given.
+// Draconid Emerald: the Route 101 battle against the LUNATONE that fell with the star (round 2, D-400;
+// round 1: the Poochyena rescue). The same battle as the vanilla starter battle (BATTLE_TYPE_FIRST_BATTLE:
+// DRACONID_RESCUE_SPECIES, no running, no whiteout), but fought by the hatchling the player already has,
+// so no starter is chosen or given.
 void StartBirchRescueBattle(void)
 {
     LockPlayerFieldControls();
