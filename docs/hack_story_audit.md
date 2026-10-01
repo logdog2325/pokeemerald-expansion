@@ -549,7 +549,7 @@ logic brief covers (rival registrations, Briney, the Devon Goods, the Go-Goggles
   My dragon is fast. Go, and come back quickly." Alternatively, open the wall during the meteor alert itself (the
   shrine is next door), so the order is simply alert → shrine → lift to the Sky Pillar.
 - **Size**: small. **Owner**: act7x.
-- **Status**: open – the Act 7 extension (being built).
+- **Status**: fixed (the Act 7 extension, D-200 – D-209).
 
 ### 30. Post-game village lines still assume the old, quiet ending
 - **Where**: `data/maps/DraconidVillage_PlayersHouse_1F/scripts.pory:20-21` (the S.S. Ticket scene),
@@ -569,7 +569,7 @@ logic brief covers (rival registrations, Briney, the Devon Goods, the Go-Goggles
   - NERINE: "The pond's still muddy from KYOGRE. It'll clear. Most things do."
   - ELDER, in his house: "The sky's debt is paid. Go and see the world, {PLAYER}. It is still wide."
 - **Size**: small. **Owner**: act7x.
-- **Status**: open – the Act 7 extension (being built).
+- **Status**: fixed (the Act 7 extension, D-200 – D-209).
 
 ### 31. The post-game lab rivals: a third apology, and a "traitor" that was never said
 - **Where**: `data/scripts/draconid/act7.pory:715-790` (`…_DraconidPostgameMay/Brendan/Double`), `act5.pory:689-691`,
@@ -584,7 +584,7 @@ logic brief covers (rival registrations, Briney, the Devon Goods, the Go-Goggles
 - **Fix**: "BRENDAN: {PLAYER}. After the village… Man, I still owe you a real battle. / No holding back. And don't make
   it weird." "MAY: I KNEW it on ROUTE 110, and I'm never going to stop saying so! One more battle?"
 - **Size**: small. **Owner**: act7x (`act7.pory`).
-- **Status**: open – the Act 7 extension (being built).
+- **Status**: fixed (the Act 7 extension, D-200 – D-209).
 
 ### 32. The villagers never notice anything
 - **Where**: `data/maps/DraconidVillage/scripts.pory:122-133` (the gatekeeper) and 139-165 (the villagers), plus
@@ -601,7 +601,7 @@ logic brief covers (rival registrations, Briney, the Devon Goods, the Go-Goggles
     dressed like a MAGMA grunt."
   - BOY, in uniform: "Why are you dressed like the bad lowlanders? …It's a trick, isn't it!"
 - **Size**: small. **Owner**: act7x (the `DraconidVillage` map).
-- **Status**: open – the Act 7 extension (being built).
+- **Status**: fixed (the Act 7 extension, D-200 – D-209).
 
 ### 33. Steven's post-game letter contradicts Champion Steven
 - **Where**: `data/maps/MossdeepCity_StevensHouse/scripts.inc:195-209` (`…_LetterFromSteven`, with the Beldum ball,
