@@ -1,0 +1,993 @@
+From c02bd1545bffe2a14c8a844e23a28323d2138fac Mon Sep 17 00:00:00 2001
+From: logdog2325 <loganjayfisher@gmail.com>
+Date: Sat, 7 Nov 2026 00:10:58 +0000
+Subject: [PATCH] =?UTF-8?q?v3.1.0:=20Masters=20Eight=20=E2=80=94=20the=20J?=
+ =?UTF-8?q?ourneys=20World=20Coronation=20Series=20finals?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Seven new anime trainers (Cynthia, Leon, Steven, Alain, Lance, Iris,
+Diantha; Ash = his existing Journeys team) with anime-only rosters and
+movesets, plus two cups: "Masters 8" (the real bracket) and "M8 Shuffle"
+(random pairings). Masters rules: Quarter Finals 3v3, Semi Finals and
+Final 6v6, one gimmick (Mega / Z-Move / Dynamax) per battle until the
+Final, where each may be used once.
+
+Trainer count 1310 -> 1320 with the trainer-flag region pinned at 1310,
+so SaveBlock1 layout (flags, simCustomTrainer8) is unchanged.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01SgytQvqpTXKZEL4YpnWFE1
+---
+ README.md                           |  14 ++
+ include/constants/flags.h           |   2 +-
+ include/constants/opponents.h       |  24 +-
+ include/debug.h                     |  10 +
+ src/battle_gimmick.c                |   3 +
+ src/battle_main.c                   |   9 +
+ src/battle_setup.c                  |   6 +
+ src/data/trainers.party             | 377 ++++++++++++++++++++++++++++
+ src/debug.c                         | 137 +++++++++-
+ test/battle/gimmick/masters_eight.c | 163 ++++++++++++
+ 10 files changed, 738 insertions(+), 7 deletions(-)
+ create mode 100644 test/battle/gimmick/masters_eight.c
+
+diff --git a/README.md b/README.md
+index 00795ed7..ae8a5474 100644
+--- a/README.md
++++ b/README.md
+@@ -176,6 +176,20 @@ All releases live on the [Releases page](https://github.com/logdog2325/pokemon-b
+   their canonical Dynamax and G-Max mons, Ash's Gigantamax Gengar, and
+   custom mons with the per-mon toggle switched on. This also fixes that
+   toggle being ignored in pilot mode
++- **MASTERS EIGHT (v3.1.0)** — the Pokémon Journeys World Coronation Series
++  finals, anime-accurate. Seven new trainers tagged (Masters): Cynthia,
++  Leon, Steven, Alain (his Masters Eight team: Chesnaught, Mega Charizard X,
++  Malamar; his Kalos League team is still there too), Lance, Iris and
++  Diantha, with Ash's Journeys team as the eighth. Every move was shown in
++  the anime, Masters Eight first, then other anime appearances only to
++  reach four; Pokémon that showed fewer keep fewer, and nothing comes from
++  the games. Two new cups: **Masters 8** (the real bracket: Leon–Alain,
++  Lance–Diantha, Cynthia–Iris, Steven–Ash) and **M8 Shuffle** (random
++  pairings). Both run the anime's rules: Quarter Finals are 3v3 (each AI
++  picks its three against the opponent), Semi Finals and the Final are
++  6v6, and each trainer may use ONE of Mega Evolution / Z-Move / Dynamax
++  per battle, until the Final, where each may be used once. Old saves are
++  unaffected
+ - **AI Leads (v3.0.0)** — a new **AI Leads** setting (Run Simulation, E4/Boss
+   level-cap step, tournament start). **Party Order** leads with the first slot
+   like the games; **AI Picks** works like VGC team preview: each AI looks at
+diff --git a/include/constants/flags.h b/include/constants/flags.h
+index 1f82d6f3..58b5f4e5 100644
+--- a/include/constants/flags.h
++++ b/include/constants/flags.h
+@@ -1347,7 +1347,7 @@
+ // out of date. They are symbolic aliases; no code references the hex part.
+ 
+ #define TRAINER_FLAGS_START                                         0x500
+-#define TRAINER_FLAGS_END                                           (TRAINER_FLAGS_START + MAX_TRAINERS_COUNT - 1) // 0x8FF for MAX_TRAINERS_COUNT_EMERALD = 1024
++#define TRAINER_FLAGS_END                                           (TRAINER_FLAGS_START + TRAINER_FLAG_SLOTS - 1) // v3.1.0: TRAINER_FLAG_SLOTS, not MAX_TRAINERS_COUNT (see opponents.h) // 0x8FF for MAX_TRAINERS_COUNT_EMERALD = 1024
+ 
+ // System Flags
+ 
+diff --git a/include/constants/opponents.h b/include/constants/opponents.h
+index e6f5f435..c045c40b 100644
+--- a/include/constants/opponents.h
++++ b/include/constants/opponents.h
+@@ -1512,6 +1512,17 @@
+ #define TRAINER_LOGAN_SV                     1303
+ #define TRAINER_LOGAN_ZA                     1304
+ 
++// v3.1.0 — Masters Eight (Pokemon Journeys, World Coronation Series). Anime
++// teams + anime-only movesets. Ash's Masters Eight team is
++// TRAINER_ASH_WORLD_CHAMPION; TRAINER_ALAIN stays his Kalos League team.
++#define TRAINER_CYNTHIA_M8                   1305
++#define TRAINER_LEON_M8                      1306
++#define TRAINER_STEVEN_M8                    1307
++#define TRAINER_ALAIN_M8                     1308
++#define TRAINER_LANCE_M8                     1309
++#define TRAINER_IRIS_M8                      1310
++#define TRAINER_DIANTHA_M8                   1311
++
+ // NOTE: Because each Trainer uses a flag to determine when they are defeated, there is only space for 9 additional trainers before trainer flag space overflows
+ //       More space can be made by shifting flags around in constants/flags.h or changing how trainer flags are handled
+ //       MAX_TRAINERS_COUNT can be increased but will take up additional saveblock space
+@@ -1536,13 +1547,22 @@
+ // 0x500-0x… range by 200 slots. Saveblock impact: SaveBlock1.flags[] grows
+ // by ROUND_BITS_TO_BYTES(200) = 25 bytes. The STATIC_ASSERT in global.h
+ // catches overflow at build time if we approach the SaveBlock sector cap.
+-#define TRAINERS_COUNT_EMERALD     1310
+-#define MAX_TRAINERS_COUNT_EMERALD 1310
++// v3.1.0 — bumped 1310 → 1320 for the seven Masters Eight trainers, WITHOUT
++// growing the trainer-flag region: TRAINER_FLAG_SLOTS_EMERALD stays at 1310,
++// so SYSTEM_FLAGS, NUM_FLAG_BYTES and every SaveBlock1 field after flags[]
++// (incl. simCustomTrainer8) keep their offsets and old saves load unchanged.
++// Trainers with ID >= 1310 simply have no "defeated" flag (sim battles never
++// use it); HasTrainerBeenFought/SetTrainerFlag/ClearTrainerFlag guard it.
++#define TRAINERS_COUNT_EMERALD     1320
++#define MAX_TRAINERS_COUNT_EMERALD 1320
++#define TRAINER_FLAG_SLOTS_EMERALD 1310
+ 
+ #if IS_FRLG
+ #define TRAINERS_COUNT                      TRAINERS_COUNT_FRLG
+ #define MAX_TRAINERS_COUNT                  MAX_TRAINERS_COUNT_FRLG
++#define TRAINER_FLAG_SLOTS                  MAX_TRAINERS_COUNT_FRLG
+ #else
++#define TRAINER_FLAG_SLOTS                  TRAINER_FLAG_SLOTS_EMERALD
+ #define TRAINERS_COUNT                      TRAINERS_COUNT_EMERALD
+ #define MAX_TRAINERS_COUNT                  MAX_TRAINERS_COUNT_EMERALD
+ #endif
+diff --git a/include/debug.h b/include/debug.h
+index 65f83497..b108a579 100644
+--- a/include/debug.h
++++ b/include/debug.h
+@@ -170,4 +170,14 @@ enum SimAiPickWhy {
+     SIM_PICK_1V1, SIM_PICK_DAMAGE, SIM_PICK_DEFENSIVE, SIM_PICK_LAST_RESORT, SIM_PICK_ACE, SIM_PICK_SIMPLE,
+ };
+ 
++// v3.1.0 — Masters Eight cup rules (anime World Coronation Series).
++// Sim_GetCupBringCap: how many Pokemon each side brings this battle (0 = no
++// cap). The Masters cups return 3 in the Quarter Finals (3v3) and 0 after
++// (full 6v6 Semi Finals + Final).
++u8 Sim_GetCupBringCap(void);
++// TRUE when the active cup's rules forbid this gimmick right now. Masters
++// cups: before the Final each trainer gets ONE gimmick per battle (Mega OR
++// Z-Move OR Dynamax); in the Final each one may be used once.
++bool32 Sim_IsGimmickBlockedByCupRules(u32 battler, u32 gimmick);
++
+ #endif // GUARD_DEBUG_H
+diff --git a/src/battle_gimmick.c b/src/battle_gimmick.c
+index c88b8b8c..d1d716ae 100644
+--- a/src/battle_gimmick.c
++++ b/src/battle_gimmick.c
+@@ -38,6 +38,9 @@ void AssignUsableGimmicks(void)
+ // Returns whether a battler is able to use a gimmick. Checks consumption and gimmick specific functions.
+ bool32 CanActivateGimmick(enum BattlerId battler, enum Gimmick gimmick)
+ {
++    // v3.1.0 — Masters Eight cup: one gimmick per battle before the Final.
++    if (Sim_IsGimmickBlockedByCupRules(battler, gimmick))
++        return FALSE;
+     return gGimmicksInfo[gimmick].CanActivate != NULL && gGimmicksInfo[gimmick].CanActivate(battler);
+ }
+ 
+diff --git a/src/battle_main.c b/src/battle_main.c
+index 758cacf6..4e485abd 100644
+--- a/src/battle_main.c
++++ b/src/battle_main.c
+@@ -2019,6 +2019,15 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer
+             && gSimVGCMode && monsCount > 4)
+             monsCount = 4;
+ 
++        // v3.1.0 — Masters Eight cup: the Quarter Finals are 3v3. Applies to
++        // pilot battles too (they leave B_FLAG_AI_VS_AI_BATTLE clear).
++        if (Sim_IsActive())
++        {
++            u8 bringCap = Sim_GetCupBringCap();
++            if (bringCap > 0 && monsCount > bringCap)
++                monsCount = bringCap;
++        }
++
+         u32 monIndices[monsCount];
+         DoTrainerPartyPool(trainer, monIndices, monsCount, battleTypeFlags);
+ 
+diff --git a/src/battle_setup.c b/src/battle_setup.c
+index 0ec4f42e..eb09d116 100644
+--- a/src/battle_setup.c
++++ b/src/battle_setup.c
+@@ -1286,16 +1286,22 @@ static void UNUSED SetBattledTrainerFlag(void)
+ 
+ bool8 HasTrainerBeenFought(u16 trainerId)
+ {
++    if (trainerId >= TRAINER_FLAG_SLOTS)  // v3.1.0 — no flag slot (see opponents.h)
++        return FALSE;
+     return FlagGet(TRAINER_FLAGS_START + trainerId);
+ }
+ 
+ void SetTrainerFlag(u16 trainerId)
+ {
++    if (trainerId >= TRAINER_FLAG_SLOTS)  // v3.1.0
++        return;
+     FlagSet(TRAINER_FLAGS_START + trainerId);
+ }
+ 
+ void ClearTrainerFlag(u16 trainerId)
+ {
++    if (trainerId >= TRAINER_FLAG_SLOTS)  // v3.1.0
++        return;
+     FlagClear(TRAINER_FLAGS_START + trainerId);
+ }
+ 
+diff --git a/src/data/trainers.party b/src/data/trainers.party
+index 5dd7a156..0f55b074 100644
+--- a/src/data/trainers.party
++++ b/src/data/trainers.party
+@@ -42912,6 +42912,383 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+ - Rock Blast
+ - Pin Missile
+ 
++
++/* v3.1.0 — MASTERS EIGHT (Pokemon Journeys, World Coronation Series,       */
++/* JN115-JN132). Rosters + movesets are ANIME-ONLY: every move was shown on  */
++/* screen, Masters Eight first, then other anime appearances only to reach  */
++/* 4. Fewer than 4 moves = the anime never showed more. Held items are only */
++/* the canon Mega Stones. Abilities only where the anime/wiki states one.   */
++/* Levels / IVs / EVs are uniform (Lv 80, neutral nature) so no trainer is  */
++/* tuned beyond what the anime shows. Losing QF trainers carry the 3 they   */
++/* brought (Steven, Alain, Lance, Iris); Diantha omits Hawlucha (it never   */
++/* used a move on screen). Ash = TRAINER_ASH_WORLD_CHAMPION.                */
++
++=== TRAINER_CYNTHIA_M8 ===
++Name: CYNTHIA
++Class: Beauty
++Pic: Beauty
++Gender: Female
++Music: Female
++Items: Full Restore / Full Restore / Full Restore / Full Restore
++Double Battle: No
++AI: Check Bad Move / Try To Faint / Check Viability / Smart Switching
++
++Spiritomb
++Level: 80
++IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
++EVs: 4 HP / 0 Atk / 0 Def / 252 SpA / 0 SpD / 252 Spe
++Serious Nature
++- Sucker Punch
++- Hypnosis
++- Dream Eater
++- Destiny Bond
++
++Roserade
++Ability: Natural Cure
++Level: 80
++IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
++EVs: 4 HP / 0 Atk / 0 Def / 252 SpA / 0 SpD / 252 Spe
++Serious Nature
++- Leaf Storm
++- Poison Jab
++- Bullet Seed
++- Power Whip
++
++Togekiss
++Ability: Serene Grace
++Level: 80
++IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
++EVs: 4 HP / 0 Atk / 0 Def / 252 SpA / 0 SpD / 252 Spe
++Serious Nature
++Dynamax Level: 10
++- Air Slash
++- Zen Headbutt
++- Sky Attack
++
++Gastrodon
++Level: 80
++IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
++EVs: 4 HP / 0 Atk / 0 Def / 252 SpA / 0 SpD / 252 Spe
++Serious Nature
++- Muddy Water
++- Earth Power
++- Stone Edge
++- Rain Dance
++
++Milotic (F)
++Level: 80
++IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
++EVs: 4 HP / 0 Atk / 0 Def / 252 SpA / 0 SpD / 252 Spe
++Serious Nature
++- Hydro Pump
++- Disarming Voice
++- Iron Head
++
++Garchomp (F) @ Garchompite
++Ability: Sand Veil
++Tags: Ace
++Level: 80
++IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
++EVs: 4 HP / 252 Atk / 0 Def / 0 SpA / 0 SpD / 252 Spe
++Serious Nature
++- Dragon Claw
++- Draco Meteor
++- Scale Shot
++- Stealth Rock
++
++=== TRAINER_LEON_M8 ===
++Name: LEON
++Class: Cooltrainer
++Pic: Cooltrainer M
++Gender: Male
++Music: Cool
++Items: Full Restore / Full Restore / Full Restore / Full Restore
++Double Battle: No
++AI: Check Bad Move / Try To Faint / Check Viability / Smart Switching
++
++Inteleon
++Level: 80
++IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
++EVs: 4 HP / 0 Atk / 0 Def / 252 SpA / 0 SpD / 252 Spe
++Serious Nature
++- Snipe Shot
++- Dark Pulse
++- Aqua Jet
++
++Mr. Rime
++Level: 80
++IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
++EVs: 4 HP / 0 Atk / 0 Def / 252 SpA / 0 SpD / 252 Spe
++Serious Nature
++- Freeze-Dry
++- Psychic Terrain
++- Expanding Force
++- Triple Axel
++
++Dragapult
++Level: 80
++IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
++EVs: 4 HP / 252 Atk / 0 Def / 0 SpA / 0 SpD / 252 Spe
++Serious Nature
++- Dragon Darts
++- Flamethrower
++- Thunderbolt
++- Dragon Tail
++
++Rillaboom
++Level: 80
++IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
++EVs: 4 HP / 252 Atk / 0 Def / 0 SpA / 0 SpD / 252 Spe
++Serious Nature
++Dynamax Level: 10
++Gigantamax: Yes
++- Drum Beating
++- Acrobatics
++- High Horsepower
++- Knock Off
++
++Cinderace
++Ability: Libero
++Level: 80
++IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
++EVs: 4 HP / 252 Atk / 0 Def / 0 SpA / 0 SpD / 252 Spe
++Serious Nature
++Dynamax Level: 10
++Gigantamax: Yes
++- Pyro Ball
++- High Jump Kick
++- Scorching Sands
++- Iron Head
++
++Charizard
++Tags: Ace
++Level: 80
++IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
++EVs: 4 HP / 0 Atk / 0 Def / 252 SpA / 0 SpD / 252 Spe
++Serious Nature
++Dynamax Level: 10
++Gigantamax: Yes
++- Fire Blast
++- Air Slash
++- Dragon Claw
++- Ancient Power
++
++=== TRAINER_STEVEN_M8 ===
++Name: STEVEN
++Class: Rival
++Pic: Steven
++Gender: Male
++Music: Male
++Items: Full Restore / Full Restore / Full Restore / Full Restore
++Double Battle: No
++AI: Check Bad Move / Try To Faint / Check Viability / Smart Switching
++
++Metagross @ Metagrossite
++Ability: Clear Body
++Level: 80
++IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
++EVs: 4 HP / 252 Atk / 0 Def / 0 SpA / 0 SpD / 252 Spe
++Serious Nature
++- Meteor Mash
++- Psychic
++- Agility
++- Flash Cannon
++
++Aggron
++Level: 80
++IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
++EVs: 4 HP / 252 Atk / 0 Def / 0 SpA / 0 SpD / 252 Spe
++Serious Nature
++- Heavy Slam
++- Smart Strike
++- Rock Tomb
++- Hyper Beam
++
++Cradily
++Level: 80
++IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
++EVs: 4 HP / 252 Atk / 0 Def / 0 SpA / 0 SpD / 252 Spe
++Serious Nature
++- Power Whip
++- Ingrain
++- Meteor Beam
++- Rock Blast
++
++=== TRAINER_ALAIN_M8 ===
++Name: ALAIN
++Class: Cooltrainer
++Pic: Cooltrainer M
++Gender: Male
++Music: Cool
++Items: Full Restore / Full Restore / Full Restore / Full Restore
++Double Battle: No
++AI: Check Bad Move / Try To Faint / Check Viability / Smart Switching
++
++Chesnaught
++Level: 80
++IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
++EVs: 4 HP / 252 Atk / 0 Def / 0 SpA / 0 SpD / 252 Spe
++Serious Nature
++- Hammer Arm
++- Spiky Shield
++- Gyro Ball
++- Pin Missile
++
++Charizard (M) @ Charizardite X
++Tags: Ace
++Level: 80
++IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
++EVs: 4 HP / 252 Atk / 0 Def / 0 SpA / 0 SpD / 252 Spe
++Serious Nature
++- Flare Blitz
++- Dragon Claw
++- Blast Burn
++- Thunder Punch
++
++Malamar
++Level: 80
++IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
++EVs: 4 HP / 252 Atk / 0 Def / 0 SpA / 0 SpD / 252 Spe
++Serious Nature
++- Psycho Cut
++- Throat Chop
++
++=== TRAINER_LANCE_M8 ===
++Name: LANCE
++Class: Elite Four Frlg
++Pic: Elite Four Lance Frlg
++Gender: Male
++Music: Elite Four
++Items: Full Restore / Full Restore / Full Restore / Full Restore
++Double Battle: No
++AI: Check Bad Move / Try To Faint / Check Viability / Smart Switching
++
++Dragonite
++Level: 80
++IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
++EVs: 4 HP / 252 Atk / 0 Def / 0 SpA / 0 SpD / 252 Spe
++Serious Nature
++Dynamax Level: 10
++- Hyper Beam
++- Body Press
++- Twister
++- Dragon Claw
++
++Gyarados (M)
++Ability: Intimidate
++Level: 80
++IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
++EVs: 4 HP / 252 Atk / 0 Def / 0 SpA / 0 SpD / 252 Spe
++Serious Nature
++- Aqua Tail
++- Dragon Pulse
++- Dragon Dance
++- Ice Fang
++
++Hydreigon
++Level: 80
++IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
++EVs: 4 HP / 0 Atk / 0 Def / 252 SpA / 0 SpD / 252 Spe
++Serious Nature
++- Dark Pulse
++- Tri Attack
++- Flash Cannon
++
++=== TRAINER_IRIS_M8 ===
++Name: IRIS
++Class: Lass
++Pic: Lass
++Gender: Female
++Music: Female
++Items: Full Restore / Full Restore / Full Restore / Full Restore
++Double Battle: No
++AI: Check Bad Move / Try To Faint / Check Viability / Smart Switching
++
++Excadrill (M)
++Level: 80
++IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
++EVs: 4 HP / 252 Atk / 0 Def / 0 SpA / 0 SpD / 252 Spe
++Serious Nature
++- Drill Run
++- Metal Claw
++- Focus Blast
++- Horn Drill
++
++Dragonite (M)
++Level: 80
++IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
++EVs: 4 HP / 252 Atk / 0 Def / 0 SpA / 0 SpD / 252 Spe
++Serious Nature
++- Thunder Punch
++- Flamethrower
++- Ice Beam
++- Dragon Rush
++
++Haxorus (M)
++Level: 80
++IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
++EVs: 4 HP / 252 Atk / 0 Def / 0 SpA / 0 SpD / 252 Spe
++Serious Nature
++- Outrage
++- Dragon Pulse
++- Psycho Cut
++- Breaking Swipe
++
++=== TRAINER_DIANTHA_M8 ===
++Name: DIANTHA
++Class: Cooltrainer
++Pic: Cooltrainer F
++Gender: Female
++Music: Cool
++Items: Full Restore / Full Restore / Full Restore / Full Restore
++Double Battle: No
++AI: Check Bad Move / Try To Faint / Check Viability / Smart Switching
++
++Tyrantrum
++Level: 80
++IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
++EVs: 4 HP / 252 Atk / 0 Def / 0 SpA / 0 SpD / 252 Spe
++Serious Nature
++- Hyper Beam
++
++Aurorus
++Level: 80
++IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
++EVs: 4 HP / 0 Atk / 0 Def / 252 SpA / 0 SpD / 252 Spe
++Serious Nature
++- Blizzard
++- Rock Slide
++- Light Screen
++- Reflect
++
++Gourgeist
++Level: 80
++IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
++EVs: 4 HP / 252 Atk / 0 Def / 0 SpA / 0 SpD / 252 Spe
++Serious Nature
++- Phantom Force
++- Shadow Sneak
++- Trick-or-Treat
++- Light Screen
++
++Goodra
++Level: 80
++IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
++EVs: 4 HP / 0 Atk / 0 Def / 252 SpA / 0 SpD / 252 Spe
++Serious Nature
++- Fire Blast
++
++Gardevoir @ Gardevoirite
++Tags: Ace
++Level: 80
++IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
++EVs: 4 HP / 0 Atk / 0 Def / 252 SpA / 0 SpD / 252 Spe
++Serious Nature
++- Moonblast
++- Psychic
++- Shadow Ball
++- Thunderbolt
++
+ === TRAINER_URBAIN ===
+ Name: URBAIN
+ Class: Cooltrainer
+diff --git a/src/debug.c b/src/debug.c
+index 461c75a5..ff6a3f05 100644
+--- a/src/debug.c
++++ b/src/debug.c
+@@ -616,6 +616,8 @@ static const u8 sSimSourceSuffixAshUnova[]    = _(" (Unova)");
+ static const u8 sSimSourceSuffixAshIndigo[]   = _(" (Indigo)");
+ static const u8 sSimSourceSuffixAshJourneys[] = _(" (Journeys)");
+ static const u8 sSimSourceSuffixAshAll[]      = _(" (Full Team)");
++// v3.1.0 — Masters Eight (Journeys World Coronation Series) anime teams.
++static const u8 sSimSourceSuffixMasters[]     = _(" (Masters)");
+ // v2.0 — Nemona has 3 starter-variant teams; tag her ace so the picker
+ // disambiguates them. Q = Quaquaval ace (player chose Fuecoco), M =
+ // Meowscarada ace (Quaxly), S = Skeledirge ace (Sprigatito).
+@@ -771,6 +773,9 @@ static const u8 *GetSimSourceSuffix(u16 trainerId)
+         case 1198: return sSimSourceSuffixAnime;     // Paul (Sinnoh rival)
+         case 1199: return sSimSourceSuffixAnime;     // Gary Oak (Kanto rival)
+     }
++    // v3.1.0 — Masters Eight anime teams (Cynthia..Diantha, 1305-1311).
++    if (trainerId >= TRAINER_CYNTHIA_M8 && trainerId <= TRAINER_DIANTHA_M8)
++        return sSimSourceSuffixMasters;
+     // v0.51 Custom — user-built trainer slots. v1.1: slots 4-6 (1099-1101)
+     // sit AFTER the LA block, so the range is discontiguous.
+     if ((trainerId >= TRAINER_SIM_CUSTOM_1 && trainerId <= TRAINER_SIM_CUSTOM_3)
+@@ -1189,6 +1194,9 @@ static const u16 sSimulatorRoster[] = {
+     1197,                                                // Ash (Full roster — 53-mon all-regions pool)
+     1198,                                                // Paul (Sinnoh rival — 17-mon pool, Electivire ace)
+     1199,                                                // Gary Oak (Kanto rival — 12-mon pool, Blastoise ace)
++    // v3.1.0 — Masters Eight (Journeys) anime teams
++    1305, 1306, 1307, 1308,                              // Cynthia / Leon / Steven / Alain (Masters)
++    1309, 1310, 1311,                                    // Lance / Iris / Diantha (Masters)
+     // ---- VGC 2012 World Championships ----
+     1108, 1109,                                          // Wolfe Glick / Ray Rizo
+     // ---- Custom section (user-built trainers, v0.51 + v1.1) ----
+@@ -1503,6 +1511,28 @@ static const u16 sCupCustom[] = {
+     1087, 1088, 1089, 1099, 1100, 1101, 1287, 1288,
+ };
+ 
++// v3.1.0 — MASTERS EIGHT (Journeys, World Coronation Series JN115-JN132).
++// sCupMasters8 is laid out in the anime's bracket order so slot pairs are the
++// real Quarter Finals: Leon-Alain, Lance-Diantha, Cynthia-Iris, Steven-Ash
++// (Semi Finals: QF1 vs QF2 winner, QF3 vs QF4 winner). The "M8 Shuffle" cup
++// is the same eight with random pairings. Both run the Masters rules (see
++// Sim_GetCupBringCap / Sim_IsGimmickBlockedByCupRules): QF 3v3, SF + Final
++// 6v6, one gimmick per battle until the Final, where each may be used once.
++static const u8 sCupName_Masters8[]        = _("Masters 8");
++static const u8 sCupName_Masters8Shuffle[] = _("M8 Shuffle");
++static const u16 sCupMasters8[] = {
++    TRAINER_LEON_M8,    TRAINER_ALAIN_M8,            // QF1 (JN115)
++    TRAINER_LANCE_M8,   TRAINER_DIANTHA_M8,          // QF2 (JN116)
++    TRAINER_CYNTHIA_M8, TRAINER_IRIS_M8,             // QF3 (JN116-117)
++    TRAINER_STEVEN_M8,  TRAINER_ASH_WORLD_CHAMPION,  // QF4 (JN118)
++};
++static const u16 sCupMasters8Shuffle[] = {
++    TRAINER_LEON_M8,    TRAINER_ALAIN_M8,
++    TRAINER_LANCE_M8,   TRAINER_DIANTHA_M8,
++    TRAINER_CYNTHIA_M8, TRAINER_IRIS_M8,
++    TRAINER_STEVEN_M8,  TRAINER_ASH_WORLD_CHAMPION,
++};
++
+ // v2.8.2 — Logan's own teams, one per game, so they can fight each other.
+ #ifndef RELEASE_BUILD
+ static const u8 sCupName_Logan[] = _("Logan");
+@@ -1545,6 +1575,8 @@ static const struct SimCup sSimCups[] =
+     { sCupName_Champions,   sCupChampions,   12 },   // Cross-gen — 11 in-game champions (+ Cynthia twice)
+     { sCupName_AllStars,    sSimulatorRoster, SIMULATOR_ROSTER_COUNT },  // Cross-gen — EVERY curated trainer in the game
+     { sCupName_Custom,      sCupCustom,       8 },   // v2.6.1 — the user's 8 custom build slots
++    { sCupName_Masters8,    sCupMasters8,     8 },   // v3.1.0 — anime Masters Eight, canon bracket
++    { sCupName_Masters8Shuffle, sCupMasters8Shuffle, 8 },  // v3.1.0 — same eight, random pairings
+ #ifndef RELEASE_BUILD
+     { sCupName_Logan,       sCupLogan,        9 },   // v2.8.2 — dev-only, last so no index shifts
+ #endif
+@@ -3173,6 +3205,13 @@ static const u8 sSimAiTierById[] =
+     [TRAINER_ASH_SINNOH] = 3,
+     [TRAINER_ASH_UNOVA] = 3,
+     [TRAINER_ASH_WORLD_CHAMPION] = 3,
++    [TRAINER_CYNTHIA_M8] = 3,  // v3.1.0 Masters Eight
++    [TRAINER_LEON_M8] = 3,
++    [TRAINER_STEVEN_M8] = 3,
++    [TRAINER_ALAIN_M8] = 3,
++    [TRAINER_LANCE_M8] = 3,
++    [TRAINER_IRIS_M8] = 3,
++    [TRAINER_DIANTHA_M8] = 3,
+     [TRAINER_AVERY] = 3,
+     [TRAINER_BENGA] = 3,
+     [TRAINER_BENI_LA] = 3,
+@@ -3397,6 +3436,7 @@ static u64 Sim_ComputeAiTier(u16 trainerId, u64 flags, u8 *tierOut)
+          || sfx == sSimSourceSuffixAshSinnoh || sfx == sSimSourceSuffixAshHoenn
+          || sfx == sSimSourceSuffixAshUnova || sfx == sSimSourceSuffixAshIndigo
+          || sfx == sSimSourceSuffixAshJourneys || sfx == sSimSourceSuffixAshAll
++         || sfx == sSimSourceSuffixMasters
+          || Sim_IsBossTrainer(trainerId))
+             tier = 3;
+         else if (cls == TRAINER_CLASS_ELITE_FOUR)
+@@ -4038,8 +4078,10 @@ static const struct DebugMenuOption sDebugMenu_Actions_TournamentCups[] =
+     { sCupName_Champions,      DebugAction_Tournament_PickCup, (void *)27 },
+     { sCupName_AllStars,       DebugAction_Tournament_PickCup, (void *)28 },
+     { sCupName_Custom,         DebugAction_Tournament_PickCup, (void *)29 },
++    { sCupName_Masters8,       DebugAction_Tournament_PickCup, (void *)30 },  // v3.1.0
++    { sCupName_Masters8Shuffle, DebugAction_Tournament_PickCup, (void *)31 }, // v3.1.0
+ #ifndef RELEASE_BUILD
+-    { sCupName_Logan,          DebugAction_Tournament_PickCup, (void *)30 },
++    { sCupName_Logan,          DebugAction_Tournament_PickCup, (void *)32 },
+ #endif
+     { NULL }
+ };
+@@ -8204,9 +8246,9 @@ static const u16 sSimulatorRosterSectionStarts[] = {
+     365 + CUSTOM_OFFSET,     // Legends Arceus — Volo/Adaman/Irida/Ingo/Akari + Kamado/Zisu/Beni/Rei (9)
+     374 + CUSTOM_OFFSET,     // SV — Nemona + Geeta + Paldea E4 + Penny + Sada/Turo + 7 gyms + 6 profs + Carmine + BB E4 + Kieran + Clavell ×3 + Miriam + Arven + Cyrano (36)
+     410 + CUSTOM_OFFSET,     // Legends ZA — Urbain/Taunie + Royale challengers (24)
+-    434 + CUSTOM_OFFSET,     // Anime — Ash (WC/Journeys + 7 region teams) + Alain + Paul + Gary (11)
+-    445 + CUSTOM_OFFSET,     // VGC — Wolfe Glick + Ray Rizo 2012 World Finals (2)
+-    447 + CUSTOM_OFFSET,     // Custom — v0.51 + v1.1 user-built slots (6)
++    434 + CUSTOM_OFFSET,     // Anime — Ash (WC/Journeys + 7 region teams) + Alain + Paul + Gary + v3.1.0 Masters Eight ×7 (18)
++    452 + CUSTOM_OFFSET,     // VGC — Wolfe Glick + Ray Rizo 2012 World Finals (2)
++    454 + CUSTOM_OFFSET,     // Custom — v0.51 + v1.1 user-built slots (6)
+ };
+ #define SIMULATOR_ROSTER_SECTION_COUNT (sizeof(sSimulatorRosterSectionStarts) / sizeof(sSimulatorRosterSectionStarts[0]))
+ 
+@@ -8661,6 +8703,58 @@ static bool32 Sim_IsTournamentActive(void)
+             && gSimTournamentRound > 0 && !gSimTournamentDone);
+ }
+ 
++// v3.1.0 — Masters Eight cup rules. TRUE for both Masters cups.
++static bool32 Sim_IsMastersCup(u32 cupIndex)
++{
++    if (cupIndex == 0 || cupIndex >= SIM_CUP_COUNT)
++        return FALSE;
++    return sSimCups[cupIndex].trainers == sCupMasters8
++        || sSimCups[cupIndex].trainers == sCupMasters8Shuffle;
++}
++
++static bool32 Sim_MastersRulesActive(void)
++{
++    return Sim_IsTournamentActive() && Sim_IsMastersCup(gSimTournamentCup);
++}
++
++// Quarter Finals are 3v3; Semi Finals and the Final are full 6v6.
++u8 Sim_GetCupBringCap(void)
++{
++    if (!Sim_MastersRulesActive())
++        return 0;
++    return (gSimTournamentRound == 1) ? 3 : 0;
++}
++
++// Masters Eight gimmick rule. Before the Final each trainer may use ONE of
++// Mega Evolution / Z-Move / Dynamax in a battle: once any is used the others
++// lock. The engine already limits each gimmick to once per battle, so in the
++// Final (where the anime lifted the one-gimmick limit) nothing extra applies
++// and every trainer may use each of the three once.
++bool32 Sim_IsGimmickBlockedByCupRules(u32 battler, u32 gimmick)
++{
++    static const u8 sMastersGimmicks[] = {
++        GIMMICK_MEGA, GIMMICK_Z_MOVE, GIMMICK_ULTRA_BURST, GIMMICK_DYNAMAX,
++    };
++    bool32 restricted = FALSE;
++
++    if (!Sim_IsActive() || !Sim_MastersRulesActive())
++        return FALSE;
++    if (gSimTournamentRound >= gSimTournamentMaxRounds)
++        return FALSE;  // the Final
++    for (u32 i = 0; i < ARRAY_COUNT(sMastersGimmicks); i++)
++        if (sMastersGimmicks[i] == gimmick)
++            restricted = TRUE;
++    if (!restricted)
++        return FALSE;
++    for (u32 i = 0; i < ARRAY_COUNT(sMastersGimmicks); i++)
++    {
++        if (sMastersGimmicks[i] != gimmick
++         && HasTrainerUsedGimmick((enum BattlerId)battler, sMastersGimmicks[i]))
++            return TRUE;
++    }
++    return FALSE;
++}
++
+ static bool32 UNUSED Sim_IsTournamentDone(void)
+ {
+     return (gSimTournamentCup > 0 && gSimTournamentDone);
+@@ -8785,6 +8879,30 @@ static bool32 Sim_BuildTournamentBracket(u8 cupIndex, s32 playerSideId)
+         }
+     }
+ 
++    // v3.1.0 — Masters 8: the canon anime bracket. Seat all eight in the
++    // cup's own order; the followed trainer keeps their real slot. A trainer
++    // from outside the eight takes a random seat (that seat's trainer sits
++    // out). Side QFs are still pre-simulated below.
++    if (cup->trainers == sCupMasters8)
++    {
++        gSimTournamentPlayerSlot = Random() & 7;
++        for (u8 slot = 0; slot < SIM_TOURNAMENT_BRACKET_SIZE; slot++)
++        {
++            if ((s32)cup->trainers[slot] == playerSideId)
++                gSimTournamentPlayerSlot = slot;
++        }
++        for (u8 slot = 0; slot < SIM_TOURNAMENT_BRACKET_SIZE; slot++)
++            gSimTournamentBracket[slot] = cup->trainers[slot];
++        gSimTournamentBracket[gSimTournamentPlayerSlot] = (u16)playerSideId;
++        for (u8 qf = 0; qf < 4; qf++)
++        {
++            if (qf == gSimTournamentPlayerSlot / 2)
++                continue;
++            gSimTournamentResults[qf] = Sim_SimulateMatch(qf * 2, qf * 2 + 1);
++        }
++        return TRUE;
++    }
++
+     // Fisher-Yates shuffle for random pairing each tournament run.
+     for (s32 i = candidateCount - 1; i > 0; i--)
+     {
+@@ -8985,6 +9103,8 @@ static void DebugAction_Trainers_SetRematch(u8 taskId)
+ 
+     if (rematchId == -1)
+     {
++        if (sDebugMenuListData->data[0] >= TRAINER_FLAG_SLOTS)  // v3.1.0 — no flag slot
++            return;
+         FlagToggle(TRAINER_FLAGS_START + sDebugMenuListData->data[0]);
+         return;
+     }
+@@ -10879,6 +10999,15 @@ static void DebugAction_Tournament_PickCup(u8 taskId, u32 cupIdx)
+     gSimTournamentSpectating = FALSE;
+     Debug_DestroyMenu(taskId);
+     sDebugMenuListData->listId = 0;
++    // v3.1.0 — the Masters Eight is a singles tournament with its own team
++    // sizes (3v3 / 6v6), so it skips the Singles / Doubles / VGC step.
++    if (Sim_IsMastersCup(cupIdx))
++    {
++        sTournamentForceDouble = FALSE;
++        gSimVGCMode = FALSE;
++        Debug_ShowMenu(DebugTask_HandleMenuInput_General, sDebugMenu_Actions_TournamentBestOf);
++        return;
++    }
+     Debug_ShowMenu(DebugTask_HandleMenuInput_General, sDebugMenu_Actions_TournamentFormat);
+ }
+ 
+diff --git a/test/battle/gimmick/masters_eight.c b/test/battle/gimmick/masters_eight.c
+new file mode 100644
+index 00000000..cf388d8b
+--- /dev/null
++++ b/test/battle/gimmick/masters_eight.c
+@@ -0,0 +1,163 @@
++#include "global.h"
++#include "test/battle.h"
++#include "debug.h"
++
++// v3.1.0 — Masters Eight cup rules (src/debug.c: Sim_GetCupBringCap,
++// Sim_IsGimmickBlockedByCupRules). Cup index 30 = "Masters 8" in sSimCups.
++#define MASTERS_8_CUP 30
++
++static void ArmMastersRound(u8 round)
++{
++    gSimPilotMode = TRUE;  // Sim_IsActive(); tests drive the player side directly
++    gSimLevelCap = 0;
++    gSimTournamentCup = MASTERS_8_CUP;
++    gSimTournamentRound = round;
++    gSimTournamentMaxRounds = 3;
++    gSimTournamentDone = FALSE;
++    gSimTournamentEliminated = FALSE;
++}
++
++static void DisarmMasters(void)
++{
++    gSimPilotMode = FALSE;
++    gSimTournamentCup = 0;
++    gSimTournamentRound = 0;
++    gSimTournamentMaxRounds = 0;
++}
++
++SINGLE_BATTLE_TEST("(MASTERS 8) Before the Final, Mega Evolving locks the Z-Move")
++{
++    GIVEN {
++        ArmMastersRound(1);
++        PLAYER(SPECIES_LUCARIO) { Item(ITEM_LUCARIONITE); }
++        PLAYER(SPECIES_WOBBUFFET) { Item(ITEM_NORMALIUM_Z); }
++        OPPONENT(SPECIES_WOBBUFFET);
++    } WHEN {
++        TURN { MOVE(player, MOVE_CELEBRATE, gimmick: GIMMICK_MEGA); }
++        TURN { SWITCH(player, 1); }
++        TURN { MOVE(player, MOVE_SCRATCH, gimmick: GIMMICK_Z_MOVE); }
++    } SCENE {
++        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_MEGA_EVOLUTION, player);
++        NONE_OF {
++            ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_ZMOVE_ACTIVATE, player);
++            ANIMATION(ANIM_TYPE_MOVE, MOVE_BREAKNECK_BLITZ, player);
++        }
++        ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, player);
++    } THEN {
++        DisarmMasters();
++    }
++}
++
++SINGLE_BATTLE_TEST("(MASTERS 8) Before the Final, using a Z-Move locks Mega Evolution")
++{
++    GIVEN {
++        ArmMastersRound(2);
++        PLAYER(SPECIES_WOBBUFFET) { Item(ITEM_NORMALIUM_Z); }
++        PLAYER(SPECIES_LUCARIO) { Item(ITEM_LUCARIONITE); }
++        OPPONENT(SPECIES_WOBBUFFET);
++    } WHEN {
++        TURN { MOVE(player, MOVE_SCRATCH, gimmick: GIMMICK_Z_MOVE); }
++        TURN { SWITCH(player, 1); }
++        TURN { MOVE(player, MOVE_CELEBRATE, gimmick: GIMMICK_MEGA); }
++    } SCENE {
++        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_ZMOVE_ACTIVATE, player);
++        NOT ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_MEGA_EVOLUTION, player);
++    } THEN {
++        EXPECT_EQ(player->species, SPECIES_LUCARIO);
++        DisarmMasters();
++    }
++}
++
++SINGLE_BATTLE_TEST("(MASTERS 8) In the Final, Mega Evolution and a Z-Move can both be used")
++{
++    GIVEN {
++        ArmMastersRound(3);
++        PLAYER(SPECIES_LUCARIO) { Item(ITEM_LUCARIONITE); }
++        PLAYER(SPECIES_WOBBUFFET) { Item(ITEM_NORMALIUM_Z); }
++        OPPONENT(SPECIES_WOBBUFFET);
++    } WHEN {
++        TURN { MOVE(player, MOVE_CELEBRATE, gimmick: GIMMICK_MEGA); }
++        TURN { SWITCH(player, 1); }
++        TURN { MOVE(player, MOVE_SCRATCH, gimmick: GIMMICK_Z_MOVE); }
++    } SCENE {
++        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_MEGA_EVOLUTION, player);
++        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_ZMOVE_ACTIVATE, player);
++        ANIMATION(ANIM_TYPE_MOVE, MOVE_BREAKNECK_BLITZ, player);
++    } THEN {
++        DisarmMasters();
++    }
++}
++
++SINGLE_BATTLE_TEST("(MASTERS 8) Rules are off outside the Masters cups")
++{
++    GIVEN {
++        DisarmMasters();
++        PLAYER(SPECIES_LUCARIO) { Item(ITEM_LUCARIONITE); }
++        PLAYER(SPECIES_WOBBUFFET) { Item(ITEM_NORMALIUM_Z); }
++        OPPONENT(SPECIES_WOBBUFFET);
++    } WHEN {
++        TURN { MOVE(player, MOVE_CELEBRATE, gimmick: GIMMICK_MEGA); }
++        TURN { SWITCH(player, 1); }
++        TURN { MOVE(player, MOVE_SCRATCH, gimmick: GIMMICK_Z_MOVE); }
++    } SCENE {
++        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_MEGA_EVOLUTION, player);
++        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_ZMOVE_ACTIVATE, player);
++    }
++}
++
++static u32 CountBuiltMons(void)
++{
++    u32 count = 0;
++    for (u32 i = 0; i < PARTY_SIZE; i++)
++        if (GetMonData(&gEnemyParty[i], MON_DATA_SPECIES) != SPECIES_NONE)
++            count++;
++    return count;
++}
++
++// A six-Pokemon trainer built here: test builds swap the real trainer table
++// for test/battle/trainer_control.party, so the anime teams aren't present.
++static const struct TrainerMon sSixMons[] =
++{
++    { .species = SPECIES_WOBBUFFET, .lvl = 50, .moves = { MOVE_SCRATCH } },
++    { .species = SPECIES_WYNAUT,    .lvl = 50, .moves = { MOVE_SCRATCH } },
++    { .species = SPECIES_PIKACHU,   .lvl = 50, .moves = { MOVE_SCRATCH } },
++    { .species = SPECIES_EEVEE,     .lvl = 50, .moves = { MOVE_SCRATCH } },
++    { .species = SPECIES_MEW,       .lvl = 50, .moves = { MOVE_SCRATCH } },
++    { .species = SPECIES_DITTO,     .lvl = 50, .moves = { MOVE_SCRATCH } },
++};
++
++static const struct Trainer sSixMonTrainer =
++{
++    .party = TRAINER_PARTY(sSixMons),
++    .trainerName = _("TEST"),
++};
++
++TEST("(MASTERS 8) Quarter Finals are 3v3, Semi Finals and the Final are 6v6")
++{
++    ArmMastersRound(1);
++    EXPECT_EQ(Sim_GetCupBringCap(), 3);
++    CreateNPCTrainerPartyFromTrainer(gEnemyParty, &sSixMonTrainer, TRUE, BATTLE_TYPE_TRAINER);
++    EXPECT_EQ(CountBuiltMons(), 3);
++
++    ArmMastersRound(2);
++    EXPECT_EQ(Sim_GetCupBringCap(), 0);
++    CreateNPCTrainerPartyFromTrainer(gEnemyParty, &sSixMonTrainer, TRUE, BATTLE_TYPE_TRAINER);
++    EXPECT_EQ(CountBuiltMons(), 6);
++
++    ArmMastersRound(3);
++    CreateNPCTrainerPartyFromTrainer(gEnemyParty, &sSixMonTrainer, TRUE, BATTLE_TYPE_TRAINER);
++    EXPECT_EQ(CountBuiltMons(), 6);
++
++    // Outside the Masters cups nothing is capped.
++    DisarmMasters();
++    gSimPilotMode = TRUE;
++    gSimTournamentCup = 1;
++    gSimTournamentRound = 1;
++    gSimTournamentMaxRounds = 3;
++    EXPECT_EQ(Sim_GetCupBringCap(), 0);
++    CreateNPCTrainerPartyFromTrainer(gEnemyParty, &sSixMonTrainer, TRUE, BATTLE_TYPE_TRAINER);
++    EXPECT_EQ(CountBuiltMons(), 6);
++
++    DisarmMasters();
++    ZeroEnemyPartyMons();
++}
+-- 
+2.43.0
+
